@@ -1,0 +1,11 @@
+-: Mod Name: Goddess Codex
+    Author - AlexKage
+:-
+ModUtil.RegisterMod( "GoddessCodex" )
+
+To "Scripts/CodexData.lua"
+Import "Content/Scripts/CodexData.lua"
+To "Scripts/CodexScripts.lua"
+Import "Content/Scripts/CodexScripts.lua"
+To "Scripts/UIData.lua"
+Import "Content/Scripts/UIData.lua"

@@ -1,0 +1,2 @@
+--table.insert(CodexOrdering, CodexOrderingOlympianGoddess)
+--table.insert(Codex, Codex.OlympianGods.Entries.Athena)

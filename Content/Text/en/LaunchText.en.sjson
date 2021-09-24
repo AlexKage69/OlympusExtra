@@ -1,0 +1,27 @@
+{
+  HelpText = {
+    lang = "en"
+    Texts = [
+      {
+        Id = "Launcher_PressAnyButton"
+        DisplayName = "Press Any Button"
+      }
+      {
+        Id = "Launcher_PressAnyKey"
+        DisplayName = "Press Any Key"
+      }
+      {
+        Id = "Launcher_AutoSaveAlert"
+        DisplayName = "AutoSave Indicator Appears When Progress Is Saved:"
+      }
+      {
+        Id = "Launcher_AutoSaveAlertAlt"
+        DisplayName = "AutoSave Notice: Your progress is being saved when you see the indicator below. Please do not turn off your console at this time."
+      }
+      {
+        Id = "Launcher_SupergiantGamesShortCopyright"
+        DisplayName = "© 2018 Supergiant Games, LLC. All rights reserved."
+      }
+    ]
+  }
+}
