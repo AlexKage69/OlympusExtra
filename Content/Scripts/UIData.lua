@@ -1,1 +1,0 @@
-CodexUI.MaxChapters = 4
