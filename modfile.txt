@@ -3,4 +3,8 @@
 :-
 
 Import "SeparateGoddess.lua"
-Import "OlympusExtra.lua"
+::Import "OlympusExtra.lua"
+
+:: Language Text
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/en/OlympusHelp.en.sjson"
