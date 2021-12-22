@@ -2,9 +2,16 @@
 
 ModUtil.RegisterMod("SeparateGoddess")
 
---local mod = "SeparateGoddess"
---local package = "HeroesIcons"
-
+OlympianGoddessExtra = {
+    Index = 3,
+    Order = { "AthenaUpgrade", "AphroditeUpgrade", "ArtemisUpgrade", "DemeterUpgrade" },
+    Codex = {
+        UnlockType = CodexUnlockTypes.Boon,
+        TitleText = "Codex_OlympianGoddessChapter",
+        Entries = {}
+    }
+}
+-- Move and add new gods and goddess
 function MoveGodToSubCodex(category, CodexOrderingIndex, god)
     for godtoremove, info in pairs(Codex.OlympianGods.Entries) do
         if(godtoremove == god) then
@@ -18,49 +25,32 @@ function MoveGodToSubCodex(category, CodexOrderingIndex, god)
     return false
 end
 
-function AddGodToSubCodex(category, god)
-    --table.insert(CodexOrdering[category].Order, god)
-    Codex[category].Entries[god] = Codex.OlympianGods.Entries[god]
-    return true
-end
-
-function AddNewOlympians()
-    for modName, section in pairs(CodexExtra) do
-        Codex[modName] = ModUtil.Table.Copy(section.Codex)
-        CodexOrdering[modName] = {Order = ModUtil.Table.Copy(section.Order)}
-        local added = false
-        for i, value in ipairs(section.Order) do
+ModUtil.LoadOnce(function ()    
+    CodexUI.MaxChapters = 4
+        if(Codex.OlympianGoddess == nil and CodexOrdering.OlympianGoddess == nil ) then
+            Codex.OlympianGoddess = {}
+            Codex.OlympianGoddess = ModUtil.Table.Copy(OlympianGoddessExtra.Codex)
+            CodexOrdering.OlympianGoddess = {Order = ModUtil.Table.Copy(OlympianGoddessExtra.Order)}    
+            table.insert(CodexOrdering.Order, OlympianGoddessExtra.Index, "OlympianGoddess")        
+        end
+        for _, value in ipairs(OlympianGoddessExtra.Order) do
                 for j, god in ipairs(CodexOrdering.OlympianGods.Order) do
                     -- Already exists
                     if(god == value) then
-                        added = MoveGodToSubCodex(modName, j, god) or added
-                    else -- New God ValueOptions
-                        --added = AddGodToSubCodex(modName, god) or added
+                        MoveGodToSubCodex("OlympianGoddess", j, god)
+                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(god))
                     end
                 end
-        end    
-        if(added) then
-            table.insert(CodexOrdering.Order, section.Index, modName)
-        end
-    end
-end
-
-OnAnyLoad{ function() 
-    CodexUI.MaxChapters = 4
-    AddNewOlympians()
-end}
-
-ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
-    --DebugPrint({Text = "@"..mod.." Trying to load package "..package..".pkg"})
-    --LoadPackages({Name = package})
-    return baseFunc()
+        end 
 end)
 
+-- Added check for Goddess being check on upgrade
 ModUtil.WrapBaseFunction( "HandleUpgradeChoiceSelection", function(baseFunc, screen, button)
     baseFunc(screen, button)
 	CheckCodexUnlock( "OlympianGoddess", button.UpgradeName )
 end)
 
+-- Added check for Goddess being check on gift
 ModUtil.WrapBaseFunction( "AttemptGift", function(baseFunc, CurrentRun, target)
     baseFunc(CurrentRun, target)
 	local name = GetGenusName( target )
@@ -73,28 +63,3 @@ ModUtil.WrapBaseFunction( "AttemptGift", function(baseFunc, CurrentRun, target)
         CheckCodexUnlock( "OlympianGoddess", name )
     end
 end)
-
-ModUtil.WrapBaseFunction( "OpenCodexScreen", function(baseFunc)
-    if(CodexStatus) then
-        ModUtil.Hades.PrintStackChunks("------Check Codex Status-----")    
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexStatus.OlympianGods))
-        ModUtil.Hades.PrintStackChunks("-----------")    
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexStatus.OlympianGoddess))
-    end
-    baseFunc()
-end)
-
--- Run OnLoad
-
---New Data
-CodexExtra = {
-	OlympianGoddess = {
-		Index = 3,
-		Order = { "AthenaUpgrade", "AphroditeUpgrade", "ArtemisUpgrade", "DemeterUpgrade" },
-		Codex = {
-			UnlockType = CodexUnlockTypes.Boon,
-			TitleText = "Codex_OlympianGoddessChapter",
-			Entries = {}
-		}
-    }
-}
