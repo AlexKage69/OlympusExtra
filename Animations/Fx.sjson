@@ -1,0 +1,86 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "SwordSwipeAFlipped-Apollo"
+      InheritFrom = "SwordSwipeAFlipped"
+      Sound = "/SFX/Player Sounds/ApolloLoveSwipe"
+      EndBlue = 0.2
+      EndGreen = 0.8
+      EndRed = 0.8
+      StartRed = 1.0
+      StartBlue = 0.0
+      StartGreen = 0.5
+      ClearSlides = true
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      Slides = [
+
+        { DurationFrames = 1 }
+        /*Frame 1*/
+        { DurationFrames = 1 }
+        { DurationFrames = 1 VisualFx = "QuickFlashPink" }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        /*Frame 10*/
+
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 0 }
+        { DurationFrames = 0 }
+        { DurationFrames = 0 }
+        { DurationFrames = 0 }
+      ]
+    }
+    {
+      Name = "BoonDropApollo"
+      InheritFrom = "BoonDropGold"
+      ChildAnimation = "BoonDropA-Apollo"
+    }
+    {
+      Name = "BoonDropA-Apollo"
+      InheritFrom = "BoonDropA"
+      ChildAnimation = "BoonDropB-Apollo"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.64
+        Blue = 0.41
+      }
+    }
+    {
+      Name = "BoonDropB-Apollo"
+      InheritFrom = "BoonDropB"
+      ChildAnimation = "BoonDropC-Apollo"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.57
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonDropC-Apollo"
+      InheritFrom = "BoonDropC"
+      ChildAnimation = "BoonDropApolloIcon"
+      Color = 
+      {
+        Red = 0.98
+        Green = 0.45
+        Blue = 0.12
+      }
+    }
+    {
+      Name = "BoonDropApolloIcon"
+      InheritFrom = "BoonDropIcon"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+    }
+  ]
+}

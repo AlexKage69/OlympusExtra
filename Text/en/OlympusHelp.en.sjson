@@ -1,9 +1,0 @@
-{
-	Texts = [
-		"_append"
-		{
-			Id = "Codex_OlympianGoddessChapter"
-			DisplayName = "Olympian Goddess"
-		}
-	]
-}

@@ -1,0 +1,13 @@
+{
+  /*
+  Made by AlexKage
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_Apollo_0001"
+      Speaker = "Achilles"
+      DisplayName = "'...Apollo Stuff...'"
+    }
+  ]
+}

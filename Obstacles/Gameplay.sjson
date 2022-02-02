@@ -1,0 +1,15 @@
+{
+  Obstacles = [
+      "_append"
+    {
+      Name = "ApolloUpgrade"
+      InheritFrom = "BaseBoon"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "BoonDropApollo"
+      }
+    }
+  ]
+}

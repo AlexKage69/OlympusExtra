@@ -1,0 +1,19 @@
+{
+  Animations = [
+	"_append"
+    {
+      Name = "Keepsake_Harp_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "GUI\Screens\AwardMenu\harp"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Harp"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "GUI\Screens\AwardMenu\harp"
+      EndFrame = 1
+      StartFrame = 1
+    }
+  ]
+}

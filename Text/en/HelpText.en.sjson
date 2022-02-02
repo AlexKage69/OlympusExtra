@@ -1,0 +1,53 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "Codex_OlympianGoddessChapter"
+			DisplayName = "Olympian Goddess"
+		}
+		{
+			Id = "NPC_Apollo_01"
+			DisplayName = "Apollo"
+			Description = "God of Music"
+		}		
+		{
+			Id = "ApolloUpgrade"
+			DisplayName = "Apollo"
+			Description = "God of Music"
+		}
+		{
+			Id = "ApolloUpgrades"
+			DisplayName = "God of Music"
+			Description = "The son of the god of the dead shall someday earn various Boons of Apollo."
+		}
+		{
+			Id = "ApolloUpgrade_FlavorText01"
+			DisplayName = "music is a gateway to the mind, listen up and see what you find."
+		}
+		{
+			Id = "ApolloUpgrade_FlavorText02"
+			DisplayName = "only the purest entities may see beyond his power."
+		}
+		{
+			Id = "ApolloUpgrade_FlavorText03"
+			DisplayName = "the god who affords help and wards off evil."
+		}		
+		{
+			Id = "ApolloWeaponTrait"
+			DisplayName = "Blinding Strike"
+			Description = "Your {$Keywords.Attack} deals more damage and can inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		} 
+		{
+			Id = "ApolloSignoff"
+			DisplayName = "From Apollo"
+		}
+		{
+			Id = "ApolloSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Apollo{#AwardDarkFlavorFormat}; you share an {#AwardMaxFlavorFormat}Harmonious Bond
+
+				{#AwardDarkFlavorFormat}He sees you as a prophet of good fortune.
+			"""
+		}
+	]
+}

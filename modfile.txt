@@ -5,6 +5,24 @@
 Import "SeparateGoddess.lua"
 ::Import "OlympusExtra.lua"
 
+Import "ApolloExtra.lua"
+
+:: Animations
+To "Game/Animations/PortraitAnimations.sjson"
+SJSON "Animations/PortraitAnimations.sjson"
+To "Game/Animations/ObstacleAnimations.sjson"
+SJSON "Animations/ObstacleAnimations.sjson"
+To "Game/Animations/Fx.sjson"
+SJSON "Animations/Fx.sjson"
+
+:: Obstacles
+To "Game/Obstacles/Gameplay.sjson"
+SJSON "Obstacles/Gameplay.sjson"
+
 :: Language Text
 To "Game/Text/en/HelpText.en.sjson"
-SJSON "Text/en/OlympusHelp.en.sjson"
+SJSON "Text/en/HelpText.en.sjson"
+To "Game/Text/en/CodexText.en.sjson"
+SJSON "Text/en/CodexText.en.sjson"
+To "Game/Text/en/MacroText.sjson"
+SJSON "Text/en/MacroText.en.sjson"
