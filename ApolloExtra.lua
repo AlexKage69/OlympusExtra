@@ -2,577 +2,19 @@
 
 ModUtil.RegisterMod("ApolloExtra")
 
-ModUtil.LoadOnce(function ()    
-	-- Keywords
-    table.insert(KeywordList, "Blind")
-	  
-    -- Codex Section
-    table.insert(CodexOrdering.OlympianGods.Order, "ApolloUpgrade")
+local mod = "ApolloExtra"
+local package = "ApolloPackage"
 
-    Codex.OlympianGods.Entries["ApolloUpgrade"] =
-    {
-        Entries =
-        {
-            {
-                UnlockThreshold = 1,
-                Text = "CodexData_Apollo_0001"
-            },
-            -- {
-            --     UnlockThreshold = 5,
-            --     Text = "Arthur_02"
+ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
+    DebugPrint({Text = "@"..mod.." Trying to load package "..package..".pkg"})
+    --LoadPackages({Name = package})
+    return baseFunc()
+end)
 
-            -- },
-            -- {
-            --     UnlockThreshold = 15,
-            --     Text = "Arthur_03"
-            -- }
-        },
-        Image = "Codex_Portrait_Apollo",
-    }
-
-    -- NPC Section
-    table.insert(GameData.ConversationOrder, "ApolloUpgrade")
-
-    --OverwriteTableKeys( EnemyData, UnitSetData.NPCs )
-
-    -- Trait Section
-    TraitData.ForceApolloBoonTrait =
-    {
-		InheritFrom = { "GiftTrait" },
-		InRackTitle = "ForceApolloBoonTrait_Rack",
-		Icon = "Keepsake_Harp",
-		EquipSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
-		ForceBoonName = "ApolloUpgrade",
-		Uses = 1,
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 2.00,
-			},
-			Epic =
-			{
-				Multiplier = 3.00,
-			}
-		},
-		SignOffData =
-		{
-		  {
-			Text = "ApolloSignoff",
-		  },
-		  {
-			Text = "ApolloSignoff_Max"
-		  }
-		},
-	}
-    TraitData.ApolloWeaponTrait =
-    {
-            Name = "ApolloWeaponTrait",
-            InheritFrom = { "ShopTier1Trait" },
-            God = "Apollo",
-            Slot = "Melee",
-            Icon = "Boon_Apollo_01",
-            AddOutgoingDamageModifiers =
-            {
-                ValidWeaponMultiplier =
-                {
-                    BaseValue = 1.50,
-                    SourceIsMultiplier = true,
-                    IdenticalMultiplier =
-                    {
-                        Value = DuplicateMultiplier,
-                    },
-                },
-                ValidWeapons = WeaponSets.HeroPhysicalWeapons,
-                ExtractValues =
-                {
-                    {
-                        Key = "ValidWeaponMultiplier",
-                        ExtractAs = "TooltipDamage",
-                        Format = "PercentDelta",
-                    },
-                }
-            },
-            PropertyChanges =
-            {
-                {
-                    WeaponNames = WeaponSets.HeroPhysicalWeapons,
-                    EffectName = "ReduceDamageOutput",
-                    EffectProperty = "Active",
-                    ChangeValue = true,
-                },
-                {
-                    WeaponName = "SwordWeapon",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeAFlipped-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SwordWeapon2",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeB-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SwordWeapon3",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeC-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SwordWeaponDash",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeC-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SwordWeapon",
-                    ProjectileProperty = "StartFx",
-                    ChangeValue = "SwordSwipeA-Emitter-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SwordWeapon2",
-                    ProjectileProperty = "StartFx",
-                    ChangeValue = "SwordSwipeA-Emitter-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SwordWeapon3",
-                    ProjectileProperty = "StartFx",
-                    ChangeValue = "SwordSwipeC-Emitter-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SwordWeapon3",
-                    WeaponProperty = "ChargeFx",
-                    ChangeValue = "ChargeAttack-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SwordWeaponDash",
-                    ProjectileProperty = "StartFx",
-                    ChangeValue = "SwordSwipeC-Emitter-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SwordWeaponDash",
-                    WeaponProperty = "ChargeFx",
-                    ChangeValue = "ChargeAttack-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SpearWeapon",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "SpearThrustProjectile-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SpearWeapon2",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "SpearThrustProjectile-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SpearWeapon3",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "SpearThrustProjectile-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "SpearWeaponDash",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "SpearDashSwipe-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SpearWeaponSpin",
-                    ProjectileProperty = "DetonateGraphic",
-                    ChangeValue = "SpearSwipe360-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SpearWeaponSpin2",
-                    ProjectileProperty = "DetonateGraphic",
-                    ChangeValue = "SpearSwipe360-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "SpearWeaponSpin3",
-                    ProjectileProperty = "DetonateGraphic",
-                    ChangeValue = "SpearSwipe360-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "BowWeapon",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "BowWeaponArrow-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "BowWeapon",
-                    WeaponProperty = "MinChargeStartFx",
-                    ChangeValue = "BowCharge-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "BowWeaponDash",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "BowWeaponArrow-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "BowWeaponDash",
-                    WeaponProperty = "ChargeStartFx",
-                    ChangeValue = "BowChargeFast-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "ShieldWeapon",
-                    ProjectileProperty = "DetonateGraphic",
-                    ChangeValue = "ShieldSwipe-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponName = "ShieldWeaponDash",
-                    ProjectileProperty = "DetonateGraphic",
-                    ChangeValue = "ShieldSwipeDash-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "ShieldWeaponRush",
-                    WeaponProperty = "ChargeStartFx",
-                    ChangeValue = "ShieldCharge-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "ShieldWeaponRush",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "ShieldRush3D-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "ShieldWeaponRush",
-                    ProjectileProperty = "DissipateGraphic",
-                    ChangeValue = "ShieldRush3D-Out-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "GunWeapon",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "GunWeaponProjectile-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "GunWeapon",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "GunFire-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "GunWeapon",
-                    ProjectileProperty = "ImpactFx",
-                    ChangeValue = "GunWeaponImpact-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "GunWeaponDash",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "GunWeaponProjectile-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "GunWeaponDash",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "GunFire-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponName = "GunWeaponDash",
-                    ProjectileProperty = "ImpactFx",
-                    ChangeValue = "GunWeaponImpact-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "FistFxApollo",
-                    ChangeType = "Absolute"
-                },
-                {
-                    WeaponName = "FistWeaponDash",
-                    ProjectileProperty = "StartFx",
-                    ChangeValue = "FistFxSwipeApollo",
-                    ChangeType = "Absolute",
-                },
-    
-                {
-                    TraitName = "SwordConsecrationTrait",
-                    WeaponNames = { "SwordWeapon" },
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeC-Apollo-Arthur",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "SwordConsecrationTrait",
-                    WeaponNames = { "SwordWeapon2" },
-                    WeaponProperty = "ChargeFx",
-                    ChangeValue = "ChargeAttack-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "SwordConsecrationTrait",
-                    WeaponNames = { "SwordWeapon2" },
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeA-Apollo-Arthur",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "SwordConsecrationTrait",
-                    WeaponNames = { "SwordWeapon3" },
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeAFlipped-Apollo-Arthur",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "SwordConsecrationTrait",
-                    WeaponNames = { "SwordWeapon3" },
-                    WeaponProperty = "ChargeFx",
-                    ChangeValue = "ChargeAttack-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "SwordConsecrationTrait",
-                    WeaponNames = { "SwordWeaponDash" },
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "SwordSwipeC-Apollo-Arthur",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    TraitName = "BowBondTrait",
-                    WeaponName = "BowWeapon",
-                    WeaponProperty = "MinChargeStartFx",
-                    ChangeValue = "BowChargeRama-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    TraitName = "BowBondTrait",
-                    WeaponName = "BowWeaponDash",
-                    WeaponProperty = "ChargeStartFx",
-                    ChangeValue = "BowChargeRamaDash-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    TraitName = "BowBondTrait",
-                    WeaponNames = { "BowWeapon", "BowWeaponDash" },
-                    ProjectileProperty = "AttachedAnim",
-                    ChangeValue = "RamaWideShot-Apollo",
-                    ChangeType = "Absoawlute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    TraitName = "GunLoadedGrenadeTrait",
-                    WeaponName = "GunWeapon",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "GunLaser-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "GunLoadedGrenadeTrait",
-                    WeaponName = "GunWeapon",
-                    ProjectileProperty = "AttachedAnim",
-                    ChangeValue = "GunLaserOriginFlare-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "GunLoadedGrenadeTrait",
-                    WeaponName = "GunWeapon",
-                    ProjectileProperty = "TipFx",
-                    ChangeValue = "GunLaserTipFlare-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "GunLoadedGrenadeTrait",
-                    WeaponName = "GunWeapon",
-                    WeaponProperty = "ChargeStartFx",
-                    ChangeValue = "GunCharge-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "GunLoadedGrenadeTrait",
-                    WeaponNames = { "GunWeapon", "GunWeaponDash" },
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "null",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "GunLoadedGrenadeTrait",
-                    WeaponName = "GunWeapon",
-                    ProjectileProperty = "DissipateGraphic",
-                    ChangeValue = "GunLaserEnd-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    TraitName = "ShieldLoadAmmoTrait",
-                    WeaponName = "ShieldWeapon",
-                    ProjectileProperty = "DetonateGraphic",
-                    ChangeValue = "BeowulfShieldSlam-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    TraitName = "BowMarkHomingTrait",
-                    WeaponNames = { "BowWeapon" },
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "BowWeaponArrow-Apollo-Alt01",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    TraitName = "BowLoadAmmoTrait",
-                    WeaponNames = { "BowWeapon" },
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "BowWeaponArrow-Apollo-Alt02",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-                {
-                    WeaponNames = { "FistWeapon", "FistWeapon3", "FistWeapon5" },
-                    TraitName = "FistDetonateTrait",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "ClawSwipe-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponNames = { "FistWeapon2", "FistWeapon4" },
-                    TraitName = "FistDetonateTrait",
-                    WeaponProperty = "FireFx",
-                    ChangeValue = "ClawSwipeFlipped-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-                {
-                    WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
-                    TraitName = "FistDetonateTrait",
-                    ProjectileProperty = "Graphic",
-                    ChangeValue = "null",
-                    ChangeType = "Absolute"
-                },
-                {
-                    WeaponNames = { "FistWeaponDash" },
-                    ProjectileProperty = "StartFx",
-                    ChangeValue = "ClawSwipeFlippedDash-Apollo",
-                    ChangeType = "Absolute",
-                    ExcludeLinked = true,
-                },
-    
-            },
-            ExtractValues =
-            {
-                {
-                    ExtractAs = "TooltipWeakDuration",
-                    SkipAutoExtract = true,
-                    External = true,
-                    BaseType = "Effect",
-                    WeaponName = "SwordWeapon",
-                    BaseName = "ReduceDamageOutput",
-                    BaseProperty = "Duration",
-                },
-                {
-                    ExtractAs = "TooltipWeakPower",
-                    SkipAutoExtract = true,
-                    External = true,
-                    BaseType = "Effect",
-                    WeaponName = "SwordWeapon",
-                    BaseName = "ReduceDamageOutput",
-                    BaseProperty = "Modifier",
-                    Format = "NegativePercentDelta"
-                }
-            }
-    } 
-
-    -- Loot Section    
-    table.insert(LootData, "ApolloUpgrade")
-
-    GameData.ApolloBasicPickUpTextLines =
-    {
+-- GameData
+local OlympusGameData = ModUtil.Entangled.ModData(GameData)
+OlympusGameData.ApolloBasicPickUpTextLines =
+{
         "ApolloFirstPickUp",
         "ApolloMiscPickup01",
         "ApolloMiscPickup02",
@@ -595,10 +37,1020 @@ ModUtil.LoadOnce(function ()
         -- "ApolloMiscPickup19",
         "ApolloMiscPickup20",
         -- "ApolloMiscPickup21",
-    }
+}
+table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 
-    LootData.ApolloUpgrade = 
+--Keywords
+local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
+ModUtil.MapSetTable(OlympusKeywordList, { "Blind" })
+
+-- Codex Section
+local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
+local OlympusCodex = ModUtil.Entangled.ModData(Codex)
+table.insert(OlympusCodexOrdering.OlympianGods.Order, "ApolloUpgrade")
+
+OlympusCodex.OlympianGods.Entries["ApolloUpgrade"] =
+{
+	Entries =
 	{
+		{
+			UnlockThreshold = 1,
+			Text = "CodexData_Apollo_0001"
+		},
+		{
+		    UnlockThreshold = 5,
+		    Text = "CodexData_Apollo_0002"
+		},
+		{
+		    UnlockThreshold = 15,
+		    Text = "CodexData_Apollo_0003"
+		}
+	},
+	Image = "Codex_Portrait_Apollo",
+}
+
+-- Trait Section
+local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+
+OlympusTraitData.ForceApolloBoonTrait = {
+	Name = "ForceApolloBoonTrait",
+		InheritFrom = { "GiftTrait" },
+		--Inherit		
+		Frame = "Gift",
+		Slot = "Keepsake",
+		RecordCacheOnEquip = true,
+		ChamberThresholds =  { 25, 50 },
+
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.5,
+			},
+			Epic =
+			{
+				Multiplier = 2.0,
+			}
+		},
+		--New Data
+		InRackTitle = "ForceApolloBoonTrait_Rack",
+		Icon = "Keepsake_Harp",
+		EquipSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
+		ForceBoonName = "ApolloUpgrade",
+		Uses = 1,
+		RarityBonus =
+		{
+			RequiredGod = "ApolloUpgrade",
+			RareBonus = { BaseValue = 0.1 },
+			EpicBonus = 0.1,
+			LegendaryBonus = 0.1,
+			ExtractValues =
+			{
+				{
+					Key = "RareBonus",
+					ExtractAs = "TooltipBonusChance",
+					Format = "Percent",
+				}
+			}
+		},
+		SignOffData =
+		{
+		  {
+			Text = "ApolloSignoff",
+		  },
+		  {
+			RequiredTextLines = { "ApolloGift07" },
+			Text = "ApolloSignoff_Max"
+		  }
+		},
+}
+    
+OlympusTraitData.ApolloWeaponTrait =
+ {
+		 Name = "ApolloWeaponTrait",
+		 InheritFrom = { "ShopTier1Trait" },
+		 God = "Apollo",
+		 Slot = "Melee",
+		 Icon = "Boon_Apollo_01",
+		 AddOutgoingDamageModifiers =
+		 {
+			 ValidWeaponMultiplier =
+			 {
+				 BaseValue = 1.50,
+				 SourceIsMultiplier = true,
+				 IdenticalMultiplier =
+				 {
+					 Value = DuplicateMultiplier,
+				 },
+			 },
+			 ValidWeapons = WeaponSets.HeroPhysicalWeapons,
+			 ExtractValues =
+			 {
+				 {
+					 Key = "ValidWeaponMultiplier",
+					 ExtractAs = "TooltipDamage",
+					 Format = "PercentDelta",
+				 },
+			 }
+		 },
+		 PropertyChanges =
+		 {
+			 {
+				 WeaponNames = WeaponSets.HeroPhysicalWeapons,
+				 EffectName = "ReduceDamageOutput",
+				 EffectProperty = "Active",
+				 ChangeValue = true,
+			 },
+			 {
+				 WeaponName = "SwordWeapon",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeAFlipped-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SwordWeapon2",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeB-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SwordWeapon3",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeC-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SwordWeaponDash",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeC-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SwordWeapon",
+				 ProjectileProperty = "StartFx",
+				 ChangeValue = "SwordSwipeA-Emitter-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SwordWeapon2",
+				 ProjectileProperty = "StartFx",
+				 ChangeValue = "SwordSwipeA-Emitter-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SwordWeapon3",
+				 ProjectileProperty = "StartFx",
+				 ChangeValue = "SwordSwipeC-Emitter-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SwordWeapon3",
+				 WeaponProperty = "ChargeFx",
+				 ChangeValue = "ChargeAttack-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SwordWeaponDash",
+				 ProjectileProperty = "StartFx",
+				 ChangeValue = "SwordSwipeC-Emitter-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SwordWeaponDash",
+				 WeaponProperty = "ChargeFx",
+				 ChangeValue = "ChargeAttack-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SpearWeapon",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "SpearThrustProjectile-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SpearWeapon2",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "SpearThrustProjectile-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SpearWeapon3",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "SpearThrustProjectile-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "SpearWeaponDash",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "SpearDashSwipe-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SpearWeaponSpin",
+				 ProjectileProperty = "DetonateGraphic",
+				 ChangeValue = "SpearSwipe360-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SpearWeaponSpin2",
+				 ProjectileProperty = "DetonateGraphic",
+				 ChangeValue = "SpearSwipe360-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "SpearWeaponSpin3",
+				 ProjectileProperty = "DetonateGraphic",
+				 ChangeValue = "SpearSwipe360-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "BowWeapon",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "BowWeaponArrow-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "BowWeapon",
+				 WeaponProperty = "MinChargeStartFx",
+				 ChangeValue = "BowCharge-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "BowWeaponDash",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "BowWeaponArrow-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "BowWeaponDash",
+				 WeaponProperty = "ChargeStartFx",
+				 ChangeValue = "BowChargeFast-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "ShieldWeapon",
+				 ProjectileProperty = "DetonateGraphic",
+				 ChangeValue = "ShieldSwipe-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponName = "ShieldWeaponDash",
+				 ProjectileProperty = "DetonateGraphic",
+				 ChangeValue = "ShieldSwipeDash-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "ShieldWeaponRush",
+				 WeaponProperty = "ChargeStartFx",
+				 ChangeValue = "ShieldCharge-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "ShieldWeaponRush",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "ShieldRush3D-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "ShieldWeaponRush",
+				 ProjectileProperty = "DissipateGraphic",
+				 ChangeValue = "ShieldRush3D-Out-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "GunWeapon",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "GunWeaponProjectile-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "GunWeapon",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "GunFire-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "GunWeapon",
+				 ProjectileProperty = "ImpactFx",
+				 ChangeValue = "GunWeaponImpact-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "GunWeaponDash",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "GunWeaponProjectile-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "GunWeaponDash",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "GunFire-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponName = "GunWeaponDash",
+				 ProjectileProperty = "ImpactFx",
+				 ChangeValue = "GunWeaponImpact-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "FistFxApollo",
+				 ChangeType = "Absolute"
+			 },
+			 {
+				 WeaponName = "FistWeaponDash",
+				 ProjectileProperty = "StartFx",
+				 ChangeValue = "FistFxSwipeApollo",
+				 ChangeType = "Absolute",
+			 },
+ 
+			 {
+				 TraitName = "SwordConsecrationTrait",
+				 WeaponNames = { "SwordWeapon" },
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeC-Apollo-Arthur",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "SwordConsecrationTrait",
+				 WeaponNames = { "SwordWeapon2" },
+				 WeaponProperty = "ChargeFx",
+				 ChangeValue = "ChargeAttack-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "SwordConsecrationTrait",
+				 WeaponNames = { "SwordWeapon2" },
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeA-Apollo-Arthur",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "SwordConsecrationTrait",
+				 WeaponNames = { "SwordWeapon3" },
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeAFlipped-Apollo-Arthur",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "SwordConsecrationTrait",
+				 WeaponNames = { "SwordWeapon3" },
+				 WeaponProperty = "ChargeFx",
+				 ChangeValue = "ChargeAttack-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "SwordConsecrationTrait",
+				 WeaponNames = { "SwordWeaponDash" },
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "SwordSwipeC-Apollo-Arthur",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 TraitName = "BowBondTrait",
+				 WeaponName = "BowWeapon",
+				 WeaponProperty = "MinChargeStartFx",
+				 ChangeValue = "BowChargeRama-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 TraitName = "BowBondTrait",
+				 WeaponName = "BowWeaponDash",
+				 WeaponProperty = "ChargeStartFx",
+				 ChangeValue = "BowChargeRamaDash-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 TraitName = "BowBondTrait",
+				 WeaponNames = { "BowWeapon", "BowWeaponDash" },
+				 ProjectileProperty = "AttachedAnim",
+				 ChangeValue = "RamaWideShot-Apollo",
+				 ChangeType = "Absoawlute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 TraitName = "GunLoadedGrenadeTrait",
+				 WeaponName = "GunWeapon",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "GunLaser-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "GunLoadedGrenadeTrait",
+				 WeaponName = "GunWeapon",
+				 ProjectileProperty = "AttachedAnim",
+				 ChangeValue = "GunLaserOriginFlare-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "GunLoadedGrenadeTrait",
+				 WeaponName = "GunWeapon",
+				 ProjectileProperty = "TipFx",
+				 ChangeValue = "GunLaserTipFlare-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "GunLoadedGrenadeTrait",
+				 WeaponName = "GunWeapon",
+				 WeaponProperty = "ChargeStartFx",
+				 ChangeValue = "GunCharge-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "GunLoadedGrenadeTrait",
+				 WeaponNames = { "GunWeapon", "GunWeaponDash" },
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "null",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "GunLoadedGrenadeTrait",
+				 WeaponName = "GunWeapon",
+				 ProjectileProperty = "DissipateGraphic",
+				 ChangeValue = "GunLaserEnd-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 TraitName = "ShieldLoadAmmoTrait",
+				 WeaponName = "ShieldWeapon",
+				 ProjectileProperty = "DetonateGraphic",
+				 ChangeValue = "BeowulfShieldSlam-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 TraitName = "BowMarkHomingTrait",
+				 WeaponNames = { "BowWeapon" },
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "BowWeaponArrow-Apollo-Alt01",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 TraitName = "BowLoadAmmoTrait",
+				 WeaponNames = { "BowWeapon" },
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "BowWeaponArrow-Apollo-Alt02",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+			 {
+				 WeaponNames = { "FistWeapon", "FistWeapon3", "FistWeapon5" },
+				 TraitName = "FistDetonateTrait",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "ClawSwipe-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponNames = { "FistWeapon2", "FistWeapon4" },
+				 TraitName = "FistDetonateTrait",
+				 WeaponProperty = "FireFx",
+				 ChangeValue = "ClawSwipeFlipped-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+			 {
+				 WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
+				 TraitName = "FistDetonateTrait",
+				 ProjectileProperty = "Graphic",
+				 ChangeValue = "null",
+				 ChangeType = "Absolute"
+			 },
+			 {
+				 WeaponNames = { "FistWeaponDash" },
+				 ProjectileProperty = "StartFx",
+				 ChangeValue = "ClawSwipeFlippedDash-Apollo",
+				 ChangeType = "Absolute",
+				 ExcludeLinked = true,
+			 },
+ 
+		 },
+		 ExtractValues =
+		 {
+			 {
+				 ExtractAs = "TooltipWeakDuration",
+				 SkipAutoExtract = true,
+				 External = true,
+				 BaseType = "Effect",
+				 WeaponName = "SwordWeapon",
+				 BaseName = "ReduceDamageOutput",
+				 BaseProperty = "Duration",
+			 },
+			 {
+				 ExtractAs = "TooltipWeakPower",
+				 SkipAutoExtract = true,
+				 External = true,
+				 BaseType = "Effect",
+				 WeaponName = "SwordWeapon",
+				 BaseName = "ReduceDamageOutput",
+				 BaseProperty = "Modifier",
+				 Format = "NegativePercentDelta"
+			 }
+		 }
+ } 
+OlympusTraitData.ApolloSecondaryTrait =
+ {
+	 Name = "ApolloSecondaryTrait",
+	 InheritFrom = { "ShopTier1Trait" },
+	 God = "Apollo",
+	 Slot = "Secondary",
+	 Icon = "Boon_Apollo_00",
+	 AddOutgoingDamageModifiers =
+	 {
+		 ValidWeaponMultiplier =
+		 {
+			 BaseValue = 1.8,
+			 SourceIsMultiplier = true,
+			 IdenticalMultiplier =
+			 {
+				 Value = DuplicateMultiplier,
+			 },
+		 },
+		 ValidWeapons = WeaponSets.HeroSecondaryWeapons,
+		 ExtractValues =
+		 {
+			 {
+				 Key = "ValidWeaponMultiplier",
+				 ExtractAs = "TooltipDamage",
+				 Format = "PercentDelta",
+			 },
+		 }
+	 },
+	 PropertyChanges =
+	 {
+		 {
+			 WeaponNames = WeaponSets.HeroSecondaryWeapons,
+			 EffectName = "ReduceDamageOutput",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+
+		 {
+			 WeaponName = "SwordParry",
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "RadialNovaSwordParry-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 WeaponName = "SpearWeaponThrow",
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "SpearThrowProjectile-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 WeaponName = "SpearWeaponThrowReturn",
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "SpearThrowProjectile-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 WeaponName = "SpearWeaponThrow",
+			 ProjectileProperty = "StartFx",
+			 ChangeValue = "AphroditeSpearThrowStartFx",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 WeaponName = "BowSplitShot",
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "BowWeaponArrow-Aphrodite-SplitShot",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 WeaponName = "BowSplitShot",
+			 WeaponProperty = "MinChargeStartFx",
+			 ChangeValue = "BowCharge-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 WeaponNames = { "ShieldThrow", },
+			 ProjectileName = "ShieldThrow",
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "ShieldSwipe-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 WeaponNames = { "ShieldThrowDash" },
+			 ProjectileName = "ShieldThrowDash",
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "ShieldSwipe-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
+			 WeaponProperty = "ChargeStartFx",
+			 ChangeValue = "ShieldCharge-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "ProjectileShield-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "ShieldRushBonusProjectileTrait",
+			 ProjectileProperty = "Graphic",
+			 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
+			 ChangeValue = "ProjectileShieldAlt01-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "ShieldLoadAmmoTrait",
+			 ProjectileProperty = "Graphic",
+			 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
+			 ChangeValue = "ProjectileShieldAlt03-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "ShieldTwoShieldTrait",
+			 ProjectileProperty = "Graphic",
+			 WeaponName = "ShieldThrow",
+			 ChangeValue = "ProjectileShieldAlt02-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "ShieldTwoShieldTrait",
+			 WeaponName = "ShieldThrow",
+			 ProjectileName = "ShieldThrow",
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "ShieldThrowTrailMirage-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 WeaponName = "GunGrenadeToss",
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "ZagGrenadeExplosionAphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "SpearTeleportTrait",
+			 WeaponName = "SpearRushWeapon",
+			 ProjectileName = "SpearRushWeapon",
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "SpearRushTrailFx-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
+			 WeaponProperty = "FireFx",
+			 ChangeValue = "FistFxUppercutDirectionalAphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 TraitName = "GunLoadedGrenadeTrait",
+			 WeaponNames = { "GunGrenadeToss" },
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "GunGrenadeLuciferOrb-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "GunLoadedGrenadeTrait",
+			 WeaponNames = { "GunGrenadeToss" },
+			 ProjectileProperty = "GroupName",
+			 ChangeValue = "FX_Standing_Add",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "GunLoadedGrenadeTrait",
+			 WeaponNames = { "GunBombWeapon" },
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "ZagGrenadeExplosionAphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "GunLoadedGrenadeTrait",
+			 WeaponNames = { "GunBombImmolation" },
+			 ProjectileProperty = "DetonateGraphic",
+			 ChangeValue = "LuciferOrbAoE-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+		 {
+			 TraitName = "BowMarkHomingTrait",
+			 WeaponNames = { "BowSplitShot" },
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "BowWeaponArrow-Aphrodite-SplitShot-Alt01",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "BowLoadAmmoTrait",
+			 WeaponNames = { "BowSplitShot" },
+			 ProjectileProperty = "Graphic",
+			 ChangeValue = "BowWeaponArrow-Aphrodite-SplitShot-Alt02",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "FistDetonateTrait",
+			 WeaponNames = { "FistWeaponSpecial" },
+			 WeaponProperty = "FireFx",
+			 ChangeValue = "ClawSwipeUppercut-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "FistDetonateTrait",
+			 WeaponNames = { "FistWeaponSpecialDash" },
+			 WeaponProperty = "FireFx",
+			 ChangeValue = "ClawSwipeUppercut-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "FistDetonateTrait",
+			 WeaponNames = { "FistWeaponSpecialDash" },
+			 WeaponProperty = "FireFx",
+			 ChangeValue = "ClawSwipeUppercutSpecial-Aphrodite",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+		 {
+			 TraitName = "FistTeleportSpecialTrait",
+			 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
+			 WeaponProperty = "FireFx",
+			 ChangeValue = "FistFxUppercutDirectionalAphrodite_FlashKick",
+			 ChangeType = "Absolute",
+			 ExcludeLinked = true,
+		 },
+
+
+	 },
+	 EnemyPropertyChanges =
+	 {
+		 {
+			 TraitName = "GunLoadedGrenadeTrait",
+			 LegalUnits = { "GunBombUnit" },
+			 ThingProperty = "Graphic",
+			 ChangeValue = "LuciferBomb-Aphrodite",
+			 ChangeType = "Absolute",
+		 },
+
+	 },
+	 ExtractValues =
+	 {
+		 {
+			 ExtractAs = "TooltipWeakDuration",
+			 SkipAutoExtract = true,
+			 External = true,
+			 BaseType = "Effect",
+			 WeaponName = "SwordWeapon",
+			 BaseName = "ReduceDamageOutput",
+			 BaseProperty = "Duration",
+		 },
+		 {
+			 ExtractAs = "TooltipWeakPower",
+			 SkipAutoExtract = true,
+			 External = true,
+			 BaseType = "Effect",
+			 WeaponName = "SwordWeapon",
+			 BaseName = "ReduceDamageOutput",
+			 BaseProperty = "Modifier",
+			 Format = "NegativePercentDelta"
+		 }
+	 }
+ }
+OlympusTraitData.ApolloDashTrait =
+ {
+	 Name = "ApolloDashTrait",
+	 InheritFrom = { "ShopTier1Trait" },
+	 -- Inherit
+	 Cost = 30,
+	 -- New Data
+	 God = "Apollo",
+	 Slot = "Rush",
+	 Icon = "Boon_Apollo_03",
+	 RarityLevels =
+	 {
+		 Common =
+		 {
+			 MinMultiplier = 1.0,
+			 MaxMultiplier = 1.0,
+		 },
+		 Rare =
+		 {
+			 MinMultiplier = 1.5,
+			 MaxMultiplier = 1.5,
+
+		 },
+		 Epic =
+		 {
+			 MinMultiplier = 2.0,
+			 MaxMultiplier = 2.0,
+		 },
+		 Heroic =
+		 {
+			 MinMultiplier = 2.5,
+			 MaxMultiplier = 2.5,
+		 }
+	 },
+	 WeaponDataOverride =
+	 {
+		 RushWeapon =
+		 {
+			 CauseImpactReaction = false,
+			 ImpactReactionHitsOverride = 0,
+		 },
+	 },
+	 PropertyChanges =
+	 {
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 WeaponProperty = "Projectile",
+			 ChangeValue = "ApolloDashProjectile",
+			 ChangeType = "Absolute",
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 ProjectileProperty = "DamageLow",
+			 BaseMin = 20,
+			 BaseMax = 20,
+			 AsInt = true,
+			 DepthMult = DepthDamageMultiplier,
+			 IdenticalMultiplier =
+			 {
+				 Value = DuplicateVeryStrongMultiplier,
+			 },
+			 ExtractValue =
+			 {
+				 ExtractAs = "TooltipDamage",
+			 }
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 ProjectileProperty = "DamageHigh",
+			 DeriveValueFrom = "DamageLow"
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 WeaponProperty = "BlinkDetonateAtEndpointDelay",
+			 ChangeValue = 0.01,
+			 ChangeType = "Absolute",
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 EffectName = "ApolloBlind",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 WeaponProperty = "FireFx",
+			 ChangeValue = "BlinkTrailVerticalB-Apollo",
+			 ChangeType = "Absolute",
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 WeaponProperty = "FireGraphic",
+			 ChangeValue = "ZagreusDashNoCollide_Apollo",
+			 ChangeType = "Absolute",
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 WeaponProperty = "BlinkDetonateAtOrigin",
+			 ChangeValue = true,
+			 ChangeType = "Absolute",
+		 },
+		 {
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 WeaponProperty = "BlinkDetonateAtEndpoint",
+			 ChangeValue = false,
+			 ChangeType = "Absolute",
+		 },
+	 },
+	 ExtractValues =
+	 {
+		 {
+			 ExtractAs = "TooltipWeakDuration",
+			 SkipAutoExtract = true,
+			 External = true,
+			 BaseType = "Effect",
+			 WeaponName = "SwordWeapon",
+			 BaseName = "ReduceDamageOutput",
+			 BaseProperty = "Duration",
+		 },
+		 {
+			 ExtractAs = "TooltipWeakPower",
+			 SkipAutoExtract = true,
+			 External = true,
+			 BaseType = "Effect",
+			 WeaponName = "SwordWeapon",
+			 BaseName = "ReduceDamageOutput",
+			 BaseProperty = "Modifier",
+			 Format = "NegativePercentDelta"
+		 }
+	 }
+ }
+-- LootData
+local OlympusLootData = ModUtil.Entangled.ModData(LootData)
+OlympusLootData.ApolloUpgrade = {
         Name = "ApolloUpgrade",
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
 		CanReceiveGift = true,
@@ -617,12 +1069,39 @@ ModUtil.LoadOnce(function ()
 
 		RequiredMinCompletedRuns = 1,
 
-		PriorityUpgrades = { "ApolloWeaponTrait" },
-		WeaponUpgrades = { },
-		Traits = { },
+		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+
+		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"}, --  ApolloRangedTrait, ShieldLoadAmmo_ApolloRangedTrait },
+		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }, -- "ApolloRangedTrait",  "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
+		Traits = { }, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
-		LinkedUpgrades = { },
+		LinkedUpgrades =
+		{
+			--[[ApolloDurationTrait =
+			{
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+			},
+			ApolloBlindedTrait  = {
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+			},
+			ApolloChanceMissTrait =
+			{
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+			},
+			ApolloChanceHitTrait =
+			{
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
+			},
+			ApolloCharmTrait =
+			{
+				OneFromEachSet =
+				{
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "ApolloDurationTrait", "ApolloBlindedTrait", "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
+				}
+			},]]--
+		},
 
 		Speaker = "NPC_Apollo_01",
 		Portrait = "Portrait_Apollo_Default_01",
@@ -2021,177 +2500,37 @@ ModUtil.LoadOnce(function ()
 			-- How lovely.
 			{ Cue = "/VO/Apollo_0130" },
 		},
-	}
-    
-    -- Gift Section    
-    table.insert(GiftOrdering, "ForceApolloBoonTrait")
+}
 
-    GiftData["ApolloUpgrade"] =
-    {
-		InheritFrom = {"DefaultGiftData"},
-		MaxedIcon = "Keepsake_Zeus_Max",
-		MaxedSticker = "Keepsake_ZeusSticker_Max",
-		MaxedRequirement = { RequiredTextLines = { "ApolloGift01" }, },
-        Value = 0,
-        Maximum = 7,
-		Locked = 7,
-		[1] = { Gift = "ForceApolloBoonTrait" },
-		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ZeusAboutRumors01" } }
-	}
+-- Gift Section    
+local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
+local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
+ModUtil.MapSetTable(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
 
-    -- Keepsake
+OlympusGiftData.ApolloUpgrade =
+{
+	InheritFrom = {"DefaultGiftData"},
+	MaxedIcon = "Keepsake_Zeus_Max",
+	MaxedSticker = "Keepsake_ZeusSticker_Max",
+	MaxedRequirement = { RequiredTextLines = { "ApolloGift01" }, },
+	Value = 0,
+	Maximum = 7,
+	Locked = 7,
+	[1] = { Gift = "ForceApolloBoonTrait" },
+	[7] = { RequiredResource = "SuperGiftPoints" },
+	UnlockGameStateRequirements = { RequiredTextLines = { "ZeusAboutRumors01" } }
+}
 
-    -- Others
-    CurrentRun.TextLinesRecord = {}
-    if GameState.Gift["ApolloUpgrade"] == nil then
-        GameState.Gift["ApolloUpgrade"] = {}
-        GameState.Gift["ApolloUpgrade"].Value = GiftData["ApolloUpgrade"].Value
-    end
-    
-end)
-
-OnControlPressed{ "Rush",
+OnControlPressed{ "Codex",
 	function( triggerArgs )
-        if LootData.ApolloUpgrade ~= nil then
-            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData["ApolloUpgrade"]))
-            CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+        if GameState ~= nil then			
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData))
+            --CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
         end
 	end
 }
-ModUtil.WrapBaseFunction( "GetUseText", function(baseFunc, useTarget)
-    baseFunc(useTarget)
+ModUtil.WrapBaseFunction( "SetupRunData", function(baseFunc)
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData))
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData["ApolloUpgrade"]))
+    baseFunc()
 end)
-
-
-
---New Data
---[[OlympusExtra = {
-    Codex = {
-        OlympianGods = {
-            Order = { "ApolloUpgrade" },
-            Codex = {
-                Entries = {
-                    ApolloUpgrade =
-                    {
-                        Entries =
-                        {
-                            {
-                                UnlockThreshold = 1,
-                                Text = "CodexData_0128",
-                            },
-                            {
-                                UnlockThreshold = 5,
-                                Text = "CodexData_0129",
-                            },
-                            {
-                                UnlockThreshold = 15,
-                                Text = "CodexData_0130" },
-                        },
-                        Image = "Codex_Portrait_Poseidon",
-                    },}
-            }
-        }
-    },
-    GiftData = {
-        ApolloUpgrade =
-        {    
-            GiftOrdering = "ForceApolloBoonTrait",
-            GiftData = {
-                InheritFrom = {"DefaultGodGiftData"},
-                MaxedIcon = "Keepsake_Zeus_Max",
-                MaxedSticker = "Keepsake_ZeusSticker_Max",
-                MaxedRequirement = { RequiredTextLines = { "ZeusGift07" }, },
-                Locked = 7,
-                Maximum = 7,
-                [1] = { Gift = "ForceApolloBoonTrait" },
-                [7] = { RequiredResource = "SuperGiftPoints" },
-                UnlockGameStateRequirements = { RequiredTextLines = { "ZeusAboutRumors01" } }
-            }
-        },
-    },
-    AchievementData = {
-        AchOlympiansExtraCodex =
-        {
-            InheritFrom = { "DefaultAchievement" },
-            CompleteGameStateRequirements =
-            {
-                RequiredCodexEntries =
-                {
-                    ApolloUpgrade = 3,
-                },
-            },
-        },
-    },
-    QuestData = {
-
-    },
-    TraitData = {
-        ForceApolloBoonTrait =
-        {
-            Icon = "Keepsake_Signet",
-            EquipSound = "/SFX/Menu Sounds/KeepsakeZeusRing",
-            InheritFrom = { "GiftTrait" },
-            InRackTitle = "ForceZeusBoonTrait_Rack",
-            ForceBoonName = "ApolloUpgrade",
-            Uses = 1,
-            RarityBonus =
-            {
-                RequiredGod = "ApolloUpgrade",
-                RareBonus = { BaseValue = 0.1 },
-                EpicBonus = 0.1,
-                LegendaryBonus = 0.1,
-                ExtractValues =
-                {
-                    {
-                        Key = "RareBonus",
-                        ExtractAs = "TooltipBonusChance",
-                        Format = "Percent",
-                    }
-                }
-            },
-            SignOffData =
-            {
-              {
-                Text = "PoseidonSignoff",
-              },
-              {
-                RequiredTextLines = { "ZeusGift07" },
-                Text = "PoseidonSignoff_Max"
-              }
-            },
-        },
-    },
-    EnemiesData = {
-        ApolloUpgradeRoomWeapon =
-        {
-            InheritFrom = { "PassiveRoomWeapon" },
-
-            DefaultAIData =
-            {
-                DeepInheritance = true,
-                PreAttackDuration = 0.0,
-                FireDuration = 0.0,
-                PostAttackDuration = 0.0,
-                PostAttackCooldownMin = 2.5,
-                PostAttackCooldownMax = 3.5,
-                CreateOwnTargetFromOriginalTarget = true,
-                RandomTargetAngle = true,
-                TargetOffsetDistanceMin = 0,
-                TargetOffsetDistanceMax = 230,
-                TeleportToTargetId = true,
-
-                AIFireTicksMin = 6,
-                AIFireTicksMax = 10,
-                FireCooldown = 0.2,
-                ResetTargetPerTick = true,
-            },
-
-            WeaponOptions =
-            {
-                "DevotionApollo",
-            },
-        },
-    }
-}
---]]

@@ -36,6 +36,16 @@
 			Id = "ApolloWeaponTrait"
 			DisplayName = "Blinding Strike"
 			Description = "Your {$Keywords.Attack} deals more damage and can inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		} 		
+		{
+			Id = "ApolloSecondaryTrait"
+			DisplayName = "Blinding Flourish"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 		
+		{
+			Id = "ApolloRushTrait"
+			DisplayName = "Radiant Dash"
+			Description = "Your {$Keywords.Dash} damages foes in an area and  creates a circle of light that inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 
 		{
 			Id = "ApolloSignoff"
@@ -48,6 +58,11 @@
 
 				{#AwardDarkFlavorFormat}He sees you as a prophet of good fortune.
 			"""
+		}
+    	{
+      		Id = "Blind"
+			DisplayName = "Blind"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipWeakDuration} Sec{#PreviousFormat}., victim deals at least {#UpgradeFormat}{$TooltipData.TooltipWeakPower}% {#PreviousFormat}less damage."
 		}
 	]
 }

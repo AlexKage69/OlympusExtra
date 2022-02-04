@@ -14,10 +14,14 @@ To "Game/Animations/ObstacleAnimations.sjson"
 SJSON "Animations/ObstacleAnimations.sjson"
 To "Game/Animations/Fx.sjson"
 SJSON "Animations/Fx.sjson"
+To "Game/Animations/GUIAnimations.sjson"
+SJSON "Animations/GUIAnimations.sjson"
 
 :: Obstacles
 To "Game/Obstacles/Gameplay.sjson"
 SJSON "Obstacles/Gameplay.sjson"
+To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "Projectiles/PlayerProjectiles.sjson"
 
 :: Language Text
 To "Game/Text/en/HelpText.en.sjson"

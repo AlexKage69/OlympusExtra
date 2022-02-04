@@ -4,14 +4,21 @@
     {
       Name = "Keepsake_Harp_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "GUI\Screens\AwardMenu\harp"
+      FilePath = "GUI\Screens\AwardMenu\bone_hourglass_04"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Harp"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "GUI\Screens\AwardMenu\harp"
+      FilePath = "GUI\Screens\AwardMenu\bone_hourglass_04"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Harp_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Harp_Child"
       EndFrame = 1
       StartFrame = 1
     }
