@@ -43,7 +43,7 @@
 			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 		
 		{
-			Id = "ApolloRushTrait"
+			Id = "ApolloDashTrait"
 			DisplayName = "Radiant Dash"
 			Description = "Your {$Keywords.Dash} damages foes in an area and  creates a circle of light that inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 
@@ -62,7 +62,7 @@
     	{
       		Id = "Blind"
 			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipWeakDuration} Sec{#PreviousFormat}., victim deals at least {#UpgradeFormat}{$TooltipData.TooltipWeakPower}% {#PreviousFormat}less damage."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}{$TooltipData.TooltipBlindPower}% {#PreviousFormat}chance."
 		}
 	]
 }

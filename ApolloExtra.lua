@@ -1028,23 +1028,23 @@ OlympusTraitData.ApolloDashTrait =
 	 ExtractValues =
 	 {
 		 {
-			 ExtractAs = "TooltipWeakDuration",
+			 ExtractAs = "TooltipBlindDuration",
 			 SkipAutoExtract = true,
 			 External = true,
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
-			 BaseName = "ReduceDamageOutput",
+			 BaseName = "ApolloBlind",
 			 BaseProperty = "Duration",
 		 },
 		 {
-			 ExtractAs = "TooltipWeakPower",
+			 ExtractAs = "TooltipBlindPower",
 			 SkipAutoExtract = true,
 			 External = true,
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
-			 BaseName = "ReduceDamageOutput",
+			 BaseName = "ApolloBlind",
 			 BaseProperty = "Modifier",
-			 Format = "NegativePercentDelta"
+			 Format = "PercentDelta"
 		 }
 	 }
  }
@@ -2520,6 +2520,24 @@ OlympusGiftData.ApolloUpgrade =
 	[7] = { RequiredResource = "SuperGiftPoints" },
 	UnlockGameStateRequirements = { RequiredTextLines = { "ZeusAboutRumors01" } }
 }
+-- Blind Functions
+ModUtil.WrapBaseFunction( "Damage", function(baseFunc,  victim, triggerArgs)
+	local missRate = 0.1
+	--[[if victim == CurrentRun.Hero and CurrentRun.Hero.TraitDictionary.ApolloDashTrait then
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.TraitDictionary))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[1].ExtractValues))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[1].PropertyChanges))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[1].Additional))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[0]))
+	end]]
+	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
+		if not HeroHasTrait("BlindDurationTrait") then
+			ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
+		end
+	else
+		baseFunc(victim, triggerArgs)
+	end
+end)
 
 OnControlPressed{ "Codex",
 	function( triggerArgs )

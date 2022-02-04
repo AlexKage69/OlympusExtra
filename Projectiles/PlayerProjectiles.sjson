@@ -53,9 +53,11 @@
                 IgnoreName = "_PlayerUnit"
                 FrontFx = "ApolloHoverLoop"
                 BackFx = "null"
-                Duration = 10
+                Duration = 5
+                Modifier = 0.1
                 Active = false
                 IsVulnerabilityEffect = true
+                TimeModifierFraction = 0
             }
         ]
     }
