@@ -161,7 +161,7 @@ OlympusTraitData.ApolloWeaponTrait =
 		 {
 			 {
 				 WeaponNames = WeaponSets.HeroPhysicalWeapons,
-				 EffectName = "ReduceDamageOutput",
+				 EffectName = "ApolloBlind",
 				 EffectProperty = "Active",
 				 ChangeValue = true,
 			 },
@@ -2531,6 +2531,9 @@ ModUtil.WrapBaseFunction( "Damage", function(baseFunc,  victim, triggerArgs)
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[0]))
 	end]]
 	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
+		thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
+		PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
+		PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 		if not HeroHasTrait("BlindDurationTrait") then
 			ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
 		end

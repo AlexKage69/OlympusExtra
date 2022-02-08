@@ -64,5 +64,9 @@
 			DisplayName = "Blind"
 			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}{$TooltipData.TooltipBlindPower}% {#PreviousFormat}chance."
 		}
+		{
+			Id = "Combat_Miss"
+			DisplayName = "Miss"
+		}
 	]
 }

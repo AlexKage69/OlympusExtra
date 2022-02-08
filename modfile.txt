@@ -21,6 +21,8 @@ SJSON "Animations/GUIAnimations.sjson"
 To "Game/Obstacles/Gameplay.sjson"
 SJSON "Obstacles/Gameplay.sjson"
 To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "Projectiles/AddPlayerProjectiles.sjson"
+To "Game/Projectiles/PlayerProjectiles.sjson"
 SJSON "Projectiles/PlayerProjectiles.sjson"
 
 :: Language Text
