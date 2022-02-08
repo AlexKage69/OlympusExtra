@@ -22,5 +22,103 @@
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Boon_Apollo_00_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_00_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_02_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_02_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_03_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_03_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_04_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_04_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_05_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_05_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_06_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_06_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
   ]
 }

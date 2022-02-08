@@ -10,6 +10,32 @@ ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
     --LoadPackages({Name = package})
     return baseFunc()
 end)
+--Color
+local OlympusColor = ModUtil.Entangled.ModData(WeaponData)
+OlympusColor.ApolloDamageLight = {255,145,79,255}
+OlympusColor.ApolloDamage = {255,145,79,255}
+--WeaponData
+local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
+OlympusWeaponData.ApolloShoutWeapon = {
+	BlockWrathGain = true,
+}
+--ProjectileData
+local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
+OlympusProjectileData.ApolloColorProjectile = {
+	DamageTextStartColor = OlympusColor.AphroditeDamageLight,
+	DamageTextColor = OlympusColor.AphroditeDamage
+}
+OlympusProjectileData.ApolloProjectile = {
+	InheritFrom = { "NoSlowFrameProjectile", "ApolloColorProjectile" },
+	StoreAmmoInLastHit = true,
+}
+OlympusProjectileData.ApolloBeowulfProjectile = {
+	InheritFrom = { "ApolloProjectile" },
+	StoreAmmoInLastHit = true,
+}
+OlympusProjectileData.ApolloShoutWeapon = {
+	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+}
 
 -- GameData
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
@@ -135,7 +161,7 @@ OlympusTraitData.ApolloWeaponTrait =
 		 InheritFrom = { "ShopTier1Trait" },
 		 God = "Apollo",
 		 Slot = "Melee",
-		 Icon = "Boon_Apollo_01",
+		 Icon =  "Boon_Apollo_01",
 		 AddOutgoingDamageModifiers =
 		 {
 			 ValidWeaponMultiplier =
@@ -633,7 +659,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 	 InheritFrom = { "ShopTier1Trait" },
 	 God = "Apollo",
 	 Slot = "Secondary",
-	 Icon = "Boon_Apollo_00",
+	 Icon =  "Boon_Apollo_00",
 	 AddOutgoingDamageModifiers =
 	 {
 		 ValidWeaponMultiplier =
@@ -1048,6 +1074,300 @@ OlympusTraitData.ApolloDashTrait =
 		 }
 	 }
  }
+OlympusTraitData.ApolloRangedTrait =
+	{
+		Name = "ApolloRangedTrait",
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Apollo",
+		Icon = "Boon_Apollo_02",
+        RequiredFalseTrait = "ShieldLoadAmmoTrait",
+		CustomTrayText = "AphroditeRangedTrait_Tray",
+		Slot = "Ranged",
+		UnloadAmmoOffset = 
+		{
+			BaseValue = -20,
+			MinMultiplier = 0,
+			IdenticalMultiplier =
+			{
+				Value = -1,
+			},
+			IgnoreRarity = true,
+		},
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.11,
+			},
+			Epic =
+			{
+				Multiplier = 1.22,
+			},
+			Heroic =
+			{
+				Multiplier = 1.33,
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "Projectile",
+				ChangeValue = "ApolloProjectile",
+				ChangeType = "Absolute",
+			},
+
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "ProjectileSpacing",
+				ChangeValue = 0,
+				ChangeType = "Absolute",
+			},
+			-- For adjusting aimline collisions -- @alice
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "Scale",
+				ChangeValue = 0.5,
+				ChangeType = "Absolute",
+			},
+			--[[
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "AimLineAnimation",
+				ChangeValue = "AimLineExtraDamageCap",
+				ChangeType = "Absolute",
+			},
+			]]
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "ProjectileAngleOffset",
+				ChangeValue = 25,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "AutoLockRange",
+				ChangeValue = 440,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireFx",
+				ChangeValue = "ProjectileFireRing-Apollo",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageLow",
+				BaseMin = 90,
+				BaseMax = 90,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "BaseRangedDamage",
+				External = true,
+				BaseType = "Projectile",
+				BaseName = "RangedWeapon",
+				BaseProperty = "DamageLow",
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Modifier",
+				Format = "PercentDelta"
+			}
+		}
+	}
+ OlympusTraitData.ApolloBlindedTrait =
+ {
+	 Name = "ApolloBlindedTrait",
+	 God = "Apollo",
+	 InheritFrom = {"ShopTier2Trait"},
+	 --PreEquipWeapons = {"AphroditeShoutWeapon", "AreaWeakenAphrodite", "PoseidonAphroditeTouchWeapon"},
+	 Icon = "Boon_Apollo_06",
+	 RarityLevels =
+	 {
+		 Common =
+		 {
+			 Multiplier = 1.0,
+		 },
+		 Rare =
+		 {
+			 Multiplier = 1.5,
+		 },
+		 Epic =
+		 {
+			 Multiplier = 2.0,
+		 },
+		 Heroic =
+		 {
+			 Multiplier = 2.5,
+		 }
+	 },
+	 PropertyChanges =
+	 {
+		 {
+			 TraitName = "ApolloWeaponTrait",
+			 WeaponNames = WeaponSets.HeroPhysicalWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 --[[{
+			 TraitName = "ApolloRangedTrait",
+			 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 {
+			 TraitName = "ShieldLoadAmmo_AphroditeRangedTrait",
+			 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 {
+			 WeaponNames = {"AphroditeShoutWeapon", "AreaWeakenAphrodite", "PoseidonAphroditeTouchWeapon" },
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },]]
+		 {
+			 WeaponNames = WeaponSets.HeroPhysicalWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Modifier",
+			 BaseMin = 0.10,
+			 BaseMax = 0.10,
+			 IdenticalMultiplier =
+			 {
+				 Value = DuplicateMultiplier,
+			 },
+			 ExtractValue =
+			 {
+				 ExtractAs = "TooltipDamage",
+				 Format = "Percent",
+			 },
+			 ChangeType = "Add",
+			 DeriveSource = "DeriveSource"
+		 },
+		 --[[{
+			 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Modifier",
+			 DeriveValueFrom = "DeriveSource",
+		 },
+		 {
+			 WeaponNames = {"AphroditeShoutWeapon", "AreaWeakenAphrodite", "PoseidonAphroditeTouchWeapon" },
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Modifier",
+			 DeriveValueFrom = "DeriveSource",
+		 },]]
+		 {
+			 TraitName = "ApolloDashTrait",
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 {
+			 TraitName = "ApolloDashTrait",
+			 WeaponNames = WeaponSets.HeroRushWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Modifier",
+			 DeriveValueFrom = "DeriveSource",
+		 },
+		 --[[{
+			 TraitName = "AphroditeSecondaryTrait",
+			 WeaponNames = WeaponSets.HeroSecondaryWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 {
+			 TraitName = "AphroditeSecondaryTrait",
+			 WeaponNames = WeaponSets.HeroSecondaryWeapons,
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Modifier",
+			 DeriveValueFrom = "DeriveSource",
+		 },
+		 {
+			 TraitName = "AphroditeDeathTrait",
+			 WeaponNames = {"DeathAreaWeakenAphrodite"},
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Active",
+			 ChangeValue = true,
+		 },
+		 {
+			 TraitName = "AphroditeDeathTrait",
+			 WeaponNames = {"DeathAreaWeakenAphrodite"},
+			 EffectName = "IncreaseDamageTaken",
+			 EffectProperty = "Modifier",
+			 DeriveValueFrom = "DeriveSource",
+		 },]]
+	 },
+	 ExtractValues =
+	 {
+		 {
+			 ExtractAs = "TooltipWeakDuration",
+			 SkipAutoExtract = true,
+			 External = true,
+			 BaseType = "Effect",
+			 WeaponName = "SwordWeapon",
+			 BaseName = "ReduceDamageOutput",
+			 BaseProperty = "Duration",
+		 },
+		 {
+			 ExtractAs = "TooltipWeakPower",
+			 SkipAutoExtract = true,
+			 External = true,
+			 BaseType = "Effect",
+			 WeaponName = "SwordWeapon",
+			 BaseName = "ReduceDamageOutput",
+			 BaseProperty = "Modifier",
+			 Format = "NegativePercentDelta"
+		 }
+	 }
+ }
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -1071,18 +1391,18 @@ OlympusLootData.ApolloUpgrade = {
 
 		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 
-		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"}, --  ApolloRangedTrait, ShieldLoadAmmo_ApolloRangedTrait },
-		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }, -- "ApolloRangedTrait",  "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
+		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
+		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 		Traits = { }, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
 		LinkedUpgrades =
 		{
-			--[[ApolloDurationTrait =
-			{
+			ApolloBlindedTrait  = {
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
-			ApolloBlindedTrait  = {
+			--[[ApolloDurationTrait =
+			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
 			ApolloChanceMissTrait =

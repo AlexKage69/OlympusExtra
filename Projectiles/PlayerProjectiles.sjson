@@ -59,7 +59,100 @@
                 IsVulnerabilityEffect = true
                 TimeModifierFraction = 0
             }
+            {
+                Name = "IncreaseDamageTaken"
+                IgnoreName = "_PlayerUnit"
+                Type = "DAMAGE_TAKEN"
+                Duration = 4
+                Modifier = 1
+                Active = false
+                TimeModifierFraction = 0
+            }
         ]
+    }{
+      Name = "ApolloProjectile"
+      InheritFrom = "1_BaseNonPhysicalProjectile"
+     DetonateGraphic = "RadialNova-Apollo"
+        Type = "INSTANT"
+        FuseMin = 0.25
+        FuseMax = 0.25
+        TotalFuse = 0.75
+        DamageLow = 0
+        DamageHigh = 0
+        DamageRadius = 220.0
+        DamageRadiusScaleY = 0.6
+        DamageRadiusScaleX = 1.1
+        AutoAdjustForTarget = false
+        UseVulnerability = false
+        NumPenetrations = 999
+        SpawnRadius = 0
+        SpawnCount = 0
+        UseStartLocation = true
+        CanHitWithoutDamage = true
+        SilentImpactOnInvulnerable = true
+        Thing = {
+            Graphic = "null"
+            OffsetZ = 70
+            AttachedAnim = "null"
+            RotateGeometry = true
+            Grip = 999999
+            Points = [
+            {
+                X = 48
+                Y = 48
+            }
+            {
+                X = 48
+                Y = -48
+            }
+            {
+                X = -48
+                Y = -48
+            }
+            {
+                X = -48
+                Y = 48
+            }
+            ]
+        }
+      Effects = [
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.1
+          Modifier = 0.5
+          HaltOnEnd = true
+          Active = false
+        }
+        {
+          Name = "ReduceDamageOutput"
+          Type = "DAMAGE_OUTPUT"
+          Duration = 4
+          Modifier = 0.7
+          Active = true
+          TimeModifierFraction = 0
+          BackFx = "AphroditeDebuffB"
+          FlashFrontFxWhenExpiring = true
+          IsVulnerabilityEffect = true
+        }
+        {
+          Name = "IncreaseDamageTaken"
+          Type = "DAMAGE_TAKEN"
+          Duration = 4
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+        }
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }]
     }
     ]
 }

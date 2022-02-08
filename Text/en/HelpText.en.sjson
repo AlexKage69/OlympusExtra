@@ -68,5 +68,29 @@
 			Id = "Combat_Miss"
 			DisplayName = "Miss"
 		}
+		{
+			Id = "ApolloShoutTrait"
+			DisplayName = "Apollo's Aid"
+			Description = "Your {$Keywords.Wrath} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+		}
+		{
+			Id = "ApolloShoutTrait_Tray"
+			InheritFrom = "ApolloShoutTrait"
+			Description = "Your {$Keywords.Wrath} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		}
+		{
+			Id = "ApolloShoutTrait_Initial"
+			InheritFrom = "ApolloShoutTrait"
+			Description = "Your {$Keywords.WrathDerivedStocks} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		} {
+			Id = "ApolloRangedTrait"
+			DisplayName = "Apollo Ranged"
+			Description = "Your {$Keywords.Cast} sends a {$Keywords.BladeRift} hurtling ahead. \n {!Icons.Bullet}{#PropertyFormat}Rift Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloRangedTrait_Initial"
+			InheritFrom = "AresRangedTrait"
+			Description = "Your {$Keywords.Cast} sends a {$Keywords.BladeRift} hurtling ahead. \n {!Icons.Bullet}{#PropertyFormat}Rift Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
 	]
 }
