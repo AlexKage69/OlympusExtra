@@ -2523,13 +2523,6 @@ OlympusGiftData.ApolloUpgrade =
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", function(baseFunc,  victim, triggerArgs)
 	local missRate = 0.1
-	--[[if victim == CurrentRun.Hero and CurrentRun.Hero.TraitDictionary.ApolloDashTrait then
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.TraitDictionary))
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[1].ExtractValues))
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[1].PropertyChanges))
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[1].Additional))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CurrentRun.Hero.TraitDictionary.ApolloDashTrait[0]))
-	end]]
 	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
 		if not HeroHasTrait("BlindDurationTrait") then
 			ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
@@ -2537,18 +2530,4 @@ ModUtil.WrapBaseFunction( "Damage", function(baseFunc,  victim, triggerArgs)
 	else
 		baseFunc(victim, triggerArgs)
 	end
-end)
-
-OnControlPressed{ "Codex",
-	function( triggerArgs )
-        if GameState ~= nil then			
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData))
-            --CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-        end
-	end
-}
-ModUtil.WrapBaseFunction( "SetupRunData", function(baseFunc)
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData))
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(LootData["ApolloUpgrade"]))
-    baseFunc()
 end)

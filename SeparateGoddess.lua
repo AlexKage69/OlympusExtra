@@ -2,47 +2,34 @@
 
 ModUtil.RegisterMod("SeparateGoddess")
 
-OlympianGoddessExtra = {
-    Index = 3,
-    Order = { "AthenaUpgrade", "AphroditeUpgrade", "ArtemisUpgrade", "DemeterUpgrade" },
-    Codex = {
-        UnlockType = CodexUnlockTypes.Boon,
-        TitleText = "Codex_OlympianGoddessChapter",
-        Entries = {}
+local OlympusCodexUI = ModUtil.Entangled.ModData(CodexUI)
+OlympusCodexUI.MaxChapters = 4;
+
+local OlympusCodex = ModUtil.Entangled.ModData(Codex)
+OlympusCodex.OlympianGoddess = {
+    UnlockType = CodexUnlockTypes.Boon,
+    TitleText = "Codex_OlympianGoddessChapter",
+    Entries = {
+        AthenaUpgrade = Codex.OlympianGods.Entries.AthenaUpgrade,
+        AphroditeUpgrade = Codex.OlympianGods.Entries.AphroditeUpgrade,
+        ArtemisUpgrade = Codex.OlympianGods.Entries.ArtemisUpgrade,
+        DemeterUpgrade = Codex.OlympianGods.Entries.DemeterUpgrade
     }
 }
--- Move and add new gods and goddess
-function MoveGodToSubCodex(category, CodexOrderingIndex, god)
-    for godtoremove, info in pairs(Codex.OlympianGods.Entries) do
-        if(godtoremove == god) then
-            --table.insert(CodexOrdering[category].Order, god)
-            Codex[category].Entries[god] = Codex.OlympianGods.Entries[god]
-            table.remove(CodexOrdering.OlympianGods.Order, CodexOrderingIndex)
-            Codex.OlympianGods.Entries[god] = nil
-            return true
-        end
-    end
-    return false
-end
+OlympusCodex.OlympianGods.Entries.AthenaUpgrade = nil
+OlympusCodex.OlympianGods.Entries.AphroditeUpgrade = nil
+OlympusCodex.OlympianGods.Entries.ArtemisUpgrade = nil
+OlympusCodex.OlympianGods.Entries.DemeterUpgrade = nil
 
-ModUtil.LoadOnce(function ()    
-    CodexUI.MaxChapters = 4
-        if(Codex.OlympianGoddess == nil and CodexOrdering.OlympianGoddess == nil ) then
-            Codex.OlympianGoddess = {}
-            Codex.OlympianGoddess = ModUtil.Table.Copy(OlympianGoddessExtra.Codex)
-            CodexOrdering.OlympianGoddess = {Order = ModUtil.Table.Copy(OlympianGoddessExtra.Order)}    
-            table.insert(CodexOrdering.Order, OlympianGoddessExtra.Index, "OlympianGoddess")        
-        end
-        for _, value in ipairs(OlympianGoddessExtra.Order) do
-                for j, god in ipairs(CodexOrdering.OlympianGods.Order) do
-                    -- Already exists
-                    if(god == value) then
-                        MoveGodToSubCodex("OlympianGoddess", j, god)
-                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(god))
-                    end
-                end
-        end 
-end)
+local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
+table.insert(OlympusCodexOrdering.Order, 3, "OlympianGoddess")
+OlympusCodexOrdering.OlympianGoddess = {
+    Order = { "AthenaUpgrade", "AphroditeUpgrade", "ArtemisUpgrade", "DemeterUpgrade" }
+}
+OlympusCodexOrdering.OlympianGods.Order.AthenaUpgrade = nil
+OlympusCodexOrdering.OlympianGods.Order.AphroditeUpgrade = nil
+OlympusCodexOrdering.OlympianGods.Order.ArtemisUpgrade = nil
+OlympusCodexOrdering.OlympianGods.Order.DemeterUpgrade = nil
 
 -- Added check for Goddess being check on upgrade
 ModUtil.WrapBaseFunction( "HandleUpgradeChoiceSelection", function(baseFunc, screen, button)
@@ -62,4 +49,25 @@ ModUtil.WrapBaseFunction( "AttemptGift", function(baseFunc, CurrentRun, target)
     if CanReceiveGift( target ) then
         CheckCodexUnlock( "OlympianGoddess", name )
     end
+end)
+
+-- Overwrite the same function
+ModUtil.WrapBaseFunction( "CodexScrollChaptersLeft", function(baseFunc, screen, button)
+	if not screen or not CodexUI.Screen or not IsScreenOpen( "Codex" ) or not screen.AllowInput then
+		return
+	end
+
+	if CodexStatus.ChapterOffset == nil then
+		CodexStatus.ChapterOffset = 1
+	else
+		CodexStatus.ChapterOffset = CodexStatus.ChapterOffset - CodexUI.MaxChapters
+		if CodexStatus.ChapterOffset < 1 then
+			CodexStatus.ChapterOffset = 9 -- 3 pages instead of 2
+		end
+	end
+	CodexUpdateChapters( screen )
+	local chapterIndex = math.min( CodexStatus.ChapterOffset + CodexUI.MaxChapters - 1, #CodexOrdering.Order )
+	local chapterName = CodexOrdering.Order[chapterIndex]
+	local chapterButton = screen.Components[chapterName]
+	CodexOpenChapter( screen, chapterButton, { FirstOpen = true } )
 end)
