@@ -10,6 +10,11 @@ ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
     --LoadPackages({Name = package})
     return baseFunc()
 end)
+--Variables
+local DepthDamageMultiplier = 0.0
+local DuplicateMultiplier = -0.60
+local DuplicateStrongMultiplier = -0.40
+local DuplicateVeryStrongMultiplier = -0.20
 --Color
 local OlympusColor = ModUtil.Entangled.ModData(WeaponData)
 OlympusColor.ApolloDamageLight = {255,145,79,255}
@@ -2841,9 +2846,11 @@ OlympusGiftData.ApolloUpgrade =
 	UnlockGameStateRequirements = { RequiredTextLines = { "ZeusAboutRumors01" } }
 }
 -- Blind Functions
-ModUtil.WrapBaseFunction( "Damage", function(baseFunc,  victim, triggerArgs)
+ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
 	local missRate = 0.1
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero))
 	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
 		thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 		PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 		PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })

@@ -3,7 +3,7 @@
 :-
 
 Import "SeparateGoddess.lua"
-::Import "OlympusExtra.lua"
+-: Import "OlympusExtra.lua" :-
 
 Import "ApolloExtra.lua"
 
