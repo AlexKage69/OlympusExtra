@@ -4,14 +4,14 @@
     {
       Name = "Keepsake_Harp_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "GUI\Screens\AwardMenu\bone_hourglass_04"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Harp"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "GUI\Screens\AwardMenu\bone_hourglass_04"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
       EndFrame = 1
       StartFrame = 1
     }
@@ -119,6 +119,16 @@
       FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Apollo_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "GUI\Screens\AwardMenu\KeepsakeMaxGift\Zeus"
+    }
+    {
+      Name = "Keepsake_ApolloSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "GUI\Screens\AwardMenu\KeepsakeMaxGift\Zeus_02"
     }
   ]
 }

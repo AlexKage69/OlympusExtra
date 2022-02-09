@@ -3,9 +3,11 @@
 :-
 
 Import "SeparateGoddess.lua"
--: Import "OlympusExtra.lua" :-
 
 Import "ApolloExtra.lua"
+
+:: Merge all together
+Import "OlympusExtra.lua"
 
 :: Animations
 To "Game/Animations/PortraitAnimations.sjson"

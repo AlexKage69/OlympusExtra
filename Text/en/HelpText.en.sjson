@@ -38,15 +38,30 @@
 			Description = "Your {$Keywords.Attack} deals more damage and can inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		} 		
 		{
+			Id = "ApolloWeaponTrait_Initial"
+			InheritFrom = "ApolloWeaponTrait"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
 			Id = "ApolloSecondaryTrait"
 			DisplayName = "Blinding Flourish"
 			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
-		} 		
+		} 	
+		{
+			Id = "ApolloSecondaryTrait_Initial"
+			InheritFrom = "ApolloSecondaryTrait"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}		
 		{
 			Id = "ApolloDashTrait"
 			DisplayName = "Radiant Dash"
 			Description = "Your {$Keywords.Dash} damages foes in an area and  creates a circle of light that inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 
+		{
+			Id = "ApolloDashTrait_Initial"
+			InheritFrom = "ApolloDashTrait"
+			Description = "Your {$Keywords.Dash} damages foes in an area and  creates a circle of light that inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
 		{
 			Id = "ApolloSignoff"
 			DisplayName = "From Apollo"
@@ -91,6 +106,21 @@
 			Id = "ApolloRangedTrait_Initial"
 			InheritFrom = "AresRangedTrait"
 			Description = "Your {$Keywords.Cast} sends a {$Keywords.BladeRift} hurtling ahead. \n {!Icons.Bullet}{#PropertyFormat}Rift Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ForceApolloBoonTrait"
+			DisplayName = "Harmonious Harp"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Apollo{#PreviousFormat}. His blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+		}
+		{
+			Id = "ForceApolloBoonTrait_Rack"
+			InheritFrom = "ForceApolloBoonTrait"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Apollo{#PreviousFormat}. His blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "ForceApolloBoonTrait_Inactive"
+			DisplayName = "Harmonious Harp"
+			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 	]
 }

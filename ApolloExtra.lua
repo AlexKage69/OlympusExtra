@@ -637,25 +637,25 @@ OlympusTraitData.ApolloWeaponTrait =
 		 },
 		 ExtractValues =
 		 {
-			 {
-				 ExtractAs = "TooltipWeakDuration",
-				 SkipAutoExtract = true,
-				 External = true,
-				 BaseType = "Effect",
-				 WeaponName = "SwordWeapon",
-				 BaseName = "ReduceDamageOutput",
-				 BaseProperty = "Duration",
-			 },
-			 {
-				 ExtractAs = "TooltipWeakPower",
-				 SkipAutoExtract = true,
-				 External = true,
-				 BaseType = "Effect",
-				 WeaponName = "SwordWeapon",
-				 BaseName = "ReduceDamageOutput",
-				 BaseProperty = "Modifier",
-				 Format = "NegativePercentDelta"
-			 }
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Modifier",
+				Format = "Percent"
+			}
 		 }
  } 
 OlympusTraitData.ApolloSecondaryTrait =
@@ -1075,7 +1075,7 @@ OlympusTraitData.ApolloDashTrait =
 			 WeaponName = "SwordWeapon",
 			 BaseName = "ApolloBlind",
 			 BaseProperty = "Modifier",
-			 Format = "PercentDelta"
+			 Format = "Percent"
 		 }
 	 }
  }
@@ -2835,15 +2835,15 @@ ModUtil.MapSetTable(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
 OlympusGiftData.ApolloUpgrade =
 {
 	InheritFrom = {"DefaultGiftData"},
-	MaxedIcon = "Keepsake_Zeus_Max",
-	MaxedSticker = "Keepsake_ZeusSticker_Max",
-	MaxedRequirement = { RequiredTextLines = { "ApolloGift01" }, },
+	MaxedIcon = "Keepsake_Apollo_Max",
+	MaxedSticker = "Keepsake_ApolloSticker_Max",
+	MaxedRequirement = { RequiredTextLines = { "ApolloGift07" }, },
 	Value = 0,
 	Maximum = 7,
 	Locked = 7,
 	[1] = { Gift = "ForceApolloBoonTrait" },
 	[7] = { RequiredResource = "SuperGiftPoints" },
-	UnlockGameStateRequirements = { RequiredTextLines = { "ZeusAboutRumors01" } }
+	UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis01" } }
 }
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
@@ -2861,3 +2861,9 @@ ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
 		baseFunc(victim, triggerArgs)
 	end
 end)
+-- For testing purposes
+OnControlPressed{ "Codex",
+    function( triggerArgs )
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GetAllUpgradeableGodTraits()))
+    end
+}
