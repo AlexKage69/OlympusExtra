@@ -19,6 +19,13 @@ local DuplicateVeryStrongMultiplier = -0.20
 local OlympusColor = ModUtil.Entangled.ModData(WeaponData)
 OlympusColor.ApolloDamageLight = {255,145,79,255}
 OlympusColor.ApolloDamage = {255,145,79,255}
+--Assets
+local package = "OEAssets"
+ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
+    DebugPrint({Text = "Trying to load package "..package..".pkg"})
+    LoadPackages({Name = package})
+    return baseFunc()
+end)
 --WeaponData
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
@@ -27,8 +34,8 @@ OlympusWeaponData.ApolloShoutWeapon = {
 --ProjectileData
 local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
 OlympusProjectileData.ApolloColorProjectile = {
-	DamageTextStartColor = OlympusColor.AphroditeDamageLight,
-	DamageTextColor = OlympusColor.AphroditeDamage
+	DamageTextStartColor = OlympusColor.ApolloDamageLight,
+	DamageTextColor = OlympusColor.ApolloDamage
 }
 OlympusProjectileData.ApolloProjectile = {
 	InheritFrom = { "NoSlowFrameProjectile", "ApolloColorProjectile" },
@@ -40,6 +47,12 @@ OlympusProjectileData.ApolloBeowulfProjectile = {
 }
 OlympusProjectileData.ApolloShoutWeapon = {
 	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+}
+
+OnControlPressed{ "Codex",
+    function( triggerArgs )
+        CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+    end    
 }
 
 -- GameData
@@ -74,6 +87,7 @@ table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 --Keywords
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 ModUtil.MapSetTable(OlympusKeywordList, { "Blind" })
+ModUtil.MapSetTable(OlympusKeywordList, { "FlashBomb" })
 
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -690,7 +704,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 	 {
 		 {
 			 WeaponNames = WeaponSets.HeroSecondaryWeapons,
-			 EffectName = "ReduceDamageOutput",
+			 EffectName = "Blind",
 			 EffectProperty = "Active",
 			 ChangeValue = true,
 		 },
@@ -928,21 +942,21 @@ OlympusTraitData.ApolloSecondaryTrait =
 	 ExtractValues =
 	 {
 		 {
-			 ExtractAs = "TooltipWeakDuration",
+			 ExtractAs = "TooltipBlindDuration",
 			 SkipAutoExtract = true,
 			 External = true,
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
-			 BaseName = "ReduceDamageOutput",
+			 BaseName = "Blind",
 			 BaseProperty = "Duration",
 		 },
 		 {
-			 ExtractAs = "TooltipWeakPower",
+			 ExtractAs = "TooltipBlindPower",
 			 SkipAutoExtract = true,
 			 External = true,
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
-			 BaseName = "ReduceDamageOutput",
+			 BaseName = "Blind",
 			 BaseProperty = "Modifier",
 			 Format = "NegativePercentDelta"
 		 }
@@ -1353,21 +1367,21 @@ OlympusTraitData.ApolloRangedTrait =
 	 ExtractValues =
 	 {
 		 {
-			 ExtractAs = "TooltipWeakDuration",
+			 ExtractAs = "TooltipBlindDuration",
 			 SkipAutoExtract = true,
 			 External = true,
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
-			 BaseName = "ReduceDamageOutput",
+			 BaseName = "Blind",
 			 BaseProperty = "Duration",
 		 },
 		 {
-			 ExtractAs = "TooltipWeakPower",
+			 ExtractAs = "TooltipBlindPower",
 			 SkipAutoExtract = true,
 			 External = true,
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
-			 BaseName = "ReduceDamageOutput",
+			 BaseName = "Blind",
 			 BaseProperty = "Modifier",
 			 Format = "NegativePercentDelta"
 		 }

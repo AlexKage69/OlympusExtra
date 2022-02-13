@@ -19,7 +19,7 @@
         { DurationFrames = 1 }
         /*Frame 1*/
         { DurationFrames = 1 }
-        { DurationFrames = 1 VisualFx = "QuickFlashPink" }
+        { DurationFrames = 1 VisualFx = "QuickFlashOrange" }
         { DurationFrames = 1 }
         { DurationFrames = 1 }
         { DurationFrames = 1 }
