@@ -33,6 +33,11 @@
 			DisplayName = "the god who affords help and wards off evil."
 		}		
 		{
+      		Id = "Blind"
+			DisplayName = "Blind"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}{$TooltipData.TooltipBlindPower}% {#PreviousFormat}chance."
+		}
+		{
 			Id = "ApolloWeaponTrait"
 			DisplayName = "Blinding Strike"
 			Description = "Your {$Keywords.Attack} deals more damage and can inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}"
@@ -55,12 +60,12 @@
 		{
 			Id = "ApolloDashTrait"
 			DisplayName = "Radiant Dash"
-			Description = "Your {$Keywords.Dash} damages foes in an area and creates a circle of light that inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		} 
 		{
 			Id = "ApolloDashTrait_Initial"
 			InheritFrom = "ApolloDashTrait"
-			Description = "Your {$Keywords.Dash} damages foes in an area and creates a circle of light that inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ApolloSignoff"
@@ -73,11 +78,6 @@
 
 				{#AwardDarkFlavorFormat}He sees you as a prophet of good fortune.
 			"""
-		}
-    	{
-      		Id = "Blind"
-			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}{$TooltipData.TooltipBlindPower}% {#PreviousFormat}chance."
 		}
 		{
       		Id = "FlashBomb"
@@ -105,12 +105,12 @@
 		} {
 			Id = "ApolloRangedTrait"
 			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet that blinds foes. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ApolloRangedTrait"
 			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet that blinds foes. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
