@@ -2,7 +2,7 @@
 
 ## Importing Assets
 ```
-texture_packing_wheel pk -s Source -b OEAssets
+texture_packing_wheel pk -s PackMe -b OEAssets
 deppth pk -s OEAssets -t OEAssets.pkg
 ```
 
@@ -14,3 +14,6 @@ Run modimporter as usual.
 Shamelessly stolen from Hades source files. 
 Tinted using https://www6.lunapic.com/editor/?action=tint
 Colour tint: #ff914f
+
+Credits to: 
+Reikiix (Apollo Portrait)
