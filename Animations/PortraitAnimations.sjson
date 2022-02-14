@@ -34,7 +34,7 @@
       StartBlue = 0.2
       EndRed = 1.0
       EndGreen = 0.6
-      EndBlue = 0.3
+      EndBlue = 0.4
       OffsetX = 0
       VisualFx = "PortraitVerticalRay_Apollo"
     }
