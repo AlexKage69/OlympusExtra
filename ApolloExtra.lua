@@ -1903,7 +1903,7 @@ OlympusLootData.ApolloUpgrade = {
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				{ Cue = "/VO/Apollo_0014",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There, there, dearest, you'll tell me all your troubles just as soon as you arrive, so let's just get you out of there for now." },
+					Text = "Hey Zagzag, are you still down there? Do you mind when I call you Zagzag? Because if you do, you better come and tell me face to face." },
 			},
 			ApolloMiscPickup05 =
 			{
@@ -1912,7 +1912,7 @@ OlympusLootData.ApolloUpgrade = {
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0015",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What is it, love, are you still having problems with the dead? I swear, you'd think they had enough of me in life!" },
+					Text = "Are you still down there, Zagzag? I'll give you my help once more. Don't waste it." },
 			},
 			ApolloMiscPickup06 =
 			{

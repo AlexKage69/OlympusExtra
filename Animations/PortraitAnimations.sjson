@@ -5,11 +5,11 @@
       Name = "PortraitRayParticle_Apollo"
       InheritFrom = "PortraitRayParticle"
       StartRed = 1.0
-      StartGreen = 0
-      StartBlue = 0.8
+      StartGreen = 0.7
+      StartBlue = 0.2
       EndRed = 1.0
-      EndGreen = 0.3
-      EndBlue = 0.5
+      EndGreen = 0.6
+      EndBlue = 0.4
       OffsetX = 0
       OffsetY = -300
     }
@@ -17,11 +17,11 @@
       Name = "PortraitVerticalRay_Apollo"
       InheritFrom = "PortraitVerticalRay"
       StartRed = 1.0
-      StartGreen = 0
-      StartBlue = 0.8
+      StartGreen = 0.7
+      StartBlue = 0.2
       EndRed = 1.0
-      EndGreen = 0.3
-      EndBlue = 0.5
+      EndGreen = 0.6
+      EndBlue = 0.4
 
       OffsetX = 0
       CreateAnimation = "PortraitRayParticle_Apollo"
@@ -30,11 +30,11 @@
       Name = "PortraitVerticalRayEmitter_Apollo"
       InheritFrom = "PortraitVerticalRayEmitter_Base"
       StartRed = 1.0
-      StartGreen = 0
-      StartBlue = 0.8
+      StartGreen = 0.7
+      StartBlue = 0.2
       EndRed = 1.0
-      EndGreen = 0.2
-      EndBlue = 0.5
+      EndGreen = 0.6
+      EndBlue = 0.3
       OffsetX = 0
       VisualFx = "PortraitVerticalRay_Apollo"
     }
@@ -51,10 +51,10 @@
       Name = "Portrait_Apollo_Default_01"
       InheritFrom = "Portrait_God_01"
       ChildAnimation = "PortraitGodRayEmitter_Apollo"
-      FilePath = "Portraits\Portraits_Apollo_01"
+      FilePath = "Apollo\Portraits_Apollo_01"
       EndFrame = 1
       StartFrame = 1
-      OffsetY = -8.0
+      Scale = 0.45
     }
     {
       Name = "Portrait_Apollo_Wrath_01"
