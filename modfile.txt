@@ -9,6 +9,16 @@ Import "ApolloExtra.lua"
 :: Merge all together
 Import "OlympusExtra.lua"
 
+:: Assets
+To "Win/Packages/OEAssets.pkg"
+Replace "Packages/OEAssets.pkg"
+To "Win/Packages/720p/OEAssets.pkg"
+Replace "Packages/OEAssets.pkg"
+To "Win/Packages/OEAssets.pkg_manifest"
+Replace "Packages/OEAssets.pkg_manifest"
+To "Win/Packages/720p/OEAssets.pkg_manifest"
+Replace "Packages/OEAssets.pkg_manifest"
+
 :: Animations
 To "Game/Animations/PortraitAnimations.sjson"
 SJSON "Animations/PortraitAnimations.sjson"

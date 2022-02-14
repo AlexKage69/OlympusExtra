@@ -23,58 +23,79 @@
       StartFrame = 1
     }
     {
+      Name = "BoonSymbolApollo"
+      InheritFrom = "BoonSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "BoonInfoSymbolApolloIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "BoonSymbolApolloIsometric"
+      InheritFrom = "BoonSymbolBaseIsometric"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
       Name = "Boon_Apollo_00_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\BlindingFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_00_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\BlindingFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\BlindingStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\BlindingStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_02_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\BlindingBomb_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_02_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\BlindingBomb_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_03_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\RadiantDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_03_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\RadiantDash_large"
       EndFrame = 1
       StartFrame = 1
     }
