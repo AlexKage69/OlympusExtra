@@ -17,3 +17,4 @@ Colour tint: #ff914f
 
 Credits to: 
 Reikiix (Apollo Portrait)
+Lazy.mano (Apollo Keepsake Badges)

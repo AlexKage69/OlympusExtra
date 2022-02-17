@@ -144,12 +144,12 @@
     {
       Name = "Keepsake_Apollo_Max"
       InheritFrom = "KeepsakeMax_Corner"
-      FilePath = "GUI\Screens\AwardMenu\KeepsakeMaxGift\Zeus"
+      FilePath = "Apollo\ApolloBadge"
     }
     {
       Name = "Keepsake_ApolloSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
-      FilePath = "GUI\Screens\AwardMenu\KeepsakeMaxGift\Zeus_02"
+      FilePath = "Apollo\ApolloBadge_max"
     }
   ]
 }

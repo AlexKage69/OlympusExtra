@@ -80,7 +80,7 @@
     {
       Name = "BoonDropApolloIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Spin\AphroditeIconSpin"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Spin\AphroditeIconSpin\AphroditeIconSpin"
     }
     {
       Name = "ZagreusDashNoCollide_Apollo"
