@@ -680,7 +680,7 @@
           Name = "ApolloBowTwinkle"
         }]
     }{
-      Name = "BowWeaponArrow-ApolloSparkles"
+      Name = "WeaponProjectile-ApolloSparkles"
       InheritFrom = "GenericSparkles"
       AngleFromOwner = "Take"
       AngleNumOffset = 8
@@ -733,16 +733,16 @@
           Name = "BowTrailRandom-Apollo"
         }
         {
-          Name = "BowWeaponArrow-ApolloSparkles"
+          Name = "WeaponProjectile-ApolloSparkles"
         }
         {
-          Name = "BowWeaponArrow-ApolloSparkles"
+          Name = "WeaponProjectile-ApolloSparkles"
         }
         {
-          Name = "BowWeaponArrow-ApolloSparkles"
+          Name = "WeaponProjectile-ApolloSparkles"
         }
         {
-          Name = "BowWeaponArrow-ApolloSparkles"
+          Name = "WeaponProjectile-ApolloSparkles"
         }]
     }
     {
@@ -902,6 +902,955 @@
       InheritFrom = "BowChargedLoop-Apollo"
       DieWithoutWeaponCharge = "BowWeaponDash"
     }
+    {
+      Name = "BowChargeRama-Apollo"
+      InheritFrom = "BowChargeRama"
+      ChildAnimation = "BowChargeRamaGlow-Apollo"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ChainTo = "BowChargedLoopRama-Apollo"
+    }
+    {
+      Name = "BowChargeRamaDash-Apollo"
+      InheritFrom = "BowChargeRama-Apollo"
+      ChainTo = "BowChargedLoopRamaDash-Apollo"
+      ChildAnimation = "BowChargeRamaGlowCharged-Apollo"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargeRamaGlow-Apollo"
+      InheritFrom = "BowChargeRamaGlow"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "BowChargeRamaGlowCharged-Apollo"
+      InheritFrom = "BowChargeRamaGlowCharged"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "BowChargedLoopRama-Apollo"
+      InheritFrom = "BowChargedLoopRama"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+      ChildAnimation = "BowChargeRamaGlowCharged-Apollo"
+    }
+    {
+      Name = "BowChargedLoopRamaDash-Apollo"
+      InheritFrom = "BowChargedLoopRama-Apollo"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "RamaWideShot-Apollo"
+      InheritFrom = "RamaWideShot"
+      VisualFx = "RamaWideShotTrail-Apollo"
+      ClearCreateAnimations = true
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+      CreateAnimations = [
+        {
+          Name = "RamaWideShotDark-Apollo"
+        }
+        {
+          Name = "RamaWideShotGlow-Apollo"
+        }]
+    }
+    {
+      Name = "RamaWideShotDark-Apollo"
+      InheritFrom = "RamaWideShotDark"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "RamaWideShotTrail-Apollo"
+      InheritFrom = "RamaWideShotTrail"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "RamaWideShotGlow-Apollo"
+      InheritFrom = "RamaWideShotGlow"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "BowWeaponArrow-Apollo-Alt01"
+      InheritFrom = "BowWeaponArrow-Apollo"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Apollo-Alt02"
+      InheritFrom = "BowWeaponArrow-Apollo"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
+    }
+    /* Apollo - Shield - WeaponTrail */
+    {
+      Name = "ShieldSwipe-Apollo"
+      InheritFrom = "ShieldSwipe"
+      ClearCreateAnimations = true
+      VisualFxCap = 3
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      VisualFxIntervalMax = 0.06
+      VisualFxIntervalMin = 0.05
+      CreateAnimations = [
+        {
+          Name = "QuickFlashOrange"
+        }
+        {
+          Name = "ShieldSwipeADisplace"
+        }
+        {
+          Name = "ShieldSwipeADark"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        ]
+    }{
+      Name = "ShieldSwipe-ApolloSparkles"
+      InheritFrom = "GenericSparkles"
+      AngleMax = 80.0
+      AngleMin = -60.0
+      AngleFromOwner = "Take"
+      AngleNumOffset = 8
+      HoldLastFrame = true
+      RadialOffsetMax = 150.0
+      RadialOffsetMin = 100.0
+      RadialOffsetScaleRadius = 300.0
+      RadialOffsetScaleY = 0.66
+      LocationFromOwner = "Ignore"
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      AlphaMax = 1.0
+      AlphaMin = 0.8
+      AddColor = true
+      Color = {
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
+      }
+      RandomDurationMax = 0.6
+      RandomDurationMin = 0.2
+      VelocityMax = 5.0
+      VelocityMin = 1.0
+      Scale = 1.0
+    }{
+      Name = "ShieldSwipeDash-Apollo"
+      InheritFrom = "ShieldSwipe-Apollo"
+      FlipVertical = true
+      ClearCreateAnimations = true
+      Scale = 1.4
+      CreateAnimations = [
+        {
+          Name = "QuickFlashYellow"
+        }
+        {
+          Name = "ShieldSwipeADisplace_Dash"
+        }
+        {
+          Name = "ShieldSwipeADark_Dash"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }
+        {
+          Name = "ShieldSwipe-ApolloSparkles"
+        }]
+    }{
+      Name = "ShieldRush3D-ApolloSparkles"
+      InheritFrom = "GenericSparkles"
+      AngleFromOwner = "Take"
+      AngleNumOffset = 8
+      HoldLastFrame = true
+      RadialOffsetScaleRadius = 400.0
+      RadialOffsetScaleY = 0.66
+      LocationFromOwner = "Take"
+      OffsetZ = 60.0
+      AlphaMax = 1.0
+      AlphaMin = 0.8
+      AddColor = true
+      Color = {
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
+      }
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      RandomDurationMax = 0.6
+      RandomDurationMin = 0.2
+      VelocityMax = 5.0
+      VelocityMin = 1.0
+      Scale = 1.0
+    }
+    {
+      Name = "ShieldCharge-Apollo"
+      InheritFrom = "ShieldCharge"
+      ChainTo = "ShieldChargedLoop-Apollo"
+      ChildAnimation = "ShieldChargeB-Apollo"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "ShieldChargeB-Apollo"
+      InheritFrom = "ShieldCharge-Apollo"
+      ChainTo = "ShieldChargedLoopB-Apollo"
+      ChildAnimation = "null"
+      PostRotateScaleY = 1.0
+    }
+    {
+      Name = "ShieldRush3D-Apollo"
+      InheritFrom = "ShieldRush3D"
+      CreateAnimation = "QuickFlashOrange"
+      VisualFx = "ShieldRushTrail-Apollo"
+      Sound = "/SFX/Player Sounds/ArtemisLeavesShieldRush"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "ShieldRush3D-Out-Apollo"
+      InheritFrom = "ShieldRush3D-Apollo"
+      ChildAnimation = "null"
+      VisualFx = "null"
+      HoldLastFrame = false
+      EndScale = 0.0
+      StartScale = 1.25
+    }
+    {
+      Name = "ShieldRush3DBeowulf-Apollo"
+      InheritFrom = "ShieldRush3D-Apollo"
+      NumAngles = 64
+      FilePath = "Fx\BeowulfShieldRush3D\BeowulfShieldRush3D"
+      CreateAnimation = "ShieldRush3DBeowulfDark"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashOrange"
+        }]
+    }
+    {
+      Name = "ShieldRush3DBeowulfMax-Apollo"
+      InheritFrom = "ShieldRush3DBeowulfMax"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      StartAlpha = 1
+      EndAlpha = 0.4
+    }
+    {
+      Name = "ShieldRush3DBeowulf-Out-Apollo"
+      InheritFrom = "ShieldRush3DBeowulf-Out"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "ShieldRushTrail-Apollo"
+      InheritFrom = "ShieldRushTrail"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      CreateAnimations = [
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }]
+    }
+    {
+      Name = "ShieldChargedLoop-Apollo"
+      InheritFrom = "ShieldChargedLoop"
+      ChildAnimation = "ShieldChargedLoopB-Apollo"
+    }
+    {
+      Name = "ShieldChargedLoopB-Apollo"
+      InheritFrom = "ShieldChargedLoopB"
+    }
+    {
+      Name = "BeowulfShieldSlam-Apollo"
+      InheritFrom = "BeowulfShieldSlam"
+      VisualFx = "BeowulfShieldSlamParticles-Apollo"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashOrange"
+        }
+        {
+          Name = "BeowulfShieldSlamDark"
+        }
+        {
+          Name = "SwordParryGroundCrack-Beowulf"
+        }
+        {
+          Name = "BeowulfShieldSlamWave-Apollo"
+        }
+        {
+          Name = "BeowulfShieldSlamWaveDark"
+        }
+        {
+          Name = "BeowulfShieldSlamFire"
+        }]
+    }
+    {
+      Name = "BeowulfShieldSlamParticles-Apollo"
+      InheritFrom = "BeowulfShieldSlamParticles"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "BeowulfShieldSlamWave-Apollo"
+      InheritFrom = "BeowulfShieldSlamWave"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    /* Apollo - Gun - WeaponTrait */
+ {
+      Name = "GunWeaponProjectile-Apollo"
+      InheritFrom = "GunWeaponProjectile"
+      CreateAnimation = "GunWeaponMuzzleFlash-Apollo"
+      VisualFx = "GunTrail-Apollo"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "GunWeaponMuzzleFlash-Apollo"
+      InheritFrom = "GunWeaponMuzzleFlash"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "GunTrail-Apollo"
+      CreateAnimations = [
+        {
+          Name = "GunTrailRandom-Apollo"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }]
+    }
+    {
+      Name = "GunTrailRandom-Apollo"
+      FilePath = "Animations\GunTrail-Aphrodite\GunTrail-Aphrodite"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunTrailA-Apollo"
+        }
+        {
+          Name = "GunTrailB-Apollo"
+        }]
+    }
+    {
+      Name = "GunTrailA-Apollo"
+      InheritFrom = "GunTrailA"
+      ClearCreateAnimations = true
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      EaseIn = 0.5
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "GunTrailA-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Apollo"
+        }]
+    }
+    {
+      Name = "GunTrailFloorGlow-Apollo"
+      InheritFrom = "GunTrailFloorGlow"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "GunTrailB-Apollo"
+      InheritFrom = "GunTrailA-Apollo"
+      ClearCreateAnimations = true
+      FilePath = "Fx\GunTrailB\GunTrailB"
+      EndFrame = 42
+      NumFrames = 42
+      StartFrame = 1
+      CreateAnimations = [
+        {
+          Name = "GunTrailB-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Apollo"
+        }]
+    }
+    {
+      Name = "GunTrail-Ares-Homing"
+      CreateAnimations = [
+        {
+          Name = "GunTrailRandom-Apollo-Homing"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }]
+    }
+    {
+      Name = "GunTrailRandom-Apollo-Homing"
+      FilePath = "Animations\GunTrail-Aphrodite\GunTrail-Aphrodite"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunTrailA-Apollo-Homing"
+        }
+        {
+          Name = "GunTrailB-Apollo-Homing"
+        }]
+    }
+    {
+      Name = "GunTrailA-Apollo-Homing"
+      InheritFrom = "GunTrailA"
+      ClearCreateAnimations = true
+      StartBlue = 0.001
+      StartGreen = 0.001
+      EaseIn = 0.5
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "GunTrailA-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Apollo"
+        }]
+    }
+    {
+      Name = "GunTrailB-Apollo-Homing"
+      InheritFrom = "GunTrailA-Apollo"
+      ClearCreateAnimations = true
+      FilePath = "Fx\GunTrailB\GunTrailB"
+      EndFrame = 42
+      NumFrames = 42
+      StartFrame = 1
+      CreateAnimations = [
+        {
+          Name = "GunTrailB-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Apollo"
+        }]
+    }
+    {
+      Name = "GunFire-Apollo"
+      FilePath = "Animations\GunFire-Ares\GunFire-Ares"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunFireA-Apollo"
+        }
+        {
+          Name = "GunFireB-Apollo"
+        }]
+    }
+    {
+      Name = "GunFireA-Apollo"
+      InheritFrom = "GunFireA"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "GunFireB-Apollo"
+      InheritFrom = "GunFireA-Apollo"
+      CreateAnimation = "GunFireB-Dark"
+      FilePath = "Fx\GunFireB\GunFireB"
+      EndFrame = 33
+      NumFrames = 33
+      StartFrame = 1
+    }
+    {
+      Name = "GunWeaponImpact-Apollo"
+      InheritFrom = "GunWeaponImpact"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "GunLaser-Apollo"
+      InheritFrom = "GunLaser"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      VisualFx = "GunLaserFeathers-Apollo"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "GunLaserDark"
+        }
+        {
+          Name = "GunLaserGlow-Apollo"
+        }
+        {
+          Name = "GunLaserHalo-Apollo"
+        }]
+    }
+    {
+      Name = "GunLaserGlow-Apollo"
+      InheritFrom = "GunLaserGlow"
+      Red = 0.80
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "GunLaserHalo-Apollo"
+      InheritFrom = "GunLaserHalo"
+      Red = 0.80
+      Green = 0.55
+      Blue = 0.05
+      VisualFxIntervalMin = 0.1
+      VisualFxIntervalMax = 0.11
+    }
+    {
+      Name = "GunLaserFeathers-Apollo"
+      Type = "Random"
+      Random = [
+        {
+          Name = "GunLaserFeatherA-Apollo"
+        }
+        {
+          Name = "GunLaserFeatherB-Apollo"
+        }]
+    }
+    {
+      Name = "GunLaserFeatherA-Apollo"
+      InheritFrom = "GunLaserFeatherA"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "GunLaserFeatherB-Apollo"
+      InheritFrom = "GunLaserFeatherA-Apollo"
+    }
+    {
+      Name = "GunLaserOriginFlare-Apollo"
+      InheritFrom = "GunLaserOriginFlare"
+      VisualFx = "GunLaserFeathers-Apollo"
+      Color = {
+        Red = 0.80
+        Green = 0.55
+        Blue = 0.05
+      }
+    }
+    {
+      Name = "GunLaserTipFlare-Apollo"
+      InheritFrom = "GunLaserTipFlare"
+      Color = {
+        Red = 0.80
+        Green = 0.55
+        Blue = 0.05
+      }
+    }
+    {
+      Name = "GunCharge-Apollo"
+      InheritFrom = "BowCharge-Apollo"
+      ChainTo = "null"
+      DieWithoutWeaponCharge = "GunWeapon"
+      UseAttachedMarkerLocation = "weapon_2_TRACKING"
+    }
+    {
+      Name = "GunLaserEnd-Apollo"
+      InheritFrom = "GunLaser-Apollo"
+      TransferCopyBody = true
+      TransferAngle = true
+      ClearCreateAnimations = true
+      Loop = false
+      Duration = 0.09
+      StartScaleY = 1
+      EndScaleY = 0
+      GroupName = "Standing"
+      CreateAnimation = "null"
+    }
+    /* Apollo - Fist - WeaponTrait */
+{
+      Name = "FistFxApollo"
+      InheritFrom = "FistFxBase"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ChildAnimation = "FistGlowApollo"
+    }
+    {
+      Name = "FistFx-ApolloSparkles"
+      InheritFrom = "GenericSparkles"
+      AngleFromOwner = "Take"
+      AngleNumOffset = 8
+      HoldLastFrame = true
+      RadialOffsetMax = 1.0
+      RadialOffsetMin = 1.0
+      RadialOffsetScaleRadius = 1000.0
+      RadialOffsetScaleY = 0.99
+      LocationFromOwner = "Take"
+      AlphaMax = 1.0
+      AlphaMin = 0.8
+      AddColor = true
+      Color = {
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
+      }
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      RandomDurationMax = 0.6
+      RandomDurationMin = 0.2
+      VelocityMax = 5.0
+      VelocityMin = 1.0
+      Scale = 1.0
+    }
+    {
+      Name = "FistFxApollo_Reach"
+      InheritFrom = "FistFxApollo"
+      StartScaleX = 1.8
+      EndScaleX = 1
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "FistFxDark_Reach"
+        }
+        {
+          Name = "FistFxDisplacement_Reach"
+        }]
+    }
+    {
+      Name = "FistGlowApollo"
+      InheritFrom = "FistGlow"
+      StartAlpha = 0.75
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05      
+      CreateAnimations = [
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+      ]
+    }
+    {
+      Name = "FistFxSwipeApollo"
+      InheritFrom = "FistFxSwipe"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ChildAnimation = "FistGlowApollo"
+      ClearCreateAnimations = true     
+      CreateAnimation = "ApolloFistSwipeSwirl"
+    }
+    
+    {
+      Name = "ApolloFistSwipeSwirl"
+      InheritFrom = "ArtemisDashIso"
+      CreateAnimation = "null"
+      FilePath = "Fx\ArtemisDashSwirl\ArtemisDashSwirl"
+      Angle = 0.0
+      AngleMax = 0.01
+      AngleMin = 0.0
+      Sound = "/SFX/Player Sounds/ArtemisLeavesWeaponSlashUpgrade"
+      EndFrame = 41
+      NumFrames = 41
+      PlaySpeed = 180.0
+      RadialOffsetMin = 300
+      RadialOffsetMax = 301
+      RadialOffsetScaleY = 0.5
+      OffsetZ = 30
+      StartFrame = 1
+      FlipHorizontal = true
+      FlipVertical = false
+      OriginX = 315.0
+      OriginY = 248.0
+      LocationFromOwner = "Take"
+      IsometricSkew = "None"
+      PostRotateScaleY = 0.5
+    }
+    {
+      Name = "FistFxUppercutApollo"
+      InheritFrom = "FistFxUppercut"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "RadialNovaFistUppercut-Apollo"
+        }
+        {
+          Name = "FistFxUppercutDark"
+        }
+        {
+          Name = "FistUppercutSmoke"
+        }]
+    }
+    {
+      Name = "RadialNovaFistUppercut-Apollo"
+      InheritFrom = "RadialNovaSwordParry"
+      ClearCreateAnimations = true
+      VisualFxCap = 8
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "DoorCloseDust"
+        }
+        {
+          Name = "SwordParryGroundCrack"
+        }
+        {
+          Name = "DisplaceShockwaveSwordParry"
+        }
+        {
+          Name = "SwordParrySpike"
+        }
+        {
+          Name = "QuickFlashOrange"
+        }]
+    }{
+      Name = "ClawSwipe-Apollo"
+      InheritFrom = "ClawSwipe"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.02
+      VisualFxCap = 6
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashOrange"
+        }]
+    }
+    {
+      Name = "ClawSwipeFlipped-Apollo"
+      InheritFrom = "ClawSwipe-Apollo"
+      CreateAnimation = "ClawSwipeDarkFlipped"
+      FlipVertical = true
+    }
+    {
+      Name = "ClawSwipeFlippedDash-Apollo"
+      InheritFrom = "ClawSwipeFlipped-Apollo"
+      CreateAnimation = "ClawSwipeDarkFlippedDash"
+      FlipVertical = true
+      RadialOffsetMin = 50
+      RadialOffsetMax = 51
+    }
+    {
+      Name = "ClawSwipeUppercut-Apollo"
+      InheritFrom = "FistFxUppercutDirectionalApollo"
+      OverlayVfx = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ClawSwipeUppercutCone-Apollo"
+        }
+        {
+          Name = "ClawSwipeUppercutDark"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercutSpecial-Apollo"
+      InheritFrom = "ClawSwipeUppercutSpecial"
+      Red = 1
+      Green = 1
+      Blue = 1
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      OverlayVfx = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ClawSwipeUppercutCone-Apollo"
+        }
+        {
+          Name = "ClawSwipeUppercutDark"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercutCone-Apollo"
+      InheritFrom = "ClawSwipeUppercutCone"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ChildAnimation = "FistGlowUppercutConeApollo"
+      ClearCreateAnimations = true
+      VisualFx = "null"
+      CreateAnimations = [
+        {
+          Name = "QuickFlashGreen"
+        }
+        {
+          Name = "FistUppercutConeApolloSwirl"
+        }]
+    }
+    
+    {
+      Name = "FistFxUppercutDirectionalApollo"
+      InheritFrom = "FistFxUppercut"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "FistUppercutConeApollo"
+        }
+        {
+          Name = "FistFxUppercutDark"
+        }]
+    }{
+      Name = "FistUppercutConeApollo"
+      InheritFrom = "FistUppercutCone"
+      ChildAnimation = "FistGlowUppercutConeApollo"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      CreateAnimations = [
+        {
+          Name = "FistUppercutConeApolloSwirl"
+        }]
+    }{
+      Name = "FistGlowUppercutConeApollo"
+      InheritFrom = "FistGlowUppercutCone"
+      StartAlpha = 0.75
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+    }
+    {
+      Name = "FistUppercutConeApolloSwirl"
+      Type = "Book"
+      FilePath = "Fx\ArtemisDashSwirl\ArtemisDashSwirl"
+      NumFrames = 41
+      IsometricSkew = "X"
+      Material = "Unlit"
+      ColorFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Take"
+      GroupName = "FX_Standing_Add"
+      OffsetZ = 160
+      RadialOffsetMin = 200
+      RadialOffsetMax = 200
+      PlaySpeed = 200
+      StartAlpha = 0.5
+      EndAlpha = 0
+      Scale = 2
+      FlipHorizontal = true
+    }
     /* Boon FX */
     {
       Name = "BoonDropApollo"
@@ -912,8 +1861,7 @@
       Name = "BoonDropA-Apollo"
       InheritFrom = "BoonDropA"
       ChildAnimation = "BoonDropB-Apollo"
-      Color = 
-      {
+      Color = {
         Red = 1.0
         Green = 0.64
         Blue = 0.41
@@ -923,8 +1871,7 @@
       Name = "BoonDropB-Apollo"
       InheritFrom = "BoonDropB"
       ChildAnimation = "BoonDropC-Apollo"
-      Color = 
-      {
+      Color = {
         Red = 1.0
         Green = 0.57
         Blue = 0.31
@@ -934,8 +1881,7 @@
       Name = "BoonDropC-Apollo"
       InheritFrom = "BoonDropC"
       ChildAnimation = "BoonDropApolloIcon"
-      Color = 
-      {
+      Color = {
         Red = 0.98
         Green = 0.45
         Blue = 0.12

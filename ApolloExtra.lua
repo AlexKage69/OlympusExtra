@@ -31,6 +31,10 @@ local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
 	BlockWrathGain = true,
 }
+--BoonInfoScreenData
+local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
+ModUtil.MapSetTable(OlympusBoonInfoScreenData.Ordering, { "ApolloUpgrade" })
+
 --ProjectileData
 local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
 OlympusProjectileData.ApolloColorProjectile = {
@@ -48,13 +52,6 @@ OlympusProjectileData.ApolloBeowulfProjectile = {
 OlympusProjectileData.ApolloShoutWeapon = {
 	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
 }
-
-OnControlPressed{ "Codex",
-    function( triggerArgs )
-        CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-    end    
-}
-
 -- GameData
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 OlympusGameData.ApolloBasicPickUpTextLines =
@@ -429,7 +426,7 @@ OlympusTraitData.ApolloWeaponTrait =
 			 {
 				 WeaponName = "FistWeaponDash",
 				 ProjectileProperty = "StartFx",
-				 ChangeValue = "FistFxSwipeApollo",
+				 ChangeValue = "FistFxSwipe",
 				 ChangeType = "Absolute",
 			 },
  
@@ -908,25 +905,25 @@ OlympusTraitData.ApolloSecondaryTrait =
 	 },
 	 ExtractValues =
 	 {
-		 {
-			 ExtractAs = "TooltipBlindDuration",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Duration",
-		 },
-		 {
-			 ExtractAs = "TooltipBlindPower",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Modifier",
-			 Format = "NegativePercentDelta"
-		 }
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Modifier",
+			Format = "Percent"
+		}
 	 }
  }
 OlympusTraitData.ApolloDashTrait =
@@ -1333,25 +1330,25 @@ OlympusTraitData.ApolloRangedTrait =
 	 },
 	 ExtractValues =
 	 {
-		 {
-			 ExtractAs = "TooltipBlindDuration",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Duration",
-		 },
-		 {
-			 ExtractAs = "TooltipBlindPower",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Modifier",
-			 Format = "NegativePercentDelta"
-		 }
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Modifier",
+			Format = "Percent"
+		}
 	 }
  }
 -- LootData
@@ -1385,7 +1382,7 @@ OlympusLootData.ApolloUpgrade = {
 		LinkedUpgrades =
 		{
 			ApolloBlindedTrait  = {
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
 			--[[ApolloDurationTrait =
 			{
