@@ -1,23 +1,23 @@
 {
   /*
-  Made by AlexKage
+  Made by AlexKage and physiX
   */
   Texts = [
 	"_append"
     {
       Id = "CodexData_Apollo_0001"
       Speaker = "Achilles"
-      DisplayName = "'...Apollo Stuff...'"
+      DisplayName = "'...One of Zeus's many sons, he is the god of archery and poetry, music and dance, truth and prohecy, healing and diseases.'"
     }
     {
       Id = "CodexData_Apollo_0002"
       Speaker = "Achilles"
-      DisplayName = "'...Apollo Stuff 2...'"
+      DisplayName = "'But most notable of all, he is the god of the Sun and its radiant light.'"
     }
     {
       Id = "CodexData_Apollo_0003"
       Speaker = "Achilles"
-      DisplayName = "'...Apollo Stuff 3...'"
+      DisplayName = "'Unlike his twin sibling Artemis, he holds a much more easygoing and extroverted personality. But as masters of the Sun and the Moon, I suppose it is inevitable that they are two sides of the same coin. '"
     }
   ]
 }
