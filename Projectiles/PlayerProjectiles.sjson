@@ -145,62 +145,14 @@
 	  ProjectileNumOpacityMultiplier = 0.3
       Effects = [
         {
-          Name = "WinePuddleDefense"
-          OnlyAffectName = "_PlayerUnit"
-          Duration = 0.75
-          Type = "DAMAGE_TAKEN"
-          Modifier = 1
-          Active = false
-        }
-        {
-          Name = "WinePuddleVulnerability"
+          Name = "ApolloBlind"
           IgnoreName = "_PlayerUnit"
-		  ExtendDurationOnReapply = true
-          Duration = 1
+          FrontFx = "ApolloHoverLoop"
+          BackFx = "null"
+          Duration = 5
+          Modifier = 0.1
           Active = true
-          TimeModifierFraction = 0
-        }
-        {
-          Name = "WinePuddleSlow"
-          IgnoreName = "_PlayerUnit"
-          Type = "SPEED"
-          Duration = 0.75
-          Modifier = 0.5
-          Active = true
-          CanAffectInvulnerable = true
-          TimeModifierFraction = 0
-        }
-		{
-			Name = "DemeterSlow"
-			IgnoreName = "_PlayerUnit"
-			Duration = 8.0
-			Stacks = true
-			ExtendDurationOnReapply = true
-            IsVulnerabilityEffect = true
-			MaxStacks = 10
-			Active = false
-			StartFx = "DemeterSlowImpact"
-			ReapplyFx = "DemeterSlowImpact"
-			Sound = "/SFX/Player Sounds/DemeterFrozenDebuffSFX"
-			StopSoundOnFinishFade = 0.5
-			FrontFx = "DemeterSlowFront"
-			BackFx = "DemeterSlowBack"
-			FlashFrontFxWhenExpiring = true
-			FlashBackFxWhenExpiring = true
-			TimeModifierFraction = 0
-			ExpiringRapidFlashThreshold = 0.3
-			ElapsedTimeMultiplier = 0.96
-		}
-        {
-          Name = "OnHitStun"
-          IgnoreName = "_PlayerUnit"
-          Duration = 0.5
-          DisableMove = true
-          DisableRotate = true
-          DisableAttack = true
-          Active = true
-          CanAffectInvulnerable = true
-          FrontFx = "DionysusStunnedFx"
+          IsVulnerabilityEffect = true
           TimeModifierFraction = 0
         }
       ]
@@ -261,11 +213,14 @@
       GroupName = "FX_Standing_Top"
 	  Effects = [
         {
-          Name = "WinePuddleVulnerability"
+          Name = "ApolloBlind"
           IgnoreName = "_PlayerUnit"
-		  ExtendDurationOnReapply = true
-          Duration = 0.5
+          FrontFx = "ApolloHoverLoop"
+          BackFx = "null"
+          Duration = 5
+          Modifier = 0.1
           Active = true
+          IsVulnerabilityEffect = true
           TimeModifierFraction = 0
         }
       ]

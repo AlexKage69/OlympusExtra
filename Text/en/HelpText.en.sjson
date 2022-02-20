@@ -105,7 +105,7 @@
 		} {
 			Id = "ApolloRangedTrait"
 			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ApolloRangedTrait"
