@@ -221,5 +221,157 @@
       StartScale = 1.5
       TimeModifierFraction = 1.0
     }
+    {
+      Name = "ApolloLobProjectile"
+      CreateAnimation = "ApolloLobProjectileDark"
+      FilePath = "Fx\DionysusProjectile\DionysusProjectile"
+      Type = "Book"
+      VisualFx = "ApolloLobProjectileSmokeContainer"
+      EndFrame = 61
+      Loop = true
+      LoopFramesOnly = true
+      NumFrames = 61
+      PlaySpeed = 60.0
+      StartFrame = 1
+      RotationSpeed = 720.0
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.02
+      VisualFxIntervalMin = 0.01
+    }
+   {
+      Name = "ApolloLobProjectileSmokeContainer"
+      CreateAnimation = "ApolloLobProjectileSmoke"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      EndAngle = 2.0
+      StartAngle = -2.0
+      Duration = 0.1
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+    }
+    {
+      Name = "ApolloLobProjectileDark"
+      FilePath = "Fx\ProjectileFire\ProjectileFire"
+      GroupName = "FX_Dark"
+      Type = "Book"
+      Sound = "/SFX/Player Sounds/ApolloLobProjectileGas"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      Scale = 2.0
+      Ambient = 0.0
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+  {
+      Name = "ApolloNovaCloud"
+      FilePath = "Fx\DionysusNova\DionysusNova"
+      GroupName = "Standing"
+      DrawBehindOwner = true
+      LocationZFromOwner = "Take"
+      Type = "Slide"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/DionysusSwordSpecialPoof"
+      EndFrame = 25
+      NumFrames = 25
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      ScaleRadius = 250.0
+      Ambient = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaDark"
+        }
+        {
+          Name = "QuickFlashOrange"
+        }]
+      Slides = [
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }]
+    }
+        
   ]
 }

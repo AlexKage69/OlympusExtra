@@ -37,13 +37,13 @@ OlympusProjectileData.ApolloColorProjectile = {
 	DamageTextStartColor = OlympusColor.ApolloDamageLight,
 	DamageTextColor = OlympusColor.ApolloDamage
 }
-OlympusProjectileData.ApolloProjectile = {
-	InheritFrom = { "NoSlowFrameProjectile", "ApolloColorProjectile" },
-	StoreAmmoInLastHit = true,
+OlympusProjectileData.ApolloLobProjectile = {
+	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
+	NeverStore = true,
 }
 OlympusProjectileData.ApolloBeowulfProjectile = {
-	InheritFrom = { "ApolloProjectile" },
-	StoreAmmoInLastHit = true,
+	InheritFrom = { "ApolloLobProjectile" },
+	NeverStore = true,
 }
 OlympusProjectileData.ApolloShoutWeapon = {
 	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
@@ -1136,60 +1136,88 @@ OlympusTraitData.ApolloRangedTrait =
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				WeaponProperty = "Projectile",
-				ChangeValue = "ApolloProjectile",
-				ChangeType = "Absolute",
-			},
-
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "ProjectileSpacing",
-				ChangeValue = 0,
-				ChangeType = "Absolute",
-			},
-			-- For adjusting aimline collisions -- @alice
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "Scale",
-				ChangeValue = 0.5,
-				ChangeType = "Absolute",
-			},
-			--[[
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "AimLineAnimation",
-				ChangeValue = "AimLineExtraDamageCap",
-				ChangeType = "Absolute",
-			},
-			]]
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "ProjectileAngleOffset",
-				ChangeValue = 25,
+				ChangeValue = "ApolloLobProjectile",
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Active",
+				ProjectileProperty = "SilentImpactOnInvulnerable",
 				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "AimLineAnimation",
+				ChangeValue = "null",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "ManualAiming",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "AcceptTriggerLockRequests",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "AllowExternalForceRelease",
+				ChangeValue = true,
+				ChangeType = "Absolute",
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				WeaponProperty = "AutoLockRange",
-				ChangeValue = 440,
+				ChangeValue = 900,
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "FireFx",
-				ChangeValue = "ProjectileFireRing-Apollo",
+				WeaponProperty = "ManualAimingInitialOffset",
+				ChangeValue = 420,
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireOnRelease",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "LockTriggerForCharge",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "MinChargeToFire",
+				ChangeValue = 0,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "TargetReticleAnimation",
+				ChangeValue = "GunGrenadeWarningDecal",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusRangedWeapon_ChargeDionysusLob",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "ApolloLobProjectile",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 90,
 				BaseMax = 90,
+				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -1198,12 +1226,75 @@ OlympusTraitData.ApolloRangedTrait =
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamage",
-				}
+				},
+				ExtractSource = "ExtractSource",
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "ApolloLobProjectile",
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				DeriveValueFrom = "DamageLow",
+			},
+			-- Beowulf modifications
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "ApolloLobProjectile",
+				ProjectileProperty = "DamageLow",
+				DeriveValueFrom = "ExtractSource",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageBeowulf",
+				},
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "DionysusLobProjectile",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "ExtractSource",
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ExcludeProjectileName = "DionysusLobProjectile",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "null",
+			},
+			-- In case bow load ammo is Active
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireOnRelease",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "Type",
+				ChangeValue = "INSTANT",
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireOnRelease",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "Type",
+				ChangeValue = "INSTANT",
+			},
+			-- Flurry Shot
+			{
+				TraitName = "RapidCastTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireOnRelease",
+				ChangeValue = false,
+				ChangeType = "Absolute",
 			},
 		},
 		ExtractValues =
