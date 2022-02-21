@@ -31,6 +31,10 @@ local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
 	BlockWrathGain = true,
 }
+--BoonInfoScreenData
+local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
+ModUtil.MapSetTable(OlympusBoonInfoScreenData.Ordering, { "ApolloUpgrade" })
+
 --ProjectileData
 local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
 OlympusProjectileData.ApolloColorProjectile = {
@@ -48,13 +52,6 @@ OlympusProjectileData.ApolloBeowulfProjectile = {
 OlympusProjectileData.ApolloShoutWeapon = {
 	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
 }
-
-OnControlPressed{ "Codex",
-    function( triggerArgs )
-        CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-    end    
-}
-
 -- GameData
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 OlympusGameData.ApolloBasicPickUpTextLines =
@@ -86,8 +83,7 @@ table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 
 --Keywords
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-ModUtil.MapSetTable(OlympusKeywordList, { "Blind" })
-ModUtil.MapSetTable(OlympusKeywordList, { "FlashBomb" })
+ModUtil.MapSetTable(OlympusKeywordList, { "Blind", "FlashBomb" })
 
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -237,53 +233,21 @@ OlympusTraitData.ApolloWeaponTrait =
 				 ChangeValue = "SwordSwipeC-Apollo",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponName = "SwordWeapon",
-				 ProjectileProperty = "StartFx",
-				 ChangeValue = "SwordSwipeA-Emitter-Apollo",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponName = "SwordWeapon2",
-				 ProjectileProperty = "StartFx",
-				 ChangeValue = "SwordSwipeA-Emitter-Apollo",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponName = "SwordWeapon3",
-				 ProjectileProperty = "StartFx",
-				 ChangeValue = "SwordSwipeC-Emitter-Apollo",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
- 
+			 }, 
 			 {
 				 WeaponName = "SwordWeapon3",
 				 WeaponProperty = "ChargeFx",
 				 ChangeValue = "ChargeAttack-Apollo",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
-			 },
- 
-			 {
-				 WeaponName = "SwordWeaponDash",
-				 ProjectileProperty = "StartFx",
-				 ChangeValue = "SwordSwipeC-Emitter-Apollo",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
- 
+			 }, 
 			 {
 				 WeaponName = "SwordWeaponDash",
 				 WeaponProperty = "ChargeFx",
 				 ChangeValue = "ChargeAttack-Apollo",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
-			 },
- 
+			 }, 
 			 {
 				 WeaponName = "SpearWeapon",
 				 ProjectileProperty = "Graphic",
@@ -462,7 +426,7 @@ OlympusTraitData.ApolloWeaponTrait =
 			 {
 				 WeaponName = "FistWeaponDash",
 				 ProjectileProperty = "StartFx",
-				 ChangeValue = "FistFxSwipeApollo",
+				 ChangeValue = "FistFxSwipe",
 				 ChangeType = "Absolute",
 			 },
  
@@ -941,25 +905,25 @@ OlympusTraitData.ApolloSecondaryTrait =
 	 },
 	 ExtractValues =
 	 {
-		 {
-			 ExtractAs = "TooltipBlindDuration",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Duration",
-		 },
-		 {
-			 ExtractAs = "TooltipBlindPower",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Modifier",
-			 Format = "NegativePercentDelta"
-		 }
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Modifier",
+			Format = "Percent"
+		}
 	 }
  }
 OlympusTraitData.ApolloDashTrait =
@@ -1457,25 +1421,25 @@ OlympusTraitData.ApolloRangedTrait =
 	 },
 	 ExtractValues =
 	 {
-		 {
-			 ExtractAs = "TooltipBlindDuration",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Duration",
-		 },
-		 {
-			 ExtractAs = "TooltipBlindPower",
-			 SkipAutoExtract = true,
-			 External = true,
-			 BaseType = "Effect",
-			 WeaponName = "SwordWeapon",
-			 BaseName = "Blind",
-			 BaseProperty = "Modifier",
-			 Format = "NegativePercentDelta"
-		 }
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Modifier",
+			Format = "Percent"
+		}
 	 }
  }
 -- LootData
@@ -1509,7 +1473,7 @@ OlympusLootData.ApolloUpgrade = {
 		LinkedUpgrades =
 		{
 			ApolloBlindedTrait  = {
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
 			--[[ApolloDurationTrait =
 			{
@@ -1744,7 +1708,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete", "ApolloWithZeus01" },
 				RequiredGodLoot = "ZeusUpgrade",
 				{ Cue = "/VO/Apollo_0044",
@@ -1757,7 +1721,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				RequiredGodLoot = "PoseidonUpgrade",
 				{ Cue = "/VO/Apollo_0045",
 					Emote = "PortraitEmoteDepressed",
@@ -1770,7 +1734,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				RequiredGodLoot = "AthenaUpgrade",
 				{ Cue = "/VO/Apollo_0042",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -1782,7 +1746,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
 				RequiredGodLoot = "AresUpgrade",
 				{ Cue = "/VO/Apollo_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -1794,7 +1758,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				RequiredGodLoot = "ArtemisUpgrade",
 				{ Cue = "/VO/Apollo_0047",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -1806,7 +1770,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				RequiredGodLoot = "DionysusUpgrade",
 				{ Cue = "/VO/Apollo_0048",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -1818,7 +1782,7 @@ OlympusLootData.ApolloUpgrade = {
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "ApolloFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				RequiredFalseTextLines = { "DemeterLiftsWinterCurse01" },
 				RequiredGodLoot = "DemeterUpgrade",
 				{ Cue = "/VO/Apollo_0181",
