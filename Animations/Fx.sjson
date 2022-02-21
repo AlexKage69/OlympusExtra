@@ -272,6 +272,88 @@
         Green = 0.0
         Blue = 0.0
       }
-    }        
+    }    
+  {
+      Name = "ApolloCloudB"
+      ChainTo = "ApolloCloudBLoop"
+      FilePath = "Apollo\ApolloCloudB\ApolloCloudB"
+      GroupName = "FX_Standing_Top"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Maintain"
+      EndAlpha = 0.5
+      StartAlpha = 1.0
+      Duration = 0.1
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 60
+      LoopFramesOnly = true
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      TransferFrameFromThis = true
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 320.0
+      StartScale = 0.0
+      Ambient = 0.0
+    }
+    {
+      Name = "ApolloCloudBLoop"
+      CreateAnimation = "ApolloCloudBShadow"
+      FilePath = "Apollo\ApolloCloudB\ApolloCloudB"
+      GroupName = "FX_Standing_Top"
+      Type = "Book"
+      VisualFx = "DionysusPsychedelia"
+      Sound = "/SFX/Player Sounds/DionysusHazeCloudSitarSteam"
+      StopSoundOnFinishFade = 0.2
+      AngleFromOwner = "Ignore"
+      Alpha = 0.5
+      ColorFromOwner = "Maintain"
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      PlaySpeed = 30.0
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      TransferFrameToThis = true
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 320.0
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.05
+      VisualFxIntervalMin = 0.04
+    } 
+    {
+      Name = "ApolloCloudBEnd"
+      InheritFrom = "ApolloCloudB"
+      ColorFromOwner = "Ignore"
+      ChainTo = "null"
+      CreateAnimation = "ApolloCloudBEndGraphic"
+      UseOwnAngle = false
+      Sound = "/SFX/Player Sounds/DionysusRadialPoof"
+      EndAlpha = 0.0
+      Duration = 0.25
+      EndScale = 1.25
+      StartScale = 1.0
+    }
+
+    {
+      Name = "ApolloCloudBEndGraphic"
+      FilePath = "Apollo\ApolloNova\ApolloNova"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      EndFrame = 25
+      NumFrames = 25
+      PlaySpeed = 45.0
+      StartFrame = 1
+      OffsetZ = 60.0
+      Scale = 1.4
+      ScaleRadius = 350
+      Ambient = 0.0
+      StartAlpha = 0.5
+      EndAlpha = 0.1
+    } 
   ]
 }

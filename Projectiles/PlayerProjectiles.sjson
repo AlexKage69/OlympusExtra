@@ -129,7 +129,7 @@
       DamageRadius = 400
       DamageLow = 0
       DamageHigh = 0
-      DissipateGraphic = "DionysusCloudBEnd"
+      DissipateGraphic = "RadialNova-Apollo"
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
@@ -157,7 +157,7 @@
         }
       ]
       Thing = {
-        Graphic = "DionysusCloudB"
+        Graphic = "ApolloCloudB"
         OffsetZ = 0
         Grip = 999999
         Points = [
