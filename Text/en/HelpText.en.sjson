@@ -127,5 +127,15 @@
 			DisplayName = "Harmonious Harp"
 			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
+		{
+			Id = "ApolloBlindedTrait"
+			DisplayName = "Divine Law"
+			Description = "{$Keywords.Blind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.Blind}: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloBlindedTrait_Initial"
+			InheritFrom = "ApolloBlindedTrait"
+			Description = "{$Keywords.Blind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.Blind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
 	]
 }

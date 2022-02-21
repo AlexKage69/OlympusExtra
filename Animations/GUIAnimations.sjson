@@ -23,13 +23,6 @@
       StartFrame = 1
     }
     {
-      Name = "BoonSymbolApollo"
-      InheritFrom = "BoonSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
       Name = "BoonInfoSymbolApolloIcon"
       InheritFrom = "BoonInfoSymbolBase"
       FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
@@ -37,11 +30,9 @@
       StartFrame = 1
     }
     {
-      Name = "BoonSymbolApolloIsometric"
-      InheritFrom = "BoonSymbolBaseIsometric"
+      Name = "BoonSymbolApolloIcon"
+      InheritFrom = "BoonSymbolBase"
       FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
-      EndFrame = 1
-      StartFrame = 1
     }
     {
       Name = "Boon_Apollo_00_Small"
