@@ -1250,14 +1250,14 @@ OlympusTraitData.ApolloRangedTrait =
 			{
 				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "DionysusLobProjectile",
+				ProjectileName = "ApolloLobProjectile",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "ExtractSource",
 			},
 			{
 				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ExcludeProjectileName = "DionysusLobProjectile",
+				ExcludeProjectileName = "ApolloLobProjectile",
 				ProjectileProperty = "DetonateGraphic",
 				ChangeValue = "null",
 			},

@@ -10,6 +10,11 @@ Put the `OEAssets` and `OEAssets.pkg` into the Packages folder.
 
 Run modimporter as usual.
 
+## Extracting Assets
+```
+deppth ex GUI.pkg -s
+```
+
 ## Asset Creation
 Shamelessly stolen from Hades source files. 
 Tinted using https://www6.lunapic.com/editor/?action=tint

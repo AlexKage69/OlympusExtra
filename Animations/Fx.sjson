@@ -224,7 +224,7 @@
     {
       Name = "ApolloLobProjectile"
       CreateAnimation = "ApolloLobProjectileDark"
-      FilePath = "Fx\DionysusProjectile\DionysusProjectile"
+      FilePath = "Apollo\ApolloProjectile\ApolloProjectile"
       Type = "Book"
       VisualFx = "ApolloLobProjectileSmokeContainer"
       EndFrame = 61
@@ -254,10 +254,10 @@
     }
     {
       Name = "ApolloLobProjectileDark"
-      FilePath = "Fx\ProjectileFire\ProjectileFire"
+      FilePath = "Apollo/ApolloFire/ProjectileFire"
       GroupName = "FX_Dark"
       Type = "Book"
-      Sound = "/SFX/Player Sounds/ApolloLobProjectileGas"
+      Sound = "/SFX/Player Sounds/DionysusLobProjectileGas"
       StopSoundOnFinishFade = 0.2
       EndFrame = 60
       Loop = true
@@ -272,106 +272,6 @@
         Green = 0.0
         Blue = 0.0
       }
-    }
-  {
-      Name = "ApolloNovaCloud"
-      FilePath = "Fx\DionysusNova\DionysusNova"
-      GroupName = "Standing"
-      DrawBehindOwner = true
-      LocationZFromOwner = "Take"
-      Type = "Slide"
-      AngleFromOwner = "Ignore"
-      Sound = "/SFX/Player Sounds/DionysusSwordSpecialPoof"
-      EndFrame = 25
-      NumFrames = 25
-      StartFrame = 1
-      RandomFlipHorizontal = true
-      ScaleRadius = 250.0
-      Ambient = 0.0
-      CreateAnimations = [
-        {
-          Name = "RadialNovaDark"
-        }
-        {
-          Name = "QuickFlashOrange"
-        }]
-      Slides = [
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }
-        {
-          DurationFrames = 2
-        }]
-    }
-        
+    }        
   ]
 }
