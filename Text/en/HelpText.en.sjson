@@ -108,9 +108,29 @@
 			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
-			Id = "ApolloRangedTrait"
-			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Id = "ApolloRangedTrait_Initial"
+			InheritFrom = "ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloRangedTrait_Tray"
+			InheritFrom = "ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_ApolloRangedTrait"
+			DisplayName = "Passion Flare"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_ApolloRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_ApolloRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
