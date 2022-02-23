@@ -2037,7 +2037,7 @@
     {
       Name = "ApolloLobProjectile"
       CreateAnimation = "ApolloLobProjectileDark"
-      FilePath = "Apollo\ApolloProjectile\ApolloProjectile"
+      FilePath = "Fx\DionysusProjectile\DionysusProjectile"
       Type = "Book"
       VisualFx = "ApolloLobProjectileSmokeContainer"
       EndFrame = 61
@@ -2048,6 +2048,12 @@
       StartFrame = 1
       RotationSpeed = 720.0
       Ambient = 0.0
+      Color = 
+      {
+        Red = 1.0
+        Green = 1.0
+        Blue = -0.9
+      }
       VisualFxIntervalMax = 0.02
       VisualFxIntervalMin = 0.01
     }
@@ -2067,9 +2073,10 @@
     }
     {
       Name = "ApolloLobProjectileDark"
-      FilePath = "Apollo/ApolloFire/ProjectileFire"
+      FilePath = "Fx/ProjectileFire/ProjectileFire"
       GroupName = "FX_Dark"
       Type = "Book"
+      ColorFromOwner = "Ignore"
       Sound = "/SFX/Player Sounds/DionysusLobProjectileGas"
       StopSoundOnFinishFade = 0.2
       EndFrame = 60
@@ -2081,19 +2088,18 @@
       Ambient = 0.0
       Color = 
       {
-        Red = 0.0
-        Green = 0.0
-        Blue = 0.0
+        Red = 2.0
+        Green = 2.0
+        Blue = 2.0
       }
     }    
     {
       Name = "ApolloCloudB"
       ChainTo = "ApolloCloudBLoop"
-      FilePath = "Apollo\ApolloCloudB\ApolloCloudB"
+      FilePath = "Fx\DionysusCloudB\DionysusCloudB"
       GroupName = "FX_Standing_Top"
       Type = "Book"
       AngleFromOwner = "Ignore"
-      ColorFromOwner = "Maintain"
       EndAlpha = 0.5
       StartAlpha = 1.0
       Duration = 0.1
@@ -2109,11 +2115,17 @@
       ScaleRadius = 320.0
       StartScale = 0.0
       Ambient = 0.0
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.65
+        Blue = 0.0
+      }
     }
     {
       Name = "ApolloCloudBLoop"
       CreateAnimation = "ApolloCloudBShadow"
-      FilePath = "Apollo\ApolloCloudB\ApolloCloudB"
+      FilePath = "Fx\DionysusCloudB\DionysusCloudB"
       GroupName = "FX_Standing_Top"
       Type = "Book"
       VisualFx = "DionysusPsychedelia"
@@ -2121,7 +2133,6 @@
       StopSoundOnFinishFade = 0.2
       AngleFromOwner = "Ignore"
       Alpha = 0.5
-      ColorFromOwner = "Maintain"
       EndFrame = 60
       Loop = true
       NumFrames = 60
@@ -2135,6 +2146,12 @@
       Ambient = 0.0
       VisualFxIntervalMax = 0.05
       VisualFxIntervalMin = 0.04
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.65
+        Blue = 0.0
+      }
     } 
     {
       Name = "ApolloCloudBEnd"
@@ -2152,7 +2169,7 @@
 
     {
       Name = "ApolloCloudBEndGraphic"
-      FilePath = "Apollo\ApolloNova\ApolloNova"
+      FilePath = "Fx\DionysusNova\DionysusNova"
       GroupName = "Standing"
       Type = "Book"
       AngleFromOwner = "Ignore"
