@@ -2706,5 +2706,156 @@
       Scale = 0.5
       OffsetZ = 90
     }
+    {
+      Name = "ApolloLobProjectile"
+      CreateAnimation = "ApolloLobProjectileDark"
+      FilePath = "Fx\DionysusProjectile\DionysusProjectile"
+      Type = "Book"
+      VisualFx = "ApolloLobProjectileSmokeContainer"
+      EndFrame = 61
+      Loop = true
+      LoopFramesOnly = true
+      NumFrames = 61
+      PlaySpeed = 60.0
+      StartFrame = 1
+      RotationSpeed = 720.0
+      Ambient = 0.0
+      Color = 
+      {
+        Red = 1.0
+        Green = 1.0
+        Blue = -0.9
+      }
+      VisualFxIntervalMax = 0.02
+      VisualFxIntervalMin = 0.01
+    }
+   {
+      Name = "ApolloLobProjectileSmokeContainer"
+      CreateAnimation = "ApolloLobProjectileSmoke"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      EndAngle = 2.0
+      StartAngle = -2.0
+      Duration = 0.1
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+    }
+    {
+      Name = "ApolloLobProjectileDark"
+      FilePath = "Fx/ProjectileFire/ProjectileFire"
+      GroupName = "FX_Dark"
+      Type = "Book"
+      ColorFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/DionysusLobProjectileGas"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      Scale = 2.0
+      Ambient = 0.0
+      Color = 
+      {
+        Red = 2.0
+        Green = 2.0
+        Blue = 2.0
+      }
+    }    
+    {
+      Name = "ApolloCloudB"
+      ChainTo = "ApolloCloudBLoop"
+      FilePath = "Fx\DionysusCloudB\DionysusCloudB"
+      GroupName = "FX_Standing_Top"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      EndAlpha = 0.5
+      StartAlpha = 1.0
+      Duration = 0.1
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 60
+      LoopFramesOnly = true
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      TransferFrameFromThis = true
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 320.0
+      StartScale = 0.0
+      Ambient = 0.0
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.65
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "ApolloCloudBLoop"
+      CreateAnimation = "ApolloCloudBShadow"
+      FilePath = "Fx\DionysusCloudB\DionysusCloudB"
+      GroupName = "FX_Standing_Top"
+      Type = "Book"
+      VisualFx = "DionysusPsychedelia"
+      Sound = "/SFX/Player Sounds/DionysusHazeCloudSitarSteam"
+      StopSoundOnFinishFade = 0.2
+      AngleFromOwner = "Ignore"
+      Alpha = 0.5
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      PlaySpeed = 30.0
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      TransferFrameToThis = true
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 320.0
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.05
+      VisualFxIntervalMin = 0.04
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.65
+        Blue = 0.0
+      }
+    } 
+    {
+      Name = "ApolloCloudBEnd"
+      InheritFrom = "ApolloCloudB"
+      ColorFromOwner = "Ignore"
+      ChainTo = "null"
+      CreateAnimation = "ApolloCloudBEndGraphic"
+      UseOwnAngle = false
+      Sound = "/SFX/Player Sounds/DionysusRadialPoof"
+      EndAlpha = 0.0
+      Duration = 0.25
+      EndScale = 1.25
+      StartScale = 1.0
+    }
+
+    {
+      Name = "ApolloCloudBEndGraphic"
+      FilePath = "Fx\DionysusNova\DionysusNova"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      EndFrame = 25
+      NumFrames = 25
+      PlaySpeed = 45.0
+      StartFrame = 1
+      OffsetZ = 60.0
+      Scale = 1.4
+      ScaleRadius = 350
+      Ambient = 0.0
+      StartAlpha = 0.5
+      EndAlpha = 0.1
+    } 
   ]
 }

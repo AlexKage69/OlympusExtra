@@ -69,90 +69,185 @@
                 TimeModifierFraction = 0
             }
         ]
-    }{
+    }
+    {
       Name = "ApolloProjectile"
-      InheritFrom = "1_BaseNonPhysicalProjectile"
-     DetonateGraphic = "RadialNova-Apollo"
-        Type = "INSTANT"
-        FuseMin = 0.25
-        FuseMax = 0.25
-        TotalFuse = 0.75
-        DamageLow = 0
-        DamageHigh = 0
-        DamageRadius = 220.0
-        DamageRadiusScaleY = 0.6
-        DamageRadiusScaleX = 1.1
-        AutoAdjustForTarget = false
-        UseVulnerability = false
-        NumPenetrations = 999
-        SpawnRadius = 0
-        SpawnCount = 0
-        UseStartLocation = true
-        CanHitWithoutDamage = true
-        SilentImpactOnInvulnerable = true
-        Thing = {
-            Graphic = "null"
-            OffsetZ = 70
-            AttachedAnim = "null"
-            RotateGeometry = true
-            Grip = 999999
-            Points = [
-            {
-                X = 48
-                Y = 48
-            }
-            {
-                X = 48
-                Y = -48
-            }
-            {
-                X = -48
-                Y = -48
-            }
-            {
-                X = -48
-                Y = 48
-            }
-            ]
-        }
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = true
+      Range = 1000
+      Speed = 900
+      DamageLow = 40
+      DamageHigh = 40
+      ImpactVelocity = 0
+      SpawnOnDetonate = "ApolloField"
+      SpawnCount = 3
+      SpawnType = "PROJECTILE"
+      MultiDetonate = true
+      Fuse = 0.15
+      IgnoreCoverageAngles = true
+      Thing = {
+        Graphic = "ApolloLobProjectile"
+        OffsetZ = 112
+        Grip = 999999
+        Points = [
+          {
+            X = 76
+            Y = 16
+          }
+          {
+            X = 76
+            Y = -16
+          }
+          {
+            X = -32
+            Y = -16
+          }
+          {
+            X = -32
+            Y = 16
+          }
+        ]
+      }
+    }
+    {
+      Name = "ApolloField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      SpawnRadius = 0
+      DamageRadius = 400
+      DamageLow = 0
+      DamageHigh = 0
+      DissipateGraphic = "RadialNova-Apollo"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Standing_Top"
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.0
+	  DangerDistance = 0
+	  ProjectileNumOpacityMultiplier = 0.3
       Effects = [
         {
-          Name = "RushGrip"
-          Type = "GRIP"
-          Duration = 0.1
-          Modifier = 0.5
-          HaltOnEnd = true
-          Active = false
-        }
-        {
-          Name = "ReduceDamageOutput"
-          Type = "DAMAGE_OUTPUT"
-          Duration = 4
-          Modifier = 0.7
+          Name = "ApolloBlind"
+          IgnoreName = "_PlayerUnit"
+          FrontFx = "ApolloHoverLoop"
+          BackFx = "null"
+          Duration = 5
+          Modifier = 0.1
           Active = true
-          TimeModifierFraction = 0
-          BackFx = "AphroditeDebuffB"
-          FlashFrontFxWhenExpiring = true
           IsVulnerabilityEffect = true
-        }
-        {
-          Name = "IncreaseDamageTaken"
-          Type = "DAMAGE_TAKEN"
-          Duration = 4
-          Modifier = 1
-          Active = false
           TimeModifierFraction = 0
         }
+      ]
+      Thing = {
+        Graphic = "ApolloCloudB"
+        OffsetZ = 0
+        Grip = 999999
+        Points = [
+          {
+            X = 90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -45
+          }
+          {
+            X = -90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 45
+          }
+        ]
+      }
+    }
+    {
+      Name = "ApolloLobProjectile"
+      InheritFrom = "1_BasePlayerLargeProjectile"
+      DetonateGraphic = "RadialNovaApollo"
+      DetonateSound = "/SFX/PlayerHammerExplosions"
+      Type = "LOB"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 400.0
+      DamageRadiusScaleY = 0.75
+      AutoAdjustForTarget = true
+      SpinRate = -360
+      Speed = 1200
+      Gravity = 2000
+      MinRange = 0.0
+      Range = 600
+      LaunchAngle = 30
+      SpeedVariance = 0
+      ImpactVelocity = 0.0
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = true
+      DetonateOnTouchdown = true
+      SpawnOnDetonate = "ApolloField"
+      UseVulnerability = false
+      SpawnCount = 1
+      SpawnType = "PROJECTILE"
+      UseRadialImpact = false
+      IgnoreCoverageAngles = true
+      GroupName = "FX_Standing_Top"
+	  Effects = [
         {
-          Name = "OnHitStun"
-          Duration = 0.7
-          DisableMove = true
-          DisableRotate = true
-          DisableAttack = true
+          Name = "ApolloBlind"
+          IgnoreName = "_PlayerUnit"
+          FrontFx = "ApolloHoverLoop"
+          BackFx = "null"
+          Duration = 5
+          Modifier = 0.1
           Active = true
-          CanAffectInvulnerable = false
-          FrontFx = "null"
-        }]
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+      ]
+      Thing = {
+        Graphic = "ApolloLobProjectile"
+        Scale = 0.1
+        OffsetZ = 101
+        AttachedAnim = "GrenadierShadow"
+        Points = [
+          {
+            X = 0
+            Y = 24
+          }
+          {
+            X = 24
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -24
+          }
+          {
+            X = -24
+            Y = 0
+          }
+        ]
+      }
     }
     ]
 }
