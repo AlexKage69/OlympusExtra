@@ -33,39 +33,39 @@
 			DisplayName = "the god who affords help and wards off evil."
 		}		
 		{
-      		Id = "Blind"
+      		Id = "ApolloBlind"
 			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}{$TooltipData.TooltipBlindPower}% {#PreviousFormat}chance."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}50% {#PreviousFormat}chance."
 		}
 		{
 			Id = "ApolloWeaponTrait"
 			DisplayName = "Blinding Strike"
-			Description = "Your {$Keywords.Attack} deals more damage and can inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Attack} deals more damage and can inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}" 
 		} 		
 		{
 			Id = "ApolloWeaponTrait_Initial"
 			InheritFrom = "ApolloWeaponTrait"
-			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ApolloSecondaryTrait"
 			DisplayName = "Blinding Flourish"
-			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 	
 		{
 			Id = "ApolloSecondaryTrait_Initial"
 			InheritFrom = "ApolloSecondaryTrait"
-			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}		
 		{
 			Id = "ApolloDashTrait"
 			DisplayName = "Radiant Dash"
-			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 
 		{
 			Id = "ApolloDashTrait_Initial"
 			InheritFrom = "ApolloDashTrait"
-			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ApolloSignoff"
@@ -82,7 +82,7 @@
 		{
       		Id = "FlashBomb"
 			DisplayName = "Flash Bomb"
-			Description = "Inflict {$Keywords.Blind} on foes in an area around you. After 3 seconds, the area detonates, dealing damage."
+			Description = "Inflict {$Keywords.ApolloBlind} on foes in an area around you. After 3 seconds, the area detonates, dealing damage."
 		}
 		{
 			Id = "Combat_Miss"
@@ -150,12 +150,17 @@
 		{
 			Id = "ApolloBlindedTrait"
 			DisplayName = "Divine Law"
-			Description = "{$Keywords.Blind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.Blind}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ApolloBlindedTrait_Initial"
 			InheritFrom = "ApolloBlindedTrait"
-			Description = "{$Keywords.Blind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.Blind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "MissChanceTrait"
+			DisplayName = "Purest light"
+			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
 		}
 	]
 }

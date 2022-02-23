@@ -631,7 +631,7 @@ OlympusTraitData.ApolloWeaponTrait =
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
 				BaseName = "ApolloBlind",
-				BaseProperty = "Modifier",
+				BaseProperty = "Amount",
 				Format = "Percent"
 			}
 		 }
@@ -914,7 +914,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			BaseType = "Effect",
 			WeaponName = "SwordWeapon",
 			BaseName = "ApolloBlind",
-			BaseProperty = "Modifier",
+			BaseProperty = "Amount",
 			Format = "Percent"
 		}
 	 }
@@ -1045,7 +1045,7 @@ OlympusTraitData.ApolloDashTrait =
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
 			 BaseName = "ApolloBlind",
-			 BaseProperty = "Modifier",
+			 BaseProperty = "Amount",
 			 Format = "Percent"
 		 }
 	 }
@@ -1188,7 +1188,7 @@ OlympusTraitData.ApolloRangedTrait =
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
 				BaseName = "ApolloBlind",
-				BaseProperty = "Modifier",
+				BaseProperty = "Amount",
 				Format = "PercentDelta"
 			}
 		}
@@ -1339,11 +1339,71 @@ OlympusTraitData.ApolloRangedTrait =
 			BaseType = "Effect",
 			WeaponName = "SwordWeapon",
 			BaseName = "ApolloBlind",
-			BaseProperty = "Modifier",
+			BaseProperty = "Amount",
 			Format = "Percent"
 		}
 	 }
  }
+ OlympusTraitData.MissChanceTrait =
+	{
+		Icon = "Boon_Apollo_10",
+		RequiredFalseTrait = "MissChanceTrait",
+		God = "Apollo",
+		InheritFrom = { "ShopTier3Trait" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = WeaponSets.HeroPhysicalWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponName = WeaponSets.HeroSecondaryWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponName = WeaponSets.HeroRushWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		}
+	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -1377,6 +1437,14 @@ OlympusLootData.ApolloUpgrade = {
 			ApolloBlindedTrait  = {
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
+			MissChanceTrait =
+			{
+				OneFromEachSet =
+				{
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
+				}
+			},
 			--[[ApolloDurationTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
@@ -1388,14 +1456,6 @@ OlympusLootData.ApolloUpgrade = {
 			ApolloChanceHitTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-			},
-			ApolloCharmTrait =
-			{
-				OneFromEachSet =
-				{
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-					{ "ApolloDurationTrait", "ApolloBlindedTrait", "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
-				}
 			},]]--
 		},
 
@@ -2818,8 +2878,10 @@ OlympusGiftData.ApolloUpgrade =
 }
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
-	local missRate = 1.0
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero))
+	local missRate = 0.5
+	if not HeroHasTrait("MissChanceTrait") then
+		missRate = 0.75
+	end
 	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
 		thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
