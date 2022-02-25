@@ -1,0 +1,84 @@
+{
+  Weapons = [
+      "_append"
+      {
+        Name = "SelfStunWeapon"
+        InheritFrom = "1_BasePlayerSlowWeapon"
+        Projectile = "SelfStun"
+    }
+      {
+        Name = "ApolloBeamWeapon"
+        InheritFrom = "1_BasePlayerSlowWeapon"
+        Type = "GUN"
+        Projectile = "ApolloCastBeam"
+        ClipSize = 1
+        Cooldown = 0.0
+        CancelMovement = true
+        FullyAutomatic = true
+        IgnoreOwnerAttackDisabled = true
+        UseTargetAngle = false
+        BlockMoveInput = true
+        IgnoreForceCooldown = true
+        CanCancelDisables = true
+        CanCancelOwnDisables = true
+        BlinkDetonateAtEndpoint = true
+        BarrelLength = 175
+        AutoLock = true
+        FireGraphic = "null"
+        LockTriggerForCharge = false
+        DisableOwnerForDuration = 0
+        ReloadTime = 3.0
+        NumProjectiles = 1
+        ProjectileAngleOffset = 30
+        SilentImpactAfterFirst = true
+        ObstacleDamageMultiplier = 1
+        BlinkNumGhosts = 3
+        Effect = {
+            Name = "BeamRotation"
+
+            Duration = 3.05
+            RotationMultiplier = 0.02
+            Active = true
+        }
+    }
+    {
+      Name = "ApolloBeamWeapon2"
+      InheritFrom = "ApolloBeamWeapon"
+    }
+    {
+      Name = "ApolloBeamWeapon360"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "ApolloCastBeam"
+      ClipSize = 1
+      Cooldown = 0.0
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      CancelMovement = true
+      ChargeCancelMovement = true
+      FullyAutomatic = false
+      BarrelLength = 175
+      AutoLock = true
+      FireGraphic = "null"
+      LockTriggerForCharge = false
+      DisableOwnerForDuration = 0
+      ReloadTime = 3.0
+      NumProjectiles = 18
+      ProjectileAngleOffset = 20
+      SilentImpactAfterFirst = true
+      ObstacleDamageMultiplier = 1
+      FireFx = "ApolloCastBeam360Vignette"
+      Effect = {
+        Name = "BeamRotation"
+
+        Duration = 3.05
+        RotationMultiplier = 0.015
+        Active = true
+      }
+    }
+    {
+      Name = "ApolloBeamWeapon2360"
+      InheritFrom = "ApolloBeamWeapon360"
+    }
+  ]
+}
