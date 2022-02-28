@@ -16,7 +16,7 @@ local DuplicateMultiplier = -0.60
 local DuplicateStrongMultiplier = -0.40
 local DuplicateVeryStrongMultiplier = -0.20
 --Color
-local OlympusColor = ModUtil.Entangled.ModData(WeaponData)
+local OlympusColor = ModUtil.Entangled.ModData(Color)
 OlympusColor.ApolloDamageLight = {255,145,79,255}
 OlympusColor.ApolloDamage = {255,145,79,255}
 --Assets
@@ -37,6 +37,35 @@ OnControlPressed{ "Codex",
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
 	BlockWrathGain = true,
+}
+OlympusWeaponData.ApolloBeamWeapon = {
+	InheritFrom = { "WrathWeapon", },
+	HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
+	HitSimSlowParameters =
+	{
+		{ ScreenPreWait = 0.02, Fraction = 0.25, LerpTime = 0 },
+		{ ScreenPreWait = 0.16, Fraction = 1.0, LerpTime = 0.1 },
+	},
+	ImpactReactionHitsOverride = 1,
+
+	BlockInterrupt = true,
+	Sounds =
+	{
+		FireSounds =
+		{
+			{ Name = "/SFX/HellFireShoot" },
+			{ Name = "/SFX/Enemy Sounds/Hades/EmoteRangedSustained" },
+			{ Name = "/SFX/Enemy Sounds/Tisiphone/TisiphoneHarpySlowBeam" },
+		},
+		ImpactSounds =
+		{
+			Invulnerable = "/SFX/ArrowWallHitClankSmall",
+			BrickObstacle = "/SFX/SwordWallHitClankSmall",
+			StoneObstacle = "/SFX/ArrowMetalStoneClang",
+			MetalObstacle = "/SFX/ArrowMetalStoneClang",
+			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+		},
+	},
 }
 --BoonInfoScreenData
 local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
@@ -91,10 +120,10 @@ OlympusGameData.ApolloBasicPickUpTextLines =
         -- "ApolloMiscPickup21",
 }
 table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
-
+table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
 --Keywords
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-ModUtil.MapSetTable(OlympusKeywordList, { "Blind", "FlashBomb" })
+ModUtil.MapSetTable(OlympusKeywordList, { "ApolloBlind", "FlashBomb" })
 
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -642,7 +671,7 @@ OlympusTraitData.ApolloWeaponTrait =
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
 				BaseName = "ApolloBlind",
-				BaseProperty = "Modifier",
+				BaseProperty = "Amount",
 				Format = "Percent"
 			}
 		 }
@@ -679,7 +708,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 	 {
 		 {
 			 WeaponNames = WeaponSets.HeroSecondaryWeapons,
-			 EffectName = "Blind",
+			 EffectName = "ApolloBlind",
 			 EffectProperty = "Active",
 			 ChangeValue = true,
 		 },
@@ -687,7 +716,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 		 {
 			 WeaponName = "SwordParry",
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "RadialNovaSwordParry-Aphrodite",
+			 ChangeValue = "RadialNovaSwordParry-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -695,7 +724,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 		 {
 			 WeaponName = "SpearWeaponThrow",
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "SpearThrowProjectile-Aphrodite",
+			 ChangeValue = "SpearThrowProjectile-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -703,21 +732,14 @@ OlympusTraitData.ApolloSecondaryTrait =
 		 {
 			 WeaponName = "SpearWeaponThrowReturn",
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "SpearThrowProjectile-Aphrodite",
-			 ChangeType = "Absolute",
-			 ExcludeLinked = true,
-		 },
-		 {
-			 WeaponName = "SpearWeaponThrow",
-			 ProjectileProperty = "StartFx",
-			 ChangeValue = "AphroditeSpearThrowStartFx",
+			 ChangeValue = "SpearThrowProjectile-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
 		 {
 			 WeaponName = "BowSplitShot",
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "BowWeaponArrow-Aphrodite-SplitShot",
+			 ChangeValue = "BowWeaponArrow-Apollo-SplitShot",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -725,7 +747,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 		 {
 			 WeaponName = "BowSplitShot",
 			 WeaponProperty = "MinChargeStartFx",
-			 ChangeValue = "BowCharge-Aphrodite",
+			 ChangeValue = "BowCharge-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -734,7 +756,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 WeaponNames = { "ShieldThrow", },
 			 ProjectileName = "ShieldThrow",
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "ShieldSwipe-Aphrodite",
+			 ChangeValue = "ShieldSwipe-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -742,7 +764,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 WeaponNames = { "ShieldThrowDash" },
 			 ProjectileName = "ShieldThrowDash",
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "ShieldSwipe-Aphrodite",
+			 ChangeValue = "ShieldSwipe-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -750,7 +772,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 		 {
 			 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
 			 WeaponProperty = "ChargeStartFx",
-			 ChangeValue = "ShieldCharge-Aphrodite",
+			 ChangeValue = "ShieldCharge-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -758,7 +780,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 		 {
 			 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "ProjectileShield-Aphrodite",
+			 ChangeValue = "ProjectileShield-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -766,7 +788,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "ShieldRushBonusProjectileTrait",
 			 ProjectileProperty = "Graphic",
 			 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-			 ChangeValue = "ProjectileShieldAlt01-Aphrodite",
+			 ChangeValue = "ProjectileShieldAlt01-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -774,7 +796,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "ShieldLoadAmmoTrait",
 			 ProjectileProperty = "Graphic",
 			 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-			 ChangeValue = "ProjectileShieldAlt03-Aphrodite",
+			 ChangeValue = "ProjectileShieldAlt03-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -782,7 +804,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "ShieldTwoShieldTrait",
 			 ProjectileProperty = "Graphic",
 			 WeaponName = "ShieldThrow",
-			 ChangeValue = "ProjectileShieldAlt02-Aphrodite",
+			 ChangeValue = "ProjectileShieldAlt02-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -791,14 +813,14 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 WeaponName = "ShieldThrow",
 			 ProjectileName = "ShieldThrow",
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "ShieldThrowTrailMirage-Aphrodite",
+			 ChangeValue = "ShieldThrowTrailMirage-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
 		 {
 			 WeaponName = "GunGrenadeToss",
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "ZagGrenadeExplosionAphrodite",
+			 ChangeValue = "ZagGrenadeExplosionApollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -807,14 +829,14 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 WeaponName = "SpearRushWeapon",
 			 ProjectileName = "SpearRushWeapon",
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "SpearRushTrailFx-Aphrodite",
+			 ChangeValue = "SpearRushTrailFx-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
 		 {
 			 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
 			 WeaponProperty = "FireFx",
-			 ChangeValue = "FistFxUppercutDirectionalAphrodite",
+			 ChangeValue = "FistFxUppercutDirectionalApollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -823,7 +845,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "GunLoadedGrenadeTrait",
 			 WeaponNames = { "GunGrenadeToss" },
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "GunGrenadeLuciferOrb-Aphrodite",
+			 ChangeValue = "GunGrenadeLuciferOrb-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -839,7 +861,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "GunLoadedGrenadeTrait",
 			 WeaponNames = { "GunBombWeapon" },
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "ZagGrenadeExplosionAphrodite",
+			 ChangeValue = "ZagGrenadeExplosionApollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -847,7 +869,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "GunLoadedGrenadeTrait",
 			 WeaponNames = { "GunBombImmolation" },
 			 ProjectileProperty = "DetonateGraphic",
-			 ChangeValue = "LuciferOrbAoE-Aphrodite",
+			 ChangeValue = "LuciferOrbAoE-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -856,7 +878,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "BowMarkHomingTrait",
 			 WeaponNames = { "BowSplitShot" },
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "BowWeaponArrow-Aphrodite-SplitShot-Alt01",
+			 ChangeValue = "BowWeaponArrow-Apollo-SplitShot-Alt01",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -864,7 +886,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "BowLoadAmmoTrait",
 			 WeaponNames = { "BowSplitShot" },
 			 ProjectileProperty = "Graphic",
-			 ChangeValue = "BowWeaponArrow-Aphrodite-SplitShot-Alt02",
+			 ChangeValue = "BowWeaponArrow-Apollo-SplitShot-Alt02",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -872,7 +894,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "FistDetonateTrait",
 			 WeaponNames = { "FistWeaponSpecial" },
 			 WeaponProperty = "FireFx",
-			 ChangeValue = "ClawSwipeUppercut-Aphrodite",
+			 ChangeValue = "ClawSwipeUppercut-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -880,7 +902,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "FistDetonateTrait",
 			 WeaponNames = { "FistWeaponSpecialDash" },
 			 WeaponProperty = "FireFx",
-			 ChangeValue = "ClawSwipeUppercut-Aphrodite",
+			 ChangeValue = "ClawSwipeUppercut-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -888,7 +910,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "FistDetonateTrait",
 			 WeaponNames = { "FistWeaponSpecialDash" },
 			 WeaponProperty = "FireFx",
-			 ChangeValue = "ClawSwipeUppercutSpecial-Aphrodite",
+			 ChangeValue = "ClawSwipeUppercutSpecial-Apollo",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -896,7 +918,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "FistTeleportSpecialTrait",
 			 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
 			 WeaponProperty = "FireFx",
-			 ChangeValue = "FistFxUppercutDirectionalAphrodite_FlashKick",
+			 ChangeValue = "FistFxUppercutDirectionalApollo_FlashKick",
 			 ChangeType = "Absolute",
 			 ExcludeLinked = true,
 		 },
@@ -909,7 +931,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			 TraitName = "GunLoadedGrenadeTrait",
 			 LegalUnits = { "GunBombUnit" },
 			 ThingProperty = "Graphic",
-			 ChangeValue = "LuciferBomb-Aphrodite",
+			 ChangeValue = "LuciferBomb-Apollo",
 			 ChangeType = "Absolute",
 		 },
 
@@ -932,7 +954,7 @@ OlympusTraitData.ApolloSecondaryTrait =
 			BaseType = "Effect",
 			WeaponName = "SwordWeapon",
 			BaseName = "ApolloBlind",
-			BaseProperty = "Modifier",
+			BaseProperty = "Amount",
 			Format = "Percent"
 		}
 	 }
@@ -1063,7 +1085,7 @@ OlympusTraitData.ApolloDashTrait =
 			 BaseType = "Effect",
 			 WeaponName = "SwordWeapon",
 			 BaseName = "ApolloBlind",
-			 BaseProperty = "Modifier",
+			 BaseProperty = "Amount",
 			 Format = "Percent"
 		 }
 	 }
@@ -1075,7 +1097,7 @@ OlympusTraitData.ApolloRangedTrait =
 		God = "Apollo",
 		Icon = "Boon_Apollo_02",
         RequiredFalseTrait = "ShieldLoadAmmoTrait",
-		CustomTrayText = "AphroditeRangedTrait_Tray",
+		CustomTrayText = "ApolloRangedTrait_Tray",
 		Slot = "Ranged",
 		UnloadAmmoOffset = 
 		{
@@ -1297,11 +1319,87 @@ OlympusTraitData.ApolloRangedTrait =
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
 				BaseName = "ApolloBlind",
-				BaseProperty = "Modifier",
+				BaseProperty = "Amount",
 				Format = "PercentDelta"
 			}
 		}
 	}
+OlympusTraitData.ApolloShoutTrait =
+{
+		InheritFrom = { "ShopTier1Trait" },
+		RequiredTextLines = { "PoseidonWrathIntro01" },
+		CustomTrayText = "ApolloShoutTrait_Tray",
+		God = "Apollo",
+		Slot = "Shout",
+		Icon = "Boon_Apollo_04",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.1,
+			},
+			Epic =
+			{
+				Multiplier = 1.2,
+			},
+			Heroic =
+			{
+				Multiplier = 1.3,
+			}
+		},
+		AddShout =
+		{
+			FunctionName = "ApolloShout",
+			Cost = 25,
+			SuperDuration = 1.2,
+			MaxDurationMultiplier = 6,
+			ExtractValues =
+			{
+				{
+					Key = "Cost",
+					ExtractAs = "TooltipWrathStocks",
+					Format = "WrathStocks",
+					SkipAutoExtract = true
+				},
+				{
+					Key = "MaxDurationMultiplier",
+					ExtractAs = "TooltipDuration",
+					Format = "EXWrathDuration",
+					DecimalPlaces = 2,
+					SkipAutoExtract = true
+				}
+			}
+		},
+		EndShout = "EndApolloBeam",
+		PreEquipWeapons = { "ApolloBeamWeapon", "SelfStunWeapon" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "ApolloBeamWeapon",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 250,
+				BaseMax = 250,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "ApolloBeamWeapon",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+		}
+}
  OlympusTraitData.ApolloBlindedTrait =
  {
 	 Name = "ApolloBlindedTrait",
@@ -1448,11 +1546,73 @@ OlympusTraitData.ApolloRangedTrait =
 			BaseType = "Effect",
 			WeaponName = "SwordWeapon",
 			BaseName = "ApolloBlind",
-			BaseProperty = "Modifier",
+			BaseProperty = "Amount",
 			Format = "Percent"
 		}
 	 }
  }
+
+ OlympusTraitData.MissChanceTrait =
+	{
+		Icon = "Boon_Apollo_10",
+		RequiredFalseTrait = "MissChanceTrait",
+		God = "Apollo",
+		InheritFrom = { "ShopTier3Trait" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = WeaponSets.HeroPhysicalWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponName = WeaponSets.HeroSecondaryWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponName = WeaponSets.HeroRushWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		}
+	}
+
 
  OlympusTraitData.ApolloRetaliateTrait =
  {
@@ -1526,6 +1686,7 @@ OlympusTraitData.ApolloRangedTrait =
 	}
 }
 
+
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -1550,7 +1711,7 @@ OlympusLootData.ApolloUpgrade = {
 		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
-		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
+		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 		Traits = {"ApolloRetaliateTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
@@ -1558,6 +1719,14 @@ OlympusLootData.ApolloUpgrade = {
 		{
 			ApolloBlindedTrait  = {
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+			},
+			MissChanceTrait =
+			{
+				OneFromEachSet =
+				{
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
+				}
 			},
 			--[[ApolloDurationTrait =
 			{
@@ -1570,14 +1739,6 @@ OlympusLootData.ApolloUpgrade = {
 			ApolloChanceHitTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-			},
-			ApolloCharmTrait =
-			{
-				OneFromEachSet =
-				{
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-					{ "ApolloDurationTrait", "ApolloBlindedTrait", "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
-				}
 			},]]--
 		},
 
@@ -2998,10 +3159,28 @@ OlympusGiftData.ApolloUpgrade =
 	[7] = { RequiredResource = "SuperGiftPoints" },
 	UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis01" } }
 }
+-- FUNCTIONS
+
+function ApolloShout()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Shout"))
+	--EquipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBeamWeapon" })
+	FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	FireWeaponFromUnit({ Weapon = "SelfStunWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	ApplyEffectFromWeapon({ WeaponName = "EurydiceDefenseApplicator", EffectName = "EurydiceDefenseEffect", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitInvulnerable( CurrentRun.Hero , "Invulnerable" )
+end
+function EndApolloBeam()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("End Shout"))
+	--UnequipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBeamWeapon" })
+	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Names = { "ZagreusStun" }})
+	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
+end
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
-	local missRate = 0.1
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero))
+	local missRate = 0.5
+	if not HeroHasTrait("MissChanceTrait") then
+		missRate = 0.75
+	end
 	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
 		thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
