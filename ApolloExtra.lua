@@ -1443,7 +1443,7 @@ OlympusTraitData.ApolloShoutTrait =
 			ChangeValue = true,
 		},
 		{
-			TraitName = "AreaWeakenAphrodite",
+			TraitName = "AreaWeakenApollo",
 			EffectName = "IncreaseDamageTaken",
 			EffectProperty = "Active",
 			ChangeValue = true,
