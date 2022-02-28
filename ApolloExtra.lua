@@ -16,7 +16,7 @@ local DuplicateMultiplier = -0.60
 local DuplicateStrongMultiplier = -0.40
 local DuplicateVeryStrongMultiplier = -0.20
 --Color
-local OlympusColor = ModUtil.Entangled.ModData(WeaponData)
+local OlympusColor = ModUtil.Entangled.ModData(Color)
 OlympusColor.ApolloDamageLight = {255,145,79,255}
 OlympusColor.ApolloDamage = {255,145,79,255}
 --Assets
@@ -30,6 +30,35 @@ end)
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
 	BlockWrathGain = true,
+}
+OlympusWeaponData.ApolloBeamWeapon = {
+	InheritFrom = { "WrathWeapon", },
+	HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
+	HitSimSlowParameters =
+	{
+		{ ScreenPreWait = 0.02, Fraction = 0.25, LerpTime = 0 },
+		{ ScreenPreWait = 0.16, Fraction = 1.0, LerpTime = 0.1 },
+	},
+	ImpactReactionHitsOverride = 1,
+
+	BlockInterrupt = true,
+	Sounds =
+	{
+		FireSounds =
+		{
+			{ Name = "/SFX/HellFireShoot" },
+			{ Name = "/SFX/Enemy Sounds/Hades/EmoteRangedSustained" },
+			{ Name = "/SFX/Enemy Sounds/Tisiphone/TisiphoneHarpySlowBeam" },
+		},
+		ImpactSounds =
+		{
+			Invulnerable = "/SFX/ArrowWallHitClankSmall",
+			BrickObstacle = "/SFX/SwordWallHitClankSmall",
+			StoneObstacle = "/SFX/ArrowMetalStoneClang",
+			MetalObstacle = "/SFX/ArrowMetalStoneClang",
+			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+		},
+	},
 }
 --BoonInfoScreenData
 local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
@@ -80,7 +109,7 @@ OlympusGameData.ApolloBasicPickUpTextLines =
         -- "ApolloMiscPickup21",
 }
 table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
-
+table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
 --Keywords
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 ModUtil.MapSetTable(OlympusKeywordList, { "ApolloBlind", "FlashBomb" })
@@ -1284,6 +1313,82 @@ OlympusTraitData.ApolloRangedTrait =
 			}
 		}
 	}
+OlympusTraitData.ApolloShoutTrait =
+{
+		InheritFrom = { "ShopTier1Trait" },
+		RequiredTextLines = { "PoseidonWrathIntro01" },
+		CustomTrayText = "ApolloShoutTrait_Tray",
+		God = "Apollo",
+		Slot = "Shout",
+		Icon = "Boon_Apollo_04",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.1,
+			},
+			Epic =
+			{
+				Multiplier = 1.2,
+			},
+			Heroic =
+			{
+				Multiplier = 1.3,
+			}
+		},
+		AddShout =
+		{
+			FunctionName = "ApolloShout",
+			Cost = 25,
+			SuperDuration = 1.2,
+			MaxDurationMultiplier = 6,
+			ExtractValues =
+			{
+				{
+					Key = "Cost",
+					ExtractAs = "TooltipWrathStocks",
+					Format = "WrathStocks",
+					SkipAutoExtract = true
+				},
+				{
+					Key = "MaxDurationMultiplier",
+					ExtractAs = "TooltipDuration",
+					Format = "EXWrathDuration",
+					DecimalPlaces = 2,
+					SkipAutoExtract = true
+				}
+			}
+		},
+		EndShout = "EndApolloBeam",
+		PreEquipWeapons = { "ApolloBeamWeapon", "SelfStunWeapon" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "ApolloBeamWeapon",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 250,
+				BaseMax = 250,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "ApolloBeamWeapon",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+		}
+}
  OlympusTraitData.ApolloBlindedTrait =
  {
 	 Name = "ApolloBlindedTrait",
@@ -1519,7 +1624,7 @@ OlympusLootData.ApolloUpgrade = {
 		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
-		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
+		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 		Traits = { }, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
@@ -2967,6 +3072,22 @@ OlympusGiftData.ApolloUpgrade =
 	[7] = { RequiredResource = "SuperGiftPoints" },
 	UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis01" } }
 }
+-- FUNCTIONS
+
+function ApolloShout()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Shout"))
+	--EquipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBeamWeapon" })
+	FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	FireWeaponFromUnit({ Weapon = "SelfStunWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	ApplyEffectFromWeapon({ WeaponName = "EurydiceDefenseApplicator", EffectName = "EurydiceDefenseEffect", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitInvulnerable( CurrentRun.Hero , "Invulnerable" )
+end
+function EndApolloBeam()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("End Shout"))
+	--UnequipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBeamWeapon" })
+	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Names = { "ZagreusStun" }})
+	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
+end
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
 	local missRate = 0.5
