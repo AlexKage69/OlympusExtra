@@ -5,7 +5,7 @@
         Name = "SelfStunWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
         Projectile = "SelfStun"
-    }
+      }
       {
         Name = "ApolloBeamWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"

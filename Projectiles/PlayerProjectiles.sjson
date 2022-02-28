@@ -368,7 +368,7 @@
           Active = true
           CanAffectInvulnerable = true
         }
-      ]
+       {
           Name = "ApolloBlind"
           IgnoreName = "_PlayerUnit"
           FrontFx = "ApolloHoverLoop"
@@ -517,5 +517,6 @@
         }
       ]
     }
+
   ]
 }
