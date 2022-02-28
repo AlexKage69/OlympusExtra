@@ -136,12 +136,12 @@
 		{
 			Id = "ApolloRetaliateTrait"
 			DisplayName = "Icarus Wings"
-			Description = "After you take damage, damage foes around you and inflict {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 			{
 			Id = "ApolloRetaliateTrait_Initial"
 			InheritFrom = "ApolloRetaliateTrait"
-			Description = "After you take damage, damage foes around you and inflict {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
