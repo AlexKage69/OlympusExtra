@@ -102,15 +102,26 @@
 			Id = "ApolloShoutTrait_Initial"
 			InheritFrom = "ApolloShoutTrait"
 			Description = "Your {$Keywords.WrathDerivedStocks} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
-		} {
-			Id = "ApolloRangedTrait"
-			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
-		}
+		} 
 		{
 			Id = "ApolloRangedTrait"
 			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloRangedTrait_Initial"
+			DisplayName = "Blinding Bomb"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloRetaliateTrait"
+			DisplayName = "Icarus Wings"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+			{
+			Id = "ApolloRetaliateTrait_Initial"
+			DisplayName = "Icarus Wings"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
