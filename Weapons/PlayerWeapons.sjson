@@ -5,7 +5,7 @@
         Name = "SelfStunWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
         Projectile = "SelfStun"
-    }
+      }
       {
         Name = "ApolloBeamWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
@@ -79,6 +79,18 @@
     {
       Name = "ApolloBeamWeapon2360"
       InheritFrom = "ApolloBeamWeapon360"
+    }
+    {
+      Name = "AreaWeakenApollo"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "AreaWeakenApollo"
+	  ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Cooldown = 0.4
     }
   ]
 }

@@ -1435,13 +1435,20 @@ OlympusTraitData.ApolloShoutTrait =
 			 EffectProperty = "Active",
 			 ChangeValue = true,
 		 },
-		 --[[{
-			 TraitName = "ApolloRangedTrait",
-			 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-			 EffectName = "IncreaseDamageTaken",
-			 EffectProperty = "Active",
-			 ChangeValue = true,
-		 },
+		 {
+			TraitName = "ApolloRangedTrait",
+			WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Active",
+			ChangeValue = true,
+		},
+		{
+			TraitName = "AreaWeakenApollo",
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Active",
+			ChangeValue = true,
+		},
+		 --[[
 		 {
 			 TraitName = "ShieldLoadAmmo_AphroditeRangedTrait",
 			 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
@@ -1450,7 +1457,7 @@ OlympusTraitData.ApolloShoutTrait =
 			 ChangeValue = true,
 		 },
 		 {
-			 WeaponNames = {"AphroditeShoutWeapon", "AreaWeakenAphrodite", "PoseidonAphroditeTouchWeapon" },
+			 WeaponNames = {"AphroditeShoutWeapon", "PoseidonAphroditeTouchWeapon" },
 			 EffectName = "IncreaseDamageTaken",
 			 EffectProperty = "Active",
 			 ChangeValue = true,
@@ -1473,6 +1480,12 @@ OlympusTraitData.ApolloShoutTrait =
 			 ChangeType = "Add",
 			 DeriveSource = "DeriveSource"
 		 },
+		 {
+			WeaponNames = {"AreaWeakenApollo"},
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Modifier",
+			DeriveValueFrom = "DeriveSource",
+		},
 		 --[[{
 			 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 			 EffectName = "IncreaseDamageTaken",
@@ -1513,20 +1526,7 @@ OlympusTraitData.ApolloShoutTrait =
 			 EffectProperty = "Modifier",
 			 DeriveValueFrom = "DeriveSource",
 		 },
-		 {
-			 TraitName = "AphroditeDeathTrait",
-			 WeaponNames = {"DeathAreaWeakenAphrodite"},
-			 EffectName = "IncreaseDamageTaken",
-			 EffectProperty = "Active",
-			 ChangeValue = true,
-		 },
-		 {
-			 TraitName = "AphroditeDeathTrait",
-			 WeaponNames = {"DeathAreaWeakenAphrodite"},
-			 EffectName = "IncreaseDamageTaken",
-			 EffectProperty = "Modifier",
-			 DeriveValueFrom = "DeriveSource",
-		 },]]
+		 ]]
 	 },
 	 ExtractValues =
 	 {
@@ -1583,6 +1583,13 @@ OlympusTraitData.ApolloShoutTrait =
 			},
 			{
 				WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName = "ApolloBlind",
+				EffectProperty = "Amount",
+				ChangeValue = 0.75,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = {"AreaWeakenApollo"},
 				EffectName = "ApolloBlind",
 				EffectProperty = "Amount",
 				ChangeValue = 0.75,
