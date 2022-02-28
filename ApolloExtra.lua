@@ -26,6 +26,13 @@ ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
     LoadPackages({Name = package})
     return baseFunc()
 end)
+
+OnControlPressed{ "Codex",
+    function( triggerArgs )
+        CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+    end    
+}
+
 --WeaponData
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
@@ -81,6 +88,10 @@ OlympusProjectileData.ApolloBeowulfProjectile = {
 OlympusProjectileData.ApolloShoutWeapon = {
 	InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
 }
+OlympusProjectileData.AreaWeakenApollo = {
+	InheritFrom = { "ApolloColorProjectile" },
+}
+
 -- GameData
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 OlympusGameData.ApolloBasicPickUpTextLines =
@@ -1487,7 +1498,7 @@ OlympusTraitData.ApolloShoutTrait =
 			 EffectName = "IncreaseDamageTaken",
 			 EffectProperty = "Modifier",
 			 DeriveValueFrom = "DeriveSource",
-		 },
+		 },tr
 		 --[[{
 			 TraitName = "AphroditeSecondaryTrait",
 			 WeaponNames = WeaponSets.HeroSecondaryWeapons,
@@ -1540,6 +1551,7 @@ OlympusTraitData.ApolloShoutTrait =
 		}
 	 }
  }
+
  OlympusTraitData.MissChanceTrait =
 	{
 		Icon = "Boon_Apollo_10",
@@ -1600,6 +1612,81 @@ OlympusTraitData.ApolloShoutTrait =
 			}
 		}
 	}
+
+
+ OlympusTraitData.ApolloRetaliateTrait =
+ {
+	God = "Apollo",
+	InheritFrom = { "ShopTier1Trait" },
+	AddOnHitWeapons = { "AreaWeakenApollo" },
+	Icon = "Boon_Apollo_09",
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 1.00,
+		},
+		Rare =
+		{
+			Multiplier = 1.25,
+		},
+		Epic =
+		{
+			Multiplier = 1.50,
+		},
+		Heroic =
+		{
+			Multiplier = 1.75,
+		}
+	},
+	PropertyChanges =
+	{
+		{
+			WeaponName = "AreaWeakenApollo",
+			ProjectileProperty = "DamageLow",
+			BaseMin = 50,
+			BaseMax = 50,
+			DepthMult = DepthDamageMultiplier,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateVeryStrongMultiplier,
+			},
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDamage",
+			}
+		},
+		{
+			WeaponName = "AreaWeakenApollo",
+			ProjectileProperty = "DamageHigh",
+			DeriveValueFrom = "DamageLow",
+		},
+	},
+	ExtractValues =
+	{
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Modifier",
+			Format = "Percent"
+		}
+	}
+}
+
+
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -1625,13 +1712,13 @@ OlympusLootData.ApolloUpgrade = {
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
 		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-		Traits = { }, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
+		Traits = {"ApolloRetaliateTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
 		LinkedUpgrades =
 		{
 			ApolloBlindedTrait  = {
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
 			MissChanceTrait =
 			{

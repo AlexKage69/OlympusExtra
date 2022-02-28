@@ -473,5 +473,49 @@
         ]
       }
     }
+    {
+      Name = "AreaWeakenApollo"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "RadialNova-Apollo"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      Fuse = 0.01
+      Range = 50
+      DamageRadius = 300
+      DamageLow = 50
+      DamageHigh = 50
+      ImpactVelocity = 0
+      ImpactVelocityCap = 0
+      ImpactVelocityFalloff = 0.1
+	  ClearOnAttackEffects = false
+      Thing = {
+        Graphic = "null"
+      }
+      Effects = [
+        {
+            Name = "ApolloBlind"
+            IgnoreName = "_PlayerUnit"
+            FrontFx = "ApolloHoverLoop"
+            BackFx = "null"
+            Duration = 5
+            Modifier = 0.1
+            Active = false
+            IsVulnerabilityEffect = true
+            TimeModifierFraction = 0
+        }
+        {
+          Name = "IncreaseDamageTaken"
+          Type = "DAMAGE_TAKEN"
+          Duration = 4
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+        }
+      ]
+    }
   ]
 }

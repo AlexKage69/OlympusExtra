@@ -5,6 +5,8 @@
 ```
 pip3 install deppth-0.1.0.0-py3-none-any.whl
 pip3 install texture_packing_wheel-1.0-py3-none-any.whl
+pip3 install PyTexturePacker
+pip3 install lz4
 ```
 
 
