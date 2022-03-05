@@ -1671,7 +1671,7 @@ OlympusTraitData.ApolloRetaliateTrait =
 			BaseType = "Effect",
 			WeaponName = "SwordWeapon",
 			BaseName = "ApolloBlind",
-			BaseProperty = "Modifier",
+			BaseProperty = "Amount",
 			Format = "Percent"
 		}
 	}
