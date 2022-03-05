@@ -135,7 +135,7 @@
         {
       Name = "Boon_Apollo_07_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Apollo\ApolloHwal_large"
+      FilePath = "Apollo\ApolloHeal_large"
       EndFrame = 1
       StartFrame = 1
     }
