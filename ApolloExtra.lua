@@ -1630,26 +1630,26 @@ OlympusTraitData.FountainDefenseTrait =
 		},
 		Rare =
 		{
-			Multiplier = 1.25,
+			Multiplier = 1.05,
 		},
 		Epic =
 		{
-			Multiplier = 1.50,
+			Multiplier = 1.10,
 		},
 		Heroic =
 		{
-			Multiplier = 1.75,
+			Multiplier = 1.15,
 		}
 	},
 	FountainDefenseBonus = 
 	{
-		BaseValue = 0.9,
+		BaseValue = 0.95,
 		MinMultiplier = 0.1,
 		ToNearest = 0.01,
 		SourceIsMultiplier = true,
 		IdenticalMultiplier =
 		{
-			Value = -0.8,
+			Value = DuplicateMultiplier,
 		},
 	},
 	AccumulatedFountainDefenseBonus = 1,
@@ -3267,7 +3267,7 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 		for k, traitData in pairs(CurrentRun.Hero.Traits) do
 			if traitData.FountainDefenseBonus then
 				hasDefenseBonus = true
-				traitData.AccumulatedFountainDefenseBonus = traitData.AccumulatedFountainDefenseBonus*traitData.FountainDefenseBonus
+				traitData.AccumulatedFountainDefenseBonus = traitData.AccumulatedFountainDefenseBonus- (1-traitData.FountainDefenseBonus)
 				ExtractValues( CurrentRun.Hero, traitData, traitData )
 			end
 		end
@@ -3281,6 +3281,6 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 OnControlPressed{ "Codex",
     function( triggerArgs )
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GetAllUpgradeableGodTraits()))
-		--CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
     end
 }
