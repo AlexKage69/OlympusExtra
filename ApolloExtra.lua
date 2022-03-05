@@ -27,12 +27,6 @@ ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
     return baseFunc()
 end)
 
-OnControlPressed{ "Codex",
-    function( triggerArgs )
-        CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-    end    
-}
-
 --WeaponData
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
@@ -1400,7 +1394,7 @@ OlympusTraitData.ApolloShoutTrait =
 			},
 		}
 }
- OlympusTraitData.ApolloBlindedTrait =
+OlympusTraitData.ApolloBlindedTrait =
  {
 	 Name = "ApolloBlindedTrait",
 	 God = "Apollo",
@@ -1552,7 +1546,7 @@ OlympusTraitData.ApolloShoutTrait =
 	 }
  }
 
- OlympusTraitData.MissChanceTrait =
+OlympusTraitData.MissChanceTrait =
 	{
 		Icon = "Boon_Apollo_10",
 		RequiredFalseTrait = "MissChanceTrait",
@@ -1620,8 +1614,67 @@ OlympusTraitData.ApolloShoutTrait =
 		}
 	}
 
-
- OlympusTraitData.ApolloRetaliateTrait =
+OlympusTraitData.FountainDefenseTrait =
+{
+    Icon = "Boon_Apollo_07",
+    InheritFrom = { "ShopTier1Trait" },
+    God = "Apollo",
+    CustomTrayText = "FountainDefenseTrait_Tray",
+    RequiredFalseTrait = "FountainDefenseTrait",    
+	RequiredCosmetics = { "TartarusReprieve" },
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 1.00,
+		},
+		Rare =
+		{
+			Multiplier = 1.25,
+		},
+		Epic =
+		{
+			Multiplier = 1.50,
+		},
+		Heroic =
+		{
+			Multiplier = 1.75,
+		}
+	},
+	FountainDefenseBonus = 
+	{
+		BaseValue = 0.9,
+		MinMultiplier = 0.1,
+		ToNearest = 0.01,
+		SourceIsMultiplier = true,
+		IdenticalMultiplier =
+		{
+			Value = -0.8,
+		},
+	},
+	AccumulatedFountainDefenseBonus = 1,
+	AddIncomingDamageModifiers =
+	{
+		DistanceThreshold = 400,
+		DistanceMultiplier = AccumulatedFountainDefenseBonus,
+	},
+    ExtractValues =
+    {
+      {
+        Key = "FountainDefenseBonus",
+        ExtractAs = "TooltipFountainBonus",
+        Format = "PercentDelta",
+        DecimalPlaces = 1,
+      },
+      {
+        Key = "AccumulatedFountainDefenseBonus",
+        ExtractAs = "TooltipAccumulatedBonus",
+        Format = "PercentDelta",
+        DecimalPlaces = 1,
+      },
+    },
+}
+OlympusTraitData.ApolloRetaliateTrait =
  {
 	God = "Apollo",
 	InheritFrom = { "ShopTier1Trait" },
@@ -1719,7 +1772,7 @@ OlympusLootData.ApolloUpgrade = {
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
 		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-		Traits = {"ApolloRetaliateTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
+		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
 		LinkedUpgrades =
@@ -3183,26 +3236,51 @@ function EndApolloBeam()
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
 end
 -- Blind Functions
-ModUtil.WrapBaseFunction( "Damage", function(baseFunc, victim, triggerArgs)
-	local missRate = 0.5
-	if not HeroHasTrait("MissChanceTrait") then
-		missRate = 0.75
-	end
-	if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
-		thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
-		PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
-		PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
-		if not HeroHasTrait("BlindDurationTrait") then
-			ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
+ModUtil.WrapBaseFunction( "Damage", 
+	function(baseFunc, victim, triggerArgs)
+		local missRate = 0.5
+		if not HeroHasTrait("MissChanceTrait") then
+			missRate = 0.75
 		end
-	else
-		baseFunc(victim, triggerArgs)
+		if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
+			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
+			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
+			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
+			if not HeroHasTrait("BlindDurationTrait") then
+				ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
+			end
+		else
+			baseFunc(victim, triggerArgs)
+		end
 	end
-end)
+)
+-- Fountain Defense Functions
+function FountainDefensePresentation()
+	PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
+	thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
+end
+
+OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFountainStyx",
+	function( triggerArgs )
+		local hasDefenseBonus = false
+		for k, traitData in pairs(CurrentRun.Hero.Traits) do
+			if traitData.FountainDefenseBonus then
+				hasDefenseBonus = true
+				traitData.AccumulatedFountainDefenseBonus = traitData.AccumulatedFountainDefenseBonus*traitData.FountainDefenseBonus
+				ExtractValues( CurrentRun.Hero, traitData, traitData )
+			end
+		end
+		if hasDefenseBonus then
+			FountainDefensePresentation()
+		end
+	end
+}
+
 -- For testing purposes
 OnControlPressed{ "Codex",
     function( triggerArgs )
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GetAllUpgradeableGodTraits()))
+		--CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
     end
 }
