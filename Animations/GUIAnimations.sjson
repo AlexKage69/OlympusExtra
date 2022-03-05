@@ -175,48 +175,6 @@
       StartFrame = 1
     }
     {
-      Name = "Boon_Apollo_07_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Apollo_07_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Apollo_08_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Apollo_08_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Apollo_09_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Apollo_09_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
       Name = "Boon_Apollo_10_Small"
       InheritFrom = "BoonTrayIcon"
       FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
