@@ -144,7 +144,7 @@
     	}
 		{
     		Id = "FountainDefenseText_Alt"
-      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Damage Resist!"     
+      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Resist!"     
     	}
 		{
 			Id = "FountainDefenseTrait_Initial",
@@ -166,6 +166,29 @@
 			InheritFrom = "ApolloRetaliateTrait"
 			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.NewTotal1}"
 		}
+		{
+			Id = "FountainCoinTrait",
+			DisplayName = "Wishing Well"
+			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+    	}
+		{
+			Id = "FountainCoinText",
+			DisplayName = "{#CombatTextHighlightFormat}Wishing Well!{#PreviousFormat}!"
+    	}
+		{
+    		Id = "FountainCoinText_Alt"
+      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount} {!Icons.Currency_Small}"     
+    	}
+		{
+			Id = "FountainCoinTrait_Initial",
+			DisplayName = "Wishing Well"
+			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+    	}
+		{
+			Id = "FountainCoinTrait_Tray",
+			DisplayName = "Wishing Well"
+			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+    	}
 		{
 			Id = "ForceApolloBoonTrait"
 			DisplayName = "Harmonious Harp"

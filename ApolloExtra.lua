@@ -1676,6 +1676,37 @@ OlympusTraitData.ApolloRetaliateTrait =
 		}
 	}
 }
+OlympusTraitData.FountainCoinTrait =
+{
+    Icon = "Boon_Apollo_13",
+    InheritFrom = { "ShopTier1Trait" },
+    God = "Apollo",
+    CustomTrayText = "FountainCoinTrait_Tray",
+    RequiredFalseTrait = "FountainCoinTrait",    
+	RequiredCosmetics = { "TartarusReprieve" },
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 1.00,
+		},
+		Rare =
+		{
+			Multiplier = 1.25,
+		},
+		Epic =
+		{
+			Multiplier = 1.50,
+		},
+		Heroic =
+		{
+			Multiplier = 2.00,
+		}
+	},
+	FountainCoinBonus = { 
+		BaseValue = 100
+	},
+}
 OlympusTraitData.MissChanceTrait =
 {
 	Icon = "Boon_Apollo_14",
@@ -1769,7 +1800,7 @@ OlympusLootData.ApolloUpgrade = {
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
 		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
+		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
 		LinkedUpgrades =
@@ -3252,24 +3283,51 @@ ModUtil.WrapBaseFunction( "Damage",
 		end
 	end
 )
--- Fountain Defense Functions
+-- Fountain Coin/Defense Functions
 function FountainDefensePresentation()
 	PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
 	thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
 end
 
+function ApolloMoney(args)
+	local amount = round(GetTotalHeroTraitValue("FountainCoinBonus"))
+	local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
+	amount = round( amount * moneyMultiplier )
+	thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainCoinText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainCoinTrait", Amount = amount }})
+	thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = args.triggeredById, } )
+end
+
 OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFountainStyx",
 	function( triggerArgs )
+		wait(0.4)
+		local hasDamageBonus = false
 		local hasDefenseBonus = false
+		local hasCoinBonus = false
 		for k, traitData in pairs(CurrentRun.Hero.Traits) do
+			if traitData.FountainDamageBonus then
+				hasDamageBonus = true
+			end 
 			if traitData.FountainDefenseBonus then
 				hasDefenseBonus = true
 				traitData.AccumulatedFountainDefenseBonus = traitData.AccumulatedFountainDefenseBonus- (1-traitData.FountainDefenseBonus)
 				ExtractValues( CurrentRun.Hero, traitData, traitData )
 			end
+			if traitData.FountainCoinBonus then
+				-- For notes,check MoneyPerRoom and SisyphusMoney
+				hasCoinBonus = true
+			end 
+		end
+		wait(1.0)
+		if hasDamageBonus then
+			wait(1.0)
 		end
 		if hasDefenseBonus then
 			FountainDefensePresentation()
+			wait(1.0)
+		end
+		if hasCoinBonus then
+			ApolloMoney(triggerArgs)
+			wait(1.0)
 		end
 	end
 }
