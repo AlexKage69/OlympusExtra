@@ -18,5 +18,5 @@ Projectiles = {
         TimeModifierFraction = 0
       }
     ] 
-    }
+  }
 }

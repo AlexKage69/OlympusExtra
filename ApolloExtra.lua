@@ -1495,13 +1495,13 @@ OlympusTraitData.ApolloBlindedTrait =
 		EffectName = "IncreaseDamageTaken",
 		EffectProperty = "Active",
 		ChangeValue = true,
-	},
-	{
-		TraitName = "AreaWeakenApollo",
-		EffectName = "IncreaseDamageTaken",
-		EffectProperty = "Active",
-		ChangeValue = true,
-	},
+		},
+		{
+			TraitName = "AreaWeakenApollo",
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Active",
+			ChangeValue = true,
+		},
 		--[[
 		{
 			TraitName = "ShieldLoadAmmo_AphroditeRangedTrait",
@@ -1535,11 +1535,11 @@ OlympusTraitData.ApolloBlindedTrait =
 			DeriveSource = "DeriveSource"
 		},
 		{
-		WeaponNames = {"AreaWeakenApollo"},
-		EffectName = "IncreaseDamageTaken",
-		EffectProperty = "Modifier",
-		DeriveValueFrom = "DeriveSource",
-	},
+			WeaponNames = {"AreaWeakenApollo"},
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Modifier",
+			DeriveValueFrom = "DeriveSource",
+		},
 		--[[{
 			WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 			EffectName = "IncreaseDamageTaken",
