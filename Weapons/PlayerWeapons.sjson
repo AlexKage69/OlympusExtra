@@ -2,9 +2,9 @@
   Weapons = [
       "_append"
       {
-        Name = "LazerEnabledWeapon"
+        Name = "LaserEnabledWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
-        Projectile = "LazerEnabled"
+        Projectile = "LaserEnabled"
     }
     {
       Name = "ApolloBeamAim"

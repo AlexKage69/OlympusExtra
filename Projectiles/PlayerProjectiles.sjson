@@ -309,7 +309,7 @@
       }
     }
     {
-        Name = "LazerEnabled"
+        Name = "LaserEnabled"
         InheritFrom = "1_BaseNonPhysicalProjectile"
         Type = "INSTANT"
         AffectsEnemies = false

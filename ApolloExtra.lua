@@ -3264,7 +3264,7 @@ function ApolloShout()
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Shout"))
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 	FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-	FireWeaponFromUnit({ Weapon = "LazerEnabledWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	FireWeaponFromUnit({ Weapon = "LaserEnabledWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 	SetUnitInvulnerable( CurrentRun.Hero , "Invulnerable" )
 end
 function EndApolloBeam()
@@ -3272,7 +3272,7 @@ function EndApolloBeam()
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
 	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusStun" })
-	ExpireProjectiles({ Names = { "ApolloCastBeam", "LazerEnabled" } })
+	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", 
