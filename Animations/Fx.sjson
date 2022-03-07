@@ -2527,68 +2527,43 @@
     {
       Name = "ApolloLaserPreview"
       ChainTo = "ApolloLaser"
-      FilePath = "Fx\HadesBeamPreview\HadesBeamPreview"
+      FilePath = "Fx\ApolloBeam\ApolloBeam"
       Type = "Book"
       Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamPreAttack"
       StopSoundOnFinishFade = 0.25
-      EndFrame = 60
-      NumFrames = 60
+      EndFrame = 30
+      NumFrames = 30
       PlaySpeed = 80.0
       StartFrame = 1
-      OriginY = 50.0
-      ScaleLength = 480.0
+      OriginY = 4.0
+      ScaleLength = 160.0
+      ScaleRadius = 160.0
+      ScaleY = 0.66
       Ambient = 0.0
       OverlayVfx = true
-      Scale = 1
-      RandomFlipVertical = true
+      TransferCopyBody = false
     }
     {
       Name = "ApolloLaser"
-      ChildAnimation = "ApolloLaserStartBurst"
-      FilePath = "Fx\HadesBeam\HadesBeam"
+      ChainTo = "ApolloLaserEnd"
+      FilePath = "Fx\ApolloBeam\ApolloBeam"
       Type = "Book"
-      Sound = "null"
+      Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamAttackLoop"
       StopSoundOnFinishFade = 0.25
-      EndFrame = 40
+      EndFrame = 30
       LoopFramesOnly = true
-      NumFrames = 40
-      RandomPlaySpeedMin = 30.0
-      RandomPlaySpeedMax = 60.0
+      NumFrames = 30
+      PlaySpeed = 60.0
       StartFrame = 1
-      OriginY = 50.0
+      OriginX = 0
+      OriginY = 1
       TransferFrameFromThis = true
-      ScaleLength = 470.0
+      ScaleLength = 160.0
+      ScaleRadius = 160.0
+      ScaleY = 0.66
       Ambient = 0.0
       OverlayVfx = true
-      Scale = 1
-      ScaleY = 1.0
-      RandomFlipVertical = true
-      CreateAnimationOnEnd = "ApolloLaserEnd"
-      CreateAnimations = [
-        {
-          Name = "ApolloLaserDark"
-        }
-        {
-          Name = "ApolloLaserGlow"
-        }
-        {
-          Name = "ApolloLaserGlowTerrain"
-        }]
-    }
-    {
-      Name = "ApolloLaserStartBurst"
-      InheritFrom = "EnemyLaser"
-      ChainTo = "null"
-      ChildAnimation = "null"
-      AddColor = true
-      Duration = 0.1
-      EndScaleY = 0.0
-      StartScaleY = 3.0
-      Color = {
-        Red = 1.0
-        Green = 0.5
-        Blue = 0.0
-      }
+      TransferCopyBody = false
     }
     {
       Name = "ApolloLaserGlow"
@@ -2641,18 +2616,17 @@
       InheritFrom = "ApolloLaser"
       Sound = "/EmptyCue"
       LoopFramesOnly = true
-      StartScaleY = 1
+      StartScaleY = 0.66
       EndScaleY = 0
       ChainTo = null
       CreateAnimationOnEnd = null
-      Duration = 0.33
       EaseIn = 0.5
       EaseOut = 1.0
       Loop = false
-      GroupName = "Standing"
       ClearCreateAnimations = true
       CreateAnimation = null
       ChildAnimation = null
+      Duration = 0.25
     }
     {
       Name = "ApolloLaserOrigin"
@@ -2671,8 +2645,8 @@
       ScaleFromOwner = "Ignore"
       Scale = 1.0
       ScaleX = 2
-      OriginX = 9
-      OriginY = 57
+      OriginX = 0
+      OriginY = 0
       RandomFlipVertical = true
       CreateAnimation = "ApolloLaserOriginGlow"
     }
@@ -2761,90 +2735,6 @@
       Name = "ApolloLaserTipNoParticles"
       InheritFrom = "ApolloLaserTip"
       VisualFx = null
-    }
-    {
-      Name = "ApolloLaserImpactFx"
-      Type = "Random"
-      Random = [
-        {
-          Name = "ApolloLaserImpactFxA"
-        }
-        {
-          Name = "ApolloLaserImpactFxB"
-        }
-        {
-          Name = "ApolloLaserImpactFxC"
-        }
-        {
-          Name = "ApolloLaserImpactFxD"
-        }]
-    }
-    {
-      Name = "ApolloLaserTipParticles"
-      Type = "Constant"
-      FilePath = "Particles\particle_glow"
-      CreateAnimation = "ApolloLaserImpactFx"
-      GroupName = "FX_Standing_Add"
-      Material = "Unlit"
-      StartScale = 1
-      EndScale = 0.7
-      Red = 1
-      Green = 0.5
-      Blue = 0
-      StartAlpha = 1
-      EndAlpha = 0
-      Duration = 0.5
-      LocationFromOwner = "Ignore"
-    }
-    {
-      Name = "ApolloLaserImpactFxA"
-      Type = "Constant"
-      FilePath = "Particles\particle_snowDust_01"
-      Material = "Unlit"
-      VelocityMin = 200
-      VelocityMax = 300
-      StartScale = 0.4
-      EndScale = 0.75
-      Scale = 1.9
-      ScaleMin = 0.8
-      ScaleMax = 1.0
-      StartAlpha = 1
-      EndAlpha = 0
-      Gravity = 120
-      RandomDurationMin = 0.9
-      RandomDurationMax = 1.2
-      Acceleration = -200
-      AngleFromOwner = "Take"
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Take"
-      UseOwnAngle = false
-      ScaleFromOwner = "Ignore"
-      GroupName = "Standing"
-      SortMode = "Isometric"
-      AddColor = true
-      StartRed = 1
-      StartGreen = 0.2
-      StartBlue = 0.01
-      EndRed = 0
-      EndGreen = 0
-      EndBlue = 0
-      EaseIn = 0.9
-      EaseOut = 1.0
-    }
-    {
-      Name = "ApolloLaserImpactFxB"
-      InheritFrom = "ApolloLaserImpactFxA"
-      FilePath = "Particles\particle_snowDust_02"
-    }
-    {
-      Name = "ApolloLaserImpactFxC"
-      InheritFrom = "ApolloLaserImpactFxA"
-      FilePath = "Particles\particle_snowDust_03"
-    }
-    {
-      Name = "ApolloLaserImpactFxD"
-      InheritFrom = "ApolloLaserImpactFxA"
-      FilePath = "Particles\particle_snowDust_04"
     }
     {
       Name = "ApolloLaserOriginGlow"

@@ -2,10 +2,16 @@
   Weapons = [
       "_append"
       {
-        Name = "SelfStunWeapon"
+        Name = "LaserEnabledWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
-        Projectile = "SelfStun"
-      }
+        Projectile = "LaserEnabled"
+    }
+    {
+      Name = "ApolloBeamAim"
+      Control = "Attack2"
+      FullyAutomatic = true
+      Enabled = false
+    }
       {
         Name = "ApolloBeamWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
@@ -23,7 +29,7 @@
         CanCancelOwnDisables = true
         BlinkDetonateAtEndpoint = true
         BarrelLength = 175
-        AutoLock = true
+        AutoLock = false
         FireGraphic = "null"
         LockTriggerForCharge = false
         DisableOwnerForDuration = 0

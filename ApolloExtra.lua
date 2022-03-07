@@ -1369,14 +1369,14 @@ OlympusTraitData.ApolloShoutTrait =
 			}
 		},
 		EndShout = "EndApolloBeam",
-		PreEquipWeapons = { "ApolloBeamWeapon", "SelfStunWeapon" },
+		PreEquipWeapons = { "ApolloBeamWeapon", "ApolloBeamAim" },
 		PropertyChanges =
 		{
 			{
 				WeaponName = "ApolloBeamWeapon",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 250,
-				BaseMax = 250,
+				BaseMin = 15,
+				BaseMax = 15,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -1743,6 +1743,30 @@ OlympusTraitData.MissChanceTrait =
 		}
 	}
 }
+-- Duo Traits
+OlympusTraitData.FamedDuetTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Artemis_01",
+		PropertyChanges =
+		{
+			{
+				TraitName = "ApolloShoutTrait",
+				WeaponName = "ApolloBeamWeapon",
+				WeaponProperty = "NumProjectiles",
+				ChangeValue = 12,
+				ExcludeLinked = true,
+			},			
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWrathStocks",
+				Format = "ExistingWrathStocks",
+				SkipAutoExtract = true
+			}
+		}		
+	}
 
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -1785,6 +1809,14 @@ OlympusLootData.ApolloUpgrade = {
 					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			},
+			FamedDuetTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloShoutTrait" },
+					OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+				}
+			}
 			--[[ApolloDurationTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
@@ -3197,6 +3229,15 @@ OlympusLootData.ApolloUpgrade = {
 			{ Cue = "/VO/Apollo_0130" },
 		},
 }
+-- Duo LootData
+OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloShoutTrait" },
+		OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+	}
+}
 
 -- Gift Section    
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
@@ -3218,19 +3259,20 @@ OlympusGiftData.ApolloUpgrade =
 }
 -- FUNCTIONS
 
+-- Shout Functions
 function ApolloShout()
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Shout"))
-	--EquipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBeamWeapon" })
+	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 	FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-	FireWeaponFromUnit({ Weapon = "SelfStunWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-	ApplyEffectFromWeapon({ WeaponName = "EurydiceDefenseApplicator", EffectName = "EurydiceDefenseEffect", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+	FireWeaponFromUnit({ Weapon = "LaserEnabledWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 	SetUnitInvulnerable( CurrentRun.Hero , "Invulnerable" )
 end
 function EndApolloBeam()
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("End Shout"))
-	--UnequipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBeamWeapon" })
-	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Names = { "ZagreusStun" }})
+	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
+	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusStun" })
+	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
 -- Blind Functions
 ModUtil.WrapBaseFunction( "Damage", 
@@ -3277,7 +3319,5 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 -- For testing purposes
 OnControlPressed{ "Codex",
     function( triggerArgs )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GetAllUpgradeableGodTraits()))
-		CreateLoot({ Name = "ApolloUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
     end
 }
