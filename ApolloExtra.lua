@@ -1743,6 +1743,30 @@ OlympusTraitData.MissChanceTrait =
 		}
 	}
 }
+-- Duo Traits
+OlympusTraitData.FamedDuetTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Artemis_01",
+		PropertyChanges =
+		{
+			{
+				TraitName = "ApolloShoutTrait",
+				WeaponName = "ApolloBeamWeapon",
+				WeaponProperty = "NumProjectiles",
+				ChangeValue = 12,
+				ExcludeLinked = true,
+			},			
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWrathStocks",
+				Format = "ExistingWrathStocks",
+				SkipAutoExtract = true
+			}
+		}		
+	}
 
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -1785,6 +1809,14 @@ OlympusLootData.ApolloUpgrade = {
 					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			},
+			FamedDuetTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloShoutTrait" },
+					OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+				}
+			}
 			--[[ApolloDurationTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
@@ -3197,6 +3229,15 @@ OlympusLootData.ApolloUpgrade = {
 			{ Cue = "/VO/Apollo_0130" },
 		},
 }
+-- Duo LootData
+OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloShoutTrait" },
+		OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+	}
+}
 
 -- Gift Section    
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
@@ -3218,6 +3259,7 @@ OlympusGiftData.ApolloUpgrade =
 }
 -- FUNCTIONS
 
+-- Shout Functions
 function ApolloShout()
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Shout"))
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
