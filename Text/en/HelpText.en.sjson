@@ -102,35 +102,69 @@
 			Id = "ApolloShoutTrait_Initial"
 			InheritFrom = "ApolloShoutTrait"
 			Description = "Your {$Keywords.WrathDerivedStocks} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
-		} {
+		} 
+		{
 			Id = "ApolloRangedTrait"
 			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ApolloRangedTrait_Initial"
 			InheritFrom = "ApolloRangedTrait"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ApolloRangedTrait_Tray"
 			InheritFrom = "ApolloRangedTrait"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait"
 			DisplayName = "Passion Flare"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait_Tray"
 			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait_Initial"
 			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
-			Description = "Your {$Keywords.Cast} places a {$Keywords.FlashBomb} at your feet. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Damage per Hit: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "FountainDefenseTrait",
+			DisplayName = "Melodic Concert"
+			Description = "Using a {$Keywords.Fountain} gives you bonus damage resist from faraway enemies. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+    	}
+		{
+			Id = "FountainDefenseText",
+			DisplayName = "{#CombatTextHighlightFormat}Melodic Concert!{#PreviousFormat}!"
+    	}
+		{
+    		Id = "FountainDefenseText_Alt"
+      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Damage Resist!"     
+    	}
+		{
+			Id = "FountainDefenseTrait_Initial",
+			DisplayName = "Melodic Concert"
+			Description = "Using a {$Keywords.Fountain} gives you damage resist from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Reduced Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
+    	}
+		{
+			Id = "FountainDefenseTrait_Tray",
+			DisplayName = "Melodic Concert"
+			Description = "Using a {$Keywords.Fountain} gives you damage resost from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Reduced Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+    	}
+		{
+			Id = "ApolloRetaliateTrait"
+			DisplayName = "Icarus Wings"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+			{
+			Id = "ApolloRetaliateTrait_Initial"
+			InheritFrom = "ApolloRetaliateTrait"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
