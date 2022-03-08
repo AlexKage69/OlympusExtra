@@ -63,7 +63,7 @@ OlympusWeaponData.ApolloBeamWeapon = {
 }
 --BoonInfoScreenData
 local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
-ModUtil.MapSetTable(OlympusBoonInfoScreenData.Ordering, { "ApolloUpgrade" })
+table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
 
 --ProjectileData
 local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
@@ -1565,7 +1565,7 @@ OlympusTraitData.ApolloBlindedTrait =
 			EffectName = "IncreaseDamageTaken",
 			EffectProperty = "Modifier",
 			DeriveValueFrom = "DeriveSource",
-		},tr
+		},
 		--[[{
 			TraitName = "AphroditeSecondaryTrait",
 			WeaponNames = WeaponSets.HeroSecondaryWeapons,
@@ -1744,10 +1744,81 @@ OlympusTraitData.MissChanceTrait =
 	}
 }
 -- Duo Traits
+OlympusTraitData.BlindDurationTrait =
+{
+	InheritFrom = { "SynergyTrait" },
+	Icon = "Apollo_Demeter_01",
+	RequiredFalseTrait = "BlindDurationTrait",
+	PropertyChanges =
+	{
+		{
+			WeaponName = WeaponSets.HeroPhysicalWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDuration",
+			},
+		},
+		{
+			WeaponName = WeaponSets.HeroSecondaryWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},
+		{
+			WeaponName = WeaponSets.HeroRushWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},
+		{
+			WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},
+		{
+			WeaponNames = {"AreaWeakenApollo"},
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},		
+	},
+	ExtractValues =
+	{
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Amount",
+			Format = "Percent"
+		}
+	}		
+}
 OlympusTraitData.FamedDuetTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Artemis_01",
+		RequiredFalseTrait = "FamedDuetTrait",
 		PropertyChanges =
 		{
 			{
@@ -1788,6 +1859,7 @@ OlympusLootData.ApolloUpgrade = {
 		LootRejectionAnimation = "BoonDissipateA_Apollo",
 
 		RequiredMinCompletedRuns = 1,
+		RequiredTextLines = { "ArtemisFirstPickUp" },
 
 		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 
@@ -1805,7 +1877,7 @@ OlympusLootData.ApolloUpgrade = {
 			{
 				OneFromEachSet =
 				{
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			},
@@ -1814,7 +1886,15 @@ OlympusLootData.ApolloUpgrade = {
 				OneFromEachSet =
 				{
 					{ "ApolloShoutTrait" },
-					OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+					{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+				}
+			},
+			BlindDurationTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			}
 			--[[ApolloDurationTrait =
@@ -3235,7 +3315,15 @@ OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait =
 	OneFromEachSet =
 	{
 		{ "ApolloShoutTrait" },
-		OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+		{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+	}
+}
+OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+		{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 	}
 }
 
@@ -3317,7 +3405,15 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 }
 
 -- For testing purposes
-OnControlPressed{ "Codex",
-    function( triggerArgs )
+ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
+	function(baseFunc)
+		if (not CanOpenCodex()) and IsSuperValid() then
+			wait(1, RoomThreadName)
+			BuildSuperMeter(CurrentRun, 100)
+			CommenceSuperMove()
+			UpdateSuperDamageBonus()
+			thread( MarkObjectiveComplete, "EXMove" )
+		end
+		baseFunc()
     end
-}
+)
