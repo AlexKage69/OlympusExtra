@@ -3450,7 +3450,7 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 		if not HeroHasTrait("MissChanceTrait") then
 			missRate = 0.75
 		end
-		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim == CurrentRun.Hero then--RandomFloat(0,1) <= missRate then
+		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim == CurrentRun.Hero and RandomFloat(0,1) <= missRate then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
