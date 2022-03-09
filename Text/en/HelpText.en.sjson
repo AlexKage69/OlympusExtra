@@ -157,11 +157,21 @@
 			Description = "Using a {$Keywords.Fountain} gives you damage resost from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Reduced Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
     	}
 		{
+			Id = "ApolloBlindedTrait"
+			DisplayName = "Divine Law"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloBlindedTrait_Initial"
+			InheritFrom = "ApolloBlindedTrait"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
 			Id = "ApolloRetaliateTrait"
 			DisplayName = "Icarus Wings"
 			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
-			{
+		{
 			Id = "ApolloRetaliateTrait_Initial"
 			InheritFrom = "ApolloRetaliateTrait"
 			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.NewTotal1}"
@@ -190,6 +200,21 @@
 			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     	}
 		{
+			Id = "ApolloHealTrait"
+			DisplayName = "Soothing Song"
+			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a {#UpgradeFormat}{$TooltipData.ApolloHealDropChance:P} {#PreviousFormat}chance to drop {!Icons.HealthRestore_Small} when killed."
+		}
+		{
+			Id = "ApolloHealTrait_Initial"
+			DisplayName = "Soothing Song"
+			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a {#UpgradeFormat}{$TooltipData.ApolloHealDropChance:P} {#PreviousFormat}chance to drop {!Icons.HealthRestore_Small} when killed."
+		}
+		{
+			Id = "MissChanceTrait"
+			DisplayName = "Purest light"
+			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
+		}
+		{
 			Id = "ForceApolloBoonTrait"
 			DisplayName = "Harmonious Harp"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Apollo{#PreviousFormat}. His blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
@@ -203,21 +228,6 @@
 			Id = "ForceApolloBoonTrait_Inactive"
 			DisplayName = "Harmonious Harp"
 			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
-		}
-		{
-			Id = "ApolloBlindedTrait"
-			DisplayName = "Divine Law"
-			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {$TooltipData.DisplayDelta1}"
-		}
-		{
-			Id = "ApolloBlindedTrait_Initial"
-			InheritFrom = "ApolloBlindedTrait"
-			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
-		}
-		{
-			Id = "MissChanceTrait"
-			DisplayName = "Purest light"
-			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
 		}
 	]
 }
