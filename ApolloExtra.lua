@@ -1490,18 +1490,18 @@ OlympusTraitData.ApolloBlindedTrait =
 			ChangeValue = true,
 		},
 		{
-		TraitName = "ApolloRangedTrait",
-		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-		EffectName = "IncreaseDamageTaken",
-		EffectProperty = "Active",
-		ChangeValue = true,
-	},
-	{
-		TraitName = "AreaWeakenApollo",
-		EffectName = "IncreaseDamageTaken",
-		EffectProperty = "Active",
-		ChangeValue = true,
-	},
+			TraitName = "ApolloRangedTrait",
+			WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Active",
+			ChangeValue = true,
+		},
+		{
+			TraitName = "AreaWeakenApollo",
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Active",
+			ChangeValue = true,
+		},
 		--[[
 		{
 			TraitName = "ShieldLoadAmmo_AphroditeRangedTrait",
@@ -1535,11 +1535,11 @@ OlympusTraitData.ApolloBlindedTrait =
 			DeriveSource = "DeriveSource"
 		},
 		{
-		WeaponNames = {"AreaWeakenApollo"},
-		EffectName = "IncreaseDamageTaken",
-		EffectProperty = "Modifier",
-		DeriveValueFrom = "DeriveSource",
-	},
+			WeaponNames = {"AreaWeakenApollo"},
+			EffectName = "IncreaseDamageTaken",
+			EffectProperty = "Modifier",
+			DeriveValueFrom = "DeriveSource",
+		},
 		--[[{
 			WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 			EffectName = "IncreaseDamageTaken",
@@ -1671,10 +1671,86 @@ OlympusTraitData.ApolloRetaliateTrait =
 			BaseType = "Effect",
 			WeaponName = "SwordWeapon",
 			BaseName = "ApolloBlind",
-			BaseProperty = "Modifier",
+			BaseProperty = "Amount",
 			Format = "Percent"
 		}
 	}
+}
+OlympusTraitData.FountainCoinTrait =
+{
+    Icon = "Boon_Apollo_11",
+    InheritFrom = { "ShopTier1Trait" },
+    God = "Apollo",
+    CustomTrayText = "FountainCoinTrait_Tray",
+    RequiredFalseTrait = "FountainCoinTrait",    
+	RequiredCosmetics = { "TartarusReprieve" },
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 1.00,
+		},
+		Rare =
+		{
+			Multiplier = 1.25,
+		},
+		Epic =
+		{
+			Multiplier = 1.50,
+		},
+		Heroic =
+		{
+			Multiplier = 2.00,
+		}
+	},
+	FountainCoinBonus = { 
+		BaseValue = 100
+	},
+}
+OlympusTraitData.ApolloHealTrait =
+{
+    Icon = "Boon_Apollo_13",
+    InheritFrom = { "ShopTier2Trait" },
+    God = "Apollo",
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 1.00,
+		},
+		Rare =
+		{
+			Multiplier = 2.00,
+		},
+		Epic =
+		{
+			Multiplier = 3.00,
+		},
+		Heroic =
+		{
+			Multiplier = 4.00,
+		}
+	},
+	ApolloHealDropChance = { 
+		BaseValue = 0.01
+	},
+	ExtractValues =
+    {
+        {
+            ExtractAs = "TooltipBlindDuration",
+            SkipAutoExtract = true,
+            External = true,
+            BaseType = "Effect",
+            WeaponName = "SwordWeapon",
+            BaseName = "ApolloBlind",
+            BaseProperty = "Duration",
+        },
+		{
+			Key = "ApolloHealDropChance",
+			ExtractAs = "TooltipDropChance",
+			Format = "Percent"
+		  },
+    }
 }
 OlympusTraitData.MissChanceTrait =
 {
@@ -1865,12 +1941,15 @@ OlympusLootData.ApolloUpgrade = {
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
 		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
+		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
 		LinkedUpgrades =
 		{
 			ApolloBlindedTrait  = {
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+			},
+			ApolloHealTrait  = {
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
 			MissChanceTrait =
@@ -3386,28 +3465,76 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 		end
 	end
 )
-
--- Fountain Defense Functions
+-- Fountain Coin/Defense Functions
 function FountainDefensePresentation()
 	PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
 	thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
 end
 
+function ApolloMoney(args)
+	local amount = round(GetTotalHeroTraitValue("FountainCoinBonus"))
+	local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
+	amount = round( amount * moneyMultiplier )
+	thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainCoinText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainCoinTrait", Amount = amount }})
+	thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = args.triggeredById, } )
+end
+
 OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFountainStyx",
 	function( triggerArgs )
+		wait(0.4)
+		local hasDamageBonus = false
 		local hasDefenseBonus = false
+		local hasCoinBonus = false
 		for k, traitData in pairs(CurrentRun.Hero.Traits) do
+			if traitData.FountainDamageBonus then
+				hasDamageBonus = true
+			end 
 			if traitData.FountainDefenseBonus then
 				hasDefenseBonus = true
 				traitData.AccumulatedFountainDefenseBonus = traitData.AccumulatedFountainDefenseBonus- (1-traitData.FountainDefenseBonus)
 				ExtractValues( CurrentRun.Hero, traitData, traitData )
 			end
+			if traitData.FountainCoinBonus then
+				-- For notes,check MoneyPerRoom and SisyphusMoney
+				hasCoinBonus = true
+			end 
+		end
+		wait(1.0)
+		if hasDamageBonus then
+			wait(1.0)
 		end
 		if hasDefenseBonus then
 			FountainDefensePresentation()
+			wait(1.0)
+		end
+		if hasCoinBonus then
+			ApolloMoney(triggerArgs)
+			wait(1.0)
 		end
 	end
 }
+
+-- Song of Healing functions
+ModUtil.WrapBaseFunction( "Kill", 
+	function(baseFunc, victim, triggerArgs)
+		local isBlinded = false
+		isBlinded = HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" })
+
+		baseFunc(victim, triggerArgs)
+
+		local hasApolloHealTrait = false
+		local dropChances = 0
+		for k, traitData in pairs(CurrentRun.Hero.Traits) do
+			if traitData.ApolloHealDropChance then
+				hasApolloHealTrait = true
+				dropChances = GetTotalHeroTraitValue("ApolloHealDropChance")
+			end
+		end 
+		if hasApolloHealTrait and RandomChance(dropChances) and isBlinded then
+			DropHealth("HealDropMinor", victim.ObjectId)
+		end
+	end
+)
 
 -- For testing purposes
 ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
