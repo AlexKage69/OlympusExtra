@@ -259,10 +259,10 @@
       CheckObstacleImpact = true
       UnlimitedUnitPenetration = false
       MaxAdjustRate = 9
-      Range = 2200
+      Range = 1000
       Speed = 0
-      DamageLow = 5
-      DamageHigh = 5
+      DamageLow = 0
+      DamageHigh = 0
       ImpactVelocity = 0
       MultiDetonate = true
       Fuse = 0.1
@@ -309,7 +309,7 @@
       }
     }
     {
-        Name = "SelfStun"
+        Name = "LaserEnabled"
         InheritFrom = "1_BaseNonPhysicalProjectile"
         Type = "INSTANT"
         AffectsEnemies = false
@@ -362,8 +362,9 @@
           Duration = 50
           DisableMove = true
           DisableRotate = false
-          DisableAttack = false
+          DisableAttack = true
           RequestTriggerLock = true
+          AutoLock = true
           Cancelable = false
           Active = true
           CanAffectInvulnerable = true

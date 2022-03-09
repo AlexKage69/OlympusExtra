@@ -245,6 +245,20 @@
       StartFrame = 1
     }
     {
+      Name = "Apollo_Artemis_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Artemis_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
       Name = "Keepsake_Apollo_Max"
       InheritFrom = "KeepsakeMax_Corner"
       FilePath = "Apollo\ApolloBadge"

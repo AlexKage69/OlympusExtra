@@ -91,17 +91,17 @@
 		{
 			Id = "ApolloShoutTrait"
 			DisplayName = "Apollo's Aid"
-			Description = "Your {$Keywords.Wrath} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
-		}
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+		}		
 		{
 			Id = "ApolloShoutTrait_Tray"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
-		}
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		}	
 		{
 			Id = "ApolloShoutTrait_Initial"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} makes you surge into foes while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
 		} 
 		{
 			Id = "ApolloRangedTrait"
@@ -180,25 +180,25 @@
 			Id = "FountainCoinTrait",
 			DisplayName = "Wishing Well"
 			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
-    	}
+    }
 		{
 			Id = "FountainCoinText",
 			DisplayName = "{#CombatTextHighlightFormat}Wishing Well!{#PreviousFormat}!"
-    	}
+    }
 		{
     		Id = "FountainCoinText_Alt"
       		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount} {!Icons.Currency_Small}"     
-    	}
+    }
 		{
 			Id = "FountainCoinTrait_Initial",
 			DisplayName = "Wishing Well"
 			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
-    	}
+    }
 		{
 			Id = "FountainCoinTrait_Tray",
 			DisplayName = "Wishing Well"
 			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
-    	}
+    }
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Soothing Song"
@@ -229,5 +229,15 @@
 			DisplayName = "Harmonious Harp"
 			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
+		{
+			Id = "MissChanceTrait"
+			DisplayName = "Purest light"
+			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
+		}
+		{
+			Id = "FamedDuetTrait"
+			DisplayName = "Famed Duet"
+			Description = "Your {$Keywords.Wrath} makes twelve beams instead of one."
+		}	
 	]
 }
