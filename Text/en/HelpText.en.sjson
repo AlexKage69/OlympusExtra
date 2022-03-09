@@ -202,12 +202,12 @@
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Soothing Song"
-			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a {#UpgradeFormat}{$TooltipData.ApolloHealDropChance:P} {#PreviousFormat}chance to drop {!Icons.HealthRestore_Small} when killed."
+			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
 			DisplayName = "Soothing Song"
-			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a {#UpgradeFormat}{$TooltipData.ApolloHealDropChance:P} {#PreviousFormat}chance to drop {!Icons.HealthRestore_Small} when killed."
+			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "MissChanceTrait"

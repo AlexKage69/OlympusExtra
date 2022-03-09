@@ -1734,6 +1734,23 @@ OlympusTraitData.ApolloHealTrait =
 	ApolloHealDropChance = { 
 		BaseValue = 0.01
 	},
+	ExtractValues =
+    {
+        {
+            ExtractAs = "TooltipBlindDuration",
+            SkipAutoExtract = true,
+            External = true,
+            BaseType = "Effect",
+            WeaponName = "SwordWeapon",
+            BaseName = "ApolloBlind",
+            BaseProperty = "Duration",
+        },
+		{
+			Key = "ApolloHealDropChance",
+			ExtractAs = "TooltipDropChance",
+			Format = "Percent"
+		  },
+    }
 }
 OlympusTraitData.MissChanceTrait =
 {
