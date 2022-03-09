@@ -3363,25 +3363,30 @@ function EndApolloBeam()
 	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
 -- Blind Functions
-ModUtil.WrapBaseFunction( "Damage", 
-	function(baseFunc, victim, triggerArgs)
+-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
+ModUtil.WrapBaseFunction( "CheckOnHitPowers", 
+
+	function(baseFunc, victim, attacker, args)
 		local missRate = 0.5
 		if not HeroHasTrait("MissChanceTrait") then
 			missRate = 0.75
 		end
-		if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
+		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim == CurrentRun.Hero then--RandomFloat(0,1) <= missRate then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 			if not HeroHasTrait("BlindDurationTrait") then
-				ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
+				ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 			end
+			args.DamageAmount = nil
+			args.AttackerWeaponData = nil		
+			args.IsInvulnerable = true	
 		else
-			baseFunc(victim, triggerArgs)
+			baseFunc(victim, attacker, args)
 		end
 	end
 )
+
 -- Fountain Defense Functions
 function FountainDefensePresentation()
 	PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
