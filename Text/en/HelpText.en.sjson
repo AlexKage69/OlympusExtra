@@ -239,5 +239,11 @@
 			DisplayName = "Famed Duet"
 			Description = "Your {$Keywords.Wrath} makes twelve beams instead of one."
 		}	
+		{
+			Id = "BlindDurationTrait"
+			DisplayName = "Chilling Melody"
+			Description = "Your {$Keywords.ApolloBlind} effects do not expire when foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+		}
+		
 	]
 }

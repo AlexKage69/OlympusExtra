@@ -63,7 +63,7 @@ OlympusWeaponData.ApolloBeamWeapon = {
 }
 --BoonInfoScreenData
 local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
-ModUtil.MapSetTable(OlympusBoonInfoScreenData.Ordering, { "ApolloUpgrade" })
+table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
 
 --ProjectileData
 local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
@@ -1820,10 +1820,81 @@ OlympusTraitData.MissChanceTrait =
 	}
 }
 -- Duo Traits
+OlympusTraitData.BlindDurationTrait =
+{
+	InheritFrom = { "SynergyTrait" },
+	Icon = "Apollo_Demeter_01",
+	RequiredFalseTrait = "BlindDurationTrait",
+	PropertyChanges =
+	{
+		{
+			WeaponName = WeaponSets.HeroPhysicalWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDuration",
+			},
+		},
+		{
+			WeaponName = WeaponSets.HeroSecondaryWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},
+		{
+			WeaponName = WeaponSets.HeroRushWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},
+		{
+			WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},
+		{
+			WeaponNames = {"AreaWeakenApollo"},
+			EffectName = "ApolloBlind",
+			EffectProperty = "Duration",
+			ChangeValue = 10,
+			ChangeType = "Absolute",
+		},		
+	},
+	ExtractValues =
+	{
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Amount",
+			Format = "Percent"
+		}
+	}		
+}
 OlympusTraitData.FamedDuetTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Artemis_01",
+		RequiredFalseTrait = "FamedDuetTrait",
 		PropertyChanges =
 		{
 			{
@@ -1864,6 +1935,7 @@ OlympusLootData.ApolloUpgrade = {
 		LootRejectionAnimation = "BoonDissipateA_Apollo",
 
 		RequiredMinCompletedRuns = 1,
+		RequiredTextLines = { "ArtemisFirstPickUp" },
 
 		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 
@@ -1884,7 +1956,7 @@ OlympusLootData.ApolloUpgrade = {
 			{
 				OneFromEachSet =
 				{
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			},
@@ -1893,7 +1965,15 @@ OlympusLootData.ApolloUpgrade = {
 				OneFromEachSet =
 				{
 					{ "ApolloShoutTrait" },
-					OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+					{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+				}
+			},
+			BlindDurationTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			}
 			--[[ApolloDurationTrait =
@@ -3314,7 +3394,15 @@ OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait =
 	OneFromEachSet =
 	{
 		{ "ApolloShoutTrait" },
-		OneOf = { "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+		{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+	}
+}
+OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+		{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 	}
 }
 
@@ -3354,22 +3442,26 @@ function EndApolloBeam()
 	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
 -- Blind Functions
-ModUtil.WrapBaseFunction( "Damage", 
-	function(baseFunc, victim, triggerArgs)
+-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
+ModUtil.WrapBaseFunction( "CheckOnHitPowers", 
+
+	function(baseFunc, victim, attacker, args)
 		local missRate = 0.5
 		if not HeroHasTrait("MissChanceTrait") then
 			missRate = 0.75
 		end
-		if triggerArgs.AttackerTable and HasEffect({Id = triggerArgs.AttackerTable.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.AttackerTable.ActiveEffects))
+		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim == CurrentRun.Hero and RandomFloat(0,1) <= missRate then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 			if not HeroHasTrait("BlindDurationTrait") then
-				ClearEffect({ Id = triggerArgs.AttackerTable.ObjectId, Name = "ApolloBlind" })
+				ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 			end
+			args.DamageAmount = nil
+			args.AttackerWeaponData = nil		
+			args.IsInvulnerable = true	
 		else
-			baseFunc(victim, triggerArgs)
+			baseFunc(victim, attacker, args)
 		end
 	end
 )
@@ -3445,7 +3537,15 @@ ModUtil.WrapBaseFunction( "Kill",
 )
 
 -- For testing purposes
-OnControlPressed{ "Codex",
-    function( triggerArgs )
+ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
+	function(baseFunc)
+		if (not CanOpenCodex()) and IsSuperValid() then
+			wait(1, RoomThreadName)
+			BuildSuperMeter(CurrentRun, 100)
+			CommenceSuperMove()
+			UpdateSuperDamageBonus()
+			thread( MarkObjectiveComplete, "EXMove" )
+		end
+		baseFunc()
     end
-}
+)
