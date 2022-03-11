@@ -1,0 +1,79 @@
+{
+  Projectiles = [
+    {
+      Name = "DevotionApollo"
+      InheritFrom = "TheseusApolloBolt"
+      DetonateGraphic = null
+      DetonateSound = "null"
+      DamageLow = 5
+      DamageHigh = 5
+      DamageRadius = 100.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      TotalFuse = 10.0
+      Fuse = 0.25
+      MultiDetonate = true
+      SpawnRadius = 0
+      DieWithOwner = true
+	    InheritOwnerElapsedTimeMultiplier = false
+      DangerDistance = 0
+      Thing = {
+        Graphic = "DevotionPreAttackBase_Apollo"
+      }
+    }
+    {
+      Name = "TheseusApolloBolt"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "RadialNovaTheseusWrath-Apollo"
+      DetonateSound = "/SFX/Explosion1"
+      Type = "INSTANT"
+      DamageLow = 5
+      DamageHigh = 5
+      DamageRadius = 150.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 1.5
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 650
+      GroupName = "FX_Terrain"
+      ImmunityDuration = 0.1
+      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
+      DangerDistance = 0
+      Thing = {
+        Graphic = "TheseusGodPowerPreviewDecal_Apollo"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = {
+          Red = 0.3
+          Green = 0.0
+          Blue = 1.0
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }
+        ]
+      }
+    }
+  ]
+}

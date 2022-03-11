@@ -26,7 +26,43 @@ ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
     LoadPackages({Name = package})
     return baseFunc()
 end)
+--EnemyUpgradeData
+local OlympusEnemyUpgradeData = ModUtil.Entangled.ModData(EnemyUpgradeData)
+OlympusEnemyUpgradeData.ApolloUpgrade =
+{
+	ScreenPanel = nil,
+	UpgradeString = "LtUpgrade_Apollo",
+	--AddSpecialWeapons = { ContinuousWeapon = "DevotionZeus" },
+	LieutenantsOnly = true,
+	Hidden = true,
+	PropertyChanges = { },
+}
+--UnitSetData
+local OlympusUnitSetData = ModUtil.Entangled.ModData(UnitSetData)
+OlympusUnitSetData.Enemies.ApolloUpgradeRoomWeapon =
+{
+	InheritFrom = { "PassiveRoomWeapon" },
 
+	DefaultAIData =
+	{
+		DeepInheritance = true,
+		PreAttackDuration = 0.0,
+		FireDuration = 0.0,
+		PostAttackDuration = 0.0,
+		PostAttackCooldownMin = 0.9,
+		PostAttackCooldownMax = 1.2,
+		CreateOwnTargetFromOriginalTarget = true,
+		RandomTargetAngle = true,
+		TargetOffsetDistanceMin = 150,
+		TargetOffsetDistanceMax = 350,
+		TeleportToTargetId = true,
+	},
+
+	WeaponOptions =
+	{
+		"DevotionApollo",
+	},
+}
 --WeaponData
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 OlympusWeaponData.ApolloShoutWeapon = {
@@ -59,6 +95,14 @@ OlympusWeaponData.ApolloBeamWeapon = {
 			MetalObstacle = "/SFX/ArrowMetalStoneClang",
 			BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
 		},
+	},
+}
+OlympusWeaponData.DevotionApollo =
+{
+	HitSimSlowParameters =
+	{
+		{ ScreenPreWait = 0.02, Fraction = 0.01, LerpTime = 0 },
+		{ ScreenPreWait = 0.02, Fraction = 1.0, LerpTime = 0 },
 	},
 }
 --BoonInfoScreenData
@@ -1427,10 +1471,10 @@ OlympusTraitData.FountainDefenseTrait =
 		MinMultiplier = 0.1,
 		ToNearest = 0.01,
 		SourceIsMultiplier = true,
-		IdenticalMultiplier =
+		IdenticalMultiplier = 
 		{
-			Value = DuplicateMultiplier,
-		},
+			Value = -0.5,
+		},		
 	},
 	AccumulatedFountainDefenseBonus = 1,
 	AddIncomingDamageModifiers =
@@ -1752,6 +1796,81 @@ OlympusTraitData.ApolloHealTrait =
 		  },
     }
 }
+OlympusTraitData.RerollBoonTrait = -- Future Sight
+{
+	InheritFrom = { "ShopTier1Trait" },
+	RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
+	RequiredMetaUpgradeUnlocked = "RerollPanelMetaUpgrade",
+	Icon = "Boon_Apollo_10",
+	RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
+	BoonCount = { 
+		BaseValue = 1
+	},
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 5,
+		},
+		Rare =
+		{
+			Multiplier = 4,
+		},
+		Epic =
+		{
+			Multiplier = 3,
+		},
+		Heroic =
+		{
+			Multiplier = 2,
+		}
+	},
+	ExtractValues =
+	{
+		{
+			Key = "BoonCount",
+			ExtractAs = "TooltipBoonCount",
+		}
+	}
+}
+OlympusTraitData.RerollObolTrait = -- Golden Fleece
+{
+	InheritFrom = { "ShopTier1Trait" },
+	RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
+	RequiredMetaUpgradeUnlocked = "RerollMetaUpgrade",
+	Icon = "GodMode",--"Boon_Apollo_12",
+	RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
+	ObolCount = { 
+		BaseValue = 1
+	},
+	RarityLevels =
+	{
+		Common =
+		{
+			Multiplier = 300,
+		},
+		Rare =
+		{
+			Multiplier = 250,
+		},
+		Epic =
+		{
+			Multiplier = 200,
+		},
+		Heroic =
+		{
+			Multiplier = 150,
+		}
+	},
+	ExtractValues =
+	{
+		{
+			Key = "ObolCount",
+			ExtractAs = "TooltipObolCount",
+		}
+	}
+}
+
 OlympusTraitData.MissChanceTrait =
 {
 	Icon = "Boon_Apollo_14",
@@ -1941,7 +2060,7 @@ OlympusLootData.ApolloUpgrade = {
 
 		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
 		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
+		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
 		Consumables = { },
 
 		LinkedUpgrades =
@@ -3428,14 +3547,12 @@ OlympusGiftData.ApolloUpgrade =
 
 -- Shout Functions
 function ApolloShout()
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Shout"))
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 	FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 	FireWeaponFromUnit({ Weapon = "LaserEnabledWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 	SetUnitInvulnerable( CurrentRun.Hero , "Invulnerable" )
 end
 function EndApolloBeam()
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("End Shout"))
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
 	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusStun" })
@@ -3464,6 +3581,55 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 			baseFunc(victim, attacker, args)
 		end
 	end
+)
+-- Prophecy and Sight
+ModUtil.WrapBaseFunction( "StartNewRun", 
+	function(baseFunc, prevRun, args)
+		baseFunc(prevRun, args)
+		CurrentRun.RerollBoonTracker = 0
+		CurrentRun.RerollObolTracker = 0
+		return CurrentRun
+	end
+)
+
+ModUtil.WrapBaseFunction( "AddMoney", 
+	function(baseFunc, amount, source)
+		baseFunc(amount, source)	
+		if amount == nil or round( amount ) <= 0 then
+			return
+		end
+		if HeroHasTrait("RerollObolTrait") then
+			if(not CurrentRun.RerollObolTracker) then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Doesnt exist"))
+				return
+			end
+			local count = GetTotalHeroTraitValue("ObolCount")
+			CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker + amount
+			if(CurrentRun.RerollObolTracker >= count) then
+				local times = math.floor(CurrentRun.RerollObolTracker/count);
+				AddRerolls( times, source, { IgnoreMetaUpgrades = true } )
+				CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker - (times * count)
+			end
+		end
+	end
+)
+ModUtil.WrapBaseFunction( "HandleLootPickup", 
+function(baseFunc, currentRun, loot)
+	baseFunc(currentRun, loot)
+	if (not loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then
+		if(not CurrentRun.RerollBoonTracker) then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Doesnt exist"))
+			return
+		end
+		CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
+		local count = GetTotalHeroTraitValue("BoonCount")
+		if(CurrentRun.RerollBoonTracker >= count) then
+			local times = math.floor(CurrentRun.RerollBoonTracker/count);
+			AddRerolls( times, source, { IgnoreMetaUpgrades = true } )
+			CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
+		end
+	end
+end
 )
 -- Fountain Coin/Defense Functions
 function FountainDefensePresentation()
@@ -3513,26 +3679,17 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 		end
 	end
 }
-
 -- Song of Healing functions
 ModUtil.WrapBaseFunction( "Kill", 
 	function(baseFunc, victim, triggerArgs)
-		local isBlinded = false
-		isBlinded = HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" })
-
-		baseFunc(victim, triggerArgs)
-
-		local hasApolloHealTrait = false
-		local dropChances = 0
-		for k, traitData in pairs(CurrentRun.Hero.Traits) do
-			if traitData.ApolloHealDropChance then
-				hasApolloHealTrait = true
-				dropChances = GetTotalHeroTraitValue("ApolloHealDropChance")
-			end
-		end 
-		if hasApolloHealTrait and RandomChance(dropChances) and isBlinded then
-			DropHealth("HealDropMinor", victim.ObjectId)
+		if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
+			victim.HealDropOnDeath = {
+				Name = "HealDropMinor",
+				Radius = 50,
+				Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
+			}
 		end
+		baseFunc(victim, triggerArgs)
 	end
 )
 

@@ -1,0 +1,12 @@
+{
+  Units = [
+    {
+      Name = "ApolloUpgradeRoomWeapon"
+      InheritFrom = "PassiveRoomWeapon"
+      DisplayInEditor = true
+      Thing = {
+        EditorOutlineDrawBounds = false
+      }
+    }
+  ]
+}

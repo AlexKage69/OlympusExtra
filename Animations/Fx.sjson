@@ -2760,6 +2760,69 @@
       Loop = true
       DieWithOwner = true
     }
+    /* Theseus - Wrath */
+    {
+      Name = "RadialNovaTheseusWrath-Apollo"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      VisualFx = "RadialNovaSwordParry-Apollo"
+      EndBlue = 1.0
+      EndRed = 0.2
+      StartBlue = 1.0
+      StartGreen = 0.3
+      StartRed = 0.7
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 16
+      VisualFxIntervalMax = 0.03
+      VisualFxIntervalMin = 0.01
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "TheseusWrathSpikeApollo"
+        }
+        {
+          Name = "QuickFlashOrange"
+        }]
+    }
+    {
+      Name = "RadialNovaApollo"
+      InheritFrom = "RadialNova"
+      LocationZFromOwner = "Take"
+      GroupName = "Standing"
+      Color = {
+        Red = 0.5
+        Green = 0.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "TheseusWrathSpikeApollo"
+      InheritFrom = "TheseusWrathSpike"
+      CreateAnimations = [
+        {
+          Name = "RadialNovaApollo"
+        }]
+      Color = 
+      {
+        Red = 0.5
+        Green = 0.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "TheseusGodPowerPreviewDecal_Apollo"
+      InheritFrom = "TheseusGodPowerPreviewDecalDark"
+      Color = 
+      {
+        Red = 0.3
+        Green = 0.0
+        Blue = 1.0
+      }
+    }
     /* Boon FX */
     {
       Name = "BoonDropApollo"
