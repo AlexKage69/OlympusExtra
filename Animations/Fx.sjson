@@ -2799,7 +2799,7 @@
     {
       Name = "BoonDropApolloIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Spin\AphroditeIconSpin\AphroditeIconSpin"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Spin\AthenaIconSpin\AthenaIconSpin"
     }
     {
       Name = "ZagreusDashNoCollide_Apollo"

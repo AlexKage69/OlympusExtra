@@ -26,9 +26,14 @@ Run modimporter as usual.
 
 
 ## Extracting Assets
+
+In the `Content/Win/Packages` directory:
+
 ```
 deppth ex GUI.pkg -s
 ```
+
+Replace GUI.pkg with any pkg you want to extract
 
 
 
