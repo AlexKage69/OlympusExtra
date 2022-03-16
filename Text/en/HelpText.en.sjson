@@ -167,6 +167,26 @@
 			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
+			Id = "RerollObolTrait"
+			DisplayName = "Golden Fleece"
+			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Randomly alter the reward for the next chamber"
+		}
+		{
+			Id = "RerollObolTrait_Initial"
+			DisplayName = "Golden Fleece"
+			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Randomly alter the reward for the next chamber"
+		}	
+		{
+			Id = "RerollBoonTrait"
+			DisplayName = "Future Sight"
+			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices"
+		}
+		{
+			Id = "RerollBoonTrait_Initial"
+			DisplayName = "Future Sight"
+			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices"
+		}		
+		{
 			Id = "ApolloRetaliateTrait"
 			DisplayName = "Icarus Wings"
 			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
@@ -243,7 +263,10 @@
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"
 			Description = "Your {$Keywords.ApolloBlind} effects do not expire when foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
-		}
-		
+		}	
+		{
+			Id = "LtUpgrade_Apollo"
+			DisplayName = "Blessed foes now blind you."
+		}	
 	]
 }
