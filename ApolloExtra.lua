@@ -38,24 +38,24 @@ OlympusEnemyUpgradeData.ApolloUpgrade =
 	PropertyChanges = { },
 }
 --UnitSetData
-local OlympusUnitSetData = ModUtil.Entangled.ModData(UnitSetData)
-OlympusUnitSetData.Enemies.ApolloUpgradeRoomWeapon =
-{
+local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
+OlympusEnemyData.ApolloUpgradeRoomWeapon = {
 	InheritFrom = { "PassiveRoomWeapon" },
 
 	DefaultAIData =
 	{
 		DeepInheritance = true,
-		PreAttackDuration = 0.0,
+		PreAttackDuration = 0,
 		FireDuration = 0.0,
 		PostAttackDuration = 0.0,
-		PostAttackCooldownMin = 0.9,
-		PostAttackCooldownMax = 1.2,
+		PostAttackCooldownMin = 6.5,
+		PostAttackCooldownMax = 7.5,
 		CreateOwnTargetFromOriginalTarget = true,
 		RandomTargetAngle = true,
-		TargetOffsetDistanceMin = 150,
-		TargetOffsetDistanceMax = 350,
+		TargetOffsetDistanceMin = 0,
+		TargetOffsetDistanceMax = 0,
 		TeleportToTargetId = true,
+		TargetFriends = true,
 	},
 
 	WeaponOptions =
@@ -99,10 +99,11 @@ OlympusWeaponData.ApolloBeamWeapon = {
 }
 OlympusWeaponData.DevotionApollo =
 {
+	HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
 	HitSimSlowParameters =
 	{
 		{ ScreenPreWait = 0.02, Fraction = 0.01, LerpTime = 0 },
-		{ ScreenPreWait = 0.02, Fraction = 1.0, LerpTime = 0 },
+		{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
 	},
 }
 --BoonInfoScreenData

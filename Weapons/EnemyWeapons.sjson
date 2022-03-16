@@ -1,5 +1,6 @@
 {
   Weapons = [
+    "_append"
     {
       Name = "DevotionApollo"
       InheritFrom = "1_BasePlayerSlowWeapon"

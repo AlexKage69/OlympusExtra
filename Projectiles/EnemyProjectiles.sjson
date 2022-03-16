@@ -1,38 +1,17 @@
 {
   Projectiles = [
-    {
-      Name = "DevotionApollo"
-      InheritFrom = "TheseusApolloBolt"
-      DetonateGraphic = null
-      DetonateSound = "null"
-      DamageLow = 5
-      DamageHigh = 5
-      DamageRadius = 100.0
-      DamageRadiusScaleY = 0.6
-      ImpactVelocity = 0
-      TotalFuse = 10.0
-      Fuse = 0.25
-      MultiDetonate = true
-      SpawnRadius = 0
-      DieWithOwner = true
-	    InheritOwnerElapsedTimeMultiplier = false
-      DangerDistance = 0
-      Thing = {
-        Graphic = "DevotionPreAttackBase_Apollo"
-      }
-    }
+      "_append"
     {
       Name = "TheseusApolloBolt"
       InheritFrom = "1_BaseEnemyMagicProjectile"
       DetonateGraphic = "RadialNovaTheseusWrath-Apollo"
-      DetonateSound = "/SFX/Explosion1"
       Type = "INSTANT"
-      DamageLow = 5
-      DamageHigh = 5
-      DamageRadius = 150.0
+      DamageLow = 10
+      DamageHigh = 10
+      DamageRadius = 250.0
       DamageRadiusScaleY = 0.6
       ImpactVelocity = 0
-      Fuse = 1.5
+      Fuse = 0.75
       AffectsFriends = false
       AffectsSelf = false
       AffectsEnemies = true
@@ -40,18 +19,17 @@
       CheckObstacleImpact = false
       CanCrit = false
       MaxVictimZ = 9999
-      SpawnRadius = 650
-      GroupName = "FX_Terrain"
-      ImmunityDuration = 0.1
+      SpawnRadius = 0
+      GroupName = "FX_Terrain_Add"
       DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
       DangerDistance = 0
       Thing = {
-        Graphic = "TheseusGodPowerPreviewDecal_Apollo"
+        Graphic = "DevotionPreAttackBase_Apollo"
         RotateGeometry = false
         Scale = 1.0
         Color = {
-          Red = 0.3
-          Green = 0.0
+          Red = 0.0
+          Green = 0.05
           Blue = 1.0
           Opacity = 1.0
         }
@@ -71,8 +49,36 @@
           {
             X = -32
             Y = 0
-          }
-        ]
+          }]
+      }
+    }
+    {
+      Name = "DevotionApollo"
+      InheritFrom = "TheseusApolloBolt"
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 350.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 1.3
+      Heal = 50
+      DieWithOwner = true
+      InheritOwnerElapsedTimeMultiplier = false
+      AffectsFriends = true
+      AffectsEnemies = true
+      AffectsSelf = false
+      DangerDistance = 0
+      Effects = {
+        Name = "ZagreusApolloBlind"
+        Type = "INVULNERABLE"
+        Duration = 4.0
+        Modifier = 1.0
+        FrontFx = "ApolloHoverLoop"
+        OnlyAffectName = "_PlayerUnit"
+        Active = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
       }
     }
   ]

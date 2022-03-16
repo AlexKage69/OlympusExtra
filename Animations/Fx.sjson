@@ -2806,8 +2806,7 @@
         {
           Name = "RadialNovaApollo"
         }]
-      Color = 
-      {
+      Color = {
         Red = 0.5
         Green = 0.0
         Blue = 1.0
@@ -2816,12 +2815,83 @@
     {
       Name = "TheseusGodPowerPreviewDecal_Apollo"
       InheritFrom = "TheseusGodPowerPreviewDecalDark"
-      Color = 
-      {
+      Color = {
         Red = 0.3
         Green = 0.0
         Blue = 1.0
       }
+    }
+    {
+      Name = "DevotionPreAttackBase_Apollo"
+      InheritFrom = "DevotionPreAttackBase"
+      VisualFx = "DevotionPreAttackFx_Apollo"
+      CreateAnimationOnEnd = "DevotionPreAttackBaseEnd_Apollo"
+      Red = 1
+      Green = 1
+      Blue = 1
+      EndRed = 1
+      EndGreen = 0.9
+      EndBlue = 0.3
+      StartRed = 0
+      StartGreen = 0.05
+      StartBlue = 1
+      ColorFromOwner = "Ignore"
+      EndAlpha = 0.2
+      Sound = "/Leftovers/Menu Sounds/ChoirLoop"
+      StopSoundOnFinishFade = 0.2
+    }
+    {
+      Name = "DevotionPreAttackFx_Apollo"
+      InheritFrom = "DevotionPreAttackFx"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "DevotionRings_Apollo"
+        }
+        {
+          Name = "DevotionLines_Apollo"
+        }]
+    }
+    {
+      Name = "DevotionLines_Apollo"
+      InheritFrom = "DevotionLines"
+      Red = 1
+      Green = 1
+      Blue = 1
+      EndRed = 1
+      EndGreen = 0.9
+      EndBlue = 0.3
+      StartRed = 0
+      StartGreen = 0.05
+      StartBlue = 1
+      ColorFromOwner = "Ignore"
+    }
+    {
+      Name = "DevotionRings_Apollo"
+      InheritFrom = "DevotionRings"
+      Red = 1
+      Green = 1
+      Blue = 1
+      EndRed = 1
+      EndGreen = 0.9
+      EndBlue = 0.3
+      StartRed = 0
+      StartGreen = 0.05
+      StartBlue = 1
+      ColorFromOwner = "Ignore"
+    }
+    {
+      Name = "DevotionPreAttackBaseEnd_Apollo"
+      InheritFrom = "DevotionPreAttackBaseEnd"
+      Red = 1
+      Green = 1
+      Blue = 1
+      StartRed = 1
+      StartGreen = 0.9
+      StartBlue = 0.3
+      EndRed = 0
+      EndGreen = 0.05
+      EndBlue = 1
     }
     /* Boon FX */
     {
