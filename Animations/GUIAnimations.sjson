@@ -177,14 +177,14 @@
     {
       Name = "Boon_Apollo_10_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\ApolloEye_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_10_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\ApolloEye_large"
       EndFrame = 1
       StartFrame = 1
     }
@@ -233,14 +233,14 @@
     {
       Name = "Boon_Apollo_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Apollo\ApolloBlind_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Apollo_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Apollo\ApolloBlind_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
