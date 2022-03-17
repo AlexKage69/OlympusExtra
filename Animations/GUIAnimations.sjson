@@ -245,33 +245,117 @@
       StartFrame = 1
     }
     {
+      Name = "Apollo_Aphrodite_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Aphrodite_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Ares_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Ares_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
       Name = "Apollo_Artemis_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\Duos\ApolloArtemis_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Apollo_Artemis_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\Duos\ApolloArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Athena_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Athena_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloAthena_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Apollo_Demeter_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\Duos\ApolloDemeter_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Apollo_Demeter_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Apollo\Duos\ApolloDemeter_01"
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Apollo_Dionysus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Dionysus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Poseidon_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Poseidon_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    } 
+    {
+      Name = "Apollo_Zeus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Zeus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }     
     {
       Name = "Keepsake_Apollo_Max"
       InheritFrom = "KeepsakeMax_Corner"
