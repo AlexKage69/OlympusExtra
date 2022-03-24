@@ -65,11 +65,12 @@ OlympusEnemyData.ApolloUpgradeRoomWeapon = {
 }
 --WeaponData
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
+local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 OlympusWeaponData.ApolloShoutWeapon = {
 	BlockWrathGain = true,
 }
 OlympusWeaponData.ApolloBeamWeapon = {
-	InheritFrom = { "WrathWeapon", },
+	InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 	HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
 	HitSimSlowParameters =
 	{
@@ -106,6 +107,12 @@ OlympusWeaponData.DevotionApollo =
 		{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
 	},
 }
+OlympusEffectData.ApolloBlind =
+{
+	OnApplyFunctionName = "ApolloBlindApply",
+	OnClearFunctionName = "ApolloBlindClear",
+}
+
 --BoonInfoScreenData
 local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
 table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
@@ -130,7 +137,6 @@ OlympusProjectileData.ApolloShoutWeapon = {
 OlympusProjectileData.AreaWeakenApollo = {
 	InheritFrom = { "ApolloColorProjectile" },
 }
-
 -- GameData
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 OlympusGameData.ApolloBasicPickUpTextLines =
@@ -2522,12 +2528,11 @@ OlympusLootData.ApolloUpgrade = {
 				{ Cue = "/VO/ZagreusField_0268", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 4.23 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Artemis? No, wait. Something is wrong. In the name of Hades! Olympus, I accept this message." },
+					Text = "Artemis? No, wait. Something is different. In the name of Hades! Olympus, I accept this message." },
 				{ Cue = "/VO/Apollo_0001",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Emote = "PortraitEmoteAffection",
 					Text = "Hi there, young fella. Everyone is talking about you around here. I just had to see it for myself. Here take this." },
 			},
 			ApolloMiscPickup01 =
@@ -2692,7 +2697,6 @@ OlympusLootData.ApolloUpgrade = {
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0027",
-					Emote = "PortraitEmoteCheerful",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "No need to worry any longer, dearest! I bring you strength and comfort, and I shall be watching every step of yours most carefully." },
 			},
@@ -3574,6 +3578,7 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 			if not HeroHasTrait("BlindDurationTrait") then
 				ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
+				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
 			end
 			args.DamageAmount = nil
 			args.AttackerWeaponData = nil		
@@ -3583,6 +3588,15 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 		end
 	end
 )
+function ApolloBlindApply( triggerArgs )
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs.TriggeredByTable))
+end
+function ApolloBlindClear(triggerArgs)
+	if HeroHasTrait("BlindDurationTrait") then
+		BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+	end
+end
 -- Prophecy and Sight
 ModUtil.WrapBaseFunction( "StartNewRun", 
 	function(baseFunc, prevRun, args)
@@ -3695,7 +3709,7 @@ ModUtil.WrapBaseFunction( "Kill",
 )
 
 -- For testing purposes
-ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
+--[[ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
 	function(baseFunc)
 		if (not CanOpenCodex()) and IsSuperValid() then
 			wait(1, RoomThreadName)
@@ -3706,4 +3720,4 @@ ModUtil.WrapBaseFunction( "BeginOpeningCodex",
 		end
 		baseFunc()
     end
-)
+)]]
