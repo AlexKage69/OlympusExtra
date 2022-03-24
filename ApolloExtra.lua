@@ -2222,7 +2222,7 @@ OlympusLootData.ApolloUpgrade = {
 					StartSound = "/SFX/AresWrathBattle",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-					Text = "Mortals are so bent on clinging to their lives, that many among them would gladly kill for it. The surge of emotion which they feel... one passion is no different from another, Lady Apollo, dear." },
+					Text = "Mortals are so bent on clinging to their lives, that many among them would gladly kill for it. The surge of emotion which they feel... one passion is no different from another, Lord Apollo, dear." },
 			},
 			ApolloWithArtemis01 =
 			{
@@ -2261,7 +2261,7 @@ OlympusLootData.ApolloUpgrade = {
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
 					Emote = "PortraitEmoteCheerful",
-					Text = "{#DialogueItalicFormat}Ah, haha{#PreviousFormat}, no need to flatter me like that, there, Lady Apollo! Beauty's almost entirely within the mind, I'm sure! And in the muscles and the jawline and the winning smile and, well, who am I to tell you, yeah?" },
+					Text = "{#DialogueItalicFormat}Ah, haha{#PreviousFormat}, no need to flatter me like that, there, Lord Apollo! Beauty's almost entirely within the mind, I'm sure! And in the muscles and the jawline and the winning smile and, well, who am I to tell you, yeah?" },
 			},
 			ApolloWithDemeter01 =
 			{
@@ -2291,7 +2291,7 @@ OlympusLootData.ApolloUpgrade = {
 				{ Cue = "/VO/ZagreusField_4339", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "OK, I think I'm ready. In the name of Hades! Olympus, this is an official message! And I hope it finds you well, Lady Apollo!" },
+					Text = "OK, I think I'm ready. In the name of Hades! Olympus, this is an official message! And I hope it finds you well, Lord Apollo!" },
 				{ Cue = "/VO/Apollo_0207",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
@@ -3277,7 +3277,7 @@ OlympusLootData.ApolloUpgrade = {
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Lady Apollo, I am truly blessed simply to have made your acquaintance, so, this is for you." },
+					Text = "Lord Apollo, I am truly blessed simply to have made your acquaintance, so, this is for you." },
 				{ Cue = "/VO/Apollo_0037",
 					PortraitExitWait = 1.0,
 					Emote = "PortraitEmoteAffection",
@@ -3293,7 +3293,7 @@ OlympusLootData.ApolloUpgrade = {
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "My lady Apollo, if not for our acquaintance, I am certain that my days or nights would be much drearier indeed." },
+					Text = "My Lord Apollo, if not for our acquaintance, I am certain that my days or nights would be much drearier indeed." },
 				{ Cue = "/VO/Apollo_0034",
 					PortraitExitWait = 1.0,
 					Emote = "PortraitEmoteAffection",
@@ -3309,7 +3309,7 @@ OlympusLootData.ApolloUpgrade = {
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Lady Apollo, I'm afraid there really isn't much here worthy of you, but perhaps this can suffice." },
+					Text = "Lord Apollo, I'm afraid there really isn't much here worthy of you, but perhaps this can suffice." },
 				{ Cue = "/VO/Apollo_0035",
 					PortraitExitWait = 1.0,
 					Emote = "PortraitEmoteAffection",
@@ -3373,7 +3373,7 @@ OlympusLootData.ApolloUpgrade = {
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "My lady Apollo, once more you've graced me with your presence and your favor, which inspire the best from me. Let this modest gift of Ambrosia signify I'm forever in your debt." },
+					Text = "My lord Apollo, once more you've graced me with your presence and your favor, which inspire the best from me. Let this modest gift of Ambrosia signify I'm forever in your debt." },
 				{ Cue = "/VO/Apollo_0205",
 					PortraitExitWait = 1.0,
 					Emote = "PortraitEmoteAffection",
@@ -3465,11 +3465,11 @@ OlympusLootData.ApolloUpgrade = {
 			RequiresLastUpgradeSwapped = true,
 			UsePlayerSource = true,
 
-			-- Lady Apollo, how can I say no?
+			-- Lady Aphrodite, how can I say no?
 			{ Cue = "/VO/ZagreusField_6000" },
 			-- A lovely offer, Apollo.
 			{ Cue = "/VO/ZagreusField_6000" },
-			-- Lady Apollo, I gladly accept.
+			-- Lady Aphrodite, I gladly accept.
 			{ Cue = "/VO/ZagreusField_6000" },
 		},
 

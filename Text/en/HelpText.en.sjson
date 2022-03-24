@@ -136,7 +136,7 @@
 		{
 			Id = "FountainDefenseTrait",
 			DisplayName = "Melodic Concert"
-			Description = "Using a {$Keywords.Fountain} gives you bonus damage resist from faraway enemies. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Using a {$Keywords.Fountain} gives you bonus damage resist from faraway enemies. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Resist per {$Keywords.Fountain}: \Column 380 {#PreviousFormat}{$TooltipData.TooltipFountainBonus:P}"
     	}
 		{
 			Id = "FountainDefenseText",
@@ -149,12 +149,12 @@
 		{
 			Id = "FountainDefenseTrait_Initial",
 			DisplayName = "Melodic Concert"
-			Description = "Using a {$Keywords.Fountain} gives you damage resist from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Reduced Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Using a {$Keywords.Fountain} gives you damage resist from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Resist per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipFountainBonus:P}"
     	}
 		{
 			Id = "FountainDefenseTrait_Tray",
 			DisplayName = "Melodic Concert"
-			Description = "Using a {$Keywords.Fountain} gives you damage resost from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Reduced Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Using a {$Keywords.Fountain} gives you damage resost from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Resist per {$Keywords.Fountain}: \Column 380 {$TooltipData.TooltipFountainBonus:P}"
     	}
 		{
 			Id = "ApolloBlindedTrait"
@@ -221,12 +221,12 @@
     }
 		{
 			Id = "ApolloHealTrait"
-			DisplayName = "Soothing Song"
+			DisplayName = "Panacea's Elixir"
 			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
-			DisplayName = "Soothing Song"
+			DisplayName = "Panacea's Elixir"
 			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
