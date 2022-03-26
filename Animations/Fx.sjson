@@ -2935,6 +2935,48 @@
       FilePath = "GUI\Screens\BoonSelectSymbols\Spin\AthenaIconSpin\AthenaIconSpin"
     }
     {
+      Name = "BoonDissipateA_Apollo"
+      InheritFrom = "BoonDissipateA"
+      Red = 0.3
+      Green = 1
+      Blue = 0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "BoonDissipateB_Apollo"
+        }
+        {
+          Name = "BoonDissipateVertical_Apollo"
+        }
+        {
+          Name = "BoonDissipateGlow_Apollo"
+        }]
+    }
+    {
+      Name = "BoonDissipateB_Apollo"
+      InheritFrom = "BoonDissipateB"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "BoonDissipateVertical_Apollo"
+      InheritFrom = "BoonDissipateVertical"
+      Hue = 0.4
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+      AddColor = true
+    } 
+    {
+      Name = "BoonDissipateGlow_Apollo"
+      InheritFrom = "BoonDissipateGlow"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    /* Dash */
+    {
       Name = "ZagreusDashNoCollide_Apollo"
       InheritFrom = "ZagreusDashNoCollide"
       ChainTo = "ZagreusDashCollide_Apollo"
@@ -3001,26 +3043,6 @@
         }]
     }
     {
-      Name = "ApolloHoverLoop"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Animations\Shade\Naked\ShadeNaked"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      AddColor = true
-      EaseOut = 1.0
-      EndFrame = 32
-      Red = 1.0
-      Green = 1.0
-      Blue = 1.0
-      Scale = 0.8
-      Loop = true
-      NumFrames = 32
-      StartFrame = 1
-      DieWithOwner = true
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
-    }
-    {
       Name = "BlinkTrailVerticalB-Apollo"
       InheritFrom = "BlinkTrailVerticalB"
       ChildAnimation = "BlinkTrailFlat-Apollo"
@@ -3055,6 +3077,27 @@
       Duration = 0.4
       Scale = 0.5
     }
+    /* Blind Fx */
+    {
+      Name = "ApolloHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Animations\Shade\Naked\ShadeNaked"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.7
+      Green = 0.7
+      Blue = 0.7
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
     {
       Name = "QuickFlashOrange"
       InheritFrom = "QuickFlash"
@@ -3076,6 +3119,7 @@
       Scale = 0.5
       OffsetZ = 90
     }
+    /* Cast */
     {
       Name = "ApolloLobProjectile"
       CreateAnimation = "ApolloLobProjectileDark"
@@ -3226,5 +3270,6 @@
       StartAlpha = 0.5
       EndAlpha = 0.1
     } 
+    /* Character Fx */
   ]
 }
