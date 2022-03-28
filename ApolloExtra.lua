@@ -1839,7 +1839,7 @@ OlympusTraitData.RerollObolTrait = -- Golden Fleece
 	InheritFrom = { "ShopTier1Trait" },
 	RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 	RequiredMetaUpgradeUnlocked = "RerollMetaUpgrade",
-	Icon = "GodMode",--"Boon_Apollo_12",
+	Icon = "Boon_Apollo_12",--"Boon_Apollo_12",
 	RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
 	ObolCount = { 
 		BaseValue = 1
@@ -2034,7 +2034,40 @@ OlympusTraitData.FamedDuetTrait =
 			}
 		}		
 	}
-
+OlympusTraitData.WarSongTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Ares_01",
+		RequiredFalseTraits = { "WarSongTrait" },
+		PropertyChanges =
+		{
+			{
+				TraitName = "ApolloRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "ApolloField",
+				EffectName = "DelayedDamage",
+				EffectProperty = "Active",
+				ChangeValue = true
+			},
+			{
+				TraitName = "ApolloRangedTrait",
+				WeaponName = "RangedWeapon",
+				ProjectileProperty = "Graphic",
+				ProjectileName = "ApolloField",
+				ChangeValue = "DemeterIceStrikeIndicator",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "ApolloRangedTrait",
+				WeaponName = "RangedWeapon",
+				ProjectileProperty = "Graphic",
+				ProjectileName = "ApolloLobProjectile",
+				ChangeValue = "DemeterPoseidonIceSpark",
+				ExcludeLinked = true,
+			},
+		},	
+		
+	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -2088,6 +2121,14 @@ OlympusLootData.ApolloUpgrade = {
 					{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
 				}
 			},
+			WarSongTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloRangedTrait" },
+					{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
+				}
+			},
 			BlindDurationTrait = 
 			{
 				OneFromEachSet =
@@ -2095,7 +2136,7 @@ OlympusLootData.ApolloUpgrade = {
 					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
-			}
+			},
 			--[[ApolloDurationTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
@@ -3515,6 +3556,14 @@ OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait =
 	{
 		{ "ApolloShoutTrait" },
 		{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+	}
+}
+OlympusLootData.AresUpgrade.LinkedUpgrades.WarSongTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloRangedTrait" },
+		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 	}
 }
 OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 

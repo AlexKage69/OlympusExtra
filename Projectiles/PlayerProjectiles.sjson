@@ -145,12 +145,42 @@
 	  ProjectileNumOpacityMultiplier = 0.3
       Effects = [
         {
-          Name = "RushGrip"
-          Type = "GRIP"
-          Duration = 0.1
-          Modifier = 0.5
-          HaltOnEnd = true
+          Name = "ApolloBlind"
+          IgnoreName = "_PlayerUnit"
+          FrontFx = "ApolloHoverLoop"
+          BackFx = "null"
+          Duration = 5
+          Modifier = 0.1
+          Active = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        },
+        {
+          Name = "IncreaseDamageTaken"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_TAKEN"
+          Duration = 4
+          Modifier = 1
           Active = false
+          TimeModifierFraction = 0
+        },
+        {
+          Name = "DelayedDamage"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_OVER_TIME"
+          Amount = 100.0
+          Stacks = false
+          ExtendDurationOnReapply = false
+          Duration = 1.1
+          FrontFx = "AresSwordHoverLoop"
+          BackFx = "null"
+          Active = false
+          TimeModifierFraction = 0
+          ExpiringTimeThreshold = 0.26
+          ExpiringFrontFx = "AresSwordHoverDrop"
+          ConsumedFx = "AresSwordHoverExplode"
+          DamageOnExpire = true
+          IsVulnerabilityEffect = true
         }
       ]
       Thing = {
