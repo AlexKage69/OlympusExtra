@@ -184,7 +184,7 @@
         }
       ]
       Thing = {
-        Graphic = "ApolloCloudB"
+        Graphic = "ApolloStrikeIndicator"
         OffsetZ = 0
         Grip = 999999
         Points = [

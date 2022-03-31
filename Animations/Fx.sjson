@@ -3135,6 +3135,170 @@
       }
     }    
     {
+      Name = "ApolloStrikeIndicator"
+      Type = "Book"
+      FilePath = "Fx\DemeterTurret\DemeterTurret"
+      NumFrames = 30
+      PlaySpeed = 120
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      Scale = 0.45
+      AddColor = true
+      StartRed = 1.0
+      StartGreen = 0.65
+      StartBlue = 0.0
+      EndRed = 0.999
+      EndGreen = 0.999
+      EndBlue = 0.999
+      PingPongColor = true
+      LocationZFromOwner = "Take"
+      ChildAnimation = "ApolloStrikeAreaA"
+      Loop = true
+      VisualFx = "ApolloSparkle-IceStrike"
+      VisualFxIntervalMin = 0.02
+      VisualFxIntervalMax = 0.04
+      CreateAnimation = "ApolloStrikeIndicatorGlow"
+      FlipHorizontal = true
+      Sound = "/SFX/Player Sounds/DemeterBlizzardVortex2"
+      StopSoundOnFinishFade = 0.2
+      ChainTo = "ApolloStrikeIndicator_Fade"
+    }
+    {
+      Name = "ApolloStrikeIndicator_Fade"
+      InheritFrom = "ApolloStrikeIndicator"
+      Loop = false
+      StartScale = 1
+      EndScale = 0
+      VisualFx = null
+      Sound = null
+      Duration = 0.4
+      ChainTo = null
+      CreateAnimation = null
+      ChildAnimation = "ApolloStrikeAreaA_Fade"
+    }
+    {
+      Name = "ApolloStrikeIndicatorGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      GroupName = "FX_Standing_Add"
+      ScaleFromOwner = "Ignore"
+      StartRed = 1.0
+      StartGreen = 0.65
+      StartBlue = 0.0
+      EndRed = 0.5
+      EndGreen = 0.3
+      EndBlue = 0.0
+      PingPongColor = true
+      Duration = 1
+      DieWithOwner = true
+      Scale = 1.5
+      Loop = true
+      ColorFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+    }
+    {
+      Name = "ApolloStrikeAreaA"
+      Type = "Constant"
+      FilePath = "Fx\DemeterWrathSwirl\DemeterWrathSwirlB"
+      Material = "Unlit"
+      RotationSpeed = -60
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      LocationZFromOwner = "Ignore"
+      Alpha = 0.5
+      Red = 1.0
+      Green = 0.65
+      Blue = 0.0
+      ScaleRadius = 580
+      ChildAnimation = "ApolloStrikeAreaB"
+      FlipVertical = true
+      FlipHorizontal = true
+      ChainTo = "ApolloStrikeAreaA_Fade"
+    }
+    {
+      Name = "ApolloStrikeAreaA_Fade"
+      InheritFrom = "ApolloStrikeAreaA"
+      ChainTo = null
+      StartAlpha = 1
+      EndAlpha = 0
+      Duration = 0.4
+      ChildAnimation = null
+      StartScale = 1
+      EndScale = 1.3
+      EaseIn = 0
+      EaseOut = 1
+    }
+    {
+      Name = "ApolloStrikeAreaB"
+      InheritFrom = "ApolloStrikeAreaA"
+      FilePath = "Fx\DemeterWrathSwirl\DemeterWrathSwirlC"
+      Red = 1.0
+      Green = 1.0
+      Blue = 0.5
+      RotationSpeed = -50
+      ChildAnimation = "ApolloStrikeAreaSmoke"
+    }
+    {
+      Name = "ApolloStrikeAreaB_Fade"
+      InheritFrom = "ApolloStrikeAreaB"
+      ChainTo = null
+      StartAlpha = 1
+      EndAlpha = 0
+      Duration = 0.4
+      ChildAnimation = "ApolloStrikeAreaSmoke_Fade"
+      StartScale = 1
+      EndScale = 1.3
+      EaseIn = 0
+      EaseOut = 1
+    }
+    {
+      Name = "ApolloStrikeAreaSmoke"
+      Type = "Book"
+      FilePath = "Fx\DemeterCycloneLoop\DemeterCycloneLoop"
+      NumFrames = 40
+      Material = "Unlit"
+      Loop = true
+      Alpha = 0.4
+      Red = 1.0
+      Green = 0.65
+      Blue = 0.0
+      AngleFromOwner = "Ignore"
+      ScaleRadius = 200
+      PlaySpeed = 24
+      FlipHorizontal = false
+      ScaleY = 0.75
+      OffsetZ = 30
+    }
+    {
+      Name = "ApolloStrikeAreaSmoke_Fade"
+      InheritFrom = "ApolloStrikeAreaSmoke"
+      StartAlpha = 1
+      EndAlpha = 0
+      Duration = 0.4
+      Loop = false
+      StartScale = 1
+      EndScale = 1.3
+      EaseIn = 0
+      EaseOut = 1
+    }
+    {
+      Name = "ApolloSparkle-IceStrike"
+      InheritFrom = "DemeterIceSparkle"
+      RadialOffsetMin = 40
+      RadialOffsetMax = 100
+      RadialOffsetScaleRadius = 100
+      RadialOffsetScaleY = 0.4
+      OffsetY = 0
+      VelocityMin = 20
+      VelocityMax = 200
+      Red = 1.0
+      Green = 0.65
+      Blue = 0.0
+      AngleChangeSpeed = 240
+      AngleFromOwner = "Ignore"
+      Scale = 0.4
+    }
+    {
       Name = "ApolloCloudB"
       ChainTo = "ApolloCloudBLoop"
       FilePath = "Fx\DionysusCloudB\DionysusCloudB"
