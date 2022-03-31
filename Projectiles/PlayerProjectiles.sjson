@@ -210,7 +210,7 @@
     {
       Name = "ApolloLobProjectile"
       InheritFrom = "1_BasePlayerLargeProjectile"
-      DetonateGraphic = "RadialNovaApollo"
+      DetonateGraphic = "RadialNova-Apollo"
       DetonateSound = "/SFX/PlayerHammerExplosions"
       Type = "LOB"
       DamageLow = 0
@@ -252,7 +252,7 @@
           }
         ]
         Thing = {
-          Graphic = "ApolloLobProjectile"
+          Graphic = "GunGrenade"
           Scale = 0.1
           OffsetZ = 101
           AttachedAnim = "GrenadierShadow"

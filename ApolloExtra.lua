@@ -2048,17 +2048,22 @@ OlympusTraitData.WarSongTrait =
 				EffectName = "DelayedDamage",
 				EffectProperty = "Active",
 				ChangeValue = true
-			},
-			{
-				TraitName = "ApolloRangedTrait",
-				WeaponName = "RangedWeapon",
-				ProjectileProperty = "Graphic",
-				ProjectileName = "ApolloLobProjectile",
-				ChangeValue = "GunGrenade",
-				ExcludeLinked = true,
-			},
+			}
 		},	
-		
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipCurseDamage",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				TraitName = "ApolloRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "ApolloField",
+				EffectName = "DelayedDamage",
+				EffectProperty = "Amount",
+			}
+		}
 	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
