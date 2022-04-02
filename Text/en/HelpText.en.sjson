@@ -265,6 +265,11 @@
 			Description = "Your {$Keywords.FlashBomb} inflicts {$Keywords.Curse}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Curse} Damage: \Column 380 {#PreviousFormat}{$TooltipData.TooltipCurseDamage}"
 		}	
 		{
+			Id = "HyacinthTrait"
+			DisplayName = "Hyacinth"
+			Description = "Foes inflicted with {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}."
+    	}
+		{
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"
 			Description = "Your {$Keywords.ApolloBlind} effects do not expire when foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."

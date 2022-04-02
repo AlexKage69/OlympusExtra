@@ -2071,6 +2071,27 @@ OlympusTraitData.WarSongTrait =
 			}
 		}
 	}
+OlympusTraitData.HyacinthTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Aphrodite_01",
+		RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
+		OnDamageEnemyFunction = {
+			FunctionName = "CheckHyacinthKill",
+			FunctionArgs = {
+				HyacinthDeathThreshold = 0.10,
+				ExtractValues =
+				{
+					{
+						Key = "HyacinthDeathThreshold",
+						ExtractAs = "TooltipDeathThreshold",
+						Format = "Percent",
+					},
+				}
+			}
+		},
+		PreEquipWeapons = { "HyacinthChillKill" },
+	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -2130,6 +2151,14 @@ OlympusLootData.ApolloUpgrade = {
 				{
 					{ "ApolloRangedTrait" },
 					{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
+				}
+			},
+			HyacinthTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+					{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeDashTrait", "AphroditeRangedTrait"}
 				}
 			},
 			BlindDurationTrait = 
@@ -3567,6 +3596,14 @@ OlympusLootData.AresUpgrade.LinkedUpgrades.WarSongTrait =
 		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 	}
 }
+OlympusLootData.AphroditeUpgrade.LinkedUpgrades.HyacinthTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+		{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeDashTrait", "AphroditeRangedTrait"}
+	}
+}
 OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 
 {
 	OneFromEachSet =
@@ -3754,7 +3791,38 @@ ModUtil.WrapBaseFunction( "Kill",
 	end
 )
 
--- For testing purposes
+-- Hyacinth Insta-kill function
+function CheckHyacinthKill( args, attacker, victim )
+	if attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
+		FireWeaponFromUnit({ Weapon = "DemeterChillKill", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true })
+		PlaySound({ Name = "/SFX/DemeterEnemyFreezeShatter", Id = victim.ObjectId })
+		
+		if victim.IsBoss then
+	      BossHyacinthKillPresentation( victim )
+		end
+		if victim.DeathAnimation ~= nil and not victim.ManualDeathAnimation then
+			SetAnimation({ Name = victim.DeathAnimation, DestinationId = victim.ObjectId })
+			-- @todo Notify on death animation finish
+		end
+		thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
+	end
+end
+
+function BossHyacinthKillPresentation(unit)
+	AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
+	local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
+	AdjustColorGrading({ Name = "Frozen", Duration = 0.4 })
+	CreateAnimation({ DestinationId = dropLocation, Name = "DemeterWinterHarvest" })
+	thread( PlayVoiceLines, GlobalVoiceLines.DemeterFatalityVoiceLines, true )
+	waitScreenTime( 0.86) -- 52 frames for DemeterWinterHarvest Scythe to appear before slicing
+	CreateAnimation({ DestinationId = dropLocation, Name = "DemeterBossIceShatter" })
+	waitScreenTime( 0.85)
+	AdjustColorGrading({ Name = "Off", Duration = 0.4 })
+	RemoveSimSpeedChange( "HyacinthKill", { LerpTime = 0.3 } )
+	Destroy({ Id = dropLocation })
+end
+
+-- Fortesting purposes
 --[[ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
 	function(baseFunc)
 		if (not CanOpenCodex()) and IsSuperValid() then
