@@ -3793,13 +3793,14 @@ ModUtil.WrapBaseFunction( "Kill",
 
 -- Hyacinth Insta-kill function
 function CheckHyacinthKill( args, attacker, victim )
-	if attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
-		FireWeaponFromUnit({ Weapon = "DemeterChillKill", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true })
+	if (not victim.IsBoss) and attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
+		FireWeaponFromUnit({ Weapon = "ApolloChillKill", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true })
 		PlaySound({ Name = "/SFX/DemeterEnemyFreezeShatter", Id = victim.ObjectId })
 		
-		if victim.IsBoss then
+		--[[if victim.IsBoss then
 	      BossHyacinthKillPresentation( victim )
-		end
+		end]]
+
 		if victim.DeathAnimation ~= nil and not victim.ManualDeathAnimation then
 			SetAnimation({ Name = victim.DeathAnimation, DestinationId = victim.ObjectId })
 			-- @todo Notify on death animation finish
@@ -3808,7 +3809,7 @@ function CheckHyacinthKill( args, attacker, victim )
 	end
 end
 
-function BossHyacinthKillPresentation(unit)
+--[[function BossHyacinthKillPresentation(unit)
 	AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 	local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
 	AdjustColorGrading({ Name = "Frozen", Duration = 0.4 })
@@ -3820,7 +3821,7 @@ function BossHyacinthKillPresentation(unit)
 	AdjustColorGrading({ Name = "Off", Duration = 0.4 })
 	RemoveSimSpeedChange( "HyacinthKill", { LerpTime = 0.3 } )
 	Destroy({ Id = dropLocation })
-end
+end]]
 
 -- Fortesting purposes
 --[[ModUtil.WrapBaseFunction( "BeginOpeningCodex", 

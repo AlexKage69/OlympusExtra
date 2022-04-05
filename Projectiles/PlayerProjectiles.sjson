@@ -445,6 +445,54 @@
         }
       ]
     }
-    
+    {
+		Name = "ApolloChillKill"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "DemeterBossIceShatter"
+      Type = "INSTANT"
+      FuseMin = 0.1
+      FuseMax = 0.1
+      Range = 0
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 240.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
+      AutoAdjustForTarget = false
+      UseVulnerability = false
+      NumPenetrations = 999
+      SpawnRadius = 0
+	  Speed = -100
+      UseStartLocation = true
+      CanHitWithoutDamage = true
+      SilentImpactOnInvulnerable = true
+      Thing = {
+        Graphic = "null"
+        OffsetZ = 70
+        AttachedAnim = "null"
+        RotateGeometry = true
+        Grip = 999999
+        Points = [
+          {
+            X = 48
+            Y = 48
+          }
+          {
+            X = 48
+            Y = -48
+          }
+          {
+            X = -48
+            Y = -48
+          }
+          {
+            X = -48
+            Y = 48
+          }
+        ]
+      }
+      Effects = [
+      ]
+	}
   ]
 }
