@@ -56,23 +56,26 @@
       Name = "DevotionApollo"
       InheritFrom = "TheseusApolloBolt"
       Type = "INSTANT"
-      DamageLow = 0
-      DamageHigh = 0
+      DamageLow = 10
+      DamageHigh = 10
       DamageRadius = 350.0
       DamageRadiusScaleY = 0.6
       ImpactVelocity = 0
-      Fuse = 1.3
-      Heal = 50
+      Fuse = 1.0
       DieWithOwner = true
       InheritOwnerElapsedTimeMultiplier = false
-      AffectsFriends = true
+      AffectsFriends = false
       AffectsEnemies = true
       AffectsSelf = false
+      SpawnOnDetonate = "DevotionApolloHeal"
+      SpawnType = "PROJECTILE"
+      CanBeProjectileDefenseDestroyed = false
+      CanBeReflected = false
       DangerDistance = 0
       Effects = {
         Name = "ZagreusApolloBlind"
         Type = "INVULNERABLE"
-        Duration = 4.0
+        Duration = 3.0
         Modifier = 1.0
         FrontFx = "ApolloHoverLoop"
         OnlyAffectName = "_PlayerUnit"
@@ -80,6 +83,24 @@
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
       }
+    }
+    {
+      Name = "DevotionApolloHeal"
+      InheritFrom = "TheseusApolloBolt"
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 350.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0
+      Heal = 500
+      DieWithOwner = true
+      InheritOwnerElapsedTimeMultiplier = false
+      AffectsFriends = true
+      AffectsEnemies = false
+      AffectsSelf = false
+      DangerDistance = 0
     }
   ]
 }

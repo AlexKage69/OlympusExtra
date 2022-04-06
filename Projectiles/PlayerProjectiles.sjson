@@ -387,7 +387,7 @@
         }
       Effects = [
         {
-          Name = "ZagreusStun"
+          Name = "ZagreusApolloStun"
           OnlyAffectName = "_PlayerUnit"
           Duration = 50
           DisableMove = true
@@ -397,6 +397,7 @@
           AutoLock = true
           Cancelable = false
           Active = true
+          StartAnimation = "ZagreusRangedWeapon_FireRepeat"
           CanAffectInvulnerable = true
         }
       ]
