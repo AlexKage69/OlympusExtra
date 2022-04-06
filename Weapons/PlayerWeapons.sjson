@@ -98,5 +98,16 @@
       IgnoreOwnerAttackDisabled = true
       Cooldown = 0.4
     }
+    {
+      Name = "ApolloChillKill"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloChillKill"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
   ]
 }
