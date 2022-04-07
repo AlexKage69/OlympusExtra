@@ -255,6 +255,11 @@
 			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
 		}
 		{
+			Id = "ArcheryLessonsTrait"
+			DisplayName = "Archery Lessons"
+			Description = "After you {$Keywords.Deflect}, briefly gain {#AltUpgradeFormat}{$TooltipData.TooltipDamageMultiplier:P} {#PreviousFormat} damage resist from faraway attacks."
+		}
+		{
 			Id = "FamedDuetTrait"
 			DisplayName = "Famed Duet"
 			Description = "Your {$Keywords.Wrath} makes twelve beams instead of one."

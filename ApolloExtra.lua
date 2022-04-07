@@ -1494,13 +1494,13 @@ OlympusTraitData.FountainDefenseTrait =
       {
         Key = "FountainDefenseBonus",
         ExtractAs = "TooltipFountainBonus",
-        Format = "PercentDelta",
+        Format = "NegativePercentDelta",
         DecimalPlaces = 1,
       },
       {
         Key = "AccumulatedFountainDefenseBonus",
         ExtractAs = "TooltipAccumulatedBonus",
-        Format = "PercentDelta",
+        Format = "NegativePercentDelta",
         DecimalPlaces = 1,
       },
     },
@@ -2099,6 +2099,15 @@ OlympusTraitData.ArcheryLessonsTrait =
 		Icon = "Apollo_Athena_01",
 		DistanceThreshold = 400,
 		DistanceMultiplier = 0.7,
+		ExtractValues =
+		{
+			{
+				Key = "DistanceMultiplier",
+				ExtractAs = "TooltipDamageMultiplier",
+				Format = "NegativePercentDelta",
+				DecimalPlaces = 1,
+			  },
+		}
 	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -3851,7 +3860,7 @@ ModUtil.WrapBaseFunction( "OnProjectileReflect",
 			local unit = triggerArgs.TriggeredByTable
 			AddIncomingDamageModifier( unit,
 			{
-				Name = triggerArgs.EffectName,
+				Name = "Archery Lessons",
 				DistanceThreshold = threshold,
 				DistanceMultiplier = multiplier,
 				Temporary = true
