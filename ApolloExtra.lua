@@ -2097,32 +2097,8 @@ OlympusTraitData.ArcheryLessonsTrait =
 		InheritFrom = { "SynergyTrait" },
 		RequiredFalseTrait = "ArcheryLessonsTrait",
 		Icon = "Apollo_Athena_01",
-		OnProjectileReflectWeapons = { "ArtemisReflectBuff" },
-		PropertyChanges =
-		{
-			{
-				WeaponName = "ArtemisReflectBuff",
-				EffectName = "ReflectCritChance",
-				EffectProperty = "Duration",
-				BaseValue = 2.0,
-				ChangeType = "Add",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDuration",
-				}
-			},
-			{
-				WeaponName = "ArtemisReflectBuff",
-				EffectName = "ReflectCritChance",
-				EffectProperty = "CritAddition",
-				BaseValue = 0.20,
-				ExtractValue =
-				{
-					ExtractAs = "TooltipCriticalChance",
-					Format = "Percent",
-				}
-			},
-		}
+		DistanceThreshold = 400,
+		DistanceMultiplier = 0.7,
 	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -3856,6 +3832,34 @@ function CheckHyacinthKill( args, attacker, victim )
 		thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 	end
 end
+
+ModUtil.WrapBaseFunction( "OnProjectileReflect", 
+	function(triggerArgs)
+		baseFunc(triggerArgs)
+		local hasArcheryLessons = false
+		local threshold = 0
+		local multiplier = 0
+		for k, traitData in pairs(CurrentRun.Hero.Traits) do
+			if traitData.ArcheryLessonsTrait then
+				hasArcheryLessons = true
+				threshold = traitData.DistanceThreshold
+				multiplier = traitData.DistanceMultiplier
+			end 
+		end
+
+		if hasArcheryLessons then 
+			local unit = triggerArgs.TriggeredByTable
+			AddIncomingDamageModifier( unit,
+			{
+				Name = triggerArgs.EffectName,
+				DistanceThreshold = threshold,
+				DistanceMultiplier = multiplier,
+				Temporary = true
+			})
+		end
+	end
+)
+
 
 --[[function BossHyacinthKillPresentation(unit)
 	AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
