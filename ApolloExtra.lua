@@ -3842,6 +3842,7 @@ function CheckHyacinthKill( args, attacker, victim )
 	end
 end
 
+-- Archery Lessons damage resist function mod
 ModUtil.WrapBaseFunction( "OnProjectileReflect", 
 	function(triggerArgs)
 		baseFunc(triggerArgs)
