@@ -2092,6 +2092,38 @@ OlympusTraitData.HyacinthTrait =
 		},
 		PreEquipWeapons = { "HyacinthChillKill" },
 	}
+OlympusTraitData.ArcheryLessonsTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		RequiredFalseTrait = "ArcheryLessonsTrait",
+		Icon = "Apollo_Athena_01",
+		OnProjectileReflectWeapons = { "ArtemisReflectBuff" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "ArtemisReflectBuff",
+				EffectName = "ReflectCritChance",
+				EffectProperty = "Duration",
+				BaseValue = 2.0,
+				ChangeType = "Add",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+				}
+			},
+			{
+				WeaponName = "ArtemisReflectBuff",
+				EffectName = "ReflectCritChance",
+				EffectProperty = "CritAddition",
+				BaseValue = 0.20,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCriticalChance",
+					Format = "Percent",
+				}
+			},
+		}
+	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -2135,6 +2167,14 @@ OlympusLootData.ApolloUpgrade = {
 				{
 					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
+				}
+			},
+			ArcheryLessonsTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
+					{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait", "AthenaRetaliateTrait"}
 				}
 			},
 			FamedDuetTrait = 
@@ -3580,6 +3620,14 @@ OlympusLootData.ApolloUpgrade = {
 		},
 }
 -- Duo LootData
+OlympusLootData.AthenaUpgrade.LinkedUpgrades.ArcheryLessonsTrait = 
+{
+	OneFromEachSet =
+	{
+		{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
+		{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait", "AthenaRetaliateTrait"}
+	}
+}
 OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
 {
 	OneFromEachSet =
