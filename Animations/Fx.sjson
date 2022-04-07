@@ -2765,12 +2765,9 @@
       Name = "RadialNovaTheseusWrath-Apollo"
       InheritFrom = "RadialNova"
       GroupName = "FX_Terrain_Add"
-      VisualFx = "RadialNovaSwordParry-Apollo"
-      EndBlue = 1.0
-      EndRed = 0.2
-      StartBlue = 1.0
-      StartGreen = 0.3
-      StartRed = 0.7
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 16
@@ -2786,6 +2783,54 @@
         }
         {
           Name = "QuickFlashOrange"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
+        }
+        {
+          Name = "RadialNovaApollo-Sparkles"
         }]
     }
     {
@@ -2794,31 +2839,54 @@
       LocationZFromOwner = "Take"
       GroupName = "Standing"
       Color = {
-        Red = 0.5
-        Green = 0.0
-        Blue = 1.0
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
       }
+    }
+    {
+      Name = "RadialNovaApollo-Sparkles"
+      InheritFrom = "GenericSparkles"
+      AngleFromOwner = "Take"
+      AngleNumOffset = 8
+      HoldLastFrame = true
+      AngleMax = 360.0
+      RadialOffsetMax = 350.0
+      RadialOffsetMin = 100.0
+      RadialOffsetScaleRadius = 25.0
+      RadialOffsetScaleY = 0.66
+      LocationFromOwner = "Ignore"
+      AlphaMax = 1.0
+      AlphaMin = 0.8
+      AddColor = true
+      Color = {
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
+      }
+      UseAttachedMarkerLocation = "weapon_2_TRACKING"
+      RandomDurationMax = 0.6
+      RandomDurationMin = 0.2
+      VelocityMax = 5.0
+      VelocityMin = 1.0
+      Scale = 1.0
     }
     {
       Name = "TheseusWrathSpikeApollo"
       InheritFrom = "TheseusWrathSpike"
-      CreateAnimations = [
-        {
-          Name = "RadialNovaApollo"
-        }]
       Color = {
-        Red = 0.5
-        Green = 0.0
-        Blue = 1.0
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
       }
     }
     {
       Name = "TheseusGodPowerPreviewDecal_Apollo"
       InheritFrom = "TheseusGodPowerPreviewDecalDark"
       Color = {
-        Red = 0.3
-        Green = 0.0
-        Blue = 1.0
+        Red = 0.90
+        Green = 0.55
+        Blue = 0.05
       }
     }
     {
@@ -2829,12 +2897,9 @@
       Red = 1
       Green = 1
       Blue = 1
-      EndRed = 1
-      EndGreen = 0.9
-      EndBlue = 0.3
-      StartRed = 0
-      StartGreen = 0.05
-      StartBlue = 1
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
       ColorFromOwner = "Ignore"
       EndAlpha = 0.2
       Sound = "/Leftovers/Menu Sounds/ChoirLoop"
@@ -2858,12 +2923,9 @@
       Red = 1
       Green = 1
       Blue = 1
-      EndRed = 1
-      EndGreen = 0.9
-      EndBlue = 0.3
-      StartRed = 0
-      StartGreen = 0.05
-      StartBlue = 1
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
       ColorFromOwner = "Ignore"
     }
     {
@@ -2872,12 +2934,9 @@
       Red = 1
       Green = 1
       Blue = 1
-      EndRed = 1
-      EndGreen = 0.9
-      EndBlue = 0.3
-      StartRed = 0
-      StartGreen = 0.05
-      StartBlue = 1
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
       ColorFromOwner = "Ignore"
     }
     {
@@ -2886,12 +2945,9 @@
       Red = 1
       Green = 1
       Blue = 1
-      StartRed = 1
-      StartGreen = 0.9
-      StartBlue = 0.3
-      EndRed = 0
-      EndGreen = 0.05
-      EndBlue = 1
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
     }
     /* Boon FX */
     {

@@ -37,6 +37,42 @@ OlympusEnemyUpgradeData.ApolloUpgrade =
 	Hidden = true,
 	PropertyChanges = { },
 }
+--QuestData
+local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
+OlympusQuestData.ApolloUpgrades =
+{
+	InheritFrom = { "DefaultQuestItem" },
+	RewardResourceName = "Gems",
+	RewardResourceAmount = 150,
+	UnlockGameStateRequirements =
+	{
+		RequiredTextLines = { "ApolloGift01", },
+	},
+	CompleteGameStateRequirements =
+	{
+		RequiredTraitsTaken =
+		{
+			"ApolloWeaponTrait",
+			"ApolloDashTrait",
+			"ApolloRangedTrait",
+			"ApolloSecondaryTrait",
+			"ApolloShoutTrait",
+			
+			"FountainDefenseTrait",
+			"ApolloBlindedTrait",
+			"ApolloRetaliateTrait",
+			"FountainCoinTrait",			
+			"ApolloHealTrait",
+
+			"RerollBoonTrait",
+			"RerollObolTrait",
+			"MissChanceTrait",
+		},
+	},
+}
+local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
+table.insert(OlympusQuestOrderData, 29, "ApolloUpgrades")
+
 --UnitSetData
 local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
 OlympusEnemyData.ApolloUpgradeRoomWeapon = {
@@ -48,8 +84,8 @@ OlympusEnemyData.ApolloUpgradeRoomWeapon = {
 		PreAttackDuration = 0,
 		FireDuration = 0.0,
 		PostAttackDuration = 0.0,
-		PostAttackCooldownMin = 6.5,
-		PostAttackCooldownMax = 7.5,
+		PostAttackCooldownMin = 2.0,
+		PostAttackCooldownMax = 2.5,
 		CreateOwnTargetFromOriginalTarget = true,
 		RandomTargetAngle = true,
 		TargetOffsetDistanceMin = 0,
@@ -1494,14 +1530,12 @@ OlympusTraitData.FountainDefenseTrait =
       {
         Key = "FountainDefenseBonus",
         ExtractAs = "TooltipFountainBonus",
-        Format = "PercentDelta",
-        DecimalPlaces = 1,
+        Format = "NegativePercentDelta"
       },
       {
         Key = "AccumulatedFountainDefenseBonus",
         ExtractAs = "TooltipAccumulatedBonus",
-        Format = "PercentDelta",
-        DecimalPlaces = 1,
+        Format = "NegativePercentDelta"
       },
     },
 }
@@ -1845,7 +1879,7 @@ OlympusTraitData.RerollObolTrait = -- Golden Fleece
 	InheritFrom = { "ShopTier1Trait" },
 	RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 	RequiredMetaUpgradeUnlocked = "RerollMetaUpgrade",
-	Icon = "Boon_Apollo_12",--"Boon_Apollo_12",
+	Icon = "Boon_Apollo_12",
 	RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
 	ObolCount = { 
 		BaseValue = 1
@@ -2116,27 +2150,28 @@ OlympusLootData.ApolloUpgrade = {
 
 		TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 
-		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait },
-		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --   "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, --"ApolloHealingTrait", "ApolloFountainTrait", "ApolloRerollTrait" },
+		PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait
+		WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --"ShieldLoadAmmo_ApolloRangedTrait"
+		Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 		Consumables = { },
 
 		LinkedUpgrades =
 		{
 			ApolloBlindedTrait  = {
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait"
 			},
 			ApolloHealTrait  = {
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait"
 			},
 			MissChanceTrait =
 			{
 				OneFromEachSet =
 				{
-					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-					{ "ApolloBlindedTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+					{ "ApolloBlindedTrait", "ApolloRetaliateTrait", "RerollObolTrait", "RerollBoonTrait" }
 				}
 			},
+			-- Duo
 			FamedDuetTrait = 
 			{
 				OneFromEachSet =
@@ -2165,22 +2200,10 @@ OlympusLootData.ApolloUpgrade = {
 			{
 				OneFromEachSet =
 				{
-					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 				}
-			},
-			--[[ApolloDurationTrait =
-			{
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-			},
-			ApolloChanceMissTrait =
-			{
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-			},
-			ApolloChanceHitTrait =
-			{
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-			},]]--
+			}
 		},
 
 		Speaker = "NPC_Apollo_01",
@@ -2206,9 +2229,9 @@ OlympusLootData.ApolloUpgrade = {
 			RequiredTextLines = { "ApolloFirstPickUp" },
 			RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", "Shop" },
 
-			-- 
+			-- Lord Apollo...
 			{ Cue = "/VO/ZagreusField_6000" },
-			-- 
+			-- You found me, Apollo...
 			{ Cue = "/VO/ZagreusField_6000" },
 		},
 
@@ -3364,7 +3387,7 @@ OlympusLootData.ApolloUpgrade = {
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "My Lord Apollo, if not for our acquaintance, I am certain that my days or nights would be much drearier indeed." },
+					Text = "My lord Apollo, if not for our acquaintance, I am certain that my days or nights would be much drearier indeed." },
 				{ Cue = "/VO/Apollo_0034",
 					PortraitExitWait = 1.0,
 					Emote = "PortraitEmoteAffection",
@@ -3536,11 +3559,11 @@ OlympusLootData.ApolloUpgrade = {
 			RequiresLastUpgradeSwapped = true,
 			UsePlayerSource = true,
 
-			-- Lady Aphrodite, how can I say no?
+			-- Lord Apollo, how can I say no?
 			{ Cue = "/VO/ZagreusField_6000" },
 			-- A lovely offer, Apollo.
 			{ Cue = "/VO/ZagreusField_6000" },
-			-- Lady Aphrodite, I gladly accept.
+			-- Lord Apollo, I gladly accept.
 			{ Cue = "/VO/ZagreusField_6000" },
 		},
 
@@ -3612,6 +3635,44 @@ OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait =
 		{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 	}
 }
+-- Other gods modification
+-- AthenaUpgrade
+table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "ApolloFirstPickUp")
+
+-- HermesUpgrade
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredFalseGodLoots, "ApolloUpgrade")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredOneOfTraits, "ForceApolloBoonTrait")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredFalseGodLoots, "ApolloUpgrade")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredOneOfTraits, "ForceApolloBoonTrait")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredFalseGodLoots, "ApolloUpgrade")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredOneOfTraits, "ForceApolloBoonTrait")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredFalseGodLoots, "ApolloUpgrade")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredOneOfTraits, "ForceApolloBoonTrait")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredFalseGodLoots, "ApolloUpgrade")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredOneOfTraits, "ForceApolloBoonTrait")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredFalseGodLoots, "ApolloUpgrade")
+table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredOneOfTraits, "ForceApolloBoonTrait")
+
+OlympusLootData.HermesUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingApollo01 =
+{
+	PlayOnce = true,
+	PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+	MinRunsSinceSquelchedHermes = ConstantsData.SquelchedHermesRunCount,
+	RequiredTextLines = { "HermesFirstPickUp" },
+	RequiredFalseGodLoot = "ApolloUpgrade",
+	RequiredTrait = "ForceApolloBoonTrait",
+	EndVoiceLines = GlobalVoiceLines.RushedHermesVoiceLines,
+
+	{ Cue = "/VO/Hermes_0160",
+		StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+		Text = "That chill you were expecting in the air, that wasn't Demeter this time, here, boss! No, that was just me whisking to you in a flash. Makes for a little pleasant breeze I think!" },
+}
 
 -- Gift Section    
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
@@ -3655,22 +3716,28 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 		if not HeroHasTrait("MissChanceTrait") then
 			missRate = 0.75
 		end
-		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim == CurrentRun.Hero and RandomFloat(0,1) <= missRate then
+		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 			if not HeroHasTrait("BlindDurationTrait") then
 				ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
-				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+				BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
 			end
 			args.DamageAmount = nil
 			args.AttackerWeaponData = nil		
 			args.IsInvulnerable = true	
+		elseif attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and attacker.ObjectId == CurrentRun.Hero.ObjectId then
+			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true} )
+			args.DamageAmount = nil
+			args.AttackerWeaponData = nil		
+			--args.IsInvulnerable = true	
 		else
 			baseFunc(victim, attacker, args)
 		end
 	end
 )
+
 function ApolloBlindApply( triggerArgs )
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs.TriggeredByTable))
@@ -3759,7 +3826,7 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 				ExtractValues( CurrentRun.Hero, traitData, traitData )
 			end
 			if traitData.FountainCoinBonus then
-				-- For notes,check MoneyPerRoom and SisyphusMoney
+				-- For notes, check MoneyPerRoom and SisyphusMoney
 				hasCoinBonus = true
 			end 
 		end
