@@ -2092,6 +2092,13 @@ OlympusTraitData.HyacinthTrait =
 		},
 		PreEquipWeapons = { "HyacinthChillKill" },
 	}
+OlympusTraitData.MaxHangoverTrait =
+{
+	InheritFrom = { "SynergyTrait" },
+	Icon = "Apollo_Dionysus_01",
+	RequiredFalseTraits = { "MaxHangoverTrait"},			
+	HangoverStacks = 5
+}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 OlympusLootData.ApolloUpgrade = {
@@ -2169,6 +2176,14 @@ OlympusLootData.ApolloUpgrade = {
 					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" } --"ApolloDurationTrait",  "ApolloChanceMissTrait", "ApolloChanceHitTrait" },
 				}
 			},
+			MaxHangoverTrait = 
+			{
+				OneFromEachSet =
+				{
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+					{ "DionysusWeaponTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
+				}
+			}
 			--[[ApolloDurationTrait =
 			{
 				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
@@ -3808,7 +3823,27 @@ function CheckHyacinthKill( args, attacker, victim )
 		thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 	end
 end
-
+-- DionysusDuo function
+ModUtil.WrapBaseFunction( "DamageOverTimeApply", 
+	function(baseFunc, triggerArgs)
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs.TriggeredByTable))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetEquippedWeapon()))
+		local maxStack = 5
+		if HeroHasTrait("DionysusAphroditeStackIncreaseTrait") then
+			maxStack = 8
+		end
+		--triggerArgs.Stacks = 5
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(maxStack))
+		--if HeroHasTrait("MaxHangoverTrait") then
+			--for i = 1, maxStack do
+				-- Done during engine conversion otherwise stacks should be a argument to pass up -- @alice
+			--ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, WeaponName = GetEquippedWeapon(), EffectName = "DamageOverTime" })
+			--end
+		--end
+		baseFunc(triggerArgs)
+	end
+)
 --[[function BossHyacinthKillPresentation(unit)
 	AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 	local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
