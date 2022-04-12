@@ -2098,7 +2098,8 @@ OlympusTraitData.ArcheryLessonsTrait =
 		RequiredFalseTrait = "ArcheryLessonsTrait",
 		Icon = "Apollo_Athena_01",
 		DistanceThreshold = 400,
-		DistanceMultiplier = 0.7,
+		DistanceMultiplier = 0.2,
+		Duration = 3, 
 		ExtractValues =
 		{
 			{
@@ -2106,7 +2107,11 @@ OlympusTraitData.ArcheryLessonsTrait =
 				ExtractAs = "TooltipDamageMultiplier",
 				Format = "NegativePercentDelta",
 				DecimalPlaces = 1,
-			  },
+			},
+			{
+				Key = "Duration",
+				ExtractAs = "TooltipDuration",
+			}
 		}
 	}
 -- LootData
@@ -3843,32 +3848,24 @@ function CheckHyacinthKill( args, attacker, victim )
 end
 
 -- Archery Lessons damage resist function mod
-ModUtil.WrapBaseFunction( "OnProjectileReflect", 
+OnProjectileReflect{
 	function(triggerArgs)
-		baseFunc(triggerArgs)
-		local hasArcheryLessons = false
-		local threshold = 0
-		local multiplier = 0
-		for k, traitData in pairs(CurrentRun.Hero.Traits) do
-			if traitData.ArcheryLessonsTrait then
-				hasArcheryLessons = true
-				threshold = traitData.DistanceThreshold
-				multiplier = traitData.DistanceMultiplier
-			end 
-		end
+		if HeroHasTrait("ArcheryLessonsTrait") then
+			local threshold = GetHeroTraitValues("ArcheryLessonsTrait").DistanceThreshold
+			local multiplier = GetHeroTraitValues("ArcheryLessonsTrait").DistanceMultiplier
+			local duration = GetHeroTraitValues("ArcheryLessonsTrait").Duration
 
-		if hasArcheryLessons then 
 			local unit = triggerArgs.TriggeredByTable
-			AddIncomingDamageModifier( unit,
-			{
-				Name = "Archery Lessons",
-				DistanceThreshold = threshold,
-				DistanceMultiplier = multiplier,
-				Temporary = true
-			})
+			AddIncomingDamageModifier( CurrentRun.Hero.ObjectId,
+				{
+					DistanceThreshold = threshold,
+					DistanceMultiplier = multiplier,
+					Duration = 10
+				}
+			)
 		end
 	end
-)
+}
 
 
 --[[function BossHyacinthKillPresentation(unit)
