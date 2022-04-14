@@ -2,7 +2,7 @@
   Animations = [
 	"_append"
     {
-      Name = "Keepsake_Harp_Child"
+      Name = "Keepsake_Lyre_Child"
       InheritFrom = "KeepsakeTrayIcon"
       FilePath = "Apollo\Keepsake_Lyre"
       Scale = 1.5
@@ -10,7 +10,7 @@
       StartFrame = 1
     }
     {
-      Name = "Keepsake_Harp"
+      Name = "Keepsake_Lyre"
       InheritFrom = "KeepsakeIcon"
       FilePath = "Apollo\Keepsake_Lyre"
       Scale = 1.5
@@ -18,9 +18,9 @@
       StartFrame = 1
     }
     {
-      Name = "Keepsake_Harp_Small"
+      Name = "Keepsake_Lyre_Small"
       InheritFrom = "KeepsakeTrayIconBacking"
-      ChildAnimation = "Keepsake_Harp_Child"
+      ChildAnimation = "Keepsake_Lyre_Child"
       EndFrame = 1
       StartFrame = 1
     }
