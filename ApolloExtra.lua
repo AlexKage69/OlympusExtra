@@ -260,7 +260,7 @@ OlympusTraitData.ForceApolloBoonTrait = {
 		},
 		--New Data
 		InRackTitle = "ForceApolloBoonTrait_Rack",
-		Icon = "Keepsake_Harp",
+		Icon = "Keepsake_Lyre",
 		EquipSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
 		ForceBoonName = "ApolloUpgrade",
 		Uses = 1,

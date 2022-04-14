@@ -252,7 +252,7 @@
 		}
 		{
 			Id = "ForceApolloBoonTrait"
-			DisplayName = "Harmonious Harp"
+			DisplayName = "Shining Lyre"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Apollo{#PreviousFormat}. His blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
@@ -262,7 +262,7 @@
 		}
 		{
 			Id = "ForceApolloBoonTrait_Inactive"
-			DisplayName = "Harmonious Harp"
+			DisplayName = "Shining Lyre"
 			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
