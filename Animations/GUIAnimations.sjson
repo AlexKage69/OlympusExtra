@@ -4,14 +4,16 @@
     {
       Name = "Keepsake_Harp_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Harp"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
       EndFrame = 1
       StartFrame = 1
     }
