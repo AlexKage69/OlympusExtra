@@ -2988,7 +2988,11 @@
     {
       Name = "BoonDropApolloIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Spin\AthenaIconSpin\AthenaIconSpin"
+      FilePath = "Apollo\ApolloIconSpin\ApolloIconSpin"
+      StartFrame = 1
+      EndFrame = 3
+      NumFrames = 3
+      Scale = 0.4
     }
     {
       Name = "BoonDissipateA_Apollo"
