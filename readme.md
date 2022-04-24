@@ -1,7 +1,19 @@
 # OlympusExtra
 
-OlympusExtra is a Hades DLC mod which adds new gods and boons to the Hades game. This includes unique effects, new god curses, duo boons, Thesus's wrath calls, and more. 
+OlympusExtra is a Hades DLC mod which adds new gods and boons to the Hades game. This includes unique effects, god's curses, duo boons, voicelines, and more. 
 
+We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastus. 
+
+-----------------------------
+## Disclaimer!
+Do note that we're still in beta-testing phase for OlympusExtra, so please note that it is very possible that your Hades game might crash during the process. To avoid this, please create a backup of the game by copying the Hades game folder before making any modifications! 
+
+In the event that the game crashes and cannot be restored, you can replace this with the backup which you have copied. Alternatively, for Steam users, you can also go to `Library` > Right click Hades > `Properties` > `Local Files` > `Verify integrity of game files`
+
+Please also note that not all features have been fully implemented yet, and some may still be buggy. We welcome your feedback on the [Hades Modding Discord](https://discordapp.com/invite/KuMbyrN)
+
+
+-----------------------------
 ## Locating your Hades game folder for modding
 - **Steam**: `Library` > Right click on Hades > `Manage` > `Browse local files` 
 - **Epic Games**: Go to `C:\Program Files\Epic Games\Hades`
@@ -20,11 +32,16 @@ OlympusExtra is a Hades DLC mod which adds new gods and boons to the Hades game.
 1. Open Hades and start playing!
 
 -----------------------------
-## ApolloExtra 
-Introducing Lord Apollo: God of Music, the Sun, and Healing! 
-
-Apollo's unique curse is Blind: foes inflicted with blind have a percentage chance to miss their next attack. 
-
-Do note that we're still in beta-testing phase for ApolloExtra, not all features have been fully implemented yet! We welcome your feedback on the [Hades Modding Discord](https://discordapp.com/invite/KuMbyrN)
+## For more information
+Please check out the [OlympusExtra GitHub Wiki](https://github.com/AlexKage69/OlympusExtra/wiki)!
 
 
+-----------------------------
+## Credits
+Developers: AlexKage, physiX  
+Voice Actor (Apollo): MrAndyG  
+
+
+### Special thanks to:  
+Apollo's portait: [Reikiix](https://twitter.com/Reikiix?s=20&t=8cjhMv3LF5Z6ya6urr6buw)  
+Apollo keepsake badges: Lazy.mano, r/Lazymanohelp  

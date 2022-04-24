@@ -35,7 +35,7 @@
 		{
       		Id = "ApolloBlind"
 			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim may miss their target by {#UpgradeFormat}50% {#PreviousFormat}chance."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}50% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
 			Id = "ApolloWeaponTrait"
@@ -82,7 +82,7 @@
 		{
       		Id = "FlashBomb"
 			DisplayName = "Flash Bomb"
-			Description = "Inflict {$Keywords.ApolloBlind} on foes in an area around you. After 3 seconds, the area detonates, dealing damage."
+			Description = "After detonating, inflict {$Keywords.ApolloBlind} on foes in an area for 3 seconds."
 		}
 		{
 			Id = "Combat_Miss"
@@ -124,7 +124,7 @@
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait"
-			DisplayName = "Passion Flare"
+			DisplayName = "Brilliant Flare"
 			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
@@ -185,12 +185,12 @@
 		{
 			Id = "RerollObolTrait"
 			DisplayName = "Golden Fleece"
-			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
+			Description = "From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}
 		{
 			Id = "RerollObolTrait_Initial"
 			DisplayName = "Golden Fleece"
-			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
+			Description = "From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}	
 		{
 			Id = "RerollBoonTrait"
@@ -215,7 +215,7 @@
 		{
 			Id = "FountainCoinTrait",
 			DisplayName = "Wishing Well"
-			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     }
 		{
 			Id = "FountainCoinText",
@@ -228,12 +228,12 @@
 		{
 			Id = "FountainCoinTrait_Initial",
 			DisplayName = "Wishing Well"
-			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     }
 		{
 			Id = "FountainCoinTrait_Tray",
 			DisplayName = "Wishing Well"
-			Description = "Using a {$Keywords.Fountain} gives you extra wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus Wealth per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     }
 		{
 			Id = "ApolloHealTrait"
@@ -248,7 +248,7 @@
 		{
 			Id = "MissChanceTrait"
 			DisplayName = "Purest light"
-			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
+			Description = "Your {$Keywords.ApolloBlind} effects have a greater miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
@@ -273,7 +273,7 @@
 		{
 			Id = "FamedDuetTrait"
 			DisplayName = "Famed Duet"
-			Description = "Your {$Keywords.Wrath} makes twelve beams instead of one."
+			Description = "Your {$Keywords.Wrath} fires twelve beams instead of one."
 		}	
 		{
 			Id = "WarSongTrait"
@@ -288,7 +288,7 @@
 		{
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"
-			Description = "Your {$Keywords.ApolloBlind} effects do not expire when foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+			Description = "Your {$Keywords.ApolloBlind} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
 		}	
 		{
 			Id = "LtUpgrade_Apollo"
