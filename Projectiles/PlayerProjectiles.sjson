@@ -401,6 +401,142 @@
           CanAffectInvulnerable = true
         }
       ]
+    }{
+        Name = "DionysusExtraHangover"
+        InheritFrom = "1_BaseNonPhysicalProjectile"
+        Type = "INSTANT"
+        AffectsEnemies = true
+        AffectsFriends = false
+        AffectsSelf = false
+        FuseMin = 0.25
+        FuseMax = 0.25
+        TotalFuse = 0.75
+        DamageLow = 0
+        DamageHigh = 0
+        DamageRadius = 220.0
+        DamageRadiusScaleY = 0.6
+        DamageRadiusScaleX = 1.1
+        AutoAdjustForTarget = false
+        UseVulnerability = false
+        NumPenetrations = 999
+        SpawnRadius = 0
+        SpawnCount = 0
+        CanHitWithoutDamage = true
+        SilentImpactOnInvulnerable = true
+        Thing = {
+            Graphic = "null"
+            OffsetZ = 70
+            AttachedAnim = "null"
+            RotateGeometry = true
+            Grip = 999999
+            Points = [
+            {
+                X = 48
+                Y = 48
+            }
+            {
+                X = 48
+                Y = -48
+            }
+            {
+                X = -48
+                Y = -48
+            }
+            {
+                X = -48
+                Y = 48
+            }
+            ]
+        }
+      Effects = [
+        {
+          Name = "DamageOverTime"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_OVER_TIME"
+          IsVulnerabilityEffect = true
+          Amount = 1.0
+          Cooldown = 0
+          Duration = 4
+          IndependentStackCooldown = true
+          Stacks = true
+          ExtendDurationOnReapply = true
+          MaxStacks = 5
+          FrontFx = "DionysusStatusFx"
+          Active = true
+          TimeModifierFraction = 0
+        }]
+    }{
+        Name = "DionysusExtraHangover1"
+        InheritFrom = "DionysusExtraHangover"
+    }{
+        Name = "DionysusExtraHangover2"
+        InheritFrom = "DionysusExtraHangover"
+    }
+    {
+      Name = "PoseidonApolloSplash"
+      InheritFrom = "1_BaseNonPhysicalProjectile"
+      Type = "INSTANT"
+      MaxAdjustRate = 60
+      Range = 1100.0
+      Speed = 1200.0
+      Acceleration = 0
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 10
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 2500
+      UseRadialImpact = false
+      DetonateGraphic = "PoseidonProjectileImpact"
+      DetonateSound = "/SFX/Player Sounds/PoseidonWaterImpactDetonate"
+      DetonateAtTarget = false
+      DetonateAtVictimLocation = true
+      UseVulnerability = false
+      ImpactFx = "null"
+      ObstacleCollisionCheck = "PolygonContainsPoint"
+      Thing = {
+        Graphic = "null"
+        OffsetZ = 112
+        AttachedAnim = "null"
+        Grip = 999999
+        RotateGeometry = true
+        Points = [
+          {
+            X = 32
+            Y = 20
+          }
+          {
+            X = 32
+            Y = -20
+          }
+          {
+            X = -76
+            Y = -20
+          }
+          {
+            X = -76
+            Y = 20
+          }]
+      } 
+      Effects = [
+        {
+          Name = "DamageOverDistance"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_OVER_DISTANCE"
+          Cooldown = 0.2
+          Duration = 3
+          Modifier = 1
+          Active = true
+          TimeModifierFraction = 0
+          FrontFx = "PoseidonDebuffSurge"
+          MaxTriggerDamage = 10
+          MinTriggerDamage = 10
+          ExpiringTimeThreshold = 0.1
+          ExpiringFrontFx = "PoseidonDebuffExpire"
+          MinSpeed = 0
+          SilentImpact = true
+          SpeedCap = 0
+          IsVulnerabilityEffect = true
+        }]
     }
     {
       Name = "AreaWeakenApollo"
@@ -447,7 +583,7 @@
       ]
     }
     {
-		Name = "ApolloChillKill"
+		  Name = "ApolloChillKill"
       InheritFrom = "1_BaseMagicProjectile"
       DetonateGraphic = "DemeterBossIceShatter"
       Type = "INSTANT"
@@ -463,7 +599,7 @@
       UseVulnerability = false
       NumPenetrations = 999
       SpawnRadius = 0
-	  Speed = -100
+	    Speed = -100
       UseStartLocation = true
       CanHitWithoutDamage = true
       SilentImpactOnInvulnerable = true

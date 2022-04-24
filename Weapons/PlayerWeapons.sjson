@@ -109,5 +109,11 @@
       IgnoreOwnerAttackDisabled = true
       NumProjectiles = 1
     }
+      {
+        Name = "DionysusCopy"
+        InheritFrom = "1_BasePlayerSlowWeapon"
+        Projectile = "DionysusExtraHangover1"
+        NumProjectiles = 3
+    }
   ]
 }

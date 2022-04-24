@@ -2106,32 +2106,85 @@ OlympusTraitData.WarSongTrait =
 		}
 	}
 OlympusTraitData.HyacinthTrait =
-	{
-		InheritFrom = { "SynergyTrait" },
-		Icon = "Apollo_Aphrodite_01",
-		RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
-		OnDamageEnemyFunction = {
-			FunctionName = "CheckHyacinthKill",
-			FunctionArgs = {
-				HyacinthDeathThreshold = 0.10,
-				ExtractValues =
+{
+	InheritFrom = { "SynergyTrait" },
+	Icon = "Apollo_Aphrodite_01",
+	RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
+	OnDamageEnemyFunction = {
+		FunctionName = "CheckHyacinthKill",
+		FunctionArgs = {
+			HyacinthDeathThreshold = 0.10,
+			ExtractValues =
+			{
 				{
-					{
-						Key = "HyacinthDeathThreshold",
-						ExtractAs = "TooltipDeathThreshold",
-						Format = "Percent",
-					},
-				}
+					Key = "HyacinthDeathThreshold",
+					ExtractAs = "TooltipDeathThreshold",
+					Format = "Percent",
+				},
 			}
-		},
-		PreEquipWeapons = { "HyacinthChillKill" },
-	}
+		}
+	},
+	PreEquipWeapons = { "HyacinthChillKill" },
+}
+
 OlympusTraitData.MaxHangoverTrait =
 {
 	InheritFrom = { "SynergyTrait" },
 	Icon = "Apollo_Dionysus_01",
-	RequiredFalseTraits = { "MaxHangoverTrait"},			
-	HangoverStacks = 5
+	RequiredFalseTraits = { "MaxHangoverTrait"},
+	PreEquipWeapons = { "DionysusCopy" },
+	PropertyChanges = {
+	}
+}
+OlympusTraitData.DionysusWeaponTrait.PropertyChanges[2].PreEquipWeapons = { "DionysusCopy" }
+table.insert(OlympusTraitData.DionysusWeaponTrait.PropertyChanges[2].WeaponNames, "DionysusCopy")
+
+OlympusTraitData.BlindedRuptureTrait =
+{
+	InheritFrom = { "SynergyTrait" },
+	Icon = "Apollo_Poseidon_01",
+	RequiredFalseTraits = { "BlindedRuptureTrait"},
+	ExtractValues =
+	{
+		{
+			ExtractAs = "TooltipBlindDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipBlindPower",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "ApolloBlind",
+			BaseProperty = "Amount",
+			Format = "Percent"
+		},
+		{
+			ExtractAs = "TooltipRuptureDuration",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "DamageOverDistance",
+			BaseProperty = "Duration",
+		},
+		{
+			ExtractAs = "TooltipSlipperyRate",
+			SkipAutoExtract = true,
+			External = true,
+			BaseType = "Effect",
+			WeaponName = "SwordWeapon",
+			BaseName = "DamageOverDistance",
+			BaseProperty = "Cooldown",
+			DecimalPlaces = 1,
+		},
+	}	
 }
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -2211,26 +2264,22 @@ OlympusLootData.ApolloUpgrade = {
 					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 				}
 			},
-			MaxHangoverTrait = 
+			--[[MaxHangoverTrait = 
 			{
 				OneFromEachSet =
 				{
 					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
 					{ "DionysusWeaponTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
 				}
-			}
-			--[[ApolloDurationTrait =
-			{
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
 			},
-			ApolloChanceMissTrait =
+			BlindedRuptureTrait = 
 			{
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-			},
-			ApolloChanceHitTrait =
-			{
-				OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-			},]]--
+				OneFromEachSet =
+				{
+					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+					{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRangedTrait", "ShieldLoadAmmo_PoseidonRangedTrait" },
+				}
+			}]]
 		},
 
 		Speaker = "NPC_Apollo_01",
@@ -3731,18 +3780,19 @@ end
 function EndApolloBeam()
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
-	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusStun" })
+	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusApolloStun" })
 	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
+
 -- Blind Functions
 -- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
 ModUtil.WrapBaseFunction( "CheckOnHitPowers", 
-
 	function(baseFunc, victim, attacker, args)
 		local missRate = 0.5
 		if not HeroHasTrait("MissChanceTrait") then
 			missRate = 0.75
 		end
+		-- Enemies misses
 		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and RandomFloat(0,1) <= missRate then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
@@ -3751,9 +3801,13 @@ ModUtil.WrapBaseFunction( "CheckOnHitPowers",
 				ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 				BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
 			end
+			if HeroHasTrait("BlindedRuptureTrait") then
+				FireWeaponFromUnit({ Weapon = "PoseidonApolloSplash", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = attacker.ObjectId, FireFromTarget = true })
+			end
 			args.DamageAmount = nil
 			args.AttackerWeaponData = nil		
 			args.IsInvulnerable = true	
+		-- Zagreus misses
 		elseif attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and attacker.ObjectId == CurrentRun.Hero.ObjectId then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true} )
 			args.DamageAmount = nil
@@ -3774,6 +3828,19 @@ function ApolloBlindClear(triggerArgs)
 		BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
 	end
 end
+ModUtil.WrapBaseFunction( "DamageOverTimeApply", 
+	function(baseFunc, triggerArgs)
+		baseFunc(triggerArgs)		
+		if HeroHasTrait("MaxHangoverTrait") then
+			FireWeaponFromUnit({ Weapon = "DionysusCopy", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, FireFromTarget = false })
+		end
+	end
+)
+--[[ModUtil.WrapBaseFunction( "DamageOverTimeClear", 
+	function(baseFunc, triggerArgs)
+		baseFunc(triggerArgs)
+	end
+)]]
 -- Prophecy and Sight
 ModUtil.WrapBaseFunction( "StartNewRun", 
 	function(baseFunc, prevRun, args)
@@ -3902,27 +3969,6 @@ function CheckHyacinthKill( args, attacker, victim )
 		thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 	end
 end
--- DionysusDuo function
-ModUtil.WrapBaseFunction( "DamageOverTimeApply", 
-	function(baseFunc, triggerArgs)
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs.TriggeredByTable))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetEquippedWeapon()))
-		local maxStack = 5
-		if HeroHasTrait("DionysusAphroditeStackIncreaseTrait") then
-			maxStack = 8
-		end
-		--triggerArgs.Stacks = 5
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(maxStack))
-		--if HeroHasTrait("MaxHangoverTrait") then
-			--for i = 1, maxStack do
-				-- Done during engine conversion otherwise stacks should be a argument to pass up -- @alice
-			--ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, WeaponName = GetEquippedWeapon(), EffectName = "DamageOverTime" })
-			--end
-		--end
-		baseFunc(triggerArgs)
-	end
-)
 --[[function BossHyacinthKillPresentation(unit)
 	AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 	local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
@@ -3937,16 +3983,18 @@ ModUtil.WrapBaseFunction( "DamageOverTimeApply",
 	Destroy({ Id = dropLocation })
 end]]
 
--- Fortesting purposes
+-- For testing purposes
 --[[ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
 	function(baseFunc)
-		if (not CanOpenCodex()) and IsSuperValid() then
+		if (false and not CanOpenCodex()) and IsSuperValid() then
 			wait(1, RoomThreadName)
 			BuildSuperMeter(CurrentRun, 100)
 			CommenceSuperMove()
 			UpdateSuperDamageBonus()
 			thread( MarkObjectiveComplete, "EXMove" )
 		end
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(OlympusTraitData.DionysusWeaponTrait.PropertyChanges[2]))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(OlympusTraitData.DionysusWeaponTrait.PropertyChanges[56]))
 		baseFunc()
     end
 )]]
