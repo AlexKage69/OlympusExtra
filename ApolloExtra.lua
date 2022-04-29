@@ -2,16 +2,10 @@
 
 if ModUtil ~= nil then
 
-ModUtil.RegisterMod("ApolloExtra")
+ModUtil.Mod.Register("ApolloExtra")
 
 local mod = "ApolloExtra"
 local package = "ApolloPackage"
-
-ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
-    DebugPrint({Text = "@"..mod.." Trying to load package "..package..".pkg"})
-    --LoadPackages({Name = package})
-    return baseFunc()
-end)
 --Variables
 local DepthDamageMultiplier = 0.0
 local DuplicateMultiplier = -0.60
@@ -24,7 +18,7 @@ OlympusColor.ApolloDamageLight = {255,145,79,255}
 OlympusColor.ApolloDamage = {255,145,79,255}
 --Assets
 local package = "OEAssets"
-ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
+ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
     DebugPrint({Text = "Trying to load package "..package..".pkg"})
     LoadPackages({Name = package})
     return baseFunc()
@@ -227,7 +221,7 @@ OlympusGameData.ApolloBasicPickUpTextLines = {
 }
 table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
-ModUtil.MapSetTable(OlympusGameData.GodAboutGodVoiceLines, { 
+ModUtil.Table.Merge(OlympusGameData.GodAboutGodVoiceLines, { 
 	"ApolloAboutZeus01", "ApolloAboutStepSiblings01", "ApolloAboutDaughters01",
 	"ApolloAboutDaughters02", "ApolloAboutDaughters03", "ApolloAboutDaughters04",
 	"ApolloAboutDaughters05", "ApolloAboutHydra", "ApolloAboutDaphne01",
@@ -237,7 +231,7 @@ ModUtil.MapSetTable(OlympusGameData.GodAboutGodVoiceLines, {
 )
 --Keywords
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-ModUtil.MapSetTable(OlympusKeywordList, { "ApolloBlind", "FlashBomb" })
+ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb" })
 
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -3712,7 +3706,7 @@ OlympusLootData.HermesUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingApo
 -- Gift Section    
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-ModUtil.MapSetTable(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
+ModUtil.Table.Merge(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
 
 OlympusGiftData.ApolloUpgrade =
 {
@@ -3744,7 +3738,7 @@ function EndApolloBeam()
 end
 -- Blind Functions
 -- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
-ModUtil.WrapBaseFunction( "CheckOnHitPowers", 
+ModUtil.Path.Wrap( "CheckOnHitPowers", 
 
 	function(baseFunc, victim, attacker, args)
 		local missRate = 0.5
@@ -3783,7 +3777,7 @@ function ApolloBlindClear(triggerArgs)
 	end
 end
 -- Prophecy and Sight
-ModUtil.WrapBaseFunction( "StartNewRun", 
+ModUtil.Path.Wrap( "StartNewRun", 
 	function(baseFunc, prevRun, args)
 		baseFunc(prevRun, args)
 		CurrentRun.RerollBoonTracker = 0
@@ -3792,7 +3786,7 @@ ModUtil.WrapBaseFunction( "StartNewRun",
 	end
 )
 
-ModUtil.WrapBaseFunction( "AddMoney", 
+ModUtil.Path.Wrap( "AddMoney", 
 	function(baseFunc, amount, source)
 		baseFunc(amount, source)	
 		if amount == nil or round( amount ) <= 0 then
@@ -3813,7 +3807,7 @@ ModUtil.WrapBaseFunction( "AddMoney",
 		end
 	end
 )
-ModUtil.WrapBaseFunction( "HandleLootPickup", 
+ModUtil.Path.Wrap( "HandleLootPickup", 
 function(baseFunc, currentRun, loot)
 	baseFunc(currentRun, loot)
 	if (not loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then
@@ -3880,7 +3874,7 @@ OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFount
 	end
 }
 -- Song of Healing functions
-ModUtil.WrapBaseFunction( "Kill", 
+ModUtil.Path.Wrap( "Kill", 
 	function(baseFunc, victim, triggerArgs)
 		if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
 			victim.HealDropOnDeath = {
@@ -3926,7 +3920,7 @@ end
 end]]
 
 -- For testing purposes
---[[ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
+--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(ModUtil.Mods.Data["ApolloExtra2"] ))
 		if (not CanOpenCodex()) and IsSuperValid() then

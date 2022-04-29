@@ -1,6 +1,6 @@
 -- Going to combine all mods
 if ModUtil ~= nil then
-    ModUtil.RegisterMod("OlympusExtra")
+    ModUtil.Mod.Register("OlympusExtra")
     if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
         --External mod interaction
         if CodexMenuData ~= nil then
@@ -20,12 +20,12 @@ if ModUtil ~= nil then
         local OlympusRealGodNames = ModUtil.Entangled.ModData(RealGodNames)
         table.insert(OlympusRealGodNames, "Apollo")
 
-        ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
+        --[[ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
             LoadPackages({Names = {
                 "ApolloUpgrade",
             }})
             return baseFunc()
-        end)
+        end)]]
         end            
     end
 
