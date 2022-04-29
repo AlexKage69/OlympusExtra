@@ -1,5 +1,7 @@
 -- Separate Gods from Goddess to add more gods
 
+if ModUtil ~= nil then
+
 ModUtil.RegisterMod("ApolloExtra")
 
 local mod = "ApolloExtra"
@@ -151,7 +153,7 @@ OlympusEffectData.ApolloBlind =
 }
 -- GlobalVoiceLines
 local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
---[[table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
+table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
 	BreakIfPlayed = true,
 	RandomRemaining = true,
 	PreLineWait = 0.5,
@@ -172,7 +174,7 @@ local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	{ Cue = "/VO/Apollo_0153" },
 	-- Just... Thank you.
 	{ Cue = "/VO/Apollo_0154" },
-})]]
+})
 --BoonInfoScreenData
 local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
 table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
@@ -3923,9 +3925,10 @@ end
 	Destroy({ Id = dropLocation })
 end]]
 
--- Fortesting purposes
+-- For testing purposes
 --[[ModUtil.WrapBaseFunction( "BeginOpeningCodex", 
-	function(baseFunc)
+	function(baseFunc)		
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(ModUtil.Mods.Data["ApolloExtra2"] ))
 		if (not CanOpenCodex()) and IsSuperValid() then
 			wait(1, RoomThreadName)
 			BuildSuperMeter(CurrentRun, 100)
@@ -3935,4 +3938,10 @@ end]]
 		end
 		baseFunc()
     end
-)]]
+)
+ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1", 
+function(triggerArgs)
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("OnHIT"))
+end)]]
+
+end
