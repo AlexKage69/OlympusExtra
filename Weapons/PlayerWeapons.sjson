@@ -42,7 +42,7 @@
         Effect = {
             Name = "BeamRotation"
 
-            Duration = 3.05
+            Duration = 1
             RotationMultiplier = 0.02
             Active = true
         }

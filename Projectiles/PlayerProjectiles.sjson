@@ -301,14 +301,13 @@
       GroupName = "FX_Dark"
       TipFx = "ApolloLaserTip"
       AttachToOwner = true
-      DangerDistance = 0
       DissipateGraphic = "ApolloLaserEnd"
       Thing = {
         Graphic = "ApolloLaserPreview"
         AttachedAnim = "ApolloLaserOrigin"
-        OffsetZ = 100
+        OffsetZ = 0
         Grip = 999999
-		    Tallness = 10
+		    Tallness = 0
 		    Points = [
           {
             X = 0
@@ -397,7 +396,7 @@
           AutoLock = true
           Cancelable = false
           Active = true
-          StartAnimation = "ZagreusRangedWeapon_FireRepeat"
+          StartAnimation = "ZagreusShootLazer"
           CanAffectInvulnerable = true
         }
       ]

@@ -2535,14 +2535,31 @@
       NumFrames = 30
       PlaySpeed = 80.0
       StartFrame = 1
-      OriginY = 4.0
-      ScaleLength = 160.0
+      OriginX = 20.0
+      OriginY = 85.0
+      ScaleLength = 120.0
       ScaleRadius = 160.0
       ScaleY = 0.66
       Ambient = 0.0
       OverlayVfx = true
       TransferCopyBody = false
-    }
+    }    
+    /*{
+      Name = "ZagreusShootLazer"
+      FilePath = "Animations\Zagreus\RangedWeapon\ZagreusRangedWeapon"
+      Type = "Book"
+      VideoTexture = "ZagreusRangedWeapon_Bink"
+      FrameDataFile = "Game\Animations\FrameData\ZagreusRangedWeapon.sga"
+      EndFrame = 100
+      Loop = true
+      NumAngles = 32
+      NumFrames = 120
+      StartFrame = 1
+      OffsetY = -105.0
+      SetOwnerEndAngle = true
+      Scale = 1.05
+      CancelOnOwnerMove = true
+    }*/
     {
       Name = "ApolloLaser"
       ChainTo = "ApolloLaserEnd"
@@ -2555,12 +2572,11 @@
       NumFrames = 30
       PlaySpeed = 60.0
       StartFrame = 1
-      OriginX = 0
-      OriginY = 1
+      OriginX = 20.0
+      OriginY = 85.0
       TransferFrameFromThis = true
-      ScaleLength = 160.0
+      ScaleLength = 120.0
       ScaleRadius = 160.0
-      ScaleY = 0.66
       Ambient = 0.0
       OverlayVfx = true
       TransferCopyBody = false
@@ -2574,8 +2590,8 @@
       LocationFromOwner = "Maintain"
       LocationZFromOwner = "Maintain"
       DieWithOwner = true
-      OriginX = 0
-      OriginY = 128
+      //OriginX = 0
+     // OriginY = 0
       ScaleY = 2.0
       Red = 1
       Green = 0.4

@@ -3733,7 +3733,7 @@ end
 function EndApolloBeam()
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
-	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusStun" })
+	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusApolloStun" })
 	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
 -- Blind Functions
@@ -3922,7 +3922,7 @@ end]]
 -- For testing purposes
 --[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(ModUtil.Mods.Data["ApolloExtra2"] ))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(ModUtil.Hades.Triggers)) 
 		if (not CanOpenCodex()) and IsSuperValid() then
 			wait(1, RoomThreadName)
 			BuildSuperMeter(CurrentRun, 100)
@@ -3932,10 +3932,11 @@ end]]
 		end
 		baseFunc()
     end
-)
-ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1", 
-function(triggerArgs)
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("OnHIT"))
-end)]]
+)]]
+--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
+	return base( triggerArgs ) 
+end )]]
+
 
 end
