@@ -2745,7 +2745,7 @@ OlympusLootData.ApolloUpgrade = {
 				{ Cue = "/VO/Apollo_0080",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Emote = "PortraitEmoteMusical",
-					Text = "I am flattered that you brought my Harmonious Harp with you. I knew we shared a special bond, Zagzag." },
+					Text = "I am flattered that you brought my Shining Lyre with you. I knew we shared a special bond, Zagzag." },
 			},
 			ApolloRunCleared01 =
 			{
@@ -3393,7 +3393,7 @@ OlympusLootData.ApolloUpgrade = {
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0115",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know respect comes both ways, right, Zagzag... I am willing to do my part, if you do yours." },
+					Text = "You know respect goes both ways, right, Zagzag... I am willing to do my part, if you do yours." },
 			},
 		},
 
