@@ -195,12 +195,12 @@
 		{
 			Id = "RerollBoonTrait"
 			DisplayName = "Future Sight"
-			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}. \n (Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n (Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
 			DisplayName = "Future Sight"
-			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}. \n (Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+			Description = "From now on, Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n (Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}		
 		{
 			Id = "ApolloRetaliateTrait"

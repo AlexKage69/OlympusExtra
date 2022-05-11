@@ -2085,7 +2085,7 @@ OlympusTraitData.FamedDuetTrait =
 				WeaponProperty = "NumProjectiles",
 				ChangeValue = 12,
 				ExcludeLinked = true,
-			},			
+			},
 		},
 		ExtractValues =
 		{
@@ -2118,12 +2118,12 @@ OlympusTraitData.WarSongTrait =
 				ExtractAs = "TooltipCurseDamage",
 				SkipAutoExtract = true,
 				External = true,
-				BaseType = "Effect",
-				TraitName = "ApolloRangedTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "ApolloField",
-				EffectName = "DelayedDamage",
-				EffectProperty = "Amount",
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DelayedDamage",
+				BaseProperty = "Amount",
+				Format = "Percent"
 			}
 		}
 	}
@@ -2147,6 +2147,47 @@ OlympusTraitData.HyacinthTrait =
 			}
 		},
 		PreEquipWeapons = { "HyacinthChillKill" },
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWeakDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipWeakPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Modifier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		}
 	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -2215,7 +2256,7 @@ OlympusLootData.ApolloUpgrade = {
 				OneFromEachSet =
 				{
 					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
-					{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeDashTrait", "AphroditeRangedTrait"}
+					{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 				}
 			},
 			BlindDurationTrait = 
@@ -3644,7 +3685,7 @@ OlympusLootData.AphroditeUpgrade.LinkedUpgrades.HyacinthTrait =
 	OneFromEachSet =
 	{
 		{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
-		{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeDashTrait", "AphroditeRangedTrait"}
+		{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 	}
 }
 OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 
