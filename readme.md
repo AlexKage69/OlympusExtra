@@ -6,7 +6,7 @@ We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastu
 
 -----------------------------
 ## Disclaimer!
-Do note that we're still in beta-testing phase for OlympusExtra, so please note that it is very possible that your Hades game might crash during the process. To avoid this, please create a backup of the game by copying the Hades game folder before making any modifications! 
+Do note that we're still in beta-testing phase for OlympusExtra, so please note that it is very possible that your Hades game might crash during the process. To avoid this, please create a backup of the game by copying the Hades game save file before making any modifications! Your save file can be found under `Documents\Saved Games\Hades`.
 
 In the event that the game crashes and cannot be restored, you can replace this with the backup which you have copied. Alternatively, for Steam users, you can also go to `Library` > Right click Hades > `Properties` > `Local Files` > `Verify integrity of game files`
 

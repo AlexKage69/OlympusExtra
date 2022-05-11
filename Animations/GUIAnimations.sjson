@@ -5,7 +5,7 @@
       Name = "Keepsake_Lyre_Child"
       InheritFrom = "KeepsakeTrayIcon"
       FilePath = "Apollo\Keepsake_Lyre"
-      Scale = 1.5
+      Scale = 0.65
       EndFrame = 1
       StartFrame = 1
     }
