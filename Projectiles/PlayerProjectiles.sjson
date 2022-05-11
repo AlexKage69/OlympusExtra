@@ -296,7 +296,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       Fuse = 0.1
-      TotalFuse = 8.0
+      TotalFuse = 13.0
       DrawAsBeam = true
       GroupName = "FX_Dark"
       TipFx = "ApolloLaserTip"
@@ -305,27 +305,12 @@
       Thing = {
         Graphic = "ApolloLaserPreview"
         AttachedAnim = "ApolloLaserOrigin"
-        OffsetZ = 0
+        OffsetZ = 70
         Grip = 999999
-		    Tallness = 0
-		    Points = [
-          {
-            X = 0
-            Y = 24
-          }
-          {
-            X = 12
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -24
-          }
-          {
-            X = -12
-            Y = 0
-          }
-        ]
+        RotateGeometry = true
+        UseBoundsForSortDrawArea = true
+        SortBoundsScale = 0.33
+        Tallness = 50        
       }
     }
     {

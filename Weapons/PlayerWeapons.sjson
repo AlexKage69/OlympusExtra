@@ -1,10 +1,10 @@
 {
   Weapons = [
-      "_append"
-      {
-        Name = "LaserEnabledWeapon"
-        InheritFrom = "1_BasePlayerSlowWeapon"
-        Projectile = "LaserEnabled"
+    "_append"
+    {
+      Name = "LaserEnabledWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Projectile = "LaserEnabled"
     }
     {
       Name = "ApolloBeamAim"
@@ -48,50 +48,11 @@
         }
     }
     {
-      Name = "ApolloBeamWeapon2"
-      InheritFrom = "ApolloBeamWeapon"
-    }
-    {
-      Name = "ApolloBeamWeapon360"
-      InheritFrom = "1_BasePlayerSlowWeapon"
-      Type = "GUN"
-      Projectile = "ApolloCastBeam"
-      ClipSize = 1
-      Cooldown = 0.0
-      RootOwnerWhileFiring = true
-      BlockMoveInput = true
-      CancelMovement = true
-      ChargeCancelMovement = true
-      FullyAutomatic = false
-      BarrelLength = 175
-      AutoLock = true
-      FireGraphic = "null"
-      LockTriggerForCharge = false
-      DisableOwnerForDuration = 0
-      ReloadTime = 3.0
-      NumProjectiles = 18
-      ProjectileAngleOffset = 20
-      SilentImpactAfterFirst = true
-      ObstacleDamageMultiplier = 1
-      FireFx = "ApolloCastBeam360Vignette"
-      Effect = {
-        Name = "BeamRotation"
-
-        Duration = 3.05
-        RotationMultiplier = 0.015
-        Active = true
-      }
-    }
-    {
-      Name = "ApolloBeamWeapon2360"
-      InheritFrom = "ApolloBeamWeapon360"
-    }
-    {
       Name = "AreaWeakenApollo"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "AreaWeakenApollo"
-	  ClearFireRequestOnChargeCancel = false
+	    ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"

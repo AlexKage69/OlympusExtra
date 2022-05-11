@@ -105,11 +105,6 @@ OlympusWeaponData.ApolloShoutWeapon = {
 OlympusWeaponData.ApolloBeamWeapon = {
 	InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 	HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
-	HitSimSlowParameters =
-	{
-		{ ScreenPreWait = 0.02, Fraction = 0.25, LerpTime = 0 },
-		{ ScreenPreWait = 0.16, Fraction = 1.0, LerpTime = 0.1 },
-	},
 	ImpactReactionHitsOverride = 1,
 
 	BlockInterrupt = true,
@@ -1463,8 +1458,8 @@ OlympusTraitData.ApolloShoutTrait =
 		{
 			FunctionName = "ApolloShout",
 			Cost = 25,
-			SuperDuration = 1.2,
-			MaxDurationMultiplier = 6,
+			SuperDuration = 3,
+			MaxDurationMultiplier = 3,
 			ExtractValues =
 			{
 				{
@@ -3922,13 +3917,8 @@ end]]
 -- For testing purposes
 --[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(ModUtil.Hades.Triggers)) 
 		if (not CanOpenCodex()) and IsSuperValid() then
-			wait(1, RoomThreadName)
-			BuildSuperMeter(CurrentRun, 100)
-			CommenceSuperMove()
-			UpdateSuperDamageBonus()
-			thread( MarkObjectiveComplete, "EXMove" )
+			BuildSuperMeter(CurrentRun, 50)
 		end
 		baseFunc()
     end

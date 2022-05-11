@@ -2544,7 +2544,7 @@
       OverlayVfx = true
       TransferCopyBody = false
     }    
-    /*{
+    {
       Name = "ZagreusShootLazer"
       FilePath = "Animations\Zagreus\RangedWeapon\ZagreusRangedWeapon"
       Type = "Book"
@@ -2559,7 +2559,7 @@
       SetOwnerEndAngle = true
       Scale = 1.05
       CancelOnOwnerMove = true
-    }*/
+    }
     {
       Name = "ApolloLaser"
       ChainTo = "ApolloLaserEnd"
