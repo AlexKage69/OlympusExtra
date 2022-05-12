@@ -296,37 +296,21 @@
       ImpactVelocity = 0
       MultiDetonate = true
       Fuse = 0.1
-      TotalFuse = 8.0
+      TotalFuse = 13.0
       DrawAsBeam = true
       GroupName = "FX_Dark"
       TipFx = "ApolloLaserTip"
       AttachToOwner = true
-      DangerDistance = 0
       DissipateGraphic = "ApolloLaserEnd"
       Thing = {
         Graphic = "ApolloLaserPreview"
         AttachedAnim = "ApolloLaserOrigin"
-        OffsetZ = 100
+        OffsetZ = 70
         Grip = 999999
-		    Tallness = 10
-		    Points = [
-          {
-            X = 0
-            Y = 24
-          }
-          {
-            X = 12
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -24
-          }
-          {
-            X = -12
-            Y = 0
-          }
-        ]
+        RotateGeometry = true
+        UseBoundsForSortDrawArea = true
+        SortBoundsScale = 0.33
+        Tallness = 50        
       }
     }
     {
@@ -397,7 +381,7 @@
           AutoLock = true
           Cancelable = false
           Active = true
-          StartAnimation = "ZagreusRangedWeapon_FireRepeat"
+          StartAnimation = "ZagreusShootLazer"
           CanAffectInvulnerable = true
         }
       ]

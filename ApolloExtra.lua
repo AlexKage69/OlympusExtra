@@ -105,11 +105,6 @@ OlympusWeaponData.ApolloShoutWeapon = {
 OlympusWeaponData.ApolloBeamWeapon = {
 	InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 	HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
-	HitSimSlowParameters =
-	{
-		{ ScreenPreWait = 0.02, Fraction = 0.25, LerpTime = 0 },
-		{ ScreenPreWait = 0.16, Fraction = 1.0, LerpTime = 0.1 },
-	},
 	ImpactReactionHitsOverride = 1,
 
 	BlockInterrupt = true,
@@ -1463,8 +1458,8 @@ OlympusTraitData.ApolloShoutTrait =
 		{
 			FunctionName = "ApolloShout",
 			Cost = 25,
-			SuperDuration = 1.2,
-			MaxDurationMultiplier = 6,
+			SuperDuration = 3,
+			MaxDurationMultiplier = 3,
 			ExtractValues =
 			{
 				{
@@ -2090,7 +2085,7 @@ OlympusTraitData.FamedDuetTrait =
 				WeaponProperty = "NumProjectiles",
 				ChangeValue = 12,
 				ExcludeLinked = true,
-			},			
+			},
 		},
 		ExtractValues =
 		{
@@ -2123,12 +2118,12 @@ OlympusTraitData.WarSongTrait =
 				ExtractAs = "TooltipCurseDamage",
 				SkipAutoExtract = true,
 				External = true,
-				BaseType = "Effect",
-				TraitName = "ApolloRangedTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "ApolloField",
-				EffectName = "DelayedDamage",
-				EffectProperty = "Amount",
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DelayedDamage",
+				BaseProperty = "Amount",
+				Format = "Percent"
 			}
 		}
 	}
@@ -2152,6 +2147,47 @@ OlympusTraitData.HyacinthTrait =
 			}
 		},
 		PreEquipWeapons = { "HyacinthChillKill" },
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWeakDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipWeakPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Modifier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		}
 	}
 -- LootData
 local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -2220,7 +2256,7 @@ OlympusLootData.ApolloUpgrade = {
 				OneFromEachSet =
 				{
 					{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
-					{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeDashTrait", "AphroditeRangedTrait"}
+					{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 				}
 			},
 			BlindDurationTrait = 
@@ -3649,7 +3685,7 @@ OlympusLootData.AphroditeUpgrade.LinkedUpgrades.HyacinthTrait =
 	OneFromEachSet =
 	{
 		{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
-		{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeDashTrait", "AphroditeRangedTrait"}
+		{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 	}
 }
 OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 
@@ -3729,7 +3765,7 @@ end
 function EndApolloBeam()
 	SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
-	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusStun" })
+	ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusApolloStun" })
 	ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
 end
 -- Blind Functions
@@ -3918,20 +3954,16 @@ end]]
 -- For testing purposes
 --[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(ModUtil.Mods.Data["ApolloExtra2"] ))
 		if (not CanOpenCodex()) and IsSuperValid() then
-			wait(1, RoomThreadName)
-			BuildSuperMeter(CurrentRun, 100)
-			CommenceSuperMove()
-			UpdateSuperDamageBonus()
-			thread( MarkObjectiveComplete, "EXMove" )
+			BuildSuperMeter(CurrentRun, 50)
 		end
 		baseFunc()
     end
-)
-ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1", 
-function(triggerArgs)
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("OnHIT"))
-end)]]
+)]]
+--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
+	return base( triggerArgs ) 
+end )]]
+
 
 end
