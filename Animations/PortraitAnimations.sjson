@@ -54,7 +54,15 @@
       FilePath = "Apollo\Portraits_Apollo_01"
       EndFrame = 1
       StartFrame = 1
-      Scale = 0.3
+      Scale = 0.35
+    }
+    {
+      Name = "Portrait_Apollo_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Portraits\Portraits_Apollo_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.35
     }
     {
       Name = "Portrait_Apollo_Wrath_01"
