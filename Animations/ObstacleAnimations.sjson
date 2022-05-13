@@ -4,8 +4,8 @@
     {
       Name = "ApolloOverlay"
       InheritFrom = "HadesOverlay"
-      FilePath = "Portraits\Portraits_Aphrodite_01"
-      Scale = 0.5
+      FilePath = "Apollo\Portraits_Apollo_01"
+      Scale = 0.3
     }
   ]
 }
