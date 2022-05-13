@@ -10,7 +10,7 @@ Do note that we're still in beta-testing phase for OlympusExtra, so please note 
 
 In the event that the game crashes and cannot be restored, you can replace this with the backup which you have copied. Alternatively, for Steam users, you can also go to `Library` > Right click Hades > `Properties` > `Local Files` > `Verify integrity of game files`
 
-Please also note that not all features have been fully implemented yet, and some may still be buggy. We welcome your feedback on the [Hades Modding Discord](https://discordapp.com/invite/KuMbyrN)
+Please also note that not all features have been fully implemented yet, and some may still be buggy. We welcome your feedback on the [Hades Modding Discord](https://discord.gg/D8S4hjABaM)
 
 
 -----------------------------
