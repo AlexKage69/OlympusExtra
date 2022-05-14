@@ -252,7 +252,7 @@
           }
         ]
         Thing = {
-          Graphic = "GunGrenade"
+          Graphic = "Projectile_BloodlessGrenadier"
           Scale = 0.1
           OffsetZ = 101
           AttachedAnim = "GrenadierShadow"

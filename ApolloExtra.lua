@@ -2127,6 +2127,27 @@ OlympusTraitData.WarSongTrait =
 			}
 		}
 	}
+table.insert(OlympusTraitData.AresLongCurseTrait.PropertyChanges,{
+	TraitName = "ApolloRangedTrait",
+	WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+	EffectName = "DelayedDamage",
+	EffectProperty = "Duration",
+	DeriveValueFrom = "DurationSource"
+})
+table.insert(OlympusTraitData.AresLoadCurseTrait.PropertyChanges,{
+	TraitName = "ApolloRangedTrait",
+	WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+	EffectName = "DelayedDamage",
+	EffectProperty = "StackAmount",
+	DeriveValueFrom = "DamageSource"
+})
+table.insert(OlympusTraitData.AresLoadCurseTrait.PropertyChanges,{
+	TraitName = "ApolloRangedTrait",
+	WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+	EffectName = "DelayedDamage",
+	EffectProperty = "Stacks",
+	ChangeValue  = true,
+})
 OlympusTraitData.HyacinthTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
