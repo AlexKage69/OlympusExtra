@@ -6,6 +6,9 @@ We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastu
 
 -----------------------------
 ## Disclaimer!
+
+**YOUR SAVE FILES MAY BE CORRUPTED IF MODDED WRONGLY! PLEASE CREATE A BACKUP OF YOUR SAVE FILES IF YOU WISH TO KEEP YOUR PROGRESS**
+
 Do note that we're still in beta-testing phase for OlympusExtra, so please note that it is very possible that your Hades game might crash during the process. To avoid this, please create a backup of the game by copying the Hades game save file before making any modifications! Your save file can be found under `Documents\Saved Games\Hades`.
 
 In the event that the game crashes and cannot be restored, you can replace this with the backup which you have copied. Alternatively, for Steam users, you can also go to `Library` > Right click Hades > `Properties` > `Local Files` > `Verify integrity of game files`
@@ -21,7 +24,10 @@ Please also note that not all features have been fully implemented yet, and some
 -----------------------------
 ## Pre-Requisites 
 1. Download and unzip [modimporter](https://github.com/SGG-Modding/sgg-mod-modimporter/releases/latest/download/modimporter-windows.zip) (follow installation instructions on the Nexus Mod page). The downloaded `modimporter.exe` should be placed in the `Hades\Content` folder
+
 1. Download and unzip [Mod Utility](https://github.com/SGG-Modding/sgg-mod-modutil/releases/download/v2.3.1/ModUtil.zip). Place the unzipped contents in the `Hades\Content\Mods` folder 
+
+   
 
 -----------------------------
 ## Installation Instructions
@@ -43,5 +49,5 @@ Voice Actor (Apollo): MrAndyG
 
 
 ### Special thanks to:  
-Apollo's portait: [Reikiix](https://twitter.com/Reikiix?s=20&t=8cjhMv3LF5Z6ya6urr6buw)  
+Apollo's portrait: [Reikiix](https://twitter.com/Reikiix)  
 Apollo keepsake badges: Lazy.mano, r/Lazymanohelp  
