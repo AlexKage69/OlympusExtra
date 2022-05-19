@@ -2776,6 +2776,110 @@
       Loop = true
       DieWithOwner = true
     }
+    {
+      Name = "HyacinthShatter"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      ColorFromOwner = "Ignore"
+      VisualFx = "ApolloShatterParticle"
+      VisualFxIntervalMin = 0.005
+      VisualFxIntervalMax = 0.006
+      TimeModifierFraction = 0
+      Duration = 0.2
+      CreateAnimations = [
+        {
+          Name = "RadialNovaApollo"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }
+        {
+          Name = "ApolloShatterParticle"
+        }]
+    }
+    {
+      Name = "ApolloShatterParticle"
+      Type = "Random"
+      Random = [
+        {
+          Name = "ApolloShatterParticleA"
+        }
+        {
+          Name = "ApolloShatterParticleB"
+        }
+        {
+          Name = "ApolloShatterParticleC"
+        }
+        {
+          Name = "ApolloShatterParticleD"
+        }]
+    }
+    {
+      Name = "ApolloShatterParticleA"
+      Type = "Book"
+      FilePath = "Particles\particle_aphrodite_sparkle"
+      NumFrames = 30
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 50
+      RandomDurationMin = 0.4
+      RandomDurationMax = 0.8
+      LoopFramesOnly = true
+      Material = "Unlit"
+      StartScale = 1
+      EndScale = 0
+      EaseIn = 0.8
+      EaseOut = 1.0
+      RadialOffsetMin = 0
+      RadialOffsetMax = 60
+      AngleMin = 0
+      AngleMax = 360
+      VelocityMin = 350
+      VelocityMax = 500
+      Acceleration = -800
+      Gravity = 600
+      AddColor = true
+      StartRed = 0.4
+      StartGreen = 0.5
+      StartBlue = 1.0
+      EndRed = 0
+      EndGreen = 0
+      EndBlue = 0
+      Loop = false
+      ScaleFromOwner = "Ignore"
+      LocationFromOwner = "Ignore"
+      GroupName = "Standing"
+      OffsetZ = 80
+    }
+    {
+      Name = "ApolloShatterParticleB"
+      InheritFrom = "ApolloShatterParticleA"
+      FilePath = "Particles\particle_aphrodite_sparkle"
+    }
+    {
+      Name = "ApolloShatterParticleC"
+      InheritFrom = "ApolloShatterParticleA"
+      FilePath = "Particles\particle_aphrodite_sparkle"
+    }
+    {
+      Name = "ApolloShatterParticleD"
+      InheritFrom = "ApolloShatterParticleA"
+      FilePath = "Particles\particle_aphrodite_sparkle"
+    }
     /* Theseus - Wrath */
     {
       Name = "RadialNovaTheseusWrath-Apollo"

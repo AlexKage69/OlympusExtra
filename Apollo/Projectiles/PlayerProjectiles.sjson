@@ -438,7 +438,7 @@
     {
 		Name = "ApolloChillKill"
       InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "DemeterBossIceShatter"
+      DetonateGraphic = "HyacinthShatter"
       Type = "INSTANT"
       FuseMin = 0.1
       FuseMax = 0.1
@@ -452,7 +452,7 @@
       UseVulnerability = false
       NumPenetrations = 999
       SpawnRadius = 0
-	  Speed = -100
+	    Speed = -100
       UseStartLocation = true
       CanHitWithoutDamage = true
       SilentImpactOnInvulnerable = true
@@ -481,8 +481,6 @@
           }
         ]
       }
-      Effects = [
-      ]
 	}
   ]
 }
