@@ -248,7 +248,7 @@
 		{
 			Id = "MissChanceTrait"
 			DisplayName = "Purest light"
-			Description = "Your {$Keywords.ApolloBlind} effects have a greater miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
+			Description = "Your {$Keywords.ApolloBlind} effects have a greater miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}65%"
 		}
 		{
 			Id = "ForceApolloBoonTrait"
@@ -264,11 +264,6 @@
 			Id = "ForceApolloBoonTrait_Inactive"
 			DisplayName = "Shining Lyre"
 			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
-		}
-		{
-			Id = "MissChanceTrait"
-			DisplayName = "Purest light"
-			Description = "Your {$Keywords.ApolloBlind} effects have more miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}75%"
 		}
 		{
 			Id = "FamedDuetTrait"

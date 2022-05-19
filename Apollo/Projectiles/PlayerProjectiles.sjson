@@ -56,6 +56,7 @@
                 Duration = 5
                 Modifier = 0.1
                 Active = false
+                ExtendDurationOnReapply = true
                 IsVulnerabilityEffect = true
                 TimeModifierFraction = 0
             }
@@ -151,7 +152,8 @@
           BackFx = "null"
           Duration = 5
           Modifier = 0.1
-          Active = true
+          Active = true          
+          ExtendDurationOnReapply = true
           IsVulnerabilityEffect = true
           TimeModifierFraction = 0
         },
@@ -246,13 +248,14 @@
             BackFx = "null"
             Duration = 5
             Modifier = 0.1
-            Active = true
+            Active = true            
+            ExtendDurationOnReapply = true
             IsVulnerabilityEffect = true
             TimeModifierFraction = 0
           }
         ]
         Thing = {
-          Graphic = "GunGrenade"
+          Graphic = "Projectile_BloodlessGrenadier"
           Scale = 0.1
           OffsetZ = 101
           AttachedAnim = "GrenadierShadow"
@@ -373,6 +376,7 @@
         {
           Name = "ZagreusApolloStun"
           OnlyAffectName = "_PlayerUnit"
+          ImmuneToForce = true
           Duration = 50
           DisableMove = true
           DisableRotate = false
@@ -416,7 +420,8 @@
             BackFx = "null"
             Duration = 5
             Modifier = 0.1
-            Active = true
+            Active = true            
+            ExtendDurationOnReapply = true
             IsVulnerabilityEffect = true
             TimeModifierFraction = 0
         }
