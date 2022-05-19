@@ -79,7 +79,8 @@
         Modifier = 1.0
         FrontFx = "ApolloHoverLoop"
         OnlyAffectName = "_PlayerUnit"
-        Active = true
+        Active = true        
+        ExtendDurationOnReapply = false
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
       }

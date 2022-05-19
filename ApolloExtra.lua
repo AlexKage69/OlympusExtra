@@ -283,7 +283,7 @@ OlympusTraitData.ForceApolloBoonTrait = {
 		--New Data
 		InRackTitle = "ForceApolloBoonTrait_Rack",
 		Icon = "Keepsake_Lyre",
-		EquipSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
+		EquipSound = "/SFX/LyreMedium",
 		ForceBoonName = "ApolloUpgrade",
 		Uses = 1,
 		RarityBonus =
@@ -3794,11 +3794,11 @@ end
 ModUtil.Path.Wrap( "CheckOnHitPowers", 
 
 	function(baseFunc, victim, attacker, args)
-		local missRate = 0.5
+		local missRate = 0.4
 		if HeroHasTrait("MissChanceTrait") then
-			missRate = 0.75
+			missRate = 0.65
 		end
-		if attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
+		if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
 			thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 			PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 			PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
