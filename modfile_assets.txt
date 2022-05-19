@@ -1,0 +1,14 @@
+-: Mod Name: Goddess Codex
+    Author - AlexKage
+    Author - Phypoh
+:-
+
+:: Assets
+To "Win/Packages/OEAssets.pkg"
+Replace "Packages/OEAssets.pkg"
+To "Win/Packages/720p/OEAssets.pkg"
+Replace "Packages/OEAssets.pkg"
+To "Win/Packages/OEAssets.pkg_manifest"
+Replace "Packages/OEAssets.pkg_manifest"
+To "Win/Packages/720p/OEAssets.pkg_manifest"
+Replace "Packages/OEAssets.pkg_manifest"
