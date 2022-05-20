@@ -1,32 +1,17 @@
 -: Mod Name: Goddess Codex
     Author - AlexKage
+    Author - Phypoh
 :-
 
 Import "SeparateGoddess.lua"
-::Import "OlympusExtra.lua"
 
-Import "ApolloExtra.lua"
+Import "Apollo/ApolloExtra.lua"
 
-:: Animations
-To "Game/Animations/PortraitAnimations.sjson"
-SJSON "Animations/PortraitAnimations.sjson"
-To "Game/Animations/ObstacleAnimations.sjson"
-SJSON "Animations/ObstacleAnimations.sjson"
-To "Game/Animations/Fx.sjson"
-SJSON "Animations/Fx.sjson"
-To "Game/Animations/GUIAnimations.sjson"
-SJSON "Animations/GUIAnimations.sjson"
+:: Merge all together
+Import "OlympusExtra.lua"
 
-:: Obstacles
-To "Game/Obstacles/Gameplay.sjson"
-SJSON "Obstacles/Gameplay.sjson"
-To "Game/Projectiles/PlayerProjectiles.sjson"
-SJSON "Projectiles/PlayerProjectiles.sjson"
+Include "modfile_assets.txt"
 
-:: Language Text
-To "Game/Text/en/HelpText.en.sjson"
-SJSON "Text/en/HelpText.en.sjson"
-To "Game/Text/en/CodexText.en.sjson"
-SJSON "Text/en/CodexText.en.sjson"
-To "Game/Text/en/MacroText.sjson"
-SJSON "Text/en/MacroText.en.sjson"
+Include "Apollo/modfile_apollo.txt"
+
+-: Include "modfile_fr.txt" :-

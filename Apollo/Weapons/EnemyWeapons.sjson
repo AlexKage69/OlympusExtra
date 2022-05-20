@@ -1,0 +1,15 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "DevotionApollo"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "DevotionApollo"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+  ]
+}

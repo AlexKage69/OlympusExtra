@@ -1,30 +1,37 @@
 -- Going to combine all mods
+if ModUtil ~= nil then
+    ModUtil.Mod.Register("OlympusExtra")
+    if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+        --External mod interaction
+        if CodexMenuData ~= nil then
+            local OlympusCodexMenuData = ModUtil.Entangled.ModData(CodexMenuData)
+            OlympusCodexMenuData.ApolloUpgrade = {
+            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait", 
+            "ApolloShoutTrait", "ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait",
+            "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolTrait", "RerollBoonTrait",
+            "MissChanceTrait",
+            }
+            table.insert(OlympusCodexMenuData.Duos, "FamedDuetTrait")
+            table.insert(OlympusCodexMenuData.Duos, "WarSongTrait")
+            table.insert(OlympusCodexMenuData.Duos, "HyacinthTrait")
+            table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
+            local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
+            table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
 
---[[ModUtil.RegisterMod("OlympusExtra")
+            table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_ApolloRangedTrait")
 
--- Add new LootData and more
-ModUtil.LoadOnce(function ()
-    for lootName, section in pairs(OlympusExtra.LootData) do
-        LootData[lootName] = OlympusExtra.LootData[lootName]
-    end
-    for achivementName, section in pairs(OlympusExtra.AchievementData) do
-        GameData.AchievementData[achivementName] = section
-    end
-    for enemyName, section in pairs(OlympusExtra.EnemiesData) do
-        UnitSetData.Enemies[enemyName] = section
-    end
-    for giftName, section in pairs(OlympusExtra.GiftData) do
-        table.insert(GiftOrdering, 13, section.GiftOrdering);
-        GiftData[giftName] = section.GiftData;
-    end
-    for traitName, section in pairs(OlympusExtra.TraitData) do
-        TraitData[traitName] = section;
-    end
-end)
+            local OlympusRealGodNames = ModUtil.Entangled.ModData(RealGodNames)
+            table.insert(OlympusRealGodNames, "Apollo")
 
-function AddGodToSubCodex(category, god)
-    table.insert(CodexOrdering[category].Order, god)
-    Codex[category].Entries[god] = OlympusExtra.Codex[category].Codex.Entries[god]
-    table.insert(BoonInfoScreenData.Ordering, god)
-    return true
-end--]]
+            --[[ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
+                LoadPackages({Names = {
+                    "ApolloUpgrade",
+                }})
+                return baseFunc()
+            end)]]
+        end            
+    end
+    -- Recompile data. Required for each gods so generic here.
+    ResetKeywords()
+    SetupRunData()
+end
