@@ -2210,6 +2210,14 @@ if ModUtil ~= nil then
 				}
 			}
 		}
+	OlympusTraitData.MasterBoltTrait =
+		{
+			InheritFrom = { "SynergyTrait" },
+			Icon = "Apollo_Zeus_01",
+			RequiredFalseTraits = { "MasterBoltTrait" },
+			MasterBoltDamage = 40,
+		}
+	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 	OlympusLootData.ApolloUpgrade = {
