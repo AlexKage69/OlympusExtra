@@ -110,7 +110,7 @@
 		{
 			Id = "ApolloRangedTrait"
 			DisplayName = "Blinding Bomb"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "ApolloRangedTrait_Initial"
@@ -120,11 +120,11 @@
 		{
 			Id = "ApolloRangedTrait_Tray"
 			InheritFrom = "ApolloRangedTrait"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait"
-			DisplayName = "Brilliant Flare"
+			DisplayName = "Blinding Flare"
 			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
@@ -273,7 +273,7 @@
 		{
 			Id = "WarSongTrait"
 			DisplayName = "War Song"
-			Description = "Your {$Keywords.FlashBomb} inflicts {$Keywords.Curse}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Curse} Damage: \Column 380 {#PreviousFormat}{$TooltipData.TooltipCurseDamage}"
+			Description = "Your {$Keywords.FlashBomb} inflicts {$Keywords.Curse}. \n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCurseDamage}"
 		}	
 		{
 			Id = "HyacinthTrait"
