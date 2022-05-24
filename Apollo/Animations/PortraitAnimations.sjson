@@ -1,0 +1,199 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "PortraitRayParticle_Apollo"
+      InheritFrom = "PortraitRayParticle"
+      StartRed = 1.0
+      StartGreen = 0.7
+      StartBlue = 0.2
+      EndRed = 1.0
+      EndGreen = 0.6
+      EndBlue = 0.4
+      OffsetX = 0
+      OffsetY = -300
+    }
+    {
+      Name = "PortraitVerticalRay_Apollo"
+      InheritFrom = "PortraitVerticalRay"
+      StartRed = 1.0
+      StartGreen = 0.7
+      StartBlue = 0.2
+      EndRed = 1.0
+      EndGreen = 0.6
+      EndBlue = 0.4
+
+      OffsetX = 0
+      CreateAnimation = "PortraitRayParticle_Apollo"
+    }
+    {
+      Name = "PortraitVerticalRayEmitter_Apollo"
+      InheritFrom = "PortraitVerticalRayEmitter_Base"
+      StartRed = 1.0
+      StartGreen = 0.7
+      StartBlue = 0.2
+      EndRed = 1.0
+      EndGreen = 0.6
+      EndBlue = 0.4
+      OffsetX = 0
+      VisualFx = "PortraitVerticalRay_Apollo"
+    }
+    {
+      Name = "PortraitGodRayEmitter_Apollo"
+      InheritFrom = "PortraitGodRayEmitter"
+      EndFrame = 1
+      StartFrame = 1
+      VisualFxOffsetX = -30.0
+      VisualFxOffsetY = 120.0
+      CreateAnimation = "PortraitVerticalRayEmitter_Apollo"
+    }
+    {
+      Name = "Portrait_Apollo_Default_01"
+      InheritFrom = "Portrait_God_01"
+      ChildAnimation = "PortraitGodRayEmitter_Apollo"
+      FilePath = "Apollo\Portraits_Apollo_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.35
+    }
+    {
+      Name = "Portrait_Apollo_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Portraits\Portraits_Apollo_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.35
+    }
+    {
+      Name = "Portrait_Apollo_Wrath_01"
+      InheritFrom = "Portrait_Apollo_Default_01"
+      ChildAnimation = "null"
+      AddColor = true
+      EndFrame = 1
+      StartFrame = 1
+      CreateAnimation = "null"
+    }
+    {
+      Name = "Codex_Portrait_Apollo"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Apollo\CodexPortrait_Apollo"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    /* Emote - Musical */
+    {
+      Name = "PortraitEmoteMusical"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      GroupName = "Combat_Menu_TraitTray_Overlay"
+      Duration = 1
+      VisualFx = "PortraitEmoteMusiclaNotes"
+      VisualFxIntervalMin = 0.08
+      VisualFxIntervalMax = 0.12
+      LocationFromOwner = "Maintain"
+      Sound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX"
+    }
+    {
+      Name = "PortraitEmoteMusiclaNotes"
+      Type = "Random"
+      Random = [
+        {
+          Name = "PortraitEmoteMusiclaNoteA"
+        }
+        {
+          Name = "PortraitEmoteMusiclaNoteB"
+        }
+        {
+          Name = "PortraitEmoteMusiclaNoteC"
+        }]
+    }
+    {
+      Name = "PortraitEmoteMusiclaNoteBase"
+      Type = "Constant"
+      FilePath = "Particles\particle_emote_flower"
+      Material = "Unlit"
+      RandomOffsetX = 60
+      RandomOffsetY = 60
+      //AddColor = true
+      Red = 0.9
+      Green = 0.2
+      Blue = 0
+      OffsetX = 75
+      OffsetY = -170
+      StartScale = 0
+      EndScale = 1
+      Scale = 1.5
+      PingPongScale = true
+      EaseIn = 0
+      EaseOut = 1
+      PingPongColor = false
+      RandomDurationMin = 1.2
+      RandomDurationMax = 2.5
+      ScaleMin = 0.8
+      ScaleMax = 1.2
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      Velocity = 300
+      Gravity = -25
+      Acceleration = -200
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      SortMode = "Id"
+      CreateAnimation = "PortraitEmoteMusiclaNoteBaseDark"
+      VisualFx = "PortraitEmoteCheerfulBurst"
+      VisualFxIntervalMin = 0.1
+      VisualFxIntervalMax = 1
+      VisualFxCap = 2
+    }
+    {
+      Name = "PortraitEmoteMusiclaNoteBaseDark"
+      InheritFrom = "PortraitEmoteMusiclaNoteBase"
+      Red = 0
+      Green = 0
+      Blue = 0
+      Velocity = 200
+      Gravity = -50
+      Scale = 1
+      SortMode = "FromParent"
+      DrawBehindOwner = true
+      ChildAnimation = null
+      CreateAnimation = null
+    }
+    {
+      Name = "PortraitEmoteMusicalBurst"
+      Type = "Constant"
+      FilePath = "Particles\particle_emote_flowerBurst"
+      RandomRotation = true
+      StartScale = 0.5
+      EndScale = 2
+      EaseIn = 0.9
+      EaseOut = 1
+      DrawBehindOwner = true
+      LocationFromOwner = "Ignore"
+      Material = "Unlit"
+      Scale = 1
+      RandomDurationMin = 0.5
+      RandomDurationMax = 0.8
+      StartAlpha = 1
+      EndAlpha = 0
+      CreateAnimation = "PortraitEmoteMusicalBurstDark"
+    }
+    {
+      Name = "PortraitEmoteMusiclaNoteA"
+      InheritFrom = "PortraitEmoteMusiclaNoteBase"
+      FilePath = "Particles\particle_note_01"
+    }
+    {
+      Name = "PortraitEmoteMusiclaNoteB"
+      InheritFrom = "PortraitEmoteMusiclaNoteBase"
+      FilePath = "Particles\particle_note_02"
+    }
+    {
+      Name = "PortraitEmoteMusiclaNoteC"
+      InheritFrom = "PortraitEmoteMusiclaNoteBase"
+      FilePath = "Particles\particle_note_03"
+      //FilePath = "Animations\HouseMusicNotes\HouseMusicNotes"
+    }
+  ]
+}

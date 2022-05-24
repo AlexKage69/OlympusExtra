@@ -1,0 +1,80 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "LaserEnabledWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Projectile = "LaserEnabled"
+    }
+    {
+      Name = "ApolloBeamAim"
+      Control = "Attack2"
+      FullyAutomatic = true
+      Enabled = false
+    }
+      {
+        Name = "ApolloBeamWeapon"
+        InheritFrom = "1_BasePlayerSlowWeapon"
+        Type = "GUN"
+        Projectile = "ApolloCastBeam"
+        ClipSize = 1
+        Cooldown = 0.0
+        CancelMovement = true
+        FullyAutomatic = true
+        IgnoreOwnerAttackDisabled = true
+        UseTargetAngle = false
+        BlockMoveInput = true
+        IgnoreForceCooldown = true
+        CanCancelDisables = true
+        CanCancelOwnDisables = true
+        BlinkDetonateAtEndpoint = true
+        BarrelLength = 175
+        AutoLock = false
+        FireGraphic = "null"
+        LockTriggerForCharge = false
+        DisableOwnerForDuration = 0
+        ReloadTime = 3.0
+        NumProjectiles = 1
+        ProjectileAngleOffset = 30
+        SilentImpactAfterFirst = true
+        ObstacleDamageMultiplier = 1
+        BlinkNumGhosts = 3
+        Effect = {
+            Name = "BeamRotation"
+
+            Duration = 1
+            RotationMultiplier = 0.02
+            Active = true
+        }
+    }
+    {
+      Name = "AreaWeakenApollo"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "AreaWeakenApollo"
+	    ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Cooldown = 0.4
+    }
+    {
+      Name = "ApolloChillKill"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloChillKill"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+      {
+        Name = "DionysusCopy"
+        InheritFrom = "1_BasePlayerSlowWeapon"
+        Projectile = "DionysusExtraHangover1"
+        NumProjectiles = 3
+    }
+  ]
+}
