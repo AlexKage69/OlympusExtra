@@ -6,7 +6,7 @@ if ModUtil ~= nil then
         if CodexMenuData ~= nil then
             local OlympusCodexMenuData = ModUtil.Entangled.ModData(CodexMenuData)
             OlympusCodexMenuData.ApolloUpgrade = {
-            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait", 
+            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloSecondaryTrait", 
             "ApolloShoutTrait", "ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait",
             "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolTrait", "RerollBoonTrait",
             "MissChanceTrait",
