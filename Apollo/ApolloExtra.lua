@@ -3012,7 +3012,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0008",
 						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "By all the divines! You are still going at it, Zagzag. I see you are well determined to come meet us. Wish you the best!" },
+						Text = "By all the divines! You're still going at it, Zagzag. I see you are well determined to come meet us. Wish you all the best!" },
 				},
 				ApolloMiscPickup08 =
 				{
@@ -3260,7 +3260,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0034",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
+						Text = "I sense your heart is pure. This blessing should be handy then. Good luck!" },
 				},
 				ApolloMiscPickup34 =
 				{
@@ -3295,7 +3295,7 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0096",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I would say you got rip off, but I had a vision of a sale coming soon... And I know Charon doesn't do take back." },
+						Text = "I would say you got ripped off, but I had a vision of a sale coming soon... And I know Charon doesn't do take backs." },
 				},
 				ApolloLootBought03 =
 				{
