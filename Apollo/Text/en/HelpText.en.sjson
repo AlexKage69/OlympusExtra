@@ -288,7 +288,7 @@
 		{
 			Id = "MasterBoltTrait"
 			DisplayName = "Master Bolt" 
-			Description = "Enemies inflicted by {$Keywords.ApolloBlind} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Enemies inflicted by {$Keywords.ApolloBlind} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {$TooltipData.MasterBoltDamage}"
 		}
 		{
 			Id = "LtUpgrade_Apollo"
