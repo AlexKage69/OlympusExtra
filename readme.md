@@ -45,8 +45,6 @@ Please check out the [OlympusExtra GitHub Wiki](https://github.com/AlexKage69/Ol
 -----------------------------
 ## Credits
 Developers: AlexKage, physiX  
-Voice Actor (Apollo): MrAndyG  
-
 
 ### Special thanks to:  
 Apollo's portrait: [Reikiix](https://twitter.com/Reikiix)  

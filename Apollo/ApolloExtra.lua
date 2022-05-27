@@ -1194,12 +1194,19 @@ if ModUtil ~= nil then
 		 }
 	 }
 	OlympusTraitData.ApolloRangedTrait =
-		{
+	{
 			Name = "ApolloRangedTrait",
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
 			Icon = "Boon_Apollo_04",
-			RequiredFalseTrait = "ShieldLoadAmmoTrait",
+			TraitDependencyTextOverrides =
+			{
+				ShieldLoadAmmoTrait =
+				{
+					Name = "ShieldLoadAmmo_ApolloRangedTrait",
+					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
+				},
+			},
 			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
 			UnloadAmmoOffset = 
@@ -1426,7 +1433,14 @@ if ModUtil ~= nil then
 					Format = "PercentDelta"
 				}
 			}
-		}
+	}
+	OlympusTraitData.ShieldLoadAmmo_ApolloRangedTrait = 
+	{
+		InheritFrom = {"ApolloRangedTrait"},
+		Skip = true,
+		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
+        RequiredTrait = "ShieldLoadAmmoTrait",
+	}
 	OlympusTraitData.ApolloShoutTrait =
 	{
 			InheritFrom = { "ShopTier1Trait" },
@@ -2234,24 +2248,24 @@ if ModUtil ~= nil then
 	
 			TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 	
-			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait"}, -- ShieldLoadAmmo_ApolloRangedTrait
-			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait" }, --"ShieldLoadAmmo_ApolloRangedTrait"
+			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
+			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
 			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 			Consumables = { },
 	
 			LinkedUpgrades =
 			{
 				ApolloBlindedTrait  = {
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait"
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
 				},
 				ApolloHealTrait  = {
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait"}, --"ShieldLoadAmmo_ApolloRangedTrait"
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
 				},
 				MissChanceTrait =
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 						{ "ApolloBlindedTrait", "ApolloRetaliateTrait", "RerollObolTrait", "RerollBoonTrait" }
 					}
 				},
@@ -2268,7 +2282,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloRangedTrait" },
+						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 					}
 				},
@@ -2276,7 +2290,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 					}
 				},
@@ -2284,7 +2298,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 					}
 				}
@@ -2997,7 +3011,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0008",
 						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "By all the divines! You are still going at it, Zagzag. I see you are well determined to come meet us. Wish you the best!" },
+						Text = "By all the divines! You're still going at it, Zagzag. I see you are well determined to come meet us. Wish you all the best!" },
 				},
 				ApolloMiscPickup08 =
 				{
@@ -3245,7 +3259,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0034",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
+						Text = "I sense your heart is pure. This blessing should be handy then. Good luck!" },
 				},
 				ApolloMiscPickup34 =
 				{
@@ -3280,7 +3294,7 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0096",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I would say you got rip off, but I had a vision of a sale coming soon... And I know Charon doesn't do take back." },
+						Text = "I would say you got ripped off, but I had a vision of a sale coming soon... And I know Charon doesn't do take backs." },
 				},
 				ApolloLootBought03 =
 				{
@@ -3697,7 +3711,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloRangedTrait" },
+			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 		}
 	}
@@ -3705,7 +3719,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 		}
 	}
@@ -3713,7 +3727,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 		}
 	}

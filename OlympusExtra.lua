@@ -6,7 +6,7 @@ if ModUtil ~= nil then
         if CodexMenuData ~= nil then
             local OlympusCodexMenuData = ModUtil.Entangled.ModData(CodexMenuData)
             OlympusCodexMenuData.ApolloUpgrade = {
-            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait", 
+            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloSecondaryTrait", 
             "ApolloShoutTrait", "ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait",
             "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolTrait", "RerollBoonTrait",
             "MissChanceTrait",
@@ -17,8 +17,6 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
             local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
-
-            table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_ApolloRangedTrait")
 
             local OlympusRealGodNames = ModUtil.Entangled.ModData(RealGodNames)
             table.insert(OlympusRealGodNames, "Apollo")
