@@ -61,6 +61,19 @@
                 TimeModifierFraction = 0
             }
             {
+              Name = "BlindLightning"
+              IgnoreName = "_PlayerUnit"
+              Type = "DAMAGE_OVER_TIME"
+              IsVulnerabilityEffect = true
+              Amount = 40.0
+              Cooldown = 1
+              Duration = 5
+              ExtendDurationOnReapply = true
+              FrontFx = "ZeusStaticArcEmitter"
+              Active = false
+              TimeModifierFraction = 0
+            }
+            {
                 Name = "IncreaseDamageTaken"
                 IgnoreName = "_PlayerUnit"
                 Type = "DAMAGE_TAKEN"
@@ -158,6 +171,19 @@
           TimeModifierFraction = 0
         },
         {
+          Name = "BlindLightning"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_OVER_TIME"
+          IsVulnerabilityEffect = true
+          Amount = 40.0
+          Cooldown = 1
+          Duration = 5
+          ExtendDurationOnReapply = true
+          FrontFx = "ZeusStaticArcEmitter"
+          Active = false
+          TimeModifierFraction = 0
+        },
+        {
           Name = "IncreaseDamageTaken"
           IgnoreName = "_PlayerUnit"
           Type = "DAMAGE_TAKEN"
@@ -251,6 +277,27 @@
             Active = true            
             ExtendDurationOnReapply = true
             IsVulnerabilityEffect = true
+            TimeModifierFraction = 0
+          }
+          {
+            Name = "BlindLightning"
+            IgnoreName = "_PlayerUnit"
+            Type = "DAMAGE_OVER_TIME"
+            IsVulnerabilityEffect = true
+            Amount = 40.0
+            Cooldown = 1
+            Duration = 5
+            ExtendDurationOnReapply = true
+            FrontFx = "ZeusStaticArcEmitter"
+            Active = false
+            TimeModifierFraction = 0
+          }
+          {
+            Name = "IncreaseDamageTaken"
+            Type = "DAMAGE_TAKEN"
+            Duration = 4
+            Modifier = 1
+            Active = false
             TimeModifierFraction = 0
           }
         ]
@@ -425,6 +472,19 @@
             IsVulnerabilityEffect = true
             TimeModifierFraction = 0
         }
+        {
+          Name = "BlindLightning"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_OVER_TIME"
+          IsVulnerabilityEffect = true
+          Amount = 40.0
+          Cooldown = 1
+          Duration = 5
+          ExtendDurationOnReapply = true
+          FrontFx = "ZeusStaticArcEmitter"
+          Active = false
+          TimeModifierFraction = 0
+        },
         {
           Name = "IncreaseDamageTaken"
           Type = "DAMAGE_TAKEN"
