@@ -52,7 +52,6 @@ if ModUtil ~= nil then
 				"ApolloWeaponTrait",
 				"ApolloDashTrait",
 				"ApolloRangedTrait",
-				"ShieldLoadAmmo_ApolloRangedTrait",
 				"ApolloSecondaryTrait",
 				"ApolloShoutTrait",
 				
