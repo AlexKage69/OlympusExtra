@@ -113,7 +113,6 @@ if ModUtil ~= nil then
 			FireSounds =
 			{
 				{ Name = "/SFX/HellFireShoot" },
-				{ Name = "/SFX/Enemy Sounds/Hades/EmoteRangedSustained" },
 				{ Name = "/SFX/Enemy Sounds/Tisiphone/TisiphoneHarpySlowBeam" },
 			},
 			ImpactSounds =
