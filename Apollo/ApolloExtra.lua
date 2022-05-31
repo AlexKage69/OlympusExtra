@@ -1198,6 +1198,7 @@ if ModUtil ~= nil then
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
 			Icon = "Boon_Apollo_04",
+			RequiredFalseTrait = "ShieldLoadAmmoTrait"
 			TraitDependencyTextOverrides =
 			{
 				ShieldLoadAmmoTrait =
