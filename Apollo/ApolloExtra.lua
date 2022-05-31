@@ -3239,7 +3239,7 @@ if ModUtil ~= nil then
 					Name = "ApolloMiscPickup22",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0002",
+					{ Cue = "/VO/Apollo_00023",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "With this blessing, Zagzag. The light shall burn your enemies." },
 				},
