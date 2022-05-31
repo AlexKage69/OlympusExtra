@@ -2257,7 +2257,7 @@ if ModUtil ~= nil then
 			OnDamageEnemyFunction = {
 				FunctionName = "CheckHyacinthKill",
 				FunctionArgs = {
-					HyacinthDeathThreshold = 0.15,
+					HyacinthDeathThreshold = 0.30,
 					ExtractValues =
 					{
 						{
