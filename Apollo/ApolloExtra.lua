@@ -135,6 +135,99 @@ if ModUtil ~= nil then
 			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
 		},
 	}
+	OlympusWeaponData.TheseusApolloUpgradeWrath =
+	{
+		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.02, Fraction = 0.01, LerpTime = 0 },
+			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
+		},
+		BlockInterrupt = true,
+
+		AIData =
+		{
+			FireTicks = 30,
+			FireCooldown = 0.15,
+			ResetTargetPerTick = true,
+			AIAngleTowardsPlayerWhileFiring = true,
+			PreAttackAnimation ="Theseus_WrathStart",
+			FireAnimation = "Theseus_WrathAirLoop",
+			PostAttackAnimation = "Theseus_WrathReturnToIdle",
+			PostAttackDuration = 0.6,
+
+			WrathVoiceLines =
+			{
+				Queue = "Interrupt",
+				{
+					RandomRemaining = true,
+					PreLineWait = 0.1,
+					CooldownTime = 40,
+					CooldownName = "TheseusWrathLinesPlayedRecently",
+					SuccessiveChanceToPlay = 0.5,
+
+					-- Lord Apollo, sing for me!
+					{ Cue = "/VO/Theseus_0600" },
+					-- Lord Apollo, play me a song!
+					{ Cue = "/VO/Theseus_0601" },
+				},
+				[2] = GlobalVoiceLines.TheseusWrathActivationVoiceLines,
+				[3] = HeroVoiceLines.TheseusWrathReactionVoiceLines_M,
+			},
+		},
+
+		Sounds =
+		{
+			FireSounds =
+			{
+				{ Name = "/SFX/Player Sounds/ElectricZapSmall" },
+			},
+		},
+	}
+	OlympusWeaponData.TheseusApolloUpgradePassive =
+	{
+		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.02, Fraction = 0.01, LerpTime = 0 },
+			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
+		},
+
+		AIData = {
+			FireTicks = 1,
+			FireInterval = 3,
+
+			AttackSlotsPerTick = 15,
+			AttackSlotInterval = 0.01,
+			AttackSlots =
+			{
+				-- inner circle
+				{ Angle = 0, OffsetDistance = 0, OffsetScaleY = 0.48, UseTargetPosition = true },
+				{ Angle = 30, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 150, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 210, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 330, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true, PauseDuration = 1.0},
+				{ Angle = 0, OffsetDistance = 0, OffsetScaleY = 0.48, UseTargetPosition = true },
+				{ Angle = 30, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 90, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 210, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 270, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true, PauseDuration = 1.0},
+				{ Angle = 0, OffsetDistance = 0, OffsetScaleY = 0.48, UseTargetPosition = true },
+				{ Angle = 90, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 150, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 270, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 330, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true, PauseDuration = 1.0},
+			},
+		},
+
+		Sounds =
+		{
+			FireSounds =
+			{
+				{ Name = "/SFX/Player Sounds/ElectricZapSmall" },
+			},
+		},
+	}
 	OlympusEffectData.ApolloBlind =
 	{
 		OnApplyFunctionName = "ApolloBlindApply",
@@ -1499,7 +1592,7 @@ if ModUtil ~= nil then
 				}
 			},
 			EndShout = "EndApolloBeam",
-			PreEquipWeapons = { "ApolloBeamWeapon", "ApolloBeamAim" },
+			PreEquipWeapons = { "ApolloBeamWeapon" },
 			PropertyChanges =
 			{
 				{
@@ -2218,17 +2311,16 @@ if ModUtil ~= nil then
 				}
 			}
 		}		
-		OlympusTraitData.MaxHangoverTrait =
+		OlympusTraitData.DazzledTrait =
 		{
 			InheritFrom = { "SynergyTrait" },
 			Icon = "Apollo_Dionysus_01",
-			RequiredFalseTraits = { "MaxHangoverTrait"},
-			PreEquipWeapons = { "DionysusCopy" },
-			PropertyChanges = {
-			}
+			RequiredFalseTraits = { "DazzledTrait"},
+			PreEquipWeapons = { "DazzledWeapon" },
+			PropertyChanges =
+			{
+			},
 		}
-		OlympusTraitData.DionysusWeaponTrait.PropertyChanges[2].PreEquipWeapons = { "DionysusCopy" }
-		table.insert(OlympusTraitData.DionysusWeaponTrait.PropertyChanges[2].WeaponNames, "DionysusCopy")
 
 		OlympusTraitData.BlindedRuptureTrait =
 		{
@@ -2506,7 +2598,7 @@ if ModUtil ~= nil then
 					Name = "ApolloWithDionysus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "MaxHangoverTrait",
+					HasTraitNameInRoom = "DrunkedBlindTrait",
 					{ Cue = "/VO/Apollo_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "{#DialogueItalicFormat}Whoa{#PreviousFormat}, this wine is exquisite, Brother! I can't believe how well it goes with the cheese. The taste of both is just... Out of this world!" },
@@ -3814,16 +3906,20 @@ if ModUtil ~= nil then
 	
 	-- Shout Functions
 	function ApolloShout()
-		SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 		FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-		FireWeaponFromUnit({ Weapon = "LaserEnabledWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-		SetPlayerInvulnerable()
 	end
 	function EndApolloBeam()
-		SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusApolloStun" })
-		ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
-		SetPlayerVulnerable()
+		EndRamWeapons({ Id = CurrentRun.Hero.ObjectId })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloStun" })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloSpeed" })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloForce" })
+		ExpireProjectiles({ Names = { "ApolloCastBeam" } })
+		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
+		SetPlayerUnphasing("ApolloBeam")
+		CurrentRun.Hero.SurgeActive = false
+		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
+		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
 	end
 
 	-- Blind Functions
@@ -3834,6 +3930,8 @@ if ModUtil ~= nil then
 			if HeroHasTrait("MissChanceTrait") then
 				missRate = 0.65
 			end
+			--and CheckCooldown( "StunDisarm", 10.0 )  not HasEffect({Id = victim.ObjectId, EffectName = "StunDisarm" })
+
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
 				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
@@ -3851,7 +3949,7 @@ if ModUtil ~= nil then
 				args.IsInvulnerable = true	
 			-- Zagreus misses
 			elseif attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and attacker.ObjectId == CurrentRun.Hero.ObjectId then
-				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true} )
+				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true, Cooldown = 0.7} )
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
 				--args.IsInvulnerable = true	
@@ -3860,29 +3958,24 @@ if ModUtil ~= nil then
 			end
 		end
 	)
-
-	function ApolloBlindApply( triggerArgs )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs.TriggeredByTable))
-	end
+	ModUtil.Path.Wrap( "DamageOverTimeApply", 
+		function(baseFunc, triggerArgs)
+			local victim = triggerArgs.TriggeredByTable
+			baseFunc(triggerArgs);
+			if HeroHasTrait("DazzledTrait") and victim and not HasEffect({Id = victim.ObjectId, EffectName = "Dazzled" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and triggerArgs.Stacks >= 5 then
+				FireWeaponFromUnit({ Weapon = "DazzledWeapon", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true  })
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.Stacks)) 
+				ClearEffect({ Id = victim.ObjectId, Name = "ApolloBlind" })
+				ClearEffect({ Id = victim.ObjectId, Name = "DamageOverTime" })
+			end
+		end
+	)
+	
 	function ApolloBlindClear(triggerArgs)
 		if HeroHasTrait("BlindDurationTrait") then
 			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
 		end
 	end
-	ModUtil.WrapBaseFunction( "DamageOverTimeApply", 
-		function(baseFunc, triggerArgs)
-			baseFunc(triggerArgs)		
-			if HeroHasTrait("MaxHangoverTrait") then
-				FireWeaponFromUnit({ Weapon = "DionysusCopy", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, FireFromTarget = false })
-			end
-		end
-	)
-	--[[ModUtil.WrapBaseFunction( "DamageOverTimeClear", 
-		function(baseFunc, triggerArgs)
-			baseFunc(triggerArgs)
-		end
-	)]]
 	-- Prophecy and Sight
 	ModUtil.Path.Wrap( "StartNewRun", 
 		function(baseFunc, prevRun, args)
@@ -3900,15 +3993,11 @@ if ModUtil ~= nil then
 				return
 			end
 			if HeroHasTrait("RerollObolTrait") then
-				if(not CurrentRun.RerollObolTracker) then
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Doesnt exist"))
-					return
-				end
 				local count = GetTotalHeroTraitValue("ObolCount")
 				CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker + amount
 				if(CurrentRun.RerollObolTracker >= count) then
 					local times = math.floor(CurrentRun.RerollObolTracker/count);
-					AddRerolls( times, source, { IgnoreMetaUpgrades = true } )
+					AddRerolls( times, source, { Thread = false, Delay = 0.5 } )
 					CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker - (times * count)
 				end
 			end
@@ -3918,15 +4007,11 @@ if ModUtil ~= nil then
 	function(baseFunc, currentRun, loot)
 		baseFunc(currentRun, loot)
 		if (not loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then
-			if(not CurrentRun.RerollBoonTracker) then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Doesnt exist"))
-				return
-			end
 			CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
 			local count = GetTotalHeroTraitValue("BoonCount")
 			if(CurrentRun.RerollBoonTracker >= count) then
 				local times = math.floor(CurrentRun.RerollBoonTracker/count);
-				AddRerolls( times, source, { IgnoreMetaUpgrades = true } )
+				AddRerolls( times, source, { Thread = false, Delay = 0.5 } )
 				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
 			end
 		end
@@ -4012,6 +4097,26 @@ if ModUtil ~= nil then
 		end
 	end
 	
+OnWeaponFired{ "ApolloBeamWeapon",
+function(triggerArgs)
+	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
+	SetPlayerPhasing("ApolloBeam")
+	CurrentRun.Hero.SurgeActive = true
+	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
+	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
+end
+}
+
+OnRamWeaponComplete{ "ApolloBeamWeapon",
+function(triggerArgs)
+	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
+	SetPlayerUnphasing("ApolloBeam")
+	CurrentRun.Hero.SurgeActive = false
+	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
+	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
+	StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
+end
+}
 	--[[function BossHyacinthKillPresentation(unit)
 		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 		local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })

@@ -16,7 +16,7 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "HyacinthTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindedRuptureTrait")
-            table.insert(OlympusCodexMenuData.Duos, "MaxHangoverTrait")
+            table.insert(OlympusCodexMenuData.Duos, "DazzledTrait")
             local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
 
