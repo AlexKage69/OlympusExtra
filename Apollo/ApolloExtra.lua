@@ -1286,12 +1286,19 @@ if ModUtil ~= nil then
 		 }
 	 }
 	OlympusTraitData.ApolloRangedTrait =
-		{
+	{
 			Name = "ApolloRangedTrait",
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
 			Icon = "Boon_Apollo_04",
-			RequiredFalseTrait = "ShieldLoadAmmoTrait",
+			TraitDependencyTextOverrides =
+			{
+				ShieldLoadAmmoTrait =
+				{
+					Name = "ShieldLoadAmmo_ApolloRangedTrait",
+					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
+				},
+			},
 			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
 			TraitDependencyTextOverrides =
@@ -1531,14 +1538,14 @@ if ModUtil ~= nil then
 					Format = "PercentDelta"
 				}
 			}
-		}
-		
+	}
+
 	OlympusTraitData.ShieldLoadAmmo_ApolloRangedTrait = 
 	{
 		InheritFrom = {"ApolloRangedTrait"},
 		Skip = true,
 		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-        RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
+    	RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
 	}
 	OlympusTraitData.ApolloShoutTrait =
 	{
@@ -2335,8 +2342,10 @@ if ModUtil ~= nil then
 	
 			TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 	
+
 			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+
 			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 			Consumables = { },
 	
@@ -2369,7 +2378,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloRangedTrait" },
+						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 					}
 				},
@@ -2377,7 +2386,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 					}
 				},
@@ -2385,7 +2394,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 					}
 				}
@@ -3088,7 +3097,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0008",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "By all the divines! You are still going at it, Zagzag. I see you are well determined to come meet us. Wish you the best!" },
+						Text = "By all the divines! You're still going at it, Zagzag. I see you are well determined to come meet us. Wish you all the best!" },
 				},
 				ApolloMiscPickup08 =
 				{
@@ -3332,7 +3341,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0034",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
+						Text = "I sense your heart is pure. This blessing should be handy then. Good luck!" },
 				},
 				ApolloMiscPickup34 =
 				{
@@ -3366,7 +3375,7 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0096",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I would say you got rip off, but I had a vision of a sale coming soon... And I know Charon doesn't do take back." },
+						Text = "I would say you got ripped off, but I had a vision of a sale coming soon... And I know Charon doesn't do take backs." },
 				},
 				ApolloLootBought03 =
 				{
@@ -3767,7 +3776,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloRangedTrait" },
+			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 		}
 	}
@@ -3775,7 +3784,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 		}
 	}
@@ -3783,7 +3792,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 		}
 	}
@@ -4054,15 +4063,15 @@ end
 	end]]
 	
 	-- For testing purposes
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
-			--[[if (not CanOpenCodex()) and IsSuperValid() then
+			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
-			end]]
+			end
 			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
