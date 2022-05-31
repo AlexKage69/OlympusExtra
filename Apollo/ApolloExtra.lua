@@ -1291,7 +1291,6 @@ if ModUtil ~= nil then
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
 			Icon = "Boon_Apollo_04",
-			RequiredFalseTrait = "ShieldLoadAmmoTrait"
 			TraitDependencyTextOverrides =
 			{
 				ShieldLoadAmmoTrait =
@@ -1546,7 +1545,7 @@ if ModUtil ~= nil then
 		InheritFrom = {"ApolloRangedTrait"},
 		Skip = true,
 		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-    RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
+    	RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
 	}
 	OlympusTraitData.ApolloShoutTrait =
 	{
