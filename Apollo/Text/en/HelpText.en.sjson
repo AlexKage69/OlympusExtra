@@ -281,6 +281,11 @@
 			Description = "Foes inflicted with {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to bosses."
     	}
 		{
+			Id = "SeaChanteyTrait"
+			DisplayName = "Sea Chantey"
+			Description = "Your {$Keywords.Wrath} fires twelve beams instead of one."
+		}	
+		{
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"
 			Description = "Your {$Keywords.ApolloBlind} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."

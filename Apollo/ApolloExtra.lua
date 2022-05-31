@@ -2256,68 +2256,93 @@ if ModUtil ~= nil then
 		EffectProperty = "Stacks",
 		ChangeValue  = true,
 	})
-	OlympusTraitData.HyacinthTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Aphrodite_01",
-			RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
-			OnDamageEnemyFunction = {
-				FunctionName = "CheckHyacinthKill",
-				FunctionArgs = {
-					HyacinthDeathThreshold = 0.30,
-					ExtractValues =
+OlympusTraitData.HyacinthTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Aphrodite_01",
+		RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
+		OnDamageEnemyFunction = {
+			FunctionName = "CheckHyacinthKill",
+			FunctionArgs = {
+				HyacinthDeathThreshold = 0.30,
+				ExtractValues =
+				{
 					{
-						{
-							Key = "HyacinthDeathThreshold",
-							ExtractAs = "TooltipDeathThreshold",
-							Format = "Percent",
-						},
-					}
-				}
-			},
-			PreEquipWeapons = { "HyacinthChillKill" },
-			ExtractValues =
-			{
-				{
-					ExtractAs = "TooltipWeakDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ReduceDamageOutput",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipWeakPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ReduceDamageOutput",
-					BaseProperty = "Modifier",
-					Format = "NegativePercentDelta"
-				},
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
+						Key = "HyacinthDeathThreshold",
+						ExtractAs = "TooltipDeathThreshold",
+						Format = "Percent",
+					},
 				}
 			}
+		},
+		PreEquipWeapons = { "HyacinthChillKill" },
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWeakDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipWeakPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Modifier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
 		}
+	}
+OlympusTraitData.SeaChanteyTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Poseidon_01",
+		RequiredFalseTrait = "SeaChanteyTrait",
+		PropertyChanges =
+		{
+			{
+				TraitName = "ApolloShoutTrait",
+				WeaponName = "ApolloBeamWeapon",
+				WeaponProperty = "NumProjectiles",
+				ChangeValue = 12,
+				ExcludeLinked = true,
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWrathStocks",
+				Format = "ExistingWrathStocks",
+				SkipAutoExtract = true
+			}
+		}		
+	}	
+
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 	OlympusLootData.ApolloUpgrade = {
@@ -2388,6 +2413,14 @@ if ModUtil ~= nil then
 					{
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
+					}
+				},
+				SeaChanteyTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait", "ApolloHealTrait"},
+						{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
 					}
 				},
 				BlindDurationTrait = 
@@ -3794,6 +3827,14 @@ if ModUtil ~= nil then
 		{
 			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
+		}
+	}
+	OlympusLootData.PoseidonUpgrade.LinkedUpgrades.SeaChanteyTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait", "ApolloHealTrait"},
+			{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
 		}
 	}
 	-- Other gods modification
