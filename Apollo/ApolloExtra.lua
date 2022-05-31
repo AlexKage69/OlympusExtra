@@ -134,6 +134,99 @@ if ModUtil ~= nil then
 			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
 		},
 	}
+	OlympusWeaponData.TheseusApolloUpgradeWrath =
+	{
+		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.02, Fraction = 0.01, LerpTime = 0 },
+			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
+		},
+		BlockInterrupt = true,
+
+		AIData =
+		{
+			FireTicks = 30,
+			FireCooldown = 0.15,
+			ResetTargetPerTick = true,
+			AIAngleTowardsPlayerWhileFiring = true,
+			PreAttackAnimation ="Theseus_WrathStart",
+			FireAnimation = "Theseus_WrathAirLoop",
+			PostAttackAnimation = "Theseus_WrathReturnToIdle",
+			PostAttackDuration = 0.6,
+
+			WrathVoiceLines =
+			{
+				Queue = "Interrupt",
+				{
+					RandomRemaining = true,
+					PreLineWait = 0.1,
+					CooldownTime = 40,
+					CooldownName = "TheseusWrathLinesPlayedRecently",
+					SuccessiveChanceToPlay = 0.5,
+
+					-- Lord Apollo, sing for me!
+					{ Cue = "/VO/Theseus_0600" },
+					-- Lord Apollo, play me a song!
+					{ Cue = "/VO/Theseus_0601" },
+				},
+				[2] = GlobalVoiceLines.TheseusWrathActivationVoiceLines,
+				[3] = HeroVoiceLines.TheseusWrathReactionVoiceLines_M,
+			},
+		},
+
+		Sounds =
+		{
+			FireSounds =
+			{
+				{ Name = "/SFX/Player Sounds/ElectricZapSmall" },
+			},
+		},
+	}
+	OlympusWeaponData.TheseusApolloUpgradePassive =
+	{
+		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.02, Fraction = 0.01, LerpTime = 0 },
+			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
+		},
+
+		AIData = {
+			FireTicks = 1,
+			FireInterval = 3,
+
+			AttackSlotsPerTick = 15,
+			AttackSlotInterval = 0.01,
+			AttackSlots =
+			{
+				-- inner circle
+				{ Angle = 0, OffsetDistance = 0, OffsetScaleY = 0.48, UseTargetPosition = true },
+				{ Angle = 30, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 150, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 210, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 330, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true, PauseDuration = 1.0},
+				{ Angle = 0, OffsetDistance = 0, OffsetScaleY = 0.48, UseTargetPosition = true },
+				{ Angle = 30, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 90, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 210, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 270, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true, PauseDuration = 1.0},
+				{ Angle = 0, OffsetDistance = 0, OffsetScaleY = 0.48, UseTargetPosition = true },
+				{ Angle = 90, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 150, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 270, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true},
+				{ Angle = 330, OffsetDistance = 750, OffsetScaleY = 0.48, UseTargetPosition = true, PauseDuration = 1.0},
+			},
+		},
+
+		Sounds =
+		{
+			FireSounds =
+			{
+				{ Name = "/SFX/Player Sounds/ElectricZapSmall" },
+			},
+		},
+	}
 	OlympusEffectData.ApolloBlind =
 	{
 		OnApplyFunctionName = "ApolloBlindApply",
@@ -1208,6 +1301,19 @@ if ModUtil ~= nil then
 			},
 			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
+			TraitDependencyTextOverrides =
+			{
+				ShieldLoadAmmoTrait =
+				{
+					Name = "ShieldLoadAmmo_ApolloRangedTrait",
+					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
+				},
+				BowLoadAmmoTrait =
+				{
+					Name = "BowLoadAmmo_ApolloRangedTrait",
+					CustomTrayText = "BowLoadAmmo_ApolloRangedTrait_Tray",
+				},
+			},
 			UnloadAmmoOffset = 
 			{
 				BaseValue = -20,
@@ -1433,12 +1539,13 @@ if ModUtil ~= nil then
 				}
 			}
 	}
+
 	OlympusTraitData.ShieldLoadAmmo_ApolloRangedTrait = 
 	{
 		InheritFrom = {"ApolloRangedTrait"},
 		Skip = true,
 		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-        RequiredTrait = "ShieldLoadAmmoTrait",
+    RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
 	}
 	OlympusTraitData.ApolloShoutTrait =
 	{
@@ -1491,7 +1598,7 @@ if ModUtil ~= nil then
 				}
 			},
 			EndShout = "EndApolloBeam",
-			PreEquipWeapons = { "ApolloBeamWeapon", "ApolloBeamAim" },
+			PreEquipWeapons = { "ApolloBeamWeapon" },
 			PropertyChanges =
 			{
 				{
@@ -1579,7 +1686,6 @@ if ModUtil ~= nil then
 		Name = "ApolloBlindedTrait",
 		God = "Apollo",
 		InheritFrom = {"ShopTier2Trait"},
-		--PreEquipWeapons = {"AphroditeShoutWeapon", "AreaWeakenAphrodite", "PoseidonAphroditeTouchWeapon"},
 		Icon = "Boon_Apollo_08",
 		RarityLevels =
 		{
@@ -1621,21 +1727,14 @@ if ModUtil ~= nil then
 				EffectName = "IncreaseDamageTaken",
 				EffectProperty = "Active",
 				ChangeValue = true,
-			},
-			--[[
+			},			
 			{
-				TraitName = "ShieldLoadAmmo_AphroditeRangedTrait",
+				TraitName = "ShieldLoadAmmo_ApolloRangedTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				EffectName = "IncreaseDamageTaken",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
-			{
-				WeaponNames = {"AphroditeShoutWeapon", "PoseidonAphroditeTouchWeapon" },
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},]]
 			{
 				WeaponNames = WeaponSets.HeroPhysicalWeapons,
 				EffectName = "IncreaseDamageTaken",
@@ -1660,19 +1759,13 @@ if ModUtil ~= nil then
 				EffectProperty = "Modifier",
 				DeriveValueFrom = "DeriveSource",
 			},
-			--[[{
+			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				EffectName = "IncreaseDamageTaken",
 				EffectProperty = "Modifier",
 				DeriveValueFrom = "DeriveSource",
 			},
 			{
-				WeaponNames = {"AphroditeShoutWeapon", "AreaWeakenAphrodite", "PoseidonAphroditeTouchWeapon" },
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Modifier",
-				DeriveValueFrom = "DeriveSource",
-			},]]
-			{
 				TraitName = "ApolloDashTrait",
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				EffectName = "IncreaseDamageTaken",
@@ -1686,21 +1779,20 @@ if ModUtil ~= nil then
 				EffectProperty = "Modifier",
 				DeriveValueFrom = "DeriveSource",
 			},
-			--[[{
-				TraitName = "AphroditeSecondaryTrait",
+			{
+				TraitName = "ApolloSecondaryTrait",
 				WeaponNames = WeaponSets.HeroSecondaryWeapons,
 				EffectName = "IncreaseDamageTaken",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
 			{
-				TraitName = "AphroditeSecondaryTrait",
+				TraitName = "ApolloSecondaryTrait",
 				WeaponNames = WeaponSets.HeroSecondaryWeapons,
 				EffectName = "IncreaseDamageTaken",
 				EffectProperty = "Modifier",
 				DeriveValueFrom = "DeriveSource",
-			},
-			]]
+			},			
 		},
 		ExtractValues =
 		{
@@ -1831,6 +1923,7 @@ if ModUtil ~= nil then
 	{
 		Icon = "Boon_Apollo_13",
 		InheritFrom = { "ShopTier2Trait" },
+		RequiredFalseTrait = "ApolloHealTrait",
 		God = "Apollo",
 		RarityLevels =
 		{
@@ -1876,9 +1969,9 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
-		RequiredMetaUpgradeUnlocked = "RerollPanelMetaUpgrade",
+		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_10",
-		RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
 		BoonCount = { 
 			BaseValue = 1
 		},
@@ -1913,9 +2006,9 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
-		RequiredMetaUpgradeUnlocked = "RerollMetaUpgrade",
+		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_12",
-		RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
 		ObolCount = { 
 			BaseValue = 1
 		},
@@ -2119,25 +2212,27 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ApolloRangedTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloField",
 					EffectName = "DelayedDamage",
 					EffectProperty = "Active",
 					ChangeValue = true
-				}
-			},	
-			ExtractValues =
-			{
+				},
 				{
-					ExtractAs = "TooltipCurseDamage",
-					SkipAutoExtract = true,
-					External = true,
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "DelayedDamage",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				}
+					EffectName = "DelayedDamage",
+					EffectProperty = "Amount",
+					BaseMin = 100,
+					BaseMax = 100,
+					AsInt = true,
+					MinMultiplier = 0.025,
+					IdenticalMultiplier =
+					{
+						Value = -0.4,
+					},
+					ExtractValue =
+					{
+						ExtractAs = "TooltipCurseDamage",
+					}
+				},
 			}
 		}
 	table.insert(OlympusTraitData.AresLongCurseTrait.PropertyChanges,{
@@ -2247,18 +2342,20 @@ if ModUtil ~= nil then
 	
 			TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
 	
-			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
-			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloShoutTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
+
+			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
+			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
+
 			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 			Consumables = { },
 	
 			LinkedUpgrades =
 			{
 				ApolloBlindedTrait  = {
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloRetaliateTrait"},
 				},
 				ApolloHealTrait  = {
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloRetaliateTrait", "ShieldLoadAmmo_ApolloRangedTrait"}, 
+					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloRetaliateTrait"},
 				},
 				MissChanceTrait =
 				{
@@ -2308,7 +2405,7 @@ if ModUtil ~= nil then
 			WrathPortrait = "Portrait_Apollo_Wrath_01",
 			OverlayAnim = "ApolloOverlay",
 			Gender = "Male",
-			SpawnSound = "/SFX/ApolloBoonLoveChimes",
+			SpawnSound = "/SFX/GoldCoinRewardDrop",
 			FlavorTextIds =
 			{
 				"ApolloUpgrade_FlavorText01",
@@ -2423,7 +2520,6 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Aphrodite_0230",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						Emote = "PortraitEmoteAffection",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
 						Text = "This is for you, little godling! Oh my me! I can't wait until we are all here together!"
@@ -2437,7 +2533,6 @@ if ModUtil ~= nil then
 					HasTraitNameInRoom = "FamedDuetTrait",
 					RequiredTextLines = { "ApolloGift01", "ArtemisGift01" },
 					{ Cue = "/VO/Apollo_0046",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I brought my sister with me this time, Zagzag! With our help, you might stand a chance against your father. Go Zagzag!" },
 					{ Cue = "/VO/Artemis_0250",
@@ -2445,7 +2540,6 @@ if ModUtil ~= nil then
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/ArtemisBoonArrow",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Emote = "PortraitEmoteDepressed",
 						Speaker = "NPC_Artemis_01", Portrait = "Portrait_Artemis_Default_01",
 						Text = "Are you seriously calling him that? I am sorry Zagreus. I hope this can make him a little more to bearable..."
 					},
@@ -2455,7 +2549,7 @@ if ModUtil ~= nil then
 					Name = "ApolloWithDionysus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "MaxHangoverTrait",
+					HasTraitNameInRoom = "DrunkedBlindTrait",
 					{ Cue = "/VO/Apollo_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "{#DialogueItalicFormat}Whoa{#PreviousFormat}, this wine is exquisite, Brother! I can't believe how well it goes with the cheese. The taste of both is just... Out of this world!" },
@@ -2465,7 +2559,6 @@ if ModUtil ~= nil then
 						StartSound = "/SFX/DionysusBoonWineLaugh",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
-						Emote = "PortraitEmoteCheerful",
 						Text = "{#DialogueItalicFormat}Haha{#PreviousFormat}, that's the trick, the combination of two great things together makes it all better. Like us. Let's combine our blessing to help, {#DialogueItalicFormat}um{#PreviousFormat}, how do you call him again, Zagzag?" },
 				},
 				ApolloWithDemeter01 =
@@ -2524,7 +2617,6 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0057",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteAffection",
 						Text = "Sorry I missed the big party in your father's domain. Dionysus told me it was quite exquisite. I wish I was able to be there, but maybe you could come visit us sometime instead?" },
 				},
 			},
@@ -2891,7 +2983,7 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0082",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteSurprise",					
+						Emote = "PortraitEmoteSurprise",
 						Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, that must hurt. Like really, really hurt. I don't think it will make the difference this time, but it's better than nothing." },
 				},
 				ApolloLowHealth02 =
@@ -2905,7 +2997,6 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0083",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteSurprise",					
 						Text = "My healing power would have come handy to you. You are just a bit too far to make me use them. I think I can manage give you this instead." },
 				},
 				ApolloLegendaryPickUp01 =
@@ -2947,7 +3038,6 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0002",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Dangers and vile creatures are hiding where you are. This blessing will keep them away. Take care." },
 				},
@@ -2957,7 +3047,6 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0003",
-						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Take my blessing, Cousin. It will light up your way to Olympus. " },
 				},
@@ -2970,7 +3059,6 @@ if ModUtil ~= nil then
 					RequiredMaxHealthFraction = 0.75,
 					{ Cue = "/VO/Apollo_0004",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteDepressed",					
 						Text = "ApolloMiscPickup03" },
 				},
 				ApolloMiscPickup04 =
@@ -3008,7 +3096,6 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0008",
-						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "By all the divines! You're still going at it, Zagzag. I see you are well determined to come meet us. Wish you all the best!" },
 				},
@@ -3075,7 +3162,6 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					MinRunsSinceAnyTextLines = { TextLines = { "ApolloPostEpilogue01" }, Count = 3 },				
 					{ Cue = "/VO/Apollo_0015",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Ob-La-Di, Ob-La-Da... Oh. Hello there. I was working on a song. I probably do have time to finish it by the time, you arrive. In the meantime, take this." },
 				},
@@ -3114,7 +3200,6 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Apollo_0019",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I heard that you've never seen sunlight before! If you ever get out, take a moment to check it out, you'll see all the beautiful things the world has to offer up here." },
 				},
@@ -3126,7 +3211,6 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Apollo_0020",
-						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Is your father keeping you into his realm, Zagzag. Sometimes fathers are strict, but we must show them who we are and take our place. We are very alike, Zagzag. The difference is I succeed in what I start. You should try it." },
 				},
@@ -3210,7 +3294,6 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0029",
-						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You might not see the sun from down there, but you have my light, right there." },
 				},
@@ -3281,7 +3364,6 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0095",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteCheerful",
 						Text = "Stopping by Charon's shop, I see. This deal might be your best chance of escaping." },
 				},
 				ApolloLootBought02 =
@@ -3303,7 +3385,6 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 	
 					{ Cue = "/VO/Apollo_0097",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You didn't have to pay for my blessing, Zagzag. I would have helped you if you only asked." },
 				},
@@ -3349,7 +3430,6 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0102",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteCheerful",
 						Text = "Are you serious, Cousin? Is it because I called you Zagzag? Because you just gave me a reason to keep using the nickname." },
 				},
 				ApolloRejection06 =
@@ -3358,7 +3438,6 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0103",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteCheerful",
 						Text = "Here I am, showing you the way out and this is the gratitude I get... Let me show you another, then." },
 				},
 				ApolloRejection07 =
@@ -3367,7 +3446,6 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0104",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteCheerful",
 						Text = "No ... way... Even I couldn't see that one coming. But you know what, I don't think you'll see what's coming for you either." },
 				},
 				ApolloRejection08 =
@@ -3376,7 +3454,6 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0105",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Emote = "PortraitEmoteCheerful",
 						Text = "I don't think this is your first mistake, Cousin. But it might be your last." },
 				},
 				ApolloRejection09 =
@@ -3418,7 +3495,6 @@ if ModUtil ~= nil then
 					Name = "ApolloMakeUp01",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0110",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I sense you've come back to the light, Zagzag. Sorry, I just had to make sure." },
 				},
@@ -3427,7 +3503,6 @@ if ModUtil ~= nil then
 					Name = "ApolloMakeUp02",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0111",
-						Emote = "PortraitEmoteCheerful",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I knew this moment would come. No hard feeling, Zagzag." },
 				},
@@ -3436,7 +3511,6 @@ if ModUtil ~= nil then
 					Name = "ApolloMakeUp03",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0112",
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Why are we fighting again, Zagzag? You know what I forgive you. Just don't do it again." },
 				},
@@ -3453,7 +3527,6 @@ if ModUtil ~= nil then
 					Name = "ApolloMakeUp05",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0114",
-						PreLineThreadedFunctionName = "PlayEmoteAnimFromSource", PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteAffection", WaitTime = 7.6 },
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Wait a second... You didn't die! Oh, I think that happens later, my bad." },
 				},
@@ -3481,7 +3554,6 @@ if ModUtil ~= nil then
 						Text = "Lord Apollo, you've shown me the way. Please accept this offering." },
 					{ Cue = "/VO/Apollo_0122",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I'd be lying if I said I didn't see that one coming. That's why I prepared this gift back. Now, we're even." },
 				},
@@ -3497,7 +3569,6 @@ if ModUtil ~= nil then
 						Text = "Lord Apollo, your light is very welcome in this darker part of the world. I must thank you for this." },
 					{ Cue = "/VO/Apollo_0123",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "It must be hard to find such Nectar where you are. I truly appreciate the gesture. Any future gift is unnecessary." },
 				},
@@ -3513,7 +3584,6 @@ if ModUtil ~= nil then
 						Text = "I know you said to stop this, Lord Apollo. This is just a little something for all your help." },
 					{ Cue = "/VO/Apollo_0124",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Another gift? You know what would be the best gift? Escape your eternal prison and come to Olympus." },
 				},
@@ -3529,7 +3599,6 @@ if ModUtil ~= nil then
 						Text = "I couldn't escape like you wanted, but this here could help you wait until I succeed. Thank you, Lord Apollo." },
 					{ Cue = "/VO/Apollo_0125",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Well, until we meet, this could do the trick. But seriously, think a little more for yourself and just... you know... escape?" },
 				},
@@ -3545,7 +3614,6 @@ if ModUtil ~= nil then
 						Text = "Your blessings have made me grasp life more, and I wanted to show my appreciation towards you, Lord Apollo. It's all I can give you for now." },
 					{ Cue = "/VO/Apollo_0126",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "How do you have so much of these? Isn't Nectar rare where you stand? This is madness..." },
 				},
@@ -3561,7 +3629,6 @@ if ModUtil ~= nil then
 						Text = "As a gesture of appreciation, this gift is for you, Lord Apollo. I hope you accept this humble offering." },
 					{ Cue = "/VO/Apollo_0127",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I will take this, but no more Nectar, Zagzag. You hear me, just get out. You have your place here. Everybody is waiting for you." },
 				},
@@ -3577,7 +3644,6 @@ if ModUtil ~= nil then
 						Text = "I know you said no more Nectar, Lord Apollo. But I must show you what you mean to me. Here's something you probably already have up there... But it's important for me you have this." },
 					{ Cue = "/VO/Apollo_0128",
 						PortraitExitWait = 1.0,
-						Emote = "PortraitEmoteAffection",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 						PostLineFunctionArgs = { Text = "NPC_Apollo_01", Icon = "Keepsake_ApolloSticker_Max" },
@@ -3772,7 +3838,7 @@ if ModUtil ~= nil then
 	-- Gift Section    
 	local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 	local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-	ModUtil.Table.Merge(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
+	table.insert(OlympusGiftOrdering, 20, "ForceApolloBoonTrait")
 	
 	OlympusGiftData.ApolloUpgrade =
 	{
@@ -3791,21 +3857,25 @@ if ModUtil ~= nil then
 	
 	-- Shout Functions
 	function ApolloShout()
-		SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 		FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-		FireWeaponFromUnit({ Weapon = "LaserEnabledWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-		SetUnitInvulnerable( CurrentRun.Hero , "Invulnerable" )
 	end
 	function EndApolloBeam()
-		SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
-		SetUnitVulnerable( CurrentRun.Hero , "Invulnerable" )
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ZagreusApolloStun" })
-		ExpireProjectiles({ Names = { "ApolloCastBeam", "LaserEnabled" } })
+		EndRamWeapons({ Id = CurrentRun.Hero.ObjectId })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloStun" })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloSpeed" })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloForce" })
+		ExpireProjectiles({ Names = { "ApolloCastBeam" } })
+		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
+		SetPlayerUnphasing("ApolloBeam")
+		CurrentRun.Hero.SurgeActive = false
+		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
+		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
 	end
+
 	-- Blind Functions
 	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
 	ModUtil.Path.Wrap( "CheckOnHitPowers", 
-	
 		function(baseFunc, victim, attacker, args)
 			local missRate = 0.4
 			if HeroHasTrait("MissChanceTrait") then
@@ -3822,8 +3892,9 @@ if ModUtil ~= nil then
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
 				args.IsInvulnerable = true	
+			-- Zagreus misses
 			elseif attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and attacker.ObjectId == CurrentRun.Hero.ObjectId then
-				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true} )
+				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true, Cooldown = 0.7} )
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
 				--args.IsInvulnerable = true	
@@ -3833,10 +3904,6 @@ if ModUtil ~= nil then
 		end
 	)
 	
-	function ApolloBlindApply( triggerArgs )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs.TriggeredByTable))
-	end
 	function ApolloBlindClear(triggerArgs)
 		if HeroHasTrait("BlindDurationTrait") then
 			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
@@ -3851,7 +3918,7 @@ if ModUtil ~= nil then
 			return CurrentRun
 		end
 	)
-	
+
 	ModUtil.Path.Wrap( "AddMoney", 
 		function(baseFunc, amount, source)
 			baseFunc(amount, source)	
@@ -3859,15 +3926,11 @@ if ModUtil ~= nil then
 				return
 			end
 			if HeroHasTrait("RerollObolTrait") then
-				if(not CurrentRun.RerollObolTracker) then
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Doesnt exist"))
-					return
-				end
 				local count = GetTotalHeroTraitValue("ObolCount")
 				CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker + amount
 				if(CurrentRun.RerollObolTracker >= count) then
 					local times = math.floor(CurrentRun.RerollObolTracker/count);
-					AddRerolls( times, source, { IgnoreMetaUpgrades = true } )
+					AddRerolls( times, source, { Thread = false } )
 					CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker - (times * count)
 				end
 			end
@@ -3877,15 +3940,11 @@ if ModUtil ~= nil then
 	function(baseFunc, currentRun, loot)
 		baseFunc(currentRun, loot)
 		if (not loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then
-			if(not CurrentRun.RerollBoonTracker) then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Doesnt exist"))
-				return
-			end
 			CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
 			local count = GetTotalHeroTraitValue("BoonCount")
 			if(CurrentRun.RerollBoonTracker >= count) then
 				local times = math.floor(CurrentRun.RerollBoonTracker/count);
-				AddRerolls( times, source, { IgnoreMetaUpgrades = true } )
+				AddRerolls( times, source, { Thread = false } )
 				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
 			end
 		end
@@ -3896,7 +3955,6 @@ if ModUtil ~= nil then
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
 	end
-	
 	function ApolloMoney(args)
 		local amount = round(GetTotalHeroTraitValue("FountainCoinBonus"))
 		local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
@@ -3904,7 +3962,6 @@ if ModUtil ~= nil then
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainCoinText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainCoinTrait", Amount = amount }})
 		thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = args.triggeredById, } )
 	end
-	
 	OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFountainStyx",
 		function( triggerArgs )
 			wait(0.4)
@@ -3971,6 +4028,26 @@ if ModUtil ~= nil then
 		end
 	end
 	
+OnWeaponFired{ "ApolloBeamWeapon",
+function(triggerArgs)
+	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
+	SetPlayerPhasing("ApolloBeam")
+	CurrentRun.Hero.SurgeActive = true
+	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
+	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
+end
+}
+
+OnRamWeaponComplete{ "ApolloBeamWeapon",
+function(triggerArgs)
+	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
+	SetPlayerUnphasing("ApolloBeam")
+	CurrentRun.Hero.SurgeActive = false
+	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
+	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
+	StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
+end
+}
 	--[[function BossHyacinthKillPresentation(unit)
 		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 		local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
@@ -3986,14 +4063,15 @@ if ModUtil ~= nil then
 	end]]
 	
 	-- For testing purposes
-	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
-			if (not CanOpenCodex()) and IsSuperValid() then
+			--[[if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
-			end
+			end]]
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)]]
+	)
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
