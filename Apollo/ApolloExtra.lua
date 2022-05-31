@@ -3829,7 +3829,7 @@ if ModUtil ~= nil then
 	-- Gift Section    
 	local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 	local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-	ModUtil.Table.Merge(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
+	table.insert(OlympusGiftOrdering, 20, "ForceApolloBoonTrait")
 	
 	OlympusGiftData.ApolloUpgrade =
 	{
@@ -4054,14 +4054,15 @@ end
 	end]]
 	
 	-- For testing purposes
-	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
-			if (not CanOpenCodex()) and IsSuperValid() then
+			--[[if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
-			end
+			end]]
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)]]
+	)
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
