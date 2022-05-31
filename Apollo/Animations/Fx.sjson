@@ -2535,7 +2535,7 @@
       NumFrames = 30
       PlaySpeed = 80.0
       StartFrame = 1
-      OriginX = 20.0
+      OriginX = 10.0
       OriginY = 85.0
       ScaleLength = 120.0
       ScaleRadius = 160.0
@@ -2572,7 +2572,7 @@
       NumFrames = 30
       PlaySpeed = 60.0
       StartFrame = 1
-      OriginX = 20.0
+      OriginX = 10.0
       OriginY = 85.0
       TransferFrameFromThis = true
       ScaleLength = 120.0
@@ -2580,6 +2580,44 @@
       Ambient = 0.0
       OverlayVfx = true
       TransferCopyBody = false
+    }
+    {
+      Name = "Invincibubble_Apollo_Loop"
+      ChildAnimation = "InvincibubbleLoop_Apollo_Offset"
+      FilePath = "Fx\InvincibubbleIn\InvincibubbleIn"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/Leftovers/SFX/PerfectTiming"
+      ColorFromOwner = "Ignore"
+      EndFrame = 27
+      HoldLastFrame = true
+      NumFrames = 27
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetY = -50.0
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      UseAttachedMarkerLocation = "ZAxis_TRACKING"
+      ScaleFromOwner = "Ignore"
+      ScaleY = 0.75
+      Ambient = 0.0
+      CreateAnimationOnEnd = "InvincibubbleOut_Zag"
+    }
+    {
+      Name = "InvincibubbleLoop_Apollo_Offset"
+      ChildAnimation = "ApolloLaserOrigin"
+      InheritFrom = "InvincibubbleLoop"
+      GroupName = "FX_Standing_Add"
+      PingPongColor = true      
+      Color = {
+        Red = 0.85
+        Green = 0.65
+        Blue = 0.10
+      }
+      DieWithOwner = false
+      LocationZFromOwner = "Ignore"
+      ScaleY = 0.75
     }
     {
       Name = "ApolloLaserGlow"
@@ -2646,6 +2684,7 @@
     }
     {
       Name = "ApolloLaserOrigin"
+      ChildAnimation = "ApolloLaserOriginGlow"
       FilePath = "Fx\HadesBeamCapEnd\HadesBeamCapEnd"
       GroupName = "Standing"
       FlipHorizontal = true
@@ -2664,7 +2703,6 @@
       OriginX = 0
       OriginY = 0
       RandomFlipVertical = true
-      CreateAnimation = "ApolloLaserOriginGlow"
     }
     {
       Name = "ApolloLaserOriginNoLight"
@@ -2754,6 +2792,7 @@
     }
     {
       Name = "ApolloLaserOriginGlow"
+      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
       Type = "Constant"
       FilePath = "Particles\particle_glow"
       Material = "Unlit"

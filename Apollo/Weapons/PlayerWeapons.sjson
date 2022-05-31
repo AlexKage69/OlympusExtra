@@ -1,52 +1,76 @@
 {
   Weapons = [
     "_append"
-    {
-      Name = "LaserEnabledWeapon"
-      InheritFrom = "1_BasePlayerSlowWeapon"
-      Projectile = "LaserEnabled"
-    }
-    {
-      Name = "ApolloBeamAim"
-      Control = "Attack2"
-      FullyAutomatic = true
-      Enabled = false
-    }
       {
         Name = "ApolloBeamWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
         Type = "GUN"
         Projectile = "ApolloCastBeam"
         ClipSize = 1
-        Cooldown = 0.0
-        CancelMovement = true
         FullyAutomatic = true
+        BlinkDetonateAtEndpoint = true
+        ChargeCancelMovement = true
+        BarrelLength = 32
+        FireGraphic = "null"
+        ReloadTime = 3.0
+        NumProjectiles = 1
+        ProjectileAngleOffset = 30
+        SilentImpactAfterFirst = true
+        AutoLockWithMouse = false
+        ObstacleDamageMultiplier = 1
+        BlinkNumGhosts = 3
+        CancelMovement = false
+        AutoLock = false
         IgnoreOwnerAttackDisabled = true
         UseTargetAngle = false
         BlockMoveInput = true
         IgnoreForceCooldown = true
         CanCancelDisables = true
         CanCancelOwnDisables = true
-        BlinkDetonateAtEndpoint = true
-        BarrelLength = 175
-        AutoLock = false
-        FireGraphic = "null"
-        LockTriggerForCharge = false
-        DisableOwnerForDuration = 0
-        ReloadTime = 3.0
-        NumProjectiles = 1
-        ProjectileAngleOffset = 30
-        SilentImpactAfterFirst = true
-        ObstacleDamageMultiplier = 1
-        BlinkNumGhosts = 3
-        Effect = {
-            Name = "BeamRotation"
-
-            Duration = 1
-            RotationMultiplier = 0.02
-            Active = true
+        BlinkGhostAnimation = "null"
+        CheckMovementReactionDistance = 150
+        ClearWeaponFireRequestOnFire = "RushWeapon"
+        PriorityFireRequest = true
+        Effects = [
+        {
+          Trigger = "Fire"
+          Name = "ApolloStun"
+          Duration = 100
+          DisableMove = false
+          DisableRotate = false
+          DisableAttack = true
+          StartAnimation = "ZagreusShootLazer"
+          Cancelable = false
         }
+        {
+          Trigger = "Fire"
+          Name = "ApolloSpeed"
+          Type = "SPEED"
+          Duration = 100
+          Modifier = 0.000000001
+          Active = true
+        }
+        {
+          Trigger = "Fire"
+          Name = "ApolloBubble"
+          Type = "INVULNERABLE"
+          Duration = 100
+          Modifier = 1.0
+          CanAffectInvulnerable = true
+          FrontFx = "Invincibubble_Apollo_Loop"
+          Active = true
+        }
+        {
+          Trigger = "Fire"
+          Name = "ApolloForce"
+          ImmuneToForce = true
+          Duration = 100
+          CanAffectInvulnerable = true
+          Active = true
+        }]
     }
+    
+    
     {
       Name = "AreaWeakenApollo"
       InheritFrom = "1_BaseMagicWeapon"
