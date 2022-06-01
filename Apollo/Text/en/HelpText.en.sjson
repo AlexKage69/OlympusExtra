@@ -283,7 +283,7 @@
 		{
 			Id = "SeaChanteyTrait"
 			DisplayName = "Sea Chantey"
-			Description = "Your {$Keywords.Wrath} fires twelve beams instead of one."
+			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
 		}	
 		{
 			Id = "BlindDurationTrait"

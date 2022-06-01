@@ -2323,24 +2323,30 @@ OlympusTraitData.SeaChanteyTrait =
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Poseidon_01",
 		RequiredFalseTrait = "SeaChanteyTrait",
-		PropertyChanges =
+		AddIncomingDamageModifiers =
 		{
+			BossDamageMultiplier = 1.05,
+			ExtractValues =
 			{
-				TraitName = "ApolloShoutTrait",
-				WeaponName = "ApolloBeamWeapon",
-				WeaponProperty = "NumProjectiles",
-				ChangeValue = 12,
-				ExcludeLinked = true,
-			},
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipWrathStocks",
-				Format = "ExistingWrathStocks",
-				SkipAutoExtract = true
+				{
+					Key = "BossDamageMultiplier",
+					ExtractAs = "IncomingMultiplier",
+					Format = "PercentDelta",
+				},
 			}
-		}		
+		},
+		AddOutgoingDamageModifiers =
+		{
+			BossDamageMultiplier = 1.10,
+			ExtractValues =
+			{
+				{
+					Key = "BossDamageMultiplier",
+					ExtractAs = "OutgoingMultiplier",
+					Format = "PercentDelta",
+				},
+			}
+		}	
 	}	
 
 	-- LootData
