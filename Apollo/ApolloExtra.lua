@@ -2346,7 +2346,11 @@ OlympusTraitData.SeaChanteyTrait =
 					Format = "PercentDelta",
 				},
 			}
-		}	
+		},
+		OnDamageEnemyFunction = {
+			FunctionName = "SpawnMusicNotes",
+			FunctionArgs = {}
+		}
 	}	
 
 	-- LootData
@@ -4053,19 +4057,25 @@ OlympusTraitData.SeaChanteyTrait =
 		end
 	)
 
-		-- Sea Chantey functions
-		ModUtil.Path.Wrap( "Kill", 
-		function(baseFunc, victim, triggerArgs)
-			if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
-				victim.HealDropOnDeath = {
-					Name = "HealDropMinor",
-					Radius = 50,
-					Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
-				}
-			end
-			baseFunc(victim, triggerArgs)
+	-- Sea Chantey functions
+	ModUtil.Path.Wrap( "Kill", 
+	function(baseFunc, victim, triggerArgs)
+		if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
+			victim.HealDropOnDeath = {
+				Name = "HealDropMinor",
+				Radius = 50,
+				Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
+			}
 		end
+		baseFunc(victim, triggerArgs)
+	end
 	)
+
+	function SpawnMusicNotes(args, attacker, victim)
+		if victim.IsBoss then
+			CreateAnimation({ DestinationId = victim.ObjectId, Name = "HouseMusicNotesShower" })
+		end
+	end
 	
 	-- Hyacinth Insta-kill function
 	function CheckHyacinthKill( args, attacker, victim )
