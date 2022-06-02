@@ -216,25 +216,25 @@
 			Id = "FountainCoinTrait",
 			DisplayName = "Wishing Well"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
-    }
+    	}
 		{
 			Id = "FountainCoinText",
 			DisplayName = "{#CombatTextHighlightFormat}Wishing Well!{#PreviousFormat}!"
-    }
+    	}
 		{
     		Id = "FountainCoinText_Alt"
       		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount} {!Icons.Currency_Small}"     
-    }
+    	}
 		{
 			Id = "FountainCoinTrait_Initial",
 			DisplayName = "Wishing Well"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
-    }
+    	}
 		{
 			Id = "FountainCoinTrait_Tray",
 			DisplayName = "Wishing Well"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
-    }
+    	}
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Panacea's Elixir"
@@ -285,6 +285,10 @@
 			DisplayName = "Sea Chantey"
 			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
 		}	
+		{
+			Id = "SeaChanteyText",
+			DisplayName = "{#CombatTextHighlightFormat}Sea Chantey!{#PreviousFormat}!"
+    	}
 		{
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"

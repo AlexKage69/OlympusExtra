@@ -4044,7 +4044,17 @@ OlympusTraitData.SeaChanteyTrait =
 		end
 	}
 	-- Song of Healing functions
-	ModUtil.Path.Wrap( "Kill", 
+	ModUtil.Path.Wrap( "StartEncounter", 
+		function(baseFunc, currentRun, currentRoom, currentEncounter )
+			if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
+				thread(SeaChanteyAnnouncement)
+			end
+			baseFunc(currentRun, currentRoom, currentEncounter)
+		end
+	)
+
+		-- Sea Chantey functions
+		ModUtil.Path.Wrap( "Kill", 
 		function(baseFunc, victim, triggerArgs)
 			if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
 				victim.HealDropOnDeath = {
@@ -4064,9 +4074,9 @@ OlympusTraitData.SeaChanteyTrait =
 			PlaySound({ Name = "/SFX/DemeterEnemyFreezeShatter", Id = victim.ObjectId })
 			
 			--[[if victim.IsBoss then
-			  BossHyacinthKillPresentation( victim )
+				BossHyacinthKillPresentation( victim )
 			end]]
-	
+
 			if victim.DeathAnimation ~= nil and not victim.ManualDeathAnimation then
 				SetAnimation({ Name = victim.DeathAnimation, DestinationId = victim.ObjectId })
 				-- @todo Notify on death animation finish
@@ -4074,27 +4084,35 @@ OlympusTraitData.SeaChanteyTrait =
 			thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 		end
 	end
-	
-OnWeaponFired{ "ApolloBeamWeapon",
-function(triggerArgs)
-	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
-	SetPlayerPhasing("ApolloBeam")
-	CurrentRun.Hero.SurgeActive = true
-	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
-	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
-end
-}
+		
+	OnWeaponFired{ "ApolloBeamWeapon",
+	function(triggerArgs)
+		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
+		SetPlayerPhasing("ApolloBeam")
+		CurrentRun.Hero.SurgeActive = true
+		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
+		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
+	end
+	}
 
-OnRamWeaponComplete{ "ApolloBeamWeapon",
-function(triggerArgs)
-	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
-	SetPlayerUnphasing("ApolloBeam")
-	CurrentRun.Hero.SurgeActive = false
-	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
-	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
-	StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
-end
-}
+	OnRamWeaponComplete{ "ApolloBeamWeapon",
+	function(triggerArgs)
+		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
+		SetPlayerUnphasing("ApolloBeam")
+		CurrentRun.Hero.SurgeActive = false
+		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
+		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
+		StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
+	end
+	}
+
+	function SeaChanteyAnnouncement()
+		wait(1)
+		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
+	end
+
+
 	--[[function BossHyacinthKillPresentation(unit)
 		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 		local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
