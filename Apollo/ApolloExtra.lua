@@ -1979,19 +1979,19 @@ if ModUtil ~= nil then
 		{
 			Common =
 			{
-				Multiplier = 5,
+				Multiplier = 4,
 			},
 			Rare =
 			{
-				Multiplier = 4,
+				Multiplier = 3,
 			},
 			Epic =
 			{
-				Multiplier = 3,
+				Multiplier = 2,
 			},
 			Heroic =
 			{
-				Multiplier = 2,
+				Multiplier = 1,
 			}
 		},
 		ExtractValues =
@@ -3983,47 +3983,62 @@ if ModUtil ~= nil then
 			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
 		end
 	end
-	-- Prophecy and Sight
-	ModUtil.Path.Wrap( "StartNewRun", 
-		function(baseFunc, prevRun, args)
-			baseFunc(prevRun, args)
-			CurrentRun.RerollBoonTracker = 0
-			CurrentRun.RerollObolTracker = 0
-			return CurrentRun
-		end
-	)
-
+	-- Prophecy and Sight	
+	function AddRerollObol()
+		AddRerolls( 1, "RerollTrait", { Thread = false, Delay = 0.5 } )		
+		CurrentRun.RerollObolTracker = 0
+	end
 	ModUtil.Path.Wrap( "AddMoney", 
 		function(baseFunc, amount, source)
 			baseFunc(amount, source)	
 			if amount == nil or round( amount ) <= 0 then
 				return
 			end
+			local times = 0
 			if HeroHasTrait("RerollObolTrait") then
 				local count = GetTotalHeroTraitValue("ObolCount")
 				CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker + amount
-				if(CurrentRun.RerollObolTracker >= count) then
-					local times = math.floor(CurrentRun.RerollObolTracker/count);
-					AddRerolls( times, source, { Thread = false, Delay = 0.5 } )
+				times = math.floor(CurrentRun.RerollObolTracker/count);
+				if(times > 0) then
 					CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker - (times * count)
 				end
 			end
-		end
-	)
-	ModUtil.Path.Wrap( "HandleLootPickup", 
-	function(baseFunc, currentRun, loot)
-		baseFunc(currentRun, loot)
-		if (not loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then
-			CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
-			local count = GetTotalHeroTraitValue("BoonCount")
-			if(CurrentRun.RerollBoonTracker >= count) then
-				local times = math.floor(CurrentRun.RerollBoonTracker/count);
-				AddRerolls( times, source, { Thread = false, Delay = 0.5 } )
-				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
+			if(times > 0) then
+				AddRerolls( times, "RerollTrait", { Thread = false, Delay = 0.5 } )			
 			end
 		end
-	end
 	)
+	function AddRerollBoon()
+		AddRerolls( 1, "RerollTrait", { Thread = false, Delay = 0.5 } )		
+		CurrentRun.RerollBoonTracker = 0
+	end
+	ModUtil.Path.Wrap( "HandleLootPickup", 
+		function(baseFunc, currentRun, loot)	
+			local times = 0
+			if not (loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then				
+				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
+				local count = GetTotalHeroTraitValue("BoonCount")
+				times = math.floor(CurrentRun.RerollBoonTracker/count);
+				if(times > 0) then
+					CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
+				end
+			end
+			baseFunc(currentRun, loot)	
+			if(times > 0) then
+				AddRerolls( times, "RerollTrait", { Thread = false, Delay = 0.5 } )			
+			end
+		end
+	)
+	ModUtil.Path.Wrap( "AddTraitToHero", 
+	function(baseFunc, args)
+		if args.TraitData and args.TraitData.Name == "RerollBoonTrait" then
+			AddRerollBoon()
+		end
+		if args.TraitData and args.TraitData.Name == "RerollObolTrait" then
+			AddRerollObol()
+		end
+		baseFunc(args)
+	end)
 	-- Fountain Coin/Defense Functions
 	function FountainDefensePresentation()
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
