@@ -84,6 +84,18 @@
       Cooldown = 0.4
     }
     {
+      Name = "ShoutEndApollo"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ShoutEndApollo"
+	    ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Cooldown = 0.4
+    }
+    {
       Name = "DazzledWeapon"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"

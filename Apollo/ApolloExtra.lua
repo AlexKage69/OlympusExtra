@@ -1592,7 +1592,7 @@ if ModUtil ~= nil then
 				}
 			},
 			EndShout = "EndApolloBeam",
-			PreEquipWeapons = { "ApolloBeamWeapon" },
+			PreEquipWeapons = { "ApolloBeamWeapon", "ShoutEndApollo" },
 			PropertyChanges =
 			{
 				{
@@ -1922,23 +1922,23 @@ if ModUtil ~= nil then
 		{
 			Common =
 			{
-				Multiplier = 1.00,
+				Multiplier = 1.0,
 			},
 			Rare =
 			{
-				Multiplier = 2.00,
+				Multiplier = 1.5,
 			},
 			Epic =
 			{
-				Multiplier = 3.00,
+				Multiplier = 2.0,
 			},
 			Heroic =
 			{
-				Multiplier = 4.00,
+				Multiplier = 2.5,
 			}
 		},
 		ApolloHealDropChance = { 
-			BaseValue = 0.01
+			BaseValue = 0.04
 		},
 		ExtractValues =
 		{
@@ -2317,10 +2317,21 @@ if ModUtil ~= nil then
 			Icon = "Apollo_Dionysus_01",
 			RequiredFalseTraits = { "DazzledTrait"},
 			PreEquipWeapons = { "DazzledWeapon" },
-			PropertyChanges =
-			{
+			OnDamageEnemyFunction = {
+				FunctionName = "CheckDazzled",
+				FunctionArgs = {
+					HyacinthDeathThreshold = 0.15,
+					ExtractValues =
+					{
+						{
+							Key = "HyacinthDeathThreshold",
+							ExtractAs = "TooltipDeathThreshold",
+							Format = "Percent",
+						},
+					}
+				}
 			},
-		}
+		}		
 
 		OlympusTraitData.BlindedRuptureTrait =
 		{
@@ -3079,7 +3090,7 @@ if ModUtil ~= nil then
 						PortraitExitWait = 1.25,
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						UseEventEndSound = true,
-						Text = "I come here to help, and you confuse me with my sister, Cousin? Not cool, man." },
+						Text = "I come all this way to help you out and the first thing you do is confuse me with my sister? Not the best first impression, Cousin." },
 				},
 				ApolloMiscPickup01 =
 				{
@@ -3088,7 +3099,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0002",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Dangers and vile creatures are hiding where you are. This blessing will keep them away. Take care." },
+						Text = "Dangers and vile creatures are hiding where you are. This blessing will keep them away." },
 				},
 				ApolloMiscPickup02 =
 				{
@@ -3097,7 +3108,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0003",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Take my blessing, Cousin. It will light up your way to Olympus. " },
+						Text = "Take my blessing, Cousin. It will light up your way to Olympus." },
 				},
 				ApolloMiscPickup03 =
 				{
@@ -3146,7 +3157,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0008",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "By all the divines! You are still going at it, Zagzag. I see you are well determined to come meet us. Wish you the best!" },
+						Text = "By the fates! You are still going at it, Zagzag. I see you are well determined to come meet us then. Wish you all the best!" },
 				},
 				ApolloMiscPickup08 =
 				{
@@ -3155,7 +3166,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0009",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Let me play something for you, it might guide your way to us. " },
+						Text = "Let me play something for you, it might guide your way to us." },
 				},
 				ApolloMiscPickup09 =
 				{
@@ -3184,7 +3195,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0012",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\n Made a haiku just for you,\n Good luck escaping.{#PreviousFormat}" },
+						Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\nMade a haiku just for you,\nGood luck escaping.{#PreviousFormat}" },
 				},
 				ApolloMiscPickup12 =
 				{
@@ -3193,7 +3204,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0013",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Trying to escape again, Zagzag? I believe your fate is set on staying down there. But then again, I've been wrong before. Against all odds, I believe in you, young prince." },
+						Text = "Trying to escape again, Zagzag? I believe the fates are set on keeping you down there. But then again, I've been wrong before. Against all odds, I believe in you, Cousin." },
 				},
 				ApolloMiscPickup13 =
 				{
@@ -3212,7 +3223,7 @@ if ModUtil ~= nil then
 					MinRunsSinceAnyTextLines = { TextLines = { "ApolloPostEpilogue01" }, Count = 3 },				
 					{ Cue = "/VO/Apollo_0015",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Ob-La-Di, Ob-La-Da... Oh. Hello there. I was working on a song. I probably do have time to finish it by the time, you arrive. In the meantime, take this." },
+						Text = "Da-Da-Dum... Da-Da-Dum... Oh. Hello there. Sorry I was working on a song. I can probably finish it by the time you arrive. In the meantime, take this." },
 				},
 				ApolloMiscPickup15 =
 				{
@@ -3221,7 +3232,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "ApolloFirstPickUp", "ApolloGift01" },
 					{ Cue = "/VO/Apollo_0016",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Did you know, Zagzag, every sound can be transformed into music? Melody, rhythm, percussions. Maybe you can use it for your escape." },
+						Text = "Zagzag, did you know every sound can be transformed into music? Melody, rhythm, percussions. Maybe you can use that information to help you escape." },
 				},
 				ApolloMiscPickup16 =
 				{
@@ -3261,7 +3272,7 @@ if ModUtil ~= nil then
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Apollo_0020",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Is your father keeping you into his realm, Zagzag. Sometimes fathers are strict, but we must show them who we are and take our place. We are very alike, Zagzag. The difference is I succeed in what I start. You should try it." },
+						Text = "Is your father keeping you in his realm, Zagzag. Sometimes fathers are strict, but we must show them we are our own gods. You and I are very alike, Zagzag. The difference between us is I usually succeed in what I start. You should probably give that a try sometime." },
 				},
 	
 				-- shorter acknowledgments
@@ -3281,14 +3292,14 @@ if ModUtil ~= nil then
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0022",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I can see you've got the music in you. It's just a matter of using it the right way." },
+						Text = "I can see you've got the music in you, Cousin. It's just a matter of using it the right way." },
 				},
 				ApolloMiscPickup22 =
 				{
 					Name = "ApolloMiscPickup22",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0002",
+					{ Cue = "/VO/Apollo_0023",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "With this blessing, Zagzag. The light shall burn your enemies." },
 				},
@@ -3299,7 +3310,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0024",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Like I used to say. Where words fail, music speaks." },
+						Text = "Like I always say. Where words failed, music thrives." },
 				},
 				ApolloMiscPickup24 =
 				{
@@ -3910,6 +3921,7 @@ if ModUtil ~= nil then
 	end
 	function EndApolloBeam()
 		EndRamWeapons({ Id = CurrentRun.Hero.ObjectId })
+		FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloStun" })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloSpeed" })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
@@ -3955,18 +3967,6 @@ if ModUtil ~= nil then
 				--args.IsInvulnerable = true	
 			else
 				baseFunc(victim, attacker, args)
-			end
-		end
-	)
-	ModUtil.Path.Wrap( "DamageOverTimeApply", 
-		function(baseFunc, triggerArgs)
-			local victim = triggerArgs.TriggeredByTable
-			baseFunc(triggerArgs);
-			if HeroHasTrait("DazzledTrait") and victim and not HasEffect({Id = victim.ObjectId, EffectName = "Dazzled" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and triggerArgs.Stacks >= 5 then
-				FireWeaponFromUnit({ Weapon = "DazzledWeapon", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true  })
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.Stacks)) 
-				ClearEffect({ Id = victim.ObjectId, Name = "ApolloBlind" })
-				ClearEffect({ Id = victim.ObjectId, Name = "DamageOverTime" })
 			end
 		end
 	)
@@ -4096,7 +4096,24 @@ if ModUtil ~= nil then
 			thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 		end
 	end
+
+	function CheckDazzled( args, attacker, victim )	
+		if attacker and  attacker == CurrentRun.Hero and HeroHasTrait("DazzledTrait") and victim and not HasEffect({Id = victim.ObjectId, EffectName = "Dazzled" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and victim.ActiveEffects["DamageOverTime"] then
+			--FireWeaponFromUnit({ Weapon = "DazzledWeapon", AutoEquip = true, Id = attacker.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true  })
+			RotateUntilEffectExpired(victim, args)
+			--ClearEffect({ Id = victim.ObjectId, Name = "DamageOverTime" })
+		end
+	end
 	
+function RotateUntilEffectExpired( enemy, args )
+	--Move({ Id = enemy.ObjectId, DestinationId = args.TargetId, SuccessDistance = aiData.MoveSuccessDistance or 32 })
+	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 270 })
+	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 180 })
+	--AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = GetTargetId(enemy)})
+	--Move({ Id = enemy.ObjectId, Distance = 32, Angle = 270, Duration = 1 })
+	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 90, Duration = 1 });
+end
+
 OnWeaponFired{ "ApolloBeamWeapon",
 function(triggerArgs)
 	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
