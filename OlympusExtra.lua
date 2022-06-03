@@ -20,8 +20,6 @@ if ModUtil ~= nil then
             local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
 
-            table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_ApolloRangedTrait")
-
             local OlympusRealGodNames = ModUtil.Entangled.ModData(RealGodNames)
             table.insert(OlympusRealGodNames, "Apollo")
 

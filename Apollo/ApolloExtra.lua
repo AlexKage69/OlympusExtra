@@ -113,7 +113,6 @@ if ModUtil ~= nil then
 			FireSounds =
 			{
 				{ Name = "/SFX/HellFireShoot" },
-				{ Name = "/SFX/Enemy Sounds/Hades/EmoteRangedSustained" },
 				{ Name = "/SFX/Enemy Sounds/Tisiphone/TisiphoneHarpySlowBeam" },
 			},
 			ImpactSounds =
@@ -1287,12 +1286,19 @@ if ModUtil ~= nil then
 		 }
 	 }
 	OlympusTraitData.ApolloRangedTrait =
-		{
+	{
 			Name = "ApolloRangedTrait",
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
 			Icon = "Boon_Apollo_04",
-			RequiredFalseTrait = "ShieldLoadAmmoTrait",
+			TraitDependencyTextOverrides =
+			{
+				ShieldLoadAmmoTrait =
+				{
+					Name = "ShieldLoadAmmo_ApolloRangedTrait",
+					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
+				},
+			},
 			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
 			TraitDependencyTextOverrides =
@@ -1539,7 +1545,7 @@ if ModUtil ~= nil then
 		InheritFrom = {"ApolloRangedTrait"},
 		Skip = true,
 		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-        RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
+        RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait" }
 	}
 	OlympusTraitData.ApolloShoutTrait =
 	{
@@ -1917,6 +1923,7 @@ if ModUtil ~= nil then
 	{
 		Icon = "Boon_Apollo_13",
 		InheritFrom = { "ShopTier2Trait" },
+		RequiredFalseTrait = "ApolloHealTrait",
 		God = "Apollo",
 		RarityLevels =
 		{
@@ -1964,7 +1971,7 @@ if ModUtil ~= nil then
 		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_10",
-		RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
 		BoonCount = { 
 			BaseValue = 1
 		},
@@ -2001,7 +2008,7 @@ if ModUtil ~= nil then
 		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_12",
-		RequiredFalseTrait = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
 		ObolCount = { 
 			BaseValue = 1
 		},
@@ -2257,7 +2264,7 @@ if ModUtil ~= nil then
 			OnDamageEnemyFunction = {
 				FunctionName = "CheckHyacinthKill",
 				FunctionArgs = {
-					HyacinthDeathThreshold = 0.15,
+					HyacinthDeathThreshold = 0.30,
 					ExtractValues =
 					{
 						{
@@ -2438,7 +2445,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloRangedTrait" },
+						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 					}
 				},
@@ -2446,7 +2453,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 					}
 				},
@@ -2454,7 +2461,7 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },-- "ShieldLoadAmmo_ApolloRangedTrait"
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 					}
 				}
@@ -3401,7 +3408,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0034",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
+						Text = "I sense your heart is pure. This blessing should be handy then. Good luck!" },
 				},
 				ApolloMiscPickup34 =
 				{
@@ -3435,7 +3442,7 @@ if ModUtil ~= nil then
 	
 					{ Cue = "/VO/Apollo_0096",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I would say you got rip off, but I had a vision of a sale coming soon... And I know Charon doesn't do take back." },
+						Text = "I would say you got ripped off, but I had a vision of a sale coming soon... And I know Charon doesn't do take backs." },
 				},
 				ApolloLootBought03 =
 				{
@@ -3836,7 +3843,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloRangedTrait" },
+			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 		}
 	}
@@ -3844,7 +3851,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
 		}
 	}
@@ -3852,7 +3859,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 		}
 	}
@@ -3898,7 +3905,7 @@ if ModUtil ~= nil then
 	-- Gift Section    
 	local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 	local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-	ModUtil.Table.Merge(OlympusGiftOrdering, { "ForceApolloBoonTrait" })
+	table.insert(OlympusGiftOrdering, 20, "ForceApolloBoonTrait")
 	
 	OlympusGiftData.ApolloUpgrade =
 	{
@@ -4022,7 +4029,7 @@ if ModUtil ~= nil then
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
 	end
-
+	
 	function ApolloMoney(args)
 		local amount = round(GetTotalHeroTraitValue("FountainCoinBonus"))
 		local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
@@ -4030,7 +4037,7 @@ if ModUtil ~= nil then
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainCoinText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainCoinTrait", Amount = amount }})
 		thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = args.triggeredById, } )
 	end
-
+	
 	OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFountainStyx",
 		function( triggerArgs )
 			wait(0.4)
@@ -4154,6 +4161,7 @@ end
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
 	)]]
