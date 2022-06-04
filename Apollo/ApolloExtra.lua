@@ -3615,7 +3615,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Apollo_0126",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "How do you have so much of these? Isn't Nectar rare where you stand? This is madness..." },
+						Text = "How do you have so many of these? Isn't Nectar rare where you stand? This is madness..." },
 				},
 				ApolloGift06 =
 				{
