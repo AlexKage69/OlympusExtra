@@ -232,6 +232,11 @@ if ModUtil ~= nil then
 		OnApplyFunctionName = "ApolloBlindApply",
 		OnClearFunctionName = "ApolloBlindClear",
 	}
+	OlympusEffectData.DistanceResist =
+	{
+		OnApplyFunctionName = "DistanceResistApply",
+		OnClearFunctionName = "DistanceResistClear",
+	}
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
@@ -318,7 +323,7 @@ if ModUtil ~= nil then
 	)
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb" })
+	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb", "DamageResist" })
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -2340,53 +2345,45 @@ if ModUtil ~= nil then
 			},
 		}		
 
-		OlympusTraitData.BlindedRuptureTrait =
+		OlympusTraitData.DamageReduceDistanceTrait =
 		{
 			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Poseidon_01",
-			RequiredFalseTraits = { "BlindedRuptureTrait"},
-			ExtractValues =
+			Icon = "Apollo_Athena_01",
+			RequiredFalseTraits = { "DamageReduceDistanceTrait"},
+			PreEquipWeapons = { "DistanceResistWeapon" },
+			DistanceResistThreshold = { 
+				BaseValue = 400
+			},
+			DistanceResistMultiplier = { 
+				BaseValue = 0.6
+			},
+			PropertyChanges =
 			{
 				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
+					WeaponNames = {"DistanceResistWeapon"},
+					EffectName = "DamageResist",
+					EffectProperty = "Duration",
+					ChangeValue = 3,
+					ChangeType = "Absolute",
+					ExtractValue =
+					{
+						ExtractAs = "TooltipDamageResistDuration",
+					}
+				},		
 				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				},
-				{
-					ExtractAs = "TooltipRuptureDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "DamageOverDistance",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipSlipperyRate",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "DamageOverDistance",
-					BaseProperty = "Cooldown",
-					DecimalPlaces = 1,
-				},
-			}	
-		}
+					WeaponNames = {"DistanceResistWeapon"},
+					EffectName = "DamageResist",
+					EffectProperty = "Modifier",
+					ChangeValue = 0.6,
+					ChangeType = "Absolute",
+					ExtractValue =
+					{
+						ExtractAs = "TooltipDamageResistModifier",
+						Format ="Percent"
+					}
+				},	
+			}
+		}	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 	OlympusLootData.ApolloUpgrade = {
@@ -2463,6 +2460,14 @@ if ModUtil ~= nil then
 					{
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
+					}
+				},
+				DamageReduceDistanceTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
+						{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
 					}
 				}
 			},
@@ -2545,7 +2550,7 @@ if ModUtil ~= nil then
 					Name = "ApolloWithAthena01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "CastBackstabTrait",
+					HasTraitNameInRoom = "DamageReduceDistanceTrait",
 					{ Cue = "/VO/Apollo_0182",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Athena, maybe the three of us could start a band! I believe you used to play flute. We could play together sometime!" },
@@ -3862,6 +3867,14 @@ if ModUtil ~= nil then
 			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
 		}
+	}	
+	OlympusLootData.AthenaUpgrade.LinkedUpgrades.DamageReduceDistanceTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
+			{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
+		}
 	}
 	-- Other gods modification
 	-- AthenaUpgrade
@@ -3952,16 +3965,13 @@ if ModUtil ~= nil then
 			--and CheckCooldown( "StunDisarm", 10.0 )  not HasEffect({Id = victim.ObjectId, EffectName = "StunDisarm" })
 
 			-- Enemies misses
-			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
+			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
 				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
 				PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
 				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
-				end
-				if HeroHasTrait("BlindedRuptureTrait") then
-					FireWeaponFromUnit({ Weapon = "PoseidonApolloSplash", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = attacker.ObjectId, FireFromTarget = true })
 				end
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
@@ -4135,7 +4145,35 @@ function RotateUntilEffectExpired( enemy, args )
 	--Move({ Id = enemy.ObjectId, Distance = 32, Angle = 270, Duration = 1 })
 	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 90, Duration = 1 });
 end
-
+-- Athena Duo
+OnProjectileReflect{
+	function( triggerArgs )
+		if HeroHasTrait("DamageReduceDistanceTrait") then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
+			FireWeaponFromUnit({ Weapon = "DistanceResistWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
+		end
+	end
+}
+function DistanceResistApply(triggerArgs)
+	local victim = triggerArgs.TriggeredByTable
+	if HeroHasTrait("DamageReduceDistanceTrait") and not triggerArgs.Reapplied then
+		local threshold = GetTotalHeroTraitValue("DistanceResistThreshold")
+		local multiplier = GetTotalHeroTraitValue("DistanceResistMultiplier")
+		AddIncomingDamageModifier( victim,
+		{
+			Name = "DamageReduceDistance",
+			DistanceThreshold = threshold,
+			DistanceMultiplier = multiplier,
+			Temporary = true,
+		})
+	end
+end
+function DistanceResistClear(triggerArgs)
+	local unit = triggerArgs.TriggeredByTable
+	if unit.IncomingDamageModifiers ~= nil then
+		RemoveIncomingDamageModifier( unit, "DamageReduceDistance" )
+	end
+end
 OnWeaponFired{ "ApolloBeamWeapon",
 function(triggerArgs)
 	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })

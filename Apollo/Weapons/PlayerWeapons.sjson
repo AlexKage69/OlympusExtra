@@ -68,9 +68,12 @@
           CanAffectInvulnerable = true
           Active = true
         }]
-    }
-    
-    
+    }    
+    {
+      Name = "DistanceResistWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Projectile = "DistanceResistProjectile"
+    }    
     {
       Name = "AreaWeakenApollo"
       InheritFrom = "1_BaseMagicWeapon"

@@ -38,6 +38,16 @@
 			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
+      		Id = "DamageResist"
+			DisplayName = "Protect"
+			Description = "Damage from faraway enemies is less effective."
+		}
+		{
+      		Id = "Dazzled"
+			DisplayName = "Dazzled"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
+		}
+		{
 			Id = "ApolloWeaponTrait"
 			DisplayName = "Blinding Strike"
 			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
@@ -165,12 +175,12 @@
 		{
 			Id = "FountainDefenseTrait_Initial",
 			DisplayName = "Melodic Concert"
-			Description = "Using a {$Keywords.Fountain} gives you damage resist from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Using a {$Keywords.Fountain} gives you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "FountainDefenseTrait_Tray",
 			DisplayName = "Melodic Concert"
-			Description = "Using a {$Keywords.Fountain} gives you damage resost from faraway attacks. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Using a {$Keywords.Fountain} gives you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
     	}
 		{
 			Id = "ApolloBlindedTrait"
@@ -284,6 +294,16 @@
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"
 			Description = "Your {$Keywords.ApolloBlind} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+		}
+		{
+			Id = "DazzledTrait"
+			DisplayName = "Disco Party"
+			Description = "..."
+		}	
+		{
+			Id = "DamageReduceDistanceTrait"
+			DisplayName = "Archery Lessons"
+			Description = "After using {$Keywords.Deflect}, briefly gain {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}% \n{!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistDuration} Sec."
 		}	
 		{
 			Id = "LtUpgrade_Apollo"

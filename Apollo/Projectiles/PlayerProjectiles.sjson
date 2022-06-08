@@ -436,6 +436,66 @@
       ]
     }
     {
+        Name = "DistanceResistProjectile"
+        InheritFrom = "1_BaseNonPhysicalProjectile"
+        Type = "INSTANT"
+        AffectsEnemies = false
+        AffectsFriends = false
+        AffectsSelf = true
+        FuseMin = 0.25
+        FuseMax = 0.25
+        TotalFuse = 0.75
+        DamageLow = 0
+        DamageHigh = 0
+        DamageRadius = 2500.0
+        DamageRadiusScaleY = 0.6
+        DamageRadiusScaleX = 1.1
+        AutoAdjustForTarget = false
+        UseVulnerability = false
+        NumPenetrations = 999
+        SpawnRadius = 0
+        SpawnCount = 0
+        CanHitWithoutDamage = true
+        SilentImpactOnInvulnerable = true
+        Thing = {
+            Graphic = "null"
+            OffsetZ = 70
+            AttachedAnim = "null"
+            RotateGeometry = true
+            Grip = 999999
+            Points = [
+            {
+                X = 48
+                Y = 48
+            }
+            {
+                X = 48
+                Y = -48
+            }
+            {
+                X = -48
+                Y = -48
+            }
+            {
+                X = -48
+                Y = 48
+            }
+            ]
+        }
+      Effects = [
+        {
+          Name = "DistanceResist"
+          Duration = 3
+          FrontFx = "DistanceResistFx"
+          Modifier = 0.6
+          ExtendDurationOnReapply = true
+          CanAffectInvulnerable = true
+          Active = true
+          TimeModifierFraction = 0
+        }
+      ]
+    }
+    {
       Name = "DazzledProjectile"
       InheritFrom = "1_BaseMagicProjectile"
       DetonateGraphic = "RadialNova-Apollo"

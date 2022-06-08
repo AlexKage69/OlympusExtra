@@ -3319,6 +3319,26 @@
       UseAttachedFlasher = false
     }
     {
+      Name = "DistanceResistFx"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Fx\Shielded\Shielded"
+      //FilePath = "Fx\ShielderNova\ShielderNova"
+      Sound = "/SFX/Player Sounds/AthenaShieldRangedAttack"
+      CreateAnimation = "RadialNovaSwordParry-ApolloSparkles"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 60
+      Alpha = 1.0   
+      Scale = 1.0
+      Loop = true
+      OffsetZ = 40.0
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
       Name = "DazzledHoverLoop"
       InheritFrom = "AresSwordHoverDrop"
       FilePath = "Animations\Shade\Naked\ShadeNaked"

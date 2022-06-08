@@ -16,7 +16,7 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "HyacinthTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindedRuptureTrait")
-            table.insert(OlympusCodexMenuData.Duos, "DazzledTrait")
+            table.insert(OlympusCodexMenuData.Duos, "DamageReduceDistanceTrait")
             local OlympusCodexMenuReloadShouldSkip = ModUtil.Entangled.ModData(CodexMenuReloadShouldSkip)
             OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
             OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true         
