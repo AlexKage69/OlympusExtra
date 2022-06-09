@@ -2384,6 +2384,90 @@ if ModUtil ~= nil then
 				},	
 			}
 		}	
+	OlympusTraitData.MasterBoltTrait =
+		{
+			InheritFrom = { "SynergyTrait" },
+			Icon = "Apollo_Zeus_01",
+			RequiredFalseTrait = { "MasterBoltTrait" },
+			PropertyChanges =
+			{
+				{
+					TraitName = "ApolloWeaponTrait",
+					WeaponNames = WeaponSets.HeroPhysicalWeapons,
+					EffectName = "BlindLightning",
+					EffectProperty = "Active",
+					ChangeValue = true,
+				},
+				{
+					TraitName = "ApolloRangedTrait",
+					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+					EffectName = "BlindLightning",
+					EffectProperty = "Active",
+					ChangeValue = true,
+				},
+				{
+					TraitName = "AreaWeakenApollo",
+					EffectName = "BlindLightning",
+					EffectProperty = "Active",
+					ChangeValue = true,
+				},			
+				{
+					TraitName = "ShieldLoadAmmo_ApolloRangedTrait",
+					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+					EffectName = "BlindLightning",
+					EffectProperty = "Active",
+					ChangeValue = true,
+				},
+				{
+					TraitName = "ApolloDashTrait",
+					WeaponNames = WeaponSets.HeroRushWeapons,
+					EffectName = "BlindLightning",
+					EffectProperty = "Active",
+					ChangeValue = true,
+				},
+				{
+					TraitName = "ApolloSecondaryTrait",
+					WeaponNames = WeaponSets.HeroSecondaryWeapons,
+					EffectName = "BlindLightning",
+					EffectProperty = "Active",
+					ChangeValue = true,
+				}		
+			},
+		ExtractValues =
+			{
+				{
+					ExtractAs = "MasterBoltDamage",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "SwordWeapon",
+					BaseName = "BlindLightning",
+					BaseProperty = "Amount",
+				},
+				{
+					ExtractAs = "TooltipBlindDuration",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "SwordWeapon",
+					BaseName = "ApolloBlind",
+					BaseProperty = "Duration",
+				},
+				{
+					ExtractAs = "TooltipBlindPower",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "SwordWeapon",
+					BaseName = "ApolloBlind",
+					BaseProperty = "Amount",
+					Format = "Percent"
+				}
+			}
+		}
+	
+	
+	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 	OlympusLootData.ApolloUpgrade = {
@@ -2452,6 +2536,14 @@ if ModUtil ~= nil then
 					{
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
+					}
+				},
+				MasterBoltTrait = 
+				{
+					OneFromEachSet = 
+					{
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+						{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusRangedTrait", "PerfectDashBoltTrait"},
 					}
 				},
 				BlindDurationTrait = 
@@ -3850,6 +3942,14 @@ if ModUtil ~= nil then
 		{
 			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
+		}
+	}
+	OlympusLootData.ZeusUpgrade.LinkedUpgrades.MasterBoltTrait = 
+	{
+		OneFromEachSet = 
+		{
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
+			{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusRangedTrait", "PerfectDashBoltTrait"},
 		}
 	}
 	OlympusLootData.AphroditeUpgrade.LinkedUpgrades.HyacinthTrait = 
