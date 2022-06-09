@@ -4073,7 +4073,7 @@ OlympusTraitData.SeaChanteyTrait =
 
 	function SpawnMusicNotes(args, attacker, victim)
 		if victim.IsBoss then
-			CreateAnimation({ DestinationId = victim.ObjectId, Name = "HouseMusicNotesShower" })
+			CreateAnimation({ DestinationId = victim.ObjectId, Name = "PoseidonMusicNotes" })
 		end
 	end
 	
