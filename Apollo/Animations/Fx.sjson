@@ -2535,7 +2535,7 @@
       NumFrames = 30
       PlaySpeed = 80.0
       StartFrame = 1
-      OriginX = 20.0
+      OriginX = 10.0
       OriginY = 85.0
       ScaleLength = 120.0
       ScaleRadius = 160.0
@@ -2572,7 +2572,7 @@
       NumFrames = 30
       PlaySpeed = 60.0
       StartFrame = 1
-      OriginX = 20.0
+      OriginX = 10.0
       OriginY = 85.0
       TransferFrameFromThis = true
       ScaleLength = 120.0
@@ -2580,6 +2580,44 @@
       Ambient = 0.0
       OverlayVfx = true
       TransferCopyBody = false
+    }
+    {
+      Name = "Invincibubble_Apollo_Loop"
+      ChildAnimation = "InvincibubbleLoop_Apollo_Offset"
+      FilePath = "Fx\InvincibubbleIn\InvincibubbleIn"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/Leftovers/SFX/PerfectTiming"
+      ColorFromOwner = "Ignore"
+      EndFrame = 27
+      HoldLastFrame = true
+      NumFrames = 27
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetY = -50.0
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      UseAttachedMarkerLocation = "ZAxis_TRACKING"
+      ScaleFromOwner = "Ignore"
+      ScaleY = 0.75
+      Ambient = 0.0
+      CreateAnimationOnEnd = "InvincibubbleOut_Zag"
+    }
+    {
+      Name = "InvincibubbleLoop_Apollo_Offset"
+      InheritFrom = "InvincibubbleLoop"
+      ChildAnimation = "ApolloLaserOrigin"
+      GroupName = "FX_Standing_Add"
+      PingPongColor = true      
+      Color = {
+        Red = 0.85
+        Green = 0.65
+        Blue = 0.10
+      }
+      DieWithOwner = false
+      LocationZFromOwner = "Ignore"
+      ScaleY = 0.75
     }
     {
       Name = "ApolloLaserGlow"
@@ -2646,7 +2684,9 @@
     }
     {
       Name = "ApolloLaserOrigin"
+      ChildAnimation = "ApolloLaserOriginGlow"
       FilePath = "Fx\HadesBeamCapEnd\HadesBeamCapEnd"
+      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
       GroupName = "Standing"
       FlipHorizontal = true
       Type = "Book"
@@ -2664,7 +2704,6 @@
       OriginX = 0
       OriginY = 0
       RandomFlipVertical = true
-      CreateAnimation = "ApolloLaserOriginGlow"
     }
     {
       Name = "ApolloLaserOriginNoLight"
@@ -2754,6 +2793,7 @@
     }
     {
       Name = "ApolloLaserOriginGlow"
+      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
       Type = "Constant"
       FilePath = "Particles\particle_glow"
       Material = "Unlit"
@@ -3270,6 +3310,46 @@
       Red = 0.7
       Green = 0.7
       Blue = 0.7
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "DistanceResistFx"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Fx\Shielded\Shielded"
+      //FilePath = "Fx\ShielderNova\ShielderNova"
+      Sound = "/SFX/Player Sounds/AthenaShieldRangedAttack"
+      CreateAnimation = "RadialNovaSwordParry-ApolloSparkles"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 60
+      Alpha = 1.0   
+      Scale = 1.0
+      Loop = true
+      OffsetZ = 40.0
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "DazzledHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Animations\Shade\Naked\ShadeNaked"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.5
+      Green = 0.0
+      Blue = 1.0
       Scale = 0.8
       Loop = true
       NumFrames = 32

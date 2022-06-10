@@ -6,7 +6,7 @@ if ModUtil ~= nil then
         if CodexMenuData ~= nil then
             local OlympusCodexMenuData = ModUtil.Entangled.ModData(CodexMenuData)
             OlympusCodexMenuData.ApolloUpgrade = {
-            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloSecondaryTrait", 
+            "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait", 
             "ApolloShoutTrait", "ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait",
             "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolTrait", "RerollBoonTrait",
             "MissChanceTrait",
@@ -16,6 +16,10 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "HyacinthTrait")
             table.insert(OlympusCodexMenuData.Duos, "MasterBoltTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
+            table.insert(OlympusCodexMenuData.Duos, "DamageReduceDistanceTrait")
+            local OlympusCodexMenuReloadShouldSkip = ModUtil.Entangled.ModData(CodexMenuReloadShouldSkip)
+            OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
+            OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true         
             local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
 
