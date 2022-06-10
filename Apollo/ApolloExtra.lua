@@ -2261,68 +2261,102 @@ if ModUtil ~= nil then
 		EffectProperty = "Stacks",
 		ChangeValue  = true,
 	})
-	OlympusTraitData.HyacinthTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Aphrodite_01",
-			RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
-			OnDamageEnemyFunction = {
-				FunctionName = "CheckHyacinthKill",
-				FunctionArgs = {
-					HyacinthDeathThreshold = 0.30,
-					ExtractValues =
+OlympusTraitData.HyacinthTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Aphrodite_01",
+		RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
+		OnDamageEnemyFunction = {
+			FunctionName = "CheckHyacinthKill",
+			FunctionArgs = {
+				HyacinthDeathThreshold = 0.30,
+				ExtractValues =
+				{
 					{
-						{
-							Key = "HyacinthDeathThreshold",
-							ExtractAs = "TooltipDeathThreshold",
-							Format = "Percent",
-						},
-					}
+						Key = "HyacinthDeathThreshold",
+						ExtractAs = "TooltipDeathThreshold",
+						Format = "Percent",
+					},
 				}
+			}
+		},
+		PreEquipWeapons = { "HyacinthChillKill" },
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWeakDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Duration",
 			},
-			PreEquipWeapons = { "HyacinthChillKill" },
+			{
+				ExtractAs = "TooltipWeakPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Modifier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		}
+	}
+OlympusTraitData.SeaChanteyTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Poseidon_01",
+		RequiredFalseTrait = "SeaChanteyTrait",
+		AddIncomingDamageModifiers =
+		{
+			BossDamageMultiplier = 1.05,
 			ExtractValues =
 			{
 				{
-					ExtractAs = "TooltipWeakDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ReduceDamageOutput",
-					BaseProperty = "Duration",
+					Key = "BossDamageMultiplier",
+					ExtractAs = "IncomingMultiplier",
+					Format = "PercentDelta",
 				},
-				{
-					ExtractAs = "TooltipWeakPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ReduceDamageOutput",
-					BaseProperty = "Modifier",
-					Format = "NegativePercentDelta"
-				},
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				}
 			}
-		}		
+		},
+		AddOutgoingDamageModifiers =
+		{
+			BossDamageMultiplier = 1.10,
+			ExtractValues =
+			{
+				{
+					Key = "BossDamageMultiplier",
+					ExtractAs = "OutgoingMultiplier",
+					Format = "PercentDelta",
+				},
+			}
+		},
+		OnDamageEnemyFunction = {
+			FunctionName = "SpawnMusicNotes",
+			FunctionArgs = {}
+		}
+	}			
 		OlympusTraitData.DazzledTrait =
 		{
 			InheritFrom = { "SynergyTrait" },
@@ -2536,6 +2570,14 @@ if ModUtil ~= nil then
 					{
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
+					}
+				},
+				SeaChanteyTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait", "ApolloHealTrait"},
+						{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
 					}
 				},
 				MasterBoltTrait = 
@@ -3976,6 +4018,14 @@ if ModUtil ~= nil then
 			{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
 		}
 	}
+	OlympusLootData.PoseidonUpgrade.LinkedUpgrades.SeaChanteyTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait", "ApolloHealTrait"},
+			{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
+		}
+	}
 	-- Other gods modification
 	-- AthenaUpgrade
 	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "ApolloFirstPickUp")
@@ -4198,19 +4248,35 @@ if ModUtil ~= nil then
 		end
 	}
 	-- Song of Healing functions
-	ModUtil.Path.Wrap( "Kill", 
-		function(baseFunc, victim, triggerArgs)
-			if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
-				victim.HealDropOnDeath = {
-					Name = "HealDropMinor",
-					Radius = 50,
-					Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
-				}
+	ModUtil.Path.Wrap( "StartEncounter", 
+		function(baseFunc, currentRun, currentRoom, currentEncounter )
+			if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
+				thread(SeaChanteyAnnouncement)
 			end
-			baseFunc(victim, triggerArgs)
+			baseFunc(currentRun, currentRoom, currentEncounter)
 		end
 	)
 
+	-- Sea Chantey functions
+	ModUtil.Path.Wrap( "Kill", 
+	function(baseFunc, victim, triggerArgs)
+		if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
+			victim.HealDropOnDeath = {
+				Name = "HealDropMinor",
+				Radius = 50,
+				Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
+			}
+		end
+		baseFunc(victim, triggerArgs)
+	end
+	)
+
+	function SpawnMusicNotes(args, attacker, victim)
+		if victim.IsBoss then
+			CreateAnimation({ DestinationId = victim.ObjectId, Name = "PoseidonMusicNotes" })
+		end
+	end
+	
 	-- Hyacinth Insta-kill function
 	function CheckHyacinthKill( args, attacker, victim )
 		if (not victim.IsBoss) and attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
@@ -4218,9 +4284,9 @@ if ModUtil ~= nil then
 			PlaySound({ Name = "/SFX/DemeterEnemyFreezeShatter", Id = victim.ObjectId })
 			
 			--[[if victim.IsBoss then
-			  BossHyacinthKillPresentation( victim )
+				BossHyacinthKillPresentation( victim )
 			end]]
-	
+
 			if victim.DeathAnimation ~= nil and not victim.ManualDeathAnimation then
 				SetAnimation({ Name = victim.DeathAnimation, DestinationId = victim.ObjectId })
 				-- @todo Notify on death animation finish
@@ -4229,6 +4295,13 @@ if ModUtil ~= nil then
 		end
 	end
 
+	function SeaChanteyAnnouncement()
+		wait(1)
+		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
+	end
+
+
 	function CheckDazzled( args, attacker, victim )	
 		if attacker and  attacker == CurrentRun.Hero and HeroHasTrait("DazzledTrait") and victim and not HasEffect({Id = victim.ObjectId, EffectName = "Dazzled" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and victim.ActiveEffects["DamageOverTime"] then
 			--FireWeaponFromUnit({ Weapon = "DazzledWeapon", AutoEquip = true, Id = attacker.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true  })
@@ -4236,64 +4309,54 @@ if ModUtil ~= nil then
 			--ClearEffect({ Id = victim.ObjectId, Name = "DamageOverTime" })
 		end
 	end
-	
-function RotateUntilEffectExpired( enemy, args )
-	--Move({ Id = enemy.ObjectId, DestinationId = args.TargetId, SuccessDistance = aiData.MoveSuccessDistance or 32 })
-	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 270 })
-	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 180 })
-	--AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = GetTargetId(enemy)})
-	--Move({ Id = enemy.ObjectId, Distance = 32, Angle = 270, Duration = 1 })
-	--SetGoalAngle({ Id = enemy.ObjectId, Angle = 90, Duration = 1 });
-end
--- Athena Duo
-OnProjectileReflect{
-	function( triggerArgs )
-		if HeroHasTrait("DamageReduceDistanceTrait") then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
-			FireWeaponFromUnit({ Weapon = "DistanceResistWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
+		
+	function RotateUntilEffectExpired( enemy, args )
+		--Move({ Id = enemy.ObjectId, DestinationId = args.TargetId, SuccessDistance = aiData.MoveSuccessDistance or 32 })
+		--SetGoalAngle({ Id = enemy.ObjectId, Angle = 270 })
+		--SetGoalAngle({ Id = enemy.ObjectId, Angle = 180 })
+		--AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = GetTargetId(enemy)})
+		--Move({ Id = enemy.ObjectId, Distance = 32, Angle = 270, Duration = 1 })
+		--SetGoalAngle({ Id = enemy.ObjectId, Angle = 90, Duration = 1 });
+	end
+	-- Athena Duo
+	OnProjectileReflect{
+		function( triggerArgs )
+			if HeroHasTrait("DamageReduceDistanceTrait") then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
+				FireWeaponFromUnit({ Weapon = "DistanceResistWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
+			end
+		end
+	}
+	function DistanceResistApply(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		if HeroHasTrait("DamageReduceDistanceTrait") and not triggerArgs.Reapplied then
+			local threshold = GetTotalHeroTraitValue("DistanceResistThreshold")
+			local multiplier = GetTotalHeroTraitValue("DistanceResistMultiplier")
+			AddIncomingDamageModifier( victim,
+			{
+				Name = "DamageReduceDistance",
+				DistanceThreshold = threshold,
+				DistanceMultiplier = multiplier,
+				Temporary = true,
+			})
 		end
 	end
-}
-function DistanceResistApply(triggerArgs)
-	local victim = triggerArgs.TriggeredByTable
-	if HeroHasTrait("DamageReduceDistanceTrait") and not triggerArgs.Reapplied then
-		local threshold = GetTotalHeroTraitValue("DistanceResistThreshold")
-		local multiplier = GetTotalHeroTraitValue("DistanceResistMultiplier")
-		AddIncomingDamageModifier( victim,
-		{
-			Name = "DamageReduceDistance",
-			DistanceThreshold = threshold,
-			DistanceMultiplier = multiplier,
-			Temporary = true,
-		})
+	function DistanceResistClear(triggerArgs)
+		local unit = triggerArgs.TriggeredByTable
+		if unit.IncomingDamageModifiers ~= nil then
+			RemoveIncomingDamageModifier( unit, "DamageReduceDistance" )
+		end
 	end
-end
-function DistanceResistClear(triggerArgs)
-	local unit = triggerArgs.TriggeredByTable
-	if unit.IncomingDamageModifiers ~= nil then
-		RemoveIncomingDamageModifier( unit, "DamageReduceDistance" )
+	OnWeaponFired{ "ApolloBeamWeapon",
+	function(triggerArgs)
+		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
+		SetPlayerPhasing("ApolloBeam")
+		CurrentRun.Hero.SurgeActive = true
+		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
+		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
 	end
-end
-OnWeaponFired{ "ApolloBeamWeapon",
-function(triggerArgs)
-	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
-	SetPlayerPhasing("ApolloBeam")
-	CurrentRun.Hero.SurgeActive = true
-	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
-	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
-end
-}
+	}
 
-OnRamWeaponComplete{ "ApolloBeamWeapon",
-function(triggerArgs)
-	ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
-	SetPlayerUnphasing("ApolloBeam")
-	CurrentRun.Hero.SurgeActive = false
-	SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
-	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
-	StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
-end
-}
 	--[[function BossHyacinthKillPresentation(unit)
 		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 		local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })

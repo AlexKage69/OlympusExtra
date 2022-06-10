@@ -14,6 +14,7 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "FamedDuetTrait")
             table.insert(OlympusCodexMenuData.Duos, "WarSongTrait")
             table.insert(OlympusCodexMenuData.Duos, "HyacinthTrait")
+            table.insert(OlympusCodexMenuData.Duos, "SeaChanteyTrait")
             table.insert(OlympusCodexMenuData.Duos, "MasterBoltTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
             table.insert(OlympusCodexMenuData.Duos, "DamageReduceDistanceTrait")

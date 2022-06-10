@@ -3111,6 +3111,53 @@
     }
     /* Boon FX */
     {
+      Name = "PoseidonMusicNotes"
+      FilePath = "Animations\HouseMusicNotes\HouseMusicNotes"
+      Type = "Random"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "PoseidonMusicNote01"
+        }
+        {
+          Name = "PoseidonMusicNote02"
+        }
+        {
+          Name = "PoseidonMusicNote03"
+        }]
+    }
+    {
+      Name = "PoseidonMusicNote01"
+      InheritFrom = "HouseMusicNote01"
+      Color = {
+        Blue = 0.8
+        Green = 0.6
+        Red = 0.3
+      }
+    }
+    {
+      Name = "PoseidonMusicNote02"
+      InheritFrom = "HouseMusicNote02"
+      Color = {
+        Blue = 0.8
+        Green = 0.6
+        Red = 0.3
+      }
+    }
+    {
+      Name = "PoseidonMusicNote03"
+      InheritFrom = "HouseMusicNote03"
+      Color = {
+        Blue = 0.8
+        Green = 0.6
+        Red = 0.3
+      }
+    }
+    {
       Name = "BoonDropApollo"
       InheritFrom = "BoonDropGold"
       ChildAnimation = "BoonDropA-Apollo"
