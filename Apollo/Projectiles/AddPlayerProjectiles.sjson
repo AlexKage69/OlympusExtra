@@ -17,6 +17,19 @@ Projectiles = {
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
       }
+      {
+        Name = "BlindLightning"
+        IgnoreName = "_PlayerUnit"
+        Type = "DAMAGE_OVER_TIME"
+        IsVulnerabilityEffect = false
+        Amount = 40.0
+        Cooldown = 1
+        Duration = 5
+        ExtendDurationOnReapply = true
+        FrontFx = "ZeusStaticArcEmitter"
+        Active = false
+        TimeModifierFraction = 0
+      }
     ] 
   }
 }

@@ -38,3 +38,7 @@ To "Game/Text/en/CodexText.en.sjson"
 SJSON "Text/en/CodexText.en.sjson"
 To "Game/Text/en/MacroText.sjson"
 SJSON "Text/en/MacroText.en.sjson"
+
+:: Subtitles
+To "Subtitles/en/Theseus.csv"
+CSV "Subtitles/en/Theseus.csv"
