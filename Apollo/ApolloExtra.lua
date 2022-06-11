@@ -1295,17 +1295,8 @@ if ModUtil ~= nil then
 			Name = "ApolloRangedTrait",
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
-			Icon = "Boon_Apollo_04",
-			TraitDependencyTextOverrides =
-			{
-				ShieldLoadAmmoTrait =
-				{
-					Name = "ShieldLoadAmmo_ApolloRangedTrait",
-					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-				},
-			},
-			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
+			Icon = "Boon_Apollo_04",
 			TraitDependencyTextOverrides =
 			{
 				ShieldLoadAmmoTrait =
@@ -1319,6 +1310,7 @@ if ModUtil ~= nil then
 					CustomTrayText = "BowLoadAmmo_ApolloRangedTrait_Tray",
 				},
 			},
+			CustomTrayText = "ApolloRangedTrait_Tray",
 			UnloadAmmoOffset = 
 			{
 				BaseValue = -20,
