@@ -1450,7 +1450,8 @@ if ModUtil ~= nil then
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 					ProjectileName = "ApolloLobProjectile",
 					ProjectileProperty = "DamageLow",
-					DeriveValueFrom = "ExtractSource",
+					ChangeValue = 70, 
+					ChangeType = "Absolute",
 					ExtractValue =
 					{
 						ExtractAs = "TooltipDamageBeowulf",
@@ -1461,7 +1462,8 @@ if ModUtil ~= nil then
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 					ProjectileName = "ApolloLobProjectile",
 					ProjectileProperty = "DamageHigh",
-					DeriveValueFrom = "ExtractSource",
+					ChangeValue = 70, 
+					ChangeType = "Absolute",
 				},
 				{
 					TraitName = "ShieldLoadAmmoTrait",
