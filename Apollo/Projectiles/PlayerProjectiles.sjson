@@ -543,44 +543,6 @@
       ]
     }
     {
-      Name = "DazzledProjectile"
-      InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "RadialNova-Apollo"
-      Type = "STRAIGHT"
-      AffectsEnemies = true
-      AffectsFriends = false
-      AffectsSelf = false
-      CheckUnitImpact = false
-      CheckObstacleImpact = false
-      Fuse = 0.01
-      Range = 5
-      DamageRadius = 5
-      DamageLow = 5
-      DamageHigh = 5
-      ImpactVelocity = 0
-      ImpactVelocityCap = 0
-      ImpactVelocityFalloff = 0.1
-	    ClearOnAttackEffects = false
-      Thing = {
-        Graphic = "null"
-      }
-      Effects = [
-        {
-            Name = "Dazzled"
-            IgnoreName = "_PlayerUnit"
-            FrontFx = "DazzledHoverLoop"
-            DisableAttack = true
-            Duration = 4
-            Cooldown = 8
-            Active = true            
-            ExtendDurationOnReapply = false
-            CanAffectInvulnerable = true
-            IsVulnerabilityEffect = true
-            TimeModifierFraction = 0
-        }
-      ]
-    }
-    {
       Name = "ShoutEndApollo"
       InheritFrom = "1_BaseMagicProjectile"
       DetonateGraphic = "RadialNova-Apollo"
@@ -687,5 +649,62 @@
         ]
       }
 	}
+  {
+      Name = "DazzledEffectApplicator"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "null"
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 100.0
+      DamageRadiusScaleX = 1.175
+      DamageRadiusScaleY = 0.56
+      ImpactVelocity = 0
+      Fuse = 0.1
+      AffectsFriends = true
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      DetonateSound = "null"
+      CanCrit = false
+      MaxVictimZ = 9999
+      Thing = {
+        Graphic = "null"
+        Color = {
+          Red = 1.0
+          Green = 1.0
+          Blue = 1.0
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+      Effect = {
+        Name = "Paralyzed"
+          Duration = 10.0
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "DazzledHoverPrep"
+          FlashFrontFxWhenExpiring = true
+          ExtendDurationOnReapply = false
+          BlockDurationOnExpire = 0.25
+      }
+    }
   ]
 }
