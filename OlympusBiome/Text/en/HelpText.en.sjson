@@ -1,0 +1,38 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "Location_Olympus"
+			DisplayName = "OLYMPUS"
+		}
+		{
+			Id = "Location_Olympus_Short"
+			DisplayName = "OLYMPUS"
+		}
+		{
+			Id = "RunHistoryScreenResult_Olympus"
+			DisplayName = "Perished in {#AltPenaltyFormat}OLYMPUS{#PreviousFormat}"
+		}
+		{
+			Id = "RunHistoryScreenResult_A_MiniBoss01"
+			DisplayName = "Slain by the {#AltPenaltyFormat}MINIBOSS1 {#PreviousFormat}in {#AltPenaltyFormat}OLYMPUS{#PreviousFormat}"
+		}
+		{
+			Id = "RunHistoryScreenResult_A_MiniBoss02"
+			DisplayName = "Slain by the {#AltPenaltyFormat}MINIBOSS2 {#PreviousFormat}in {#AltPenaltyFormat}OLYMPUS{#PreviousFormat}"
+		}
+		{
+			Id = "RunHistoryScreenResult_A_MiniBoss03"
+			DisplayName = "Slain by the {#AltPenaltyFormat}MINIBOSS3 {#PreviousFormat}in {#AltPenaltyFormat}OLYMPUS{#PreviousFormat}"
+		}
+		{
+			Id = "RunHistoryScreenResult_A_Boss01"
+			DisplayName = "Slain by {#AltPenaltyFormat}HERCULES {#PreviousFormat}in {#AltPenaltyFormat}OLYMPUS{#PreviousFormat}"
+		}
+		{
+			Id = "OlympusReprieve"
+			DisplayName = "Fountain Chamber, Olympus"
+			Description = "{!Icons.SpecialOffer} {$Keywords.NewChamber}: Restores some {!Icons.HealthHome_Small} among the divines."
+		}
+	]
+}

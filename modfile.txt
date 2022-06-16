@@ -7,11 +7,14 @@ Import "SeparateGoddess.lua"
 
 Import "Apollo/ApolloExtra.lua"
 
+Import "OlympusBiome/Olympus.lua"
+
 :: Merge all together
 Import "OlympusExtra.lua"
 
 Include "modfile_assets.txt"
 
 Include "Apollo/modfile_apollo.txt"
+Include "OlympusBiome/modfile_olympus.txt"
 
 -: Include "modfile_fr.txt" :-

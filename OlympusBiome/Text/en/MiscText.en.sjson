@@ -1,0 +1,12 @@
+{
+  /*
+  Made by AlexKage and physiX
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "RichPresence_Olympus" 
+      DisplayName = "Battling towards Olympus"
+    }
+  ]
+}
