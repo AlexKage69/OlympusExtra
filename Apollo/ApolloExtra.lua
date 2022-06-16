@@ -106,7 +106,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 		HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
 		ImpactReactionHitsOverride = 1,
-	
+		MultipleProjectileMultiplier = 0.2,	
 		BlockInterrupt = true,
 		Sounds =
 		{
@@ -4439,7 +4439,9 @@ OlympusTraitData.SeaChanteyTrait =
 	end
 	function EndApolloBeam()
 		EndRamWeapons({ Id = CurrentRun.Hero.ObjectId })
-		FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+		if CurrentRun.Hero.SuperActive then
+			FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+		end
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloStun" })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloSpeed" })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
@@ -4453,14 +4455,32 @@ OlympusTraitData.SeaChanteyTrait =
 	end
 
 	OnWeaponFired{ "ApolloBeamWeapon",
-	function(triggerArgs)
-		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
-		SetPlayerPhasing("ApolloBeam")
-		CurrentRun.Hero.SurgeActive = true
-		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
-		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
-	end
+		function(triggerArgs)
+			ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
+			SetPlayerPhasing("ApolloBeam")
+			CurrentRun.Hero.SurgeActive = true
+			SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
+			SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
+		end
 	}
+	ModUtil.Path.Wrap( "DamageEnemy", 
+		function(baseFunc, victim, triggerArgs)
+			local sourceWeaponData = triggerArgs.AttackerWeaponData
+			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
+				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
+					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Reduced")) 		
+				else
+					if not victim.TimeOfLastDamage then
+						victim.TimeOfLastDamage = {}
+					end
+					victim.TimeOfLastDamage[sourceWeaponData.Name] = _worldTime	
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Solo")) 
+				end
+			end
+			baseFunc(victim, triggerArgs)
+		end
+	)
 	-- Blind Functions
 	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
 	ModUtil.Path.Wrap( "CheckOnHitPowers", 
@@ -4736,7 +4756,7 @@ OlympusTraitData.SeaChanteyTrait =
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
 	)]]
