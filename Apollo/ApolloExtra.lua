@@ -1295,17 +1295,8 @@ if ModUtil ~= nil then
 			Name = "ApolloRangedTrait",
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
-			Icon = "Boon_Apollo_04",
-			TraitDependencyTextOverrides =
-			{
-				ShieldLoadAmmoTrait =
-				{
-					Name = "ShieldLoadAmmo_ApolloRangedTrait",
-					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-				},
-			},
-			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
+			Icon = "Boon_Apollo_04",
 			TraitDependencyTextOverrides =
 			{
 				ShieldLoadAmmoTrait =
@@ -1319,6 +1310,7 @@ if ModUtil ~= nil then
 					CustomTrayText = "BowLoadAmmo_ApolloRangedTrait_Tray",
 				},
 			},
+			CustomTrayText = "ApolloRangedTrait_Tray",
 			UnloadAmmoOffset = 
 			{
 				BaseValue = -20,
@@ -1458,7 +1450,8 @@ if ModUtil ~= nil then
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 					ProjectileName = "ApolloLobProjectile",
 					ProjectileProperty = "DamageLow",
-					DeriveValueFrom = "ExtractSource",
+					ChangeValue = 70, 
+					ChangeType = "Absolute",
 					ExtractValue =
 					{
 						ExtractAs = "TooltipDamageBeowulf",
@@ -1469,7 +1462,8 @@ if ModUtil ~= nil then
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 					ProjectileName = "ApolloLobProjectile",
 					ProjectileProperty = "DamageHigh",
-					DeriveValueFrom = "ExtractSource",
+					ChangeValue = 70, 
+					ChangeType = "Absolute",
 				},
 				{
 					TraitName = "ShieldLoadAmmoTrait",
@@ -3821,7 +3815,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0126",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "How do you have so much of these? Isn't Nectar rare where you stand? This is madness..." },
+						Text = "How do you have so many of these? Isn't Nectar rare where you stand? This is madness..." },
 				},
 				ApolloGift06 =
 				{
