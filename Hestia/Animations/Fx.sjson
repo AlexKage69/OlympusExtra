@@ -1,0 +1,25 @@
+{
+  Animations = [
+    "_append"
+    /* Apollo - Sword - WeaponTrait */
+    /* Apollo - Sword - SecondaryTrait */
+    /* Apollo - Spear - WeaponTrait */
+    /* Apollo - Spear - SecondaryTrait */
+    /* Apollo - Bow - WeaponTrait */
+    /* Apollo - Bow - SecondaryTrait */
+    /* Apollo - Shield - WeaponTrail */
+    /* Apollo - Shield - SecondaryTrait  */
+    /* Apollo - Gun - WeaponTrait */
+    /* Apollo - Gun - SecondaryTrait */
+    /* Apollo - Fist - WeaponTrait */
+    /* Apollo - Fist - SecondaryTrait */
+    /* Apollo - Shout - Hellring */
+    /* Hestia - Duos */
+    /* Theseus - Wrath */
+    /* Boon FX */
+    /* Dash */
+    /* Attraction Fx */
+    /* Cast */
+    /* Character Fx */
+  ]
+}

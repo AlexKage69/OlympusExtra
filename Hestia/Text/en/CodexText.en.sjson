@@ -1,0 +1,23 @@
+{
+  /*
+  Made by AlexKage and physiX
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_Hestia_0001"
+      Speaker = "Achilles"
+      DisplayName = "'HestiaCodex1'"
+    }
+    {
+      Id = "CodexData_Hestia_0002"
+      Speaker = "Achilles"
+      DisplayName = "'HestiaCodex2'"
+    }
+    {
+      Id = "CodexData_Hestia_0003"
+      Speaker = "Achilles"
+      DisplayName = "'HestiaCodex3'"
+    }
+  ]
+}

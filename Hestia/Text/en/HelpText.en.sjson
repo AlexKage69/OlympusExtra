@@ -1,0 +1,36 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "NPC_Hestia_01"
+			DisplayName = "Hestia"
+			Description = "God of Hearth"
+		}		
+		{
+			Id = "HestiaFirstPickUp"
+			DisplayName = "Met Hestia"
+		}
+		{
+			Id = "HestiaUpgrade"
+			DisplayName = "Hestia"
+			Description = "God of Hearth"
+		}
+		{
+			Id = "HestiaUpgrades"
+			DisplayName = "God of Hearth"
+			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
+		}
+		{
+			Id = "HestiaUpgrade_FlavorText01"
+			DisplayName = "home is the starting place of love, hope and dreams."
+		}
+		{
+			Id = "HestiaUpgrade_FlavorText02"
+			DisplayName = "a house is made of bricks and beams and a home is made of hopes and dreams."
+		}
+		{
+			Id = "HestiaUpgrade_FlavorText03"
+			DisplayName = "home is the place you feel you belong."
+		}	
+	]
+}

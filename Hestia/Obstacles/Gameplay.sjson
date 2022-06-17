@@ -1,0 +1,15 @@
+{
+  Obstacles = [
+      "_append"
+    {
+      Name = "HestiaUpgrade"
+      InheritFrom = "BaseBoon"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "BoonDropHestia"
+      }
+    }
+  ]
+}

@@ -2,10 +2,10 @@
 
 if ModUtil ~= nil then
 
-	ModUtil.Mod.Register("ApolloExtra")
+	ModUtil.Mod.Register("HestiaExtra")
 	
-	local mod = "ApolloExtra"
-	local package = "ApolloPackage"
+	local mod = "HestiaExtra"
+	local package = "HestiaPackage"
 	--Variables
 	local DepthDamageMultiplier = 0.0
 	local DuplicateMultiplier = -0.60
@@ -13,15 +13,15 @@ if ModUtil ~= nil then
 	local DuplicateVeryStrongMultiplier = -0.20
 	--Color
 	local OlympusColor = ModUtil.Entangled.ModData(Color)
-	OlympusColor.ApolloVoice = {255,145,79,255}
-	OlympusColor.ApolloDamageLight = {255,145,79,255}
-	OlympusColor.ApolloDamage = {255,145,79,255}
+	OlympusColor.HestiaVoice = {123, 22, 53,255}
+	OlympusColor.HestiaDamageLight = {123, 22, 53,255} 
+	OlympusColor.HestiaDamage = {123, 22, 53,255}
 	--EnemyUpgradeData
 	local OlympusEnemyUpgradeData = ModUtil.Entangled.ModData(EnemyUpgradeData)
-	OlympusEnemyUpgradeData.ApolloUpgrade =
+	OlympusEnemyUpgradeData.HestiaUpgrade =
 	{
 		ScreenPanel = nil,
-		UpgradeString = "LtUpgrade_Apollo",
+		UpgradeString = "LtUpgrade_Hestia",
 		--AddSpecialWeapons = { ContinuousWeapon = "DevotionZeus" },
 		LieutenantsOnly = true,
 		Hidden = true,
@@ -29,43 +29,41 @@ if ModUtil ~= nil then
 	}
 	--QuestData
 	local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
-	OlympusQuestData.ApolloUpgrades =
+	OlympusQuestData.HestiaUpgrades =
 	{
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "Gems",
 		RewardResourceAmount = 150,
 		UnlockGameStateRequirements =
 		{
-			RequiredTextLines = { "ApolloGift01", },
+			RequiredTextLines = { "HestiaGift01", },
 		},
 		CompleteGameStateRequirements =
 		{
 			RequiredTraitsTaken =
 			{
-				"ApolloWeaponTrait",
-				"ApolloDashTrait",
-				"ApolloRangedTrait",
-				"ApolloSecondaryTrait",
-				"ApolloShoutTrait",
-				
-				"FountainDefenseTrait",
-				"ApolloBlindedTrait",
-				"ApolloRetaliateTrait",
-				"FountainCoinTrait",			
-				"ApolloHealTrait",
-	
-				"RerollBoonTrait",
-				"RerollObolTrait",
-				"MissChanceTrait",
+				"HestiaWeaponTrait",
+				--"HestiaDashTrait",
+				--"HestiaRangedTrait",
+				--"HestiaSecondaryTrait",
+				--"HestiaShoutTrait",				
+				--"StrongAttractionTrait",
+				--"HestiaRevengeTrait",
+				--"HealthDefianceTrait",
+				--"HealthDamageTrait",			
+				--"LavaDeathTrait",	
+				--"LavaResistTrait",
+				--"LavaLongerTrait",
+				--"LavaAutoTrait",
 			},
 		},
 	}
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
-	table.insert(OlympusQuestOrderData, 29, "ApolloUpgrades")
+	table.insert(OlympusQuestOrderData, 30, "HestiaUpgrades")
 	
 	--UnitSetData
 	local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
-	OlympusEnemyData.ApolloUpgradeRoomWeapon = {
+	OlympusEnemyData.HestiaUpgradeRoomWeapon = {
 		InheritFrom = { "PassiveRoomWeapon" },
 	
 		DefaultAIData =
@@ -86,39 +84,16 @@ if ModUtil ~= nil then
 	
 		WeaponOptions =
 		{
-			"DevotionApollo",
+			"DevotionHestia",
 		},
 	}
 	--WeaponData
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
-	OlympusWeaponData.ApolloShoutWeapon = {
+	OlympusWeaponData.HestiaShoutWeapon = {
 		BlockWrathGain = true,
 	}
-	OlympusWeaponData.ApolloBeamWeapon = {
-		InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
-		HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
-		ImpactReactionHitsOverride = 1,
-		MultipleProjectileMultiplier = 0.15,	
-		BlockInterrupt = true,
-		Sounds =
-		{
-			FireSounds =
-			{
-				{ Name = "/SFX/HellFireShoot" },
-				{ Name = "/SFX/Enemy Sounds/Tisiphone/TisiphoneHarpySlowBeam" },
-			},
-			ImpactSounds =
-			{
-				Invulnerable = "/SFX/ArrowWallHitClankSmall",
-				BrickObstacle = "/SFX/SwordWallHitClankSmall",
-				StoneObstacle = "/SFX/ArrowMetalStoneClang",
-				MetalObstacle = "/SFX/ArrowMetalStoneClang",
-				BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
-			},
-		},
-	}
-	OlympusWeaponData.DevotionApollo =
+	OlympusWeaponData.DevotionHestia =
 	{
 		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
 		HitSimSlowParameters =
@@ -127,7 +102,7 @@ if ModUtil ~= nil then
 			{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0 },
 		},
 	}
-	OlympusWeaponData.TheseusApolloUpgradeWrath =
+	OlympusWeaponData.TheseusHestiaUpgradeWrath =
 	{
 		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
 		HitSimSlowParameters =
@@ -158,9 +133,9 @@ if ModUtil ~= nil then
 					CooldownName = "TheseusWrathLinesPlayedRecently",
 					SuccessiveChanceToPlay = 0.5,
 
-					-- Lord Apollo, sing for me!
+					-- Lord Hestia, sing for me!
 					{ Cue = "/VO/Theseus_0600" },
-					-- Lord Apollo, play me a song!
+					-- Lord Hestia, play me a song!
 					{ Cue = "/VO/Theseus_0601" },
 				},
 				[2] = GlobalVoiceLines.TheseusWrathActivationVoiceLines,
@@ -176,7 +151,7 @@ if ModUtil ~= nil then
 			},
 		},
 	}
-	OlympusWeaponData.TheseusApolloUpgradePassive =
+	OlympusWeaponData.TheseusHestiaUpgradePassive =
 	{
 		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.08, FalloffSpeed = 3000 },
 		HitSimSlowParameters =
@@ -220,21 +195,6 @@ if ModUtil ~= nil then
 			},
 		},
 	}
-	OlympusEffectData.Paralyzed =
-	{
-		OnApplyFunctionName = "ParalyzedApply",
-		OnClearFunctionName = "ParalyzedClear",
-	}
-	OlympusEffectData.ApolloBlind =
-	{
-		OnApplyFunctionName = "ApolloBlindApply",
-		OnClearFunctionName = "ApolloBlindClear",
-	}
-	OlympusEffectData.DistanceResist =
-	{
-		OnApplyFunctionName = "DistanceResistApply",
-		OnClearFunctionName = "DistanceResistClear",
-	}
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
@@ -242,42 +202,42 @@ if ModUtil ~= nil then
 		BreakIfPlayed = true,
 		RandomRemaining = true,
 		PreLineWait = 0.5,
-		RequiredLastGodLoot = "ApolloUpgrade",
+		RequiredLastGodLoot = "HestiaUpgrade",
 		RequiredEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
 		RequireCurrentEncounterNotComplete = true,
-		Source = { SubtitleColor = Color.ApolloVoice },
+		Source = { SubtitleColor = Color.HestiaVoice },
 	
 		-- Well done, Zagzag.
-		{ Cue = "/VO/Apollo_0149" },
+		{ Cue = "/VO/Hestia_0149" },
 		-- I knew you had it in you.
-		{ Cue = "/VO/Apollo_0150" },
+		{ Cue = "/VO/Hestia_0150" },
 		-- I see a bright future.
-		{ Cue = "/VO/Apollo_0151" },
+		{ Cue = "/VO/Hestia_0151" },
 		-- There's no one like you, Zagzag.
-		{ Cue = "/VO/Apollo_0152" },
+		{ Cue = "/VO/Hestia_0152" },
 		-- I'll write you a song for this!
-		{ Cue = "/VO/Apollo_0153" },
+		{ Cue = "/VO/Hestia_0153" },
 		-- Just... Thank you.
-		{ Cue = "/VO/Apollo_0154" },
+		{ Cue = "/VO/Hestia_0154" },
 		-- Underworld, I want to hear you make some noise!
-		{ Cue = "/VO/Apollo_0155" },
+		{ Cue = "/VO/Hestia_0155" },
 		-- Let's get you out this time around!
-		{ Cue = "/VO/Apollo_0156" },
+		{ Cue = "/VO/Hestia_0156" },
 		-- We can go the distance together!
-		{ Cue = "/VO/Apollo_0157" },
+		{ Cue = "/VO/Hestia_0157" },
 		-- Another one bites the Styx!
-		{ Cue = "/VO/Apollo_0158" },
+		{ Cue = "/VO/Hestia_0158" },
 		-- Light is on your side!
-		{ Cue = "/VO/Apollo_0159" },
+		{ Cue = "/VO/Hestia_0159" },
 		-- Let's try this once more, with feeling!
-		{ Cue = "/VO/Apollo_0160" },
+		{ Cue = "/VO/Hestia_0160" },
 	})
 	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
 		RandomRemaining = true,
 		BreakIfPlayed = true,
 		SuccessiveChanceToPlay = 0.5,
 		PreLineWait = 0.75,
-		RequiredLastGodLoot = "ApolloUpgrade",
+		RequiredLastGodLoot = "HestiaUpgrade",
 		-- For the light.
 		{ Cue = "/VO/ZagreusField_4819" },
 		-- I can hear it.
@@ -301,98 +261,98 @@ if ModUtil ~= nil then
 	})
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
-	table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
+	table.insert(OlympusBoonInfoScreenData.Ordering, "HestiaUpgrade")
 	
 	--ProjectileData
 	local OlympusProjectileData = ModUtil.Entangled.ModData(ProjectileData)
-	OlympusProjectileData.ApolloColorProjectile = {
-		DamageTextStartColor = OlympusColor.ApolloDamageLight,
-		DamageTextColor = OlympusColor.ApolloDamage
+	OlympusProjectileData.HestiaColorProjectile = {
+		DamageTextStartColor = OlympusColor.HestiaDamageLight,
+		DamageTextColor = OlympusColor.HestiaDamage
 	}
-	OlympusProjectileData.ApolloLobProjectile = {
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
+	OlympusProjectileData.HestiaLobProjectile = {
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 		NeverStore = true,
 	}
-	OlympusProjectileData.ApolloBeowulfProjectile = {
-		InheritFrom = { "ApolloLobProjectile" },
+	OlympusProjectileData.HestiaBeowulfProjectile = {
+		InheritFrom = { "HestiaLobProjectile" },
 		NeverStore = true,
 	}
-	OlympusProjectileData.ApolloShoutWeapon = {
+	OlympusProjectileData.HestiaShoutWeapon = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
 	}
-	OlympusProjectileData.AreaWeakenApollo = {
-		InheritFrom = { "ApolloColorProjectile" },
+	OlympusProjectileData.AreaWeakenHestia = {
+		InheritFrom = { "HestiaColorProjectile" },
 	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
-	OlympusGameData.ApolloBasicPickUpTextLines = {
-		"ApolloFirstPickUp",
-		"ApolloMiscPickup01",
-		"ApolloMiscPickup02",
-		"ApolloMiscPickup03",
-		-- "ApolloMiscPickup04",
-		"ApolloMiscPickup05",
-		"ApolloMiscPickup06",
-		"ApolloMiscPickup07",
-		"ApolloMiscPickup08",
-		"ApolloMiscPickup09",
-		-- "ApolloMiscPickup10",
-		"ApolloMiscPickup11",
-		"ApolloMiscPickup12",
-		"ApolloMiscPickup13",
-		"ApolloMiscPickup14",
-		"ApolloMiscPickup15",
-		"ApolloMiscPickup16",
-		"ApolloMiscPickup17",
-		-- "ApolloMiscPickup18",
-		-- "ApolloMiscPickup19",
-		"ApolloMiscPickup20",
-		-- "ApolloMiscPickup21",
+	OlympusGameData.HestiaBasicPickUpTextLines = {
+		"HestiaFirstPickUp",
+		"HestiaMiscPickup01",
+		"HestiaMiscPickup02",
+		"HestiaMiscPickup03",
+		-- "HestiaMiscPickup04",
+		"HestiaMiscPickup05",
+		"HestiaMiscPickup06",
+		"HestiaMiscPickup07",
+		"HestiaMiscPickup08",
+		"HestiaMiscPickup09",
+		-- "HestiaMiscPickup10",
+		"HestiaMiscPickup11",
+		"HestiaMiscPickup12",
+		"HestiaMiscPickup13",
+		"HestiaMiscPickup14",
+		"HestiaMiscPickup15",
+		"HestiaMiscPickup16",
+		"HestiaMiscPickup17",
+		-- "HestiaMiscPickup18",
+		-- "HestiaMiscPickup19",
+		"HestiaMiscPickup20",
+		-- "HestiaMiscPickup21",
 	}
-	table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
-	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
+	table.insert(OlympusGameData.ConversationOrder, "HestiaUpgrade")
+	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "HestiaBeamWeapon")
 	ModUtil.Table.Merge(OlympusGameData.GodAboutGodVoiceLines, { 
-		"ApolloAboutZeus01", "ApolloAboutStepSiblings01", "ApolloAboutDaughters01",
-		"ApolloAboutDaughters02", "ApolloAboutDaughters03", "ApolloAboutDaughters04",
-		"ApolloAboutDaughters05", "ApolloAboutHydra", "ApolloAboutDaphne01",
-		"ApolloAboutPan01", "ApolloAboutArtemis01", "ApolloAboutArtemis02",
-		"ApolloAboutArtemis03", "ApolloAboutMusic01", "ApolloAboutHarpQuest01",
-		"ApolloAboutHarpQuest02", "ApolloAboutOrpheus01", "ApolloAboutOrpheus02" }
+		"HestiaAboutZeus01", "HestiaAboutStepSiblings01", "HestiaAboutDaughters01",
+		"HestiaAboutDaughters02", "HestiaAboutDaughters03", "HestiaAboutDaughters04",
+		"HestiaAboutDaughters05", "HestiaAboutHydra", "HestiaAboutDaphne01",
+		"HestiaAboutPan01", "HestiaAboutArtemis01", "HestiaAboutArtemis02",
+		"HestiaAboutArtemis03", "HestiaAboutMusic01", "HestiaAboutHarpQuest01",
+		"HestiaAboutHarpQuest02", "HestiaAboutOrpheus01", "HestiaAboutOrpheus02" }
 	)
 	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb", "DamageResist" })
+	--local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
+	--ModUtil.Table.Merge(OlympusKeywordList, { "HestiaBlind", "FlashBomb", "DamageResist" })
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
-	table.insert(OlympusCodexOrdering.OlympianGods.Order, "ApolloUpgrade")
+	table.insert(OlympusCodexOrdering.OlympianGoddess.Order, "HestiaUpgrade")
 	
-	OlympusCodex.OlympianGods.Entries["ApolloUpgrade"] =
+	OlympusCodex.OlympianGoddess.Entries["HestiaUpgrade"] =
 	{
 		Entries =
 		{
 			{
 				UnlockThreshold = 1,
-				Text = "CodexData_Apollo_0001"
+				Text = "CodexData_Hestia_0001"
 			},
 			{
 				UnlockThreshold = 5,
-				Text = "CodexData_Apollo_0002"
+				Text = "CodexData_Hestia_0002"
 			},
 			{
 				UnlockThreshold = 15,
-				Text = "CodexData_Apollo_0003"
+				Text = "CodexData_Hestia_0003"
 			}
 		},
-		Image = "Codex_Portrait_Apollo",
+		Image = "Codex_Portrait_Hestia",
 	}
 	
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 	
-	OlympusTraitData.ForceApolloBoonTrait = {
-		Name = "ForceApolloBoonTrait",
+	OlympusTraitData.ForceHestiaBoonTrait = {
+		Name = "ForceHestiaBoonTrait",
 			InheritFrom = { "GiftTrait" },
 			--Inherit		
 			Frame = "Gift",
@@ -416,14 +376,14 @@ if ModUtil ~= nil then
 				}
 			},
 			--New Data
-			InRackTitle = "ForceApolloBoonTrait_Rack",
+			InRackTitle = "ForceHestiaBoonTrait_Rack",
 			Icon = "Keepsake_Lyre",
 			EquipSound = "/SFX/LyreMedium",
-			ForceBoonName = "ApolloUpgrade",
+			ForceBoonName = "HestiaUpgrade",
 			Uses = 1,
 			RarityBonus =
 			{
-				RequiredGod = "ApolloUpgrade",
+				RequiredGod = "HestiaUpgrade",
 				RareBonus = { BaseValue = 0.1 },
 				EpicBonus = 0.1,
 				LegendaryBonus = 0.1,
@@ -439,22 +399,22 @@ if ModUtil ~= nil then
 			SignOffData =
 			{
 			  {
-				Text = "ApolloSignoff",
+				Text = "HestiaSignoff",
 			  },
 			  {
-				RequiredTextLines = { "ApolloGift07" },
-				Text = "ApolloSignoff_Max"
+				RequiredTextLines = { "HestiaGift07" },
+				Text = "HestiaSignoff_Max"
 			  }
 			},
 	}
 		
-	OlympusTraitData.ApolloWeaponTrait =
+	OlympusTraitData.HestiaWeaponTrait =
 	 {
-			 Name = "ApolloWeaponTrait",
+			 Name = "HestiaWeaponTrait",
 			 InheritFrom = { "ShopTier1Trait" },
-			 God = "Apollo",
+			 God = "Hestia",
 			 Slot = "Melee",
-			 Icon =  "Boon_Apollo_01",
+			 Icon =  "Boon_Hestia_01",
 			 AddOutgoingDamageModifiers =
 			 {
 				 ValidWeaponMultiplier =
@@ -480,77 +440,77 @@ if ModUtil ~= nil then
 			 {
 				 {
 					 WeaponNames = WeaponSets.HeroPhysicalWeapons,
-					 EffectName = "ApolloBlind",
+					 EffectName = "HestiaBlind",
 					 EffectProperty = "Active",
 					 ChangeValue = true,
 				 },
 				 {
 					 WeaponName = "SwordWeapon",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeAFlipped-Apollo",
+					 ChangeValue = "SwordSwipeAFlipped-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "SwordWeapon2",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeB-Apollo",
+					 ChangeValue = "SwordSwipeB-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "SwordWeapon3",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Apollo",
+					 ChangeValue = "SwordSwipeC-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "SwordWeaponDash",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Apollo",
+					 ChangeValue = "SwordSwipeC-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 }, 
 				 {
 					 WeaponName = "SwordWeapon3",
 					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Apollo",
+					 ChangeValue = "ChargeAttack-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 }, 
 				 {
 					 WeaponName = "SwordWeaponDash",
 					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Apollo",
+					 ChangeValue = "ChargeAttack-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 }, 
 				 {
 					 WeaponName = "SpearWeapon",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearThrustProjectile-Apollo",
+					 ChangeValue = "SpearThrustProjectile-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "SpearWeapon2",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearThrustProjectile-Apollo",
+					 ChangeValue = "SpearThrustProjectile-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "SpearWeapon3",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearThrustProjectile-Apollo",
+					 ChangeValue = "SpearThrustProjectile-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "SpearWeaponDash",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearDashSwipe-Apollo",
+					 ChangeValue = "SpearDashSwipe-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -558,7 +518,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "SpearWeaponSpin",
 					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "SpearSwipe360-Apollo",
+					 ChangeValue = "SpearSwipe360-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -566,7 +526,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "SpearWeaponSpin2",
 					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "SpearSwipe360-Apollo",
+					 ChangeValue = "SpearSwipe360-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -574,7 +534,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "SpearWeaponSpin3",
 					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "SpearSwipe360-Apollo",
+					 ChangeValue = "SpearSwipe360-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -582,28 +542,28 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "BowWeapon",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Apollo",
+					 ChangeValue = "BowWeaponArrow-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "BowWeapon",
 					 WeaponProperty = "MinChargeStartFx",
-					 ChangeValue = "BowCharge-Apollo",
+					 ChangeValue = "BowCharge-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "BowWeaponDash",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Apollo",
+					 ChangeValue = "BowWeaponArrow-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "BowWeaponDash",
 					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "BowChargeFast-Apollo",
+					 ChangeValue = "BowChargeFast-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -611,14 +571,14 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "ShieldWeapon",
 					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "ShieldSwipe-Apollo",
+					 ChangeValue = "ShieldSwipe-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
 				 {
 					 WeaponName = "ShieldWeaponDash",
 					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "ShieldSwipeDash-Apollo",
+					 ChangeValue = "ShieldSwipeDash-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -626,7 +586,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "ShieldWeaponRush",
 					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "ShieldCharge-Apollo",
+					 ChangeValue = "ShieldCharge-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -634,7 +594,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "ShieldWeaponRush",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "ShieldRush3D-Apollo",
+					 ChangeValue = "ShieldRush3D-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -642,7 +602,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "ShieldWeaponRush",
 					 ProjectileProperty = "DissipateGraphic",
-					 ChangeValue = "ShieldRush3D-Out-Apollo",
+					 ChangeValue = "ShieldRush3D-Out-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -650,7 +610,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "GunWeapon",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "GunWeaponProjectile-Apollo",
+					 ChangeValue = "GunWeaponProjectile-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -658,7 +618,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "GunWeapon",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "GunFire-Apollo",
+					 ChangeValue = "GunFire-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -666,7 +626,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "GunWeapon",
 					 ProjectileProperty = "ImpactFx",
-					 ChangeValue = "GunWeaponImpact-Apollo",
+					 ChangeValue = "GunWeaponImpact-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -674,7 +634,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "GunWeaponDash",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "GunWeaponProjectile-Apollo",
+					 ChangeValue = "GunWeaponProjectile-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -682,7 +642,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "GunWeaponDash",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "GunFire-Apollo",
+					 ChangeValue = "GunFire-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -690,7 +650,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponName = "GunWeaponDash",
 					 ProjectileProperty = "ImpactFx",
-					 ChangeValue = "GunWeaponImpact-Apollo",
+					 ChangeValue = "GunWeaponImpact-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -698,7 +658,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "FistFxApollo",
+					 ChangeValue = "FistFxHestia",
 					 ChangeType = "Absolute"
 				 },
 				 {
@@ -712,7 +672,7 @@ if ModUtil ~= nil then
 					 TraitName = "SwordConsecrationTrait",
 					 WeaponNames = { "SwordWeapon" },
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Apollo-Arthur",
+					 ChangeValue = "SwordSwipeC-Hestia-Arthur",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -720,7 +680,7 @@ if ModUtil ~= nil then
 					 TraitName = "SwordConsecrationTrait",
 					 WeaponNames = { "SwordWeapon2" },
 					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Apollo",
+					 ChangeValue = "ChargeAttack-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -728,7 +688,7 @@ if ModUtil ~= nil then
 					 TraitName = "SwordConsecrationTrait",
 					 WeaponNames = { "SwordWeapon2" },
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeA-Apollo-Arthur",
+					 ChangeValue = "SwordSwipeA-Hestia-Arthur",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -736,7 +696,7 @@ if ModUtil ~= nil then
 					 TraitName = "SwordConsecrationTrait",
 					 WeaponNames = { "SwordWeapon3" },
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeAFlipped-Apollo-Arthur",
+					 ChangeValue = "SwordSwipeAFlipped-Hestia-Arthur",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -744,7 +704,7 @@ if ModUtil ~= nil then
 					 TraitName = "SwordConsecrationTrait",
 					 WeaponNames = { "SwordWeapon3" },
 					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Apollo",
+					 ChangeValue = "ChargeAttack-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -752,7 +712,7 @@ if ModUtil ~= nil then
 					 TraitName = "SwordConsecrationTrait",
 					 WeaponNames = { "SwordWeaponDash" },
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Apollo-Arthur",
+					 ChangeValue = "SwordSwipeC-Hestia-Arthur",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -761,7 +721,7 @@ if ModUtil ~= nil then
 					 TraitName = "BowBondTrait",
 					 WeaponName = "BowWeapon",
 					 WeaponProperty = "MinChargeStartFx",
-					 ChangeValue = "BowChargeRama-Apollo",
+					 ChangeValue = "BowChargeRama-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -770,7 +730,7 @@ if ModUtil ~= nil then
 					 TraitName = "BowBondTrait",
 					 WeaponName = "BowWeaponDash",
 					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "BowChargeRamaDash-Apollo",
+					 ChangeValue = "BowChargeRamaDash-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -779,7 +739,7 @@ if ModUtil ~= nil then
 					 TraitName = "BowBondTrait",
 					 WeaponNames = { "BowWeapon", "BowWeaponDash" },
 					 ProjectileProperty = "AttachedAnim",
-					 ChangeValue = "RamaWideShot-Apollo",
+					 ChangeValue = "RamaWideShot-Hestia",
 					 ChangeType = "Absoawlute",
 					 ExcludeLinked = true,
 				 },
@@ -788,7 +748,7 @@ if ModUtil ~= nil then
 					 TraitName = "GunLoadedGrenadeTrait",
 					 WeaponName = "GunWeapon",
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "GunLaser-Apollo",
+					 ChangeValue = "GunLaser-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -796,7 +756,7 @@ if ModUtil ~= nil then
 					 TraitName = "GunLoadedGrenadeTrait",
 					 WeaponName = "GunWeapon",
 					 ProjectileProperty = "AttachedAnim",
-					 ChangeValue = "GunLaserOriginFlare-Apollo",
+					 ChangeValue = "GunLaserOriginFlare-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -804,7 +764,7 @@ if ModUtil ~= nil then
 					 TraitName = "GunLoadedGrenadeTrait",
 					 WeaponName = "GunWeapon",
 					 ProjectileProperty = "TipFx",
-					 ChangeValue = "GunLaserTipFlare-Apollo",
+					 ChangeValue = "GunLaserTipFlare-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -812,7 +772,7 @@ if ModUtil ~= nil then
 					 TraitName = "GunLoadedGrenadeTrait",
 					 WeaponName = "GunWeapon",
 					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "GunCharge-Apollo",
+					 ChangeValue = "GunCharge-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -828,7 +788,7 @@ if ModUtil ~= nil then
 					 TraitName = "GunLoadedGrenadeTrait",
 					 WeaponName = "GunWeapon",
 					 ProjectileProperty = "DissipateGraphic",
-					 ChangeValue = "GunLaserEnd-Apollo",
+					 ChangeValue = "GunLaserEnd-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -837,7 +797,7 @@ if ModUtil ~= nil then
 					 TraitName = "ShieldLoadAmmoTrait",
 					 WeaponName = "ShieldWeapon",
 					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "BeowulfShieldSlam-Apollo",
+					 ChangeValue = "BeowulfShieldSlam-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -846,7 +806,7 @@ if ModUtil ~= nil then
 					 TraitName = "BowMarkHomingTrait",
 					 WeaponNames = { "BowWeapon" },
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Apollo-Alt01",
+					 ChangeValue = "BowWeaponArrow-Hestia-Alt01",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -854,7 +814,7 @@ if ModUtil ~= nil then
 					 TraitName = "BowLoadAmmoTrait",
 					 WeaponNames = { "BowWeapon" },
 					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Apollo-Alt02",
+					 ChangeValue = "BowWeaponArrow-Hestia-Alt02",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -863,7 +823,7 @@ if ModUtil ~= nil then
 					 WeaponNames = { "FistWeapon", "FistWeapon3", "FistWeapon5" },
 					 TraitName = "FistDetonateTrait",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "ClawSwipe-Apollo",
+					 ChangeValue = "ClawSwipe-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -871,7 +831,7 @@ if ModUtil ~= nil then
 					 WeaponNames = { "FistWeapon2", "FistWeapon4" },
 					 TraitName = "FistDetonateTrait",
 					 WeaponProperty = "FireFx",
-					 ChangeValue = "ClawSwipeFlipped-Apollo",
+					 ChangeValue = "ClawSwipeFlipped-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -885,7 +845,7 @@ if ModUtil ~= nil then
 				 {
 					 WeaponNames = { "FistWeaponDash" },
 					 ProjectileProperty = "StartFx",
-					 ChangeValue = "ClawSwipeFlippedDash-Apollo",
+					 ChangeValue = "ClawSwipeFlippedDash-Hestia",
 					 ChangeType = "Absolute",
 					 ExcludeLinked = true,
 				 },
@@ -899,7 +859,7 @@ if ModUtil ~= nil then
 					External = true,
 					BaseType = "Effect",
 					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
+					BaseName = "HestiaBlind",
 					BaseProperty = "Duration",
 				},
 				{
@@ -908,19 +868,19 @@ if ModUtil ~= nil then
 					External = true,
 					BaseType = "Effect",
 					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
+					BaseName = "HestiaBlind",
 					BaseProperty = "Amount",
 					Format = "Percent"
 				}
 			 }
 	 } 
-	OlympusTraitData.ApolloSecondaryTrait =
+	OlympusTraitData.HestiaSecondaryTrait =
 	 {
-		 Name = "ApolloSecondaryTrait",
+		 Name = "HestiaSecondaryTrait",
 		 InheritFrom = { "ShopTier1Trait" },
-		 God = "Apollo",
+		 God = "Hestia",
 		 Slot = "Secondary",
-		 Icon =  "Boon_Apollo_02",
+		 Icon =  "Boon_Hestia_02",
 		 AddOutgoingDamageModifiers =
 		 {
 			 ValidWeaponMultiplier =
@@ -946,7 +906,7 @@ if ModUtil ~= nil then
 		 {
 			 {
 				 WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				 EffectName = "ApolloBlind",
+				 EffectName = "HestiaBlind",
 				 EffectProperty = "Active",
 				 ChangeValue = true,
 			 },
@@ -954,7 +914,7 @@ if ModUtil ~= nil then
 			 {
 				 WeaponName = "SwordParry",
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "RadialNovaSwordParry-Apollo",
+				 ChangeValue = "RadialNovaSwordParry-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -962,7 +922,7 @@ if ModUtil ~= nil then
 			 {
 				 WeaponName = "SpearWeaponThrow",
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "SpearThrowProjectile-Apollo",
+				 ChangeValue = "SpearThrowProjectile-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -970,14 +930,14 @@ if ModUtil ~= nil then
 			 {
 				 WeaponName = "SpearWeaponThrowReturn",
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "SpearThrowProjectile-Apollo",
+				 ChangeValue = "SpearThrowProjectile-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
 			 {
 				 WeaponName = "BowSplitShot",
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "BowWeaponArrow-Apollo-SplitShot",
+				 ChangeValue = "BowWeaponArrow-Hestia-SplitShot",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -985,7 +945,7 @@ if ModUtil ~= nil then
 			 {
 				 WeaponName = "BowSplitShot",
 				 WeaponProperty = "MinChargeStartFx",
-				 ChangeValue = "BowCharge-Apollo",
+				 ChangeValue = "BowCharge-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -994,7 +954,7 @@ if ModUtil ~= nil then
 				 WeaponNames = { "ShieldThrow", },
 				 ProjectileName = "ShieldThrow",
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ShieldSwipe-Apollo",
+				 ChangeValue = "ShieldSwipe-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1002,7 +962,7 @@ if ModUtil ~= nil then
 				 WeaponNames = { "ShieldThrowDash" },
 				 ProjectileName = "ShieldThrowDash",
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ShieldSwipe-Apollo",
+				 ChangeValue = "ShieldSwipe-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1010,7 +970,7 @@ if ModUtil ~= nil then
 			 {
 				 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
 				 WeaponProperty = "ChargeStartFx",
-				 ChangeValue = "ShieldCharge-Apollo",
+				 ChangeValue = "ShieldCharge-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1018,7 +978,7 @@ if ModUtil ~= nil then
 			 {
 				 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "ProjectileShield-Apollo",
+				 ChangeValue = "ProjectileShield-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1026,7 +986,7 @@ if ModUtil ~= nil then
 				 TraitName = "ShieldRushBonusProjectileTrait",
 				 ProjectileProperty = "Graphic",
 				 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-				 ChangeValue = "ProjectileShieldAlt01-Apollo",
+				 ChangeValue = "ProjectileShieldAlt01-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1034,7 +994,7 @@ if ModUtil ~= nil then
 				 TraitName = "ShieldLoadAmmoTrait",
 				 ProjectileProperty = "Graphic",
 				 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-				 ChangeValue = "ProjectileShieldAlt03-Apollo",
+				 ChangeValue = "ProjectileShieldAlt03-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1042,7 +1002,7 @@ if ModUtil ~= nil then
 				 TraitName = "ShieldTwoShieldTrait",
 				 ProjectileProperty = "Graphic",
 				 WeaponName = "ShieldThrow",
-				 ChangeValue = "ProjectileShieldAlt02-Apollo",
+				 ChangeValue = "ProjectileShieldAlt02-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1051,14 +1011,14 @@ if ModUtil ~= nil then
 				 WeaponName = "ShieldThrow",
 				 ProjectileName = "ShieldThrow",
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ShieldThrowTrailMirage-Apollo",
+				 ChangeValue = "ShieldThrowTrailMirage-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
 			 {
 				 WeaponName = "GunGrenadeToss",
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ZagGrenadeExplosionApollo",
+				 ChangeValue = "ZagGrenadeExplosionHestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1067,14 +1027,14 @@ if ModUtil ~= nil then
 				 WeaponName = "SpearRushWeapon",
 				 ProjectileName = "SpearRushWeapon",
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "SpearRushTrailFx-Apollo",
+				 ChangeValue = "SpearRushTrailFx-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
 			 {
 				 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
 				 WeaponProperty = "FireFx",
-				 ChangeValue = "FistFxUppercutDirectionalApollo",
+				 ChangeValue = "FistFxUppercutDirectionalHestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1083,7 +1043,7 @@ if ModUtil ~= nil then
 				 TraitName = "GunLoadedGrenadeTrait",
 				 WeaponNames = { "GunGrenadeToss" },
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "GunGrenadeLuciferOrb-Apollo",
+				 ChangeValue = "GunGrenadeLuciferOrb-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1099,7 +1059,7 @@ if ModUtil ~= nil then
 				 TraitName = "GunLoadedGrenadeTrait",
 				 WeaponNames = { "GunBombWeapon" },
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ZagGrenadeExplosionApollo",
+				 ChangeValue = "ZagGrenadeExplosionHestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1107,7 +1067,7 @@ if ModUtil ~= nil then
 				 TraitName = "GunLoadedGrenadeTrait",
 				 WeaponNames = { "GunBombImmolation" },
 				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "LuciferOrbAoE-Apollo",
+				 ChangeValue = "LuciferOrbAoE-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1116,7 +1076,7 @@ if ModUtil ~= nil then
 				 TraitName = "BowMarkHomingTrait",
 				 WeaponNames = { "BowSplitShot" },
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "BowWeaponArrow-Apollo-SplitShot-Alt01",
+				 ChangeValue = "BowWeaponArrow-Hestia-SplitShot-Alt01",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1124,7 +1084,7 @@ if ModUtil ~= nil then
 				 TraitName = "BowLoadAmmoTrait",
 				 WeaponNames = { "BowSplitShot" },
 				 ProjectileProperty = "Graphic",
-				 ChangeValue = "BowWeaponArrow-Apollo-SplitShot-Alt02",
+				 ChangeValue = "BowWeaponArrow-Hestia-SplitShot-Alt02",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1132,7 +1092,7 @@ if ModUtil ~= nil then
 				 TraitName = "FistDetonateTrait",
 				 WeaponNames = { "FistWeaponSpecial" },
 				 WeaponProperty = "FireFx",
-				 ChangeValue = "ClawSwipeUppercut-Apollo",
+				 ChangeValue = "ClawSwipeUppercut-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1140,7 +1100,7 @@ if ModUtil ~= nil then
 				 TraitName = "FistDetonateTrait",
 				 WeaponNames = { "FistWeaponSpecialDash" },
 				 WeaponProperty = "FireFx",
-				 ChangeValue = "ClawSwipeUppercut-Apollo",
+				 ChangeValue = "ClawSwipeUppercut-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1148,7 +1108,7 @@ if ModUtil ~= nil then
 				 TraitName = "FistDetonateTrait",
 				 WeaponNames = { "FistWeaponSpecialDash" },
 				 WeaponProperty = "FireFx",
-				 ChangeValue = "ClawSwipeUppercutSpecial-Apollo",
+				 ChangeValue = "ClawSwipeUppercutSpecial-Hestia",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1156,7 +1116,7 @@ if ModUtil ~= nil then
 				 TraitName = "FistTeleportSpecialTrait",
 				 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
 				 WeaponProperty = "FireFx",
-				 ChangeValue = "FistFxUppercutDirectionalApollo_FlashKick",
+				 ChangeValue = "FistFxUppercutDirectionalHestia_FlashKick",
 				 ChangeType = "Absolute",
 				 ExcludeLinked = true,
 			 },
@@ -1169,7 +1129,7 @@ if ModUtil ~= nil then
 				 TraitName = "GunLoadedGrenadeTrait",
 				 LegalUnits = { "GunBombUnit" },
 				 ThingProperty = "Graphic",
-				 ChangeValue = "LuciferBomb-Apollo",
+				 ChangeValue = "LuciferBomb-Hestia",
 				 ChangeType = "Absolute",
 			 },
 	
@@ -1182,7 +1142,7 @@ if ModUtil ~= nil then
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
+				BaseName = "HestiaBlind",
 				BaseProperty = "Duration",
 			},
 			{
@@ -1191,22 +1151,22 @@ if ModUtil ~= nil then
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
+				BaseName = "HestiaBlind",
 				BaseProperty = "Amount",
 				Format = "Percent"
 			}
 		 }
 	 }
-	OlympusTraitData.ApolloDashTrait =
+	OlympusTraitData.HestiaDashTrait =
 	 {
-		 Name = "ApolloDashTrait",
+		 Name = "HestiaDashTrait",
 		 InheritFrom = { "ShopTier1Trait" },
 		 -- Inherit
 		 Cost = 30,
 		 -- New Data
-		 God = "Apollo",
+		 God = "Hestia",
 		 Slot = "Rush",
-		 Icon = "Boon_Apollo_03",
+		 Icon = "Boon_Hestia_03",
 		 RarityLevels =
 		 {
 			 Common =
@@ -1244,7 +1204,7 @@ if ModUtil ~= nil then
 			 {
 				 WeaponNames = WeaponSets.HeroRushWeapons,
 				 WeaponProperty = "Projectile",
-				 ChangeValue = "ApolloDashProjectile",
+				 ChangeValue = "HestiaDashProjectile",
 				 ChangeType = "Absolute",
 			 },
 			 {
@@ -1276,20 +1236,20 @@ if ModUtil ~= nil then
 			 },
 			 {
 				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 EffectName = "ApolloBlind",
+				 EffectName = "HestiaBlind",
 				 EffectProperty = "Active",
 				 ChangeValue = true,
 			 },
 			 {
 				 WeaponNames = WeaponSets.HeroRushWeapons,
 				 WeaponProperty = "FireFx",
-				 ChangeValue = "BlinkTrailVerticalB-Apollo",
+				 ChangeValue = "BlinkTrailVerticalB-Hestia",
 				 ChangeType = "Absolute",
 			 },
 			 {
 				 WeaponNames = WeaponSets.HeroRushWeapons,
 				 WeaponProperty = "FireGraphic",
-				 ChangeValue = "ZagreusDashNoCollide_Apollo",
+				 ChangeValue = "ZagreusDashNoCollide_Hestia",
 				 ChangeType = "Absolute",
 			 },
 			 {
@@ -1313,7 +1273,7 @@ if ModUtil ~= nil then
 				 External = true,
 				 BaseType = "Effect",
 				 WeaponName = "SwordWeapon",
-				 BaseName = "ApolloBlind",
+				 BaseName = "HestiaBlind",
 				 BaseProperty = "Duration",
 			 },
 			 {
@@ -1322,1333 +1282,139 @@ if ModUtil ~= nil then
 				 External = true,
 				 BaseType = "Effect",
 				 WeaponName = "SwordWeapon",
-				 BaseName = "ApolloBlind",
+				 BaseName = "HestiaBlind",
 				 BaseProperty = "Amount",
 				 Format = "Percent"
 			 }
 		 }
 	 }
-	OlympusTraitData.ApolloRangedTrait =
+	--[[OlympusTraitData.HestiaRangedTrait =
 	{
-			Name = "ApolloRangedTrait",
-			InheritFrom = { "ShopTier1Trait" },
-			God = "Apollo",
-			Icon = "Boon_Apollo_04",
-			TraitDependencyTextOverrides =
-			{
-				ShieldLoadAmmoTrait =
-				{
-					Name = "ShieldLoadAmmo_ApolloRangedTrait",
-					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-				},
-			},
-			CustomTrayText = "ApolloRangedTrait_Tray",
-			Slot = "Ranged",
-			TraitDependencyTextOverrides =
-			{
-				ShieldLoadAmmoTrait =
-				{
-					Name = "ShieldLoadAmmo_ApolloRangedTrait",
-					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-				},
-				BowLoadAmmoTrait =
-				{
-					Name = "BowLoadAmmo_ApolloRangedTrait",
-					CustomTrayText = "BowLoadAmmo_ApolloRangedTrait_Tray",
-				},
-			},
-			UnloadAmmoOffset = 
-			{
-				BaseValue = -20,
-				MinMultiplier = 0,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-				},
-				IgnoreRarity = true,
-			},
-			RarityLevels =
-			{
-				Common =
-				{
-					Multiplier = 1.0,
-				},
-				Rare =
-				{
-					Multiplier = 1.11,
-				},
-				Epic =
-				{
-					Multiplier = 1.22,
-				},
-				Heroic =
-				{
-					Multiplier = 1.33,
-				}
-			},
-			PropertyChanges =
-			{
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "Projectile",
-					ChangeValue = "ApolloLobProjectile",
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileProperty = "SilentImpactOnInvulnerable",
-					ChangeValue = true,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "AimLineAnimation",
-					ChangeValue = "null",
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "ManualAiming",
-					ChangeValue = true,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "AcceptTriggerLockRequests",
-					ChangeValue = false,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "AllowExternalForceRelease",
-					ChangeValue = true,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "AutoLockRange",
-					ChangeValue = 900,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "ManualAimingInitialOffset",
-					ChangeValue = 420,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "FireOnRelease",
-					ChangeValue = true,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "LockTriggerForCharge",
-					ChangeValue = false,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "MinChargeToFire",
-					ChangeValue = 0,
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "TargetReticleAnimation",
-					ChangeValue = "GunGrenadeWarningDecal",
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "ChargeStartAnimation",
-					ChangeValue = "ZagreusRangedWeapon_ChargeDionysusLob",
-					ChangeType = "Absolute",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
-					ProjectileProperty = "DamageLow",
-					BaseMin = 90,
-					BaseMax = 90,
-					AsInt = true,
-					DepthMult = DepthDamageMultiplier,
-					IdenticalMultiplier =
-					{
-						Value = DuplicateStrongMultiplier,
-					},
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamage",
-					},
-					ExtractSource = "ExtractSource",
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
-					ProjectileProperty = "DamageHigh",
-					DeriveValueFrom = "DamageLow",
-				},
-				-- Beowulf modifications
-				{
-					TraitName = "ShieldLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
-					ProjectileProperty = "DamageLow",
-					DeriveValueFrom = "ExtractSource",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageBeowulf",
-					},
-				},
-				{
-					TraitName = "ShieldLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
-					ProjectileProperty = "DamageHigh",
-					DeriveValueFrom = "ExtractSource",
-				},
-				{
-					TraitName = "ShieldLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ExcludeProjectileName = "ApolloLobProjectile",
-					ProjectileProperty = "DetonateGraphic",
-					ChangeValue = "null",
-				},
-				-- In case bow load ammo is Active
-				{
-					TraitName = "BowLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "FireOnRelease",
-					ChangeValue = false,
-					ChangeType = "Absolute",
-				},
-				{
-					TraitName = "BowLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileProperty = "Type",
-					ChangeValue = "INSTANT",
-				},
-				{
-					TraitName = "ShieldLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "FireOnRelease",
-					ChangeValue = false,
-					ChangeType = "Absolute",
-				},
-				{
-					TraitName = "ShieldLoadAmmoTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileProperty = "Type",
-					ChangeValue = "INSTANT",
-				},
-				-- Flurry Shot
-				{
-					TraitName = "RapidCastTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					WeaponProperty = "FireOnRelease",
-					ChangeValue = false,
-					ChangeType = "Absolute",
-				},
-			},
-			ExtractValues =
-			{
-				{
-					ExtractAs = "BaseRangedDamage",
-					External = true,
-					BaseType = "Projectile",
-					BaseName = "RangedWeapon",
-					BaseProperty = "DamageLow",
-				},
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "PercentDelta"
-				}
-			}
-		}
 		
-	OlympusTraitData.ShieldLoadAmmo_ApolloRangedTrait = 
+	}		
+	OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
 	{
-		InheritFrom = {"ApolloRangedTrait"},
-		Skip = true,
-		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-        RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait" }
+		
 	}
-	OlympusTraitData.ApolloShoutTrait =
+	OlympusTraitData.HestiaShoutTrait =
 	{
-			InheritFrom = { "ShopTier1Trait" },
-			RequiredTextLines = { "PoseidonWrathIntro01" },
-			CustomTrayText = "ApolloShoutTrait_Tray",
-			God = "Apollo",
-			Slot = "Shout",
-			Icon = "Boon_Apollo_06",
-			RarityLevels =
-			{
-				Common =
-				{
-					Multiplier = 1.0,
-				},
-				Rare =
-				{
-					Multiplier = 1.1,
-				},
-				Epic =
-				{
-					Multiplier = 1.2,
-				},
-				Heroic =
-				{
-					Multiplier = 1.3,
-				}
-			},
-			AddShout =
-			{
-				FunctionName = "ApolloShout",
-				Cost = 25,
-				SuperDuration = 3,
-				MaxDurationMultiplier = 3,
-				ExtractValues =
-				{
-					{
-						Key = "Cost",
-						ExtractAs = "TooltipWrathStocks",
-						Format = "WrathStocks",
-						SkipAutoExtract = true
-					},
-					{
-						Key = "MaxDurationMultiplier",
-						ExtractAs = "TooltipDuration",
-						Format = "EXWrathDuration",
-						DecimalPlaces = 2,
-						SkipAutoExtract = true
-					}
-				}
-			},
-			EndShout = "EndApolloBeam",
-			PreEquipWeapons = { "ApolloBeamWeapon", "ShoutEndApollo" },
-			PropertyChanges =
-			{
-				{
-					WeaponName = "ApolloBeamWeapon",
-					ProjectileProperty = "DamageLow",
-					BaseMin = 15,
-					BaseMax = 15,
-					DepthMult = DepthDamageMultiplier,
-					IdenticalMultiplier =
-					{
-						Value = DuplicateMultiplier,
-					},
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamage",
-					}
-				},
-				{
-					WeaponName = "ApolloBeamWeapon",
-					ProjectileProperty = "DamageHigh",
-					DeriveValueFrom = "DamageLow"
-				},
-			}
+			
 	}
-	OlympusTraitData.FountainDefenseTrait =
+	OlympusTraitData.StrongAttractionTrait =
 	{
-		Icon = "Boon_Apollo_07",
-		InheritFrom = { "ShopTier1Trait" },
-		God = "Apollo",
-		CustomTrayText = "FountainDefenseTrait_Tray",
-		RequiredFalseTrait = "FountainDefenseTrait",    
-		RequiredCosmetics = { "TartarusReprieve" },
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.05,
-			},
-			Epic =
-			{
-				Multiplier = 1.10,
-			},
-			Heroic =
-			{
-				Multiplier = 1.15,
-			}
-		},
-		FountainDefenseBonus = 
-		{
-			BaseValue = 0.95,
-			MinMultiplier = 0.1,
-			ToNearest = 0.01,
-			SourceIsMultiplier = true,
-			IdenticalMultiplier = 
-			{
-				Value = -0.5,
-			},		
-		},
-		AccumulatedFountainDefenseBonus = 1,
-		AddIncomingDamageModifiers =
-		{
-			DistanceThreshold = 400,
-			DistanceMultiplier = AccumulatedFountainDefenseBonus,
-		},
-		ExtractValues =
-		{
-		  {
-			Key = "FountainDefenseBonus",
-			ExtractAs = "TooltipFountainBonus",
-			Format = "NegativePercentDelta"
-		  },
-		  {
-			Key = "AccumulatedFountainDefenseBonus",
-			ExtractAs = "TooltipAccumulatedBonus",
-			Format = "NegativePercentDelta"
-		  },
-		},
+		
 	}
-	OlympusTraitData.ApolloBlindedTrait =
+	OlympusTraitData.HestiaRevengeTrait =
 	{
-		Name = "ApolloBlindedTrait",
-		God = "Apollo",
-		InheritFrom = {"ShopTier2Trait"},
-		Icon = "Boon_Apollo_08",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.0,
-			},
-			Rare =
-			{
-				Multiplier = 1.5,
-			},
-			Epic =
-			{
-				Multiplier = 2.0,
-			},
-			Heroic =
-			{
-				Multiplier = 2.5,
-			}
-		},
-		PropertyChanges =
-		{
-			{
-				TraitName = "ApolloWeaponTrait",
-				WeaponNames = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			{
-				TraitName = "ApolloRangedTrait",
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			{
-				TraitName = "AreaWeakenApollo",
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},			
-			{
-				TraitName = "ShieldLoadAmmo_ApolloRangedTrait",
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			{
-				WeaponNames = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Modifier",
-				BaseMin = 0.10,
-				BaseMax = 0.10,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-					Format = "Percent",
-				},
-				ChangeType = "Add",
-				DeriveSource = "DeriveSource"
-			},
-			{
-				WeaponNames = {"AreaWeakenApollo"},
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Modifier",
-				DeriveValueFrom = "DeriveSource",
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Modifier",
-				DeriveValueFrom = "DeriveSource",
-			},
-			{
-				TraitName = "ApolloDashTrait",
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			{
-				TraitName = "ApolloDashTrait",
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Modifier",
-				DeriveValueFrom = "DeriveSource",
-			},
-			{
-				TraitName = "ApolloSecondaryTrait",
-				WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			{
-				TraitName = "ApolloSecondaryTrait",
-				WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "IncreaseDamageTaken",
-				EffectProperty = "Modifier",
-				DeriveValueFrom = "DeriveSource",
-			},			
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipBlindPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Amount",
-				Format = "Percent"
-			}
-		}
+		
 	}
-	OlympusTraitData.ApolloRetaliateTrait =
-	 {
-		God = "Apollo",
-		InheritFrom = { "ShopTier1Trait" },
-		AddOnHitWeapons = { "AreaWeakenApollo" },
-		Icon = "Boon_Apollo_09",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.50,
-			},
-			Heroic =
-			{
-				Multiplier = 1.75,
-			}
-		},
-		PropertyChanges =
-		{
-			{
-				WeaponName = "AreaWeakenApollo",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 50,
-				BaseMax = 50,
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateVeryStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},
-			{
-				WeaponName = "AreaWeakenApollo",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow",
-			},
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipBlindPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Amount",
-				Format = "Percent"
-			}
-		}
-	}
-	OlympusTraitData.FountainCoinTrait =
+	OlympusTraitData.HealthDefianceTrait =
 	{
-		Icon = "Boon_Apollo_11",
-		InheritFrom = { "ShopTier1Trait" },
-		God = "Apollo",
-		CustomTrayText = "FountainCoinTrait_Tray",
-		RequiredFalseTrait = "FountainCoinTrait",    
-		RequiredCosmetics = { "TartarusReprieve" },
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.50,
-			},
-			Heroic =
-			{
-				Multiplier = 2.00,
-			}
-		},
-		FountainCoinBonus = { 
-			BaseValue = 100
-		},
+		
 	}
-	OlympusTraitData.ApolloHealTrait =
+	OlympusTraitData.HealthDamageTrait =
 	{
-		Icon = "Boon_Apollo_13",
-		InheritFrom = { "ShopTier2Trait" },
-		RequiredFalseTrait = "ApolloHealTrait",
-		God = "Apollo",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.0,
-			},
-			Rare =
-			{
-				Multiplier = 1.5,
-			},
-			Epic =
-			{
-				Multiplier = 2.0,
-			},
-			Heroic =
-			{
-				Multiplier = 2.5,
-			}
-		},
-		ApolloHealDropChance = { 
-			BaseValue = 0.04
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Duration",
-			},
-			{
-				Key = "ApolloHealDropChance",
-				ExtractAs = "TooltipDropChance",
-				Format = "Percent"
-			  },
-		}
+		
 	}
-	OlympusTraitData.RerollBoonTrait = -- Future Sight
+	OlympusTraitData.LavaDeathTrait =
 	{
-		InheritFrom = { "ShopTier1Trait" },
-		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
-		RequiredMetaUpgradeStageUnlocked = 4,
-		Icon = "Boon_Apollo_10",
-		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
-		BoonCount = { 
-			BaseValue = 1
-		},
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 4,
-			},
-			Rare =
-			{
-				Multiplier = 3,
-			},
-			Epic =
-			{
-				Multiplier = 2,
-			},
-			Heroic =
-			{
-				Multiplier = 1,
-			}
-		},
-		ExtractValues =
-		{
-			{
-				Key = "BoonCount",
-				ExtractAs = "TooltipBoonCount",
-			}
-		}
-	}
-	OlympusTraitData.RerollObolTrait = -- Golden Fleece
-	{
-		InheritFrom = { "ShopTier1Trait" },
-		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
-		RequiredMetaUpgradeStageUnlocked = 4,
-		Icon = "Boon_Apollo_12",
-		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
-		ObolCount = { 
-			BaseValue = 1
-		},
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 300,
-			},
-			Rare =
-			{
-				Multiplier = 250,
-			},
-			Epic =
-			{
-				Multiplier = 200,
-			},
-			Heroic =
-			{
-				Multiplier = 150,
-			}
-		},
-		ExtractValues =
-		{
-			{
-				Key = "ObolCount",
-				ExtractAs = "TooltipObolCount",
-			}
-		}
-	}
 	
-	OlympusTraitData.MissChanceTrait =
+	}
+	OlympusTraitData.LavaResistTrait = 
 	{
-		Icon = "Boon_Apollo_14",
-		RequiredFalseTrait = "MissChanceTrait",
-		God = "Apollo",
-		InheritFrom = { "ShopTier3Trait" },
-		PropertyChanges =
-		{
-			{
-				WeaponName = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Amount",
-				ChangeValue = 0.75,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponName = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Amount",
-				ChangeValue = 0.75,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponName = WeaponSets.HeroRushWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Amount",
-				ChangeValue = 0.75,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponName = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Amount",
-				ChangeValue = 0.75,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = {"AreaWeakenApollo"},
-				EffectName = "ApolloBlind",
-				EffectProperty = "Amount",
-				ChangeValue = 0.75,
-				ChangeType = "Absolute",
-			},
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipBlindPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Amount",
-				Format = "Percent"
-			}
-		}
+		
+	}
+	OlympusTraitData.LavaLongerTrait = 
+	{
+		
+	}	
+	OlympusTraitData.LavaAutoTrait =
+	{
+		
 	}
 	-- Duo Traits
-	OlympusTraitData.BlindDurationTrait =
+	OlympusTraitData.MoreTrapDamageTrait =
 	{
-		InheritFrom = { "SynergyTrait" },
-		Icon = "Apollo_Demeter_01",
-		RequiredFalseTrait = "BlindDurationTrait",
-		PropertyChanges =
-		{
-			{
-				WeaponName = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Duration",
-				ChangeValue = 10,
-				ChangeType = "Absolute",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDuration",
-				},
-			},
-			{
-				WeaponName = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Duration",
-				ChangeValue = 10,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponName = WeaponSets.HeroRushWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Duration",
-				ChangeValue = 10,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponName = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName = "ApolloBlind",
-				EffectProperty = "Duration",
-				ChangeValue = 10,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = {"AreaWeakenApollo"},
-				EffectName = "ApolloBlind",
-				EffectProperty = "Duration",
-				ChangeValue = 10,
-				ChangeType = "Absolute",
-			},		
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipBlindPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Amount",
-				Format = "Percent"
-			}
-		}		
+			
 	}
-	OlympusTraitData.FamedDuetTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Artemis_01",
-			RequiredFalseTrait = "FamedDuetTrait",
-			PropertyChanges =
-			{
-				{
-					TraitName = "ApolloShoutTrait",
-					WeaponName = "ApolloBeamWeapon",
-					WeaponProperty = "NumProjectiles",
-					ChangeValue = 12,
-					ExcludeLinked = true,
-				},
-			},
-			ExtractValues =
-			{
-				{
-					ExtractAs = "TooltipWrathStocks",
-					Format = "ExistingWrathStocks",
-					SkipAutoExtract = true
-				}
-			}		
-		}
-	OlympusTraitData.WarSongTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Ares_01",
-			RequiredFalseTraits = { "WarSongTrait" },
-			PropertyChanges =
-			{
-				{
-					TraitName = "ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "DelayedDamage",
-					EffectProperty = "Active",
-					ChangeValue = true
-				},
-				{
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "DelayedDamage",
-					EffectProperty = "Amount",
-					BaseMin = 100,
-					BaseMax = 100,
-					AsInt = true,
-					MinMultiplier = 0.025,
-					IdenticalMultiplier =
-					{
-						Value = -0.4,
-					},
-					ExtractValue =
-					{
-						ExtractAs = "TooltipCurseDamage",
-					}
-				},
-			}
-		}
-	table.insert(OlympusTraitData.AresLongCurseTrait.PropertyChanges,{
-		TraitName = "ApolloRangedTrait",
-		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-		EffectName = "DelayedDamage",
-		EffectProperty = "Duration",
-		DeriveValueFrom = "DurationSource"
-	})
-	table.insert(OlympusTraitData.AresLoadCurseTrait.PropertyChanges,{
-		TraitName = "ApolloRangedTrait",
-		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-		EffectName = "DelayedDamage",
-		EffectProperty = "StackAmount",
-		DeriveValueFrom = "DamageSource"
-	})
-	table.insert(OlympusTraitData.AresLoadCurseTrait.PropertyChanges,{
-		TraitName = "ApolloRangedTrait",
-		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-		EffectName = "DelayedDamage",
-		EffectProperty = "Stacks",
-		ChangeValue  = true,
-	})
-OlympusTraitData.HyacinthTrait =
+	OlympusTraitData.FreeHealthTrait =
 	{
-		InheritFrom = { "SynergyTrait" },
-		Icon = "Apollo_Aphrodite_01",
-		RequiredFalseTraits = { "HyacinthTrait", "CharmTrait", "InstantChillKill"},
-		OnDamageEnemyFunction = {
-			FunctionName = "CheckHyacinthKill",
-			FunctionArgs = {
-				HyacinthDeathThreshold = 0.30,
-				ExtractValues =
-				{
-					{
-						Key = "HyacinthDeathThreshold",
-						ExtractAs = "TooltipDeathThreshold",
-						Format = "Percent",
-					},
-				}
-			}
-		},
-		PreEquipWeapons = { "HyacinthChillKill" },
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipWeakDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ReduceDamageOutput",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipWeakPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ReduceDamageOutput",
-				BaseProperty = "Modifier",
-				Format = "NegativePercentDelta"
-			},
-			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipBlindPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "ApolloBlind",
-				BaseProperty = "Amount",
-				Format = "Percent"
-			}
-		}
+					
 	}
-OlympusTraitData.SeaChanteyTrait =
+	OlympusTraitData.ExplosionTrait =
 	{
-		InheritFrom = { "SynergyTrait" },
-		Icon = "Apollo_Poseidon_01",
-		RequiredFalseTrait = "SeaChanteyTrait",
-		AddIncomingDamageModifiers =
-		{
-			BossDamageMultiplier = 1.05,
-			ExtractValues =
-			{
-				{
-					Key = "BossDamageMultiplier",
-					ExtractAs = "IncomingMultiplier",
-					Format = "PercentDelta",
-				},
-			}
-		},
-		AddOutgoingDamageModifiers =
-		{
-			BossDamageMultiplier = 1.10,
-			ExtractValues =
-			{
-				{
-					Key = "BossDamageMultiplier",
-					ExtractAs = "OutgoingMultiplier",
-					Format = "PercentDelta",
-				},
-			}
-		},
-		OnDamageEnemyFunction = {
-			FunctionName = "SpawnMusicNotes",
-			FunctionArgs = {}
-		}
+			
+	}	
+	OlympusTraitData.ChillFireTrait =
+	{
+		
+	}
+	OlympusTraitData.FestiveFogHealTrait =
+	{
+		
 	}			
-		OlympusTraitData.DazzledTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Dionysus_01",
-			RequiredFalseTraits = { "DazzledTrait"},
-			PreEquipWeapons = { "DazzledEffectApplicator" },
-		}		
+	OlympusTraitData.LavaDoomTrait =
+	{
 
-		OlympusTraitData.DamageReduceDistanceTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Athena_01",
-			RequiredFalseTraits = { "DamageReduceDistanceTrait"},
-			PreEquipWeapons = { "DistanceResistWeapon" },
-			DistanceResistThreshold = { 
-				BaseValue = 400
-			},
-			DistanceResistMultiplier = { 
-				BaseValue = 0.6
-			},
-			PropertyChanges =
-			{
-				{
-					WeaponNames = {"DistanceResistWeapon"},
-					EffectName = "DamageResist",
-					EffectProperty = "Duration",
-					ChangeValue = 3,
-					ChangeType = "Absolute",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageResistDuration",
-					}
-				},		
-				{
-					WeaponNames = {"DistanceResistWeapon"},
-					EffectName = "DamageResist",
-					EffectProperty = "Modifier",
-					ChangeValue = 0.6,
-					ChangeType = "Absolute",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageResistModifier",
-						Format ="Percent"
-					}
-				},	
-			}
-		}	
-	OlympusTraitData.MasterBoltTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Zeus_01",
-			RequiredFalseTrait = { "MasterBoltTrait" },
-			PropertyChanges =
-			{
-				{
-					TraitName = "ApolloWeaponTrait",
-					WeaponNames = WeaponSets.HeroPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "AreaWeakenApollo",
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},			
-				{
-					TraitName = "ShieldLoadAmmo_ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloDashTrait",
-					WeaponNames = WeaponSets.HeroRushWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloSecondaryTrait",
-					WeaponNames = WeaponSets.HeroSecondaryWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				}		
-			},
-		ExtractValues =
-			{
-				{
-					ExtractAs = "MasterBoltDamage",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "BlindLightning",
-					BaseProperty = "Amount",
-				},
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				}
-			}
-		}
-	
-	
+	}		
+	OlympusTraitData.MoreHellringTrait =
+	{
+			
+	}	
+	OlympusTraitData.FishingHealTrait =
+	{
+			
+	}
+	OlympusTraitData.CloseBlindTrait =
+	{
+			
+	}]]
 	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
-	OlympusLootData.ApolloUpgrade = {
-			Name = "ApolloUpgrade",
+	OlympusLootData.HestiaUpgrade = {
+			Name = "HestiaUpgrade",
 			InheritFrom = { "BaseLoot", "BaseSoundPackage"},
 			CanReceiveGift = true,
 			AlwaysShowDefaultUseText = true,
 			Weight = 10,
-			Icon = "BoonSymbolApollo",
-			BoonInfoIcon = "BoonInfoSymbolApolloIcon",
-			DoorIcon = "BoonSymbolApolloIsometric",
-			Color = { 255, 162, 105, 255 },
-			LightingColor = {255, 146, 79, 255},
-			LootColor = {255, 114, 30, 255},
-			SubtitleColor = {1.000, 0.353, 0.675, 1.0},
-			EventEndSound = "/SFX/ApolloBoonLoveChimes",
-			UpgradeSelectedSound = "/SFX/ApolloBoonChoice",
-			LootRejectionAnimation = "BoonDissipateA_Apollo",
+			Icon = "BoonSymbolHestia",
+			BoonInfoIcon = "BoonInfoSymbolHestiaIcon",
+			DoorIcon = "BoonSymbolHestiaIsometric",
+			Color = { 123, 22, 53, 255 },
+			LightingColor = {123, 22, 53, 255},
+			LootColor = {123, 22, 53, 255},
+			SubtitleColor = {0.48, 0.09, 0.21, 1.0},
+			EventEndSound = "/SFX/HestiaBoonLoveChimes",
+			UpgradeSelectedSound = "/SFX/HestiaBoonChoice",
+			LootRejectionAnimation = "BoonDissipateA_Hestia",
 	
 			RequiredMinCompletedRuns = 1,
-			RequiredTextLines = { "ArtemisFirstPickUp" },
+			RequiredTextLines = { "DionysusFirstPickUp" },
 	
-			TraitsList = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" },
+			TraitsList = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait" },
 	
-			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
+			PriorityUpgrades = { "HestiaWeaponTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
+			WeaponUpgrades = { "HestiaWeaponTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
+			Traits = { },--"HestiaRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 			Consumables = { },
 	
 			LinkedUpgrades =
 			{
-				ApolloBlindedTrait  = {
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloRetaliateTrait"},
-				},
-				ApolloHealTrait  = {
-					OneOf = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloRetaliateTrait"},
-				},
-				MissChanceTrait =
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-						{ "ApolloBlindedTrait", "ApolloRetaliateTrait", "RerollObolTrait", "RerollBoonTrait" }
-					}
-				},
-				-- Duo
-				FamedDuetTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloShoutTrait" },
-						{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
-					}
-				},
-				WarSongTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
-						{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
-					}
-				},
-				HyacinthTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
-						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
-					}
-				},
-				SeaChanteyTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait", "ApolloHealTrait"},
-						{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
-					}
-				},
-				MasterBoltTrait = 
-				{
-					OneFromEachSet = 
-					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
-						{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusRangedTrait", "PerfectDashBoltTrait"},
-					}
-				},
-				BlindDurationTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
-						{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
-					}
-				},
-				DamageReduceDistanceTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
-						{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
-					}
-				},
-				DazzledTrait = 
-				{
-					OneFromEachSet =
-					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
-						{ "DionysusWeaponTrait", "DionysusRangedTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
-					}
-				},
+				
 			},
 	
-			Speaker = "NPC_Apollo_01",
-			Portrait = "Portrait_Apollo_Default_01",
-			WrathPortrait = "Portrait_Apollo_Wrath_01",
-			OverlayAnim = "ApolloOverlay",
+			Speaker = "NPC_Hestia_01",
+			Portrait = "Portrait_Hestia_Default_01",
+			WrathPortrait = "Portrait_Hestia_Wrath_01",
+			OverlayAnim = "HestiaOverlay",
 			Gender = "Male",
 			SpawnSound = "/SFX/GoldCoinRewardDrop",
 			FlavorTextIds =
 			{
-				"ApolloUpgrade_FlavorText01",
-				"ApolloUpgrade_FlavorText02",
-				"ApolloUpgrade_FlavorText03",
+				"HestiaUpgrade_FlavorText01",
+				"HestiaUpgrade_FlavorText02",
+				"HestiaUpgrade_FlavorText03",
 			},
 	
 			OnSpawnVoiceLines =
@@ -2658,12 +1424,12 @@ OlympusTraitData.SeaChanteyTrait =
 				PlayOnceThisRun = true,
 				PreLineWait = 0.85,
 				ChanceToPlay = 0.33,
-				RequiredTextLines = { "ApolloFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp" },
 				RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", "Shop" },
 	
-				-- Lord Apollo...
+				-- Lord Hestia...
 				{ Cue = "/VO/ZagreusField_4816" },
-				-- You found me, Apollo...
+				-- You found me, Hestia...
 				{ Cue = "/VO/ZagreusField_4817" },
 			},
 	
@@ -2675,13 +1441,13 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			DuoPickupTextLineSets =
 			{
-				ApolloWithZeus01 =
+				HestiaWithZeus01 =
 				{
-					Name = "ApolloWithZeus01",
+					Name = "HestiaWithZeus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "MasterBoltTrait",
-					{ Cue = "/VO/Apollo_0041",
+					{ Cue = "/VO/Hestia_0041",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Seeing you struggle with your father made me realise something, Zagzag. Fathers and sons work much better together. My father and I put together something that might help you." },
 					{ Cue = "/VO/Zeus_0250",
@@ -2692,13 +1458,13 @@ OlympusTraitData.SeaChanteyTrait =
 						Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
 						Text = "That's right, Nephew! I feel generous and I know you feel grateful. Let's show him our power, young son." },
 				},
-				ApolloWithPoseidon01 =
+				HestiaWithPoseidon01 =
 				{
-					Name = "ApolloWithPoseidon01",
+					Name = "HestiaWithPoseidon01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "SeaChanteyTrait",
-					{ Cue = "/VO/Apollo_0042",
+					{ Cue = "/VO/Hestia_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "This is far from the first time Uncle Poseidon and I have composed together. We decided to create a little Sea Chantey to keep your spirit up. This is for you!" },
 					{ Cue = "/VO/Poseidon_0250",
@@ -2709,13 +1475,13 @@ OlympusTraitData.SeaChanteyTrait =
 						Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
 						Text = "That's right, Little Hades! With our help, I don't think it's possible for you to fail." },
 				},
-				ApolloWithAthena01 =
+				HestiaWithAthena01 =
 				{
-					Name = "ApolloWithAthena01",
+					Name = "HestiaWithAthena01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "DamageReduceDistanceTrait",
-					{ Cue = "/VO/Apollo_0182",
+					{ Cue = "/VO/Hestia_0182",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Athena, maybe the three of us could start a band! I believe you used to play the flute. We could create a divine musical trio!" },
 					{ Cue = "/VO/Athena_0240",
@@ -2726,13 +1492,13 @@ OlympusTraitData.SeaChanteyTrait =
 						Speaker = "NPC_Athena_01", Portrait = "Portrait_Athena_Default_01",
 						Text = "I have much responsibility, Step-Brother! I don't have time to ... start a band... Let's help our Cousin instead." },
 				},
-				ApolloWithAres01 =
+				HestiaWithAres01 =
 				{
-					Name = "ApolloWithAres01",
+					Name = "HestiaWithAres01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "WarSongTrait",
-					{ Cue = "/VO/Apollo_0044",
+					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Well, if it isn't my dear Brother! You know what I was thinking? You should write a song or maybe a poem. It would free your mind from all this needless violence." },
 					{ Cue = "/VO/Ares_0240",
@@ -2743,14 +1509,14 @@ OlympusTraitData.SeaChanteyTrait =
 						Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
 						Text = "The only form of art I recognize is war. {#DialogueItalicFormat} Hm {#PreviousFormat} ... I have never seen anybody killing with words. Zagreus, take this instead." },
 				},
-				ApolloWithAphrodite01 =
+				HestiaWithAphrodite01 =
 				{
-					Name = "ApolloWithAphrodite01",
+					Name = "HestiaWithAphrodite01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "HyacinthTrait",
-					RequiredTextLines = { "ApolloGift01", "AphroditeGift01" },
-					{ Cue = "/VO/Apollo_0045",
+					RequiredTextLines = { "HestiaGift01", "AphroditeGift01" },
+					{ Cue = "/VO/Hestia_0045",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Aphrodite and I decided to combine our efforts in order to help you escape that realm of yours, Zagzag." },
 					{ Cue = "/VO/Aphrodite_0230",
@@ -2761,14 +1527,14 @@ OlympusTraitData.SeaChanteyTrait =
 						Text = "And... This is for you, little godling! Oh my me! I can't wait until we are all here together!"
 					},
 				},
-				ApolloWithArtemis01 =
+				HestiaWithArtemis01 =
 				{
-					Name = "ApolloWithArtemis01",
+					Name = "HestiaWithArtemis01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "FamedDuetTrait",
-					RequiredTextLines = { "ApolloGift01", "ArtemisGift01" },
-					{ Cue = "/VO/Apollo_0046",
+					RequiredTextLines = { "HestiaGift01", "ArtemisGift01" },
+					{ Cue = "/VO/Hestia_0046",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I've brought my sister with me this time, Zagzag! Our combine symphony will shake the underworld to its core. Go team Zagzag!" },
 					{ Cue = "/VO/Artemis_0250",
@@ -2780,13 +1546,13 @@ OlympusTraitData.SeaChanteyTrait =
 						Text = "Are you seriously calling him that? I am sorry Zagreus. I hope this can make him a little more to bearable..."
 					},
 				},
-				ApolloWithDionysus01 =
+				HestiaWithDionysus01 =
 				{
-					Name = "ApolloWithDionysus01",
+					Name = "HestiaWithDionysus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "DazzledTrait",
-					{ Cue = "/VO/Apollo_0047",
+					{ Cue = "/VO/Hestia_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}, this wine is exquisite, Brother! It goes excellently with the cheese. To taste them both is like a glorious symphony!" },
 					{ Cue = "/VO/Dionysus_0230",
@@ -2797,13 +1563,13 @@ OlympusTraitData.SeaChanteyTrait =
 						Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
 						Text = "{#DialogueItalicFormat} Haha {#PreviousFormat}, that's the trick, the combination of two great things together makes it all better. Like us. Let's combine our blessing to help, um, how do you call him again, Zagzag?" },
 				},
-				ApolloWithDemeter01 =
+				HestiaWithDemeter01 =
 				{
-					Name = "ApolloWithDemeter01",
+					Name = "HestiaWithDemeter01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "BlindDurationTrait",
-					{ Cue = "/VO/Apollo_0048",
+					{ Cue = "/VO/Hestia_0048",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "You know, Aunty. For someone that's so cold, you might want to chill out sometime." },
 					{ Cue = "/VO/Demeter_0370",
@@ -2817,39 +1583,39 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			SuperPriorityPickupTextLineSets =
 			{
-				ApolloAboutZagzag01 =
+				HestiaAboutZagzag01 =
 				{
-					Name = "ApolloAboutZagzag01",
+					Name = "HestiaAboutZagzag01",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0161",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0161",
 						PortraitExitWait = 1.25,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come and tell me face to face." },
 				},
-				ApolloAboutOlympianReunionQuest01 =
+				HestiaAboutOlympianReunionQuest01 =
 				{
-					Name = "ApolloAboutOlympianReunionQuest01",
+					Name = "HestiaAboutOlympianReunionQuest01",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
+					RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
 					{ Cue = "/VO/ZagreusField_4818", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-						Text = "OK, I think I'm ready. In the name of Hades! Olympus, this is an official message! And I hope it finds you well, Lord Apollo!" },
-					{ Cue = "/VO/Apollo_0058",
+						Text = "OK, I think I'm ready. In the name of Hades! Olympus, this is an official message! And I hope it finds you well, Lord Hestia!" },
+					{ Cue = "/VO/Hestia_0058",
 						PortraitExitWait = 1.25,
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						UseEventEndSound = true,
 						Emote = "PortraitEmoteDepressed",
 						Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}! Is that a party invitation? Oh wait, it's part of an invitation for me and my relatives, hm? Oh well, I am flattered, but I don't think I can make it, I'll give my relatives my half of the information and ask Artemis how it went. Maybe some other time Zagzag." },
 				},
-				ApolloPostEpilogue01 =
+				HestiaPostEpilogue01 =
 				{
-					Name = "ApolloPostEpilogue01",
+					Name = "HestiaPostEpilogue01",
 					PlayOnce = true,
 					RequiredTextLines = { "OlympianReunionQuestComplete" },
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0057",
+					{ Cue = "/VO/Hestia_0057",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Sorry I missed the big party in your father's domain, Zagzag. Dionysus told me it was quite exquisite. I wish I was able to be there, but maybe you could try visiting us sometime instead?" },
 				},
@@ -2858,445 +1624,445 @@ OlympusTraitData.SeaChanteyTrait =
 			PriorityPickupTextLineSets =
 			{
 				-- about other gods
-				ApolloAboutZeus01 =
+				HestiaAboutZeus01 =
 				{
-					Name = "ApolloAboutZeus01",
+					Name = "HestiaAboutZeus01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaFirstPickUp" },
 					RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
-					RequiredFalseTextLines = { "OlympianReunionQuestComplete", "ApolloWithZeus01", "ZeusWithApollo01" },
+					RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HestiaWithZeus01", "ZeusWithHestia01" },
 					RequiredGodLoot = "ZeusUpgrade",
-					{ Cue = "/VO/Apollo_0059",
+					{ Cue = "/VO/Hestia_0059",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I heard Orpheus plays music for your court. I take care of all the music playing here in Olympus. My father can be strict, but a good jam has always put him in a good mood. Fathers can be tense... I am sure you understand what I mean..." },
 				},
-				ApolloAboutStepSiblings01 =
+				HestiaAboutStepSiblings01 =
 				{
-					Name = "ApolloAboutStepSiblings01",
+					Name = "HestiaAboutStepSiblings01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaFirstPickUp" },
 					RequiredGodLoot = "ArtemisUpgrade",
-					{ Cue = "/VO/Apollo_0060",
+					{ Cue = "/VO/Hestia_0060",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know, Zagzag. I don't think I can ever imagine living a life without all my step-siblings. Ares, Aphrodite, Dionysus. I mean they are all great, but Zeus loves them a bit more than me... At least, I have Artemis. Don't tell her I said that." },
 				},
-				ApolloAboutDaughters01 =
+				HestiaAboutDaughters01 =
 				{
-					Name = "ApolloAboutDaughters01",
+					Name = "HestiaAboutDaughters01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "OrpheusMusicProgress01" },
-					{ Cue = "/VO/Apollo_0061",
+					RequiredTextLines = { "HestiaFirstPickUp", "OrpheusMusicProgress01" },
+					{ Cue = "/VO/Hestia_0061",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Hey Zagzag, I believe you still haven't found your second half, am I right? Maybe, you could be a great match for one of my daughters." },
 				},
-				ApolloAboutDaughters02 =
+				HestiaAboutDaughters02 =
 				{
-					Name = "ApolloAboutDaughters02",
+					Name = "HestiaAboutDaughters02",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutDaughters01" },
-					{ Cue = "/VO/Apollo_0062",
+					RequiredTextLines = { "HestiaAboutDaughters01" },
+					{ Cue = "/VO/Hestia_0062",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Of my three daughters, Apollonis is kind of emotional... Once, she burned down our house, because her meal wasn't hot enough... Oh! Another time, she cried for a week because her hair brush broke... Well, if you are looking to spice up your life, she's an excellent catch!" },
+						Text = "Of my three daughters, Hestianis is kind of emotional... Once, she burned down our house, because her meal wasn't hot enough... Oh! Another time, she cried for a week because her hair brush broke... Well, if you are looking to spice up your life, she's an excellent catch!" },
 				},
-				ApolloAboutDaughters03 =
+				HestiaAboutDaughters03 =
 				{
-					Name = "ApolloAboutDaughters03",
+					Name = "HestiaAboutDaughters03",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutDaughters01" },
-					{ Cue = "/VO/Apollo_0063",
+					RequiredTextLines = { "HestiaAboutDaughters01" },
+					{ Cue = "/VO/Hestia_0063",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "The most shy of my daughters is certainly Cephisso. She's extremely quiet. She could be next to me and I wouldn't even hear what she said. Good for settling down with a more quiet lifestyle, I suppose." },
 				},
-				ApolloAboutDaughters04 =
+				HestiaAboutDaughters04 =
 				{
-					Name = "ApolloAboutDaughters04",
+					Name = "HestiaAboutDaughters04",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutDaughters01" },
-					{ Cue = "/VO/Apollo_0064",
+					RequiredTextLines = { "HestiaAboutDaughters01" },
+					{ Cue = "/VO/Hestia_0064",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Borysthenis is the strongest of my daughters, she can move mountains! Just be careful with her hugs. She cracked my back a century ago and I still feel sore from it. But hey, if that's not showing love, what is?" },
 				},
-				ApolloAboutDaughters05 =
+				HestiaAboutDaughters05 =
 				{
-					Name = "ApolloAboutDaughters05",
+					Name = "HestiaAboutDaughters05",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					EndCue = "/VO/ZagreusHome_3760",
-					RequiredTextLines = { "ApolloAboutDaughters02", "ApolloAboutDaughters03", "ApolloAboutDaughters04" },
-					{ Cue = "/VO/Apollo_0065",
+					RequiredTextLines = { "HestiaAboutDaughters02", "HestiaAboutDaughters03", "HestiaAboutDaughters04" },
+					{ Cue = "/VO/Hestia_0065",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Well, I have talked to my daughters, and they are not really looking for a... long distant relationship. And since I don't see you going anywhere anytime soon, I think they'll end this here." },
 				},
-				ApolloAboutHydra =
+				HestiaAboutHydra =
 				{
-					Name = "ApolloAboutHydra",
+					Name = "HestiaAboutHydra",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredBiome = "Asphodel",
 					RequiredAnyRoomsLastRun = { "B_Boss01", "B_Boss02" },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0165",
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaGift01", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0165",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "The bone hydra has a snake's head, right? {#DialogueItalicFormat} Arg {#PreviousFormat}. I hate snakes, especially pythons. They are the worst. Still, I have quite a bit of experience getting the upper hand on them. This should help." },
 				},
-				ApolloAboutDaphne01 =
+				HestiaAboutDaphne01 =
 				{
-					Name = "ApolloAboutDaphne01",
+					Name = "HestiaAboutDaphne01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0162",
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0162",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Were you staring at my laurel crown, Zagzag? It's beautiful, is it not? Made by my beloved Daphne. I miss her everyday." },
 				},
-				ApolloAboutPan01 =
+				HestiaAboutPan01 =
 				{
-					Name = "ApolloAboutPan01",
+					Name = "HestiaAboutPan01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0163",
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaGift01", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0163",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "As you know, Zagzag, I am the god of music, but once the Nymph Pan tried to get my title, he stood no chance against my excellent taste in music. I still remember his face. Ha-ha-ha. Priceless." },
 				},
-				ApolloAboutArtemis01 =
+				HestiaAboutArtemis01 =
 				{
-					Name = "ApolloAboutArtemis01",
+					Name = "HestiaAboutArtemis01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloAboutStepSiblings01", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaAboutStepSiblings01", "HestiaFirstPickUp" },
 					RequiredGodLoot = "ArtemisUpgrade",
-					{ Cue = "/VO/Apollo_0066",
+					{ Cue = "/VO/Hestia_0066",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "My sister is a bit antisocial at times. I tried to help her out of her shell, but even I can't do anything. Maybe you can help her out." },
 				},
-				ApolloAboutArtemis02 =
+				HestiaAboutArtemis02 =
 				{
-					Name = "ApolloAboutArtemis02",
+					Name = "HestiaAboutArtemis02",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutArtemis01" },
+					RequiredTextLines = { "HestiaAboutArtemis01" },
 					RequiredGodLoot = "ArtemisUpgrade",
-					{ Cue = "/VO/Apollo_0067",
+					{ Cue = "/VO/Hestia_0067",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Artemis is older than me by a few seconds, but she loves to make me feel like I am the youngest. I mean it was only a few seconds... That doesn't count, right?" },
 				},
-				ApolloAboutArtemis03 =
+				HestiaAboutArtemis03 =
 				{
-					Name = "ApolloAboutArtemis03",
+					Name = "HestiaAboutArtemis03",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutArtemis02" },
+					RequiredTextLines = { "HestiaAboutArtemis02" },
 					RequiredGodLoot = "ArtemisUpgrade",
-					{ Cue = "/VO/Apollo_0068",
+					{ Cue = "/VO/Hestia_0068",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I wonder if I could beat Artemis in an archery competition... We are both pretty good... Tell me, Zagzag... You would bet on me, right?" },
 				},
-				ApolloAboutMusic01 =
+				HestiaAboutMusic01 =
 				{
-					Name = "ApolloAboutMusic01",
+					Name = "HestiaAboutMusic01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "OrpheusWithEurydice01", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0069",
+					RequiredTextLines = { "OrpheusWithEurydice01", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0069",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "As the god of music, I know better than most of my relatives that cooperation is key. I always try to add my special spice to the mix, but I know art is always better as a collective effort. I hope our cooperation will help you escape." },
 				},
-				ApolloAboutHarpQuest01 =
+				HestiaAboutHarpQuest01 =
 				{
-					Name = "ApolloAboutHarpQuest01",
+					Name = "HestiaAboutHarpQuest01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "OrpheusMusicProgress02", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0070",
+					RequiredTextLines = { "OrpheusMusicProgress02", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0070",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Are you learning some form of music, Zagzag? I sense hours of practice over the tips of your fingers. Someday, you might want to quit, but you must persist like you are now! It will be all worth in the end. Trust me." },
 				},
-				ApolloAboutHarpQuest02 =
+				HestiaAboutHarpQuest02 =
 				{
-					Name = "ApolloAboutHarpQuest02",
+					Name = "HestiaAboutHarpQuest02",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "OrpheusMusicProgress04", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0071",
+					RequiredTextLines = { "OrpheusMusicProgress04", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0071",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I heard that you are a musician now, Zagzag? Ooh! Maybe Pan and Orpheus would like to join us, and we can make a band! What do you say? Oh wait, you're still there, and I am still here... hmm. We'll workshop." },
 				},
-				ApolloAboutOrpheus01 =
+				HestiaAboutOrpheus01 =
 				{
-					Name = "ApolloAboutOrpheus01",
+					Name = "HestiaAboutOrpheus01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "OrpheusTallTale03", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0072",
+					RequiredTextLines = { "OrpheusTallTale03", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0072",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Did you meet my old friend Orpheus down there? We used to play together all the time, but he went to pick up a girl and never came back. It's a shame too, he was pretty good." },
 				},
-				ApolloAboutOrpheus02 =
+				HestiaAboutOrpheus02 =
 				{
-					Name = "ApolloAboutOrpheus02",
+					Name = "HestiaAboutOrpheus02",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutOrpheus01", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0073",
+					RequiredTextLines = { "HestiaAboutOrpheus01", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0073",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know. I don't like to brag, Zagzag, but I did give Orpheus his golden lyre. He probably still has it! A perfect instrument for a near-perfect musician. Okay, I might like to brag a little bit." },
 				},
-				ApolloAboutLeto01 =
+				HestiaAboutLeto01 =
 				{
-					Name = "ApolloAboutLeto01",
+					Name = "HestiaAboutLeto01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "PersephoneMeeting02", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0084",
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaGift01", "PersephoneMeeting02", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0084",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I may be Zeus's son, Zagzag, but Hera is not my mother. My mother's name is Leto. She taught Artemis and I everything we know. Uh. Sometimes I wish she was here in Olympus with us, but that just can't happen. Hera kind of hates her." },
 				},
-				ApolloAboutLeto02 =
+				HestiaAboutLeto02 =
 				{
-					Name = "ApolloAboutLeto02",
+					Name = "HestiaAboutLeto02",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutLeto01", "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaAboutLeto01", "HestiaFirstPickUp" },
 					RequiredMinRunsCleared = 2,
-					{ Cue = "/VO/Apollo_0085",
+					{ Cue = "/VO/Hestia_0085",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Leto gave birth to my sister and I on an island. I believe, Delos was the name. She was fleeing a Python, but not to worry, I defeated the mighty beast and now she's free to go anywhere she pleases... Well, except for Olympus..." },
 				},
-				ApolloAboutArtemisLeto01 =
+				HestiaAboutArtemisLeto01 =
 				{
-					Name = "ApolloAboutArtemisLeto01",
+					Name = "HestiaAboutArtemisLeto01",
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutLeto01", "ApolloAboutLeto02", "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaAboutLeto01", "HestiaAboutLeto02", "HestiaFirstPickUp" },
 					RequiredGodLoot = "ArtemisUpgrade",
 					RequiredMinRunsCleared = 2,
-					{ Cue = "/VO/Apollo_0086",
+					{ Cue = "/VO/Hestia_0086",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "My sister doesn't speak much about our mother, Leto. Though, I guess that's just how she is. She's not a very vocal character when it isn't about hunting something... Though I'm sure you have noticed that by now." },
 				},
-				ApolloPostGiftPickup01 =
+				HestiaPostGiftPickup01 =
 				{
-					Name = "ApolloPostGiftPickup01",
+					Name = "HestiaPostGiftPickup01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift02", },
-					{ Cue = "/VO/Apollo_0087",
+					RequiredTextLines = { "HestiaGift02", },
+					{ Cue = "/VO/Hestia_0087",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I don't know why, but you are in my mind a lot lately. I just have this feeling that I must meet you somehow... This here should help make it happen." },
 				},
-				ApolloPostGiftPickup02 =
+				HestiaPostGiftPickup02 =
 				{
-					Name = "ApolloPostGiftPickup02",
+					Name = "HestiaPostGiftPickup02",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift03", },
-					{ Cue = "/VO/Apollo_0088",
+					RequiredTextLines = { "HestiaGift03", },
+					{ Cue = "/VO/Hestia_0088",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I feel our kinship getting stronger on every encounter. I hope you feel the same, Zagzag." },
 				},
 	
-				ApolloPostGiftPickup03 =
+				HestiaPostGiftPickup03 =
 				{
-					Name = "ApolloPostGiftPickup03",
+					Name = "HestiaPostGiftPickup03",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift04", },
-					{ Cue = "/VO/Apollo_0089",
+					RequiredTextLines = { "HestiaGift04", },
+					{ Cue = "/VO/Hestia_0089",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I can see you are really trying to escape this time, Zagzag. And you know what? This could be the one. All you have to do is escape once, and it would be over. And you can finally be with us. I believe in you, Zagzag." },
 				},
-				ApolloAboutKeepsake01 =
+				HestiaAboutKeepsake01 =
 				{
-					Name = "ApolloAboutKeepsake01",
+					Name = "HestiaAboutKeepsake01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTrait = "ForceApolloBoonTrait",	
-					{ Cue = "/VO/Apollo_0080",
+					RequiredTrait = "ForceHestiaBoonTrait",	
+					{ Cue = "/VO/Hestia_0080",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Emote = "PortraitEmoteMusical",
 						Text = "I am flattered that you brought my Harmonious Harp with you. I knew we shared a special bond, Zagzag." },
 				},
-				ApolloRunCleared01 =
+				HestiaRunCleared01 =
 				{
-					Name = "ApolloRunCleared01",
+					Name = "HestiaRunCleared01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloAboutPersephoneMeeting01" },
+					RequiredTextLines = { "HestiaFirstPickUp", "HestiaAboutPersephoneMeeting01" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					RequiredMinRunsCleared = 2,
 					RequiresLastRunCleared = true,					
-					{ Cue = "/VO/Apollo_0079",
+					{ Cue = "/VO/Hestia_0079",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "What are you doing there, Zagzag? I saw in a vision that you escaped. Why did you go back? Maybe you forgot something? Oh well, I also saw that you would do it again. So, no worries." },
 				},
-				ApolloBackstory01 =
+				HestiaBackstory01 =
 				{
-					Name = "ApolloBackstory01",
+					Name = "HestiaBackstory01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "ArtemisFirstPickUp", "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0090",
+					RequiredTextLines = { "ZeusFirstPickUp", "ArtemisFirstPickUp", "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0090",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Being the son of Uncle Hades must not be an easy task. I know the feeling. Zeus isn't exactly easy either. When Artemis told me about your existence, I just knew I had to meet you." },
 				},
-				ApolloBackstory02 =
+				HestiaBackstory02 =
 				{
-					Name = "ApolloBackstory02",
+					Name = "HestiaBackstory02",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory01" },
-					{ Cue = "/VO/Apollo_0091",
+					RequiredTextLines = { "HestiaBackstory01" },
+					{ Cue = "/VO/Hestia_0091",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I'm sorry I didn't reach out sooner, Zagzag. I tried to, but it seemed the fates were intending on keeping us apart. I wonder what changed." },
 				},
-				ApolloBackstory03 =
+				HestiaBackstory03 =
 				{
-					Name = "ApolloBackstory03",
+					Name = "HestiaBackstory03",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "PersephoneMeeting02", "ApolloBackstory02" },
-					{ Cue = "/VO/Apollo_0092",
+					RequiredTextLines = { "PersephoneMeeting02", "HestiaBackstory02" },
+					{ Cue = "/VO/Hestia_0092",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I try not to eavesdrop, but I heard that Hades once had a Queen. I assumed it was Nyx, but I had a vision lately and...  Oh, I won't give away to much of the fun. You'll see what I mean." },
 				},
-				ApolloBackstory04 =
+				HestiaBackstory04 =
 				{
-					Name = "ApolloBackstory04",
+					Name = "HestiaBackstory04",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01" },
-					{ Cue = "/VO/Apollo_0093",
+					RequiredTextLines = { "HestiaBackstory03", "HestiaAboutLeto01" },
+					{ Cue = "/VO/Hestia_0093",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we? We are very alike, aren't we?" },
 				},
-				ApolloBackstory05 =
+				HestiaBackstory05 =
 				{
-					Name = "ApolloBackstory05",
+					Name = "HestiaBackstory05",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory04", "PersephoneMeeting04" },
+					RequiredTextLines = { "HestiaBackstory04", "PersephoneMeeting04" },
 					RequiredFalseTextLines = { "PersephoneReturnsHome01" },
-					{ Cue = "/VO/Apollo_0094",
+					{ Cue = "/VO/Hestia_0094",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I hope you find your mother once you have escaped. Be rid of that place and until your father is ready to change never return. May the fates be ever in your favor, Cousin." },
 				},
-				ApolloRunProgress01 =
+				HestiaRunProgress01 =
 				{
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredMinRunsCleared = 4,
-					{ Cue = "/VO/Apollo_0074",
+					{ Cue = "/VO/Hestia_0074",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I had a vision of you with someone from the surface. She was somehow related to... Demeter? I guess my vision isn't what it used to be, Zagzag." },
 				},
-				ApolloRunProgress02 =
+				HestiaRunProgress02 =
 				{
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0075",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0075",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "{#DialogueItalicFormat}Okay, {#PreviousFormat}I saw you escape at least once. Seriously! I'm not lying! If you got out of the Underworld, you would tell me, right?" },
 				},
-				ApolloRunProgress03 =
+				HestiaRunProgress03 =
 				{
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredRoomLastRun = "C_Intro",
 					RequiredFalseRoomLastRun = "D_Intro",
 					RequiredMinRunsCleared = 2,
-					{ Cue = "/VO/Apollo_0076",
+					{ Cue = "/VO/Hestia_0076",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Trust me, Zagzag. Going through Elysium is no walk in the park. I've written songs and stories about their heroes and all of their legends. Maybe just try being nice to them, some of them have ego issues after all that glory went to their heads." },
 				},
-				ApolloRunProgress04 =
+				HestiaRunProgress04 =
 				{
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredAnyRoomsLastRun = { "D_Intro" },
 					RequiresLastRunCleared = false,
-					{ Cue = "/VO/Apollo_0077",
+					{ Cue = "/VO/Hestia_0077",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You almost had a glimpse of light, I heard. I believe you can go further this time. And this here might be exactly what you needed." },
 				},
-				ApolloRunProgress05 =
+				HestiaRunProgress05 =
 				{
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredRoom = "D_Hub",
-					{ Cue = "/VO/Apollo_0078",
+					{ Cue = "/VO/Hestia_0078",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Facing a three-headed dogs, eh Zagzag. Well, I'll offer you a bit of informational poetry. {#DialogueItalicFormat} Um-um {#PreviousFormat}. “The trick with any beast is ter know how to calms 'em. Jus” play “im a bit o” music an' he'll go straight ter sleep—'" },
 				},
-				ApolloLowHealth01 =
+				HestiaLowHealth01 =
 				{
-					Name = "ApolloLowHealth01",
+					Name = "HestiaLowHealth01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredMaxHealthFraction = 0.20,
 					RequiredMaxLastStands = 1,
 	
-					{ Cue = "/VO/Apollo_0082",
+					{ Cue = "/VO/Hestia_0082",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Emote = "PortraitEmoteSurprise",
 						Text = "{#DialogueItalicFormat} Oh {#PreviousFormat}, that must hurt. Like really, really hurt. I don't think it will make the difference this time, but this is better than nothing." },
 				},
-				ApolloLowHealth02 =
+				HestiaLowHealth02 =
 				{
-					Name = "ApolloLowHealth02",
+					Name = "HestiaLowHealth02",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredMaxHealthFraction = 0.15,
 					RequiredMaxLastStands = 1,
 	
-					{ Cue = "/VO/Apollo_0083",
+					{ Cue = "/VO/Hestia_0083",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I see my healing power would be very useful to you right now. You are just a bit too far away for me to use it. I can manage to give you this instead thought." },
 				},
-				ApolloLegendaryPickUp01 =
+				HestiaLegendaryPickUp01 =
 				{
-					Name = "ApolloLegendaryPickUp01",
+					Name = "HestiaLegendaryPickUp01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloGift01" },
+					RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift01" },
 					ValuableUpgradeInRoom = {
 						AllAtLeastRarity = "Rare",
 						HasAtLeastRarity = "Epic",
 					},
-					{ Cue = "/VO/Apollo_0081",
+					{ Cue = "/VO/Hestia_0081",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I gathered all my divine power to give you this blessing, Zagzag. Don't let it go to waste. {#DialogueItalicFormat} Yawn {#PreviousFormat}, I get to take a small nap. You got this." },
 				},
@@ -3304,386 +2070,386 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			PickupTextLineSets =
 			{
-				ApolloFirstPickUp =
+				HestiaFirstPickUp =
 				{
-					Name = "ApolloFirstPickUp",
+					Name = "HestiaFirstPickUp",
 					PlayOnce = true,
 					RequiredTextLines = { "AthenaFirstPickUp", "ArtemisFirstPickUp", },
 					{ Cue = "/VO/ZagreusField_4800", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 4.23 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
 						Text = "This presence... It feels like Artemis, but something is different... In the name of Hades! Olympus! I accept this message." },
-					{ Cue = "/VO/Apollo_0001",
+					{ Cue = "/VO/Hestia_0001",
 						PortraitExitWait = 1.25,
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						UseEventEndSound = true,
 						Text = "I come all this way to help you out and the first thing you do is confuse me with my sister? Not the best first impression, Cousin." },
 				},
-				ApolloMiscPickup01 =
+				HestiaMiscPickup01 =
 				{
-					Name = "ApolloMiscPickup01",
+					Name = "HestiaMiscPickup01",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0002",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0002",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Dangers and vile creatures are hiding where you are. This blessing will keep them away." },
 				},
-				ApolloMiscPickup02 =
+				HestiaMiscPickup02 =
 				{
-					Name = "ApolloMiscPickup02",
+					Name = "HestiaMiscPickup02",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0003",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0003",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Take my blessing, Cousin. It will light up your way to Olympus." },
 				},
-				ApolloMiscPickup03 =
+				HestiaMiscPickup03 =
 				{
-					Name = "ApolloMiscPickup03",
+					Name = "HestiaMiscPickup03",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					RequiredMaxHealthFraction = 0.75,
-					{ Cue = "/VO/Apollo_0004",
+					{ Cue = "/VO/Hestia_0004",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Are you still down there, Zagzag? Maybe this blessing is what's been missing to get you out!" },
 				},
-				ApolloMiscPickup04 =
+				HestiaMiscPickup04 =
 				{
-					Name = "ApolloMiscPickup04",
+					Name = "HestiaMiscPickup04",
 					Priority = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0005",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0005",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Only those who are pure of heart can handle the light from my blessings. I knew you were one of us!" },
 				},
-				ApolloMiscPickup05 =
+				HestiaMiscPickup05 =
 				{
-					Name = "ApolloMiscPickup05",
+					Name = "HestiaMiscPickup05",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0006",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0006",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "A real musician knows when to persevere. And you, Zagzag, have a real musician heart." },
 				},
-				ApolloMiscPickup06 =
+				HestiaMiscPickup06 =
 				{
-					Name = "ApolloMiscPickup06",
+					Name = "HestiaMiscPickup06",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0007",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0007",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Tag! You're it. Now you have to come to me. Just the rules of the game, Zagzag. Maybe this will help you catch up." },
 				},
-				ApolloMiscPickup07 =
+				HestiaMiscPickup07 =
 				{
-					Name = "ApolloMiscPickup07",
+					Name = "HestiaMiscPickup07",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0008",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0008",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "By the fates! You are still going at it, Zagzag. I see you are well determined to come meet us then. Wish you all the best!" },
 				},
-				ApolloMiscPickup08 =
+				HestiaMiscPickup08 =
 				{
-					Name = "ApolloMiscPickup08",
+					Name = "HestiaMiscPickup08",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0009",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0009",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Let me play something for you, it might guide your way to us." },
 				},
-				ApolloMiscPickup09 =
+				HestiaMiscPickup09 =
 				{
-					Name = "ApolloMiscPickup09",
+					Name = "HestiaMiscPickup09",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0010",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0010",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "There you are, Zagzag. Are you hiding from me? I just wanted to give you this." },
 				},
-				ApolloMiscPickup10 =
+				HestiaMiscPickup10 =
 				{
-					Name = "ApolloMiscPickup10",
+					Name = "HestiaMiscPickup10",
 					Priority = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-					{ Cue = "/VO/Apollo_0011",
+					{ Cue = "/VO/Hestia_0011",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Let me light your path. It's the least I can do for a guy like you." },
 				},
-				ApolloMiscPickup11 =
+				HestiaMiscPickup11 =
 				{
-					Name = "ApolloMiscPickup11",
+					Name = "HestiaMiscPickup11",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0012",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0012",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\nMade a haiku just for you,\nGood luck escaping.{#PreviousFormat}" },
 				},
-				ApolloMiscPickup12 =
+				HestiaMiscPickup12 =
 				{
-					Name = "ApolloMiscPickup12",
+					Name = "HestiaMiscPickup12",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0013",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0013",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Trying to escape again, Zagzag? I believe the fates are set on keeping you down there. But then again, I've been wrong before. Against all odds, I believe in you, Cousin." },
 				},
-				ApolloMiscPickup13 =
+				HestiaMiscPickup13 =
 				{
-					Name = "ApolloMiscPickup13",
+					Name = "HestiaMiscPickup13",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0014",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0014",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know, Zagzag? Your perseverance inspires me! I mean, I'm writing songs like crazy up here. You have escape if you wanna hear them though!" },
 				},
-				ApolloMiscPickup14 =
+				HestiaMiscPickup14 =
 				{
-					Name = "ApolloMiscPickup14",
+					Name = "HestiaMiscPickup14",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					MinRunsSinceAnyTextLines = { TextLines = { "ApolloPostEpilogue01" }, Count = 3 },				
-					{ Cue = "/VO/Apollo_0015",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					MinRunsSinceAnyTextLines = { TextLines = { "HestiaPostEpilogue01" }, Count = 3 },				
+					{ Cue = "/VO/Hestia_0015",
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						Emote = "PortraitEmoteMusical",	
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Da-Da-Dum... Da-Da-Dum... Oh. Hello there. Sorry I was working on a song. I can probably finish it by the time you arrive. In the meantime, take this." },
 				},
-				ApolloMiscPickup15 =
+				HestiaMiscPickup15 =
 				{
-					Name = "ApolloMiscPickup15",
+					Name = "HestiaMiscPickup15",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloGift01" },
-					{ Cue = "/VO/Apollo_0016",
+					RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift01" },
+					{ Cue = "/VO/Hestia_0016",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Zagzag, did you know every sound can be transformed into music? Melody, rhythm, percussions. Maybe you can use that information to help you escape." },
 				},
-				ApolloMiscPickup16 =
+				HestiaMiscPickup16 =
 				{
-					Name = "ApolloMiscPickup16",
+					Name = "HestiaMiscPickup16",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0017",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0017",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Sometimes adversity is what you need to face in order to become successful. All the best, Zagzag." },
 				},
-				ApolloMiscPickup17 =
+				HestiaMiscPickup17 =
 				{
-					Name = "ApolloMiscPickup17",
+					Name = "HestiaMiscPickup17",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
-					{ Cue = "/VO/Apollo_0018",
+					RequiredTextLines = { "HestiaFirstPickUp" },
+					{ Cue = "/VO/Hestia_0018",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I keep giving you my finest blessings but I'm not seeing any results, Zagzag. Luckily for you, I'm willing to wait as long as you need." },
 				},
-				ApolloMiscPickup18 =
+				HestiaMiscPickup18 =
 				{
-					Name = "ApolloMiscPickup18",
+					Name = "HestiaMiscPickup18",
 					Priority = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-					{ Cue = "/VO/Apollo_0019",
+					{ Cue = "/VO/Hestia_0019",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I heard that you've never seen sunlight before! If you ever get out, take a moment to check it out, you'll see all the beautiful things the world has to offer up here." },
 				},
-				ApolloMiscPickup19 =
+				HestiaMiscPickup19 =
 				{
-					Name = "ApolloMiscPickup19",
+					Name = "HestiaMiscPickup19",
 					Priority = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredTextLines = { "HestiaFirstPickUp" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-					{ Cue = "/VO/Apollo_0020",
+					{ Cue = "/VO/Hestia_0020",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Is your father keeping you in his realm, Zagzag. Sometimes fathers are strict, but we must show them we are our own gods. You and I are very alike, Zagzag. The difference between us is I usually succeed in what I start. You should probably give that a try sometime." },
 				},
 	
 				-- shorter acknowledgments
-				ApolloMiscPickup20 =
+				HestiaMiscPickup20 =
 				{
-					Name = "ApolloMiscPickup20",
+					Name = "HestiaMiscPickup20",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0021",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0021",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I knew you would come, Zagzag. I prepared this just for the occasion." },
 				},
-				ApolloMiscPickup21 =
+				HestiaMiscPickup21 =
 				{
-					Name = "ApolloMiscPickup21",
+					Name = "HestiaMiscPickup21",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0022",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0022",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I can see you've got the music in you, Cousin. It's just a matter of using it the right way." },
 				},
-				ApolloMiscPickup22 =
+				HestiaMiscPickup22 =
 				{
-					Name = "ApolloMiscPickup22",
+					Name = "HestiaMiscPickup22",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0023",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0023",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "With this blessing, Zagzag. The light shall burn your enemies." },
 				},
-				ApolloMiscPickup23 =
+				HestiaMiscPickup23 =
 				{
-					Name = "ApolloMiscPickup23",
+					Name = "HestiaMiscPickup23",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0024",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0024",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Like I always say. Where words failed, music thrives." },
 				},
-				ApolloMiscPickup24 =
+				HestiaMiscPickup24 =
 				{
-					Name = "ApolloMiscPickup24",
+					Name = "HestiaMiscPickup24",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0025",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0025",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Music brings people together, Zagzag. Just like how this blessing will help bring you to us!" },
 				},
-				ApolloMiscPickup25 =
+				HestiaMiscPickup25 =
 				{
-					Name = "ApolloMiscPickup25",
+					Name = "HestiaMiscPickup25",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0026",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0026",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Music is an escape for many mortals, and it'll be your escape too! ...From your father's realm, I mean." },
 				},
-				ApolloMiscPickup26 =
+				HestiaMiscPickup26 =
 				{
-					Name = "ApolloMiscPickup26",
+					Name = "HestiaMiscPickup26",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0027",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0027",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Mortals come and go like the wind, but music has always been there for me." },
 				},
-				ApolloMiscPickup27 =
+				HestiaMiscPickup27 =
 				{
-					Name = "ApolloMiscPickup27",
+					Name = "HestiaMiscPickup27",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0028",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0028",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "This blessing will light your way to us. Just get here quickly before it fades." },
 				},
-				ApolloMiscPickup28 =
+				HestiaMiscPickup28 =
 				{
-					Name = "ApolloMiscPickup28",
+					Name = "HestiaMiscPickup28",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0029",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0029",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You might not be able to see the sun from down there, but you have my light right here." },
 				},
-				ApolloMiscPickup29 =
+				HestiaMiscPickup29 =
 				{
-					Name = "ApolloMiscPickup29",
+					Name = "HestiaMiscPickup29",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0030",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0030",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "As you work to create light for others, you naturally light your own way. Keep going, Cousin." },
 				},
 	
-				ApolloMiscPickup30 =
+				HestiaMiscPickup30 =
 				{
-					Name = "ApolloMiscPickup30",
+					Name = "HestiaMiscPickup30",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0031",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0031",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Hope is being able to always see the light despite the darkness." },
 				},
-				ApolloMiscPickup31 =
+				HestiaMiscPickup31 =
 				{
-					Name = "ApolloMiscPickup31",
+					Name = "HestiaMiscPickup31",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0032",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0032",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "History is but the unrolled scroll of prophecy. Your fate is yours to write, Zagzag." },
 				},
-				ApolloMiscPickup32 =
+				HestiaMiscPickup32 =
 				{
-					Name = "ApolloMiscPickup32",
+					Name = "HestiaMiscPickup32",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0033",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0033",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I don't make mistakes. I make prophecies which immediately turn out to be wrong." },
 				},
-				ApolloMiscPickup33 =
+				HestiaMiscPickup33 =
 				{
-					Name = "ApolloMiscPickup33",
+					Name = "HestiaMiscPickup33",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0034",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0034",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
 				},
-				ApolloMiscPickup34 =
+				HestiaMiscPickup34 =
 				{
-					Name = "ApolloMiscPickup34",
+					Name = "HestiaMiscPickup34",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0035",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0035",
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						Emote = "PortraitEmoteMusical",	
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I am your sunshine~~\nYour only sunshine~~\nI give you blessings~~\nwhen skies are gray~~" },
 				},
-				ApolloMiscPickup35 =
+				HestiaMiscPickup35 =
 				{
-					Name = "ApolloMiscPickup35",
+					Name = "HestiaMiscPickup35",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0036",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0036",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Another ray of sunshine coming your way!" },
 				},
-				ApolloMiscPickup36 =
+				HestiaMiscPickup36 =
 				{
-					Name = "ApolloMiscPickup36",
+					Name = "HestiaMiscPickup36",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0037",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0037",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You've always got a friend in me, Zagzag. One day, we'll find each other." },
 				},
-				ApolloMiscPickup37 =
+				HestiaMiscPickup37 =
 				{
-					Name = "ApolloMiscPickup37",
+					Name = "HestiaMiscPickup37",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0038",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0038",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "When it comes down to it, it's quite simple, Zagzag. Just beat it. No one wants to be defeated!" },
 				},
-				ApolloMiscPickup38 =
+				HestiaMiscPickup38 =
 				{
-					Name = "ApolloMiscPickup38",
+					Name = "HestiaMiscPickup38",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0039",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0039",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I have given you all I can. You'll have to do the rest on your own." },
 				},
-				ApolloMiscPickup39 =
+				HestiaMiscPickup39 =
 				{
-					Name = "ApolloMiscPickup39",
+					Name = "HestiaMiscPickup39",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
-					{ Cue = "/VO/Apollo_0040",
+					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
+					{ Cue = "/VO/Hestia_0040",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You seem to be under a lot of pressure down there. I guess it really does split a family in two." },
 				},
@@ -3691,35 +2457,35 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			BoughtTextLines =
 			{
-				ApolloLootBought01 =
+				HestiaLootBought01 =
 				{
-					Name = "ApolloLootBought01",
+					Name = "HestiaLootBought01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 	
-					{ Cue = "/VO/Apollo_0095",
+					{ Cue = "/VO/Hestia_0095",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Stopping by Charon's shop, I see. This deal might be your best chance of escaping." },
 				},
-				ApolloLootBought02 =
+				HestiaLootBought02 =
 				{
-					Name = "ApolloLootBought02",
+					Name = "HestiaLootBought02",
 					PlayOnce = true,
 					ChanceToPlay = 0.33,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 	
-					{ Cue = "/VO/Apollo_0096",
+					{ Cue = "/VO/Hestia_0096",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know, I saw a vision of a sale coming soon. I'd say you got ripped off, but I know Charon doesn't do well with haggling." },
 				},
-				ApolloLootBought03 =
+				HestiaLootBought03 =
 				{
-					Name = "ApolloLootBought03",
+					Name = "HestiaLootBought03",
 					PlayOnce = true,
 					ChanceToPlay = 0.33,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 	
-					{ Cue = "/VO/Apollo_0097",
+					{ Cue = "/VO/Hestia_0097",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You didn't have to pay for my blessing, Zagzag. I would have helped you if you would just asked." },
 				},
@@ -3727,98 +2493,98 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			RejectionTextLines =
 			{
-				ApolloRejection01 =
+				HestiaRejection01 =
 				{
-					Name = "ApolloRejection01",
-					{ Cue = "/VO/Apollo_0098",
+					Name = "HestiaRejection01",
+					{ Cue = "/VO/Hestia_0098",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Did you just choose somebody else over me, Cousin? I guess you've decided to stay down there." },
 				},
-				ApolloRejection02 =
+				HestiaRejection02 =
 				{
-					Name = "ApolloRejection02",
-					{ Cue = "/VO/Apollo_0099",
+					Name = "HestiaRejection02",
+					{ Cue = "/VO/Hestia_0099",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know I can see what's going to happen, right? Let me just say you won't like what comes next." },
 				},
-				ApolloRejection03 =
+				HestiaRejection03 =
 				{
-					Name = "ApolloRejection03",
-					{ Cue = "/VO/Apollo_0100",
+					Name = "HestiaRejection03",
+					{ Cue = "/VO/Hestia_0100",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Man. The moment I thought we could jam together. Let's just hope this doesn't mark the end of our duet." },
 				},
-				ApolloRejection04 =
+				HestiaRejection04 =
 				{
-					Name = "ApolloRejection04",
-					{ Cue = "/VO/Apollo_0101",
+					Name = "HestiaRejection04",
+					{ Cue = "/VO/Hestia_0101",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Are you blind, Cousin? I hope you meant to choose me. Because, if not, what I am going to do is very justified." },
 				},
-				ApolloRejection05 =
+				HestiaRejection05 =
 				{
-					Name = "ApolloRejection05",
-					{ Cue = "/VO/Apollo_0102",
+					Name = "HestiaRejection05",
+					{ Cue = "/VO/Hestia_0102",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Are you serious, Cousin? Is it because I called you Zagzag? Because you just gave me a reason to keep using the nickname." },
 				},
-				ApolloRejection06 =
+				HestiaRejection06 =
 				{
-					Name = "ApolloRejection06",
-					{ Cue = "/VO/Apollo_0103",
+					Name = "HestiaRejection06",
+					{ Cue = "/VO/Hestia_0103",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Here I am, trying to help guide you out of your father's realm and this is the gratitude I get in return. Allow me to show you something else then." },
 				},
-				ApolloRejection07 =
+				HestiaRejection07 =
 				{
-					Name = "ApolloRejection07",
-					{ Cue = "/VO/Apollo_0104",
+					Name = "HestiaRejection07",
+					{ Cue = "/VO/Hestia_0104",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "No way. Even I couldn't see that one coming. But you know what, I don't think you'll see what's coming for you either." },
 				},
-				ApolloRejection08 =
+				HestiaRejection08 =
 				{
-					Name = "ApolloRejection08",
-					{ Cue = "/VO/Apollo_0105",
+					Name = "HestiaRejection08",
+					{ Cue = "/VO/Hestia_0105",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I don't think this was your first mistake, Cousin. But it might be your last." },
 				},
-				ApolloRejection09 =
+				HestiaRejection09 =
 				{
-					Name = "ApolloRejection09",
-					{ Cue = "/VO/Apollo_0106",
+					Name = "HestiaRejection09",
+					{ Cue = "/VO/Hestia_0106",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Let me sing you a song, Cousin. It's called “Zagreus dies once more”. It's very catchy." },
 				},
-				ApolloRejection10 =
+				HestiaRejection10 =
 				{
-					Name = "ApolloRejection10",
-					{ Cue = "/VO/Apollo_0107",
+					Name = "HestiaRejection10",
+					{ Cue = "/VO/Hestia_0107",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I can't believe you've done this, Cousin. I though we were friends." },
 				},
-				ApolloRejection11 =
+				HestiaRejection11 =
 				{
-					Name = "ApolloRejection11",
-					{ Cue = "/VO/Apollo_0108",
+					Name = "HestiaRejection11",
+					{ Cue = "/VO/Hestia_0108",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know what, I accept your decision. As long as you accept the decision I'm about to make." },
 				},
-				ApolloRejection12 =
+				HestiaRejection12 =
 				{
-					Name = "ApolloRejection12",
-					{ Cue = "/VO/Apollo_0109",
+					Name = "HestiaRejection12",
+					{ Cue = "/VO/Hestia_0109",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Seems like you have death wish. Wait, that's an excellent name for a band! Here, deal with these guys while I go write that down." },
@@ -3835,13 +2601,13 @@ OlympusTraitData.SeaChanteyTrait =
 					SuccessiveChanceToPlay = 0.33,
 					UsePlayerSource = true,
 	
-					-- Sorry, Apollo.
+					-- Sorry, Hestia.
 					{ Cue = "/VO/ZagreusField_4801" },
-					-- Nothing personal, Lord Apollo.
+					-- Nothing personal, Lord Hestia.
 					{ Cue = "/VO/ZagreusField_4802" },
-					-- Forgive me, Apollo.
+					-- Forgive me, Hestia.
 					{ Cue = "/VO/ZagreusField_4803" },
-					-- Apologies, Lord Apollo.
+					-- Apologies, Lord Hestia.
 					{ Cue = "/VO/ZagreusField_4804" },
 				},
 				[2] = GlobalVoiceLines.GodRejectedVoiceLines,
@@ -3849,99 +2615,99 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			MakeUpTextLines =
 			{
-				ApolloMakeUp01 =
+				HestiaMakeUp01 =
 				{
-					Name = "ApolloMakeUp01",
+					Name = "HestiaMakeUp01",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0110",
+					{ Cue = "/VO/Hestia_0110",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I sense you've come back to the light, Zagzag. Sorry, I just had to make sure." },
 				},
-				ApolloMakeUp02 =
+				HestiaMakeUp02 =
 				{
-					Name = "ApolloMakeUp02",
+					Name = "HestiaMakeUp02",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0111",
+					{ Cue = "/VO/Hestia_0111",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I knew this moment would come. Don't worry, Zagzag. No hard feeling." },
 				},
-				ApolloMakeUp03 =
+				HestiaMakeUp03 =
 				{
-					Name = "ApolloMakeUp03",
+					Name = "HestiaMakeUp03",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0112",
+					{ Cue = "/VO/Hestia_0112",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Why are we fighting again, Zagzag? You know what I forgive you. Just don't do it again." },
 				},
-				ApolloMakeUp04 =
+				HestiaMakeUp04 =
 				{
-					Name = "ApolloMakeUp04",
+					Name = "HestiaMakeUp04",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0113",
+					{ Cue = "/VO/Hestia_0113",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Everybody stops! I've got a song in my head and I need to go write it down. We are done here." },
 				},
-				ApolloMakeUp05 =
+				HestiaMakeUp05 =
 				{
-					Name = "ApolloMakeUp05",
+					Name = "HestiaMakeUp05",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0114",
+					{ Cue = "/VO/Hestia_0114",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Wait a second... You didn't die. Oh, I think that might actually happen later. Um, yea. My bad. Carry on." },
 				},
-				ApolloMakeUp06 =
+				HestiaMakeUp06 =
 				{
-					Name = "ApolloMakeUp06",
+					Name = "HestiaMakeUp06",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0115",
+					{ Cue = "/VO/Hestia_0115",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know respect is like a duet, Zagzag. I am willing to play my part, if you play yours." },
 				},
-				ApolloMakeUp07 =
+				HestiaMakeUp07 =
 				{
-					Name = "ApolloMakeUp07",
+					Name = "HestiaMakeUp07",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0116",
+					{ Cue = "/VO/Hestia_0116",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Friendship is all about its lows and its highs. That was our low,  so how about a high?" },
 				},
-				ApolloMakeUp08 =
+				HestiaMakeUp08 =
 				{
-					Name = "ApolloMakeUp08",
+					Name = "HestiaMakeUp08",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0117",
+					{ Cue = "/VO/Hestia_0117",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "You know what? Music is all about experimentation, and I'm sure that's what you were doing. I forgive you." },
 				},
-				ApolloMakeUp09 =
+				HestiaMakeUp09 =
 				{
-					Name = "ApolloMakeUp09",
+					Name = "HestiaMakeUp09",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0118",
+					{ Cue = "/VO/Hestia_0118",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "{#DialogueItalicFormat} Hahaha {#PreviousFormat}, you almost had me there for a second, Zagzag! Now, let's get back to the matter at hand." },
 				},
-				ApolloMakeUp10 =
+				HestiaMakeUp10 =
 				{
-					Name = "ApolloMakeUp10",
+					Name = "HestiaMakeUp10",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0119",
+					{ Cue = "/VO/Hestia_0119",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I don't want to brag, but if our fight was in my domain, you'd be pretty sorry right now." },
 				},
-				ApolloMakeUp11 =
+				HestiaMakeUp11 =
 				{
-					Name = "ApolloMakeUp11",
+					Name = "HestiaMakeUp11",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0120",
+					{ Cue = "/VO/Hestia_0120",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Alright, I know when something has gone on long enough. You win this round, Zagzag, and your prize is right here!" },
 				},
-				ApolloMakeUp12 =
+				HestiaMakeUp12 =
 				{
-					Name = "ApolloMakeUp12",
+					Name = "HestiaMakeUp12",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					{ Cue = "/VO/Apollo_0121",
+					{ Cue = "/VO/Hestia_0121",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Let's put the past in the past. The show must go on, Zagzag." },
 				},
@@ -3950,110 +2716,110 @@ OlympusTraitData.SeaChanteyTrait =
 			GiftTextLineSets =
 			{
 				-- gives gift in exchange
-				ApolloGift01 =
+				HestiaGift01 =
 				{
-					Name = "ApolloGift01",
+					Name = "HestiaGift01",
 					PlayOnce = true,
 					{ Cue = "/VO/ZagreusHome_3761", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "Lord Apollo, you've shown me the way. Please accept this offering." },
-					{ Cue = "/VO/Apollo_0122",
+						Text = "Lord Hestia, you've shown me the way. Please accept this offering." },
+					{ Cue = "/VO/Hestia_0122",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I'd be lying if I said I didn't see that one coming. That's why I prepared this gift back. Now, we're even." },
 				},
-				ApolloGift02 =
+				HestiaGift02 =
 				{
-					Name = "ApolloGift02",
+					Name = "HestiaGift02",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloGift01" },
+					RequiredTextLines = { "HestiaGift01" },
 					{ Cue = "/VO/ZagreusHome_3762", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "Lord Apollo, your light is very welcome in this darker part of the world. I must thank you for this." },
-					{ Cue = "/VO/Apollo_0123",
+						Text = "Lord Hestia, your light is very welcome in this darker part of the world. I must thank you for this." },
+					{ Cue = "/VO/Hestia_0123",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "It must be hard to find such good Nectar where you are. I truly appreciate the gesture. Any future gift is completely unnecessary." },
 				},
-				ApolloGift03 =
+				HestiaGift03 =
 				{
-					Name = "ApolloGift03",
+					Name = "HestiaGift03",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloGift02" },
+					RequiredTextLines = { "HestiaGift02" },
 					{ Cue = "/VO/ZagreusHome_3763", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "I know you said to stop this, Lord Apollo. This is just a little something for all your help." },
-					{ Cue = "/VO/Apollo_0124",
+						Text = "I know you said to stop this, Lord Hestia. This is just a little something for all your help." },
+					{ Cue = "/VO/Hestia_0124",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Yet another gift? You know what is an even better gift you could give me, Zagzag? Coming to visit us sometime soon." },
 				},
-				ApolloGift04 =
+				HestiaGift04 =
 				{
-					Name = "ApolloGift04",
+					Name = "HestiaGift04",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloGift03" },
+					RequiredTextLines = { "HestiaGift03" },
 					{ Cue = "/VO/ZagreusHome_3764", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "I couldn't escape like you wanted, but this here could help you wait until I succeed. Thank you, Lord Apollo." },
-					{ Cue = "/VO/Apollo_0125",
+						Text = "I couldn't escape like you wanted, but this here could help you wait until I succeed. Thank you, Lord Hestia." },
+					{ Cue = "/VO/Hestia_0125",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Well, until we meet, this could do the trick. But seriously, think a little more about yourself and... Just focus on escaping." },
 				},
-				ApolloGift05 =
+				HestiaGift05 =
 				{
-					Name = "ApolloGift05",
+					Name = "HestiaGift05",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloGift04" },
+					RequiredTextLines = { "HestiaGift04" },
 					{ Cue = "/VO/ZagreusHome_3765", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "Your blessings have made me grasp life more, and I wanted to show my appreciation towards you, Lord Apollo. It's all I can give you for now." },
-					{ Cue = "/VO/Apollo_0126",
+						Text = "Your blessings have made me grasp life more, and I wanted to show my appreciation towards you, Lord Hestia. It's all I can give you for now." },
+					{ Cue = "/VO/Hestia_0126",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "How do you have so much of these? Isn't Nectar rare in your realm? I mean I saw it coming. Just wow." },
 				},
-				ApolloGift06 =
+				HestiaGift06 =
 				{
-					Name = "ApolloGift06",
+					Name = "HestiaGift06",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloGift05" },
+					RequiredTextLines = { "HestiaGift05" },
 					{ Cue = "/VO/ZagreusHome_3766", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "As a gesture of appreciation, this gift is for you, Lord Apollo. I hope you accept this humble offering." },
-					{ Cue = "/VO/Apollo_0127",
+						Text = "As a gesture of appreciation, this gift is for you, Lord Hestia. I hope you accept this humble offering." },
+					{ Cue = "/VO/Hestia_0127",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I will take this, but no more Nectar, Zagzag. I mean it. Just escape. You have your place here. And everybody is rooting for you." },
 				},
-				ApolloGift07 =
+				HestiaGift07 =
 				{
-					Name = "ApolloGift07",
+					Name = "HestiaGift07",
 					PlayOnce = true,
-					RequiredTextLines = { "ApolloGift06" },
+					RequiredTextLines = { "HestiaGift06" },
 					{ Cue = "/VO/ZagreusHome_3767", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 						PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 						PostLineFunctionName = "BoonInteractPresentation",
-						Text = "I know you said no more Nectar, Lord Apollo. But I must show you what you mean to me. Here's something you probably already have up there... But it's important for me you have this." },
-					{ Cue = "/VO/Apollo_0128",
+						Text = "I know you said no more Nectar, Lord Hestia. But I must show you what you mean to me. Here's something you probably already have up there... But it's important for me you have this." },
+					{ Cue = "/VO/Hestia_0128",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
-						PostLineFunctionArgs = { Text = "NPC_Apollo_01", Icon = "Keepsake_ApolloSticker_Max" },
+						PostLineFunctionArgs = { Text = "NPC_Hestia_01", Icon = "Keepsake_HestiaSticker_Max" },
 						Text = "Is that Ambrosia? How did you find this? I don't know what to say beside thank you my friend. I just hope we can see each other soon. So, I may share it with you. For now, thought, have this. And take care of yourself." },
 				},
 			},
@@ -4064,11 +2830,11 @@ OlympusTraitData.SeaChanteyTrait =
 				PreLineWait = 1.0,
 				PlayFromTarget = true,
 	
-				-- This is too much, Lord Apollo.
+				-- This is too much, Lord Hestia.
 				{ Cue = "/VO/ZagreusField_4812" },
 			},
 	
-			ShoutActivationSound = "/SFX/LyreGood", -- "VO/ApolloWrathLight"
+			ShoutActivationSound = "/SFX/LyreGood", -- "VO/HestiaWrathLight"
 			ShoutVoiceLines =
 			{
 				Queue = "Interrupt",
@@ -4076,43 +2842,43 @@ OlympusTraitData.SeaChanteyTrait =
 					BreakIfPlayed = true,
 					RandomRemaining = true,
 					RequiredKillEnemiesFound = true,
-					RequiredFalseSpurnedGodName = "ApolloUpgrade",
+					RequiredFalseSpurnedGodName = "HestiaUpgrade",
 	
 					-- Put your fate in the light!
-					{ Cue = "/VO/Apollo_0129" },
+					{ Cue = "/VO/Hestia_0129" },
 					-- Do, Re, Mi! Your end I see!
-					{ Cue = "/VO/Apollo_0130" },
+					{ Cue = "/VO/Hestia_0130" },
 					-- La, Si, Do! Your pain will grow!
-					{ Cue = "/VO/Apollo_0164" },
+					{ Cue = "/VO/Hestia_0164" },
 					-- You're in Treble now!
-					{ Cue = "/VO/Apollo_0131" },
+					{ Cue = "/VO/Hestia_0131" },
 					-- Back for another round?
-					{ Cue = "/VO/Apollo_0132" },
+					{ Cue = "/VO/Hestia_0132" },
 					-- Better keep up with the rhythm!
-					{ Cue = "/VO/Apollo_0133" },
+					{ Cue = "/VO/Hestia_0133" },
 					-- Didn't I hear someone ask for an encore?
-					{ Cue = "/VO/Apollo_0134", RequiredMinKillEnemies = 2 },
+					{ Cue = "/VO/Hestia_0134", RequiredMinKillEnemies = 2 },
 					-- I'll never get tired of this sound.
-					{ Cue = "/VO/Apollo_0135", RequiredMinKillEnemies = 2 },
+					{ Cue = "/VO/Hestia_0135", RequiredMinKillEnemies = 2 },
 				},
 				{
 					BreakIfPlayed = true,
 					PlayFromTarget = true,
 					RandomRemaining = true,
 					RequiredKillEnemiesFound = true,
-					RequiredSpurnedGodName = "ApolloUpgrade",
+					RequiredSpurnedGodName = "HestiaUpgrade",
 					RequireCurrentEncounterNotComplete = true,
 	
 					-- Is it because I called you Zagzag?
-					{ Cue = "/VO/Apollo_0136" },
+					{ Cue = "/VO/Hestia_0136" },
 					-- You have chosen... Poorly!
-					{ Cue = "/VO/Apollo_0137" },
+					{ Cue = "/VO/Hestia_0137" },
 					-- Let's go then! Double Time!
-					{ Cue = "/VO/Apollo_0138" },
+					{ Cue = "/VO/Hestia_0138" },
 					-- You were the chosen one!
-					{ Cue = "/VO/Apollo_0139" },
+					{ Cue = "/VO/Hestia_0139" },
 					-- You were my cousin, Zagzag. I loved you.
-					{ Cue = "/VO/Apollo_0140" },
+					{ Cue = "/VO/Hestia_0140" },
 				},
 			},
 	
@@ -4122,16 +2888,16 @@ OlympusTraitData.SeaChanteyTrait =
 				RandomRemaining = true,
 				PreLineWait = 1.05,
 				SuccessiveChanceToPlay = 0.33,
-				CooldownName = "SaidApolloRecently",
+				CooldownName = "SaidHestiaRecently",
 				CooldownTime = 40,
 				RequiresLastUpgradeSwapped = true,
 				UsePlayerSource = true,
 	
-				-- Great trade, Lord Apollo.
+				-- Great trade, Lord Hestia.
 				{ Cue = "/VO/ZagreusField_4813" },
-				-- Lord Apollo, show me the path.
+				-- Lord Hestia, show me the path.
 				{ Cue = "/VO/ZagreusField_4814" },
-				-- Lord Apollo, I agree with the terms.
+				-- Lord Hestia, I agree with the terms.
 				{ Cue = "/VO/ZagreusField_4815" },
 			},
 	
@@ -4143,11 +2909,11 @@ OlympusTraitData.SeaChanteyTrait =
 				NoTarget = true,
 	
 				-- This is what happens to those who succumb to the darkness.
-				{ Cue = "/VO/Apollo_0141" },
+				{ Cue = "/VO/Hestia_0141" },
 				-- Hear that? Silence shall be your only music.
-				{ Cue = "/VO/Apollo_0142" },
+				{ Cue = "/VO/Hestia_0142" },
 				-- I already knew this choice would be your last.
-				{ Cue = "/VO/Apollo_0143" },
+				{ Cue = "/VO/Hestia_0143" },
 			},
 	
 			BlindBoxOpenedVoiceLines =
@@ -4155,587 +2921,210 @@ OlympusTraitData.SeaChanteyTrait =
 				RandomRemaining = true,
 				BreakIfPlayed = true,
 				PreLineWait = 0.3,
-				Source = { SubtitleColor = Color.ApolloVoice },
+				Source = { SubtitleColor = Color.HestiaVoice },
 				TriggerCooldowns = { "ZagreusBoonTakenSpeech" },
 	
 				-- You want to start a band?
-				{ Cue = "/VO/Apollo_0144" },
+				{ Cue = "/VO/Hestia_0144" },
 				-- You've got this!
-				{ Cue = "/VO/Apollo_0145" },
+				{ Cue = "/VO/Hestia_0145" },
 				-- This is my divine blessing.
-				{ Cue = "/VO/Apollo_0146" },
+				{ Cue = "/VO/Hestia_0146" },
 				-- My light will guide you!
-				{ Cue = "/VO/Apollo_0147" },
+				{ Cue = "/VO/Hestia_0147" },
 				-- Get ready to jam.
-				{ Cue = "/VO/Apollo_0148" },
+				{ Cue = "/VO/Hestia_0148" },
 			},
 	}
 	-- Duo PickupLines	
-	OlympusLootData.ZeusUpgrade.DuoPickupTextLineSets.ZeusWithApollo01 = {
-		Name = "ZeusWithApollo01",
+	OlympusLootData.ZeusUpgrade.DuoPickupTextLineSets.ZeusWithHestia01 = {
+		Name = "ZeusWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "MasterBoltTrait",
 		{ Cue = "/VO/Zeus_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Is that the bow I gave to Artemis and you, Young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
-		{ Cue = "/VO/Apollo_0049",
+		{ Cue = "/VO/Hestia_0049",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "Of course, I never leave without it, Father. Perhabs we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
 	}
-	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithApollo01 = {
-		Name = "PoseidonWithApollo01",
+	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithHestia01 = {
+		Name = "PoseidonWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "SeaChanteyTrait",
 		{ Cue = "/VO/Poseidon_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Hey ho, isn't it another one of my Nephew! Let's sing a sailor's song." },
-		{ Cue = "/VO/Apollo_0050",
+		{ Cue = "/VO/Hestia_0050",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "As much as I would love that, Uncle, I am sure Zagzag here would appreciate something more... tangible? Let's keep the singing for when he arrives on Olympus." },
 	}
-	OlympusLootData.AthenaUpgrade.DuoPickupTextLineSets.AthenaWithApollo01 = {
-		Name = "AthenaWithApollo01",
+	OlympusLootData.AthenaUpgrade.DuoPickupTextLineSets.AthenaWithHestia01 = {
+		Name = "AthenaWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Athena_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "I see. You are helping Zagreus as well, Step-brother. For someone who claims to be faster than Hermes, you took your sweet time." },
-		{ Cue = "/VO/Apollo_0051",
+		{ Cue = "/VO/Hestia_0051",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "You know what, step-sister, just because I appreciate the finer things in life doesn't mean I want to help him any less than you do. And help him we shall!" },
 	}
-	OlympusLootData.AresUpgrade.DuoPickupTextLineSets.AresWithApollo01 = {
-		Name = "AresWithApollo01",
+	OlympusLootData.AresUpgrade.DuoPickupTextLineSets.AresWithHestia01 = {
+		Name = "AresWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Ares_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "My kin, I wish to help you once more, but in order to not fail this time, Apollo here will help me with his foresight. There's no failing this time." },
-		{ Cue = "/VO/Apollo_0052",
+			Text = "My kin, I wish to help you once more, but in order to not fail this time, Hestia here will help me with his foresight. There's no failing this time." },
+		{ Cue = "/VO/Hestia_0052",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "Um, Brother... I really don't think my Foresight is an instrument to be used. How about we try working together instead?  {#DialogueItalicFormat} Urgh, {#PreviousFormat}  do you see what I put up with to try to help you, Zagzag? You owe me one." },
 	}
-	OlympusLootData.AphroditeUpgrade.DuoPickupTextLineSets.AphroditeWithApollo01 = {
-		Name = "AphroditeWithApollo01",
+	OlympusLootData.AphroditeUpgrade.DuoPickupTextLineSets.AphroditeWithHestia01 = {
+		Name = "AphroditeWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Aphrodite_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Well, lovely as ever, Apollo. From all my relatives, you are by far the only one to understand beauty and perfection." },
-		{ Cue = "/VO/Apollo_0053",
+			Text = "Well, lovely as ever, Hestia. From all my relatives, you are by far the only one to understand beauty and perfection." },
+		{ Cue = "/VO/Hestia_0053",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}! Well thank you, Aphrodite. You are not too bad yourself. Let's help Zagzag here step up to our league." },
 	}
-	OlympusLootData.ArtemisUpgrade.DuoPickupTextLineSets.ArtemisWithApollo01 = {
-		Name = "ArtemisWithApollo01",
+	OlympusLootData.ArtemisUpgrade.DuoPickupTextLineSets.ArtemisWithHestia01 = {
+		Name = "ArtemisWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Artemis_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Apollo! How many times did I ask you not to include me in any forms of get together! {#DialogueItalicFormat} Arrg {#PreviousFormat}! I'll make an exception, only because it's Zagreus, but it's the last time." },
-		{ Cue = "/VO/Apollo_0054",
+			Text = "Hestia! How many times did I ask you not to include me in any forms of get together! {#DialogueItalicFormat} Arrg {#PreviousFormat}! I'll make an exception, only because it's Zagreus, but it's the last time." },
+		{ Cue = "/VO/Hestia_0054",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "Oh, is my sister going soft? Is she ready to have a social life? I think I found her weak spot, Zagzag. Let me thank you with this!" },
 	}
-	OlympusLootData.DionysusUpgrade.DuoPickupTextLineSets.DionysusWithApollo01 = {
-		Name = "DionysusWithApollo01",
+	OlympusLootData.DionysusUpgrade.DuoPickupTextLineSets.DionysusWithHestia01 = {
+		Name = "DionysusWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Dionysus_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Hey Zag, Apollo helped me prepare this awesome welcome party for you. We hope you can get here in time." },
-		{ Cue = "/VO/Apollo_0055",
+			Text = "Hey Zag, Hestia helped me prepare this awesome welcome party for you. We hope you can get here in time." },
+		{ Cue = "/VO/Hestia_0055",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "Bad news, Brother. My foresight tells me he won't make it here in time. Here, we can try sharing a bit of the party with him through a blessing. How does that sound, Zagzag?" },
 	}
-	OlympusLootData.DemeterUpgrade.DuoPickupTextLineSets.DemeterWithApollo01 = {
-		Name = "DemeterWithApollo01",
+	OlympusLootData.DemeterUpgrade.DuoPickupTextLineSets.DemeterWithHestia01 = {
+		Name = "DemeterWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Demeter_0371",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Since Apollo is here, I figured we must help you, young Zagreus. Even if Apollo's flare is a bit much for me." },
-		{ Cue = "/VO/Apollo_0056",
+			Text = "Since Hestia is here, I figured we must help you, young Zagreus. Even if Hestia's flare is a bit much for me." },
+		{ Cue = "/VO/Hestia_0056",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
 			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag we'll do what it takes to help you." },
 	}
 	-- Duo LootData	
-	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
-	{
-		OneFromEachSet =
-		{
-			{ "ApolloShoutTrait" },
-			{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
-		}
-	}
-	OlympusLootData.AresUpgrade.LinkedUpgrades.WarSongTrait = 
-	{
-		OneFromEachSet =
-		{
-			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
-			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
-		}
-	}
-	OlympusLootData.ZeusUpgrade.LinkedUpgrades.MasterBoltTrait = 
-	{
-		OneFromEachSet = 
-		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait" },
-			{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusRangedTrait", "PerfectDashBoltTrait"},
-		}
-	}
-	OlympusLootData.AphroditeUpgrade.LinkedUpgrades.HyacinthTrait = 
-	{
-		OneFromEachSet =
-		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
-			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
-		}
-	}
-	OlympusLootData.DemeterUpgrade.LinkedUpgrades.BlindDurationTrait = 
-	{
-		OneFromEachSet =
-		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
-			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait" }
-		}
-	}	
-	OlympusLootData.AthenaUpgrade.LinkedUpgrades.DamageReduceDistanceTrait = 
-	{
-		OneFromEachSet =
-		{
-			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
-			{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
-		}
-	}
-	OlympusLootData.PoseidonUpgrade.LinkedUpgrades.SeaChanteyTrait = 
-	{
-		OneFromEachSet =
-		{
-			{ "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait", "ApolloHealTrait"},
-			{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
-		}
-	}
+	
 	-- Other gods modification
 	-- AthenaUpgrade
-	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "ApolloFirstPickUp")
+	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "HestiaFirstPickUp")
 	
 	-- HermesUpgrade
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredFalseGodLoots, "ApolloUpgrade")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredOneOfTraits, "ForceApolloBoonTrait")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredFalseGodLoots, "ApolloUpgrade")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredOneOfTraits, "ForceApolloBoonTrait")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredFalseGodLoots, "ApolloUpgrade")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredOneOfTraits, "ForceApolloBoonTrait")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredFalseGodLoots, "ApolloUpgrade")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredOneOfTraits, "ForceApolloBoonTrait")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredFalseGodLoots, "ApolloUpgrade")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredOneOfTraits, "ForceApolloBoonTrait")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredMinAnyTextLines.TextLines, "HermesExpectingApollo01")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredFalseGodLoots, "ApolloUpgrade")
-	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredOneOfTraits, "ForceApolloBoonTrait")
+	--[[table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredMinAnyTextLines.TextLines, "HermesExpectingHestia01")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredFalseGodLoots, "HestiaUpgrade")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian01.RequiredOneOfTraits, "ForceHestiaBoonTrait")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredMinAnyTextLines.TextLines, "HermesExpectingHestia01")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredFalseGodLoots, "HestiaUpgrade")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian02.RequiredOneOfTraits, "ForceHestiaBoonTrait")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredMinAnyTextLines.TextLines, "HermesExpectingHestia01")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredFalseGodLoots, "HestiaUpgrade")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian03.RequiredOneOfTraits, "ForceHestiaBoonTrait")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredMinAnyTextLines.TextLines, "HermesExpectingHestia01")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredFalseGodLoots, "HestiaUpgrade")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian04.RequiredOneOfTraits, "ForceHestiaBoonTrait")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredMinAnyTextLines.TextLines, "HermesExpectingHestia01")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredFalseGodLoots, "HestiaUpgrade")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian05.RequiredOneOfTraits, "ForceHestiaBoonTrait")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredMinAnyTextLines.TextLines, "HermesExpectingHestia01")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredFalseGodLoots, "HestiaUpgrade")
+	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredOneOfTraits, "ForceHestiaBoonTrait")]]
 	
-	OlympusLootData.HermesUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingApollo01 =
+	--[[OlympusLootData.HermesUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingHestia01 =
 	{
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 		MinRunsSinceSquelchedHermes = ConstantsData.SquelchedHermesRunCount,
 		RequiredTextLines = { "HermesFirstPickUp" },
-		RequiredFalseGodLoot = "ApolloUpgrade",
-		RequiredTrait = "ForceApolloBoonTrait",
+		RequiredFalseGodLoot = "HestiaUpgrade",
+		RequiredTrait = "ForceHestiaBoonTrait",
 		EndVoiceLines = GlobalVoiceLines.RushedHermesVoiceLines,
 	
 		{ Cue = "/VO/Hermes_0240",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-			Text = "Some say Apollo is faster than me. Well, here's your proof that I am the fastest among us, Boss!" },
-	}
+			Text = "Some say Hestia is faster than me. Well, here's your proof that I am the fastest among us, Boss!" },
+	}]]
 	
 	-- Gift Section    
 	local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 	local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-	table.insert(OlympusGiftOrdering, 20, "ForceApolloBoonTrait")
+	table.insert(OlympusGiftOrdering, 21, "ForceHestiaBoonTrait")
 	
-	OlympusGiftData.ApolloUpgrade =
+	OlympusGiftData.HestiaUpgrade =
 	{
 		InheritFrom = {"DefaultGiftData"},
-		MaxedIcon = "Keepsake_Apollo_Max",
-		MaxedSticker = "Keepsake_ApolloSticker_Max",
-		MaxedRequirement = { RequiredTextLines = { "ApolloGift07" }, },
+		MaxedIcon = "Keepsake_Hestia_Max",
+		MaxedSticker = "Keepsake_HestiaSticker_Max",
+		MaxedRequirement = { RequiredTextLines = { "HestiaGift07" }, },
 		Value = 0,
 		Maximum = 7,
 		Locked = 7,
-		[1] = { Gift = "ForceApolloBoonTrait" },
+		[1] = { Gift = "ForceHestiaBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis03" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaAboutArtemis03" } }
 	}
 	-- FUNCTIONS
-	
-	-- Shout Functions
-	function ApolloShout()
-		FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-	end
-	function EndApolloBeam()
-		EndRamWeapons({ Id = CurrentRun.Hero.ObjectId })
-		if CurrentRun.Hero.SuperActive then
-			FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
-		end
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloStun" })
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloSpeed" })
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloForce" })
-		ExpireProjectiles({ Names = { "ApolloCastBeam" } })
-		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
-		SetPlayerUnphasing("ApolloBeam")
-		CurrentRun.Hero.SurgeActive = false
-		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
-		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
-	end
-
-	OnWeaponFired{ "ApolloBeamWeapon",
-		function(triggerArgs)
-			ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
-			SetPlayerPhasing("ApolloBeam")
-			CurrentRun.Hero.SurgeActive = true
-			SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
-			SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
-		end
-	}
-	ModUtil.Path.Wrap( "DamageEnemy", 
-		function(baseFunc, victim, triggerArgs)
-			local sourceWeaponData = triggerArgs.AttackerWeaponData
-			if HeroHasTrait("DazzledTrait") and RandomFloat(0,1) <= 1 then
-				local notifyName = "ApolloBlindExpired"..victim.ObjectId
-				--notify(notifyName)
-			end
-			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
-				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
-					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Reduced")) 		
-				else
-					if not victim.TimeOfLastDamage then
-						victim.TimeOfLastDamage = {}
-					end
-					victim.TimeOfLastDamage[sourceWeaponData.Name] = _worldTime	
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Solo")) 
-				end
-			end
-			baseFunc(victim, triggerArgs)
-		end
-	)
-	-- Blind Functions
-	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
-	ModUtil.Path.Wrap( "CheckOnHitPowers", 
-		function(baseFunc, victim, attacker, args)
-			local missRate = 0.4
-			if HeroHasTrait("MissChanceTrait") then
-				missRate = 0.65
-			end
-			--and CheckCooldown( "StunDisarm", 10.0 )  not HasEffect({Id = victim.ObjectId, EffectName = "StunDisarm" })
-
-			-- Enemies misses
-			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
-				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
-				PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
-				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
-				if not HeroHasTrait("BlindDurationTrait") then
-					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
-					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
-				end
-				args.DamageAmount = nil
-				args.AttackerWeaponData = nil		
-				args.IsInvulnerable = true	
-			-- Zagreus misses
-			elseif attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and attacker.ObjectId == CurrentRun.Hero.ObjectId then
-				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, {SkipShadow = true, Cooldown = 0.7} )
-				args.DamageAmount = nil
-				args.AttackerWeaponData = nil		
-				--args.IsInvulnerable = true	
-			else
-				baseFunc(victim, attacker, args)
-			end
-		end
-	)
-	
-	function ApolloBlindClear(triggerArgs)
-		if HeroHasTrait("BlindDurationTrait") then
-			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
-		end
-	end
-	-- Prophecy and Sight	
-	function AddRerollObol()
-		AddRerolls( 1, "RerollTrait", { Thread = false, Delay = 0.5 } )		
-		CurrentRun.RerollObolTracker = 0
-	end
-	ModUtil.Path.Wrap( "AddMoney", 
-		function(baseFunc, amount, source)
-			baseFunc(amount, source)	
-			if amount == nil or round( amount ) <= 0 then
-				return
-			end
-			local times = 0
-			if HeroHasTrait("RerollObolTrait") then
-				local count = GetTotalHeroTraitValue("ObolCount")
-				CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker + amount
-				times = math.floor(CurrentRun.RerollObolTracker/count);
-				if(times > 0) then
-					CurrentRun.RerollObolTracker = CurrentRun.RerollObolTracker - (times * count)
-				end
-			end
-			if(times > 0) then
-				AddRerolls( times, "RerollTrait", { Thread = false, Delay = 0.5 } )			
-			end
-		end
-	)
-	function AddRerollBoon()
-		AddRerolls( 1, "RerollTrait", { Thread = false, Delay = 0.5 } )		
-		CurrentRun.RerollBoonTracker = 0
-	end
-	ModUtil.Path.Wrap( "HandleLootPickup", 
-		function(baseFunc, currentRun, loot)	
-			local times = 0
-			if not (loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then				
-				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
-				local count = GetTotalHeroTraitValue("BoonCount")
-				times = math.floor(CurrentRun.RerollBoonTracker/count);
-				if(times > 0) then
-					CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
-				end
-			end
-			baseFunc(currentRun, loot)	
-			if(times > 0) then
-				AddRerolls( times, "RerollTrait", { Thread = false, Delay = 0.5 } )			
-			end
-		end
-	)
-	ModUtil.Path.Wrap( "AddTraitToHero", 
-	function(baseFunc, args)
-		if args.TraitData and args.TraitData.Name == "RerollBoonTrait" then
-			AddRerollBoon()
-		end
-		if args.TraitData and args.TraitData.Name == "RerollObolTrait" then
-			AddRerollObol()
-		end
-		baseFunc(args)
-	end)
-	-- Fountain Coin/Defense Functions
-	function FountainDefensePresentation()
-		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
-		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
-	end
-	
-	function ApolloMoney(args)
-		local amount = round(GetTotalHeroTraitValue("FountainCoinBonus"))
-		local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
-		amount = round( amount * moneyMultiplier )
-		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainCoinText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainCoinTrait", Amount = amount }})
-		thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = args.triggeredById, } )
-	end
-	
-	OnUsed{ "HealthFountain HealthFountainAsphodel HealthFountainElysium HealthFountainStyx",
-		function( triggerArgs )
-			wait(0.4)
-			local hasDamageBonus = false
-			local hasDefenseBonus = false
-			local hasCoinBonus = false
-			for k, traitData in pairs(CurrentRun.Hero.Traits) do
-				if traitData.FountainDamageBonus then
-					hasDamageBonus = true
-				end 
-				if traitData.FountainDefenseBonus then
-					hasDefenseBonus = true
-					traitData.AccumulatedFountainDefenseBonus = traitData.AccumulatedFountainDefenseBonus- (1-traitData.FountainDefenseBonus)
-					ExtractValues( CurrentRun.Hero, traitData, traitData )
-				end
-				if traitData.FountainCoinBonus then
-					-- For notes, check MoneyPerRoom and SisyphusMoney
-					hasCoinBonus = true
-				end 
-			end
-			wait(1.0)
-			if hasDamageBonus then
-				wait(1.0)
-			end
-			if hasDefenseBonus then
-				FountainDefensePresentation()
-				wait(1.0)
-			end
-			if hasCoinBonus then
-				ApolloMoney(triggerArgs)
-				wait(1.0)
-			end
-		end
-	}
-	-- Song of Healing functions
-	ModUtil.Path.Wrap( "StartEncounter", 
-		function(baseFunc, currentRun, currentRoom, currentEncounter )
-			if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
-				thread(SeaChanteyAnnouncement)
-			end
-			baseFunc(currentRun, currentRoom, currentEncounter)
-		end
-	)
-
-	-- Sea Chantey functions
-	ModUtil.Path.Wrap( "Kill", 
-	function(baseFunc, victim, triggerArgs)
-		if HeroHasTrait("ApolloHealTrait") and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
-			victim.HealDropOnDeath = {
-				Name = "HealDropMinor",
-				Radius = 50,
-				Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
-			}
-		end
-		baseFunc(victim, triggerArgs)
-	end
-	)
-
-	function SpawnMusicNotes(args, attacker, victim)
-		if victim.IsBoss then
-			CreateAnimation({ DestinationId = victim.ObjectId, Name = "PoseidonMusicNotes" })
-		end
-	end
-
-	function SeaChanteyAnnouncement()
-		wait(1)
-		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
-		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
-	end
-	
-	-- Hyacinth Insta-kill function
-	function CheckHyacinthKill( args, attacker, victim )
-		if (not victim.IsBoss) and attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
-			FireWeaponFromUnit({ Weapon = "ApolloChillKill", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true })
-			PlaySound({ Name = "/SFX/DemeterEnemyFreezeShatter", Id = victim.ObjectId })
-			
-			--[[if victim.IsBoss then
-				BossHyacinthKillPresentation( victim )
-			end]]
-
-			if victim.DeathAnimation ~= nil and not victim.ManualDeathAnimation then
-				SetAnimation({ Name = victim.DeathAnimation, DestinationId = victim.ObjectId })
-				-- @todo Notify on death animation finish
-			end
-			thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
-		end
-	end
-	
-	-- Dionysus Dazzled
-	function CheckDazzled( args, attacker, victim )	
-		if attacker and  attacker == CurrentRun.Hero and victim and not victim.AiDisabled and not HasEffect({Id = victim.ObjectId, EffectName = "Paralyzed" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and victim.ActiveEffects["DamageOverTime"] == 5 then
-			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, WeaponName = "DazzledEffectApplicator", EffectName = "Paralyzed"})
-			local notifyName = "ParalyzedExpired"..victim.ObjectId
-			NotifyOnEffectExpired({ Id = victim.ObjectId, Notify = notifyName, EffectName = "Paralyzed" })
-		end
-	end
-		
-	ModUtil.Path.Wrap( "IsAIActive", 
-		function(baseFunc, enemy, currentRun)
-			if enemy and HasEffect({Id = enemy.ObjectId, EffectName ="ApolloBlind" }) and HeroHasTrait("DazzledTrait") and (not enemy.LastDazzled or _worldTime - enemy.LastDazzled < 15) and RandomFloat(0,1) <= 1 then
-				local notifyName = "ApolloBlindExpired"..enemy.ObjectId
-				NotifyOnEffectExpired({ Id = enemy.ObjectId, Notify = notifyName, EffectName = "ApolloBlind" })
-				BlockEffect({ Id = enemy.ObjectId, Name = "ApolloBlind", Duration = 10.0 })
-				StopAnimation({ Name = "ApolloHoverLoop", DestinationId = enemy.ObjectId })
-				CreateAnimation({ DestinationId = enemy.ObjectId, Name = "DazzledHoverLoop"})
-				waitUntil( notifyName )
-				enemy.LastDazzled = _worldTime
-				StopAnimation({ Name = "DazzledHoverLoop", DestinationId = enemy.ObjectId })
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Ending")) 
-			end
-			return baseFunc(enemy, currentRun)
-		end
-	)
-	function ParalyzedApply(triggerArgs)
-
-	end
-	function ParalyzedClear(triggerArgs)
-	end
-	-- Athena Duo
-	OnProjectileReflect{
-		function( triggerArgs )
-			if HeroHasTrait("DamageReduceDistanceTrait") then
-				FireWeaponFromUnit({ Weapon = "DistanceResistWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
-			end
-		end
-	}
-	function DistanceResistApply(triggerArgs)
-		local victim = triggerArgs.TriggeredByTable
-		if HeroHasTrait("DamageReduceDistanceTrait") and not triggerArgs.Reapplied then
-			local threshold = GetTotalHeroTraitValue("DistanceResistThreshold")
-			local multiplier = GetTotalHeroTraitValue("DistanceResistMultiplier")
-			AddIncomingDamageModifier( victim,
-			{
-				Name = "DamageReduceDistance",
-				DistanceThreshold = threshold,
-				DistanceMultiplier = multiplier,
-				Temporary = true,
-			})
-		end
-	end
-	function DistanceResistClear(triggerArgs)
-		local unit = triggerArgs.TriggeredByTable
-		if unit.IncomingDamageModifiers ~= nil then
-			RemoveIncomingDamageModifier( unit, "DamageReduceDistance" )
-		end
-	end
-
-	--[[function BossHyacinthKillPresentation(unit)
-		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
-		local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })
-		AdjustColorGrading({ Name = "Frozen", Duration = 0.4 })
-		CreateAnimation({ DestinationId = dropLocation, Name = "DemeterWinterHarvest" })
-		thread( PlayVoiceLines, OlympusGlobalVoiceLines.DemeterFatalityVoiceLines, true )
-		waitScreenTime( 0.86) -- 52 frames for DemeterWinterHarvest Scythe to appear before slicing
-		CreateAnimation({ DestinationId = dropLocation, Name = "DemeterBossIceShatter" })
-		waitScreenTime( 0.85)
-		AdjustColorGrading({ Name = "Off", Duration = 0.4 })
-		RemoveSimSpeedChange( "HyacinthKill", { LerpTime = 0.3 } )
-		Destroy({ Id = dropLocation })
-	end]]
 	
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 

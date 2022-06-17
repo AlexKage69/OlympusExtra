@@ -2,10 +2,6 @@
 	Texts = [
 		"_append"
 		{
-			Id = "Codex_OlympianGoddessChapter"
-			DisplayName = "Olympian Goddess"
-		}
-		{
 			Id = "NPC_Apollo_01"
 			DisplayName = "Apollo"
 			Description = "God of Music"

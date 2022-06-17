@@ -1,4 +1,11 @@
 -- Going to combine all mods
+--Assets
+local package = "OEAssets"
+ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
+	DebugPrint({Text = "Trying to load package "..package..".pkg"})
+	LoadPackages({Name = package})
+	return baseFunc()
+end)
 if ModUtil ~= nil then
     ModUtil.Mod.Register("OlympusExtra")
     if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
