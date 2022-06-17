@@ -97,8 +97,12 @@ if ModUtil ~= nil then
 		},
 	}
 	--WeaponData
+	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "ApolloLobProjectile")
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "ApolloField")
+	table.insert(OlympusWeaponSets.MapTransitionExpireProjectileExcludeNames, "ApolloLobProjectile")
 	OlympusWeaponData.ApolloShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -320,6 +324,11 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
 		NeverStore = true,
 	}
+	OlympusProjectileData.ApolloField =
+	{
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+		SpawnedProjectile = true,
+	}
 	OlympusProjectileData.ApolloBeowulfProjectile = {
 		InheritFrom = { "ApolloLobProjectile" },
 		NeverStore = true,
@@ -332,6 +341,15 @@ if ModUtil ~= nil then
 	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
+	table.insert(OlympusGameData.AllSynergyTraits, "FamedDuetTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "WarSongTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "HyacinthTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "SeaChanteyTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "MasterBoltTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "DazzledTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "BlindDurationTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "DamageReduceDistanceTrait")
+	
 	OlympusGameData.ApolloBasicPickUpTextLines = {
 		"ApolloFirstPickUp",
 		"ApolloMiscPickup01",
@@ -1341,14 +1359,6 @@ if ModUtil ~= nil then
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
 			Icon = "Boon_Apollo_04",
-			TraitDependencyTextOverrides =
-			{
-				ShieldLoadAmmoTrait =
-				{
-					Name = "ShieldLoadAmmo_ApolloRangedTrait",
-					CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
-				},
-			},
 			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
 			TraitDependencyTextOverrides =
@@ -4545,7 +4555,7 @@ OlympusTraitData.SeaChanteyTrait =
 	ModUtil.Path.Wrap( "HandleLootPickup", 
 		function(baseFunc, currentRun, loot)	
 			local times = 0
-			if not (loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then				
+			if not (loot.Name == "StackUpgrade") and not (loot.Name == "WeaponUpgrade") and HeroHasTrait("RerollBoonTrait") then				
 				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
 				local count = GetTotalHeroTraitValue("BoonCount")
 				times = math.floor(CurrentRun.RerollBoonTracker/count);
