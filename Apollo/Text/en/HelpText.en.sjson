@@ -11,6 +11,10 @@
 			Description = "God of Music"
 		}		
 		{
+			Id = "ApolloFirstPickUp"
+			DisplayName = "Met Apollo"
+		}
+		{
 			Id = "ApolloUpgrade"
 			DisplayName = "Apollo"
 			Description = "God of Music"

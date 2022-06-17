@@ -2408,20 +2408,6 @@ OlympusTraitData.SeaChanteyTrait =
 			Icon = "Apollo_Dionysus_01",
 			RequiredFalseTraits = { "DazzledTrait"},
 			PreEquipWeapons = { "DazzledEffectApplicator" },
-			OnDamageEnemyFunction = {
-				FunctionName = "CheckDazzled",
-				FunctionArgs = {
-					HyacinthDeathThreshold = 0.15,
-					ExtractValues =
-					{
-						{
-							Key = "HyacinthDeathThreshold",
-							ExtractAs = "TooltipDeathThreshold",
-							Format = "Percent",
-						},
-					}
-				}
-			},
 		}		
 
 		OlympusTraitData.DamageReduceDistanceTrait =
@@ -2845,9 +2831,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0161",
 						PortraitExitWait = 1.25,
-						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-						UseEventEndSound = true,
-						Emote = "PortraitEmoteMusical",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come and tell me face to face." },
 				},
 				ApolloAboutOlympianReunionQuest01 =
@@ -2924,7 +2908,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloAboutDaughters01" },
+					RequiredTextLines = { "ApolloAboutDaughters01" },
 					{ Cue = "/VO/Apollo_0062",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Of my three daughters, Apollonis is kind of emotional... Once, she burned down our house, because her meal wasn't hot enough... Oh! Another time, she cried for a week because her hair brush broke... Well, if you are looking to spice up your life, she's an excellent catch!" },
@@ -3028,7 +3012,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutArtemis01" },
+					RequiredTextLines = { "ApolloAboutArtemis02" },
 					RequiredGodLoot = "ArtemisUpgrade",
 					{ Cue = "/VO/Apollo_0068",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -3095,7 +3079,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ZeusGift01", "ArtemisGift01", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "PersephoneMeeting02", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0084",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I may be Zeus's son, Zagzag, but Hera is not my mother. My mother's name is Leto. She taught Artemis and I everything we know. Uh. Sometimes I wish she was here in Olympus with us, but that just can't happen. Hera kind of hates her." },
@@ -3107,6 +3091,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloAboutLeto01", "ApolloFirstPickUp" },
+					RequiredMinRunsCleared = 2,
 					{ Cue = "/VO/Apollo_0085",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Leto gave birth to my sister and I on an island. I believe, Delos was the name. She was fleeing a Python, but not to worry, I defeated the mighty beast and now she's free to go anywhere she pleases... Well, except for Olympus..." },
@@ -3119,6 +3104,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloAboutLeto01", "ApolloAboutLeto02", "ApolloFirstPickUp" },
 					RequiredGodLoot = "ArtemisUpgrade",
+					RequiredMinRunsCleared = 2,
 					{ Cue = "/VO/Apollo_0086",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "My sister doesn't speak much about our mother, Leto. Though, I guess that's just how she is. She's not a very vocal character when it isn't about hunting something... Though I'm sure you have noticed that by now." },
@@ -3128,7 +3114,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloPostGiftPickup01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift01", },
+					RequiredTextLines = { "ApolloGift02", },
 					{ Cue = "/VO/Apollo_0087",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I don't know why, but you are in my mind a lot lately. I just have this feeling that I must meet you somehow... This here should help make it happen." },
@@ -3138,7 +3124,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloPostGiftPickup02",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift02", },
+					RequiredTextLines = { "ApolloGift03", },
 					{ Cue = "/VO/Apollo_0088",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I feel our kinship getting stronger on every encounter. I hope you feel the same, Zagzag." },
@@ -3149,7 +3135,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloPostGiftPickup03",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift03", },
+					RequiredTextLines = { "ApolloGift04", },
 					{ Cue = "/VO/Apollo_0089",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I can see you are really trying to escape this time, Zagzag. And you know what? This could be the one. All you have to do is escape once, and it would be over. And you can finally be with us. I believe in you, Zagzag." },
@@ -3213,7 +3199,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloBackstory04",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto02" },
+					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01" },
 					{ Cue = "/VO/Apollo_0093",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we? We are very alike, aren't we?" },
@@ -3223,7 +3209,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloBackstory05",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory04" },
+					RequiredTextLines = { "ApolloBackstory04", "PersephoneMeeting04" },
 					RequiredFalseTextLines = { "PersephoneReturnsHome01" },
 					{ Cue = "/VO/Apollo_0094",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -3363,7 +3349,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloMiscPickup03",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
-					RequiredFalseRooms = { "RoomOpening" },
+					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					RequiredMaxHealthFraction = 0.75,
 					{ Cue = "/VO/Apollo_0004",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -3375,7 +3361,6 @@ OlympusTraitData.SeaChanteyTrait =
 					Priority = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
-					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Apollo_0005",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Only those who are pure of heart can handle the light from my blessings. I knew you were one of us!" },
@@ -3470,6 +3455,8 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					MinRunsSinceAnyTextLines = { TextLines = { "ApolloPostEpilogue01" }, Count = 3 },				
 					{ Cue = "/VO/Apollo_0015",
+						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+						Emote = "PortraitEmoteMusical",	
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Da-Da-Dum... Da-Da-Dum... Oh. Hello there. Sorry I was working on a song. I can probably finish it by the time you arrive. In the meantime, take this." },
 				},
@@ -3657,6 +3644,8 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0035",
+						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+						Emote = "PortraitEmoteMusical",	
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I am your sunshine~~\nYour only sunshine~~\nI give you blessings~~\nwhen skies are gray~~" },
 				},
@@ -4466,6 +4455,10 @@ OlympusTraitData.SeaChanteyTrait =
 	ModUtil.Path.Wrap( "DamageEnemy", 
 		function(baseFunc, victim, triggerArgs)
 			local sourceWeaponData = triggerArgs.AttackerWeaponData
+			if HeroHasTrait("DazzledTrait") and RandomFloat(0,1) <= 1 then
+				local notifyName = "ApolloBlindExpired"..victim.ObjectId
+				--notify(notifyName)
+			end
 			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
 				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
 					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
@@ -4689,12 +4682,16 @@ OlympusTraitData.SeaChanteyTrait =
 		
 	ModUtil.Path.Wrap( "IsAIActive", 
 		function(baseFunc, enemy, currentRun)
-			if enemy and HasEffect({Id = enemy.ObjectId, EffectName ="Paralyzed" }) then
-				StopAnimation({ Name = "DazzledHoverPrep", DestinationId = enemy.ObjectId })
+			if enemy and HasEffect({Id = enemy.ObjectId, EffectName ="ApolloBlind" }) and HeroHasTrait("DazzledTrait") and (not enemy.LastDazzled or _worldTime - enemy.LastDazzled < 15) and RandomFloat(0,1) <= 1 then
+				local notifyName = "ApolloBlindExpired"..enemy.ObjectId
+				NotifyOnEffectExpired({ Id = enemy.ObjectId, Notify = notifyName, EffectName = "ApolloBlind" })
+				BlockEffect({ Id = enemy.ObjectId, Name = "ApolloBlind", Duration = 10.0 })
+				StopAnimation({ Name = "ApolloHoverLoop", DestinationId = enemy.ObjectId })
 				CreateAnimation({ DestinationId = enemy.ObjectId, Name = "DazzledHoverLoop"})
-				ClearEffect({ Id = enemy.ObjectId, Name = "DamageOverTime" })
-				local notifyName = "ParalyzedExpired"..enemy.ObjectId
 				waitUntil( notifyName )
+				enemy.LastDazzled = _worldTime
+				StopAnimation({ Name = "DazzledHoverLoop", DestinationId = enemy.ObjectId })
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Ending")) 
 			end
 			return baseFunc(enemy, currentRun)
 		end
@@ -4703,9 +4700,6 @@ OlympusTraitData.SeaChanteyTrait =
 
 	end
 	function ParalyzedClear(triggerArgs)
-		local victim = triggerArgs.TriggeredByTable
-		StopAnimation({ Name = "DazzledHoverLoop", DestinationId = victim.ObjectId })
-		BlockEffect({ Id = victim.ObjectId, Name = "Paralyzed", Duration = 15.0 })
 	end
 	-- Athena Duo
 	OnProjectileReflect{
@@ -4751,7 +4745,7 @@ OlympusTraitData.SeaChanteyTrait =
 	end]]
 	
 	-- For testing purposes
-	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
@@ -4759,7 +4753,7 @@ OlympusTraitData.SeaChanteyTrait =
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)]]
+	)
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
