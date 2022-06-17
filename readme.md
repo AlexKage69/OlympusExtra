@@ -43,7 +43,7 @@ Please check out the [OlympusExtra GitHub Wiki](https://github.com/AlexKage69/Ol
 
 -----------------------------
 ## Donations
-Paypal Email: alexandre69.demers@gmail.com
+Paypal Email: alexandre69.demers@gmail.com  
 Money collected will be redistributed to artists, voice actors and helpers for their contributions as a thank you for their volunteered work.
 
 -----------------------------
