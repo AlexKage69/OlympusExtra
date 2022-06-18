@@ -27,14 +27,14 @@
     {
       Name = "BoonInfoSymbolHestiaIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Hestia"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "BoonSymbolHestiaIcon"
       InheritFrom = "BoonSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Hestia"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
     }
     {
       Name = "Boon_Hestia_00_Small"

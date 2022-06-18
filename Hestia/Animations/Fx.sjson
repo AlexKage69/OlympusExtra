@@ -17,6 +17,11 @@
     /* Hestia - Duos */
     /* Theseus - Wrath */
     /* Boon FX */
+    {
+      Name = "BoonDropHestia"
+      InheritFrom = "BoonDropGold"
+      ChildAnimation = "BoonDropA-Apollo"
+    }
     /* Dash */
     /* Attraction Fx */
     /* Cast */

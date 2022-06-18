@@ -43,6 +43,28 @@ if ModUtil ~= nil then
             end)]]
         end            
     end
+    if ModUtil.Mods.Data["HestiaExtra"] ~= nil then
+        --External mod interaction
+        if CodexMenuData ~= nil then
+            local OlympusCodexMenuData = ModUtil.Entangled.ModData(CodexMenuData)
+            OlympusCodexMenuData.HestiaUpgrade = {
+            "HestiaWeaponTrait"
+            }
+            local OlympusCodexMenuReloadShouldSkip = ModUtil.Entangled.ModData(CodexMenuReloadShouldSkip)    
+            local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
+            table.insert(OlympusCodexBoonTable, "HestiaUpgrade")
+
+            local OlympusRealGodNames = ModUtil.Entangled.ModData(RealGodNames)
+            table.insert(OlympusRealGodNames, "Hestia")
+
+            --[[ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
+                LoadPackages({Names = {
+                    "ApolloUpgrade",
+                }})
+                return baseFunc()
+            end)]]
+        end            
+    end
     -- Recompile data. Required for each gods so generic here.
     ResetKeywords()
     SetupRunData()

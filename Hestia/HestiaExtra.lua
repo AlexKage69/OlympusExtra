@@ -1378,16 +1378,16 @@ if ModUtil ~= nil then
 			CanReceiveGift = true,
 			AlwaysShowDefaultUseText = true,
 			Weight = 10,
-			Icon = "BoonSymbolHestia",
-			BoonInfoIcon = "BoonInfoSymbolHestiaIcon",
-			DoorIcon = "BoonSymbolHestiaIsometric",
+			Icon = "BoonSymbolApollo",
+			BoonInfoIcon = "BoonInfoSymbolApolloIcon",
+			DoorIcon = "BoonSymbolApolloIsometric",
 			Color = { 123, 22, 53, 255 },
 			LightingColor = {123, 22, 53, 255},
 			LootColor = {123, 22, 53, 255},
 			SubtitleColor = {0.48, 0.09, 0.21, 1.0},
-			EventEndSound = "/SFX/HestiaBoonLoveChimes",
-			UpgradeSelectedSound = "/SFX/HestiaBoonChoice",
-			LootRejectionAnimation = "BoonDissipateA_Hestia",
+			EventEndSound = "/SFX/AphroditeBoonLoveChimes",
+			UpgradeSelectedSound = "/SFX/AphroditeBoonChoice",
+			LootRejectionAnimation = "BoonDissipateA_Apollo",
 	
 			RequiredMinCompletedRuns = 1,
 			RequiredTextLines = { "DionysusFirstPickUp" },
@@ -1408,7 +1408,7 @@ if ModUtil ~= nil then
 			Portrait = "Portrait_Hestia_Default_01",
 			WrathPortrait = "Portrait_Hestia_Wrath_01",
 			OverlayAnim = "HestiaOverlay",
-			Gender = "Male",
+			Gender = "Female",
 			SpawnSound = "/SFX/GoldCoinRewardDrop",
 			FlavorTextIds =
 			{
@@ -3141,5 +3141,10 @@ if ModUtil ~= nil then
 		return base( triggerArgs ) 
 	end )]]
 	
-	
+	OnControlPressed{ "Codex",
+    function( triggerArgs )
+        CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+    end    
+}
+
 	end

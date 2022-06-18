@@ -5,7 +5,7 @@
       Name = "HestiaOverlay"
       InheritFrom = "HadesOverlay"
       FilePath = "Hestia\Portraits_Hestia_01"
-      Scale = 0.3
+      Scale = 0.7
     }
   ]
 }
