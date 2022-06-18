@@ -77,6 +77,7 @@
       Name = "Codex_Portrait_Hestia"
       InheritFrom = "Codex_Portrait_Base_01"
       FilePath = "Hestia\CodexPortrait_Hestia"
+      Scale = 0.29
       EndFrame = 1
       StartFrame = 1
     }    

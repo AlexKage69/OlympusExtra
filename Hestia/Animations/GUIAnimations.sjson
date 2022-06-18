@@ -27,14 +27,14 @@
     {
       Name = "BoonInfoSymbolHestiaIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Hestia\Hestia1"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "BoonSymbolHestiaIcon"
       InheritFrom = "BoonSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Hestia\Hestia1"
     }
     {
       Name = "Boon_Hestia_00_Small"
@@ -53,14 +53,14 @@
     {
       Name = "Boon_Hestia_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
