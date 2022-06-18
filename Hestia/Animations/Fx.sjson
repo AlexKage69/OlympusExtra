@@ -37,20 +37,15 @@
       InheritFrom = "BoonDropB"
       ChildAnimation = "BoonDropC-Hestia"
       Color = {
-        Red = 0.48
-        Green = 0.09
-        Blue =  0.21
+        Red = 0.92
+        Green = 0.5
+        Blue =  0.79
       }
     }
     {
       Name = "BoonDropC-Hestia"
       InheritFrom = "BoonDropC"
       ChildAnimation = "BoonDropHestiaIcon"
-      Color = {
-        Red = 0.48
-        Green = 0.09
-        Blue =  0.21
-      }
     }
     {
       Name = "BoonDropHestiaIcon"
