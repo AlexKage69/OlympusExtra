@@ -20,7 +20,87 @@
     {
       Name = "BoonDropHestia"
       InheritFrom = "BoonDropGold"
-      ChildAnimation = "BoonDropA-Apollo"
+      ChildAnimation = "BoonDropA-Hestia"
+    }
+    {
+      Name = "BoonDropA-Hestia"
+      InheritFrom = "BoonDropA"
+      ChildAnimation = "BoonDropB-Hestia"
+      Color = {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BoonDropB-Hestia"
+      InheritFrom = "BoonDropB"
+      ChildAnimation = "BoonDropC-Hestia"
+      Color = {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BoonDropC-Hestia"
+      InheritFrom = "BoonDropC"
+      ChildAnimation = "BoonDropHestiaIcon"
+      Color = {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BoonDropHestiaIcon"
+      InheritFrom = "BoonDropIcon"
+      FilePath = "Apollo\ApolloIconSpin\ApolloIconSpin"
+      StartFrame = 1
+      EndFrame = 3
+      NumFrames = 3
+      Scale = 0.4
+    }
+    {
+      Name = "BoonDissipateA_Hestia"
+      InheritFrom = "BoonDissipateA"
+      Red = 0.3
+      Green = 1
+      Blue = 0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "BoonDissipateB_Hestia"
+        }
+        {
+          Name = "BoonDissipateVertical_Hestia"
+        }
+        {
+          Name = "BoonDissipateGlow_Hestia"
+        }]
+    }
+    {
+      Name = "BoonDissipateB_Hestia"
+      InheritFrom = "BoonDissipateB"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "BoonDissipateVertical_Hestia"
+      InheritFrom = "BoonDissipateVertical"
+      Hue = 0.4
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+      AddColor = true
+    } 
+    {
+      Name = "BoonDissipateGlow_Hestia"
+      InheritFrom = "BoonDissipateGlow"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
     }
     /* Dash */
     /* Attraction Fx */

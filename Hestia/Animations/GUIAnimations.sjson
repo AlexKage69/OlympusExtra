@@ -25,9 +25,65 @@
       StartFrame = 1
     }
     {
+      Name = "BoonSymbolGlow_Hestia"
+      InheritFrom = "BoonSymbolGlow"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "BoonSymbolFlare_Hestia"
+      InheritFrom = "BoonSymbolFlare"
+      Color = 
+      {
+        Red = 0.824
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "BoonSymbolHestia"
+      InheritFrom = "BoonBackingA"
+      ChildAnimation = "BoonBackingB_Hestia"
+      Scale = 0.5
+      CreateAnimations = [
+        {
+          Name = "BoonSymbolGlow_Hestia"
+        }
+        {
+          Name = "BoonSymbolFlare_Hestia"
+        }]
+      Color = 
+      {
+        Red = 0.41
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "BoonBackingB_Hestia"
+      InheritFrom = "BoonBackingB"
+      ChildAnimation = "BoonBackingC_Hestia"
+      Scale = 0.5
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.231
+        Blue = 0.078
+      }
+    }
+    {
+      Name = "BoonBackingC_Hestia"
+      InheritFrom = "BoonBackingC"
+      ChildAnimation = "BoonSymbolHestiaIcon"
+    }
+    {
       Name = "BoonInfoSymbolHestiaIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hestia\Hestia1"
+      FilePath = "Hestia\Hestia2"
       EndFrame = 1
       StartFrame = 1
     }
@@ -35,6 +91,7 @@
       Name = "BoonSymbolHestiaIcon"
       InheritFrom = "BoonSymbolBase"
       FilePath = "Hestia\Hestia1"
+      Scale = 0.35
     }
     {
       Name = "Boon_Hestia_00_Small"
@@ -67,84 +124,84 @@
     {
       Name = "Boon_Hestia_02_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_02_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_03_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_03_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_04_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_04_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_05_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_05_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_06_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaAid_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_06_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaAid_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hestia_07_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\OpenArms_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_07_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\OpenArms_large"
       EndFrame = 1
       StartFrame = 1
     }
