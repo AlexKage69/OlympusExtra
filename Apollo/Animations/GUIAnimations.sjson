@@ -91,7 +91,7 @@
     {
       Name = "BoonSymbolApolloIcon"
       InheritFrom = "BoonSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Apollo\Apollo3"
     }
     {
       Name = "Boon_Apollo_00_Small"
