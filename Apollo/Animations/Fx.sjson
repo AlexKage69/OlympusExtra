@@ -3178,8 +3178,8 @@
       ChildAnimation = "BoonDropC-Apollo"
       Color = {
         Red = 1.0
-        Green = 0.57
-        Blue = 0.31
+        Green = 0.7
+        Blue = 0.1
       }
     }
     {
