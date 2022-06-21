@@ -2431,6 +2431,7 @@ OlympusTraitData.SeaChanteyTrait =
 				ProjectileProperty = "DamageLow",
 				BaseMin = 45,
 				BaseMax = 45,
+				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2439,10 +2440,11 @@ OlympusTraitData.SeaChanteyTrait =
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamage",
-				}
+				},
+				ExtractSource = "ExtractSource",
 			},
 			{
-				WeaponName = {"DionysusLobWeaponAdditional"},
+				WeaponNames = {"DionysusLobWeaponAdditional"},
 				ProjectileName = "DionysusLobProjectileAdditional",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
@@ -2486,18 +2488,20 @@ OlympusTraitData.SeaChanteyTrait =
 				ProjectileProperty = "DamageLow",
 				BaseMin = 45,
 				BaseMax = 45,
+				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
-					Value = DuplicateVeryStrongMultiplier,
+					Value = DuplicateStrongMultiplier,
 				},
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamage",
-				}
+				},
+				ExtractSource = "ExtractSource",
 			},
 			{
-				WeaponName = {"ApolloLobWeaponAdditional", "DionysusLobWeaponAdditional"},
+				WeaponNames = {"ApolloLobWeaponAdditional"},
 				ProjectileName = "ApolloLobProjectileAdditional",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
@@ -4789,9 +4793,18 @@ OlympusTraitData.SeaChanteyTrait =
 	end
 	
 	-- Dionysus Duo Lobs
+	local countToTwo = false;
 	function SpawnAdditionalLob( triggerArgs, traitDataArgs )
 		--local lastlocation = triggerArgs.LastHitTable
 		if (triggerArgs.name == "ApolloLobProjectile" or triggerArgs.name == "DionysusLobProjectile") and (HeroHasTrait("MasterLobApolloTrait") or HeroHasTrait("MasterLobDionysusTrait")) then	
+			if HeroHasTrait("ArtemisBonusProjectileTrait") then
+				if countToTwo then
+					countToTwo = false
+					return
+				else
+					countToTwo = true
+				end
+			end
 			if triggerArgs.name == "ApolloLobProjectile" then
 				FireWeaponFromUnit({ Weapon = "DionysusLobWeaponAdditional", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
 			elseif triggerArgs.name == "DionysusLobProjectile" then
@@ -4844,7 +4857,7 @@ OlympusTraitData.SeaChanteyTrait =
 	end]]
 	
 	-- For testing purposes
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
@@ -4852,7 +4865,7 @@ OlympusTraitData.SeaChanteyTrait =
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
