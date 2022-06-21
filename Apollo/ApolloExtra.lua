@@ -346,7 +346,8 @@ if ModUtil ~= nil then
 	table.insert(OlympusGameData.AllSynergyTraits, "HyacinthTrait")
 	table.insert(OlympusGameData.AllSynergyTraits, "SeaChanteyTrait")
 	table.insert(OlympusGameData.AllSynergyTraits, "MasterBoltTrait")
-	table.insert(OlympusGameData.AllSynergyTraits, "DazzledTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "MasterLobApolloTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "MasterLobDionysusTrait")
 	table.insert(OlympusGameData.AllSynergyTraits, "BlindDurationTrait")
 	table.insert(OlympusGameData.AllSynergyTraits, "DamageReduceDistanceTrait")
 	
@@ -2412,53 +2413,154 @@ OlympusTraitData.SeaChanteyTrait =
 			FunctionArgs = {}
 		}
 	}			
-		OlympusTraitData.DazzledTrait =
+	OlympusTraitData.MasterLobApolloTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Dionysus_01",
+		RequiredFalseTraits = { "MasterLobDionysusTrait", "MasterLobApolloTrait" },
+		PreEquipWeapons = { "DionysusLobWeaponAdditional" },
+		OnProjectileDeathFunction =
 		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Dionysus_01",
-			RequiredFalseTraits = { "DazzledTrait"},
-			PreEquipWeapons = { "DazzledEffectApplicator" },
-		}		
-
-		OlympusTraitData.DamageReduceDistanceTrait =
+			Name = "SpawnAdditionalLob",
+		},
+		PropertyChanges =
 		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Athena_01",
-			RequiredFalseTraits = { "DamageReduceDistanceTrait"},
-			PreEquipWeapons = { "DistanceResistWeapon" },
-			DistanceResistThreshold = { 
-				BaseValue = 400
-			},
-			DistanceResistMultiplier = { 
-				BaseValue = 0.6
-			},
-			PropertyChanges =
 			{
+				WeaponNames = {"DionysusLobWeaponAdditional"},
+				ProjectileName = "DionysusLobProjectileAdditional",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 45,
+				BaseMax = 45,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
 				{
-					WeaponNames = {"DistanceResistWeapon"},
-					EffectName = "DamageResist",
-					EffectProperty = "Duration",
-					ChangeValue = 3,
-					ChangeType = "Absolute",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageResistDuration",
-					}
-				},		
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
 				{
-					WeaponNames = {"DistanceResistWeapon"},
-					EffectName = "DamageResist",
-					EffectProperty = "Modifier",
-					ChangeValue = 0.6,
-					ChangeType = "Absolute",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageResistModifier",
-						Format ="Percent"
-					}
-				},	
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = {"DionysusLobWeaponAdditional"},
+				ProjectileName = "DionysusLobProjectileAdditional",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipCloudDuration",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "TotalFuse",
+			},
+			{
+				ExtractAs = "TooltipCloudInterval",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "Fuse",
+				DecimalPlaces = 2,
 			}
-		}	
+		}
+	}
+	-- Exact copy, but different for HelpText
+	OlympusTraitData.MasterLobDionysusTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Dionysus_01",
+		RequiredFalseTraits = { "MasterLobApolloTrait", "MasterLobDionysusTrait" },
+		PreEquipWeapons = { "ApolloLobWeaponAdditional" },
+		OnProjectileDeathFunction =
+		{
+			Name = "SpawnAdditionalLob",
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = {"ApolloLobWeaponAdditional"},
+				ProjectileName = "ApolloLobProjectileAdditional",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 45,
+				BaseMax = 45,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateVeryStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = {"ApolloLobWeaponAdditional", "DionysusLobWeaponAdditional"},
+				ProjectileName = "ApolloLobProjectileAdditional",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipCloudDuration",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "TotalFuse",
+			},
+			{
+				ExtractAs = "TooltipCloudInterval",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "Fuse",
+				DecimalPlaces = 2,
+			}
+		}
+	}
+	OlympusTraitData.DamageReduceDistanceTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Athena_01",
+		RequiredFalseTraits = { "DamageReduceDistanceTrait"},
+		PreEquipWeapons = { "DistanceResistWeapon" },
+		DistanceResistThreshold = { 
+			BaseValue = 400
+		},
+		DistanceResistMultiplier = { 
+			BaseValue = 0.6
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = {"DistanceResistWeapon"},
+				EffectName = "DamageResist",
+				EffectProperty = "Duration",
+				ChangeValue = 3,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageResistDuration",
+				}
+			},		
+			{
+				WeaponNames = {"DistanceResistWeapon"},
+				EffectName = "DamageResist",
+				EffectProperty = "Modifier",
+				ChangeValue = 0.6,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageResistModifier",
+					Format ="Percent"
+				}
+			},	
+		}
+	}	
 	OlympusTraitData.MasterBoltTrait =
 		{
 			InheritFrom = { "SynergyTrait" },
@@ -2645,12 +2747,12 @@ OlympusTraitData.SeaChanteyTrait =
 						{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
 					}
 				},
-				DazzledTrait = 
+				MasterLobApolloTrait = 
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
-						{ "DionysusWeaponTrait", "DionysusRangedTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
+						{ "ApolloRangedTrait"},
+						{ "DionysusWeaponTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
 					}
 				},
 			},
@@ -2802,7 +2904,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloWithDionysus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "DazzledTrait",
+					HasTraitNameInRoom = "MasterLobApolloTrait",
 					{ Cue = "/VO/Apollo_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}, this wine is exquisite, Brother! It goes excellently with the cheese. To taste them both is like a glorious symphony!" },
@@ -4224,7 +4326,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Name = "AthenaWithApollo01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "DamageReduceDistanceTrait",
 		{ Cue = "/VO/Athena_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "I see. You are helping Zagreus as well, Step-brother. For someone who claims to be faster than Hermes, you took your sweet time." },
@@ -4240,7 +4342,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Name = "AresWithApollo01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "WarSongTrait",
 		{ Cue = "/VO/Ares_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "My kin, I wish to help you once more, but in order to not fail this time, Apollo here will help me with his foresight. There's no failing this time." },
@@ -4256,7 +4358,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Name = "AphroditeWithApollo01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "HyacinthTrait",
 		{ Cue = "/VO/Aphrodite_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Well, lovely as ever, Apollo. From all my relatives, you are by far the only one to understand beauty and perfection." },
@@ -4272,7 +4374,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Name = "ArtemisWithApollo01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "FamedDuetTrait",
 		{ Cue = "/VO/Artemis_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Apollo! How many times did I ask you not to include me in any forms of get together! {#DialogueItalicFormat} Arrg {#PreviousFormat}! I'll make an exception, only because it's Zagreus, but it's the last time." },
@@ -4288,7 +4390,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Name = "DionysusWithApollo01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "MasterLobDionysusTrait",
 		{ Cue = "/VO/Dionysus_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Hey Zag, Apollo helped me prepare this awesome welcome party for you. We hope you can get here in time." },
@@ -4304,7 +4406,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Name = "DemeterWithApollo01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "BlindDurationTrait",
 		{ Cue = "/VO/Demeter_0371",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Since Apollo is here, I figured we must help you, young Zagreus. Even if Apollo's flare is a bit much for me." },
@@ -4373,6 +4475,15 @@ OlympusTraitData.SeaChanteyTrait =
 			{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
 		}
 	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.MasterLobDionysusTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "DionysusRangedTrait"},
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }
+		}
+	}
+	
 	-- Other gods modification
 	-- AthenaUpgrade
 	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "ApolloFirstPickUp")
@@ -4465,10 +4576,6 @@ OlympusTraitData.SeaChanteyTrait =
 	ModUtil.Path.Wrap( "DamageEnemy", 
 		function(baseFunc, victim, triggerArgs)
 			local sourceWeaponData = triggerArgs.AttackerWeaponData
-			if HeroHasTrait("DazzledTrait") and RandomFloat(0,1) <= 1 then
-				local notifyName = "ApolloBlindExpired"..victim.ObjectId
-				--notify(notifyName)
-			end
 			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
 				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
 					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
@@ -4662,7 +4769,7 @@ OlympusTraitData.SeaChanteyTrait =
 		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
 	end
-	
+
 	-- Hyacinth Insta-kill function
 	function CheckHyacinthKill( args, attacker, victim )
 		if (not victim.IsBoss) and attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
@@ -4681,36 +4788,18 @@ OlympusTraitData.SeaChanteyTrait =
 		end
 	end
 	
-	-- Dionysus Dazzled
-	function CheckDazzled( args, attacker, victim )	
-		if attacker and  attacker == CurrentRun.Hero and victim and not victim.AiDisabled and not HasEffect({Id = victim.ObjectId, EffectName = "Paralyzed" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and victim.ActiveEffects["DamageOverTime"] == 5 then
-			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, WeaponName = "DazzledEffectApplicator", EffectName = "Paralyzed"})
-			local notifyName = "ParalyzedExpired"..victim.ObjectId
-			NotifyOnEffectExpired({ Id = victim.ObjectId, Notify = notifyName, EffectName = "Paralyzed" })
-		end
-	end
-		
-	ModUtil.Path.Wrap( "IsAIActive", 
-		function(baseFunc, enemy, currentRun)
-			if enemy and HasEffect({Id = enemy.ObjectId, EffectName ="ApolloBlind" }) and HeroHasTrait("DazzledTrait") and (not enemy.LastDazzled or _worldTime - enemy.LastDazzled < 15) and RandomFloat(0,1) <= 1 then
-				local notifyName = "ApolloBlindExpired"..enemy.ObjectId
-				NotifyOnEffectExpired({ Id = enemy.ObjectId, Notify = notifyName, EffectName = "ApolloBlind" })
-				BlockEffect({ Id = enemy.ObjectId, Name = "ApolloBlind", Duration = 10.0 })
-				StopAnimation({ Name = "ApolloHoverLoop", DestinationId = enemy.ObjectId })
-				CreateAnimation({ DestinationId = enemy.ObjectId, Name = "DazzledHoverLoop"})
-				waitUntil( notifyName )
-				enemy.LastDazzled = _worldTime
-				StopAnimation({ Name = "DazzledHoverLoop", DestinationId = enemy.ObjectId })
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Ending")) 
+	-- Dionysus Duo Lobs
+	function SpawnAdditionalLob( triggerArgs, traitDataArgs )
+		--local lastlocation = triggerArgs.LastHitTable
+		if (triggerArgs.name == "ApolloLobProjectile" or triggerArgs.name == "DionysusLobProjectile") and (HeroHasTrait("MasterLobApolloTrait") or HeroHasTrait("MasterLobDionysusTrait")) then	
+			if triggerArgs.name == "ApolloLobProjectile" then
+				FireWeaponFromUnit({ Weapon = "DionysusLobWeaponAdditional", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
+			elseif triggerArgs.name == "DionysusLobProjectile" then
+				FireWeaponFromUnit({ Weapon = "ApolloLobWeaponAdditional", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
 			end
-			return baseFunc(enemy, currentRun)
 		end
-	)
-	function ParalyzedApply(triggerArgs)
+	end
 
-	end
-	function ParalyzedClear(triggerArgs)
-	end
 	-- Athena Duo
 	OnProjectileReflect{
 		function( triggerArgs )
