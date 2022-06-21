@@ -1359,9 +1359,8 @@ if ModUtil ~= nil then
 			Name = "ApolloRangedTrait",
 			InheritFrom = { "ShopTier1Trait" },
 			God = "Apollo",
-			Icon = "Boon_Apollo_04",
-			CustomTrayText = "ApolloRangedTrait_Tray",
 			Slot = "Ranged",
+			Icon = "Boon_Apollo_04",
 			TraitDependencyTextOverrides =
 			{
 				ShieldLoadAmmoTrait =
@@ -1375,6 +1374,7 @@ if ModUtil ~= nil then
 					CustomTrayText = "BowLoadAmmo_ApolloRangedTrait_Tray",
 				},
 			},
+			CustomTrayText = "ApolloRangedTrait_Tray",
 			UnloadAmmoOffset = 
 			{
 				BaseValue = -20,
@@ -1514,7 +1514,8 @@ if ModUtil ~= nil then
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 					ProjectileName = "ApolloLobProjectile",
 					ProjectileProperty = "DamageLow",
-					DeriveValueFrom = "ExtractSource",
+					ChangeValue = 70, 
+					ChangeType = "Absolute",
 					ExtractValue =
 					{
 						ExtractAs = "TooltipDamageBeowulf",
@@ -1525,7 +1526,8 @@ if ModUtil ~= nil then
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 					ProjectileName = "ApolloLobProjectile",
 					ProjectileProperty = "DamageHigh",
-					DeriveValueFrom = "ExtractSource",
+					ChangeValue = 70, 
+					ChangeType = "Absolute",
 				},
 				{
 					TraitName = "ShieldLoadAmmoTrait",
@@ -2657,7 +2659,7 @@ OlympusTraitData.SeaChanteyTrait =
 			CanReceiveGift = true,
 			AlwaysShowDefaultUseText = true,
 			Weight = 10,
-			Icon = "BoonSymbolApollo",
+			Icon = "BoonSymbolApollo2",
 			BoonInfoIcon = "BoonInfoSymbolApolloIcon",
 			DoorIcon = "BoonSymbolApolloIsometric",
 			Color = { 255, 162, 105, 255 },
@@ -4145,7 +4147,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0126",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "How do you have so much of these? Isn't Nectar rare in your realm? I mean I saw it coming. Just wow." },
+						Text = "How do you have so many of these? Isn't Nectar rare in your realm? I mean I saw it coming. Just wow." },
 				},
 				ApolloGift06 =
 				{

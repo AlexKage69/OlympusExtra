@@ -138,7 +138,7 @@
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait"
-			DisplayName = "Blinding Flare"
+			DisplayName = "Brilliant Flare"
 			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
