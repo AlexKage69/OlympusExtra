@@ -134,7 +134,7 @@
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait"
-			DisplayName = "Blinding Flare"
+			DisplayName = "Brilliant Flare"
 			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
@@ -305,11 +305,6 @@
 			Description = "Your {$Keywords.ApolloBlind} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
 		}
 		{
-			Id = "DazzledTrait"
-			DisplayName = "Disco Party"
-			Description = "..."
-		}	
-		{
 			Id = "DamageReduceDistanceTrait"
 			DisplayName = "Archery Lessons"
 			Description = "After using {$Keywords.Deflect}, briefly gain {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}% \n{!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistDuration} Sec."
@@ -318,6 +313,16 @@
 			Id = "MasterBoltTrait"
 			DisplayName = "Master Bolt" 
 			Description = "Enemies inflicted by {$Keywords.ApolloBlind} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {#UpgradeFormat}{$TooltipData.MasterBoltDamage}"
+		}
+		{
+			Id = "MasterLobApolloTrait"
+			DisplayName = "Blinding Fog" 
+			Description = "Your {$Keywords.FlashBomb} summons a {$Keywords.Cloud} upon yourself.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "MasterLobDionysusTrait"
+			DisplayName = "Festive Bomb" 
+			Description = "Your {$Keywords.Cloud} summons a {$Keywords.FlashBomb} upon yourself.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
 		}
 		{
 			Id = "LtUpgrade_Apollo"

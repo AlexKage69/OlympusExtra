@@ -87,19 +87,6 @@
       Cooldown = 0.4
     }
     {
-      Name = "DazzledEffectApplicator"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "DazzledEffectApplicator"
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-      AcceptTriggerLockRequests = false
-      IgnoreTriggerLockDuringCooldown = true
-      Cooldown = 4.0
-    }
-    {
       Name = "ShoutEndApollo"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
@@ -116,6 +103,28 @@
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "ApolloChillKill"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "ApolloLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloLobProjectileAdditional"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "DionysusLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "DionysusLobProjectileAdditional"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"

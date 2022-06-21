@@ -649,61 +649,139 @@
         ]
       }
 	}
-  {
-      Name = "DazzledEffectApplicator"
-      InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "null"
-      Type = "INSTANT"
+    {
+      Name = "ApolloLobProjectileAdditional"
+      InheritFrom = "1_BasePlayerLargeProjectile"
+      DetonateGraphic = "RadialNova-Apollo"
+      DetonateSound = "/SFX/PlayerHammerExplosions"
+      Type = "LOB"
       DamageLow = 0
       DamageHigh = 0
-      DamageRadius = 100.0
-      DamageRadiusScaleX = 1.175
-      DamageRadiusScaleY = 0.56
-      ImpactVelocity = 0
-      Fuse = 0.1
-      AffectsFriends = true
+      DamageRadius = 400.0
+      DamageRadiusScaleY = 0.75
+      AutoAdjustForTarget = true
+      SpinRate = -360
+      Speed = 1200
+      Gravity = 2000
+      MinRange = 0.0
+      Range = 600
+      LaunchAngle = 30
+      SpeedVariance = 0
+      ImpactVelocity = 0.0
+      AffectsFriends = false
       AffectsSelf = false
-      AffectsEnemies = true
       CheckUnitImpact = false
-      CheckObstacleImpact = false
-      DetonateSound = "null"
-      CanCrit = false
-      MaxVictimZ = 9999
-      Thing = {
-        Graphic = "null"
-        Color = {
-          Red = 1.0
-          Green = 1.0
-          Blue = 1.0
-          Opacity = 1.0
+      CheckObstacleImpact = true
+      DetonateOnTouchdown = true
+      SpawnOnDetonate = "ApolloField"
+      UseVulnerability = false
+      SpawnCount = 1
+      SpawnType = "PROJECTILE"
+      UseRadialImpact = false
+      IgnoreCoverageAngles = true
+      GroupName = "FX_Standing_Top"
+      Effects = [
+          {
+            Name = "ApolloBlind"
+            IgnoreName = "_PlayerUnit"
+            FrontFx = "ApolloHoverLoop"
+            BackFx = "null"
+            Duration = 5
+            Modifier = 0.1
+            Active = true            
+            ExtendDurationOnReapply = true
+            IsVulnerabilityEffect = true
+            TimeModifierFraction = 0
+          }
+        ]
+        Thing = {
+          Graphic = "Projectile_BloodlessGrenadier"
+          Scale = 0.1
+          OffsetZ = 101
+          AttachedAnim = "GrenadierShadow"
+          Points = [
+            {
+              X = 0
+              Y = 24
+            }
+            {
+              X = 24
+              Y = 0
+            }
+            {
+              X = 0
+              Y = -24
+            }
+            {
+              X = -24
+              Y = 0
+            }
+          ]
         }
+    }
+    {
+      Name = "DionysusLobProjectileAdditional"
+      InheritFrom = "1_BasePlayerLargeProjectile"
+      DetonateGraphic = "RadialNovaDionysus"
+      DetonateSound = "/SFX/PlayerHammerExplosions"
+      Type = "LOB"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 400.0
+      DamageRadiusScaleY = 0.75
+      AutoAdjustForTarget = true
+      SpinRate = -360
+      Speed = 1200
+      Gravity = 2000
+      MinRange = 0.0
+      Range = 600
+      LaunchAngle = 30
+      SpeedVariance = 0
+      ImpactVelocity = 0.0
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = true
+      DetonateOnTouchdown = true
+      SpawnOnDetonate = "DionysusField"
+      UseVulnerability = false
+      SpawnCount = 1
+      SpawnType = "PROJECTILE"
+      UseRadialImpact = false
+      IgnoreCoverageAngles = true
+      GroupName = "FX_Standing_Top"
+      Effects = [
+        {
+          Name = "WinePuddleVulnerability"
+          IgnoreName = "_PlayerUnit"
+          ExtendDurationOnReapply = true
+          Duration = 0.5
+          Active = true
+          TimeModifierFraction = 0
+        }]
+      Thing = 
+      {
+        Graphic = "DionysusLobProjectile"
+        Scale = 0.1
+        OffsetZ = 101
+        AttachedAnim = "GrenadierShadow"
         Points = [
           {
             X = 0
-            Y = 8
+            Y = 24
           }
           {
-            X = 32
+            X = 24
             Y = 0
           }
           {
             X = 0
-            Y = -8
+            Y = -24
           }
           {
-            X = -32
+            X = -24
             Y = 0
           }]
-      }
-      Effect = {
-        Name = "Paralyzed"
-          Duration = 10.0
-          Active = true
-          CanAffectInvulnerable = false
-          FrontFx = "DazzledHoverPrep"
-          FlashFrontFxWhenExpiring = true
-          ExtendDurationOnReapply = false
-          BlockDurationOnExpire = 0.25
       }
     }
   ]

@@ -16,3 +16,9 @@ Replace "Packages/OEAssets.pkg_manifest"
 :: SeparateGoddess
 To "Game/Text/en/HelpText.en.sjson"
 SJSON "Olympus/Text/en/HelpText.en.sjson"
+
+:: Audio
+To "Audio/FMOD/Build/Desktop/VO.fsb"
+Replace "Audio/VO.fsb"
+To "Audio/FMOD/Build/Desktop/VO.h"
+Replace "Audio/VO.h"
