@@ -25,6 +25,63 @@
       StartFrame = 1
     }
     {
+      Name = "BoonSymbolGlow_Apollo"
+      InheritFrom = "BoonSymbolGlow"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.57
+        Blue = 0.31
+
+      }
+    }
+    {
+      Name = "BoonSymbolFlare_Apollo"
+      InheritFrom = "BoonSymbolFlare"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.925
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonSymbolApollo2"
+      InheritFrom = "BoonBackingA"
+      ChildAnimation = "BoonBackingB_Apollo"
+      Scale = 0.5
+      CreateAnimations = [
+        {
+          Name = "BoonSymbolGlow_Apollo"
+        }
+        {
+          Name = "BoonSymbolFlare_Apollo"
+        }]
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.57
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonBackingB_Apollo"
+      InheritFrom = "BoonBackingB"
+      ChildAnimation = "BoonBackingC_Apollo"
+      Scale = 0.5
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.925
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonBackingC_Apollo"
+      InheritFrom = "BoonBackingC"
+      ChildAnimation = "BoonSymbolApolloIcon"
+    }
+    {
       Name = "BoonInfoSymbolApolloIcon"
       InheritFrom = "BoonInfoSymbolBase"
       FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
@@ -34,7 +91,7 @@
     {
       Name = "BoonSymbolApolloIcon"
       InheritFrom = "BoonSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Apollo\Apollo3"
     }
     {
       Name = "Boon_Apollo_00_Small"
