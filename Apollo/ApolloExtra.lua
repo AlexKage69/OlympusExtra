@@ -324,6 +324,12 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
 		NeverStore = true,
 	}
+	OlympusProjectileData.DionysusLobProjectileAdditional = {
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "DionysusColorProjectile" },
+	}
+	OlympusProjectileData.ApolloLobProjectileAdditional = {
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
+	}	
 	OlympusProjectileData.ApolloField =
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
@@ -2425,33 +2431,6 @@ OlympusTraitData.SeaChanteyTrait =
 		{
 			Name = "SpawnAdditionalLob",
 		},
-		PropertyChanges =
-		{
-			{
-				WeaponNames = {"DionysusLobWeaponAdditional"},
-				ProjectileName = "DionysusLobProjectileAdditional",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 45,
-				BaseMax = 45,
-				AsInt = true,
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				},
-				ExtractSource = "ExtractSource",
-			},
-			{
-				WeaponNames = {"DionysusLobWeaponAdditional"},
-				ProjectileName = "DionysusLobProjectileAdditional",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow",
-			},
-		},
 		ExtractValues =
 		{
 			{
@@ -2481,33 +2460,6 @@ OlympusTraitData.SeaChanteyTrait =
 		OnProjectileDeathFunction =
 		{
 			Name = "SpawnAdditionalLob",
-		},
-		PropertyChanges =
-		{
-			{
-				WeaponNames = {"ApolloLobWeaponAdditional"},
-				ProjectileName = "ApolloLobProjectileAdditional",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 45,
-				BaseMax = 45,
-				AsInt = true,
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				},
-				ExtractSource = "ExtractSource",
-			},
-			{
-				WeaponNames = {"ApolloLobWeaponAdditional"},
-				ProjectileName = "ApolloLobProjectileAdditional",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow",
-			},
 		},
 		ExtractValues =
 		{
