@@ -97,8 +97,12 @@ if ModUtil ~= nil then
 		},
 	}
 	--WeaponData
+	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "ApolloLobProjectile")
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "ApolloField")
+	table.insert(OlympusWeaponSets.MapTransitionExpireProjectileExcludeNames, "ApolloLobProjectile")
 	OlympusWeaponData.ApolloShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -106,7 +110,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 		HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
 		ImpactReactionHitsOverride = 1,
-	
+		MultipleProjectileMultiplier = 0.15,	
 		BlockInterrupt = true,
 		Sounds =
 		{
@@ -227,6 +231,11 @@ if ModUtil ~= nil then
 			},
 		},
 	}
+	OlympusEffectData.Paralyzed =
+	{
+		OnApplyFunctionName = "ParalyzedApply",
+		OnClearFunctionName = "ParalyzedClear",
+	}
 	OlympusEffectData.ApolloBlind =
 	{
 		OnApplyFunctionName = "ApolloBlindApply",
@@ -239,6 +248,7 @@ if ModUtil ~= nil then
 	}
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
+	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
 	table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
 		BreakIfPlayed = true,
 		RandomRemaining = true,
@@ -260,6 +270,45 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/Apollo_0153" },
 		-- Just... Thank you.
 		{ Cue = "/VO/Apollo_0154" },
+		-- Underworld, I want to hear you make some noise!
+		{ Cue = "/VO/Apollo_0155" },
+		-- Let's get you out this time around!
+		{ Cue = "/VO/Apollo_0156" },
+		-- We can go the distance together!
+		{ Cue = "/VO/Apollo_0157" },
+		-- Another one bites the Styx!
+		{ Cue = "/VO/Apollo_0158" },
+		-- Light is on your side!
+		{ Cue = "/VO/Apollo_0159" },
+		-- Let's try this once more, with feeling!
+		{ Cue = "/VO/Apollo_0160" },
+	})
+	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		SuccessiveChanceToPlay = 0.5,
+		PreLineWait = 0.75,
+		RequiredLastGodLoot = "ApolloUpgrade",
+		-- For the light.
+		{ Cue = "/VO/ZagreusField_4819" },
+		-- I can hear it.
+		{ Cue = "/VO/ZagreusField_4820" },
+		-- That's my jam.
+		{ Cue = "/VO/ZagreusField_4821" },
+		-- Music to my ears.
+		{ Cue = "/VO/ZagreusField_4822" },
+		-- Nice beat.
+		{ Cue = "/VO/ZagreusField_4823" },
+		-- Musical.
+		{ Cue = "/VO/ZagreusField_4824" },
+		-- Our duet continues.
+		{ Cue = "/VO/ZagreusField_4825" },
+		-- Beat it.
+		{ Cue = "/VO/ZagreusField_4826" },
+		-- That's bright.
+		{ Cue = "/VO/ZagreusField_4827" },
+		-- Flashy.
+		{ Cue = "/VO/ZagreusField_4828" },
 	})
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
@@ -275,6 +324,11 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
 		NeverStore = true,
 	}
+	OlympusProjectileData.ApolloField =
+	{
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+		SpawnedProjectile = true,
+	}
 	OlympusProjectileData.ApolloBeowulfProjectile = {
 		InheritFrom = { "ApolloLobProjectile" },
 		NeverStore = true,
@@ -287,6 +341,16 @@ if ModUtil ~= nil then
 	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
+	table.insert(OlympusGameData.AllSynergyTraits, "FamedDuetTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "WarSongTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "HyacinthTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "SeaChanteyTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "MasterBoltTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "MasterLobApolloTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "MasterLobDionysusTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "BlindDurationTrait")
+	table.insert(OlympusGameData.AllSynergyTraits, "DamageReduceDistanceTrait")
+	
 	OlympusGameData.ApolloBasicPickUpTextLines = {
 		"ApolloFirstPickUp",
 		"ApolloMiscPickup01",
@@ -421,7 +485,7 @@ if ModUtil ~= nil then
 			 {
 				 ValidWeaponMultiplier =
 				 {
-					 BaseValue = 1.50,
+					 BaseValue = 1.40,
 					 SourceIsMultiplier = true,
 					 IdenticalMultiplier =
 					 {
@@ -887,7 +951,7 @@ if ModUtil ~= nil then
 		 {
 			 ValidWeaponMultiplier =
 			 {
-				 BaseValue = 1.8,
+				 BaseValue = 1.6,
 				 SourceIsMultiplier = true,
 				 IdenticalMultiplier =
 				 {
@@ -1212,8 +1276,8 @@ if ModUtil ~= nil then
 			 {
 				 WeaponNames = WeaponSets.HeroRushWeapons,
 				 ProjectileProperty = "DamageLow",
-				 BaseMin = 20,
-				 BaseMax = 20,
+				 BaseMin = 15,
+				 BaseMax = 15,
 				 AsInt = true,
 				 DepthMult = DepthDamageMultiplier,
 				 IdenticalMultiplier =
@@ -2351,67 +2415,158 @@ OlympusTraitData.SeaChanteyTrait =
 			FunctionArgs = {}
 		}
 	}			
-		OlympusTraitData.DazzledTrait =
+	OlympusTraitData.MasterLobApolloTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Dionysus_01",
+		RequiredFalseTraits = { "MasterLobDionysusTrait", "MasterLobApolloTrait" },
+		PreEquipWeapons = { "DionysusLobWeaponAdditional" },
+		OnProjectileDeathFunction =
 		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Dionysus_01",
-			RequiredFalseTraits = { "DazzledTrait"},
-			PreEquipWeapons = { "DazzledWeapon" },
-			OnDamageEnemyFunction = {
-				FunctionName = "CheckDazzled",
-				FunctionArgs = {
-					HyacinthDeathThreshold = 0.15,
-					ExtractValues =
-					{
-						{
-							Key = "HyacinthDeathThreshold",
-							ExtractAs = "TooltipDeathThreshold",
-							Format = "Percent",
-						},
-					}
-				}
-			},
-		}		
-
-		OlympusTraitData.DamageReduceDistanceTrait =
+			Name = "SpawnAdditionalLob",
+		},
+		PropertyChanges =
 		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Athena_01",
-			RequiredFalseTraits = { "DamageReduceDistanceTrait"},
-			PreEquipWeapons = { "DistanceResistWeapon" },
-			DistanceResistThreshold = { 
-				BaseValue = 400
-			},
-			DistanceResistMultiplier = { 
-				BaseValue = 0.6
-			},
-			PropertyChanges =
 			{
+				WeaponNames = {"DionysusLobWeaponAdditional"},
+				ProjectileName = "DionysusLobProjectileAdditional",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 45,
+				BaseMax = 45,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
 				{
-					WeaponNames = {"DistanceResistWeapon"},
-					EffectName = "DamageResist",
-					EffectProperty = "Duration",
-					ChangeValue = 3,
-					ChangeType = "Absolute",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageResistDuration",
-					}
-				},		
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
 				{
-					WeaponNames = {"DistanceResistWeapon"},
-					EffectName = "DamageResist",
-					EffectProperty = "Modifier",
-					ChangeValue = 0.6,
-					ChangeType = "Absolute",
-					ExtractValue =
-					{
-						ExtractAs = "TooltipDamageResistModifier",
-						Format ="Percent"
-					}
-				},	
+					ExtractAs = "TooltipDamage",
+				},
+				ExtractSource = "ExtractSource",
+			},
+			{
+				WeaponNames = {"DionysusLobWeaponAdditional"},
+				ProjectileName = "DionysusLobProjectileAdditional",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipCloudDuration",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "TotalFuse",
+			},
+			{
+				ExtractAs = "TooltipCloudInterval",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "Fuse",
+				DecimalPlaces = 2,
 			}
-		}	
+		}
+	}
+	-- Exact copy, but different for HelpText
+	OlympusTraitData.MasterLobDionysusTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Dionysus_01",
+		RequiredFalseTraits = { "MasterLobApolloTrait", "MasterLobDionysusTrait" },
+		PreEquipWeapons = { "ApolloLobWeaponAdditional" },
+		OnProjectileDeathFunction =
+		{
+			Name = "SpawnAdditionalLob",
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = {"ApolloLobWeaponAdditional"},
+				ProjectileName = "ApolloLobProjectileAdditional",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 45,
+				BaseMax = 45,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+				ExtractSource = "ExtractSource",
+			},
+			{
+				WeaponNames = {"ApolloLobWeaponAdditional"},
+				ProjectileName = "ApolloLobProjectileAdditional",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipCloudDuration",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "TotalFuse",
+			},
+			{
+				ExtractAs = "TooltipCloudInterval",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "Fuse",
+				DecimalPlaces = 2,
+			}
+		}
+	}
+	OlympusTraitData.DamageReduceDistanceTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Athena_01",
+		RequiredFalseTraits = { "DamageReduceDistanceTrait"},
+		PreEquipWeapons = { "DistanceResistWeapon" },
+		DistanceResistThreshold = { 
+			BaseValue = 400
+		},
+		DistanceResistMultiplier = { 
+			BaseValue = 0.6
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = {"DistanceResistWeapon"},
+				EffectName = "DamageResist",
+				EffectProperty = "Duration",
+				ChangeValue = 3,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageResistDuration",
+				}
+			},		
+			{
+				WeaponNames = {"DistanceResistWeapon"},
+				EffectName = "DamageResist",
+				EffectProperty = "Modifier",
+				ChangeValue = 0.6,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageResistModifier",
+					Format ="Percent"
+				}
+			},	
+		}
+	}	
 	OlympusTraitData.MasterBoltTrait =
 		{
 			InheritFrom = { "SynergyTrait" },
@@ -2597,7 +2752,15 @@ OlympusTraitData.SeaChanteyTrait =
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
 						{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
 					}
-				}
+				},
+				MasterLobApolloTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "ApolloRangedTrait"},
+						{ "DionysusWeaponTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
+					}
+				},
 			},
 	
 			Speaker = "NPC_Apollo_01",
@@ -2637,33 +2800,32 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			DuoPickupTextLineSets =
 			{
-				--Miss Trait
 				ApolloWithZeus01 =
 				{
 					Name = "ApolloWithZeus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
-					{ Cue = "/VO/Apollo_0187",
+					HasTraitNameInRoom = "MasterBoltTrait",
+					{ Cue = "/VO/Apollo_0041",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Seeing you struggle with your father made me realise I must improve mine, Zagzag. We came up with something that might help you as well." },
-					{ Cue = "/VO/Zeus_0199",
+						Text = "Seeing you struggle with your father made me realise something, Zagzag. Fathers and sons work much better together. My father and I put together something that might help you." },
+					{ Cue = "/VO/Zeus_0250",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/ZeusBoonThunder",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
-						Text = "That's right, Nephew! I feel generous and I know you feel grateful. Let's show him our power, Young son." },
+						Text = "That's right, Nephew! I feel generous and I know you feel grateful. Let's show him our power, young son." },
 				},
 				ApolloWithPoseidon01 =
 				{
 					Name = "ApolloWithPoseidon01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "BlindedRuptureTrait",
+					HasTraitNameInRoom = "SeaChanteyTrait",
 					{ Cue = "/VO/Apollo_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "It's not the first time, Uncle and I work together. We have a little practice here. This is for you." },
+						Text = "This is far from the first time Uncle Poseidon and I have composed together. We decided to create a little Sea Chantey to keep your spirit up. This is for you!" },
 					{ Cue = "/VO/Poseidon_0250",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -2672,7 +2834,6 @@ OlympusTraitData.SeaChanteyTrait =
 						Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
 						Text = "That's right, Little Hades! With our help, I don't think it's possible for you to fail." },
 				},
-				-- Miss Trait
 				ApolloWithAthena01 =
 				{
 					Name = "ApolloWithAthena01",
@@ -2681,8 +2842,8 @@ OlympusTraitData.SeaChanteyTrait =
 					HasTraitNameInRoom = "DamageReduceDistanceTrait",
 					{ Cue = "/VO/Apollo_0182",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Athena, maybe the three of us could start a band! I believe you used to play flute. We could play together sometime!" },
-					{ Cue = "/VO/Athena_0123",
+						Text = "Athena, maybe the three of us could start a band! I believe you used to play the flute. We could create a divine musical trio!" },
+					{ Cue = "/VO/Athena_0240",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/AthenaBoonHolyShield",
@@ -2698,14 +2859,14 @@ OlympusTraitData.SeaChanteyTrait =
 					HasTraitNameInRoom = "WarSongTrait",
 					{ Cue = "/VO/Apollo_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Isn't it my dear Brother! You know what I was thinking? You should write a song or a poem. It would free your mind from all this violence." },
+						Text = "Well, if it isn't my dear Brother! You know what I was thinking? You should write a song or maybe a poem. It would free your mind from all this needless violence." },
 					{ Cue = "/VO/Ares_0240",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/AresWrathBattle",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-						Text = "The only form of art I recognize is war. {#DialogueItalicFormat}Hm{#PreviousFormat}... I have never seen anybody killing with words. Zagreus, take this instead." },
+						Text = "The only form of art I recognize is war. {#DialogueItalicFormat} Hm {#PreviousFormat} ... I have never seen anybody killing with words. Zagreus, take this instead." },
 				},
 				ApolloWithAphrodite01 =
 				{
@@ -2716,13 +2877,13 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloGift01", "AphroditeGift01" },
 					{ Cue = "/VO/Apollo_0045",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Aphrodite and I are here to help. We came to a conclusion. Without our help, you won't escape. Therefore... " },
+						Text = "Aphrodite and I decided to combine our efforts in order to help you escape that realm of yours, Zagzag." },
 					{ Cue = "/VO/Aphrodite_0230",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
-						Text = "This is for you, little godling! Oh my me! I can't wait until we are all here together!"
+						Text = "And... This is for you, little godling! Oh my me! I can't wait until we are all here together!"
 					},
 				},
 				ApolloWithArtemis01 =
@@ -2734,7 +2895,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloGift01", "ArtemisGift01" },
 					{ Cue = "/VO/Apollo_0046",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "I brought my sister with me this time, Zagzag! With our help, you might stand a chance against your father. Go Zagzag!" },
+						Text = "I've brought my sister with me this time, Zagzag! Our combine symphony will shake the underworld to its core. Go team Zagzag!" },
 					{ Cue = "/VO/Artemis_0250",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -2749,17 +2910,17 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloWithDionysus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "DrunkedBlindTrait",
+					HasTraitNameInRoom = "MasterLobApolloTrait",
 					{ Cue = "/VO/Apollo_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "{#DialogueItalicFormat}Whoa{#PreviousFormat}, this wine is exquisite, Brother! I can't believe how well it goes with the cheese. The taste of both is just... Out of this world!" },
+						Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}, this wine is exquisite, Brother! It goes excellently with the cheese. To taste them both is like a glorious symphony!" },
 					{ Cue = "/VO/Dionysus_0230",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/DionysusBoonWineLaugh",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
-						Text = "{#DialogueItalicFormat}Haha{#PreviousFormat}, that's the trick, the combination of two great things together makes it all better. Like us. Let's combine our blessing to help, {#DialogueItalicFormat}um{#PreviousFormat}, how do you call him again, Zagzag?" },
+						Text = "{#DialogueItalicFormat} Haha {#PreviousFormat}, that's the trick, the combination of two great things together makes it all better. Like us. Let's combine our blessing to help, um, how do you call him again, Zagzag?" },
 				},
 				ApolloWithDemeter01 =
 				{
@@ -2769,13 +2930,13 @@ OlympusTraitData.SeaChanteyTrait =
 					HasTraitNameInRoom = "BlindDurationTrait",
 					{ Cue = "/VO/Apollo_0048",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "You know what, Aunty, for someone who's that cold, you might want to chill out sometime." },
+						Text = "You know, Aunty. For someone that's so cold, you might want to chill out sometime." },
 					{ Cue = "/VO/Demeter_0370",
 						PortraitExitWait = 0.35,
 						StartSound = "/SFX/DemeterBoonFrost",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-						Text = "How dare you! That's no way to talk to your Elders! I order you to help Zagreus and stop calling him nicknames." },
+						Text = "How dare you! That's no way to talk to your elders! I order you to help Zagreus and stop calling him nicknames." },
 				},
 			},
 	
@@ -2788,17 +2949,15 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0161",
 						PortraitExitWait = 1.25,
-						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-						UseEventEndSound = true,
-						Emote = "PortraitEmoteMusical",
-						Text = "Hey, Zagzag. You don't mind me calling you Zagzag? Right? Because if you do, you'd better come and tell me face to face." },
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come and tell me face to face." },
 				},
 				ApolloAboutOlympianReunionQuest01 =
 				{
 					Name = "ApolloAboutOlympianReunionQuest01",
 					PlayOnce = true,
 					RequiredTextLines = { "ApolloFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-					{ Cue = "/VO/ZagreusField_4817", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					{ Cue = "/VO/ZagreusField_4818", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
 						Text = "OK, I think I'm ready. In the name of Hades! Olympus, this is an official message! And I hope it finds you well, Lord Apollo!" },
@@ -2807,7 +2966,7 @@ OlympusTraitData.SeaChanteyTrait =
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						UseEventEndSound = true,
 						Emote = "PortraitEmoteDepressed",
-						Text = "{#DialogueItalicFormat}Whoa{#PreviousFormat}! Is that a party invitation? Wait, it's part of an invitation and I need to talk to my relatives? Well, I guess I can give them my part of information, but I don't think I can make it, I'll ask my sister to tell me how it went. Sorry Zagzag." },
+						Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}! Is that a party invitation? Oh wait, it's part of an invitation for me and my relatives, hm? Oh well, I am flattered, but I don't think I can make it, I'll give my relatives my half of the information and ask Artemis how it went. Maybe some other time Zagzag." },
 				},
 				ApolloPostEpilogue01 =
 				{
@@ -2817,7 +2976,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0057",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Sorry I missed the big party in your father's domain. Dionysus told me it was quite exquisite. I wish I was able to be there, but maybe you could come visit us sometime instead?" },
+						Text = "Sorry I missed the big party in your father's domain, Zagzag. Dionysus told me it was quite exquisite. I wish I was able to be there, but maybe you could try visiting us sometime instead?" },
 				},
 			},
 	
@@ -2836,7 +2995,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredGodLoot = "ZeusUpgrade",
 					{ Cue = "/VO/Apollo_0059",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Is Orpheus playing music to your dad? Well, I play my music to mine. He can be pretty strict at times, but a good old jam always sooth his mood a bit. Fathers can be a bit tense... I am sure you understand what I mean..." },
+						Text = "I heard Orpheus plays music for your court. I take care of all the music playing here in Olympus. My father can be strict, but a good jam has always put him in a good mood. Fathers can be tense... I am sure you understand what I mean..." },
 				},
 				ApolloAboutStepSiblings01 =
 				{
@@ -2848,7 +3007,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredGodLoot = "ArtemisUpgrade",
 					{ Cue = "/VO/Apollo_0060",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Ares, Aphrodite, Dionysus. I mean they are all great step-siblings, but Zeus sure loves a bit too much, hm... At least, I have Artemis. Don't tell her that" },
+						Text = "You know, Zagzag. I don't think I can ever imagine living a life without all my step-siblings. Ares, Aphrodite, Dionysus. I mean they are all great, but Zeus loves them a bit more than me... At least, I have Artemis. Don't tell her I said that." },
 				},
 				ApolloAboutDaughters01 =
 				{
@@ -2859,7 +3018,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp", "OrpheusMusicProgress01" },
 					{ Cue = "/VO/Apollo_0061",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Hey Zagzag, I believe you still haven't found your second half, am I right? Maybe, you would be a great match for one of my daughters." },
+						Text = "Hey Zagzag, I believe you still haven't found your second half, am I right? Maybe, you could be a great match for one of my daughters." },
 				},
 				ApolloAboutDaughters02 =
 				{
@@ -2867,10 +3026,10 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloAboutDaughters01" },
+					RequiredTextLines = { "ApolloAboutDaughters01" },
 					{ Cue = "/VO/Apollo_0062",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Of my three daughters, Apollonis is kind of emotional... Once, she burned our house, because her meal wasn't hot enough... Another time, she cried for a week because her hair brush broke... But, well, if you are looking to spice up your life, she's the one for you!" },
+						Text = "Of my three daughters, Apollonis is kind of emotional... Once, she burned down our house, because her meal wasn't hot enough... Oh! Another time, she cried for a week because her hair brush broke... Well, if you are looking to spice up your life, she's an excellent catch!" },
 				},
 				ApolloAboutDaughters03 =
 				{
@@ -2881,7 +3040,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloAboutDaughters01" },
 					{ Cue = "/VO/Apollo_0063",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Her name Cephisso and she's probably my most shy daughter of the three. She's very quiet ... like very... Sometimes, she speaks and I didn't she was in the room... So, for a quiet lifestyle, she could be the one for you!" },
+						Text = "The most shy of my daughters is certainly Cephisso. She's extremely quiet. She could be next to me and I wouldn't even hear what she said. Good for settling down with a more quiet lifestyle, I suppose." },
 				},
 				ApolloAboutDaughters04 =
 				{
@@ -2892,7 +3051,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloAboutDaughters01" },
 					{ Cue = "/VO/Apollo_0064",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Borysthenis is the strong one, she's not nervous. She can even move mountains! Just be careful with her hugs, she cracked my back once and I still feel soar for it... But hey, if that's not showing love, what is? If you want someone to check your back, she's the one!" },
+						Text = "Borysthenis is the strongest of my daughters, she can move mountains! Just be careful with her hugs. She cracked my back a century ago and I still feel sore from it. But hey, if that's not showing love, what is?" },
 				},
 				ApolloAboutDaughters05 =
 				{
@@ -2904,7 +3063,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloAboutDaughters02", "ApolloAboutDaughters03", "ApolloAboutDaughters04" },
 					{ Cue = "/VO/Apollo_0065",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Well, I have talked to my daughters, and they kind of don't want, hm, a distant relationship, and since I don't see you going anywhere, I think they'll end this here." },
+						Text = "Well, I have talked to my daughters, and they are not really looking for a... long distant relationship. And since I don't see you going anywhere anytime soon, I think they'll end this here." },
 				},
 				ApolloAboutHydra =
 				{
@@ -2917,7 +3076,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0165",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Hydra has snake's head, right? {#DialogueItalicFormat}Urf{#PreviousFormat}, I hate snakes, especially pythons, they are the worst. Still, I got the upper hand against them, here that should help." },
+						Text = "The bone hydra has a snake's head, right? {#DialogueItalicFormat} Arg {#PreviousFormat}. I hate snakes, especially pythons. They are the worst. Still, I have quite a bit of experience getting the upper hand on them. This should help." },
 				},
 				ApolloAboutDaphne01 =
 				{
@@ -2925,10 +3084,10 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift04", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0162",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Were you looking at my laurel crown, Zagz... Oh Daphne, I miss you very much... Where are you?" },
+						Text = "Were you staring at my laurel crown, Zagzag? It's beautiful, is it not? Made by my beloved Daphne. I miss her everyday." },
 				},
 				ApolloAboutPan01 =
 				{
@@ -2936,10 +3095,10 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift02", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0163",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "As you know, Zagzag, I am the god of music, but once the Nymph Pan tried to get my title, but he had no chance against my great taste in music. I still remember his face. Priceless..." },
+						Text = "As you know, Zagzag, I am the god of music, but once the Nymph Pan tried to get my title, he stood no chance against my excellent taste in music. I still remember his face. Ha-ha-ha. Priceless." },
 				},
 				ApolloAboutArtemis01 =
 				{
@@ -2947,11 +3106,11 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloAboutStepSiblings01", "ApolloFirstPickUp" },
 					RequiredGodLoot = "ArtemisUpgrade",
 					{ Cue = "/VO/Apollo_0066",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "My sister is a bit antisocial at times... I tried to get her off her shell... Even the Great Apollo can't do anything. Perhaps you can help her with that?" },
+						Text = "My sister is a bit antisocial at times. I tried to help her out of her shell, but even I can't do anything. Maybe you can help her out." },
 				},
 				ApolloAboutArtemis02 =
 				{
@@ -2963,7 +3122,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredGodLoot = "ArtemisUpgrade",
 					{ Cue = "/VO/Apollo_0067",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Artemis is older than me by seconds, but she loves to make me feel like the youngest. I mean by seconds... That doesn't count right?" },
+						Text = "Artemis is older than me by a few seconds, but she loves to make me feel like I am the youngest. I mean it was only a few seconds... That doesn't count, right?" },
 				},
 				ApolloAboutArtemis03 =
 				{
@@ -2971,11 +3130,11 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloAboutArtemis01" },
+					RequiredTextLines = { "ApolloAboutArtemis02" },
 					RequiredGodLoot = "ArtemisUpgrade",
 					{ Cue = "/VO/Apollo_0068",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I wonder if I could beat Artemis in a bow competition... We are both pretty good... Tell me, Zagzag... You would bet on me, right?" },
+						Text = "I wonder if I could beat Artemis in an archery competition... We are both pretty good... Tell me, Zagzag... You would bet on me, right?" },
 				},
 				ApolloAboutMusic01 =
 				{
@@ -2986,7 +3145,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "OrpheusWithEurydice01", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0069",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "As the god of music, I know several of my relatives that contributed to what is is now. I always try to add my special spice to the recipe, but Art is a collective part of life. I hope you find music in your heart even while you are stuck down there." },
+						Text = "As the god of music, I know better than most of my relatives that cooperation is key. I always try to add my special spice to the mix, but I know art is always better as a collective effort. I hope our cooperation will help you escape." },
 				},
 				ApolloAboutHarpQuest01 =
 				{
@@ -2997,7 +3156,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "OrpheusMusicProgress02", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0070",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Are you learning some art of music, Zagzag? I sense hours of practice over the tips of your fingers. Someday, you might want to quit, but you must persist like you are doing right now, it will be all worth in the end. Trust me." },
+						Text = "Are you learning some form of music, Zagzag? I sense hours of practice over the tips of your fingers. Someday, you might want to quit, but you must persist like you are now! It will be all worth in the end. Trust me." },
 				},
 				ApolloAboutHarpQuest02 =
 				{
@@ -3008,7 +3167,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "OrpheusMusicProgress04", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0071",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I heard that you are a musician now, Zagzag? Maybe, Pan and Orpheus would like to join us and make a band, what do you say? Oh wait, you're still there, and I am still here... We'll think of something when we meet. I am sure of it." },
+						Text = "I heard that you are a musician now, Zagzag? Ooh! Maybe Pan and Orpheus would like to join us, and we can make a band! What do you say? Oh wait, you're still there, and I am still here... hmm. We'll workshop." },
 				},
 				ApolloAboutOrpheus01 =
 				{
@@ -3019,7 +3178,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "OrpheusTallTale03", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0072",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Did you meet my old friend Orpheus down there? We used to play together, but he went to pick up a girl and never came back. It's a shame, he was pretty good." },
+						Text = "Did you meet my old friend Orpheus down there? We used to play together all the time, but he went to pick up a girl and never came back. It's a shame too, he was pretty good." },
 				},
 				ApolloAboutOrpheus02 =
 				{
@@ -3030,7 +3189,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloAboutOrpheus01", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0073",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I don't like to brag, Zagzag, but I gave Orpheus his golden lyre, which he probably still have. Man, that thing is invaluable, such great instrument." },
+						Text = "You know. I don't like to brag, Zagzag, but I did give Orpheus his golden lyre. He probably still has it! A perfect instrument for a near-perfect musician. Okay, I might like to brag a little bit." },
 				},
 				ApolloAboutLeto01 =
 				{
@@ -3038,10 +3197,10 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ZeusGift01", "ArtemisGift01", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "PersephoneMeeting02", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0084",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I am Zeus's son, Zagzag, but Hera is not my mother. Her name is Leto. **Pause** My mother I mean, she taught Artemis and I everything we know, Sometimes I wish she was in Olympus with us, but she doesn't go well with Hera." },
+						Text = "I may be Zeus's son, Zagzag, but Hera is not my mother. My mother's name is Leto. She taught Artemis and I everything we know. Uh. Sometimes I wish she was here in Olympus with us, but that just can't happen. Hera kind of hates her." },
 				},
 				ApolloAboutLeto02 =
 				{
@@ -3050,9 +3209,10 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloAboutLeto01", "ApolloFirstPickUp" },
+					RequiredMinRunsCleared = 2,
 					{ Cue = "/VO/Apollo_0085",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Leto gave birth to us on an island. Delos was the name. She was fleeing a Python, but don't worry, I defeated the mighty beast and now she's free to go anywhere... Except Olympus..." },
+						Text = "Leto gave birth to my sister and I on an island. I believe, Delos was the name. She was fleeing a Python, but not to worry, I defeated the mighty beast and now she's free to go anywhere she pleases... Well, except for Olympus..." },
 				},
 				ApolloAboutArtemisLeto01 =
 				{
@@ -3062,29 +3222,30 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloAboutLeto01", "ApolloAboutLeto02", "ApolloFirstPickUp" },
 					RequiredGodLoot = "ArtemisUpgrade",
+					RequiredMinRunsCleared = 2,
 					{ Cue = "/VO/Apollo_0086",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "My sister doesn't talk much about our mother, Leto. I guess it's just how she is, not a very vocal character when it isn't about hunting something... But I am sure you have somehow notice. Am I right, Zagzag?" },
+						Text = "My sister doesn't speak much about our mother, Leto. Though, I guess that's just how she is. She's not a very vocal character when it isn't about hunting something... Though I'm sure you have noticed that by now." },
 				},
 				ApolloPostGiftPickup01 =
 				{
 					Name = "ApolloPostGiftPickup01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift01", },
+					RequiredTextLines = { "ApolloGift02", },
 					{ Cue = "/VO/Apollo_0087",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I don't know why, but you are in my mind a lot, lately. I just have this feeling I must meet you somehow... This here should help make it happen." },
+						Text = "I don't know why, but you are in my mind a lot lately. I just have this feeling that I must meet you somehow... This here should help make it happen." },
 				},
 				ApolloPostGiftPickup02 =
 				{
 					Name = "ApolloPostGiftPickup02",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift02", },
+					RequiredTextLines = { "ApolloGift03", },
 					{ Cue = "/VO/Apollo_0088",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I feel our friendship getting stronger on every encounter. I just hope you feel the same, Zagzag." },
+						Text = "I feel our kinship getting stronger on every encounter. I hope you feel the same, Zagzag." },
 				},
 	
 				ApolloPostGiftPickup03 =
@@ -3092,22 +3253,21 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloPostGiftPickup03",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloGift03", },
+					RequiredTextLines = { "ApolloGift04", },
 					{ Cue = "/VO/Apollo_0089",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I see you are really trying this time. This could be the one. All you have to do is escape once, and it would be over. You would be with us. Keep going." },
+						Text = "I can see you are really trying to escape this time, Zagzag. And you know what? This could be the one. All you have to do is escape once, and it would be over. And you can finally be with us. I believe in you, Zagzag." },
 				},
 				ApolloAboutKeepsake01 =
 				{
 					Name = "ApolloAboutKeepsake01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTrait = "ForceApolloBoonTrait",
-	
+					RequiredTrait = "ForceApolloBoonTrait",	
 					{ Cue = "/VO/Apollo_0080",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Emote = "PortraitEmoteMusical",
-						Text = "I am flattered that you brought my Shining Lyre with you. I knew we shared a special bond, Zagzag." },
+						Text = "I am flattered that you brought my Harmonious Harp with you. I knew we shared a special bond, Zagzag." },
 				},
 				ApolloRunCleared01 =
 				{
@@ -3116,20 +3276,21 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp", "ApolloAboutPersephoneMeeting01" },
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-					RequiresLastRunCleared = true,
+					RequiredMinRunsCleared = 2,
+					RequiresLastRunCleared = true,					
 					{ Cue = "/VO/Apollo_0079",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "What are you doing there, Zagzag. I saw in a vision that you escaped... Why did you go back? Forgot something, maybe? Oh well, I also saw that you would do it again. No worries." },
+						Text = "What are you doing there, Zagzag? I saw in a vision that you escaped. Why did you go back? Maybe you forgot something? Oh well, I also saw that you would do it again. So, no worries." },
 				},
 				ApolloBackstory01 =
 				{
 					Name = "ApolloBackstory01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ArtemisFirstPickUp", "ApolloFirstPickUp" },
+					RequiredTextLines = { "ZeusFirstPickUp", "ArtemisFirstPickUp", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0090",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Being the son of Uncle Hades must not be an easy task. I know the feeling since Zeus is not easy either. When Artemis told me about your existence, I knew I had to meet you." },
+						Text = "Being the son of Uncle Hades must not be an easy task. I know the feeling. Zeus isn't exactly easy either. When Artemis told me about your existence, I just knew I had to meet you." },
 				},
 				ApolloBackstory02 =
 				{
@@ -3139,7 +3300,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloBackstory01" },
 					{ Cue = "/VO/Apollo_0091",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Sorry I didn't reach out sooner, Zagzag. I wish I had, but just couldn't. Hopefully, my help can make the difference in your escape." },
+						Text = "I'm sorry I didn't reach out sooner, Zagzag. I tried to, but it seemed the fates were intending on keeping us apart. I wonder what changed." },
 				},
 				ApolloBackstory03 =
 				{
@@ -3149,28 +3310,79 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "PersephoneMeeting02", "ApolloBackstory02" },
 					{ Cue = "/VO/Apollo_0092",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I have a really good hearing and I heard that Hades once had a Queen. I assumed it was Nyx, but I had a vision lately... And... Well, I don't want to spoil it, just keep going." },
+						Text = "I try not to eavesdrop, but I heard that Hades once had a Queen. I assumed it was Nyx, but I had a vision lately and...  Oh, I won't give away to much of the fun. You'll see what I mean." },
 				},
 				ApolloBackstory04 =
 				{
 					Name = "ApolloBackstory04",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto02" },
+					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01" },
 					{ Cue = "/VO/Apollo_0093",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I have to speak out, Zagzag... I know about your secret, and I understand... I did what I had to do to protect my own mother and I can sense you would do the same. We are very alike, aren't we?" },
+						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we? We are very alike, aren't we?" },
 				},
 				ApolloBackstory05 =
 				{
 					Name = "ApolloBackstory05",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloBackstory04" },
+					RequiredTextLines = { "ApolloBackstory04", "PersephoneMeeting04" },
 					RequiredFalseTextLines = { "PersephoneReturnsHome01" },
 					{ Cue = "/VO/Apollo_0094",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I hope you find your mother once you have escaped. Just don't go back to your father's realm... Unless he's ready to change. May the fates be in your favour!" },
+						Text = "I hope you find your mother once you have escaped. Be rid of that place and until your father is ready to change never return. May the fates be ever in your favor, Cousin." },
+				},
+				ApolloRunProgress01 =
+				{
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredMinRunsCleared = 4,
+					{ Cue = "/VO/Apollo_0074",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I had a vision of you with someone from the surface. She was somehow related to... Demeter? I guess my vision isn't what it used to be, Zagzag." },
+				},
+				ApolloRunProgress02 =
+				{
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "ApolloFirstPickUp" },
+					{ Cue = "/VO/Apollo_0075",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "{#DialogueItalicFormat}Okay, {#PreviousFormat}I saw you escape at least once. Seriously! I'm not lying! If you got out of the Underworld, you would tell me, right?" },
+				},
+				ApolloRunProgress03 =
+				{
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredRoomLastRun = "C_Intro",
+					RequiredFalseRoomLastRun = "D_Intro",
+					RequiredMinRunsCleared = 2,
+					{ Cue = "/VO/Apollo_0076",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Trust me, Zagzag. Going through Elysium is no walk in the park. I've written songs and stories about their heroes and all of their legends. Maybe just try being nice to them, some of them have ego issues after all that glory went to their heads." },
+				},
+				ApolloRunProgress04 =
+				{
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "ApolloFirstPickUp" },
+					RequiredAnyRoomsLastRun = { "D_Intro" },
+					RequiresLastRunCleared = false,
+					{ Cue = "/VO/Apollo_0077",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "You almost had a glimpse of light, I heard. I believe you can go further this time. And this here might be exactly what you needed." },
+				},
+				ApolloRunProgress05 =
+				{
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredRoom = "D_Hub",
+					{ Cue = "/VO/Apollo_0078",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Facing a three-headed dogs, eh Zagzag. Well, I'll offer you a bit of informational poetry. {#DialogueItalicFormat} Um-um {#PreviousFormat}. “The trick with any beast is ter know how to calms 'em. Jus” play “im a bit o” music an' he'll go straight ter sleep—'" },
 				},
 				ApolloLowHealth01 =
 				{
@@ -3184,7 +3396,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0082",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Emote = "PortraitEmoteSurprise",
-						Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, that must hurt. Like really, really hurt. I don't think it will make the difference this time, but it's better than nothing." },
+						Text = "{#DialogueItalicFormat} Oh {#PreviousFormat}, that must hurt. Like really, really hurt. I don't think it will make the difference this time, but this is better than nothing." },
 				},
 				ApolloLowHealth02 =
 				{
@@ -3197,7 +3409,7 @@ OlympusTraitData.SeaChanteyTrait =
 	
 					{ Cue = "/VO/Apollo_0083",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "My healing power would have come handy to you. You are just a bit too far to make me use them. I think I can manage give you this instead." },
+						Text = "I see my healing power would be very useful to you right now. You are just a bit too far away for me to use it. I can manage to give you this instead thought." },
 				},
 				ApolloLegendaryPickUp01 =
 				{
@@ -3211,7 +3423,7 @@ OlympusTraitData.SeaChanteyTrait =
 					},
 					{ Cue = "/VO/Apollo_0081",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I gathered all my god-power to give you this. Don't let it go to waste, Zagzag. {#DialogueItalicFormat}Yawn{#PreviousFormat}, I'll rest now. You can do this." },
+						Text = "I gathered all my divine power to give you this blessing, Zagzag. Don't let it go to waste. {#DialogueItalicFormat} Yawn {#PreviousFormat}, I get to take a small nap. You got this." },
 				},
 			},
 	
@@ -3255,11 +3467,11 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloMiscPickup03",
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
-					RequiredFalseRooms = { "RoomOpening" },
+					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					RequiredMaxHealthFraction = 0.75,
 					{ Cue = "/VO/Apollo_0004",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup03" },
+						Text = "Are you still down there, Zagzag? Maybe this blessing is what's been missing to get you out!" },
 				},
 				ApolloMiscPickup04 =
 				{
@@ -3267,10 +3479,9 @@ OlympusTraitData.SeaChanteyTrait =
 					Priority = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloFirstPickUp" },
-					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Apollo_0005",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup04" },
+						Text = "Only those who are pure of heart can handle the light from my blessings. I knew you were one of us!" },
 				},
 				ApolloMiscPickup05 =
 				{
@@ -3279,7 +3490,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0006",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup05" },
+						Text = "A real musician knows when to persevere. And you, Zagzag, have a real musician heart." },
 				},
 				ApolloMiscPickup06 =
 				{
@@ -3288,7 +3499,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0007",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup06" },
+						Text = "Tag! You're it. Now you have to come to me. Just the rules of the game, Zagzag. Maybe this will help you catch up." },
 				},
 				ApolloMiscPickup07 =
 				{
@@ -3326,7 +3537,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Apollo_0011",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Let me light your path. That's the least I can do for a guy like you." },
+						Text = "Let me light your path. It's the least I can do for a guy like you." },
 				},
 				ApolloMiscPickup11 =
 				{
@@ -3353,7 +3564,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0014",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup13" },
+						Text = "You know, Zagzag? Your perseverance inspires me! I mean, I'm writing songs like crazy up here. You have escape if you wanna hear them though!" },
 				},
 				ApolloMiscPickup14 =
 				{
@@ -3362,6 +3573,8 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					MinRunsSinceAnyTextLines = { TextLines = { "ApolloPostEpilogue01" }, Count = 3 },				
 					{ Cue = "/VO/Apollo_0015",
+						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+						Emote = "PortraitEmoteMusical",	
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "Da-Da-Dum... Da-Da-Dum... Oh. Hello there. Sorry I was working on a song. I can probably finish it by the time you arrive. In the meantime, take this." },
 				},
@@ -3390,7 +3603,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = { "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0018",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup17" },
+						Text = "I keep giving you my finest blessings but I'm not seeing any results, Zagzag. Luckily for you, I'm willing to wait as long as you need." },
 				},
 				ApolloMiscPickup18 =
 				{
@@ -3423,7 +3636,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0021",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I knew you would come, Zagzag. I prepared this in such case." },
+						Text = "I knew you would come, Zagzag. I prepared this just for the occasion." },
 				},
 				ApolloMiscPickup21 =
 				{
@@ -3459,7 +3672,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0025",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup24" },
+						Text = "Music brings people together, Zagzag. Just like how this blessing will help bring you to us!" },
 				},
 				ApolloMiscPickup25 =
 				{
@@ -3468,7 +3681,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0026",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup25" },
+						Text = "Music is an escape for many mortals, and it'll be your escape too! ...From your father's realm, I mean." },
 				},
 				ApolloMiscPickup26 =
 				{
@@ -3477,7 +3690,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0027",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "ApolloMiscPickup26" },
+						Text = "Mortals come and go like the wind, but music has always been there for me." },
 				},
 				ApolloMiscPickup27 =
 				{
@@ -3486,7 +3699,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0028",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "This shall light up your way to us. Just be quick before it fades." },
+						Text = "This blessing will light your way to us. Just get here quickly before it fades." },
 				},
 				ApolloMiscPickup28 =
 				{
@@ -3495,7 +3708,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0029",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "You might not see the sun from down there, but you have my light, right there." },
+						Text = "You might not be able to see the sun from down there, but you have my light right here." },
 				},
 				ApolloMiscPickup29 =
 				{
@@ -3504,7 +3717,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0030",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "As you work to create light for others, you naturally light your own way. Keep going." },
+						Text = "As you work to create light for others, you naturally light your own way. Keep going, Cousin." },
 				},
 	
 				ApolloMiscPickup30 =
@@ -3514,7 +3727,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0031",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Hope is being able to see that there is light despite all the darkness." },
+						Text = "Hope is being able to always see the light despite the darkness." },
 				},
 				ApolloMiscPickup31 =
 				{
@@ -3523,7 +3736,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0032",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "History is but the unrolled scroll of prophecy. Write your own story, Zagzag." },
+						Text = "History is but the unrolled scroll of prophecy. Your fate is yours to write, Zagzag." },
 				},
 				ApolloMiscPickup32 =
 				{
@@ -3541,7 +3754,7 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0034",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I sense your heart is pure. This blessing should be handy then. Good luck!" },
+						Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
 				},
 				ApolloMiscPickup34 =
 				{
@@ -3549,9 +3762,56 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 					{ Cue = "/VO/Apollo_0035",
+						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+						Emote = "PortraitEmoteMusical",	
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I am your sunshine~~\n Your only sunshine~~\n I make you happy~~\n when skies are gray~~" },
-				}
+						Text = "I am your sunshine~~\nYour only sunshine~~\nI give you blessings~~\nwhen skies are gray~~" },
+				},
+				ApolloMiscPickup35 =
+				{
+					Name = "ApolloMiscPickup35",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
+					{ Cue = "/VO/Apollo_0036",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Another ray of sunshine coming your way!" },
+				},
+				ApolloMiscPickup36 =
+				{
+					Name = "ApolloMiscPickup36",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
+					{ Cue = "/VO/Apollo_0037",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "You've always got a friend in me, Zagzag. One day, we'll find each other." },
+				},
+				ApolloMiscPickup37 =
+				{
+					Name = "ApolloMiscPickup37",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
+					{ Cue = "/VO/Apollo_0038",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "When it comes down to it, it's quite simple, Zagzag. Just beat it. No one wants to be defeated!" },
+				},
+				ApolloMiscPickup38 =
+				{
+					Name = "ApolloMiscPickup38",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
+					{ Cue = "/VO/Apollo_0039",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I have given you all I can. You'll have to do the rest on your own." },
+				},
+				ApolloMiscPickup39 =
+				{
+					Name = "ApolloMiscPickup39",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
+					{ Cue = "/VO/Apollo_0040",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "You seem to be under a lot of pressure down there. I guess it really does split a family in two." },
+				},
 			},
 	
 			BoughtTextLines =
@@ -3575,7 +3835,7 @@ OlympusTraitData.SeaChanteyTrait =
 	
 					{ Cue = "/VO/Apollo_0096",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I would say you got ripped off, but I had a vision of a sale coming soon... And I know Charon doesn't do take backs." },
+						Text = "You know, I saw a vision of a sale coming soon. I'd say you got ripped off, but I know Charon doesn't do well with haggling." },
 				},
 				ApolloLootBought03 =
 				{
@@ -3586,7 +3846,7 @@ OlympusTraitData.SeaChanteyTrait =
 	
 					{ Cue = "/VO/Apollo_0097",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "You didn't have to pay for my blessing, Zagzag. I would have helped you if you only asked." },
+						Text = "You didn't have to pay for my blessing, Zagzag. I would have helped you if you would just asked." },
 				},
 			},
 	
@@ -3598,7 +3858,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0098",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Did you just choose somebody else over me, Cousin? I guess you've decided to stay in the darkness down below." },
+						Text = "Did you just choose somebody else over me, Cousin? I guess you've decided to stay down there." },
 				},
 				ApolloRejection02 =
 				{
@@ -3606,7 +3866,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0099",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "You know I can see what's going to happen, right? Let me just say you won't like it." },
+						Text = "You know I can see what's going to happen, right? Let me just say you won't like what comes next." },
 				},
 				ApolloRejection03 =
 				{
@@ -3614,7 +3874,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0100",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "The moment I thought we could jam together. Let's just hope it's not the end of our duet." },
+						Text = "Man. The moment I thought we could jam together. Let's just hope this doesn't mark the end of our duet." },
 				},
 				ApolloRejection04 =
 				{
@@ -3622,7 +3882,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0101",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Are you blind, Cousin? I hope you you meant to choose me. If not, what I am going to do is justified." },
+						Text = "Are you blind, Cousin? I hope you meant to choose me. Because, if not, what I am going to do is very justified." },
 				},
 				ApolloRejection05 =
 				{
@@ -3638,7 +3898,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0103",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Here I am, showing you the way out and this is the gratitude I get... Let me show you another, then." },
+						Text = "Here I am, trying to help guide you out of your father's realm and this is the gratitude I get in return. Allow me to show you something else then." },
 				},
 				ApolloRejection07 =
 				{
@@ -3646,7 +3906,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0104",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "No ... way... Even I couldn't see that one coming. But you know what, I don't think you'll see what's coming for you either." },
+						Text = "No way. Even I couldn't see that one coming. But you know what, I don't think you'll see what's coming for you either." },
 				},
 				ApolloRejection08 =
 				{
@@ -3654,7 +3914,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0105",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I don't think this is your first mistake, Cousin. But it might be your last." },
+						Text = "I don't think this was your first mistake, Cousin. But it might be your last." },
 				},
 				ApolloRejection09 =
 				{
@@ -3662,7 +3922,31 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0106",
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Let me sing you a song, Cousin. It's called {#DialogueItalicFormat}\"Zagreus dies once more\"{#PreviousFormat}. It's very catchy." },
+						Text = "Let me sing you a song, Cousin. It's called “Zagreus dies once more”. It's very catchy." },
+				},
+				ApolloRejection10 =
+				{
+					Name = "ApolloRejection10",
+					{ Cue = "/VO/Apollo_0107",
+						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I can't believe you've done this, Cousin. I though we were friends." },
+				},
+				ApolloRejection11 =
+				{
+					Name = "ApolloRejection11",
+					{ Cue = "/VO/Apollo_0108",
+						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "You know what, I accept your decision. As long as you accept the decision I'm about to make." },
+				},
+				ApolloRejection12 =
+				{
+					Name = "ApolloRejection12",
+					{ Cue = "/VO/Apollo_0109",
+						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Seems like you have death wish. Wait, that's an excellent name for a band! Here, deal with these guys while I go write that down." },
 				},
 			},
 	
@@ -3704,7 +3988,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0111",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I knew this moment would come. No hard feeling, Zagzag." },
+						Text = "I knew this moment would come. Don't worry, Zagzag. No hard feeling." },
 				},
 				ApolloMakeUp03 =
 				{
@@ -3720,7 +4004,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0113",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Stop! I got a song in my head and I got to go write it down. Let me be now." },
+						Text = "Everybody stops! I've got a song in my head and I need to go write it down. We are done here." },
 				},
 				ApolloMakeUp05 =
 				{
@@ -3728,7 +4012,7 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0114",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Wait a second... You didn't die! Oh, I think that happens later, my bad." },
+						Text = "Wait a second... You didn't die. Oh, I think that might actually happen later. Um, yea. My bad. Carry on." },
 				},
 				ApolloMakeUp06 =
 				{
@@ -3736,7 +4020,55 @@ OlympusTraitData.SeaChanteyTrait =
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0115",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "You know respect goes both ways, right, Zagzag... I am willing to do my part, if you do yours." },
+						Text = "You know respect is like a duet, Zagzag. I am willing to play my part, if you play yours." },
+				},
+				ApolloMakeUp07 =
+				{
+					Name = "ApolloMakeUp07",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					{ Cue = "/VO/Apollo_0116",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Friendship is all about its lows and its highs. That was our low,  so how about a high?" },
+				},
+				ApolloMakeUp08 =
+				{
+					Name = "ApolloMakeUp08",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					{ Cue = "/VO/Apollo_0117",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "You know what? Music is all about experimentation, and I'm sure that's what you were doing. I forgive you." },
+				},
+				ApolloMakeUp09 =
+				{
+					Name = "ApolloMakeUp09",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					{ Cue = "/VO/Apollo_0118",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "{#DialogueItalicFormat} Hahaha {#PreviousFormat}, you almost had me there for a second, Zagzag! Now, let's get back to the matter at hand." },
+				},
+				ApolloMakeUp10 =
+				{
+					Name = "ApolloMakeUp10",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					{ Cue = "/VO/Apollo_0119",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I don't want to brag, but if our fight was in my domain, you'd be pretty sorry right now." },
+				},
+				ApolloMakeUp11 =
+				{
+					Name = "ApolloMakeUp11",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					{ Cue = "/VO/Apollo_0120",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Alright, I know when something has gone on long enough. You win this round, Zagzag, and your prize is right here!" },
+				},
+				ApolloMakeUp12 =
+				{
+					Name = "ApolloMakeUp12",
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					{ Cue = "/VO/Apollo_0121",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "Let's put the past in the past. The show must go on, Zagzag." },
 				},
 			},
 	
@@ -3770,7 +4102,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0123",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "It must be hard to find such Nectar where you are. I truly appreciate the gesture. Any future gift is unnecessary." },
+						Text = "It must be hard to find such good Nectar where you are. I truly appreciate the gesture. Any future gift is completely unnecessary." },
 				},
 				ApolloGift03 =
 				{
@@ -3785,7 +4117,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0124",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Another gift? You know what would be the best gift? Escape your eternal prison and come to Olympus." },
+						Text = "Yet another gift? You know what is an even better gift you could give me, Zagzag? Coming to visit us sometime soon." },
 				},
 				ApolloGift04 =
 				{
@@ -3800,7 +4132,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0125",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Well, until we meet, this could do the trick. But seriously, think a little more for yourself and just... you know... escape?" },
+						Text = "Well, until we meet, this could do the trick. But seriously, think a little more about yourself and... Just focus on escaping." },
 				},
 				ApolloGift05 =
 				{
@@ -3815,7 +4147,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0126",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "How do you have so many of these? Isn't Nectar rare where you stand? This is madness..." },
+						Text = "How do you have so many of these? Isn't Nectar rare in your realm? I mean I saw it coming. Just wow." },
 				},
 				ApolloGift06 =
 				{
@@ -3830,7 +4162,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0127",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I will take this, but no more Nectar, Zagzag. You hear me, just get out. You have your place here. Everybody is waiting for you." },
+						Text = "I will take this, but no more Nectar, Zagzag. I mean it. Just escape. You have your place here. And everybody is rooting for you." },
 				},
 				ApolloGift07 =
 				{
@@ -3847,7 +4179,7 @@ OlympusTraitData.SeaChanteyTrait =
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 						PostLineFunctionArgs = { Text = "NPC_Apollo_01", Icon = "Keepsake_ApolloSticker_Max" },
-						Text = "{#DialogueItalicFormat}Um{#PreviousFormat}. This is no Nectar... Ambrosia now? How did you find this? What can I say? Thank you, my friend. I just hope we can see each other soon. Until then, take care and... Thank you." },
+						Text = "Is that Ambrosia? How did you find this? I don't know what to say beside thank you my friend. I just hope we can see each other soon. So, I may share it with you. For now, thought, have this. And take care of yourself." },
 				},
 			},
 	
@@ -3873,17 +4205,17 @@ OlympusTraitData.SeaChanteyTrait =
 	
 					-- Put your fate in the light!
 					{ Cue = "/VO/Apollo_0129" },
-					-- Do, Re, Mi! The end I see!
+					-- Do, Re, Mi! Your end I see!
 					{ Cue = "/VO/Apollo_0130" },
 					-- La, Si, Do! Your pain will grow!
 					{ Cue = "/VO/Apollo_0164" },
-					-- Purification time, am I right?
+					-- You're in Treble now!
 					{ Cue = "/VO/Apollo_0131" },
-					-- Vile creatures don't stand a chance!
+					-- Back for another round?
 					{ Cue = "/VO/Apollo_0132" },
-					-- Better keep the rhythm!
+					-- Better keep up with the rhythm!
 					{ Cue = "/VO/Apollo_0133" },
-					-- Did you ask for an encore?
+					-- Didn't I hear someone ask for an encore?
 					{ Cue = "/VO/Apollo_0134", RequiredMinKillEnemies = 2 },
 					-- I'll never get tired of this sound.
 					{ Cue = "/VO/Apollo_0135", RequiredMinKillEnemies = 2 },
@@ -3896,15 +4228,15 @@ OlympusTraitData.SeaChanteyTrait =
 					RequiredSpurnedGodName = "ApolloUpgrade",
 					RequireCurrentEncounterNotComplete = true,
 	
-					-- Is it because I called you Zagzag?!
+					-- Is it because I called you Zagzag?
 					{ Cue = "/VO/Apollo_0136" },
 					-- You have chosen... Poorly!
 					{ Cue = "/VO/Apollo_0137" },
-					-- The light shall burn you, Zagzag.
+					-- Let's go then! Double Time!
 					{ Cue = "/VO/Apollo_0138" },
 					-- You were the chosen one!
 					{ Cue = "/VO/Apollo_0139" },
-					-- You were my brother, Zagzag. I loved you.
+					-- You were my cousin, Zagzag. I loved you.
 					{ Cue = "/VO/Apollo_0140" },
 				},
 			},
@@ -3951,19 +4283,148 @@ OlympusTraitData.SeaChanteyTrait =
 				Source = { SubtitleColor = Color.ApolloVoice },
 				TriggerCooldowns = { "ZagreusBoonTakenSpeech" },
 	
-				-- Let's start a band.
+				-- You want to start a band?
 				{ Cue = "/VO/Apollo_0144" },
-				-- Zagzag is in the place.
+				-- You've got this!
 				{ Cue = "/VO/Apollo_0145" },
-				-- This is my holy blessing.
+				-- This is my divine blessing.
 				{ Cue = "/VO/Apollo_0146" },
-				-- I'll show you the way.
+				-- My light will guide you!
 				{ Cue = "/VO/Apollo_0147" },
 				-- Get ready to jam.
 				{ Cue = "/VO/Apollo_0148" },
 			},
 	}
-	-- Duo LootData
+	-- Duo PickupLines	
+	OlympusLootData.ZeusUpgrade.DuoPickupTextLineSets.ZeusWithApollo01 = {
+		Name = "ZeusWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "MasterBoltTrait",
+		{ Cue = "/VO/Zeus_0251",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Is that the bow I gave to Artemis and you, Young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
+		{ Cue = "/VO/Apollo_0049",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "Of course, I never leave without it, Father. Perhabs we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
+	}
+	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithApollo01 = {
+		Name = "PoseidonWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "SeaChanteyTrait",
+		{ Cue = "/VO/Poseidon_0251",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Hey ho, isn't it another one of my Nephew! Let's sing a sailor's song." },
+		{ Cue = "/VO/Apollo_0050",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "As much as I would love that, Uncle, I am sure Zagzag here would appreciate something more... tangible? Let's keep the singing for when he arrives on Olympus." },
+	}
+	OlympusLootData.AthenaUpgrade.DuoPickupTextLineSets.AthenaWithApollo01 = {
+		Name = "AthenaWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "DamageReduceDistanceTrait",
+		{ Cue = "/VO/Athena_0241",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "I see. You are helping Zagreus as well, Step-brother. For someone who claims to be faster than Hermes, you took your sweet time." },
+		{ Cue = "/VO/Apollo_0051",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "You know what, step-sister, just because I appreciate the finer things in life doesn't mean I want to help him any less than you do. And help him we shall!" },
+	}
+	OlympusLootData.AresUpgrade.DuoPickupTextLineSets.AresWithApollo01 = {
+		Name = "AresWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "WarSongTrait",
+		{ Cue = "/VO/Ares_0241",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "My kin, I wish to help you once more, but in order to not fail this time, Apollo here will help me with his foresight. There's no failing this time." },
+		{ Cue = "/VO/Apollo_0052",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "Um, Brother... I really don't think my Foresight is an instrument to be used. How about we try working together instead?  {#DialogueItalicFormat} Urgh, {#PreviousFormat}  do you see what I put up with to try to help you, Zagzag? You owe me one." },
+	}
+	OlympusLootData.AphroditeUpgrade.DuoPickupTextLineSets.AphroditeWithApollo01 = {
+		Name = "AphroditeWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "HyacinthTrait",
+		{ Cue = "/VO/Aphrodite_0231",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Well, lovely as ever, Apollo. From all my relatives, you are by far the only one to understand beauty and perfection." },
+		{ Cue = "/VO/Apollo_0053",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}! Well thank you, Aphrodite. You are not too bad yourself. Let's help Zagzag here step up to our league." },
+	}
+	OlympusLootData.ArtemisUpgrade.DuoPickupTextLineSets.ArtemisWithApollo01 = {
+		Name = "ArtemisWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "FamedDuetTrait",
+		{ Cue = "/VO/Artemis_0251",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Apollo! How many times did I ask you not to include me in any forms of get together! {#DialogueItalicFormat} Arrg {#PreviousFormat}! I'll make an exception, only because it's Zagreus, but it's the last time." },
+		{ Cue = "/VO/Apollo_0054",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "Oh, is my sister going soft? Is she ready to have a social life? I think I found her weak spot, Zagzag. Let me thank you with this!" },
+	}
+	OlympusLootData.DionysusUpgrade.DuoPickupTextLineSets.DionysusWithApollo01 = {
+		Name = "DionysusWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "MasterLobDionysusTrait",
+		{ Cue = "/VO/Dionysus_0231",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Hey Zag, Apollo helped me prepare this awesome welcome party for you. We hope you can get here in time." },
+		{ Cue = "/VO/Apollo_0055",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "Bad news, Brother. My foresight tells me he won't make it here in time. Here, we can try sharing a bit of the party with him through a blessing. How does that sound, Zagzag?" },
+	}
+	OlympusLootData.DemeterUpgrade.DuoPickupTextLineSets.DemeterWithApollo01 = {
+		Name = "DemeterWithApollo01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "BlindDurationTrait",
+		{ Cue = "/VO/Demeter_0371",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Since Apollo is here, I figured we must help you, young Zagreus. Even if Apollo's flare is a bit much for me." },
+		{ Cue = "/VO/Apollo_0056",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/LyreMedium",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag we'll do what it takes to help you." },
+	}
+	-- Duo LootData	
 	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
 	{
 		OneFromEachSet =
@@ -4020,6 +4481,15 @@ OlympusTraitData.SeaChanteyTrait =
 			{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" }
 		}
 	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.MasterLobDionysusTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "DionysusRangedTrait"},
+			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }
+		}
+	}
+	
 	-- Other gods modification
 	-- AthenaUpgrade
 	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "ApolloFirstPickUp")
@@ -4075,7 +4545,7 @@ OlympusTraitData.SeaChanteyTrait =
 		Locked = 7,
 		[1] = { Gift = "ForceApolloBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis01" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis03" } }
 	}
 	-- FUNCTIONS
 	
@@ -4085,7 +4555,9 @@ OlympusTraitData.SeaChanteyTrait =
 	end
 	function EndApolloBeam()
 		EndRamWeapons({ Id = CurrentRun.Hero.ObjectId })
-		FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+		if CurrentRun.Hero.SuperActive then
+			FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+		end
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloStun" })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloSpeed" })
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "ApolloBubble" })
@@ -4098,6 +4570,33 @@ OlympusTraitData.SeaChanteyTrait =
 		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
 	end
 
+	OnWeaponFired{ "ApolloBeamWeapon",
+		function(triggerArgs)
+			ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
+			SetPlayerPhasing("ApolloBeam")
+			CurrentRun.Hero.SurgeActive = true
+			SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
+			SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
+		end
+	}
+	ModUtil.Path.Wrap( "DamageEnemy", 
+		function(baseFunc, victim, triggerArgs)
+			local sourceWeaponData = triggerArgs.AttackerWeaponData
+			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
+				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
+					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Reduced")) 		
+				else
+					if not victim.TimeOfLastDamage then
+						victim.TimeOfLastDamage = {}
+					end
+					victim.TimeOfLastDamage[sourceWeaponData.Name] = _worldTime	
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Solo")) 
+				end
+			end
+			baseFunc(victim, triggerArgs)
+		end
+	)
 	-- Blind Functions
 	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
 	ModUtil.Path.Wrap( "CheckOnHitPowers", 
@@ -4169,7 +4668,7 @@ OlympusTraitData.SeaChanteyTrait =
 	ModUtil.Path.Wrap( "HandleLootPickup", 
 		function(baseFunc, currentRun, loot)	
 			local times = 0
-			if not (loot.Name == "StackUpgrade") and HeroHasTrait("RerollBoonTrait") then				
+			if not (loot.Name == "StackUpgrade") and not (loot.Name == "WeaponUpgrade") and HeroHasTrait("RerollBoonTrait") then				
 				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
 				local count = GetTotalHeroTraitValue("BoonCount")
 				times = math.floor(CurrentRun.RerollBoonTracker/count);
@@ -4270,7 +4769,13 @@ OlympusTraitData.SeaChanteyTrait =
 			CreateAnimation({ DestinationId = victim.ObjectId, Name = "PoseidonMusicNotes" })
 		end
 	end
-	
+
+	function SeaChanteyAnnouncement()
+		wait(1)
+		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
+	end
+
 	-- Hyacinth Insta-kill function
 	function CheckHyacinthKill( args, attacker, victim )
 		if (not victim.IsBoss) and attacker == CurrentRun.Hero and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and HasEffect({Id = victim.ObjectId, EffectName = "ApolloBlind" }) and not victim.IsDead and victim.Health / victim.MaxHealth <= args.HyacinthDeathThreshold and ( victim.Phases == nil or victim.CurrentPhase == victim.Phases ) then
@@ -4288,35 +4793,32 @@ OlympusTraitData.SeaChanteyTrait =
 			thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 		end
 	end
-
-	function SeaChanteyAnnouncement()
-		wait(1)
-		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
-		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
-	end
-
-
-	function CheckDazzled( args, attacker, victim )	
-		if attacker and  attacker == CurrentRun.Hero and HeroHasTrait("DazzledTrait") and victim and not HasEffect({Id = victim.ObjectId, EffectName = "Dazzled" }) and HasEffect({Id = victim.ObjectId, EffectName = "DamageOverTime" }) and victim.ActiveEffects["DamageOverTime"] then
-			--FireWeaponFromUnit({ Weapon = "DazzledWeapon", AutoEquip = true, Id = attacker.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true  })
-			RotateUntilEffectExpired(victim, args)
-			--ClearEffect({ Id = victim.ObjectId, Name = "DamageOverTime" })
+	
+	-- Dionysus Duo Lobs
+	local countToTwo = false;
+	function SpawnAdditionalLob( triggerArgs, traitDataArgs )
+		--local lastlocation = triggerArgs.LastHitTable
+		if (triggerArgs.name == "ApolloLobProjectile" or triggerArgs.name == "DionysusLobProjectile") and (HeroHasTrait("MasterLobApolloTrait") or HeroHasTrait("MasterLobDionysusTrait")) then	
+			if HeroHasTrait("ArtemisBonusProjectileTrait") then
+				if countToTwo then
+					countToTwo = false
+					return
+				else
+					countToTwo = true
+				end
+			end
+			if triggerArgs.name == "ApolloLobProjectile" then
+				FireWeaponFromUnit({ Weapon = "DionysusLobWeaponAdditional", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
+			elseif triggerArgs.name == "DionysusLobProjectile" then
+				FireWeaponFromUnit({ Weapon = "ApolloLobWeaponAdditional", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
+			end
 		end
 	end
-		
-	function RotateUntilEffectExpired( enemy, args )
-		--Move({ Id = enemy.ObjectId, DestinationId = args.TargetId, SuccessDistance = aiData.MoveSuccessDistance or 32 })
-		--SetGoalAngle({ Id = enemy.ObjectId, Angle = 270 })
-		--SetGoalAngle({ Id = enemy.ObjectId, Angle = 180 })
-		--AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = GetTargetId(enemy)})
-		--Move({ Id = enemy.ObjectId, Distance = 32, Angle = 270, Duration = 1 })
-		--SetGoalAngle({ Id = enemy.ObjectId, Angle = 90, Duration = 1 });
-	end
+
 	-- Athena Duo
 	OnProjectileReflect{
 		function( triggerArgs )
 			if HeroHasTrait("DamageReduceDistanceTrait") then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
 				FireWeaponFromUnit({ Weapon = "DistanceResistWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true })
 			end
 		end
@@ -4341,15 +4843,6 @@ OlympusTraitData.SeaChanteyTrait =
 			RemoveIncomingDamageModifier( unit, "DamageReduceDistance" )
 		end
 	end
-	OnWeaponFired{ "ApolloBeamWeapon",
-	function(triggerArgs)
-		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = false })
-		SetPlayerPhasing("ApolloBeam")
-		CurrentRun.Hero.SurgeActive = true
-		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = true })
-		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = true })
-	end
-	}
 
 	--[[function BossHyacinthKillPresentation(unit)
 		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
@@ -4371,7 +4864,7 @@ OlympusTraitData.SeaChanteyTrait =
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
 	)]]

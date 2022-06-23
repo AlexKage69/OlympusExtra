@@ -99,21 +99,32 @@
       Cooldown = 0.4
     }
     {
-      Name = "DazzledWeapon"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "DazzledProjectile"
-	    ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
       Name = "ApolloChillKill"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "ApolloChillKill"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "ApolloLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloLobProjectileAdditional"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "DionysusLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "DionysusLobProjectileAdditional"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"

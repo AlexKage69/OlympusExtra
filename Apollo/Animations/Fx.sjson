@@ -3386,6 +3386,26 @@
       UseAttachedFlasher = false
     }
     {
+      Name = "DazzledHoverPrep"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Animations\Shade\Naked\ShadeNaked"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.7
+      Green = 0.0
+      Blue = 0.0
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
       Name = "DazzledHoverLoop"
       InheritFrom = "AresSwordHoverDrop"
       FilePath = "Animations\Shade\Naked\ShadeNaked"
@@ -3394,9 +3414,9 @@
       AddColor = true
       EaseOut = 1.0
       EndFrame = 32
-      Red = 0.5
-      Green = 0.0
-      Blue = 1.0
+      Red = 0.0
+      Green = 0.7
+      Blue = 0.0
       Scale = 0.8
       Loop = true
       NumFrames = 32
