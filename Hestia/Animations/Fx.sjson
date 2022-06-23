@@ -2,6 +2,256 @@
   Animations = [
     "_append"
     /* Hestia - Sword - WeaponTrait */
+    {
+      Name = "SwordSwipeAFlipped-Hestia"
+      InheritFrom = "SwordSwipeAFlipped"
+      GroupName = "Standing"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      Slides = [
+        {
+          DurationFrames = 1
+          VisualFx = "SwordSwipeA-Hestia"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+          VisualFx = "QuickFlashDarkPurple"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }]
+    }
+    {
+      Name = "SwordSwipeA-Hestia"
+      InheritFrom = "SwordSwipeAFlipped"
+      ClearCreateAnimations = true
+      FilePath = "Fx\SwordSwipeA-Poseidon\SwordSwipeA-Poseidon"
+      GroupName = "Standing"
+      Type = "Book"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      AddColor = false
+      EndBlue = 0.10
+      EndGreen = 0.02
+      EndRed = 0.50
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EndFrame = 29
+      NumFrames = 29
+      ClearSlides = true
+      StartFrame = 1
+    }
+    {
+      Name = "SwordSwipeA-Hestia-Arthur"
+      InheritFrom = "SwordSwipeA-Hestia"
+      Scale = 2.0
+      FlipVertical = false
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeAChroma"
+        }
+        {
+          Name = "SwordSwipeADark-Arthur"
+        }
+        {
+          Name = "SwordSwipeADisplace"
+        }]
+    }
+    {
+      Name = "SwordSwipeAFlipped-Hestia-Arthur"
+      InheritFrom = "SwordSwipeAFlipped-Hestia"
+      Scale = 2.0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeAChromaFlipped"
+        }
+        {
+          Name = "SwordSwipeAFlippedDark-Arthur"
+        }
+        {
+          Name = "SwordSwipeAFlippedDisplace"
+        }]
+    }
+    {
+      Name = "SwordSwipeB-Hestia"
+      InheritFrom = "SwordSwipeB"
+      ChildAnimation = "QuickFlashDarkPurple"
+      GroupName = "Standing"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      Slides = [
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+          VisualFx = "SwordSwipeB-Displace"
+        }
+        {
+          DurationFrames = 2
+          VisualFx = "SwordSwipeBImpact-Poseidon"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    {
+      Name = "SwordSwipeC-Hestia"
+      InheritFrom = "SwordSwipeC-ArthurBase"
+      ChildAnimation = "RailgunLineSword3-Hestia"
+      //VisualFx = "PoseidonMeleeSplash_SwordSwipeC"
+      Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+    }
+    {
+      Name = "RailgunLineSword3-Hestia"
+      InheritFrom = "RailgunLineSword3"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SwordSwipeC-Hestia-Arthur"
+      InheritFrom = "SwordSwipeC-Hestia"
+      OffsetZ = 52
+      ClearCreateAnimations = true
+      ChildAnimation = null
+      VisualFx = null
+      CreateAnimation = "SwordSwipeC-Displace-Arthur"
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeC-Arthur-Chroma"
+        }]
+    }
+    {
+      Name = "ChargeAttack-Hestia"
+      InheritFrom = "ChargeAttack"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
     /* Hestia - Sword - SecondaryTrait */
     /* Hestia - Spear - WeaponTrait */
     /* Hestia - Spear - SecondaryTrait */
@@ -96,6 +346,26 @@
       Red = 1.0
       Green = 0.64
       Blue = 0.41
+    }
+    {
+      Name = "QuickFlashDarkPurple"
+      InheritFrom = "QuickFlashRed"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.3
+      EaseIn = 0.99
+      EaseOut = 1.0
+      Scale = 0.7
+    }
+    {
+      Name = "QuickFlashDarkPurpleSmall"
+      InheritFrom = "QuickFlashDarkPurple"
+      Scale = 0.5
+      OffsetZ = 90
     }
     /* Dash */
     /* Attraction Fx */

@@ -32,5 +32,92 @@
 			Id = "HestiaUpgrade_FlavorText03"
 			DisplayName = "home is the place you feel you belong."
 		}	
+		{
+			Id = "HestiaWeaponTrait"
+			DisplayName = "Embracing Strike"
+			Description = "Your {$Keywords.Attack} deals more damage and attacts foes towards you. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}" 
+		} 		
+		{
+			Id = "HestiaWeaponTrait_Initial"
+			InheritFrom = "HestiaWeaponTrait"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HestiaSecondaryTrait"
+			DisplayName = "Embracing Flourish"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 	
+		{
+			Id = "HestiaSecondaryTrait_Initial"
+			InheritFrom = "HestiaSecondaryTrait"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}		
+		{
+			Id = "HestiaDashTrait"
+			DisplayName = "Flaring Rush"
+			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 
+		{
+			Id = "HestiaDashTrait_Initial"
+			InheritFrom = "HestiaDashTrait"
+			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HestiaRangedTrait"
+			DisplayName = "Embracing Shot"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HestiaRangedTrait_Initial"
+			InheritFrom = "HestiaRangedTrait"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HestiaRangedTrait_Tray"
+			InheritFrom = "HestiaRangedTrait"
+			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_HestiaRangedTrait"
+			DisplayName = "Embracing Flare"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
+		}
+		{
+			Id = "ShieldLoadAmmo_HestiaRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "ShieldLoadAmmo_HestiaRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "BowLoadAmmo_HestiaRangedTrait"
+			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
+		}
+		{
+			Id = "BowLoadAmmo_HestiaRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait_Tray"
+		}
+		{
+			Id = "BowLoadAmmo_HestiaRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait_Initial"
+		}
+		{
+			Id = "HestiaShoutTrait"
+			DisplayName = "Hestia's Aid"
+			Description = "Your {$Keywords.Wrath} fires Ring for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+		}	
+		{
+			Id = "HestiaShoutTrait_Tray"
+			InheritFrom = "HestiaShoutTrait"
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		}	
+		{
+			Id = "HestiaShoutTrait_Initial"
+			InheritFrom = "HestiaShoutTrait"
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		} 
 	]
 }

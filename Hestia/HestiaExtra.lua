@@ -43,9 +43,9 @@ if ModUtil ~= nil then
 			RequiredTraitsTaken =
 			{
 				"HestiaWeaponTrait",
-				--"HestiaDashTrait",
-				--"HestiaRangedTrait",
-				--"HestiaSecondaryTrait",
+				"HestiaDashTrait",
+				"HestiaRangedTrait",
+				"HestiaSecondaryTrait",
 				--"HestiaShoutTrait",				
 				--"StrongAttractionTrait",
 				--"HestiaRevengeTrait",
@@ -409,890 +409,1219 @@ if ModUtil ~= nil then
 	}
 		
 	OlympusTraitData.HestiaWeaponTrait =
-	 {
-			 Name = "HestiaWeaponTrait",
-			 InheritFrom = { "ShopTier1Trait" },
-			 God = "Hestia",
-			 Slot = "Melee",
-			 Icon =  "Boon_Hestia_01",
-			 AddOutgoingDamageModifiers =
-			 {
-				 ValidWeaponMultiplier =
-				 {
-					 BaseValue = 1.40,
-					 SourceIsMultiplier = true,
-					 IdenticalMultiplier =
-					 {
-						 Value = DuplicateMultiplier,
-					 },
-				 },
-				 ValidWeapons = WeaponSets.HeroPhysicalWeapons,
-				 ExtractValues =
-				 {
-					 {
-						 Key = "ValidWeaponMultiplier",
-						 ExtractAs = "TooltipDamage",
-						 Format = "PercentDelta",
-					 },
-				 }
-			 },
-			 PropertyChanges =
-			 {
-				 {
-					 WeaponNames = WeaponSets.HeroPhysicalWeapons,
-					 EffectName = "HestiaBlind",
-					 EffectProperty = "Active",
-					 ChangeValue = true,
-				 },
-				 {
-					 WeaponName = "SwordWeapon",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeAFlipped-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "SwordWeapon2",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeB-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "SwordWeapon3",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "SwordWeaponDash",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 }, 
-				 {
-					 WeaponName = "SwordWeapon3",
-					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 }, 
-				 {
-					 WeaponName = "SwordWeaponDash",
-					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 }, 
-				 {
-					 WeaponName = "SpearWeapon",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearThrustProjectile-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "SpearWeapon2",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearThrustProjectile-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "SpearWeapon3",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearThrustProjectile-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "SpearWeaponDash",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "SpearDashSwipe-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "SpearWeaponSpin",
-					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "SpearSwipe360-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "SpearWeaponSpin2",
-					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "SpearSwipe360-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "SpearWeaponSpin3",
-					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "SpearSwipe360-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "BowWeapon",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "BowWeapon",
-					 WeaponProperty = "MinChargeStartFx",
-					 ChangeValue = "BowCharge-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "BowWeaponDash",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "BowWeaponDash",
-					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "BowChargeFast-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "ShieldWeapon",
-					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "ShieldSwipe-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponName = "ShieldWeaponDash",
-					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "ShieldSwipeDash-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "ShieldWeaponRush",
-					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "ShieldCharge-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "ShieldWeaponRush",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "ShieldRush3D-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "ShieldWeaponRush",
-					 ProjectileProperty = "DissipateGraphic",
-					 ChangeValue = "ShieldRush3D-Out-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "GunWeapon",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "GunWeaponProjectile-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "GunWeapon",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "GunFire-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "GunWeapon",
-					 ProjectileProperty = "ImpactFx",
-					 ChangeValue = "GunWeaponImpact-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "GunWeaponDash",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "GunWeaponProjectile-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "GunWeaponDash",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "GunFire-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponName = "GunWeaponDash",
-					 ProjectileProperty = "ImpactFx",
-					 ChangeValue = "GunWeaponImpact-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "FistFxHestia",
-					 ChangeType = "Absolute"
-				 },
-				 {
-					 WeaponName = "FistWeaponDash",
-					 ProjectileProperty = "StartFx",
-					 ChangeValue = "FistFxSwipe",
-					 ChangeType = "Absolute",
-				 },
-	 
-				 {
-					 TraitName = "SwordConsecrationTrait",
-					 WeaponNames = { "SwordWeapon" },
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Hestia-Arthur",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "SwordConsecrationTrait",
-					 WeaponNames = { "SwordWeapon2" },
-					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "SwordConsecrationTrait",
-					 WeaponNames = { "SwordWeapon2" },
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeA-Hestia-Arthur",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "SwordConsecrationTrait",
-					 WeaponNames = { "SwordWeapon3" },
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeAFlipped-Hestia-Arthur",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "SwordConsecrationTrait",
-					 WeaponNames = { "SwordWeapon3" },
-					 WeaponProperty = "ChargeFx",
-					 ChangeValue = "ChargeAttack-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "SwordConsecrationTrait",
-					 WeaponNames = { "SwordWeaponDash" },
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "SwordSwipeC-Hestia-Arthur",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 TraitName = "BowBondTrait",
-					 WeaponName = "BowWeapon",
-					 WeaponProperty = "MinChargeStartFx",
-					 ChangeValue = "BowChargeRama-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 TraitName = "BowBondTrait",
-					 WeaponName = "BowWeaponDash",
-					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "BowChargeRamaDash-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 TraitName = "BowBondTrait",
-					 WeaponNames = { "BowWeapon", "BowWeaponDash" },
-					 ProjectileProperty = "AttachedAnim",
-					 ChangeValue = "RamaWideShot-Hestia",
-					 ChangeType = "Absoawlute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 TraitName = "GunLoadedGrenadeTrait",
-					 WeaponName = "GunWeapon",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "GunLaser-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "GunLoadedGrenadeTrait",
-					 WeaponName = "GunWeapon",
-					 ProjectileProperty = "AttachedAnim",
-					 ChangeValue = "GunLaserOriginFlare-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "GunLoadedGrenadeTrait",
-					 WeaponName = "GunWeapon",
-					 ProjectileProperty = "TipFx",
-					 ChangeValue = "GunLaserTipFlare-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "GunLoadedGrenadeTrait",
-					 WeaponName = "GunWeapon",
-					 WeaponProperty = "ChargeStartFx",
-					 ChangeValue = "GunCharge-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "GunLoadedGrenadeTrait",
-					 WeaponNames = { "GunWeapon", "GunWeaponDash" },
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "null",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "GunLoadedGrenadeTrait",
-					 WeaponName = "GunWeapon",
-					 ProjectileProperty = "DissipateGraphic",
-					 ChangeValue = "GunLaserEnd-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 TraitName = "ShieldLoadAmmoTrait",
-					 WeaponName = "ShieldWeapon",
-					 ProjectileProperty = "DetonateGraphic",
-					 ChangeValue = "BeowulfShieldSlam-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 TraitName = "BowMarkHomingTrait",
-					 WeaponNames = { "BowWeapon" },
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Hestia-Alt01",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 TraitName = "BowLoadAmmoTrait",
-					 WeaponNames = { "BowWeapon" },
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "BowWeaponArrow-Hestia-Alt02",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-				 {
-					 WeaponNames = { "FistWeapon", "FistWeapon3", "FistWeapon5" },
-					 TraitName = "FistDetonateTrait",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "ClawSwipe-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponNames = { "FistWeapon2", "FistWeapon4" },
-					 TraitName = "FistDetonateTrait",
-					 WeaponProperty = "FireFx",
-					 ChangeValue = "ClawSwipeFlipped-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-				 {
-					 WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
-					 TraitName = "FistDetonateTrait",
-					 ProjectileProperty = "Graphic",
-					 ChangeValue = "null",
-					 ChangeType = "Absolute"
-				 },
-				 {
-					 WeaponNames = { "FistWeaponDash" },
-					 ProjectileProperty = "StartFx",
-					 ChangeValue = "ClawSwipeFlippedDash-Hestia",
-					 ChangeType = "Absolute",
-					 ExcludeLinked = true,
-				 },
-	 
-			 },
-			 ExtractValues =
-			 {
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "HestiaBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "HestiaBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				}
-			 }
-	 } 
-	OlympusTraitData.HestiaSecondaryTrait =
-	 {
-		 Name = "HestiaSecondaryTrait",
-		 InheritFrom = { "ShopTier1Trait" },
-		 God = "Hestia",
-		 Slot = "Secondary",
-		 Icon =  "Boon_Hestia_02",
-		 AddOutgoingDamageModifiers =
-		 {
-			 ValidWeaponMultiplier =
-			 {
-				 BaseValue = 1.6,
-				 SourceIsMultiplier = true,
-				 IdenticalMultiplier =
-				 {
-					 Value = DuplicateMultiplier,
-				 },
-			 },
-			 ValidWeapons = WeaponSets.HeroSecondaryWeapons,
-			 ExtractValues =
-			 {
-				 {
-					 Key = "ValidWeaponMultiplier",
-					 ExtractAs = "TooltipDamage",
-					 Format = "PercentDelta",
-				 },
-			 }
-		 },
-		 PropertyChanges =
-		 {
-			 {
-				 WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				 EffectName = "HestiaBlind",
-				 EffectProperty = "Active",
-				 ChangeValue = true,
-			 },
-	
-			 {
-				 WeaponName = "SwordParry",
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "RadialNovaSwordParry-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 WeaponName = "SpearWeaponThrow",
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "SpearThrowProjectile-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 WeaponName = "SpearWeaponThrowReturn",
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "SpearThrowProjectile-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponName = "BowSplitShot",
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "BowWeaponArrow-Hestia-SplitShot",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 WeaponName = "BowSplitShot",
-				 WeaponProperty = "MinChargeStartFx",
-				 ChangeValue = "BowCharge-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 WeaponNames = { "ShieldThrow", },
-				 ProjectileName = "ShieldThrow",
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ShieldSwipe-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponNames = { "ShieldThrowDash" },
-				 ProjectileName = "ShieldThrowDash",
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ShieldSwipe-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				 WeaponProperty = "ChargeStartFx",
-				 ChangeValue = "ShieldCharge-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "ProjectileShield-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "ShieldRushBonusProjectileTrait",
-				 ProjectileProperty = "Graphic",
-				 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-				 ChangeValue = "ProjectileShieldAlt01-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "ShieldLoadAmmoTrait",
-				 ProjectileProperty = "Graphic",
-				 WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-				 ChangeValue = "ProjectileShieldAlt03-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "ShieldTwoShieldTrait",
-				 ProjectileProperty = "Graphic",
-				 WeaponName = "ShieldThrow",
-				 ChangeValue = "ProjectileShieldAlt02-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "ShieldTwoShieldTrait",
-				 WeaponName = "ShieldThrow",
-				 ProjectileName = "ShieldThrow",
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ShieldThrowTrailMirage-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponName = "GunGrenadeToss",
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ZagGrenadeExplosionHestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "SpearTeleportTrait",
-				 WeaponName = "SpearRushWeapon",
-				 ProjectileName = "SpearRushWeapon",
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "SpearRushTrailFx-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
-				 WeaponProperty = "FireFx",
-				 ChangeValue = "FistFxUppercutDirectionalHestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 TraitName = "GunLoadedGrenadeTrait",
-				 WeaponNames = { "GunGrenadeToss" },
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "GunGrenadeLuciferOrb-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "GunLoadedGrenadeTrait",
-				 WeaponNames = { "GunGrenadeToss" },
-				 ProjectileProperty = "GroupName",
-				 ChangeValue = "FX_Standing_Add",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "GunLoadedGrenadeTrait",
-				 WeaponNames = { "GunBombWeapon" },
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "ZagGrenadeExplosionHestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "GunLoadedGrenadeTrait",
-				 WeaponNames = { "GunBombImmolation" },
-				 ProjectileProperty = "DetonateGraphic",
-				 ChangeValue = "LuciferOrbAoE-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-			 {
-				 TraitName = "BowMarkHomingTrait",
-				 WeaponNames = { "BowSplitShot" },
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "BowWeaponArrow-Hestia-SplitShot-Alt01",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "BowLoadAmmoTrait",
-				 WeaponNames = { "BowSplitShot" },
-				 ProjectileProperty = "Graphic",
-				 ChangeValue = "BowWeaponArrow-Hestia-SplitShot-Alt02",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "FistDetonateTrait",
-				 WeaponNames = { "FistWeaponSpecial" },
-				 WeaponProperty = "FireFx",
-				 ChangeValue = "ClawSwipeUppercut-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "FistDetonateTrait",
-				 WeaponNames = { "FistWeaponSpecialDash" },
-				 WeaponProperty = "FireFx",
-				 ChangeValue = "ClawSwipeUppercut-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "FistDetonateTrait",
-				 WeaponNames = { "FistWeaponSpecialDash" },
-				 WeaponProperty = "FireFx",
-				 ChangeValue = "ClawSwipeUppercutSpecial-Hestia",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-			 {
-				 TraitName = "FistTeleportSpecialTrait",
-				 WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
-				 WeaponProperty = "FireFx",
-				 ChangeValue = "FistFxUppercutDirectionalHestia_FlashKick",
-				 ChangeType = "Absolute",
-				 ExcludeLinked = true,
-			 },
-	
-	
-		 },
-		 EnemyPropertyChanges =
-		 {
-			 {
-				 TraitName = "GunLoadedGrenadeTrait",
-				 LegalUnits = { "GunBombUnit" },
-				 ThingProperty = "Graphic",
-				 ChangeValue = "LuciferBomb-Hestia",
-				 ChangeType = "Absolute",
-			 },
-	
-		 },
-		 ExtractValues =
-		 {
+	{
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Slot = "Melee",
+		Icon = "Boon_Hestia_01",
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
 			{
-				ExtractAs = "TooltipBlindDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
+				BaseValue = 1.30,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ValidWeapons = WeaponSets.HeroPhysicalWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		},
+		OnWeaponChargeFunctions =
+		{
+			ValidWeapons = {"SwordWeapon", "SwordWeapon2", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "SwordWeapon3", "ShieldWeapon", "ShieldWeaponDash", "ShieldWeaponRush", "BowWeapon", "BowWeaponDash", "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash", "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5" },
+			FunctionName = "CheckVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				Range = 800,				-- Vacuum distance
+				DistanceBuffer = {
+					LowPull = 1300,
+					MidPull = 1700,
+					HighPull = 2100,
+				},		-- Space to leave between player and enemy
+				RushDistanceBuffer = 2000,
+				AutoLockArc = 180,
+			},
+		},
+		PropertyChanges =
+		{
+			{
 				WeaponName = "SwordWeapon",
-				BaseName = "HestiaBlind",
-				BaseProperty = "Duration",
+				ProjectileProperty = "StartFx",
+				ChangeValue = "null",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
 			},
 			{
-				ExtractAs = "TooltipBlindPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "HestiaBlind",
-				BaseProperty = "Amount",
-				Format = "Percent"
-			}
-		 }
-	 }
-	OlympusTraitData.HestiaDashTrait =
-	 {
-		 Name = "HestiaDashTrait",
-		 InheritFrom = { "ShopTier1Trait" },
-		 -- Inherit
-		 Cost = 30,
-		 -- New Data
-		 God = "Hestia",
-		 Slot = "Rush",
-		 Icon = "Boon_Hestia_03",
-		 RarityLevels =
-		 {
-			 Common =
-			 {
-				 MinMultiplier = 1.0,
-				 MaxMultiplier = 1.0,
-			 },
-			 Rare =
-			 {
-				 MinMultiplier = 1.5,
-				 MaxMultiplier = 1.5,
-	
-			 },
-			 Epic =
-			 {
-				 MinMultiplier = 2.0,
-				 MaxMultiplier = 2.0,
-			 },
-			 Heroic =
-			 {
-				 MinMultiplier = 2.5,
-				 MaxMultiplier = 2.5,
-			 }
-		 },
-		 WeaponDataOverride =
-		 {
-			 RushWeapon =
-			 {
-				 CauseImpactReaction = false,
-				 ImpactReactionHitsOverride = 0,
-			 },
-		 },
-		 PropertyChanges =
-		 {
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 WeaponProperty = "Projectile",
-				 ChangeValue = "HestiaDashProjectile",
-				 ChangeType = "Absolute",
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 ProjectileProperty = "DamageLow",
-				 BaseMin = 15,
-				 BaseMax = 15,
-				 AsInt = true,
-				 DepthMult = DepthDamageMultiplier,
-				 IdenticalMultiplier =
-				 {
-					 Value = DuplicateVeryStrongMultiplier,
-				 },
-				 ExtractValue =
-				 {
-					 ExtractAs = "TooltipDamage",
-				 }
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 ProjectileProperty = "DamageHigh",
-				 DeriveValueFrom = "DamageLow"
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 WeaponProperty = "BlinkDetonateAtEndpointDelay",
-				 ChangeValue = 0.01,
-				 ChangeType = "Absolute",
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 EffectName = "HestiaBlind",
-				 EffectProperty = "Active",
-				 ChangeValue = true,
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 WeaponProperty = "FireFx",
-				 ChangeValue = "BlinkTrailVerticalB-Hestia",
-				 ChangeType = "Absolute",
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 WeaponProperty = "FireGraphic",
-				 ChangeValue = "ZagreusDashNoCollide_Hestia",
-				 ChangeType = "Absolute",
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 WeaponProperty = "BlinkDetonateAtOrigin",
-				 ChangeValue = true,
-				 ChangeType = "Absolute",
-			 },
-			 {
-				 WeaponNames = WeaponSets.HeroRushWeapons,
-				 WeaponProperty = "BlinkDetonateAtEndpoint",
-				 ChangeValue = false,
-				 ChangeType = "Absolute",
-			 },
-		 },
-		 ExtractValues =
-		 {
-			 {
-				 ExtractAs = "TooltipBlindDuration",
-				 SkipAutoExtract = true,
-				 External = true,
-				 BaseType = "Effect",
-				 WeaponName = "SwordWeapon",
-				 BaseName = "HestiaBlind",
-				 BaseProperty = "Duration",
-			 },
-			 {
-				 ExtractAs = "TooltipBlindPower",
-				 SkipAutoExtract = true,
-				 External = true,
-				 BaseType = "Effect",
-				 WeaponName = "SwordWeapon",
-				 BaseName = "HestiaBlind",
-				 BaseProperty = "Amount",
-				 Format = "Percent"
-			 }
-		 }
-	 }
-	--[[OlympusTraitData.HestiaRangedTrait =
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeAFlipped-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeB-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeC-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "ChargeFx",
+				ChangeValue = "ChargeAttack-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeaponDash",
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeC-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeaponDash",
+				WeaponProperty = "ChargeFx",
+				ChangeValue = "ChargeAttack-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SpearWeapon",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "SpearThrustProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SpearWeapon2",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "SpearThrustProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SpearWeapon3",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "SpearThrustProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SpearWeaponDash",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "SpearDashSwipe-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SpearWeaponSpin",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "SpearSwipe360-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SpearWeaponSpin2",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "SpearSwipe360-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SpearWeaponSpin3",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "SpearSwipe360-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "BowWeapon",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+
+			{
+				WeaponName = "BowWeapon",
+				WeaponProperty = "MinChargeStartFx",
+				ChangeValue = "BowCharge-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+
+			{
+				WeaponName = "BowWeaponDash",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+
+			{
+				WeaponName = "BowWeaponDash",
+				WeaponProperty = "ChargeStartFx",
+				ChangeValue = "BowChargeFast-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "ShieldWeapon",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ShieldSwipe-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "ShieldWeaponDash",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ShieldSwipeDash-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+
+			{
+				WeaponName = "ShieldWeaponRush",
+				WeaponProperty = "ChargeStartFx",
+				ChangeValue = "ShieldCharge-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "ShieldWeaponRush",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "ShieldRush3D-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "ShieldWeaponRush",
+				ProjectileProperty = "DissipateGraphic",
+				ChangeValue = "ShieldRush3D-Out-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "GunWeapon",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "GunWeaponProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "GunWeapon",
+				WeaponProperty = "FireFx",
+				ChangeValue = "GunFire-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "GunWeapon",
+				ProjectileProperty = "ImpactFx",
+				ChangeValue = "GunWeaponImpact-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "GunWeaponDash",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "GunWeaponProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "GunWeaponDash",
+				WeaponProperty = "FireFx",
+				ChangeValue = "GunFire-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "GunWeaponDash",
+				ProjectileProperty = "ImpactFx",
+				ChangeValue = "GunWeaponImpact-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "FistFxHestia",
+				ChangeType = "Absolute"
+			},
+			{
+				WeaponName = "FistWeaponDash",
+				ProjectileProperty = "StartFx",
+				ChangeValue = "FistFxSwipeHestia",
+				ChangeType = "Absolute",
+			},
+
+			{
+				TraitName = "SwordConsecrationTrait",
+				WeaponNames = { "SwordWeapon" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeC-Hestia-Arthur",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "SwordConsecrationTrait",
+				WeaponNames = { "SwordWeapon2" },
+				WeaponProperty = "ChargeFx",
+				ChangeValue = "ChargeAttack-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "SwordConsecrationTrait",
+				WeaponNames = { "SwordWeapon2" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeA-Hestia-Arthur",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "SwordConsecrationTrait",
+				WeaponNames = { "SwordWeapon3" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeAFlipped-Hestia-Arthur",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "SwordConsecrationTrait",
+				WeaponNames = { "SwordWeapon3" },
+				WeaponProperty = "ChargeFx",
+				ChangeValue = "ChargeAttack-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "SwordConsecrationTrait",
+				WeaponNames = { "SwordWeaponDash" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "SwordSwipeC-Hestia-Arthur",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				TraitName = "BowBondTrait",
+				WeaponName = "BowWeapon",
+				WeaponProperty = "MinChargeStartFx",
+				ChangeValue = "BowChargeRama-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				TraitName = "BowBondTrait",
+				WeaponName = "BowWeaponDash",
+				WeaponProperty = "ChargeStartFx",
+				ChangeValue = "BowChargeRamaDash-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "BowBondTrait",
+				WeaponNames = { "BowWeapon", "BowWeaponDash" },
+				ProjectileProperty = "AttachedAnim",
+				ChangeValue = "RamaWideShot-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponName = "GunWeapon",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "GunLaser-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponName = "GunWeapon",
+				ProjectileProperty = "AttachedAnim",
+				ChangeValue = "GunLaserOriginFlare-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponName = "GunWeapon",
+				ProjectileProperty = "TipFx",
+				ChangeValue = "GunLaserTipFlare-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponName = "GunWeapon",
+				WeaponProperty = "ChargeStartFx",
+				ChangeValue = "GunCharge-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponNames = { "GunWeapon", "GunWeaponDash" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "null",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponName = "GunWeapon",
+				ProjectileProperty = "DissipateGraphic",
+				ChangeValue = "GunLaserEnd-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponName = "ShieldWeapon",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "BeowulfShieldSlam-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "BowMarkHomingTrait",
+				WeaponNames = { "BowWeapon" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia-Alt01",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = { "BowWeapon" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia-Alt02",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "FistWeapon", "FistWeapon3", "FistWeapon5" },
+				TraitName = "FistDetonateTrait",
+				WeaponProperty = "FireFx",
+				ChangeValue = "ClawSwipe-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon2", "FistWeapon4" },
+				TraitName = "FistDetonateTrait",
+				WeaponProperty = "FireFx",
+				ChangeValue = "ClawSwipeFlipped-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
+				TraitName = "FistDetonateTrait",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "null",
+				ChangeType = "Absolute"
+			},
+			{
+				WeaponNames = { "FistWeaponDash" },
+				ProjectileProperty = "StartFx",
+				ChangeValue = "ClawSwipeFlippedDash-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+		},
+	}
+
+	OlympusTraitData.HestiaSecondaryTrait =
 	{
-		
-	}		
-	OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Slot = "Secondary",
+		Icon = "Boon_Hestia_00",
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseValue = 1.7,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ValidWeapons = WeaponSets.HeroSecondaryWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		},
+		--[[OnWeaponChargeFunctions =
+		{
+			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
+			FunctionName = "CheckVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				Range = 800,				-- Vacuum distance
+				DistanceBuffer = {
+					LowPull = 1300,
+					MidPull = 1700,
+					HighPull = 2100,
+				},		-- Space to leave between player and enemy
+				RushDistanceBuffer = 2000,
+				AutoLockArc = 180,
+			},
+		},]]
+		OnWeaponFiredFunctions =
+		{
+			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
+			FunctionName = "CheckVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				Range = 800,				-- Vacuum distance
+				DistanceBuffer = {
+					LowPull = 1300,
+					MidPull = 1700,
+					HighPull = 2100,
+				},		-- Space to leave between player and enemy
+				RushDistanceBuffer = 2000,
+				AutoLockArc = 180,
+			},
+		},
+		PropertyChanges =
+		{
+			--[[{
+				WeaponNames = { "SpearWeaponThrow" },
+				ProjectileProperty = "ImpactVelocity",
+				ChangeType = "Add",
+				BaseMin = 2300,
+				BaseMax = 2300,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "SpearWeaponThrow" },
+				ProjectileProperty = "ImpactVelocityCap",
+				ChangeType = "Add",
+				BaseMin = 2300,
+				BaseMax = 2300,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
+				ProjectileProperty = "ImpactVelocity",
+				ChangeType = "Add",
+				BaseMin = 1800,
+				BaseMax = 1800,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
+				ProjectileProperty = "ImpactVelocityCap",
+				ChangeType = "Add",
+				BaseMin = 1800,
+				BaseMax = 1800,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "SwordParry" },
+				ProjectileProperty = "ImpactVelocity",
+				ChangeType = "Add",
+				BaseMin = 1200,
+				BaseMax = 1200,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "SwordParry" },
+				ProjectileProperty = "ImpactVelocityCap",
+				ChangeType = "Add",
+				BaseMin = 1200,
+				BaseMax = 1200,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash"  },
+				ExcludeProjectileName = "GunGrenadeSelfDamage",
+				ProjectileProperty = "ImpactVelocity",
+				ChangeType = "Add",
+				BaseMin = 2500,
+				BaseMax = 2500,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash"  },
+				ExcludeProjectileName = "GunGrenadeSelfDamage",
+				ProjectileProperty = "ImpactVelocityCap",
+				ChangeType = "Add",
+				BaseMin = 2500,
+				BaseMax = 2500,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "BowSplitShot" },
+				ProjectileProperty = "ImpactVelocity",
+				ChangeType = "Add",
+				BaseMin = 1100,
+				BaseMax = 1100,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "BowSplitShot" },
+				ProjectileProperty = "ImpactVelocityCap",
+				ChangeType = "Add",
+				BaseMin = 1100,
+				BaseMax = 1100,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "GunBombImmolation" },
+				ProjectileProperty = "ImpactVelocity",
+				ChangeType = "Add",
+				BaseMin = 1800,
+				BaseMax = 1800,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},
+			{
+				WeaponNames = { "GunBombImmolation" },
+				ProjectileProperty = "ImpactVelocityCap",
+				ChangeType = "Add",
+				BaseMin = 1800,
+				BaseMax = 1800,
+				IdenticalMultiplier =
+				{
+					Value = -1,
+					MinMultiplier = 0,
+				},
+				ExcludeLinked = true,
+				IgnoreRarity = true,
+			},]]
+			{
+				WeaponName = "SwordParry",
+				ProjectileProperty = "StartFx",
+				ChangeValue = "null",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "FireFx",
+				ChangeValue = "null",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SwordParry",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "RadialNovaSwordParry-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SpearWeaponThrow",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "SpearThrowProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SpearWeaponThrowReturn",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "SpearThrowProjectile-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "SpearWeaponThrow",
+				ProjectileProperty = "StartFx",
+				ChangeValue = "HestiaSplashNovaSpearThrow",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponName = "BowSplitShot",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia-SplitShot",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "ShieldThrow" },
+				ProjectileName = "ShieldThrow",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ShieldSwipe-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "ShieldThrowDash" },
+				ProjectileName = "ShieldThrowDash",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ShieldSwipe-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
+				WeaponProperty = "ChargeStartFx",
+				ChangeValue = "ShieldCharge-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "ProjectileShield-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "ShieldRushBonusProjectileTrait",
+				ProjectileProperty = "Graphic",
+				WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
+				ChangeValue = "ProjectileShieldAlt01-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				ProjectileProperty = "Graphic",
+				WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
+				ChangeValue = "ProjectileShieldAlt03-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "ShieldTwoShieldTrait",
+				ProjectileProperty = "Graphic",
+				WeaponName = "ShieldThrow",
+				ChangeValue = "ProjectileShieldAlt02-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "ShieldTwoShieldTrait",
+				WeaponName = "ShieldThrow",
+				ProjectileName = "ShieldThrow",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ShieldThrowTrailMirage-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "GunGrenadeToss",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ZagGrenadeExplosionHestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "SpearTeleportTrait",
+				WeaponName = "SpearRushWeapon",
+				ProjectileName = "SpearRushWeapon",
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "SpearRushTrailFx-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "FistFxUppercutDirectionalHestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponNames = { "GunGrenadeToss" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "GunGrenadeLuciferOrb-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponNames = { "GunGrenadeToss" },
+				ProjectileProperty = "GroupName",
+				ChangeValue = "FX_Standing_Add",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponNames = { "GunBombWeapon" },
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "ZagGrenadeExplosionHestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				WeaponNames = { "GunBombImmolation" },
+				ProjectileProperty = "DetonateGraphic",
+				ChangeValue = "LuciferOrbAoE-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "BowMarkHomingTrait",
+				WeaponNames = { "BowSplitShot" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia-SplitShot-Alt01",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = { "BowSplitShot" },
+				ProjectileProperty = "Graphic",
+				ChangeValue = "BowWeaponArrow-Hestia-SplitShot-Alt02",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "FistDetonateTrait",
+				WeaponNames = { "FistWeaponSpecial" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "ClawSwipeUppercut-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "FistDetonateTrait",
+				WeaponNames = { "FistWeaponSpecialDash" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "ClawSwipeUppercutSpecial-Hestia",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				TraitName = "FistTeleportSpecialTrait",
+				WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
+				WeaponProperty = "FireFx",
+				ChangeValue = "FistFxUppercutDirectionalHestia_FlashKick",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+		},
+		EnemyPropertyChanges =
+		{
+			{
+				TraitName = "GunLoadedGrenadeTrait",
+				LegalUnits = { "GunBombUnit" },
+				ThingProperty = "Graphic",
+				ChangeValue = "LuciferBomb-Hestia",
+				ChangeType = "Absolute",
+			},
+		}
+	}
+
+	OlympusTraitData.HestiaDashTrait =
+	{
+		InheritFrom = { "ShopTier1Trait" },
+		RequiredFalseTraits = { "GunLoadedGrenadeTrait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_03",
+		Slot = "Rush",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.20,
+			},
+			Epic =
+			{
+				Multiplier = 1.40,
+			},
+			Heroic =
+			{
+				Multiplier = 1.60,
+			}
+		},
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier = {
+				BaseValue = 1.5,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = -0.8,
+				},
+			},
+			ValidWeapons = WeaponSets.HeroDashWeapons,
+			ExcludeLinked = true,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamageBonus",
+					Format = "PercentDelta",
+				},
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponProperty = "FireFx",
+				ChangeValue = "BlinkTrailVerticalB-Hestia",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusDashNoCollide_Hestia",
+				ChangeType = "Absolute",
+			},
+		},
+	}
+	OlympusTraitData.HestiaRangedTrait =
+	{
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Slot = "Ranged",
+		Icon = "Boon_Hestia_02",
+		CustomTrayText = "HestiaRangedTrait_Tray",
+        RequiredFalseTrait = "ShieldLoadAmmoTrait",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.000,
+			},
+			Rare =
+			{
+				Multiplier = 1.145,
+			},
+			Epic =
+			{
+				Multiplier = 1.290,
+			},
+			Heroic =
+			{
+				Multiplier = 1.435,
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "Projectile",
+				ChangeValue = "ArtemisProjectile",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireFx",
+				ChangeValue = "ProjectileFireRing-Hestia",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageLow",
+				BaseMin = 70,
+				BaseMax = 70,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "CriticalHitChance",
+				ChangeValue = 0.10,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCritChance",
+					Format = "Percent",
+					SkipAutoExtract = true
+				}
+			},
+			-- Beowulf
+			{
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                WeaponProperty = "FireOnRelease",
+                ChangeValue = false,
+                ChangeType = "Absolute",
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "Type",
+                ChangeValue = "INSTANT",
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DamageRadius",
+                ChangeValue = 400
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DetonateGraphic",
+                ChangeValue = "RadialNovaSwordParry-Hestia"
+            },
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "BaseRangedDamage",
+				External = true,
+				BaseType = "Projectile",
+				BaseName = "RangedWeapon",
+				BaseProperty = "DamageLow",
+			}
+		}
+	}
+	OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait =
+	{
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Slot = "Ranged",
+		Icon = "Boon_Hestia_02",
+		CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
+        RequiredTrait = "ShieldLoadAmmoTrait",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.000,
+			},
+			Rare =
+			{
+				Multiplier = 1.145,
+			},
+			Epic =
+			{
+				Multiplier = 1.290,
+			},
+			Heroic =
+			{
+				Multiplier = 1.435,
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "Projectile",
+				ChangeValue = "ArtemisProjectile",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireFx",
+				ChangeValue = "ProjectileFireRing-Hestia",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageLow",
+				BaseMin = 55,
+				BaseMax = 55,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "CriticalHitChance",
+				ChangeValue = 0.10,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCritChance",
+					Format = "Percent",
+					SkipAutoExtract = true
+				}
+			},
+			{
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                WeaponProperty = "FireOnRelease",
+                ChangeValue = false,
+                ChangeType = "Absolute",
+            },
+            {
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "Type",
+                ChangeValue = "INSTANT",
+            },
+            {
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DamageRadius",
+                ChangeValue = 330
+            },
+            {
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "IgnoreCoverageAngles",
+                ChangeValue = false
+            },
+            {
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DetonateGraphic",
+                ChangeValue = "RadialNovaSwordParry-Hestia"
+            },
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "BaseRangedDamage",
+				External = true,
+				BaseType = "Projectile",
+				BaseName = "RangedWeapon",
+				BaseProperty = "DamageLow",
+			}
+		}
+	}	
+	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
 	{
 		
 	}
@@ -1394,8 +1723,8 @@ if ModUtil ~= nil then
 	
 			TraitsList = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait" },
 	
-			PriorityUpgrades = { "HestiaWeaponTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
-			WeaponUpgrades = { "HestiaWeaponTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
+			PriorityUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
+			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
 			Traits = { },--"HestiaRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 			Consumables = { },
 	
@@ -3125,7 +3454,56 @@ if ModUtil ~= nil then
 		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaAboutArtemis03" } }
 	}
 	-- FUNCTIONS
-	
+	-- Attraction functions
+	function GetAllNearestEnemiesArgs( args )
+		args = args or {}
+		local range = args.Range or 600
+		local count = args.Count or 4
+		local arc = args.Arc or 90
+		local nearestEnemyTargetIds =  GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
+		local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
+		local allNearbyEnemies = {}
+		for _, id in pairs( nearestEnemyTargetIds ) do
+			local enemy = ActiveEnemies[id]
+			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
+				local angleToTarget = GetAngleBetween({ Id = CurrentRun.Hero.ObjectId, DestinationId = id })
+				local distance = GetDistance({ Id = CurrentRun.Hero.ObjectId, DestinationId = id })
+				if CalcArcDistance( facingAngle, angleToTarget ) <= arc then
+					if distance < range * 2 then
+						table.insert(allNearbyEnemies, id)
+					end
+				end
+			end
+		end
+		return allNearbyEnemies
+	end
+	function CheckVacuumAllNearbyEnemies(weaponData, args)
+		local targetIds = GetAllNearestEnemiesArgs({ Arc = args.AutoLockArc, Range = args.Range, RequireFacing = true })			
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name)) 
+		for _, id in pairs( targetIds ) do
+			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then	
+				ApplyForce({ Id = id, Speed = args.DistanceBuffer.HighPull, Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }) })
+				--FireWeaponFromUnit({ Weapon = "FistSpecialVacuum", Id = CurrentRun.Hero.ObjectId, DestinationId = id })
+				HestiaPullPresentation( id, args )
+			end
+		end
+	end
+	function GetRequireFacing(weaponData) 
+		if weaponData.name == "SwordParry" then
+			return false
+		end
+		return true
+	end
+	function GetDistanceBuffer(weaponData, distanceBuffer) 
+		if weaponData.name == "SwordWeapon" then
+			return distanceBuffer.LowPull
+		end
+		return 2000
+	end
+	function HestiaPullPresentation( victimId, args )
+		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = CurrentRun.Hero.ObjectId, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
+		PlaySound({ Name = "/SFX/Player Sounds/ZagreusFistMagnetismVacuumActivate", Id = victimId })
+	end
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
@@ -3141,10 +3519,10 @@ if ModUtil ~= nil then
 		return base( triggerArgs ) 
 	end )]]
 	
-	OnControlPressed{ "Codex",
-    function( triggerArgs )
-        CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-    end    
-}
+	--[[OnControlPressed{ "Codex",
+		function( triggerArgs )
+			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		end 
+	}]]
 
-	end
+end

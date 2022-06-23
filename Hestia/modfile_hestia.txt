@@ -40,5 +40,5 @@ To "Game/Text/en/MacroText.sjson"
 SJSON "Text/en/MacroText.en.sjson"
 
 :: Subtitles
-:: To "Subtitles/en/Theseus.csv"
-:: CSV "Subtitles/en/Theseus.csv"
+To "Subtitles/en/Theseus.csv"
+CSV "Subtitles/en/Theseus.csv"
