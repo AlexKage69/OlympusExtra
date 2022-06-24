@@ -418,7 +418,7 @@ if ModUtil ~= nil then
 		{
 			ValidWeaponMultiplier =
 			{
-				BaseValue = 1.30,
+				BaseValue = 1.20,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
@@ -436,19 +436,131 @@ if ModUtil ~= nil then
 			}
 		},
 		OnWeaponChargeFunctions =
-		{
-			ValidWeapons = {"SwordWeapon", "SwordWeapon2", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "SwordWeapon3", "ShieldWeapon", "ShieldWeaponDash", "ShieldWeaponRush", "BowWeapon", "BowWeaponDash", "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash", "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5" },
+		{--"SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash", 
+			ValidWeapons = {"SwordWeapon", "SwordWeapon2", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "SwordWeapon3", "ShieldWeapon", "ShieldWeaponDash", "ShieldWeaponRush", "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3",  "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5" },
 			FunctionName = "CheckVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
-				Range = 800,				-- Vacuum distance
-				DistanceBuffer = {
-					LowPull = 1300,
-					MidPull = 1700,
-					HighPull = 2100,
-				},		-- Space to leave between player and enemy
-				RushDistanceBuffer = 2000,
-				AutoLockArc = 180,
+				SwordWeapon = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SwordWeapon2 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SwordWeaponDash = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeapon = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeapon2 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeapon3 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeaponDash = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SwordWeapon3 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				ShieldWeapon = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				ShieldWeaponDash = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				ShieldWeaponRush = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeaponSpin = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeaponSpin2 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				SpearWeaponSpin3 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				FistWeaponDash = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				FistWeapon = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				FistWeapon2 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				FistWeapon3 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				FistWeapon4 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
+				FistWeapon5 = {
+					Range = 500,
+					PullForce = 1300,
+					Arc = 90,
+					Count = 3,
+				},
 			},
 		},
 		PropertyChanges =
@@ -882,11 +994,12 @@ if ModUtil ~= nil then
 		God = "Hestia",
 		Slot = "Secondary",
 		Icon = "Boon_Hestia_00",
+		RequiredFalseTraits = { "FistVacuumTrait" },		
 		AddOutgoingDamageModifiers =
 		{
 			ValidWeaponMultiplier =
 			{
-				BaseValue = 1.7,
+				BaseValue = 1.4,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
@@ -932,7 +1045,7 @@ if ModUtil ~= nil then
 					HighPull = 2100,
 				},		-- Space to leave between player and enemy
 				RushDistanceBuffer = 2000,
-				AutoLockArc = 180,
+				Arc = 120,
 			},
 		},
 		PropertyChanges =
@@ -3456,9 +3569,8 @@ if ModUtil ~= nil then
 	-- FUNCTIONS
 	-- Attraction functions
 	function GetAllNearestEnemiesArgs( args )
-		args = args or {}
-		local range = args.Range or 600
-		local count = args.Count or 4
+		local range = args.Range or 500
+		local count = args.Count or 3
 		local arc = args.Arc or 90
 		local nearestEnemyTargetIds =  GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
 		local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
@@ -3478,11 +3590,11 @@ if ModUtil ~= nil then
 		return allNearbyEnemies
 	end
 	function CheckVacuumAllNearbyEnemies(weaponData, args)
-		local targetIds = GetAllNearestEnemiesArgs({ Arc = args.AutoLockArc, Range = args.Range, RequireFacing = true })			
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name)) 
+		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90}
+		local targetIds = GetAllNearestEnemiesArgs(args)	
 		for _, id in pairs( targetIds ) do
 			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then	
-				ApplyForce({ Id = id, Speed = args.DistanceBuffer.HighPull, Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }) })
+				ApplyForce({ Id = id, Speed = args.PullForce or 1000, Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }) })
 				--FireWeaponFromUnit({ Weapon = "FistSpecialVacuum", Id = CurrentRun.Hero.ObjectId, DestinationId = id })
 				HestiaPullPresentation( id, args )
 			end

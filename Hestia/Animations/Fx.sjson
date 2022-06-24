@@ -368,6 +368,91 @@
       OffsetZ = 90
     }
     /* Dash */
+    {
+      Name = "BlinkTrailVerticalB-Hestia"
+      InheritFrom = "BlinkTrailVerticalB"
+      ChildAnimation = "null"
+      Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      StopSoundOnFinishFade = 0.2
+      CreateAnimations = [
+        {
+          Name = "ArtemisDashTwinkle"
+        }
+        {
+          Name = "ArtemisDashGround"
+        }
+        {
+          Name = "ArtemisDashIso"
+        }
+        {
+          Name = "ArtemisDashSwirl"
+        }
+        {
+          Name = "ArtemisDashLeaves"
+        }
+        {
+          Name = "QuickFlashGreen"
+        }]
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BlinkTrailFlat-Hestia"
+      InheritFrom = "BlinkTrailFlat"
+      ChildAnimation = "null"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BlinkTrailVerticalA-Hestia"
+      InheritFrom = "BlinkTrailVerticalA"
+      ChildAnimation = "BlinkTrailFlash-Hestia"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "ZagreusDashNoCollide_Hestia"
+      InheritFrom = "ZagreusDashNoCollide"
+      ChainTo = "ZagreusDashCollide_Hestia"
+      ChildAnimation = "ZagreusDashNoCollideVFX_Hestia"
+      EndFrame = 60
+      StartFrame = 1
+    }
+    {
+      Name = "ZagreusDashCollide_Hestia"
+      InheritFrom = "ZagreusDashCollide"
+      ChildAnimation = "ZagreusDashCollideVFX_Hestia"
+      EndFrame = 60
+      StartFrame = 1
+    }
+
+    {
+      Name = "ZagreusDashNoCollideVFX_Hestia"
+      InheritFrom = "ZagreusDashNoCollideVFX"
+      EndFrame = 60
+      StartFrame = 1
+      Hue = 0.313
+    }
+
+    {
+      Name = "ZagreusDashCollideVFX_Hestia"
+      InheritFrom = "ZagreusDashCollideVFX"
+      EndFrame = 60
+      StartFrame = 1
+      Hue = 0.313
+    }
     /* Attraction Fx */
     /* Cast */
     /* Character Fx */
