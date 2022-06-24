@@ -4,6 +4,8 @@ OlympusExtra is a Hades DLC mod which adds new gods and boons to the Hades game.
 
 We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastus. 
 
+** Please download the latest version of modimporter for ApolloExtra v1.1.0 **
+
 -----------------------------
 ## Disclaimer!
 
@@ -23,7 +25,7 @@ Please also note that not all features have been fully implemented yet, and some
 
 -----------------------------
 ## Pre-Requisites 
-1. Download and unzip [modimporter](https://github.com/SGG-Modding/sgg-mod-modimporter/releases/latest/download/modimporter-windows.zip) (follow installation instructions on the Nexus Mod page). The downloaded `modimporter.exe` should be placed in the `Hades\Content` folder
+1. Download and unzip [modimporter](https://github.com/SGG-Modding/sgg-mod-modimporter/releases/latest/download/modimporter-windows.zip) (follow installation instructions on the Nexus Mod page). The downloaded `modimporter.exe` should be placed in the `Hades\Content` folder. 
 
 1. Download and unzip [Mod Utility](https://github.com/SGG-Modding/sgg-mod-modutil/releases/download/v2.3.1/ModUtil.zip). Place the unzipped contents in the `Hades\Content\Mods` folder 
 
@@ -31,7 +33,7 @@ Please also note that not all features have been fully implemented yet, and some
 
 -----------------------------
 ## Installation Instructions
-1. Make sure you fulfill the above pre-requisites!
+1. Make sure you fulfill the above pre-requisites! (You should have the **latest version** of the above, or else thd mod installation will have errors!)
 1. Download the OlympusExtra mod from the [Releases](https://github.com/AlexKage69/OlympusExtra/releases) section 
 1. Place the unzipped contents in the `Hades\Content\Mods` folder
 1. Run the `Hades\Content\modimporter.exe` executable 
