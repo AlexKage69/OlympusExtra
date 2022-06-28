@@ -51,5 +51,5 @@ Developers: AlexKage, physiX
 ### Special thanks to:  
 Apollo's portrait: [Reikiix](https://twitter.com/Reikiix)  
 Apollo keepsake badges: Lazy.mano, r/Lazymanohelp  
-Apollo's Voice: [Andrew Alley](https://twitter.com/VoicesOfAlley)
+Apollo's Voice: [Andrew Alley](https://twitter.com/VoicesOfAlley)  
 Audio Editor: [D4v](https://github.com/GGD4V)
