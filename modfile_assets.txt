@@ -12,3 +12,9 @@ To "Win/Packages/OEAssets.pkg_manifest"
 Replace "Packages/OEAssets.pkg_manifest"
 To "Win/Packages/720p/OEAssets.pkg_manifest"
 Replace "Packages/OEAssets.pkg_manifest"
+
+:: Audio
+To "Audio/FMOD/Build/Desktop/VO.fsb"
+Replace "Audio/VO.fsb"
+To "Audio/FMOD/Build/Desktop/VO.h"
+Replace "Audio/VO.h"

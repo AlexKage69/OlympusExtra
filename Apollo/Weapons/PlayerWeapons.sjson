@@ -68,9 +68,12 @@
           CanAffectInvulnerable = true
           Active = true
         }]
-    }
-    
-    
+    }    
+    {
+      Name = "DistanceResistWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Projectile = "DistanceResistProjectile"
+    }    
     {
       Name = "AreaWeakenApollo"
       InheritFrom = "1_BaseMagicWeapon"
@@ -84,10 +87,44 @@
       Cooldown = 0.4
     }
     {
+      Name = "ShoutEndApollo"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ShoutEndApollo"
+	    ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Cooldown = 0.4
+    }
+    {
       Name = "ApolloChillKill"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "ApolloChillKill"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "ApolloLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloLobProjectileAdditional"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "DionysusLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "DionysusLobProjectileAdditional"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
