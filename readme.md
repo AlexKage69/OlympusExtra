@@ -4,7 +4,7 @@ OlympusExtra is a Hades DLC mod which adds new gods and boons to the Hades game.
 
 We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastus. 
 
-** Please download the latest version of modimporter for ApolloExtra v1.1.0 **
+** **Please download the latest version of modimporter for ApolloExtra v1.1.0** **
 
 -----------------------------
 ## Disclaimer!
@@ -51,3 +51,5 @@ Developers: AlexKage, physiX
 ### Special thanks to:  
 Apollo's portrait: [Reikiix](https://twitter.com/Reikiix)  
 Apollo keepsake badges: Lazy.mano, r/Lazymanohelp  
+Apollo's Voice: [Andrew Alley](https://twitter.com/VoicesOfAlley)  
+Audio Editor: [D4v](https://github.com/GGD4V)
