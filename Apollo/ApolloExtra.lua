@@ -2944,7 +2944,7 @@ OlympusTraitData.SeaChanteyTrait =
 					{ Cue = "/VO/Apollo_0161",
 						PortraitExitWait = 1.25,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come and tell me face to face." },
+						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come tell me face to face." },
 				},
 				ApolloAboutOlympianReunionQuest01 =
 				{
