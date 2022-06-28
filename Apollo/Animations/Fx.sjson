@@ -2592,6 +2592,11 @@
       ColorFromOwner = "Ignore"
       EndFrame = 27
       HoldLastFrame = true
+      Color = {
+        Red = 0.85
+        Green = 0.65
+        Blue = 0.10
+      }
       NumFrames = 27
       PlaySpeed = 60.0
       StartFrame = 1

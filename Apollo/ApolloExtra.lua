@@ -4578,14 +4578,12 @@ OlympusTraitData.SeaChanteyTrait =
 			local sourceWeaponData = triggerArgs.AttackerWeaponData
 			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
 				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
-					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Reduced")) 		
+					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier		
 				else
 					if not victim.TimeOfLastDamage then
 						victim.TimeOfLastDamage = {}
 					end
 					victim.TimeOfLastDamage[sourceWeaponData.Name] = _worldTime	
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Solo")) 
 				end
 			end
 			baseFunc(victim, triggerArgs)
