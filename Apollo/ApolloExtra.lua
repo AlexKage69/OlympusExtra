@@ -110,7 +110,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 		HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
 		ImpactReactionHitsOverride = 1,
-		MultipleProjectileMultiplier = 0.15,	
+		MultipleProjectileMultiplier = 0.10,
 		BlockInterrupt = true,
 		Sounds =
 		{
