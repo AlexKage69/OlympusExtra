@@ -2434,6 +2434,13 @@ OlympusTraitData.SeaChanteyTrait =
 		ExtractValues =
 		{
 			{
+				ExtractAs = "TooltipDamage",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusLobProjectileAdditional",
+				BaseProperty = "DamageLow",
+			},
+			{
 				ExtractAs = "TooltipCloudDuration",
 				External = true,
 				BaseType = "ProjectileBase",
@@ -2447,6 +2454,15 @@ OlympusTraitData.SeaChanteyTrait =
 				BaseName = "DionysusField",
 				BaseProperty = "Fuse",
 				DecimalPlaces = 2,
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
 			}
 		}
 	}
@@ -2464,6 +2480,13 @@ OlympusTraitData.SeaChanteyTrait =
 		ExtractValues =
 		{
 			{
+				ExtractAs = "TooltipDamage",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "ApolloLobProjectileAdditional",
+				BaseProperty = "DamageLow",
+			},
+			{
 				ExtractAs = "TooltipCloudDuration",
 				External = true,
 				BaseType = "ProjectileBase",
@@ -2477,6 +2500,25 @@ OlympusTraitData.SeaChanteyTrait =
 				BaseName = "DionysusField",
 				BaseProperty = "Fuse",
 				DecimalPlaces = 2,
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
 			}
 		}
 	}
@@ -2523,7 +2565,7 @@ OlympusTraitData.SeaChanteyTrait =
 		{
 			InheritFrom = { "SynergyTrait" },
 			Icon = "Apollo_Zeus_01",
-			RequiredFalseTrait = { "MasterBoltTrait" },
+			RequiredFalseTraits = { "MasterBoltTrait" },
 			PropertyChanges =
 			{
 				{
