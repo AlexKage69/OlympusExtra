@@ -8,8 +8,8 @@ To "Game/Animations/PortraitAnimations.sjson"
 SJSON "Animations/PortraitAnimations.sjson"
 To "Game/Animations/ObstacleAnimations.sjson"
 SJSON "Animations/ObstacleAnimations.sjson"
-To "Game/Animations/Fx.sjson"
-SJSON "Animations/Fx.sjson"
+-: To "Game/Animations/Fx.sjson" 
+SJSON "Animations/Fx.sjson" :-
 To "Game/Animations/GUIAnimations.sjson"
 SJSON "Animations/GUIAnimations.sjson"
 

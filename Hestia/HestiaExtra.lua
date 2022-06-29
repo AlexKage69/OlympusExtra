@@ -407,7 +407,6 @@ if ModUtil ~= nil then
 			  }
 			},
 	}
-		
 	OlympusTraitData.HestiaWeaponTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -435,133 +434,251 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		OnWeaponChargeFunctions =
-		{--"SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash", 
-			ValidWeapons = {"SwordWeapon", "SwordWeapon2", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "SwordWeapon3", "ShieldWeapon", "ShieldWeaponDash", "ShieldWeaponRush", "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3",  "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5" },
-			FunctionName = "CheckVacuumAllNearbyEnemies",
+		OnWeaponProjectileDeathFunction =
+		{ -- "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
+			ValidWeapons = { "ShieldWeaponRush", "SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash" },
+			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
-				SwordWeapon = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SwordWeapon2 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SwordWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeapon = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeapon2 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeapon3 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SwordWeapon3 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				ShieldWeapon = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				ShieldWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				ShieldWeaponRush = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
+				From = "OnWeaponProjectileDeathFunction",
 				SpearWeaponSpin = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
 					Count = 3,
+					Distance = 50,
 				},
 				SpearWeaponSpin2 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
 					Count = 3,
+					Distance = 50,
 				},
 				SpearWeaponSpin3 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 1000,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+				},
+				ShieldWeaponRush = {
+					Range = 700,
+					PullForce = 1000,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+				SniperGunWeapon = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+				SniperGunWeaponDash = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+				GunWeapon = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+				GunWeaponDash = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+				BowWeapon = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+				BowWeaponDash = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+				},
+			}
+		},
+		OnWeaponChargeFunctions =
+		{
+			ValidWeapons = { "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3" },
+			FunctionName = "CheckChargeVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponChargeFunctions",
+				SpearWeaponSpin = {
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
+					Count = 3,
+					Distance = 100,
+				},
+				SpearWeaponSpin2 = {
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
+					Count = 3,
+					Distance = 100,
+				},
+				SpearWeaponSpin3 = {
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+				},
+			}
+		},
+		OnWeaponFiredFunctions =
+		{
+			ValidWeapons = { "SwordWeapon", "SwordWeapon2", "SwordWeapon3", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "ShieldWeapon", "ShieldWeaponDash", "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5", },
+			FunctionName = "CheckFiredVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponFiredFunctions",
+				SwordWeapon = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SwordWeapon2 = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SwordWeapon3 = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SwordWeaponDash = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SpearWeapon = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				SpearWeapon2 = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				SpearWeapon3 = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				SpearWeaponDash = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				ShieldWeapon = {
+					Range = 700,
+					PullForce = 1000,
+					Arc = 120,
+					Count = 3,
+					Distance = 150,
+					RequireFacing = true,
+				},
+				ShieldWeaponDash = {
+					Range = 700,
+					PullForce = 1000,
+					Arc = 120,
+					Count = 3,
+					Distance = 150,
+					RequireFacing = true,
 				},
 				FistWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon2 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon3 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon4 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon5 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
-			},
+			}
 		},
 		PropertyChanges =
 		{
@@ -987,14 +1104,13 @@ if ModUtil ~= nil then
 			},
 		},
 	}
-
 	OlympusTraitData.HestiaSecondaryTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		Slot = "Secondary",
 		Icon = "Boon_Hestia_00",
-		RequiredFalseTraits = { "FistVacuumTrait" },		
+		RequiredFalseTraits = { "FistVacuumTrait", "FistChargeSpecialTrait", "FistSpecialFireballTrait" },
 		AddOutgoingDamageModifiers =
 		{
 			ValidWeaponMultiplier =
@@ -1016,38 +1132,71 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		--[[OnWeaponChargeFunctions =
+		
+		OnWeaponProjectileDeathFunction =
 		{
 			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
-			FunctionName = "CheckVacuumAllNearbyEnemies",
+			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
-				Range = 800,				-- Vacuum distance
-				DistanceBuffer = {
-					LowPull = 1300,
-					MidPull = 1700,
-					HighPull = 2100,
-				},		-- Space to leave between player and enemy
-				RushDistanceBuffer = 2000,
-				AutoLockArc = 180,
-			},
-		},]]
-		OnWeaponFiredFunctions =
-		{
-			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
-			FunctionName = "CheckVacuumAllNearbyEnemies",
-			FunctionArgs =
-			{
-				Range = 800,				-- Vacuum distance
-				DistanceBuffer = {
-					LowPull = 1300,
-					MidPull = 1700,
-					HighPull = 2100,
-				},		-- Space to leave between player and enemy
-				RushDistanceBuffer = 2000,
-				Arc = 120,
-			},
-		},
+				SwordParry = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				SpearWeaponThrow = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				ShieldThrow = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				ShieldThrowDash = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				BowSplitShot = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				GunBombImmolation = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				GunGrenadeToss = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+				},
+				FistWeaponSpecial = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 90,
+					Count = 3,
+					RequireFacing = true,
+				},
+				FistWeaponSpecialDash = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 90,
+					Count = 3,
+					RequireFacing = true,
+				},
+			}
+		},		
 		PropertyChanges =
 		{
 			--[[{
@@ -3568,19 +3717,23 @@ if ModUtil ~= nil then
 	}
 	-- FUNCTIONS
 	-- Attraction functions
-	function GetAllNearestEnemiesArgs( args )
+	function GetAllNearestEnemiesArgs( args, targetId )
 		local range = args.Range or 500
 		local count = args.Count or 3
 		local arc = args.Arc or 90
-		local nearestEnemyTargetIds =  GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
+		local nearestEnemyTargetIds =  GetClosestIds({ Id = targetId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
 		local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
 		local allNearbyEnemies = {}
 		for _, id in pairs( nearestEnemyTargetIds ) do
 			local enemy = ActiveEnemies[id]
 			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
-				local angleToTarget = GetAngleBetween({ Id = CurrentRun.Hero.ObjectId, DestinationId = id })
-				local distance = GetDistance({ Id = CurrentRun.Hero.ObjectId, DestinationId = id })
+				local angleToTarget = GetAngleBetween({ Id = targetId, DestinationId = id })
+				local distance = GetDistance({ Id = targetId, DestinationId = id })
 				if CalcArcDistance( facingAngle, angleToTarget ) <= arc then
+					if distance < range * 2 then
+						table.insert(allNearbyEnemies, id)
+					end
+				elseif not args.RequireFacing then
 					if distance < range * 2 then
 						table.insert(allNearbyEnemies, id)
 					end
@@ -3589,33 +3742,56 @@ if ModUtil ~= nil then
 		end
 		return allNearbyEnemies
 	end
-	function CheckVacuumAllNearbyEnemies(weaponData, args)
-		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90}
-		local targetIds = GetAllNearestEnemiesArgs(args)	
+	function CheckChargeVacuumAllNearbyEnemies(weaponData, args)
+		CheckProjectileVacuumAllNearbyEnemies(weaponData, CurrentRun.Hero.ObjectId, args)
+	end
+	function CheckFiredVacuumAllNearbyEnemies(weaponData, args)
+		CheckProjectileVacuumAllNearbyEnemies(weaponData, CurrentRun.Hero.ObjectId, args)
+	end
+	function CheckProjectileVacuumAllNearbyEnemies(weaponData, triggerArgs, args)
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name)) 	
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.From)) 	
+		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90, Distance = 10}
+		--args.PullForce = 2500
+		local pullTarget
+		if type(triggerArgs) ~= "number" and triggerArgs.LocationX and triggerArgs.LocationY then
+			pullTarget = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+		else
+			pullTarget = triggerArgs
+		end
+		local targetIds = GetAllNearestEnemiesArgs(args, pullTarget)	
 		for _, id in pairs( targetIds ) do
 			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then	
-				ApplyForce({ Id = id, Speed = args.PullForce or 1000, Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }) })
+				local force = GetRequiredForceToEnemy( id, pullTarget, -1 * args.Distance )
+				if( args.PullForce < force ) then
+					force = args.PullForce
+				end
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(force)) 
+				ApplyForce({ Id = id, Speed = force, Angle = GetAngleBetween({ Id = id, DestinationId = pullTarget }) })
 				--FireWeaponFromUnit({ Weapon = "FistSpecialVacuum", Id = CurrentRun.Hero.ObjectId, DestinationId = id })
-				HestiaPullPresentation( id, args )
+				HestiaPullPresentation( id, args, pullTarget )
 			end
 		end
 	end
-	function GetRequireFacing(weaponData) 
-		if weaponData.name == "SwordParry" then
-			return false
-		end
-		return true
-	end
-	function GetDistanceBuffer(weaponData, distanceBuffer) 
-		if weaponData.name == "SwordWeapon" then
-			return distanceBuffer.LowPull
-		end
-		return 2000
-	end
-	function HestiaPullPresentation( victimId, args )
-		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = CurrentRun.Hero.ObjectId, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
+	function HestiaPullPresentation( victimId, args, dropLocation )
+		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = dropLocation, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
 		PlaySound({ Name = "/SFX/Player Sounds/ZagreusFistMagnetismVacuumActivate", Id = victimId })
 	end
+	OnProjectileDeath{
+		function( triggerArgs )
+			local attacker = triggerArgs.AttackerTable
+			local weaponData = GetWeaponData( attacker, triggerArgs.WeaponName)
+
+			if CurrentRun.Hero and attacker == CurrentRun.Hero then	
+				for i, traitData in pairs( GetHeroTraitValues("OnWeaponProjectileDeathFunction")) do
+					if ( traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, triggerArgs.name )) and traitData.FunctionName and _G[traitData.FunctionName] then
+						thread( _G[traitData.FunctionName], weaponData, triggerArgs, traitData.FunctionArgs )
+					end					
+				end
+			end
+		end
+	}	
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
