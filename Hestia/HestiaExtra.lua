@@ -468,6 +468,7 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
 				SniperGunWeapon = {
 					Range = 700,
@@ -475,6 +476,7 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
 				SniperGunWeaponDash = {
 					Range = 700,
@@ -482,6 +484,7 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
 				GunWeapon = {
 					Range = 700,
@@ -490,12 +493,14 @@ if ModUtil ~= nil then
 					Count = 3,
 					Distance = 50,
 				},
+				RequireFirstHit = true,
 				GunWeaponDash = {
 					Range = 700,
 					PullForce = 900,
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
 				BowWeapon = {
 					Range = 700,
@@ -503,6 +508,7 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
 				BowWeaponDash = {
 					Range = 700,
@@ -510,6 +516,7 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
 			}
 		},
@@ -3751,12 +3758,19 @@ if ModUtil ~= nil then
 	function CheckProjectileVacuumAllNearbyEnemies(weaponData, triggerArgs, args)
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name))
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name)) 	
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.From)) 	
+		
 		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90, Distance = 10}
-		--args.PullForce = 2500
+		args.PullForce = 1100
 		local pullTarget
-		if type(triggerArgs) ~= "number" and triggerArgs.LocationX and triggerArgs.LocationY then
-			pullTarget = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+		if type(triggerArgs) ~= "number" then
+			if args.RequireFirstHit and triggerArgs.FirstUnitInVolley then
+				pullTarget = triggerArgs.FirstUnitInVolley.ObjectId
+			elseif triggerArgs.LocationX and triggerArgs.LocationY then
+				pullTarget = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+			else
+				pullTarget = CurrentRun.Hero.ObjectId
+			end
+			
 		else
 			pullTarget = triggerArgs
 		end
@@ -3764,13 +3778,13 @@ if ModUtil ~= nil then
 		for _, id in pairs( targetIds ) do
 			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then	
 				local force = GetRequiredForceToEnemy( id, pullTarget, -1 * args.Distance )
-				if( args.PullForce < force ) then
+				if( type(force) ~= "number" or args.PullForce < force ) then
 					force = args.PullForce
 				end
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(force)) 
-				ApplyForce({ Id = id, Speed = force, Angle = GetAngleBetween({ Id = id, DestinationId = pullTarget }) })
-				--FireWeaponFromUnit({ Weapon = "FistSpecialVacuum", Id = CurrentRun.Hero.ObjectId, DestinationId = id })
-				HestiaPullPresentation( id, args, pullTarget )
+				if not args.RequireFirstHit or pullTarget ~= id then
+					ApplyForce({ Id = id, Speed = force, Angle = GetAngleBetween({ Id = id, DestinationId = pullTarget, SelfApplied = true }) })
+					HestiaPullPresentation( id, args, pullTarget )
+				end
 			end
 		end
 	end

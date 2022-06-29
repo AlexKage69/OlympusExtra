@@ -4415,7 +4415,7 @@ OlympusTraitData.SeaChanteyTrait =
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag we'll do what it takes to help you." },
+			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag, we'll do what it takes to help you." },
 	}
 	-- Duo LootData	
 	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
