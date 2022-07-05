@@ -1708,21 +1708,20 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.05,
+				Multiplier = 1.33,
 			},
 			Epic =
 			{
-				Multiplier = 1.10,
+				Multiplier = 1.66,
 			},
 			Heroic =
 			{
-				Multiplier = 1.15,
+				Multiplier = 2.00,
 			}
 		},
 		FountainDefenseBonus = 
 		{
-			BaseValue = 0.95,
-			MinMultiplier = 0.1,
+			BaseValue = 0.97,
 			ToNearest = 0.01,
 			SourceIsMultiplier = true,
 			IdenticalMultiplier = 
@@ -2185,6 +2184,14 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
+				TraitName = "MasterBoltTrait",
+				WeaponName = "BlindLightningEffector",
+				EffectName = "BlindLightning",
+				EffectProperty = "Duration",
+				ChangeValue = 10,
+				ChangeType = "Absolute",
+			},
+			{
 				WeaponName = WeaponSets.HeroPhysicalWeapons,
 				EffectName = "ApolloBlind",
 				EffectProperty = "Duration",
@@ -2562,86 +2569,43 @@ OlympusTraitData.SeaChanteyTrait =
 		}
 	}	
 	OlympusTraitData.MasterBoltTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Zeus_01",
-			RequiredFalseTraits = { "MasterBoltTrait" },
-			PropertyChanges =
-			{
-				{
-					TraitName = "ApolloWeaponTrait",
-					WeaponNames = WeaponSets.HeroPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "AreaWeakenApollo",
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},			
-				{
-					TraitName = "ShieldLoadAmmo_ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloDashTrait",
-					WeaponNames = WeaponSets.HeroRushWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloSecondaryTrait",
-					WeaponNames = WeaponSets.HeroSecondaryWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				}		
-			},
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Zeus_01",
+		RequiredFalseTraits = { "MasterBoltTrait" },
+		PreEquipWeapons = { "BlindLightningEffector" },
 		ExtractValues =
+		{
 			{
-				{
-					ExtractAs = "MasterBoltDamage",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "BlindLightning",
-					BaseProperty = "Amount",
-				},
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				}
+				ExtractAs = "MasterBoltDamage",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "BlindLightningEffector",
+				BaseName = "BlindLightning",
+				BaseProperty = "Amount",
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
 			}
 		}
+	}
 	
 	
 	
@@ -4598,7 +4562,7 @@ OlympusTraitData.SeaChanteyTrait =
 				missRate = 0.65
 			end
 			--and CheckCooldown( "StunDisarm", 10.0 )  not HasEffect({Id = victim.ObjectId, EffectName = "StunDisarm" })
-
+			missRate = 1.0
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
 				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
@@ -4607,6 +4571,9 @@ OlympusTraitData.SeaChanteyTrait =
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+				end
+				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
+					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
 				end
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
@@ -4621,11 +4588,19 @@ OlympusTraitData.SeaChanteyTrait =
 				baseFunc(victim, attacker, args)
 			end
 		end
-	)
-	
+	)	
+	function ApolloBlindApply(triggerArgs) 
+		if HeroHasTrait("MasterBoltTrait") then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.TriggeredByTable.ObjectId)) 
+			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, AutoEquip = true, WeaponName = "BlindLightningEffector", EffectName = "BlindLightning" })
+		end
+	end
 	function ApolloBlindClear(triggerArgs)
 		if HeroHasTrait("BlindDurationTrait") then
 			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+			if HeroHasTrait("MasterBoltTrait") then
+				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 3.0 })
+			end
 		end
 	end
 	-- Prophecy and Sight	

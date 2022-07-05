@@ -61,19 +61,6 @@
                 TimeModifierFraction = 0
             }
             {
-              Name = "BlindLightning"
-              IgnoreName = "_PlayerUnit"
-              Type = "DAMAGE_OVER_TIME"
-              IsVulnerabilityEffect = true
-              Amount = 40.0
-              Cooldown = 1
-              Duration = 5
-              ExtendDurationOnReapply = true
-              FrontFx = "ZeusStaticArcEmitter"
-              Active = false
-              TimeModifierFraction = 0
-            }
-            {
                 Name = "IncreaseDamageTaken"
                 IgnoreName = "_PlayerUnit"
                 Type = "DAMAGE_TAKEN"
@@ -171,19 +158,6 @@
           TimeModifierFraction = 0
         },
         {
-          Name = "BlindLightning"
-          IgnoreName = "_PlayerUnit"
-          Type = "DAMAGE_OVER_TIME"
-          IsVulnerabilityEffect = true
-          Amount = 40.0
-          Cooldown = 1
-          Duration = 5
-          ExtendDurationOnReapply = true
-          FrontFx = "ZeusStaticArcEmitter"
-          Active = false
-          TimeModifierFraction = 0
-        },
-        {
           Name = "IncreaseDamageTaken"
           IgnoreName = "_PlayerUnit"
           Type = "DAMAGE_TAKEN"
@@ -236,6 +210,40 @@
       }
     }
     {
+      Name = "BlindLightningEffector"
+      InheritFrom = "1_BaseMagicProjectile"
+      Type = "INSTANT"
+      Fuse = 0.01
+      //ImpactFx = "DemeterIceBlast"
+      NumPenetrations = 999
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      DamageLow = 5
+      DamageHigh = 5
+      IgnoreCoverageAngles = true
+      UseVulnerability = false
+      CanCrit = false
+      Thing = {
+        Graphic = "null"
+      }
+      Effects = [
+        {
+            Name = "BlindLightning"
+            IgnoreName = "_PlayerUnit"
+            Type = "DAMAGE_OVER_TIME"
+            IsVulnerabilityEffect = true
+            Amount = 40.0
+            Cooldown = 1
+            Duration = 5
+            ExtendDurationOnReapply = true
+            FrontFx = "BlindStaticArcEmitter"
+            Active = true
+            TimeModifierFraction = 0
+          }
+      ]
+    }
+    {
       Name = "ApolloLobProjectile"
       InheritFrom = "1_BasePlayerLargeProjectile"
       DetonateGraphic = "RadialNova-Apollo"
@@ -277,19 +285,6 @@
             Active = true            
             ExtendDurationOnReapply = true
             IsVulnerabilityEffect = true
-            TimeModifierFraction = 0
-          }
-          {
-            Name = "BlindLightning"
-            IgnoreName = "_PlayerUnit"
-            Type = "DAMAGE_OVER_TIME"
-            IsVulnerabilityEffect = true
-            Amount = 40.0
-            Cooldown = 1
-            Duration = 5
-            ExtendDurationOnReapply = true
-            FrontFx = "ZeusStaticArcEmitter"
-            Active = false
             TimeModifierFraction = 0
           }
           {
