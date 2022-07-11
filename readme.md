@@ -39,6 +39,7 @@ Please also note that not all features have been fully implemented yet, and some
 1. Run the `Hades\Content\modimporter.exe` executable 
 1. Open Hades and start playing!
 
+* Xbox/PC Game Pass users: 1.1.1 should fix any audio problem (Random audio played).
 -----------------------------
 ## For more information
 Please check out the [OlympusExtra GitHub Wiki](https://github.com/AlexKage69/OlympusExtra/wiki)!
