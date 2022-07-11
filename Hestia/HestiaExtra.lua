@@ -3529,9 +3529,9 @@ if ModUtil ~= nil then
 	-- Hestia FreeHealthTrait
 	ModUtil.Path.Wrap( "SpawnRoomReward", 
 		function(baseFunc, eventSource, args )
-			local currentRun = CurrentRun
-			local currentEncounter = CurrentRun.CurrentRoom.Encounter
-			if (currentEncounter.EncounterType == "Boss" or currentEncounter.EncounterType == "Miniboss") then -- and HeroHasTrait("FreeHealthTrait") then
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.CurrentRoom.Encounter.EncounterType)) 
+			if (HeroHasTrait("FreeHealthTrait") and CurrentRun.CurrentRoom.Encounter ~= nil and CurrentRun.CurrentRoom.Encounter.EncounterType ~= nil and 
+				(CurrentRun.CurrentRoom.Encounter.EncounterType == "Boss" or CurrentRun.CurrentRoom.Encounter.EncounterType == "Miniboss" or CurrentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss")) then
 				local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
 				local cost = 0
 				local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
@@ -3539,7 +3539,6 @@ if ModUtil ~= nil then
 				--ApplyUpwardForce({ Id = consumableId, Speed = 450 })
 				--local forceAngle = GetAngleBetween({ Id = lootPointId, DestinationId = CurrentRun.Hero.ObjectId })
 				--ApplyForce({ Id = consumableId, Speed = 100, Angle = forceAngle, SelfApplied = true })
-				
 				PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
 				thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FreeHealthText", Duration = 1})
 			end
