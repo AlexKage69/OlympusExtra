@@ -4676,7 +4676,6 @@ OlympusTraitData.SeaChanteyTrait =
 	)	
 	function ApolloBlindApply(triggerArgs) 
 		if HeroHasTrait("MasterBoltTrait") then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.TriggeredByTable.ObjectId)) 
 			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, AutoEquip = true, WeaponName = "BlindLightningEffector", EffectName = "BlindLightning" })
 		end
 	end

@@ -14,9 +14,8 @@ To "Win/Packages/720p/OEAssets.pkg_manifest"
 Replace "Packages/OEAssets.pkg_manifest"
 
 :: Audio
-:: XBOX PASS uncomment below by removing the ::
-:: To "Audio/FMOD/Build/Desktop/VO.txt"
-:: Replace "Audio/VO.txt" -:
+To "Audio/FMOD/Build/Desktop/VO.txt"
+Replace "Audio/VO.txt"
 
 To "Audio/FMOD/Build/Desktop/VO.fsb"
 Replace "Audio/VO.fsb"
