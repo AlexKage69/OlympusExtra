@@ -1666,10 +1666,23 @@ if ModUtil ~= nil then
 	{
 			
 	}
+	]]--
 	OlympusTraitData.FreeHealthTrait =
 	{
-					
+		InheritFrom = {"SynergyTrait"},
+		Icon = "Hestia_Aphrodite_01",
+		--SpawnRoomReward
+		--[[
+		if (currentEncounter.EncounterType == "Boss" or currentEncounter.EncounterType == "Miniboss") and HeroHasTrait("FreeHealthTrait")
+		local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = currentRun.Hero.ObjectId, Group = "Standing" })
+		local cost = 0
+		local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
+		ApplyUpwardForce({ Id = consumableId, Speed = 450 })
+		PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
+        ]]--
 	}
+
+	--[[
 	OlympusTraitData.ExplosionTrait =
 	{
 			
@@ -3504,6 +3517,28 @@ if ModUtil ~= nil then
 		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = CurrentRun.Hero.ObjectId, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
 		PlaySound({ Name = "/SFX/Player Sounds/ZagreusFistMagnetismVacuumActivate", Id = victimId })
 	end
+    
+
+	-- Hestia FreeHealthTrait
+	ModUtil.Path.Wrap( "SpawnRoomReward", 
+		function(baseFunc, eventSource, args )
+			if (currentEncounter.EncounterType == "Boss" or currentEncounter.EncounterType == "Miniboss") and HeroHasTrait("FreeHealthTrait") then
+				local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
+				local cost = 0
+				local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
+				ActivatedObjects[consumable.ObjectId] = consumable
+				--ApplyUpwardForce({ Id = consumableId, Speed = 450 })
+				--local forceAngle = GetAngleBetween({ Id = lootPointId, DestinationId = CurrentRun.Hero.ObjectId })
+				--ApplyForce({ Id = consumableId, Speed = 100, Angle = forceAngle, SelfApplied = true })
+				
+				PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
+				thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FreeHealthText", Duration = 1})
+			end
+			baseFunc(eventSource, args)
+		end
+	)
+
+
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		

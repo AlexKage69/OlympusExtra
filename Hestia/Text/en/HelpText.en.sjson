@@ -119,5 +119,14 @@
 			InheritFrom = "HestiaShoutTrait"
 			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
 		} 
+		{
+			Id = "FreeHealthTrait"
+			DisplayName = "Loving Embrace"
+			Description = "After you clear a miniboss encounter or boss encounter, gain an extra Centaur Heart."
+		}	
+		{
+			Id = "FreeHealthText",
+			DisplayName = "{#CombatTextHighlightFormat}Loving Embrace!{#PreviousFormat}!"
+		}
 	]
 }
