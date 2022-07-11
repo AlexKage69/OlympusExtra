@@ -39,10 +39,23 @@ Please also note that not all features have been fully implemented yet, and some
 1. Run the `Hades\Content\modimporter.exe` executable 
 1. Open Hades and start playing!
 
+* Xbox/PC Game Pass users: Go to Mods/OlympusExtra/modfile_assets.txt, then remove the :: for both indicated lines to fix the audio.
 -----------------------------
 ## For more information
 Please check out the [OlympusExtra GitHub Wiki](https://github.com/AlexKage69/OlympusExtra/wiki)!
 
+-----------------------------
+## Common mistake
+- When installing the mod, make sure the name of the mod is "OlympusExtra" and located under "Mods\"
+- Always make sure you have the latest version of "OlympusExtra", "ModUtil" and "modimporter". We work very closely and always make sure we work with each other.
+
+#### Xbox/PC Game Pass
+- After running the ModImporter.exe, go to "Hades\Content\Audio\FMOD\Build\Desktop" and if there's a VO.txt, replace it with the VO.h. It will fix that you get random voicelines.
+
+-----------------------------
+## Donations
+Paypal Email: alexandre69.demers@gmail.com  
+Money collected will be redistributed to artists, voice actors and helpers for their contributions as a thank you for their volunteered work.
 
 -----------------------------
 ## Credits
