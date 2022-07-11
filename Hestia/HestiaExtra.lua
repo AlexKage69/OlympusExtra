@@ -1671,15 +1671,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = {"SynergyTrait"},
 		Icon = "Hestia_Aphrodite_01",
-		--SpawnRoomReward
-		--[[
-		if (currentEncounter.EncounterType == "Boss" or currentEncounter.EncounterType == "Miniboss") and HeroHasTrait("FreeHealthTrait")
-		local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = currentRun.Hero.ObjectId, Group = "Standing" })
-		local cost = 0
-		local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
-		ApplyUpwardForce({ Id = consumableId, Speed = 450 })
-		PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
-        ]]--
+		RequiredFalseTraits = { "FreeHealthTrait"}
 	}
 
 	--[[
@@ -1740,10 +1732,17 @@ if ModUtil ~= nil then
 			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
 			Traits = { },--"HestiaRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
 			Consumables = { },
-	
+
 			LinkedUpgrades =
 			{
-				
+				FreeHealthTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait"},
+						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait", "HealthRewardBonusTrait"}
+					}
+				},
 			},
 	
 			Speaker = "NPC_Hestia_01",
@@ -3408,7 +3407,15 @@ if ModUtil ~= nil then
 			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag we'll do what it takes to help you." },
 	}
 	-- Duo LootData	
-	
+	OlympusLootData.AphroditeUpgrade.LinkedUpgrades.FreeHealthTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait"},
+			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait", "HealthRewardBonusTrait"}
+		}
+	}
+
 	-- Other gods modification
 	-- AthenaUpgrade
 	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "HestiaFirstPickUp")
@@ -3522,7 +3529,9 @@ if ModUtil ~= nil then
 	-- Hestia FreeHealthTrait
 	ModUtil.Path.Wrap( "SpawnRoomReward", 
 		function(baseFunc, eventSource, args )
-			if (currentEncounter.EncounterType == "Boss" or currentEncounter.EncounterType == "Miniboss") and HeroHasTrait("FreeHealthTrait") then
+			local currentRun = CurrentRun
+			local currentEncounter = CurrentRun.CurrentRoom.Encounter
+			if (currentEncounter.EncounterType == "Boss" or currentEncounter.EncounterType == "Miniboss") then -- and HeroHasTrait("FreeHealthTrait") then
 				local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
 				local cost = 0
 				local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
