@@ -946,6 +946,57 @@ if ModUtil ~= nil then
 				}
 			 }
 	 } 
+	 OlympusTraitData.ShieldLoadAmmoTrait.AnimDefinitions.ApolloWeaponTrait =
+	 {
+		 Unloaded =
+		 {
+			 Graphic = "ShieldRush3DBeowulf-Apollo",
+			 DissipateGraphic = "ShieldRush3DBeowulf-Out-Apollo",
+			 StartFx = "null",
+			 StartFx2 = "null",
+			 AttachedAnim = "null",
+		 },
+		 Loaded =
+		 {
+			 Graphic = "ShieldRush3DBeowulf-Apollo",
+			 DissipateGraphic = "ShieldRush3DBeowulf-Out-Apollo",
+			 StartFx = "null",
+			 StartFx2 = "null",
+			 AttachedAnim = "ShieldRush3DBeowulfMax-Apollo",
+		 },
+	}
+	table.insert(OlympusTraitData.GunShotgunTrait.PropertyChanges,{
+		TraitName = "ApolloWeaponTrait",
+		WeaponNames = { "GunWeapon", "GunWeaponDash" },
+		ProjectileProperty = "StartFx",
+		ChangeValue = "GunShotgunBlastRandomFlip-Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.GunShotgunTrait.PropertyChanges,{
+		TraitName = "ApolloWeaponTrait",
+		WeaponNames = { "GunWeapon", "GunWeaponDash" },
+		ProjectileProperty = "ImpactFx",
+		ChangeValue = "null",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.GunHomingBulletTrait.PropertyChanges,{
+		WeaponNames = { "GunWeapon", "GunWeaponDash" },
+		TraitName = "ApolloWeaponTrait",
+		ProjectileProperty = "Graphic",
+		ChangeValue = "GunWeaponProjectile_Homing-Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.FistReachAttackTrait.PropertyChanges,{
+		TraitName = "ApolloWeaponTrait",
+		WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
+		ProjectileProperty = "Graphic",
+		ChangeValue = "FistFxApollo_Reach",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
 	OlympusTraitData.ApolloSecondaryTrait =
 	 {
 		 Name = "ApolloSecondaryTrait",
@@ -1229,6 +1280,40 @@ if ModUtil ~= nil then
 			}
 		 }
 	 }
+	 
+	table.insert(OlympusTraitData.FistSpecialFireballTrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponName = "FistWeaponSpecial",
+		ProjectileProperty = "Graphic",
+		ChangeValue = "FistFireballFx-Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.FistSpecialFireballTrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponName = "FistWeaponSpecial",
+		WeaponProperty = "FireFx",
+		ChangeValue = "null",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.FistSpecialLandTrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponNames = { "FistWeaponLandAreaAttack" },
+		ProjectileProperty = "DetonateGraphic",
+		ChangeValue = "FistSpecialLandFx_Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.SpearThrowObjectAOETrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponNames = { "SpearThrowImmolation" },
+		ProjectileProperty = "DetonateGraphic",
+		ChangeType = "Absolute",
+		ChangeValue = "RadialNovaSwordParry-Apollo",
+		ExcludeLinked = true,
+	})
+	
 	OlympusTraitData.ApolloDashTrait =
 	 {
 		 Name = "ApolloDashTrait",
@@ -4739,7 +4824,7 @@ OlympusTraitData.SeaChanteyTrait =
 
 	function SeaChanteyAnnouncement()
 		wait(1)
-		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
 	end
 
