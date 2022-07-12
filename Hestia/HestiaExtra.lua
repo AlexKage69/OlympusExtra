@@ -315,8 +315,8 @@ if ModUtil ~= nil then
 		"HestiaAboutHarpQuest02", "HestiaAboutOrpheus01", "HestiaAboutOrpheus02" }
 	)
 	--Keywords
-	--local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	--ModUtil.Table.Merge(OlympusKeywordList, { "HestiaBlind", "FlashBomb", "DamageResist" })
+	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
+	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash" })
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -372,8 +372,8 @@ if ModUtil ~= nil then
 			},
 			--New Data
 			InRackTitle = "ForceHestiaBoonTrait_Rack",
-			Icon = "Keepsake_Lyre",
-			EquipSound = "/SFX/LyreMedium",
+			Icon = "Keepsake_Ember",
+			EquipSound = "/SFX/Enemy Sounds/Megaera/MegaeraFlameBurst",
 			ForceBoonName = "HestiaUpgrade",
 			Uses = 1,
 			RarityBonus =
@@ -2420,39 +2420,51 @@ if ModUtil ~= nil then
 	-- Duo Traits
 	OlympusTraitData.MoreTrapDamageTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Athena_01",
+		RequiredFalseTrait = "MoreTrapDamageTrait",	
 	}
 	OlympusTraitData.FreeHealthTrait =
 	{
-					
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Aphrodite_01",
+		RequiredFalseTrait = "FreeHealthTrait",		
 	}
 	OlympusTraitData.ExplosionTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Artemis_01",
+		RequiredFalseTrait = "ExplosionTrait",
 	}	
 	OlympusTraitData.ChillFireTrait =
 	{
-		
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Demeter_01",
+		RequiredFalseTrait = "ChillFireTrait",
 	}
 	OlympusTraitData.FestiveFogHealTrait =
 	{
-		
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Dionysus_01",
+		RequiredFalseTrait = "FestiveFogHealTrait",
 	}			
 	OlympusTraitData.LavaDoomTrait =
 	{
-
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Ares_01",
+		RequiredFalseTrait = "LavaDoomTrait",
 	}		
 	OlympusTraitData.MoreHellringTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Zeus_01",
+		RequiredFalseTrait = "MoreHellringTrait",
 	}	
 	OlympusTraitData.FishingHealTrait =
 	{
-			
-	}
-	OlympusTraitData.CloseBlindTrait =
-	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Poseidon_01",
+		RequiredFalseTrait = "FishingHealTrait",	
 	}
 	
 	-- LootData

@@ -35,62 +35,94 @@
 		{
 			Id = "HestiaWeaponTrait"
 			DisplayName = "Embracing Strike"
-			Description = "Your {$Keywords.Attack} deals more damage and attacts foes towards you. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {$TooltipData.DisplayDelta1}" 
+			Description = "Your {$Keywords.Attack} deals more damage and attracts foes. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
 		} 		
 		{
 			Id = "HestiaWeaponTrait_Initial"
 			InheritFrom = "HestiaWeaponTrait"
-			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Attack} deals more damage and attracts foes. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HestiaSecondaryTrait"
 			DisplayName = "Embracing Flourish"
-			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Special} deals more damage and attracts foes. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 	
 		{
 			Id = "HestiaSecondaryTrait_Initial"
 			InheritFrom = "HestiaSecondaryTrait"
-			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Special} deals more damage and attracts foes. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}		
 		{
 			Id = "HestiaDashTrait"
 			DisplayName = "Flaring Rush"
-			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		} 
 		{
 			Id = "HestiaDashTrait_Initial"
 			InheritFrom = "HestiaDashTrait"
-			Description = "Your {$Keywords.Dash} creates a circle of light that damages foes and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Dash Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
+			Id = "HestiaSignoff"
+			DisplayName = "From Hestia"
+		}
+		{
+			Id = "HestiaSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Hestia{#AwardDarkFlavorFormat}; you share an {#AwardMaxFlavorFormat}Compassionate Bond
+
+				{#AwardDarkFlavorFormat}She sees you as a bringer of love and compassion.
+			"""
+		}
+		{
+      		Id = "LavaSplash"
+			DisplayName = "Lava Pool"
+			Description = "While stepping on it, damage foes over time."
+		}
+		{
+			Id = "HestiaShoutTrait"
+			DisplayName = "Hestia's Aid"
+			Description = "Your {$Keywords.Wrath} fires a ring of fire for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+		}		
+		{
+			Id = "HestiaShoutTrait_Tray"
+			InheritFrom = "HestiaShoutTrait"
+			Description = "Your {$Keywords.Wrath} fires a ring of fire for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		}	
+		{
+			Id = "HestiaShoutTrait_Initial"
+			InheritFrom = "HestiaShoutTrait"
+			Description = "Your {$Keywords.Wrath} fires a ring of fire for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+		} 
+		{
 			Id = "HestiaRangedTrait"
-			DisplayName = "Embracing Shot"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			DisplayName = "Ember Shot"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HestiaRangedTrait_Initial"
 			InheritFrom = "HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HestiaRangedTrait_Tray"
 			InheritFrom = "HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} launches a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait"
-			DisplayName = "Embracing Flare"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
+			DisplayName = "Ember Flare"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait_Tray"
 			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait_Initial"
 			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "BowLoadAmmo_HestiaRangedTrait"
@@ -105,19 +137,128 @@
 			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait_Initial"
 		}
 		{
-			Id = "HestiaShoutTrait"
-			DisplayName = "Hestia's Aid"
-			Description = "Your {$Keywords.Wrath} fires Ring for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+			Id = "StrongAttractionTrait",
+			DisplayName = "Open Arms"
+			Description = "Your boons with attraction effect are stronger. \n {!Icons.Bullet}{#PropertyFormat}Bonus Force Attraction: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {$TooltipData.DisplayDelta1}"
+    	}
+		{
+			Id = "StrongAttractionTrait_Initial",
+			InheritFrom = "StrongAttractionTrait"
+			Description =  "Your boons with attraction effect are stronger. \n {!Icons.Bullet}{#PropertyFormat}Bonus Force Attraction: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {$TooltipData.NewTotal1}"
+    	}
+		{
+			Id = "HestiaRevengeTrait"
+			DisplayName = "Molten Sting"
+			Description = "{$Keywords.LavaSplash}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.LavaSplash}: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HestiaRevengeTrait_Initial"
+			InheritFrom = "HestiaRevengeTrait"
+			Description = "{$Keywords.LavaSplash}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.LavaSplash}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "LavaDeathTrait"
+			DisplayName = "Blazing Hearth"
+			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "LavaDeathTrait_Initial"
+			InheritFrom = "LavaDeathTrait"
+			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HealthDamageTrait"
+			DisplayName = "Melting Heart"
+			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per : \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HealthDamageTrait_Initial"
+			InheritFrom = "HealthDamageTrait"
+			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per : \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}		
+		{
+			Id = "LavaResistTrait"
+			DisplayName = "Home Turf"
+			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "LavaResistTrait_Initial"
+			InheritFrom = "LavaResistTrait"
+			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "LavaLongerTrait",
+			DisplayName = "Eternal Flame"
+			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Size Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+    	}
+		{
+			Id = "LavaLongerTrait_Initial",
+			InheritFrom = "LavaLongerTrait"
+			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Size Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+    	}
+		{
+			Id = "LavaAutoTrait"
+			DisplayName = "Royal Hearth"
+			Description = "{$Keywords.LavaSplash} attracts foes."
+		}
+		{
+			Id = "ForceHestiaBoonTrait"
+			DisplayName = "Ancestral Torch"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+		}
+		{
+			Id = "ForceHestiaBoonTrait_Rack"
+			InheritFrom = "ForceHestiaBoonTrait"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "ForceHestiaBoonTrait_Inactive"
+			DisplayName = "Ancestral Torch"
+			Description = "Hestia's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+		}
+		{
+			Id = "MoreTrapDamageTrait"
+			DisplayName = "MoreTrapDamageTrait"
+			Description = "Your {$Keywords.Wrath} fires twelve beams instead of one."
 		}	
 		{
-			Id = "HestiaShoutTrait_Tray"
-			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+			Id = "FreeHealthTrait"
+			DisplayName = "FreeHealthTrait"
+			Description = "Your {$Keywords.FlashBomb} inflicts {$Keywords.Curse}. \n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCurseDamage}"
 		}	
 		{
-			Id = "HestiaShoutTrait_Initial"
-			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
-		} 
+			Id = "ExplosionTrait"
+			DisplayName = "ExplosionTrait"
+			Description = "Foes inflicted with {$Keywords.LavaSplash} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to bosses."
+    		}
+		{
+			Id = "ChillFireTrait"
+			DisplayName = "ChillFireTrait"
+			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
+		}	
+		{
+			Id = "FestiveFogHealTrait"
+			DisplayName = "FestiveFogHealTrait"
+			Description = "Your {$Keywords.LavaSplash} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+		}
+		{
+			Id = "LavaDoomTrait"
+			DisplayName = "LavaDoomTrait"
+			Description = "After using {$Keywords.Deflect}, briefly gain {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}% \n{!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistDuration} Sec."
+		}	
+		{
+			Id = "MoreHellringTrait"
+			DisplayName = "MoreHellringTrait" 
+			Description = "Enemies inflicted by {$Keywords.LavaSplash} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {#UpgradeFormat}{$TooltipData.MasterBoltDamage}"
+		}
+		{
+			Id = "FishingHealTrait"
+			DisplayName = "FishingHealTrait" 
+			Description = "Your {$Keywords.FlashBomb} summons a {$Keywords.Cloud} upon yourself.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "LtUpgrade_Hestia"
+			DisplayName = "Blessed foes now attract you."
+		}	
 	]
 }

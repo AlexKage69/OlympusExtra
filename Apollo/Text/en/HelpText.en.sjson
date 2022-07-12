@@ -174,12 +174,12 @@
     	}
 		{
 			Id = "FountainDefenseTrait_Initial",
-			DisplayName = "Melodic Concert"
+			InheritFrom = "FountainDefenseTrait"
 			Description = "Using a {$Keywords.Fountain} gives you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "FountainDefenseTrait_Tray",
-			DisplayName = "Melodic Concert"
+			InheritFrom = "FountainDefenseTrait"
 			Description = "Using a {$Keywords.Fountain} gives you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
     	}
 		{
@@ -199,7 +199,7 @@
 		}
 		{
 			Id = "RerollObolTrait_Initial"
-			DisplayName = "Golden Fleece"
+			InheritFrom = "RerollObolTrait"
 			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}
 		{
@@ -209,7 +209,7 @@
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
-			DisplayName = "Future Sight"
+			InheritFrom = "RerollBoonTrait"
 			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}		
 		{
@@ -237,12 +237,12 @@
     	}
 		{
 			Id = "FountainCoinTrait_Initial",
-			DisplayName = "Wishing Well"
+			InheritFrom = "FountainCoinTrait"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     	}
 		{
 			Id = "FountainCoinTrait_Tray",
-			DisplayName = "Wishing Well"
+			InheritFrom = "FountainCoinTrait"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     	}
 		{
@@ -252,7 +252,7 @@
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
-			DisplayName = "Panacea's Elixir"
+			InheritFrom = "ApolloHealTrait"
 			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
@@ -273,7 +273,7 @@
 		{
 			Id = "ForceApolloBoonTrait_Inactive"
 			DisplayName = "Shining Lyre"
-			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+			Description = "Apollo's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
 			Id = "FamedDuetTrait"
