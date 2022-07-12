@@ -1,5 +1,135 @@
 {
   Projectiles = [
       "_append"
+      {
+      Name = "HestiaProjectile"
+      InheritFrom = "1_BaseNonPhysicalProjectile"
+      Type = "HOMING"
+      HomingAllegiance = "ENEMIES"
+      MaxAdjustRate = 500
+      Speed = 200
+      Acceleration = 0
+      Range = 1000.0
+      DamageLow = 2
+      DamageHigh = 2
+      DetonateGraphic = "null"
+      //ImpactFx = "HestiaHitFx"
+      ObstacleCollisionCheck = "PolygonContainsPoint"
+      MultipleUnitCollisions = false
+      MultipleObstacleCollisions = false
+      SpawnOnDetonate = "HestiaLavaPuddle"
+      SpawnType = "PROJECTILE"
+      CheckObstacleImpact = true
+      CheckUnitImpact = true
+      UnlimitedUnitPenetration = false
+      DetonateAtVictimLocation = true
+      UseVulnerability = false
+      GroupName = "FX_Standing_Add"
+      IgnoreCoverageAngles = true
+      Thing = 
+      {
+        Graphic = "HestiaLavaSplashProjectileHead"//"HestiaSlowLavaSplash"
+        OffsetZ = 112
+        Grip = 999999
+        Points = [
+          {
+            X = 76
+            Y = 16
+          }
+          {
+            X = 76
+            Y = -16
+          }
+          {
+            X = -32
+            Y = -16
+          }
+          {
+            X = -32
+            Y = 16
+          }]
+      }
+      Effects = [
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    {
+      Name = "HestiaLavaPuddle"
+      Type = "INSTANT"
+      DissipateGraphic = "HestiaLavaPuddleOut"
+      GroupName = "FX_Terrain"
+      Range = 0
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      CanBeReflected = false
+      //AffectsFriends = true
+      DamageRadius = 150
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      TotalFuse = 8.0
+      Fuse = 0.2
+      InflictedDamageSound = "/SFX/BurnDamageSizzle"
+      InflictedDamageFx = "Immolation"
+      //ImmunityKey = "LavaTileWeapon"
+      IgnoreDodge = true
+      //ImmunityDuration = 0.18
+      Damage = 10
+      MoveInterval = 0.19
+      //DamagePerConsecutiveHit = 0.5
+      RoundDamageDown = true
+      ConsecutiveHitWindow = 0.8
+      IgnoreCoverageAngles = true
+      //MaxVictimZ = 1
+      MultiDetonate = true
+      DangerDistance = 0
+      CanCrit = false
+      Effect = 
+      {
+        Name = "LavaSlow"
+        Type = "SPEED"
+        Duration = 0.5
+        Modifier = 1
+        Active = true
+        CanAffectInvulnerable = false
+        FrontFx = "null"
+      }
+      Thing = 
+      {
+        Graphic = "HestiaLavaPuddleLarge"
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }
+    }
   ]
 }

@@ -88,8 +88,11 @@ if ModUtil ~= nil then
 		},
 	}
 	--WeaponData
+	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
+
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HestiaProjectile")	
 	OlympusWeaponData.HestiaShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -269,19 +272,11 @@ if ModUtil ~= nil then
 		DamageTextStartColor = OlympusColor.HestiaDamageLight,
 		DamageTextColor = OlympusColor.HestiaDamage
 	}
-	OlympusProjectileData.HestiaLobProjectile = {
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
-		NeverStore = true,
-	}
-	OlympusProjectileData.HestiaBeowulfProjectile = {
-		InheritFrom = { "HestiaLobProjectile" },
-		NeverStore = true,
+	OlympusProjectileData.HestiaProjectile = {
+		InheritFrom = { "HestiaColorProjectile" },
 	}
 	OlympusProjectileData.HestiaShoutWeapon = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
-	}
-	OlympusProjectileData.AreaWeakenHestia = {
-		InheritFrom = { "HestiaColorProjectile" },
 	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
@@ -492,8 +487,8 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
+					RequireFirstHit = true,
 				},
-				RequireFirstHit = true,
 				GunWeaponDash = {
 					Range = 700,
 					PullForce = 900,
@@ -1139,71 +1134,235 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		
 		OnWeaponProjectileDeathFunction =
-		{
-			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
+		{ -- "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
+			ValidWeapons = { "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
+				From = "OnWeaponProjectileDeathFunction",
 				SwordParry = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 360,
 					Count = 3,
+					Distance = 150,
 				},
 				SpearWeaponThrow = {
-					Range = 700,
-					PullForce = 4000,
-					Arc = 360,
+					Range = 1000,
+					PullForce = 990,
+					Arc = 180,
 					Count = 3,
+					Distance = 150,
 				},
 				ShieldThrow = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 360,
 					Count = 3,
+					Distance = 150,
 				},
 				ShieldThrowDash = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 360,
 					Count = 3,
+					Distance = 150,
 				},
 				BowSplitShot = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 360,
 					Count = 3,
+					Distance = 150,
 				},
 				GunBombImmolation = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 360,
 					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
 				},
 				GunGrenadeToss = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 360,
 					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
 				},
 				FistWeaponSpecial = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
 					RequireFacing = true,
 				},
 				FistWeaponSpecialDash = {
-					Range = 700,
-					PullForce = 4000,
+					Range = 1000,
+					PullForce = 990,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
 					RequireFacing = true,
 				},
 			}
-		},		
+		},
+		OnWeaponChargeFunctions =
+		{
+			ValidWeapons = {"SpearWeaponThrow", },
+			FunctionName = "CheckChargeVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponChargeFunctions",
+				SwordParry = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				SpearWeaponThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 180,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrowDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				BowSplitShot = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				GunBombImmolation = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				GunGrenadeToss = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				FistWeaponSpecial = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+				FistWeaponSpecialDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+			}
+		},
+		OnWeaponFiredFunctions =
+		{
+			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "FistWeaponSpecial", "FistWeaponSpecialDash" },
+			FunctionName = "CheckFiredVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponFiredFunctions",
+				SwordParry = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				SpearWeaponThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 180,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrowDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				BowSplitShot = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				GunBombImmolation = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				GunGrenadeToss = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				FistWeaponSpecial = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+				FistWeaponSpecialDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+			}
+		},
+		
 		PropertyChanges =
 		{
 			--[[{
@@ -1700,7 +1859,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				WeaponProperty = "Projectile",
-				ChangeValue = "ArtemisProjectile",
+				ChangeValue = "HestiaProjectile",
 				ChangeType = "Absolute",
 			},
 			{
@@ -1811,7 +1970,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				WeaponProperty = "Projectile",
-				ChangeValue = "ArtemisProjectile",
+				ChangeValue = "HestiaProjectile",
 				ChangeType = "Absolute",
 			},
 			{
@@ -3760,7 +3919,7 @@ if ModUtil ~= nil then
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name)) 	
 		
 		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90, Distance = 10}
-		args.PullForce = 1100
+		args.PullForce = 999
 		local pullTarget
 		if type(triggerArgs) ~= "number" then
 			if args.RequireFirstHit and triggerArgs.FirstUnitInVolley then
