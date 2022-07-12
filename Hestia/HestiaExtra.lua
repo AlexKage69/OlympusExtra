@@ -2052,42 +2052,370 @@ if ModUtil ~= nil then
 	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
 	{
 		
-	}
+	}--]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
-			
+		InheritFrom = { "ShopTier1Trait" },
+		RequiredTextLines = { "PoseidonWrathIntro01" },
+		CustomTrayText = "HestiaShoutTrait_Tray",
+		God = "Hestia",
+		Slot = "Shout",
+		Icon = "Boon_Hestia_04",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.1,
+			},
+			Epic =
+			{
+				Multiplier = 1.2,
+			},
+			Heroic =
+			{
+				Multiplier = 1.3,
+			}
+		},
+		AddShout =
+		{
+			FunctionName = "HestiaShout",
+			MaxFunctionName = "HestiaMaxShout",
+			Cost = 25,
+			MaxDurationMultiplier = 2,
+			SuperDuration = 5,
+			IsBurst = true,
+			ExtractValues =
+			{
+				{
+					Key = "Cost",
+					ExtractAs = "TooltipWrathStocks",
+					Format = "WrathStocks",
+					SkipAutoExtract = true
+				},
+				{
+					Key = "MaxDurationMultiplier",
+					ExtractAs = "TooltipDuration",
+					Format = "EXWrathDuration",
+					DecimalPlaces = 2,
+					SkipAutoExtract = true
+				}
+			}
+		},
+		EndShout = "EndHestia",
+		PreEquipWeapons = { "HestiaSuper", "HestiaMaxSuper", },
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "HestiaSuper", "HestiaMaxSuper", },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 10,
+				BaseMax = 10,
+				MinMultiplier = 0.2,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = { "HestiaSuper", "HestiaMaxSuper", },
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponNames = { "HestiaSuper", "HestiaMaxSuper", },
+				ProjectileProperty = "Fuse",
+				ChangeValue = 0.25,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipInterval",
+					SkipAutoExtract = true,
+					DecimalPlaces = 2,
+				}
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipChillDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipChillPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "ElapsedTimeMultiplier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipChillStacks",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "MaxStacks",
+			},
+		}
 	}
 	OlympusTraitData.StrongAttractionTrait =
 	{
-		
+		Icon = "Boon_Hestia_05",
+		InheritFrom = { "ShopTier2Trait" },
+		RequiredFalseTrait = "StrongAttractionTrait",
+		God = "Hestia",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 2.0,
+			},
+			Epic =
+			{
+				Multiplier = 3.0,
+			},
+			Heroic =
+			{
+				Multiplier = 4.0,
+			}
+		},
+		AttractionCount = { 
+			BaseValue = 1.0
+		},
+		AttractionForce = { 
+			BaseValue = 500.0
+		},
+		ExtractValues =
+		{
+
+		}
 	}
 	OlympusTraitData.HestiaRevengeTrait =
 	{
-		
+		Icon = "Boon_Hestia_06",
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		AddOnHitWeapons = { "HestiaRetaliate" },
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.20,
+			},
+			Epic =
+			{
+				Multiplier = 1.40,
+			},
+			Heroic =
+			{
+				Multiplier = 1.60,
+			}
+		},
+		PropertyChanges =
+		{
+			
+			{
+				WeaponName = "HestiaRetaliate",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 15,
+				BaseMax = 15,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "HestiaRetaliate",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
 	}
 	OlympusTraitData.HealthDefianceTrait =
 	{
-		
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_07",
+		LootSource = "HestiaUpgrade",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
+		DefianceExtraHealth = {
+			BaseValue = 15
+		}
 	}
 	OlympusTraitData.HealthDamageTrait =
 	{
-		
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_07",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
 	}
 	OlympusTraitData.LavaDeathTrait =
 	{
-	
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_08",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
 	}
 	OlympusTraitData.LavaResistTrait = 
 	{
-		
+		InheritFrom = { "ShopTier2Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_09",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
 	}
 	OlympusTraitData.LavaLongerTrait = 
 	{
-		
+		InheritFrom = { "ShopTier2Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_10",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
 	}	
 	OlympusTraitData.LavaAutoTrait =
 	{
-		
+		InheritFrom = { "ShopTier3Trait" },
+		RequiredFalseTrait = "LavaAutoTrait",
+		God = "Hestia",
+		Icon = "Boon_Hestia_11",
+	}
+	-- Consumable Data
+	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	OlympusConsumableData.LastStandHealthDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "HealthDefianceTrait",
+		RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
+		RequiredMinMaximumLastStands = 1,
+		Icon = "Boon_Hestia_11",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Icon = "ExtraLifeStyx",
+				WeaponName = "LastStandMetaUpgradeShield",
+				HealFraction = 0.5
+			},
+			{ TraitName = "HealthDefianceTrait" },
+			{ },
+		},
 	}
 	-- Duo Traits
 	OlympusTraitData.MoreTrapDamageTrait =
@@ -2125,7 +2453,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.CloseBlindTrait =
 	{
 			
-	}]]
+	}
 	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -2153,12 +2481,27 @@ if ModUtil ~= nil then
 	
 			PriorityUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
 			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
-			Traits = { },--"HestiaRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
-			Consumables = { },
+			Traits = { "HestiaRevengeTrait", "LavaDeathTrait", "HealthDamageTrait" },
+			Consumables = { "LastStandHealthDrop" },
 	
 			LinkedUpgrades =
 			{
-				
+				StrongAttractionTrait = {
+					OneOf = { "ApolloWeaponTrait", "HestiaSecondaryTrait"},
+				},
+				LavaResistTrait = {
+					OneOf = { "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
+				},
+				LavaLongerTrait = {
+					OneOf = { "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
+				},
+				LavaAutoTrait = {
+					OneFromEachSet =
+					{
+						{ "ApolloWeaponTrait", "HestiaSecondaryTrait" },
+						{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
+					}
+				}
 			},
 	
 			Speaker = "NPC_Hestia_01",
@@ -3920,6 +4263,11 @@ if ModUtil ~= nil then
 		
 		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90, Distance = 10}
 		args.PullForce = 999
+		if HeroHasTrait("StrongAttractionTrait") then
+			args.PullForce = args.PullForce + 500
+			args.Count = args.Count + GetTotalHeroTraitValue("AttractionCount")
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Count)) 
+		end
 		local pullTarget
 		if type(triggerArgs) ~= "number" then
 			if args.RequireFirstHit and triggerArgs.FirstUnitInVolley then
@@ -3965,6 +4313,26 @@ if ModUtil ~= nil then
 			end
 		end
 	}	
+	-- Shout functions
+	function HestiaShout()
+		FireWeaponFromUnit({ Weapon = "HestiaSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	end
+	function HestiaMaxShout()
+		FireWeaponFromUnit({ Weapon = "HestiaMaxSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	end
+	function EndHestia()
+		ExpireProjectiles({ Names = { "HestiaSuper", "HestiaMaxSuper" } })
+	end
+	-- LastStand Hestia functions
+	ModUtil.Path.Wrap( "CheckLastStand", 
+		function ( baseFunc, victim, triggerArgs )
+			local hasLastStand = baseFunc(victim, triggerArgs)
+			if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
+				AddMaxHealth( GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait", {Delay = 0.1} )
+			end
+			return hasLastStand
+		end
+	)
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
