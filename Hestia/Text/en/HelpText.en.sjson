@@ -157,6 +157,21 @@
 			Description = "{$Keywords.LavaSplash}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.LavaSplash}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
+			Id = "HealthDefianceTrait"
+			DisplayName = "Homecoming"
+			Description = "{$Keywords.ExtraChance} gives you Health. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {$TooltipData.DisplayDelta1} {#UpgradeFormat}Sec."
+		}
+		{
+			Id = "HealthDefianceTrait_Initial"
+			InheritFrom = "HealthDefianceTrait"
+			Description = "{$Keywords.ExtraChance} gives you Health. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {$TooltipData.DisplayDelta1} {#UpgradeFormat}Sec."
+		}
+		{
+			Id = "LastStandHealthDrop"
+			InheritFrom = "HealthDefianceTrait_Initial"
+			Description = "{$Keywords.ExtraChance} gives you Health. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {$TooltipData.NewTotal1} {#UpgradeFormat}Sec."
+		}
+		{
 			Id = "LavaDeathTrait"
 			DisplayName = "Blazing Hearth"
 			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"

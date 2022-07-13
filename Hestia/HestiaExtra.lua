@@ -429,7 +429,7 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		OnWeaponProjectileDeathFunction =
+		--[[OnWeaponProjectileDeathFunction =
 		{ -- "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
 			ValidWeapons = { "ShieldWeaponRush", "SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
@@ -681,9 +681,15 @@ if ModUtil ~= nil then
 					RequireFacing = true,
 				},
 			}
-		},
+		},]]
 		PropertyChanges =
 		{
+			{
+				WeaponNames = WeaponSets.HeroMeleeWeapons,
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 1100,
+				ChangeType = "Add",
+			},
 			{
 				WeaponName = "SwordWeapon",
 				ProjectileProperty = "StartFx",
@@ -1365,176 +1371,6 @@ if ModUtil ~= nil then
 		
 		PropertyChanges =
 		{
-			--[[{
-				WeaponNames = { "SpearWeaponThrow" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 2300,
-				BaseMax = 2300,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "SpearWeaponThrow" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 2300,
-				BaseMax = 2300,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "SwordParry" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1200,
-				BaseMax = 1200,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "SwordParry" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1200,
-				BaseMax = 1200,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash"  },
-				ExcludeProjectileName = "GunGrenadeSelfDamage",
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 2500,
-				BaseMax = 2500,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash"  },
-				ExcludeProjectileName = "GunGrenadeSelfDamage",
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 2500,
-				BaseMax = 2500,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "BowSplitShot" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1100,
-				BaseMax = 1100,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "BowSplitShot" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1100,
-				BaseMax = 1100,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunBombImmolation" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunBombImmolation" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},]]
 			{
 				WeaponName = "SwordParry",
 				ProjectileProperty = "StartFx",
@@ -2409,9 +2245,9 @@ if ModUtil ~= nil then
 		UseFunctionNames =  { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" } ,
 		UseFunctionArgs = {
 			{
-				Icon = "ExtraLifeStyx",
+				Icon = "ExtraLifeHestia",
 				WeaponName = "LastStandMetaUpgradeShield",
-				HealFraction = 0.5
+				HealFraction = 0.5,
 			},
 			{ TraitName = "HealthDefianceTrait" },
 			{ },
@@ -4241,6 +4077,9 @@ if ModUtil ~= nil then
 	function GetAllNearestEnemiesArgs( args, targetId )
 		local range = args.Range or 500
 		local count = args.Count or 3
+		if HeroHasTrait("StrongAttractionTrait") then
+			count = count + GetTotalHeroTraitValue("AttractionCount")
+		end
 		local arc = args.Arc or 90
 		local nearestEnemyTargetIds =  GetClosestIds({ Id = targetId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
 		local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
@@ -4275,11 +4114,6 @@ if ModUtil ~= nil then
 		
 		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90, Distance = 10}
 		args.PullForce = 999
-		if HeroHasTrait("StrongAttractionTrait") then
-			args.PullForce = args.PullForce + 500
-			args.Count = args.Count + GetTotalHeroTraitValue("AttractionCount")
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Count)) 
-		end
 		local pullTarget
 		if type(triggerArgs) ~= "number" then
 			if args.RequireFirstHit and triggerArgs.FirstUnitInVolley then
@@ -4299,6 +4133,9 @@ if ModUtil ~= nil then
 				local force = GetRequiredForceToEnemy( id, pullTarget, -1 * args.Distance )
 				if( type(force) ~= "number" or args.PullForce < force ) then
 					force = args.PullForce
+					if HeroHasTrait("StrongAttractionTrait") then
+						force = force + 500
+					end
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
 					ApplyForce({ Id = id, Speed = force, Angle = GetAngleBetween({ Id = id, DestinationId = pullTarget, SelfApplied = true }) })

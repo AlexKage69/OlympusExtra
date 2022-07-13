@@ -1,10 +1,11 @@
 -- Going to combine all mods
 --Assets
-local package = "OEAssets"
+local package = "OEApollo"
 if ModUtil ~= nil then
     ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
         DebugPrint({Text = "Trying to load package "..package..".pkg"})
-        LoadPackages({Name = package})
+        LoadPackages({Name = "OEHestia"})
+        LoadPackages({Name = "OEApollo"})
         return baseFunc()
     end)
     ModUtil.Mod.Register("OlympusExtra")
@@ -37,18 +38,17 @@ if ModUtil ~= nil then
             OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true         
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
             table.insert(OlympusRealGodNames, "Apollo")
-            --[[ModUtil.WrapBaseFunction( "SetupMap", function(baseFunc)
-                LoadPackages({Names = {
-                    "ApolloUpgrade",
-                }})
-                return baseFunc()
-            end)]]
         end         
         if ModUtil.Mods.Data["HestiaExtra"] ~= nil then
             --External mod interaction
             OlympusCodexMenuData.HestiaUpgrade = {
-                "HestiaWeaponTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaSecondaryTrait"
+                "HestiaWeaponTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaSecondaryTrait",
+                "HestiaShoutTrait", "StrongAttractionTrait", "HestiaRevengeTrait",
+                "LastStandHealthDrop", "HealthDamageTrait", "LavaDeathTrait", "LavaResistTrait", 
+                "LavaLongerTrait", "LavaAutoTrait"
             }
+            table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")
+            OlympusCodexMenuData.ConsumableTraits.LastStandHealthDrop = "HealthDefianceTrait"
             table.insert(OlympusCodexBoonTable, "HestiaUpgrade")
             table.insert(OlympusRealGodNames, "Hestia")
         end
