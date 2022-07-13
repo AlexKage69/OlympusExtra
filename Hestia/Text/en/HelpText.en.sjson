@@ -128,5 +128,9 @@
 			Id = "FreeHealthText",
 			DisplayName = "{#CombatTextHighlightFormat}Loving Embrace!{#PreviousFormat}!"
 		}
+		{
+			Id = "UseEmptyHealthDrop"
+			DisplayName = "{I} Gain +{$TempTextData.TooltipMaxHealth}{!Icons.HealthUpAlt_Small}"
+		}
 	]
 }

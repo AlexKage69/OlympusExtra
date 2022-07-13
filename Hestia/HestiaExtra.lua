@@ -3530,21 +3530,110 @@ if ModUtil ~= nil then
 	ModUtil.Path.Wrap( "SpawnRoomReward", 
 		function(baseFunc, eventSource, args )
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.CurrentRoom.Encounter.EncounterType)) 
-			if (HeroHasTrait("FreeHealthTrait") and CurrentRun.CurrentRoom.Encounter ~= nil and CurrentRun.CurrentRoom.Encounter.EncounterType ~= nil and 
-				(CurrentRun.CurrentRoom.Encounter.EncounterType == "Boss" or CurrentRun.CurrentRoom.Encounter.EncounterType == "Miniboss" or CurrentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss")) then
-				local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
-				local cost = 0
-				local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
-				ActivatedObjects[consumable.ObjectId] = consumable
-				--ApplyUpwardForce({ Id = consumableId, Speed = 450 })
-				--local forceAngle = GetAngleBetween({ Id = lootPointId, DestinationId = CurrentRun.Hero.ObjectId })
-				--ApplyForce({ Id = consumableId, Speed = 100, Angle = forceAngle, SelfApplied = true })
-				PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
-				thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FreeHealthText", Duration = 1})
+			if HeroHasTrait("FreeHealthTrait") and CurrentRun.CurrentRoom.Encounter ~= nil and CurrentRun.CurrentRoom.Encounter.EncounterType ~= nil then
+				if CurrentRun.CurrentRoom.Encounter.EncounterType == "Boss" or CurrentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss" then
+					local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
+					local cost = 0
+					local consumable = CreateConsumableItem( consumableId, "RoomRewardMaxHealthDrop", cost )
+					ActivatedObjects[consumable.ObjectId] = consumable
+					PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
+					thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FreeHealthText", Duration = 1})
+				-- end
+				-- { "WretchAssassinMiniboss", "HeavyRangedSplitterMiniboss", "RatThugMiniboss", "ThiefImpulseMineLayerMinoboss", "HeavyRangedForkedMiniboss", "StayrRangedMiniboss", "CrawlerMiniboss" }
+				else --  CurrentRun.CurrentRoom.Encounter.EncounterType == "Miniboss" then
+					local consumableId = SpawnObstacle({ Name = "RoomRewardEmptyHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
+					local cost = 0
+					local consumable = CreateConsumableItem( consumableId, "RoomRewardEmptyHealthDrop", cost )
+					ActivatedObjects[consumable.ObjectId] = consumable
+					PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
+					thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FreeHealthText", Duration = 1})
+				end
+				
 			end
 			baseFunc(eventSource, args)
 		end
 	)
+
+	ConsumableData.RoomRewardEmptyHealthDrop =
+	{
+		InheritFrom = { "BaseConsumable", },
+		Cost =
+		{
+			BaseValue = 100,
+			DepthMult = 0,
+			AsInt = true,
+		},
+		AddMaxHealth = 25,
+		AddMaxHealthArgs =
+		{
+			Thread = true,
+			Delay = 0.5,
+			NoHealing = true,
+		},
+		UseText = "UseEmptyHealthDrop",
+		UsePromptOffsetY = 30,
+		BlockExitText = "ExitBlockedByHeal",
+		SpawnSound = "/SFX/HealthIncreaseDrop",
+		ConsumeSound = "/SFX/HealthIncreasePickup",
+		PlayInteract = true,
+		HideWorldText = true,
+
+		ConsumedVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.55,
+			SuccessiveChanceToPlayAll = 0.5,
+			Cooldowns =
+			{
+				{ Name = "ZagreusAnyQuipSpeech", Time = 60 },
+			},
+
+			-- That ought to keep me going for a bit.
+			{ Cue = "/VO/ZagreusField_0737", },
+			-- Strength of the Centaurs.
+			{ Cue = "/VO/ZagreusField_0940", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's good.
+			{ Cue = "/VO/ZagreusField_0386", RequiredPlayed = { "/VO/ZagreusField_0737" }, CooldownName = "SaidGoodRecently", CooldownTime = 40, },
+			-- Yes.
+			{ Cue = "/VO/ZagreusField_0387", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Better.
+			{ Cue = "/VO/ZagreusField_0388", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Good for the health.
+			{ Cue = "/VO/ZagreusField_0389", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's a relief.
+			{ Cue = "/VO/ZagreusField_0299", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Much better.
+			{ Cue = "/VO/ZagreusField_0300", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's better.
+			{ Cue = "/VO/ZagreusField_0133", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- I feel stronger.
+			{ Cue = "/VO/ZagreusField_3995", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Feeling stronger.
+			{ Cue = "/VO/ZagreusField_3996", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Feeling good.
+			{ Cue = "/VO/ZagreusField_3997", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Feeling tough.
+			{ Cue = "/VO/ZagreusField_3998", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Centaur strength.
+			{ Cue = "/VO/ZagreusField_3999", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Vitality.
+			{ Cue = "/VO/ZagreusField_4000", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's life.
+			{ Cue = "/VO/ZagreusField_4001", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Should keep me going.
+			{ Cue = "/VO/ZagreusField_4002", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+		},
+		ExtractValues =
+		{
+			{
+				Key = "AddMaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+				Format = "MaxHealth"
+			},
+		}
+	}
+
 
 
 	-- For testing purposes
