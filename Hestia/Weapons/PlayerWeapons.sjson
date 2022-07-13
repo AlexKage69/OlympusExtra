@@ -39,7 +39,7 @@
       Name = "HestiaRetaliate"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "AresRetaliate"
+      Projectile = "LavaSplashLob"
       FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true

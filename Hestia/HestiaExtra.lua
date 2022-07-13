@@ -429,7 +429,7 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		--[[OnWeaponProjectileDeathFunction =
+		OnWeaponProjectileDeathFunction =
 		{ -- "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
 			ValidWeapons = { "ShieldWeaponRush", "SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
@@ -681,15 +681,9 @@ if ModUtil ~= nil then
 					RequireFacing = true,
 				},
 			}
-		},]]
+		},
 		PropertyChanges =
 		{
-			{
-				WeaponNames = WeaponSets.HeroMeleeWeapons,
-				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 1100,
-				ChangeType = "Add",
-			},
 			{
 				WeaponName = "SwordWeapon",
 				ProjectileProperty = "StartFx",
@@ -2076,8 +2070,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "HestiaRetaliate",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 15,
-				BaseMax = 15,
+				BaseMin = 1,
+				BaseMax = 1,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2230,6 +2224,15 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "LavaAutoTrait",
 		God = "Hestia",
 		Icon = "Boon_Hestia_11",
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroMeleeWeapons,
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 1100,
+				ChangeType = "Add",
+			},
+		},
 	}
 	-- Consumable Data
 	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)

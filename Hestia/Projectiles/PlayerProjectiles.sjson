@@ -131,5 +131,111 @@
           }]
       }
     }
+    {
+      Name = "LavaSplashLob"
+      InheritFrom = "1_BasePlayerLargeProjectile"
+      DetonateGraphic = "null"
+      //DetonateSound = "/SFX/HellFireImpactQuiet"
+      ReticleGraphic = "LobWarningDecal"
+      Type = "LOB"
+      DamageLow = 2
+      DamageHigh = 2
+      DamageRadius = 200.0
+      DamageRadiusScaleY = 0.75
+      AutoAdjustForTarget = false
+      LaunchAngle = 10
+      Speed = 550
+      SpeedVariance = 150
+      ImpactVelocity = 0.0
+      AffectsFriends = true
+      AffectsSelf = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      SpawnOnDetonate = "SecondLavaPuddleLarge"
+      CanBeReflected = false
+      SpawnType = "PROJECTILE"
+      CanCrit = false
+      IgnoreCoverageAngles = true
+      UseVulnerability = false
+      SkipSpawnsIfBlocked = true
+      DangerDistance = 0
+      Thing = 
+      {
+        Graphic = "HestiaLavaSplashProjectileHead"
+        Scale = 1.0
+        OffsetZ = 101
+        //AttachedAnim = "GrenadierShadow"
+        Points = [
+          {
+            X = 0
+            Y = 24
+          }
+          {
+            X = 24
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -24
+          }
+          {
+            X = -24
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "SecondLavaPuddleLarge"
+      Type = "INSTANT"
+      DissipateGraphic = "HestiaLavaPuddleOut"
+      GroupName = "FX_Terrain"
+      Range = 0
+      CheckObstacleImpact = false
+      //UnlimitedUnitPenetration = true
+      CanBeReflected = false
+      AffectsFriends = false
+      DamageRadius = 150
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      TotalFuse = 8.0
+      Fuse = 0.2
+      InflictedDamageSound = "/SFX/BurnDamageSizzle"
+      InflictedDamageFx = "Immolation"
+      //ImmunityKey = "LavaTileWeapon"
+      //IgnoreDodge = true
+      //ImmunityDuration = 0.18
+      DamageLow = 2
+      DamageHigh = 2
+      MoveInterval = 0.19
+      //DamagePerConsecutiveHit = 0.5
+      //RoundDamageDown = true
+      ConsecutiveHitWindow = 0.8
+      IgnoreCoverageAngles = true
+      MaxVictimZ = 1
+      MultiDetonate = true
+      DangerDistance = 0
+      CanCrit = false
+      Thing = 
+      {
+        Graphic = "HestiaLavaPuddleLarge"
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }
+    }
   ]
 }

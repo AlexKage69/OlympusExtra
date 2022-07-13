@@ -48,6 +48,8 @@ if ModUtil ~= nil then
                 "LavaLongerTrait", "LavaAutoTrait"
             }
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")
+            table.insert(OlympusCodexMenuData.Legendaries, "LavaAutoTrait")
+            table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_HestiaRangedTrait")
             OlympusCodexMenuData.ConsumableTraits.LastStandHealthDrop = "HealthDefianceTrait"
             table.insert(OlympusCodexBoonTable, "HestiaUpgrade")
             table.insert(OlympusRealGodNames, "Hestia")
