@@ -17,7 +17,7 @@
       ObstacleCollisionCheck = "PolygonContainsPoint"
       MultipleUnitCollisions = false
       MultipleObstacleCollisions = false
-      SpawnOnDetonate = "HestiaLavaPuddle"
+      SpawnOnDetonate = "SecondLavaPuddleLarge"
       SpawnType = "PROJECTILE"
       CheckObstacleImpact = true
       CheckUnitImpact = true
@@ -68,68 +68,6 @@
           HaltOnEnd = true
           Active = false
         }]
-    }
-    {
-      Name = "HestiaLavaPuddle"
-      Type = "INSTANT"
-      DissipateGraphic = "HestiaLavaPuddleOut"
-      GroupName = "FX_Terrain"
-      Range = 0
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      CanBeReflected = false
-      //AffectsFriends = true
-      DamageRadius = 150
-      DamageRadiusScaleX = 1.0
-      DamageRadiusScaleY = 0.6
-      TotalFuse = 8.0
-      Fuse = 0.2
-      InflictedDamageSound = "/SFX/BurnDamageSizzle"
-      InflictedDamageFx = "Immolation"
-      //ImmunityKey = "LavaTileWeapon"
-      IgnoreDodge = true
-      //ImmunityDuration = 0.18
-      Damage = 10
-      MoveInterval = 0.19
-      //DamagePerConsecutiveHit = 0.5
-      RoundDamageDown = true
-      ConsecutiveHitWindow = 0.8
-      IgnoreCoverageAngles = true
-      //MaxVictimZ = 1
-      MultiDetonate = true
-      DangerDistance = 0
-      CanCrit = false
-      Effect = 
-      {
-        Name = "LavaSlow"
-        Type = "SPEED"
-        Duration = 0.5
-        Modifier = 1
-        Active = true
-        CanAffectInvulnerable = false
-        FrontFx = "null"
-      }
-      Thing = 
-      {
-        Graphic = "HestiaLavaPuddleLarge"
-        Points = [
-          {
-            X = 4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -2
-          }
-          {
-            X = -4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = 2
-          }]
-      }
     }
     {
       Name = "LavaSplashLob"
@@ -215,9 +153,20 @@
       MultiDetonate = true
       DangerDistance = 0
       CanCrit = false
+      Effects = [
+         {
+          Name = "LavaPuddleDefense"
+          OnlyAffectName = "_PlayerUnit"
+          Duration = 0.75
+          Type = "DAMAGE_TAKEN"
+          Modifier = 1
+          Active = false
+        }
+      ]
       Thing = 
       {
         Graphic = "HestiaLavaPuddleLarge"
+        Scale = 12.0
         Points = [
           {
             X = 4

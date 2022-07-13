@@ -149,12 +149,12 @@
 		{
 			Id = "HestiaRevengeTrait"
 			DisplayName = "Molten Sting"
-			Description = "{$Keywords.LavaSplash}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.LavaSplash}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus \n {!Icons.Bullet}{#PropertyFormat}Damage {$Keywords.LavaSplash}: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "HestiaRevengeTrait_Initial"
 			InheritFrom = "HestiaRevengeTrait"
-			Description = "{$Keywords.LavaSplash}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.LavaSplash}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus \n {!Icons.Bullet}{#PropertyFormat}Damage {$Keywords.LavaSplash}: \Column 380 {$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDefianceTrait"
@@ -164,7 +164,7 @@
 		{
 			Id = "HealthDefianceTrait_Initial"
 			InheritFrom = "HealthDefianceTrait"
-			Description = "{$Keywords.ExtraChance} gives you Health. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {$TooltipData.DisplayDelta1} {#UpgradeFormat}Sec."
+			Description = "{$Keywords.ExtraChance} gives you Health. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {$TooltipData.NewTotal1} {#UpgradeFormat}Sec."
 		}
 		{
 			Id = "LastStandHealthDrop"
@@ -194,12 +194,12 @@
 		{
 			Id = "LavaResistTrait"
 			DisplayName = "Home Turf"
-			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageReduction:P}{#PreviousFormat}"
 		}
 		{
 			Id = "LavaResistTrait_Initial"
 			InheritFrom = "LavaResistTrait"
-			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageReduction:P}{#PreviousFormat}"
 		}
 		{
 			Id = "LavaLongerTrait",

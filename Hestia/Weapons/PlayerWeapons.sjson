@@ -47,5 +47,17 @@
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
     }
+    {
+      Name = "HestiaOnDeath"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "SecondLavaPuddleLarge"
+      //FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
   ]
 }

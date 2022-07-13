@@ -2167,6 +2167,30 @@ if ModUtil ~= nil then
 				Multiplier = 1.75,
 			}
 		},
+		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "HestiaOnDeath",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 2,
+				BaseMax = 2,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "HestiaOnDeath",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
 	}
 	OlympusTraitData.LavaResistTrait = 
 	{
@@ -2191,6 +2215,68 @@ if ModUtil ~= nil then
 			{
 				Multiplier = 1.75,
 			}
+		},
+		PropertyChanges =
+		{
+			{
+				TraitName = "HestiaRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "HestiaRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Modifier",
+				BaseMin = 0.85,
+				BaseMax = 0.90,
+				SourceIsMultiplier = true,
+				DeriveSource = "ModifierSource",
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ChangeType = "Multiply",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageReduction",
+					Format = "NegativePercentDelta",
+				}
+			},
+			-- Active
+			{
+				TraitName = "LavaDeathTrait",
+				WeaponName = "HestiaOnDeath",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "LavaDeathTrait",
+				WeaponName = "HestiaOnDeath",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Modifier",
+				DeriveValueFrom = "ModifierSource"
+			},
+			{
+				TraitName = "HestiaRevengeTrait",
+				WeaponName = "HestiaRetaliate",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "HestiaRevengeTrait",
+				WeaponName = "HestiaRetaliate",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Modifier",
+				DeriveValueFrom = "ModifierSource"
+			},
 		},
 	}
 	OlympusTraitData.LavaLongerTrait = 
@@ -2217,6 +2303,24 @@ if ModUtil ~= nil then
 				Multiplier = 1.75,
 			}
 		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
+				ProjectileName = "SecondLavaPuddleLarge",
+				ProjectileProperty = "Scale",
+				ChangeValue = 15.0,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			--[[{
+				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
+				ProjectileName = "SecondLavaPuddleLarge",
+				ProjectileProperty = "TotalFuse",
+				ChangeValue = 12.0,
+				ChangeType = "Absolute",
+			},]]
+		},
 	}	
 	OlympusTraitData.LavaAutoTrait =
 	{
@@ -2227,9 +2331,10 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				WeaponNames = WeaponSets.HeroMeleeWeapons,
+				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
+				ProjectileName = "SecondLavaPuddleLarge",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 1100,
+				ChangeValue = 2000,
 				ChangeType = "Add",
 			},
 		},
