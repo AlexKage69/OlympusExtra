@@ -376,7 +376,7 @@
     {
       Name = "RoomRewardEmptyHealthDrop"
       CreateAnimation = "PickupFlare"
-      FilePath = "Fx\MaxHealthUp\MaxHealthUp"
+      FilePath = "Hestia\Fx\CentaurSoul\CentaurSoul"
       Type = "Book"
       VisualFx = "RoomRewardEmptyHealthDropParticles"
       EaseOut = 1.0

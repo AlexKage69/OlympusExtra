@@ -130,7 +130,7 @@
 		}
 		{
 			Id = "UseEmptyHealthDrop"
-			DisplayName = "{I} Gain +{$TempTextData.TooltipMaxHealth}{!Icons.HealthUpAlt_Small}"
+			DisplayName = "{I} Gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth} {!Icons.HealthUpAlt_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
 		}
 	]
 }
