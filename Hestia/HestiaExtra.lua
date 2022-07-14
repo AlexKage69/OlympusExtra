@@ -4290,7 +4290,7 @@ if ModUtil ~= nil then
 			return hasLastStand
 		end
 	)
-	-- For testing purposes
+	-- For testing purposes 
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
