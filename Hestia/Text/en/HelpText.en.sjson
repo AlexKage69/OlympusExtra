@@ -4,7 +4,7 @@
 		{
 			Id = "NPC_Hestia_01"
 			DisplayName = "Hestia"
-			Description = "God of Hearth"
+			Description = "Goddess of Hearth"
 		}		
 		{
 			Id = "HestiaFirstPickUp"
@@ -13,11 +13,11 @@
 		{
 			Id = "HestiaUpgrade"
 			DisplayName = "Hestia"
-			Description = "God of Hearth"
+			Description = "Goddess of Hearth"
 		}
 		{
 			Id = "HestiaUpgrades"
-			DisplayName = "God of Hearth"
+			DisplayName = "Goddess of Hearth"
 			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
 		}
 		{
@@ -122,7 +122,7 @@
 		{
 			Id = "FreeHealthTrait"
 			DisplayName = "Loving Embrace"
-			Description = "After you clear a miniboss encounter or boss encounter, gain an extra Centaur Heart."
+			Description = "After you defeat a boss, gain an extra Centaur Heart. After you defeat a miniboss, gain an extra Centaur Soul."
 		}	
 		{
 			Id = "FreeHealthText",
