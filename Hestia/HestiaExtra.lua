@@ -3540,7 +3540,7 @@ if ModUtil ~= nil then
 					thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FreeHealthText", Duration = 1})
 				-- end
 				-- { "WretchAssassinMiniboss", "HeavyRangedSplitterMiniboss", "RatThugMiniboss", "ThiefImpulseMineLayerMinoboss", "HeavyRangedForkedMiniboss", "StayrRangedMiniboss", "CrawlerMiniboss" }
-				else --  CurrentRun.CurrentRoom.Encounter.EncounterType == "Miniboss" then
+				elseif CurrentRun.CurrentRoom.IsMiniBossRoom then
 					local consumableId = SpawnObstacle({ Name = "RoomRewardEmptyHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
 					local cost = 0
 					local consumable = CreateConsumableItem( consumableId, "RoomRewardEmptyHealthDrop", cost )
