@@ -21,6 +21,16 @@
 			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
 		}
 		{
+			Id = "CentaurHeart"
+			DisplayName = "Centaur Heart"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
+		}
+		{
+			Id = "CentaurSoul"
+			DisplayName = "Centaur Soul"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small})){#PreviousFormat}"
+		}
+		{
 			Id = "HestiaUpgrade_FlavorText01"
 			DisplayName = "home is the starting place of love, hope and dreams."
 		}
