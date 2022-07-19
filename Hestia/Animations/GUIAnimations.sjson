@@ -4,16 +4,16 @@
     {
       Name = "Keepsake_Ember_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "Apollo\Keepsake_Lyre"
-      Scale = 0.65
+      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_kitchenflame_01"
+      Scale = 0.5
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Ember"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "Apollo\Keepsake_Lyre"
-      Scale = 1.5
+      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_kitchenflame_01"
+      Scale = 1.2
       EndFrame = 1
       StartFrame = 1
     }
@@ -424,6 +424,16 @@
       Name = "Keepsake_HestiaSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
       FilePath = "Hestia\HestiaBadge_max"
+    }
+    {
+      Name = "ExtraLifeHestia"
+      FilePath = "GUI\HUD\HealthBar_1upStyx"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Scale = 0.6
+      Material = "Unlit"
     }
   ]
 }

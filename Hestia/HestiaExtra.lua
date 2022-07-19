@@ -88,8 +88,11 @@ if ModUtil ~= nil then
 		},
 	}
 	--WeaponData
+	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
+
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HestiaProjectile")	
 	OlympusWeaponData.HestiaShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -269,19 +272,11 @@ if ModUtil ~= nil then
 		DamageTextStartColor = OlympusColor.HestiaDamageLight,
 		DamageTextColor = OlympusColor.HestiaDamage
 	}
-	OlympusProjectileData.HestiaLobProjectile = {
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
-		NeverStore = true,
-	}
-	OlympusProjectileData.HestiaBeowulfProjectile = {
-		InheritFrom = { "HestiaLobProjectile" },
-		NeverStore = true,
+	OlympusProjectileData.HestiaProjectile = {
+		InheritFrom = { "HestiaColorProjectile" },
 	}
 	OlympusProjectileData.HestiaShoutWeapon = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
-	}
-	OlympusProjectileData.AreaWeakenHestia = {
-		InheritFrom = { "HestiaColorProjectile" },
 	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
@@ -320,8 +315,8 @@ if ModUtil ~= nil then
 		"HestiaAboutHarpQuest02", "HestiaAboutOrpheus01", "HestiaAboutOrpheus02" }
 	)
 	--Keywords
-	--local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	--ModUtil.Table.Merge(OlympusKeywordList, { "HestiaBlind", "FlashBomb", "DamageResist" })
+	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
+	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash" })
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -377,8 +372,8 @@ if ModUtil ~= nil then
 			},
 			--New Data
 			InRackTitle = "ForceHestiaBoonTrait_Rack",
-			Icon = "Keepsake_Lyre",
-			EquipSound = "/SFX/LyreMedium",
+			Icon = "Keepsake_Ember",
+			EquipSound = "/SFX/Enemy Sounds/Megaera/MegaeraFlameBurst",
 			ForceBoonName = "HestiaUpgrade",
 			Uses = 1,
 			RarityBonus =
@@ -407,7 +402,6 @@ if ModUtil ~= nil then
 			  }
 			},
 	}
-		
 	OlympusTraitData.HestiaWeaponTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -435,133 +429,258 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		OnWeaponChargeFunctions =
-		{--"SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash", 
-			ValidWeapons = {"SwordWeapon", "SwordWeapon2", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "SwordWeapon3", "ShieldWeapon", "ShieldWeaponDash", "ShieldWeaponRush", "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3",  "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5" },
-			FunctionName = "CheckVacuumAllNearbyEnemies",
+		OnWeaponProjectileDeathFunction =
+		{ -- "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
+			ValidWeapons = { "ShieldWeaponRush", "SniperGunWeapon", "SniperGunWeaponDash", "GunWeapon", "GunWeaponDash","BowWeapon", "BowWeaponDash" },
+			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
-				SwordWeapon = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SwordWeapon2 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SwordWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeapon = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeapon2 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeapon3 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SpearWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				SwordWeapon3 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				ShieldWeapon = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				ShieldWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
-				ShieldWeaponRush = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
-					Count = 3,
-				},
+				From = "OnWeaponProjectileDeathFunction",
 				SpearWeaponSpin = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
 					Count = 3,
+					Distance = 50,
 				},
 				SpearWeaponSpin2 = {
-					Range = 500,
-					PullForce = 1300,
-					Arc = 90,
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
 					Count = 3,
+					Distance = 50,
 				},
 				SpearWeaponSpin3 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 1000,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+				},
+				ShieldWeaponRush = {
+					Range = 700,
+					PullForce = 1000,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+				SniperGunWeapon = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+				SniperGunWeaponDash = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+				GunWeapon = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+				GunWeaponDash = {
+					Range = 700,
+					PullForce = 900,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+				BowWeapon = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+				BowWeaponDash = {
+					Range = 700,
+					PullForce = 4000,
+					Arc = 360,
+					Count = 3,
+					Distance = 50,
+					RequireFirstHit = true,
+				},
+			}
+		},
+		OnWeaponChargeFunctions =
+		{
+			ValidWeapons = { "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3" },
+			FunctionName = "CheckChargeVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponChargeFunctions",
+				SpearWeaponSpin = {
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
+					Count = 3,
+					Distance = 100,
+				},
+				SpearWeaponSpin2 = {
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 360,
+					Count = 3,
+					Distance = 100,
+				},
+				SpearWeaponSpin3 = {
+					Range = 1000,
+					PullForce = 2000,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+				},
+			}
+		},
+		OnWeaponFiredFunctions =
+		{
+			ValidWeapons = { "SwordWeapon", "SwordWeapon2", "SwordWeapon3", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3", "SpearWeaponDash", "ShieldWeapon", "ShieldWeaponDash", "FistWeaponDash", "FistWeapon", "FistWeapon2","FistWeapon3","FistWeapon4","FistWeapon5", },
+			FunctionName = "CheckFiredVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponFiredFunctions",
+				SwordWeapon = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SwordWeapon2 = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SwordWeapon3 = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SwordWeaponDash = {
+					Range = 800,
+					PullForce = 1500,
+					Arc = 90,
+					Count = 3,
+					Distance = 100,
+					RequireFacing = true,
+				},
+				SpearWeapon = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				SpearWeapon2 = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				SpearWeapon3 = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				SpearWeaponDash = {
+					Range = 1100,
+					PullForce = 1500,
+					Arc = 60,
+					Count = 3,
+					Distance = 300,
+					RequireFacing = true,
+				},
+				ShieldWeapon = {
+					Range = 700,
+					PullForce = 1000,
+					Arc = 120,
+					Count = 3,
+					Distance = 150,
+					RequireFacing = true,
+				},
+				ShieldWeaponDash = {
+					Range = 700,
+					PullForce = 1000,
+					Arc = 120,
+					Count = 3,
+					Distance = 150,
+					RequireFacing = true,
 				},
 				FistWeaponDash = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon2 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon3 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon4 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
 				FistWeapon5 = {
-					Range = 500,
-					PullForce = 1300,
+					Range = 800,
+					PullForce = 500,
 					Arc = 90,
 					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
 				},
-			},
+			}
 		},
 		PropertyChanges =
 		{
@@ -987,14 +1106,13 @@ if ModUtil ~= nil then
 			},
 		},
 	}
-
 	OlympusTraitData.HestiaSecondaryTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		Slot = "Secondary",
 		Icon = "Boon_Hestia_00",
-		RequiredFalseTraits = { "FistVacuumTrait" },		
+		RequiredFalseTraits = { "FistVacuumTrait", "FistChargeSpecialTrait", "FistSpecialFireballTrait" },
 		AddOutgoingDamageModifiers =
 		{
 			ValidWeaponMultiplier =
@@ -1016,210 +1134,237 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		--[[OnWeaponChargeFunctions =
-		{
-			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
-			FunctionName = "CheckVacuumAllNearbyEnemies",
+		OnWeaponProjectileDeathFunction =
+		{ -- "SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
+			ValidWeapons = { "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss" },
+			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
-				Range = 800,				-- Vacuum distance
-				DistanceBuffer = {
-					LowPull = 1300,
-					MidPull = 1700,
-					HighPull = 2100,
-				},		-- Space to leave between player and enemy
-				RushDistanceBuffer = 2000,
-				AutoLockArc = 180,
-			},
-		},]]
+				From = "OnWeaponProjectileDeathFunction",
+				SwordParry = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				SpearWeaponThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 180,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrowDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				BowSplitShot = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				GunBombImmolation = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				GunGrenadeToss = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				FistWeaponSpecial = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+				FistWeaponSpecialDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+			}
+		},
+		OnWeaponChargeFunctions =
+		{
+			ValidWeapons = {"SpearWeaponThrow", },
+			FunctionName = "CheckChargeVacuumAllNearbyEnemies",
+			FunctionArgs =
+			{
+				From = "OnWeaponChargeFunctions",
+				SwordParry = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				SpearWeaponThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 180,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrowDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				BowSplitShot = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				GunBombImmolation = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				GunGrenadeToss = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				FistWeaponSpecial = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+				FistWeaponSpecialDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+			}
+		},
 		OnWeaponFiredFunctions =
 		{
-			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "ShieldThrow", "ShieldThrowDash", "BowSplitShot", "GunBombImmolation", "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash" },
-			FunctionName = "CheckVacuumAllNearbyEnemies",
+			ValidWeapons = {"SwordParry", "SpearWeaponThrow", "FistWeaponSpecial", "FistWeaponSpecialDash" },
+			FunctionName = "CheckFiredVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
-				Range = 800,				-- Vacuum distance
-				DistanceBuffer = {
-					LowPull = 1300,
-					MidPull = 1700,
-					HighPull = 2100,
-				},		-- Space to leave between player and enemy
-				RushDistanceBuffer = 2000,
-				Arc = 120,
-			},
+				From = "OnWeaponFiredFunctions",
+				SwordParry = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				SpearWeaponThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 180,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrow = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				ShieldThrowDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				BowSplitShot = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+				},
+				GunBombImmolation = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				GunGrenadeToss = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 360,
+					Count = 3,
+					Distance = 150,
+					RequireFirstHit = true,
+				},
+				FistWeaponSpecial = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+				FistWeaponSpecialDash = {
+					Range = 1000,
+					PullForce = 990,
+					Arc = 90,
+					Count = 3,
+					Distance = 50,
+					RequireFacing = true,
+				},
+			}
 		},
+		
 		PropertyChanges =
 		{
-			--[[{
-				WeaponNames = { "SpearWeaponThrow" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 2300,
-				BaseMax = 2300,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "SpearWeaponThrow" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 2300,
-				BaseMax = 2300,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "SwordParry" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1200,
-				BaseMax = 1200,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "SwordParry" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1200,
-				BaseMax = 1200,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash"  },
-				ExcludeProjectileName = "GunGrenadeSelfDamage",
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 2500,
-				BaseMax = 2500,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunGrenadeToss", "FistWeaponSpecial", "FistWeaponSpecialDash"  },
-				ExcludeProjectileName = "GunGrenadeSelfDamage",
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 2500,
-				BaseMax = 2500,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "BowSplitShot" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1100,
-				BaseMax = 1100,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "BowSplitShot" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1100,
-				BaseMax = 1100,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunBombImmolation" },
-				ProjectileProperty = "ImpactVelocity",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},
-			{
-				WeaponNames = { "GunBombImmolation" },
-				ProjectileProperty = "ImpactVelocityCap",
-				ChangeType = "Add",
-				BaseMin = 1800,
-				BaseMax = 1800,
-				IdenticalMultiplier =
-				{
-					Value = -1,
-					MinMultiplier = 0,
-				},
-				ExcludeLinked = true,
-				IgnoreRarity = true,
-			},]]
 			{
 				WeaponName = "SwordParry",
 				ProjectileProperty = "StartFx",
@@ -1544,7 +1689,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				WeaponProperty = "Projectile",
-				ChangeValue = "ArtemisProjectile",
+				ChangeValue = "HestiaProjectile",
 				ChangeType = "Absolute",
 			},
 			{
@@ -1655,7 +1800,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				WeaponProperty = "Projectile",
-				ChangeValue = "ArtemisProjectile",
+				ChangeValue = "HestiaProjectile",
 				ChangeType = "Absolute",
 			},
 			{
@@ -1737,80 +1882,534 @@ if ModUtil ~= nil then
 	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
 	{
 		
-	}
+	}--]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
-			
+		InheritFrom = { "ShopTier1Trait" },
+		RequiredTextLines = { "PoseidonWrathIntro01" },
+		CustomTrayText = "HestiaShoutTrait_Tray",
+		God = "Hestia",
+		Slot = "Shout",
+		Icon = "Boon_Hestia_04",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.1,
+			},
+			Epic =
+			{
+				Multiplier = 1.2,
+			},
+			Heroic =
+			{
+				Multiplier = 1.3,
+			}
+		},
+		AddShout =
+		{
+			FunctionName = "HestiaShout",
+			MaxFunctionName = "HestiaMaxShout",
+			Cost = 25,
+			MaxDurationMultiplier = 2,
+			SuperDuration = 5,
+			IsBurst = true,
+			ExtractValues =
+			{
+				{
+					Key = "Cost",
+					ExtractAs = "TooltipWrathStocks",
+					Format = "WrathStocks",
+					SkipAutoExtract = true
+				},
+				{
+					Key = "MaxDurationMultiplier",
+					ExtractAs = "TooltipDuration",
+					Format = "EXWrathDuration",
+					DecimalPlaces = 2,
+					SkipAutoExtract = true
+				}
+			}
+		},
+		EndShout = "EndHestia",
+		PreEquipWeapons = { "HestiaSuper", "HestiaMaxSuper", },
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "HestiaSuper", "HestiaMaxSuper", },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 10,
+				BaseMax = 10,
+				MinMultiplier = 0.2,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = { "HestiaSuper", "HestiaMaxSuper", },
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponNames = { "HestiaSuper", "HestiaMaxSuper", },
+				ProjectileProperty = "Fuse",
+				ChangeValue = 0.25,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipInterval",
+					SkipAutoExtract = true,
+					DecimalPlaces = 2,
+				}
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipChillDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipChillPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "ElapsedTimeMultiplier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipChillStacks",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "MaxStacks",
+			},
+		}
 	}
 	OlympusTraitData.StrongAttractionTrait =
 	{
-		
+		Icon = "Boon_Hestia_05",
+		InheritFrom = { "ShopTier2Trait" },
+		RequiredFalseTrait = "StrongAttractionTrait",
+		God = "Hestia",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 2.0,
+			},
+			Epic =
+			{
+				Multiplier = 3.0,
+			},
+			Heroic =
+			{
+				Multiplier = 4.0,
+			}
+		},
+		AttractionCount = { 
+			BaseValue = 1.0
+		},
+		AttractionForce = { 
+			BaseValue = 500.0
+		},
+		ExtractValues =
+		{
+
+		}
 	}
 	OlympusTraitData.HestiaRevengeTrait =
 	{
-		
+		Icon = "Boon_Hestia_06",
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		AddOnHitWeapons = { "HestiaRetaliate" },
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.20,
+			},
+			Epic =
+			{
+				Multiplier = 1.40,
+			},
+			Heroic =
+			{
+				Multiplier = 1.60,
+			}
+		},
+		PropertyChanges =
+		{
+			
+			{
+				WeaponName = "HestiaRetaliate",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 1,
+				BaseMax = 1,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "HestiaRetaliate",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
 	}
 	OlympusTraitData.HealthDefianceTrait =
 	{
-		
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_07",
+		LootSource = "HestiaUpgrade",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
+		DefianceExtraHealth = {
+			BaseValue = 15
+		}
 	}
 	OlympusTraitData.HealthDamageTrait =
 	{
-		
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_07",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
 	}
 	OlympusTraitData.LavaDeathTrait =
 	{
-	
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_08",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
+		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "HestiaOnDeath",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 2,
+				BaseMax = 2,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "HestiaOnDeath",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
 	}
 	OlympusTraitData.LavaResistTrait = 
 	{
-		
+		InheritFrom = { "ShopTier2Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_09",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				TraitName = "HestiaRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "HestiaRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Modifier",
+				BaseMin = 0.85,
+				BaseMax = 0.90,
+				SourceIsMultiplier = true,
+				DeriveSource = "ModifierSource",
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ChangeType = "Multiply",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageReduction",
+					Format = "NegativePercentDelta",
+				}
+			},
+			-- Active
+			{
+				TraitName = "LavaDeathTrait",
+				WeaponName = "HestiaOnDeath",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "LavaDeathTrait",
+				WeaponName = "HestiaOnDeath",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Modifier",
+				DeriveValueFrom = "ModifierSource"
+			},
+			{
+				TraitName = "HestiaRevengeTrait",
+				WeaponName = "HestiaRetaliate",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "HestiaRevengeTrait",
+				WeaponName = "HestiaRetaliate",
+				EffectName= "LavaPuddleDefense",
+				EffectProperty = "Modifier",
+				DeriveValueFrom = "ModifierSource"
+			},
+		},
 	}
 	OlympusTraitData.LavaLongerTrait = 
 	{
-		
+		InheritFrom = { "ShopTier2Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_10",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
+				ProjectileName = "SecondLavaPuddleLarge",
+				ProjectileProperty = "Scale",
+				ChangeValue = 15.0,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			--[[{
+				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
+				ProjectileName = "SecondLavaPuddleLarge",
+				ProjectileProperty = "TotalFuse",
+				ChangeValue = 12.0,
+				ChangeType = "Absolute",
+			},]]
+		},
 	}	
 	OlympusTraitData.LavaAutoTrait =
 	{
-		
+		InheritFrom = { "ShopTier3Trait" },
+		RequiredFalseTrait = "LavaAutoTrait",
+		God = "Hestia",
+		Icon = "Boon_Hestia_11",
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
+				ProjectileName = "SecondLavaPuddleLarge",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 2000,
+				ChangeType = "Add",
+			},
+		},
+	}
+	-- Consumable Data
+	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	OlympusConsumableData.LastStandHealthDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "HealthDefianceTrait",
+		RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
+		RequiredMinMaximumLastStands = 1,
+		Icon = "Boon_Hestia_11",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Icon = "ExtraLifeHestia",
+				WeaponName = "LastStandMetaUpgradeShield",
+				HealFraction = 0.5,
+			},
+			{ TraitName = "HealthDefianceTrait" },
+			{ },
+		},
 	}
 	-- Duo Traits
 	OlympusTraitData.MoreTrapDamageTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Athena_01",
+		RequiredFalseTrait = "MoreTrapDamageTrait",	
 	}
 	OlympusTraitData.FreeHealthTrait =
 	{
-					
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Aphrodite_01",
+		RequiredFalseTrait = "FreeHealthTrait",		
 	}
 	OlympusTraitData.ExplosionTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Artemis_01",
+		RequiredFalseTrait = "ExplosionTrait",
 	}	
 	OlympusTraitData.ChillFireTrait =
 	{
-		
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Demeter_01",
+		RequiredFalseTrait = "ChillFireTrait",
 	}
 	OlympusTraitData.FestiveFogHealTrait =
 	{
-		
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Dionysus_01",
+		RequiredFalseTrait = "FestiveFogHealTrait",
 	}			
 	OlympusTraitData.LavaDoomTrait =
 	{
-
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Ares_01",
+		RequiredFalseTrait = "LavaDoomTrait",
 	}		
 	OlympusTraitData.MoreHellringTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Zeus_01",
+		RequiredFalseTrait = "MoreHellringTrait",
 	}	
 	OlympusTraitData.FishingHealTrait =
 	{
-			
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Poseidon_01",
+		RequiredFalseTrait = "FishingHealTrait",	
 	}
-	OlympusTraitData.CloseBlindTrait =
-	{
-			
-	}]]
 	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -1838,12 +2437,27 @@ if ModUtil ~= nil then
 	
 			PriorityUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
 			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
-			Traits = { },--"HestiaRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
-			Consumables = { },
+			Traits = { "HestiaRevengeTrait", "LavaDeathTrait", "HealthDamageTrait" },
+			Consumables = { "LastStandHealthDrop" },
 	
 			LinkedUpgrades =
 			{
-				
+				StrongAttractionTrait = {
+					OneOf = { "ApolloWeaponTrait", "HestiaSecondaryTrait"},
+				},
+				LavaResistTrait = {
+					OneOf = { "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
+				},
+				LavaLongerTrait = {
+					OneOf = { "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
+				},
+				LavaAutoTrait = {
+					OneFromEachSet =
+					{
+						{ "ApolloWeaponTrait", "HestiaSecondaryTrait" },
+						{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
+					}
+				}
 			},
 	
 			Speaker = "NPC_Hestia_01",
@@ -3568,19 +4182,26 @@ if ModUtil ~= nil then
 	}
 	-- FUNCTIONS
 	-- Attraction functions
-	function GetAllNearestEnemiesArgs( args )
+	function GetAllNearestEnemiesArgs( args, targetId )
 		local range = args.Range or 500
 		local count = args.Count or 3
+		if HeroHasTrait("StrongAttractionTrait") then
+			count = count + GetTotalHeroTraitValue("AttractionCount")
+		end
 		local arc = args.Arc or 90
-		local nearestEnemyTargetIds =  GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
+		local nearestEnemyTargetIds =  GetClosestIds({ Id = targetId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
 		local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
 		local allNearbyEnemies = {}
 		for _, id in pairs( nearestEnemyTargetIds ) do
 			local enemy = ActiveEnemies[id]
 			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
-				local angleToTarget = GetAngleBetween({ Id = CurrentRun.Hero.ObjectId, DestinationId = id })
-				local distance = GetDistance({ Id = CurrentRun.Hero.ObjectId, DestinationId = id })
+				local angleToTarget = GetAngleBetween({ Id = targetId, DestinationId = id })
+				local distance = GetDistance({ Id = targetId, DestinationId = id })
 				if CalcArcDistance( facingAngle, angleToTarget ) <= arc then
+					if distance < range * 2 then
+						table.insert(allNearbyEnemies, id)
+					end
+				elseif not args.RequireFacing then
 					if distance < range * 2 then
 						table.insert(allNearbyEnemies, id)
 					end
@@ -3589,34 +4210,87 @@ if ModUtil ~= nil then
 		end
 		return allNearbyEnemies
 	end
-	function CheckVacuumAllNearbyEnemies(weaponData, args)
-		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90}
-		local targetIds = GetAllNearestEnemiesArgs(args)	
+	function CheckChargeVacuumAllNearbyEnemies(weaponData, args)
+		CheckProjectileVacuumAllNearbyEnemies(weaponData, CurrentRun.Hero.ObjectId, args)
+	end
+	function CheckFiredVacuumAllNearbyEnemies(weaponData, args)
+		CheckProjectileVacuumAllNearbyEnemies(weaponData, CurrentRun.Hero.ObjectId, args)
+	end
+	function CheckProjectileVacuumAllNearbyEnemies(weaponData, triggerArgs, args)
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponData.Name)) 	
+		
+		local args = args[weaponData.Name] or {PullForce = 1000, Range = 500, Count = 3, Arc = 90, Distance = 10}
+		args.PullForce = 999
+		local pullTarget
+		if type(triggerArgs) ~= "number" then
+			if args.RequireFirstHit and triggerArgs.FirstUnitInVolley then
+				pullTarget = triggerArgs.FirstUnitInVolley.ObjectId
+			elseif triggerArgs.LocationX and triggerArgs.LocationY then
+				pullTarget = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+			else
+				pullTarget = CurrentRun.Hero.ObjectId
+			end
+			
+		else
+			pullTarget = triggerArgs
+		end
+		local targetIds = GetAllNearestEnemiesArgs(args, pullTarget)	
 		for _, id in pairs( targetIds ) do
 			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then	
-				ApplyForce({ Id = id, Speed = args.PullForce or 1000, Angle = GetAngleBetween({ Id = id, DestinationId = CurrentRun.Hero.ObjectId }) })
-				--FireWeaponFromUnit({ Weapon = "FistSpecialVacuum", Id = CurrentRun.Hero.ObjectId, DestinationId = id })
-				HestiaPullPresentation( id, args )
+				local force = GetRequiredForceToEnemy( id, pullTarget, -1 * args.Distance )
+				if( type(force) ~= "number" or args.PullForce < force ) then
+					force = args.PullForce
+					if HeroHasTrait("StrongAttractionTrait") then
+						force = force + 500
+					end
+				end
+				if not args.RequireFirstHit or pullTarget ~= id then
+					ApplyForce({ Id = id, Speed = force, Angle = GetAngleBetween({ Id = id, DestinationId = pullTarget, SelfApplied = true }) })
+					HestiaPullPresentation( id, args, pullTarget )
+				end
 			end
 		end
 	end
-	function GetRequireFacing(weaponData) 
-		if weaponData.name == "SwordParry" then
-			return false
-		end
-		return true
-	end
-	function GetDistanceBuffer(weaponData, distanceBuffer) 
-		if weaponData.name == "SwordWeapon" then
-			return distanceBuffer.LowPull
-		end
-		return 2000
-	end
-	function HestiaPullPresentation( victimId, args )
-		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = CurrentRun.Hero.ObjectId, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
+	function HestiaPullPresentation( victimId, args, dropLocation )
+		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = dropLocation, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
 		PlaySound({ Name = "/SFX/Player Sounds/ZagreusFistMagnetismVacuumActivate", Id = victimId })
 	end
-	-- For testing purposes
+	OnProjectileDeath{
+		function( triggerArgs )
+			local attacker = triggerArgs.AttackerTable
+			local weaponData = GetWeaponData( attacker, triggerArgs.WeaponName)
+
+			if CurrentRun.Hero and attacker == CurrentRun.Hero then	
+				for i, traitData in pairs( GetHeroTraitValues("OnWeaponProjectileDeathFunction")) do
+					if ( traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, triggerArgs.name )) and traitData.FunctionName and _G[traitData.FunctionName] then
+						thread( _G[traitData.FunctionName], weaponData, triggerArgs, traitData.FunctionArgs )
+					end					
+				end
+			end
+		end
+	}	
+	-- Shout functions
+	function HestiaShout()
+		FireWeaponFromUnit({ Weapon = "HestiaSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	end
+	function HestiaMaxShout()
+		FireWeaponFromUnit({ Weapon = "HestiaMaxSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+	end
+	function EndHestia()
+		ExpireProjectiles({ Names = { "HestiaSuper", "HestiaMaxSuper" } })
+	end
+	-- LastStand Hestia functions
+	ModUtil.Path.Wrap( "CheckLastStand", 
+		function ( baseFunc, victim, triggerArgs )
+			local hasLastStand = baseFunc(victim, triggerArgs)
+			if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
+				AddMaxHealth( GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait", {Delay = 0.1} )
+			end
+			return hasLastStand
+		end
+	)
+	-- For testing purposes 
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then

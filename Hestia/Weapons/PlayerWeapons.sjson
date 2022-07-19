@@ -13,5 +13,51 @@
       IgnoreOwnerAttackDisabled = true
       Cooldown = 0.4
     }
+    {
+      Name = "HestiaSuper"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "DemeterSuper"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "HestiaMaxSuper"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "DemeterMaxSuper"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "HestiaRetaliate"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "LavaSplashLob"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "HestiaOnDeath"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "SecondLavaPuddleLarge"
+      //FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
   ]
 }

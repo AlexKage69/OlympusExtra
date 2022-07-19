@@ -253,6 +253,31 @@
       StartRed = 0.41
     }
     /* Hestia - Sword - SecondaryTrait */
+    {
+      Name = "RadialNovaSwordParry-Hestia"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      //VisualFx = "ArtemisSwordParryLeavesRandom"
+      EndGreen = 0.999
+      EndRed = 0.4
+      StartBlue = 0.2
+      StartGreen = 1.0
+      StartRed = 0.9
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 16
+      VisualFxIntervalMax = 0.03
+      VisualFxIntervalMin = 0.01
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        { Name = "RadialNovaSwordParryDark" }
+        { Name = "DoorCloseDust" }
+        { Name = "SwordParryGroundCrack" }
+        { Name = "DisplaceShockwaveSwordParry" }
+        //{ Name = "SwordParrySpikeArtemis" }
+        { Name = "QuickFlashDarkPurple" }
+      ]
+    }
     /* Hestia - Spear - WeaponTrait */
     /* Hestia - Spear - SecondaryTrait */
     /* Hestia - Bow - WeaponTrait */
@@ -455,6 +480,183 @@
     }
     /* Attraction Fx */
     /* Cast */
+    {
+      Name = "HestiaLavaSplashProjectileHead"
+      FilePath = "Aspho\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
+      Type = "Book"
+      VisualFx = "LavaSplashProjectileTrail"
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      PlaySpeed = 3.0
+      StartFrame = 1
+      Ambient = 0.0
+      VisualFxCap = 40
+      VisualFxDistanceMax = 30.0
+      VisualFxDistanceMin = 20.0
+    }
+    {
+      Name = "HestiaLavaPuddle"
+      CreateAnimation = "LavaHeatWavesPuddle"
+      FilePath = "Hestia\Fx\LavaPuddleIn\LavaPuddleIn"
+      GroupName = "FX_Terrain"
+      Type = "Book"
+      VisualFx = "HestiaLavaPuddleParticles"
+      //VisualFxManagerCap = 300
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 17
+      HoldLastFrame = true
+      NumFrames = 17
+      PlaySpeed = 3.0
+      StartFrame = 1
+      OriginX = 25.0
+      OriginY = 25.0
+      Scale = 0.75
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.2
+      VisualFxIntervalMin = 0.1
+    }
+    {
+      Name = "HestiaLavaPuddleOut"
+      InheritFrom = "HestiaLavaPuddle"
+      CreateAnimation = "null"
+      FilePath = "Hestia\Fx\LavaPuddleOut\LavaPuddleOut"
+      UseOwnAngle = false
+      EndFrame = 20
+      HoldLastFrame = false
+      NumFrames = 20
+      StartFrame = 1
+      Scale = 0.9
+    }
+    {
+      Name = "HestiaLavaPuddleLarge"
+      InheritFrom = "HestiaLavaPuddle"
+      Sound = "/SFX/LavaPuddleAmbientLoop"
+      //StopSoundOnFinishFade = 0.2
+      //Scale = 0.9
+    }
+    {
+      Name = "HestiaLavaPuddleParticles"
+      FilePath = "Animations\LavaPuddleParticles\LavaPuddleParticles"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleA"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleB"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleC"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleD"
+        }]
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleA"
+      FilePath = "Aspho\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      AngleMax = 295.0
+      AngleMin = 245.0
+      EndFrame = 50
+      NumFrames = 50
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      AddColor = true
+      Red = 0.82
+      Green = 0.20
+      Blue = 0.50
+      StartFrame = 1
+      RandomOffsetX = 120.0
+      RandomOffsetY = 20.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleMax = 1.2
+      ScaleMin = 0.8
+      Ambient = 0.0
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleB"
+      InheritFrom = "HestiaLavaSplashProjectileTrailPuddleA"
+      FilePath = "Aspho\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleC"
+      InheritFrom = "LavaSplashProjectileTrailPuddleA"
+      FilePath = "Aspho\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleD"
+      InheritFrom = "LavaSplashProjectileTrailPuddleA"
+      FilePath = "Aspho\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+    }
+    
+     {
+      Name = "ProjectileFireRing-Hestia"
+      InheritFrom = "ProjectileFireRing"
+      CreateAnimation = "QuickFlashDarkPurple"
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      OffsetZ = 110.0
+    }
+    {
+      Name = "HestiaRangedTrail"
+      FilePath = "Fx\ArtemisRangedTrail\ArtemisRangedTrail"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 91.0
+      RandomPlaySpeedMin = 60.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      Scale = 0.4
+      ScaleY = 0.75
+      Ambient = 0.0
+      /*CreateAnimations = [
+        { Name = "ArtemisRangedTrailDark" }
+        { Name = "ArtemisRangedTrailHelixRandom" }
+        { Name = "ArtemisRangedTrailLeavesRandom" }
+      ]*/
+    }
+    {
+      Name = "HestiaHitFx"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Standing_Top"
+      Light = "null"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/ArtemisLeavesImpactDetonate"
+      PlaySpeed = 120.0
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      LocationFromOwner = "Ignore"
+      IsometricSkew = "X"
+      PostRotateScaleY = 1.0
+      Scale = 0.25
+      ScaleFromOwner = "Ignore"
+      CreateAnimations = [
+        { Name = "QuickFlashGreen" }
+        { Name = "ArtemisHitTwinkle-IgnoreLocation" }
+      ]
+      Color = { Red = 0.50 Green = 1.0 Blue = 0.0 }
+    }
     /* Character Fx */
   ]
 }
