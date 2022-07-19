@@ -28,12 +28,12 @@
 		{
 			Id = "CentaurSoul"
 			DisplayName = "Centaur Soul"
-			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} \n{#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
 		}
 		{
 			Id = "MiniBoss"
 			DisplayName = "Mini-bosses"
-			Description = "Mini-bosses are usually associated with {!Icons.MiniBoss} and are stronger than most enemies."
+			Description = "Stronger than most enemies, usually associated with {!Icons.MiniBoss}."
 		}
 		{
 			Id = "HestiaUpgrade_FlavorText01"
