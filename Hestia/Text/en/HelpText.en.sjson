@@ -23,12 +23,17 @@
 		{
 			Id = "CentaurHeart"
 			DisplayName = "Centaur Heart"
-			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
 		}
 		{
 			Id = "CentaurSoul"
 			DisplayName = "Centaur Soul"
-			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small})){#PreviousFormat}"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
+		}
+		{
+			Id = "MiniBoss"
+			DisplayName = "Mini-bosses"
+			Description = "Mini-bosses are usually associated with {!Icons.MiniBoss} and are stronger than most enemies."
 		}
 		{
 			Id = "HestiaUpgrade_FlavorText01"
@@ -249,7 +254,7 @@
 		{
 			Id = "FreeHealthTrait"
 			DisplayName = "Loving Embrace"
-			Description = "After you defeat a boss, gain an extra Centaur Heart. After you defeat a miniboss, gain an extra Centaur Soul."
+			Description = "After you defeat {$Keywords.BossPlural}, gain a {$Keywords.CentaurHeart}.\n After you defeat {$Keywords.MiniBoss}, gain a {$Keywords.CentaurSoul}."
 		}	
 		{
 			Id = "FreeHealthText",

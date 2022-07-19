@@ -316,7 +316,24 @@ if ModUtil ~= nil then
 	)
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash" })
+	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash", "CentaurHeart", "CentaurSoul", "MiniBoss" })
+
+	-- This is not working since the Icons are too big or small to be used and there's no Scale.
+	--[[local OlympusIconData = ModUtil.Entangled.ModData(IconData)
+	OlympusIconData.CentaurHeart = {
+		TexturePath = "GUI\\Icons\\HealthExtra",
+		UseTooltip = false,
+		TextSymbolScale = 0.5,
+	}
+	OlympusIconData.CentaurSoul = {
+		TexturePath = "GUI\\Icons\\UnLife",
+		UseTooltip = false,
+		TextSymbolScale = 0.5,
+	}
+	for iconName, iconData in pairs( OlympusIconData ) do
+		Icons[iconName] = iconData.TexturePath
+		IconTooltips[iconName] = iconData.UseTooltip
+	end]]
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -2374,6 +2391,15 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Aphrodite_01",
 		RequiredFalseTrait = "FreeHealthTrait",		
+		AddMaxHealth = 25,
+		ExtractValues =
+		{
+			{
+				Key = "AddMaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+				Format = "MaxHealth"
+			},
+		}
 	}
 
 	--

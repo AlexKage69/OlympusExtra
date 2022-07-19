@@ -424,6 +424,26 @@
       Name = "Keepsake_HestiaSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
       FilePath = "Hestia\HestiaBadge_max"
+    }    
+    {
+      Name = "CentaurHeartIcon"
+      FilePath = "GUI\Icons\RoomReward\MaxHealthUp_01"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
+    }
+    {
+      Name = "CentaurSoulIcon"
+      FilePath = "GUI\Screens\ShopIcons\soul_16"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
     }
     {
       Name = "ExtraLifeHestia"
