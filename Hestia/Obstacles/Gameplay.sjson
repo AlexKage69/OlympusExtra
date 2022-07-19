@@ -26,5 +26,20 @@
         }
       }
     }
+    {
+      Name = "RoomRewardEmptyHealthDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = true
+      Life =
+      {
+        DeathFx = "RoomRewardEmptyHealthDropPickupFx"
+      }
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "RoomRewardEmptyHealthDrop"
+        TouchdownSound = "/SFX/BloodstoneAmmoDrop"
+      }
+    }
   ]
 }

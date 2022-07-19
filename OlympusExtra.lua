@@ -23,6 +23,8 @@ if ModUtil ~= nil then
                 "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolTrait", "RerollBoonTrait",
                 "MissChanceTrait",
             }
+
+            -- Apollo duos
             table.insert(OlympusCodexMenuData.Duos, "FamedDuetTrait")
             table.insert(OlympusCodexMenuData.Duos, "WarSongTrait")
             table.insert(OlympusCodexMenuData.Duos, "HyacinthTrait")
@@ -32,6 +34,7 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "MasterLobDionysusTrait")
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
             table.insert(OlympusCodexMenuData.Duos, "DamageReduceDistanceTrait")
+
             table.insert(OlympusCodexMenuData.Legendaries, "MissChanceTrait")
             table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_ApolloRangedTrait")
             OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
@@ -53,6 +56,9 @@ if ModUtil ~= nil then
             OlympusCodexMenuData.ConsumableTraits.LastStandHealthDrop = "HealthDefianceTrait"
             table.insert(OlympusCodexBoonTable, "HestiaUpgrade")
             table.insert(OlympusRealGodNames, "Hestia")
+
+            -- Hestia duos
+            table.insert(OlympusCodexMenuData.Duos, "FreeHealthTrait")
         end
     end
     -- Recompile data. Required for each gods so generic here.

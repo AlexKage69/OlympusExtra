@@ -658,5 +658,79 @@
       Color = { Red = 0.50 Green = 1.0 Blue = 0.0 }
     }
     /* Character Fx */
+
+    /* Centaur Soul */
+    {
+      Name = "RoomRewardEmptyHealthDrop"
+      CreateAnimation = "PickupFlare"
+      FilePath = "Hestia\Fx\CentaurSoul\CentaurSoul"
+      Type = "Book"
+      VisualFx = "RoomRewardEmptyHealthDropParticles"
+      EaseOut = 1.0
+      EndFrame = 24
+      Loop = true
+      NumFrames = 24
+      PlaySpeed = 24.0
+      StartFrame = 1
+      EndOffsetY = 10.0
+      Scale = 0.66
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.3
+      VisualFxIntervalMin = 0.2
+      PingPongShiftOverDuration = true
+      Slides = [
+        {
+          DurationFrames = 1
+          Sound = "/SFX/HeartPulsate1"
+          Frame = 5
+        }
+        {
+          DurationFrames = 1
+          Sound = "/SFX/HeartPulsate2"
+          Frame = 12
+        }]
+    }
+    {
+      Name = "RoomRewardEmptyHealthDropParticles"
+      FilePath = "Particles\particle_ascension_01"
+      GroupName = "FX_Standing_Top"
+      Type = "Constant"
+      AngleMax = 360.0
+      UseOwnAngle = false
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.03
+      StartRed = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      RandomDurationMax = 1.5
+      RandomDurationMin = 0.5
+      StartFrame = 1
+      RadialOffsetMax = 30.0
+      RadialOffsetMin = 25.0
+      LocationFromOwner = "Take"
+      VelocityMax = 100.0
+      VelocityMin = 50.0
+      PingPongScale = true
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.5
+      ScaleMin = 0.25
+      StartScale = 0.0
+      Ambient = 0.0
+      RandomAccelerationMax = -50.0
+      RandomAccelerationMin = -60.0
+    }
+    {
+      Name = "RoomRewardEmptyHealthDropPickupFx"
+      FilePath = "Fx\MaxHealthUpPickup\MaxHealthUpPickup"
+      Type = "Book"
+      EndFrame = 42
+      NumFrames = 42
+      PlaySpeed = 30.0
+      StartFrame = 1
+      Ambient = 0.0
+      SortMode = "FromParent"
+      LocationZFromOwner = "Ignore"
+    }
   ]
 }

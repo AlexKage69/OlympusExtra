@@ -4,7 +4,7 @@
 		{
 			Id = "NPC_Hestia_01"
 			DisplayName = "Hestia"
-			Description = "God of Hearth"
+			Description = "Goddess of Hearth"
 		}		
 		{
 			Id = "HestiaFirstPickUp"
@@ -13,12 +13,22 @@
 		{
 			Id = "HestiaUpgrade"
 			DisplayName = "Hestia"
-			Description = "God of Hearth"
+			Description = "Goddess of Hearth"
 		}
 		{
 			Id = "HestiaUpgrades"
-			DisplayName = "God of Hearth"
+			DisplayName = "Goddess of Hearth"
 			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
+		}
+		{
+			Id = "CentaurHeart"
+			DisplayName = "Centaur Heart"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
+		}
+		{
+			Id = "CentaurSoul"
+			DisplayName = "Centaur Soul"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small})){#PreviousFormat}"
 		}
 		{
 			Id = "HestiaUpgrade_FlavorText01"
@@ -238,14 +248,22 @@
 		}	
 		{
 			Id = "FreeHealthTrait"
-			DisplayName = "FreeHealthTrait"
-			Description = "Your {$Keywords.FlashBomb} inflicts {$Keywords.Curse}. \n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCurseDamage}"
+			DisplayName = "Loving Embrace"
+			Description = "After you defeat a boss, gain an extra Centaur Heart. After you defeat a miniboss, gain an extra Centaur Soul."
 		}	
+		{
+			Id = "FreeHealthText",
+			DisplayName = "{#CombatTextHighlightFormat}Loving Embrace!{#PreviousFormat}!"
+		}
+		{
+			Id = "UseEmptyHealthDrop"
+			DisplayName = "{I} Gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth} {!Icons.HealthUpAlt_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
+		}
 		{
 			Id = "ExplosionTrait"
 			DisplayName = "ExplosionTrait"
 			Description = "Foes inflicted with {$Keywords.LavaSplash} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to bosses."
-    		}
+    	}
 		{
 			Id = "ChillFireTrait"
 			DisplayName = "ChillFireTrait"
