@@ -455,5 +455,15 @@
       Scale = 0.6
       Material = "Unlit"
     }
+    {
+      Name = "Keepsake_Hestia_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hestia\HestiaBadge"
+    }
+    {
+      Name = "Keepsake_HestiaSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hestia\HestiaBadge_max"
+    }
   ]
 }

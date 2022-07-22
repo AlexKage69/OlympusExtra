@@ -4224,7 +4224,7 @@ if ModUtil ~= nil then
 		Locked = 7,
 		[1] = { Gift = "ForceHestiaBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaAboutArtemis03" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaAboutDionysus01" } }
 	}
 	-- FUNCTIONS
 	-- Attraction functions
