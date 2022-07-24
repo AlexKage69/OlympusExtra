@@ -1896,10 +1896,6 @@ if ModUtil ~= nil then
 			}
 		}
 	}	
-	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
-	{
-		
-	}--]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -2139,6 +2135,8 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
+		CustomTrayText = "HealthDamageTrait_Tray",
+		RequiredFalseTrait = "HealthDamageTrait", 
 		Icon = "Boon_Hestia_07",
 		RarityLevels =
 		{
@@ -2148,17 +2146,35 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.25,
+				Multiplier = 1.50,
 			},
 			Epic =
 			{
-				Multiplier = 1.50,
+				Multiplier = 2.00,
 			},
 			Heroic =
 			{
-				Multiplier = 1.75,
+				Multiplier = 2.50,
 			}
 		},
+		CentaurAttackBonus = 
+		{
+			BaseValue = 0.01,	
+		},
+		AccumulatedDamageBonus = 1,
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier = AccumulatedDamageBonus,
+			ValidWeapons = WeaponSets.HeroAllWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		}
 	}
 	OlympusTraitData.LavaDeathTrait =
 	{
