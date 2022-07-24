@@ -2159,21 +2159,27 @@ if ModUtil ~= nil then
 		},
 		CentaurAttackBonus = 
 		{
-			BaseValue = 0.01,	
+			BaseValue = 0.010,
+			DecimalPlaces = 3,	
 		},
 		AccumulatedDamageBonus = 1,
 		AddOutgoingDamageModifiers =
 		{
 			ValidWeaponMultiplier = AccumulatedDamageBonus,
-			ValidWeapons = WeaponSets.HeroAllWeapons,
-			ExtractValues =
+			ValidWeapons = WeaponSets.HeroAllWeapons
+		},
+		ExtractValues =
+		{
 			{
-				{
-					Key = "ValidWeaponMultiplier",
-					ExtractAs = "TooltipDamage",
-					Format = "PercentDelta",
-				},
-			}
+				Key = "CentaurAttackBonus",
+				ExtractAs = "TooltipDamage",
+				Format = "Percent",
+			},
+						{
+				Key = "AccumulatedDamageBonus",
+				ExtractAs = "TooltipTotalDamage",
+				Format = "Percent",
+			},
 		}
 	}
 	OlympusTraitData.LavaDeathTrait =
@@ -4382,7 +4388,10 @@ if ModUtil ~= nil then
 			baseFunc(eventSource, args)
 		end
 	)
-
+	ConsumableData.RoomRewardMaxHealthDrop.OnAddedFunctionName = 
+	{	
+		"OnHealthMultiplyDamage"
+	}
 	ConsumableData.RoomRewardEmptyHealthDrop =
 	{
 		InheritFrom = { "BaseConsumable", },
@@ -4406,6 +4415,7 @@ if ModUtil ~= nil then
 		ConsumeSound = "/SFX/HealthIncreasePickup",
 		PlayInteract = true,
 		HideWorldText = true,
+		OnAddedFunctionName = "OnHealthMultiplyDamage",
 
 		ConsumedVoiceLines =
 		{
@@ -4462,6 +4472,15 @@ if ModUtil ~= nil then
 			},
 		}
 	}
+
+	function HealthDamagePresentation()
+		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
+		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "FountainDefenseTrait", Amount = (1 - GetTotalHeroTraitValue("FountainDefenseBonus", {IsMultiplier = true})) * 100 } })
+	end
+
+	function OnHealthMultiplyDamage()
+		HealthDamagePresentation()
+	end
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
@@ -4477,10 +4496,10 @@ if ModUtil ~= nil then
 		return base( triggerArgs ) 
 	end )]]
 	
-	--[[OnControlPressed{ "Codex",
+	OnControlPressed{ "Codex",
 		function( triggerArgs )
 			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 		end 
-	}]]
+	}
 
 end

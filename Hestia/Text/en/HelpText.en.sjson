@@ -196,15 +196,20 @@
 			InheritFrom = "LavaDeathTrait"
 			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
+				{
+			Id = "HealthDamageTrait_Tray"
+			DisplayName = "Melting Heart"
+			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Current bonus damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
+		}
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per : \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
 		}
 		{
 			Id = "HealthDamageTrait_Initial"
 			InheritFrom = "HealthDamageTrait"
-			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per : \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "For each Heart you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}		
 		{
 			Id = "LavaResistTrait"
