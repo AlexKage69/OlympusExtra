@@ -482,7 +482,7 @@
     /* Cast */
     {
       Name = "HestiaLavaSplashProjectileHead"
-      FilePath = "Aspho\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
+      FilePath = "Hestia\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
       Type = "Book"
       VisualFx = "LavaSplashProjectileTrail"
       EndFrame = 40
