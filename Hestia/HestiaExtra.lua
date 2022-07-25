@@ -4461,10 +4461,10 @@ if ModUtil ~= nil then
 		return base( triggerArgs ) 
 	end )]]
 	
-	--[[OnControlPressed{ "Codex",
+	OnControlPressed{ "Codex",
 		function( triggerArgs )
 			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 		end 
-	}]]
+	}
 
 end

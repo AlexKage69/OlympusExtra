@@ -325,11 +325,11 @@
     {
       Name = "BoonDropHestiaIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Apollo\ApolloIconSpin\ApolloIconSpin"
+      FilePath = "Hestia\HestiaIconSpin\HestiaIconSpin"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
-      Scale = 0.4
+      Scale = 0.17
     }
     {
       Name = "BoonDissipateA_Hestia"
