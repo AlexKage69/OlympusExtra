@@ -10,14 +10,14 @@
       Speed = 200
       Acceleration = 0
       Range = 1000.0
-      DamageLow = 2
-      DamageHigh = 2
+      DamageLow = 200
+      DamageHigh = 200
       DetonateGraphic = "null"
       //ImpactFx = "HestiaHitFx"
       ObstacleCollisionCheck = "PolygonContainsPoint"
       MultipleUnitCollisions = false
       MultipleObstacleCollisions = false
-      SpawnOnDetonate = "SecondLavaPuddleLarge"
+      SpawnOnDetonate = "HestiaField"
       SpawnType = "PROJECTILE"
       CheckObstacleImpact = true
       CheckUnitImpact = true
@@ -89,7 +89,7 @@
       AffectsSelf = true
       CheckUnitImpact = false
       CheckObstacleImpact = false
-      SpawnOnDetonate = "SecondLavaPuddleLarge"
+      SpawnOnDetonate = "HestiaField"
       CanBeReflected = false
       SpawnType = "PROJECTILE"
       CanCrit = false
@@ -123,9 +123,197 @@
       }
     }
     {
-      Name = "SecondLavaPuddleLarge"
+      Name = "HestiaField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
       Type = "INSTANT"
+      DamageLow = 3
+      DamageHigh = 3
       DissipateGraphic = "HestiaLavaPuddleOut"
+      //SpawnOnDetonate = "HestiaDefenseField"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 175
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      Thing = 
+      {
+        Graphic = "HestiaLavaPuddleLarge"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }
+    }
+    {
+      Name = "HestiaDefenseField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = false
+      AffectsFriends = false
+      AffectsSelf = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      SpawnRadius = 0
+      DamageRadius = 400
+      DamageLow = 0
+      DamageHigh = 0
+      DissipateGraphic = "DionysusCloudBEnd"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Standing_Top"
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.0
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      Effects = [
+         {
+          Name = "LavaPuddleDefense"
+          OnlyAffectName = "_PlayerUnit"
+          Duration = 0.75
+          Type = "DAMAGE_TAKEN"
+          Modifier = 1
+          Active = false
+        }
+      ]
+      Thing = 
+      {
+        Graphic = "DionysusCloudB"
+        Scale = 24.0
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }
+    }
+    {
+      Name = "HestiaSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HadesCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 1600
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 20
+      DamageHigh = 20
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HestiaRing"
+        Grip = 999999
+      }      
+    }
+    {
+      Name = "HestiaMaxSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HadesCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 2200
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 50
+      DamageHigh = 50
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HestiaRing"
+        Grip = 999999
+      }
+    }
+    {
+      Name = "HestiaLavaPuddleLarge"
+      Type = "INSTANT"
+      //DissipateGraphic = "HestiaLavaPuddleOut"
       GroupName = "FX_Terrain"
       Range = 0
       CheckObstacleImpact = false
@@ -135,7 +323,7 @@
       DamageRadius = 150
       DamageRadiusScaleX = 1.0
       DamageRadiusScaleY = 0.6
-      TotalFuse = 8.0
+      TotalFuse = 16.0
       Fuse = 0.2
       InflictedDamageSound = "/SFX/BurnDamageSizzle"
       InflictedDamageFx = "Immolation"
@@ -150,7 +338,7 @@
       ConsecutiveHitWindow = 0.8
       IgnoreCoverageAngles = true
       MaxVictimZ = 1
-      MultiDetonate = true
+      //MultiDetonate = true
       DangerDistance = 0
       CanCrit = false
       Effects = [
@@ -166,7 +354,7 @@
       Thing = 
       {
         Graphic = "HestiaLavaPuddleLarge"
-        Scale = 12.0
+        Scale = 24.0
         Points = [
           {
             X = 4

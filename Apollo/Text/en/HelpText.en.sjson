@@ -288,12 +288,12 @@
 		{
 			Id = "HyacinthTrait"
 			DisplayName = "Hyacinth"
-			Description = "Foes inflicted with {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to bosses."
+			Description = "Foes inflicted with {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to {$Keywords.BossPlural}."
     	}
 		{
 			Id = "SeaChanteyTrait"
 			DisplayName = "Sea Chantey"
-			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
+			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage and take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from {$Keywords.BossPlural}."
 		}	
 		{
 			Id = "SeaChanteyText",

@@ -289,6 +289,35 @@
     /* Hestia - Fist - WeaponTrait */
     /* Hestia - Fist - SecondaryTrait */
     /* Hestia - Shout - Hellring */
+    {
+      Name = "HestiaRing"
+      FilePath = "Dev\blank_invisible"
+      GroupName = "FX_Terrain"
+      Type = "Constant"
+      AddColor = true
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      DieWithOwner = true
+      RandomRotation = false
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 960.0
+      Ambient = 0.0
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      VisualFx = "HadesAmmoPushRingCirclesBright"
+      VisualFxIntervalMin = 0.15
+      VisualFxIntervalMax = 0.2
+      IgnoreFrameCap = true
+      CreateAnimation = "HadesAmmoPushRingDisplacement"
+      Color = 
+      {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      Sound = "/Leftovers/Menu Sounds/TextReveal2"
+    }
     /* Hestia - Duos */
     /* Theseus - Wrath */
     /* Boon FX */
@@ -482,7 +511,7 @@
     /* Cast */
     {
       Name = "HestiaLavaSplashProjectileHead"
-      FilePath = "Aspho\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
+      FilePath = "Hestia\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
       Type = "Book"
       VisualFx = "LavaSplashProjectileTrail"
       EndFrame = 40
@@ -500,39 +529,90 @@
       CreateAnimation = "LavaHeatWavesPuddle"
       FilePath = "Hestia\Fx\LavaPuddleIn\LavaPuddleIn"
       GroupName = "FX_Terrain"
+      DrawBehindOwner = true
       Type = "Book"
       VisualFx = "HestiaLavaPuddleParticles"
       //VisualFxManagerCap = 300
+      //ScaleRadius = 110
       AngleFromOwner = "Ignore"
       ColorFromOwner = "Ignore"
       EndFrame = 17
       HoldLastFrame = true
       NumFrames = 17
-      PlaySpeed = 3.0
+      PlaySpeed = 30.0
       StartFrame = 1
-      OriginX = 25.0
-      OriginY = 25.0
-      Scale = 0.75
+      //OriginX = 25.0
+      Scale = 1.0
       ScaleFromOwner = "Ignore"
       Ambient = 0.0
       VisualFxIntervalMax = 0.2
       VisualFxIntervalMin = 0.1
     }
     {
+      Name = "ConsecrationAoEE"
+      Type = "Constant"
+      FilePath = "Fx\Arthur\ConsecrationAoE_1"
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      RotationSpeed = 2
+      Material = "Unlit"
+      VisualFx = "ConsecrationAoE3_VFX"
+      VisualFxIntervalMin = 0.5
+      VisualFxIntervalMax = 0.51
+      StartRed = 0.2
+      StartGreen = 0.5
+      StartBlue = 1
+      EndRed = 0
+      EndGreen = 0
+      EndBlue = 0
+      AddColor = true
+      EndAlpha = 0.75
+      Duration = 0.3
+      EaseIn = 0.8
+      EaseOut = 1.0
+      StartScale = 0.8
+      EndScale = 1.0
+      HoldLastFrame = true
+      Sound = "/Leftovers/SFX/ConsecrationLoopSFX"
+      StopSoundOnFinishFade = 0.2
+      AngleFromOwner = "Ignore"
+      ScaleRadius = 500
+      CreateAnimations = [
+        {
+          Name = "ConsecrationAoE2"
+        }
+        {
+          Name = "ConsecrationAoE2A"
+        }
+        {
+          Name = "ConsecrationAoE3"
+        }
+        {
+          Name = "ConsecrationStartGlow"
+        }
+        {
+          Name = "ConsecrationStartSpike"
+        }]
+    }
+    {
       Name = "HestiaLavaPuddleOut"
       InheritFrom = "HestiaLavaPuddle"
+      GroupName = "FX_Terrain"
       CreateAnimation = "null"
       FilePath = "Hestia\Fx\LavaPuddleOut\LavaPuddleOut"
-      UseOwnAngle = false
+      //UseOwnAngle = false
       EndFrame = 20
       HoldLastFrame = false
+      OffsetX = 8
+      OffsetY = 58
       NumFrames = 20
       StartFrame = 1
-      Scale = 0.9
+      Scale = 1.0
     }
     {
       Name = "HestiaLavaPuddleLarge"
       InheritFrom = "HestiaLavaPuddle"
+      GroupName = "FX_Terrain"
       Sound = "/SFX/LavaPuddleAmbientLoop"
       //StopSoundOnFinishFade = 0.2
       //Scale = 0.9

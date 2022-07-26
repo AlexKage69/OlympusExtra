@@ -4850,6 +4850,20 @@ OlympusTraitData.SeaChanteyTrait =
 		RemoveSimSpeedChange( "HyacinthKill", { LerpTime = 0.3 } )
 		Destroy({ Id = dropLocation })
 	end]]
+
+	-- Changes to Maps
+	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
+		Name = "Boon",
+		LootName = "ApolloUpgrade",
+		GameStateRequirements =
+		{
+			RequiredTextLines = {  "ZeusFirstPickUp", "ArtemisFirstPickUp" },
+			RequiredOnlyNotPickedUp = "ApolloUpgrade",
+			RequiredOnlyNotPickedUpIgnoreName = "DemeterUpgrade",
+		}
+	})
+    OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 	
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
