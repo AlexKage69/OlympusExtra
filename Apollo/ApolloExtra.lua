@@ -381,6 +381,7 @@ if ModUtil ~= nil then
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb", "DamageResist" })
+    ResetKeywords()
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -2163,6 +2164,38 @@ if ModUtil ~= nil then
 			}
 		}
 	}
+	-- Consumable Data
+	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	OlympusConsumableData.RerollBoonDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
+		RequiredMetaUpgradeStageUnlocked = 4,
+		Icon = "Boon_Apollo_10",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddRerollBoon", "AddTraitToHero" } ,
+		UseFunctionArgs = {
+			{ },
+			{ TraitName = "RerollBoonTrait" },
+		},
+	}
+	OlympusConsumableData.RerollObolDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
+		RequiredMetaUpgradeStageUnlocked = 4,
+		Icon = "Boon_Apollo_12",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddRerollObol", "AddTraitToHero" } ,
+		UseFunctionArgs = {
+			{ },
+			{ TraitName = "RerollObolTrait" },
+		},
+	}
 	-- Duo Traits
 	OlympusTraitData.BlindDurationTrait =
 	{
@@ -2670,8 +2703,8 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
-			Consumables = { },
+			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait"}, 
+			Consumables = { "RerollObolDrop", "RerollBoonDrop" },
 	
 			LinkedUpgrades =
 			{
@@ -4675,16 +4708,6 @@ OlympusTraitData.SeaChanteyTrait =
 			end
 		end
 	)
-	ModUtil.Path.Wrap( "AddTraitToHero", 
-	function(baseFunc, args)
-		if args.TraitData and args.TraitData.Name == "RerollBoonTrait" then
-			AddRerollBoon()
-		end
-		if args.TraitData and args.TraitData.Name == "RerollObolTrait" then
-			AddRerollObol()
-		end
-		baseFunc(args)
-	end)
 	-- Fountain Coin/Defense Functions
 	function FountainDefensePresentation()
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })

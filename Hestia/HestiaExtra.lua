@@ -323,6 +323,7 @@ if ModUtil ~= nil then
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash", "CentaurHeart", "CentaurSoul", "MiniBoss" })
+    ResetKeywords()
 
 	-- This is not working since the Icons are too big or small to be used and there's no Scale.
 	--[[local OlympusIconData = ModUtil.Entangled.ModData(IconData)
@@ -4245,7 +4246,7 @@ if ModUtil ~= nil then
 		Locked = 7,
 		[1] = { Gift = "ForceHestiaBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaAboutArtemis03" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaAboutDionysus01" } }
 	}
 	-- FUNCTIONS
 	-- Attraction functions

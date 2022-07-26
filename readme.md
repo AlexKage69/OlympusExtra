@@ -49,3 +49,5 @@ Developers: AlexKage, physiX
 ### Special thanks to:  
 Apollo's portrait: [Reikiix](https://twitter.com/Reikiix)  
 Apollo keepsake badges: Lazy.mano, r/Lazymanohelp  
+Hestia's portrait: [Relia](https://twitter.com/shazari)
+Hestia keepsake badges: [Starley](https://twitter.com/princestarley/)
