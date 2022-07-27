@@ -4336,7 +4336,7 @@ OlympusTraitData.SeaChanteyTrait =
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "Of course, I never leave without it, Father. Perhabs we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
+			Text = "Of course, I never leave without it, Father. Perhaps we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
 	}
 	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithApollo01 = {
 		Name = "PoseidonWithApollo01",
