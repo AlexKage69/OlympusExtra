@@ -4500,7 +4500,7 @@ if ModUtil ~= nil then
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
 			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-		end 
+		end  
 	}]]
 
 end
