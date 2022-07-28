@@ -2306,7 +2306,33 @@ if ModUtil ~= nil then
 					ChangeValue = true
 				},
 				{
+					TraitName = "ApolloRangedTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+					EffectName = "DelayedDamage",
+					EffectProperty = "Amount",
+					BaseMin = 100,
+					BaseMax = 100,
+					AsInt = true,
+					MinMultiplier = 0.025,
+					IdenticalMultiplier =
+					{
+						Value = -0.4,
+					},
+					ExtractValue =
+					{
+						ExtractAs = "TooltipCurseDamage",
+					}
+				},
+				{
+					TraitName = "MasterLobDionysusTrait",
+					WeaponName = "ApolloLobWeaponAdditional",
+					EffectName = "DelayedDamage",
+					EffectProperty = "Active",
+					ChangeValue = true
+				},
+				{
+					TraitName = "MasterLobDionysusTrait",
+					WeaponName = "ApolloLobWeaponAdditional",
 					EffectName = "DelayedDamage",
 					EffectProperty = "Amount",
 					BaseMin = 100,
@@ -2441,7 +2467,7 @@ OlympusTraitData.SeaChanteyTrait =
 			FunctionArgs = {}
 		}
 	}			
-	OlympusTraitData.MasterLobApolloTrait =
+OlympusTraitData.MasterLobApolloTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Dionysus_01",
@@ -2498,7 +2524,7 @@ OlympusTraitData.SeaChanteyTrait =
 		}
 	}
 	-- Exact copy, but different for HelpText
-	OlympusTraitData.MasterLobDionysusTrait =
+OlympusTraitData.MasterLobDionysusTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Dionysus_01",
@@ -2554,6 +2580,109 @@ OlympusTraitData.SeaChanteyTrait =
 			}
 		}
 	}
+	table.insert(OlympusTraitData.DionysusDefenseTrait.PropertyChanges, {
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		EffectName= "WinePuddleDefense",
+		EffectProperty = "Modifier",
+		BaseMin = 0.85,
+		BaseMax = 0.90,
+		SourceIsMultiplier = true,
+		DeriveSource = "ModifierSource",
+		IdenticalMultiplier =
+		{
+			Value = DuplicateMultiplier,
+		},
+		ChangeType = "Multiply",
+		ExtractValue =
+		{
+			ExtractAs = "TooltipDamageReduction",
+			Format = "NegativePercentDelta",
+		}
+	})
+	table.insert(OlympusTraitData.DionysusDefenseTrait.PropertyChanges, {
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		EffectName= "WinePuddleDefense",
+		EffectProperty = "Active",
+		ChangeValue = true,
+		ChangeType = "Absolute",
+	})
+	OlympusTraitData.IceStrikeArrayTrait.AddOutgoingDamageModifiers.RequiredTrait = nil
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Type",
+		ChangeValue = "INSTANT",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Fuse",
+		ChangeValue = 0.3,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		WeaponProperty = "ManualAimingRequireValidLocation",
+		ChangeValue = true,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Speed",
+		ChangeValue = 0,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Range",
+		ChangeValue = 100,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		WeaponProperty = "AutoLock",
+		ChangeValue = false,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+		ProjectileName = "DionysusField",
+		EffectName = "DemeterSlow",
+		EffectProperty = "Active",
+		ChangeValue = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Graphic",
+		ProjectileName = "DionysusField",
+		ChangeValue = "DemeterIceStrikeIndicator",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Graphic",
+		ProjectileName = "DionysusLobProjectileAdditional",
+		ChangeValue = "DemeterPoseidonIceSpark",
+		ExcludeLinked = true,
+	})	
+	OlympusTraitData.LightningCloudTrait.AmmoDeathAdditionalWeapon = {
+		ValidProjectileName = "DionysusLobProjectileAdditional",
+		WeaponName = "ZeusDionysusCloudStrike",
+		Interval = 0.85,
+		Duration = 5,
+		Range = 400,
+	}
+	
 	OlympusTraitData.DamageReduceDistanceTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
@@ -2735,7 +2864,7 @@ OlympusTraitData.SeaChanteyTrait =
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
+						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "MasterLobDionysusTrait"},
 						{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 					}
 				},
@@ -2777,6 +2906,14 @@ OlympusTraitData.SeaChanteyTrait =
 					{
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
 						{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
+					}
+				},
+				MasterLobDionysusTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "DionysusRangedTrait"},
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }
 					}
 				},
 				MasterLobApolloTrait = 
@@ -4463,7 +4600,7 @@ OlympusTraitData.SeaChanteyTrait =
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
+			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "MasterLobDionysusTrait"},
 			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 		}
 	}
@@ -4515,6 +4652,49 @@ OlympusTraitData.SeaChanteyTrait =
 			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }
 		}
 	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.MasterLobApolloTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "ApolloRangedTrait"},
+			{ "DionysusWeaponTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
+		}
+	}
+	
+	-- For DionysusRangedTrait when duo is activated.
+	OlympusLootData.ZeusUpgrade.LinkedUpgrades.LightningCloudTrait = {
+		OneFromEachSet =
+		{
+			{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusShoutTrait" },
+			{ "DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.LightningCloudTrait = {
+		OneFromEachSet =
+		{
+			{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusShoutTrait" },
+			{ "DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}
+	OlympusLootData.DemeterUpgrade.LinkedUpgrades.IceStrikeArrayTrait = {
+		OneFromEachSet =
+		{
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait", "DemeterShoutTrait" },
+			{ "DionysusRangedTrait", "ShieldLoadAmmo_DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.IceStrikeArrayTrait = {
+		OneFromEachSet =
+		{
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait", "DemeterShoutTrait" },
+			{ "DionysusRangedTrait", "ShieldLoadAmmo_DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}	
+	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusDefenseTrait.OneOf, "MasterLobApolloTrait")
+	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusComboVulnerability.OneFromEachSet[1], "MasterLobApolloTrait")
+	
+	
+
 	
 	-- Other gods modification
 	-- AthenaUpgrade
@@ -4830,6 +5010,21 @@ OlympusTraitData.SeaChanteyTrait =
 			end
 		end
 	end
+	OnProjectileDeath{
+		function( triggerArgs )
+			local attacker = triggerArgs.AttackerTable
+			if CurrentRun.Hero and attacker == CurrentRun.Hero then
+				-- Remove clause after optimizations
+				if HeroHasTrait("LightningCloudTrait") then
+					for i, data in pairs(GetHeroTraitValues("AmmoDeathAdditionalWeapon")) do
+						if triggerArgs.name == data.ValidProjectileName then
+							FireAmmoDeathWeapon( data, triggerArgs.LocationX, triggerArgs.LocationY )
+						end
+					end
+				end
+			end
+		end
+	}
 
 	-- Athena Duo
 	OnProjectileReflect{
