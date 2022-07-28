@@ -20,7 +20,7 @@ if ModUtil ~= nil then
             OlympusCodexMenuData.ApolloUpgrade = {
                 "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait", 
                 "ApolloShoutTrait", "ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait",
-                "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolTrait", "RerollBoonTrait",
+                "ApolloBlindedTrait", "ApolloHealTrait", "RerollObolDrop", "RerollBoonDrop",
                 "MissChanceTrait",
             }
 
@@ -35,10 +35,14 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "BlindDurationTrait")
             table.insert(OlympusCodexMenuData.Duos, "DamageReduceDistanceTrait")
 
+            table.insert(OlympusCodexMenuData.Consumables, "RerollObolDrop")
+            table.insert(OlympusCodexMenuData.Consumables, "RerollBoonDrop")
             table.insert(OlympusCodexMenuData.Legendaries, "MissChanceTrait")
             table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_ApolloRangedTrait")
-            OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
-            OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true         
+            OlympusCodexMenuData.ConsumableTraits.RerollObolDrop = "RerollObolTrait"
+            OlympusCodexMenuData.ConsumableTraits.RerollBoonDrop = "RerollBoonTrait"
+            --OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
+            --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true         
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
             table.insert(OlympusRealGodNames, "Apollo")
         end         
@@ -62,6 +66,5 @@ if ModUtil ~= nil then
         end
     end
     -- Recompile data. Required for each gods so generic here.
-    ResetKeywords()
     SetupRunData()
 end

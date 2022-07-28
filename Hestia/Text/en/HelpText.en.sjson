@@ -249,7 +249,7 @@
 		{
 			Id = "MoreTrapDamageTrait"
 			DisplayName = "MoreTrapDamageTrait"
-			Description = "Your {$Keywords.Wrath} fires twelve beams instead of one."
+			Description = "{$Keywords.Traps} deal more damage to enemies."
 		}	
 		{
 			Id = "FreeHealthTrait"
@@ -267,32 +267,32 @@
 		{
 			Id = "ExplosionTrait"
 			DisplayName = "ExplosionTrait"
-			Description = "Foes inflicted with {$Keywords.LavaSplash} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to bosses."
+			Description = "Your {$Keywords.Crit} creates an explosion."
     	}
 		{
 			Id = "ChillFireTrait"
 			DisplayName = "ChillFireTrait"
-			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
+			Description = "Your {$Keywords.Dash} inflicts countinous {$Keywords.Chill}"
 		}	
 		{
 			Id = "FestiveFogHealTrait"
 			DisplayName = "FestiveFogHealTrait"
-			Description = "Your {$Keywords.LavaSplash} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+			Description = "While in {$Keywords.Cloud}, your damage heals you. Also using {$Keywords.Cast} deal damage to yourself."
 		}
 		{
 			Id = "LavaDoomTrait"
 			DisplayName = "LavaDoomTrait"
-			Description = "After using {$Keywords.Deflect}, briefly gain {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}% \n{!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistDuration} Sec."
+			Description = "After {$Keywords.Curse} activate, it leaves a small {$Keywords.LavaSplash}."
 		}	
 		{
 			Id = "MoreHellringTrait"
 			DisplayName = "MoreHellringTrait" 
-			Description = "Enemies inflicted by {$Keywords.LavaSplash} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {#UpgradeFormat}{$TooltipData.MasterBoltDamage}"
+			Description = "Your {$Keywords.Shout} summons 3 ring of fire."
 		}
 		{
 			Id = "FishingHealTrait"
 			DisplayName = "FishingHealTrait" 
-			Description = "Your {$Keywords.FlashBomb} summons a {$Keywords.Cloud} upon yourself.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+			Description = "{$Keywords.FishingPoint} are more likely to spawn. Their rewards are doubled and they fully heal you."
 		}
 		{
 			Id = "LtUpgrade_Hestia"
