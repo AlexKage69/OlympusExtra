@@ -273,8 +273,14 @@ if ModUtil ~= nil then
 		DamageTextColor = OlympusColor.HestiaDamage
 	}
 	OlympusProjectileData.HestiaProjectile = {
-		InheritFrom = { "HestiaColorProjectile" },
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 	}
+	OlympusProjectileData.HestiaLavaPuddleLarge =
+	{
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+		SpawnedProjectile = true,
+		NeverStore = true,
+	}	
 	OlympusProjectileData.HestiaShoutWeapon = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
 	}
@@ -317,6 +323,7 @@ if ModUtil ~= nil then
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash", "CentaurHeart", "CentaurSoul", "MiniBoss" })
+    ResetKeywords()
 
 	-- This is not working since the Icons are too big or small to be used and there's no Scale.
 	--[[local OlympusIconData = ModUtil.Entangled.ModData(IconData)
@@ -1715,8 +1722,9 @@ if ModUtil ~= nil then
 				ChangeValue = "ProjectileFireRing-Hestia",
 				ChangeType = "Absolute",
 			},
-			{
+			--[[{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 70,
 				BaseMax = 70,
@@ -1732,21 +1740,27 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "CriticalHitChance",
-				ChangeValue = 0.10,
-				ChangeType = "Absolute",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 3,
+				BaseMax = 3,
 				ExtractValue =
 				{
-					ExtractAs = "TooltipCritChance",
-					Format = "Percent",
-					SkipAutoExtract = true
+					ExtractAs = "TooltipDamageLava",
 				}
 			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},]]
 			-- Beowulf
 			{
                 TraitName = "ShieldLoadAmmoTrait",
@@ -1826,7 +1840,7 @@ if ModUtil ~= nil then
 				ChangeValue = "ProjectileFireRing-Hestia",
 				ChangeType = "Absolute",
 			},
-			{
+			--[[{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileProperty = "DamageLow",
 				BaseMin = 55,
@@ -1845,19 +1859,7 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "CriticalHitChance",
-				ChangeValue = 0.10,
-				ChangeType = "Absolute",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipCritChance",
-					Format = "Percent",
-					SkipAutoExtract = true
-				}
-			},
+			},]]
 			{
                 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
                 WeaponProperty = "FireOnRelease",
@@ -2322,21 +2324,34 @@ if ModUtil ~= nil then
 		},
 		PropertyChanges =
 		{
-			{
+			--[[{
 				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
-				ProjectileName = "SecondLavaPuddleLarge",
+				ProjectileName = "HestiaField",
 				ProjectileProperty = "Scale",
 				ChangeValue = 15.0,
 				ChangeType = "Multiply",
 				ExcludeLinked = true,
-			},
-			--[[{
-				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
-				ProjectileName = "SecondLavaPuddleLarge",
-				ProjectileProperty = "TotalFuse",
-				ChangeValue = 12.0,
-				ChangeType = "Absolute",
 			},]]
+			{
+				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "Scale",
+				ChangeValue = 3,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipWidth",
+					Format = "PercentDelta"
+				}
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "TotalFuse",
+				ChangeValue = 15.0,
+				ChangeType = "Absolute",
+			},
 		},
 	}	
 	OlympusTraitData.LavaAutoTrait =
@@ -2348,10 +2363,17 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
-				ProjectileName = "SecondLavaPuddleLarge",
+				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 2000,
+				ChangeValue = 300,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
 				ChangeType = "Add",
 			},
 		},
@@ -4446,6 +4468,20 @@ if ModUtil ~= nil then
 			},
 		}
 	}
+
+	-- Changes to Maps
+	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
+		Name = "Boon",
+		LootName = "HestiaUpgrade",
+		GameStateRequirements =
+		{
+			RequiredTextLines = {  "ZeusFirstPickUp", "DionysusFirstPickUp" },
+			RequiredOnlyNotPickedUp = "HestiaUpgrade",
+			RequiredOnlyNotPickedUpIgnoreName = "DemeterUpgrade",
+		}
+	})
+	OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
@@ -4465,6 +4501,6 @@ if ModUtil ~= nil then
 		function( triggerArgs )
 			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 		end 
-	}]]--
+	}]]
 
 end

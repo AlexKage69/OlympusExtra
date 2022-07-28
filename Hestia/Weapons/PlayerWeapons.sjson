@@ -17,7 +17,7 @@
       Name = "HestiaSuper"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "DemeterSuper"
+      Projectile = "HestiaSuper"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
@@ -28,7 +28,7 @@
       Name = "HestiaMaxSuper"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "DemeterMaxSuper"
+      Projectile = "HestiaMaxSuper"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
@@ -51,7 +51,7 @@
       Name = "HestiaOnDeath"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "SecondLavaPuddleLarge"
+      Projectile = "HestiaLavaPuddleLarge"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
