@@ -3199,7 +3199,7 @@ if ModUtil ~= nil then
 						PortraitExitWait = 1.25,
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 						UseEventEndSound = true,
-						Text = "I come all this way to help you out and the first thing you do is confuse me with my sister? Not the best first impression, Cousin." },
+						Text = "Hello, young one. It is a pleasure to meet you, Zagreus. I have heard word of your problem — this here is to show my compassion towards your cause. Until next time..." },
 				},
 				HestiaMiscPickup01 =
 				{
@@ -4500,7 +4500,7 @@ if ModUtil ~= nil then
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
 			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-		end  
+		end 
 	}]]
 
 end
