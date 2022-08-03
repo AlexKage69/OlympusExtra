@@ -88,7 +88,7 @@
 		{
 			Id = "ApolloSignoff_Max"
 			DisplayName = """
-				From {#AwardMaxFlavorFormat}Apollo{#AwardDarkFlavorFormat}; you share an {#AwardMaxFlavorFormat}Harmonious Bond
+				From {#AwardMaxFlavorFormat}Apollo{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Harmonious Bond
 
 				{#AwardDarkFlavorFormat}He sees you as a prophet of good fortune.
 			"""
@@ -296,12 +296,12 @@
     	}
 		{
 			Id = "SeaChanteyTrait"
-			DisplayName = "Sea Chantey"
+			DisplayName = "Sea Shanty"
 			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
 		}	
 		{
 			Id = "SeaChanteyText",
-			DisplayName = "{#CombatTextHighlightFormat}Sea Chantey!{#PreviousFormat}!"
+			DisplayName = "{#CombatTextHighlightFormat}Sea Shanty!{#PreviousFormat}!"
     	}
 		{
 			Id = "BlindDurationTrait"
