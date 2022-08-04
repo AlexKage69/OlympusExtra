@@ -363,11 +363,9 @@
       InheritFrom = "RadialNova"
       GroupName = "FX_Terrain_Add"
       //VisualFx = "ArtemisSwordParryLeavesRandom"
-      EndGreen = 0.999
-      EndRed = 0.4
-      StartBlue = 0.2
-      StartGreen = 1.0
-      StartRed = 0.9
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41    
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 16
@@ -2753,35 +2751,39 @@
     /* Dash */
     {
       Name = "BlinkTrailVerticalB-Hestia"
-      InheritFrom = "BlinkTrailVerticalB"
+      //InheritFrom = "BlinkTrailVerticalB"
       ChildAnimation = "null"
-      Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      //Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
       StopSoundOnFinishFade = 0.2
       CreateAnimations = [
+        /*{
+          Name = "HestiaDashFire"
+        }*/
         {
-          Name = "ArtemisDashTwinkle"
-        }
-        {
-          Name = "ArtemisDashGround"
-        }
-        {
-          Name = "ArtemisDashIso"
-        }
-        {
-          Name = "ArtemisDashSwirl"
-        }
-        {
-          Name = "ArtemisDashLeaves"
-        }
-        {
-          Name = "QuickFlashGreen"
+          Name = "QuickFlashDarkPurple"
         }]
       Color = 
       {
-        Red = 0.48
-        Green = 0.09
-        Blue =  0.21
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
       }
+    }
+    {
+      Name = "HestiaDashFire"
+      FilePath = "Fx\ArtemisDashLeaves\ArtemisDashLeaves"
+      GroupName = "FX_Terrain"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 85
+      NumFrames = 85
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OriginX = 100.0
+      OriginY = 85.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      Ambient = 0.0
     }
     {
       Name = "BlinkTrailFlat-Hestia"
@@ -2826,7 +2828,7 @@
       InheritFrom = "ZagreusDashNoCollideVFX"
       EndFrame = 60
       StartFrame = 1
-      Hue = 0.313
+      Hue = 0.916
     }
 
     {
@@ -2834,9 +2836,47 @@
       InheritFrom = "ZagreusDashCollideVFX"
       EndFrame = 60
       StartFrame = 1
-      Hue = 0.313
+      Hue = 0.916
     }
     /* Attraction Fx */
+    {
+      Name = "HestiaFistVacuumFx"
+      Type = "Book"
+      FilePath = "Fx\FistVacuumFx\FistVacuumFx"
+      NumFrames = 14
+      AddColor = true
+      StartRed = 0.6
+      StartGreen = 0
+      StartBlue = 1
+      EndRed = 0.4
+      EndBlue = 0.999
+      EndGreen = 0.001
+      GroupName = "FX_Standing_Add"
+      OriginX = 25
+      OriginY = 100
+      OffsetZ = 60
+      StartAlpha = 1.0
+      EndAlpha = 0.9
+      ScaleY = 1.5
+      SortMode = "FromParent"
+      ScaleFromOwner = "Ignore"
+      LocationFromOwner = "Ignore"
+      AngleFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      RandomFlipVertical = true
+      ScaleLength = 485
+      //VisualFx = "FistVacuumParticles"
+      VisualFxCap = 16
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.03
+      CreateAnimations = [
+        /*{
+          Name = "FistVacuumFxDark"
+        }
+        {
+          Name = "FistVacuumFxDisplacement"
+        }*/]
+    }
     /* Cast */
     {
       Name = "HestiaLavaSplashProjectileHead"

@@ -4466,7 +4466,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 		HasTraitNameInRoom = "MasterBoltTrait",
 		{ Cue = "/VO/Zeus_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Is that the bow I gave to Artemis and you, Young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
+			Text = "Is that the bow I gave to Artemis and you, young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
 		{ Cue = "/VO/Apollo_0049",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,

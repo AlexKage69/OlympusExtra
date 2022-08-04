@@ -71,3 +71,38 @@ ModUtil.WrapBaseFunction( "CodexScrollChaptersLeft", function(baseFunc, screen, 
 	local chapterButton = screen.Components[chapterName]
 	CodexOpenChapter( screen, chapterButton, { FirstOpen = true } )
 end)
+
+-- Move the CodexStatus
+--local OlympusCodexStatus = ModUtil.Entangled.ModData(CodexStatus)
+ModUtil.Path.Wrap( "UnlockExistingEntries", 
+	function(baseFunc)	
+		baseFunc()
+		if CodexStatus["OlympianGoddess"] == nil then
+			CodexStatus["OlympianGoddess"] = {}
+			if CodexStatus["OlympianGods"] ~= nil then
+				if CodexStatus["OlympianGods"]["ArtemisUpgrade"] ~= nil then
+					CodexStatus["OlympianGoddess"]["ArtemisUpgrade"] = CodexStatus["OlympianGods"]["ArtemisUpgrade"]
+				end	
+				if CodexStatus["OlympianGods"]["DemeterUpgrade"] ~= nil then
+					CodexStatus["OlympianGoddess"]["DemeterUpgrade"] = CodexStatus["OlympianGods"]["DemeterUpgrade"]
+				end	
+				if CodexStatus["OlympianGods"]["AphroditeUpgrade"] ~= nil then
+					CodexStatus["OlympianGoddess"]["AphroditeUpgrade"] = CodexStatus["OlympianGods"]["AphroditeUpgrade"]
+				end	
+				if CodexStatus["OlympianGods"]["AthenaUpgrade"] ~= nil then
+					CodexStatus["OlympianGoddess"]["AthenaUpgrade"] = CodexStatus["OlympianGods"]["AthenaUpgrade"]
+				end	
+			end
+		end	
+	end
+)
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
+		function(baseFunc)		
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexStatus["OlympianGods"]))
+			baseFunc()
+		end
+	)
+--[[
+if OlympusCodexStatus["OlympianGods"][entryName][entryIndex].Unlocked then
+	UnlockCodexEntry()
+end--]]

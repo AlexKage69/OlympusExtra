@@ -275,9 +275,9 @@ if ModUtil ~= nil then
 	OlympusProjectileData.HestiaProjectile = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 	}
-	OlympusProjectileData.HestiaLavaPuddleLarge =
+	OlympusProjectileData.HestiaField =
 	{
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 		SpawnedProjectile = true,
 		NeverStore = true,
 	}	
@@ -1621,7 +1621,6 @@ if ModUtil ~= nil then
 	OlympusTraitData.HestiaDashTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
-		RequiredFalseTraits = { "GunLoadedGrenadeTrait" },
 		God = "Hestia",
 		Icon = "Boon_Hestia_03",
 		Slot = "Rush",
@@ -1644,27 +1643,6 @@ if ModUtil ~= nil then
 				Multiplier = 1.60,
 			}
 		},
-		AddOutgoingDamageModifiers =
-		{
-			ValidWeaponMultiplier = {
-				BaseValue = 1.5,
-				SourceIsMultiplier = true,
-				IdenticalMultiplier =
-				{
-					Value = -0.8,
-				},
-			},
-			ValidWeapons = WeaponSets.HeroDashWeapons,
-			ExcludeLinked = true,
-			ExtractValues =
-			{
-				{
-					Key = "ValidWeaponMultiplier",
-					ExtractAs = "TooltipDamageBonus",
-					Format = "PercentDelta",
-				},
-			}
-		},
 		PropertyChanges =
 		{
 			{
@@ -1677,6 +1655,46 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				WeaponProperty = "FireGraphic",
 				ChangeValue = "ZagreusDashNoCollide_Hestia",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponProperty = "Projectile",
+				ChangeValue = "HestiaFireDashField",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileProperty = "DamageLow",
+				BaseMin = 1,
+				BaseMax = 1,
+				AsInt = true,
+				MinMultiplier = 0.2,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponProperty = "BlinkDetonateAtOrigin",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponProperty = "BlinkDetonateAtEndpoint",
+				ChangeValue = false,
 				ChangeType = "Absolute",
 			},
 		},
@@ -1722,7 +1740,7 @@ if ModUtil ~= nil then
 				ChangeValue = "ProjectileFireRing-Hestia",
 				ChangeType = "Absolute",
 			},
-			--[[{
+			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageLow",
@@ -1744,12 +1762,12 @@ if ModUtil ~= nil then
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
-			{
+			--[[{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 3,
-				BaseMax = 3,
+				BaseMax = 10,
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamageLava",
@@ -4321,7 +4339,7 @@ if ModUtil ~= nil then
 		end
 	end
 	function HestiaPullPresentation( victimId, args, dropLocation )
-		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = dropLocation, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
+		CreateAnimationsBetween({ Animation = "HestiaFistVacuumFx", DestinationId = victimId, Id = dropLocation, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
 		PlaySound({ Name = "/SFX/Player Sounds/ZagreusFistMagnetismVacuumActivate", Id = victimId })
 	end
 	OnProjectileDeath{

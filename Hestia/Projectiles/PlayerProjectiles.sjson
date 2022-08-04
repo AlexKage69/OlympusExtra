@@ -14,7 +14,7 @@
       DamageHigh = 200
       DetonateGraphic = "null"
       //ImpactFx = "HestiaHitFx"
-      ObstacleCollisionCheck = "PolygonContainsPoint"
+      //ObstacleCollisionCheck = "PolygonContainsPoint"
       MultipleUnitCollisions = false
       MultipleObstacleCollisions = false
       SpawnOnDetonate = "HestiaField"
@@ -133,7 +133,7 @@
       GaussianSpawnDistribution = true
       Type = "INSTANT"
       DamageLow = 3
-      DamageHigh = 3
+      DamageHigh = 10
       DissipateGraphic = "HestiaLavaPuddleOut"
       //SpawnOnDetonate = "HestiaDefenseField"
       ImpactVelocity = 0
@@ -157,6 +157,61 @@
       Thing = 
       {
         Graphic = "HestiaLavaPuddleLarge"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }
+    }
+    {
+      Name = "HestiaFireDashField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 1
+      DamageHigh = 1
+      //DissipateGraphic = "HestiaLavaPuddleOut"
+      //SpawnOnDetonate = "HestiaDefenseField"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.1
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 175
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      Thing = 
+      {
+        Graphic = "ArtemisDashGround"
         DrawEmbeddedBehind = true
         Points = [
           {
