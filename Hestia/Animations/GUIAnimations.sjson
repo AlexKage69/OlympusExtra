@@ -4,7 +4,7 @@
     {
       Name = "Keepsake_Ember_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_kitchenflame_01"
+      FilePath = "Hestia\Keepsake_Cauldron"
       Scale = 0.5
       EndFrame = 1
       StartFrame = 1
@@ -12,7 +12,7 @@
     {
       Name = "Keepsake_Ember"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_kitchenflame_01"
+      FilePath = "Hestia\Keepsake_Cauldron"
       Scale = 1.2
       EndFrame = 1
       StartFrame = 1
@@ -208,56 +208,56 @@
         {
       Name = "Boon_Hestia_08_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Vengence_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_08_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Vengence_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hestia_09_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Homecoming_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_09_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Homecoming_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_10_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\MeltingHeart_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_10_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\MeltingHeart_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_11_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Blazing_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_11_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Blazing_large"
       EndFrame = 1
       StartFrame = 1
     }
@@ -292,14 +292,14 @@
     {
       Name = "Boon_Hestia_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaAttract_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\HestiaAttract_large"
       EndFrame = 1
       StartFrame = 1
     }
