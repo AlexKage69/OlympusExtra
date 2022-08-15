@@ -72,8 +72,7 @@ ModUtil.WrapBaseFunction( "CodexScrollChaptersLeft", function(baseFunc, screen, 
 	CodexOpenChapter( screen, chapterButton, { FirstOpen = true } )
 end)
 
--- Move the CodexStatus
---local OlympusCodexStatus = ModUtil.Entangled.ModData(CodexStatus)
+-- Added CodexStatus
 ModUtil.Path.Wrap( "UnlockExistingEntries", 
 	function(baseFunc)	
 		baseFunc()
@@ -96,13 +95,3 @@ ModUtil.Path.Wrap( "UnlockExistingEntries",
 		end	
 	end
 )
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)		
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexStatus["OlympianGods"]))
-			baseFunc()
-		end
-	)
---[[
-if OlympusCodexStatus["OlympianGods"][entryName][entryIndex].Unlocked then
-	UnlockCodexEntry()
-end--]]

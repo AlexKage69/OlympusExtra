@@ -179,6 +179,62 @@
     }
     {
       Name = "HestiaFireDashField"
+      InheritFrom = "DefaultRushProjectile"
+      Type = "HOMING"
+      HomingAllegiance = "ENEMIES"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      AdjustRateAcceleration = -260
+      UnlimitedUnitPenetration = true
+      Range = 200
+      Speed = 1000
+      DamageRadius = 120
+      DamageRadiusScaleY = 0.7
+      DamageRadiusScaleX = 1.3
+      DamageLow = 0
+      DamageHigh = 0
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5.0
+      Fuse = 0.1
+      ImpactFx = null
+      DetonateGraphic = null
+      DissipateGraphic = "HestiaRushProjectileImpact"
+      UseVulnerability = false
+      IgnoreCoverageAngles = true
+      SilentImpactOnInvulnerable = true
+      SpawnOnDetonate = "HestiaFire"
+      SpawnType = "PROJECTILE"
+      GroupName = "Standing"
+      Thing = 
+      {
+        Graphic = "HestiaRushProjectileHead"
+        OffsetZ = 0
+        Grip = 999999
+        AttachedAnim = "null"
+        UseBoundsForSortDrawArea = true
+        Points = [
+          {
+            X = 90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -45
+          }
+          {
+            X = -90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 45
+          }]
+      }
+    }
+    {
+      Name = "HestiaFire"
       AutoAdjustForTarget = false
       AffectsEnemies = true
       AffectsFriends = false
@@ -187,48 +243,44 @@
       UnlimitedUnitPenetration = true
       GaussianSpawnDistribution = true
       Type = "INSTANT"
-      DamageLow = 1
-      DamageHigh = 1
-      //DissipateGraphic = "HestiaLavaPuddleOut"
-      //SpawnOnDetonate = "HestiaDefenseField"
+      SpawnRadius = 0
+      DamageRadius = 200
+      DamageLow = 0
+      DamageHigh = 0
       ImpactVelocity = 0
       MultiDetonate = true
-      TotalFuse = 5
-      Fuse = 0.25
+      TotalFuse = 5.5
+      Fuse = 0.1
       Range = 0
       UseVulnerability = false
-      ConsecutiveHitWindow = 0.1
-      ImmunityDuration = 0.75
+      ImmunityDuration = 0.6
       SilentImpactOnInvulnerable = true
-      GroupName = "FX_Terrain"
-      VacuumStrength = 0
-      VacuumDistance = 0
-      IgnoreDodge = true
-      DamageRadius = 175
-      DamageRadiusScaleX = 1.0
+      GroupName = "FX_Standing_Top"
       DamageRadiusScaleY = 0.6
-      DangerDistance = 0
-      ProjectileNumOpacityMultiplier = 0.3
+      DamageRadiusScaleX = 1.0
+      IgnoreCoverageAngles = true
+      ClearOnAttackEffects = false      
       Thing = 
       {
-        Graphic = "ArtemisDashGround"
-        DrawEmbeddedBehind = true
+        Graphic = "DemeterSpinIn"
+        OffsetZ = 0
+        Grip = 999999
         Points = [
           {
-            X = 4
+            X = 90
             Y = 0
           }
           {
             X = 0
-            Y = -2
+            Y = -45
           }
           {
-            X = -4
+            X = -90
             Y = 0
           }
           {
             X = 0
-            Y = 2
+            Y = 45
           }]
       }
     }

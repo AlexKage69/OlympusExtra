@@ -1665,9 +1665,10 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFire",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 1,
-				BaseMax = 1,
+				BaseMin = 7,
+				BaseMax = 7,
 				AsInt = true,
 				MinMultiplier = 0.2,
 				DepthMult = DepthDamageMultiplier,
@@ -1699,6 +1700,15 @@ if ModUtil ~= nil then
 			},
 		},
 	}
+	OlympusTraitData.ChaosCurseDashRangeTrait.PropertyChanges[1].DeriveSource = "ModifierSource"
+	table.insert(OlympusTraitData.ChaosCurseDashRangeTrait.PropertyChanges, {
+		TraitName = "HestiaDashTrait",
+		WeaponNames = { "RushWeapon" },
+		ProjectileName = "HestiaFireDashField",
+		ProjectileProperty = "Range",
+		ChangeType = "Multiply",
+		DeriveValueFrom = "ModifierSource",
+	})
 	OlympusTraitData.HestiaRangedTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },

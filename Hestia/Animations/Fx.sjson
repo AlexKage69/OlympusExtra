@@ -2756,9 +2756,6 @@
       //Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
       StopSoundOnFinishFade = 0.2
       CreateAnimations = [
-        /*{
-          Name = "HestiaDashFire"
-        }*/
         {
           Name = "QuickFlashDarkPurple"
         }]
@@ -2770,20 +2767,219 @@
       }
     }
     {
-      Name = "HestiaDashFire"
-      FilePath = "Fx\ArtemisDashLeaves\ArtemisDashLeaves"
-      GroupName = "FX_Terrain"
+      Name = "HestiaRushProjectileHead"
       Type = "Book"
-      AngleFromOwner = "Take"
-      EndFrame = 85
-      NumFrames = 85
-      PlaySpeed = 60.0
-      StartFrame = 1
-      OriginX = 100.0
-      OriginY = 85.0
+      FilePath = "Fx\DemeterSmokeDirectional\DemeterSmokeDirectional"
+      NumFrames = 43
+      PlaySpeed = 60
+      Material = "Unlit"
+      Scale = 1.5
+      AngleFromOwner = "Maintain"
+      UseOwnAngle = true
+      SortMode = "FromParent"
+      //Sound = "/SFX/Player Sounds/DemeterColdNovaRush"
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      AddColor = false
+      EaseIn = 0.9
+      EaseOut = 1.0
+      VisualFxDistanceMin = 30
+      VisualFxDistanceMax = 40
+      VisualFxCap = 16
+      VisualFx = "HestiaRushProjectileTrail"
+    }
+    {
+      Name = "HestiaRushProjectileTrail"
+      Type = "Book"
+      FilePath = "Fx\KnockbackLines\KnockbackLines"
+      AddColor = false
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      NumFrames = 21
       LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
-      Ambient = 0.0
+      RandomFlipVertical = true
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 90
+      StartAlpha = 0.8
+      EndAlpha = 0
+      PostRotateScaleY = 1.0
+      Scale = 0.5
+      StartScaleX = 2
+      EndScaleX = 1
+      ScaleY = 0.5
+      OriginX = -50
+      OriginY = 135
+      OffsetZ = -30
+      GroupName = "FX_Terrain"
+    }
+    {
+      Name = "HestiaRushProjectileImpact"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      CreateAnimation = "HestiaRushProjectileImpactFx"
+      Duration = 0.1
+    }
+    {
+      Name = "HestiaRushProjectileImpactFx"
+      Type = "Slide"
+      FilePath = "Fx\DemeterSmokeA\DemeterSmokeA"
+      NumFrames = 47
+      Material = "Unlit"
+      StartScale = 0.7
+      EndScale = 0.69
+      DieWithOwner = false
+      ColorFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      OverlayVfx = true
+      UseOwnAngle = false
+      //Sound = "/SFX/Player Sounds/DemeterRushImpactPoof"
+      CreateAnimation = "QuickFlashDarkPurple"
+      Slides = [
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
     }
     {
       Name = "BlinkTrailFlat-Hestia"
