@@ -233,7 +233,7 @@
 		}
 		{
 			Id = "ForceHestiaBoonTrait"
-			DisplayName = "Ancestral Torch"
+			DisplayName = "Bottomless Cauldron"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
@@ -243,7 +243,7 @@
 		}
 		{
 			Id = "ForceHestiaBoonTrait_Inactive"
-			DisplayName = "Ancestral Torch"
+			DisplayName = "Bottomless Cauldron"
 			Description = "Hestia's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
