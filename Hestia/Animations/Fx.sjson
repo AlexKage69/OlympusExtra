@@ -2847,6 +2847,12 @@
       Loop = true
       NumFrames = 40
       PlaySpeed = 3.0
+      AddColor = false
+      Color = {
+        Red = 0.5
+        Green = 0.5
+        Blue = 0.5
+      }
       StartFrame = 1
       Ambient = 0.0
       VisualFxCap = 40
@@ -2980,9 +2986,11 @@
       RandomPlaySpeedMax = 45.0
       RandomPlaySpeedMin = 30.0
       AddColor = true
-      Red = 0.82
-      Green = 0.20
-      Blue = 0.50
+      Color = {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
       StartFrame = 1
       RandomOffsetX = 120.0
       RandomOffsetY = 20.0

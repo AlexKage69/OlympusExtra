@@ -1135,7 +1135,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		Slot = "Secondary",
-		Icon = "Boon_Hestia_00",
+		Icon = "Boon_Hestia_02",
 		RequiredFalseTraits = { "FistVacuumTrait", "FistChargeSpecialTrait", "FistSpecialFireballTrait" },
 		AddOutgoingDamageModifiers =
 		{
@@ -1686,7 +1686,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		Slot = "Ranged",
-		Icon = "Boon_Hestia_02",
+		Icon = "Boon_Hestia_04",
 		CustomTrayText = "HestiaRangedTrait_Tray",
         RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
@@ -1804,7 +1804,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		Slot = "Ranged",
-		Icon = "Boon_Hestia_02",
+		Icon = "Boon_Hestia_05",
 		CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
         RequiredTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
@@ -1909,7 +1909,7 @@ if ModUtil ~= nil then
 		CustomTrayText = "HestiaShoutTrait_Tray",
 		God = "Hestia",
 		Slot = "Shout",
-		Icon = "Boon_Hestia_04",
+		Icon = "Boon_Hestia_06",
 		RarityLevels =
 		{
 			Common =
@@ -2024,7 +2024,7 @@ if ModUtil ~= nil then
 	}
 	OlympusTraitData.StrongAttractionTrait =
 	{
-		Icon = "Boon_Hestia_05",
+		Icon = "Boon_Hestia_07",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "StrongAttractionTrait",
 		God = "Hestia",
@@ -2060,7 +2060,7 @@ if ModUtil ~= nil then
 	}
 	OlympusTraitData.HestiaRevengeTrait =
 	{
-		Icon = "Boon_Hestia_06",
+		Icon = "Boon_Hestia_08",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		AddOnHitWeapons = { "HestiaRetaliate" },
@@ -2112,7 +2112,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
-		Icon = "Boon_Hestia_07",
+		Icon = "Boon_Hestia_09",
 		LootSource = "HestiaUpgrade",
 		RarityLevels =
 		{
@@ -2141,7 +2141,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
-		Icon = "Boon_Hestia_07",
+		Icon = "Boon_Hestia_10",
 		RarityLevels =
 		{
 			Common =
@@ -2166,7 +2166,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
-		Icon = "Boon_Hestia_08",
+		Icon = "Boon_Hestia_11",
 		RarityLevels =
 		{
 			Common =
@@ -2215,7 +2215,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hestia",
-		Icon = "Boon_Hestia_09",
+		Icon = "Boon_Hestia_12",
 		RarityLevels =
 		{
 			Common =
@@ -2302,7 +2302,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hestia",
-		Icon = "Boon_Hestia_10",
+		Icon = "Boon_Hestia_13",
 		RarityLevels =
 		{
 			Common =
@@ -2359,7 +2359,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "LavaAutoTrait",
 		God = "Hestia",
-		Icon = "Boon_Hestia_11",
+		Icon = "Boon_Hestia_14",
 		PropertyChanges =
 		{
 			{
@@ -2386,7 +2386,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HealthDefianceTrait",
 		RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
 		RequiredMinMaximumLastStands = 1,
-		Icon = "Boon_Hestia_11",
+		Icon = "Boon_Hestia_09",
 		ConsumeSound = "/EmptyCue",
 		Cost = 0,
 		UseFunctionNames =  { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" } ,
