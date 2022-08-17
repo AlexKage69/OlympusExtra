@@ -2790,6 +2790,127 @@
       VisualFx = "HestiaRushProjectileTrail"
     }
     {
+      Name = "HestiaSpinLoop"
+      FilePath = "Fx\LavaFire\LavaFire"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      RandomStartFrame = true
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 150.0
+      Ambient = 0.0
+      ChainTo = "HestiaSpinLoopOut"
+      //Alpha = 0.7
+      //AddColor = true
+      Color = {
+        Red = 0.8
+        Green = 0.7
+        Blue = 0.9
+      }
+      ColorFromOwner = "Ignore"
+      //VisualFx = "CandleFlame"
+      //VisualFxIntervalMin = 0.1
+      //VisualFxIntervalMax = 0.2
+      SortMode = "Secondary"
+      OverlayVfx = false
+      TransferFrameFromThis = true
+      Material = "Unlit"
+      ScaleX = 0.5
+      ScaleY = 1.0
+      CreateAnimations = [
+        { Name = "HestiaSpinLight" }
+        { Name = "LavaEmber" }
+      ]
+    }
+    {
+      Name = "HestiaSpinLight"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      GroupName = "FX_Terrain_Add"
+      StartAlpha = 0
+      EndAlpha = 0.3
+      PingPongColor = false
+      Duration = 0.25
+      DieWithOwner = true
+      Scale = 2
+      ScaleY = 0.5
+      HoldLastFrame = true
+      ChainTo = "HestiaSpinLightOut"
+    }
+    {
+      Name = "HestiaSpinLightOut"
+      InheritFrom = "HestiaSpinLight"
+      StartAlpha = 0.3
+      EndAlpha = 0
+      HoldLastFrame = false
+      ChainTo = null
+    }
+    {
+      Name = "HestiaSpinLoopOut"
+      InheritFrom = "HestiaSpinLoop"
+      ChainTo = "HestiaSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
+    }
+    {
+      Name = "HestiaSpinIn"
+      InheritFrom = "HestiaSpinLoop"
+      TransferFrameFromThis = false
+      ChainTo = "HestiaSpinLoop"
+      //CreateAnimation = "QuickFlashIce"
+      FilePath = "Fx\LavaFire\LavaFire"
+      Sound = "/null"
+      EndFrame = 5
+      Loop = false
+      NumFrames = 5
+      StartFrame = 1
+      StartAlpha = 0
+      EndAlpha = 1
+    }
+    {
+      Name = "HestiaSpinOut"
+      InheritFrom = "HestiaSpinLoop"
+      TransferFrameFromThis = false
+      TransferFrameToThis = false
+      ChainTo = "null"
+      //FilePath = "Fx\LavaFire\LavaFire"
+      Sound = "/EmptyCue"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 35
+      VisualFx = null
+      EndFrame = 15
+      Loop = false
+      NumFrames = 15
+      StartFrame = 1
+      ChildAnimation = "HestiaSpinOut2"
+    }
+    {
+      Name = "HestiaSpinOut2"
+      InheritFrom = "HestiaSpinOut"
+      ChildAnimation = null
+    }
+    {
       Name = "HestiaRushProjectileTrail"
       Type = "Book"
       FilePath = "Fx\KnockbackLines\KnockbackLines"
@@ -3113,6 +3234,7 @@
       PlaySpeed = 30.0
       StartFrame = 1
       //OriginX = 25.0
+      OffsetZ = 50.0
       Scale = 1.0
       ScaleFromOwner = "Ignore"
       Ambient = 0.0

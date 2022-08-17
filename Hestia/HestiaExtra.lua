@@ -1632,15 +1632,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.20,
+				Multiplier = 1.22,
 			},
 			Epic =
 			{
-				Multiplier = 1.40,
+				Multiplier = 1.44,
 			},
 			Heroic =
 			{
-				Multiplier = 1.60,
+				Multiplier = 1.66,
 			}
 		},
 		PropertyChanges =
@@ -1667,25 +1667,70 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileName = "HestiaFire",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 7,
-				BaseMax = 7,
+				BaseMin = 6,
+				BaseMax = 6,
 				AsInt = true,
 				MinMultiplier = 0.2,
 				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "DamageOverTime",
 				IdenticalMultiplier =
 				{
 					Value = DuplicateStrongMultiplier,
 				},
 				ExtractValue =
 				{
-					ExtractAs = "TooltipDamage",
+					ExtractAs = "TooltipDamageOverTime",
 				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFire",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageOverTime"
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 3,
+				BaseMax = 3,
+				AsInt = true,
+				MinMultiplier = 0.2,
+				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "BurstDamage",
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageBurst",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "BurstDamage"
+			},
+			--[[{
+				WeaponNames = { "RushWeapon" },
+				WeaponProperty = "WeaponRange",
+				ChangeValue = 1.2,
+				ChangeType = "Multiply",
+			},
+			{
+				WeaponNames = { "RushWeapon" },
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "Range",
+				ChangeValue = 1.2,
+				ChangeType = "Multiply",
 			},
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
-			},
+			},--]]
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				WeaponProperty = "BlinkDetonateAtOrigin",
@@ -1708,6 +1753,14 @@ if ModUtil ~= nil then
 		ProjectileProperty = "Range",
 		ChangeType = "Multiply",
 		DeriveValueFrom = "ModifierSource",
+	})
+	table.insert(OlympusTraitData.SpearDashMultiStrike.PropertyChanges, {
+		TraitName = "HestiaDashTrait",
+		WeaponNames = { "RushWeapon" },
+		ProjectileName = "HestiaFireDashField",
+		ProjectileProperty = "Range",
+		ChangeValue = 0.75,
+		ChangeType = "Multiply",
 	})
 	OlympusTraitData.HestiaRangedTrait =
 	{
@@ -1757,6 +1810,7 @@ if ModUtil ~= nil then
 				BaseMin = 70,
 				BaseMax = 70,
 				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "DamageBurst",
 				IdenticalMultiplier =
 				{
 					Value = DuplicateStrongMultiplier,
@@ -1770,14 +1824,15 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				DeriveValueFrom = "DamageBurst"
 			},
-			--[[{
+			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 3,
-				BaseMax = 10,
+				BaseMin = 7,
+				BaseMax = 7,
+				DeriveSource = "DamageField",
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamageLava",
@@ -1787,8 +1842,8 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
-			},]]
+				DeriveValueFrom = "DamageField"
+			},
 			-- Beowulf
 			{
                 TraitName = "ShieldLoadAmmoTrait",
@@ -2078,13 +2133,21 @@ if ModUtil ~= nil then
 		AttractionCount = { 
 			BaseValue = 1.0
 		},
-		AttractionForce = { 
-			BaseValue = 500.0
+		AttractionDistance = { 
+			BaseValue = 0.15
 		},
 		ExtractValues =
 		{
-
-		}
+		  {
+			Key = "AttractionCount",
+			ExtractAs = "TooltipAttractionCount",
+		  },
+		  {
+			Key = "AttractionDistance",
+			ExtractAs = "TooltipAttractionDistance",
+			Format = "Percent",
+		  },
+		},
 	}
 	OlympusTraitData.HestiaRevengeTrait =
 	{
@@ -2113,12 +2176,11 @@ if ModUtil ~= nil then
 		},
 		PropertyChanges =
 		{
-			
 			{
 				WeaponName = "HestiaRetaliate",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 1,
-				BaseMax = 1,
+				BaseMin = 5,
+				BaseMax = 5,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2162,8 +2224,19 @@ if ModUtil ~= nil then
 			}
 		},
 		DefianceExtraHealth = {
-			BaseValue = 15
-		}
+			BaseValue = 20,
+			ExtractValue =
+			{
+				ExtractAs = "TooltipBonusHealth",
+			}
+		},
+		ExtractValues =
+		{
+		  {
+			Key = "DefianceExtraHealth",
+			ExtractAs = "TooltipBonusHealth",
+		  },
+		},
 	}
 	OlympusTraitData.HealthDamageTrait =
 	{
@@ -2188,6 +2261,16 @@ if ModUtil ~= nil then
 			{
 				Multiplier = 1.75,
 			}
+		},
+		BonusDamage = { 
+			BaseValue = 0.15
+		},
+		ExtractValues =
+		{
+		  {
+			Key = "BonusDamage",
+			ExtractAs = "TooltipBonusDamage",
+		  },		  
 		},
 	}
 	OlympusTraitData.LavaDeathTrait =
@@ -2215,13 +2298,21 @@ if ModUtil ~= nil then
 			}
 		},
 		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
+		LavaSpawnChance = {
+			BaseValue = 15,
+			ExtractValue =
+			{
+				ExtractAs = "TooltipBonusHealth",
+				Format = "PercentDelta",
+			}
+		},
 		PropertyChanges =
 		{
 			{
 				WeaponName = "HestiaOnDeath",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 2,
-				BaseMax = 2,
+				BaseMin = 5,
+				BaseMax = 5,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2370,7 +2461,7 @@ if ModUtil ~= nil then
 				ExtractValue =
 				{
 					ExtractAs = "TooltipWidth",
-					Format = "PercentDelta"
+					Format = "Percent"
 				}
 			},
 			{
@@ -2379,6 +2470,10 @@ if ModUtil ~= nil then
 				ProjectileProperty = "TotalFuse",
 				ChangeValue = 15.0,
 				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+				}
 			},
 		},
 	}	
@@ -2394,7 +2489,7 @@ if ModUtil ~= nil then
 				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 300,
+				ChangeValue = 250,
 				ChangeType = "Add",
 			},
 			{
@@ -2427,6 +2522,17 @@ if ModUtil ~= nil then
 			{ TraitName = "HealthDefianceTrait" },
 			{ },
 		},
+		--[[ExtractValues =
+		{
+			{
+				{
+					Key = "TooltipBonusHealth",
+					ExtractAs = "TooltipBonusHealth2",
+					SkipAutoExtract = true,
+					External = true,
+				},
+			}
+		},]]
 	}
 	-- Duo Traits
 	OlympusTraitData.MoreTrapDamageTrait =
@@ -4283,6 +4389,7 @@ if ModUtil ~= nil then
 		local count = args.Count or 3
 		if HeroHasTrait("StrongAttractionTrait") then
 			count = count + GetTotalHeroTraitValue("AttractionCount")
+			range = range + 1000 * GetTotalHeroTraitValue("AttractionDistance")
 		end
 		local arc = args.Arc or 90
 		local nearestEnemyTargetIds =  GetClosestIds({ Id = targetId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
@@ -4338,7 +4445,7 @@ if ModUtil ~= nil then
 				if( type(force) ~= "number" or args.PullForce < force ) then
 					force = args.PullForce
 					if HeroHasTrait("StrongAttractionTrait") then
-						force = force + 500
+						--force = force + 500
 					end
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
@@ -4381,7 +4488,7 @@ if ModUtil ~= nil then
 		function ( baseFunc, victim, triggerArgs )
 			local hasLastStand = baseFunc(victim, triggerArgs)
 			if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
-				AddMaxHealth( GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait", {Delay = 0.1} )
+				AddMaxHealth( GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait", {Delay = 0.01, NoHealing = true, Thread = true} )
 			end
 			return hasLastStand
 		end
