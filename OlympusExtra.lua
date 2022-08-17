@@ -51,13 +51,15 @@ if ModUtil ~= nil then
             OlympusCodexMenuData.HestiaUpgrade = {
                 "HestiaWeaponTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaSecondaryTrait",
                 "HestiaShoutTrait", "StrongAttractionTrait", "HestiaRevengeTrait",
-                "LastStandHealthDrop", "HealthDamageTrait", "LavaDeathTrait", "LavaResistTrait", 
+                "LastStandHealthDrop", "HealthDamageSoulDrop", "LavaDeathTrait", "LavaResistTrait", 
                 "LavaLongerTrait", "LavaAutoTrait"
             }
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")
+            table.insert(OlympusCodexMenuData.Consumables, "HealthDamageSoulDrop")
             table.insert(OlympusCodexMenuData.Legendaries, "LavaAutoTrait")
             table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_HestiaRangedTrait")
             OlympusCodexMenuData.ConsumableTraits.LastStandHealthDrop = "HealthDefianceTrait"
+            OlympusCodexMenuData.ConsumableTraits.HealthDamageSoulDrop = "HealthDamageTrait"
             table.insert(OlympusCodexBoonTable, "HestiaUpgrade")
             table.insert(OlympusRealGodNames, "Hestia")
 

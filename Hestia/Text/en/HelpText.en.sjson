@@ -199,13 +199,31 @@
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "For each {$Keywords.CentaurHeart} you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per {$Keywords.CentaurHeart}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusDamage}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		} 
+		{
+			Id = "HealthDamageTrait_Tray"
+			InheritFrom = "HealthDamageTrait"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
 		}
 		{
 			Id = "HealthDamageTrait_Initial"
 			InheritFrom = "HealthDamageTrait"
-			Description = "For each {$Keywords.CentaurHeart} you gain, you also gain damage bonus \n {!Icons.Bullet}{#PropertyFormat}Bonus damage per {$Keywords.CentaurHeart}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusDamage}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}		
+		{
+			Id = "HealthDamageSoulDrop"
+			InheritFrom = "HealthDamageTrait_Initial"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		}
+		{
+			Id = "CentaurHeartBoostedText"
+			DisplayName = "{I} Gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} and more..."
+		}	
+		{
+			Id = "CentaurHeartBoostedText_Alt"
+			DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Damage!"
+		}
 		{
 			Id = "LavaResistTrait"
 			DisplayName = "Home Turf"
