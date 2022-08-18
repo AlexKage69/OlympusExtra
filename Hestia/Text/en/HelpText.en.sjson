@@ -31,6 +31,10 @@
 			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} \n{#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
 		}
 		{
+			Id = "RoomRewardEmptyHealthDrop"
+			DisplayName = "Centaur Soul"
+		}
+		{
 			Id = "MiniBoss"
 			DisplayName = "Mini-bosses"
 			Description = "Stronger than most enemies, usually associated with {!Icons.MiniBoss}."
@@ -174,17 +178,17 @@
 		{
 			Id = "HealthDefianceTrait"
 			DisplayName = "Homecoming"
-			Description = "{$Keywords.ExtraChance} gives you Health. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+			Description = "{$Keywords.ExtraChance} gives you {!Icons.Health}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
 		}
 		{
 			Id = "HealthDefianceTrait_Initial"
 			InheritFrom = "HealthDefianceTrait"
-			Description = "{$Keywords.ExtraChance} gives you Health. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+			Description = "{$Keywords.ExtraChance} gives you {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
 		}
 		{
 			Id = "LastStandHealthDrop"
 			InheritFrom = "HealthDefianceTrait_Initial"
-			Description = "{$Keywords.ExtraChance} gives you Health. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
+			Description = "{$Keywords.ExtraChance} gives you {!Icons.Health_Small}. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
 		}
 		{
 			Id = "LavaDeathTrait"

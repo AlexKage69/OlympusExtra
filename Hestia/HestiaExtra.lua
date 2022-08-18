@@ -346,6 +346,7 @@ if ModUtil ~= nil then
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
 	table.insert(OlympusCodexOrdering.OlympianGoddess.Order, "HestiaUpgrade")
+	table.insert(OlympusCodexOrdering.Items.Order, 6, "RoomRewardEmptyHealthDrop")
 	
 	OlympusCodex.OlympianGoddess.Entries["HestiaUpgrade"] =
 	{
@@ -366,7 +367,21 @@ if ModUtil ~= nil then
 		},
 		Image = "Codex_Portrait_Hestia",
 	}
-	
+	OlympusCodex.Items.Entries["RoomRewardEmptyHealthDrop"] =
+	{
+		Entries =
+		{
+			{
+				UnlockThreshold = 1,
+				Text = "CodexData_Hestia_0004",
+			},
+			{
+				UnlockThreshold = 10,
+				Text = "CodexData_Hestia_0005",
+			},
+		},
+		Image = "Codex_Portrait_Heart",
+	}	
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 	
@@ -2365,7 +2380,7 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				EffectName= "LavaPuddleDefense",
 				EffectProperty = "Modifier",
-				BaseMin = 0.85,
+				BaseMin = 0.90,
 				BaseMax = 0.90,
 				SourceIsMultiplier = true,
 				DeriveSource = "ModifierSource",
@@ -2554,7 +2569,7 @@ if ModUtil ~= nil then
 		AddMaxHealthArgs =
 		{
 			Thread = true,
-			Delay = 0.5,
+			Delay = 0.1,
 			NoHealing = true,
 		},
 		UseText = "UseEmptyHealthDrop",
@@ -4611,7 +4626,6 @@ if ModUtil ~= nil then
 		end
 	)
 	function SpawnCentaurSoul()
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Spawn")) 
 		local dropItemName = "RoomRewardEmptyHealthDrop"
 		GiveRandomConsumables({
 			Delay = 0.5,
@@ -4627,8 +4641,9 @@ if ModUtil ~= nil then
 	end
 	-- HealthDamageTrait
 	function HealthDamagePresentation()
-		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
-		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FountainDefenseText_Alt", Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "HealthDamageTrait", Amount = (1 - GetTotalHeroTraitValue("CentaurAttackBonus", {IsMultiplier = true})) * 100 } })
+		--PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })		
+		local amount = math.floor(((GetTotalHeroTraitValue("CentaurAttackBonus", {IsMultiplier = false})) - 1) * 100);
+		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CentaurHeartBoostedText_Alt", PreDelay = 0.55, Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "HealthDamageTrait", Amount = amount } })
 	end
 
 	function OnHealthMultiplyDamage()
@@ -4676,7 +4691,8 @@ if ModUtil ~= nil then
 	
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
-			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ZeusUpgrade)) 
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ApolloUpgrade)) 
 		end 
 	}]]
 
