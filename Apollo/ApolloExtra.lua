@@ -1506,10 +1506,9 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
+					ProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DamageLow",
-					ChangeValue = 70, 
-					ChangeType = "Absolute",
+					DeriveValueFrom = "ExtractSource",
 					ExtractValue =
 					{
 						ExtractAs = "TooltipDamageBeowulf",
@@ -1518,15 +1517,14 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
+					ProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DamageHigh",
-					ChangeValue = 70, 
-					ChangeType = "Absolute",
+					DeriveValueFrom = "ExtractSource",
 				},
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ExcludeProjectileName = "ApolloLobProjectile",
+					ExcludeProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DetonateGraphic",
 					ChangeValue = "null",
 				},
