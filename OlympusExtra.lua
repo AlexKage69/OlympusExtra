@@ -11,11 +11,13 @@ if ModUtil ~= nil then
     ModUtil.Mod.Register("OlympusExtra")
 
     -- CodexMenu Compatibility
-    if CodexMenuData ~= nil then
-        local OlympusCodexMenuData = ModUtil.Entangled.ModData(CodexMenuData)
-        local OlympusCodexMenuReloadShouldSkip = ModUtil.Entangled.ModData(CodexMenuReloadShouldSkip)
-        local OlympusRealGodNames = ModUtil.Entangled.ModData(RealGodNames)
-        local OlympusCodexBoonTable = ModUtil.Entangled.ModData(CodexBoonTable)
+    if CodexMenu ~= nil then
+        local OlympusCodexMenuData = CodexMenu.BoonData
+        --local OlympusCodexMenuReloadShouldSkip = OlympusCodexMenu.ReloadShouldSkip
+        local OlympusRealGodNames = CodexMenu.RealGodNames
+        local OlympusCodexBoonTable = CodexMenu.BoonTable
+        local OlympusConsumableTable = CodexMenu.ConsumableTable
+        --Apollo
         if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
             OlympusCodexMenuData.ApolloUpgrade = {
                 "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait", 
@@ -45,25 +47,32 @@ if ModUtil ~= nil then
             --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true         
             table.insert(OlympusCodexBoonTable, "ApolloUpgrade")
             table.insert(OlympusRealGodNames, "Apollo")
-        end         
+        end        
+        -- Hestia 
         if ModUtil.Mods.Data["HestiaExtra"] ~= nil then
             --External mod interaction
             OlympusCodexMenuData.HestiaUpgrade = {
                 "HestiaWeaponTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaSecondaryTrait",
                 "HestiaShoutTrait", "StrongAttractionTrait", "HestiaRevengeTrait",
-                "LastStandHealthDrop", "HealthDamageTrait", "LavaDeathTrait", "LavaResistTrait", 
+                "LastStandHealthDrop", "HealthDamageSoulDrop", "LavaDeathTrait", "LavaResistTrait", 
                 "LavaLongerTrait", "LavaAutoTrait"
             }
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")
+            table.insert(OlympusCodexMenuData.Consumables, "HealthDamageSoulDrop")
             table.insert(OlympusCodexMenuData.Legendaries, "LavaAutoTrait")
             table.insert(OlympusCodexMenuData.BeowulfTraits, "ShieldLoadAmmo_HestiaRangedTrait")
             OlympusCodexMenuData.ConsumableTraits.LastStandHealthDrop = "HealthDefianceTrait"
+            OlympusCodexMenuData.ConsumableTraits.HealthDamageSoulDrop = "HealthDamageTrait"
             table.insert(OlympusCodexBoonTable, "HestiaUpgrade")
             table.insert(OlympusRealGodNames, "Hestia")
 
             -- Hestia duos
             table.insert(OlympusCodexMenuData.Duos, "FreeHealthTrait")
+
+            -- CentaurSoul-CodexMenu
+            table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")
         end
+        -- Apollo Hestia Duo
     end
     -- Recompile data. Required for each gods so generic here.
     SetupRunData()

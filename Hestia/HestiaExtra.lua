@@ -275,9 +275,9 @@ if ModUtil ~= nil then
 	OlympusProjectileData.HestiaProjectile = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 	}
-	OlympusProjectileData.HestiaLavaPuddleLarge =
+	OlympusProjectileData.HestiaField =
 	{
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 		SpawnedProjectile = true,
 		NeverStore = true,
 	}	
@@ -346,6 +346,7 @@ if ModUtil ~= nil then
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
 	table.insert(OlympusCodexOrdering.OlympianGoddess.Order, "HestiaUpgrade")
+	table.insert(OlympusCodexOrdering.Items.Order, 6, "RoomRewardEmptyHealthDrop")
 	
 	OlympusCodex.OlympianGoddess.Entries["HestiaUpgrade"] =
 	{
@@ -366,7 +367,21 @@ if ModUtil ~= nil then
 		},
 		Image = "Codex_Portrait_Hestia",
 	}
-	
+	OlympusCodex.Items.Entries["RoomRewardEmptyHealthDrop"] =
+	{
+		Entries =
+		{
+			{
+				UnlockThreshold = 1,
+				Text = "CodexData_Hestia_0004",
+			},
+			{
+				UnlockThreshold = 10,
+				Text = "CodexData_Hestia_0005",
+			},
+		},
+		Image = "Codex_Portrait_Heart",
+	}	
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 	
@@ -1621,7 +1636,6 @@ if ModUtil ~= nil then
 	OlympusTraitData.HestiaDashTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
-		RequiredFalseTraits = { "GunLoadedGrenadeTrait" },
 		God = "Hestia",
 		Icon = "Boon_Hestia_03",
 		Slot = "Rush",
@@ -1633,36 +1647,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.20,
+				Multiplier = 1.22,
 			},
 			Epic =
 			{
-				Multiplier = 1.40,
+				Multiplier = 1.44,
 			},
 			Heroic =
 			{
-				Multiplier = 1.60,
-			}
-		},
-		AddOutgoingDamageModifiers =
-		{
-			ValidWeaponMultiplier = {
-				BaseValue = 1.5,
-				SourceIsMultiplier = true,
-				IdenticalMultiplier =
-				{
-					Value = -0.8,
-				},
-			},
-			ValidWeapons = WeaponSets.HeroDashWeapons,
-			ExcludeLinked = true,
-			ExtractValues =
-			{
-				{
-					Key = "ValidWeaponMultiplier",
-					ExtractAs = "TooltipDamageBonus",
-					Format = "PercentDelta",
-				},
+				Multiplier = 1.66,
 			}
 		},
 		PropertyChanges =
@@ -1679,8 +1672,81 @@ if ModUtil ~= nil then
 				ChangeValue = "ZagreusDashNoCollide_Hestia",
 				ChangeType = "Absolute",
 			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponProperty = "Projectile",
+				ChangeValue = "HestiaFireDashField",
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFire",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 6,
+				BaseMax = 6,
+				AsInt = true,
+				MinMultiplier = 0.2,
+				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "DamageOverTime",
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageOverTime",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFire",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageOverTime"
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 3,
+				BaseMax = 3,
+				AsInt = true,
+				MinMultiplier = 0.2,
+				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "BurstDamage",
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageBurst",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "BurstDamage"
+			},
 		},
 	}
+	OlympusTraitData.ChaosCurseDashRangeTrait.PropertyChanges[1].DeriveSource = "ModifierSource"
+	table.insert(OlympusTraitData.ChaosCurseDashRangeTrait.PropertyChanges, {
+		TraitName = "HestiaDashTrait",
+		WeaponNames = { "RushWeapon" },
+		ProjectileName = "HestiaFireDashField",
+		ProjectileProperty = "Range",
+		ChangeType = "Multiply",
+		DeriveValueFrom = "ModifierSource",
+	})
+	table.insert(OlympusTraitData.SpearDashMultiStrike.PropertyChanges, {
+		TraitName = "HestiaDashTrait",
+		WeaponNames = { "RushWeapon" },
+		ProjectileName = "HestiaFireDashField",
+		ProjectileProperty = "Range",
+		ChangeValue = 0.75,
+		ChangeType = "Multiply",
+	})
 	OlympusTraitData.HestiaRangedTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -1722,13 +1788,14 @@ if ModUtil ~= nil then
 				ChangeValue = "ProjectileFireRing-Hestia",
 				ChangeType = "Absolute",
 			},
-			--[[{
+			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 70,
 				BaseMax = 70,
 				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "DamageBurst",
 				IdenticalMultiplier =
 				{
 					Value = DuplicateStrongMultiplier,
@@ -1742,14 +1809,15 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				DeriveValueFrom = "DamageBurst"
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 3,
-				BaseMax = 3,
+				BaseMin = 7,
+				BaseMax = 7,
+				DeriveSource = "DamageField",
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamageLava",
@@ -1759,8 +1827,8 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
-			},]]
+				DeriveValueFrom = "DamageField"
+			},
 			-- Beowulf
 			{
                 TraitName = "ShieldLoadAmmoTrait",
@@ -1898,10 +1966,6 @@ if ModUtil ~= nil then
 			}
 		}
 	}	
-	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
-	{
-		
-	}--]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -2050,13 +2114,21 @@ if ModUtil ~= nil then
 		AttractionCount = { 
 			BaseValue = 1.0
 		},
-		AttractionForce = { 
-			BaseValue = 500.0
+		AttractionDistance = { 
+			BaseValue = 0.15
 		},
 		ExtractValues =
 		{
-
-		}
+		  {
+			Key = "AttractionCount",
+			ExtractAs = "TooltipAttractionCount",
+		  },
+		  {
+			Key = "AttractionDistance",
+			ExtractAs = "TooltipAttractionDistance",
+			Format = "Percent",
+		  },
+		},
 	}
 	OlympusTraitData.HestiaRevengeTrait =
 	{
@@ -2085,12 +2157,11 @@ if ModUtil ~= nil then
 		},
 		PropertyChanges =
 		{
-			
 			{
 				WeaponName = "HestiaRetaliate",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 1,
-				BaseMax = 1,
+				BaseMin = 5,
+				BaseMax = 5,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2134,13 +2205,26 @@ if ModUtil ~= nil then
 			}
 		},
 		DefianceExtraHealth = {
-			BaseValue = 15
-		}
+			BaseValue = 20,
+			ExtractValue =
+			{
+				ExtractAs = "TooltipBonusHealth",
+			}
+		},
+		ExtractValues =
+		{
+		  {
+			Key = "DefianceExtraHealth",
+			ExtractAs = "TooltipBonusHealth",
+		  },
+		},
 	}
 	OlympusTraitData.HealthDamageTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
+		CustomTrayText = "HealthDamageTrait_Tray",
+		LootSource = "HestiaUpgrade",
 		Icon = "Boon_Hestia_10",
 		RarityLevels =
 		{
@@ -2150,17 +2234,55 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.25,
+				Multiplier = 1.33,
 			},
 			Epic =
 			{
-				Multiplier = 1.50,
+				Multiplier = 1.66,
 			},
 			Heroic =
 			{
-				Multiplier = 1.75,
+				Multiplier = 2.00,
 			}
 		},
+		CentaurAttackBonus = 
+		{
+			BaseValue = 1.03,
+			SourceIsMultiplier = true,
+			DecimalPlaces = 2,
+			MinMultiplier = 0.1,
+			IdenticalMultiplier =
+			{
+				Value = -0.8,
+			},
+		},
+		AccumulatedHealthDamageBonus = 1,
+		AddOutgoingDamageModifiers =
+		{
+		  UseTraitValue = "AccumulatedHealthDamageBonus",
+		  IsMultiplier = true,
+		  Unique = true,
+		},
+		AddMaxHealth = 25,
+		ExtractValues =
+		{
+			{
+				Key = "CentaurAttackBonus",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+				DecimalPlaces = 1,
+			  },
+			{
+				Key = "AccumulatedHealthDamageBonus",
+				ExtractAs = "TooltipTotalDamage",
+				Format = "PercentDelta",
+			},
+			{
+				Key = "AddMaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+				Format = "MaxHealth"
+			},
+		}
 	}
 	OlympusTraitData.LavaDeathTrait =
 	{
@@ -2187,13 +2309,21 @@ if ModUtil ~= nil then
 			}
 		},
 		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
+		LavaSpawnChance = {
+			BaseValue = 15,
+			ExtractValue =
+			{
+				ExtractAs = "TooltipBonusHealth",
+				Format = "PercentDelta",
+			}
+		},
 		PropertyChanges =
 		{
 			{
 				WeaponName = "HestiaOnDeath",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 2,
-				BaseMax = 2,
+				BaseMin = 5,
+				BaseMax = 5,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2250,7 +2380,7 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				EffectName= "LavaPuddleDefense",
 				EffectProperty = "Modifier",
-				BaseMin = 0.85,
+				BaseMin = 0.90,
 				BaseMax = 0.90,
 				SourceIsMultiplier = true,
 				DeriveSource = "ModifierSource",
@@ -2342,7 +2472,7 @@ if ModUtil ~= nil then
 				ExtractValue =
 				{
 					ExtractAs = "TooltipWidth",
-					Format = "PercentDelta"
+					Format = "Percent"
 				}
 			},
 			{
@@ -2351,6 +2481,10 @@ if ModUtil ~= nil then
 				ProjectileProperty = "TotalFuse",
 				ChangeValue = 15.0,
 				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+				}
 			},
 		},
 	}	
@@ -2366,7 +2500,7 @@ if ModUtil ~= nil then
 				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 300,
+				ChangeValue = 250,
 				ChangeType = "Add",
 			},
 			{
@@ -2399,6 +2533,108 @@ if ModUtil ~= nil then
 			{ TraitName = "HealthDefianceTrait" },
 			{ },
 		},
+	}	
+	OlympusConsumableData.HealthDamageSoulDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "HealthDamageTrait",
+		Icon = "Boon_Hestia_10",
+		Cost = 0,
+		UseFunctionNames =  { "AddTraitToHero", "SpawnCentaurSoul" } ,
+		UseFunctionArgs =
+		{
+			{ TraitName = "HealthDamageTrait" },
+			{},
+		},
+	}
+
+	OlympusConsumableData.RoomRewardMaxHealthDrop.UseFunctionNames = 
+	{	
+		"OnHealthMultiplyDamage"
+	}
+	OlympusConsumableData.RoomRewardMaxHealthDrop.UseFunctionArgs =
+	{
+		{},
+	}
+	OlympusConsumableData.RoomRewardEmptyHealthDrop =
+	{
+		InheritFrom = { "BaseConsumable", },
+		Cost =
+		{
+			BaseValue = 100,
+			DepthMult = 0,
+			AsInt = true,
+		},
+		AddMaxHealth = 25,
+		AddMaxHealthArgs =
+		{
+			Thread = true,
+			Delay = 0.1,
+			NoHealing = true,
+		},
+		UseText = "UseEmptyHealthDrop",
+		UsePromptOffsetY = 30,
+		BlockExitText = "ExitBlockedByHeal",
+		SpawnSound = "/SFX/HealthIncreaseDrop",
+		ConsumeSound = "/SFX/HealthIncreasePickup",
+		PlayInteract = true,
+		HideWorldText = true,
+		UseFunctionNames = { "OnHealthMultiplyDamage" },
+		UseFunctionArgs = {{}},
+		ConsumedVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.55,
+			SuccessiveChanceToPlayAll = 0.5,
+			Cooldowns =
+			{
+				{ Name = "ZagreusAnyQuipSpeech", Time = 60 },
+			},
+
+			-- That ought to keep me going for a bit.
+			{ Cue = "/VO/ZagreusField_0737", },
+			-- Strength of the Centaurs.
+			{ Cue = "/VO/ZagreusField_0940", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's good.
+			{ Cue = "/VO/ZagreusField_0386", RequiredPlayed = { "/VO/ZagreusField_0737" }, CooldownName = "SaidGoodRecently", CooldownTime = 40, },
+			-- Yes.
+			{ Cue = "/VO/ZagreusField_0387", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Better.
+			{ Cue = "/VO/ZagreusField_0388", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Good for the health.
+			{ Cue = "/VO/ZagreusField_0389", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's a relief.
+			{ Cue = "/VO/ZagreusField_0299", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Much better.
+			{ Cue = "/VO/ZagreusField_0300", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's better.
+			{ Cue = "/VO/ZagreusField_0133", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- I feel stronger.
+			{ Cue = "/VO/ZagreusField_3995", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Feeling stronger.
+			{ Cue = "/VO/ZagreusField_3996", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Feeling good.
+			{ Cue = "/VO/ZagreusField_3997", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Feeling tough.
+			{ Cue = "/VO/ZagreusField_3998", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Centaur strength.
+			{ Cue = "/VO/ZagreusField_3999", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Vitality.
+			{ Cue = "/VO/ZagreusField_4000", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- That's life.
+			{ Cue = "/VO/ZagreusField_4001", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+			-- Should keep me going.
+			{ Cue = "/VO/ZagreusField_4002", RequiredPlayed = { "/VO/ZagreusField_0737" } },
+		},
+		ExtractValues =
+		{
+			{
+				Key = "AddMaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+				Format = "MaxHealth"
+			},
+		}
 	}
 	-- Duo Traits
 	OlympusTraitData.MoreTrapDamageTrait =
@@ -2472,7 +2708,7 @@ if ModUtil ~= nil then
 			Weight = 10,
 			Icon = "BoonSymbolHestia",
 			BoonInfoIcon = "BoonInfoSymbolHestiaIcon",
-			DoorIcon = "BoonSymbolApolloIsometric",
+			DoorIcon = "BoonSymbolHestiaIsometric",
 			Color = { 123, 22, 53, 255 },
 			LightingColor = {123, 22, 53, 255},
 			LootColor = {123, 22, 53, 255},
@@ -2488,8 +2724,8 @@ if ModUtil ~= nil then
 	
 			PriorityUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
 			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
-			Traits = { "HestiaRevengeTrait", "LavaDeathTrait", "HealthDamageTrait" },
-			Consumables = { "LastStandHealthDrop" },
+			Traits = { "HestiaRevengeTrait", "LavaDeathTrait" },
+			Consumables = { "LastStandHealthDrop", "HealthDamageSoulDrop" },
 	
 			LinkedUpgrades =
 			{
@@ -3398,7 +3634,7 @@ if ModUtil ~= nil then
 				HestiaMiscPickup21 =
 				{
 					Name = "HestiaMiscPickup21",
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					PreEven,tFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = GameData.HestiaBasicPickUpTextLines,
 					{ Cue = "/VO/Hestia_0022",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -4255,6 +4491,7 @@ if ModUtil ~= nil then
 		local count = args.Count or 3
 		if HeroHasTrait("StrongAttractionTrait") then
 			count = count + GetTotalHeroTraitValue("AttractionCount")
+			range = range + 1000 * GetTotalHeroTraitValue("AttractionDistance")
 		end
 		local arc = args.Arc or 90
 		local nearestEnemyTargetIds =  GetClosestIds({ Id = targetId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = range, MaximumCount = count })
@@ -4310,7 +4547,7 @@ if ModUtil ~= nil then
 				if( type(force) ~= "number" or args.PullForce < force ) then
 					force = args.PullForce
 					if HeroHasTrait("StrongAttractionTrait") then
-						force = force + 500
+						--force = force + 500
 					end
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
@@ -4321,7 +4558,7 @@ if ModUtil ~= nil then
 		end
 	end
 	function HestiaPullPresentation( victimId, args, dropLocation )
-		CreateAnimationsBetween({ Animation = "FistVacuumFx", DestinationId = victimId, Id = dropLocation, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
+		CreateAnimationsBetween({ Animation = "HestiaFistVacuumFx", DestinationId = victimId, Id = dropLocation, Length = args.distanceBuffer, Stretch = true, UseZLocation = false, Group = "FX_Standing_Add" })
 		PlaySound({ Name = "/SFX/Player Sounds/ZagreusFistMagnetismVacuumActivate", Id = victimId })
 	end
 	OnProjectileDeath{
@@ -4353,7 +4590,7 @@ if ModUtil ~= nil then
 		function ( baseFunc, victim, triggerArgs )
 			local hasLastStand = baseFunc(victim, triggerArgs)
 			if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
-				AddMaxHealth( GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait", {Delay = 0.1} )
+				AddMaxHealth( GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait", {Delay = 0.01, NoHealing = true, Thread = true} )
 			end
 			return hasLastStand
 		end
@@ -4388,86 +4625,40 @@ if ModUtil ~= nil then
 			baseFunc(eventSource, args)
 		end
 	)
-
-	ConsumableData.RoomRewardEmptyHealthDrop =
-	{
-		InheritFrom = { "BaseConsumable", },
-		Cost =
-		{
-			BaseValue = 100,
-			DepthMult = 0,
-			AsInt = true,
-		},
-		AddMaxHealth = 25,
-		AddMaxHealthArgs =
-		{
-			Thread = true,
+	function SpawnCentaurSoul()
+		local dropItemName = "RoomRewardEmptyHealthDrop"
+		GiveRandomConsumables({
 			Delay = 0.5,
-			NoHealing = true,
-		},
-		UseText = "UseEmptyHealthDrop",
-		UsePromptOffsetY = 30,
-		BlockExitText = "ExitBlockedByHeal",
-		SpawnSound = "/SFX/HealthIncreaseDrop",
-		ConsumeSound = "/SFX/HealthIncreasePickup",
-		PlayInteract = true,
-		HideWorldText = true,
-
-		ConsumedVoiceLines =
-		{
-			RandomRemaining = true,
-			BreakIfPlayed = true,
-			PreLineWait = 0.55,
-			SuccessiveChanceToPlayAll = 0.5,
-			Cooldowns =
+			NotRequiredPickup = true,
+			LootOptions =
 			{
-				{ Name = "ZagreusAnyQuipSpeech", Time = 60 },
-			},
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+	end
+	-- HealthDamageTrait
+	function HealthDamagePresentation()
+		--PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })		
+		local amount = math.floor(((GetTotalHeroTraitValue("CentaurAttackBonus", {IsMultiplier = false})) - 1) * 100);
+		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CentaurHeartBoostedText_Alt", PreDelay = 0.55, Duration = 1, LuaKey = "TempTextData", LuaValue = { TraitName = "HealthDamageTrait", Amount = amount } })
+	end
 
-			-- That ought to keep me going for a bit.
-			{ Cue = "/VO/ZagreusField_0737", },
-			-- Strength of the Centaurs.
-			{ Cue = "/VO/ZagreusField_0940", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- That's good.
-			{ Cue = "/VO/ZagreusField_0386", RequiredPlayed = { "/VO/ZagreusField_0737" }, CooldownName = "SaidGoodRecently", CooldownTime = 40, },
-			-- Yes.
-			{ Cue = "/VO/ZagreusField_0387", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Better.
-			{ Cue = "/VO/ZagreusField_0388", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Good for the health.
-			{ Cue = "/VO/ZagreusField_0389", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- That's a relief.
-			{ Cue = "/VO/ZagreusField_0299", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Much better.
-			{ Cue = "/VO/ZagreusField_0300", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- That's better.
-			{ Cue = "/VO/ZagreusField_0133", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- I feel stronger.
-			{ Cue = "/VO/ZagreusField_3995", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Feeling stronger.
-			{ Cue = "/VO/ZagreusField_3996", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Feeling good.
-			{ Cue = "/VO/ZagreusField_3997", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Feeling tough.
-			{ Cue = "/VO/ZagreusField_3998", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Centaur strength.
-			{ Cue = "/VO/ZagreusField_3999", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Vitality.
-			{ Cue = "/VO/ZagreusField_4000", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- That's life.
-			{ Cue = "/VO/ZagreusField_4001", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-			-- Should keep me going.
-			{ Cue = "/VO/ZagreusField_4002", RequiredPlayed = { "/VO/ZagreusField_0737" } },
-		},
-		ExtractValues =
-		{
-			{
-				Key = "AddMaxHealth",
-				ExtractAs = "TooltipMaxHealth",
-				Format = "MaxHealth"
-			},
-		}
-	}
+	function OnHealthMultiplyDamage()
+		local hasDamageBonus = false
+		for k, traitData in pairs(CurrentRun.Hero.Traits) do
+			if traitData.CentaurAttackBonus then
+				hasDamageBonus = true
+				traitData.AccumulatedHealthDamageBonus = traitData.AccumulatedHealthDamageBonus + (traitData.CentaurAttackBonus - 1)
+				ExtractValues( CurrentRun.Hero, traitData, traitData )
+			end
+		end
+		if hasDamageBonus then
+			HealthDamagePresentation()
+		end
+	end
 
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
@@ -4482,6 +4673,7 @@ if ModUtil ~= nil then
 		}
 	})
 	OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
+
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
@@ -4499,7 +4691,8 @@ if ModUtil ~= nil then
 	
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
-			CreateLoot({ Name = "HestiaUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ZeusUpgrade)) 
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ApolloUpgrade)) 
 		end 
 	}]]
 

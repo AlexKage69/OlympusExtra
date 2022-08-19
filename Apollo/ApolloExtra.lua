@@ -1506,10 +1506,9 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
+					ProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DamageLow",
-					ChangeValue = 70, 
-					ChangeType = "Absolute",
+					DeriveValueFrom = "ExtractSource",
 					ExtractValue =
 					{
 						ExtractAs = "TooltipDamageBeowulf",
@@ -1518,15 +1517,14 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
+					ProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DamageHigh",
-					ChangeValue = 70, 
-					ChangeType = "Absolute",
+					DeriveValueFrom = "ExtractSource",
 				},
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ExcludeProjectileName = "ApolloLobProjectile",
+					ExcludeProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DetonateGraphic",
 					ChangeValue = "null",
 				},
@@ -4466,7 +4464,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 		HasTraitNameInRoom = "MasterBoltTrait",
 		{ Cue = "/VO/Zeus_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Is that the bow I gave to Artemis and you, Young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
+			Text = "Is that the bow I gave to Artemis and you, young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
 		{ Cue = "/VO/Apollo_0049",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,

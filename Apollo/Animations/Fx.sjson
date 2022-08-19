@@ -1933,6 +1933,9 @@
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05
+      EndRed = 0.75
+      EndGreen = 0.50
+      EndBlue = 0.10
       VisualFx = "GunLaserFeathers-Apollo"
       ClearCreateAnimations = true
       CreateAnimations = [
@@ -2120,6 +2123,35 @@
       StartBlue = 0.05  
     }
     {
+      Name = "LuciferBomb-Apollo"
+      InheritFrom = "LuciferBomb"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "LuciferBombDark"
+        }
+        {
+          Name = "LuciferBombGlow-Apollo"
+        }
+        {
+          Name = "LuciferBombDropDisplace"
+        }
+        {
+          Name = "QuickFlashOrange"
+        }]
+    }
+    {
+      Name = "LuciferBombGlow-Apollo"
+      InheritFrom = "LuciferBombGlow"
+      ColorFromOwner = "Ignore"
+      Red = 0.75
+      Green = 0.50
+      Blue = 0.05
+    }
+    {
       Name = "GunGrenadeTrailContainer-LuciferOrb-Apollo"
       InheritFrom = "GunGrenadeTrailContainer-LuciferOrb"
       ClearCreateAnimations = true
@@ -2138,17 +2170,15 @@
         {
           Name = "GunGrenadeParticles-LuciferOrb-ApolloA"
         }
-        {
+        /*{
           Name = "GunGrenadeParticles-LuciferOrb-ApolloB"
-        }]
+        }*/
+        ]
     }
     {
       Name = "GunGrenadeParticles-LuciferOrb-ApolloA"
       InheritFrom = "GunGrenadeParticles-LuciferOrb"
-      FilePath = "Particles\particle_aphrodite_sparkle"
-      Red = 1.0
-      Green = 1.0
-      Blue = 1.0
+      FilePath = "Particles\particle_kira"
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05  
@@ -2160,11 +2190,11 @@
       RandomRotation = false
       AlphaMin = 0.99
     }
-    {
+    /*{
       Name = "GunGrenadeParticles-LuciferOrb-ApolloB"
       InheritFrom = "GunGrenadeParticles-LuciferOrb-ApolloA"
-      FilePath = "Particles\particle_aphrodite_heart"
-    }
+      FilePath = "Particles\particle_kira"
+    }*/
     {
       Name = "ZagGrenadeExplosionApolloB"
       InheritFrom = "ZagGrenadeExplosionBaseB"
