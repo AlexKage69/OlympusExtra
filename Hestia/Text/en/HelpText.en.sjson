@@ -193,12 +193,12 @@
 		{
 			Id = "LavaDeathTrait"
 			DisplayName = "Blazing Hearth"
-			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "LavaDeathTrait_Initial"
 			InheritFrom = "LavaDeathTrait"
-			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDamageTrait"

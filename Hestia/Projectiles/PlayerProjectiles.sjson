@@ -74,14 +74,17 @@
       InheritFrom = "1_BasePlayerLargeProjectile"
       DetonateGraphic = "null"
       //DetonateSound = "/SFX/HellFireImpactQuiet"
-      ReticleGraphic = "LobWarningDecal"
+      //ReticleGraphic = "LobWarningDecal"
       Type = "LOB"
       DamageLow = 2
       DamageHigh = 2
       DamageRadius = 200.0
       DamageRadiusScaleY = 0.75
-      AutoAdjustForTarget = false
-      LaunchAngle = 10
+      AutoAdjustForTarget = true
+      LaunchAngle = 50
+      SpinRate = 0
+      MinRange = 0.0
+      //LaunchAngle = 100
       Speed = 550
       SpeedVariance = 150
       ImpactVelocity = 0.0
@@ -89,7 +92,7 @@
       AffectsSelf = true
       CheckUnitImpact = false
       CheckObstacleImpact = false
-      SpawnOnDetonate = "HestiaField"
+      SpawnOnDetonate = "HestiaSmallField"
       CanBeReflected = false
       SpawnType = "PROJECTILE"
       CanCrit = false
@@ -100,7 +103,7 @@
       Thing = 
       {
         Graphic = "HestiaLavaSplashProjectileHead"
-        Scale = 1.0
+        //Scale = 1.0
         OffsetZ = 101
         //AttachedAnim = "GrenadierShadow"
         Points = [
@@ -132,9 +135,9 @@
       UnlimitedUnitPenetration = true
       GaussianSpawnDistribution = true
       Type = "INSTANT"
-      DamageLow = 3
-      DamageHigh = 10
-      DissipateGraphic = "HestiaLavaPuddleOut"
+      DamageLow = 7
+      DamageHigh = 7
+      DissipateGraphic = "HestiaLavaPuddleOutLarge"
       //SpawnOnDetonate = "HestiaDefenseField"
       ImpactVelocity = 0
       MultiDetonate = true
@@ -154,8 +157,7 @@
       DamageRadiusScaleY = 0.6
       DangerDistance = 0
       ProjectileNumOpacityMultiplier = 0.3
-      Thing = 
-      {
+      Thing = {
         Graphic = "HestiaLavaPuddleLarge"
         DrawEmbeddedBehind = true
         Points = [
@@ -175,7 +177,129 @@
             X = 0
             Y = 2
           }]
-      }
+      }     
+    }
+    {
+      Name = "HestiaDeathField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 7
+      DamageHigh = 7
+      DissipateGraphic = "HestiaLavaPuddleOutSmallest"
+      //SpawnOnDetonate = "HestiaDefenseField"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 90
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      Thing = {
+        Graphic = "HestiaLavaPuddleSmallest"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }      
+    }
+    {
+      Name = "HestiaSmallField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 7
+      DamageHigh = 7
+      DissipateGraphic = "HestiaLavaPuddleOutSmallest"
+      //SpawnOnDetonate = "HestiaDefenseField"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 90
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      Thing = {
+        Graphic = "HestiaLavaPuddleSmallest"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }      
+      Effects = [
+          {
+            Name = "TestEffect"
+            OnlyAffectName = "_PlayerUnit"
+            FrontFx = "ApolloHoverLoop"
+            BackFx = "null"
+            Duration = 0.3
+            Modifier = 0.1
+            Active = true            
+            ExtendDurationOnReapply = true
+            IsVulnerabilityEffect = true
+            TimeModifierFraction = 0
+          }
+        ]
     }
     {
       Name = "HestiaFireDashField"
@@ -264,8 +388,7 @@
       GroupName = "FX_Terrain_Top"
       IgnoreCoverageAngles = true
       ClearOnAttackEffects = false      
-      Thing = 
-      {
+      Thing = {
         Graphic = "HestiaSpinIn"
         OffsetZ = 0
         Grip = 999999
@@ -287,6 +410,20 @@
             Y = 45
           }]
       }
+      Effects = [
+          {
+            Name = "TestEffect"
+            OnlyAffectName = "_PlayerUnit"
+            FrontFx = "ApolloHoverLoop"
+            BackFx = "null"
+            Duration = 0.1
+            Modifier = 0.1
+            Active = true            
+            ExtendDurationOnReapply = true
+            IsVulnerabilityEffect = true
+            TimeModifierFraction = 0
+          }
+        ]
     }
     {
       Name = "HestiaDefenseField"
@@ -326,8 +463,7 @@
           Active = false
         }
       ]
-      Thing = 
-      {
+      Thing = {
         Graphic = "DionysusCloudB"
         Scale = 24.0
         Points = [

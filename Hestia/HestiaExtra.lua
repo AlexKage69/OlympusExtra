@@ -13,9 +13,9 @@ if ModUtil ~= nil then
 	local DuplicateVeryStrongMultiplier = -0.20
 	--Color
 	local OlympusColor = ModUtil.Entangled.ModData(Color)
-	OlympusColor.HestiaVoice = {123, 22, 53,255}
-	OlympusColor.HestiaDamageLight = {123, 22, 53,255} 
-	OlympusColor.HestiaDamage = {123, 22, 53,255}
+	OlympusColor.HestiaVoice = {204, 26, 51,255}
+	OlympusColor.HestiaDamageLight = {225, 22, 53,255} 
+	OlympusColor.HestiaDamage = {204, 26, 51, 255}
 	--EnemyUpgradeData
 	local OlympusEnemyUpgradeData = ModUtil.Entangled.ModData(EnemyUpgradeData)
 	OlympusEnemyUpgradeData.HestiaUpgrade =
@@ -197,7 +197,9 @@ if ModUtil ~= nil then
 				{ Name = "/SFX/Player Sounds/ElectricZapSmall" },
 			},
 		},
-	}
+	}	
+	--OlympusEffectData.DelayedDamage.OnApplyFunctionName = "DelayDamageApply"
+	--OlympusEffectData.DelayedDamage.OnClearFunctionName = "DelayDamageClear"
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
@@ -281,8 +283,17 @@ if ModUtil ~= nil then
 		SpawnedProjectile = true,
 		NeverStore = true,
 	}	
+	OlympusWeaponData.AreaWeakenHestia =
+	{
+		InheritFrom = { "HestiaColorProjectile" },
+	}
+	OlympusWeaponData.HestiaFieldSmall =
+	{
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
+		SpawnedProjectile = true,
+	}
 	OlympusProjectileData.HestiaShoutWeapon = {
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
+		InheritFrom = { "HestiaColorProjectile", "NoSlowFrameProjectile", "NoShakeProjectile" },
 	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
@@ -2305,18 +2316,18 @@ if ModUtil ~= nil then
 			},
 			Heroic =
 			{
-				Multiplier = 1.75,
+				Multiplier = 1.75
 			}
 		},
 		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
-		LavaSpawnChance = {
+		--[[LavaSpawnChance = {
 			BaseValue = 15,
 			ExtractValue =
 			{
 				ExtractAs = "TooltipBonusHealth",
 				Format = "PercentDelta",
 			}
-		},
+		},]]
 		PropertyChanges =
 		{
 			{
@@ -2431,6 +2442,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.LavaLongerTrait = 
 	{
 		InheritFrom = { "ShopTier2Trait" },
+		RequiredFalseTrait = "LavaLongerTrait",
 		God = "Hestia",
 		Icon = "Boon_Hestia_13",
 		RarityLevels =
@@ -2441,46 +2453,101 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.25,
+				Multiplier = 1.14,
 			},
 			Epic =
 			{
-				Multiplier = 1.50,
+				Multiplier = 1.28,
 			},
 			Heroic =
 			{
-				Multiplier = 1.75,
+				Multiplier = 1.42,
 			}
 		},
 		PropertyChanges =
 		{
-			--[[{
-				WeaponNames = { "HestiaRangedTrait", "HestiaOnDeath", "HestiaRevengeTrait" },
-				ProjectileName = "HestiaField",
-				ProjectileProperty = "Scale",
-				ChangeValue = 15.0,
-				ChangeType = "Multiply",
-				ExcludeLinked = true,
-			},]]
 			{
-				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				WeaponNames = { "RangedWeapon", "HestiaRetaliate" },
 				ProjectileName = "HestiaField",
-				ProjectileProperty = "Scale",
-				ChangeValue = 3,
-				ChangeType = "Multiply",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleLargest",
+				ChangeType = "Absolute",
 				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaRetaliate" },
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleLargest",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				
+				WeaponNames = { "RangedWeapon", "HestiaRetaliate" },
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "TotalFuse",
+				BaseMin = 7,
+				BaseMax = 7,
+				DeriveSource = "DamageField",
 				ExtractValue =
 				{
-					ExtractAs = "TooltipWidth",
-					Format = "Percent"
+					ExtractAs = "TooltipDuration",
 				}
 			},
 			{
-				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
-				ProjectileName = "HestiaField",
-				ProjectileProperty = "TotalFuse",
-				ChangeValue = 15.0,
+				WeaponNames = { "HestiaOnDeath" },
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
 				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "HestiaOnDeath" },
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				
+				WeaponNames = { "HestiaOnDeath" },
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "TotalFuse",
+				BaseMin = 7,
+				BaseMax = 7,
+				DeriveSource = "DamageField",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+				}
+			},
+			{
+				WeaponNames = { "HestiaOnDeath" },
+				ProjectileName = "HestiaDeathField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "HestiaOnDeath" },
+				ProjectileName = "HestiaDeathField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				
+				WeaponNames = { "HestiaOnDeath" },
+				ProjectileName = "HestiaDeathField",
+				ProjectileProperty = "TotalFuse",
+				BaseMin = 7,
+				BaseMax = 7,
+				DeriveSource = "DamageField",
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDuration",
@@ -4595,8 +4662,6 @@ if ModUtil ~= nil then
 			return hasLastStand
 		end
 	)
-	-- For testing purposes 
-    
 
 	-- Hestia FreeHealthTrait
 	ModUtil.Path.Wrap( "SpawnRoomReward", 
@@ -4659,7 +4724,12 @@ if ModUtil ~= nil then
 			HealthDamagePresentation()
 		end
 	end
-
+	-- Lava Stuff	
+	ModUtil.Path.Wrap( "CheckForAllEnemiesDead", 
+	function(baseFunc, eventSource, args )
+		baseFunc(eventSource, args)
+		ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField", "HestiaDeathField" } })
+	end)
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
