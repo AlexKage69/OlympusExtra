@@ -96,7 +96,7 @@
     {
       Name = "BoonSymbolHestiaIsometric"
       InheritFrom = "BoonSymbolBaseIsometric"
-      FilePath = "Hestia\Hestia3"
+      FilePath = "Hestia\HestiaDoorIcon"
       EndFrame = 1
       StartFrame = 1
       Scale = 0.25
