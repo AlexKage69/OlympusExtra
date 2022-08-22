@@ -2558,7 +2558,7 @@
     }
     {
       Name = "HestiaSplashUppercut2"
-      InheritFrom = "PoseidonSplashUppercut"
+      InheritFrom = "HestiaSplashUppercut"
       FilePath = "Fx\PoseidonProjectileSplash\PoseidonProjectileSplash"
       NumFrames = 40
       PlaySpeed = 60
@@ -3332,7 +3332,7 @@
     {
       Name = "HestiaLavaPuddleSmall"
       InheritFrom = "HestiaLavaPuddleSmallest"
-      Scale = 2.0
+      Scale = 0.7
     }
     {
       Name = "HestiaLavaPuddleLarge"

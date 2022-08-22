@@ -1801,7 +1801,7 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "HestiaProjectile",
+				--ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 70,
 				BaseMax = 70,
@@ -1818,7 +1818,7 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "HestiaProjectile",
+				--ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageBurst"
 			},
@@ -1826,8 +1826,8 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 7,
-				BaseMax = 7,
+				BaseMin = 16,
+				BaseMax = 16,
 				DeriveSource = "DamageField",
 				ExtractValue =
 				{
@@ -2147,6 +2147,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		AddOnHitWeapons = { "HestiaRetaliate" },
+		OnHitWeaponProperties = { FunctionName = "HestiaRevengeFunc",  },
 		RarityLevels =
 		{
 			Common =
@@ -2171,8 +2172,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "HestiaRetaliate",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 5,
-				BaseMax = 5,
+				BaseMin = 10,
+				BaseMax = 10,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2245,20 +2246,20 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.33,
+				Multiplier = 2.00,
 			},
 			Epic =
 			{
-				Multiplier = 1.66,
+				Multiplier = 3.00,
 			},
 			Heroic =
 			{
-				Multiplier = 2.00,
+				Multiplier = 4.00,
 			}
 		},
 		CentaurAttackBonus = 
 		{
-			BaseValue = 1.03,
+			BaseValue = 1.01,
 			SourceIsMultiplier = true,
 			DecimalPlaces = 2,
 			MinMultiplier = 0.1,
@@ -2304,19 +2305,19 @@ if ModUtil ~= nil then
 		{
 			Common =
 			{
-				Multiplier = 1.00,
+				Multiplier = 1.0,
 			},
 			Rare =
 			{
-				Multiplier = 1.25,
+				Multiplier = 1.2,
 			},
 			Epic =
 			{
-				Multiplier = 1.50,
+				Multiplier = 1.4,
 			},
 			Heroic =
 			{
-				Multiplier = 1.75
+				Multiplier = 1.7
 			}
 		},
 		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
@@ -2333,8 +2334,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "HestiaOnDeath",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 5,
-				BaseMax = 5,
+				BaseMin = 10,
+				BaseMax = 10,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2484,7 +2485,7 @@ if ModUtil ~= nil then
 			},
 			{
 				
-				WeaponNames = { "RangedWeapon", "HestiaRetaliate" },
+				WeaponNames = { "RangedWeapon",  },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "TotalFuse",
 				BaseMin = 7,
@@ -2496,7 +2497,7 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponNames = { "HestiaOnDeath" },
+				WeaponNames = { "HestiaOnDeath", "HestiaRetaliate" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleSmall",
@@ -2504,7 +2505,7 @@ if ModUtil ~= nil then
 				ExcludeLinked = true,
 			},
 			{
-				WeaponNames = { "HestiaOnDeath" },
+				WeaponNames = { "HestiaOnDeath", "HestiaRetaliate" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleSmall",
@@ -2513,7 +2514,7 @@ if ModUtil ~= nil then
 			},
 			{
 				
-				WeaponNames = { "HestiaOnDeath" },
+				WeaponNames = { "HestiaOnDeath", "HestiaRetaliate" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "TotalFuse",
 				BaseMin = 7,
@@ -2523,36 +2524,7 @@ if ModUtil ~= nil then
 				{
 					ExtractAs = "TooltipDuration",
 				}
-			},
-			{
-				WeaponNames = { "HestiaOnDeath" },
-				ProjectileName = "HestiaDeathField",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "HestiaLavaPuddleSmall",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponNames = { "HestiaOnDeath" },
-				ProjectileName = "HestiaDeathField",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "HestiaLavaPuddleSmall",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				
-				WeaponNames = { "HestiaOnDeath" },
-				ProjectileName = "HestiaDeathField",
-				ProjectileProperty = "TotalFuse",
-				BaseMin = 7,
-				BaseMax = 7,
-				DeriveSource = "DamageField",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDuration",
-				}
-			},
+			},			
 		},
 	}	
 	OlympusTraitData.LavaAutoTrait =
@@ -2709,6 +2681,37 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Athena_01",
 		RequiredFalseTrait = "MoreTrapDamageTrait",	
+		PreEquipWeapons = WeaponSets.RubbleWeapons,
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.RubbleWeapons,
+				ProjectileProperty = "DamageLow",
+				BaseValue = 4,
+				ChangeType="MultiplyBase",
+			},
+			{
+				WeaponNames = WeaponSets.RubbleWeapons,
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			}
+		},
+		EnemyIncomingDamageModifiers =
+		{
+			TrapDamageTakenMultiplier =
+			{
+				BaseValue = 31.0,
+				SourceIsMultiplier = true,
+			},
+			ExtractValues =
+			{
+				{
+					Key = "TrapDamageTakenMultiplier",
+					ExtractAs = "TooltipDamageBonus",
+					Format = "PercentDelta",
+				},
+			}
+		},
 	}
 	--
 	OlympusTraitData.FreeHealthTrait =
@@ -2821,6 +2824,11 @@ if ModUtil ~= nil then
 						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait", "HealthRewardBonusTrait"}
 					}
 				},
+				MoreTrapDamageTrait =
+				{
+					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+					{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait", "ShieldLoadAmmo_AthenaRangedTrait"}
+				}
 			},
 	
 			Speaker = "NPC_Hestia_01",
@@ -4728,8 +4736,20 @@ if ModUtil ~= nil then
 	ModUtil.Path.Wrap( "CheckForAllEnemiesDead", 
 	function(baseFunc, eventSource, args )
 		baseFunc(eventSource, args)
-		ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField", "HestiaDeathField" } })
+		ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField" } })
 	end)
+	function HestiaRevengeFunc(attacker, triggerArgs)
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(weaponData))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(weaponData.TriggersOnHitEffects))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs))
+		local range = 300
+		local randomLightningTargetOffsetX = RandomFloat(-1 * range/2, range/2)
+		local randomLightningTargetOffsetY = RandomFloat(-1 * range/2, range/2)
+		local targetId = SpawnObstacle({ Name = "InvisibleTarget", Group = "Scripting", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = randomLightningTargetOffsetX, OffsetY = randomLightningTargetOffsetY })
+		thread(FireWeaponWithinRange, { SourceId = CurrentRun.Hero.ObjectId, TargetId = targetId, Range = range, WeaponName = "HestiaRetaliate", InitialDelay = 0, Delay = 0.21, Count = 1})
+	--)FireWeaponFromUnit({ Weapon = "HestiaRetaliate", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = newDestination })
+	end
+
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {

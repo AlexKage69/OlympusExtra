@@ -75,28 +75,28 @@
       DetonateGraphic = "null"
       //DetonateSound = "/SFX/HellFireImpactQuiet"
       //ReticleGraphic = "LobWarningDecal"
-      Type = "LOB"
+      Type = "Lob"
       DamageLow = 2
       DamageHigh = 2
       DamageRadius = 200.0
       DamageRadiusScaleY = 0.75
       AutoAdjustForTarget = true
-      LaunchAngle = 50
-      SpinRate = 0
-      MinRange = 0.0
-      //LaunchAngle = 100
+      //LaunchAngle = 50
+      SpinRate = 200
+      MinRange = 500.0
+      LaunchAngle = 200
       Speed = 550
       SpeedVariance = 150
       ImpactVelocity = 0.0
-      AffectsFriends = true
-      AffectsSelf = true
+      AffectsFriends = false
+      AffectsSelf = false
       CheckUnitImpact = false
       CheckObstacleImpact = false
       SpawnOnDetonate = "HestiaSmallField"
       CanBeReflected = false
       SpawnType = "PROJECTILE"
       CanCrit = false
-      IgnoreCoverageAngles = true
+      IgnoreCoverageAngles = false
       UseVulnerability = false
       SkipSpawnsIfBlocked = true
       DangerDistance = 0
@@ -178,60 +178,6 @@
             Y = 2
           }]
       }     
-    }
-    {
-      Name = "HestiaDeathField"
-      AutoAdjustForTarget = false
-      AffectsEnemies = true
-      AffectsFriends = false
-      AffectsSelf = false
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      GaussianSpawnDistribution = true
-      Type = "INSTANT"
-      DamageLow = 7
-      DamageHigh = 7
-      DissipateGraphic = "HestiaLavaPuddleOutSmallest"
-      //SpawnOnDetonate = "HestiaDefenseField"
-      ImpactVelocity = 0
-      MultiDetonate = true
-      TotalFuse = 5
-      Fuse = 0.25
-      Range = 0
-      UseVulnerability = false
-      ConsecutiveHitWindow = 0.8
-      ImmunityDuration = 0.75
-      SilentImpactOnInvulnerable = true
-      GroupName = "FX_Terrain"
-      VacuumStrength = 0
-      VacuumDistance = 0
-      IgnoreDodge = true
-      DamageRadius = 90
-      DamageRadiusScaleX = 1.0
-      DamageRadiusScaleY = 0.6
-      DangerDistance = 0
-      ProjectileNumOpacityMultiplier = 0.3
-      Thing = {
-        Graphic = "HestiaLavaPuddleSmallest"
-        DrawEmbeddedBehind = true
-        Points = [
-          {
-            X = 4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -2
-          }
-          {
-            X = -4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = 2
-          }]
-      }      
     }
     {
       Name = "HestiaSmallField"

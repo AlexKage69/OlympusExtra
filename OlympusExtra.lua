@@ -68,6 +68,7 @@ if ModUtil ~= nil then
 
             -- Hestia duos
             table.insert(OlympusCodexMenuData.Duos, "FreeHealthTrait")
+            table.insert(OlympusCodexMenuData.Duos, "MoreTrapDamageTrait")
 
             -- CentaurSoul-CodexMenu
             table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")

@@ -116,7 +116,7 @@
 		{
 			Id = "HestiaRangedTrait"
 			DisplayName = "Ember Shot"
-			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.TooltipDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#OldFormat}{$TooltipData.TooltipDamageLava}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.TooltipDamage}{!Icons.RightArrow}{$TooltipData.TooltipDamage} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#OldFormat}{$TooltipData.TooltipDamageLava}{!Icons.RightArrow}{$TooltipData.LavaSplash}"
 		}
 		{
 			Id = "HestiaRangedTrait_Initial"
@@ -158,12 +158,12 @@
 		{
 			Id = "StrongAttractionTrait",
 			DisplayName = "Open Arms"
-			Description = "Your boons with attraction effect are stronger. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Description = "Your boons with attraction effect are stronger and attracts more foes. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
     	}
 		{
 			Id = "StrongAttractionTrait_Initial",
 			InheritFrom = "StrongAttractionTrait"
-			Description =  "Your boons with attraction effect are stronger. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Description = "Your boons with attraction effect are stronger and attracts more foes. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
     	}
 		{
 			Id = "HestiaRevengeTrait"
@@ -193,12 +193,12 @@
 		{
 			Id = "LavaDeathTrait"
 			DisplayName = "Blazing Hearth"
-			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "LavaDeathTrait_Initial"
 			InheritFrom = "LavaDeathTrait"
-			Description = "When foes are slain, they have a chance to leave behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDamageTrait"
@@ -241,12 +241,12 @@
 		{
 			Id = "LavaLongerTrait",
 			DisplayName = "Eternal Flame"
-			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Size Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipWidth}% \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaLongerTrait_Initial",
 			InheritFrom = "LavaLongerTrait"
-			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Size Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipWidth}% \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaAutoTrait"
@@ -270,8 +270,8 @@
 		}
 		{
 			Id = "MoreTrapDamageTrait"
-			DisplayName = "MoreTrapDamageTrait"
-			Description = "{$Keywords.Traps} deal more damage to enemies."
+			DisplayName = "Danger Zone"
+			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage to foes."
 		}	
 		{
 			Id = "FreeHealthTrait"

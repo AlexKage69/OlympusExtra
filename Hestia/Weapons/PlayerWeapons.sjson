@@ -51,7 +51,7 @@
       Name = "HestiaOnDeath"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaDeathField"
+      Projectile = "HestiaSmallField"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
