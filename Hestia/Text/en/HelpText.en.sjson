@@ -21,6 +21,35 @@
 			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
 		}
 		{
+			Id = "HomeWarmthQuest"
+			DisplayName = "The Warmth of Home"
+			Description = "Hestia is asking to make the god of dead more at home. Some furniture should do the trick."
+		}
+		{
+			Id = "HestiaHomeWarmthQuest01"
+			DisplayName = "Hestia asked to add more lights... Maybe candles?"
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest02"
+			DisplayName = "Hestia asked to add something warmth... Fire is always handy."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest03"
+			DisplayName = "Hestia asked to add a fireplace... Any should do."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest04"
+			DisplayName = "Hestia asked to put on some music... Maybe Orpheus can help."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest05"
+			DisplayName = "Hestia asked for even more fire... Maybe Thanatos can help."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest06"
+			DisplayName = "Hestia seemed please with the new decor."
+		}		
+		{
 			Id = "CentaurHeart"
 			DisplayName = "Centaur Heart"
 			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
@@ -275,7 +304,7 @@
 		}	
 		{
 			Id = "FreeHealthTrait"
-			DisplayName = "Loving Embrace"
+			DisplayName = "Unrequited Love"
 			Description = "After you defeat {$Keywords.BossPlural}, gain a {$Keywords.CentaurHeart}.\n After you defeat {$Keywords.MiniBoss}, gain a {$Keywords.CentaurSoul}."
 		}	
 		{

@@ -3470,7 +3470,122 @@
       Color = { Red = 0.50 Green = 1.0 Blue = 0.0 }
     }
     /* Character Fx */
-
+{
+      Name = "ArtemisExplosion"
+      FilePath = "Fx\MineExplosion\MineExplosion"
+      GroupName = "Standing"
+      Type = "Book"
+      VisualFx = "MineExplosionSparks"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      SortFromOwner = "Take"
+      SortMode = "FromParent"
+      ScaleRadius = 240.0
+      Ambient = 0.0
+      VisualFxCap = 24
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      UseBoundsForSortArea = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashGreen"
+        }
+        {
+          Name = "MineExplosionLighting"
+        }
+        {
+          Name = "DisplaceShockwaveHemi"
+        }
+        {
+          Name = "ExplosionScorchDecal"
+        }]
+    }
+    {
+      Name = "TheseusGodPowerPreviewDecal_Hestia"
+      InheritFrom = "TheseusGodPowerPreviewDecalDark"
+      Color = 
+      {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
+    }
+    {
+      Name = "RadialNovaTheseusWrath-Hestia"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      EndRed = 0.999
+      StartBlue = 0.50
+      StartGreen = 0.20
+      StartRed = 0.82
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "TheseusWrathSpikeHestia"
+        }
+        /*{
+          Name = "AresSwordHoverDropParry"
+        }*/
+        /*{
+          Name = "AresBladeSpinOutParry"
+        }*/
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+    }
+    {
+      Name = "RadialNovaDevotion-Hestia"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      EndRed = 0.999
+      StartBlue = 0.50
+      StartGreen = 0.20
+      StartRed = 0.82
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        /*{
+          Name = "AresSwordHoverDropParry"
+        }
+        {
+          Name = "AresBladeSpinOutParry"
+        }*/
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+    }
+    {
+      Name = "TheseusWrathSpikeHestia"
+      InheritFrom = "TheseusWrathSpike"
+      Color = 
+      {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
+    }
     /* Centaur Soul */
     {
       Name = "RoomRewardEmptyHealthDrop"

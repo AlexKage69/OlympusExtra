@@ -3604,7 +3604,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 					Name = "ApolloLegendaryPickUp01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloGift01" },
+					RequiredTextLines = { "ApolloFirstPickUp" },
 					ValuableUpgradeInRoom = {
 						AllAtLeastRarity = "Rare",
 						HasAtLeastRarity = "Epic",
@@ -4776,7 +4776,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 		Locked = 7,
 		[1] = { Gift = "ForceApolloBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis03" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloBackstory04" } }
 	}
 	-- FUNCTIONS
 	
