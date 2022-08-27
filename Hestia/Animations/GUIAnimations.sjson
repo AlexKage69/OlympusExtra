@@ -314,14 +314,14 @@
     {
       Name = "Hestia_Aphrodite_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Duos\HestiaAphrodite_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hestia_Aphrodite_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Duos\HestiaAphrodite_01"
       EndFrame = 1
       StartFrame = 1
     }
@@ -342,28 +342,28 @@
     {
       Name = "Hestia_Artemis_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Duos\HestiaArtemis_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hestia_Artemis_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Duos\HestiaArtemis_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hestia_Athena_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Duos\HestiaAthena_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hestia_Athena_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hestia\Duos\HestiaAthena_01"
       EndFrame = 1
       StartFrame = 1
     }
