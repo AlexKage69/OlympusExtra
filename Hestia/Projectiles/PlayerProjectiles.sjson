@@ -14,12 +14,8 @@
       DamageLow = 200
       DamageHigh = 200
       DetonateGraphic = "null"
-      //ImpactFx = "HestiaHitFx"
-      //ObstacleCollisionCheck = "PolygonContainsPoint"
       MultipleUnitCollisions = false
       MultipleObstacleCollisions = false
-      //SpawnOnDetonate = "HestiaFieldDefense"
-      SpawnType = "PROJECTILE"
       CheckObstacleImpact = true
       CheckUnitImpact = true
       UnlimitedUnitPenetration = false
@@ -77,8 +73,8 @@
       //DetonateSound = "/SFX/HellFireImpactQuiet"
       //ReticleGraphic = "LobWarningDecal"
       Type = "Lob"
-      DamageLow = 2
-      DamageHigh = 2
+      DamageLow = 0
+      DamageHigh = 0
       DamageRadius = 200.0
       DamageRadiusScaleY = 0.75
       AutoAdjustForTarget = true
@@ -93,9 +89,9 @@
       AffectsSelf = false
       CheckUnitImpact = false
       CheckObstacleImpact = false
-      SpawnOnDetonate = "HestiaSmallField"
+      //SpawnOnDetonate = "HestiaSmallField"
       CanBeReflected = false
-      SpawnType = "PROJECTILE"
+      //SpawnType = "PROJECTILE"
       //CanCrit = false
       IgnoreCoverageAngles = false
       UseVulnerability = false
@@ -136,10 +132,9 @@
       UnlimitedUnitPenetration = true
       GaussianSpawnDistribution = true
       Type = "INSTANT"
-      DamageLow = 7
-      DamageHigh = 7
+      DamageLow = 1
+      DamageHigh = 1
       DissipateGraphic = "HestiaLavaPuddleOutLarge"
-      //SpawnOnDetonate = "HestiaDefenseField"
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
@@ -193,74 +188,7 @@
       Type = "INSTANT"
       DamageLow = 0
       DamageHigh = 0
-      //DissipateGraphic = "PoisonPoolSmokeFadeOut"
-      //SpawnOnDetonate = "HestiaField"
-      ImpactVelocity = 0
-      MultiDetonate = true
-      TotalFuse = 5
-      Fuse = 0.25
-      Range = 0
-      UseVulnerability = false
-      ConsecutiveHitWindow = 0.8
-      ImmunityDuration = 0.75
-      SilentImpactOnInvulnerable = true
-      GroupName = "FX_Terrain"
-      VacuumStrength = 0
-      VacuumDistance = 0
-      IgnoreDodge = true
-      DamageRadius = 175
-      DamageRadiusScaleX = 1.0
-      DamageRadiusScaleY = 0.6
-      DangerDistance = 0
-      ProjectileNumOpacityMultiplier = 0.3
-      CanCrit = false
-      Thing = {
-        Graphic = "SmokeTrapIn"
-        DrawEmbeddedBehind = true
-        Points = [
-          {
-            X = 4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -2
-          }
-          {
-            X = -4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = 2
-          }]
-      }     
-      Effects = [
-        {
-          Name = "LavaPuddleDefense"
-          OnlyAffectName = "_PlayerUnit"
-          FrontFx = "ApolloHoverLoop"
-          Duration = 0.75
-          Type = "DAMAGE_TAKEN"
-          Modifier = 1
-          Active = true
-        }
-      ]
-    }
-    {
-      Name = "HestiaSmallFieldDefense"
-      AutoAdjustForTarget = false
-      AffectsEnemies = false
-      AffectsFriends = true
-      AffectsSelf = true
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      GaussianSpawnDistribution = true
-      Type = "INSTANT"
-      DamageLow = 0
-      DamageHigh = 0
       DissipateGraphic = "PoisonPoolSmokeFadeOut"
-      //SpawnOnDetonate = "HestiaField"
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
@@ -309,7 +237,72 @@
           Duration = 0.75
           Type = "DAMAGE_TAKEN"
           Modifier = 1
-          Active = true
+          Active = false
+        }
+      ]
+    }
+    {
+      Name = "HestiaSmallFieldDefense"
+      AutoAdjustForTarget = false
+      AffectsEnemies = false
+      AffectsFriends = true
+      AffectsSelf = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DissipateGraphic = "PoisonPoolSmokeFadeOut"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.25
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 175
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      CanCrit = false
+      Thing = {
+        Graphic = "PoisonPoolSmokeFadeIn"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }     
+      Effects = [
+        {
+          Name = "LavaPuddleDefense"
+          OnlyAffectName = "_PlayerUnit"
+          FrontFx = "ApolloHoverLoop"
+          Duration = 0.75
+          Type = "DAMAGE_TAKEN"
+          Modifier = 1
+          Active = false
         }
       ]
     }
@@ -508,66 +501,6 @@
         ]
     }
     {
-      Name = "HestiaDefenseField"
-      AutoAdjustForTarget = false
-      AffectsEnemies = false
-      AffectsFriends = false
-      AffectsSelf = true
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      GaussianSpawnDistribution = true
-      Type = "INSTANT"
-      SpawnRadius = 0
-      DamageRadius = 400
-      DamageLow = 0
-      DamageHigh = 0
-      DissipateGraphic = "DionysusCloudBEnd"
-      ImpactVelocity = 0
-      MultiDetonate = true
-      TotalFuse = 5
-      Fuse = 0.25
-      Range = 0
-      UseVulnerability = false
-      ImmunityDuration = 0.75
-      SilentImpactOnInvulnerable = true
-      GroupName = "FX_Standing_Top"
-      DamageRadiusScaleY = 0.6
-      DamageRadiusScaleX = 1.0
-      DangerDistance = 0
-      ProjectileNumOpacityMultiplier = 0.3
-      Effects = [
-         {
-          Name = "LavaPuddleDefense"
-          OnlyAffectName = "_PlayerUnit"
-          Duration = 0.75
-          Type = "DAMAGE_TAKEN"
-          Modifier = 1
-          Active = false
-        }
-      ]
-      Thing = {
-        Graphic = "DionysusCloudB"
-        Scale = 24.0
-        Points = [
-          {
-            X = 4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -2
-          }
-          {
-            X = -4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = 2
-          }]
-      }
-    }
-    {
       Name = "ArtemisHestiaExplosion"
       InheritFrom = "1_BaseMagicProjectile"
       DetonateGraphic = "ArtemisExplosion"
@@ -661,70 +594,6 @@
       {
         Graphic = "HestiaRing"
         Grip = 999999
-      }
-    }
-    {
-      Name = "HestiaLavaPuddleLarge"
-      Type = "INSTANT"
-      //DissipateGraphic = "HestiaLavaPuddleOut"
-      GroupName = "FX_Terrain"
-      Range = 0
-      CheckObstacleImpact = false
-      //UnlimitedUnitPenetration = true
-      CanBeReflected = false
-      AffectsFriends = false
-      DamageRadius = 150
-      DamageRadiusScaleX = 1.0
-      DamageRadiusScaleY = 0.6
-      TotalFuse = 16.0
-      Fuse = 0.2
-      InflictedDamageSound = "/SFX/BurnDamageSizzle"
-      InflictedDamageFx = "Immolation"
-      //ImmunityKey = "LavaTileWeapon"
-      //IgnoreDodge = true
-      //ImmunityDuration = 0.18
-      DamageLow = 2
-      DamageHigh = 2
-      MoveInterval = 0.19
-      //DamagePerConsecutiveHit = 0.5
-      //RoundDamageDown = true
-      ConsecutiveHitWindow = 0.8
-      IgnoreCoverageAngles = true
-      MaxVictimZ = 1
-      //MultiDetonate = true
-      DangerDistance = 0
-      CanCrit = false
-      Effects = [
-         {
-          Name = "LavaPuddleDefense"
-          OnlyAffectName = "_PlayerUnit"
-          Duration = 0.75
-          Type = "DAMAGE_TAKEN"
-          Modifier = 1
-          Active = false
-        }
-      ]
-      Thing = 
-      {
-        Graphic = "HestiaLavaPuddleLarge"
-        Scale = 24.0
-        Points = [
-          {
-            X = 4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -2
-          }
-          {
-            X = -4
-            Y = 0
-          }
-          {
-            X = 0
-            Y = 2
-          }]
       }
     }
   ]

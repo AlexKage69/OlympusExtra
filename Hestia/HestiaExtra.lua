@@ -128,9 +128,6 @@ if ModUtil ~= nil then
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HestiaProjectile")	
-	OlympusWeaponData.RangedWeapon = {
-		OnHitFunctionNames = { "HestiaLavaSpawn" }
-	}
 	OlympusWeaponData.HestiaShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -1712,6 +1709,31 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 3,
+				BaseMax = 3,
+				AsInt = true,
+				MinMultiplier = 0.2,
+				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "BurstDamage",
+				IdenticalMultiplier =
+				{
+					Value = DuplicateVeryStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "HestiaFireDashField",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "BurstDamage"
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileName = "HestiaFire",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 6,
@@ -1722,7 +1744,7 @@ if ModUtil ~= nil then
 				DeriveSource = "DamageOverTime",
 				IdenticalMultiplier =
 				{
-					Value = DuplicateStrongMultiplier,
+					Value = DuplicateVeryStrongMultiplier,
 				},
 				ExtractValue =
 				{
@@ -1734,31 +1756,6 @@ if ModUtil ~= nil then
 				ProjectileName = "HestiaFire",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageOverTime"
-			},
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				ProjectileName = "HestiaFireDashField",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 3,
-				BaseMax = 3,
-				AsInt = true,
-				MinMultiplier = 0.2,
-				DepthMult = DepthDamageMultiplier,
-				DeriveSource = "BurstDamage",
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamageBurst",
-				}
-			},
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				ProjectileName = "HestiaFireDashField",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "BurstDamage"
 			},
 		},
 	}
@@ -1787,6 +1784,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Hestia_04",
 		CustomTrayText = "HestiaRangedTrait_Tray",
         RequiredFalseTrait = "ShieldLoadAmmoTrait",
+		PreEquipWeapons = { "HestiaLavaProjectile" },
 		RarityLevels =
 		{
 			Common =
@@ -1806,6 +1804,11 @@ if ModUtil ~= nil then
 				Multiplier = 1.435,
 			}
 		},
+		OnProjectileDeathFunction =
+		{
+			Name = "SpawningLavaProjectile",
+			Args = {}
+		},
 		PropertyChanges =
 		{
 			{
@@ -1822,7 +1825,7 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				--ProjectileName = "HestiaProjectile",
+				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 70,
 				BaseMax = 70,
@@ -1830,7 +1833,7 @@ if ModUtil ~= nil then
 				DeriveSource = "DamageBurst",
 				IdenticalMultiplier =
 				{
-					Value = DuplicateStrongMultiplier,
+					Value = DuplicateVeryStrongMultiplier,
 				},
 				ExtractValue =
 				{
@@ -1839,25 +1842,27 @@ if ModUtil ~= nil then
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				--ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageBurst"
 			},
 			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "HestiaField",
+				WeaponNames = { "HestiaLavaProjectile" },
 				ProjectileProperty = "DamageLow",
 				BaseMin = 16,
 				BaseMax = 16,
 				DeriveSource = "DamageField",
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateVeryStrongMultiplier,
+				},
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamageLava",
 				}
 			},
 			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "HestiaField",
+				WeaponNames = { "HestiaLavaProjectile" },
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageField"
 			},
@@ -1907,6 +1912,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Hestia_05",
 		CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
         RequiredTrait = "ShieldLoadAmmoTrait",
+		PreEquipWeapons = { "HestiaLavaProjectile" },
 		RarityLevels =
 		{
 			Common =
@@ -1940,12 +1946,14 @@ if ModUtil ~= nil then
 				ChangeValue = "ProjectileFireRing-Hestia",
 				ChangeType = "Absolute",
 			},
-			--[[{
+			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HestiaProjectile",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 55,
-				BaseMax = 55,
+				BaseMin = 60,
+				BaseMax = 60,
 				DepthMult = DepthDamageMultiplier,
+				DeriveSource = "DamageBurst",
 				IdenticalMultiplier =
 				{
 					Value = DuplicateStrongMultiplier,
@@ -1958,8 +1966,29 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
-			},]]
+				DeriveValueFrom = "DamageBurst"
+			},
+			{
+				WeaponNames = { "HestiaLavaProjectile" },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 16,
+				BaseMax = 16,
+				DeriveSource = "DamageField",
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageLava",
+				}
+			},
+			{
+				WeaponNames = { "HestiaLavaProjectile" },
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageField"
+			},
 			{
                 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
                 WeaponProperty = "FireOnRelease",
@@ -2128,26 +2157,26 @@ if ModUtil ~= nil then
 		{
 			Common =
 			{
-				Multiplier = 1.0,
+				Multiplier = 2.0,
 			},
 			Rare =
 			{
-				Multiplier = 2.0,
+				Multiplier = 3.0,
 			},
 			Epic =
 			{
-				Multiplier = 3.0,
+				Multiplier = 4.0,
 			},
 			Heroic =
 			{
-				Multiplier = 4.0,
+				Multiplier = 5.0,
 			}
 		},
 		AttractionCount = { 
 			BaseValue = 1.0
 		},
 		AttractionDistance = { 
-			BaseValue = 0.15
+			BaseValue = 0.12
 		},
 		ExtractValues =
 		{
@@ -2168,7 +2197,13 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		AddOnHitWeapons = { "HestiaRetaliate" },
-		OnHitWeaponProperties = { FunctionName = "HestiaRevengeFunc",  },
+		PreEquipWeapons = { "HestiaOnRevenge" },
+		OnProjectileDeathFunction =
+		{
+			Name = "SpawningLavaRevenge",
+			Args = {}
+		},
+		--OnHitWeaponProperties = { FunctionName = "HestiaRevengeFunc",  },
 		RarityLevels =
 		{
 			Common =
@@ -2191,14 +2226,14 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				WeaponName = "HestiaRetaliate",
+				WeaponName = "HestiaOnRevenge",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 10,
 				BaseMax = 10,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
-					Value = DuplicateMultiplier,
+					Value = DuplicateStrongMultiplier,
 				},
 				ExtractValue =
 				{
@@ -2206,7 +2241,7 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponName = "HestiaRetaliate",
+				WeaponName = "HestiaOnRevenge",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
 			},
@@ -2322,6 +2357,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
 		Icon = "Boon_Hestia_11",
+		PreEquipWeapons = { "HestiaOnDeath" },
 		RarityLevels =
 		{
 			Common =
@@ -2341,15 +2377,7 @@ if ModUtil ~= nil then
 				Multiplier = 1.7
 			}
 		},
-		OnEnemyDeathWeapon = { Weapon = "HestiaOnDeath", FireAtDeathLocation = true },
-		--[[LavaSpawnChance = {
-			BaseValue = 15,
-			ExtractValue =
-			{
-				ExtractAs = "TooltipBonusHealth",
-				Format = "PercentDelta",
-			}
-		},]]
+		OnEnemyDeathFunctionArgs = {Name = "SpawningLavaDeath", Args = {}},
 		PropertyChanges =
 		{
 			{
@@ -2379,6 +2407,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hestia",
 		Icon = "Boon_Hestia_12",
+		PreEquipWeapons = { "HestiaFieldDefense", "HestiaSmallFieldDefense" },
 		RarityLevels =
 		{
 			Common =
@@ -2401,16 +2430,14 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				TraitName = "HestiaRangedTrait",
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponNames = { "HestiaFieldDefense" },
 				EffectName= "LavaPuddleDefense",
 				EffectProperty = "Active",
 				ChangeValue = true,
 				ChangeType = "Absolute",
 			},
 			{
-				TraitName = "HestiaRangedTrait",
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponNames = { "HestiaFieldDefense" },
 				EffectName= "LavaPuddleDefense",
 				EffectProperty = "Modifier",
 				BaseMin = 0.90,
@@ -2419,7 +2446,7 @@ if ModUtil ~= nil then
 				DeriveSource = "ModifierSource",
 				IdenticalMultiplier =
 				{
-					Value = DuplicateMultiplier,
+					Value = DuplicateStrongMultiplier,
 				},
 				ChangeType = "Multiply",
 				ExtractValue =
@@ -2428,33 +2455,16 @@ if ModUtil ~= nil then
 					Format = "NegativePercentDelta",
 				}
 			},
-			-- Active
 			{
-				TraitName = "LavaDeathTrait",
-				WeaponName = "HestiaOnDeath",
+				WeaponNames = { "HestiaSmallFieldDefense" },
 				EffectName= "LavaPuddleDefense",
 				EffectProperty = "Active",
 				ChangeValue = true,
 				ChangeType = "Absolute",
 			},
 			{
-				TraitName = "LavaDeathTrait",
+				WeaponNames = { "HestiaSmallFieldDefense" },
 				WeaponName = "HestiaOnDeath",
-				EffectName= "LavaPuddleDefense",
-				EffectProperty = "Modifier",
-				DeriveValueFrom = "ModifierSource"
-			},
-			{
-				TraitName = "HestiaRevengeTrait",
-				WeaponName = "HestiaRetaliate",
-				EffectName= "LavaPuddleDefense",
-				EffectProperty = "Active",
-				ChangeValue = true,
-				ChangeType = "Absolute",
-			},
-			{
-				TraitName = "HestiaRevengeTrait",
-				WeaponName = "HestiaRetaliate",
 				EffectName= "LavaPuddleDefense",
 				EffectProperty = "Modifier",
 				DeriveValueFrom = "ModifierSource"
@@ -2475,15 +2485,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.14,
+				Multiplier = 1.28,
 			},
 			Epic =
 			{
-				Multiplier = 1.28,
+				Multiplier = 1.57,
 			},
 			Heroic =
 			{
-				Multiplier = 1.42,
+				Multiplier = 1.86,
 			}
 		},
 		PropertyChanges =
@@ -2511,7 +2521,6 @@ if ModUtil ~= nil then
 				ProjectileProperty = "TotalFuse",
 				BaseMin = 7,
 				BaseMax = 7,
-				DeriveSource = "DamageField",
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDuration",
@@ -2540,11 +2549,6 @@ if ModUtil ~= nil then
 				ProjectileProperty = "TotalFuse",
 				BaseMin = 7,
 				BaseMax = 7,
-				DeriveSource = "DamageField",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDuration",
-				}
 			},			
 		},
 	}	
@@ -2721,9 +2725,10 @@ if ModUtil ~= nil then
 		{
 			TrapDamageTakenMultiplier =
 			{
-				BaseValue = 31.0,
+				BaseValue = 5.0,
 				SourceIsMultiplier = true,
 			},
+			Multiplicative = true,
 			ExtractValues =
 			{
 				{
@@ -2757,6 +2762,25 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Artemis_01",
 		RequiredFalseTrait = "ExplosionTrait",
+		PreEquipWeapons = { "ArtemisHestiaExplosion"},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "ArtemisHestiaExplosion" },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 50,
+				BaseMax = 50,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+		}		
 	}	
 	OlympusTraitData.ChillFireTrait =
 	{
@@ -4816,25 +4840,56 @@ if ModUtil ~= nil then
 	ModUtil.Path.Wrap( "CheckForAllEnemiesDead", 
 	function(baseFunc, eventSource, args )
 		baseFunc(eventSource, args)
-		ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField" } })
+		ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField", "HestiaFieldDefense", "HestiaSmallFieldDefense" } })
 	end)
-	function HestiaRevengeFunc(attacker, triggerArgs)
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(weaponData))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(weaponData.TriggersOnHitEffects))
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs))
-		local range = 300
-		local randomLightningTargetOffsetX = RandomFloat(-1 * range/2, range/2)
-		local randomLightningTargetOffsetY = RandomFloat(-1 * range/2, range/2)
-		local targetId = SpawnObstacle({ Name = "InvisibleTarget", Group = "Scripting", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = randomLightningTargetOffsetX, OffsetY = randomLightningTargetOffsetY })
-		thread(FireWeaponWithinRange, { SourceId = CurrentRun.Hero.ObjectId, TargetId = targetId, Range = range, WeaponName = "HestiaRetaliate", InitialDelay = 0, Delay = 0.21, Count = 1})
-	--)FireWeaponFromUnit({ Weapon = "HestiaRetaliate", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = newDestination })
+	ModUtil.Path.Wrap( "KillEnemy", 
+	function(baseFunc,  victim, triggerArgs )
+		baseFunc(victim, triggerArgs)
+		local killer = triggerArgs.AttackerTable
+		local killingWeapon = triggerArgs.SourceWeapon
+		if not victim.SkipModifiers and killer ~= nil and killer == CurrentRun.Hero then
+			for i, data in pairs(GetHeroTraitValues("OnEnemyDeathFunctionArgs")) do
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(functionName))
+				if data.Name and _G[data.Name] then
+					_G[data.Name]( triggerArgs, data.Args )
+				end
+			end
+		end
+	end)
+	function SpawningLavaProjectile( triggerArgs, args )
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.name)) 
+		if HeroHasTrait("HestiaRangedTrait") and triggerArgs.name == "HestiaProjectile" then
+			local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+			FireWeaponFromUnit({ Weapon = "HestiaLavaProjectile", Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true })
+			if HeroHasTrait("LavaResistTrait") then
+				FireWeaponFromUnit({ Weapon = "HestiaFieldDefense", Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true })
+			end
+		end
+	end
+	function SpawningLavaDeath( triggerArgs, args )
+		if HeroHasTrait("LavaDeathTrait") then
+			--local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+			FireWeaponFromUnit({ Weapon = "HestiaOnDeath", Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.triggeredById, FireFromTarget = true })
+			if HeroHasTrait("LavaResistTrait") then
+				FireWeaponFromUnit({ Weapon = "HestiaSmallFieldDefense", Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.triggeredById, FireFromTarget = true })
+			end
+		end
+	end
+	function SpawningLavaRevenge( triggerArgs, args )
+		if HeroHasTrait("HestiaRevengeTrait") and triggerArgs.name == "LavaSplashLob" then
+			local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
+			FireWeaponFromUnit({ Weapon = "HestiaOnRevenge", Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true })
+			if HeroHasTrait("LavaResistTrait") then
+				FireWeaponFromUnit({ Weapon = "HestiaSmallFieldDefense", Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true })
+			end
+		end
 	end
 	-- Artemis Duo
 	ModUtil.Path.Wrap( "DamageEnemy", 
 	function(baseFunc, victim, triggerArgs )
 		baseFunc(victim, triggerArgs)
 		if(HeroHasTrait("ExplosionTrait") and triggerArgs.IsCrit) then
-			FireWeaponFromUnit({ Weapon = "ArtemisHestiaExplosion", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, ClearAllFireRequests = true, FireFromTarget = true })
+			FireWeaponFromUnit({ Weapon = "ArtemisHestiaExplosion", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, ClearAllFireRequests = true, FireFromTarget = true })
 		end
 	end)
 	-- Changes to Maps
@@ -4848,20 +4903,8 @@ if ModUtil ~= nil then
 			RequiredOnlyNotPickedUp = "HestiaUpgrade",
 			RequiredOnlyNotPickedUpIgnoreName = "DemeterUpgrade",
 		}
-	})
-	function HestiaLavaSpawn(victim, victimId, triggerArgs)
-		if triggerArgs.SourceWeapon == "RangedWeapon" and HeroHasTrait("HestiaRangedTrait") then
-			FireWeaponFromUnit({ Weapon = "HestiaLavaProjectile", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, ClearAllFireRequests = true, FireFromTarget = true })	
-			if HeroHasTrait("LavaResistTrait") then
-				FireWeaponFromUnit({ Weapon = "HestiaFieldDefense", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, ClearAllFireRequests = true, FireFromTarget = true })	
-			end
-		elseif HeroHasTrait("LavaDeathTrait") or HeroHasTrait("HestiaRevengeTrait") then
-			FireWeaponFromUnit({ Weapon = "HestiaOnDeath", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, ClearAllFireRequests = true, FireFromTarget = true })		
-			if HeroHasTrait("LavaResistTrait") then
-				FireWeaponFromUnit({ Weapon = "HestiaSmallFieldDefense", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, AutoEquip = true, ClearAllFireRequests = true, FireFromTarget = true })	
-			end
-		end
-	end
+	})	
+	
 	OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 
 	-- For testing purposes

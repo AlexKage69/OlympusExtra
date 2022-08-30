@@ -60,6 +60,30 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
+      Name = "HestiaOnRevenge"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "HestiaSmallField"
+      //FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "HestiaOnDeathDefense"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "HestiaSmallFieldDefense"
+      //FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
       Name = "HestiaLavaProjectile"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
@@ -88,7 +112,7 @@
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "HestiaFieldDefense"
-      FireSound = "/SFX/BurnDamageSizzle"
+      //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
       AutoLock = true
@@ -100,7 +124,7 @@
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "HestiaSmallFieldDefense"
-      FireSound = "/SFX/BurnDamageSizzle"
+      //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
       AutoLock = true
