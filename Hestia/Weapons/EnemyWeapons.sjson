@@ -15,7 +15,7 @@
       Name = "TheseusHestiaUpgradeWrath"
       InheritFrom = "1_BasePlayerSlowWeapon"
       Type = "GUN"
-      Projectile = "TheseusHestiaBolt"
+      Projectile = "TheseusHestiaBoltNoPull"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
@@ -24,7 +24,7 @@
     {
       Name = "TheseusHestiaUpgradePassive"
       InheritFrom = "TheseusHestiaUpgradeWrath"
-      Projectile = "TheseusHestiaBoltPassive"
+      Projectile = "TheseusPullHestiaBolt"
     }
   ]
 }

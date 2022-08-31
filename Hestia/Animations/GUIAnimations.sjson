@@ -356,14 +356,14 @@
     {
       Name = "Hestia_Athena_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "GUI\Screens\Chaos\enviroment_damage_16"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hestia_Athena_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "GUI\Screens\Chaos\enviroment_damage_16"
       EndFrame = 1
       StartFrame = 1
     }

@@ -242,6 +242,23 @@ if ModUtil ~= nil then
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
+	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		SuccessiveChanceToPlayAll = 0.33,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
+		RequiredSwappedGodLoot = "ApolloUpgrade",
+		CooldownName = "SaidApolloRecently",
+		CooldownTime = 40,
+
+		-- I'm sure Lord Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_1863" },
+		-- Surely Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_1864" },
+		-- Lord Apollo won't mind, will he?
+		{ Cue = "/VO/ZagreusField_1865" },
+	})
 	table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
 		BreakIfPlayed = true,
 		RandomRemaining = true,
@@ -302,6 +319,16 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/ZagreusField_4827" },
 		-- Flashy.
 		{ Cue = "/VO/ZagreusField_4828" },
+	})
+	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
+		PlayOnce = true,
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", "Shop" },
+
+		-- That's much brighter! All thanks to you, Lord Apollo!
+		{ Cue = "/VO/ZagreusField_4832", RequiredLastGodLoot = "ApolloUpgrade", RequiredTextLinesThisRun = "ApolloFirstPickUp" },
 	})
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
@@ -2818,7 +2845,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 			Color = { 255, 162, 105, 255 },
 			LightingColor = {255, 146, 79, 255},
 			LootColor = {255, 114, 30, 255},
-			SubtitleColor = {1.000, 0.353, 0.675, 1.0},
+			SubtitleColor = {0.800, 0.550, 0.050, 1.0},
 			EventEndSound = "/SFX/ApolloBoonLoveChimes",
 			UpgradeSelectedSound = "/SFX/ApolloBoonChoice",
 			LootRejectionAnimation = "BoonDissipateA_Apollo",
@@ -3577,7 +3604,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 					Name = "ApolloLegendaryPickUp01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloGift01" },
+					RequiredTextLines = { "ApolloFirstPickUp" },
 					ValuableUpgradeInRoom = {
 						AllAtLeastRarity = "Rare",
 						HasAtLeastRarity = "Epic",
@@ -4749,7 +4776,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 		Locked = 7,
 		[1] = { Gift = "ForceApolloBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis03" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloBackstory04" } }
 	}
 	-- FUNCTIONS
 	
@@ -4795,7 +4822,6 @@ OlympusTraitData.MasterLobDionysusTrait =
 						victim.TimeOfLastDamage = {}
 					end
 					victim.TimeOfLastDamage[sourceWeaponData.Name] = _worldTime	
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Solo")) 
 				end
 			end
 			baseFunc(victim, triggerArgs)
