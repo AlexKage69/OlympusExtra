@@ -64,7 +64,7 @@
               Name = "BlindLightning"
               IgnoreName = "_PlayerUnit"
               Type = "DAMAGE_OVER_TIME"
-              IsVulnerabilityEffect = true
+              IsVulnerabilityEffect = false
               Amount = 40.0
               Cooldown = 1
               Duration = 5
@@ -174,7 +174,7 @@
           Name = "BlindLightning"
           IgnoreName = "_PlayerUnit"
           Type = "DAMAGE_OVER_TIME"
-          IsVulnerabilityEffect = true
+          IsVulnerabilityEffect = false
           Amount = 40.0
           Cooldown = 1
           Duration = 5
@@ -283,7 +283,7 @@
             Name = "BlindLightning"
             IgnoreName = "_PlayerUnit"
             Type = "DAMAGE_OVER_TIME"
-            IsVulnerabilityEffect = true
+            IsVulnerabilityEffect = false
             Amount = 40.0
             Cooldown = 1
             Duration = 5

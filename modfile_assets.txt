@@ -31,3 +31,7 @@ To "Audio/FMOD/Build/Desktop/VO.h"
 Replace "Audio/VO.h"
 To "Audio/FMOD/Build/Desktop/VO.fsb"
 Replace "Audio/VO.fsb" 
+
+:: Subtitles
+To "Subtitles/en/ZagreusScratch.csv"
+Replace "Audio/Subtitles/Subtitle.en.csv"

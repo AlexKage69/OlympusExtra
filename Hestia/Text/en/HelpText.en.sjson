@@ -21,6 +21,35 @@
 			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
 		}
 		{
+			Id = "HomeWarmthQuest"
+			DisplayName = "The Warmth of Home"
+			Description = "Hestia is asking to make the god of dead more at home. Some furniture should do the trick."
+		}
+		{
+			Id = "HestiaHomeWarmthQuest01"
+			DisplayName = "Hestia asked to add more lights... Maybe candles?"
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest02"
+			DisplayName = "Hestia asked to add something warmth... Fire is always handy."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest03"
+			DisplayName = "Hestia asked to add a fireplace... Any should do."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest04"
+			DisplayName = "Hestia asked to put on some music... Maybe Orpheus can help."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest05"
+			DisplayName = "Hestia asked for even more fire... Maybe Thanatos can help."
+		}		
+		{
+			Id = "HestiaHomeWarmthQuest06"
+			DisplayName = "Hestia seemed please with the new decor."
+		}		
+		{
 			Id = "CentaurHeart"
 			DisplayName = "Centaur Heart"
 			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
@@ -74,12 +103,12 @@
 		{
 			Id = "HestiaDashTrait"
 			DisplayName = "Flaring Rush"
-			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBurst} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageOverTime}"
+			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
 		} 
 		{
 			Id = "HestiaDashTrait_Initial"
 			InheritFrom = "HestiaDashTrait"
-			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBurst} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageOverTime}"
+			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "HestiaSignoff"
@@ -116,17 +145,17 @@
 		{
 			Id = "HestiaRangedTrait"
 			DisplayName = "Ember Shot"
-			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.TooltipDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#OldFormat}{$TooltipData.TooltipDamageLava}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#OldFormat}{$TooltipData.DisplayDelta2}"
 		}
 		{
 			Id = "HestiaRangedTrait_Initial"
 			InheritFrom = "HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}  \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageLava}"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}  \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "HestiaRangedTrait_Tray"
 			InheritFrom = "HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}  \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageLava}"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}  \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait"
@@ -158,12 +187,12 @@
 		{
 			Id = "StrongAttractionTrait",
 			DisplayName = "Open Arms"
-			Description = "Your boons with attraction effect are stronger. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Description = "Your boons with attraction effect are stronger and attracts more foes. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
     	}
 		{
 			Id = "StrongAttractionTrait_Initial",
 			InheritFrom = "StrongAttractionTrait"
-			Description =  "Your boons with attraction effect are stronger. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Description = "Your boons with attraction effect are stronger and attracts more foes. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
     	}
 		{
 			Id = "HestiaRevengeTrait"
@@ -193,12 +222,12 @@
 		{
 			Id = "LavaDeathTrait"
 			DisplayName = "Molten Core"
-			Description = "When foes are slain, they have a chance to leave behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "When foes are slain, they have a chance to leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "LavaDeathTrait_Initial"
 			InheritFrom = "LavaDeathTrait"
-			Description = "When foes are slain, they have a chance to leave behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDamageTrait"
@@ -231,22 +260,22 @@
 		{
 			Id = "LavaResistTrait"
 			DisplayName = "Home Turf"
-			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageReduction:P}{#PreviousFormat}"
+			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "LavaResistTrait_Initial"
 			InheritFrom = "LavaResistTrait"
-			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageReduction:P}{#PreviousFormat}"
+			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "LavaLongerTrait",
 			DisplayName = "Eternal Flame"
-			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Size Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipWidth}% \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaLongerTrait_Initial",
 			InheritFrom = "LavaLongerTrait"
-			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Size Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipWidth}% \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaAutoTrait"
@@ -270,12 +299,12 @@
 		}
 		{
 			Id = "MoreTrapDamageTrait"
-			DisplayName = "MoreTrapDamageTrait"
-			Description = "{$Keywords.Traps} deal more damage to enemies."
+			DisplayName = "Danger Zone"
+			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage to foes." 
 		}	
 		{
 			Id = "FreeHealthTrait"
-			DisplayName = "Loving Embrace"
+			DisplayName = "Unrequited Love"
 			Description = "After you defeat {$Keywords.BossPlural}, gain a {$Keywords.CentaurHeart}.\n After you defeat {$Keywords.MiniBoss}, gain a {$Keywords.CentaurSoul}."
 		}	
 		{
@@ -288,8 +317,8 @@
 		}
 		{
 			Id = "ExplosionTrait"
-			DisplayName = "ExplosionTrait"
-			Description = "Your {$Keywords.Crit} creates an explosion."
+			DisplayName = "Striking Sparks"
+			Description = "Your {$Keywords.Crit} creates an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "ChillFireTrait"
