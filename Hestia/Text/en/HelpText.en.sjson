@@ -193,12 +193,12 @@
 		{
 			Id = "LavaDeathTrait"
 			DisplayName = "Molten Core"
-			Description = "When foes are slain, they have a chance to leave behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "LavaDeathTrait_Initial"
 			InheritFrom = "LavaDeathTrait"
-			Description = "When foes are slain, they have a chance to leave behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDamageTrait"
