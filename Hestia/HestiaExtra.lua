@@ -409,7 +409,7 @@ if ModUtil ~= nil then
 				Text = "CodexData_Hestia_0005",
 			},
 		},
-		Image = "Codex_Portrait_Heart",
+		Image = "Codex_Portrait_CentaurSoul",
 	}	
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
@@ -4924,9 +4924,19 @@ if ModUtil ~= nil then
 	
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ZeusUpgrade)) 
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ApolloUpgrade)) 
+			local dropItemName = "RoomRewardEmptyHealthDrop"
+			GiveRandomConsumables({
+				Delay = 0.5,
+				NotRequiredPickup = true,
+				LootOptions =
+				{
+					{
+						Name = dropItemName,
+						Chance = 1,
+					}
+				}
+			})
 		end 
-	}]]
+	}]]--
 
 end

@@ -165,12 +165,12 @@
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait_Tray"
 			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait_Initial"
 			InheritFrom = "ShieldLoadAmmo_HestiaRangedTrait"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "BowLoadAmmo_HestiaRangedTrait"
@@ -221,7 +221,7 @@
 		}
 		{
 			Id = "LavaDeathTrait"
-			DisplayName = "Blazing Hearth"
+			DisplayName = "Molten Core"
 			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
@@ -260,27 +260,27 @@
 		{
 			Id = "LavaResistTrait"
 			DisplayName = "Home Turf"
-			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "LavaResistTrait_Initial"
 			InheritFrom = "LavaResistTrait"
-			Description = "You take less damage while standing in {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "LavaLongerTrait",
 			DisplayName = "Eternal Flame"
-			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaLongerTrait_Initial",
 			InheritFrom = "LavaLongerTrait"
-			Description = "{$Keywords.LavaSplash} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaAutoTrait"
 			DisplayName = "Royal Hearth"
-			Description = "{$Keywords.LavaSplash} attracts foes."
+			Description = "Your {$Keywords.LavaSplash}s attracts foes."
 		}
 		{
 			Id = "ForceHestiaBoonTrait"
