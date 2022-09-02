@@ -1,9 +1,0 @@
-
-Projectiles = { 
-  "_sequence" = true 
-  0 = { 
-    Effects = [
-      "_append" 
-    ] 
-  }
-}

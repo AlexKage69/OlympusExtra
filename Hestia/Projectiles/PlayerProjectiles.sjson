@@ -534,7 +534,7 @@
       CanBeReflected = false
       CanBeProjectileDefenseDestroyed = false
       AffectsEnemies = true
-      AffectsFriends = true
+      //AffectsFriends = true
       Range = 1.0
       DamageRadius = 1600
       DamageRadiusScaleY = 0.5
@@ -570,7 +570,7 @@
       CanBeReflected = false
       CanBeProjectileDefenseDestroyed = false
       AffectsEnemies = true
-      AffectsFriends = true
+      //AffectsFriends = true
       Range = 1.0
       DamageRadius = 2200
       DamageRadiusScaleY = 0.5

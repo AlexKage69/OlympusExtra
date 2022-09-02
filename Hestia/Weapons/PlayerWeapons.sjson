@@ -33,7 +33,8 @@
       AutoLock = true
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
-      NumProjectiles = 1
+      NumProjectiles = 3
+      ProjectileInterval = 0.5
     }
     {
       Name = "HestiaRetaliate"
