@@ -207,17 +207,17 @@
 		{
 			Id = "HealthDefianceTrait"
 			DisplayName = "Homecoming"
-			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUp_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
 		}
 		{
 			Id = "HealthDefianceTrait_Initial"
 			InheritFrom = "HealthDefianceTrait"
-			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUp_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
 		}
 		{
 			Id = "LastStandHealthDrop"
 			InheritFrom = "HealthDefianceTrait_Initial"
-			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUp_Small}. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
 		}
 		{
 			Id = "LastStandDamageReduceTrait"
