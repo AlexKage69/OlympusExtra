@@ -130,17 +130,17 @@
 		{
 			Id = "HestiaShoutTrait"
 			DisplayName = "Hestia's Aid"
-			Description = "Your {$Keywords.Wrath} fires a ring of fire for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta2} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		}		
 		{
 			Id = "HestiaShoutTrait_Tray"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.Wrath} fires a ring of fire for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta2} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		}	
 		{
 			Id = "HestiaShoutTrait_Initial"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.Wrath} fires a ring of fire for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.NewTotal2} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		} 
 		{
 			Id = "HestiaRangedTrait"
@@ -207,17 +207,27 @@
 		{
 			Id = "HealthDefianceTrait"
 			DisplayName = "Homecoming"
-			Description = "{$Keywords.ExtraChance} gives you {!Icons.Health}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
 		}
 		{
 			Id = "HealthDefianceTrait_Initial"
 			InheritFrom = "HealthDefianceTrait"
-			Description = "{$Keywords.ExtraChance} gives you {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
 		}
 		{
 			Id = "LastStandHealthDrop"
 			InheritFrom = "HealthDefianceTrait_Initial"
-			Description = "{$Keywords.ExtraChance} gives you {!Icons.Health_Small}. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
+		}
+		{
+			Id = "LastStandDamageReduceTrait"
+			DisplayName = "Temperance"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, receive less damage that encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "LastStandDamageReduceTrait_Initial"
+			InheritFrom = "LastStandDamageReduceTrait"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, receive less damage that encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "LavaDeathTrait"

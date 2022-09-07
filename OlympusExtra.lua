@@ -53,7 +53,7 @@ if ModUtil ~= nil then
             --External mod interaction
             OlympusCodexMenuData.HestiaUpgrade = {
                 "HestiaWeaponTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaSecondaryTrait",
-                "HestiaShoutTrait", "StrongAttractionTrait", "HestiaRevengeTrait",
+                "HestiaShoutTrait", "StrongAttractionTrait", "HestiaRevengeTrait", "LastStandDamageReduceTrait",
                 "LastStandHealthDrop", "HealthDamageSoulDrop", "LavaDeathTrait", "LavaResistTrait", 
                 "LavaLongerTrait", "LavaAutoTrait"
             }

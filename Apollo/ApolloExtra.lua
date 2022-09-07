@@ -3508,7 +3508,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01" },
 					{ Cue = "/VO/Apollo_0093",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we? We are very alike, aren't we?" },
+						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we?" },
 				},
 				ApolloBackstory05 =
 				{
