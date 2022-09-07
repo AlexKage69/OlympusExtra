@@ -3418,7 +3418,7 @@
       Name = "HestiaLavaSplashProjectileHead"
       FilePath = "Hestia\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
       Type = "Book"
-      VisualFx = "LavaSplashProjectileTrail"
+      VisualFx = "HestiaLavaSplashProjectileTrail"
       EndFrame = 40
       Loop = true
       NumFrames = 40
@@ -3434,6 +3434,61 @@
       VisualFxCap = 40
       VisualFxDistanceMax = 30.0
       VisualFxDistanceMin = 20.0
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrail"
+      FilePath = "Animations\LavaSplashProjectileTrail\LavaSplashProjectileTrail"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "HestiaLavaSplashProjectileTrailA"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailB"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailC"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailD"
+        }]
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailA"
+      FilePath = "Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      AngleMax = 5.0
+      AngleMin = -5.0
+      EndFrame = 50
+      NumFrames = 50
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      ScaleMax = 1.2
+      ScaleMin = 0.8
+      Ambient = 0.0
+      CancelOverCap = true
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailB"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailC"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailD"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
     }
     {
       Name = "HestiaLavaPuddle"
