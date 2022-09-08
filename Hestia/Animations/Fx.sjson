@@ -77,17 +77,17 @@
       Name = "SwordSwipeA-Hestia"
       InheritFrom = "SwordSwipeAFlipped"
       ClearCreateAnimations = true
-      FilePath = "Fx\SwordSwipeA-Poseidon\SwordSwipeA-Poseidon"
+      FilePath = "Hestia\Fx\SwordSwipeA-Hestia\SwordSwipeA-hestia"
       GroupName = "Standing"
       Type = "Book"
       //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
-      AddColor = false
-      EndBlue = 0.10
-      EndGreen = 0.02
-      EndRed = 0.50
-      StartBlue = 0.18
-      StartGreen = 0.08
-      StartRed = 0.41
+      //AddColor = false
+      //EndBlue = 0.10
+      //EndGreen = 0.02
+      //EndRed = 0.50
+      //StartBlue = 0.18
+      //StartGreen = 0.08
+      //StartRed = 0.41
       EndFrame = 29
       NumFrames = 29
       ClearSlides = true
@@ -278,7 +278,7 @@
     }
     {
       Name = "HestiaMeleeSplash"
-      FilePath = "Fx\PoseidonMeleeSplash\PoseidonMeleeSplash"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
       GroupName = "Standing"
       Type = "Book"
       Angle = -90.0
@@ -360,7 +360,7 @@
     /* Hestia - Sword - SecondaryTrait */
     {
       Name = "SwordParryParticles-Hestia"
-      FilePath = "Fx\PoseidonProjectileImpactPiece\PoseidonProjectileImpactPiece"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
       GroupName = "Standing"
       Type = "Book"
       AngleChangeSpeedMax = 1.0
@@ -951,7 +951,7 @@
     }
     {
       Name = "HestiaProjectileHeadDripFlare"
-      FilePath = "Tilesets\Lensflare\Flare_poseidon"
+      FilePath = "Hestia\Flare_Hestia"
       GroupName = "FX_Standing_Add"
       Type = "Constant"
       AngleFromOwner = "Ignore"
@@ -2773,7 +2773,7 @@
     {
       Name = "HestiaAmmoPushRingCirclesBright"
       Type = "Book"
-      FilePath = "Fx\HadesAmmoWeaponCirclesBright\HadesAmmoWeaponCirclesBright"
+      FilePath = "Hestia\Fx\HadesAmmoWeaponCirclesBright\HadesAmmoWeaponCirclesBright"
       NumFrames = 6
       Material = "Unlit"
       ScaleRadius = 920
@@ -2992,7 +2992,7 @@
     }
     {
       Name = "HestiaSpinLoop"
-      FilePath = "Fx\LavaFire\LavaFire"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
       GroupName = "FX_Terrain"
       DrawBehindOwner = true
       Type = "Book"
@@ -3644,7 +3644,7 @@
     }
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
       GroupName = "FX_Standing_Add"
       Type = "Book"
       AngleFromOwner = "Ignore"
@@ -3672,17 +3672,17 @@
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleB"
       InheritFrom = "HestiaLavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
     }
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleC"
       InheritFrom = "LavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
     }
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleD"
       InheritFrom = "LavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
     }
     
      {
