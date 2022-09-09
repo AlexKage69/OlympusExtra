@@ -300,14 +300,14 @@
     {
       Name = "Boon_Hestia_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hestia\HestiaAttract_large"
+      FilePath = "Hestia\Temperance_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hestia_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hestia\HestiaAttract_large"
+      FilePath = "Hestia\Temperance_large"
       EndFrame = 1
       StartFrame = 1
     }
