@@ -409,7 +409,7 @@ if ModUtil ~= nil then
 				Text = "CodexData_Hestia_0005",
 			},
 		},
-		Image = "Codex_Portrait_Heart",
+		Image = "Codex_Portrait_CentaurSoul",
 	}	
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
@@ -5135,7 +5135,7 @@ if ModUtil ~= nil then
 	OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 
 	-- For testing purposes
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
@@ -5143,7 +5143,7 @@ if ModUtil ~= nil then
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
@@ -5151,9 +5151,19 @@ if ModUtil ~= nil then
 	
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ZeusUpgrade)) 
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(CodexMenu.BoonData.ApolloUpgrade)) 
+			local dropItemName = "RoomRewardEmptyHealthDrop"
+			GiveRandomConsumables({
+				Delay = 0.5,
+				NotRequiredPickup = true,
+				LootOptions =
+				{
+					{
+						Name = dropItemName,
+						Chance = 1,
+					}
+				}
+			})
 		end 
-	}]]
+	}]]--
 
 end
