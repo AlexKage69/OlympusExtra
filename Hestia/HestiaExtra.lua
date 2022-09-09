@@ -417,27 +417,6 @@ if ModUtil ~= nil then
 	OlympusTraitData.ForceHestiaBoonTrait = {
 		Name = "ForceHestiaBoonTrait",
 			InheritFrom = { "GiftTrait" },
-			--Inherit		
-			Frame = "Gift",
-			Slot = "Keepsake",
-			RecordCacheOnEquip = true,
-			ChamberThresholds =  { 25, 50 },
-	
-			RarityLevels =
-			{
-				Common =
-				{
-					Multiplier = 1.0,
-				},
-				Rare =
-				{
-					Multiplier = 1.5,
-				},
-				Epic =
-				{
-					Multiplier = 2.0,
-				}
-			},
 			--New Data
 			InRackTitle = "ForceHestiaBoonTrait_Rack",
 			Icon = "Keepsake_Ember",
@@ -2810,7 +2789,7 @@ if ModUtil ~= nil then
 			}
 		},
 	}
-	--
+	
 	OlympusTraitData.FreeHealthTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
@@ -2827,7 +2806,6 @@ if ModUtil ~= nil then
 		}
 	}
 
-	--
 	OlympusTraitData.ExplosionTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
@@ -2853,35 +2831,54 @@ if ModUtil ~= nil then
 			},
 		}		
 	}	
-	OlympusTraitData.ChillFireTrait =
+
+	OlympusTraitData.LavaCrystalTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Demeter_01",
-		RequiredFalseTrait = "ChillFireTrait",
+		RequiredFalseTrait = "LavaCrystalTrait",
+		PreEquipWeapons = { "HestiaOnRevenge" },
+		SetupFunction =
+		{
+			Name = "SetUpDemeterLavaSplash",
+			Args =
+			{
+				--Amount = 1,
+				Interval = 2,
+				ExtractValues =
+				{
+					{
+						Key = "Interval",
+						ExtractAs = "TooltipInterval",
+						DecimalPlaces = 2,
+					},
+				}
+			},
+		},
 	}
-	OlympusTraitData.FestiveFogHealTrait =
+	OlympusTraitData.FullHealBossTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Dionysus_01",
-		RequiredFalseTrait = "FestiveFogHealTrait",
+		RequiredFalseTrait = "FullHealBossTrait",
 	}			
-	OlympusTraitData.LavaDoomTrait =
+	OlympusTraitData.CloseDamageBuffTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Ares_01",
-		RequiredFalseTrait = "LavaDoomTrait",
+		RequiredFalseTrait = "CloseDamageBuffTrait",
 	}		
-	OlympusTraitData.MoreHellringTrait =
+	OlympusTraitData.ShoutMaxIncreaseTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Zeus_01",
-		RequiredFalseTrait = "MoreHellringTrait",
+		RequiredFalseTrait = "ShoutMaxIncreaseTrait",
 	}	
-	OlympusTraitData.FishingHealTrait =
+	OlympusTraitData.FishingRewardExtraTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Poseidon_01",
-		RequiredFalseTrait = "FishingHealTrait",	
+		RequiredFalseTrait = "FishingRewardExtraTrait",	
 	}
 	
 	-- LootData
@@ -4993,6 +4990,21 @@ if ModUtil ~= nil then
 			end
 		end
 	end
+	-- Demeter Duo	
+	function SetUpDemeterLavaSplash( unit, args )
+		thread( DemeterLavaSplash, unit, args )
+	end
+
+	function DemeterLavaSplash( unit, args )
+		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
+			wait( args.Interval, RoomThreadName)
+			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+				local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = unit.LocationX, LocationY = unit.LocationY })
+				FireWeaponFromUnit({ Weapon = "HestiaOnRevenge", Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true })
+				--thread( UpdateHealthUI )
+			end
+		end
+	end
 	-- Artemis Duo
 	ModUtil.Path.Wrap( "DamageEnemy", 
 	function(baseFunc, victim, triggerArgs )
@@ -5001,6 +5013,112 @@ if ModUtil ~= nil then
 			FireWeaponFromUnit({ Weapon = "ArtemisHestiaExplosion", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, ClearAllFireRequests = true, FireFromTarget = true })
 		end
 	end)
+	-- Poseidon Duo
+	ModUtil.Path.Wrap( "GetFish", 
+	function(baseFunc, biome, fishingState )
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(fishingState))
+		fishingState = "Perfect"	
+		if HeroHasTrait("FishingRewardExtraTrait") then	
+			GiveRandomConsumables({
+				Delay = 0.3,
+				NotRequiredPickup = true,
+				LootOptions =
+				{
+					{
+						Name = "StoreRewardRandomStack",
+						Chance = 1,
+					}
+				}
+			})
+			if fishingState == "Perfect" then
+				DropRewardPerfect()
+			elseif fishingState == "Good" then
+				DropRewardGood()
+			elseif fishingState == "TooLate" then
+				DropRewardLate()
+			elseif fishingState == "WayLate" then
+				DropRewardWayLate()
+			end			
+		end
+		local result = baseFunc(biome, fishingState)	
+		return result
+	end)
+	function DropRewardPerfect() 
+		local dropItemName = "GiftDrop"
+		if GameState.Cosmetics and GameState.Cosmetics.GiftDropRunProgress then
+			dropItemName = "GiftDropRunProgress"
+		end
+		GiveRandomConsumables({
+			Delay = 0.7,
+			NotRequiredPickup = true,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+	end
+	function DropRewardGood() 
+		local dropItemName = "RoomRewardMetaPointDrop"
+		GiveRandomConsumables({
+			Delay = 1.5,
+			NotRequiredPickup = true,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+	end
+	function DropRewardLate() 
+		local dropItemName = "GemDrop"
+		GiveRandomConsumables({
+			Delay = 1.5,
+			NotRequiredPickup = true,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+	end
+	function DropRewardWayLate() 
+		local dropItemName = "RoomRewardMetaPointDrop"
+		GiveRandomConsumables({
+			Delay = 1.5,
+			NotRequiredPickup = true,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+	end
+	
+	ModUtil.Path.Wrap( "RecordFish", 
+	function(baseFunc, fishName )
+		baseFunc(fishName)
+		if HeroHasTrait("FishingRewardExtraTrait") then
+			thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FishDoubled", PreDelay = 0.55, Duration = 1 })
+			GameState.TotalCaughtFish = GameState.TotalCaughtFish or {}
+			IncrementTableValue( GameState.TotalCaughtFish, fishName )
+
+			GameState.CaughtFish = GameState.CaughtFish or {}
+			IncrementTableValue( GameState.CaughtFish, fishName )
+
+			CurrentRun.CaughtFish = CurrentRun.CaughtFish or {}
+			IncrementTableValue( CurrentRun.CaughtFish, fishName )
+		end
+	end)
+	
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
