@@ -130,17 +130,17 @@
 		{
 			Id = "HestiaShoutTrait"
 			DisplayName = "Hestia's Aid"
-			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta2} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
+			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		}		
 		{
 			Id = "HestiaShoutTrait_Tray"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta2} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
+			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		}	
 		{
 			Id = "HestiaShoutTrait_Initial"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.NewTotal2} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
+			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		} 
 		{
 			Id = "HestiaRangedTrait"

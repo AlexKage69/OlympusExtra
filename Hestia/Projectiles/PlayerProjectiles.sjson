@@ -188,7 +188,7 @@
       Type = "INSTANT"
       DamageLow = 0
       DamageHigh = 0
-      DissipateGraphic = "PoisonPoolSmokeFadeOut"
+      DissipateGraphic = "DefenseSmokeFadeOut"
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
@@ -209,8 +209,8 @@
       ProjectileNumOpacityMultiplier = 0.3
       CanCrit = false
       Thing = {
-        Graphic = "PoisonPoolSmokeFadeIn"
-        DrawEmbeddedBehind = true
+        Graphic = "DefenseSmokeFadeIn"
+        //DrawEmbeddedBehind = true
         Points = [
           {
             X = 4
@@ -233,8 +233,8 @@
         {
           Name = "LavaPuddleDefense"
           OnlyAffectName = "_PlayerUnit"
-          FrontFx = "ApolloHoverLoop"
-          Duration = 0.75
+          FrontFx = "HestiaDefenseLoop"
+          Duration = 0.7
           Type = "DAMAGE_TAKEN"
           Modifier = 1
           Active = false
@@ -253,7 +253,7 @@
       Type = "INSTANT"
       DamageLow = 0
       DamageHigh = 0
-      DissipateGraphic = "PoisonPoolSmokeFadeOut"
+      DissipateGraphic = "DefenseSmokeFadeOut"
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
@@ -274,7 +274,7 @@
       ProjectileNumOpacityMultiplier = 0.3
       CanCrit = false
       Thing = {
-        Graphic = "PoisonPoolSmokeFadeIn"
+        Graphic = "DefenseSmokeFadeIn"
         DrawEmbeddedBehind = true
         Points = [
           {
@@ -298,8 +298,8 @@
         {
           Name = "LavaPuddleDefense"
           OnlyAffectName = "_PlayerUnit"
-          FrontFx = "ApolloHoverLoop"
-          Duration = 0.75
+          FrontFx = "HestiaDefenseLoop"
+          Duration = 0.7
           Type = "DAMAGE_TAKEN"
           Modifier = 1
           Active = false
@@ -360,20 +360,6 @@
             Y = 2
           }]
       }      
-      Effects = [
-          {
-            Name = "TestEffect"
-            OnlyAffectName = "_PlayerUnit"
-            FrontFx = "ApolloHoverLoop"
-            BackFx = "null"
-            Duration = 0.3
-            Modifier = 0.1
-            Active = true            
-            ExtendDurationOnReapply = true
-            IsVulnerabilityEffect = true
-            TimeModifierFraction = 0
-          }
-        ]
     }
     {
       Name = "HestiaFireDashField"
@@ -485,20 +471,6 @@
             Y = 45
           }]
       }
-      Effects = [
-          {
-            Name = "TestEffect"
-            OnlyAffectName = "_PlayerUnit"
-            FrontFx = "ApolloHoverLoop"
-            BackFx = "null"
-            Duration = 0.1
-            Modifier = 0.1
-            Active = true            
-            ExtendDurationOnReapply = true
-            IsVulnerabilityEffect = true
-            TimeModifierFraction = 0
-          }
-        ]
     }
     {
       Name = "ArtemisHestiaExplosion"

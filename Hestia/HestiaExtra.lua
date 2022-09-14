@@ -2067,22 +2067,7 @@ if ModUtil ~= nil then
 			{
 				Multiplier = 1.3,
 			}
-		},
-		AddOutgoingLifestealModifiers =
-		{
-			ValidWeaponsOnce = {"HestiaMaxSuper", "HestiaSuper" },
-			ValidMultiplier = 0.00,
-			BaseLifesteal = 1,
-			MinLifesteal = 0,
-			MaxLifesteal = 0,
-			ExtractValues =
-			{
-				{
-					Key = "BaseLifesteal",
-					ExtractAs = "TooltipLifesteal",
-				},
-			}
-		},
+		},		
 		AddShout =
 		{
 			FunctionName = "HestiaShout",
@@ -2135,6 +2120,21 @@ if ModUtil ~= nil then
 				}
 
 			},
+		},
+		AddOutgoingLifestealModifiers =
+		{
+			Unique = true,
+			ValidWeapons = {"HestiaMaxSuper", "HestiaSuper" },
+			ValidMultiplier = 0.00,
+			MaxLifesteal = 1,
+			MinLifesteal = 1,
+			ExtractValues =
+			{
+				{
+					Key = "MinLifesteal",
+					ExtractAs = "TooltipLifesteal",
+				},
+			}
 		},
 		ExtractValues =
 		{
@@ -4193,7 +4193,17 @@ if ModUtil ~= nil then
 						Text = "Some choices are hard to make. I hope you had your reasons. Still, here it comes." },
 				},
 			},
-	
+			FreePassVoiceLines ={
+				HestiaFreePass01 =
+				{
+					PlayOnce = true,
+					Name = "HestiaFreePass01",
+					{ Cue = "/VO/Hestia_0098",
+						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I believe you know me enough by now. I don't like conflict. I don't see the point of fighting you. Take this and be on your way, young one." },
+				},
+			},
 			RejectionVoiceLines =
 			{
 				{
@@ -4221,6 +4231,7 @@ if ModUtil ~= nil then
 				HestiaMakeUp01 =
 				{
 					Name = "HestiaMakeUp01",
+
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Hestia_0110",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -4539,6 +4550,104 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hestia_0148" },
 			},
 	}
+	-- FreePass PickupLines
+	OlympusLootData.ZeusUpgrade.FreePassVoiceLines = {
+		ZeusFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "ZeusFreePass01",
+			{ Cue = "/VO/Zeus_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "I am the strongest of my siblings, Zagreus. Yet, you picked Hestia over me. Well, she's very kind, I must admit. I suppose I'll show you the same kindess... this time." },
+		},
+	}
+	OlympusLootData.PoseidonUpgrade.FreePassVoiceLines = {
+		PoseidonFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "PoseidonFreePass01",
+			{ Cue = "/VO/Poseidon_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "You should always pick your uncle over your aunt. I'll spare you the fight this time, but only because I want to show you who's your best relative!" },
+		},
+	}
+	OlympusLootData.AthenaUpgrade.FreePassVoiceLines = {
+		AthenaFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "AthenaFreePass01",
+			{ Cue = "/VO/Athena_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "You picked Lady Hestia, I see. A strategic meanuver. In turn, I shall strategically spare you the fight this time. May you use it in your favor." },
+		},
+	}
+	OlympusLootData.AresUpgrade.FreePassVoiceLines = {
+		AresFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "AresFreePass01",
+			{ Cue = "/VO/Ares_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "My kin... I do not appreciate this slight. However, since you picked the Lady Hestia, and she has personally beseeched me to find it in my heart to forgive such disrespect, I suppose I shall give you a pass this time. But mark my word, this is will happen only once. Next time, I trust you will make a different choice." },
+		},
+	}
+	OlympusLootData.AphroditeUpgrade.FreePassVoiceLines = {
+		PoseidonFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "PoseidonFreePass01",
+			{ Cue = "/VO/Poseidon_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "Oh? How coy of you, dearest. You don't have to pick other gods to play hard to get. It won't work on me. No fight." },
+		},
+	}
+	OlympusLootData.ArtemisUpgrade.FreePassVoiceLines = {
+		ArtemisFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "ArtemisFreePass01",
+			{ Cue = "/VO/Artemis_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "Look, I also appreciate Hestia, but that's no reason not to pick me. I mean... {#DialogueItalicFormat}Huh{#PreviousFormat}, alright, I'll let it go this time. Don't get use to it." },
+		},
+	}
+	OlympusLootData.DionysusUpgrade.FreePassVoiceLines = {
+		DionysusFreePass01 =
+		{
+			PlayOnce = true,
+			Name = "DionysusFreePass01",
+			{ Cue = "/VO/Dionysus_0262",
+				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+				Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}, Zag, you should always pick me. Wait... You picked Hestia? Nevermind, she deserves this one after all she's done for me. I'll even pitch this in." },
+		},
+	}
+	OlympusLootData.DemeterUpgrade.RejectionTextLines.DemeterFakeFreePass01 = {
+		PlayOnce = true,
+		Name = "DemeterFreePass01",
+		RequiredAnyTextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AthenaFreePass01", "AresFreePass01", "AphroditeFreePass01", "ArtemisFreePass01","DionysusFreePass01", },
+		{ Cue = "/VO/Demeter_0362",
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+			Text = "Truly, you picked her, Zagreus? Well, I am not like the others. I won't be foul. I'll teach you whom to trust." },
+	}
+	OlympusLootData.DemeterUpgrade.MakeUpTextLines.DemeterFakeFreePassFollow01 = {
+		PlayOnce = true,
+		Name = "DemeterFreePass01",
+		Priority = true,
+		RequiredTextLines = { "DemeterFakeFreePass01" },
+		{ Cue = "/VO/Demeter_0363",
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+			Text = "I hope next time you have to make such a choice, it won't be her, Zagreus." },
+	}
+	
 	-- Duo PickupLines	
 	OlympusLootData.ZeusUpgrade.DuoPickupTextLineSets.ZeusWithHestia01 = {
 		Name = "ZeusWithHestia01",
@@ -4928,7 +5037,24 @@ if ModUtil ~= nil then
 			HealthDamagePresentation()
 		end
 	end
-	ModUtil.Path.Wrap( "CalculateLifestealModifiers", 
+	ModUtil.Path.Wrap( "AddOutgoingLifestealModifier", 
+	function(baseFunc, unit, data )
+		if CanAddModifiers(unit.OutgoingLifestealModifiers, data) then
+			baseFunc(unit, data)
+		end
+	end)
+	function CanAddModifiers(list, data)
+		if list == nil then
+			return true
+		end
+		for index, value in pairs(list) do
+			if(value.Name == data.Name and data.Unique ~= nil) then
+				return false
+			end
+		end
+		return true
+	end
+	--[[ModUtil.Path.Wrap( "CalculateLifestealModifiers", 
 	function ( baseFunc, attacker, victim, weaponData, triggerArgs )
 		baseFunc(attacker, victim, weaponData, triggerArgs)  
 		local lifesteal = 0
@@ -4941,7 +5067,7 @@ if ModUtil ~= nil then
 			end
 		end	
 		Heal( attacker, { HealAmount = lifesteal, SourceName = "CombatLifesteal", Silent = false } )
-	end)
+	end)]]
 	-- Lava Stuff	
 	ModUtil.Path.Wrap( "CheckForAllEnemiesDead", 
 	function(baseFunc, eventSource, args )
@@ -5118,7 +5244,201 @@ if ModUtil ~= nil then
 			IncrementTableValue( CurrentRun.CaughtFish, fishName )
 		end
 	end)
+	-- Rejection Functions
+	ModUtil.Path.Wrap( "SpawnRoomReward", 
+	function(baseFunc, eventSource, args )
+		local currentRoom = CurrentRun.CurrentRoom
+		if currentRoom.RewardSkip == nil then
+			baseFunc(eventSource, args)
+		end
+	end)
+	ModUtil.Path.Wrap( "StartDevotionTest", 
+	function(baseFunc, currentRun, currentRoom, currentEncounter )
+		currentRun = currentRun or CurrentRun
+		currentRoom = currentRoom or CurrentRun.CurrentRoom
+		currentEncounter = currentEncounter or CurrentRun.CurrentRoom.Encounter
+
+		thread( PlayVoiceLines, GlobalVoiceLines.DevotionLootGrantedVoiceLines )
+
+		local lootA = GiveLoot({ OffsetX = -85, OffsetY = 35, ForceLootName = currentEncounter.LootAName, SuppressSpawnSounds = true })
+		lootA.CanReceiveGift = false
+		SetThingProperty({ Property = "SortBoundsScale", Value = 1, DestinationId = lootA.ObjectId })
+		SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = lootA.ObjectId })
+
+		local lootB = GiveLoot({ OffsetX = 85, OffsetY = -35, ForceLootName = currentEncounter.LootBName, SuppressSpawnSounds = true })
+		lootB.CanReceiveGift = false
+		SetThingProperty({ Property = "SortBoundsScale", Value = 1, DestinationId = lootB.ObjectId })
+		SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = lootB.ObjectId })
+
+		waitUntil( UIData.BoonMenuId )
+
+		local lootAId = lootA.ObjectId
+		local lootBId = lootB.ObjectId
+		local newLoots = { lootAId, lootBId }
+		-- upgrade enemies with alternate upgrade
+		local chosenLootName = NotifyResultsTable[ UIData.BoonMenuId ]
+		local alternateLootId = nil
+		local alternateLootData = nil
+		if lootA.Name == chosenLootName then
+			alternateLootId = lootBId
+			alternateLootData = lootB
+		else
+			alternateLootId = lootAId
+			alternateLootData = lootA
+		end
+		currentEncounter.ChosenGodName = chosenLootName
+		currentEncounter.SpurnedGodName = alternateLootData.Name
+
+		-- wait until slot upgrade is done
+		DebugPrint({ Text = "Apply "..alternateLootData.Name.." to Enemies" })
+		AddEnemyUpgrade( alternateLootData.Name, CurrentRun )
+		currentEncounter.RemoveUpgradeOnEnd = alternateLootData.Name
+		if EnemyData[alternateLootData.Name.."RoomWeapon"] ~= nil then
+			currentEncounter.SpawnPassiveRoomWeapons = currentEncounter.SpawnPassiveRoomWeapons or {}
+			table.insert(currentEncounter.SpawnPassiveRoomWeapons, alternateLootData.Name.."RoomWeapon")
+		end
+		if CanPlayFreePass(chosenLootName, alternateLootData) then
+			ModUtil.Hades.PrintStackChunks("Freepass")
+			StartDevotionTestPresentationFreePass(CurrentRun.CurrentRoom, alternateLootData, alternateLootId)
+			alternateLootData.Skip = true
+			CurrentRun.CurrentRoom.RewardSkip = true
+			currentEncounter.Completed = true
+		else
+			ModUtil.Hades.PrintStackChunks("Battle")
+			CurrentRun.CurrentRoom.RejectedLootData = alternateLootData
+			UseableOff({ Ids = newLoots })
+			StartDevotionTestPresentation( CurrentRun.CurrentRoom, alternateLootData, alternateLootId )
+			Destroy({ Ids = newLoots })
+			EnableRoomTraps()
+			ActivatedObjects[alternateLootId] = nil
+			RemoveInputBlock({ Name = "DevotionTest" })
+			StartEncounterEffects( CurrentRun )
+		end		
+	end)
+	function CanPlayFreePass(chosenLootName, alternateLootData)
+		if alternateLootData.FreePassVoiceLines == nil and not (chosenLootName.Name == "HestiaUpgrade" or alternateLootData.Name == "HestiaUpgrade") then 
+			ModUtil.Hades.PrintStackChunks("NOPE1 Freepass")
+			return false
+		end
+		local allEligibleLines = {}
+		for textLinesName, textLines in pairs( alternateLootData.FreePassVoiceLines ) do
+			if IsTextLineEligible( CurrentRun, textLines ) then
+				table.insert( allEligibleLines, textLines )
+			end
+		end
 	
+		if IsEmpty( allEligibleLines ) then
+			ModUtil.Hades.PrintStackChunks("NOPE2 Freepass")
+			return false
+		end
+		ModUtil.Hades.PrintStackChunks("Can Freepass")
+		local number = RandomFloat(0,1)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(number))
+		return number <= 0.1
+	end	
+	function StartDevotionTestPresentationFreePass( currentRoom, alternateLootData, alternateLootId )
+		AddInputBlock({ Name = "DevotionTest" })
+		wait(1.0)
+		--Shake({ Id = alternateLootData.ObjectId, Distance = 2, Speed = 250, Duration = 1.0  })
+		PanCamera({ Ids = alternateLootData.ObjectId, Duration = 3.5, EaseIn = 0.05, EaseOut = 0.3 })
+		--thread( DoRumble, { { ScreenPreWait = 0.15, LeftFraction = 0.17, Duration = 1.0 }, } )
+		-- thread( InCombatText, alternateLootId, "Player_GodDispleased_"..alternateLootData.Name, 2.5 )
+		-- AngleTowardTarget({ Id = CurrentRun.Hero.ObjectId, DestinationId = alternateLootId })
+	
+		--PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal3", Id = alternateLootId })
+		--wait(0.5)
+		--PlaySound({ Name = "/SFX/Menu Sounds/PortraitEmoteAngerSFX" })
+	
+		PlayRandomRemainingTextLines( alternateLootData, alternateLootData.FreePassVoiceLines )
+		PanCamera({ Ids = CurrentRun.Hero.ObjectId, Duration = 1.0, EaseIn = 0.05, EaseOut = 0.3 })
+		alternateLootData.Skip = true
+		RemoveInputBlock({ Name = "DevotionTest" })
+		--[[if alternateLootData.RejectionVoiceLines ~= nil then
+			thread( PlayVoiceLines, alternateLootData.RejectionVoiceLines )
+		else
+			thread( PlayVoiceLines, GlobalVoiceLines.GodRejectedVoiceLines, true )
+		end]]
+		--wait(1.0)
+		--[[if alternateLootData.LootRejectionAnimation then
+			CreateAnimation({ Name = alternateLootData.LootRejectionAnimation, DestinationId = alternateLootId })
+		else
+			CreateAnimation({ Name = "BoonOrbDissipate", DestinationId = alternateLootId, Color = Color.Red })
+		end]]
+		--PlaySound({ Name = "/SFX/GodFavorBattleStart" })
+		PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
+		ModUtil.Hades.PrintStackChunks("end presentation")
+	end
+	ModUtil.Path.Wrap( "HandleLootPickup", 
+	function(baseFunc, currentRun, loot )
+		if loot.Skip then
+			local checkingMeterUnlock = GiftData[loot.Name] and not IsGameStateEligible(CurrentRun, GiftData[loot.Name].UnlockGameStateRequirements )
+			SetPlayerInvulnerable( "HandleLootPickup" )
+			AddTimerBlock( currentRun, "HandleLootPickup" )
+
+			local lootId = loot.ObjectId
+
+			CurrentLootData = loot
+			SetLightBarColor({ PlayerIndex = 1, Color = loot.LootColor });
+
+			local hasDuoBoon = false
+			if loot.UpgradeOptions ~= nil then
+				for i, itemData in pairs(loot.UpgradeOptions) do
+					if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsDuoBoon then
+						hasDuoBoon = true
+					end
+				end
+			end
+
+			PlaySound({ Name = loot.PickupSound or "/SFX/Menu Sounds/GodBoonInteract" })
+			thread( PlayVoiceLines, loot.PickupVoiceLines, true )
+
+			-- SKIP TALKING
+
+			AddInputBlock({ Name = "HandleLootPickup" })
+
+			if CurrentRun.LootTypeHistory[loot.Name] == nil then
+				CurrentRun.LootTypeHistory[loot.Name] = 0
+			end
+			currentRun.LootTypeHistory[loot.Name] = currentRun.LootTypeHistory[loot.Name] + 1
+
+			if loot.RespawnAfterUse then
+				local newLoot = CreateLoot({ Name = loot.Name, LootData = loot, SpawnPoint = lootId })
+				newLoot.UpgradeOptions = nil
+			end
+			if loot.WipeRecordsAfterUse then
+				TextLinesRecord = {}
+				CurrentRun.TextLinesRecord = {}
+			end
+			Destroy({ Id = lootId })
+			ActivatedObjects[lootId] = nil
+
+			RemoveInputBlock({ Name = "HandleLootPickup" })
+			RemoveTimerBlock( currentRun, "HandleLootPickup" )
+
+			if HasExchangeOnLoot( loot ) and GetNumMetaUpgrades("ReducedLootChoicesShrineUpgrade") == 0 then
+				thread( PlayVoiceLines, HeroVoiceLines.UpgradeMenuOpenVoiceLines, true )
+			else
+				thread( PlayVoiceLines, loot.UpgradeMenuOpenVoiceLines, true )
+			end
+
+			if not GameData.MissingPackages[loot.Name] then
+				LoadPackages({ Name = loot.Name })
+			end
+			OpenUpgradeChoiceMenu( loot )
+
+			if loot.PostPickupFunction ~= nil then
+				local postPickupFunction = _G[loot.PostPickupFunction]
+				postPickupFunction(loot, loot.PostPickupFunctionArgs)
+			end
+
+			SetPlayerVulnerable( "HandleLootPickup" )
+			if checkingMeterUnlock and IsGameStateEligible(CurrentRun, GiftData[loot.Name].UnlockGameStateRequirements ) then
+				thread( GiftTrackUnlockedPresentation, loot.Name )
+			end
+		else 
+			baseFunc(currentRun, loot)
+		end
+	end)
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
@@ -5135,7 +5455,7 @@ if ModUtil ~= nil then
 	OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 
 	-- For testing purposes
-	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
@@ -5143,7 +5463,7 @@ if ModUtil ~= nil then
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)]]
+	)
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
