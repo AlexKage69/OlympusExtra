@@ -2040,7 +2040,7 @@ if ModUtil ~= nil then
 				BaseProperty = "DamageLow",
 			}
 		}
-	}	
+	}
 	OlympusTraitData.HestiaShoutTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -5298,13 +5298,11 @@ if ModUtil ~= nil then
 			table.insert(currentEncounter.SpawnPassiveRoomWeapons, alternateLootData.Name.."RoomWeapon")
 		end
 		if CanPlayFreePass(chosenLootName, alternateLootData) then
-			ModUtil.Hades.PrintStackChunks("Freepass")
 			StartDevotionTestPresentationFreePass(CurrentRun.CurrentRoom, alternateLootData, alternateLootId)
 			alternateLootData.Skip = true
 			CurrentRun.CurrentRoom.RewardSkip = true
 			currentEncounter.Completed = true
 		else
-			ModUtil.Hades.PrintStackChunks("Battle")
 			CurrentRun.CurrentRoom.RejectedLootData = alternateLootData
 			UseableOff({ Ids = newLoots })
 			StartDevotionTestPresentation( CurrentRun.CurrentRoom, alternateLootData, alternateLootId )
@@ -5317,7 +5315,6 @@ if ModUtil ~= nil then
 	end)
 	function CanPlayFreePass(chosenLootName, alternateLootData)
 		if alternateLootData.FreePassVoiceLines == nil and not (chosenLootName.Name == "HestiaUpgrade" or alternateLootData.Name == "HestiaUpgrade") then 
-			ModUtil.Hades.PrintStackChunks("NOPE1 Freepass")
 			return false
 		end
 		local allEligibleLines = {}
@@ -5328,12 +5325,10 @@ if ModUtil ~= nil then
 		end
 	
 		if IsEmpty( allEligibleLines ) then
-			ModUtil.Hades.PrintStackChunks("NOPE2 Freepass")
 			return false
 		end
-		ModUtil.Hades.PrintStackChunks("Can Freepass")
 		local number = RandomFloat(0,1)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(number))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(number))
 		return number <= 0.1
 	end	
 	function StartDevotionTestPresentationFreePass( currentRoom, alternateLootData, alternateLootId )
@@ -5366,7 +5361,6 @@ if ModUtil ~= nil then
 		end]]
 		--PlaySound({ Name = "/SFX/GodFavorBattleStart" })
 		PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
-		ModUtil.Hades.PrintStackChunks("end presentation")
 	end
 	ModUtil.Path.Wrap( "HandleLootPickup", 
 	function(baseFunc, currentRun, loot )
