@@ -4956,7 +4956,6 @@ if ModUtil ~= nil then
 			local weaponData = GetWeaponData( attacker, triggerArgs.WeaponName)
 			local victim = triggerArgs.FirstUnitInVolley
 			if CurrentRun.Hero and attacker == CurrentRun.Hero and victim == nil then	
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Name))
 				for i, traitData in pairs( GetHeroTraitValues("OnWeaponProjectileDeathFunction")) do
 					if ( traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, triggerArgs.name )) and traitData.FunctionName and _G[traitData.FunctionName] then
 						thread( _G[traitData.FunctionName], weaponData, triggerArgs, traitData.FunctionArgs )
@@ -5004,7 +5003,6 @@ if ModUtil ~= nil then
 	-- Hestia FreeHealthTrait
 	ModUtil.Path.Wrap( "SpawnRoomReward", 
 		function(baseFunc, eventSource, args )
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.CurrentRoom.Encounter.EncounterType)) 
 			if HeroHasTrait("FreeHealthTrait") and CurrentRun.CurrentRoom.Encounter ~= nil and CurrentRun.CurrentRoom.Encounter.EncounterType ~= nil then
 				if CurrentRun.CurrentRoom.Encounter.EncounterType == "Boss" or CurrentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss" then
 					local consumableId = SpawnObstacle({ Name = "RoomRewardMaxHealthDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing"})
@@ -5106,7 +5104,6 @@ if ModUtil ~= nil then
 		local killingWeapon = triggerArgs.SourceWeapon
 		if not victim.SkipModifiers and killer ~= nil and killer == CurrentRun.Hero then
 			for i, data in pairs(GetHeroTraitValues("OnEnemyDeathFunctionArgs")) do
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(functionName))
 				if data.Name and _G[data.Name] then
 					_G[data.Name]( triggerArgs, data.Args )
 				end
@@ -5114,7 +5111,6 @@ if ModUtil ~= nil then
 		end
 	end)
 	function SpawningLavaProjectile( triggerArgs, args )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.name)) 
 		if HeroHasTrait("HestiaRangedTrait") and triggerArgs.name == "HestiaProjectile" then
 			local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX, LocationY = triggerArgs.LocationY })
 			FireWeaponFromUnit({ Weapon = "HestiaLavaProjectile", Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true })
@@ -5167,8 +5163,6 @@ if ModUtil ~= nil then
 	-- Poseidon Duo
 	ModUtil.Path.Wrap( "GetFish", 
 	function(baseFunc, biome, fishingState )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(fishingState))
-		--fishingState = ""	
 		if HeroHasTrait("FishingRewardExtraTrait") then	
 			GiveRandomConsumables({
 				Delay = 0.3,
@@ -5361,7 +5355,6 @@ if ModUtil ~= nil then
 			return false
 		end
 		local number = RandomFloat(0,1)
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(number))
 		return number <= 0.1
 	end	
 	function StartDevotionTestPresentationFreePass( currentRoom, alternateLootData, alternateLootId )
@@ -5482,7 +5475,7 @@ if ModUtil ~= nil then
 	OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 
 	-- For testing purposes
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
@@ -5490,7 +5483,7 @@ if ModUtil ~= nil then
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
