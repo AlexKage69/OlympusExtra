@@ -294,6 +294,27 @@ if ModUtil ~= nil then
 		-- For the Bringers of Love and Compassion
 		{ Cue = "/VO/ZagreusField_4850" },
 	})
+	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, { 
+		-- Hestia!!
+		Cue = "/VO/ZagreusField_4951", RequiredTrait = "ApolloShoutTrait", RequiredFalseSpurnedGodName = "ApolloUpgrade" 
+	})	
+	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		SuccessiveChanceToPlayAll = 0.33,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
+		RequiredSwappedGodLoot = "ZeusUpgrade",
+		CooldownName = "SaidZeusRecently",
+		CooldownTime = 40,
+
+		-- I'm sure Lady Hestia won't mind.
+		{ Cue = "/VO/ZagreusField_4929" },
+		-- Surely Hestia won't mind.
+		{ Cue = "/VO/ZagreusField_4930" },
+		-- Lady Hestia won't mind, will she?
+		{ Cue = "/VO/ZagreusField_4931" },
+	})	
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
 	table.insert(OlympusBoonInfoScreenData.Ordering, "HestiaUpgrade")
@@ -3181,7 +3202,7 @@ if ModUtil ~= nil then
 					Name = "HestiaAboutOlympianReunionQuest01",
 					PlayOnce = true,
 					RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-					{ Cue = "/VO/ZagreusField_4818", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
 						Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance of reunion with my father, Lady Hestia!" },
@@ -3197,7 +3218,7 @@ if ModUtil ~= nil then
 					Name = "HestiaAboutOlympianReunionQuest01",
 					PlayOnce = true,
 					RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-					{ Cue = "/VO/ZagreusField_4818", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
 						Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance of reunion with my father, Lady Hestia!" },
@@ -3703,7 +3724,7 @@ if ModUtil ~= nil then
 					Name = "HestiaFirstPickUp",
 					PlayOnce = true,
 					RequiredTextLines = { "AthenaFirstPickUp", "DionysusFirstPickUp", },
-					{ Cue = "/VO/ZagreusField_4800", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					{ Cue = "/VO/ZagreusField_4900", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 4.23 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
 						Text = "Who can this be? It feels so... warm. In the name of Hades! Olympus! I accept this message." },
@@ -4240,13 +4261,13 @@ if ModUtil ~= nil then
 					UsePlayerSource = true,
 	
 					-- I didn't mean to, Lady Hestia.
-					{ Cue = "/VO/ZagreusField_4932" },
+					{ Cue = "/VO/ZagreusField_4902" },
 					-- I am very sorry, Lady Hestia.
-					{ Cue = "/VO/ZagreusField_4933" },
+					{ Cue = "/VO/ZagreusField_4903" },
 					-- It isn't anything against you, Lady Hestia.
-					{ Cue = "/VO/ZagreusField_4934" },
+					{ Cue = "/VO/ZagreusField_4904" },
 					-- I don't know why I did that, Lady Hestia.
-					{ Cue = "/VO/ZagreusField_4935" },
+					{ Cue = "/VO/ZagreusField_4905" },
 				},
 				[2] = GlobalVoiceLines.GodRejectedVoiceLines,
 			},

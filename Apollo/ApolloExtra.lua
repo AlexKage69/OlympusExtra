@@ -329,7 +329,28 @@ if ModUtil ~= nil then
 
 		-- That's much brighter! All thanks to you, Lord Apollo!
 		{ Cue = "/VO/ZagreusField_4832", RequiredLastGodLoot = "ApolloUpgrade", RequiredTextLinesThisRun = "ApolloFirstPickUp" },
-	})
+	})	
+	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, { 
+		-- Apollo!!
+		Cue = "/VO/ZagreusField_4833", RequiredTrait = "ApolloShoutTrait", RequiredFalseSpurnedGodName = "ApolloUpgrade" 
+	})	
+	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		SuccessiveChanceToPlayAll = 0.33,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
+		RequiredSwappedGodLoot = "ZeusUpgrade",
+		CooldownName = "SaidZeusRecently",
+		CooldownTime = 40,
+
+		-- I'm sure Lord Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_4829" },
+		-- Surely Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_4830" },
+		-- Lord Apollo won't mind, will he?
+		{ Cue = "/VO/ZagreusField_4831" },
+	})	
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
 	table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
