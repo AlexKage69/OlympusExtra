@@ -313,16 +313,19 @@ if ModUtil ~= nil then
 		SpawnedProjectile = true,
 		NeverStore = true,
 	}	
-	OlympusWeaponData.AreaWeakenHestia =
-	{
-		InheritFrom = { "HestiaColorProjectile" },
-	}
-	OlympusWeaponData.HestiaFieldSmall =
+	OlympusProjectileData.HestiaSmallField =
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
 		SpawnedProjectile = true,
 	}
-	OlympusProjectileData.HestiaShoutWeapon = {
+	--[[OlympusWeaponData.AreaWeakenHestia =
+	{
+		InheritFrom = { "HestiaColorProjectile" },
+	}]]
+	OlympusWeaponData.HestiaSuper = {
+		InheritFrom = { "HestiaColorProjectile", "NoSlowFrameProjectile", "NoShakeProjectile" },
+	}
+	OlympusWeaponData.HestiaMaxSuper = {
 		InheritFrom = { "HestiaColorProjectile", "NoSlowFrameProjectile", "NoShakeProjectile" },
 	}
 	-- GameData
@@ -2548,7 +2551,7 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				WeaponNames = { "RangedWeapon", "HestiaRetaliate" },
+				WeaponNames = { "RangedWeapon" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleLargest",
@@ -2556,7 +2559,7 @@ if ModUtil ~= nil then
 				ExcludeLinked = true,
 			},
 			{
-				WeaponNames = { "RangedWeapon", "HestiaRetaliate" },
+				WeaponNames = { "RangedWeapon" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleLargest",
@@ -2606,19 +2609,33 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "LavaAutoTrait",
 		God = "Hestia",
-		Icon = "Boon_Hestia_14",
+		Icon = "Boon_Hestia_01",
 		PropertyChanges =
 		{
 			{
-				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				WeaponNames = { "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
 				ChangeValue = 250,
 				ChangeType = "Add",
 			},
 			{
-				WeaponNames = { "RangedWeapon", "HestiaOnDeath", "HestiaRetaliate" },
+				WeaponNames = { "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "VacuumDistance",
 				ChangeValue = 400,
 				ChangeType = "Add",
@@ -2648,6 +2665,14 @@ if ModUtil ~= nil then
 			{ },
 		},
 	}	
+	OlympusConsumableData.RoomRewardMetaPointFishGoodDrop =
+	{
+		InheritFrom = { "RoomRewardMetaPointDrop", },
+		AddResources =
+		{
+			MetaPoints = 15,
+		},
+	}
 	OlympusConsumableData.HealthDamageSoulDrop =
 	{
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
@@ -5142,8 +5167,8 @@ if ModUtil ~= nil then
 	-- Poseidon Duo
 	ModUtil.Path.Wrap( "GetFish", 
 	function(baseFunc, biome, fishingState )
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(fishingState))
-		fishingState = "Perfect"	
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(fishingState))
+		--fishingState = ""	
 		if HeroHasTrait("FishingRewardExtraTrait") then	
 			GiveRandomConsumables({
 				Delay = 0.3,
@@ -5171,9 +5196,6 @@ if ModUtil ~= nil then
 	end)
 	function DropRewardPerfect() 
 		local dropItemName = "GiftDrop"
-		if GameState.Cosmetics and GameState.Cosmetics.GiftDropRunProgress then
-			dropItemName = "GiftDropRunProgress"
-		end
 		GiveRandomConsumables({
 			Delay = 0.7,
 			NotRequiredPickup = true,
@@ -5187,9 +5209,9 @@ if ModUtil ~= nil then
 		})
 	end
 	function DropRewardGood() 
-		local dropItemName = "RoomRewardMetaPointDrop"
+		local dropItemName = "RoomRewardMetaPointFishGoodDrop"
 		GiveRandomConsumables({
-			Delay = 1.5,
+			Delay = 0.7,
 			NotRequiredPickup = true,
 			LootOptions =
 			{
@@ -5203,7 +5225,7 @@ if ModUtil ~= nil then
 	function DropRewardLate() 
 		local dropItemName = "GemDrop"
 		GiveRandomConsumables({
-			Delay = 1.5,
+			Delay = 0.7,
 			NotRequiredPickup = true,
 			LootOptions =
 			{
@@ -5215,9 +5237,9 @@ if ModUtil ~= nil then
 		})
 	end
 	function DropRewardWayLate() 
-		local dropItemName = "RoomRewardMetaPointDrop"
+		local dropItemName = "RoomRewardConsolationPrize"
 		GiveRandomConsumables({
-			Delay = 1.5,
+			Delay = 0.7,
 			NotRequiredPickup = true,
 			LootOptions =
 			{
@@ -5233,7 +5255,7 @@ if ModUtil ~= nil then
 	function(baseFunc, fishName )
 		baseFunc(fishName)
 		if HeroHasTrait("FishingRewardExtraTrait") then
-			thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FishDoubled", PreDelay = 0.55, Duration = 1 })
+			--thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FishDoubled", PreDelay = 0.55, Duration = 1 })
 			GameState.TotalCaughtFish = GameState.TotalCaughtFish or {}
 			IncrementTableValue( GameState.TotalCaughtFish, fishName )
 
@@ -5243,7 +5265,18 @@ if ModUtil ~= nil then
 			CurrentRun.CaughtFish = CurrentRun.CaughtFish or {}
 			IncrementTableValue( CurrentRun.CaughtFish, fishName )
 		end
+		--local iconId = CreateScreenObstacle({ Name = "BlankObstacle", X = ScreenCenterX, Y = ScreenCenterY - 315, Group = "Combat_Menu_TraitTray_Overlay" })
+		--SetAnimation({ Name = "Icon_FishDouble", DestinationId = iconId, OffsetY = 20, OffsetX = 20 })
 	end)
+	ModUtil.Path.Wrap( "DisplayUnlockText", 
+		function(baseFunc, args )
+			if HeroHasTrait("FishingRewardExtraTrait") and args.IconBacking == "FishCatchIconBacking" and args.SubtitleData ~= nil and args.SubtitleData.LuaValue ~= nil then
+				local doubleName = args.Icon.."_Doubled"
+				args.SubtitleData = { LuaKey = "TempTextData", LuaValue = { Name = doubleName }}
+			end
+			baseFunc(args)
+		end
+	)
 	-- Rejection Functions
 	ModUtil.Path.Wrap( "SpawnRoomReward", 
 	function(baseFunc, eventSource, args )

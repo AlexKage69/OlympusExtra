@@ -49,6 +49,17 @@ if ModUtil ~= nil then
                 EndSound = "/Leftovers/World Sounds/MapZoomInShort",
                 Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
                 Text = "Haha, always the poet, I see. I must say, since Zagreus cannot, that I appreciate everything you do for our {#DialogueItalicFormat}Zagzag{#PreviousFormat}. Though, I wouldn't call him that, since he could find a worse nickname in turn." },
+        }        
+        OlympusLootData.ApolloUpgrade.FreePassVoiceLines = {
+            ApolloFreePass01 =
+            {
+                PlayOnce = true,
+                Name = "ApolloFreePass01",
+                { Cue = "/VO/Apollo_0262",
+                    PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+                    StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+                    Text = "You think Hestia is generous? Well, Zagzag, I'll show you generosity. No fight this time, just blessings. Now you'll think twice before your next decision." },
+            },
         }
     end
     -- CodexMenu Compatibility
@@ -112,28 +123,20 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "FreeHealthTrait")
             table.insert(OlympusCodexMenuData.Duos, "MoreTrapDamageTrait")
             table.insert(OlympusCodexMenuData.Duos, "ExplosionTrait")             
-            table.insert(OlympusCodexMenuData.Duos, "LavaCrystalTrait")        
-            table.insert(OlympusCodexMenuData.Duos, "FullHealBossTrait")        
-            table.insert(OlympusCodexMenuData.Duos, "CloseDamageBuffTrait")        
-            table.insert(OlympusCodexMenuData.Duos, "ShoutMaxIncreaseTrait")    
-            table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait")         
+            --table.insert(OlympusCodexMenuData.Duos, "LavaCrystalTrait")        
+            --table.insert(OlympusCodexMenuData.Duos, "FullHealBossTrait")        
+            --table.insert(OlympusCodexMenuData.Duos, "CloseDamageBuffTrait")        
+            --table.insert(OlympusCodexMenuData.Duos, "ShoutMaxIncreaseTrait")    
+            --table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait") 0        
             
             -- CentaurSoul-CodexMenu
             table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")
         end
-        if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil  then     
+        --[[if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil  then     
             table.insert(OlympusCodexMenuData.Duos, "BlindExtraHealTrait")      
-        end
+        end]]
     end    
     -- Recompile data. Required for each gods so generic here.
     SetupRunData()
 end
 
-
-ModUtil.Path.Wrap( "AddRerolls", 
-	function(baseFunc, amount, source, args )
-        if type(amount) == "number" then
-		    baseFunc(amount, source, args)
-        end
-	end
-)

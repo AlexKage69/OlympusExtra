@@ -134,6 +134,8 @@
       Type = "INSTANT"
       DamageLow = 1
       DamageHigh = 1
+      VacuumStrength = 0
+      VacuumDistance = 0
       DissipateGraphic = "HestiaLavaPuddleOutLarge"
       ImpactVelocity = 0
       MultiDetonate = true
@@ -318,6 +320,8 @@
       Type = "INSTANT"
       DamageLow = 7
       DamageHigh = 7
+      VacuumStrength = 0
+      VacuumDistance = 0
       DissipateGraphic = "HestiaLavaPuddleOutSmallest"
       //SpawnOnDetonate = "HestiaDefenseField"
       ImpactVelocity = 0

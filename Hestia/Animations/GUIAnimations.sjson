@@ -312,6 +312,20 @@
       StartFrame = 1
     }
     {
+      Name = "Boon_Hestia_15_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\RoyalHearth_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_15_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\RoyalHearth_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
       Name = "Hestia_Aphrodite_01_Small"
       InheritFrom = "BoonTrayIcon"
       FilePath = "Hestia\Duos\HestiaAphrodite_01"
@@ -472,6 +486,12 @@
       Name = "Keepsake_HestiaSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
       FilePath = "Hestia\HestiaBadge_max"
+    }
+    {
+      Name = "Icon_FishDouble"
+      InheritFrom = "BaseFishIcon"
+      FilePath = "Hestia\FishDouble"
+      Scale = 2.0
     }
   ]
 }
