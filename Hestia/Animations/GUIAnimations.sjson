@@ -487,11 +487,5 @@
       InheritFrom = "KeepsakeMax_Sticker"
       FilePath = "Hestia\HestiaBadge_max"
     }
-    {
-      Name = "Icon_FishDouble"
-      InheritFrom = "BaseFishIcon"
-      FilePath = "Hestia\FishDouble"
-      Scale = 2.0
-    }
   ]
 }
