@@ -2132,7 +2132,6 @@ if ModUtil ~= nil then
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
-
 			{
 				WeaponNames = {"HestiaMaxSuper",},
 				WeaponProperty = "NumProjectiles",
@@ -2600,7 +2599,7 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponNames = { "HestiaOnDeath", "HestiaRetaliate" },
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleSmall",
@@ -2608,7 +2607,7 @@ if ModUtil ~= nil then
 				ExcludeLinked = true,
 			},
 			{
-				WeaponNames = { "HestiaOnDeath", "HestiaRetaliate" },
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleSmall",
@@ -2617,7 +2616,7 @@ if ModUtil ~= nil then
 			},
 			{
 				
-				WeaponNames = { "HestiaOnDeath", "HestiaRetaliate" },
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "TotalFuse",
 				BaseMin = 7,
