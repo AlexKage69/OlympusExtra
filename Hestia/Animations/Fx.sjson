@@ -77,17 +77,17 @@
       Name = "SwordSwipeA-Hestia"
       InheritFrom = "SwordSwipeAFlipped"
       ClearCreateAnimations = true
-      FilePath = "Fx\SwordSwipeA-Poseidon\SwordSwipeA-Poseidon"
+      FilePath = "Hestia\Fx\SwordSwipeA-Hestia\SwordSwipeA-hestia"
       GroupName = "Standing"
       Type = "Book"
       //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
-      AddColor = false
-      EndBlue = 0.10
-      EndGreen = 0.02
-      EndRed = 0.50
-      StartBlue = 0.18
-      StartGreen = 0.08
-      StartRed = 0.41
+      //AddColor = false
+      //EndBlue = 0.10
+      //EndGreen = 0.02
+      //EndRed = 0.50
+      //StartBlue = 0.18
+      //StartGreen = 0.08
+      //StartRed = 0.41
       EndFrame = 29
       NumFrames = 29
       ClearSlides = true
@@ -256,14 +256,11 @@
     }
     {
       Name = "HestiaProjectileSplash2"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       GroupName = "Standing"
       Type = "Book"
       Angle = -90.0
       ColorFromOwner = "Ignore"
-      Red = 0.50
-      Green = 0.50
-      Blue = 0.50
       EndFrame = 35
       NumFrames = 35
       StartFrame = 1
@@ -278,7 +275,7 @@
     }
     {
       Name = "HestiaMeleeSplash"
-      FilePath = "Fx\PoseidonMeleeSplash\PoseidonMeleeSplash"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
       GroupName = "Standing"
       Type = "Book"
       Angle = -90.0
@@ -310,7 +307,7 @@
       InheritFrom = "SwordSwipeC-ArthurBase"
       ChildAnimation = "RailgunLineSword3-Hestia"
       //VisualFx = "PoseidonMeleeSplash_SwordSwipeC"
-      Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
       EndBlue = 0.16
       EndGreen = 0.05
       EndRed = 0.32
@@ -360,7 +357,7 @@
     /* Hestia - Sword - SecondaryTrait */
     {
       Name = "SwordParryParticles-Hestia"
-      FilePath = "Fx\PoseidonProjectileImpactPiece\PoseidonProjectileImpactPiece"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
       GroupName = "Standing"
       Type = "Book"
       AngleChangeSpeedMax = 1.0
@@ -661,11 +658,8 @@
     }
     {
       Name = "SpearThrustParticles-Hestia"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       Type = "Book"
-      Red = 0.50
-      Green = 0.50
-      Blue = 0.50
       Angle = 180.0
       AngleFromOwner = "Take"
       EndFrame = 35
@@ -724,7 +718,7 @@
       Name = "SpearSwipe360-Hestia"
       InheritFrom = "SpearSwipe360"
       ChildAnimation = "SpearSwipe360B-Hestia"
-      Sound = "/SFX/Player Sounds/PoseidonWaterImpactDetonate"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterImpactDetonate"
       EndBlue = 0.16
       EndGreen = 0.05
       EndRed = 0.32
@@ -931,14 +925,11 @@
     }
     {
       Name = "HestiaArrowFront"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       ChildAnimation = "HestiaProjectileHeadDripFlare"
       GroupName = "FX_Standing_Add"
       Type = "Book"
       ColorFromOwner = "Ignore"
-      Red = 0.50
-      Green = 0.50
-      Blue = 0.50
       EndFrame = 35
       NumFrames = 35
       PlaySpeed = 120.0
@@ -951,7 +942,7 @@
     }
     {
       Name = "HestiaProjectileHeadDripFlare"
-      FilePath = "Tilesets\Lensflare\Flare_poseidon"
+      FilePath = "Hestia\Flare_Hestia"
       GroupName = "FX_Standing_Add"
       Type = "Constant"
       AngleFromOwner = "Ignore"
@@ -1034,7 +1025,7 @@
     }
     {
       Name = "BowTrailA-Hestia-Particles"
-      FilePath = "Fx\PoseidonMeleeSplash\PoseidonMeleeSplash"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
       GroupName = "Standing"
       Type = "Book"
       Angle = 90.0
@@ -1305,7 +1296,7 @@
       InheritFrom = "ShieldRush3D"
       CreateAnimation = "QuickFlashDarkPurple"
       VisualFx = "ShieldRush3D-Hestia-Particles"
-      Sound = "/SFX/Player Sounds/PoseidonWaterDashUpgrade"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterDashUpgrade"
       EndBlue = 0.16
       EndGreen = 0.05
       EndRed = 0.32
@@ -1316,13 +1307,10 @@
     {
       Name = "ShieldRush3D-Hestia-Particles"
       //CreateAnimation = "HestiaWaveDashSprite"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       GroupName = "Standing"
       Type = "Book"
       //AddColor = true
-      Red = 0.50
-      Green = 0.50
-      Blue = 0.50
       Angle = 180.0
       EndFrame = 35
       NumFrames = 35
@@ -1538,7 +1526,7 @@
     }
     {
       Name = "ShieldThrowTrail-HestiaFx"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       ColorFromOwner = "Take"
       Type = "Book"
       Angle = 180.0
@@ -1618,7 +1606,7 @@
     }
     {
       Name = "HestiaShieldThrowMiragePiece"
-      FilePath = "Fx\PoseidonProjectileImpactPiece\PoseidonProjectileImpactPiece"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
       GroupName = "FX_Terrain"
       Type = "Book"
       AngleMax = 360.0
@@ -1763,14 +1751,11 @@
     }
     {
       Name = "GunTrailA-Hestia-Particles"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       GroupName = "FX_Standing_Add"
       Type = "Book"
       Angle = 0
       AngleFromOwner = "Take"
-      Blue = 0.50
-      Green = 0.50
-      Red = 0.50
       EndFrame = 30
       NumFrames = 30
       RandomPlaySpeedMax = 90.0
@@ -1923,15 +1908,12 @@
     {
       Name = "HestiaLaserParticles"
       Type = "Book"
-      FilePath = "Fx\PoseidonWallSplash\PoseidonWallSplash"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
       NumFrames = 35
       Material = "Unlit"
       LocationZFromOwner = "Take"
       AngleFromOwner = "Take"
       LocationFromOwner = "Ignore"
-      Red = 0.5
-      Green = 0.5
-      Blue = 0.5
       OriginX = 0
       OriginY = 160
       ScaleLength = 320
@@ -2098,7 +2080,7 @@
     {
       Name = "GunGrenadeParticles-LuciferOrb-Hestia"
       InheritFrom = "GunGrenadeParticles-LuciferOrb"
-      FilePath = "Fx\PoseidonProjectileSplash\PoseidonProjectileSplash"
+      FilePath = "Hestia\Fx\HestiaProjectileSplash\HestiaProjectileSplash"
       Type = "Book"
       NumFrames = 41
       Red = 1.0
@@ -2204,7 +2186,7 @@
     }
     {
       Name = "HestiaMeleeSplash_Fist"
-      FilePath = "Fx\PoseidonMeleeSplash\PoseidonMeleeSplash"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
       Type = "Book"
       AngleFromOwner = "Maintain"
       Sound = "/EmptyCue"
@@ -2267,7 +2249,7 @@
     {
       Name = "FistFxSwipeHestiaSplash"
       Type = "Book"
-      FilePath = "Fx\PoseidonProjectileImpactPiece\PoseidonProjectileImpactPiece"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
       NumFrames = 48
       StartFrame = 1
       PlaySpeed = 140
@@ -2446,7 +2428,7 @@
     {
       Name = "HestiaClawSwipeFx"
       Type = "Book"
-      FilePath = "Fx\PoseidonProjectileSplash\PoseidonProjectileSplash"
+      FilePath = "Hestia\Fx\HestiaProjectileSplash\HestiaProjectileSplash"
       NumFrames = 41
       StartFrame = 1
       PostRotateScaleY = 0.5
@@ -2643,7 +2625,7 @@
     {
       Name = "HestiaSplashUppercut"
       Type = "Book"
-      FilePath = "Fx\PoseidonMeleeSplash\PoseidonMeleeSplash"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
       NumFrames = 30
       PlaySpeed = 50
       Scale = 1.5
@@ -2663,7 +2645,7 @@
     {
       Name = "HestiaSplashUppercut2"
       InheritFrom = "HestiaSplashUppercut"
-      FilePath = "Fx\PoseidonProjectileSplash\PoseidonProjectileSplash"
+      FilePath = "Hestia\Fx\HestiaProjectileSplash\HestiaProjectileSplash"
       NumFrames = 40
       PlaySpeed = 60
       Scale = 1.25
@@ -2773,7 +2755,7 @@
     {
       Name = "HestiaAmmoPushRingCirclesBright"
       Type = "Book"
-      FilePath = "Fx\HadesAmmoWeaponCirclesBright\HadesAmmoWeaponCirclesBright"
+      FilePath = "Hestia\Fx\HadesAmmoWeaponCirclesBright\HadesAmmoWeaponCirclesBright"
       NumFrames = 6
       Material = "Unlit"
       ScaleRadius = 920
@@ -2970,7 +2952,7 @@
     {
       Name = "HestiaRushProjectileHead"
       Type = "Book"
-      FilePath = "Fx\DemeterSmokeDirectional\DemeterSmokeDirectional"
+      //FilePath = "Fx\DemeterSmokeDirectional\DemeterSmokeDirectional"
       NumFrames = 43
       PlaySpeed = 60
       Material = "Unlit"
@@ -2992,7 +2974,7 @@
     }
     {
       Name = "HestiaSpinLoop"
-      FilePath = "Fx\LavaFire\LavaFire"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
       GroupName = "FX_Terrain"
       DrawBehindOwner = true
       Type = "Book"
@@ -3013,11 +2995,11 @@
       ChainTo = "HestiaSpinLoopOut"
       //Alpha = 0.7
       //AddColor = true
-      Color = {
+      /*Color = {
         Red = 0.8
         Green = 0.7
         Blue = 0.9
-      }
+      }*/
       ColorFromOwner = "Ignore"
       //VisualFx = "CandleFlame"
       //VisualFxIntervalMin = 0.1
@@ -3026,8 +3008,8 @@
       OverlayVfx = false
       TransferFrameFromThis = true
       Material = "Unlit"
-      ScaleX = 0.5
-      ScaleY = 1.0
+      ScaleX = 1.2
+      ScaleY = 2.5
       CreateAnimations = [
         //{ Name = "HestiaSpinLight" }
         { Name = "LavaEmber" }
@@ -3073,12 +3055,88 @@
       EndAlpha = 0.999
     }
     {
+      Name = "HestiaDefenseLoop"
+      FilePath = "Fx\Immolation\Immolation"
+      Type = "Book"
+      AngleMax = 10.0
+      AngleMin = -10.0
+      EndFrame = 43
+      Loop = true
+      NumFrames = 43
+      Alpha = 0.9
+      Color = {
+        Blue = 0.10
+        Green = 0.08
+        Red = 0.38
+      }
+      //RandomPlaySpeedMax = 80.0
+      //RandomPlaySpeedMin = 50.0      
+      TransferFrameFromThis = true
+      OriginX = 128.0
+      OriginY = 150.0
+      RandomOffsetX = 20.0
+      RandomOffsetY = 6.0
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      SortMode = "FromParent"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      OffsetZ = 80
+      ScaleMax = 0.9
+      ScaleMin = 0.6
+    }   
+    {
+      Name = "DefenseSmoke"
+      Type = "Book"
+      FilePath = "Fx\GroundFogIso\GroundFogIso"
+      NumFrames = 138
+      //Loop = true
+      Material = "Unlit"
+      Alpha = 1.0
+      ScaleFromOwner = "Ignore"
+      Scale = 1.25
+      ChainTo = "DefenseSmokeFadeOut"
+      AngleFromOwner = "Ignore"
+      GroupName = "Standing"
+      //RandomStartFrame = true
+      PlaySpeed = 20
+      OffsetY = 0
+      OffsetZ = 100
+      //RandomFlipHorizontal = true
+      DieWithOwner = true
+      TransferFrameToThis = true
+    }
+    {
+      Name = "DefenseSmokeFadeIn"
+      InheritFrom = "DefenseSmoke"
+      Loop = false
+      StartAlpha = 0
+      EndAlpha = 0.4
+      LoopFramesOnly = true
+      Duration = 0.2
+      ChainTo = "DefenseSmoke"
+      DieWithOwner = true
+      TransferFrameFromThis = true
+      TransferFrameToThis = false
+    }
+    {
+      Name = "DefenseSmokeFadeOut"
+      InheritFrom = "DefenseSmoke"
+      Loop = false
+      StartAlpha = 0.4
+      EndAlpha = 0
+      ChainTo = null
+      DieWithOwner = true
+      SortMode = "Isometric"
+    }
+    {
       Name = "HestiaSpinIn"
       InheritFrom = "HestiaSpinLoop"
       TransferFrameFromThis = false
       ChainTo = "HestiaSpinLoop"
       //CreateAnimation = "QuickFlashIce"
-      FilePath = "Fx\LavaFire\LavaFire"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
       Sound = "/null"
       EndFrame = 5
       Loop = false
@@ -3093,7 +3151,7 @@
       TransferFrameFromThis = false
       TransferFrameToThis = false
       ChainTo = "null"
-      //FilePath = "Fx\LavaFire\LavaFire"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
       Sound = "/EmptyCue"
       CreateAnimation = null
       ClearCreateAnimations = true
@@ -3104,6 +3162,7 @@
       Loop = false
       NumFrames = 15
       StartFrame = 1
+      EndAlpha = 0
       ChildAnimation = "HestiaSpinOut2"
     }
     {
@@ -3419,21 +3478,16 @@
       FilePath = "Hestia\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
       Type = "Book"
       VisualFx = "HestiaLavaSplashProjectileTrail"
+      Color ={       
+       Red = 0.5
+       Blue = 0.5
+       Green = 0.5 
+      }
       EndFrame = 40
       Loop = true
       NumFrames = 40
-      PlaySpeed = 3.0
-      AddColor = false
-      Color = {
-        Red = 0.5
-        Green = 0.5
-        Blue = 0.5
-      }
+      PlaySpeed = 6.0
       StartFrame = 1
-      Ambient = 0.0
-      VisualFxCap = 40
-      VisualFxDistanceMax = 30.0
-      VisualFxDistanceMin = 20.0
     }
     {
       Name = "HestiaLavaSplashProjectileTrail"
@@ -3458,9 +3512,14 @@
     }
     {
       Name = "HestiaLavaSplashProjectileTrailA"
-      FilePath = "Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
       Type = "Book"
       AngleFromOwner = "Take"
+      Color ={
+        Red = 0.5
+        Blue = 0.5
+        Green = 0.5
+      }
       AngleMax = 5.0
       AngleMin = -5.0
       EndFrame = 50
@@ -3478,17 +3537,17 @@
     {
       Name = "HestiaLavaSplashProjectileTrailB"
       InheritFrom = "LavaSplashProjectileTrailA"
-      FilePath = "Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
     }
     {
       Name = "HestiaLavaSplashProjectileTrailC"
       InheritFrom = "LavaSplashProjectileTrailA"
-      FilePath = "Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
     }
     {
       Name = "HestiaLavaSplashProjectileTrailD"
       InheritFrom = "LavaSplashProjectileTrailA"
-      FilePath = "Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
     }
     {
       Name = "HestiaLavaPuddle"
@@ -3500,6 +3559,11 @@
       VisualFx = "HestiaLavaPuddleParticles"
       //VisualFxManagerCap = 300
       //ScaleRadius = 110
+      Color ={
+        Red = 0.9
+        Blue = 0.9
+        Green = 0.9
+      }
       AngleFromOwner = "Ignore"
       ColorFromOwner = "Ignore"
       EndFrame = 17
@@ -3644,7 +3708,7 @@
     }
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
       GroupName = "FX_Standing_Add"
       Type = "Book"
       AngleFromOwner = "Ignore"
@@ -3654,11 +3718,11 @@
       NumFrames = 50
       RandomPlaySpeedMax = 45.0
       RandomPlaySpeedMin = 30.0
-      AddColor = true
-      Color = {
-        Red = 0.82
-        Green = 0.20
-        Blue = 0.50
+      //AddColor = true
+      Color ={
+        Red = 0.8
+        Blue = 0.8
+        Green = 0.8
       }
       StartFrame = 1
       RandomOffsetX = 120.0
@@ -3672,17 +3736,17 @@
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleB"
       InheritFrom = "HestiaLavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
     }
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleC"
       InheritFrom = "LavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
     }
     {
       Name = "HestiaLavaSplashProjectileTrailPuddleD"
       InheritFrom = "LavaSplashProjectileTrailPuddleA"
-      FilePath = "Aspho\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
     }
     
      {

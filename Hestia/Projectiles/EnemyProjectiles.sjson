@@ -7,7 +7,7 @@
       DetonateGraphic = "RadialNovaTheseusWrath-Hestia"
       DetonateSound = "/SFX/Explosion1"
       Type = "INSTANT"
-      VacuumStrength = 400
+      VacuumStrength = 300
       VacuumDistance = 4000
       DamageLow = 15
       DamageHigh = 15

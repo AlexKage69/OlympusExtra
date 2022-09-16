@@ -56,5 +56,9 @@
         TouchdownSound = "/SFX/BloodstoneAmmoDrop"
       }
     }
+    {
+      Name = "RoomRewardMetaPointFishGoodDrop"
+      InheritFrom = "RoomRewardMetaPointDrop"
+    }
   ]
 }
