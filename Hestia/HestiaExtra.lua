@@ -334,6 +334,9 @@ if ModUtil ~= nil then
 		SpawnedProjectile = true,
 		NeverStore = true,
 	}	
+	OlympusProjectileData.HestiaFireDashField = {
+		InheritFrom = { "HestiaColorProjectile" },
+	}	
 	OlympusProjectileData.HestiaSmallField =
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
@@ -1821,7 +1824,7 @@ if ModUtil ~= nil then
 		Slot = "Ranged",
 		Icon = "Boon_Hestia_04",
 		CustomTrayText = "HestiaRangedTrait_Tray",
-        RequiredFalseTrait = "ShieldLoadAmmoTrait",
+        --RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		PreEquipWeapons = { "HestiaLavaProjectile" },
 		RarityLevels =
 		{
@@ -1942,7 +1945,7 @@ if ModUtil ~= nil then
 			}
 		}
 	}
-	OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait =
+	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hestia",
@@ -2064,7 +2067,7 @@ if ModUtil ~= nil then
 				BaseProperty = "DamageLow",
 			}
 		}
-	}
+	}]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -2571,7 +2574,7 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				WeaponNames = { "RangedWeapon" },
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleLargest",
@@ -2579,7 +2582,7 @@ if ModUtil ~= nil then
 				ExcludeLinked = true,
 			},
 			{
-				WeaponNames = { "RangedWeapon" },
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaLavaPuddleLargest",
@@ -2588,7 +2591,7 @@ if ModUtil ~= nil then
 			},
 			{
 				
-				WeaponNames = { "RangedWeapon",  },
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "TotalFuse",
 				BaseMin = 7,
@@ -2629,18 +2632,18 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "LavaAutoTrait",
 		God = "Hestia",
-		Icon = "Boon_Hestia_01",
+		Icon = "Boon_Hestia_15",
 		PropertyChanges =
 		{
 			{
-				WeaponNames = { "HestiaLavaProjectile" },
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
 				ChangeValue = 250,
 				ChangeType = "Add",
 			},
 			{
-				WeaponNames = { "HestiaLavaProjectile" },
+				WeaponNames = { "RangedWeapon","HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumDistance",
 				ChangeValue = 400,
@@ -2950,8 +2953,8 @@ if ModUtil ~= nil then
 	
 			TraitsList = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait" },
 	
-			PriorityUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait" },
-			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaShoutTrait" },--, "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait", "HestiaShoutTrait" },
+			PriorityUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait" },
+			WeaponUpgrades = { "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaShoutTrait" },
 			Traits = { "HestiaRevengeTrait", "LavaDeathTrait", "LastStandDamageReduceTrait" },
 			Consumables = { "LastStandHealthDrop", "HealthDamageSoulDrop" },
 	
@@ -2961,7 +2964,7 @@ if ModUtil ~= nil then
 					OneOf = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
 				},
 				StrongAttractionTrait = {
-					OneOf = { "ApolloWeaponTrait", "HestiaSecondaryTrait"},
+					OneOf = { "HestiaWeaponTrait", "HestiaSecondaryTrait"},
 				},
 				LavaResistTrait = {
 					OneOf = { "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
@@ -2972,7 +2975,7 @@ if ModUtil ~= nil then
 				LavaAutoTrait = {
 					OneFromEachSet =
 					{
-						{ "ApolloWeaponTrait", "HestiaSecondaryTrait" },
+						{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
 						{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait"},
 					}
 				},
@@ -2982,20 +2985,26 @@ if ModUtil ~= nil then
 				{
 					OneFromEachSet =
 					{
-						{ "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait"},
-						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait", "HealthRewardBonusTrait"}
-					}
+						{ "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},
+						{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait"}
+					},
 				},
 				MoreTrapDamageTrait =
 				{
-					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
-					{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait", "ShieldLoadAmmo_AthenaRangedTrait"}
+					OneFromEachSet =
+					{
+						{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+						{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait", "ShieldLoadAmmo_AthenaRangedTrait"}
+					},
 				},
 				ExplosionTrait = 
 				{
-					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
-					{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
-				}
+					OneFromEachSet =
+					{
+						{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+						{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRangedTrait", "CritBonusTrait" }
+					},
+				},
 			},
 	
 			Speaker = "NPC_Hestia_01",
@@ -4827,11 +4836,26 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait", "ShieldLoadAmmo_HestiaRangedTrait"},
+			{ "HestiaWeaponTrait", "HestiaSecondaryTrait", "HestiaDashTrait", "HestiaRangedTrait"},
 			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait", "HealthRewardBonusTrait"}
 		}
 	}
-
+	OlympusLootData.AthenaUpgrade.LinkedUpgrades.MoreTrapDamageTrait =
+	{
+		OneFromEachSet =
+		{
+			{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+			{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait", "ShieldLoadAmmo_AthenaRangedTrait"}
+		}
+	}
+	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.ExplosionTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+			{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRushTrait", "ArtemisRangedTrait" }
+		}
+	}
 	-- Other gods modification
 	-- AthenaUpgrade
 	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines, "HestiaFirstPickUp")
