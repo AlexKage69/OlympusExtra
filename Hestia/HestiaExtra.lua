@@ -4369,7 +4369,7 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Hestia_0120",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Truce! You cannot defeat me and I refuse defeat you. Let's end it here." },
+						Text = "Truce! You cannot defeat me and I refuse to defeat you. Let's end it here." },
 				},
 				HestiaMakeUp12 =
 				{
