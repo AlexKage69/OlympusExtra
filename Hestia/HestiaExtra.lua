@@ -262,9 +262,9 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/Hestia_0157" },
 		-- My warmth is yours.
 		{ Cue = "/VO/Hestia_0158" },
-		-- Bring love and compassion to this world.
+		-- Bring warmth and compassion to this world.
 		{ Cue = "/VO/Hestia_0159" },
-		-- You deserve your title, Bringer of Love and Compassion.
+		-- For the Warmth and Compassion Brigade!
 		{ Cue = "/VO/Hestia_0160" },
 	})
 	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
@@ -289,9 +289,9 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/ZagreusField_4847" },
 		-- Smells like burnt.
 		{ Cue = "/VO/ZagreusField_4848" },
-		-- Let's bring love and compassion.
+		-- Let's bring warmth and compassion.
 		{ Cue = "/VO/ZagreusField_4849" },
-		-- For the Bringers of Love and Compassion
+		-- For the Warmth and Compassion Brigade.
 		{ Cue = "/VO/ZagreusField_4850" },
 	})
 	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, { 
@@ -3069,14 +3069,15 @@ if ModUtil ~= nil then
 					HasTraitNameInRoom = "SeaChanteyTrait",
 					{ Cue = "/VO/Hestia_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Poseidon. I know we haven't talk in a while. But I still feel like you don't take responsibilities for you did or didn't do." },
+						Text = "Ah. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
 					{ Cue = "/VO/Poseidon_0260",
+						Emote = "PortraitEmoteFiredUp",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						StartSound = "/SFX/PoseidonBoonWaveCrash",
+						StartSound = "/SFX/PoseidonBoonWaveCrash", UseEventEndSound = true,
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
-						Text = "{#DialogueItalicFormat}Woah{#PreviousFormat}. Hold down there, Hestia. I always try to do my best. Also how can I be reponsible for something I didn't do? I always act. Like I am doing this moment, right, Zagreus." },
+						Text = "Now hold on there, Hestia! I always do my best. And how can I be reponsible for something I didn't do? I always take action. Like I'm doing right this moment, with Zagreus." },
 				},]]
 				HestiaWithAthena01 =
 				{
@@ -3093,7 +3094,7 @@ if ModUtil ~= nil then
 						StartSound = "/SFX/AthenaBoonHolyShield",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Athena_01", Portrait = "Portrait_Athena_Default_01",
-						Text = "I only did what I believe should be done. I gave Zagreus the opportunity to escape. The rest is up to him now. We should continue to help in any way we can." },
+						Text = "I only did what I believed should be done. I gave Zagreus the opportunity to escape. The rest is up to him now. We should continue to help in any way we can." },
 				},
 				--[[HestiaWithAres01 =
 				{
@@ -3104,7 +3105,7 @@ if ModUtil ~= nil then
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
+						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
 					{ Cue = "/VO/Ares_0240",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -3213,7 +3214,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-						Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance of reunion with my father, Lady Hestia!" },
+						Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance to reunite with my father, Lady Hestia!" },
 					{ Cue = "/VO/Hestia_0057",
 						PortraitExitWait = 1.25,
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
@@ -3229,7 +3230,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 						PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 						PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-						Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance of reunion with my father, Lady Hestia!" },
+						Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance to reunite with my father, Lady Hestia!" },
 					{ Cue = "/VO/Hestia_0170",
 						PortraitExitWait = 1.25,
 						PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
@@ -3314,7 +3315,7 @@ if ModUtil ~= nil then
 					RequiredTrait = "GunManualReloadTrait",
 					{ Cue = "/VO/Hestia_0060",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Is that my Aspect you've got there, young one? I was looking for it. Well, I suppose I can share it with you for a while. I hope it helps in whatever goal you've put your mind to." },
+						Text = "Oh, my Aspect! I haven't used it in a while. I was much younger then, and believed flames had other purposes. I make much better use of them now. But if it helps you do your deeds, be my guest." },
 				},
 				HestiaAboutHades01 =
 				{
@@ -3373,7 +3374,7 @@ if ModUtil ~= nil then
 					RequiredGodLoot = "HeraUpgrade",
 					{ Cue = "/VO/Hestia_0065",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I don't know if you've met her, but Hera is a bit younger than me. She can be strict, but nonetheless is respected by all. She is a queen, after all. Maybe someday, she will show the same compassion that I am showing you now." },
+						Text = "I don't know if you've met her yet, but Sister Hera is younger than me. She can be strict, but she's still widely respected; she is queen of Olympus, after all. Maybe someday, she will show the same compassion that I am showing you now." },
 				},]]
 				HestiaAboutCooking01 =
 				{
@@ -3569,7 +3570,7 @@ if ModUtil ~= nil then
 					RequiredTextLines = { "HestiaBackstory01", "AresFirstPickUp", "ArtemisFirstPickUp", "AphroditeFirstPickUp" },
 					{ Cue = "/VO/Hestia_0091",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I believe you know Dionysus by now. I gave him my seat, because I saw that behind his relaxed attitude, he knew how to handle any stressful situation. Hum. Or maybe it's the wine that makes him relaxed.... Of that, I am not sure. Hehe." },
+						Text = "I believe you know Dionysus by now. I gave him my seat, because I saw that behind his relaxed attitude, he knew how to handle any stressful situation. {#DialogueItalicFormat}Hum{#PreviousFormat}. Or maybe it's the wine that makes him relaxed.... Of that, I am not sure. {#DialogueItalicFormat}Hehe{#PreviousFormat}." },
 				},
 				HestiaBackstory03 =
 				{
@@ -4321,7 +4322,7 @@ if ModUtil ~= nil then
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Hestia_0114",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I don't like fighting. I just wanted to teach you that there can be consequences to our actions." },
+						Text = "I don't like fighting. I just wanted to teach you that there can be consequences for our actions." },
 				},
 				HestiaMakeUp06 =
 				{
@@ -4396,7 +4397,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Hestia_0122",
 						PortraitExitWait = 1.0,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Giving to others while you don't have much yourself, hm? This shows how good your heart is. I shall return the kindness, if you'll allow me." },
+						Text = "Giving to others while you don't have much yourself, {#DialogueItalicFormat}hm{#PreviousFormat}? This shows how good your heart is. I shall return the kindness, if you'll allow me." },
 				},
 				HestiaGift02 =
 				{
@@ -4488,7 +4489,7 @@ if ModUtil ~= nil then
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 						PostLineFunctionArgs = { Text = "NPC_Hestia_01", Icon = "Keepsake_HestiaSticker_Max" },
-						Text = "This is too much! You know what? With this gift, I prononce us the Bringers of Love and Compassion! It might sound lame, but if we can make others laugh at our title, our goal might have been achieved already. Now, here's your badge to prove it." },
+						Text = "This is too much! You know what? With this gift, I prononce us the Warmth and Compassion Brigade! It might sound silly, but if we can make others laugh at the name, we're already well on our way to bringing people together. Now, here's your badge to prove it." },
 				},
 			},
 	
@@ -4522,11 +4523,11 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Hestia_0131" },
 					-- Let's teach them a lesson.
 					{ Cue = "/VO/Hestia_0132" },
-					-- No soup for you.
+					-- No soup for you!
 					{ Cue = "/VO/Hestia_0133" },
 					-- Fire knows no limit!
 					{ Cue = "/VO/Hestia_0134" },
-					-- We are the Bringers of Love and Compassion!
+					-- We are the Warmth and Compassion Brigade!
 					{ Cue = "/VO/Hestia_0135", RequiredTextLines = { "HestiaGift07" } },
 				},
 				{
@@ -4592,7 +4593,7 @@ if ModUtil ~= nil then
 				Source = { SubtitleColor = Color.HestiaVoice },
 				TriggerCooldowns = { "ZagreusBoonTakenSpeech" },
 	
-				-- Oh oh, you are on fire, young one!
+				-- Oh hoh, you are on fire, young one!
 				{ Cue = "/VO/Hestia_0144" },
 				-- This shall keep you warm.
 				{ Cue = "/VO/Hestia_0145" },
@@ -4646,7 +4647,7 @@ if ModUtil ~= nil then
 			{ Cue = "/VO/Ares_0262",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-				Text = "My kin... I do not appreciate this slight. However, since you picked the Lady Hestia, and she has personally beseeched me to find it in my heart to forgive such disrespect, I suppose I shall give you a pass this time. But mark my word, this is will happen only once. Next time, I trust you will make a different choice." },
+				Text = "My kin... I do not appreciate this slight. However, since you picked the Lady Hestia, and she has personally beseeched me to find it in my heart to forgive such disrespect, I suppose I shall give you a pass this time. But mark my word, this will happen only once. Next time, I trust you will make a different choice." },
 		},
 	}
 	OlympusLootData.AphroditeUpgrade.FreePassVoiceLines = {
@@ -4710,7 +4711,7 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "MasterBoltTrait",
 		{ Cue = "/VO/Zeus_0261",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "My foster-sister and I came to give you a few sparks. She thinks it's what's been missing in our relationship." },
+			Text = "My Foster-Sister and I came to give you a few sparks. She thinks it's what's been missing in our relationship." },
 		{ Cue = "/VO/Hestia_0049",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -4726,14 +4727,14 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "SeaChanteyTrait",
 		{ Cue = "/VO/Poseidon_0261",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "You seems to still hold grudge against me, Foster-Sister, huh. You always were hard to read. I wonder what I did to make you." },
+			Text = "You still seem to hold a grudge against me, dear Foster-Sister. You always were hard to read. I wonder what I did to upset you so?" },
 		{ Cue = "/VO/Hestia_0050",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/BurnDamage",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
-			Text = "You still don't get it. I won't be the one showing you the wrong you've made. I know one day you'll see and fix the situation. I have hope." },
+			Text = "You still don't get it—this is not about me, it is between you and your brothers. I'm no longer up there, and I won't be the one showing you the wrongs you must make amends for. I believe one day you'll come to understand, and fix the situation. I have hope." },
 	}
 	OlympusLootData.AthenaUpgrade.DuoPickupTextLineSets.AthenaWithHestia01 = {
 		Name = "AthenaWithHestia01",
@@ -4774,7 +4775,7 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		{ Cue = "/VO/Aphrodite_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Oh Lady Hestia. You are positively smoking hot, as always. I can't believe you've never taken up with any suitors! You don't know what you are missing." },
+			Text = "Oh, Lady Hestia. You are positively smoking hot, as always. I can't believe you've never taken up with any suitors! You don't know what you are missing." },
 		{ Cue = "/VO/Hestia_0053",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -4813,7 +4814,7 @@ if ModUtil ~= nil then
 			StartSound = "/SFX/BurnDamage",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
-			Text = "Don't worry, my child. I did not come to take my seat back. I know you do your part, and can see much you've helped Zagreus. I came to help him too, so let's do it together." },
+			Text = "Don't worry, my child. I did not come to take my seat back. I know you do your part, and can see how much you've helped Zagreus. I came to help him too, so let's do it together." },
 	}
 	OlympusLootData.DemeterUpgrade.DuoPickupTextLineSets.DemeterWithHestia01 = {
 		Name = "DemeterWithHestia01",
