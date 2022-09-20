@@ -413,8 +413,6 @@ if ModUtil ~= nil then
 		"ApolloMiscPickup17",
 		-- "ApolloMiscPickup18",
 		-- "ApolloMiscPickup19",
-		"ApolloMiscPickup20",
-		-- "ApolloMiscPickup21",
 	}
 	table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
@@ -3181,7 +3179,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 				{
 					Name = "ApolloPostEpilogue01",
 					PlayOnce = true,
-					RequiredTextLines = { "OlympianReunionQuestComplete" },
+					RequiredTextLines = { "ApolloFirstPickUp", "OlympianReunionQuestComplete" },
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0057",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,

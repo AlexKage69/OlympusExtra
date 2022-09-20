@@ -358,18 +358,21 @@ if ModUtil ~= nil then
 		"HestiaFirstPickUp",
 		"HestiaMiscPickup01",
 		"HestiaMiscPickup02",
-		"HestiaMiscPickup03",
+		-- "HestiaMiscPickup03",
 		"HestiaMiscPickup04",
 		"HestiaMiscPickup05",
 		"HestiaMiscPickup06",
 		"HestiaMiscPickup07",
 		"HestiaMiscPickup08",
 		"HestiaMiscPickup09",
-		"HestiaMiscPickup10",
+		-- "HestiaMiscPickup10",
 		"HestiaMiscPickup11",
 		"HestiaMiscPickup12",
 		"HestiaMiscPickup13",
-		"HestiaMiscPickup14"
+		"HestiaMiscPickup14",
+		"HestiaMiscPickup15",
+		"HestiaMiscPickup16",
+		"HestiaMiscPickup17"
 	}
 	table.insert(OlympusGameData.ConversationOrder, "HestiaUpgrade")
 	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "HestiaBeamWeapon")
@@ -3101,7 +3104,7 @@ if ModUtil ~= nil then
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "WarSongTrait",
-					RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+					RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HestiaWithAres02" },
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
@@ -3119,7 +3122,7 @@ if ModUtil ~= nil then
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					HasTraitNameInRoom = "WarSongTrait",
-					RequiredTextLines = { "OlympianReunionQuestComplete" },
+					RequiredTextLines = { "OlympianReunionQuestComplete", "HestiaWithAres01" },
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
@@ -3241,7 +3244,7 @@ if ModUtil ~= nil then
 				{
 					Name = "HestiaPostEpilogue01",
 					PlayOnce = true,
-					RequiredTextLines = { "OlympianReunionQuestComplete" },
+					RequiredTextLines = { "HestiaFirstPickUp", "OlympianReunionQuestComplete" },
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Hestia_0057",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
