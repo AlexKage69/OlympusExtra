@@ -103,7 +103,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameEffect", "NoShakeEffect", "WrathWeapon", },
 		HitScreenshake = { Distance = 3, Speed = 300, Duration = 0.06, FalloffSpeed = 3000 },
 		ImpactReactionHitsOverride = 1,
-		MultipleProjectileMultiplier = 0.15,	
+		MultipleProjectileMultiplier = 0.10,
 		BlockInterrupt = true,
 		Sounds =
 		{
@@ -365,6 +365,12 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
 		NeverStore = true,
 	}
+	OlympusProjectileData.DionysusLobProjectileAdditional = {
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "DionysusColorProjectile" },
+	}
+	OlympusProjectileData.ApolloLobProjectileAdditional = {
+		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "ApolloColorProjectile" },
+	}	
 	OlympusProjectileData.ApolloField =
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
@@ -980,6 +986,57 @@ if ModUtil ~= nil then
 				}
 			 }
 	 } 
+	 OlympusTraitData.ShieldLoadAmmoTrait.AnimDefinitions.ApolloWeaponTrait =
+	 {
+		 Unloaded =
+		 {
+			 Graphic = "ShieldRush3DBeowulf-Apollo",
+			 DissipateGraphic = "ShieldRush3DBeowulf-Out-Apollo",
+			 StartFx = "null",
+			 StartFx2 = "null",
+			 AttachedAnim = "null",
+		 },
+		 Loaded =
+		 {
+			 Graphic = "ShieldRush3DBeowulf-Apollo",
+			 DissipateGraphic = "ShieldRush3DBeowulf-Out-Apollo",
+			 StartFx = "null",
+			 StartFx2 = "null",
+			 AttachedAnim = "ShieldRush3DBeowulfMax-Apollo",
+		 },
+	}
+	table.insert(OlympusTraitData.GunShotgunTrait.PropertyChanges,{
+		TraitName = "ApolloWeaponTrait",
+		WeaponNames = { "GunWeapon", "GunWeaponDash" },
+		ProjectileProperty = "StartFx",
+		ChangeValue = "GunShotgunBlastRandomFlip-Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.GunShotgunTrait.PropertyChanges,{
+		TraitName = "ApolloWeaponTrait",
+		WeaponNames = { "GunWeapon", "GunWeaponDash" },
+		ProjectileProperty = "ImpactFx",
+		ChangeValue = "null",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.GunHomingBulletTrait.PropertyChanges,{
+		WeaponNames = { "GunWeapon", "GunWeaponDash" },
+		TraitName = "ApolloWeaponTrait",
+		ProjectileProperty = "Graphic",
+		ChangeValue = "GunWeaponProjectile_Homing-Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.FistReachAttackTrait.PropertyChanges,{
+		TraitName = "ApolloWeaponTrait",
+		WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
+		ProjectileProperty = "Graphic",
+		ChangeValue = "FistFxApollo_Reach",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
 	OlympusTraitData.ApolloSecondaryTrait =
 	 {
 		 Name = "ApolloSecondaryTrait",
@@ -1263,6 +1320,40 @@ if ModUtil ~= nil then
 			}
 		 }
 	 }
+	 
+	table.insert(OlympusTraitData.FistSpecialFireballTrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponName = "FistWeaponSpecial",
+		ProjectileProperty = "Graphic",
+		ChangeValue = "FistFireballFx-Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.FistSpecialFireballTrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponName = "FistWeaponSpecial",
+		WeaponProperty = "FireFx",
+		ChangeValue = "null",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.FistSpecialLandTrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponNames = { "FistWeaponLandAreaAttack" },
+		ProjectileProperty = "DetonateGraphic",
+		ChangeValue = "FistSpecialLandFx_Apollo",
+		ChangeType = "Absolute",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.SpearThrowObjectAOETrait.PropertyChanges,{
+		TraitName = "ApolloSecondaryTrait",
+		WeaponNames = { "SpearThrowImmolation" },
+		ProjectileProperty = "DetonateGraphic",
+		ChangeType = "Absolute",
+		ChangeValue = "RadialNovaSwordParry-Apollo",
+		ExcludeLinked = true,
+	})
+	
 	OlympusTraitData.ApolloDashTrait =
 	 {
 		 Name = "ApolloDashTrait",
@@ -1740,21 +1831,20 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.05,
+				Multiplier = 1.33,
 			},
 			Epic =
 			{
-				Multiplier = 1.10,
+				Multiplier = 1.66,
 			},
 			Heroic =
 			{
-				Multiplier = 1.15,
+				Multiplier = 2.00,
 			}
 		},
 		FountainDefenseBonus = 
 		{
-			BaseValue = 0.95,
-			MinMultiplier = 0.1,
+			BaseValue = 0.97,
 			ToNearest = 0.01,
 			SourceIsMultiplier = true,
 			IdenticalMultiplier = 
@@ -2249,6 +2339,14 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
+				TraitName = "MasterBoltTrait",
+				WeaponName = "BlindLightningEffector",
+				EffectName = "BlindLightning",
+				EffectProperty = "Duration",
+				ChangeValue = 10,
+				ChangeType = "Absolute",
+			},
+			{
 				WeaponName = WeaponSets.HeroPhysicalWeapons,
 				EffectName = "ApolloBlind",
 				EffectProperty = "Duration",
@@ -2521,35 +2619,15 @@ OlympusTraitData.MasterLobApolloTrait =
 		{
 			Name = "SpawnAdditionalLob",
 		},
-		PropertyChanges =
-		{
-			{
-				WeaponNames = {"DionysusLobWeaponAdditional"},
-				ProjectileName = "DionysusLobProjectileAdditional",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 45,
-				BaseMax = 45,
-				AsInt = true,
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				},
-				ExtractSource = "ExtractSource",
-			},
-			{
-				WeaponNames = {"DionysusLobWeaponAdditional"},
-				ProjectileName = "DionysusLobProjectileAdditional",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow",
-			},
-		},
 		ExtractValues =
 		{
+			{
+				ExtractAs = "TooltipDamage",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusLobProjectileAdditional",
+				BaseProperty = "DamageLow",
+			},
 			{
 				ExtractAs = "TooltipCloudDuration",
 				External = true,
@@ -2564,6 +2642,15 @@ OlympusTraitData.MasterLobApolloTrait =
 				BaseName = "DionysusField",
 				BaseProperty = "Fuse",
 				DecimalPlaces = 2,
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
 			}
 		}
 	}
@@ -2578,35 +2665,15 @@ OlympusTraitData.MasterLobDionysusTrait =
 		{
 			Name = "SpawnAdditionalLob",
 		},
-		PropertyChanges =
-		{
-			{
-				WeaponNames = {"ApolloLobWeaponAdditional"},
-				ProjectileName = "ApolloLobProjectileAdditional",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 45,
-				BaseMax = 45,
-				AsInt = true,
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				},
-				ExtractSource = "ExtractSource",
-			},
-			{
-				WeaponNames = {"ApolloLobWeaponAdditional"},
-				ProjectileName = "ApolloLobProjectileAdditional",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow",
-			},
-		},
 		ExtractValues =
 		{
+			{
+				ExtractAs = "TooltipDamage",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "ApolloLobProjectileAdditional",
+				BaseProperty = "DamageLow",
+			},
 			{
 				ExtractAs = "TooltipCloudDuration",
 				External = true,
@@ -2621,6 +2688,25 @@ OlympusTraitData.MasterLobDionysusTrait =
 				BaseName = "DionysusField",
 				BaseProperty = "Fuse",
 				DecimalPlaces = 2,
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
 			}
 		}
 	}
@@ -2767,86 +2853,43 @@ OlympusTraitData.MasterLobDionysusTrait =
 		}
 	}	
 	OlympusTraitData.MasterBoltTrait =
-		{
-			InheritFrom = { "SynergyTrait" },
-			Icon = "Apollo_Zeus_01",
-			RequiredFalseTrait = { "MasterBoltTrait" },
-			PropertyChanges =
-			{
-				{
-					TraitName = "ApolloWeaponTrait",
-					WeaponNames = WeaponSets.HeroPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "AreaWeakenApollo",
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},			
-				{
-					TraitName = "ShieldLoadAmmo_ApolloRangedTrait",
-					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloDashTrait",
-					WeaponNames = WeaponSets.HeroRushWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				},
-				{
-					TraitName = "ApolloSecondaryTrait",
-					WeaponNames = WeaponSets.HeroSecondaryWeapons,
-					EffectName = "BlindLightning",
-					EffectProperty = "Active",
-					ChangeValue = true,
-				}		
-			},
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Apollo_Zeus_01",
+		RequiredFalseTraits = { "MasterBoltTrait" },
+		PreEquipWeapons = { "BlindLightningEffector" },
 		ExtractValues =
+		{
 			{
-				{
-					ExtractAs = "MasterBoltDamage",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "BlindLightning",
-					BaseProperty = "Amount",
-				},
-				{
-					ExtractAs = "TooltipBlindDuration",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Duration",
-				},
-				{
-					ExtractAs = "TooltipBlindPower",
-					SkipAutoExtract = true,
-					External = true,
-					BaseType = "Effect",
-					WeaponName = "SwordWeapon",
-					BaseName = "ApolloBlind",
-					BaseProperty = "Amount",
-					Format = "Percent"
-				}
+				ExtractAs = "MasterBoltDamage",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "BlindLightningEffector",
+				BaseName = "BlindLightning",
+				BaseProperty = "Amount",
+			},
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
 			}
 		}
+	}
 	
 	
 	
@@ -3157,7 +3200,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 					{ Cue = "/VO/Apollo_0161",
 						PortraitExitWait = 1.25,
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come and tell me face to face." },
+						Text = "Hey, Zagzag. You don't mind me calling you Zagzag, right? Because if you do, you'd better come tell me face to face." },
 				},
 				ApolloAboutOlympianReunionQuest01 =
 				{
@@ -4834,8 +4877,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 			local sourceWeaponData = triggerArgs.AttackerWeaponData
 			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
 				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and _worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
-					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Reduced")) 		
+					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier		
 				else
 					if not victim.TimeOfLastDamage then
 						victim.TimeOfLastDamage = {}
@@ -4855,7 +4897,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 				missRate = 0.65
 			end
 			--and CheckCooldown( "StunDisarm", 10.0 )  not HasEffect({Id = victim.ObjectId, EffectName = "StunDisarm" })
-
+			missRate = 1.0
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
 				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
@@ -4864,6 +4906,9 @@ OlympusTraitData.MasterLobDionysusTrait =
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+				end
+				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
+					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
 				end
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
@@ -4878,11 +4923,18 @@ OlympusTraitData.MasterLobDionysusTrait =
 				baseFunc(victim, attacker, args)
 			end
 		end
-	)
-	
+	)	
+	function ApolloBlindApply(triggerArgs) 
+		if HeroHasTrait("MasterBoltTrait") then
+			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, AutoEquip = true, WeaponName = "BlindLightningEffector", EffectName = "BlindLightning" })
+		end
+	end
 	function ApolloBlindClear(triggerArgs)
 		if HeroHasTrait("BlindDurationTrait") then
 			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+			if HeroHasTrait("MasterBoltTrait") then
+				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 3.0 })
+			end
 		end
 	end
 	-- Prophecy and Sight	
@@ -5011,7 +5063,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 
 	function SeaChanteyAnnouncement()
 		wait(1)
-		PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
 		thread( InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "SeaChanteyText", Duration = 1})
 	end
 

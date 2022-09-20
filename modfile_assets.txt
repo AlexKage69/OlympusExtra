@@ -29,6 +29,9 @@ SJSON "Olympus/Text/en/HelpText.en.sjson"
 :: Audio
 To "Audio/FMOD/Build/Desktop/VO.h"
 Replace "Audio/VO.h"
+To "Audio/FMOD/Build/Desktop/VO.txt"
+Replace "Audio/VO.txt"
+
 To "Audio/FMOD/Build/Desktop/VO.fsb"
 Replace "Audio/VO.fsb" 
 
