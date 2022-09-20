@@ -305,12 +305,12 @@
 		{
 			Id = "ForceHestiaBoonTrait_Inactive"
 			DisplayName = "Bottomless Cauldron"
-			Description = "Hestia's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P}{#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
+			Description = "Hestia's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
 			Id = "MoreTrapDamageTrait"
 			DisplayName = "Danger Zone"
-			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#PreviousFormat} damage to foes." 
+			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat} damage to foes." 
 		}	
 		{
 			Id = "FreeHealthTrait"
