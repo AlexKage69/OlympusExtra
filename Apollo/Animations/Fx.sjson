@@ -1283,7 +1283,7 @@
       InheritFrom = "BowWeaponArrow-Apollo-SplitShot"
       FilePath = "Fx\Arrow\Arrow_Alt02"
     }
-    /* Apollo - Shield - WeaponTrail */
+    /* Apollo - Shield - WeaponTrait */
     {
       Name = "ShieldSwipe-Apollo"
       InheritFrom = "ShieldSwipe"
@@ -1442,7 +1442,7 @@
       InheritFrom = "ShieldRush3D"
       CreateAnimation = "QuickFlashOrange"
       VisualFx = "ShieldRushTrail-Apollo"
-      Sound = "/SFX/Player Sounds/ArtemisLeavesShieldRush"
+      Sound = "/SFX/Player Sounds/ZagreusShieldRush"
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05
@@ -1466,6 +1466,18 @@
       CreateAnimations = [
         {
           Name = "QuickFlashOrange"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
+        }
+        {
+          Name = "WeaponProjectile-ApolloSparkles"
         }]
     }
     {
@@ -1539,6 +1551,30 @@
         }
         {
           Name = "BeowulfShieldSlamFire"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
+        }
+        {
+          Name = "ShieldRush3D-ApolloSparkles"
         }]
     }
     {
@@ -1758,7 +1794,7 @@
     }
     {
       Name = "GunTrailRandom-Apollo"
-      FilePath = "Animations\GunTrail-Aphrodite\GunTrail-Aphrodite"
+      FilePath = "Animations\GunTrail\GunTrail"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
@@ -1838,7 +1874,7 @@
     }
     {
       Name = "GunTrailRandom-Apollo-Homing"
-      FilePath = "Animations\GunTrail-Aphrodite\GunTrail-Aphrodite"
+      FilePath = "Animations\GunTrail\GunTrail"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
@@ -2228,8 +2264,82 @@
       StartGreen = 0.55
       StartBlue = 0.05
     }
+    {
+      Name = "GunShotgunBlastRandomFlip-Apollo"
+      Type = "Random"
+      Random = [
+        {
+          Name = "GunShotgunBlast-Apollo"
+        }
+        {
+          Name = "GunShotgunBlastFlipped-Apollo"
+        }]
+    }
+    {
+      Name = "GunShotgunBlast-Apollo"
+      InheritFrom = "GunShotgunBlast"
+      ClearCreateAnimations = true
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05  
+      CreateAnimations = [
+        {
+          Name = "QuickFlashOrange"
+        }
+        {
+          Name = "ShotgunBlastWaveA-Apollo"
+        }
+        {
+          Name = "ShotgunBlastWaveB-Apollo"
+        }]
+    }
+    {
+      Name = "GunShotgunBlastFlipped-Apollo"
+      InheritFrom = "GunShotgunBlast-Apollo"
+      FlipVertical = true
+      ClearCreateAnimations = true
+      CreateAnimation = "GunShotgunBlastDarkFlipped"
+      CreateAnimations = [
+        {
+          Name = "QuickFlashOrange"
+        }
+        {
+          Name = "ShotgunBlastWaveA-Apollo"
+        }
+        {
+          Name = "ShotgunBlastWaveB-Apollo"
+        }]
+    }
+    {
+      Name = "ShotgunBlastWaveA-Apollo"
+      InheritFrom = "ShotgunBlastWaveA"
+      Hue = 0
+      Red = 0.80
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "ShotgunBlastWaveB-Apollo"
+      InheritFrom = "ShotgunBlastWaveB"
+      Hue = 0
+      Red = 0.80
+      Green = 0.55
+      Blue = 0.05
+    }
+    {
+      Name = "GunWeaponProjectile_Homing-Apollo"
+      InheritFrom = "GunWeaponProjectile_Homing"
+      CreateAnimation = "GunWeaponMuzzleFlash-Apollo"
+      VisualFx = "GunTrail-Apollo"
+      Red = 1
+      Green = 1
+      Blue = 1
+      EndRed = 0.80
+      EndGreen = 0.55
+      EndBlue = 0.05  
+    }
     /* Apollo - Fist - WeaponTrait */
-{
+    {
       Name = "FistFxApollo"
       InheritFrom = "FistFxBase"
       StartRed = 0.80
@@ -2507,6 +2617,83 @@
       StartGreen = 0.55
       StartBlue = 0.05
     }
+    {
+      Name = "FistFireballFx-Apollo"
+      InheritFrom = "FistFireballFx"
+      ClearCreateAnimations = true
+      Red = 0.80
+      Green = 0.55
+      Blue = 0.05
+      VisualFx = "ProjectileFireRingFireball-Apollo"
+      CreateAnimations = [
+        {
+          Name = "FistFireballFxStart-Apollo"
+        }
+        {
+          Name = "CastDustFireball"
+        }]
+    }
+    {
+      Name = "FistFireballFxStart-Apollo"
+      InheritFrom = "FistFireballFxStart"
+      Red = 0.80
+      Green = 0.55
+      Blue = 0.05
+      ChildAnimation = "QuickFlashOrange"
+    }
+     {
+      Name = "ProjectileFireRingFireball-Apollo"
+      InheritFrom = "ProjectileFireRingFireball"
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05
+      CreateAnimation = "ApolloParticleMixGun"
+    }
+    {
+      Name = "ApolloParticleMixGun"
+      FilePath = "Particles\particle_kira"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }
+        {
+          Name = "FistFx-ApolloSparkles"
+        }]
+    }
+    {
+      Name = "FistSpecialLandFx_Apollo"
+      InheritFrom = "RadialNovaSwordParry-Apollo"
+      VisualFx = "EnemyBurrowDirtRadial_ScaleRadius"
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.02
+      VisualFxCap = 200
+      CreateAnimations = [
+        {
+          Name = "DustRingFront"
+        }
+        {
+          Name = "DustRingBackPetrified"
+        }
+        {
+          Name = "FistSpecialGroundCracks"
+        }
+        {
+          Name = "FistUppercutSmoke"
+        }]
+    }
     /* Apollo - Fist - SecondaryTrait */
     {
       Name = "FistFxUppercutDirectionalApollo_FlashKick"
@@ -2620,6 +2807,11 @@
       ColorFromOwner = "Ignore"
       EndFrame = 27
       HoldLastFrame = true
+      Color = {
+        Red = 0.85
+        Green = 0.65
+        Blue = 0.10
+      }
       NumFrames = 27
       PlaySpeed = 60.0
       StartFrame = 1
@@ -3454,6 +3646,70 @@
       PingPongShiftOverDuration = true
       UseAttachedFlasher = false
     }
+    
+    {
+      Name = "BlindStaticArcEmitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BlindStaticArcs"
+      EndFrame = 1
+      OffsetZ = 240.0
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.15
+      VisualFxIntervalMin = 0.1
+    }
+    {
+      Name = "BlindStaticArcs"
+      FilePath = "Animations\ZeusStaticArcs\ZeusStaticArcs"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      OffsetZ = 240.0
+      StartFrame = 1
+      Random = [
+        {
+          Name = "BlindStaticArcA"
+        }
+        {
+          Name = "BlindStaticArcB"
+        }
+        {
+          Name = "BlindStaticArcC"
+        }]
+    }
+    {
+      Name = "BlindStaticArcA"
+      FilePath = "Fx\ZeusStaticArcA\ZeusStaticArcA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 15
+      NumFrames = 15
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 40.0
+      StartFrame = 1
+      //OffsetZ = 240.0
+      RandomOffsetX = 15.0
+      RandomOffsetY = 15.0
+      SortMode = "FromParent"
+      RandomRotation = true
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.9
+      ScaleMin = 0.6
+      Ambient = 0.0
+    }
+    {
+      Name = "BlindStaticArcB"
+      InheritFrom = "BlindStaticArcA"
+      FilePath = "Fx\ZeusStaticArcB\ZeusStaticArcB"
+    }
+    {
+      Name = "BlindStaticArcC"
+      InheritFrom = "ZeusStaticArcA"
+      FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
+    }
     {
       Name = "QuickFlashOrange"
       InheritFrom = "QuickFlash"
@@ -3537,12 +3793,15 @@
     {
       Name = "ApolloStrikeIndicator"
       Type = "Book"
-      FilePath = "Fx\DemeterTurret\DemeterTurret"
+      FilePath = "Fx\LightningBall\LightningBall"
+      EndFrame = 30
       NumFrames = 30
-      PlaySpeed = 120
+      StartFrame = 1
+      PlaySpeed = 30.0
       Material = "Unlit"
       AngleFromOwner = "Ignore"
-      Scale = 0.45
+      Scale = 0.70
+      Alpha = 0.5
       AddColor = true
       StartRed = 1.0
       StartGreen = 0.65
@@ -3552,16 +3811,16 @@
       EndBlue = 0.999
       PingPongColor = true
       LocationZFromOwner = "Take"
-      ChildAnimation = "ApolloStrikeAreaA"
+      ChildAnimation = "ApolloStrikeAreaSmoke"
       Loop = true
-      VisualFx = "ApolloSparkle-IceStrike"
+      VisualFx = "ApolloSparkle-Strike"
       VisualFxIntervalMin = 0.02
       VisualFxIntervalMax = 0.04
-      CreateAnimation = "ApolloStrikeIndicatorGlow"
+      //CreateAnimation = "ApolloStrikeIndicatorGlow"
       FlipHorizontal = true
-      Sound = "/SFX/Player Sounds/DemeterBlizzardVortex2"
-      StopSoundOnFinishFade = 0.2
-      ChainTo = "ApolloStrikeIndicator_Fade"
+      //Sound = "/SFX/Player Sounds/DemeterBlizzardVortex2"
+      //StopSoundOnFinishFade = 0.2
+      //ChainTo = "ApolloStrikeIndicator_Fade"
     }
     {
       Name = "ApolloStrikeIndicator_Fade"
@@ -3574,7 +3833,7 @@
       Duration = 0.4
       ChainTo = null
       CreateAnimation = null
-      ChildAnimation = "ApolloStrikeAreaA_Fade"
+      //ChildAnimation = "ApolloStrikeAreaA_Fade"
     }
     {
       Name = "ApolloStrikeIndicatorGlow"
@@ -3597,68 +3856,13 @@
       AngleFromOwner = "Ignore"
     }
     {
-      Name = "ApolloStrikeAreaA"
-      Type = "Constant"
-      FilePath = "Fx\DemeterWrathSwirl\DemeterWrathSwirlB"
-      Material = "Unlit"
-      RotationSpeed = -60
-      GroupName = "FX_Terrain"
-      PostRotateScaleY = 0.5
-      LocationZFromOwner = "Ignore"
-      Alpha = 0.5
-      Red = 1.0
-      Green = 0.65
-      Blue = 0.0
-      ScaleRadius = 580
-      ChildAnimation = "ApolloStrikeAreaB"
-      FlipVertical = true
-      FlipHorizontal = true
-      ChainTo = "ApolloStrikeAreaA_Fade"
-    }
-    {
-      Name = "ApolloStrikeAreaA_Fade"
-      InheritFrom = "ApolloStrikeAreaA"
-      ChainTo = null
-      StartAlpha = 1
-      EndAlpha = 0
-      Duration = 0.4
-      ChildAnimation = null
-      StartScale = 1
-      EndScale = 1.3
-      EaseIn = 0
-      EaseOut = 1
-    }
-    {
-      Name = "ApolloStrikeAreaB"
-      InheritFrom = "ApolloStrikeAreaA"
-      FilePath = "Fx\DemeterWrathSwirl\DemeterWrathSwirlC"
-      Red = 1.0
-      Green = 1.0
-      Blue = 0.5
-      RotationSpeed = -50
-      ChildAnimation = "ApolloStrikeAreaSmoke"
-    }
-    {
-      Name = "ApolloStrikeAreaB_Fade"
-      InheritFrom = "ApolloStrikeAreaB"
-      ChainTo = null
-      StartAlpha = 1
-      EndAlpha = 0
-      Duration = 0.4
-      ChildAnimation = "ApolloStrikeAreaSmoke_Fade"
-      StartScale = 1
-      EndScale = 1.3
-      EaseIn = 0
-      EaseOut = 1
-    }
-    {
       Name = "ApolloStrikeAreaSmoke"
       Type = "Book"
       FilePath = "Fx\DemeterCycloneLoop\DemeterCycloneLoop"
       NumFrames = 40
       Material = "Unlit"
       Loop = true
-      Alpha = 0.4
+      Alpha = 0.6
       Red = 1.0
       Green = 0.65
       Blue = 0.0
@@ -3666,130 +3870,29 @@
       ScaleRadius = 200
       PlaySpeed = 24
       FlipHorizontal = false
-      ScaleY = 0.75
+      Scale = 1.35
       OffsetZ = 30
     }
     {
-      Name = "ApolloStrikeAreaSmoke_Fade"
-      InheritFrom = "ApolloStrikeAreaSmoke"
-      StartAlpha = 1
-      EndAlpha = 0
-      Duration = 0.4
-      Loop = false
-      StartScale = 1
-      EndScale = 1.3
-      EaseIn = 0
-      EaseOut = 1
-    }
-    {
-      Name = "ApolloSparkle-IceStrike"
-      InheritFrom = "DemeterIceSparkle"
-      RadialOffsetMin = 40
-      RadialOffsetMax = 100
-      RadialOffsetScaleRadius = 100
-      RadialOffsetScaleY = 0.4
+      Name = "ApolloSparkle-Strike"
+      InheritFrom = "GenericSparkles"
+      RadialOffsetMax = 300.0
+      RadialOffsetMin = 100.0
+      RadialOffsetScaleRadius = 2500.0
+      AngleNumOffset = 8
+      AngleMax = 360.0
       OffsetY = 0
-      VelocityMin = 20
+      VelocityMin = 50
       VelocityMax = 200
-      Red = 1.0
-      Green = 0.65
-      Blue = 0.0
-      AngleChangeSpeed = 240
+      Red = 0.90
+      Green = 0.55
+      Blue = 0.05
+      AlphaMax = 1.0
+      AlphaMin = 0.8
+      //AngleChangeSpeed = 240
       AngleFromOwner = "Ignore"
       Scale = 0.4
     }
-    {
-      Name = "ApolloCloudB"
-      ChainTo = "ApolloCloudBLoop"
-      FilePath = "Fx\DionysusCloudB\DionysusCloudB"
-      GroupName = "FX_Standing_Top"
-      Type = "Book"
-      AngleFromOwner = "Ignore"
-      EndAlpha = 0.5
-      StartAlpha = 1.0
-      Duration = 0.1
-      EaseIn = 0.9
-      EaseOut = 1.0
-      EndFrame = 60
-      LoopFramesOnly = true
-      NumFrames = 60
-      PlaySpeed = 30.0
-      StartFrame = 1
-      TransferFrameFromThis = true
-      ScaleFromOwner = "Ignore"
-      ScaleRadius = 320.0
-      StartScale = 0.0
-      Ambient = 0.0
-      Color = 
-      {
-        Red = 1.0
-        Green = 0.65
-        Blue = 0.0
-      }
-    }
-    {
-      Name = "ApolloCloudBLoop"
-      CreateAnimation = "ApolloCloudBShadow"
-      FilePath = "Fx\DionysusCloudB\DionysusCloudB"
-      GroupName = "FX_Standing_Top"
-      Type = "Book"
-      VisualFx = "DionysusPsychedelia"
-      Sound = "/SFX/Player Sounds/DionysusHazeCloudSitarSteam"
-      StopSoundOnFinishFade = 0.2
-      AngleFromOwner = "Ignore"
-      Alpha = 0.5
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      PlaySpeed = 30.0
-      ReRandomizeOnLoop = false
-      StartFrame = 1
-      RandomFlipHorizontal = true
-      TransferFrameToThis = true
-      ScaleFromOwner = "Ignore"
-      ScaleRadius = 320.0
-      Ambient = 0.0
-      VisualFxIntervalMax = 0.05
-      VisualFxIntervalMin = 0.04
-      Color = 
-      {
-        Red = 1.0
-        Green = 0.65
-        Blue = 0.0
-      }
-    } 
-    {
-      Name = "ApolloCloudBEnd"
-      InheritFrom = "ApolloCloudB"
-      ColorFromOwner = "Ignore"
-      ChainTo = "null"
-      CreateAnimation = "ApolloCloudBEndGraphic"
-      UseOwnAngle = false
-      Sound = "/SFX/Player Sounds/DionysusRadialPoof"
-      EndAlpha = 0.0
-      Duration = 0.25
-      EndScale = 1.25
-      StartScale = 1.0
-    }
-
-    {
-      Name = "ApolloCloudBEndGraphic"
-      FilePath = "Fx\DionysusNova\DionysusNova"
-      GroupName = "Standing"
-      Type = "Book"
-      AngleFromOwner = "Ignore"
-      UseOwnAngle = false
-      EndFrame = 25
-      NumFrames = 25
-      PlaySpeed = 45.0
-      StartFrame = 1
-      OffsetZ = 60.0
-      Scale = 1.4
-      ScaleRadius = 350
-      Ambient = 0.0
-      StartAlpha = 0.5
-      EndAlpha = 0.1
-    } 
     /* Character Fx */
   ]
 }
