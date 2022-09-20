@@ -242,7 +242,7 @@
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		} 
 		{
 			Id = "HealthDamageTrait_Tray"
@@ -295,7 +295,7 @@
 		{
 			Id = "ForceHestiaBoonTrait"
 			DisplayName = "Bottomless Cauldron"
-			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
 			Id = "ForceHestiaBoonTrait_Rack"
