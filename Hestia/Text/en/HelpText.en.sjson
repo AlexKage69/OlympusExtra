@@ -257,7 +257,7 @@
 		{
 			Id = "HealthDamageSoulDrop"
 			InheritFrom = "HealthDamageTrait_Initial"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}
 		{
 			Id = "CentaurHeartBoostedText"
