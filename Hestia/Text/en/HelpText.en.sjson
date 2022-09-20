@@ -23,31 +23,31 @@
 		{
 			Id = "HomeWarmthQuest"
 			DisplayName = "The Warmth of Home"
-			Description = "Hestia is asking to make the god of dead more at home. Some furniture should do the trick."
+			Description = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission various renovations to make his father more at home."
 		}
 		{
 			Id = "HestiaHomeWarmthQuest01"
-			DisplayName = "Hestia asked to add more lights... Maybe candles?"
+			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission some candles from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest02"
-			DisplayName = "Hestia asked to add something warmth... Fire is always handy."
+			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission some fiery items from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest03"
-			DisplayName = "Hestia asked to add a fireplace... Any should do."
+			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission a fireplace from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest04"
-			DisplayName = "Hestia asked to put on some music... Maybe Orpheus can help."
+			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday play a fiery song from the Court Musician to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest05"
-			DisplayName = "Hestia asked for even more fire... Maybe Thanatos can help."
+			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission some deathlike flames from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest06"
-			DisplayName = "Hestia seemed please with the new decor."
+			DisplayName = "The goddess of the hearth shall someday be fully satisfied with the son of the god of the dead's efforts to make his father feel more at home."
 		}		
 		{
 			Id = "CentaurHeart"
@@ -65,7 +65,7 @@
 		}
 		{
 			Id = "MiniBoss"
-			DisplayName = "Mini-bosses"
+			DisplayName = "Mini-Bosses"
 			Description = "Stronger than most enemies, usually associated with {!Icons.MiniBoss}."
 		}
 		{
@@ -103,12 +103,12 @@
 		{
 			Id = "HestiaDashTrait"
 			DisplayName = "Flaring Rush"
-			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
+			Description = "Your {$Keywords.Dash} creates a trail of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
 		} 
 		{
 			Id = "HestiaDashTrait_Initial"
 			InheritFrom = "HestiaDashTrait"
-			Description = "Your {$Keywords.Dash} creates a wall of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.Dash} creates a trail of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "HestiaSignoff"
@@ -117,30 +117,30 @@
 		{
 			Id = "HestiaSignoff_Max"
 			DisplayName = """
-				From {#AwardMaxFlavorFormat}Hestia{#AwardDarkFlavorFormat}; you share an {#AwardMaxFlavorFormat}Compassionate Bond
+				From {#AwardMaxFlavorFormat}Hestia{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Compassionate Bond
 
-				{#AwardDarkFlavorFormat}She sees you as a bringer of love and compassion.
+				{#AwardDarkFlavorFormat}Together, you are the founding members of the Warmth and Compassion Brigade.
 			"""
 		}
 		{
       		Id = "LavaSplash"
 			DisplayName = "Lava Pool"
-			Description = "While stepping on it, damage foes over time."
+			Description = "A puddle of lava rapidly damages foes in an area."
 		}
 		{
 			Id = "HestiaShoutTrait"
 			DisplayName = "Hestia's Aid"
-			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
+			Description = "Your {$Keywords.WrathDerivedStocks} unleashes a ring of fire around you, restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per enemy hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		}		
 		{
 			Id = "HestiaShoutTrait_Tray"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
+			Description = "Your {$Keywords.WrathDerivedStocks} unleashes a ring of fire around you, restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per enemy hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		}	
 		{
 			Id = "HestiaShoutTrait_Initial"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} fires a ring of fire restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
+			Description = "Your {$Keywords.WrathDerivedStocks} unleashes a ring of fire around you, restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per enemy hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} - Rings Fired: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipProjectiles}"
 		} 
 		{
 			Id = "HestiaRangedTrait"
@@ -160,7 +160,7 @@
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait"
 			DisplayName = "Ember Flare"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HestiaRangedTrait_Tray"
@@ -187,22 +187,22 @@
 		{
 			Id = "StrongAttractionTrait",
 			DisplayName = "Open Arms"
-			Description = "Your boons with attraction effect are stronger and attracts more foes. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Description = "Your {#BoldFormat}Boons {#PreviousFormat} with attraction effects are stronger and attract more foes. \n {!Icons.Bullet}{#PropertyFormat}Targets Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Attraction Distance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
     	}
 		{
 			Id = "StrongAttractionTrait_Initial",
 			InheritFrom = "StrongAttractionTrait"
-			Description = "Your boons with attraction effect are stronger and attracts more foes. \n {!Icons.Bullet}{#PropertyFormat}Target Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Distance Attraction: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Description = "Your {#BoldFormat}Boons {#PreviousFormat} with attraction effects are stronger and attract more foes. \n {!Icons.Bullet}{#PropertyFormat}Targets Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Attraction Distance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
     	}
 		{
 			Id = "HestiaRevengeTrait"
 			DisplayName = "Molten Sting"
-			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "HestiaRevengeTrait_Initial"
 			InheritFrom = "HestiaRevengeTrait"
-			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDefianceTrait"
@@ -217,17 +217,17 @@
 		{
 			Id = "LastStandHealthDrop"
 			InheritFrom = "HealthDefianceTrait_Initial"
-			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. Replenish {#BoldFormat}1 {#PreviousFormat}use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. Replenish {#BoldFormat}1 {#PreviousFormat} use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
 		}
 		{
 			Id = "LastStandDamageReduceTrait"
 			DisplayName = "Temperance"
-			Description = "After using {$Keywords.ExtraChanceReplenish}, receive less damage that encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "LastStandDamageReduceTrait_Initial"
 			InheritFrom = "LastStandDamageReduceTrait"
-			Description = "After using {$Keywords.ExtraChanceReplenish}, receive less damage that encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "LavaDeathTrait"
@@ -242,22 +242,22 @@
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		} 
 		{
 			Id = "HealthDamageTrait_Tray"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
 		}
 		{
 			Id = "HealthDamageTrait_Initial"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}		
 		{
 			Id = "HealthDamageSoulDrop"
 			InheritFrom = "HealthDamageTrait_Initial"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}
 		{
 			Id = "CentaurHeartBoostedText"
@@ -280,37 +280,37 @@
 		{
 			Id = "LavaLongerTrait",
 			DisplayName = "Eternal Flame"
-			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaLongerTrait_Initial",
 			InheritFrom = "LavaLongerTrait"
-			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Duration Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {$Keywords.LavaSplash}s are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaAutoTrait"
 			DisplayName = "Royal Hearth"
-			Description = "Your {$Keywords.LavaSplash}s attracts foes."
+			Description = "Your {$Keywords.LavaSplash}s attract foes."
 		}
 		{
 			Id = "ForceHestiaBoonTrait"
 			DisplayName = "Bottomless Cauldron"
-			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
 			Id = "ForceHestiaBoonTrait_Rack"
 			InheritFrom = "ForceHestiaBoonTrait"
-			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hestia{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "ForceHestiaBoonTrait_Inactive"
 			DisplayName = "Bottomless Cauldron"
-			Description = "Hestia's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+			Description = "Hestia's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
 			Id = "MoreTrapDamageTrait"
 			DisplayName = "Danger Zone"
-			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage to foes." 
+			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat} damage to foes." 
 		}	
 		{
 			Id = "FreeHealthTrait"
@@ -333,27 +333,27 @@
 		{
 			Id = "ChillFireTrait"
 			DisplayName = "ChillFireTrait"
-			Description = "Your {$Keywords.Dash} inflicts countinous {$Keywords.Chill}"
+			Description = "Your {$Keywords.Dash} inflicts countinous {$Keywords.Chill}."
 		}	
 		{
 			Id = "FestiveFogHealTrait"
 			DisplayName = "FestiveFogHealTrait"
-			Description = "While in {$Keywords.Cloud}, your damage heals you. Also using {$Keywords.Cast} deal damage to yourself."
+			Description = "While standing in {$Keywords.Cloud}, your damage heals you. Also, using {$Keywords.Cast} deal damage to yourself."
 		}
 		{
 			Id = "LavaDoomTrait"
 			DisplayName = "LavaDoomTrait"
-			Description = "After {$Keywords.Curse} activate, it leaves a small {$Keywords.LavaSplash}."
+			Description = "After your {$Keywords.Curse} effects activate, they leave a small {$Keywords.LavaSplash}."
 		}	
 		{
 			Id = "MoreHellringTrait"
 			DisplayName = "MoreHellringTrait" 
-			Description = "Your {$Keywords.Shout} summons 3 ring of fire."
+			Description = "Your {$Keywords.Shout} summons {#BoldFormat}3{#PreviousFormat} rings of fire."
 		}
 		{
 			Id = "FishingHealTrait"
 			DisplayName = "FishingHealTrait" 
-			Description = "{$Keywords.FishingPoint} are more likely to spawn. Their rewards are doubled and they fully heal you."
+			Description = "{$Keywords.FishingPoint}s are more likely to spawn. Their rewards are doubled and they fully heal you."
 		}
 		{
 			Id = "LtUpgrade_Hestia"
