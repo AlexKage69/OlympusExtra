@@ -4657,7 +4657,7 @@ if ModUtil ~= nil then
 			{ Cue = "/VO/Poseidon_0262",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-				Text = "Oh? How coy of you, dearest. You don't have to pick other gods to play hard to get. It won't work on me. No fight." },
+				Text = "Oh? How coy of you, dearest. You don't have to pick other gods to play hard to get. It won't work on me. No contest." },
 		},
 	}
 	OlympusLootData.ArtemisUpgrade.FreePassVoiceLines = {
