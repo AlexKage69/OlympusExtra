@@ -4,6 +4,9 @@ OlympusExtra is a Hades DLC mod which adds new gods and boons to the Hades game.
 
 We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastus. 
 
+** **Please download the latest version of modimporter for ApolloExtra v1.1.0** **
+
+If you are using CodexMenu, please make sure you have the latest version since it's been made compatible with that specific version or later.
 -----------------------------
 ## Disclaimer!
 
@@ -23,7 +26,7 @@ Please also note that not all features have been fully implemented yet, and some
 
 -----------------------------
 ## Pre-Requisites 
-1. Download and unzip [modimporter](https://github.com/SGG-Modding/sgg-mod-modimporter/releases/latest/download/modimporter-windows.zip) (follow installation instructions on the Nexus Mod page). The downloaded `modimporter.exe` should be placed in the `Hades\Content` folder
+1. Download and unzip [modimporter](https://github.com/SGG-Modding/sgg-mod-modimporter/releases/latest/download/modimporter-windows.zip) (follow installation instructions on the Nexus Mod page). The downloaded `modimporter.exe` should be placed in the `Hades\Content` folder. 
 
 1. Download and unzip [Mod Utility](https://github.com/SGG-Modding/sgg-mod-modutil/releases/download/v2.3.1/ModUtil.zip). Place the unzipped contents in the `Hades\Content\Mods` folder 
 
@@ -31,16 +34,29 @@ Please also note that not all features have been fully implemented yet, and some
 
 -----------------------------
 ## Installation Instructions
-1. Make sure you fulfill the above pre-requisites!
+1. Make sure you fulfill the above pre-requisites! (You should have the **latest version** of the above, or else thd mod installation will have errors!)
 1. Download the OlympusExtra mod from the [Releases](https://github.com/AlexKage69/OlympusExtra/releases) section 
 1. Place the unzipped contents in the `Hades\Content\Mods` folder
 1. Run the `Hades\Content\modimporter.exe` executable 
 1. Open Hades and start playing!
 
+* Xbox/PC Game Pass users: 1.1.1 should fix any audio problem (Random audio played).
 -----------------------------
 ## For more information
 Please check out the [OlympusExtra GitHub Wiki](https://github.com/AlexKage69/OlympusExtra/wiki)!
 
+-----------------------------
+## Common mistake
+- When installing the mod, make sure the name of the mod is "OlympusExtra" and located under "Mods\"
+- Always make sure you have the latest version of "OlympusExtra", "ModUtil" and "modimporter". We work very closely and always make sure we work with each other.
+
+#### Xbox/PC Game Pass
+- After running the ModImporter.exe, go to "Hades\Content\Audio\FMOD\Build\Desktop" and if there's a VO.txt, replace it with the VO.h. It will fix that you get random voicelines.
+
+-----------------------------
+## Donations
+Paypal Email: alexandre69.demers@gmail.com  
+Money collected will be redistributed to artists, voice actors and helpers for their contributions as a thank you for their volunteered work.
 
 -----------------------------
 ## Credits
@@ -49,5 +65,7 @@ Developers: AlexKage, physiX
 ### Special thanks to:  
 Apollo's portrait: [Reikiix](https://twitter.com/Reikiix)  
 Apollo keepsake badges: Lazy.mano, r/Lazymanohelp  
+Apollo's Voice: [Andrew Alley](https://twitter.com/VoicesOfAlley)  
+Audio Editor: [D4v](https://github.com/GGD4V)
 Hestia's portrait: [Relia](https://twitter.com/shazari)
 Hestia keepsake badges: [Starley](https://twitter.com/princestarley/)
