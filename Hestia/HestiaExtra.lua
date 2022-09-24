@@ -634,17 +634,17 @@ if ModUtil ~= nil then
 				},
 				BowWeapon = {
 					Range = 700,
-					PullForce = 900,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 100,
 				},
 				BowWeaponDash = {
 					Range = 700,
-					PullForce = 900,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 100,
 				},
 			}
 		},
@@ -1386,8 +1386,8 @@ if ModUtil ~= nil then
 					RequireFirstHit = true,
 				},
 				BowSplitShot = {
-					Range = 500,
-					PullForce = 1000,
+					Range = 700,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 80,
@@ -1407,7 +1407,14 @@ if ModUtil ~= nil then
 					Arc = 360,
 					Count = 3,
 					Distance = 100,
-				},						
+				},				
+				BowSplitShot = {
+					Range = 700,
+					PullForce = 1800,
+					Arc = 360,
+					Count = 3,
+					Distance = 80,
+				},		
 				--[[GunBombImmolation = {
 					Range = 1000,
 					PullForce = 1000,
