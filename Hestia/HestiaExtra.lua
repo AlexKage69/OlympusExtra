@@ -564,7 +564,7 @@ if ModUtil ~= nil then
 				},
 				BowWeapon = {
 					Range = 700,
-					PullForce = 1000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
@@ -572,7 +572,7 @@ if ModUtil ~= nil then
 				},
 				BowWeaponDash = {
 					Range = 700,
-					PullForce = 1000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 50,
@@ -656,22 +656,22 @@ if ModUtil ~= nil then
 			{
 				From = "OnWeaponChargeFunctions",
 				SpearWeaponSpin = {
-					Range = 1000,
-					PullForce = 1000,
+					Range = 2000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 250,
 				},
 				SpearWeaponSpin2 = {
-					Range = 1000,
-					PullForce = 1000,
+					Range = 2000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 250,
 				},
 				SpearWeaponSpin3 = {
-					Range = 1000,
-					PullForce = 1000,
+					Range = 2000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 250,
@@ -767,7 +767,7 @@ if ModUtil ~= nil then
 				},
 				FistWeaponDash = {
 					Range = 800,
-					PullForce = 1500,
+					PullForce = 1600,
 					Arc = 70,
 					Count = 3,
 					Distance = 80,
@@ -775,7 +775,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 700,
-							PullForce = 970,
+							PullForce = 1800,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -784,16 +784,16 @@ if ModUtil ~= nil then
 					}
 				},
 				FistWeapon = {
-					Range = 800,
-					PullForce = 1300,
+					Range = 500,
+					PullForce = 1500,
 					Arc = 60,
 					Count = 3,
 					Distance = 80,
 					RequireFacing = true,
 					Traits = {
 						FistDetonateTrait = {
-							Range = 700,
-							PullForce = 970,
+							Range = 500,
+							PullForce = 1800,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -802,8 +802,8 @@ if ModUtil ~= nil then
 					}
 				},
 				FistWeapon2 = {
-					Range = 700,
-					PullForce = 1300,
+					Range = 500,
+					PullForce = 1500,
 					Arc = 60,
 					Count = 3,
 					Distance = 80,
@@ -1335,7 +1335,7 @@ if ModUtil ~= nil then
 				From = "OnWeaponProjectileHitFunction",
 				ShieldThrow = {
 					Range = 700,
-					PullForce = 1000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 100,
@@ -1347,7 +1347,7 @@ if ModUtil ~= nil then
 				},
 				ChaosShieldThrow = {
 					Range = 700,
-					PullForce = 1000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 100,
@@ -1359,7 +1359,7 @@ if ModUtil ~= nil then
 				},
 				ShieldThrowDash = {
 					Range = 700,
-					PullForce = 1000,
+					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
 					Distance = 100,
@@ -1439,17 +1439,17 @@ if ModUtil ~= nil then
 					Distance = 100,
 				},				
 				FistWeaponSpecial = {
-					Range = 700,
-					PullForce = 1000,
-					Arc = 25,
+					Range = 800,
+					PullForce = 1600,
+					Arc = 70,
 					Count = 3,
 					Distance = 80,
 					RequireFacing = true,
 				},
 				FistWeaponSpecialDash = {
-					Range = 700,
-					PullForce = 1000,
-					Arc = 25,
+					Range = 800,
+					PullForce = 1600,
+					Arc = 70,
 					Count = 3,
 					Distance = 80,
 					RequireFacing = true,
