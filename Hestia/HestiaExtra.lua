@@ -1310,7 +1310,7 @@ if ModUtil ~= nil then
 		{
 			ValidWeaponMultiplier =
 			{
-				BaseValue = 1.4,
+				BaseValue = 1.60,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
