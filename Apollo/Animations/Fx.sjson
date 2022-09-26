@@ -2567,7 +2567,7 @@
       OriginY = 85.0
       ScaleLength = 120.0
       ScaleRadius = 160.0
-      ScaleY = 0.66
+      ScaleY = 0.80
       Ambient = 0.0
       OverlayVfx = true
       TransferCopyBody = false
