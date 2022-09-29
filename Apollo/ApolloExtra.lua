@@ -1790,7 +1790,7 @@ if ModUtil ~= nil then
 				}
 			},
 			EndShout = "EndApolloBeam",
-			PreEquipWeapons = { "ApolloBeamWeapon", "ShoutEndApollo" },
+			PreEquipWeapons = { "ApolloBeamWeapon", "ShoutEndApollo"},-- "ApolloBeamAim" },
 			PropertyChanges =
 			{
 				{
@@ -2594,7 +2594,7 @@ OlympusTraitData.SeaChanteyTrait =
 		},
 		AddOutgoingDamageModifiers =
 		{
-			BossDamageMultiplier = 1.10,
+			BossDamageMultiplier = 1.20,
 			ExtractValues =
 			{
 				{
@@ -3558,9 +3558,21 @@ OlympusTraitData.MasterLobDionysusTrait =
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "PersephoneMeeting02", "ApolloBackstory02" },
+					RequiredFalseTextLines = { "PersephoneReturnsHome01", "ApolloBackstory03b" },
 					{ Cue = "/VO/Apollo_0092",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I try not to eavesdrop, but I heard that Hades once had a Queen. I assumed it was Nyx, but I had a vision lately and...  Oh, I won't give away to much of the fun. You'll see what I mean." },
+				},
+				ApolloBackstory03b =
+				{
+					Name = "ApolloBackstory03",
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "PersephoneMeeting02", "ApolloBackstory02","PersephoneReturnsHome01" },
+					RequiredFalseTextLines = { "ApolloBackstory03" },
+					{ Cue = "/VO/Apollo_0166",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I was really rooting for you and your mother to reunite, Zagzag. Hopefully you won't ever be separated again." },
 				},
 				ApolloBackstory04 =
 				{
@@ -3568,9 +3580,21 @@ OlympusTraitData.MasterLobDionysusTrait =
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01" },
+					RequiredFalseTextLines = { "PersephoneReturnsHome01", "ApolloBackstory04b" },
 					{ Cue = "/VO/Apollo_0093",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we?" },
+				},
+				ApolloBackstory04b =
+				{
+					Name = "ApolloBackstory04",
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01", "PersephoneReturnsHome01" },
+					RequiredFalseTextLines = { "ApolloBackstory04" },
+					{ Cue = "/VO/Apollo_0167",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I have to tell you the truth, Zagzag. I knew about your secret for a long time... I just didn't want to spoil the surprise for everyone else. Always on quest to find our mothers. We're very alike, aren't we?" },
 				},
 				ApolloBackstory05 =
 				{
@@ -4838,12 +4862,13 @@ OlympusTraitData.MasterLobDionysusTrait =
 		Locked = 7,
 		[1] = { Gift = "ForceApolloBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloBackstory04" } }
+		UnlockGameStateRequirements = { RequiredAnyTextLines = { "ApolloBackstory04", "ApolloBackstory04b" } }
 	}
 	-- FUNCTIONS
 	
 	-- Shout Functions
 	function ApolloShout()
+		--SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 		FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 	end
 	function EndApolloBeam()
@@ -4859,6 +4884,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
 		SetPlayerUnphasing("ApolloBeam")
 		CurrentRun.Hero.SurgeActive = false
+		--SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
 		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
 	end
@@ -4905,10 +4931,11 @@ OlympusTraitData.MasterLobDionysusTrait =
 				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
-					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
 				end
 				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
+					BlockEffect({ Id = attacker.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 				end
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
@@ -4931,9 +4958,9 @@ OlympusTraitData.MasterLobDionysusTrait =
 	end
 	function ApolloBlindClear(triggerArgs)
 		if HeroHasTrait("BlindDurationTrait") then
-			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
 			if HeroHasTrait("MasterBoltTrait") then
-				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 3.0 })
+				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 			end
 		end
 	end

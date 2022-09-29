@@ -132,6 +132,10 @@ if ModUtil ~= nil then
             -- CentaurSoul-CodexMenu
             table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")
         end
+        -- Hestia 
+        --[[if ModUtil.Mods.Data["CerberusAssist"] ~= nil then
+            table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")            
+        end]]
         --[[if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil  then     
             table.insert(OlympusCodexMenuData.Duos, "BlindExtraHealTrait")      
         end]]

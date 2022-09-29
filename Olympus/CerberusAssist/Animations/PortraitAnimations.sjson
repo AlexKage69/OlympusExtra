@@ -1,0 +1,12 @@
+{
+  Animations = [
+    "_append"
+     {
+      Name = "Codex_Portrait_GoodBoyAssistTrait"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_SkellyAssistTrait"
+      EndFrame = 1
+      StartFrame = 1
+    }
+  ]
+}

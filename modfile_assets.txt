@@ -22,10 +22,6 @@ Replace "Packages/OEApollo.pkg_manifest"
 To "Win/Packages/720p/OEApollo.pkg_manifest"
 Replace "Packages/OEApollo.pkg_manifest"
 
-:: SeparateGoddess
-To "Game/Text/en/HelpText.en.sjson"
-SJSON "Olympus/Text/en/HelpText.en.sjson"
-
 :: Audio
 To "Audio/FMOD/Build/Desktop/VO.h"
 Replace "Audio/VO.h"

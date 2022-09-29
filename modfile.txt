@@ -18,4 +18,4 @@ Include "Hestia/modfile_hestia.txt"
 
 -: Include "modfile_fr.txt" :-
 
-Import "Olympus/patch.lua"
+Include "Olympus/modfile_olympus.txt"
