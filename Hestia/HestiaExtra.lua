@@ -337,6 +337,9 @@ if ModUtil ~= nil then
 	OlympusProjectileData.HestiaFireDashField = {
 		InheritFrom = { "HestiaColorProjectile" },
 	}	
+	OlympusProjectileData.HestiaFire = {
+		InheritFrom = { "HestiaColorProjectile" },
+	}	
 	OlympusProjectileData.HestiaSmallField =
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HestiaColorProjectile" },
