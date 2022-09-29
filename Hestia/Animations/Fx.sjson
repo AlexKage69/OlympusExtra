@@ -3479,9 +3479,9 @@
       Type = "Book"
       VisualFx = "HestiaLavaSplashProjectileTrail"
       Color ={       
-       Red = 0.5
-       Blue = 0.5
-       Green = 0.5 
+       Red = 1.0
+       Blue = 1.0
+       Green = 1.0 
       }
       EndFrame = 40
       Loop = true
@@ -3493,9 +3493,9 @@
       Name = "HestiaLavaSplashProjectileTrail"
       FilePath = "Animations\LavaSplashProjectileTrail\LavaSplashProjectileTrail"
       Type = "Random"
-      EndFrame = 1
-      NumFrames = 1
-      StartFrame = 1
+      EndFrame = 1.0
+      NumFrames = 1.0
+      StartFrame = 1.0
       Random = [
         {
           Name = "HestiaLavaSplashProjectileTrailA"
@@ -3516,10 +3516,11 @@
       Type = "Book"
       AngleFromOwner = "Take"
       Color ={
-        Red = 0.5
-        Blue = 0.5
-        Green = 0.5
+        Red = 1.0
+        Blue = 1.0
+        Green = 1.0
       }
+      AddColor = false
       AngleMax = 5.0
       AngleMin = -5.0
       EndFrame = 50
