@@ -234,6 +234,11 @@ if ModUtil ~= nil then
 		OnApplyFunctionName = "ApolloBlindApply",
 		OnClearFunctionName = "ApolloBlindClear",
 	}
+	OlympusEffectData.BlindLightning =
+	{
+		DamageTextStartColor = Color.ZeusDamageLight,
+		DamageTextColor = Color.ZeusDamage,
+	}
 	OlympusEffectData.DistanceResist =
 	{
 		OnApplyFunctionName = "DistanceResistApply",
@@ -379,6 +384,9 @@ if ModUtil ~= nil then
 	OlympusProjectileData.ApolloBeowulfProjectile = {
 		InheritFrom = { "ApolloLobProjectile" },
 		NeverStore = true,
+	}
+	OlympusProjectileData.BlindLightningEffector = {
+		InheritFrom = { "ApolloColorProjectile" },
 	}
 	OlympusProjectileData.ApolloShoutWeapon = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
@@ -4922,8 +4930,6 @@ OlympusTraitData.MasterLobDionysusTrait =
 			if HeroHasTrait("MissChanceTrait") then
 				missRate = 0.65
 			end
-			--and CheckCooldown( "StunDisarm", 10.0 )  not HasEffect({Id = victim.ObjectId, EffectName = "StunDisarm" })
-			missRate = 1.0
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and HasEffect({Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0,1) <= missRate then
 				thread( InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, {SkipShadow = true} )
@@ -4932,10 +4938,6 @@ OlympusTraitData.MasterLobDionysusTrait =
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
-				end
-				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
-					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
-					BlockEffect({ Id = attacker.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 				end
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
@@ -4953,7 +4955,9 @@ OlympusTraitData.MasterLobDionysusTrait =
 	)	
 	function ApolloBlindApply(triggerArgs) 
 		if HeroHasTrait("MasterBoltTrait") then
-			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, AutoEquip = true, WeaponName = "BlindLightningEffector", EffectName = "BlindLightning" })
+			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId, WeaponName = "BlindLightningEffector", EffectName = "BlindLightning" })
+			
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(triggerArgs.TriggeredByTable.ObjectId)) 
 		end
 	end
 	function ApolloBlindClear(triggerArgs)
@@ -4962,6 +4966,10 @@ OlympusTraitData.MasterLobDionysusTrait =
 			if HeroHasTrait("MasterBoltTrait") then
 				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 			end
+		end
+		if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
+			ClearEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning" })
+			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 		end
 	end
 	-- Prophecy and Sight	
