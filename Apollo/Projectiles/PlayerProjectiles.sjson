@@ -236,6 +236,40 @@
       }
     }
     {
+      Name = "BlindLightningEffector"
+      InheritFrom = "1_BaseMagicProjectile"
+      Type = "INSTANT"
+      Fuse = 0.01
+      //ImpactFx = "DemeterIceBlast"
+      NumPenetrations = 999
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      DamageLow = 5
+      DamageHigh = 5
+      IgnoreCoverageAngles = true
+      UseVulnerability = false
+      CanCrit = false
+      Thing = {
+        Graphic = "null"
+      }
+      Effects = [
+        {
+            Name = "BlindLightning"
+            IgnoreName = "_PlayerUnit"
+            Type = "DAMAGE_OVER_TIME"
+            IsVulnerabilityEffect = true
+            Amount = 40.0
+            Cooldown = 1
+            Duration = 5
+            ExtendDurationOnReapply = true
+            FrontFx = "BlindStaticArcEmitter"
+            Active = true
+            TimeModifierFraction = 0
+          }
+      ]
+    }
+    {
       Name = "ApolloLobProjectile"
       InheritFrom = "1_BasePlayerLargeProjectile"
       DetonateGraphic = "RadialNova-Apollo"
@@ -655,8 +689,8 @@
       DetonateGraphic = "RadialNova-Apollo"
       DetonateSound = "/SFX/PlayerHammerExplosions"
       Type = "LOB"
-      DamageLow = 0
-      DamageHigh = 0
+      DamageLow = 45
+      DamageHigh = 45
       DamageRadius = 400.0
       DamageRadiusScaleY = 0.75
       AutoAdjustForTarget = true
@@ -725,8 +759,8 @@
       DetonateGraphic = "RadialNovaDionysus"
       DetonateSound = "/SFX/PlayerHammerExplosions"
       Type = "LOB"
-      DamageLow = 0
-      DamageHigh = 0
+      DamageLow = 45
+      DamageHigh = 45
       DamageRadius = 400.0
       DamageRadiusScaleY = 0.75
       AutoAdjustForTarget = true

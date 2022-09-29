@@ -3808,9 +3808,9 @@
       Color = { Red = 0.50 Green = 1.0 Blue = 0.0 }
     }
     /* Character Fx */
-{
+    {
       Name = "ArtemisExplosion"
-      FilePath = "Fx\MineExplosion\MineExplosion"
+      FilePath = "Hestia\Fx\ArtemisExplosion\ArtemisExplosion"
       GroupName = "Standing"
       Type = "Book"
       VisualFx = "MineExplosionSparks"

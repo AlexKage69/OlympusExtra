@@ -140,5 +140,17 @@
       IgnoreOwnerAttackDisabled = true
       NumProjectiles = 1
     }
+    {
+      Name = "BlindLightningEffector"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "BlindLightningEffector"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      SetCompleteAngleOnFire = true
+    }
   ]
 }
