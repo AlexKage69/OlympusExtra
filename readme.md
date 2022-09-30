@@ -6,7 +6,7 @@ We are planning the following 4 Olympian Gods: Apollo, Hestia, Hera and Hephastu
 
 ** **Please download the latest version of modimporter for ApolloExtra v1.1.0** **
 
-If you are using CodexMenu, please make sure you have the latest version since it's been made compatible with that specific version or later.
+If you are using CodexMenu, please make sure you have the latest version since it's been made compatible with that specific version or later. You might need to take CodexMenu from here if it's not updated in Nexus: https://github.com/PonyWarrior/HadesModRepo/blob/42513927693b27a3e5727d81d28c9d2e3aff0b37/CodexMenu/CodexMenu.lua
 -----------------------------
 ## Disclaimer!
 

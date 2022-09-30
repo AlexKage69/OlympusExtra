@@ -239,6 +239,11 @@ if ModUtil ~= nil then
 		OnApplyFunctionName = "DistanceResistApply",
 		OnClearFunctionName = "DistanceResistClear",
 	}
+	OlympusEffectData.BlindLightning =
+	{
+		DamageTextStartColor = Color.ZeusDamageLight,
+		DamageTextColor = Color.ZeusDamage,
+	}
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
@@ -4936,6 +4941,9 @@ OlympusTraitData.MasterLobDionysusTrait =
 				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
 					BlockEffect({ Id = attacker.ObjectId, Name = "BlindLightning", Duration = 4.0 })
+				end
+				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
+					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
 				end
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		

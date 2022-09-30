@@ -3711,6 +3711,69 @@
       FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
     }
     {
+      Name = "BlindStaticArcEmitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BlindStaticArcs"
+      EndFrame = 1
+      OffsetZ = 240.0
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.15
+      VisualFxIntervalMin = 0.1
+    }
+    {
+      Name = "BlindStaticArcs"
+      FilePath = "Animations\ZeusStaticArcs\ZeusStaticArcs"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      OffsetZ = 240.0
+      StartFrame = 1
+      Random = [
+        {
+          Name = "BlindStaticArcA"
+        }
+        {
+          Name = "BlindStaticArcB"
+        }
+        {
+          Name = "BlindStaticArcC"
+        }]
+    }
+    {
+      Name = "BlindStaticArcA"
+      FilePath = "Fx\ZeusStaticArcA\ZeusStaticArcA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 15
+      NumFrames = 15
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 40.0
+      StartFrame = 1
+      //OffsetZ = 240.0
+      RandomOffsetX = 15.0
+      RandomOffsetY = 15.0
+      SortMode = "FromParent"
+      RandomRotation = true
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.9
+      ScaleMin = 0.6
+      Ambient = 0.0
+    }
+    {
+      Name = "BlindStaticArcB"
+      InheritFrom = "BlindStaticArcA"
+      FilePath = "Fx\ZeusStaticArcB\ZeusStaticArcB"
+    }
+    {
+      Name = "BlindStaticArcC"
+      InheritFrom = "ZeusStaticArcA"
+      FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
+    }
+    {
       Name = "QuickFlashOrange"
       InheritFrom = "QuickFlash"
       FilePath = "Particles\particle_quickflash"
