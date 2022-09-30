@@ -1,0 +1,34 @@
+{
+	Texts = [
+		"_append"		
+		{
+			Id = "Codex_OlympianGoddessChapter"
+			DisplayName = "Olympian Goddesses"
+		}			
+		{
+			Id = "GoodBoyAssistTrait_Rack"
+			DisplayName = "Companion Cerberus"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in an area near your closest foe, then continually down the line. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.TooltipKeepsakeUses}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "GoodBoyAssistTrait_Delta"
+			DisplayName = "Companion Cerberus"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in an area near your closest foe, then continually down the line. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "GoodBoyAssistTrait"
+			DisplayName = "Companion Cerberus"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in an area near your closest foe, then continually down the line."
+		}
+		{
+			Id = "CodexData_GoodBoyAssistTrait_01"
+			Speaker = "Achilles"
+			DisplayName = "'...When Rib first emerged from the darkness, he wished more than anything to be as strong as the many great heroes who reside within the Underworld. But he was distraught by his thin frame, and found there was nothing he could do to change it, no matter how he tried. However, Mother Night cautioned him that he was following a path to greatness very different from the heroes he admired; they were guided not by envy of others. Rib did not believe this; he knew heroes inspired other heroes...'"
+		}    
+		{
+			Id = "CodexData_GoodBoyAssistTrait_02"
+			Speaker = "Achilles"
+			DisplayName = "'...When Rib first emerged from the darkness, he wished more than anything to be as strong as the many great heroes who reside within the Underworld. But he was distraught by his thin frame, and found there was nothing he could do to change it, no matter how he tried. However, Mother Night cautioned him that he was following a path to greatness very different from the heroes he admired; they were guided not by envy of others. Rib did not believe this; he knew heroes inspired other heroes. {#CodexBoldFormat}Determined to prove himself, he sought to hoist an entire boulder to prove his strength to those he knew. He trained, and trained. But by the time Mother Night found him, he was crumpled in a heap. Now, Rib no longer seeks to be admired, but is very capable of making himself useful to whomever he is given to. And, he is not so preoccupied with heroes, anymore.{#PreviousFormat}'"
+		}
+    ]
+}

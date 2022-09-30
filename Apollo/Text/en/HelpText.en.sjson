@@ -2,10 +2,6 @@
 	Texts = [
 		"_append"
 		{
-			Id = "Codex_OlympianGoddessChapter"
-			DisplayName = "Olympian Goddess"
-		}
-		{
 			Id = "NPC_Apollo_01"
 			DisplayName = "Apollo"
 			Description = "God of Music"
@@ -178,12 +174,12 @@
     	}
 		{
 			Id = "FountainDefenseTrait_Initial",
-			DisplayName = "Melodic Concert"
+			InheritFrom = "FountainDefenseTrait"
 			Description = "Using a {$Keywords.Fountain} gives you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "FountainDefenseTrait_Tray",
-			DisplayName = "Melodic Concert"
+			InheritFrom = "FountainDefenseTrait"
 			Description = "Using a {$Keywords.Fountain} gives you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
     	}
 		{
@@ -203,7 +199,12 @@
 		}
 		{
 			Id = "RerollObolTrait_Initial"
-			DisplayName = "Golden Fleece"
+			InheritFrom = "RerollObolTrait"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
+		}
+		{
+			Id = "RerollObolDrop"
+			InheritFrom = "RerollObolTrait"
 			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}
 		{
@@ -213,9 +214,14 @@
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
-			DisplayName = "Future Sight"
+			InheritFrom = "RerollBoonTrait"
 			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
-		}		
+		}	
+		{
+			Id = "RerollBoonDrop"
+			InheritFrom = "RerollBoonTrait"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+		}	
 		{
 			Id = "ApolloRetaliateTrait"
 			DisplayName = "Icarus Wings"
@@ -241,12 +247,12 @@
     	}
 		{
 			Id = "FountainCoinTrait_Initial",
-			DisplayName = "Wishing Well"
+			InheritFrom = "FountainCoinTrait"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     	}
 		{
 			Id = "FountainCoinTrait_Tray",
-			DisplayName = "Wishing Well"
+			InheritFrom = "FountainCoinTrait"
 			Description = "Using a {$Keywords.Fountain} gives you extra {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
     	}
 		{
@@ -256,7 +262,7 @@
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
-			DisplayName = "Panacea's Elixir"
+			InheritFrom = "ApolloHealTrait"
 			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
@@ -277,7 +283,7 @@
 		{
 			Id = "ForceApolloBoonTrait_Inactive"
 			DisplayName = "Shining Lyre"
-			Description = "Apollo' blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+			Description = "Apollo's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
 			Id = "FamedDuetTrait"
@@ -292,12 +298,12 @@
 		{
 			Id = "HyacinthTrait"
 			DisplayName = "Hyacinth"
-			Description = "Foes inflicted with {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to bosses."
+			Description = "Foes inflicted with {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to {$Keywords.BossPlural}."
     	}
 		{
 			Id = "SeaChanteyTrait"
 			DisplayName = "Sea Chantey"
-			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage to bosses, but also take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from bosses."
+			Description = "You deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage and take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage from {$Keywords.BossPlural}."
 		}	
 		{
 			Id = "SeaChanteyText",
@@ -327,6 +333,21 @@
 			Id = "MasterLobDionysusTrait"
 			DisplayName = "Festive Bomb" 
 			Description = "Your {$Keywords.Cloud} summons a {$Keywords.FlashBomb} upon yourself.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "ApolloLightningCloudTrait"
+			DisplayName = "Scintillating Feast"
+			Description = "Your {$Keywords.Cloud} effects also deal lightning damage periodically. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloLightningCloudTrait_Initial"
+			InheritFrom = "LightningCloudTrait"
+			Description = "Your {$Keywords.Cloud} effects also deal lightning damage periodically. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloIceStrikeArrayTrait"
+			DisplayName = "Ice Wine"
+			Description = "Your {$Keywords.Cast} blasts an area with freezing {$Keywords.Cloud} that inflicts {$Keywords.Chill}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}
 		{
 			Id = "LtUpgrade_Apollo"

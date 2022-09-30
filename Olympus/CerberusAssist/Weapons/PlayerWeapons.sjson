@@ -1,0 +1,68 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "NPC_Goodboy_01_Assist"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "NPC_Cerberus_01_Assist"
+      ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging"
+      FireFx = "Cerberus_HadesAssistJump_ToRun"
+      NumProjectiles = 36
+      ProjectileInterval = 0.5
+      ProjectileSpacing = 100
+      ProjectileOffsetStart = "CENTER"
+      ProjectileAngleOffset = 200
+      ProjectileAngleOffsetScaleY = 0.75
+    }
+    {
+      Name = "ZagreusCerberusAssistRockFall"
+      InheritFrom = "1_BaseEnemyMagicWeapon"
+      Type = "GUN"
+      Projectile = "ZagreusCerberusAssistBombard"
+      FullyAutomatic = true
+      AutoLock = true
+      IgnoreOwnerAttackDisabled = true
+    }    
+    {
+      Name = "ZagreusCerberusAssistMovement"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      ClipSize = 1
+      ChargeSound = "null"
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      CancelMovement = true
+      ChargeCancelMovement = true
+      FullyAutomatic = false
+      BarrelLength = 55
+      AutoLock = true
+      FireGraphic = "null"
+      LockTriggerForCharge = false
+      DisableOwnerForDuration = 0.0
+      NumProjectiles = 2
+      ProjectileAngleOffset = 180
+      ProjectileAngleStartOffset = 90
+      Spread = 30
+    }
+    {
+      Name = "ZagreusCerberusAssist"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      FireSound = "/Leftovers/Menu Sounds/TextReveal3"
+      Projectile = "ZagreusCerberusAssist"
+      ChargeSound = "null"
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      CancelMovement = false
+      ChargeCancelMovement = true
+      FullyAutomatic = false
+      BarrelLength = 90
+      AutoLock = true
+      FireGraphic = "null"
+      LockTriggerForCharge = false
+      DisableOwnerForDuration = 0
+    }
+  ]
+}

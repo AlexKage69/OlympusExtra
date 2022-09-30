@@ -1,0 +1,64 @@
+{
+  Obstacles = [
+      "_append"
+    {
+      Name = "HestiaUpgrade"
+      InheritFrom = "BaseBoon"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "BoonDropHestia"
+      }
+    }
+    {
+      Name = "HealthDamageSoulDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = false
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "null"
+        Interact = 
+        {
+          AutoActivate = true
+          DestroyOnUse = true
+        }
+      }
+    }
+    {
+      Name = "LastStandHealthDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = false
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "null"
+        Interact = 
+        {
+          AutoActivate = true
+          DestroyOnUse = true
+        }
+      }
+    }
+    {
+      Name = "RoomRewardEmptyHealthDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = true
+      Life =
+      {
+        DeathFx = "RoomRewardEmptyHealthDropPickupFx"
+      }
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "RoomRewardEmptyHealthDrop"
+        TouchdownSound = "/SFX/BloodstoneAmmoDrop"
+      }
+    }
+    {
+      Name = "RoomRewardMetaPointFishGoodDrop"
+      InheritFrom = "RoomRewardMetaPointDrop"
+    }
+  ]
+}

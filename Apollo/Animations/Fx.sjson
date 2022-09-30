@@ -832,8 +832,6 @@
       Name = "SpearThrowProjectile-Apollo"
       InheritFrom = "SpearThrowProjectile"
       CreateAnimation = "SpearThrowProjectileGlow-Apollo"
-      //VisualFx = "SpearThrowParticles-Aphrodite"
-      //Sound = "/SFX/Player Sounds/AphroditeLoveSwipe"
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05
@@ -1971,6 +1969,9 @@
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05
+      EndRed = 0.75
+      EndGreen = 0.50
+      EndBlue = 0.10
       VisualFx = "GunLaserFeathers-Apollo"
       ClearCreateAnimations = true
       CreateAnimations = [
@@ -2158,6 +2159,35 @@
       StartBlue = 0.05  
     }
     {
+      Name = "LuciferBomb-Apollo"
+      InheritFrom = "LuciferBomb"
+      Red = 0.8
+      Green = 0.55
+      Blue = 0.05
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "LuciferBombDark"
+        }
+        {
+          Name = "LuciferBombGlow-Apollo"
+        }
+        {
+          Name = "LuciferBombDropDisplace"
+        }
+        {
+          Name = "QuickFlashOrange"
+        }]
+    }
+    {
+      Name = "LuciferBombGlow-Apollo"
+      InheritFrom = "LuciferBombGlow"
+      ColorFromOwner = "Ignore"
+      Red = 0.75
+      Green = 0.50
+      Blue = 0.05
+    }
+    {
       Name = "GunGrenadeTrailContainer-LuciferOrb-Apollo"
       InheritFrom = "GunGrenadeTrailContainer-LuciferOrb"
       ClearCreateAnimations = true
@@ -2176,17 +2206,15 @@
         {
           Name = "GunGrenadeParticles-LuciferOrb-ApolloA"
         }
-        {
+        /*{
           Name = "GunGrenadeParticles-LuciferOrb-ApolloB"
-        }]
+        }*/
+        ]
     }
     {
       Name = "GunGrenadeParticles-LuciferOrb-ApolloA"
       InheritFrom = "GunGrenadeParticles-LuciferOrb"
-      FilePath = "Particles\particle_aphrodite_sparkle"
-      Red = 1.0
-      Green = 1.0
-      Blue = 1.0
+      FilePath = "Particles\particle_kira"
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05  
@@ -2198,11 +2226,11 @@
       RandomRotation = false
       AlphaMin = 0.99
     }
-    {
+    /*{
       Name = "GunGrenadeParticles-LuciferOrb-ApolloB"
       InheritFrom = "GunGrenadeParticles-LuciferOrb-ApolloA"
-      FilePath = "Particles\particle_aphrodite_heart"
-    }
+      FilePath = "Particles\particle_kira"
+    }*/
     {
       Name = "ZagGrenadeExplosionApolloB"
       InheritFrom = "ZagGrenadeExplosionBaseB"
@@ -2726,7 +2754,7 @@
       OriginY = 85.0
       ScaleLength = 120.0
       ScaleRadius = 160.0
-      ScaleY = 0.66
+      ScaleY = 0.80
       Ambient = 0.0
       OverlayVfx = true
       TransferCopyBody = false
@@ -3008,6 +3036,7 @@
       Loop = true
       DieWithOwner = true
     }
+    /* Hestia - Duos */
     {
       Name = "HyacinthShatter"
       Type = "Constant"
@@ -3111,6 +3140,113 @@
       Name = "ApolloShatterParticleD"
       InheritFrom = "ApolloShatterParticleA"
       FilePath = "Particles\particle_aphrodite_sparkle"
+    }
+    {
+      Name = "PoseidonMusicNotes"
+      FilePath = "Animations\HouseMusicNotes\HouseMusicNotes"
+      Type = "Random"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "PoseidonMusicNote01"
+        }
+        {
+          Name = "PoseidonMusicNote02"
+        }
+        {
+          Name = "PoseidonMusicNote03"
+        }]
+    }
+    {
+      Name = "PoseidonMusicNote01"
+      InheritFrom = "HouseMusicNote01"
+      Color = {
+        Blue = 0.8
+        Green = 0.6
+        Red = 0.3
+      }
+    }
+    {
+      Name = "PoseidonMusicNote02"
+      InheritFrom = "HouseMusicNote02"
+      Color = {
+        Blue = 0.8
+        Green = 0.6
+        Red = 0.3
+      }
+    }
+    {
+      Name = "PoseidonMusicNote03"
+      InheritFrom = "HouseMusicNote03"
+      Color = {
+        Blue = 0.8
+        Green = 0.6
+        Red = 0.3
+      }
+    }
+    {
+      Name = "DistanceResistFx"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Fx\Shielded\Shielded"
+      //FilePath = "Fx\ShielderNova\ShielderNova"
+      Sound = "/SFX/Player Sounds/AthenaShieldRangedAttack"
+      CreateAnimation = "RadialNovaSwordParry-ApolloSparkles"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 60
+      Alpha = 1.0   
+      Scale = 1.0
+      Loop = true
+      OffsetZ = 40.0
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "DazzledHoverPrep"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Animations\Shade\Naked\ShadeNaked"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.7
+      Green = 0.0
+      Blue = 0.0
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "DazzledHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Animations\Shade\Naked\ShadeNaked"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.0
+      Green = 0.7
+      Blue = 0.0
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
     }
     /* Theseus - Wrath */
     {
@@ -3302,53 +3438,6 @@
       StartBlue = 0.05
     }
     /* Boon FX */
-    {
-      Name = "PoseidonMusicNotes"
-      FilePath = "Animations\HouseMusicNotes\HouseMusicNotes"
-      Type = "Random"
-      AngleFromOwner = "Ignore"
-      ColorFromOwner = "Ignore"
-      EndFrame = 1
-      NumFrames = 1
-      StartFrame = 1
-      Random = [
-        {
-          Name = "PoseidonMusicNote01"
-        }
-        {
-          Name = "PoseidonMusicNote02"
-        }
-        {
-          Name = "PoseidonMusicNote03"
-        }]
-    }
-    {
-      Name = "PoseidonMusicNote01"
-      InheritFrom = "HouseMusicNote01"
-      Color = {
-        Blue = 0.8
-        Green = 0.6
-        Red = 0.3
-      }
-    }
-    {
-      Name = "PoseidonMusicNote02"
-      InheritFrom = "HouseMusicNote02"
-      Color = {
-        Blue = 0.8
-        Green = 0.6
-        Red = 0.3
-      }
-    }
-    {
-      Name = "PoseidonMusicNote03"
-      InheritFrom = "HouseMusicNote03"
-      Color = {
-        Blue = 0.8
-        Green = 0.6
-        Red = 0.3
-      }
-    }
     {
       Name = "BoonDropApollo"
       InheritFrom = "BoonDropGold"
@@ -3622,64 +3711,67 @@
       FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
     }
     {
-      Name = "DistanceResistFx"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Fx\Shielded\Shielded"
-      //FilePath = "Fx\ShielderNova\ShielderNova"
-      Sound = "/SFX/Player Sounds/AthenaShieldRangedAttack"
-      CreateAnimation = "RadialNovaSwordParry-ApolloSparkles"
-      StopSoundOnFinishFade = 0.2
-      EaseOut = 1.0
-      EndFrame = 60
-      Alpha = 1.0   
-      Scale = 1.0
-      Loop = true
-      OffsetZ = 40.0
-      NumFrames = 60
+      Name = "BlindStaticArcEmitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BlindStaticArcs"
+      EndFrame = 1
+      OffsetZ = 240.0
+      NumFrames = 1
       StartFrame = 1
-      DieWithOwner = true
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
+      VisualFxIntervalMax = 0.15
+      VisualFxIntervalMin = 0.1
     }
     {
-      Name = "DazzledHoverPrep"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Animations\Shade\Naked\ShadeNaked"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      AddColor = true
-      EaseOut = 1.0
-      EndFrame = 32
-      Red = 0.7
-      Green = 0.0
-      Blue = 0.0
-      Scale = 0.8
-      Loop = true
-      NumFrames = 32
+      Name = "BlindStaticArcs"
+      FilePath = "Animations\ZeusStaticArcs\ZeusStaticArcs"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      OffsetZ = 240.0
       StartFrame = 1
-      DieWithOwner = true
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
+      Random = [
+        {
+          Name = "BlindStaticArcA"
+        }
+        {
+          Name = "BlindStaticArcB"
+        }
+        {
+          Name = "BlindStaticArcC"
+        }]
     }
     {
-      Name = "DazzledHoverLoop"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Animations\Shade\Naked\ShadeNaked"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      AddColor = true
-      EaseOut = 1.0
-      EndFrame = 32
-      Red = 0.0
-      Green = 0.7
-      Blue = 0.0
-      Scale = 0.8
-      Loop = true
-      NumFrames = 32
+      Name = "BlindStaticArcA"
+      FilePath = "Fx\ZeusStaticArcA\ZeusStaticArcA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 15
+      NumFrames = 15
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 40.0
       StartFrame = 1
-      DieWithOwner = true
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
+      //OffsetZ = 240.0
+      RandomOffsetX = 15.0
+      RandomOffsetY = 15.0
+      SortMode = "FromParent"
+      RandomRotation = true
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.9
+      ScaleMin = 0.6
+      Ambient = 0.0
+    }
+    {
+      Name = "BlindStaticArcB"
+      InheritFrom = "BlindStaticArcA"
+      FilePath = "Fx\ZeusStaticArcB\ZeusStaticArcB"
+    }
+    {
+      Name = "BlindStaticArcC"
+      InheritFrom = "ZeusStaticArcA"
+      FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
     }
     {
       Name = "QuickFlashOrange"

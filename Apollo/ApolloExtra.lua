@@ -16,13 +16,6 @@ if ModUtil ~= nil then
 	OlympusColor.ApolloVoice = {255,145,79,255}
 	OlympusColor.ApolloDamageLight = {255,145,79,255}
 	OlympusColor.ApolloDamage = {255,145,79,255}
-	--Assets
-	local package = "OEAssets"
-	ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
-		DebugPrint({Text = "Trying to load package "..package..".pkg"})
-		LoadPackages({Name = package})
-		return baseFunc()
-	end)
 	--EnemyUpgradeData
 	local OlympusEnemyUpgradeData = ModUtil.Entangled.ModData(EnemyUpgradeData)
 	OlympusEnemyUpgradeData.ApolloUpgrade =
@@ -246,9 +239,31 @@ if ModUtil ~= nil then
 		OnApplyFunctionName = "DistanceResistApply",
 		OnClearFunctionName = "DistanceResistClear",
 	}
+	OlympusEffectData.BlindLightning =
+	{
+		DamageTextStartColor = Color.ZeusDamageLight,
+		DamageTextColor = Color.ZeusDamage,
+	}
 	-- GlobalVoiceLines
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
+	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		SuccessiveChanceToPlayAll = 0.33,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
+		RequiredSwappedGodLoot = "ApolloUpgrade",
+		CooldownName = "SaidApolloRecently",
+		CooldownTime = 40,
+
+		-- I'm sure Lord Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_1863" },
+		-- Surely Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_1864" },
+		-- Lord Apollo won't mind, will he?
+		{ Cue = "/VO/ZagreusField_1865" },
+	})
 	table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
 		BreakIfPlayed = true,
 		RandomRemaining = true,
@@ -310,6 +325,37 @@ if ModUtil ~= nil then
 		-- Flashy.
 		{ Cue = "/VO/ZagreusField_4828" },
 	})
+	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
+		PlayOnce = true,
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", "Shop" },
+
+		-- That's much brighter! All thanks to you, Lord Apollo!
+		{ Cue = "/VO/ZagreusField_4832", RequiredLastGodLoot = "ApolloUpgrade", RequiredTextLinesThisRun = "ApolloFirstPickUp" },
+	})	
+	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, { 
+		-- Apollo!!
+		Cue = "/VO/ZagreusField_4833", RequiredTrait = "ApolloShoutTrait", RequiredFalseSpurnedGodName = "ApolloUpgrade" 
+	})	
+	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.65,
+		SuccessiveChanceToPlayAll = 0.33,
+		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
+		RequiredSwappedGodLoot = "ZeusUpgrade",
+		CooldownName = "SaidZeusRecently",
+		CooldownTime = 40,
+
+		-- I'm sure Lord Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_4829" },
+		-- Surely Apollo won't mind.
+		{ Cue = "/VO/ZagreusField_4830" },
+		-- Lord Apollo won't mind, will he?
+		{ Cue = "/VO/ZagreusField_4831" },
+	})	
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
 	table.insert(OlympusBoonInfoScreenData.Ordering, "ApolloUpgrade")
@@ -378,8 +424,6 @@ if ModUtil ~= nil then
 		"ApolloMiscPickup17",
 		-- "ApolloMiscPickup18",
 		-- "ApolloMiscPickup19",
-		"ApolloMiscPickup20",
-		-- "ApolloMiscPickup21",
 	}
 	table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
@@ -394,6 +438,7 @@ if ModUtil ~= nil then
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb", "DamageResist" })
+    ResetKeywords()
 	
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -1603,10 +1648,9 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
+					ProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DamageLow",
-					ChangeValue = 70, 
-					ChangeType = "Absolute",
+					DeriveValueFrom = "ExtractSource",
 					ExtractValue =
 					{
 						ExtractAs = "TooltipDamageBeowulf",
@@ -1615,15 +1659,14 @@ if ModUtil ~= nil then
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ProjectileName = "ApolloLobProjectile",
+					ProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DamageHigh",
-					ChangeValue = 70, 
-					ChangeType = "Absolute",
+					DeriveValueFrom = "ExtractSource",
 				},
 				{
 					TraitName = "ShieldLoadAmmoTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-					ExcludeProjectileName = "ApolloLobProjectile",
+					ExcludeProjectileName = "DionysusLobProjectile",
 					ProjectileProperty = "DetonateGraphic",
 					ChangeValue = "null",
 				},
@@ -1752,7 +1795,7 @@ if ModUtil ~= nil then
 				}
 			},
 			EndShout = "EndApolloBeam",
-			PreEquipWeapons = { "ApolloBeamWeapon", "ShoutEndApollo" },
+			PreEquipWeapons = { "ApolloBeamWeapon", "ShoutEndApollo"},-- "ApolloBeamAim" },
 			PropertyChanges =
 			{
 				{
@@ -2260,6 +2303,38 @@ if ModUtil ~= nil then
 			}
 		}
 	}
+	-- Consumable Data
+	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	OlympusConsumableData.RerollBoonDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
+		RequiredMetaUpgradeStageUnlocked = 4,
+		Icon = "Boon_Apollo_10",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddRerollBoon", "AddTraitToHero" } ,
+		UseFunctionArgs = {
+			{ },
+			{ TraitName = "RerollBoonTrait" },
+		},
+	}
+	OlympusConsumableData.RerollObolDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTraits = {"RerollObolTrait", "RerollBoonTrait"},
+		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
+		RequiredMetaUpgradeStageUnlocked = 4,
+		Icon = "Boon_Apollo_12",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddRerollObol", "AddTraitToHero" } ,
+		UseFunctionArgs = {
+			{ },
+			{ TraitName = "RerollObolTrait" },
+		},
+	}
 	-- Duo Traits
 	OlympusTraitData.BlindDurationTrait =
 	{
@@ -2378,7 +2453,33 @@ if ModUtil ~= nil then
 					ChangeValue = true
 				},
 				{
+					TraitName = "ApolloRangedTrait",
 					WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+					EffectName = "DelayedDamage",
+					EffectProperty = "Amount",
+					BaseMin = 100,
+					BaseMax = 100,
+					AsInt = true,
+					MinMultiplier = 0.025,
+					IdenticalMultiplier =
+					{
+						Value = -0.4,
+					},
+					ExtractValue =
+					{
+						ExtractAs = "TooltipCurseDamage",
+					}
+				},
+				{
+					TraitName = "MasterLobDionysusTrait",
+					WeaponName = "ApolloLobWeaponAdditional",
+					EffectName = "DelayedDamage",
+					EffectProperty = "Active",
+					ChangeValue = true
+				},
+				{
+					TraitName = "MasterLobDionysusTrait",
+					WeaponName = "ApolloLobWeaponAdditional",
 					EffectName = "DelayedDamage",
 					EffectProperty = "Amount",
 					BaseMin = 100,
@@ -2498,7 +2599,7 @@ OlympusTraitData.SeaChanteyTrait =
 		},
 		AddOutgoingDamageModifiers =
 		{
-			BossDamageMultiplier = 1.10,
+			BossDamageMultiplier = 1.20,
 			ExtractValues =
 			{
 				{
@@ -2513,7 +2614,7 @@ OlympusTraitData.SeaChanteyTrait =
 			FunctionArgs = {}
 		}
 	}			
-	OlympusTraitData.MasterLobApolloTrait =
+OlympusTraitData.MasterLobApolloTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Dionysus_01",
@@ -2559,7 +2660,7 @@ OlympusTraitData.SeaChanteyTrait =
 		}
 	}
 	-- Exact copy, but different for HelpText
-	OlympusTraitData.MasterLobDionysusTrait =
+OlympusTraitData.MasterLobDionysusTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Apollo_Dionysus_01",
@@ -2614,6 +2715,109 @@ OlympusTraitData.SeaChanteyTrait =
 			}
 		}
 	}
+	table.insert(OlympusTraitData.DionysusDefenseTrait.PropertyChanges, {
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		EffectName= "WinePuddleDefense",
+		EffectProperty = "Modifier",
+		BaseMin = 0.85,
+		BaseMax = 0.90,
+		SourceIsMultiplier = true,
+		DeriveSource = "ModifierSource",
+		IdenticalMultiplier =
+		{
+			Value = DuplicateMultiplier,
+		},
+		ChangeType = "Multiply",
+		ExtractValue =
+		{
+			ExtractAs = "TooltipDamageReduction",
+			Format = "NegativePercentDelta",
+		}
+	})
+	table.insert(OlympusTraitData.DionysusDefenseTrait.PropertyChanges, {
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		EffectName= "WinePuddleDefense",
+		EffectProperty = "Active",
+		ChangeValue = true,
+		ChangeType = "Absolute",
+	})
+	OlympusTraitData.IceStrikeArrayTrait.AddOutgoingDamageModifiers.RequiredTrait = nil
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Type",
+		ChangeValue = "INSTANT",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Fuse",
+		ChangeValue = 0.3,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		WeaponProperty = "ManualAimingRequireValidLocation",
+		ChangeValue = true,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Speed",
+		ChangeValue = 0,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Range",
+		ChangeValue = 100,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		WeaponProperty = "AutoLock",
+		ChangeValue = false,
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+		ProjectileName = "DionysusField",
+		EffectName = "DemeterSlow",
+		EffectProperty = "Active",
+		ChangeValue = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Graphic",
+		ProjectileName = "DionysusField",
+		ChangeValue = "DemeterIceStrikeIndicator",
+		ExcludeLinked = true,
+	})
+	table.insert(OlympusTraitData.IceStrikeArrayTrait.PropertyChanges,{
+		TraitName = "MasterLobApolloTrait",
+		WeaponName = "DionysusLobWeaponAdditional",
+		ProjectileProperty = "Graphic",
+		ProjectileName = "DionysusLobProjectileAdditional",
+		ChangeValue = "DemeterPoseidonIceSpark",
+		ExcludeLinked = true,
+	})	
+	OlympusTraitData.LightningCloudTrait.AmmoDeathAdditionalWeapon = {
+		ValidProjectileName = "DionysusLobProjectileAdditional",
+		WeaponName = "ZeusDionysusCloudStrike",
+		Interval = 0.85,
+		Duration = 5,
+		Range = 400,
+	}
+	
 	OlympusTraitData.DamageReduceDistanceTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
@@ -2708,7 +2912,7 @@ OlympusTraitData.SeaChanteyTrait =
 			Color = { 255, 162, 105, 255 },
 			LightingColor = {255, 146, 79, 255},
 			LootColor = {255, 114, 30, 255},
-			SubtitleColor = {1.000, 0.353, 0.675, 1.0},
+			SubtitleColor = {0.800, 0.550, 0.050, 1.0},
 			EventEndSound = "/SFX/ApolloBoonLoveChimes",
 			UpgradeSelectedSound = "/SFX/ApolloBoonChoice",
 			LootRejectionAnimation = "BoonDissipateA_Apollo",
@@ -2720,8 +2924,8 @@ OlympusTraitData.SeaChanteyTrait =
 	
 			PriorityUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait" },
 			WeaponUpgrades = { "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait", "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "ApolloShoutTrait" },
-			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait", "RerollObolTrait", "RerollBoonTrait"}, 
-			Consumables = { },
+			Traits = {"ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait"}, 
+			Consumables = { "RerollObolDrop", "RerollBoonDrop" },
 	
 			LinkedUpgrades =
 			{
@@ -2752,7 +2956,7 @@ OlympusTraitData.SeaChanteyTrait =
 				{
 					OneFromEachSet =
 					{
-						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
+						{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "MasterLobDionysusTrait"},
 						{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 					}
 				},
@@ -2794,6 +2998,14 @@ OlympusTraitData.SeaChanteyTrait =
 					{
 						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait"},
 						{ "AthenaWeaponTrait", "AthenaRangedTrait", "AthenaSecondaryTrait", "AthenaRushTrait" }
+					}
+				},
+				MasterLobDionysusTrait = 
+				{
+					OneFromEachSet =
+					{
+						{ "DionysusRangedTrait"},
+						{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }
 					}
 				},
 				MasterLobApolloTrait = 
@@ -3015,7 +3227,7 @@ OlympusTraitData.SeaChanteyTrait =
 				{
 					Name = "ApolloPostEpilogue01",
 					PlayOnce = true,
-					RequiredTextLines = { "OlympianReunionQuestComplete" },
+					RequiredTextLines = { "ApolloFirstPickUp", "OlympianReunionQuestComplete" },
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					{ Cue = "/VO/Apollo_0057",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -3351,9 +3563,21 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "PersephoneMeeting02", "ApolloBackstory02" },
+					RequiredFalseTextLines = { "PersephoneReturnsHome01", "ApolloBackstory03b" },
 					{ Cue = "/VO/Apollo_0092",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						Text = "I try not to eavesdrop, but I heard that Hades once had a Queen. I assumed it was Nyx, but I had a vision lately and...  Oh, I won't give away to much of the fun. You'll see what I mean." },
+				},
+				ApolloBackstory03b =
+				{
+					Name = "ApolloBackstory03",
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "PersephoneMeeting02", "ApolloBackstory02","PersephoneReturnsHome01" },
+					RequiredFalseTextLines = { "ApolloBackstory03" },
+					{ Cue = "/VO/Apollo_0166",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I was really rooting for you and your mother to reunite, Zagzag. Hopefully you won't ever be separated again." },
 				},
 				ApolloBackstory04 =
 				{
@@ -3361,9 +3585,21 @@ OlympusTraitData.SeaChanteyTrait =
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01" },
+					RequiredFalseTextLines = { "PersephoneReturnsHome01", "ApolloBackstory04b" },
 					{ Cue = "/VO/Apollo_0093",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we? We are very alike, aren't we?" },
+						Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we?" },
+				},
+				ApolloBackstory04b =
+				{
+					Name = "ApolloBackstory04",
+					PlayOnce = true,
+					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+					RequiredTextLines = { "ApolloBackstory03", "ApolloAboutLeto01", "PersephoneReturnsHome01" },
+					RequiredFalseTextLines = { "ApolloBackstory04" },
+					{ Cue = "/VO/Apollo_0167",
+						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+						Text = "I have to tell you the truth, Zagzag. I knew about your secret for a long time... I just didn't want to spoil the surprise for everyone else. Always on quest to find our mothers. We're very alike, aren't we?" },
 				},
 				ApolloBackstory05 =
 				{
@@ -3459,7 +3695,7 @@ OlympusTraitData.SeaChanteyTrait =
 					Name = "ApolloLegendaryPickUp01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "ApolloFirstPickUp", "ApolloGift01" },
+					RequiredTextLines = { "ApolloFirstPickUp" },
 					ValuableUpgradeInRoom = {
 						AllAtLeastRarity = "Rare",
 						HasAtLeastRarity = "Epic",
@@ -4346,14 +4582,14 @@ OlympusTraitData.SeaChanteyTrait =
 		HasTraitNameInRoom = "MasterBoltTrait",
 		{ Cue = "/VO/Zeus_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Is that the bow I gave to Artemis and you, Young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
+			Text = "Is that the bow I gave to Artemis and you, young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
 		{ Cue = "/VO/Apollo_0049",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "Of course, I never leave without it, Father. Perhabs we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
+			Text = "Of course, I never leave without it, Father. Perhaps we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
 	}
 	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithApollo01 = {
 		Name = "PoseidonWithApollo01",
@@ -4465,7 +4701,7 @@ OlympusTraitData.SeaChanteyTrait =
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag we'll do what it takes to help you." },
+			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag, we'll do what it takes to help you." },
 	}
 	-- Duo LootData	
 	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait = 
@@ -4480,7 +4716,7 @@ OlympusTraitData.SeaChanteyTrait =
 	{
 		OneFromEachSet =
 		{
-			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait"},
+			{ "ApolloRangedTrait", "ShieldLoadAmmo_ApolloRangedTrait", "MasterLobDionysusTrait"},
 			{ "AresWeaponTrait", "AresSecondaryTrait", "AresRetaliateTrait"}
 		}
 	}
@@ -4532,6 +4768,49 @@ OlympusTraitData.SeaChanteyTrait =
 			{ "ApolloWeaponTrait", "ApolloSecondaryTrait", "ApolloDashTrait" }
 		}
 	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.MasterLobApolloTrait = 
+	{
+		OneFromEachSet =
+		{
+			{ "ApolloRangedTrait"},
+			{ "DionysusWeaponTrait", "DionysusSecondaryTrait", "DionysusRushTrait" }
+		}
+	}
+	
+	-- For DionysusRangedTrait when duo is activated.
+	OlympusLootData.ZeusUpgrade.LinkedUpgrades.LightningCloudTrait = {
+		OneFromEachSet =
+		{
+			{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusShoutTrait" },
+			{ "DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.LightningCloudTrait = {
+		OneFromEachSet =
+		{
+			{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRushTrait", "ZeusShoutTrait" },
+			{ "DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}
+	OlympusLootData.DemeterUpgrade.LinkedUpgrades.IceStrikeArrayTrait = {
+		OneFromEachSet =
+		{
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait", "DemeterShoutTrait" },
+			{ "DionysusRangedTrait", "ShieldLoadAmmo_DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.IceStrikeArrayTrait = {
+		OneFromEachSet =
+		{
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterRushTrait", "DemeterShoutTrait" },
+			{ "DionysusRangedTrait", "ShieldLoadAmmo_DionysusRangedTrait", "MasterLobApolloTrait" },
+		}
+	}	
+	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusDefenseTrait.OneOf, "MasterLobApolloTrait")
+	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusComboVulnerability.OneFromEachSet[1], "MasterLobApolloTrait")
+	
+	
+
 	
 	-- Other gods modification
 	-- AthenaUpgrade
@@ -4588,12 +4867,13 @@ OlympusTraitData.SeaChanteyTrait =
 		Locked = 7,
 		[1] = { Gift = "ForceApolloBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloAboutArtemis03" } }
+		UnlockGameStateRequirements = { RequiredAnyTextLines = { "ApolloBackstory04", "ApolloBackstory04b" } }
 	}
 	-- FUNCTIONS
 	
 	-- Shout Functions
 	function ApolloShout()
+		--SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
 		FireWeaponFromUnit({ Weapon = "ApolloBeamWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 	end
 	function EndApolloBeam()
@@ -4609,6 +4889,7 @@ OlympusTraitData.SeaChanteyTrait =
 		ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
 		SetPlayerUnphasing("ApolloBeam")
 		CurrentRun.Hero.SurgeActive = false
+		--SetWeaponProperty({ WeaponName = "ApolloBeamAim", DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 		SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
 		SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
 	end
@@ -4655,7 +4936,11 @@ OlympusTraitData.SeaChanteyTrait =
 				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
-					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
+				end
+				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
+					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
+					BlockEffect({ Id = attacker.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 				end
 				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
@@ -4681,9 +4966,9 @@ OlympusTraitData.SeaChanteyTrait =
 	end
 	function ApolloBlindClear(triggerArgs)
 		if HeroHasTrait("BlindDurationTrait") then
-			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 3.0 })
+			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
 			if HeroHasTrait("MasterBoltTrait") then
-				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 3.0 })
+				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 			end
 		end
 	end
@@ -4733,16 +5018,6 @@ OlympusTraitData.SeaChanteyTrait =
 			end
 		end
 	)
-	ModUtil.Path.Wrap( "AddTraitToHero", 
-	function(baseFunc, args)
-		if args.TraitData and args.TraitData.Name == "RerollBoonTrait" then
-			AddRerollBoon()
-		end
-		if args.TraitData and args.TraitData.Name == "RerollObolTrait" then
-			AddRerollObol()
-		end
-		baseFunc(args)
-	end)
 	-- Fountain Coin/Defense Functions
 	function FountainDefensePresentation()
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
@@ -4865,6 +5140,21 @@ OlympusTraitData.SeaChanteyTrait =
 			end
 		end
 	end
+	OnProjectileDeath{
+		function( triggerArgs )
+			local attacker = triggerArgs.AttackerTable
+			if CurrentRun.Hero and attacker == CurrentRun.Hero then
+				-- Remove clause after optimizations
+				if HeroHasTrait("LightningCloudTrait") then
+					for i, data in pairs(GetHeroTraitValues("AmmoDeathAdditionalWeapon")) do
+						if triggerArgs.name == data.ValidProjectileName then
+							FireAmmoDeathWeapon( data, triggerArgs.LocationX, triggerArgs.LocationY )
+						end
+					end
+				end
+			end
+		end
+	}
 
 	-- Athena Duo
 	OnProjectileReflect{
@@ -4908,6 +5198,20 @@ OlympusTraitData.SeaChanteyTrait =
 		RemoveSimSpeedChange( "HyacinthKill", { LerpTime = 0.3 } )
 		Destroy({ Id = dropLocation })
 	end]]
+
+	-- Changes to Maps
+	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
+		Name = "Boon",
+		LootName = "ApolloUpgrade",
+		GameStateRequirements =
+		{
+			RequiredTextLines = {  "ZeusFirstPickUp", "ArtemisFirstPickUp" },
+			RequiredOnlyNotPickedUp = "ApolloUpgrade",
+			RequiredOnlyNotPickedUpIgnoreName = "DemeterUpgrade",
+		}
+	})
+    OverwriteTableKeys( RoomData, RoomSetData.Tartarus )
 	
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 

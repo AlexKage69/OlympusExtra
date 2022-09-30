@@ -2,6 +2,14 @@
   Weapons = [
     "_append"
       {
+        Name = "ApolloBeamAim"
+        Control = "Attack2"
+        FullyAutomatic = true
+        Enabled = false
+        IgnoreOwnerAttackDisabled = true
+        //DisableAttack = false
+      }
+      {
         Name = "ApolloBeamWeapon"
         InheritFrom = "1_BasePlayerSlowWeapon"
         Type = "GUN"
@@ -20,7 +28,10 @@
         ObstacleDamageMultiplier = 1
         BlinkNumGhosts = 3
         CancelMovement = false
-        AutoLock = false
+        AutoLock = true
+        //AutoLockRange = 900
+        //AutoLockWithMouse = true
+        //AutoLockArcDistance = 180
         IgnoreOwnerAttackDisabled = true
         UseTargetAngle = false
         BlockMoveInput = true
@@ -28,8 +39,6 @@
         CanCancelDisables = true
         CanCancelOwnDisables = true
         BlinkGhostAnimation = "null"
-        CheckMovementReactionDistance = 150
-        ClearWeaponFireRequestOnFire = "RushWeapon"
         PriorityFireRequest = true
         Effects = [
         {

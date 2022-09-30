@@ -1,0 +1,92 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "PortraitRayParticle_Hestia"
+      InheritFrom = "PortraitRayParticle"
+      StartRed = 0.48
+      StartGreen = 0.09
+      StartBlue = 0.21
+      EndRed = 0.82
+      EndGreen = 0.2
+      EndBlue = 0.5
+      OffsetX = 0
+      OffsetY = -300
+    }
+    {
+      Name = "PortraitVerticalRay_Hestia"
+      InheritFrom = "PortraitVerticalRay"
+      StartRed = 0.48
+      StartGreen = 0.09
+      StartBlue = 0.21
+      EndRed = 0.82
+      EndGreen = 0.2
+      EndBlue = 0.5
+
+      OffsetX = 0
+      CreateAnimation = "PortraitRayParticle_Hestia"
+    }
+    {
+      Name = "PortraitVerticalRayEmitter_Hestia"
+      InheritFrom = "PortraitVerticalRayEmitter_Base"
+      StartRed = 0.48
+      StartGreen = 0.09
+      StartBlue = 0.21
+      EndRed = 0.82
+      EndGreen = 0.2
+      EndBlue = 0.5
+      OffsetX = 0
+      VisualFx = "PortraitVerticalRay_Hestia"
+    }
+    {
+      Name = "PortraitGodRayEmitter_Hestia"
+      InheritFrom = "PortraitGodRayEmitter"
+      EndFrame = 1
+      StartFrame = 1
+      VisualFxOffsetX = -30.0
+      VisualFxOffsetY = 120.0
+      CreateAnimation = "PortraitVerticalRayEmitter_Hestia"
+    }
+    {
+      Name = "Portrait_Hestia_Default_01"
+      InheritFrom = "Portrait_God_01"
+      ChildAnimation = "PortraitGodRayEmitter_Hestia"
+      FilePath = "Hestia\Portraits_Hestia_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 1
+    }
+    {
+      Name = "Portrait_Hestia_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Portraits\Portraits_Hestia_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 1
+    }
+    {
+      Name = "Portrait_Hestia_Wrath_01"
+      InheritFrom = "Portrait_Hestia_Default_01"
+      ChildAnimation = "null"
+      AddColor = true
+      EndFrame = 1
+      StartFrame = 1
+      CreateAnimation = "null"
+    }
+    {
+      Name = "Codex_Portrait_Hestia"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Hestia\CodexPortrait_Hestia"
+      Scale = 0.29
+      EndFrame = 1
+      StartFrame = 1
+    }    
+    {
+      Name = "Codex_Portrait_CentaurSoul"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Hestia\CodexCentaurSoul"
+      EndFrame = 1
+      StartFrame = 1
+    }
+  ]
+}

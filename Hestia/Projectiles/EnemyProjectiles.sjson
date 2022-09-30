@@ -1,0 +1,163 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "TheseusHestiaBolt"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "RadialNovaTheseusWrath-Hestia"
+      DetonateSound = "/SFX/Explosion1"
+      Type = "INSTANT"
+      VacuumStrength = 300
+      VacuumDistance = 4000
+      DamageLow = 15
+      DamageHigh = 15
+      DamageRadius = 270.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0.75
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "FX_Terrain"
+      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
+      DangerDistance = 0
+      Thing = 
+      {
+        Graphic = "TheseusGodPowerPreviewDecal_Hestia"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = 
+        {
+          Red = 0.82
+          Green = 0.20
+          Blue = 0.50
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "TheseusHestiaBoltNoPull"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "RadialNovaTheseusWrath-Hestia"
+      DetonateSound = "/SFX/Explosion1"
+      Type = "INSTANT"
+      DamageLow = 15
+      DamageHigh = 15
+      DamageRadius = 270.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0.75
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "FX_Terrain"
+      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
+      DangerDistance = 0
+      Thing = 
+      {
+        Graphic = "TheseusGodPowerPreviewDecal_Hestia"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = 
+        {
+          Red = 0.82
+          Green = 0.20
+          Blue = 0.50
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "TheseusHestiaBoltPassive"
+      InheritFrom = "TheseusHestiaBoltNoPull"
+      DamageRadius = 400
+      Fuse = 1.0
+    }
+    {
+      Name = "DevotionHestia"
+      InheritFrom = "TheseusHestiaBolt"
+      DetonateGraphic = "RadialNovaDevotion-Hestia"
+      Type = "INSTANT"
+      DamageLow = 15
+      DamageHigh = 15
+      DamageRadius = 270.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 1.0
+      TotalFuse = 3.6
+      MultiDetonate = true
+      //Speed = 150
+      Range = 1500
+      DieWithOwner = true
+      InheritOwnerElapsedTimeMultiplier = false
+      DangerDistance = 0
+      NumBounces = 999
+      CheckObstacleImpact = true
+    }
+    {
+      Name = "TheseusPullHestiaBolt"
+      InheritFrom = "TheseusHestiaBolt"
+      DetonateGraphic = "RadialNovaDevotion-Hestia"
+      Type = "INSTANT"
+      DamageLow = 15
+      DamageHigh = 15
+      DamageRadius = 350.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 1.0
+      TotalFuse = 5.0
+      MultiDetonate = true
+      //Speed = 150
+      Range = 1500
+      DieWithOwner = true
+      InheritOwnerElapsedTimeMultiplier = false
+      DangerDistance = 0
+      NumBounces = 999
+      CheckObstacleImpact = true
+    }
+  ]
+}

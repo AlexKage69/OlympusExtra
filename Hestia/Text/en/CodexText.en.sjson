@@ -1,0 +1,34 @@
+{
+  /*
+  Made by AlexKage and physiX
+  Additional writing by bessyboo
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_Hestia_0001"
+      Speaker = "Achilles"
+      DisplayName = "'...I believe that few Olympians have such high regard for mortal life as the goddess of the hearth. Far kinder and more forgiving than her sisters, she was once tasked by Zeus with tending the fires and feeding all of Olympus. Indeed, I was always most grateful in my mortal days to have her blessing on cold and dark nights...'"
+    }
+    {
+      Id = "CodexData_Hestia_0002"
+      Speaker = "Achilles"
+      DisplayName = "'...I believe that few Olympians have such high regard for mortal life as the goddess of the hearth. Far kinder and more forgiving than her sisters, she was once tasked by Zeus with tending the fires and feeding all of Olympus. Indeed, I was always most grateful in my mortal days to have her blessing on cold and dark nights. {#CodexBoldFormat}Although she no longer resides on the mountaintop with the rest of her family, I have reason to believe that she remains in contact with not only her sisters, but several in the Master's domain as well...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_Hestia_0003"
+      Speaker = "Achilles"
+      DisplayName = "'...I believe that few Olympians have such high regard for mortal life as the goddess of the hearth. Far kinder and more forgiving than her sisters, she was once tasked by Zeus with tending the fires and feeding all of Olympus. Indeed, I was always most grateful in my mortal days to have her blessing on cold and dark nights. Although she no longer resides on the mountaintop with the rest of her family, I have reason to believe that she remains in contact with not only her sisters, but several in the Master's domain as well. {#CodexBoldFormat}Unlike most of her Olympic brethren, she remains ever hopeful that one day all the gods may forgive their past disagreements, and live together in harmony.{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_Hestia_0004"
+      Speaker = "Achilles"
+      DisplayName = "'...Unlike its heart, the vessel which encases a Centaur's soul has lost most of its original owner's tenacity. Charon is the only one who knows how to collect these, making them only available from his shop, I believe...'"
+    }
+    {
+      Id = "CodexData_Hestia_0005"
+      Speaker = "Achilles"
+      DisplayName = "'...Unlike its heart, the vessel which encases a Centaur's soul has lost most of its original owner's tenacity. Charon is the only one who knows how to collect these, making them only available from his shop, I believe. {#CodexBoldFormat}Rumor has it the goddess of the hearth somehow convinced the boatman to share this knowledge, and might now be called upon in certain circumstances to provide those in need with this rare artifact as well.{#PreviousFormat}'"
+    }
+  ]
+}

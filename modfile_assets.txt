@@ -4,20 +4,33 @@
 :-
 
 :: Assets
-To "Win/Packages/OEAssets.pkg"
-Replace "Packages/OEAssets.pkg"
-To "Win/Packages/720p/OEAssets.pkg"
-Replace "Packages/OEAssets.pkg"
-To "Win/Packages/OEAssets.pkg_manifest"
-Replace "Packages/OEAssets.pkg_manifest"
-To "Win/Packages/720p/OEAssets.pkg_manifest"
-Replace "Packages/OEAssets.pkg_manifest"
+To "Win/Packages/OEHestia.pkg"
+Replace "Packages/OEHestia.pkg"
+To "Win/Packages/720p/OEHestia.pkg"
+Replace "Packages/OEHestia.pkg"
+To "Win/Packages/OEHestia.pkg_manifest"
+Replace "Packages/OEHestia.pkg_manifest"
+To "Win/Packages/720p/OEHestia.pkg_manifest"
+Replace "Packages/OEHestia.pkg_manifest"
+
+To "Win/Packages/OEApollo.pkg"
+Replace "Packages/OEApollo.pkg"
+To "Win/Packages/720p/OEApollo.pkg"
+Replace "Packages/OEApollo.pkg"
+To "Win/Packages/OEApollo.pkg_manifest"
+Replace "Packages/OEApollo.pkg_manifest"
+To "Win/Packages/720p/OEApollo.pkg_manifest"
+Replace "Packages/OEApollo.pkg_manifest"
 
 :: Audio
+To "Audio/FMOD/Build/Desktop/VO.h"
+Replace "Audio/VO.h"
 To "Audio/FMOD/Build/Desktop/VO.txt"
 Replace "Audio/VO.txt"
 
 To "Audio/FMOD/Build/Desktop/VO.fsb"
-Replace "Audio/VO.fsb"
-To "Audio/FMOD/Build/Desktop/VO.h"
-Replace "Audio/VO.h"
+Replace "Audio/VO.fsb" 
+
+:: Subtitles
+To "Subtitles/en/ZagreusScratch.csv"
+Replace "Audio/Subtitles/Subtitle.en.csv"

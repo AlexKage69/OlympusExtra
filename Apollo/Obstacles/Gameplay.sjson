@@ -11,5 +11,35 @@
         Graphic = "BoonDropApollo"
       }
     }
+    {
+      Name = "RerollBoonDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = false
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "null"
+        Interact = 
+        {
+          AutoActivate = true
+          DestroyOnUse = true
+        }
+      }
+    }
+    {
+      Name = "RerollObolDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = false
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "null"
+        Interact = 
+        {
+          AutoActivate = true
+          DestroyOnUse = true
+        }
+      }
+    }
   ]
 }

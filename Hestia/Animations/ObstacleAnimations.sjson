@@ -1,0 +1,11 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "HestiaOverlay"
+      InheritFrom = "HadesOverlay"
+      FilePath = "Hestia\Portraits_Hestia_01"
+      Scale = 0.7
+    }
+  ]
+}

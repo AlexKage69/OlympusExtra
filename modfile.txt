@@ -3,15 +3,19 @@
     Author - Phypoh
 :-
 
+Include "modfile_assets.txt"
+
 Import "SeparateGoddess.lua"
 
 Import "Apollo/ApolloExtra.lua"
+Import "Hestia/HestiaExtra.lua"
 
 :: Merge all together
 Import "OlympusExtra.lua"
 
-Include "modfile_assets.txt"
-
 Include "Apollo/modfile_apollo.txt"
+Include "Hestia/modfile_hestia.txt"
 
 -: Include "modfile_fr.txt" :-
+
+Include "Olympus/modfile_olympus.txt"
