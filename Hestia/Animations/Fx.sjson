@@ -1901,7 +1901,7 @@
       Blue = 0.18
       Green = 0.08
       Red = 0.41
-      VisualFx = "HestiaLaserParticles"
+      //VisualFx = "HestiaLaserParticles"
       VisualFxIntervalMin = 0.1
       VisualFxIntervalMax = 0.11
     }

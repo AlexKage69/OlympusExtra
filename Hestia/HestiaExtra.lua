@@ -2112,7 +2112,7 @@ if ModUtil ~= nil then
 		{
 			FunctionName = "HestiaShout",
 			MaxFunctionName = "HestiaMaxShout",
-			Cost = 25,
+			Cost = 33.34,
 			SuperDuration = 0.8,
 			IsBurst = true,
 			ExtractValues =
@@ -2129,7 +2129,7 @@ if ModUtil ~= nil then
 		PropertyChanges =
 		{
 			{
-				WeaponNames = {"HestiaMaxSuper", "HestiaSuper"},
+				WeaponNames = {"HestiaSuper"},
 				ProjectileProperty = "DamageLow",
 				BaseMin = 50,
 				BaseMax = 50,
@@ -2144,7 +2144,23 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponNames = {"HestiaMaxSuper", "HestiaSuper",},
+				WeaponNames = {"HestiaSuper",},
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponNames = {"HestiaMaxSuper"},
+				ProjectileProperty = "DamageLow",
+				BaseMin = 75,
+				BaseMax = 75,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			{
+				WeaponNames = {"HestiaMaxSuper"},
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
@@ -2153,10 +2169,10 @@ if ModUtil ~= nil then
 				WeaponProperty = "NumProjectiles",
 				ChangeValue = 3,
 				ChangeType = "Absolute",
-				ExtractValue =
+				--[[ExtractValue =
 				{
 					ExtractAs = "TooltipProjectiles",
-				}
+				}]]
 
 			},
 		},
@@ -2337,15 +2353,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.50,
+				Multiplier = 0.94,
 			},
 			Epic =
 			{
-				Multiplier = 2.00,
+				Multiplier = 0.88,
 			},
 			Heroic =
 			{
-				Multiplier = 2.50,
+				Multiplier = 0.82,
 			}
 		},
 		PropertyChanges =
@@ -2364,7 +2380,7 @@ if ModUtil ~= nil then
 					ExtractAs = "TooltipBonus",
 					Format = "NegativePercentDelta",
 				},
-				ChangeType = "Add",
+				ChangeType = "Absolute",
 			},
 			{
 				WeaponNames = {"LastStandMetaUpgradeShield", "LastStandReincarnateShield"},
