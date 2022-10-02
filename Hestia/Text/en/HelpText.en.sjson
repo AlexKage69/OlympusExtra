@@ -432,5 +432,13 @@
 		Id = "Fish_Surface_Legendary_01_Doubled"
 		DisplayName = "Sturgeon x2"
 		}
+		{
+		Id = "FreePass"
+		DisplayName = "Transgression forgiven!"
+		}
+		{
+		Id = "FreePassWhy",
+		DisplayName = "Hestia's just too nice, you can't compete with her!"
+		}
 	]
 }
