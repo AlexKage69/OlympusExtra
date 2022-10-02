@@ -4698,7 +4698,7 @@ if ModUtil ~= nil then
 			{ Cue = "/VO/Artemis_0262",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-				Text = "Look, I also appreciate Hestia, but that's no reason not to pick me. I mean... {#DialogueItalicFormat}Huh{#PreviousFormat}, alright, I'll let it go this time. Don't get use to it." },
+				Text = "Look, I also appreciate Hestia, but that's no reason not to pick me. I mean... {#DialogueItalicFormat}Huh{#PreviousFormat} alright, I'll let it go this time. Don't get used to it." },
 		},
 	}
 	OlympusLootData.DionysusUpgrade.FreePassVoiceLines = {
