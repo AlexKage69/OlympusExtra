@@ -57,6 +57,19 @@ if ModUtil ~= nil then
 				"LavaAutoTrait",
 			},
 		},
+		CashedOutVoiceLines =
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.4,
+			Cooldowns =
+			{
+				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
+			},
+
+			-- This was done with your help, Lady Hestia.
+			{ Cue = "/VO/ZagreusHome_3778" },
+		},
 	}
 	OlympusQuestData.HomeWarmthQuest = {
 		InheritFrom = { "DefaultQuestItem" },
@@ -5403,6 +5416,27 @@ if ModUtil ~= nil then
 			alternateLootData.Skip = true
 			CurrentRun.CurrentRoom.RewardSkip = true
 			currentEncounter.Completed = true
+			DisplayUnlockText( {
+				--SupertitleText = "EasyModeUpgradedSupertitle",
+		
+				TitleText = "FreePassTextBanner",
+				SubtitleText = alternateLootData.Name.."FreePass",
+				TextRevealSound = "/Leftovers/Menu Sounds/EmoteExcitement",
+				Color = Color.DarkSalmon,
+				--SupertitleTextColor = {190, 190, 190, 255},
+				--SupertitleTextDelay = 1.0,
+				TextColor = Color.White,
+				SubTextColor = alternateLootData.LootColor,
+				-- Icon = EasyModeIcon,
+				-- Duration = 4.35,
+				-- IconMoveSpeed = 0.00001,
+				TextOffsetY = 15,
+				--TitleFont = "SpectralSCLightTitling",
+				--SubtitleFont = "SpectralSCLightTitling",
+				--SupertitleFont = "AlegreyaSansSCRegular",
+				Layer = "Overlay",
+				AdditionalAnimation = "GodHoodRays",
+				} )
 		else
 			CurrentRun.CurrentRoom.RejectedLootData = alternateLootData
 			UseableOff({ Ids = newLoots })
@@ -5415,7 +5449,7 @@ if ModUtil ~= nil then
 		end		
 	end)
 	function CanPlayFreePass(chosenLootName, alternateLootData)
-		if alternateLootData.FreePassVoiceLines == nil and not (chosenLootName.Name == "HestiaUpgrade" or alternateLootData.Name == "HestiaUpgrade") then 
+		if alternateLootData.FreePassVoiceLines == nil or (chosenLootName ~= "HestiaUpgrade" and alternateLootData.Name ~= "HestiaUpgrade") then 
 			return false
 		end
 		local allEligibleLines = {}
@@ -5429,7 +5463,7 @@ if ModUtil ~= nil then
 			return false
 		end
 		local number = RandomFloat(0,1)
-		return number <= 0.1
+		return number <= 1.0--0.05
 	end	
 	function StartDevotionTestPresentationFreePass( currentRoom, alternateLootData, alternateLootId )
 		AddInputBlock({ Name = "DevotionTest" })
@@ -5532,7 +5566,7 @@ if ModUtil ~= nil then
 		else 
 			baseFunc(currentRun, loot)
 		end
-	end)
+	end)	
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
