@@ -59,6 +59,19 @@ if ModUtil ~= nil then
 				"MissChanceTrait",
 			},
 		},
+		CashedOutVoiceLines =
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.4,
+			Cooldowns =
+			{
+				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
+			},
+
+			-- Lord Apollo might write about what I did.
+			{ Cue = "/VO/ZagreusHome_3768" },
+		},
 	}
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
 	table.insert(OlympusQuestOrderData, 29, "ApolloUpgrades")
