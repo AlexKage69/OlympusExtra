@@ -5400,20 +5400,6 @@ if ModUtil ~= nil then
 		end
 		if CanPlayFreePass(chosenLootName, alternateLootData) then
 			StartDevotionTestPresentationFreePass(CurrentRun.CurrentRoom, alternateLootData, alternateLootId)
-
-			DisplayUnlockText({
-				Icon = "BoonSymbolHestiaIsometric",
-				IconScale = 1.0,
-				IconMoveSpeed = 0.0001,
-				IconOffsetY = 0,
-				HighlightIcon = true,
-				TitleText = "FreePass",
-				AnimationName = "LocationTextBGRelationship",
-				AnimationOutName = "LocationTextBGRelationshipOut",
-				--SubtitleText = "NewTraitUnlocked_Subtitle",
-				--SubtitleData = { LuaKey = "TempTextData", LuaValue = { Name = npcName, Gift = giftName }},
-			})
-
 			alternateLootData.Skip = true
 			CurrentRun.CurrentRoom.RewardSkip = true
 			currentEncounter.Completed = true
