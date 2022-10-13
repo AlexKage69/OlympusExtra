@@ -328,7 +328,7 @@
 		{
 			Id = "ExplosionTrait"
 			DisplayName = "Striking Sparks"
-			Description = "Your {$Keywords.Crit} creates an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "When you apply {$Keywords.Crit} damage, create an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "ChillFireTrait"
@@ -431,6 +431,54 @@
 		{
 		Id = "Fish_Surface_Legendary_01_Doubled"
 		DisplayName = "Sturgeon x2"
+		}
+		{
+			Id = "FreePassTextBanner"
+			DisplayName = "Forgiven!"
+		}
+		{
+			Id = "ZeusUpgradeFreePass"
+			DisplayName = "Spark of reconciliation"
+		}
+		{
+			Id = "PoseidonUpgradeFreePass"
+			DisplayName = "There's one fire, water won't extinguish"
+		}
+		{
+			Id = "AthenaUpgradeFreePass"
+			DisplayName = "A tactical retreat"
+		}
+		{
+			Id = "AphroditeUpgradeFreePass"
+			DisplayName = "Make love, not war"
+		}
+		{
+			Id = "ArtemisUpgradeFreePass"
+			DisplayName = "The hunt never stops"
+		}
+		{
+			Id = "AresUpgradeFreePass"
+			DisplayName = "A battle of kindness he can't win"
+		}
+		{
+			Id = "DionysusUpgradeFreePass"
+			DisplayName = "A favour returned"
+		}
+		{
+			Id = "DemeterUpgradeFreePass"
+			DisplayName = "If you see this, you are a magician..."
+		}
+		{
+			Id = "ApolloUpgradeFreePass"
+			DisplayName = "His mercy shines on you"
+		}
+		{
+			Id = "HestiaUpgradeFreePass"
+			DisplayName = "May compassion guide your path"
+		}
+		{
+			Id = "HeraUpgradeFreePass"
+			DisplayName = "Queens can also forgive"
 		}
 	]
 }
