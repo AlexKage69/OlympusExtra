@@ -258,12 +258,12 @@
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Panacea's Elixir"
-			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
 			InheritFrom = "ApolloHealTrait"
-			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "MissChanceTrait"
