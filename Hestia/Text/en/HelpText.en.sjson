@@ -52,12 +52,12 @@
 		{
 			Id = "CentaurHeart"
 			DisplayName = "Centaur Heart"
-			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} {#PreviousFormat}"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small}. {#PreviousFormat}"
 		}
 		{
 			Id = "CentaurSoul"
 			DisplayName = "Centaur Soul"
-			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small} \n{#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small}. \n{#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
 		}
 		{
 			Id = "RoomRewardEmptyHealthDrop"
@@ -328,7 +328,7 @@
 		{
 			Id = "ExplosionTrait"
 			DisplayName = "Striking Sparks"
-			Description = "When you apply {$Keywords.Crit} damage, create an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Crit} effects create an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "ChillFireTrait"
