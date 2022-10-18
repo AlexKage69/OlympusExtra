@@ -197,12 +197,12 @@
 		{
 			Id = "HestiaRevengeTrait"
 			DisplayName = "Molten Sting"
-			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "HestiaRevengeTrait_Initial"
 			InheritFrom = "HestiaRevengeTrait"
-			Description = "After you take damage, create a random {$Keywords.LavaSplash} near Zagreus. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HealthDefianceTrait"
