@@ -34,3 +34,9 @@ Replace "Audio/VO.fsb"
 :: Subtitles
 To "Subtitles/en/ZagreusScratch.csv"
 Replace "Audio/Subtitles/Subtitle.en.csv"
+
+:: Movies
+To "Movies/MainMenuIn.bik"
+Replace "Movies/MainMenuIn.bik"
+To "Movies/MainMenuLoop.bik"
+Replace "Movies/MainMenuLoop.bik"
