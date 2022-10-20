@@ -210,7 +210,7 @@
 		{
 			Id = "RerollBoonTrait"
 			DisplayName = "Future Sight"
-			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \nGain a {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} now. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
