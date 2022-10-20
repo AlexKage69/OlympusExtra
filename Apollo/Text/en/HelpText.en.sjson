@@ -40,7 +40,7 @@
 		{
       		Id = "DamageResist"
 			DisplayName = "Protect"
-			Description = "Damage from faraway enemies is less effective."
+			Description = "Damage from faraway foes is less effective."
 		}
 		{
       		Id = "Dazzled"
@@ -105,17 +105,17 @@
 		{
 			Id = "ApolloShoutTrait"
 			DisplayName = "Apollo's Aid"
-			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}{$TooltipData.TooltipDuration} Sec. Duration"
 		}		
 		{
 			Id = "ApolloShoutTrait_Tray"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec. Duration"
 		}	
 		{
 			Id = "ApolloShoutTrait_Initial"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec."
+			Description = "Your {$Keywords.Wrath} fires a beam while {$Keywords.Invulnerable} for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Impact Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec. Duration"
 		} 
 		{
 			Id = "ApolloRangedTrait"
@@ -135,7 +135,7 @@
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait"
 			DisplayName = "Brilliant Flare"
-			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "ShieldLoadAmmo_ApolloRangedTrait_Tray"
@@ -162,7 +162,7 @@
 		{
 			Id = "FountainDefenseTrait",
 			DisplayName = "Melodic Concert"
-			Description = "Using a {$Keywords.Fountain} gives you bonus damage resist from faraway enemies. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Using a {$Keywords.Fountain} gives you bonus damage resist from faraway foes. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
     	}
 		{
 			Id = "FountainDefenseText",
@@ -195,32 +195,32 @@
 		{
 			Id = "RerollObolTrait"
 			DisplayName = "Golden Fleece"
-			Description = "From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}
 		{
 			Id = "RerollObolTrait_Initial"
 			InheritFrom = "RerollObolTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. Receive {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} now. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}
 		{
 			Id = "RerollObolDrop"
 			InheritFrom = "RerollObolTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. Receive {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. \n {#PreviousFormat}(Randomly alter the reward for the next chamber)"
 		}
 		{
 			Id = "RerollBoonTrait"
 			DisplayName = "Future Sight"
-			Description = "From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \nGain a {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} now. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
 			InheritFrom = "RerollBoonTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. Receive {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} now. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}	
 		{
 			Id = "RerollBoonDrop"
 			InheritFrom = "RerollBoonTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small}. From now on, gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
+			Description = "Gain {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. Receive {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} now. \n {#PreviousFormat}(Randomly alter {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}and {#BoldFormatGraft}Well of Charon {#PreviousFormat}choices)"
 		}	
 		{
 			Id = "ApolloRetaliateTrait"
@@ -258,12 +258,12 @@
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Panacea's Elixir"
-			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "Foes inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
 			InheritFrom = "ApolloHealTrait"
-			Description = "Enemies inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when killed. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "Foes inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "MissChanceTrait"
@@ -312,17 +312,17 @@
 		{
 			Id = "BlindDurationTrait"
 			DisplayName = "Chilling Melody"
-			Description = "Your {$Keywords.ApolloBlind} effects do not expire after foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+			Description = "Your {$Keywords.ApolloBlind} effects do not expire when foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec. Duration"
 		}
 		{
 			Id = "DamageReduceDistanceTrait"
 			DisplayName = "Archery Lessons"
-			Description = "After using {$Keywords.Deflect}, briefly gain {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}% \n{!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistDuration} Sec."
+			Description = "After using {$Keywords.Deflect}, gain {$Keywords.DamageResist} for {#BoldFormat}{$TooltipData.TooltipDamageResistDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Defense: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}%"
 		}	
 		{
 			Id = "MasterBoltTrait"
 			DisplayName = "Master Bolt" 
-			Description = "Enemies inflicted by {$Keywords.ApolloBlind} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {#UpgradeFormat}{$TooltipData.MasterBoltDamage}"
+			Description = "Foes inflicted by {$Keywords.ApolloBlind} are also struck by lightning every second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {#UpgradeFormat}{$TooltipData.MasterBoltDamage}"
 		}
 		{
 			Id = "MasterLobApolloTrait"

@@ -3344,7 +3344,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 					RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
 					{ Cue = "/VO/Apollo_0165",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "The bone hydra has a snake's head, right? {#DialogueItalicFormat} Arg {#PreviousFormat}. I hate snakes, especially pythons. They are the worst. Still, I have quite a bit of experience getting the upper hand on them. This should help." },
+						Text = "The bone hydra has a snake's head, right? {#DialogueItalicFormat} Urgh {#PreviousFormat}. I hate snakes, especially pythons. They are the worst. Still, I have quite a bit of experience getting the upper hand on them. This should help." },
 				},
 				ApolloAboutDaphne01 =
 				{
@@ -4471,7 +4471,7 @@ OlympusTraitData.MasterLobDionysusTrait =
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 						PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 						PostLineFunctionArgs = { Text = "NPC_Apollo_01", Icon = "Keepsake_ApolloSticker_Max" },
-						Text = "Is that Ambrosia? How did you find this? I don't know what to say beside thank you my friend. I just hope we can see each other soon. So, I may share it with you. For now, thought, have this. And take care of yourself." },
+						Text = "Is that Ambrosia? How did you find this? I don't know what to say besides thank you, my friend. I just hope we can see each other soon. So, I may share it with you. For now, thought, have this. And take care of yourself." },
 				},
 			},
 	

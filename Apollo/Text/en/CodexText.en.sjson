@@ -17,7 +17,7 @@
     {
       Id = "CodexData_Apollo_0003"
       Speaker = "Achilles"
-      DisplayName = "'...One of Zeus's many sons, he is the god of archery and poetry, music and dance, truth and prohecy, healing and diseases. But most notable of all, he is the god of the Sun and its radiant light. {#CodexBoldFormat} Unlike his twin sibling Artemis, he holds a much more easygoing and extroverted personality. But as masters of the Sun and the Moon, I suppose it is inevitable that they are two sides of the same coin{#PreviousFormat}...'"
+      DisplayName = "'...One of Zeus's many sons, he is the god of archery and poetry, music and dance, truth and prohecy, healing and diseases. But most notable of all, he is the god of the Sun and its radiant light. {#CodexBoldFormat} Unlike his twin sibling Artemis, he holds a much more easygoing and extroverted personality. But as masters of the Sun and the Moon, I suppose it is inevitable that they are two sides of the same coin.{#PreviousFormat}'"
     }
   ]
 }

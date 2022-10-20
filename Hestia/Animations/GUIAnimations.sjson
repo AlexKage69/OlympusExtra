@@ -469,7 +469,7 @@
     }
     {
       Name = "ExtraLifeHestia"
-      FilePath = "GUI\HUD\HealthBar_1upStyx"
+      FilePath = "Hestia\HestiaDDIcon"
       Type = "ConstantNoUpdate"
       EndFrame = 1
       NumFrames = 1
