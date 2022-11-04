@@ -22,6 +22,16 @@ Replace "Packages/OEApollo.pkg_manifest"
 To "Win/Packages/720p/OEApollo.pkg_manifest"
 Replace "Packages/OEApollo.pkg_manifest"
 
+
+To "Win/Packages/OEMinor.pkg"
+Replace "Packages/OEMinor.pkg"
+To "Win/Packages/720p/OEMinor.pkg"
+Replace "Packages/OEMinor.pkg"
+To "Win/Packages/OEMinor.pkg_manifest"
+Replace "Packages/OEMinor.pkg_manifest"
+To "Win/Packages/720p/OEMinor.pkg_manifest"
+Replace "Packages/OEMinor.pkg_manifest"
+
 :: Audio
 To "Audio/FMOD/Build/Desktop/VO.h"
 Replace "Audio/VO.h"
