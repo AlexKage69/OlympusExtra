@@ -6,7 +6,7 @@
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "NPC_Cerberus_01_Assist"
-      ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging"
+      //ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging"
       FireFx = "Cerberus_HadesAssistJump_ToRun"
       NumProjectiles = 36
       ProjectileInterval = 0.5

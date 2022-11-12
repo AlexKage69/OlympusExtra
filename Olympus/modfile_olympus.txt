@@ -1,7 +1,7 @@
 
-:: Import "CerberusAssist/CerberusAssist.lua"
+Import "CerberusAssist/CerberusAssist.lua"
 Import "patch.lua"
-:: Import "extender.lua"
+Import "extender.lua"
 
 To "Game/Weapons/PlayerWeapons.sjson"
 SJSON "CerberusAssist/Weapons/PlayerWeapons.sjson"

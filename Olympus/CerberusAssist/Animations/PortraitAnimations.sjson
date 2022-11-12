@@ -4,9 +4,29 @@
      {
       Name = "Codex_Portrait_GoodBoyAssistTrait"
       InheritFrom = "Codex_Portrait_Base_01"
-      FilePath = "Portraits\Codex\CodexPortrait_SkellyAssistTrait"
+      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
       EndFrame = 1
       StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Cerberus_Plush_Menu"
+      InheritFrom = "LegendaryKeepsakeMenuIcon"
+      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
+    }
+    {
+      Name = "Keepsake_Cerberus_Plush_Small"
+      InheritFrom = "LegendaryKeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Cerberus_Plush_Child"
+    }
+    {
+      Name = "Keepsake_Cerberus_Plush_Child"
+      InheritFrom = "LegendaryKeepsakeTrayIcon"
+      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
+    }    
+    {
+      Name = "Keepsake_Cerberus_Plush"
+      InheritFrom = "LegendaryKeepsakeIcon"
+      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
     }
   ]
 }
