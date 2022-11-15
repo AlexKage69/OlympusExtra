@@ -2857,7 +2857,7 @@ if ModUtil ~= nil then
 		PreEquipWeapons = WeaponSets.RubbleWeapons,
 		PropertyChanges =
 		{
-			{
+			--[[{
 				WeaponNames = { WeaponSets.RubbleWeapons },
 				ProjectileProperty = "DamageLow",
 				BaseValue = 4,
@@ -2867,17 +2867,23 @@ if ModUtil ~= nil then
 				WeaponNames = { WeaponSets.RubbleWeapons },
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
-			},
+			},]]
 			{
 				WeaponNames = { "HestiaLavaProjectile", "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileProperty = "DamageLow",
-				BaseValue = 20,
-				ChangeType = "MultiplyBase",
+				ChangeValue="5.0",
+				ChangeType="MultiplyBase",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+					Format = "Percent",
+				}
 			},
 			{
 				WeaponNames = { "HestiaLavaProjectile", "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				ChangeValue="5.0",
+				ChangeType="MultiplyBase",
 			}
 		},
 		EnemyIncomingDamageModifiers =
@@ -3062,20 +3068,20 @@ if ModUtil ~= nil then
 					Skip = true,
 					Traits = {
 						ZeusRangedTrait = {
-							Range = 400,
+							Range = 1500,
 							PullForce = 1800,
 							Arc = 360,
-							Count = 3,
+							Count = 2,
 							Distance = 50,
 							RequireFirstHit = false,
 						},
 					},
 				},
 				ChainLightning = {
-					Range = 400,
+					Range = 1500,
 					PullForce = 1800,
 					Arc = 360,
-					Count = 3,
+					Count = 2,
 					Distance = 50,
 					RequireFirstHit = false,
 				},
