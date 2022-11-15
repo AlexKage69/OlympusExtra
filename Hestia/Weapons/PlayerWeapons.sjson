@@ -132,5 +132,19 @@
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
     }
+    {
+      Name = "FoesNumberDamageBuff"
+      InheritFrom = "MagicShield"
+      Projectile = "FoesNumberDamageBuff"
+      Effect = 
+      {
+        Name = "FoesNumberDamageBuff"
+        Duration = 100
+        Modifier = 0
+        Active = true
+        FrontFx = "PoseidonEncounterStartBuff"
+        BackFx = "null"
+      }
+    }
   ]
 }

@@ -438,6 +438,20 @@
       StartFrame = 1
     }     
     {
+      Name = "Hestia_Apollo_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Apollo_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }   
+    {
       Name = "Keepsake_Hestia_Max"
       InheritFrom = "KeepsakeMax_Corner"
       FilePath = "Hestia\HestiaBadge"

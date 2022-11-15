@@ -12,12 +12,44 @@ if ModUtil ~= nil then
     -- Apollo Hestia Duo   
         local OlympusLootData = ModUtil.Entangled.ModData(LootData)   
         local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
-    if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil  then     
-        OlympusTraitData.BlindExtraHealTrait = {
+    if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil then     
+        OlympusTraitData.ShoutMoreHealTrait = 
+        {
             InheritFrom = { "SynergyTrait" },
             Icon = "Hestia_Apollo_01",
-            RequiredFalseTrait = "BlindExtraHealTrait",	
+            RequiredFalseTrait = "ShoutMoreHealTrait",	
+            AddOutgoingLifestealModifiers =
+            {
+                Unique = true,
+                ValidWeapons = {"HestiaMaxSuper", "HestiaSuper" },
+                ValidMultiplier = 0.00,
+                MaxLifesteal = 4,
+                MinLifesteal = 4,
+                ExtractValues =
+                {
+                    {
+                        Key = "MinLifesteal",
+                        ExtractAs = "TooltipLifesteal",
+                    },
+                }
+            },
         }
+        OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait = 
+            {
+                OneFromEachSet =
+                {
+                    { "HestiaShoutTrait"},
+                    { "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait"}
+                }
+            }
+        OlympusLootData.ApolloUpgrade.LinkedUpgrades.ShoutMoreHealTrait = 
+            {
+                OneFromEachSet =
+                {
+                    { "HestiaShoutTrait"},
+                    { "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait"}
+                }
+            }
         OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HestiaWithApollo01 = {
             Name = "HestiaWithApollo01",
             PlayOnce = true,
@@ -123,16 +155,18 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "FreeHealthTrait")
             table.insert(OlympusCodexMenuData.Duos, "MoreTrapDamageTrait")
             table.insert(OlympusCodexMenuData.Duos, "ExplosionTrait")             
-            --table.insert(OlympusCodexMenuData.Duos, "LavaCrystalTrait")        
-            --table.insert(OlympusCodexMenuData.Duos, "FullHealBossTrait")        
-            --table.insert(OlympusCodexMenuData.Duos, "CloseDamageBuffTrait")        
-            --table.insert(OlympusCodexMenuData.Duos, "ShoutMaxIncreaseTrait")    
-            --table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait") 0        
-            
+            table.insert(OlympusCodexMenuData.Duos, "ChillFireTrait")        
+            table.insert(OlympusCodexMenuData.Duos, "FullHealBossTrait")        
+            table.insert(OlympusCodexMenuData.Duos, "FoesNumberDamageTrait")        
+            table.insert(OlympusCodexMenuData.Duos, "PullZeusCastTrait")    
+            table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait")        
+            if ModUtil.Mods.Data["ApolloExtra"] ~= nil then 
+                table.insert(OlympusCodexMenuData.Duos, "ShoutMoreHealTrait")                  
+            end
             -- CentaurSoul-CodexMenu
             table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")
         end
-        -- Hestia 
+        
         --[[if ModUtil.Mods.Data["CerberusAssist"] ~= nil then
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")            
         end]]

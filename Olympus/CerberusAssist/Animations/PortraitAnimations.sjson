@@ -4,14 +4,14 @@
      {
       Name = "Codex_Portrait_GoodBoyAssistTrait"
       InheritFrom = "Codex_Portrait_Base_01"
-      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
+      FilePath = "Macaria\CodexPortrait_Macaria"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Cerberus_Plush_Menu"
       InheritFrom = "LegendaryKeepsakeMenuIcon"
-      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
+      FilePath = "GUI\Screens\AwardMenu\Legendary\Achilles_01"
     }
     {
       Name = "Keepsake_Cerberus_Plush_Small"
@@ -21,12 +21,12 @@
     {
       Name = "Keepsake_Cerberus_Plush_Child"
       InheritFrom = "LegendaryKeepsakeTrayIcon"
-      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
+      FilePath = "Minor\Cererus_Companion_01"
     }    
     {
       Name = "Keepsake_Cerberus_Plush"
       InheritFrom = "LegendaryKeepsakeIcon"
-      FilePath = "GUI\Screens\AwardMenu\old_spiked_collar_06"
+      FilePath = "Minor\Cererus_Companion_01"
     }
   ]
 }

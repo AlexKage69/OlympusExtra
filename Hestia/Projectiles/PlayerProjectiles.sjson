@@ -144,7 +144,7 @@
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
-      ImmunityDuration = 0.75
+      ImmunityDuration = 0.2
       SilentImpactOnInvulnerable = true
       GroupName = "FX_Terrain"
       VacuumStrength = 0
@@ -331,7 +331,7 @@
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
-      ImmunityDuration = 0.75
+      ImmunityDuration = 0.2
       SilentImpactOnInvulnerable = true
       GroupName = "FX_Terrain"
       VacuumStrength = 0
@@ -447,7 +447,7 @@
       Fuse = 0.1
       Range = 0
       UseVulnerability = false
-      ImmunityDuration = 0.6
+      ImmunityDuration = 0.2
       SilentImpactOnInvulnerable = true
       GroupName = "FX_Terrain_Top"
       IgnoreCoverageAngles = true
@@ -475,6 +475,28 @@
             Y = 45
           }]
       }
+      Effects = [
+          {
+            Name = "DemeterSlow"
+            IgnoreName = "_PlayerUnit"
+            Duration = 8.0
+            Stacks = true
+            ExtendDurationOnReapply = true
+            IsVulnerabilityEffect = true
+            MaxStacks = 10
+            Active = false
+            StartFx = "DemeterSlowImpact"
+            ReapplyFx = "DemeterSlowImpactReapply"
+            Sound = "/SFX/Player Sounds/DemeterFrozenDebuffSFX"
+            StopSoundOnFinishFade = 0.5
+            FrontFx = "DemeterSlowFront"
+            BackFx = "DemeterSlowBack"
+            FlashFrontFxWhenExpiring = true
+            FlashBackFxWhenExpiring = true
+            TimeModifierFraction = 0
+            ExpiringRapidFlashThreshold = 0.3
+            ElapsedTimeMultiplier = 0.96
+          }]
     }
     {
       Name = "ArtemisHestiaExplosion"

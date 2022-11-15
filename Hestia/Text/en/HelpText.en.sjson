@@ -242,22 +242,22 @@
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		} 
 		{
 			Id = "HealthDamageTrait_Tray"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total {$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} Bonus Damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
 		}
 		{
 			Id = "HealthDamageTrait_Initial"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}		
 		{
 			Id = "HealthDamageSoulDrop"
 			InheritFrom = "HealthDamageTrait_Initial"
-			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "Gain bonus damage with Attack, Special, and Cast when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}
 		{
 			Id = "CentaurHeartBoostedText"
@@ -280,17 +280,17 @@
 		{
 			Id = "LavaLongerTrait",
 			DisplayName = "Eternal Flame"
-			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}s {#PreviousFormat} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} {#PreviousFormat} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaLongerTrait_Initial",
 			InheritFrom = "LavaLongerTrait"
-			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}s {#PreviousFormat} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} {#PreviousFormat} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
     	}
 		{
 			Id = "LavaAutoTrait"
 			DisplayName = "Royal Hearth"
-			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}s {#PreviousFormat} attract foes."
+			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} {#PreviousFormat} attract foes."
 		}
 		{
 			Id = "ForceHestiaBoonTrait"
@@ -310,7 +310,7 @@
 		{
 			Id = "MoreTrapDamageTrait"
 			DisplayName = "Danger Zone"
-			Description = "{$Keywords.Traps} deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat} damage to foes." 
+			Description = "{$Keywords.Traps} and {$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Traps} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "FreeHealthTrait"
@@ -332,28 +332,37 @@
     	}
 		{
 			Id = "ChillFireTrait"
-			DisplayName = "ChillFireTrait"
-			Description = "Your {$Keywords.Dash} inflicts countinous {$Keywords.Chill}."
+			DisplayName = "Icy Scorches"
+			Description = "Your {$Keywords.Dash} inflicts continous {$Keywords.Chill} and creates {#BoldFormat}2 {#PreviousFormat} additionnal trail of fire."
 		}	
 		{
-			Id = "FestiveFogHealTrait"
-			DisplayName = "FestiveFogHealTrait"
-			Description = "While standing in {$Keywords.Cloud}, your damage heals you. Also, using {$Keywords.Cast} deal damage to yourself."
+			Id = "FullHealBossTrait"
+			DisplayName = "Quick Drink"
+			Description = "Encounters with {$Keywords.BossPlural} and {$Keywords.MiniBoss} restores {#ItalicFormat}all {#PreviousFormat}{!Icons.Health_Small} upon entering."
 		}
 		{
-			Id = "LavaDoomTrait"
-			DisplayName = "LavaDoomTrait"
-			Description = "After your {$Keywords.Curse} effects activate, they leave a small {$Keywords.LavaSplash}."
+			Id = "FullHealBossText",
+			DisplayName = "{#CombatTextHighlightFormat}Quick Drink!{#PreviousFormat}!"
+    	}
+		{
+			Id = "FoesNumberDamageTrait"
+			DisplayName = "Raging Flames"
+			Description = "When there's at least {#BoldFormat}6 {#PreviousFormat} foes, your {$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}	
 		{
-			Id = "MoreHellringTrait"
-			DisplayName = "MoreHellringTrait" 
-			Description = "Your {$Keywords.Shout} summons {#BoldFormat}3{#PreviousFormat} rings of fire."
+			Id = "PullZeusCastTrait"
+			DisplayName = "Magnetic Force"
+			Description = "Your {$Keywords.Cast} bounces {#BoldFormat}3 {#PreviousFormat} additionnal times and pulls foes on hit."
 		}
 		{
-			Id = "FishingHealTrait"
-			DisplayName = "FishingHealTrait" 
-			Description = "{$Keywords.FishingPoint}s are more likely to spawn. Their rewards are doubled and they fully heal you."
+			Id = "FishingRewardExtraTrait"
+			DisplayName = "Fish Stew" 
+			Description = "{$Keywords.FishingPoint}{#BoldFormat}s {#PreviousFormat} gives more rewards and {#AltUpgradeFormat}+1 Lv.{!Icons.RandomPomSmall} {#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Fish caught: \Column 380 {#UpgradeFormat}x2"
+		}
+		{
+			Id = "ShoutMoreHealTrait"
+			DisplayName = "Summertime" 
+			Description = "Your {$Keywords.WrathDerivedStocks} restores {#BoldFormat}5{#PreviousFormat} {!Icons.Health_Small} per foe hit."
 		}
 		{
 			Id = "LtUpgrade_Hestia"
