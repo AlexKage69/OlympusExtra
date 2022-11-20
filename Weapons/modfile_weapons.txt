@@ -1,0 +1,10 @@
+-: Mod Name: Goddess Codex
+    Author - AlexKage
+    Author - Phypoh
+:-
+
+Include "Movies/modfile_movies.txt"
+
+Import "HammerWeapon.lua"
+Import "StaffWeapon.lua"
+Import "AllWeapons.lua"

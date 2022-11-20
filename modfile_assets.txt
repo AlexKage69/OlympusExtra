@@ -31,6 +31,9 @@ Replace "Packages/OEMinor.pkg_manifest"
 To "Win/Packages/720p/OEMinor.pkg_manifest"
 Replace "Packages/OEMinor.pkg_manifest"
 
+To "Win/Maps/RoomPreRun.thing_bin"
+Replace "Packages/Maps/RoomPreRun.thing_bin"
+
 :: Audio
 
 :: Subtitles

@@ -147,7 +147,7 @@ OlympusTraitData.GoodBoyAssistTrait =
     local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)    
     OlympusGiftData.NPC_Cerberus_01[7] = { Gift = "GoodBoyAssistTrait", RequiredResource = "SuperGiftPoints" }
     local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)    
-	table.insert(OlympusGiftOrdering, "GoodBoyAssistTrait")
+	table.insert(OlympusGiftOrdering, 34,"GoodBoyAssistTrait")
 
     local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)

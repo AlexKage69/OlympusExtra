@@ -68,6 +68,7 @@
       AffectsEnemies = true
       AffectsFriends = true
       ImpactFx = "EnemyProjectileImpact"
+      //StartFx = "Cerberus_HadesAssistJump_ToRun"
       ImpactSound = "null"
       CheckUnitImpact = true
       CheckObstacleImpact = true
@@ -84,7 +85,7 @@
       ImpactVelocity = 2000
       Thing = 
       {
-        Graphic = "Cerberus_HadesAssistJump_ToRun"
+        Graphic = "null"
         OffsetZ = 70
         AttachedAnim = "SlingShotShadow"
         Grip = 999999
