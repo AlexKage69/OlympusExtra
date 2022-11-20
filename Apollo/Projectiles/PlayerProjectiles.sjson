@@ -219,8 +219,8 @@
       AffectsEnemies = true
       AffectsFriends = false
       AffectsSelf = false
-      DamageLow = 5
-      DamageHigh = 5
+      DamageLow = 0
+      DamageHigh = 0
       IgnoreCoverageAngles = true
       UseVulnerability = false
       CanCrit = false
@@ -236,7 +236,7 @@
             Amount = 40.0
             Cooldown = 1
             Duration = 5
-            ExtendDurationOnReapply = true
+            ExtendDurationOnReapply = false
             FrontFx = "BlindStaticArcEmitter"
             Active = true
             TimeModifierFraction = 0
