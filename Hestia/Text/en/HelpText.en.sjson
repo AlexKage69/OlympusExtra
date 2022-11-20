@@ -27,27 +27,27 @@
 		}
 		{
 			Id = "HestiaHomeWarmthQuest01"
-			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission some candles from the House Contractor to make his father more at home."
+			DisplayName = "Commission some candles from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest02"
-			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission some fiery items from the House Contractor to make his father more at home."
+			DisplayName = "Commission some fiery items from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest03"
-			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission a fireplace from the House Contractor to make his father more at home."
+			DisplayName = "Commission a fireplace from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest04"
-			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday play a fiery song from the Court Musician to make his father more at home."
+			DisplayName = "Play a fiery song from the Court Musician to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest05"
-			DisplayName = "At the behest of the goddess of the hearth, the son of the god of the dead shall someday commission some deathlike flames from the House Contractor to make his father more at home."
+			DisplayName = "Commission some deathlike flames from the House Contractor to make his father more at home."
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest06"
-			DisplayName = "The goddess of the hearth shall someday be fully satisfied with the son of the god of the dead's efforts to make his father feel more at home."
+			DisplayName = "Report back to the goddess of the hearth the son of the god of the dead's efforts to make his father feel more at home."
 		}		
 		{
 			Id = "CentaurHeart"
@@ -367,7 +367,11 @@
 		{
 			Id = "LtUpgrade_Hestia"
 			DisplayName = "Blessed foes now attract you."
-		}	
+		}				
+		{
+			Id = "ClearRequiredTraitsHestia"
+			DisplayName = "{!Icons.RunClearStar}Disciple of Hestia{!Icons.RunClearStar}"
+		}
 		// Fish Doubled
 		{
 		Id = "Fish_Tartarus_Common_01_Doubled"

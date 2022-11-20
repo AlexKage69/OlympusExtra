@@ -54,8 +54,8 @@ if ModUtil ~= nil then
 				"FountainCoinTrait",			
 				"ApolloHealTrait",
 	
-				"RerollBoonTrait",
-				"RerollObolTrait",
+				--"RerollBoonTrait",
+				--"RerollObolTrait",
 				"MissChanceTrait",
 			},
 		},
@@ -80,6 +80,7 @@ if ModUtil ~= nil then
 	local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
 	OlympusEnemyData.ApolloUpgradeRoomWeapon = {
 		InheritFrom = { "PassiveRoomWeapon" },
+		AdditionalEnemySetupFunctionName = "ApolloSetupLastKill",
 	
 		DefaultAIData =
 		{
@@ -445,6 +446,32 @@ if ModUtil ~= nil then
 		"ApolloMiscPickup17",
 		-- "ApolloMiscPickup18",
 		-- "ApolloMiscPickup19",
+	}
+	
+	GameData.RunClearMessageData.ClearRequiredTraitsApollo =
+	{
+		InheritFrom = { "DefaultMessage" },
+		GameStateRequirements =
+		{
+			RequiredCountOfTraitsCount = 6,
+			RequiredCountOfTraits =
+			{
+				"ApolloWeaponTrait",
+				"ApolloDashTrait",
+				"ApolloRangedTrait",
+				"ApolloSecondaryTrait",
+				"ApolloShoutTrait",				
+				"FountainDefenseTrait",
+				"ApolloBlindedTrait",
+				"ApolloRetaliateTrait",
+				"FountainCoinTrait",			
+				"ApolloHealTrait",	
+				"RerollBoonTrait",
+				"RerollObolTrait",
+				"MissChanceTrait",
+			},
+			RequiredOneOfTraits = { "MissChanceTrait" },
+		},
 	}
 	table.insert(OlympusGameData.ConversationOrder, "ApolloUpgrade")
 	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun.Names, "ApolloBeamWeapon")
@@ -5203,7 +5230,26 @@ OlympusTraitData.MasterLobDionysusTrait =
 			RemoveIncomingDamageModifier( unit, "DamageReduceDistance" )
 		end
 	end
+	-- Apollo Devotion 
+	function ApolloSetupLastKill(enemy, currentRun)
+		thread(CheckLastKill, {Enemy = enemy, CurrentRun = currentRun})
+	end
 
+	function CheckLastKill(args)
+		while args.CurrentRun and args.CurrentRun.Hero and not args.CurrentRun.Hero.IsDead do
+			wait(0.7, "RoomThread")
+			if args.CurrentRun and args.CurrentRun.Hero and not args.CurrentRun.Hero.IsDead
+				and IsCombatEncounterActive(args.CurrentRun) and not IsEmpty(RequiredKillEnemies) then				
+				if TableLength( RequiredKillEnemies ) <= 1 then
+					args.Enemy.DefaultAIData.PostAttackCooldownMin = 5.0
+					args.Enemy.DefaultAIData.PostAttackCooldownMax = 5.5
+				else					
+					args.Enemy.DefaultAIData.PostAttackCooldownMin = 2.0
+					args.Enemy.DefaultAIData.PostAttackCooldownMax = 2.5
+				end
+			end
+		end
+	end
 	--[[function BossHyacinthKillPresentation(unit)
 		AddSimSpeedChange( "HyacinthKill", { Fraction = 0.005, LerpTime = 0 } )
 		local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = unit.ObjectId })

@@ -49,8 +49,9 @@ if ModUtil ~= nil then
 				"HestiaShoutTrait",
 				"StrongAttractionTrait",
 				"HestiaRevengeTrait",
-				"HealthDefianceTrait",
-				"HealthDamageTrait",
+				--"HealthDefianceTrait",
+				--"LastStandDamageReduceTrait",
+				--"HealthDamageTrait",
 				"LavaDeathTrait",
 				"LavaResistTrait",
 				"LavaLongerTrait",
@@ -74,6 +75,7 @@ if ModUtil ~= nil then
 	OlympusQuestData.HomeWarmthQuest = {
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "SuperGems",
+		Spacing = 60,
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements =
 		{
@@ -389,6 +391,32 @@ if ModUtil ~= nil then
 		"HestiaMiscPickup15",
 		"HestiaMiscPickup16",
 		"HestiaMiscPickup17"
+	}
+	GameData.RunClearMessageData.ClearRequiredTraitsHestia =
+	{
+		InheritFrom = { "DefaultMessage" },
+		GameStateRequirements =
+		{
+			RequiredCountOfTraitsCount = 6,
+			RequiredCountOfTraits =
+			{
+				"HestiaWeaponTrait",
+				"HestiaDashTrait",
+				"HestiaRangedTrait",
+				"HestiaSecondaryTrait",
+				"HestiaShoutTrait",
+				"StrongAttractionTrait",
+				"HestiaRevengeTrait",
+				"HealthDefianceTrait",
+				"LastStandDamageReduceTrait",
+				"HealthDamageTrait",
+				"LavaDeathTrait",
+				"LavaResistTrait",
+				"LavaLongerTrait",
+				"LavaAutoTrait",
+			},
+			RequiredOneOfTraits = { "LavaAutoTrait" },
+		},
 	}
 	table.insert(OlympusGameData.ConversationOrder, "HestiaUpgrade")
 	table.insert(OlympusGameData.RunClearMessageData.ClearWeaponsFiredWrath.GameStateRequirements.RequiredWeaponsFiredThisRun
@@ -2194,6 +2222,16 @@ if ModUtil ~= nil then
 				}]]
 
 			},
+			{
+				TraitName = "RegeneratingCappedSuperTrait",
+				LuaProperty = "SuperMeterCap",
+				BaseValue = 33.34,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCap",
+				}
+			},
 		},
 		AddOutgoingLifestealModifiers =
 		{
@@ -2210,11 +2248,11 @@ if ModUtil ~= nil then
 				},
 			}
 		},
-		ExtractValues =
-		{
-
-		}
 	}
+	
+	table.insert(OlympusTraitData.RegeneratingCappedSuperTrait.RequiredFalseTraits,
+		"HestiaShoutTrait")
+	
 	OlympusTraitData.StrongAttractionTrait =
 	{
 		Icon = "Boon_Hestia_07",
@@ -3280,12 +3318,12 @@ if ModUtil ~= nil then
 
 		DuoPickupTextLineSets =
 		{
-			--[[HestiaWithZeus01 =
+			HestiaWithZeus01 =
 				{
 					Name = "HestiaWithZeus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "MasterBoltTrait",
+					HasTraitNameInRoom = "PullZeusCastTrait",
 					{ Cue = "/VO/Hestia_0041",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Foster-Brother. How's ruling over all your relatives making you feel? A word of advice from your big sister: treat others as you treat yourself, because they might just do the same." },
@@ -3296,13 +3334,13 @@ if ModUtil ~= nil then
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
 						Text = "I know how to rule my realm, Foster-Sister. Something you don't have to do anymore. I even have extra time to help our young Zagreus here!" },
-				},]]
-			--[[HestiaWithPoseidon01 =
+				},
+			HestiaWithPoseidon01 =
 				{
 					Name = "HestiaWithPoseidon01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "SeaChanteyTrait",
+					HasTraitNameInRoom = "FishingRewardExtraTrait",
 					{ Cue = "/VO/Hestia_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Ah. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
@@ -3314,13 +3352,13 @@ if ModUtil ~= nil then
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
 						Text = "Now hold on there, Hestia! I always do my best. And how can I be reponsible for something I didn't do? I always take action. Like I'm doing right this moment, with Zagreus." },
-				},]]
+				},
 			HestiaWithAthena01 =
 			{
 				Name = "HestiaWithAthena01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "DamageReduceDistanceTrait",
+				HasTraitNameInRoom = "MoreTrapDamageTrait",
 				{ Cue = "/VO/Hestia_0043",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Text = "I wanted to thank you, young Athena. You were the first to help out our beloved Zagreus on his quest of freedom. It is you who started all this." },
@@ -3332,12 +3370,12 @@ if ModUtil ~= nil then
 					Speaker = "NPC_Athena_01", Portrait = "Portrait_Athena_Default_01",
 					Text = "I only did what I believed should be done. I gave Zagreus the opportunity to escape. The rest is up to him now. We should continue to help in any way we can." },
 			},
-			--[[HestiaWithAres01 =
+			HestiaWithAres01 =
 				{
 					Name = "HestiaWithAres01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "WarSongTrait",
+					HasTraitNameInRoom = "FoesNumberDamageTrait",
 					RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HestiaWithAres02" },
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -3355,8 +3393,9 @@ if ModUtil ~= nil then
 					Name = "HestiaWithAres02",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "WarSongTrait",
-					RequiredTextLines = { "OlympianReunionQuestComplete", "HestiaWithAres01" },
+					HasTraitNameInRoom = "FoesNumberDamageTrait",
+					RequiredTextLines = { "OlympianReunionQuestComplete" },
+					RequiredFalseTextLines = { "HestiaWithAres01" },
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
@@ -3367,13 +3406,13 @@ if ModUtil ~= nil then
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
 						Text = "I can only agree with you, Aunt Hestia. And even though my kin has brought peace to his realm, he must continue to fight so that he might maintain it." },
-				},]]
+				},
 			HestiaWithAphrodite01 =
 			{
 				Name = "HestiaWithAphrodite01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "HyacinthTrait",
+				HasTraitNameInRoom = "FreeHealthTrait",
 				RequiredTextLines = { "HestiaGift01", "AphroditeGift01" },
 				{ Cue = "/VO/Hestia_0045",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -3391,7 +3430,7 @@ if ModUtil ~= nil then
 				Name = "HestiaWithArtemis01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "FamedDuetTrait",
+				HasTraitNameInRoom = "ExplosionTrait",
 				RequiredTextLines = { "HestiaGift01", "ArtemisGift01" },
 				{ Cue = "/VO/Hestia_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -3405,12 +3444,12 @@ if ModUtil ~= nil then
 					Text = "I show plenty of affection, to those worthy of it. In fact, I'll prove it right now: Zagreus, this is for you, from us, to show that we {#DialogueItalicFormat}care{#PreviousFormat}."
 				},
 			},
-			--[[HestiaWithDionysus01 =
+			HestiaWithDionysus01 =
 				{
 					Name = "HestiaWithDionysus01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "DazzledTrait",
+					HasTraitNameInRoom = "FullHealBossTrait",
 					{ Cue = "/VO/Hestia_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Taking my place as an Olympian isn't too hard, my child? I remember when I was there—I argued with Zeus all the time. I hope you are not as headstrong as I was." },
@@ -3421,13 +3460,13 @@ if ModUtil ~= nil then
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
 						Text = "{#DialogueItalicFormat}Oh{#PreviousFormat} don't you worry, Lady Hestia, I'm trying a more chill approach. I still care and act, but just when it's necessary, yeah? Like right now, with Zag." },
-				},]]
-			--[[HestiaWithDemeter01 =
+				},
+			HestiaWithDemeter01 =
 				{
 					Name = "HestiaWithDemeter01",
 					PlayOnce = true,
 					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "BlindDurationTrait",
+					HasTraitNameInRoom = "ChillFireTrait",
 					{ Cue = "/VO/Hestia_0048",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your love, for once? If not for me, do it for Zagreus." },
@@ -3437,7 +3476,7 @@ if ModUtil ~= nil then
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
 						Text = "You know very well why. And I don't have to justify anything to you. But I will not drag Zagreus into our affairs. Take it, Zagreus. And go." },
-				},]]
+				},
 		},
 
 		SuperPriorityPickupTextLineSets =
@@ -3447,6 +3486,7 @@ if ModUtil ~= nil then
 				Name = "HestiaAboutOlympianReunionQuest01",
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
+				RequiredFalseTextLines = { "HestiaAboutOlympianReunionQuest01b" },
 				{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero",
@@ -3464,6 +3504,7 @@ if ModUtil ~= nil then
 				Name = "HestiaAboutOlympianReunionQuest01",
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
+				RequiredFalseTextLines = { "HestiaAboutOlympianReunionQuest01" },
 				{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero",
@@ -3481,10 +3522,78 @@ if ModUtil ~= nil then
 				Name = "HestiaPostEpilogue01",
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "OlympianReunionQuestComplete" },
+				RequiredAnyTextLines = { "HestiaAboutOlympianReunionQuest01", "HestiaAboutOlympianReunionQuest01b" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Hestia_0057",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Everyone told me that your little gathering went well. I am glad Hades can finally understand the meaning of family. You are never truly home without one." },
+			},
+			HestiaHomeWarmthQuest01 =
+			{
+				Name = "HestiaHomeWarmthQuest01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaGift01", "HestiaAboutHades02" },
+				RequiredCosmetics = { "PostBossGiftRack", "QuestLog", "ChallengeSwitches1", "BreakableValue1", "OrpheusUnlockItem" },
+				{ Cue = "/VO/Hestia_0068",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Young one, I have a favor to ask. I know how Hades is. He doesn't open up easily to others. Could you please add some lights to his domain? Show him what's in front of him." },
+			},
+			HestiaHomeWarmthQuest02 =
+			{
+				Name = "HestiaHomeWarmthQuest02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaHomeWarmthQuest01" },
+				RequiredCosmetics = { "Cosmetic_HouseCandles02" },
+				{ Cue = "/VO/Hestia_0069",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Thank you, young one. Those candles should give Hades something to look at. But perhaps more fire could bring some warmth to his life. Try adding some." },
+			},
+			HestiaHomeWarmthQuest03 =
+			{
+				Name = "HestiaHomeWarmthQuest03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaHomeWarmthQuest02" },
+				RequiredCosmetics = { "Cosmetic_MainHallTikiTorches", "Cosmetic_KitchenStoveFlame" },
+				{ Cue = "/VO/Hestia_0070",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I am sure it's nice and warm now, but perhaps it's not enough. Add a fireplace—this should be a place of reunion for the people of his domain. A place to commune." },
+			},
+			HestiaHomeWarmthQuest04 =
+			{
+				Name = "HestiaHomeWarmthQuest04",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaHomeWarmthQuest03" },
+				RequiredAnyCosmetics = { "Cosmetic_MainHallFireplace", "Cosmetic_MainHallFireplaceA" },
+				{ Cue = "/VO/Hestia_0071",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The fireplace is perfect, young one. Now, perhaps you should break the silence with some music. Ask Orpheus to play something for your father." },
+			},
+			HestiaHomeWarmthQuest05 =
+			{
+				Name = "HestiaHomeWarmthQuest05",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaHomeWarmthQuest04" },
+				RequiredCosmetics = { "Cosmetic_MusicPlayer" },
+				--RequiredMusicName = { "MusicMusicPlayerMusicAsphodel2MusicPlayer" },
+				{ Cue = "/VO/Hestia_0072",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "{#DialogueItalicFormat}Hmm{#PreviousFormat}. Some music will do. And Orpheus plays it so well. Everything is almost perfect. Ask Thanatos for the final touch, if I correctly recall Hades's taste in home decor." },
+			},
+			HestiaHomeWarmthQuest06 =
+			{
+				Name = "HestiaHomeWarmthQuest06",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaHomeWarmthQuest05" },
+				RequiredCosmetics = { "Cosmetic_ThanatosBrazier" },
+				{ Cue = "/VO/Hestia_0073",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You did it! Those flames are what was missing. Now I am sure Hades is in a good place. And in good hands. You are a good son, Zagreus. Don't let anybody make you think otherwise." },
 			},
 		},
 
@@ -3661,73 +3770,6 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hestia_0067",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I don't know what to think about this new generation. They are all so focused on their own goals and responsibilities that they forget the essentials: love and affection. At least they are aiding you on your quest, and I hope this can assist as well." },
-			},
-			HestiaHomeWarmthQuest01 =
-			{
-				Name = "HestiaHomeWarmthQuest01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaGift01" },
-				RequiredCosmetics = { "PostBossGiftRack", "QuestLog", "ChallengeSwitches1", "BreakableValue1", "OrpheusUnlockItem" },
-				{ Cue = "/VO/Hestia_0068",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Young one, I have a favor to ask. I know how Hades is. He doesn't open up easily to others. Could you please add some lights to his domain? Show him what's in front of him." },
-			},
-			HestiaHomeWarmthQuest02 =
-			{
-				Name = "HestiaHomeWarmthQuest02",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaHomeWarmthQuest01" },
-				RequiredCosmetics = { "Cosmetic_HouseCandles02" },
-				{ Cue = "/VO/Hestia_0069",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Thank you, young one. Those candles should give Hades something to look at. But perhaps more fire could bring some warmth to his life. Try adding some." },
-			},
-			HestiaHomeWarmthQuest03 =
-			{
-				Name = "HestiaHomeWarmthQuest03",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaHomeWarmthQuest02" },
-				RequiredCosmetics = { "Cosmetic_MainHallTikiTorches", "Cosmetic_KitchenStoveFlame" },
-				{ Cue = "/VO/Hestia_0070",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am sure it's nice and warm now, but perhaps it's not enough. Add a fireplace—this should be a place of reunion for the people of his domain. A place to commune." },
-			},
-			HestiaHomeWarmthQuest04 =
-			{
-				Name = "HestiaHomeWarmthQuest04",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaHomeWarmthQuest03" },
-				RequiredAnyCosmetics = { "Cosmetic_MainHallFireplace", "Cosmetic_MainHallFireplaceA" },
-				{ Cue = "/VO/Hestia_0071",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The fireplace is perfect, young one. Now, perhaps you should break the silence with some music. Ask Orpheus to play something appropriate for your father." },
-			},
-			HestiaHomeWarmthQuest05 =
-			{
-				Name = "HestiaHomeWarmthQuest05",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaHomeWarmthQuest04" },
-				RequiredCosmetics = { "Cosmetic_MusicPlayer" },
-				RequiredMusicName = { "MusicMusicPlayerMusicAsphodel2MusicPlayer" },
-				{ Cue = "/VO/Hestia_0072",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Hmm{#PreviousFormat}. River of Flame, that's my favorite. And Orpheus plays it so well. Everything is almost perfect. Ask Thanatos for the final touch, if I correctly recall Hades's taste in home decor." },
-			},
-			HestiaHomeWarmthQuest06 =
-			{
-				Name = "HestiaHomeWarmthQuest06",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaHomeWarmthQuest05" },
-				RequiredCosmetics = { "Cosmetic_ThanatosBrazier" },
-				{ Cue = "/VO/Hestia_0073",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You did it! Those flames are what was missing. Now I am sure Hades is in a good place. And in good hands. You are a good son, Zagreus. Don't let anybody make you think otherwise." },
 			},
 			HestiaPostGiftPickup01 =
 			{
@@ -4954,7 +4996,7 @@ if ModUtil ~= nil then
 		Name = "ZeusWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "MasterBoltTrait",
+		HasTraitNameInRoom = "PullZeusCastTrait",
 		{ Cue = "/VO/Zeus_0261",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "My Foster-Sister and I came to give you a few sparks. She thinks it's what's been missing in our relationship." },
@@ -4970,7 +5012,7 @@ if ModUtil ~= nil then
 		Name = "PoseidonWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "SeaChanteyTrait",
+		HasTraitNameInRoom = "FishingRewardExtraTrait",
 		{ Cue = "/VO/Poseidon_0261",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "You still seem to hold a grudge against me, dear Foster-Sister. You always were hard to read. I wonder what I did to upset you so?" },
@@ -4986,7 +5028,7 @@ if ModUtil ~= nil then
 		Name = "AthenaWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "MoreTrapDamageTrait",
 		{ Cue = "/VO/Athena_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Lady Hestia. Make sure the fire you give to Zagreus doesn't burn him. That would be very conterproductive to our cause. I can only shield him so much." },
@@ -5002,7 +5044,7 @@ if ModUtil ~= nil then
 		Name = "AresWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "FoesNumberDamageTrait",
 		{ Cue = "/VO/Ares_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Lady Hestia, are you going to let him fight with hugs and kisses? I think we can agree to give him something more." },
@@ -5018,7 +5060,7 @@ if ModUtil ~= nil then
 		Name = "AphroditeWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "FreeHealthTrait",
 		{ Cue = "/VO/Aphrodite_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Oh, Lady Hestia. You are positively smoking hot, as always. I can't believe you've never taken up with any suitors! You don't know what you are missing." },
@@ -5034,7 +5076,7 @@ if ModUtil ~= nil then
 		Name = "ArtemisWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "ExplosionTrait",
 		{ Cue = "/VO/Artemis_0261",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Lady Hestia, could you... give me the recipe once again for the smoky boar I made from the spoils of my hunt the other day? I'd like to hunt another, I think." },
@@ -5050,7 +5092,7 @@ if ModUtil ~= nil then
 		Name = "DionysusWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "FullHealBossTrait",
 		{ Cue = "/VO/Dionysus_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Oh hey, Hestia. I know I seem to party a lot, but I swear I am doing my part as an Olympian. You can ask the others." },
@@ -5066,7 +5108,7 @@ if ModUtil ~= nil then
 		Name = "DemeterWithHestia01",
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		HasTraitNameInRoom = "ChillFireTrait",
 		{ Cue = "/VO/Demeter_0381",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "I know we don't always agree on things, but I must say, being strong, independent goddesses makes us understand each other." },

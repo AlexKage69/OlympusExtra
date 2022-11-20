@@ -353,5 +353,9 @@
 			Id = "LtUpgrade_Apollo"
 			DisplayName = "Blessed foes now blind you."
 		}	
+		{
+			Id = "ClearRequiredTraitsApollo"
+			DisplayName = "{!Icons.RunClearStar}Disciple of Apollo{!Icons.RunClearStar}"
+		}
 	]
 }
