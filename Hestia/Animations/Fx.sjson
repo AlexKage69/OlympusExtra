@@ -3843,7 +3843,7 @@
           Name = "DisplaceShockwaveHemi"
         }
         {
-          Name = "ExplosionScorchDecal"
+          Name = "ExplosionScorchDecalFade"
         }]
     }
     {

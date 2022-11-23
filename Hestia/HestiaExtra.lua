@@ -3524,7 +3524,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HestiaFirstPickUp", "OlympianReunionQuestComplete" },
 				RequiredAnyTextLines = { "HestiaAboutOlympianReunionQuest01", "HestiaAboutOlympianReunionQuest01b" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hestia_0057",
+				{ Cue = "/VO/Hestia_0161",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Everyone told me that your little gathering went well. I am glad Hades can finally understand the meaning of family. You are never truly home without one." },
 			},

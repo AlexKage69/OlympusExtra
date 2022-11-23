@@ -266,7 +266,7 @@ function(baseFunc, id)
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.CurrentIndex)) 
 	baseFunc(id)
 end)]]
-ModUtil.Path.Wrap( "HandleUpgradeToggle", 
+--[[ModUtil.Path.Wrap( "HandleUpgradeToggle", 
 	function(baseFunc, screen, button, textOverride)	
         baseFunc(screen, button, textOverride)      
         local upgradeName = button.Data.Gift
@@ -276,7 +276,7 @@ ModUtil.Path.Wrap( "HandleUpgradeToggle",
             GameState.LastAwardTrait = upgradeName
         end
     end
-)
+)]]
 --[[ModUtil.Path.Wrap( "GetComponentByHotkey", 
 	function(baseFunc, components, hotkey)	
 		baseFunc(components,hotkey)
@@ -300,24 +300,19 @@ function HandleKeyboardManagerLoadPage(screen)
 
 end
 function HandleKeyboardManagerChangePage(screen, button)
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.CurrentIndex))
-	if ScreenAnchors.AwardMenuScreen.LastTableSelected == "Assist" and ScreenAnchors.AwardMenuScreen.CurrentIndex ~= nil and (ScreenAnchors.AwardMenuScreen.CurrentIndex % 6 == 0 or ScreenAnchors.AwardMenuScreen.CurrentIndex % 6 == 5) then
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.LastTableSelected))
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.AssistBoolean))
+	if ScreenAnchors.AwardMenuScreen.CurrentIndex ~= nil and (ScreenAnchors.AwardMenuScreen.CurrentIndex % 6 == 0 or ScreenAnchors.AwardMenuScreen.CurrentIndex % 6 == 5) then
 		if ScreenAnchors.AwardMenuScreen.AssistBoolean then
 			AssistChangePage(screen, button.Direction)
 		else
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("true"))
 			ScreenAnchors.AwardMenuScreen.AssistBoolean = true
 		end
 	else
 		ScreenAnchors.AwardMenuScreen.AssistBoolean = false
 	end	
-	if ScreenAnchors.AwardMenuScreen.LastTableSelected == "Keepsake" and ScreenAnchors.AwardMenuScreen.CurrentIndex ~= nil and (ScreenAnchors.AwardMenuScreen.CurrentIndex % 10 == 0 or ScreenAnchors.AwardMenuScreen.CurrentIndex % 10 == 9) then
+	if ScreenAnchors.AwardMenuScreen.CurrentIndex ~= nil and (ScreenAnchors.AwardMenuScreen.CurrentIndex % 10 == 0 or ScreenAnchors.AwardMenuScreen.CurrentIndex % 10 == 9) then
 		if ScreenAnchors.AwardMenuScreen.KeepsakeBoolean then
 			KeepsakeChangePage(screen, button.Direction)
 		else
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Keepsake true"))
 			ScreenAnchors.AwardMenuScreen.KeepsakeBoolean = true
 		end
 	else
@@ -340,9 +335,13 @@ function AssistManagerPageButtons(screen)
 	end
 end
 function AssistManagerChangePageClick(screen, button)
+	screen.LastTableSelected = "Assist"
 	AssistChangePage(screen, button.Direction)
 end
 function AssistChangePage(screen, direction)
+	if screen.LastTableSelected ~= "Assist" then
+		return
+	end	
 	if direction == "Left" and screen.AssistCurrentPage > screen.AssistFirstPage then
 		screen.AssistCurrentPage = screen.AssistCurrentPage - 1
 	elseif direction == "Right" and screen.AssistCurrentPage < screen.AssistLastPage  then
@@ -430,6 +429,7 @@ function KeepsakeManagerPageButtons(screen)
 	end
 end
 function KeepsakeManagerChangePageClick(screen, button)
+	screen.LastTableSelected = "Keepsake"
 	KeepsakeChangePage(screen, button.Direction)
 end
 function KeepsakeChangePage(screen, direction)

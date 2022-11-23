@@ -405,7 +405,7 @@ if ModUtil ~= nil then
 		NeverStore = true,
 	}
 	OlympusProjectileData.BlindLightningEffector = {
-		InheritFrom = { "ApolloColorProjectile" },
+		InheritFrom = { "ZeusColorProjectile" },
 	}
 	OlympusProjectileData.ApolloShoutWeapon = {
 		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile" },
@@ -2943,8 +2943,14 @@ OlympusTraitData.MasterLobDionysusTrait =
 			}
 		}
 	}
-	
-	
+	table.insert(OlympusTraitData.ZeusLightningDebuff.PropertyChanges,
+	{
+		TraitName = "MasterBoltTrait",
+		WeaponName = "BlindLightningEffector",
+		EffectName = "ZeusAttackPenalty",
+		EffectProperty = "Active",
+		ChangeValue = true,
+	})	
 	
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
@@ -4983,10 +4989,11 @@ OlympusTraitData.MasterLobDionysusTrait =
 				if not HeroHasTrait("BlindDurationTrait") then
 					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
 					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
+					if HeroHasTrait("MasterBoltTrait") then
+						ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
+					end
 				end
-				if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
-					ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
-				end
+				
 				args.DamageAmount = nil
 				args.AttackerWeaponData = nil		
 				args.IsInvulnerable = true	
@@ -5012,11 +5019,13 @@ OlympusTraitData.MasterLobDionysusTrait =
 			if HeroHasTrait("MasterBoltTrait") then
 				BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
 			end
+		else
+			if HeroHasTrait("MasterBoltTrait") then
+				ClearEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning" })
+				--BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
+			end
 		end
-		if not HeroHasTrait("BlindDurationTrait") and HeroHasTrait("MasterBoltTrait") then
-			ClearEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning" })
-			BlockEffect({ Id = triggerArgs.TriggeredByTable.ObjectId, Name = "BlindLightning", Duration = 4.0 })
-		end
+		
 	end
 	-- Prophecy and Sight	
 	function AddRerollObol()
@@ -5165,7 +5174,18 @@ OlympusTraitData.MasterLobDionysusTrait =
 			thread( Kill, victim, { ImpactAngle = 0, AttackerTable = CurrentRun.Hero, AttackerId = CurrentRun.Hero.ObjectId })
 		end
 	end
-	
+	--Zeus Duo extra function
+	ModUtil.Path.Wrap( "CheckOnDamagedPowers", 
+	function(baseFunc, victim, attacker, args)
+		baseFunc(victim, attacker, args)
+		local weaponName = args.SourceWeapon
+		if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and HeroHasTrait("ZeusChargedBoltTrait") and args.FirstInVolley then
+			if Contains({ "BlindLightningEffector" }, weaponName ) then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("FIre")) 
+				FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true })
+			end
+		end
+	end)
 	-- Dionysus Duo Lobs
 	local countToTwo = false;
 	function SpawnAdditionalLob( triggerArgs, traitDataArgs )

@@ -240,7 +240,15 @@
             FrontFx = "BlindStaticArcEmitter"
             Active = true
             TimeModifierFraction = 0
-          }
+          },
+        {
+          Name = "ZeusAttackPenalty"
+          FrontFx = "ZeusStaticArcEmitter"
+          BackFx = "null"
+          Duration = 10
+          Active = false
+          IsVulnerabilityEffect = true
+        }
       ]
     }
     {

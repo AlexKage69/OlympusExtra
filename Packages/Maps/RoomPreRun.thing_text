@@ -233,8 +233,8 @@
             "IgnoreGridManager": false,
             "Invert": false,
             "Location": {
-                "X": 5521.92041015625,
-                "Y": 4008.0234375
+                "X": 5412.87626953125,
+                "Y": 3971.534521484375
             },
             "Name": "WeaponKit01",
             "OffsetZ": 0.0,
@@ -283,8 +283,8 @@
             "IgnoreGridManager": false,
             "Invert": false,
             "Location": {
-                "X": 7332.681640625,
-                "Y": 4052.722412109375
+                "X": 7353.17919921875,
+                "Y": 3960.254638671875
             },
             "Name": "WeaponKit01",
             "OffsetZ": 0.0,
@@ -4882,6 +4882,106 @@
             "Location": {
                 "X": 7000.17236328125,
                 "Y": 3783.748779296875
+            },
+            "Name": "HouseTerrainInset01",
+            "OffsetZ": 0.0,
+            "ParallaxAmount": 1.0,
+            "Points": [],
+            "Saturation": 0.0,
+            "Scale": 0.2287680059671402,
+            "SkewAngle": 180.0,
+            "SkewScale": 1.0,
+            "SortIndex": 0,
+            "StopsLight": true,
+            "Tallness": 0.0,
+            "UseBoundsForSortArea": true,
+            "Value": 0.0
+        },
+        {
+            "ActivateAtRange": false,
+            "ActivationRange": 600.0,
+            "Active": true,
+            "AllowMovementReaction": false,
+            "Ambient": -1.0,
+            "Angle": 0.0,
+            "AttachToID": 0,
+            "AttachedIDs": [],
+            "CausesOcculsion": false,
+            "Clutter": false,
+            "Collision": true,
+            "Color": {
+                "A": 255,
+                "B": 255,
+                "G": 255,
+                "R": 255
+            },
+            "Comments": null,
+            "CreatesShadows": true,
+            "DataType": "Obstacle",
+            "DrawVfxOnTop": true,
+            "FlipHorizontal": true,
+            "FlipVertical": false,
+            "GroupNames": [
+                "Terrain_01_Decor01"
+            ],
+            "HelpTextID": null,
+            "Hue": 0.0,
+            "Id": 420643,
+            "IgnoreGridManager": false,
+            "Invert": false,
+            "Location": {
+                "X": 5412.87626953125,
+                "Y": 3971.534521484375
+            },
+            "Name": "HouseTerrainInset01",
+            "OffsetZ": 0.0,
+            "ParallaxAmount": 1.0,
+            "Points": [],
+            "Saturation": 0.0,
+            "Scale": 0.2287680059671402,
+            "SkewAngle": 180.0,
+            "SkewScale": 1.0,
+            "SortIndex": 0,
+            "StopsLight": true,
+            "Tallness": 0.0,
+            "UseBoundsForSortArea": true,
+            "Value": 0.0
+        },
+        {
+            "ActivateAtRange": false,
+            "ActivationRange": 600.0,
+            "Active": true,
+            "AllowMovementReaction": false,
+            "Ambient": -1.0,
+            "Angle": 0.0,
+            "AttachToID": 0,
+            "AttachedIDs": [],
+            "CausesOcculsion": false,
+            "Clutter": false,
+            "Collision": true,
+            "Color": {
+                "A": 255,
+                "B": 255,
+                "G": 255,
+                "R": 255
+            },
+            "Comments": null,
+            "CreatesShadows": true,
+            "DataType": "Obstacle",
+            "DrawVfxOnTop": true,
+            "FlipHorizontal": true,
+            "FlipVertical": false,
+            "GroupNames": [
+                "Terrain_01_Decor01"
+            ],
+            "HelpTextID": null,
+            "Hue": 0.0,
+            "Id": 420644,
+            "IgnoreGridManager": false,
+            "Invert": false,
+            "Location": {
+                "X": 7353.17919921875,
+                "Y": 3960.254638671875
             },
             "Name": "HouseTerrainInset01",
             "OffsetZ": 0.0,

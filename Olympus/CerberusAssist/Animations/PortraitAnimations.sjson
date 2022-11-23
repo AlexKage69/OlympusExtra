@@ -4,7 +4,7 @@
      {
       Name = "Codex_Portrait_GoodBoyAssistTrait"
       InheritFrom = "Codex_Portrait_Base_01"
-      FilePath = "Macaria\CodexPortrait_Macaria"
+      FilePath = "Portraits\Codex\CodexPortrait_AchillesPatroclusAssistTrait"
       EndFrame = 1
       StartFrame = 1
     }
@@ -21,12 +21,12 @@
     {
       Name = "Keepsake_Cerberus_Plush_Child"
       InheritFrom = "LegendaryKeepsakeTrayIcon"
-      FilePath = "Minor\Cererus_Companion_01"
+      FilePath = "GUI\Screens\AwardMenu\Legendary\Achilles_01"
     }    
     {
       Name = "Keepsake_Cerberus_Plush"
       InheritFrom = "LegendaryKeepsakeIcon"
-      FilePath = "Minor\Cererus_Companion_01"
+      FilePath = "GUI\Screens\AwardMenu\Legendary\Achilles_01"
     }
   ]
 }
