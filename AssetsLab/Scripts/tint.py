@@ -3,12 +3,14 @@ from PIL.ImageColor import getcolor, getrgb
 from PIL.ImageOps import grayscale
 import os
 
-color = '#cb5987' #'#d01480'
+color = '#a2b2fe' 
+#color = '#e7eefe'
 #directory = '../OGAssets/MineExplosion'
-directory = 'Aligned'
+directory = 'LavaFire'
 output_dir = 'Tinted'
 saturation_degree = 1 # 1
 contrast_degree = 3 # 5
+brighten_degree = 1.5
  
 # iterate over files in
 # that directory
@@ -33,6 +35,10 @@ def contrast(src, contrast=1):
     return enhancer.enhance(contrast)
 
 
+def brighten(src, brightness=1):
+    enhancer = ImageEnhance.Brightness(src)
+    return enhancer.enhance(brightness)
+
 def save_img(src, output_path):
     # src.show()
     src.save(output_path)
@@ -47,9 +53,10 @@ for filename in os.listdir(directory):
         img = image_tint(img, color)
         img =  saturate(img, saturation_degree)
         img = contrast(img, contrast_degree)
+        img = brighten(img, brighten_degree)
         # img =  saturate(img, saturation_degree)
         
-        filename = filename.replace("Mine", "Artemis")
+        filename = filename.replace("Fire", "FireDemeter")
         output_path = os.path.join(output_dir, filename)
         save_img(img, output_path)
         # img.show()

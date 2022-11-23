@@ -37,6 +37,16 @@ Replace GUI.pkg with any pkg you want to extract
 
 
 
+To extract all: 
+
+```
+for %v in (*.pkg) dp deppth ex %v -s
+```
+
+
+
+
+
 ## Asset Creation
 
 Shamelessly stolen from Hades source files. 
