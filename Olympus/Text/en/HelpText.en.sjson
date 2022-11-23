@@ -7,17 +7,17 @@
 		}			
 		{
 			Id = "GoodBoyAssistTrait_Rack"
-			DisplayName = "Companion Cerberus"
+			DisplayName = "Companion Solo"
 			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in an area near your closest foe, then continually down the line. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.TooltipKeepsakeUses}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "GoodBoyAssistTrait_Delta"
-			DisplayName = "Companion Cerberus"
+			DisplayName = "Companion Solo"
 			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in an area near your closest foe, then continually down the line. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "GoodBoyAssistTrait"
-			DisplayName = "Companion Cerberus"
+			DisplayName = "Companion Solo"
 			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in an area near your closest foe, then continually down the line."
 		}
 		{

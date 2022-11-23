@@ -6,6 +6,7 @@ if ModUtil ~= nil then
         DebugPrint({Text = "Trying to load package "..package..".pkg"})
         LoadPackages({Name = "OEHestia"})
         LoadPackages({Name = "OEApollo"})
+        LoadPackages({Name = "OEMinor"})
         return baseFunc()
     end)
     ModUtil.Mod.Register("OlympusExtra")

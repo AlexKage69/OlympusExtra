@@ -11,7 +11,8 @@
     {
       Name = "Keepsake_Cerberus_Plush_Menu"
       InheritFrom = "LegendaryKeepsakeMenuIcon"
-      FilePath = "GUI\Screens\AwardMenu\Legendary\Achilles_01"
+      Scale = 0.6
+      FilePath = "Minor\Cerberus_01"
     }
     {
       Name = "Keepsake_Cerberus_Plush_Small"
@@ -21,12 +22,14 @@
     {
       Name = "Keepsake_Cerberus_Plush_Child"
       InheritFrom = "LegendaryKeepsakeTrayIcon"
-      FilePath = "GUI\Screens\AwardMenu\Legendary\Achilles_01"
+      Scale = 0.6
+      FilePath = "Minor\Cerberus_01"
     }    
     {
       Name = "Keepsake_Cerberus_Plush"
       InheritFrom = "LegendaryKeepsakeIcon"
-      FilePath = "GUI\Screens\AwardMenu\Legendary\Achilles_01"
+      Scale = 0.6
+      FilePath = "Minor\Cerberus_01"
     }
   ]
 }
