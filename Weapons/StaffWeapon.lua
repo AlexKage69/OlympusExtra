@@ -208,3 +208,298 @@
 
 		Upgrades = { },
 	}
+
+	local OlympusWeaponUpgradeData = ModUtil.Entangled.ModData(WeaponUpgradeData)
+	OlympusWeaponUpgradeData.StaffWeapon = {
+		{
+			Costs = { 1, 1, 1, 1, 1, },
+			MaxUpgradeLevel = 5,
+			UpgradeUnequippedId = "StaffWeapon_Unequipped",
+			StartsUnlocked = false,
+			RequiredInvestmentTraitName = "StaffBaseUpgradeTrait",
+			Image = "Codex_Portrait_Sword"
+		},
+		{
+			Costs = { 1, 2, 3, 4, 5 },
+			MaxUpgradeLevel = 5,
+			TraitName = "SwordAmmoWaveTrait",
+			--TraitName = "SwordCriticalParryTrait",
+			EquippedKitAnimation = "WeaponStaffAlt01FloatingIdleOff",
+			UnequippedKitAnimation = "WeaponStaffAlt01FloatingIdle",
+			BonusUnequippedKitAnimation = "WeaponStaffAlt01FloatingIdleBonus",
+			BonusEquippedKitAnimation = "WeaponStaffAlt01FloatingIdleOffBonus",
+			Image = "Codex_Portrait_SwordAlt01"
+		},
+		{
+			Costs = { 2, 2, 3, 4, 5 },
+			MaxUpgradeLevel = 5,
+			TraitName = "StaffHealKillTrait",
+			EquippedKitAnimation = "WeaponStaffAlt02FloatingIdleOff",
+			UnequippedKitAnimation = "WeaponStaffAlt02FloatingIdle",
+			BonusUnequippedKitAnimation = "WeaponStaffAlt02FloatingIdleBonus",
+			BonusEquippedKitAnimation = "WeaponStaffAlt02FloatingIdleOffBonus",
+			Image = "Codex_Portrait_SwordAlt02"
+		},
+		{
+			Costs = { 3, 3, 3, 3, 3 },
+			MaxUpgradeLevel = 5,
+			GameStateRequirements =
+			{
+				RequiredTextLines = { "ApolloFirstPickUp" },
+			},
+			TraitName = "StaffLaserTrait",
+			EquippedKitAnimation = "WeaponStaffAlt03FloatingIdleOff",
+			UnequippedKitAnimation = "WeaponStaffAlt03FloatingIdle",
+			BonusUnequippedKitAnimation = "WeaponStaffAlt03FloatingIdleBonus",
+			BonusEquippedKitAnimation = "WeaponStaffAlt03FloatingIdleOffBonus",
+			Image = "Codex_Portrait_SwordAlt03"
+		},
+	}
+	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+	OlympusTraitData.StaffBaseUpgradeTrait =
+	{
+		Icon = "WeaponEnchantment_Staff01",
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		CustomTrayText = "StaffBaseUpgradeTrait_Tray",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1,
+				MaxMultiplier = 1,
+			},
+			Rare =
+			{
+				MinMultiplier = 2,
+				MaxMultiplier = 2,
+			},
+			Epic =
+			{
+				MinMultiplier = 3,
+				MaxMultiplier = 3,
+			},
+			Heroic =
+			{
+				MinMultiplier = 4,
+				MaxMultiplier = 4,
+			},
+			Legendary =
+			{
+				MinMultiplier = 5.0,
+				MaxMultiplier = 5.0,
+			},
+		},
+		PropertyChanges =
+		{
+			
+		},
+		ExtractEntry =
+		{
+			BaseValue = 0.97,
+			SourceIsMultiplier = true,
+		},
+		ExtractValues =
+		{
+		}
+	}
+	OlympusTraitData.StaffExplodingBallTrait =
+	{
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		CustomTrayText = "StaffSweepBuffTrait_Tray",
+		Icon = "WeaponEnchantment_Staff03",
+		RequiredWeapon = "StaffWeapon",
+		PostWeaponUpgradeScreenAnimation = "ZagreusStaffAlt01Attack2_ReturnToIdle_Loop",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1.00,
+				MaxMultiplier = 1.00,
+			},
+			Rare =
+			{
+				MinMultiplier = 1.25,
+				MaxMultiplier = 1.25,
+			},
+			Epic =
+			{
+				MinMultiplier = 1.50,
+				MaxMultiplier = 1.50,
+			},
+			Heroic =
+			{
+				MinMultiplier = 1.75,
+				MaxMultiplier = 1.75,
+			},
+			Legendary =
+			{
+				MinMultiplier = 2.00,
+				MaxMultiplier = 2.00,
+			},
+		},
+		PropertyChanges =
+		{
+			
+		},
+		WeaponBinks =
+		{
+			"ZagreusSword01_Bink",
+			"ZagreusSword01ReturnToIdle_Bink",
+			"ZagreusSword01DashAttack_Bink",
+			"ZagreusSword01Run_Bink",
+			"ZagreusSword01RunStop_Bink",
+			"ZagreusSword01Parry_Bink"
+		},
+		WeaponDataOverride =
+		{
+			HammerWeapon =
+			{
+				WeaponBinks =
+				{
+					"ZagreusSword01_Bink",
+					"ZagreusSword01ReturnToIdle_Bink",
+					"ZagreusSword01DashAttack_Bink",
+					"ZagreusSword01Run_Bink",
+					"ZagreusSword01RunStop_Bink",
+					"ZagreusSword01Parry_Bink"
+				},
+			}
+		},
+		ExtractValues =
+		{
+		}
+	}
+	OlympusTraitData.StaffHealKillTrait =
+	{
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		CustomTrayText = "StaffSweepBuffTrait_Tray",
+		Icon = "WeaponEnchantment_Staff03",
+		RequiredWeapon = "StaffWeapon",
+		PostWeaponUpgradeScreenAnimation = "ZagreusStaffAlt01Attack2_ReturnToIdle_Loop",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1.00,
+				MaxMultiplier = 1.00,
+			},
+			Rare =
+			{
+				MinMultiplier = 1.25,
+				MaxMultiplier = 1.25,
+			},
+			Epic =
+			{
+				MinMultiplier = 1.50,
+				MaxMultiplier = 1.50,
+			},
+			Heroic =
+			{
+				MinMultiplier = 1.75,
+				MaxMultiplier = 1.75,
+			},
+			Legendary =
+			{
+				MinMultiplier = 2.00,
+				MaxMultiplier = 2.00,
+			},
+		},
+		PropertyChanges =
+		{
+			
+		},
+		WeaponBinks =
+		{
+			"ZagreusSword01_Bink",
+			"ZagreusSword01ReturnToIdle_Bink",
+			"ZagreusSword01DashAttack_Bink",
+			"ZagreusSword01Run_Bink",
+			"ZagreusSword01RunStop_Bink",
+			"ZagreusSword01Parry_Bink"
+		},
+		WeaponDataOverride =
+		{
+			HammerWeapon =
+			{
+				WeaponBinks =
+				{
+					"ZagreusSword01_Bink",
+					"ZagreusSword01ReturnToIdle_Bink",
+					"ZagreusSword01DashAttack_Bink",
+					"ZagreusSword01Run_Bink",
+					"ZagreusSword01RunStop_Bink",
+					"ZagreusSword01Parry_Bink"
+				},
+			}
+		},
+		ExtractValues =
+		{
+		}
+	}
+	OlympusTraitData.StaffLaserTrait =
+	{
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		CustomTrayText = "StaffSweepBuffTrait_Tray",
+		Icon = "WeaponEnchantment_Staff03",
+		RequiredWeapon = "StaffWeapon",
+		PostWeaponUpgradeScreenAnimation = "ZagreusStaffAlt01Attack2_ReturnToIdle_Loop",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1.00,
+				MaxMultiplier = 1.00,
+			},
+			Rare =
+			{
+				MinMultiplier = 1.25,
+				MaxMultiplier = 1.25,
+			},
+			Epic =
+			{
+				MinMultiplier = 1.50,
+				MaxMultiplier = 1.50,
+			},
+			Heroic =
+			{
+				MinMultiplier = 1.75,
+				MaxMultiplier = 1.75,
+			},
+			Legendary =
+			{
+				MinMultiplier = 2.00,
+				MaxMultiplier = 2.00,
+			},
+		},
+		PropertyChanges =
+		{
+			
+		},
+		WeaponBinks =
+		{
+			"ZagreusSword01_Bink",
+			"ZagreusSword01ReturnToIdle_Bink",
+			"ZagreusSword01DashAttack_Bink",
+			"ZagreusSword01Run_Bink",
+			"ZagreusSword01RunStop_Bink",
+			"ZagreusSword01Parry_Bink"
+		},
+		WeaponDataOverride =
+		{
+			StaffWeapon =
+			{
+				WeaponBinks =
+				{
+					"ZagreusSword01_Bink",
+					"ZagreusSword01ReturnToIdle_Bink",
+					"ZagreusSword01DashAttack_Bink",
+					"ZagreusSword01Run_Bink",
+					"ZagreusSword01RunStop_Bink",
+					"ZagreusSword01Parry_Bink"
+				},
+			}
+		},
+		ExtractValues =
+		{
+		}
+	}

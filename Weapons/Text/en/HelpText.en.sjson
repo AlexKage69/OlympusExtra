@@ -1,0 +1,135 @@
+{
+	Texts = [
+		"_append"		
+		{
+			Id = "HammerWeapon_Unequipped"
+			DisplayName = "Aspect of Zagreus"
+			Description = "The form in which the mighty hammer first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#OldFormat}+0% \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+		}
+		{
+			Id = "HammerBaseUpgradeTrait"
+			DisplayName = "Aspect of Zagreus"
+			Description = "The form in which the mighty hammer first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeed:P} \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+		}
+		{
+			Id = "HammerBaseUpgradeTrait_Delta"
+			InheritFrom = "HammerBaseUpgradeTrait"
+			Description = "The form in which the mighty hammer first revealed itself.\n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+		}
+		{
+			Id = "HammerBaseUpgradeTrait_Tray"
+			InheritFrom = "HammerBaseUpgradeTrait"
+			Description = "The form in which the mighty hammer first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeed:P}"
+		}
+		{
+			Id = "HammerSweepBuffTrait"
+			DisplayName = "Aspect of Heracles"
+			Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipPercentChance:P} \n\n {#ItalicFormatDark}One of Nyx's daughters once brandished the blade against the arrogant."
+		}
+		{
+			Id = "HammerSweepBuffTrait_Delta"
+			InheritFrom = "HammerSweepBuffTrait"
+			Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}One of Nyx's daughters once brandished the blade against the arrogant."
+		}
+		{
+			Id = "HammerSweepBuffTrait_Tray"
+			InheritFrom = "HammerSweepBuffTrait"
+			Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipPercentChance:P}"
+		}
+		{
+			Id = "HammerDefenseStandTrait"
+			DisplayName = "Aspect of Hephaestus"
+			Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamage:P} \n\n {#ItalicFormatDark}Even before he ruled the seas, the blade's first bearer liked making a splash."
+		}
+		{
+			Id = "HammerDefenseStandTrait_Delta"
+			InheritFrom = "HammerDefenseStandTrait"
+			Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}Even before he ruled the seas, the blade's first bearer liked making a splash."
+		}
+		{
+			Id = "HammerDefenseStandTrait_Tray"
+			InheritFrom = "HammerDefenseStandTrait"
+			Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		}
+		{
+			Id = "ThrowHammerTrait"
+			DisplayName = "Aspect of Thor"
+			Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamageReduction:P} \n\n {#ItalicFormatDark}Peace and destruction await a kingdom governed by the rule of might."
+		}
+		{
+			Id = "ThrowHammerTrait_Delta"
+			InheritFrom = "ThrowHammerTrait"
+			Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}Peace and destruction await a kingdom governed by the rule of might."
+		}
+		{
+			Id = "ThrowHammerTrait_Tray"
+			InheritFrom = "ThrowHammerTrait"
+			Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamageReduction:P}"
+		}
+		{
+			Id = "StaffWeapon_Unequipped"
+			DisplayName = "Aspect of Zagreus"
+			Description = "The form in which the staff of all knowledge first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#OldFormat}+0% \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+		}
+		{
+			Id = "StaffBaseUpgradeTrait"
+			DisplayName = "Aspect of Zagreus"
+			Description = "The form in which the staff of all knowledge first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeed:P} \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+		}
+		{
+			Id = "StaffBaseUpgradeTrait_Delta"
+			InheritFrom = "StaffBaseUpgradeTrait"
+			Description = "The form in which the staff of all knowledge first revealed itself.\n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+		}
+		{
+			Id = "StaffBaseUpgradeTrait_Tray"
+			InheritFrom = "StaffBaseUpgradeTrait"
+			Description = "The form in which the staff of all knowledge first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeed:P}"
+		}
+		{
+			Id = "StaffExplodingBallTrait"
+			DisplayName = "Aspect of Adonis"
+			Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipPercentChance:P} \n\n {#ItalicFormatDark}One of Nyx's daughters once brandished the blade against the arrogant."
+		}
+		{
+			Id = "StaffExplodingBallTrait_Delta"
+			InheritFrom = "StaffExplodingBallTrait"
+			Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}One of Nyx's daughters once brandished the blade against the arrogant."
+		}
+		{
+			Id = "StaffExplodingBallTrait_Tray"
+			InheritFrom = "StaffExplodingBallTrait"
+			Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipPercentChance:P}"
+		}
+		{
+			Id = "StaffHealKillTrait"
+			DisplayName = "Aspect of Hermes"
+			Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamage:P} \n\n {#ItalicFormatDark}Even before he ruled the seas, the blade's first bearer liked making a splash."
+		}
+		{
+			Id = "StaffHealKillTrait_Delta"
+			InheritFrom = "StaffHealKillTrait"
+			Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}Even before he ruled the seas, the blade's first bearer liked making a splash."
+		}
+		{
+			Id = "StaffHealKillTrait_Tray"
+			InheritFrom = "StaffHealKillTrait"
+			Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		}
+		{
+			Id = "StaffLaserTrait"
+			DisplayName = "Aspect of Ra"
+			Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamageReduction:P} \n\n {#ItalicFormatDark}Peace and destruction await a kingdom governed by the rule of might."
+		}
+		{
+			Id = "StaffLaserTrait_Delta"
+			InheritFrom = "StaffLaserTrait"
+			Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}Peace and destruction await a kingdom governed by the rule of might."
+		}
+		{
+			Id = "StaffLaserTrait_Tray"
+			InheritFrom = "StaffLaserTrait"
+			Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamageReduction:P}"
+		}
+    ]
+}

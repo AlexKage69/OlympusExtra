@@ -2,6 +2,8 @@
     Author - AlexKage
     Author - Phypoh
 :-
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/en/HelpText.en.sjson"
 
 Include "Movies/modfile_movies.txt"
 
