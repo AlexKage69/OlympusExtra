@@ -311,7 +311,7 @@ if ModUtil ~= nil then
 	})
 	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, {
 		-- Hestia!!
-		Cue = "/VO/ZagreusField_4951", RequiredTrait = "ApolloShoutTrait", RequiredFalseSpurnedGodName = "ApolloUpgrade"
+		Cue = "/VO/ZagreusField_4951", RequiredTrait = "HestiaShoutTrait", RequiredFalseSpurnedGodName = "HestiaUpgrade"
 	})
 	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
 		RandomRemaining = true,
@@ -319,8 +319,8 @@ if ModUtil ~= nil then
 		PreLineWait = 0.65,
 		SuccessiveChanceToPlayAll = 0.33,
 		RequiredFalseEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
-		RequiredSwappedGodLoot = "ZeusUpgrade",
-		CooldownName = "SaidZeusRecently",
+		RequiredSwappedGodLoot = "HestiaUpgrade",
+		CooldownName = "SaidHestiaRecently",
 		CooldownTime = 40,
 
 		-- I'm sure Lady Hestia won't mind.

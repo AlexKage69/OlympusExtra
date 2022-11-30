@@ -1,0 +1,464 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "NPC_Hera_01"
+			DisplayName = "Hera"
+			Description = "Queen of Olympus"
+		}		
+		{
+			Id = "HeraFirstPickUp"
+			DisplayName = "Met Hera"
+		}
+		{
+			Id = "HeraUpgrade"
+			DisplayName = "Hera"
+			Description = "Queen of Olympus"
+		}
+		{
+			Id = "HeraUpgrades"
+			DisplayName = "Queen of Olympus"
+			Description = "The son of the god of the dead shall someday earn various Boons of Hera."
+		}
+		{
+			Id = "HeraUpgrade_FlavorText01"
+			DisplayName = "loyalty is the greatest weapon your allies can get from you."
+		}
+		{
+			Id = "HeraUpgrade_FlavorText02"
+			DisplayName = "royalty is only a title when others gives it to you."
+		}
+		{
+			Id = "HeraUpgrade_FlavorText03"
+			DisplayName = "justice has many forms; judge, jury and executioner."
+		}	
+		{
+      		Id = "JealousyCurse"
+			DisplayName = "Jealousy"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., victim takes {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} more damage with {$Keywords.Attack} and {$Keywords.Special} per curse applied."
+		}
+		{
+      		Id = "SnareCurse"
+			DisplayName = "Snare"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipSnareDuration} Sec{#PreviousFormat}., victim can't move, but they can still attack."
+		}
+		{
+      		Id = "SnareTrap"
+			DisplayName = "Snare"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipSnareDuration} Sec{#PreviousFormat}., victim can't move, but they can still attack."
+		}
+		{
+			Id = "ApolloWeaponTrait"
+			DisplayName = "Blinding Strike"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
+		} 		
+		{
+			Id = "ApolloWeaponTrait_Initial"
+			InheritFrom = "ApolloWeaponTrait"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloSecondaryTrait"
+			DisplayName = "Blinding Flourish"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 	
+		{
+			Id = "ApolloSecondaryTrait_Initial"
+			InheritFrom = "ApolloSecondaryTrait"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}		
+		{
+			Id = "HeraDashTrait"
+			DisplayName = "Flaring Rush"
+			Description = "Your {$Keywords.Dash} leaves {$Keywords.JealousyCurse} behind. Max of 5 \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
+		} 
+		{
+			Id = "HeraDashTrait_Initial"
+			InheritFrom = "HeraDashTrait"
+			Description = "Your {$Keywords.Dash} creates a trail of fire. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Damage Over Time: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "HeraSignoff"
+			DisplayName = "From Hera"
+		}
+		{
+			Id = "HeraSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Hera{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Compassionate Bond
+
+				{#AwardDarkFlavorFormat}Together, you are the founding members of the Warmth and Compassion Brigade.
+			"""
+		}
+		{
+      		Id = "LavaSplash"
+			DisplayName = "Lava Pool"
+			Description = "A puddle of lava rapidly damages foes in an area."
+		}
+		{
+			Id = "HeraShoutTrait"
+			DisplayName = "Hera's Aid"
+			Description = "Your {$Keywords.WrathDerivedStocks} fires rings of fire, restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Damage"
+		}		
+		{
+			Id = "HeraShoutTrait_Tray"
+			InheritFrom = "HeraShoutTrait"
+			Description = "Your {$Keywords.WrathDerivedStocks} fires rings of fire, restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Damage"
+		}	
+		{
+			Id = "HeraShoutTrait_Initial"
+			InheritFrom = "HeraShoutTrait"
+			Description = "Your {$Keywords.WrathDerivedStocks} fires rings of fire, restoring {$TooltipData.TooltipLifesteal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Damage"
+		} 
+		{
+			Id = "HeraRangedTrait"
+			DisplayName = "Ember Shot"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#OldFormat}{$TooltipData.DisplayDelta2}"
+		}
+		{
+			Id = "HeraRangedTrait_Initial"
+			InheritFrom = "HeraRangedTrait"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}  \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "HeraRangedTrait_Tray"
+			InheritFrom = "HeraRangedTrait"
+			Description = "Your {$Keywords.Cast} launches a fireball which spawns a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}  \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "ShieldLoadAmmo_HeraRangedTrait"
+			DisplayName = "Ember Flare"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta2}"
+		}
+		{
+			Id = "ShieldLoadAmmo_HeraRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_HeraRangedTrait"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "ShieldLoadAmmo_HeraRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_HeraRangedTrait"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "BowLoadAmmo_HeraRangedTrait"
+			InheritFrom = "ShieldLoadAmmo_HeraRangedTrait"
+		}
+		{
+			Id = "BowLoadAmmo_HeraRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_HeraRangedTrait_Tray"
+		}
+		{
+			Id = "BowLoadAmmo_HeraRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_HeraRangedTrait_Initial"
+		}
+		{
+			Id = "StrongAttractionTrait",
+			DisplayName = "Open Arms"
+			Description = "Your {#BoldFormat}{$Keywords.GodBoon}s {#PreviousFormat} with attraction effects are stronger and attract more foes. \n {!Icons.Bullet}{#PropertyFormat}Targets Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Attraction Distance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+    	}
+		{
+			Id = "StrongAttractionTrait_Initial",
+			InheritFrom = "StrongAttractionTrait"
+			Description = "Your {#BoldFormat}{$Keywords.GodBoon}s {#PreviousFormat} with attraction effects are stronger and attract more foes. \n {!Icons.Bullet}{#PropertyFormat}Targets Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Attraction Distance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+    	}
+		{
+			Id = "HeraRevengeTrait"
+			DisplayName = "Molten Sting"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HeraRevengeTrait_Initial"
+			InheritFrom = "HeraRevengeTrait"
+			Description = "After you take damage, create a random {$Keywords.LavaSplash} near you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HealthDefianceTrait"
+			DisplayName = "Homecoming"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+		}
+		{
+			Id = "HealthDefianceTrait_Initial"
+			InheritFrom = "HealthDefianceTrait"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth}"
+		}
+		{
+			Id = "LastStandHealthDrop"
+			InheritFrom = "HealthDefianceTrait_Initial"
+			Description = "{$Keywords.ExtraChanceChaos} gives you {!Icons.HealthUpAlt_Small}. Replenish {#BoldFormat}1 {#PreviousFormat} use. \n {!Icons.Bullet}{#PropertyFormat}Bonus Health: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipBonusHealth} {#UpgradeFormat}"
+		}
+		{
+			Id = "LastStandDamageReduceTrait"
+			DisplayName = "Temperance"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that Encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "LastStandDamageReduceTrait_Initial"
+			InheritFrom = "LastStandDamageReduceTrait"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that Encounter. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "LavaDeathTrait"
+			DisplayName = "Molten Core"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "LavaDeathTrait_Initial"
+			InheritFrom = "LavaDeathTrait"
+			Description = "When foes are slain, they leave a {$Keywords.LavaSplash} behind. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HealthDamageTrait"
+			DisplayName = "Melting Heart"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		} 
+		{
+			Id = "HealthDamageTrait_Tray"
+			InheritFrom = "HealthDamageTrait"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total {$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} Bonus Damage : \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDamage:P}"
+		}
+		{
+			Id = "HealthDamageTrait_Initial"
+			InheritFrom = "HealthDamageTrait"
+			Description = "Gain bonus damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		}		
+		{
+			Id = "HealthDamageSoulDrop"
+			InheritFrom = "HealthDamageTrait_Initial"
+			Description = "Gain bonus damage with Attack, Special, and Cast when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per Pickup: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		}
+		{
+			Id = "CentaurHeartBoostedText"
+			DisplayName = "{I} Gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth}{!Icons.HealthUp_Small} and more..."
+		}	
+		{
+			Id = "CentaurHeartBoostedText_Alt"
+			DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Damage!"
+		}
+		{
+			Id = "LavaResistTrait"
+			DisplayName = "Home Turf"
+			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "LavaResistTrait_Initial"
+			InheritFrom = "LavaResistTrait"
+			Description = "You take less damage while standing in a {$Keywords.LavaSplash}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "LavaLongerTrait",
+			DisplayName = "Eternal Flame"
+			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} {#PreviousFormat} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+    	}
+		{
+			Id = "LavaLongerTrait_Initial",
+			InheritFrom = "LavaLongerTrait"
+			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} {#PreviousFormat} are bigger and last longer. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDuration} Sec{#PreviousFormat}."
+    	}
+		{
+			Id = "LavaAutoTrait"
+			DisplayName = "Royal Hearth"
+			Description = "Your {#BoldFormat}{$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} {#PreviousFormat} attract foes."
+		}
+		{
+			Id = "ForceHeraBoonTrait"
+			DisplayName = "Bottomless Cauldron"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hera{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
+		}
+		{
+			Id = "ForceHeraBoonTrait_Rack"
+			InheritFrom = "ForceHeraBoonTrait"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hera{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "ForceHeraBoonTrait_Inactive"
+			DisplayName = "Bottomless Cauldron"
+			Description = "Hera's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
+		}
+		{
+			Id = "MoreTrapDamageTrait"
+			DisplayName = "Danger Zone"
+			Description = "{$Keywords.Traps} and {$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Traps} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}{#AltUpgradeFormat}" 
+		}	
+		{
+			Id = "FreeHealthTrait"
+			DisplayName = "Unrequited Love"
+			Description = "After you defeat {$Keywords.BossPlural}, gain a {$Keywords.CentaurHeart}.\n After you defeat {$Keywords.MiniBoss}, gain a {$Keywords.CentaurSoul}."
+		}	
+		{
+			Id = "FreeHealthText",
+			DisplayName = "{#CombatTextHighlightFormat}Loving Embrace!{#PreviousFormat}!"
+		}
+		{
+			Id = "UseEmptyHealthDrop"
+			DisplayName = "{I} Gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth} {!Icons.HealthUpAlt_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
+		}
+		{
+			Id = "ExplosionTrait"
+			DisplayName = "Striking Sparks"
+			Description = "Your {$Keywords.Crit} effects create an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+    	}
+		{
+			Id = "ChillFireTrait"
+			DisplayName = "Icy Scorches"
+			Description = "Your {$Keywords.Dash} inflicts continous {$Keywords.Chill} and creates {#BoldFormat}2 {#PreviousFormat} additionnal trail of fire."
+		}	
+		{
+			Id = "FullHealBossTrait"
+			DisplayName = "Quick Drink"
+			Description = "Encounters with {$Keywords.BossPlural} and {$Keywords.MiniBoss} restores {#ItalicFormat}all {#PreviousFormat}{!Icons.Health_Small} upon entering."
+		}
+		{
+			Id = "FullHealBossText",
+			DisplayName = "{#CombatTextHighlightFormat}Quick Drink!{#PreviousFormat}!"
+    	}
+		{
+			Id = "FoesNumberDamageTrait"
+			DisplayName = "Raging Flames"
+			Description = "When there's at least {#BoldFormat}6 {#PreviousFormat} foes, your {$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}	
+		{
+			Id = "PullZeusCastTrait"
+			DisplayName = "Magnetic Force"
+			Description = "Your {$Keywords.Cast} bounces {#BoldFormat}3 {#PreviousFormat} additionnal times and pulls foes on hit."
+		}
+		{
+			Id = "FishingRewardExtraTrait"
+			DisplayName = "Fish Stew" 
+			Description = "{$Keywords.FishingPoint}{#BoldFormat}s {#PreviousFormat} gives more rewards and {#AltUpgradeFormat}+1 Lv.{!Icons.RandomPomSmall} {#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Fish caught: \Column 380 {#UpgradeFormat}x2"
+		}
+		{
+			Id = "ShoutMoreHealTrait"
+			DisplayName = "Summertime" 
+			Description = "Your {$Keywords.WrathDerivedStocks} restores {#BoldFormat}5{#PreviousFormat} {!Icons.Health_Small} per foe hit."
+		}
+		{
+			Id = "LtUpgrade_Hera"
+			DisplayName = "Blessed foes now attract you."
+		}				
+		{
+			Id = "ClearRequiredTraitsHera"
+			DisplayName = "{!Icons.RunClearStar}Disciple of Hera{!Icons.RunClearStar}"
+		}
+		// Fish Doubled
+		{
+		Id = "Fish_Tartarus_Common_01_Doubled"
+		DisplayName = "Hellfish x2"
+		}
+		{
+		Id = "Fish_Tartarus_Rare_01_Doubled"
+		DisplayName = "Knucklehead x2"
+		}
+		{
+		Id = "Fish_Tartarus_Legendary_01_Doubled"
+		DisplayName = "Scyllascion x2"
+		}
+		{
+		Id = "Fish_Asphodel_Common_01_Doubled"
+		DisplayName = "Slavug x2"
+		}
+		{
+		Id = "Fish_Asphodel_Rare_01_Doubled"
+		DisplayName = "Chrustacean x2"
+		}
+		{
+		Id = "Fish_Asphodel_Legendary_01_Doubled"
+		DisplayName = "Flameater x2"
+		}
+		{
+		Id = "Fish_Elysium_Common_01_Doubled"
+		DisplayName = "Chlam x2"
+		}
+		{
+		Id = "Fish_Elysium_Rare_01_Doubled"
+		DisplayName = "Charp x2"
+		}
+		{
+		Id = "Fish_Elysium_Legendary_01_Doubled"
+		DisplayName = "Seamare x2"
+		}
+		{
+		Id = "Fish_Styx_Common_01_Doubled"
+		DisplayName = "Gupp x2"
+		}
+		{
+		Id = "Fish_Styx_Rare_01_Doubled"
+		DisplayName = "Scuffer x2"
+		}
+		{
+		Id = "Fish_Styx_Legendary_01_Doubled"
+		DisplayName = "Stonewhal x2"
+		}
+		{
+		Id = "Fish_Chaos_Common_01_Doubled"
+		DisplayName = "Mati x2"
+		}
+		{
+		Id = "Fish_Chaos_Rare_01_Doubled"
+		DisplayName = "Projelly x2"
+		}
+		{
+		Id = "Fish_Chaos_Legendary_01_Doubled"
+		DisplayName = "Voidskate x2"
+		}
+		{
+		Id = "Fish_Surface_Common_01_Doubled"
+		DisplayName = "Trout x2"
+		}
+		{
+		Id = "Fish_Surface_Rare_01_Doubled"
+		DisplayName = "Bass x2"
+		}
+		{
+		Id = "Fish_Surface_Legendary_01_Doubled"
+		DisplayName = "Sturgeon x2"
+		}
+		{
+			Id = "FreePassTextBanner"
+			DisplayName = "Forgiven!"
+		}
+		{
+			Id = "ZeusUpgradeFreePass"
+			DisplayName = "Spark of reconciliation"
+		}
+		{
+			Id = "PoseidonUpgradeFreePass"
+			DisplayName = "There's one fire, water won't extinguish"
+		}
+		{
+			Id = "AthenaUpgradeFreePass"
+			DisplayName = "A tactical retreat"
+		}
+		{
+			Id = "AphroditeUpgradeFreePass"
+			DisplayName = "Make love, not war"
+		}
+		{
+			Id = "ArtemisUpgradeFreePass"
+			DisplayName = "The hunt never stops"
+		}
+		{
+			Id = "AresUpgradeFreePass"
+			DisplayName = "A battle of kindness he can't win"
+		}
+		{
+			Id = "DionysusUpgradeFreePass"
+			DisplayName = "A favour returned"
+		}
+		{
+			Id = "DemeterUpgradeFreePass"
+			DisplayName = "If you see this, you are a magician..."
+		}
+		{
+			Id = "ApolloUpgradeFreePass"
+			DisplayName = "His mercy shines on you"
+		}
+		{
+			Id = "HeraUpgradeFreePass"
+			DisplayName = "May compassion guide your path"
+		}
+		{
+			Id = "HeraUpgradeFreePass"
+			DisplayName = "Queens can also forgive"
+		}
+	]
+}

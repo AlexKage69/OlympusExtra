@@ -1,0 +1,142 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "HeraProjectile"
+      InheritFrom = "1_BaseNonPhysicalProjectile"
+      Type = "HOMING"
+      HomingAllegiance = "ENEMIES"
+      AffectsEnemies = true
+      MaxAdjustRate = 200
+      Speed = 300
+      Acceleration = 0
+      Range = 1000.0
+      DamageLow = 200
+      DamageHigh = 200
+      DetonateGraphic = "null"
+      MultipleUnitCollisions = false
+      MultipleObstacleCollisions = false
+      CheckObstacleImpact = true
+      CheckUnitImpact = true
+      UnlimitedUnitPenetration = false
+      DetonateAtVictimLocation = true
+      UseVulnerability = false
+      GroupName = "FX_Standing_Add"
+      IgnoreCoverageAngles = true
+      Thing = 
+      {
+        Graphic = "HeraLavaSplashProjectileHead"//"HeraSlowLavaSplash"
+        OffsetZ = 112
+        Grip = 999999
+        Points = [
+          {
+            X = 76
+            Y = 16
+          }
+          {
+            X = 76
+            Y = -16
+          }
+          {
+            X = -32
+            Y = -16
+          }
+          {
+            X = -32
+            Y = 16
+          }]
+      }
+      Effects = [
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    {
+      Name = "HeraSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HadesCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      //AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 1600
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 20
+      DamageHigh = 20
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HeraRing"
+        Grip = 999999
+      }      
+    }
+    {
+      Name = "HeraMaxSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HadesCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      //AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 2200
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 50
+      DamageHigh = 50
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HeraRing"
+        Grip = 999999
+      }
+    }
+  ]
+}

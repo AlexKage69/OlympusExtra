@@ -1,0 +1,15 @@
+{
+  Obstacles = [
+      "_append"
+    {
+      Name = "HeraUpgrade"
+      InheritFrom = "BaseBoon"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "BoonDropHera"
+      }
+    }
+  ]
+}
