@@ -5919,7 +5919,7 @@ if ModUtil ~= nil then
 
 				if loot.RespawnAfterUse then
 					local newLoot = CreateLoot({ Name = loot.Name, LootData = loot, SpawnPoint = lootId })
-					newLoot.UpgradeOptions = nil
+					newLoot.UpgradeOptions = loot.UpgradeOptions
 				end
 				if loot.WipeRecordsAfterUse then
 					TextLinesRecord = {}
