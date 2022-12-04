@@ -3,6 +3,8 @@
     Author - Phypoh
 :-
 
+Import "Apollo/ApolloExtra.lua"
+
 :: Animations
 To "Game/Animations/PortraitAnimations.sjson"
 SJSON "Animations/PortraitAnimations.sjson"
