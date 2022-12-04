@@ -1,5 +1,6 @@
 
 :: Import "CerberusAssist/CerberusAssist.lua"
+:: Import "MacariaNPC/MacariaNPC.lua"
 Import "patch.lua"
 Import "extender.lua"
 
@@ -9,3 +10,5 @@ To "Game/Animations/PortraitAnimations.sjson"
 SJSON "CerberusAssist/Animations/PortraitAnimations.sjson"
 To "Game/Projectiles/PlayerProjectiles.sjson"
 SJSON "CerberusAssist/Projectiles/PlayerProjectiles.sjson"
+To "Game/Units/NPCs.sjson"
+SJSON "NPCs.sjson"
