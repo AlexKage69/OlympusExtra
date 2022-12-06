@@ -118,350 +118,350 @@
     {
       Name = "Boon_Hera_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraStrike_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraStrike_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_02_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraFlourish_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_02_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraFlourish_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_03_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraDash_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_03_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraDash_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_04_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_04_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_05_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_05_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_06_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraAid_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_06_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraAid_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hera_07_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\OpenArms_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_07_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\OpenArms_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hera_08_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Vengence_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_08_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Vengence_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hera_09_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Homecoming_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_09_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Homecoming_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_10_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\MeltingHeart_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_10_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\MeltingHeart_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_11_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\MoltenCore_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_11_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\MoltenCore_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
       {
       Name = "Boon_Hera_12_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HomeTurf_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_12_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HomeTurf_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_13_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\EternalFlame_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_13_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\EternalFlame_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Temperance_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Temperance_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_15_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraAttract_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_15_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraAttract_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Aphrodite_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraAphrodite_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Aphrodite_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraAphrodite_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Ares_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraAres_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Ares_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraAres_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Artemis_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraArtemis_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Artemis_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraArtemis_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Athena_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraAthena_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Athena_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraAthena_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Demeter_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraDemeter_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Demeter_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraDemeter_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Dionysus_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraDionysus_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Dionysus_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraDionysus_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Poseidon_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraPoseidon_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Poseidon_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraPoseidon_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     } 
     {
       Name = "Hera_Zeus_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraZeus_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Zeus_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraZeus_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }     
     {
       Name = "Hera_Apollo_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraApollo_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Apollo_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraApollo_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }    
     {
       Name = "Hera_Hestia_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraHestia_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Hestia_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraHestia_01"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }  

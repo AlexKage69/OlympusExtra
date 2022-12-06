@@ -3,7 +3,7 @@
     Author - Phypoh
 :-
 
-Import "Hera/HeraExtra.lua"
+Import "HeraExtra.lua"
 
 :: Animations
 To "Game/Animations/PortraitAnimations.sjson"
@@ -21,13 +21,13 @@ SJSON "Units/Enemies.sjson"
 To "Game/Obstacles/Gameplay.sjson"
 SJSON "Obstacles/Gameplay.sjson"
 To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "Projectiles/AddPlayerProjectiles.sjson"
+To "Game/Projectiles/PlayerProjectiles.sjson"
 SJSON "Projectiles/PlayerProjectiles.sjson"
 To "Game/Projectiles/EnemyProjectiles.sjson"
 SJSON "Projectiles/EnemyProjectiles.sjson"
 
 :: Weapons
-To "Game/Weapons/PlayerWeapons.sjson"
-SJSON "Weapons/AddPlayerWeapons.sjson"
 To "Game/Weapons/PlayerWeapons.sjson"
 SJSON "Weapons/PlayerWeapons.sjson"
 To "Game/Weapons/EnemyWeapons.sjson"

@@ -5,49 +5,14 @@
     {
       Name = "SwordSwipeAFlipped-Hera"
       InheritFrom = "SwordSwipeAFlipped"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
       ClearSlides = true
       VisualFxIntervalMax = 0.0011
       VisualFxIntervalMin = 0.001
       CreateAnimations = [
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
-        {
-          Name = "SwordSwipeA-Sparkles"
-        }
+       
       ]
       Slides = [
 
@@ -75,33 +40,6 @@
       ]
     }
     {
-      Name = "SwordSwipeA-Sparkles"
-      InheritFrom = "GenericSparkles"
-      AngleMax = 80.0
-      AngleMin = -60.0
-      AngleFromOwner = "Take"
-      AngleNumOffset = 8
-      HoldLastFrame = true
-      RadialOffsetMax = 200.0
-      RadialOffsetMin = 150.0
-      RadialOffsetScaleRadius = 500.0
-      RadialOffsetScaleY = 0.66
-      LocationFromOwner = "Ignore"
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-      AlphaMax = 1.0
-      AlphaMin = 0.8
-      AddColor = true
-      Color = {
-        Red = 0.90
-        Green = 0.55
-        Blue = 0.05
-      }
-      RandomDurationMax = 0.6
-      RandomDurationMin = 0.2
-      VelocityMax = 5.0
-      VelocityMin = 1.0
-      Scale = 1.0
-    }{
       Name = "SwordSwipeA-Hera"
       InheritFrom = "SwordSwipeAFlipped-Hera"
       FlipVertical = false
@@ -142,41 +80,12 @@
       Name = "SwordSwipeB-Hera"
       InheritFrom = "SwordSwipeB"
       ChildAnimation = "QuickFlashOrange"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
       ClearSlides = true
       CreateAnimations = [
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
+        
       ]
       Slides = [
         {
@@ -243,32 +152,6 @@
         }]
     }
     {
-      Name = "SwordSwipeB-Sparkles"
-      InheritFrom = "GenericSparkles"
-      AngleFromOwner = "Take"
-      AngleNumOffset = 8
-      HoldLastFrame = true
-      RadialOffsetMax = 0.0
-      RadialOffsetMin = 0.0
-      RadialOffsetScaleRadius = 200.0
-      RadialOffsetScaleY = 0.66
-      LocationFromOwner = "Ignore"
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-      AlphaMax = 1.0
-      AlphaMin = 0.8
-      AddColor = true
-      Color = {
-        Red = 0.90
-        Green = 0.55
-        Blue = 0.05
-      }
-      RandomDurationMax = 0.6
-      RandomDurationMin = 0.2
-      VelocityMax = 5.0
-      VelocityMin = 1.0
-      Scale = 1.0
-    }
-    {
       Name = "SwordSwipeBImpact-Hera"
       InheritFrom = "SwordSwipeBImpact"
       ChildAnimation = "QuickFlashPinkSwordSwipeBImpact"
@@ -280,45 +163,21 @@
       Name = "SwordSwipeC-Hera"
       InheritFrom = "SwordSwipeC-ArthurBase"
       ChildAnimation = "RailgunLineSword3-Hera"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
       CreateAnimations = [
         {
           Name = "SwordSwipeC-Arthur-Chroma"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
-        }
-        {
-          Name = "SwordSwipeB-Sparkles"
         }
       ]
     }
     {
       Name = "RailgunLineSword3-Hera"
       InheritFrom = "RailgunLineSword3"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
     }
     {
       Name = "SwordSwipeC-Hera-Arthur"
@@ -336,18 +195,18 @@
     }{
       Name = "ChargeAttack-Hera"
       InheritFrom = "ChargeAttack"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
     }
     /* Hera - Sword - SecondaryTrait */
     {
       Name = "RadialNovaSwordParry-Hera"
       InheritFrom = "RadialNova"
       GroupName = "FX_Terrain_Add"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 24
@@ -372,140 +231,15 @@
         }
         {
           Name = "QuickFlashOrange"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
-        }
-        {
-          Name = "RadialNovaSwordParry-HeraSparkles"
         }]
     }{
       Name = "SwordParrySpikeHera"
       InheritFrom = "SwordParrySpike"
       Color = {
-        Red = 0.8
-        Green = 0.55
-        Blue = 0.05
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
       }
-    }{
-      Name = "RadialNovaSwordParry-HeraSparkles"
-      InheritFrom = "GenericSparkles"
-      AngleFromOwner = "Take"
-      AngleNumOffset = 8
-      HoldLastFrame = true
-      AngleMax = 360.0
-      RadialOffsetMax = 300.0
-      RadialOffsetMin = 100.0
-      RadialOffsetScaleRadius = 1000.0
-      RadialOffsetScaleY = 0.66
-      LocationFromOwner = "Ignore"
-      AlphaMax = 1.0
-      AlphaMin = 0.8
-      AddColor = true
-      Color = {
-        Red = 0.90
-        Green = 0.55
-        Blue = 0.05
-      }
-      UseAttachedMarkerLocation = "weapon_2_TRACKING"
-      RandomDurationMax = 0.6
-      RandomDurationMin = 0.2
-      VelocityMax = 5.0
-      VelocityMin = 1.0
-      Scale = 1.0
     }
     /* Hera - Spear - WeaponTrait */
     {
@@ -515,9 +249,9 @@
       ChildAnimation = "SpearThrustTrail-Hera"
       CreateAnimation = "QuickFlashOrange"
       Sound = "/EmptyCue"
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
       ClearSlides = true
       Slides = [
         {
@@ -3476,7 +3210,7 @@
     {
       Name = "BoonDropHeraIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Hera\HeraIconSpin\HeraIconSpin"
+      FilePath = "Hestia\HestiaIconSpin\HestiaIconSpin"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
@@ -3629,7 +3363,7 @@
     {
       Name = "HeraHoverLoop"
       InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Animations\Shade\Naked\ShadeNaked"
+      FilePath = "Animations\Shade\ShadeShield\ShadeShield"
       Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
       StopSoundOnFinishFade = 0.2
       AddColor = true
@@ -3646,7 +3380,26 @@
       PingPongShiftOverDuration = true
       UseAttachedFlasher = false
     }
-    
+    {
+      Name = "HeraBelowLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Animations\Shade\SpearAttack\ShadeSpearAttacks"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.7
+      Green = 0.7
+      Blue = 0.7
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
     {
       Name = "BlindStaticArcEmitter"
       FilePath = "Dev\blank_invisible"
@@ -3955,6 +3708,34 @@
       //AngleChangeSpeed = 240
       AngleFromOwner = "Ignore"
       Scale = 0.4
+    }
+    {
+      Name = "RadialNovaHera"
+      InheritFrom = "RadialNova"
+      LocationZFromOwner = "Take"
+      GroupName = "Standing"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "AuraFxLight"
+      FilePath = "Fx\BloodMine\BloodMineLight"
+      Type = "Constant"
+      //Sound = "/SFX/BloodMineBeepBasic"
+      //StopSoundOnFinishFade = 0.2
+      StartAlpha = 1.0
+      Duration = 0.5
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      Loop = true
+      NumFrames = 1
+      StartFrame = 1
+      Scale = 0.3
+      Ambient = 0.0
     }
     /* Character Fx */
   ]

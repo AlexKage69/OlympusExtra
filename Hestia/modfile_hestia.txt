@@ -3,7 +3,7 @@
     Author - Phypoh
 :-
 
-Import "Hestia/HestiaExtra.lua"
+Import "HestiaExtra.lua"
 
 :: Animations
 To "Game/Animations/PortraitAnimations.sjson"

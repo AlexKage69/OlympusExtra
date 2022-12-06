@@ -2,10 +2,17 @@
   Weapons = [
     "_append"  
     {
-      Name = "AreaWeakenHestia"
+      Name = "MineTossZagreus"
+      InheritFrom = "MineToss"
+      Projectile = "MineTossZagreus"
+      NumProjectiles = 1
+      ProjectileInterval = 0
+    }
+    {
+      Name = "AreaWeakenHera"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "AreaWeakenHestia"
+      Projectile = "AreaWeakenHera"
 	    ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
       AutoLock = true
@@ -14,10 +21,10 @@
       Cooldown = 0.4
     }
     {
-      Name = "HestiaSuper"
+      Name = "HeraSuper"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaSuper"
+      Projectile = "HeraSuper"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
@@ -25,10 +32,10 @@
       NumProjectiles = 1
     }
     {
-      Name = "HestiaMaxSuper"
+      Name = "HeraMaxSuper"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaMaxSuper"
+      Projectile = "HeraMaxSuper"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
@@ -37,7 +44,7 @@
       ProjectileInterval = 0.5
     }
     {
-      Name = "HestiaRetaliate"
+      Name = "HeraRetaliate"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
       Projectile = "LavaSplashLob"
@@ -49,10 +56,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "HestiaOnDeath"
+      Name = "HeraOnDeath"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaSmallField"
+      Projectile = "HeraSmallField"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
@@ -61,10 +68,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "HestiaOnRevenge"
+      Name = "HeraOnRevenge"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaSmallField"
+      Projectile = "HeraSmallField"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
@@ -73,10 +80,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "HestiaOnDeathDefense"
+      Name = "HeraOnDeathDefense"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaSmallFieldDefense"
+      Projectile = "HeraSmallFieldDefense"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
@@ -85,10 +92,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "HestiaLavaProjectile"
+      Name = "HeraLavaProjectile"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaField"
+      Projectile = "HeraField"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
@@ -97,10 +104,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "ArtemisHestiaExplosion"
+      Name = "ArtemisHeraExplosion"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "ArtemisHestiaExplosion"
+      Projectile = "ArtemisHeraExplosion"
       FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
@@ -109,10 +116,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "HestiaFieldDefense"
+      Name = "HeraFieldDefense"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaFieldDefense"
+      Projectile = "HeraFieldDefense"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
@@ -121,10 +128,10 @@
       IgnoreOwnerAttackDisabled = true
     }
     {
-      Name = "HestiaSmallFieldDefense"
+      Name = "HeraSmallFieldDefense"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
-      Projectile = "HestiaSmallFieldDefense"
+      Projectile = "HeraSmallFieldDefense"
       //FireSound = "/SFX/BurnDamageSizzle"
       ClearFireRequestOnChargeCancel = false
       FullyAutomatic = true
