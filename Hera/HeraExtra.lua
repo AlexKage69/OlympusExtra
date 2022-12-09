@@ -47,7 +47,7 @@ if ModUtil ~= nil then
 				"HeraRangedTrait",
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
-				"RelationshipTrait",
+				"DiscountHeraTrait",
 				"PriviledgeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
@@ -374,7 +374,7 @@ GameData.RunClearMessageData.ClearRequiredTraitsHera =
 			"HeraRangedTrait",
 			"HeraSecondaryTrait",
 			"HeraShoutTrait",
-			"RelationshipTrait",
+			"DiscountHeraTrait",
 			"PriviledgeHeraTrait",
 			"FamilyHeraTrait",
 			"MoreRewardTrait",
@@ -1746,35 +1746,42 @@ OlympusTraitData.HeraShoutTrait =
 	},
 }
 
-OlympusTraitData.RelationshipTrait =
+OlympusTraitData.DiscountHeraTrait =
 {
 	Icon = "Boon_Hera_07",
 	InheritFrom = { "ShopTier2Trait" },
-	RequiredFalseTrait = "RelationshipTrait",
+	RequiredFalseTrait = "DiscountHeraTrait",
 	God = "Hera",
 	RarityLevels =
 	{
 		Common =
 		{
-			Multiplier = 2.0,
+			Multiplier = 1.0,
 		},
 		Rare =
 		{
-			Multiplier = 3.0,
+			Multiplier = 0.94,
 		},
 		Epic =
 		{
-			Multiplier = 4.0,
+			Multiplier = 0.87,
 		},
 		Heroic =
 		{
-			Multiplier = 5.0,
+			Multiplier = 0.81,
 		}
 	},
-	ExtractValues =
-	{
-		
+	StoreCostMultiplier = {
+		BaseValue = 0.8
 	},
+		ExtractValues =
+		{
+			{
+				Key = "StoreCostMultiplier",
+				ExtractAs = "TooltipDiscount",
+				Format = "NegativePercentDelta",
+			}
+		}
 }
 OlympusTraitData.PriviledgeHeraTrait =
 {
@@ -2132,7 +2139,7 @@ OlympusLootData.HeraUpgrade = {
 
 	PriorityUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait"},--, "HeraRangedTrait" },
 	WeaponUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraShoutTrait"},--, "HeraRangedTrait", "HeraShoutTrait" },
-	Traits = { },--"RelationshipTrait", "MoreCompanionTrait", "MoreRewardTrait", "DeathDamageTrait" },
+	Traits = { },--"DiscountHeraTrait", "MoreCompanionTrait", "MoreRewardTrait", "DeathDamageTrait" },
 	Consumables = { },
 
 	LinkedUpgrades =
@@ -3919,6 +3926,52 @@ OlympusLootData.HeraUpgrade = {
 			table.insert( ScreenAnchors.TraitPlaceholderIcons, wrathIcon )
 		end
 	)	
+	ModUtil.Path.Wrap("CreateStoreButtons",
+		function(baseFunc)
+			if HeroHasTrait("DiscountHeraTrait") then
+				local numButtons = StoreData.WorldShop.MaxOffers
+				if numButtons == nil then
+					numButtons = 0
+					for i, groupData in pairs( StoreData.WorldShop.GroupsOf ) do
+						numButtons = numButtons + groupData.Offers
+					end
+				end
+				local itemIndex = RandomNumber(numButtons)
+				local upgradeData = CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex]
+	
+				if upgradeData ~= nil then
+					if not upgradeData.Processed then
+						if upgradeData.Type == "Trait" then
+							upgradeData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = upgradeData.Name })
+							if upgradeData.CostIncreasePerStack ~= nil then
+								upgradeData.Cost = upgradeData.Cost + GetTraitCount(CurrentRun.Hero, upgradeData) * upgradeData.CostIncreasePerStack
+							end
+							upgradeData.Type = "Trait"
+							SetTraitTextData( upgradeData )
+						elseif upgradeData.Type == "Consumable" then
+							upgradeData = GetRampedConsumableData( ConsumableData[upgradeData.Name] )
+							upgradeData.Type = "Consumable"
+						elseif upgradeData.Type == "Cosmetic" then
+							upgradeData = DeepCopyTable( ConditionalItemData[upgradeData.Name] )
+							upgradeData.Type = "Cosmetic"
+						end
+		
+						local costMultiplier = 1 + ( GetNumMetaUpgrades( "ShopPricesShrineUpgrade" ) * ( MetaUpgradeData.ShopPricesShrineUpgrade.ChangeValue - 1 ) )
+						costMultiplier = costMultiplier * (GetTotalHeroTraitValue("StoreCostMultiplier", {IsMultiplier = true})-0.2)
+						if costMultiplier ~= 1 then
+							upgradeData.Cost = round( upgradeData.Cost * costMultiplier )
+						end
+		
+						upgradeData.Processed = true
+					end
+				end
+				CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex] = upgradeData
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Discount on "..upgradeData.Name))
+			end
+			baseFunc()			
+		end
+	)	
+	
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
@@ -3941,7 +3994,10 @@ OlympusLootData.HeraUpgrade = {
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-			
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetTotalHeroTraitValue("StoreCostMultiplier", {IsMultiplier = true})))
+			--[[if not HeroHasTrait("DiscountTrait") then
+				AddTraitToHero({ TraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = "DiscountTrait" }) })
+			end]]
 			--CreateLoot({ Name = "HeraUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering))
 			baseFunc()

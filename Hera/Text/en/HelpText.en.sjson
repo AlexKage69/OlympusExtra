@@ -53,6 +53,11 @@
 			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipSnareDuration} Sec{#PreviousFormat}., victim can't move, but they can still attack."
 		}
 		{
+      		Id = "SpecialDiscount"
+			DisplayName = "Special Discount"
+			Description = "One item from Well of Charon is cheaper than others."
+		}
+		{
 			Id = "HeraWeaponTrait"
 			DisplayName = "Spiteful Strike"
 			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
@@ -152,14 +157,14 @@
 			InheritFrom = "ShieldLoadAmmo_HeraRangedTrait_Initial"
 		}
 		{
-			Id = "StrongAttractionTrait",
-			DisplayName = "Open Arms"
-			Description = "Your {#BoldFormat}{$Keywords.GodBoon}s {#PreviousFormat} with attraction effects are stronger and attract more foes. \n {!Icons.Bullet}{#PropertyFormat}Targets Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Attraction Distance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Id = "DiscountHeraTrait",
+			DisplayName = "Loyal Relation"
+			Description = "All items are discounted. {$Keywords.SpecialDiscount} available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
     	}
 		{
-			Id = "StrongAttractionTrait_Initial",
-			InheritFrom = "StrongAttractionTrait"
-			Description = "Your {#BoldFormat}{$Keywords.GodBoon}s {#PreviousFormat} with attraction effects are stronger and attract more foes. \n {!Icons.Bullet}{#PropertyFormat}Targets Attracted: \Column 380 {#UpgradeFormat}+{$TooltipData.AttractionCount} \n {!Icons.Bullet}{#PropertyFormat}Bonus Attraction Distance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAttractionDistance}%"
+			Id = "DiscountHeraTrait_Initial",
+			InheritFrom = "DiscountHeraTrait"
+			Description = "All items are discounted. {$Keywords.SpecialDiscount} available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
     	}
 		{
 			Id = "HeraRevengeTrait"
