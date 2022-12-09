@@ -171,7 +171,7 @@ if ModUtil ~= nil then
         if ModUtil.Mods.Data["HeraExtra"] ~= nil then
             OlympusCodexMenuData.HeraUpgrade = {
                 "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraShoutTrait",
-                "DiscountHeraTrait"
+                "DiscountHeraTrait", "PriviledgeHeraTrait", "FamilyHeraTrait", "MoreRewardTrait"
             }
 
             -- Apollo duos
