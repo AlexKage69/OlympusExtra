@@ -4,7 +4,7 @@
      {
       Name = "Codex_Portrait_GoodBoyAssistTrait"
       InheritFrom = "Codex_Portrait_Base_01"
-      FilePath = "Portraits\Codex\CodexPortrait_AchillesPatroclusAssistTrait"
+      FilePath = "Minor\CodexPortrait_Cerberus"
       EndFrame = 1
       StartFrame = 1
     }
@@ -22,7 +22,7 @@
     {
       Name = "Keepsake_Cerberus_Plush_Child"
       InheritFrom = "LegendaryKeepsakeTrayIcon"
-      Scale = 0.6
+      Scale = 0.2
       FilePath = "Minor\Cerberus_01"
     }    
     {
