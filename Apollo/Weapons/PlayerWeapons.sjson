@@ -10,54 +10,75 @@
         //DisableAttack = false
       }
       {
-        Name = "ApolloBeamWeapon"
-        InheritFrom = "1_BasePlayerSlowWeapon"
-        Type = "GUN"
-        Projectile = "ApolloCastBeam"
-        ClipSize = 1
-        FullyAutomatic = true
-        BlinkDetonateAtEndpoint = true
-        ChargeCancelMovement = true
-        BarrelLength = 32
-        FireGraphic = "null"
-        ReloadTime = 3.0
-        NumProjectiles = 1
-        ProjectileAngleOffset = 30
-        SilentImpactAfterFirst = true
-        AutoLockWithMouse = false
-        ObstacleDamageMultiplier = 1
-        BlinkNumGhosts = 3
-        CancelMovement = false
-        AutoLock = true
-        //AutoLockRange = 900
-        //AutoLockWithMouse = true
-        //AutoLockArcDistance = 180
-        IgnoreOwnerAttackDisabled = true
-        UseTargetAngle = false
-        BlockMoveInput = true
-        IgnoreForceCooldown = true
-        CanCancelDisables = true
-        CanCancelOwnDisables = true
-        BlinkGhostAnimation = "null"
-        PriorityFireRequest = true
-        Effects = [
+      Name = "ApolloShoutWeapon"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloShoutProjectile"
+      FullyAutomatic = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      CancelMovement = true
+      ChargeCancelMovement = true
+      BarrelLength = 32
+      AutoLock = true
+      AutoLockRange = 1000
+      AutoLockArcDistance = 75
+      AutoLockWithMouse = false
+      ShowFreeAimLine = true
+      AimLineAnimation = "AuraAimLineNoMovement"
+      ChargeStartAnimation = "ZagreusRangedWeapon_Charge"
+      FireGraphic = "ZagreusRangedWeapon_Fire"
+      LockTriggerForCharge = true
+      NumProjectiles = 1
+      ProjectileSpacing = 30
+      ProjectileAngleOffset = 30
+      ProjectileOffsetStart = "LEFT"
+      ProjectileInterval = 0.03
+    }
+    {
+      Name = "ApolloSurgeWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "RAM"
+      SelfVelocity = 0
+      SelfVelocityCap = 0
+      RamTotalDistance = 0
+      RamDistanceInterval = 0
+      RamReappliesVelocity = false
+      FireEndGraphic = "ZagreusDash"
+      FireGraphic = "ZagreusDash"
+      FireFx = "null"
+      ChargeTime = 0
+      //Projectile = "AresInvisibleAoE"
+      //ProjectileInterval = 0.1
+      WeaponRange = 300
+      BlinkMaxRange = 400
+      ChargeFx = "null"
+      ArsenalCooldown = 0.0
+      CancelMovement = false
+      FullyAutomatic = true
+      AutoLock = true
+      IgnoreOwnerAttackDisabled = true
+      UseTargetAngle = false
+      BlockMoveInput = true
+      IgnoreForceCooldown = true
+      CanCancelDisables = true
+      CanCancelOwnDisables = true
+      BlinkDetonateAtEndpoint = true
+      BlinkNumGhosts = 3
+      BlinkGhostAnimation = "null"
+      CheckMovementReactionDistance = 150
+      Effects = [
         {
           Trigger = "Fire"
           Name = "ApolloStun"
           Duration = 100
-          DisableMove = false
+          DisableMove = true
           DisableRotate = false
           DisableAttack = true
           StartAnimation = "ZagreusShootLazer"
           Cancelable = false
-        }
-        {
-          Trigger = "Fire"
-          Name = "ApolloSpeed"
-          Type = "SPEED"
-          Duration = 100
-          Modifier = 0.000000001
-          Active = true
         }
         {
           Trigger = "Fire"
@@ -77,7 +98,7 @@
           CanAffectInvulnerable = true
           Active = true
         }]
-    }    
+    }
     {
       Name = "DistanceResistWeapon"
       InheritFrom = "1_BasePlayerSlowWeapon"

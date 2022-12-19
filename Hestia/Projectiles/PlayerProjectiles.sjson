@@ -140,7 +140,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
@@ -194,7 +194,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
@@ -259,7 +259,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
@@ -327,7 +327,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
