@@ -3062,7 +3062,7 @@
       Name = "HestiaDemeterSpinIn"
       InheritFrom = "HestiaDemeterSpinLoop"
       TransferFrameFromThis = false
-      ChainTo = "HestiaSpinLoop"
+      ChainTo = "HestiaDemeterSpinLoop"
       FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
       Sound = "/null"
       EndFrame = 5
