@@ -14,7 +14,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		Frame = "Gift",
 		Slot = "Assist",
 		Icon = "Keepsake_Cerberus_Plush",
-		ChamberThresholds =  { 25, 50 },
+
 		RarityLevels =
 		{
 			Common =
@@ -125,10 +125,10 @@ OlympusTraitData.GoodBoyAssistTrait =
 				ExtractAs = "TooltipKeepsakeUses",
 			},
 		},
-		--[[LoadBinks =
+		LoadBinks =
 		{
-			"Enemy_MegaeraMultiFurySkyDive_Bink",
-		},]]
+			"Cerberus_HadesAssistJumpIn_Bink",
+		},
 		SignOffData =
 		{
 		  {

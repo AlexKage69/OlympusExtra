@@ -333,7 +333,7 @@
 		{
 			Id = "ChillFireTrait"
 			DisplayName = "Icy Scorches"
-			Description = "Your {$Keywords.Dash} inflicts continous {$Keywords.Chill} and creates {#BoldFormat}2 {#PreviousFormat} additionnal trail of fire."
+			Description = "Your {$Keywords.Dash} inflicts continous {$Keywords.Chill}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}	
 		{
 			Id = "FullHealBossTrait"
