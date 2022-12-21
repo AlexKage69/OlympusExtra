@@ -86,12 +86,13 @@
       FilePath = "Hestia\Hestia2"
       EndFrame = 1
       StartFrame = 1
+      Scale = 0.40
     }
     {
       Name = "BoonSymbolHestiaIcon"
       InheritFrom = "BoonSymbolBase"
       FilePath = "Hestia\Hestia3"
-      Scale = 0.35
+      Scale = 0.30
     }
     {
       Name = "BoonSymbolHestiaIsometric"

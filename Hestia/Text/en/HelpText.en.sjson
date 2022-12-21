@@ -333,7 +333,7 @@
 		{
 			Id = "ChillFireTrait"
 			DisplayName = "Icy Scorches"
-			Description = "Your {$Keywords.Dash} inflicts continous {$Keywords.Chill}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Dash} fire trail inflicts {$Keywords.Chill}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}	
 		{
 			Id = "FullHealBossTrait"
@@ -352,7 +352,7 @@
 		{
 			Id = "PullZeusCastTrait"
 			DisplayName = "Magnetic Force"
-			Description = "Your {$Keywords.Cast} bounces {#BoldFormat}3 {#PreviousFormat} additionnal times and pulls foes on hit."
+			Description = "Your {$Keywords.Cast} bounces {#BoldFormat}3 {#PreviousFormat} additional times and pulls foes on hit."
 		}
 		{
 			Id = "FishingRewardExtraTrait"
