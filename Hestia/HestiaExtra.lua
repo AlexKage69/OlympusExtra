@@ -2995,22 +2995,40 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Demeter_01",
 		RequiredFalseTrait = "ChillFireTrait",
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseValue = 1.2,
+				SourceIsMultiplier = true,
+			},
+			RequiredTrait = "HestiaDashTrait",
+			ValidWeapons = WeaponSets.HeroRushWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		},
 		PropertyChanges =
 		{
-			{
+			--[[{
 				WeaponNames = { "RushWeapon" },
 				WeaponProperty = "NumProjectiles",
 				ChangeValue = 3,
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
-			},
-			{
+			},]]
+			--[[{
 				WeaponNames = { "RushWeapon" },
 				WeaponProperty = "ProjectileAngleOffset",
 				ChangeValue = 6,
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
-			},
+			},]]
 			{
 				TraitName = "HestiaDashTrait",
 				WeaponNames = { "RushWeapon" },

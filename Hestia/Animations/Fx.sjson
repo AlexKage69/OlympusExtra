@@ -2990,28 +2990,19 @@
       StartFrame = 1
       LocationZFromOwner = "Ignore"
       ScaleFromOwner = "Ignore"
-      ScaleRadius = 150.0
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
       Ambient = 0.0
-      ChainTo = "HestiaSpinLoopOut"
-      //Alpha = 0.7
-      //AddColor = true
-      /*Color = {
-        Red = 0.8
-        Green = 0.7
-        Blue = 0.9
-      }*/
+      ChainTo = "HestiaSpinLoopOut"    
       ColorFromOwner = "Ignore"
-      //VisualFx = "CandleFlame"
-      //VisualFxIntervalMin = 0.1
-      //VisualFxIntervalMax = 0.2
       SortMode = "Secondary"
       OverlayVfx = false
       TransferFrameFromThis = true
       Material = "Unlit"
-      ScaleX = 1.2
-      ScaleY = 2.5
+      ScaleX = 3
+      ScaleY = 4
       CreateAnimations = [
-        //{ Name = "HestiaSpinLight" }
         { Name = "LavaEmber" }
       ]
     }
@@ -3033,20 +3024,10 @@
       StartFrame = 1
       LocationZFromOwner = "Ignore"
       ScaleFromOwner = "Ignore"
-      ScaleRadius = 150.0
+      ScaleRadius = 250.0
       Ambient = 0.0
       ChainTo = "HestiaDemeterSpinLoopOut"
-      //Alpha = 0.7
-      //AddColor = true
-      /*Color = {
-        Red = 0.8
-        Green = 0.7
-        Blue = 0.9
-      }*/
       ColorFromOwner = "Ignore"
-      //VisualFx = "CandleFlame"
-      //VisualFxIntervalMin = 0.1
-      //VisualFxIntervalMax = 0.2
       SortMode = "Secondary"
       OverlayVfx = false
       TransferFrameFromThis = true
@@ -4191,6 +4172,74 @@
       Ambient = 0.0
       SortMode = "FromParent"
       LocationZFromOwner = "Ignore"
+    }
+    // Cerberus Assist Fx
+    {
+      Name = "Cerberus_ZagreusAssistJump_ToRun"
+      FilePath = "Animations\Cerberus\HadesAssistJumpIn\CerberusHadesAssistJumpIn"
+      Type = "Slide"
+      AngleFromOwner = "Ignore"
+      ChainTo = "Cerberus_HadesAssistRun"
+      VideoTexture = "Cerberus_HadesAssistJumpIn_Bink"
+      Velocity = 300
+      Sound = "null"
+      EndFrame = 13
+      NumAngles = 1
+      NumFrames = 13
+      StartFrame = 1
+      OffsetY = -114.0
+      StartAlpha = 0
+      EndAlpha = 1
+      Slides = [
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }]
+      Material = 
+      {
+        Ambient = 0.0
+        Diffuse = 0.0
+        Directionality = 0.0
+      }
     }
   ]
 }
