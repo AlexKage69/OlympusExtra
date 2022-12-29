@@ -1816,15 +1816,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.1,
+				Multiplier = 1.15,
 			},
 			Epic =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.3,
 			},
 			Heroic =
 			{
-				Multiplier = 1.3,
+				Multiplier = 1.5,
 			}
 		},
 		AddShout =
@@ -1857,8 +1857,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "ApolloShoutWeapon",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 20,
-				BaseMax = 20,
+				BaseMin = 35,
+				BaseMax = 35,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -5042,11 +5042,11 @@ if ModUtil ~= nil then
 		local betweenAngle = GetAngleBetween({ Id = heroId, DestinationId = targetId })
 		local heroAngle = GetAngle({ Id = heroId })
 		local diffAngle = betweenAngle - heroAngle
-		if diffAngle > 6 or diffAngle < -6 then
+		if diffAngle > 8 or diffAngle < -8 then
 			if diffAngle < 360 and diffAngle > 180 or diffAngle < 0 and diffAngle > -180 then
-				heroAngle = (heroAngle - 3) % 360
+				heroAngle = (heroAngle - 4) % 360
 			else
-				heroAngle = (heroAngle + 3) % 360
+				heroAngle = (heroAngle + 4) % 360
 			end
 		else
 			heroAngle = betweenAngle

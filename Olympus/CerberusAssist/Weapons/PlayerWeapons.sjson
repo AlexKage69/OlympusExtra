@@ -7,12 +7,12 @@
       Type = "GUN"
       Projectile = "NPC_Cerberus_01_Assist"
       //ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging"
-      NumProjectiles = 36
-      ProjectileInterval = 0.1
-      ProjectileSpacing = 100
-      ProjectileOffsetStart = "CENTER"
-      ProjectileAngleOffset = 200
-      ProjectileAngleOffsetScaleY = 0.75
+      NumProjectiles = 75
+      ProjectileInterval = 0.03
+      ProjectileSpacing = 75
+      ProjectileOffsetStart = "LEFT"
+      ProjectileAngleOffset = 100
+      ProjectileAngleOffsetScaleY = 0.2
     }
     {
       Name = "ZagreusCerberusAssistRockFall"

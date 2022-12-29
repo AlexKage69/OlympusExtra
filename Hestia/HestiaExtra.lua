@@ -2208,7 +2208,7 @@ if ModUtil ~= nil then
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamageMax",
-					SkipAutoExtract = true
+					--SkipAutoExtract = true
 				}
 			},
 			{
@@ -2247,12 +2247,12 @@ if ModUtil ~= nil then
 		},
 		AddOutgoingLifestealModifiers =
 		{
-			Unique = true,
+			--Unique = true,
 			ValidWeapons = { "HestiaMaxSuper", "HestiaSuper" },
 			ValidMultiplier = 0.00,
 			MaxLifesteal = 1,
 			MinLifesteal = 1,
-		},
+		}
 	}
 	
 	table.insert(OlympusTraitData.RegeneratingCappedSuperTrait.RequiredFalseTraits,
@@ -3043,7 +3043,7 @@ if ModUtil ~= nil then
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
-			{
+			--[[{
 				TraitName = "HestiaDashTrait",
 				WeaponNames = { "RushWeapon" },
 				ProjectileName = "HestiaFire",
@@ -3051,7 +3051,7 @@ if ModUtil ~= nil then
 				ChangeValue = "HestiaDemeterSpinIn",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
-			},
+			},]]
 		},
 		ExtractValues =
 		{
