@@ -2747,6 +2747,7 @@
       Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamPreAttack"
       StopSoundOnFinishFade = 0.25
       EndFrame = 30
+      UseOwnAngle = true
       NumFrames = 30
       PlaySpeed = 80.0
       StartFrame = 1
@@ -2766,6 +2767,7 @@
       VideoTexture = "ZagreusRangedWeapon_Bink"
       FrameDataFile = "Game\Animations\FrameData\ZagreusRangedWeapon.sga"
       EndFrame = 100
+      UseOwnAngle = true
       Loop = true
       NumAngles = 32
       NumFrames = 120
@@ -2773,7 +2775,7 @@
       OffsetY = -105.0
       SetOwnerEndAngle = true
       Scale = 1.05
-      CancelOnOwnerMove = true
+      //CancelOnOwnerMove = true
     }
     {
       Name = "ApolloLaser"
@@ -2784,6 +2786,7 @@
       StopSoundOnFinishFade = 0.25
       EndFrame = 30
       LoopFramesOnly = true
+      UseOwnAngle = true
       NumFrames = 30
       PlaySpeed = 60.0
       StartFrame = 1

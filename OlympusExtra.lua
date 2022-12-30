@@ -21,7 +21,7 @@ if ModUtil ~= nil then
             RequiredFalseTrait = "ShoutMoreHealTrait",	
             AddOutgoingLifestealModifiers =
             {
-                Unique = true,
+                --Unique = true,
                 ValidWeapons = {"HestiaMaxSuper", "HestiaSuper" },
                 ValidMultiplier = 0.00,
                 MaxLifesteal = 4,
@@ -34,6 +34,14 @@ if ModUtil ~= nil then
                     },
                 }
             },
+            ExtractValues =
+            {
+                {
+                    ExtractAs = "TooltipWrathStocks",
+                    Format = "ExistingWrathStocks",
+                    SkipAutoExtract = true
+                }
+            }
         }
         OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait = 
             {

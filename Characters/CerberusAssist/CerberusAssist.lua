@@ -14,7 +14,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		Frame = "Gift",
 		Slot = "Assist",
 		Icon = "Keepsake_Cerberus_Plush",
-		ChamberThresholds =  { 25, 50 },
+
 		RarityLevels =
 		{
 			Common =
@@ -97,10 +97,10 @@ OlympusTraitData.GoodBoyAssistTrait =
 		PropertyChanges =
 		{
 
-			--[[{
+			{
 				WeaponName = "NPC_Goodboy_01_Assist",
 				ProjectileProperty = "DamageLow",
-				ChangeValue = 5000,
+				ChangeValue = 1500,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -115,7 +115,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 				WeaponName = "NPC_Goodboy_01_Assist",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
-			},]]
+			},
 		},
 		RemainingUses = { BaseValue = 1 },
 		ExtractValues =
@@ -125,10 +125,10 @@ OlympusTraitData.GoodBoyAssistTrait =
 				ExtractAs = "TooltipKeepsakeUses",
 			},
 		},
-		--[[LoadBinks =
+		LoadBinks =
 		{
-			"Enemy_MegaeraMultiFurySkyDive_Bink",
-		},]]
+			"Cerberus_HadesAssistJumpIn_Bink",
+		},
 		SignOffData =
 		{
 		  {

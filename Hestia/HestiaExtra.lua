@@ -2193,7 +2193,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaSuper", },
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				DeriveValueFrom = "DamageLow",
 			},
 			{
 				WeaponNames = { "HestiaMaxSuper" },
@@ -2205,11 +2205,23 @@ if ModUtil ~= nil then
 				{
 					Value = DuplicateMultiplier,
 				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageMax",
+					--SkipAutoExtract = true
+				}
 			},
 			{
 				WeaponNames = { "HestiaMaxSuper" },
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				BaseMin = 75,
+				BaseMax = 75,
+				DepthMult = DepthDamageMultiplier,
+				ExcludeLinked = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
 			},
 			{
 				WeaponNames = { "HestiaMaxSuper", },
@@ -2235,19 +2247,12 @@ if ModUtil ~= nil then
 		},
 		AddOutgoingLifestealModifiers =
 		{
-			Unique = true,
+			--Unique = true,
 			ValidWeapons = { "HestiaMaxSuper", "HestiaSuper" },
 			ValidMultiplier = 0.00,
 			MaxLifesteal = 1,
 			MinLifesteal = 1,
-			ExtractValues =
-			{
-				{
-					Key = "MinLifesteal",
-					ExtractAs = "TooltipLifesteal",
-				},
-			}
-		},
+		}
 	}
 	
 	table.insert(OlympusTraitData.RegeneratingCappedSuperTrait.RequiredFalseTraits,
@@ -2463,32 +2468,32 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.50,
+				Multiplier = 1.4,
 			},
 			Epic =
 			{
-				Multiplier = 2.00,
+				Multiplier = 2,
 			},
 			Heroic =
 			{
-				Multiplier = 2.50,
+				Multiplier = 2.4,
 			}
 		},
 		CentaurAttackBonus =
 		{
-			BaseValue = 1.02,
+			BaseValue = 1.05,
 			SourceIsMultiplier = true,
 			DecimalPlaces = 2,
 			MinMultiplier = 0.1,
-			IdenticalMultiplier =
+			--[[IdenticalMultiplier =
 			{
 				Value = -0.8,
-			},
+			},]]
 		},
 		AccumulatedHealthDamageBonus = 1,
 		AddOutgoingDamageModifiers =
 		{
-			ValidWeapons = WeaponSets.HeroAllWeapons,
+			ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons,
 			UseTraitValue = "AccumulatedHealthDamageBonus",
 			IsMultiplier = true,
 			Unique = true,
@@ -2758,7 +2763,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
 		RequiredFalseTrait = "HealthDefianceTrait",
-		RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
+		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
 		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
 		RequiredMinMaximumLastStands = 1,
 		Icon = "Boon_Hestia_09",
@@ -2990,21 +2995,46 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Demeter_01",
 		RequiredFalseTrait = "ChillFireTrait",
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseValue = 1.2,
+				SourceIsMultiplier = true,
+			},
+			RequiredTrait = "HestiaDashTrait",
+			ValidWeapons = WeaponSets.HeroRushWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		},
 		PropertyChanges =
 		{
-			{
+			--[[{
 				WeaponNames = { "RushWeapon" },
 				WeaponProperty = "NumProjectiles",
 				ChangeValue = 3,
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
-			},
-			{
+			},]]
+			--[[{
 				WeaponNames = { "RushWeapon" },
 				WeaponProperty = "ProjectileAngleOffset",
 				ChangeValue = 6,
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
+			},]]
+			{
+				TraitName = "HestiaDashTrait",
+				WeaponNames = { "RushWeapon" },
+				EffectName = "DemeterSlow",
+				EffectProperty = "Active",
+				ChangeValue = true,
 			},
 			{
 				TraitName = "HestiaDashTrait",
@@ -3013,6 +3043,15 @@ if ModUtil ~= nil then
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
+			--[[{
+				TraitName = "HestiaDashTrait",
+				WeaponNames = { "RushWeapon" },
+				ProjectileName = "HestiaFire",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaDemeterSpinIn",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},]]
 		},
 		ExtractValues =
 		{
@@ -3057,6 +3096,8 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Ares_01",
 		RequiredFalseTrait = "FoesNumberDamageTrait",
+		--EncounterStartWeapon = "FoesNumberDamageBuff",
+		PreEquipWeapons = { "FoesNumberDamageBuff" },
 		SetupFunction =
 		{
 			Name = "TrackAresDamageBonus",
@@ -3065,16 +3106,23 @@ if ModUtil ~= nil then
 			{
 				Target = "Player",
 				Effect = "FoesNumberDamageBuff",
-				EnemiesNumberThreshold = 7,
-			}
+				EnemiesNumberThreshold = 5,
+				ExtractValues =
+				{
+					{
+						Key = "EnemiesNumberThreshold",
+						ExtractAs = "EnemyThreshold"
+					},
+				}
+			},
 		},
 		AddOutgoingDamageModifiers =
 		{
-			ValidWeapons = WeaponSets.HeroAllWeapons,
+			ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons,
 			RequiredEffects = { "FoesNumberDamageBuff" },
 			RequiredSelfEffectsMultiplier =
 			{
-				BaseValue = 1.5,
+				BaseValue = 1.7,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
@@ -5579,19 +5627,15 @@ if ModUtil ~= nil then
 
 	function EnemiesCountThread(args)
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
-			wait(0.2, "RoomThread")
+			wait(1.0, "RoomThread")
 			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead
 				and IsCombatEncounterActive(CurrentRun) and not IsEmpty(RequiredKillEnemies) then
 				local enemiesNumberThreshold = args.EnemiesNumberThreshold or 0
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Tick"))
 				
-				if TableLength( RequiredKillEnemies ) >= enemiesNumberThreshold then
-					for enemyId, enemy in pairs(RequiredKillEnemies) do
-						ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-						WeaponName = "FoesNumberDamageBuff", EffectName = "FoesNumberDamageBuff" })
-					
-					end
-				else
+				if TableLength( RequiredKillEnemies ) >= enemiesNumberThreshold and not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "FoesNumberDamageBuff" }) then
+					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+					WeaponName = "FoesNumberDamageBuff", EffectName = "FoesNumberDamageBuff" })
+				elseif TableLength( RequiredKillEnemies ) < enemiesNumberThreshold and HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "FoesNumberDamageBuff" }) then
 					ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "FoesNumberDamageBuff" })
 				end
 			end
@@ -5611,10 +5655,16 @@ if ModUtil ~= nil then
 	-- Dionysus Duo
 	ModUtil.Path.Wrap("StartEncounter",
 		function(baseFunc, currentRun, currentRoom, currentEncounter)
-			if HeroHasTrait("FullHealBossTrait") and
-				(currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or currentRun.CurrentRoom.IsMiniBossRoom) then
-				thread(FullHealBossAnnouncement)
-				Heal(CurrentRun.Hero, { HealAmount = 9999, SourceName = "FullHealBossTrait" })
+			if HeroHasTrait("FullHealBossTrait") then
+				if 	(currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and 
+					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
+					thread(FullHealBossAnnouncement)
+					Heal(CurrentRun.Hero, { HealAmount = CurrentRun.Hero.MaxHealth, SourceName = "FullHealBossTrait" })
+				elseif currentRun.CurrentRoom.IsMiniBossRoom then
+					thread(FullHealBossAnnouncement)
+					Heal(CurrentRun.Hero, { HealAmount = (CurrentRun.Hero.MaxHealth/2), SourceName = "FullHealBossTrait" })
+				end
 			end
 			baseFunc(currentRun, currentRoom, currentEncounter)
 		end
@@ -5629,17 +5679,19 @@ if ModUtil ~= nil then
 	ModUtil.Path.Wrap("GetFish",
 		function(baseFunc, biome, fishingState)
 			if HeroHasTrait("FishingRewardExtraTrait") then
-				GiveRandomConsumables({
-					Delay = 0.3,
-					NotRequiredPickup = true,
-					LootOptions =
-					{
+				if CurrentRun.CurrentRoom.Name then
+					GiveRandomConsumables({
+						Delay = 0.3,
+						NotRequiredPickup = true,
+						LootOptions =
 						{
-							Name = "StoreRewardRandomStack",
-							Chance = 1,
+							{
+								Name = "StoreRewardRandomStack",
+								Chance = 1,
+							}
 						}
-					}
-				})
+					})
+				end
 				if fishingState == "Perfect" then
 					DropRewardPerfect()
 				elseif fishingState == "Good" then
@@ -5919,7 +5971,7 @@ if ModUtil ~= nil then
 
 				if loot.RespawnAfterUse then
 					local newLoot = CreateLoot({ Name = loot.Name, LootData = loot, SpawnPoint = lootId })
-					newLoot.UpgradeOptions = nil
+					newLoot.UpgradeOptions = loot.UpgradeOptions
 				end
 				if loot.WipeRecordsAfterUse then
 					TextLinesRecord = {}

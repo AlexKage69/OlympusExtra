@@ -139,11 +139,13 @@
       Effect = 
       {
         Name = "FoesNumberDamageBuff"
-        Duration = 100
-        Modifier = 0
+        Modifier = 1.0
+        Duration = 1000
         Active = true
-        FrontFx = "PoseidonEncounterStartBuff"
-        BackFx = "null"
+        CanAffectInvulnerable = true
+        BackFx = null
+        OnlyAffectName = "_PlayerUnit"
+        FrontFx = "HestiaEncounterStartBuff"
       }
     }
   ]
