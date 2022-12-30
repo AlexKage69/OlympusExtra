@@ -4,6 +4,7 @@ local package = "OEApollo"
 if ModUtil ~= nil then
     ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
         DebugPrint({Text = "Trying to load package "..package..".pkg"})
+        LoadPackages({Name = "OEHera"})
         LoadPackages({Name = "OEHestia"})
         LoadPackages({Name = "OEApollo"})
         LoadPackages({Name = "OEMinor"})
