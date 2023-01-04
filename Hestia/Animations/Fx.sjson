@@ -3024,18 +3024,19 @@
       StartFrame = 1
       LocationZFromOwner = "Ignore"
       ScaleFromOwner = "Ignore"
-      ScaleRadius = 250.0
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
       Ambient = 0.0
-      ChainTo = "HestiaDemeterSpinLoopOut"
+      ChainTo = "HestiaDemeterSpinLoopOut"    
       ColorFromOwner = "Ignore"
       SortMode = "Secondary"
       OverlayVfx = false
       TransferFrameFromThis = true
       Material = "Unlit"
-      ScaleX = 1.2
-      ScaleY = 2.5
+      ScaleX = 3
+      ScaleY = 4
       CreateAnimations = [
-        //{ Name = "HestiaSpinLight" }
         { Name = "LavaEmber" }
       ]
     }
@@ -3075,7 +3076,7 @@
     }
     {
       Name = "HestiaDemeterSpinOut2"
-      InheritFrom = "HestiaSpinOut"
+      InheritFrom = "HestiaDemeterSpinOut"
       ChildAnimation = null
     }
     {
@@ -3103,6 +3104,19 @@
       EndAlpha = 0
       HoldLastFrame = false
       ChainTo = null
+    }
+    {
+      Name = "HestiaDemeterSpinLoopOut"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      ChainTo = "HestiaDemeterSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
     }
     {
       Name = "HestiaSpinLoopOut"

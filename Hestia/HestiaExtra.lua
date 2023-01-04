@@ -1812,8 +1812,8 @@ if ModUtil ~= nil then
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileName = "HestiaFireDashField",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 3,
-				BaseMax = 3,
+				BaseMin = 12,
+				BaseMax = 12,
 				AsInt = true,
 				MinMultiplier = 0.2,
 				DepthMult = DepthDamageMultiplier,
@@ -2995,11 +2995,19 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Demeter_01",
 		RequiredFalseTrait = "ChillFireTrait",
+		--[[WeaponDataOverride =
+		{
+			RushWeapon =
+			{
+				DamageTextStartColor = Color.DemeterDamageLight,
+				DamageTextColor = Color.DemeterDamage
+			},
+		},]]
 		AddOutgoingDamageModifiers =
 		{
 			ValidWeaponMultiplier =
 			{
-				BaseValue = 1.2,
+				BaseValue = 1.25,
 				SourceIsMultiplier = true,
 			},
 			RequiredTrait = "HestiaDashTrait",
@@ -3030,28 +3038,19 @@ if ModUtil ~= nil then
 				ExcludeLinked = true,
 			},]]
 			{
-				TraitName = "HestiaDashTrait",
 				WeaponNames = { "RushWeapon" },
 				EffectName = "DemeterSlow",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
 			{
-				TraitName = "HestiaDashTrait",
-				WeaponNames = { "RushWeapon" },
-				EffectName = "DemeterSlow",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			--[[{
-				TraitName = "HestiaDashTrait",
 				WeaponNames = { "RushWeapon" },
 				ProjectileName = "HestiaFire",
 				ProjectileProperty = "Graphic",
 				ChangeValue = "HestiaDemeterSpinIn",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
-			},]]
+			},
 		},
 		ExtractValues =
 		{
