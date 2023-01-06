@@ -13,8 +13,8 @@ OlympusTraitData.GoodBoyAssistTrait =
 		Name = "GoodBoyAssistTrait",
 		Frame = "Gift",
 		Slot = "Assist",
-		Icon = "Keepsake_Unknown",
-		ChamberThresholds =  { 25, 50 },
+		Icon = "Keepsake_Cerberus_Plush",
+
 		RarityLevels =
 		{
 			Common =
@@ -39,7 +39,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 			},
 		},
 		InRackTitle = "GoodBoyAssistTrait_Rack",
-		InRackIcon = "Keepsake_Meg_Plush_Menu",
+		InRackIcon = "Keepsake_Cerberus_Plush_Menu",
 
 		--PreEquipWeapons = { "NPC_Goodboy_01_Assist" },
 		EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
@@ -88,7 +88,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 			GameStateRequirements = {
 				CurrentRoomValueFalse = "BlockHadesAssistTraits",
 				RequiredFalseRooms = { "D_Boss01" },
-				},
+			},
 			AssistPresentationPortrait = "Portrait_Cerberus_Default_01",
 			AssistPresentationPortraitOffsetY = 55,
 			AssistPresentationColor = { 200, 0, 255, 255 },
@@ -97,10 +97,10 @@ OlympusTraitData.GoodBoyAssistTrait =
 		PropertyChanges =
 		{
 
-			--[[{
+			{
 				WeaponName = "NPC_Goodboy_01_Assist",
 				ProjectileProperty = "DamageLow",
-				ChangeValue = 5000,
+				ChangeValue = 1500,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -115,7 +115,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 				WeaponName = "NPC_Goodboy_01_Assist",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
-			},]]
+			},
 		},
 		RemainingUses = { BaseValue = 1 },
 		ExtractValues =
@@ -125,24 +125,18 @@ OlympusTraitData.GoodBoyAssistTrait =
 				ExtractAs = "TooltipKeepsakeUses",
 			},
 		},
-		--[[LoadBinks =
+		LoadBinks =
 		{
-			"Enemy_MegaeraMultiFurySkyDive_Bink",
-		},]]
+			"Cerberus_HadesAssistJumpIn_Bink",
+		},
 		SignOffData =
 		{
 		  {
-			Text = "MegaeraSignoff",
+			Text = "CerberusSignoff",
 		  },
 		  {
-			RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
-			RequiredFalseTextLines = { "BecameCloseWithMegaera01Meg_BackOff", "BecameCloseWithMegaera01_BMeg_BackOff" },
-			Text = "MegaeraSignoff_AssistMax_A"
-		  },
-		  {
-		  	RequiredTextLines = { "MegaeraGift10" },
-			RequiredFalseTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
-			Text = "MegaeraSignoff_AssistMax_B"
+		  	RequiredTextLines = { "CerberusGift09" },
+			Text = "CerberusSignoff_AssistMax"
 		  }
 		},
 	}
@@ -151,9 +145,9 @@ OlympusTraitData.GoodBoyAssistTrait =
 		Costs = { 1, 2, 3, 4, 5, },
 	}
     local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)    
-    --OlympusGiftData.NPC_Cerberus_01[2] = { Gift = "GoodBoyAssistTrait" }
+    OlympusGiftData.NPC_Cerberus_01[7] = { Gift = "GoodBoyAssistTrait", RequiredResource = "SuperGiftPoints" }
     local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)    
-	table.insert(OlympusGiftOrdering, "GoodBoyAssistTrait")
+	table.insert(OlympusGiftOrdering, 34,"GoodBoyAssistTrait")
 
     local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
@@ -172,7 +166,7 @@ OlympusTraitData.GoodBoyAssistTrait =
                 Text = "CodexData_GoodBoyAssistTrait_02",
             },
         },
-        Image = "Codex_Portrait_FuryAssistTrait",
+        Image = "Codex_Portrait_GoodBoyAssistTrait",
     }
     local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
     OlympusWeaponData.NPC_Goodboy_01_Assist =
@@ -181,7 +175,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		StartingWeapon = false,
 		IgnoreOutgoingDamageModifiers = true,
 
-		FireScreenshake = { Distance = 6, Speed = 400, FalloffSpeed = 1400, Duration = 0.4 },
+		FireScreenshake = { Distance = 6, Speed = 200, FalloffSpeed = 1400, Duration = 0.4 },
 
 		AIData =
 		{
@@ -221,7 +215,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		},
 		Binks =
 		{
-			"Enemy_MegaeraMultiFurySkyDive_Bink"
+			--"Enemy_MegaeraMultiFurySkyDive_Bink"
 		},
 	}
 	function GoodboyAttackSpawn( assistData )
@@ -256,12 +250,12 @@ OlympusTraitData.GoodBoyAssistTrait =
 	ModUtil.Path.Wrap( "DoAssist", 
 		function(baseFunc, unit)	
 			baseFunc(unit)	
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("After Do Assist")) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("After Do Assist")) 
 		end)
 	ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
 			if (not CanOpenCodex()) and IsSuperValid() then
-				BuildSuperMeter(CurrentRun, 50)
+				AddKeepsakeCharge({})
 			end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(ModUtil.Mods.Data)) 
 			

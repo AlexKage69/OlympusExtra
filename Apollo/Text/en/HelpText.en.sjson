@@ -4,7 +4,7 @@
 		{
 			Id = "NPC_Apollo_01"
 			DisplayName = "Apollo"
-			Description = "God of Music"
+			Description = "God of Light"
 		}		
 		{
 			Id = "ApolloFirstPickUp"
@@ -13,11 +13,11 @@
 		{
 			Id = "ApolloUpgrade"
 			DisplayName = "Apollo"
-			Description = "God of Music"
+			Description = "God of Light"
 		}
 		{
 			Id = "ApolloUpgrades"
-			DisplayName = "God of Music"
+			DisplayName = "God of Light"
 			Description = "The son of the god of the dead shall someday earn various Boons of Apollo."
 		}
 		{
@@ -353,5 +353,9 @@
 			Id = "LtUpgrade_Apollo"
 			DisplayName = "Blessed foes now blind you."
 		}	
+		{
+			Id = "ClearRequiredTraitsApollo"
+			DisplayName = "{!Icons.RunClearStar}Disciple of Apollo{!Icons.RunClearStar}"
+		}
 	]
 }

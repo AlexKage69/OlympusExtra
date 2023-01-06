@@ -7,6 +7,8 @@ Include "modfile_assets.txt"
 
 Import "SeparateGoddess.lua"
 
+:: Include "Weapons/modfile_weapons.txt"
+
 Import "Apollo/ApolloExtra.lua"
 Import "Hestia/HestiaExtra.lua"
 

@@ -25,7 +25,8 @@ ModUtil.BaseOverride("ShowAwardMenu", function ()
 	ScreenAnchors.AwardMenuScreen.AssistLastPage = 0
 	ScreenAnchors.AwardMenuScreen.AssistCurrentPage = 0
 	ScreenAnchors.AwardMenuScreen.CurrentIndex = 0
-	ScreenAnchors.AwardMenuScreen.PreviousIndex = 0
+	ScreenAnchors.AwardMenuScreen.KeepsakeBoolean = false
+	ScreenAnchors.AwardMenuScreen.AssistBoolean = false
 
 	components.ShopBackgroundDim = CreateScreenComponent({ Name = "rectangle01", Group = "Combat_Menu" })
 	SetScale({ Id = components.ShopBackgroundDim.Id, Fraction = 4 })
@@ -136,7 +137,7 @@ ModUtil.BaseOverride("ShowAwardMenu", function ()
 		--[[if TraitData[upgradeData.Gift].Slot == "Assist" then
 			localy = localy + 180
 		end]]
-        local indexPerPage = 10
+        local indexPerPage = 30
         local pageIndex = math.floor((index-1) / indexPerPage)
         local itemIndex = math.floor((index-1) % indexPerPage)
 		localx = startX - spacerX * rowMin/2 + ((itemIndex) % rowMax + 0.5) * spacerX
@@ -148,7 +149,6 @@ ModUtil.BaseOverride("ShowAwardMenu", function ()
 		 if ScreenAnchors.AwardMenuScreen.LastTrait ~= nil and upgradeData.Gift == ScreenAnchors.AwardMenuScreen.LastTrait then
 			ScreenAnchors.AwardMenuScreen.KeepsakeCurrentPage = pageIndex
 			ScreenAnchors.AwardMenuScreen.CurrentIndex = itemIndex
-			ScreenAnchors.AwardMenuScreen.PreviousIndex = itemIndex
 		end
 		 --ScreenAnchors.AwardMenuScreen.LastAssist == upgradeData
          table.insert(ScreenAnchors.AwardMenuScreen.KeepsakesList[pageIndex],{
@@ -176,7 +176,7 @@ ModUtil.BaseOverride("ShowAwardMenu", function ()
 	for index, upgradeData in ipairs(UIData.AwardMenu.AvailableAssistTraits) do
 		local localx = 0
 		local localy = 0
-        local indexPerPage = 3
+        local indexPerPage = 6
         local pageIndex = math.floor((index-1) / indexPerPage)
         local itemIndex = math.floor((index-1) % indexPerPage)
 		localx = startX + (itemIndex+1)  * spacerX
@@ -191,7 +191,6 @@ ModUtil.BaseOverride("ShowAwardMenu", function ()
 		 if ScreenAnchors.AwardMenuScreen.LastAssist ~= nil and upgradeData.Gift == ScreenAnchors.AwardMenuScreen.LastAssist then
 			ScreenAnchors.AwardMenuScreen.AssistCurrentPage = pageIndex
 			ScreenAnchors.AwardMenuScreen.CurrentIndex = itemIndex
-			ScreenAnchors.AwardMenuScreen.PreviousIndex = itemIndex
 		end
          table.insert(ScreenAnchors.AwardMenuScreen.AssistsList[pageIndex],{
              itemIndex = itemIndex,
@@ -203,6 +202,7 @@ ModUtil.BaseOverride("ShowAwardMenu", function ()
     end
     AssistManagerLoadPage(ScreenAnchors.AwardMenuScreen)
     KeepsakeManagerLoadPage(ScreenAnchors.AwardMenuScreen)
+	HandleKeyboardManagerLoadPage(ScreenAnchors.AwardMenuScreen)
 
 	if GameState.LifetimeResourcesGained.SuperGiftPoints ~= nil and GameState.LifetimeResourcesGained.SuperGiftPoints > 0 and hasUnlockedKeepsakes then
 		components.CurrentKeys = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
@@ -246,24 +246,27 @@ end)
 
 ModUtil.Path.Wrap( "SetCursorFrame", 
 function(baseFunc, button)	
-	ScreenAnchors.AwardMenuScreen.PreviousIndex = ScreenAnchors.AwardMenuScreen.CurrentIndex
 	ScreenAnchors.AwardMenuScreen.CurrentIndex = button.Index
-	ScreenAnchors.AwardMenuScreen.LastTableSelected = "Keepsake"
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Keepsake")) 
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.CurrentIndex)) 
+	if string.find(button.ButtonKey, "AssistItem") then
+		ScreenAnchors.AwardMenuScreen.LastTableSelected = "Assist"
+	else
+		ScreenAnchors.AwardMenuScreen.LastTableSelected = "Keepsake"
+	end	
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Keepsake")) 
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button)) 
 	baseFunc(button)
 end)
 
-ModUtil.Path.Wrap( "SetLegendaryFrame", 
+--[[ModUtil.Path.Wrap( "SetLegendaryFrame", 
 function(baseFunc, id)	
-	--local button = ScreenAnchors.AwardMenuScreen[id]	
-	--ScreenAnchors.AwardMenuScreen.CurrentIndex = button.Index
-	--ScreenAnchors.AwardMenuScreen.LastTableSelected = "Assist"
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Assist")) 
+	local button = ScreenAnchors.AwardMenuScreen[id]	
+	ScreenAnchors.AwardMenuScreen.CurrentIndex = button.Index
+	ScreenAnchors.AwardMenuScreen.LastTableSelected = "Assist"
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Assist")) 
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.CurrentIndex)) 
 	baseFunc(id)
-end)
-ModUtil.Path.Wrap( "HandleUpgradeToggle", 
+end)]]
+--[[ModUtil.Path.Wrap( "HandleUpgradeToggle", 
 	function(baseFunc, screen, button, textOverride)	
         baseFunc(screen, button, textOverride)      
         local upgradeName = button.Data.Gift
@@ -273,70 +276,75 @@ ModUtil.Path.Wrap( "HandleUpgradeToggle",
             GameState.LastAwardTrait = upgradeName
         end
     end
-)
-function GetIndexFromButton()
-	return 0
-end
+)]]
 --[[ModUtil.Path.Wrap( "GetComponentByHotkey", 
 	function(baseFunc, components, hotkey)	
 		baseFunc(components,hotkey)
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(hotkey)) 
 	end
 )]]
+function HandleKeyboardManagerLoadPage(screen)
+	local components = screen.Components
+	--Left
+	components.AssistLeftPageButton = CreateScreenComponent({ Name = "NoneLeft", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "BoonManager" })
+	Attach({ Id = components.AssistLeftPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = -880, OffsetY = 0 })
+	components.AssistLeftPageButton.OnPressedFunctionName = "HandleKeyboardManagerChangePage"
+	components.AssistLeftPageButton.Direction = "Left"
+	components.AssistLeftPageButton.ControlHotkeys = { "MenuLeft", "Left" }
+	--Right
+	components.AssistRightPageButton = CreateScreenComponent({ Name = "NoneRight", Scale = 0.0, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "BoonManager" })
+	Attach({ Id = components.AssistRightPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = 350, OffsetY = 0 })
+	components.AssistRightPageButton.OnPressedFunctionName = "HandleKeyboardManagerChangePage"
+	components.AssistRightPageButton.Direction = "Right"
+	components.AssistRightPageButton.ControlHotkeys = { "MenuRight", "Right" }
 
+end
+function HandleKeyboardManagerChangePage(screen, button)
+	if ScreenAnchors.AwardMenuScreen.CurrentIndex ~= nil and (ScreenAnchors.AwardMenuScreen.CurrentIndex % 6 == 0 or ScreenAnchors.AwardMenuScreen.CurrentIndex % 6 == 5) then
+		if ScreenAnchors.AwardMenuScreen.AssistBoolean then
+			AssistChangePage(screen, button.Direction)
+		else
+			ScreenAnchors.AwardMenuScreen.AssistBoolean = true
+		end
+	else
+		ScreenAnchors.AwardMenuScreen.AssistBoolean = false
+	end	
+	if ScreenAnchors.AwardMenuScreen.CurrentIndex ~= nil and (ScreenAnchors.AwardMenuScreen.CurrentIndex % 10 == 0 or ScreenAnchors.AwardMenuScreen.CurrentIndex % 10 == 9) then
+		if ScreenAnchors.AwardMenuScreen.KeepsakeBoolean then
+			KeepsakeChangePage(screen, button.Direction)
+		else
+			ScreenAnchors.AwardMenuScreen.KeepsakeBoolean = true
+		end
+	else
+		ScreenAnchors.AwardMenuScreen.KeepsakeBoolean = false
+	end
+end
 function AssistManagerPageButtons(screen)
 	local components = screen.Components
-	if components.AssistLeftPageButton then
-		Destroy({ Ids = {components.AssistLeftPageButton.Id}})
-	end
-	if components.AssistRightPageButton then
-		Destroy({ Ids = {components.AssistRightPageButton.Id}})
-	end
-	if components.AssistLeftClickPageButton then
-		Destroy({ Ids = {components.AssistLeftClickPageButton.Id}})
-	end
-	if components.AssistRightClickPageButton then
-		Destroy({ Ids = {components.AssistRightClickPageButton.Id}})
-	end
 	if screen.AssistCurrentPage ~= screen.AssistFirstPage then
 		components.AssistLeftClickPageButton = CreateScreenComponent({ Name = "ButtonCodexLeft", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "BoonManager" })
 		Attach({ Id = components.AssistLeftClickPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = -880, OffsetY = 300 })
 		components.AssistLeftClickPageButton.OnPressedFunctionName = "AssistManagerChangePageClick"
 		components.AssistLeftClickPageButton.Direction = "Left"
-		components.AssistLeftPageButton = CreateScreenComponent({ Name = "ButtonCodexLeft2", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "BoonManager" })
-		Attach({ Id = components.AssistLeftPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = -880, OffsetY = 300 })
-		components.AssistLeftPageButton.OnPressedFunctionName = "AssistManagerChangePage"
-		components.AssistLeftPageButton.Direction = "Left"
-		components.AssistLeftPageButton.ControlHotkeys = { "MenuLeft", "Left" }
 	end
 	if screen.AssistCurrentPage ~= screen.AssistLastPage then
 		components.AssistRightClickPageButton = CreateScreenComponent({ Name = "ButtonCodexRight", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "BoonManager" })
 		Attach({ Id = components.AssistRightClickPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = 350, OffsetY = 300 })
 		components.AssistRightClickPageButton.OnPressedFunctionName = "AssistManagerChangePageClick"
 		components.AssistRightClickPageButton.Direction = "Right"
-		components.AssistRightPageButton = CreateScreenComponent({ Name = "ButtonCodexRight2", Scale = 0.0, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "BoonManager" })
-		Attach({ Id = components.AssistRightPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = 350, OffsetY = 300 })
-		components.AssistRightPageButton.OnPressedFunctionName = "AssistManagerChangePage"
-		components.AssistRightPageButton.Direction = "Right"
-		components.AssistRightPageButton.ControlHotkeys = { "MenuRight", "Right" }
-	end
-end
-function AssistManagerChangePage(screen, button)
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Pressed"))
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(button.Direction))
-	if screen.CurrentIndex ~= nil and button.Direction == "Left" and screen.AssistCurrentPage > screen.AssistFirstPage and (screen.CurrentIndex % 3) == 0  then
-		screen.AssistCurrentPage = screen.AssistCurrentPage - 1
-	elseif screen.CurrentIndex ~= nil and button.Direction == "Right" and screen.AssistCurrentPage < screen.AssistLastPage and (screen.CurrentIndex % 3) == 2  then
-		screen.AssistCurrentPage = screen.AssistCurrentPage + 1
-	else
-		return
 	end
 end
 function AssistManagerChangePageClick(screen, button)
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click"))
-	if button.Direction == "Left" and screen.AssistCurrentPage > screen.AssistFirstPage then
+	screen.LastTableSelected = "Assist"
+	AssistChangePage(screen, button.Direction)
+end
+function AssistChangePage(screen, direction)
+	if screen.LastTableSelected ~= "Assist" then
+		return
+	end	
+	if direction == "Left" and screen.AssistCurrentPage > screen.AssistFirstPage then
 		screen.AssistCurrentPage = screen.AssistCurrentPage - 1
-	elseif button.Direction == "Right" and screen.AssistCurrentPage < screen.AssistLastPage  then
+	elseif direction == "Right" and screen.AssistCurrentPage < screen.AssistLastPage  then
 		screen.AssistCurrentPage = screen.AssistCurrentPage + 1
 	else
 		return
@@ -352,6 +360,18 @@ function AssistManagerChangePageClick(screen, button)
 	if ScreenAnchors.AwardMenuScreen ~= nil then
 		Destroy({ Id = ScreenAnchors.AwardMenuScreen.HoverFrame })
 		ScreenAnchors.AwardMenuScreen.HoverFrame = nil
+	end	
+	if screen.Components.AssistLeftPageButton then
+		Destroy({ Ids = {screen.Components.AssistLeftPageButton.Id}})
+	end
+	if screen.Components.AssistRightPageButton then
+		Destroy({ Ids = {screen.Components.AssistRightPageButton.Id}})
+	end
+	if screen.Components.AssistLeftClickPageButton then
+		Destroy({ Ids = {screen.Components.AssistLeftClickPageButton.Id}})
+	end
+	if screen.Components.AssistRightClickPageButton then
+		Destroy({ Ids = {screen.Components.AssistRightClickPageButton.Id}})
 	end
 	Destroy({ Ids = ids})
 	AssistManagerLoadPage(screen)
@@ -359,13 +379,13 @@ end
 
 function AssistManagerLoadPage(screen)
 	local components = ScreenAnchors.AwardMenuScreen.Components
-	AssistManagerPageButtons(screen)
     --local displayedTraits = {}
 	local spacerY = 165
     local spacerX = 198
 	local startX = 0
 	local startY = 165 + 2 * spacerY + 230
 	local createdKeepsakes = 0
+	AssistManagerPageButtons(screen)
     local pageAssists = screen.AssistsList[screen.AssistCurrentPage]
     if pageAssists then
         for i, assistData in pairs(pageAssists) do
@@ -395,54 +415,32 @@ function AssistManagerLoadPage(screen)
 end
 function KeepsakeManagerPageButtons(screen)
 	local components = screen.Components
-	if components.KeepsakeLeftPageButton then
-		Destroy({ Ids = {components.KeepsakeLeftPageButton.Id}})
-	end
-	if components.KeepsakeRightPageButton then
-		Destroy({ Ids = {components.KeepsakeRightPageButton.Id}})
-	end
 	if screen.KeepsakeCurrentPage ~= screen.KeepsakeFirstPage then
 		components.KeepsakeLeftClickPageButton = CreateScreenComponent({ Name = "ButtonCodexLeft", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "KeepsakeManager" })
-		Attach({ Id = components.KeepsakeLeftClickPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = -880, OffsetY = 0 })
+		Attach({ Id = components.KeepsakeLeftClickPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = -880, OffsetY = -80 })
 		components.KeepsakeLeftClickPageButton.OnPressedFunctionName = "KeepsakeManagerChangePageClick"
 		components.KeepsakeLeftClickPageButton.Direction = "Left"
-		components.KeepsakeLeftPageButton = CreateScreenComponent({ Name = "ButtonCodexLeft2", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "KeepsakeManager" })
-		Attach({ Id = components.KeepsakeLeftPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = -880, OffsetY = 0 })
-		components.KeepsakeLeftPageButton.OnPressedFunctionName = "KeepsakeManagerChangePage"
-		components.KeepsakeLeftPageButton.Direction = "Left"
-		components.KeepsakeLeftPageButton.ControlHotkeys = { "MenuLeft", "Left" }
 	end
 	if screen.KeepsakeCurrentPage ~= screen.KeepsakeLastPage then
 		components.KeepsakeRightClickPageButton = CreateScreenComponent({ Name = "ButtonCodexRight", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "KeepsakeManager" })
-		Attach({ Id = components.KeepsakeRightClickPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = 350, OffsetY = 0 })
+		Attach({ Id = components.KeepsakeRightClickPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = 350, OffsetY = -80 })
 		components.KeepsakeRightClickPageButton.OnPressedFunctionName = "KeepsakeManagerChangePageClick"
 		components.KeepsakeRightClickPageButton.Direction = "Right"
-		components.KeepsakeRightPageButton = CreateScreenComponent({ Name = "ButtonCodexRight2", Scale = 0.8, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "KeepsakeManager" })
-		Attach({ Id = components.KeepsakeRightPageButton.Id, DestinationId = components.ShopBackground.Id, OffsetX = 350, OffsetY = 0 })
-		components.KeepsakeRightPageButton.OnPressedFunctionName = "KeepsakeManagerChangePage"
-		components.KeepsakeRightPageButton.Direction = "Right"
-		components.KeepsakeRightPageButton.ControlHotkeys = { "MenuRight", "Right" }
 	end
-end
-function KeepsakeManagerChangePage(screen, button)
-	if button.Direction == "Left" and screen.KeepsakeCurrentPage > screen.KeepsakeFirstPage and (screen.CurrentIndex % 10) == 0  then
-		screen.KeepsakeCurrentPage = screen.KeepsakeCurrentPage - 1
-	elseif button.Direction == "Right" and screen.KeepsakeCurrentPage < screen.KeepsakeLastPage and (screen.CurrentIndex % 10) == 9 then
-		screen.KeepsakeCurrentPage = screen.KeepsakeCurrentPage + 1
-	else
-		return
-	end
-
 end
 function KeepsakeManagerChangePageClick(screen, button)
+	screen.LastTableSelected = "Keepsake"
+	KeepsakeChangePage(screen, button.Direction)
+end
+function KeepsakeChangePage(screen, direction)
 	if screen.LastTableSelected ~= "Keepsake" then
 		return
 	end	
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(screen.CurrentIndex % 10))
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button))
-	if button.Direction == "Left" and screen.KeepsakeCurrentPage > screen.KeepsakeFirstPage and (screen.CurrentIndex % 10) == 0  then
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(screen.CurrentIndex % 10))
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button))
+	if direction == "Left" and screen.KeepsakeCurrentPage > screen.KeepsakeFirstPage then
 		screen.KeepsakeCurrentPage = screen.KeepsakeCurrentPage - 1
-	elseif button.Direction == "Right" and screen.KeepsakeCurrentPage < screen.KeepsakeLastPage and (screen.CurrentIndex % 10) == 9 then
+	elseif direction == "Right" and screen.KeepsakeCurrentPage < screen.KeepsakeLastPage then
 		screen.KeepsakeCurrentPage = screen.KeepsakeCurrentPage + 1
 	else
 		return
@@ -458,6 +456,18 @@ function KeepsakeManagerChangePageClick(screen, button)
 	if ScreenAnchors.AwardMenuScreen ~= nil then
 		Destroy({ Id = ScreenAnchors.AwardMenuScreen.HoverFrame })
 		ScreenAnchors.AwardMenuScreen.HoverFrame = nil
+	end
+	if screen.Components.KeepsakeLeftPageButton then
+		Destroy({ Ids = {screen.Components.KeepsakeLeftPageButton.Id}})
+	end
+	if screen.Components.KeepsakeRightPageButton then
+		Destroy({ Ids = {screen.Components.KeepsakeRightPageButton.Id}})
+	end
+	if screen.Components.KeepsakeLeftClickPageButton then
+		Destroy({ Ids = {screen.Components.KeepsakeLeftClickPageButton.Id}})
+	end
+	if screen.Components.KeepsakeRightClickPageButton then
+		Destroy({ Ids = {screen.Components.KeepsakeRightClickPageButton.Id}})
 	end
 	Destroy({ Ids = ids})
 	KeepsakeManagerLoadPage(screen)

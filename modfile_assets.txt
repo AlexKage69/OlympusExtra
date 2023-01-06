@@ -22,15 +22,26 @@ Replace "Packages/OEApollo.pkg_manifest"
 To "Win/Packages/720p/OEApollo.pkg_manifest"
 Replace "Packages/OEApollo.pkg_manifest"
 
-:: Audio
-To "Audio/FMOD/Build/Desktop/VO.h"
-Replace "Audio/VO.h"
-To "Audio/FMOD/Build/Desktop/VO.txt"
-Replace "Audio/VO.txt"
+To "Win/Packages/OEMinor.pkg"
+Replace "Packages/OEMinor.pkg"
+To "Win/Packages/720p/OEMinor.pkg"
+Replace "Packages/OEMinor.pkg"
+To "Win/Packages/OEMinor.pkg_manifest"
+Replace "Packages/OEMinor.pkg_manifest"
+To "Win/Packages/720p/OEMinor.pkg_manifest"
+Replace "Packages/OEMinor.pkg_manifest"
 
-To "Audio/FMOD/Build/Desktop/VO.fsb"
-Replace "Audio/VO.fsb" 
+To "Win/Maps/RoomPreRun.thing_bin"
+Replace "Packages/Maps/RoomPreRun.thing_bin"
+
+:: Audio
 
 :: Subtitles
 To "Subtitles/en/ZagreusScratch.csv"
 Replace "Audio/Subtitles/Subtitle.en.csv"
+
+:: Movies
+To "Movies/MainMenuIn.bik"
+Replace "Movies/MainMenuIn.bik"
+To "Movies/MainMenuLoop.bik"
+Replace "Movies/MainMenuLoop.bik"

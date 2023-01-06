@@ -1,10 +1,12 @@
 
-:: Import "CerberusAssist/CerberusAssist.lua"
+Import "CerberusAssist/CerberusAssist.lua"
 Import "patch.lua"
-:: Import "extender.lua"
+Import "extender.lua"
 
 To "Game/Weapons/PlayerWeapons.sjson"
 SJSON "CerberusAssist/Weapons/PlayerWeapons.sjson"
+To "Game/Animations/PortraitAnimations.sjson"
+SJSON "CerberusAssist/Animations/PortraitAnimations.sjson"
 To "Game/Projectiles/PlayerProjectiles.sjson"
 SJSON "CerberusAssist/Projectiles/PlayerProjectiles.sjson"
 To "Game/Text/en/HelpText.en.sjson"

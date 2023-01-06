@@ -1,66 +1,6 @@
 {
   Projectiles = [
       "_append"
-       {
-      Name = "NPC_Goodboy_01_Assist"
-      InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "FuryHellfire"
-      Type = "INSTANT"
-      DetonateSound = "null"
-      Fuse = 0.6
-      UseStartLocation = true
-      StartFx = "MegaeraAssist"
-      AffectsEnemies = true
-      AffectsFriends = false
-      Range = 1.0
-      DamageRadius = 350
-      DamageRadiusScaleY = 0.58
-      NumPenetrations = 9999
-      AffectsSelf = false
-      CheckUnitImpact = false
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      DamageLow = 3000
-      DamageHigh = 3000
-      ImpactVelocity = 0
-      CriticalFx = "CriticalHit"
-      HitVulnerabilityFx = "Backstab"
-      UseArmor = false
-      UseVulnerability = false
-      CanCrit = false
-      GroupName = "FX_Terrain"
-      ImmunityDuration = 1.0
-      Thing = 
-      {
-        Graphic = "FuryHellfirePreviewDecalDark"
-        RotateGeometry = false
-        Scale = 1.0
-        Color = 
-        {
-          Red = 1.0
-          Green = 1.0
-          Blue = 1.0
-          Opacity = 1.0
-        }
-        Points = [
-          {
-            X = 0
-            Y = 8
-          }
-          {
-            X = 32
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -8
-          }
-          {
-            X = -32
-            Y = 0
-          }]
-      }
-    }
     {
       Name = "ZagreusCerberusAssist"
       InheritFrom = "1_BasePlayerSmallProjectile"
@@ -68,6 +8,7 @@
       AffectsEnemies = true
       AffectsFriends = true
       ImpactFx = "EnemyProjectileImpact"
+      //StartFx = "Cerberus_HadesAssistJump_ToRun"
       ImpactSound = "null"
       CheckUnitImpact = true
       CheckObstacleImpact = true
@@ -84,7 +25,7 @@
       ImpactVelocity = 2000
       Thing = 
       {
-        Graphic = "Cerberus_HadesAssistJump_ToRun"
+        Graphic = "null"
         OffsetZ = 70
         AttachedAnim = "SlingShotShadow"
         Grip = 999999
@@ -206,7 +147,7 @@
       DetonateSound = "null"
       Fuse = 0.6
       UseStartLocation = true
-      //StartFx = "Cerberus_HadesAssistJump_ToRun"
+      //StartFx = "Cerberus_ZagreusAssistJump_ToRun"
       AffectsEnemies = true
       AffectsFriends = false
       Range = 1.0
