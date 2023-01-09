@@ -563,7 +563,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 				SniperGunWeaponDash = {
@@ -571,7 +571,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 				GunWeapon = {
@@ -579,7 +579,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 					Traits = {
 						GunLoadedGrenadeTrait = {
@@ -587,7 +587,7 @@ if ModUtil ~= nil then
 							PullForce = 1800,
 							Arc = 360,
 							Count = 3,
-							Distance = 50,
+							Distance = 75,
 						},
 					},
 				},
@@ -596,7 +596,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 					Traits = {
 						GunLoadedGrenadeTrait = {
@@ -604,7 +604,7 @@ if ModUtil ~= nil then
 							PullForce = 1800,
 							Arc = 360,
 							Count = 3,
-							Distance = 50,
+							Distance = 75,
 						},
 					},
 				},
@@ -613,7 +613,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 				BowWeaponDash = {
@@ -621,7 +621,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 			}
@@ -639,28 +639,28 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				SniperGunWeaponDash = {
 					Range = 400,
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				ShieldWeaponRush = {
 					Range = 400,
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				GunWeapon = {
 					Range = 700,
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						GunLoadedGrenadeTrait = {
 							Skip = true
@@ -672,7 +672,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						GunLoadedGrenadeTrait = {
 							Skip = true
@@ -684,14 +684,14 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				BowWeaponDash = {
 					Range = 700,
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 			}
 		},
@@ -739,7 +739,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SwordWeapon2 = {
@@ -747,7 +747,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SwordWeapon3 = {
@@ -755,7 +755,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SwordWeaponDash = {
@@ -763,7 +763,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SpearWeapon = {
@@ -803,7 +803,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				ShieldWeaponDash = {
@@ -811,7 +811,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				FistWeaponDash = {
@@ -1388,7 +1388,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						ShieldTwoShieldTrait = {
 							Skip = true
@@ -1400,7 +1400,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						ShieldTwoShieldTrait = {
 							Skip = true
@@ -1412,7 +1412,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						ShieldTwoShieldTrait = {
 							Skip = true
@@ -1456,7 +1456,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				BowSplitShot = {
 					Range = 700,
@@ -1493,7 +1493,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				FistWeaponSpecial = {
 					Range = 500,
@@ -3157,7 +3157,7 @@ if ModUtil ~= nil then
 							PullForce = 1800,
 							Arc = 360,
 							Count = 2,
-							Distance = 50,
+							Distance = 75,
 							RequireFirstHit = false,
 						},
 					},
@@ -3167,7 +3167,7 @@ if ModUtil ~= nil then
 					PullForce = 1800,
 					Arc = 360,
 					Count = 2,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = false,
 				},
 			}
