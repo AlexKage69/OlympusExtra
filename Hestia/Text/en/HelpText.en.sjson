@@ -372,6 +372,52 @@
 			Id = "ClearRequiredTraitsHestia"
 			DisplayName = "{!Icons.RunClearStar}Disciple of Hestia{!Icons.RunClearStar}"
 		}
+		// Forgiveness Quest
+		{
+			Id = "ForgivenessQuest"
+			DisplayName = "Mercy and forgiveness"
+			Description = "The son of the god of the dead shall someday be forgiven thanks to Hestia."
+		}
+		{
+			Id = "ZeusFreePass01"
+			DisplayName = "Zeus forgave you"
+		}
+		{
+			Id = "PoseidonFreePass01"
+			DisplayName = "Poseidon forgave you"
+		}
+		{
+			Id = "AresFreePass01"
+			DisplayName = "Ares forgave you"
+		}
+		{
+			Id = "DionysusFreePass01"
+			DisplayName = "Dionysus forgave you"
+		}
+		{
+			Id = "ApolloFreePass01"
+			DisplayName = "Apollo forgave you"
+		}
+		{
+			Id = "ArtemisFreePass01"
+			DisplayName = "Artemis forgave you"
+		}
+		{
+			Id = "AphroditeFreePass01"
+			DisplayName = "Aphrodite forgave you"
+		}
+		{
+			Id = "AthenaFreePass01"
+			DisplayName = "Athena forgave you"
+		}
+		{
+			Id = "HestiaFreePass02"
+			DisplayName = "Hestia forgave you"
+		}
+		{
+			Id = "HeraFreePass01"
+			DisplayName = "Hera forgave you"
+		}
 		// Fish Doubled
 		{
 		Id = "Fish_Tartarus_Common_01_Doubled"
