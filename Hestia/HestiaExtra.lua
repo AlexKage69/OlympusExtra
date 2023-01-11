@@ -5985,7 +5985,7 @@ if ModUtil ~= nil then
 			return false
 		end
 		local number = RandomFloat(0, 1)
-		return number <= 1.0 --0.05
+		return number <= 0.05
 	end
 
 	function StartDevotionTestPresentationFreePass(currentRoom, alternateLootData, alternateLootId)
