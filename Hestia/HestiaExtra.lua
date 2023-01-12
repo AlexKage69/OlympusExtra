@@ -2287,7 +2287,10 @@ if ModUtil ~= nil then
 			BaseValue = 1.0
 		},
 		AttractionDistance = {
-			BaseValue = 0.12
+			BaseValue = 0 -- 0.12
+		},
+		AttractionForce = {
+			BaseValue = 1.25 -- 1.0
 		},
 		ExtractValues =
 		{
@@ -5387,7 +5390,12 @@ if ModUtil ~= nil then
 			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then
 				local force = GetRequiredForceToEnemy(id, pullTarget, -1 * args.Distance)
 				if (type(force) ~= "number" or args.PullForce < force) then
-					force = args.PullForce
+					if HeroHasTrait("StrongAttractionTrait") then
+						force = args.PullForce * GetTotalHeroTraitValue("AttractionCount")
+					else
+						force = args.PullForce
+					end
+
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
 					ApplyForce({ Id = id, Speed = force,
@@ -5492,6 +5500,7 @@ if ModUtil ~= nil then
 			baseFunc(eventSource, args)
 		end
 	)
+	
 	function SpawnCentaurSoul()
 		local dropItemName = "RoomRewardEmptyHealthDrop"
 		GiveRandomConsumables({
