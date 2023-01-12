@@ -104,9 +104,51 @@ if ModUtil ~= nil then
 		},
 		IncompleteName = "Quest_UnknownCondition",
 	}
+	OlympusQuestData.ForgivenessQuest =
+	{
+		InheritFrom = { "DefaultQuestItem" },
+		RewardResourceName = "SuperGems",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements =
+		{
+			RequiredTextLines = { "HestiaFreePass01" },		
+		},
+		CompleteGameStateRequirements =
+		{
+			RequiredTextLines =
+			{
+				"ZeusFreePass01", 
+				"PoseidonFreePass01",
+				"AresFreePass01",
+				"DionysusFreePass01",
+				"AthenaFreePass01",
+				"ArtemisFreePass01",
+				"AphroditeFreePass01",
+				"ApolloFreePass01",
+				--"HeraFreePass01",
+				"HestiaFreePass02",
+			},
+			
+		},		
+		IncompleteName = "Quest_UnknownCondition",
+		CashedOutVoiceLines =
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.4,
+			Cooldowns =
+			{
+				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
+			},
+
+			-- That's all of them.
+			{ Cue = "/VO/ZagreusHome_3768" },
+		},
+	}
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
 	table.insert(OlympusQuestOrderData, 30, "HestiaUpgrades")
 	table.insert(OlympusQuestOrderData, 54, "HomeWarmthQuest")
+	table.insert(OlympusQuestOrderData, 55, "ForgivenessQuest")
 
 	--UnitSetData
 	local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
@@ -3390,7 +3432,7 @@ if ModUtil ~= nil then
 					HasTraitNameInRoom = "FishingRewardExtraTrait",
 					{ Cue = "/VO/Hestia_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Ah. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
+						Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
 					{ Cue = "/VO/Poseidon_0260",
 						Emote = "PortraitEmoteFiredUp",
 						PortraitExitWait = 0.35,
@@ -3427,7 +3469,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
-					{ Cue = "/VO/Ares_0240",
+					{ Cue = "/VO/Ares_0250",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/AresWrathBattle",
@@ -3446,7 +3488,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Hestia_0044",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
-					{ Cue = "/VO/Ares_0240",
+					{ Cue = "/VO/Ares_0253",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/AresWrathBattle",
@@ -3464,7 +3506,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hestia_0045",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Text = "I know your heart is warm, but you could have put a little more on in front of Zagreus, young Aphrodite." },
-				{ Cue = "/VO/Aphrodite_0230",
+				{ Cue = "/VO/Aphrodite_0240",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -3482,7 +3524,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hestia_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Text = "Young Artemis, nothing good is going to come out of being alone. Showing affection and care to others is the best way to accept yourself. Try it with Zagreus." },
-				{ Cue = "/VO/Artemis_0250",
+				{ Cue = "/VO/Artemis_0260",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/ArtemisBoonArrow",
@@ -3500,7 +3542,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Hestia_0047",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Taking my place as an Olympian isn't too hard, my child? I remember when I was there—I argued with Zeus all the time. I hope you are not as headstrong as I was." },
-					{ Cue = "/VO/Dionysus_0230",
+					{ Cue = "/VO/Dionysus_0240",
 						PortraitExitWait = 0.35,
 						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 						StartSound = "/SFX/DionysusBoonWineLaugh",
@@ -3517,7 +3559,7 @@ if ModUtil ~= nil then
 					{ Cue = "/VO/Hestia_0048",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 						Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your love, for once? If not for me, do it for Zagreus." },
-					{ Cue = "/VO/Demeter_0370",
+					{ Cue = "/VO/Demeter_0380",
 						PortraitExitWait = 0.35,
 						StartSound = "/SFX/DemeterBoonFrost",
 						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -3528,12 +3570,22 @@ if ModUtil ~= nil then
 
 		SuperPriorityPickupTextLineSets =
 		{
+			HestiaForgiveness03 =
+			{
+				Name = "HestiaForgiveness03",
+				PlayOnce = true,
+				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 7 },
+				{ Cue = "/VO/Hestia_0175",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Looks like most of my relative did their best to be kind when the time came for them to forgive. I hope one day we can be one big family, and that's thanks to you, young one. Thanks." },
+			},
 			HestiaAboutOlympianReunionQuest01 =
 			{
 				Name = "HestiaAboutOlympianReunionQuest01",
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-				RequiredFalseTextLines = { "HestiaAboutOlympianReunionQuest01b" },
+				RequiredFalseTextLines = { "HestiaAboutOlympianReunionQuest01b", "HestiaHomeWarmthQuest06" },
 				{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero",
@@ -3550,7 +3602,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaAboutOlympianReunionQuest01",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
+				RequiredTextLines = { "HestiaFirstPickUp", "PersephoneAboutOlympianReunionQuest01", "HestiaHomeWarmthQuest06" },
 				RequiredFalseTextLines = { "HestiaAboutOlympianReunionQuest01" },
 				{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
@@ -3617,7 +3669,7 @@ if ModUtil ~= nil then
 				RequiredAnyCosmetics = { "Cosmetic_MainHallFireplace", "Cosmetic_MainHallFireplaceA" },
 				{ Cue = "/VO/Hestia_0071",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The fireplace is perfect, young one. Now, perhaps you should break the silence with some music. Ask Orpheus to play something for your father." },
+					Text = "The fireplace is perfect, young one. Now, perhaps you should break the silence with some music. Ask Orpheus to play something fitting for the occasion for your father." },
 			},
 			HestiaHomeWarmthQuest05 =
 			{
@@ -3625,8 +3677,7 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HestiaHomeWarmthQuest04" },
-				RequiredCosmetics = { "Cosmetic_MusicPlayer" },
-				--RequiredMusicName = { "MusicMusicPlayerMusicAsphodel2MusicPlayer" },
+				RequiredCosmetics = { "Cosmetic_MusicPlayer", "/Music/MusicPlayer/MusicAsphodel2MusicPlayer" },
 				{ Cue = "/VO/Hestia_0072",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "{#DialogueItalicFormat}Hmm{#PreviousFormat}. Some music will do. And Orpheus plays it so well. Everything is almost perfect. Ask Thanatos for the final touch, if I correctly recall Hades's taste in home decor." },
@@ -3646,6 +3697,29 @@ if ModUtil ~= nil then
 
 		PriorityPickupTextLineSets =
 		{
+			--Badge hints
+			HestiaForgiveness01 =
+			{
+				Name = "HestiaForgiveness01",
+				PlayOnce = true,
+				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredFalseTextLines = { "HestiaForgiveness03" },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 1 },
+				{ Cue = "/VO/Hestia_0173",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Vanity and arrogance is something in our blood. Power can bring selfishness, but it can also ask for forgiveness. I am sure anyone is able to forgive you when the time will come." },
+			},
+			HestiaForgiveness02 =
+			{
+				Name = "HestiaForgiveness02",
+				PlayOnce = true,
+				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredFalseTextLines = { "HestiaForgiveness03" },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 3 },
+				{ Cue = "/VO/Hestia_0174",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Young one, I have heard of some of my relatives forgave the wrong you did to them. I am so proud of them! And of you, for showing them the way to forgiveness. Keep it up!" },
+			},
 			-- about other gods
 			HestiaAboutZeus01 =
 			{
@@ -3762,19 +3836,19 @@ if ModUtil ~= nil then
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Poseidon doesn't take his responsibilities seriously. When Zeus refused to bring Hades back, he didn't speak up. That's what family should be for. That's something I'll have a hard time forgiving." },
 			},
-			--[[HestiaAboutHera01 =
-				{
-					Name = "HestiaAboutHera01",
-					PlayOnce = true,
-					RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					RequiredTextLines = { "HestiaFirstPickUp", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HestiaFirstPickUp" },
-					RequiredFalseTextLines = { "HestiaWithHera01", "HeraWithHestia01" },
-					RequiredGodLoot = "HeraUpgrade",
-					{ Cue = "/VO/Hestia_0065",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-						Text = "I don't know if you've met her yet, but Sister Hera is younger than me. She can be strict, but she's still widely respected; she is queen of Olympus, after all. Maybe someday, she will show the same compassion that I am showing you now." },
-				},]]
+			HestiaAboutHera01 =
+			{
+				Name = "HestiaAboutHera01",
+				PlayOnce = true,
+				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HestiaFirstPickUp", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
+				RequiredFalseTextLines = { "HestiaWithHera01", "HeraWithHestia01" },
+				RequiredGodLoot = "HeraUpgrade",
+				{ Cue = "/VO/Hestia_0065",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I don't know if you've met her yet, but Sister Hera is younger than me. She can be strict, but she's still widely respected; she is queen of Olympus, after all. Maybe someday, she will show the same compassion that I am showing you now." },
+			},
 			HestiaAboutCooking01 =
 			{
 				Name = "HestiaAboutCooking01",
@@ -3872,7 +3946,7 @@ if ModUtil ~= nil then
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You finally got out last time, but fresh air doesn't seem to be your cup of tea. Maybe breathing some more will fix it for you. Try again, young one." },
 			},
-			HestiaRunCleared0 =
+			HestiaRunCleared02 =
 			{
 				Name = "HestiaRunCleared02",
 				PlayOnce = true,
@@ -3984,7 +4058,9 @@ if ModUtil ~= nil then
 			{
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredAnyRoomsLastRun = { "C_PreBoss01" },
+				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredAnyRoomsLastRun = { "C_PreBoss01", "C_Boss01" },
+				RequiredFalseRoomLastRun = { "C_PostBoss01" },
 				RequiresLastRunCleared = false,
 				{ Cue = "/VO/Hestia_0078",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -4587,10 +4663,20 @@ if ModUtil ~= nil then
 			{
 				PlayOnce = true,
 				Name = "HestiaFreePass01",
-				{ Cue = "/VO/Hestia_0098",
+				{ Cue = "/VO/Hestia_0168",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I believe you know me enough by now. I don't like conflict. I don't see the point of fighting you. Take this and be on your way, young one." },
+			},
+			HestiaFreePass02 =
+			{
+				PlayOnce = true,
+				Name = "HestiaFreePass02",
+				RequiredTextLines = { "HestiaFreePass01" },
+				{ Cue = "/VO/Hestia_0169",
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I have something to say. I talked to young Ares, and he explained the importance of conflict in life; how it forces us to improve each other. I'll let you have my gift this time, but you'd better pick me next time if you don't want to face the wrath of an old lady." },
 			},
 		},
 		RejectionVoiceLines =
@@ -4776,7 +4862,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hestia_0125",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oh! I was running short on that. However, I don't believe you should be the one to provide it to me, since it's so rare within your realm." },
+					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}! I was running short on that. However, I don't believe you should be the one to provide it to me, since it's so rare within your realm." },
 			},
 			HestiaGift05 =
 			{
@@ -4967,7 +5053,7 @@ if ModUtil ~= nil then
 		{
 			PlayOnce = true,
 			Name = "AthenaFreePass01",
-			{ Cue = "/VO/Athena_0262",
+			{ Cue = "/VO/Athena_0252",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 				Text = "You picked Lady Hestia, I see. A strategic meanuver. In turn, I shall strategically spare you the fight this time. May you use it in your favor." },
@@ -4978,7 +5064,7 @@ if ModUtil ~= nil then
 		{
 			PlayOnce = true,
 			Name = "AresFreePass01",
-			{ Cue = "/VO/Ares_0262",
+			{ Cue = "/VO/Ares_0252",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 				Text = "My kin... I do not appreciate this slight. However, since you picked the Lady Hestia, and she has personally beseeched me to find it in my heart to forgive such disrespect, I suppose I shall give you a pass this time. But mark my word, this will happen only once." },
@@ -4989,7 +5075,7 @@ if ModUtil ~= nil then
 		{
 			PlayOnce = true,
 			Name = "PoseidonFreePass01",
-			{ Cue = "/VO/Poseidon_0262",
+			{ Cue = "/VO/Poseidon_0242",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 				Text = "Oh? How coy of you, dearest. You don't have to pick other gods to play hard to get. It won't work on me. No contest." },
@@ -5011,7 +5097,7 @@ if ModUtil ~= nil then
 		{
 			PlayOnce = true,
 			Name = "DionysusFreePass01",
-			{ Cue = "/VO/Dionysus_0262",
+			{ Cue = "/VO/Dionysus_0242",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 				Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}, Zag, you should always pick me. Wait... You picked Hestia? Nevermind, she deserves this one after all she's done for me. I'll even pitch this in." },
@@ -5022,7 +5108,7 @@ if ModUtil ~= nil then
 		Name = "DemeterFreePass01",
 		RequiredAnyTextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AthenaFreePass01", "AresFreePass01",
 			"AphroditeFreePass01", "ArtemisFreePass01", "DionysusFreePass01", },
-		{ Cue = "/VO/Demeter_0362",
+		{ Cue = "/VO/Demeter_0382",
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 			Text = "Truly, you picked her, Zagreus? Well, I am not like the others. I won't be foul. I'll teach you whom to trust." },
@@ -5032,7 +5118,7 @@ if ModUtil ~= nil then
 		Name = "DemeterFreePass01",
 		Priority = true,
 		RequiredTextLines = { "DemeterFakeFreePass01" },
-		{ Cue = "/VO/Demeter_0363",
+		{ Cue = "/VO/Demeter_0383",
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 			Text = "I hope next time you have to make such a choice, it won't be her, Zagreus." },
@@ -5312,7 +5398,7 @@ if ModUtil ~= nil then
 		Locked = 7,
 		[1] = { Gift = "ForceHestiaBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaBackstory04" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaForgiveness03" } }
 	}
 	-- FUNCTIONS
 	-- Attraction functions
@@ -5899,7 +5985,7 @@ if ModUtil ~= nil then
 			return false
 		end
 		local number = RandomFloat(0, 1)
-		return number <= 1.0 --0.05
+		return number <= 0.05
 	end
 
 	function StartDevotionTestPresentationFreePass(currentRoom, alternateLootData, alternateLootId)

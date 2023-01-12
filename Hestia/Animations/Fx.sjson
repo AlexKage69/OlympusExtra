@@ -3852,7 +3852,8 @@
       Name = "HestiaLavaPuddleSmallest"
       InheritFrom = "HestiaLavaPuddle"
       GroupName = "FX_Terrain"
-      Sound = "/SFX/LavaPuddleAmbientLoop"
+      //Sound = "/SFX/LavaPuddleAmbientLoop"
+      //StopSoundOnFinishFade = 0.2
       Scale = 0.5
       //OffsetX = 5
       OffsetY = 25
@@ -3867,7 +3868,7 @@
       InheritFrom = "HestiaLavaPuddle"
       GroupName = "FX_Terrain"
       Sound = "/SFX/LavaPuddleAmbientLoop"
-      //StopSoundOnFinishFade = 0.2
+      StopSoundOnFinishFade = 0.2
       Scale = 0.9
     }
     {

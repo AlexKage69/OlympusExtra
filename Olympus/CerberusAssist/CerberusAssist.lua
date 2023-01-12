@@ -215,7 +215,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		},
 		Binks =
 		{
-			--"Enemy_MegaeraMultiFurySkyDive_Bink"
+			"Cerberus_HadesAssistJumpIn_Bink"
 		},
 	}
 	function GoodboyAttackSpawn( assistData )

@@ -21,6 +21,11 @@
 			Description = "The son of the god of the dead shall someday earn various Boons of Apollo."
 		}
 		{
+			Id = "CosmeticsMusic"
+			DisplayName = "Sheet Collector"
+			Description = "The son of the god of the dead shall someday earn all Sheet Music offered by the Court Music Stand"
+		}
+		{
 			Id = "ApolloUpgrade_FlavorText01"
 			DisplayName = "music is a gateway to the mind, listen up and see what you find."
 		}
@@ -356,6 +361,10 @@
 		{
 			Id = "ClearRequiredTraitsApollo"
 			DisplayName = "{!Icons.RunClearStar}Disciple of Apollo{!Icons.RunClearStar}"
+		}
+		{
+			Id = "MusicMusicPlayerMainThemeMusicPlayer"
+			DisplayName = "Met Tisiphonesssss"
 		}
 	]
 }
