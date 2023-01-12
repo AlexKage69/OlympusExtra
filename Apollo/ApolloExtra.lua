@@ -69,12 +69,41 @@ if ModUtil ~= nil then
 				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
 			},
 
-			-- Lord Apollo might write about what I did.
+			-- Music is the key
+			{ Cue = "/VO/ZagreusHome_3768" },
+		},
+	}
+	OlympusQuestData.CosmeticsMusic =
+	{
+		InheritFrom = { "DefaultQuestItem" },
+		RewardResourceName = "SuperGems",
+		RewardResourceAmount = 1,
+		UnlockGameStateRequirements =
+		{
+			RequiredCosmetics = { "Cosmetic_MusicPlayer", },
+		},
+		CompleteGameStateRequirements =
+		{
+			RequiredCosmetics = GameData.CosmeticsMusic,
+			
+		},		
+		CashedOutVoiceLines =
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.4,
+			Cooldowns =
+			{
+				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
+			},
+
+			-- That's all of them.
 			{ Cue = "/VO/ZagreusHome_3768" },
 		},
 	}
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
 	table.insert(OlympusQuestOrderData, 29, "ApolloUpgrades")
+	--table.insert(OlympusQuestOrderData, 53, "CosmeticsMusic")
 
 	--UnitSetData
 	local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
@@ -431,6 +460,37 @@ if ModUtil ~= nil then
 	table.insert(OlympusGameData.AllSynergyTraits, "MasterLobDionysusTrait")
 	table.insert(OlympusGameData.AllSynergyTraits, "BlindDurationTrait")
 	table.insert(OlympusGameData.AllSynergyTraits, "DamageReduceDistanceTrait")
+
+	OlympusGameData.CosmeticsMusic = {
+		"/Music/MusicPlayer/MainThemeMusicPlayer",
+		"/Music/MusicPlayer/MusicExploration4MusicPlayer",
+		"/Music/MusicPlayer/HadesThemeMusicPlayer",
+		"/Music/MusicPlayer/MusicHadesResetMusicPlayer",
+		"/Music/MusicPlayer/MusicHadesReset2MusicPlayer",
+		"/Music/MusicPlayer/MusicHadesReset3MusicPlayer",
+		"/Music/MusicPlayer/MusicTartarus4MusicPlayer",
+		"/Music/MusicPlayer/MusicAsphodel1MusicPlayer",
+		"/Music/MusicPlayer/MusicAsphodel2MusicPlayer",
+		"/Music/MusicPlayer/MusicAsphodel3MusicPlayer",
+		"/Music/MusicPlayer/MusicElysium1MusicPlayer",
+		"/Music/MusicPlayer/MusicElysium2MusicPlayer",
+		"/Music/MusicPlayer/MusicElysium3MusicPlayer",
+		"/Music/MusicPlayer/MusicStyx1MusicPlayer",
+		"/Music/MusicPlayer/ChaosThemeMusicPlayer",
+		"/Music/MusicPlayer/ThanatosThemeMusicPlayer",
+		"/Music/MusicPlayer/MusicExploration1MusicPlayer",
+		"/Music/MusicPlayer/MusicExploration2MusicPlayer",
+		"/Music/MusicPlayer/MusicExploration3MusicPlayer",
+		"/Music/MusicPlayer/CharonShopThemeMusicPlayer",
+		"/Music/MusicPlayer/CharonFightThemeMusicPlayer",
+		"/Music/MusicPlayer/EurydiceSong1MusicPlayer",
+		"/Music/MusicPlayer/OrpheusSong1MusicPlayer",
+		"/Music/MusicPlayer/OrpheusSong2MusicPlayer",
+		"/Music/MusicPlayer/BossFightMusicMusicPlayer",
+		"/Music/MusicPlayer/TheUnseenOnesMusicPlayer",
+		"/Music/MusicPlayer/PersephoneThemeMusicPlayer",
+		"/Music/MusicPlayer/EndThemeMusicPlayer",
+	}
 
 	OlympusGameData.ApolloBasicPickUpTextLines = {
 		"ApolloFirstPickUp",
@@ -3282,6 +3342,21 @@ if ModUtil ~= nil then
 
 		SuperPriorityPickupTextLineSets =
 		{
+			ApolloMusicSheets03 =
+			{
+				Name = "ApolloMusicSheets03",
+				PlayOnce = true,
+				RequiredMinAnyCosmetics =
+				{
+					Cosmetics = GameData.CosmeticsMusic,
+					Count = 16,
+				},
+				RequiredTextLines = { "ApolloGift06" },
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				{ Cue = "/VO/Apollo_0170",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Woah, Zagzag! Look at this music collection. You should be proud of it. Ask something good to play next time you are with Orpheus." },
+			},
 			ApolloAboutZagzag01 =
 			{
 				Name = "ApolloAboutZagzag01",
@@ -3323,6 +3398,39 @@ if ModUtil ~= nil then
 
 		PriorityPickupTextLineSets =
 		{
+			--Badge
+			ApolloMusicSheets01 =
+			{
+				Name = "ApolloMusicSheets01",
+				PlayOnce = true,
+				RequiredMinAnyCosmetics =
+				{
+					Cosmetics = GameData.CosmeticsMusic,
+					Count = 5,
+				},
+				RequiredTextLines = { "ApolloGift01" },
+				RequiredFalseTextLines = { "ApolloMusicSheets03" },
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				{ Cue = "/VO/Apollo_0170",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You found a way to retrieve all the finest music Orpheus has to offer. I would be curious hearing some of them one day. You should probably acquire them first." },
+			},		
+			ApolloMusicSheets02 =
+			{
+				Name = "ApolloMusicSheets02",
+				PlayOnce = true,
+				RequiredMinAnyCosmetics =
+				{
+					Cosmetics = GameData.CosmeticsMusic,
+					Count = 10,
+				},
+				RequiredTextLines = { "ApolloGift04", "ApolloMusicSheets01" },
+				RequiredFalseTextLines = { "ApolloMusicSheets03" },
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				{ Cue = "/VO/Apollo_0170",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Paper is not paper, once you wrote a song, your court musician Orpheus got that right. Maybe you should help him gaining some more." },
+			},		
 			-- about other gods
 			ApolloAboutZeus01 =
 			{
@@ -4984,7 +5092,7 @@ if ModUtil ~= nil then
 		Locked = 7,
 		[1] = { Gift = "ForceApolloBoonTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredAnyTextLines = { "ApolloBackstory04", "ApolloBackstory04b" } }
+		UnlockGameStateRequirements = { RequiredTextLines = { "ApolloMusicSheets03" } }
 	}
 	-- FUNCTIONS
 
@@ -5301,7 +5409,6 @@ if ModUtil ~= nil then
 			if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and
 				HeroHasTrait("ZeusChargedBoltTrait") and args.FirstInVolley then
 				if Contains({ "BlindLightningEffector" }, weaponName) then
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("FIre"))
 					FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId,
 						DestinationId = victim.ObjectId, FireFromTarget = true })
 				end

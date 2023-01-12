@@ -67,6 +67,59 @@ ModUtil.Path.Wrap( "EquipAssist",
         baseFunc( heroUnit, traitName, args)
     end
 )
+--[[ModUtil.Path.Wrap( "ShowQuestProgress", 
+	function(baseFunc, questData )
+        baseFunc(questData)
+        local requirements = questData.CompleteGameStateRequirements
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(questData.CompleteGameStateRequirements))
+        if requirements.RequiredCosmetics ~= nil then
+            --Basics
+            local index = 1
+            local baseOffsetY = 200
+            local spacing = questData.Spacing or 30
+
+            local maxEntriesPerColumn = questData.MaxEntriesPerColumn or 12
+            local currentColumn = 1
+            local columnWidth = 350
+
+            local completeColor = {223,223,223,255}
+            local incompleteColor = {94,94,94,255}
+            local fontSize = questData.FontSize or 20
+            local font = "AlegreyaSansSCRegular"
+
+            local textSymbolScale = 1.0
+            local width = 700
+            -- Specifics
+            for k, name in pairs( requirements.RequiredCosmetics ) do
+                local color = completeColor
+                local text = "QuestLog_QuestProgressComplete"
+                
+                if not GameState.Cosmetics[name] then
+                    color = incompleteColor
+                    text = questData.IncompleteName or "QuestLog_QuestProgressIncomplete"
+                end
+                CreateTextBox({ Id = ScreenAnchors.QuestLogScreen.Components.DescriptionBox.Id,
+                    Text = text,
+                    LuaKey = "TempTextData",
+                    LuaValue = { Requirement = name },
+                    OffsetX = ( currentColumn - 1 ) * columnWidth, OffsetY = baseOffsetY + ( ( index - ( maxEntriesPerColumn * (currentColumn - 1) ) ) * spacing),
+                    FontSize = fontSize,
+                    Color = color,
+                    Font = font,
+                    Width = width,
+                    ShadowBlur = 0, ShadowColor = {0,0,0,0}, ShadowOffset={0, 2},
+                    TextSymbolScale = textSymbolScale,
+                    Justification = "Left" })
+                index = index + 1
+                if( index > maxEntriesPerColumn * currentColumn ) then
+                    currentColumn = currentColumn + 1
+                end
+            end
+        end
+
+        
+    end
+)]]
 --[[ModUtil.Path.Wrap( "AddRerolls", 
 	function(baseFunc, amount, source, args )
         if type(amount) == "number" then

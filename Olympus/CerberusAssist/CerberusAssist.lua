@@ -215,7 +215,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		},
 		Binks =
 		{
-			--"Enemy_MegaeraMultiFurySkyDive_Bink"
+			"Cerberus_HadesAssistJumpIn_Bink"
 		},
 	}
 	function GoodboyAttackSpawn( assistData )
@@ -238,7 +238,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 			--Destroy({ Id = targetId })	
 			--wait(2, RoomThreadName)
 		--end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Finish")) 
+		-- ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Finish")) 
 	
 		--[[wait(1, RoomThreadName)
 		local consumableData = DeepCopyTable( assistData )

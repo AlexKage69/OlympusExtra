@@ -12,56 +12,7 @@
       ProjectileSpacing = 75
       ProjectileOffsetStart = "LEFT"
       ProjectileAngleOffset = 100
-      ProjectileAngleOffsetScaleY = 0.2
-    }
-    {
-      Name = "ZagreusCerberusAssistRockFall"
-      InheritFrom = "1_BaseEnemyMagicWeapon"
-      Type = "GUN"
-      Projectile = "ZagreusCerberusAssistBombard"
-      FullyAutomatic = true
-      AutoLock = true
-      IgnoreOwnerAttackDisabled = true
-    }    
-    {
-      Name = "ZagreusCerberusAssistMovement"
-      InheritFrom = "1_BasePlayerSlowWeapon"
-      Type = "GUN"
-      Projectile = "null"
-      ClipSize = 1
-      ChargeSound = "null"
-      RootOwnerWhileFiring = true
-      BlockMoveInput = true
-      CancelMovement = true
-      ChargeCancelMovement = true
-      FullyAutomatic = false
-      BarrelLength = 55
-      AutoLock = true
-      FireGraphic = "null"
-      LockTriggerForCharge = false
-      DisableOwnerForDuration = 0.0
-      NumProjectiles = 2
-      ProjectileAngleOffset = 180
-      ProjectileAngleStartOffset = 90
-      Spread = 30
-    }
-    {
-      Name = "ZagreusCerberusAssist"
-      InheritFrom = "1_BasePlayerSlowWeapon"
-      Type = "GUN"
-      FireSound = "/Leftovers/Menu Sounds/TextReveal3"
-      Projectile = "ZagreusCerberusAssist"
-      ChargeSound = "null"
-      RootOwnerWhileFiring = true
-      BlockMoveInput = true
-      CancelMovement = false
-      ChargeCancelMovement = true
-      FullyAutomatic = false
-      BarrelLength = 90
-      AutoLock = true
-      FireGraphic = "null"
-      LockTriggerForCharge = false
-      DisableOwnerForDuration = 0
+      ProjectileAngleOffsetScaleY = 0.7
     }
   ]
 }
