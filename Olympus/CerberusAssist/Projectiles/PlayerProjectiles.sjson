@@ -7,9 +7,9 @@
       DetonateGraphic = "RadialNovaRubbleSnowCerberusBombard"
       Type = "INSTANT"
       DetonateSound = "null"
-      Fuse = 0.6
+      Fuse = 0.4
       UseStartLocation = true
-      StartFx = "MegaeraAssist"
+      //StartFx = "ClawSwipeFlippedDash"
       AffectsEnemies = true
       AffectsFriends = false
       Range = 1.0

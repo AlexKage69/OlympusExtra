@@ -12,7 +12,7 @@
       ProjectileSpacing = 75
       ProjectileOffsetStart = "LEFT"
       ProjectileAngleOffset = 100
-      ProjectileAngleOffsetScaleY = 0.2
+      ProjectileAngleOffsetScaleY = 0.7
     }
   ]
 }

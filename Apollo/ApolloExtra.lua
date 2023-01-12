@@ -3349,7 +3349,7 @@ if ModUtil ~= nil then
 				RequiredMinAnyCosmetics =
 				{
 					Cosmetics = GameData.CosmeticsMusic,
-					Count = 26,
+					Count = 16,
 				},
 				RequiredTextLines = { "ApolloGift06" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
@@ -3422,7 +3422,7 @@ if ModUtil ~= nil then
 				RequiredMinAnyCosmetics =
 				{
 					Cosmetics = GameData.CosmeticsMusic,
-					Count = 12,
+					Count = 10,
 				},
 				RequiredTextLines = { "ApolloGift04", "ApolloMusicSheets01" },
 				RequiredFalseTextLines = { "ApolloMusicSheets03" },
