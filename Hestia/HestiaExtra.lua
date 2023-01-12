@@ -2220,8 +2220,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaSuper" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 50,
-				BaseMax = 50,
+				BaseMin = 150,
+				BaseMax = 150,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2240,8 +2240,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaMaxSuper" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 75,
-				BaseMax = 75,
+				BaseMin = 200,
+				BaseMax = 200,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
