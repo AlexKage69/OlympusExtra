@@ -273,7 +273,7 @@
 		{
 			Id = "MissChanceTrait"
 			DisplayName = "Purest light"
-			Description = "Your {$Keywords.ApolloBlind} effects have a greater miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}65%"
+			Description = "Your {$Keywords.ApolloBlind} effects have a greater miss chance. \n {!Icons.Bullet}{#PropertyFormat}Miss chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}60%"
 		}
 		{
 			Id = "ForceApolloBoonTrait"

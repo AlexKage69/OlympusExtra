@@ -1917,8 +1917,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "ApolloShoutWeapon",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 35,
-				BaseMax = 35,
+				BaseMin = 55,
+				BaseMax = 55,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -5185,7 +5185,7 @@ if ModUtil ~= nil then
 		function(baseFunc, victim, attacker, args)
 			local missRate = 0.4
 			if HeroHasTrait("MissChanceTrait") then
-				missRate = 0.65
+				missRate = 0.6
 			end
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and
