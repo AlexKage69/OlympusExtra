@@ -309,7 +309,7 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/Apollo_0152" },
 		-- I'll write you a song for this!
 		{ Cue = "/VO/Apollo_0153" },
-		-- Just... Thank you.
+		-- Just... thank you.
 		{ Cue = "/VO/Apollo_0154" },
 		-- Underworld, I want to hear you make some noise!
 		{ Cue = "/VO/Apollo_0155" },
