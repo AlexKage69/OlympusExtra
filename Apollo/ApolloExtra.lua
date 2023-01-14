@@ -3503,7 +3503,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "OrpheusMusicProgress02", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0070",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Are you learning some form of music, Zagzag? I sense hours of practice on the tips of your fingers. Someday, you might want to quit, but you must persist like you are doing now! It will be all worth in the end, trust me." },
+					Text = "Are you learning some form of music, Zagzag? I sense hours of practice on the tips of your fingers. Someday, you might want to quit, but you must persist like you're doing now! It will be all worth it in the end, trust me." },
 			},
 			ApolloAboutHarpQuest02 =
 			{
