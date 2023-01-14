@@ -3671,7 +3671,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "ApolloBackstory03" },
 				{ Cue = "/VO/Apollo_0166",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I was really rooting for you and your mother to reunite, Zagzag. Hopefully you won't ever be separated again." },
+					Text = "I was really rooting for you and your mother to reunite, Zagzag. Hopefully, you won't ever be separated again." },
 			},
 			ApolloBackstory04 =
 			{
@@ -4581,7 +4581,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0129" },
 				-- Do, re, mi! Your end I see!
 				{ Cue = "/VO/Apollo_0130" },
-				-- La, si, do! Your pain will grow!
+				-- La, ti, do! Your pain will grow!
 				{ Cue = "/VO/Apollo_0164" },
 				-- You're in treble now!
 				{ Cue = "/VO/Apollo_0131" },
