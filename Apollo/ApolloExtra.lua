@@ -5185,7 +5185,7 @@ if ModUtil ~= nil then
 		function(baseFunc, victim, attacker, args)
 			local missRate = 0.4
 			if HeroHasTrait("MissChanceTrait") then
-				missRate = 0.65
+				missRate = 0.6
 			end
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and
