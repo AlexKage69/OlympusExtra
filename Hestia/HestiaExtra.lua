@@ -5928,7 +5928,7 @@ if ModUtil ~= nil then
 			end
 			currentEncounter.ChosenGodName = chosenLootName
 			currentEncounter.SpurnedGodName = alternateLootData.Name
-
+			
 			-- wait until slot upgrade is done
 			DebugPrint({ Text = "Apply " .. alternateLootData.Name .. " to Enemies" })
 			AddEnemyUpgrade(alternateLootData.Name, CurrentRun)
@@ -5942,6 +5942,8 @@ if ModUtil ~= nil then
 				alternateLootData.Skip = true
 				CurrentRun.CurrentRoom.RewardSkip = true
 				currentEncounter.Completed = true
+				currentEncounter.StartTime = _worldTime
+				currentEncounter.ClearTime = 0
 				DisplayUnlockText({
 					--SupertitleText = "EasyModeUpgradedSupertitle",
 
