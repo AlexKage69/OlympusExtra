@@ -1917,8 +1917,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "ApolloShoutWeapon",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 55,
-				BaseMax = 55,
+				BaseMin = 35,
+				BaseMax = 35,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
