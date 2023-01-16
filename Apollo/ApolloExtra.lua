@@ -2267,7 +2267,7 @@ if ModUtil ~= nil then
 			}
 		},
 		ApolloHealDropChance = {
-			BaseValue = 0.04
+			BaseValue = 0.08
 		},
 		ExtractValues =
 		{
