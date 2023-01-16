@@ -5117,37 +5117,50 @@ if ModUtil ~= nil then
 
 	OnRamWeaponComplete { "ApolloSurgeWeapon",
 		function(triggerArgs)
-			FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId,
-				DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
+			--FireWeaponFromUnit({ Weapon = "ShoutEndApollo", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, AutoEquip = true, ClearAllFireRequests = true })
 			ToggleControl({ Names = { "Use", "Gift", "Reload", "Assist" }, Enabled = true })
+			SetPlayerInvulnerable( "ApolloShout" )
 			--SetPlayerUnphasing("ApolloBeam")
 			CurrentRun.Hero.SurgeActive = false
 			SetThingProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToForce", Value = false })
 			SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "ImmuneToStun", Value = false })
 			--StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "AresBladeSpinShadow_Shout" })
 			ExpireProjectiles({ Names = { "ApolloShoutProjectile" } })
+			thread( ApolloImmunityThread )
 		end
 	}
+	function ApolloImmunityThread()
+		wait( 0.5 )
+		SetPlayerVulnerable( "ApolloShout" )
+	end
 
 	function ApolloShoutAutoAimThread(args)
-		local enemy = nil
+		local enemyTarget = nil
 		while CurrentRun.Hero.SurgeActive do
 			wait(0.02, "RoomThread") --0.01
-			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
-				LookTowardsTarget(CurrentRun.Hero.ObjectId, enemy.ObjectId)
-			else
-				local id = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true,
+			if enemyTarget == nil then
+				local ids = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true,
 					IgnoreHomingIneligible = true, Distance = 2200 })
-				enemy = ActiveEnemies[id]
-				if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
-					LookTowardsTarget(CurrentRun.Hero.ObjectId, enemy.ObjectId)
+				for _, id in pairs(ids) do
+					local enemy = ActiveEnemies[id]
+					if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
+						enemyTarget = enemy
+						break
+					end
 				end
+			end
+			if enemyTarget ~= nil  then 
+				--SetGoalAngle({ Id = CurrentRun.Hero.ObjectId, Angle = GetAngleBetween({ Id = CurrentRun.Hero.ObjectId, DestinationId = enemyTarget }) })
+				LookTowardsTarget(CurrentRun.Hero.ObjectId, enemyTarget.ObjectId)
+			end
+			if enemyTarget ~= nil and (enemyTarget.IsDead or enemyTarget.IgnoreAutoLock) then
+				enemyTarget = nil
 			end
 		end
 	end
 
 	function LookTowardsTarget(heroId, targetId)
-		local betweenAngle = GetAngleBetween({ Id = heroId, DestinationId = targetId })
+		local betweenAngle = GetAngleTowards(heroId, targetId)
 		local heroAngle = GetAngle({ Id = heroId })
 		local diffAngle = betweenAngle - heroAngle
 		if diffAngle > 8 or diffAngle < -8 then
@@ -5160,6 +5173,23 @@ if ModUtil ~= nil then
 			heroAngle = betweenAngle
 		end
 		SetGoalAngle({ Id = heroId, Angle = heroAngle })
+	end
+	function GetAngleTowards(heroId, targetId)
+		local targetLocation = GetLocation({ Id = targetId })
+		local heroLocation = GetLocation({ Id = heroId })
+		local normalizeLocation = {
+			X = targetLocation.X - heroLocation.X,
+			Y = targetLocation.Y - heroLocation.Y,
+		}
+		local slope = (-normalizeLocation.Y)/normalizeLocation.X
+		local angle = math.deg(math.atan(slope))
+		if normalizeLocation.X < 0 then
+			angle = angle + 180
+		end
+		if angle < 0 then
+			angle = angle + 360
+		end
+		return angle
 	end
 
 	ModUtil.Path.Wrap("DamageEnemy",
