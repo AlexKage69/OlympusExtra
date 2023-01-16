@@ -2256,8 +2256,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaMaxSuper" },
 				ProjectileProperty = "DamageHigh",
-				BaseMin = 75,
-				BaseMax = 75,
+				BaseMin = 200,
+				BaseMax = 200,
 				DepthMult = DepthDamageMultiplier,
 				ExcludeLinked = true,
 				IdenticalMultiplier =
