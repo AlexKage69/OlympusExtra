@@ -2174,6 +2174,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
+		RequiredFalseTraits = { "RegeneratingCappedSuperTrait" },
 		CustomTrayText = "HestiaShoutTrait_Tray",
 		God = "Hestia",
 		Slot = "Shout",
