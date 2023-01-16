@@ -2510,20 +2510,20 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.4,
+				Multiplier = 1.33,
 			},
 			Epic =
 			{
-				Multiplier = 2,
+				Multiplier = 1.66,
 			},
 			Heroic =
 			{
-				Multiplier = 2.4,
+				Multiplier = 2.0,
 			}
 		},
 		CentaurAttackBonus =
 		{
-			BaseValue = 1.05,
+			BaseValue = 1.03,
 			SourceIsMultiplier = true,
 			DecimalPlaces = 2,
 			MinMultiplier = 0.1,
