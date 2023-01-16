@@ -8,7 +8,7 @@
       HomingAllegiance = "ENEMIES"
       AffectsEnemies = true
       MaxAdjustRate = 200
-      Speed = 300
+      Speed = 400
       Acceleration = 0
       Range = 1000.0
       DamageLow = 200

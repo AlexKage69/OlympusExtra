@@ -577,7 +577,7 @@ if ModUtil ~= nil then
 		{
 			ValidWeaponMultiplier =
 			{
-				BaseValue = 1.20,
+				BaseValue = 1.30,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
@@ -602,68 +602,68 @@ if ModUtil ~= nil then
 				From = "OnWeaponProjectileHitFunction",
 				SniperGunWeapon = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 				SniperGunWeaponDash = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 				GunWeapon = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 					Traits = {
 						GunLoadedGrenadeTrait = {
 							Range = 700,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 360,
 							Count = 3,
-							Distance = 50,
+							Distance = 75,
 						},
 					},
 				},
 				GunWeaponDash = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 					Traits = {
 						GunLoadedGrenadeTrait = {
 							Range = 700,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 360,
 							Count = 3,
-							Distance = 50,
+							Distance = 75,
 						},
 					},
 				},
 				BowWeapon = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 				BowWeaponDash = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = true,
 				},
 			}
@@ -678,31 +678,31 @@ if ModUtil ~= nil then
 				From = "OnWeaponProjectileDeathFunction",
 				SniperGunWeapon = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				SniperGunWeaponDash = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				ShieldWeaponRush = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				GunWeapon = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						GunLoadedGrenadeTrait = {
 							Skip = true
@@ -711,10 +711,10 @@ if ModUtil ~= nil then
 				},
 				GunWeaponDash = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						GunLoadedGrenadeTrait = {
 							Skip = true
@@ -723,17 +723,17 @@ if ModUtil ~= nil then
 				},
 				BowWeapon = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				BowWeaponDash = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 			}
 		},
@@ -746,21 +746,21 @@ if ModUtil ~= nil then
 				From = "OnWeaponChargeFunctions",
 				SpearWeaponSpin = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 250,
 				},
 				SpearWeaponSpin2 = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 250,
 				},
 				SpearWeaponSpin3 = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 250,
@@ -778,39 +778,39 @@ if ModUtil ~= nil then
 				From = "OnWeaponFiredFunctions",
 				SwordWeapon = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SwordWeapon2 = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SwordWeapon3 = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SwordWeaponDash = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				SpearWeapon = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 30,
 					Count = 3,
 					Distance = 500,
@@ -818,7 +818,7 @@ if ModUtil ~= nil then
 				},
 				SpearWeapon2 = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 30,
 					Count = 3,
 					Distance = 500,
@@ -826,7 +826,7 @@ if ModUtil ~= nil then
 				},
 				SpearWeapon3 = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 30,
 					Count = 3,
 					Distance = 500,
@@ -834,7 +834,7 @@ if ModUtil ~= nil then
 				},
 				SpearWeaponDash = {
 					Range = 1000,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 50,
 					Count = 3,
 					Distance = 300,
@@ -842,23 +842,23 @@ if ModUtil ~= nil then
 				},
 				ShieldWeapon = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				ShieldWeaponDash = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 90,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					RequireFacing = true,
 				},
 				FistWeaponDash = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 70,
 					Count = 3,
 					Distance = 80,
@@ -866,7 +866,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 400,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -876,7 +876,7 @@ if ModUtil ~= nil then
 				},
 				FistWeapon = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 60,
 					Count = 3,
 					Distance = 80,
@@ -884,7 +884,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 500,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -894,7 +894,7 @@ if ModUtil ~= nil then
 				},
 				FistWeapon2 = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 60,
 					Count = 3,
 					Distance = 80,
@@ -902,7 +902,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 700,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -912,7 +912,7 @@ if ModUtil ~= nil then
 				},
 				FistWeapon3 = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 15,
 					Count = 3,
 					Distance = 80,
@@ -920,7 +920,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 700,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -930,7 +930,7 @@ if ModUtil ~= nil then
 				},
 				FistWeapon4 = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 60,
 					Count = 3,
 					Distance = 80,
@@ -938,7 +938,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 700,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -948,7 +948,7 @@ if ModUtil ~= nil then
 				},
 				FistWeapon5 = {
 					Range = 400,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 60,
 					Count = 3,
 					Distance = 80,
@@ -956,7 +956,7 @@ if ModUtil ~= nil then
 					Traits = {
 						FistDetonateTrait = {
 							Range = 700,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 90,
 							Count = 3,
 							Distance = 80,
@@ -1401,7 +1401,7 @@ if ModUtil ~= nil then
 		{
 			ValidWeaponMultiplier =
 			{
-				BaseValue = 1.60,
+				BaseValue = 1.70,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
@@ -1427,10 +1427,10 @@ if ModUtil ~= nil then
 				From = "OnWeaponProjectileHitFunction",
 				ShieldThrow = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						ShieldTwoShieldTrait = {
 							Skip = true
@@ -1439,10 +1439,10 @@ if ModUtil ~= nil then
 				},
 				ChaosShieldThrow = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						ShieldTwoShieldTrait = {
 							Skip = true
@@ -1451,10 +1451,10 @@ if ModUtil ~= nil then
 				},
 				ShieldThrowDash = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 					Traits = {
 						ShieldTwoShieldTrait = {
 							Skip = true
@@ -1463,7 +1463,7 @@ if ModUtil ~= nil then
 				},
 				SpearWeaponThrow = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 150,
@@ -1471,7 +1471,7 @@ if ModUtil ~= nil then
 				},
 				SpearWeaponThrowReturn = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 150,
@@ -1479,7 +1479,7 @@ if ModUtil ~= nil then
 				},
 				BowSplitShot = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 80,
@@ -1495,28 +1495,28 @@ if ModUtil ~= nil then
 				From = "OnWeaponProjectileDeathFunction",
 				SpearWeaponThrow = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				BowSplitShot = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 80,
 				},
 				GunBombImmolation = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 150,
 				},
 				GunGrenadeToss = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
 					Distance = 150,
@@ -1532,14 +1532,14 @@ if ModUtil ~= nil then
 				From = "OnWeaponFiredFunctions",
 				SwordParry = {
 					Range = 700,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 3,
-					Distance = 100,
+					Distance = 125,
 				},
 				FistWeaponSpecial = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 70,
 					Count = 3,
 					Distance = 80,
@@ -1547,7 +1547,7 @@ if ModUtil ~= nil then
 				},
 				FistWeaponSpecialDash = {
 					Range = 500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 70,
 					Count = 3,
 					Distance = 80,
@@ -2174,6 +2174,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
+		RequiredFalseTraits = { "RegeneratingCappedSuperTrait" },
 		CustomTrayText = "HestiaShoutTrait_Tray",
 		God = "Hestia",
 		Slot = "Shout",
@@ -2220,8 +2221,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaSuper" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 50,
-				BaseMax = 50,
+				BaseMin = 150,
+				BaseMax = 150,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2240,8 +2241,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaMaxSuper" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 75,
-				BaseMax = 75,
+				BaseMin = 200,
+				BaseMax = 200,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -2256,8 +2257,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaMaxSuper" },
 				ProjectileProperty = "DamageHigh",
-				BaseMin = 75,
-				BaseMax = 75,
+				BaseMin = 200,
+				BaseMax = 200,
 				DepthMult = DepthDamageMultiplier,
 				ExcludeLinked = true,
 				IdenticalMultiplier =
@@ -2510,20 +2511,20 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.4,
+				Multiplier = 1.33,
 			},
 			Epic =
 			{
-				Multiplier = 2,
+				Multiplier = 1.66,
 			},
 			Heroic =
 			{
-				Multiplier = 2.4,
+				Multiplier = 2.0,
 			}
 		},
 		CentaurAttackBonus =
 		{
-			BaseValue = 1.05,
+			BaseValue = 1.03,
 			SourceIsMultiplier = true,
 			DecimalPlaces = 2,
 			MinMultiplier = 0.1,
@@ -3196,20 +3197,20 @@ if ModUtil ~= nil then
 					Traits = {
 						ZeusRangedTrait = {
 							Range = 1500,
-							PullForce = 1800,
+							PullForce = 2000,
 							Arc = 360,
 							Count = 2,
-							Distance = 50,
+							Distance = 75,
 							RequireFirstHit = false,
 						},
 					},
 				},
 				ChainLightning = {
 					Range = 1500,
-					PullForce = 1800,
+					PullForce = 2000,
 					Arc = 360,
 					Count = 2,
-					Distance = 50,
+					Distance = 75,
 					RequireFirstHit = false,
 				},
 			}
@@ -5473,7 +5474,11 @@ if ModUtil ~= nil then
 			if id ~= 0 and ActiveEnemies[id] ~= nil and not ActiveEnemies[id].IsDead then
 				local force = GetRequiredForceToEnemy(id, pullTarget, -1 * args.Distance)
 				if (type(force) ~= "number" or args.PullForce < force) then
-					force = args.PullForce
+					-- if HeroHasTrait("StrongAttractionTrait") then
+					-- 	force = args.PullForce * GetTotalHeroTraitValue("AttractionCount")
+					-- else
+						force = args.PullForce
+					-- end
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
 					ApplyForce({ Id = id, Speed = force,
@@ -5578,6 +5583,7 @@ if ModUtil ~= nil then
 			baseFunc(eventSource, args)
 		end
 	)
+	
 	function SpawnCentaurSoul()
 		local dropItemName = "RoomRewardEmptyHealthDrop"
 		GiveRandomConsumables({
@@ -5923,7 +5929,7 @@ if ModUtil ~= nil then
 			end
 			currentEncounter.ChosenGodName = chosenLootName
 			currentEncounter.SpurnedGodName = alternateLootData.Name
-
+			
 			-- wait until slot upgrade is done
 			DebugPrint({ Text = "Apply " .. alternateLootData.Name .. " to Enemies" })
 			AddEnemyUpgrade(alternateLootData.Name, CurrentRun)
@@ -5937,6 +5943,8 @@ if ModUtil ~= nil then
 				alternateLootData.Skip = true
 				CurrentRun.CurrentRoom.RewardSkip = true
 				currentEncounter.Completed = true
+				currentEncounter.StartTime = _worldTime
+				currentEncounter.ClearTime = 0
 				DisplayUnlockText({
 					--SupertitleText = "EasyModeUpgradedSupertitle",
 
