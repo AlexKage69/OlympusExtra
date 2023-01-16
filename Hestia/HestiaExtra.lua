@@ -6116,36 +6116,25 @@ if ModUtil ~= nil then
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
 
 	-- For testing purposes
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)		
-            
-			if (not CanOpenCodex()) and IsSuperValid() then
-				BuildSuperMeter(CurrentRun, 50)
-			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			baseFunc()
-		end
-	)
+	-- ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	-- 	function(baseFunc)		
+    --         HestiaShout()
+	-- 		-- if (not CanOpenCodex()) and IsSuperValid() then
+	-- 		-- 	BuildSuperMeter(CurrentRun, 50)
+	-- 		-- end
+	-- 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+	-- 		-- baseFunc()
+	-- 	end
+	-- )
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 
 	end )]]
 
-	--[[OnControlPressed{ "Codex",
-		function( triggerArgs )
-			local dropItemName = "RoomRewardEmptyHealthDrop"
-			GiveRandomConsumables({
-				Delay = 0.5,
-				NotRequiredPickup = true,
-				LootOptions =
-				{
-					{
-						Name = dropItemName,
-						Chance = 1,
-					}
-				}
-			})
-		end 
-	}]] --
+	-- OnControlPressed{ "Codex",
+	-- 	function( triggerArgs )
+	-- 		HestiaShout()
+	-- 	end 
+	-- }
 
 end
