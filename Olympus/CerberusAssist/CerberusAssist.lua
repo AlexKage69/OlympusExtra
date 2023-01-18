@@ -87,7 +87,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 			CerberusWeapon = "NPC_Goodboy_01_Assist",
 			GameStateRequirements = {
 				CurrentRoomValueFalse = "BlockHadesAssistTraits",
-				RequiredFalseRooms = { "D_Boss01" },
+				--RequiredFalseRooms = { "D_Boss01" },
 			},
 			AssistPresentationPortrait = "Portrait_Cerberus_Default_01",
 			AssistPresentationPortraitOffsetY = 55,
@@ -147,7 +147,7 @@ OlympusTraitData.GoodBoyAssistTrait =
     local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)    
     OlympusGiftData.NPC_Cerberus_01[7] = { Gift = "GoodBoyAssistTrait", RequiredResource = "SuperGiftPoints" }
     local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)    
-	table.insert(OlympusGiftOrdering, 34,"GoodBoyAssistTrait")
+	table.insert(OlympusGiftOrdering, "GoodBoyAssistTrait")
 
     local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
