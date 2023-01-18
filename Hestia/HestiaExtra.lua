@@ -1928,6 +1928,19 @@ if ModUtil ~= nil then
 		CustomTrayText = "HestiaRangedTrait_Tray",
 		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		PreEquipWeapons = { "HestiaLavaProjectile" },
+		TraitDependencyTextOverrides =
+		{
+			ShieldLoadAmmoTrait =
+			{
+				Name = "ShieldLoadAmmo_HestiaRangedTrait",
+				CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
+			},
+			BowLoadAmmoTrait =
+			{
+				Name = "BowLoadAmmo_HestiaRangedTrait",
+				CustomTrayText = "BowLoadAmmo_HestiaRangedTrait_Tray",
+			},
+		},
 		RarityLevels =
 		{
 			Common =
@@ -2047,128 +2060,12 @@ if ModUtil ~= nil then
 			}
 		}
 	}
-	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait =
+	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
 	{
-		InheritFrom = { "ShopTier1Trait" },
-		God = "Hestia",
-		Slot = "Ranged",
-		Icon = "Boon_Hestia_05",
+		InheritFrom = {"HestiaRangedTrait"},
+		Skip = true,
 		CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
-        RequiredTrait = "ShieldLoadAmmoTrait",
-		PreEquipWeapons = { "HestiaLavaProjectile" },
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.000,
-			},
-			Rare =
-			{
-				Multiplier = 1.145,
-			},
-			Epic =
-			{
-				Multiplier = 1.290,
-			},
-			Heroic =
-			{
-				Multiplier = 1.435,
-			}
-		},
-		PropertyChanges =
-		{
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "Projectile",
-				ChangeValue = "HestiaProjectile",
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "FireFx",
-				ChangeValue = "ProjectileFireRing-Hestia",
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "HestiaProjectile",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 60,
-				BaseMax = 60,
-				DepthMult = DepthDamageMultiplier,
-				DeriveSource = "DamageBurst",
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageBurst"
-			},
-			{
-				WeaponNames = { "HestiaLavaProjectile" },
-				ProjectileProperty = "DamageLow",
-				BaseMin = 16,
-				BaseMax = 16,
-				DeriveSource = "DamageField",
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamageLava",
-				}
-			},
-			{
-				WeaponNames = { "HestiaLavaProjectile" },
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageField"
-			},
-			{
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                WeaponProperty = "FireOnRelease",
-                ChangeValue = false,
-                ChangeType = "Absolute",
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "Type",
-                ChangeValue = "INSTANT",
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "DamageRadius",
-                ChangeValue = 330
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "IgnoreCoverageAngles",
-                ChangeValue = false
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "DetonateGraphic",
-                ChangeValue = "RadialNovaSwordParry-Hestia"
-            },
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "BaseRangedDamage",
-				External = true,
-				BaseType = "Projectile",
-				BaseName = "RangedWeapon",
-				BaseProperty = "DamageLow",
-			}
-		}
+        RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
 	}]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
