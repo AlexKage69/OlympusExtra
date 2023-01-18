@@ -3575,7 +3575,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaForgiveness03",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift06" },
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 7 },
 				{ Cue = "/VO/Hestia_0175",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -3703,7 +3703,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaForgiveness01",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift01" },
 				RequiredFalseTextLines = { "HestiaForgiveness03" },
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 1 },
 				{ Cue = "/VO/Hestia_0173",
@@ -3714,7 +3714,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaForgiveness02",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "HestiaForgiveness01", "HestiaGift03" },
 				RequiredFalseTextLines = { "HestiaForgiveness03" },
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 3 },
 				{ Cue = "/VO/Hestia_0174",
@@ -6116,7 +6116,7 @@ if ModUtil ~= nil then
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
 
 	-- For testing purposes
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
             
 			if (not CanOpenCodex()) and IsSuperValid() then
@@ -6125,7 +6125,7 @@ if ModUtil ~= nil then
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			baseFunc()
 		end
-	)
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 

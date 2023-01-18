@@ -3424,7 +3424,7 @@ if ModUtil ~= nil then
 					Cosmetics = GameData.CosmeticsMusic,
 					Count = 10,
 				},
-				RequiredTextLines = { "ApolloGift04", "ApolloMusicSheets01" },
+				RequiredTextLines = { "ApolloGift03", "ApolloMusicSheets01" },
 				RequiredFalseTextLines = { "ApolloMusicSheets03" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0170",
