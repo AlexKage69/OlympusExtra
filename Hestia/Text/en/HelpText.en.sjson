@@ -4,7 +4,7 @@
 		{
 			Id = "NPC_Hestia_01"
 			DisplayName = "Hestia"
-			Description = "Goddess of Hearth"
+			Description = "Goddess of the Hearth"
 		}		
 		{
 			Id = "HestiaFirstPickUp"
@@ -13,11 +13,11 @@
 		{
 			Id = "HestiaUpgrade"
 			DisplayName = "Hestia"
-			Description = "Goddess of Hearth"
+			Description = "Goddess of the Hearth"
 		}
 		{
 			Id = "HestiaUpgrades"
-			DisplayName = "Goddess of Hearth"
+			DisplayName = "Goddess of the Hearth"
 			Description = "The son of the god of the dead shall someday earn various Boons of Hestia."
 		}
 		{
