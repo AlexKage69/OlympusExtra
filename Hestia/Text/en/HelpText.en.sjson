@@ -227,7 +227,7 @@
 		{
 			Id = "LastStandDamageReduceTrait_Initial"
 			InheritFrom = "LastStandDamageReduceTrait"
-			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that {$Keywords.Encounter}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that {$Keywords.EncounterAlt}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "LavaDeathTrait"
