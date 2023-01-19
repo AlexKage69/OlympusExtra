@@ -222,7 +222,7 @@
 		{
 			Id = "LastStandDamageReduceTrait"
 			DisplayName = "Temperance"
-			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that {$Keywords.Encounter}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "After using {$Keywords.ExtraChanceReplenish}, take less damage that {$Keywords.EncounterAlt}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "LastStandDamageReduceTrait_Initial"
@@ -242,22 +242,22 @@
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "Your {$Keywords.Attack} and {$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small}: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
+			Description = "Your {$Keywords.Attack}+{$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small} Item: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
 		} 
 		{
 			Id = "HealthDamageTrait_Tray"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Your {$Keywords.Attack} and {$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipTotalDamage:P}"
+			Description = "Your {$Keywords.Attack}+{$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipTotalDamage:P}"
 		}
 		{
 			Id = "HealthDamageTrait_Initial"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Your {$Keywords.Attack} and {$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small}: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
+			Description = "Your {$Keywords.Attack}+{$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small} Item: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
 		}		
 		{
 			Id = "HealthDamageSoulDrop"
 			InheritFrom = "HealthDamageTrait_Initial"
-			Description = "Your {$Keywords.Attack} and {$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small}: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
+			Description = "Your {$Keywords.Attack}+{$Keywords.Special} gain bonus damage when you pick up {!Icons.HealthUp_Small} items. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small} Item: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
 		}
 		{
 			Id = "CentaurHeartBoostedText"
@@ -328,7 +328,7 @@
 		{
 			Id = "ExplosionTrait"
 			DisplayName = "Striking Sparks"
-			Description = "Your {$Keywords.Crit} effects create an explosion, dealing damage in a small area. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Crit} effects create an explosion in a small area. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "ChillFireTrait"
@@ -338,7 +338,7 @@
 		{
 			Id = "FullHealBossTrait"
 			DisplayName = "Quick Drink"
-			Description = "Defeating {$Keywords.BossPlural} and {$Keywords.MiniBoss} restores {!Icons.Health_Small}.\n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.BossPlural}: \Column 380 {#UpgradeFormat}100% \n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.MiniBoss}: \Column 380 {#UpgradeFormat}50%"
+			Description = "Defeating {$Keywords.BossPlural} and {$Keywords.MiniBoss} restores {!Icons.Health_Small}.\n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.BossPlural}: \Column 380 {#UpgradeFormat}100%{!Icons.Health_Small_Tooltip} \n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.MiniBoss}: \Column 380 {#UpgradeFormat}50%{!Icons.Health_Small_Tooltip}"
 		}
 		{
 			Id = "FullHealBossText",
@@ -347,7 +347,7 @@
 		{
 			Id = "FoesNumberDamageTrait"
 			DisplayName = "Raging Flames"
-			Description = "When facing at least {$TooltipData.EnemyThreshold} foes, your {$Keywords.Attack} and {$Keywords.Special} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "When facing at least {$TooltipData.EnemyThreshold} foes, your {$Keywords.Attack}+{$Keywords.Special} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}	
 		{
 			Id = "PullZeusCastTrait"
