@@ -2048,6 +2048,31 @@ if ModUtil ~= nil then
 				ProjectileProperty = "DetonateGraphic",
 				ChangeValue = "RadialNovaSwordParry-Hestia"
 			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+				TraitName = "LavaLongerTrait",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleLargest",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
+			},
 		},
 		ExtractValues =
 		{
@@ -2296,6 +2321,31 @@ if ModUtil ~= nil then
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
 			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaLongerTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
+			},
 		},
 	}
 	OlympusTraitData.HealthDefianceTrait =
@@ -2506,6 +2556,31 @@ if ModUtil ~= nil then
 				WeaponName = "HestiaOnDeath",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaLongerTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
 			},
 		},
 	}
@@ -3082,7 +3157,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Zeus_01",
-		RequiredFalseTrait = "PullZeusCastTrait",
+		RequiredFalseTraits = { "PullZeusCastTrait", "ShieldLoadAmmoTrait" },
 		OnWeaponHitFunctions = {
 			ValidWeapons = { "RangedWeapon" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
@@ -3247,14 +3322,14 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "HestiaDashTrait" },
-					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait", },
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait" },
 				},
 			},
 			PullZeusCastTrait = 
 			{
 				OneFromEachSet =
 				{
-					{ "ZeusRangedTrait" },
+					{ "ZeusWeaponTrait", "ZeusRangedTrait" },
 					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
 				},
 			},
@@ -5165,7 +5240,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+			{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait" },
 			{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait",
 				"ShieldLoadAmmo_AthenaRangedTrait" }
 		}
@@ -5201,7 +5276,7 @@ if ModUtil ~= nil then
 		OneFromEachSet =
 		{
 			{ "HestiaDashTrait" },
-			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait" },
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait" },
 		},
 	}
 	
@@ -5209,7 +5284,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ZeusRangedTrait" },
+			{ "ZeusWeaponTrait", "ZeusRangedTrait" },
 			{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
 		},
 	}
@@ -5219,7 +5294,7 @@ if ModUtil ~= nil then
 		OneFromEachSet =
 		{
 			{ "LastStandDamageReduceTrait", "HealthDefianceTrait", "HealthDamageTrait" },
-			{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait" },
+			{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait", "FishingTrait" },
 		}
 	}
 	-- Other gods modification
