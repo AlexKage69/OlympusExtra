@@ -100,7 +100,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 			{
 				WeaponName = "NPC_Goodboy_01_Assist",
 				ProjectileProperty = "DamageLow",
-				ChangeValue = 1500,
+				ChangeValue = 2000,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{

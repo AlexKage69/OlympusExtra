@@ -3205,7 +3205,7 @@ if ModUtil ~= nil then
 			{
 				OneFromEachSet =
 				{
-					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+					{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait" },
 					{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait",
 						"ShieldLoadAmmo_AthenaRangedTrait" }
 				},
@@ -3231,7 +3231,7 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "LastStandDamageReduceTrait", "HealthDefianceTrait", "HealthDamageTrait" },
-					{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait" },
+					{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait", "FishingTrait" },
 				},
 			},
 			ShoutMoreHealTrait =
@@ -3247,7 +3247,7 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "HestiaDashTrait" },
-					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait" },
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait", },
 				},
 			},
 			PullZeusCastTrait = 
@@ -5890,7 +5890,7 @@ if ModUtil ~= nil then
 			return false
 		end
 		local number = RandomFloat(0, 1)
-		return number <= 0.05
+		return number <= 0.20
 	end
 
 	function StartDevotionTestPresentationFreePass(currentRoom, alternateLootData, alternateLootId)
