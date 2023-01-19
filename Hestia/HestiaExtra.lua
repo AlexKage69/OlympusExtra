@@ -75,7 +75,6 @@ if ModUtil ~= nil then
 	OlympusQuestData.HomeWarmthQuest = {
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "SuperGems",
-		Spacing = 60,
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements =
 		{
