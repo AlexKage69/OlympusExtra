@@ -6028,21 +6028,10 @@ if ModUtil ~= nil then
 		return base( triggerArgs ) 
 	end )]]
 
-	--[[OnControlPressed{ "Codex",
-		function( triggerArgs )
-			local dropItemName = "RoomRewardEmptyHealthDrop"
-			GiveRandomConsumables({
-				Delay = 0.5,
-				NotRequiredPickup = true,
-				LootOptions =
-				{
-					{
-						Name = dropItemName,
-						Chance = 1,
-					}
-				}
-			})
-		end 
-	}]] --
+	-- OnControlPressed{ "Codex",
+	-- 	function( triggerArgs )
+	-- 		HestiaShout()
+	-- 	end 
+	-- }
 
 end
