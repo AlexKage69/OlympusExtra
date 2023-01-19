@@ -1,6 +1,6 @@
 -: Mod Name: Goddess Codex
     Author - AlexKage
-    Author - Phypoh
+    Author - physiX
 :-
 
 :: Animations
