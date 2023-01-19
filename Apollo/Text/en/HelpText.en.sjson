@@ -215,17 +215,17 @@
 		{
 			Id = "RerollBoonTrait"
 			DisplayName = "Future Sight"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {#BoldFormatGraft} {$Keywords.GodBoon}{#PreviousFormat}."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}."
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
 			InheritFrom = "RerollBoonTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
 		}	
 		{
 			Id = "RerollBoonDrop"
 			InheritFrom = "RerollBoonTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
 		}	
 		{
 			Id = "ApolloRetaliateTrait"
@@ -263,12 +263,12 @@
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Panacea's Elixir"
-			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} items when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
 			InheritFrom = "ApolloHealTrait"
-			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} items when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "MissChanceTrait"
@@ -308,7 +308,7 @@
 		{
 			Id = "SeaChanteyTrait"
 			DisplayName = "Sea Shanty"
-			Description = "When fighting {$Keywords.BossPlural}, you deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage, but take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage."
+			Description = "When fighting {$Keywords.BossPlural}, you deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat}damage, but take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat}damage."
 		}	
 		{
 			Id = "SeaChanteyText",
