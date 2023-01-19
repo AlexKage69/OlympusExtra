@@ -2796,7 +2796,7 @@
       CreateAnimation = null
     }
     {
-      Name = "HadesAmmoPushRingEdgeFx"
+      Name = "HestiaAmmoPushRingEdgeFx"
       Type = "Constant"
       FilePath = "Particles\particle_snowDust_01"
       NumFrames = 1
@@ -2827,6 +2827,26 @@
       ScaleFromOwner = "Ignore"
       GroupName = "Standing"
       SortMode = "FromParent"
+    }
+    {
+      Name = "HestiaCastNovaHit"
+      FilePath = "Fx\ShadeNova\ShadeNova"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      EndFrame = 28
+      NumFrames = 28
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      Ambient = 0.0
+      Hue = 0.3
+      Scale = 1
+      ScaleY = 1.0
+      PlaySpeed = 80
+      OffsetZ = 30
+      Red = 1.0
+      Green = 0
+      Blue = 0.81
     }
     /* Hestia - Duos */
     /* Theseus - Wrath */
