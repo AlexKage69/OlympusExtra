@@ -43,7 +43,7 @@
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest05"
-			DisplayName = "Commission Some Deathlike Flames from the House Contractor"
+			DisplayName = "Commission Deathlike Flames from the House Contractor"
 		}		
 		{
 			Id = "HestiaHomeWarmthQuest06"
