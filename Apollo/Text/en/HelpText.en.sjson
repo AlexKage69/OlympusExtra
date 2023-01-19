@@ -40,7 +40,7 @@
 		{
       		Id = "ApolloBlind"
 			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have at least {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
       		Id = "DamageResist"
@@ -50,7 +50,7 @@
 		{
       		Id = "Dazzled"
 			DisplayName = "Dazzled"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have at least {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
 			Id = "ApolloWeaponTrait"
@@ -110,17 +110,17 @@
 		{
 			Id = "ApolloShoutTrait"
 			DisplayName = "Apollo's Aid"
-			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
 		}		
 		{
 			Id = "ApolloShoutTrait_Tray"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
 		}	
 		{
 			Id = "ApolloShoutTrait_Initial"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Beam Damage"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.NewTotal1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Beam Damage"
 		} 
 		{
 			Id = "ApolloRangedTrait"
