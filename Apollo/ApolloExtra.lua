@@ -338,7 +338,7 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/Apollo_0152" },
 		-- I'll write you a song for this!
 		{ Cue = "/VO/Apollo_0153" },
-		-- Just... Thank you.
+		-- Just... thank you.
 		{ Cue = "/VO/Apollo_0154" },
 		-- Underworld, I want to hear you make some noise!
 		{ Cue = "/VO/Apollo_0155" },
@@ -3208,14 +3208,14 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "MasterBoltTrait",
 				{ Cue = "/VO/Apollo_0041",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Seeing you struggle with your father made me realise something, Zagzag. Fathers and sons work much better together. My father and I put together something that might help you." },
+					Text = "Seeing you struggle with your father has made me realise something, Zagzag. Fathers and sons work much better together. My father and I have put together something that might help you." },
 				{ Cue = "/VO/Zeus_0250",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/ZeusBoonThunder",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
-					Text = "That's right, Nephew! I feel generous and I know you feel grateful. Let's show him our power, young son." },
+					Text = "That's right, Nephew! I feel generous, and I know you feel grateful. Let's show him our power, young son." },
 			},
 			ApolloWithPoseidon01 =
 			{
@@ -3225,7 +3225,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "SeaChanteyTrait",
 				{ Cue = "/VO/Apollo_0042",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "This is far from the first time Uncle Poseidon and I have composed together. We decided to create a little Sea Chantey to keep your spirit up. This is for you!" },
+					Text = "This is far from the first time Uncle Poseidon and I have composed together. We decided to create a little sea shanty to keep your spirits up. This is for you!" },
 				{ Cue = "/VO/Poseidon_0250",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -3249,7 +3249,7 @@ if ModUtil ~= nil then
 					StartSound = "/SFX/AthenaBoonHolyShield",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Athena_01", Portrait = "Portrait_Athena_Default_01",
-					Text = "I have much responsibility, Step-Brother! I don't have time to ... start a band... Let's help our Cousin instead." },
+					Text = "I have much responsibility, Step-Brother! I don't have time to... start a band.... Let's help our cousin instead." },
 			},
 			ApolloWithAres01 =
 			{
@@ -3259,14 +3259,14 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "WarSongTrait",
 				{ Cue = "/VO/Apollo_0044",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Well, if it isn't my dear Brother! You know what I was thinking? You should write a song or maybe a poem. It would free your mind from all this needless violence." },
+					Text = "Well, if it isn't my dear brother! You know what I was thinking? You should write a song or maybe a poem. It would free your mind from all this needless violence." },
 				{ Cue = "/VO/Ares_0240",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/AresWrathBattle",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-					Text = "The only form of art I recognize is war. {#DialogueItalicFormat} Hm {#PreviousFormat} ... I have never seen anybody killing with words. Zagreus, take this instead." },
+					Text = "The only form of art I recognize is war. {#DialogueItalicFormat}Hm{#PreviousFormat}... I have never seen anyone killed with words. Zagreus, take this instead." },
 			},
 			ApolloWithAphrodite01 =
 			{
@@ -3283,7 +3283,7 @@ if ModUtil ~= nil then
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
-					Text = "And... This is for you, little godling! Oh my me! I can't wait until we are all here together!"
+					Text = "And this is for you, little godling! Oh my, I simply cannot wait until we are all here together!"
 				},
 			},
 			ApolloWithArtemis01 =
@@ -3295,14 +3295,14 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloGift01", "ArtemisGift01" },
 				{ Cue = "/VO/Apollo_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I've brought my sister with me this time, Zagzag! Our combine symphony will shake the underworld to its core. Go team Zagzag!" },
+					Text = "I've brought my sister with me this time, Zagzag! Our combined symphony will shake the underworld to its core. Go team Zagzag!" },
 				{ Cue = "/VO/Artemis_0250",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/ArtemisBoonArrow",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Artemis_01", Portrait = "Portrait_Artemis_Default_01",
-					Text = "Are you seriously calling him that? I am sorry Zagreus. I hope this can make him a little more to bearable..."
+					Text = "Are you seriously calling him that? I am so sorry Zagreus. I hope this can make him a little more bearable..."
 				},
 			},
 			ApolloWithDionysus01 =
@@ -3313,14 +3313,14 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "MasterLobApolloTrait",
 				{ Cue = "/VO/Apollo_0047",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}, this wine is exquisite, Brother! It goes excellently with the cheese. To taste them both is like a glorious symphony!" },
+					Text = "{#DialogueItalicFormat}Whoa{#PreviousFormat}, this wine is exquisite, Brother! It goes excellently with the cheese. To taste them both is like a glorious symphony!" },
 				{ Cue = "/VO/Dionysus_0230",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/DionysusBoonWineLaugh",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
-					Text = "{#DialogueItalicFormat} Haha {#PreviousFormat}, that's the trick, the combination of two great things together makes it all better. Like us. Let's combine our blessing to help, um, how do you call him again, Zagzag?" },
+					Text = "{#DialogueItalicFormat}Haha{#PreviousFormat}, that's the trick, the combination of two great things together makes it all better. Like us. Let's combine our blessing to help, um, what do you call him again? Zagzag?" },
 			},
 			ApolloWithDemeter01 =
 			{
@@ -3330,7 +3330,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "BlindDurationTrait",
 				{ Cue = "/VO/Apollo_0048",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "You know, Aunty. For someone that's so cold, you might want to chill out sometime." },
+					Text = "You know, Aunty, for someone that's so cold, you might want to chill out sometime." },
 				{ Cue = "/VO/Demeter_0370",
 					PortraitExitWait = 0.35,
 					StartSound = "/SFX/DemeterBoonFrost",
@@ -3382,7 +3382,7 @@ if ModUtil ~= nil then
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
 					Emote = "PortraitEmoteDepressed",
-					Text = "{#DialogueItalicFormat} Whoa {#PreviousFormat}! Is that a party invitation? Oh wait, it's part of an invitation for me and my relatives, hm? Oh well, I am flattered, but I don't think I can make it, I'll give my relatives my half of the information and ask Artemis how it went. Maybe some other time Zagzag." },
+					Text = "{#DialogueItalicFormat}Whoa{#PreviousFormat}! Is that a party invitation? Oh, wait, it's part of an invitation for me and my relatives, hm? Oh well, I'm flattered, but I don't think I can make it. I'll give my relatives my half of the information and ask Artemis how it went. Maybe some other time, Zagzag." },
 			},
 			ApolloPostEpilogue01 =
 			{
@@ -3392,7 +3392,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0057",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Sorry I missed the big party in your father's domain, Zagzag. Dionysus told me it was quite exquisite. I wish I was able to be there, but maybe you could try visiting us sometime instead?" },
+					Text = "Sorry I missed that big party in your father's domain, Zagzag. Dionysus told me it was quite exquisite. I wish I was able to be there, but maybe you could try visiting us sometime instead?" },
 			},
 		},
 
@@ -3424,7 +3424,7 @@ if ModUtil ~= nil then
 					Cosmetics = GameData.CosmeticsMusic,
 					Count = 10,
 				},
-				RequiredTextLines = { "ApolloGift04", "ApolloMusicSheets01" },
+				RequiredTextLines = { "ApolloGift03", "ApolloMusicSheets01" },
 				RequiredFalseTextLines = { "ApolloMusicSheets03" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0170",
@@ -3445,7 +3445,7 @@ if ModUtil ~= nil then
 				RequiredGodLoot = "ZeusUpgrade",
 				{ Cue = "/VO/Apollo_0059",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard Orpheus plays music for your court. I take care of all the music playing here in Olympus. My father can be strict, but a good jam has always put him in a good mood. Fathers can be tense... I am sure you understand what I mean..." },
+					Text = "I heard Orpheus plays music for your court. I take care of all the music playing here in Olympus. My father can be strict, but a good jam always puts him in a good mood. Fathers can be tense... I'm sure you understand what I mean." },
 			},
 			ApolloAboutStepSiblings01 =
 			{
@@ -3458,7 +3458,7 @@ if ModUtil ~= nil then
 				RequiredGodLoot = "ArtemisUpgrade",
 				{ Cue = "/VO/Apollo_0060",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Zagzag. I don't think I can ever imagine living a life without all my step-siblings. Ares, Aphrodite, Dionysus. I mean they are all great, but Zeus loves them a bit more than me... At least, I have Artemis. Don't tell her I said that." },
+					Text = "You know, Zagzag, I don't think I can ever imagine living a life without all my step-siblings. Ares, Aphrodite, Dionysus... I mean, they're all great, but Zeus loves them a bit more than me. At least I have Artemis. ...Don't tell her I said that." },
 			},
 			ApolloAboutDaughters01 =
 			{
@@ -3469,7 +3469,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp", "OrpheusMusicProgress01" },
 				{ Cue = "/VO/Apollo_0061",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey Zagzag, I believe you still haven't found your second half, am I right? Maybe, you could be a great match for one of my daughters." },
+					Text = "Hey Zagzag, I believe you still haven't found your second half, am I right? Maybe you could be a great match for one of my daughters." },
 			},
 			ApolloAboutDaughters02 =
 			{
@@ -3480,7 +3480,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloAboutDaughters01" },
 				{ Cue = "/VO/Apollo_0062",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Of my three daughters, Apollonis is kind of emotional... Once, she burned down our house, because her meal wasn't hot enough... Oh! Another time, she cried for a week because her hair brush broke... Well, if you are looking to spice up your life, she's an excellent catch!" },
+					Text = "Of my three daughters, Apollonis is... kind of emotional. Once, she burned down our house because her meal wasn't hot enough. Oh! Another time, she cried for a week because her hair brush broke. Well, if you're looking to spice up your life, she's an excellent catch!" },
 			},
 			ApolloAboutDaughters03 =
 			{
@@ -3491,7 +3491,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloAboutDaughters01" },
 				{ Cue = "/VO/Apollo_0063",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The most shy of my daughters is certainly Cephisso. She's extremely quiet. She could be next to me and I wouldn't even hear what she said. Good for settling down with a more quiet lifestyle, I suppose." },
+					Text = "The most shy of my daughters is certainly Cephisso. She's extremely quiet. She could be right next to me and I wouldn't even hear what she said. Good for settling down with a more quiet lifestyle, I suppose." },
 			},
 			ApolloAboutDaughters04 =
 			{
@@ -3502,7 +3502,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloAboutDaughters01" },
 				{ Cue = "/VO/Apollo_0064",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Borysthenis is the strongest of my daughters, she can move mountains! Just be careful with her hugs. She cracked my back a century ago and I still feel sore from it. But hey, if that's not showing love, what is?" },
+					Text = "Borysthenis is the strongest of my daughters, she can move mountains! Just be careful with her hugs. She cracked my back a century ago, and I still feel sore from it. But hey, if that's not showing love, what is?" },
 			},
 			ApolloAboutDaughters05 =
 			{
@@ -3514,7 +3514,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloAboutDaughters02", "ApolloAboutDaughters03", "ApolloAboutDaughters04" },
 				{ Cue = "/VO/Apollo_0065",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Well, I have talked to my daughters, and they are not really looking for a... long distant relationship. And since I don't see you going anywhere anytime soon, I think they'll end this here." },
+					Text = "Well, I've talked to my daughters, and they're not really looking for a... long-distance relationship. And since I don't see you going anywhere anytime soon, I think they'll end this here." },
 			},
 			ApolloAboutHydra =
 			{
@@ -3528,7 +3528,7 @@ if ModUtil ~= nil then
 					"AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0165",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The bone hydra has a snake's head, right? {#DialogueItalicFormat} Urgh {#PreviousFormat}. I hate snakes, especially pythons. They are the worst. Still, I have quite a bit of experience getting the upper hand on them. This should help." },
+					Text = "The bone hydra has a snake's head, right? {#DialogueItalicFormat}Urgh{#PreviousFormat}. I hate snakes, especially pythons. They are the worst. Still, I have quite a bit of experience getting the upper hand on them. This should help." },
 			},
 			ApolloAboutDaphne01 =
 			{
@@ -3540,7 +3540,7 @@ if ModUtil ~= nil then
 					"AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0162",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Were you staring at my laurel crown, Zagzag? It's beautiful, is it not? Made by my beloved Daphne. I miss her everyday." },
+					Text = "Were you staring at my laurel crown, Zagzag? It's beautiful, is it not? Made by my beloved Daphne. I miss her every day." },
 			},
 			ApolloAboutPan01 =
 			{
@@ -3552,7 +3552,7 @@ if ModUtil ~= nil then
 					"AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "ApolloGift01", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0163",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "As you know, Zagzag, I am the god of music, but once the Nymph Pan tried to get my title, he stood no chance against my excellent taste in music. I still remember his face. Ha-ha-ha. Priceless." },
+					Text = "As you know, Zagzag, I know my way around a lyre. Once, the nymph Pan tried to challenge me, but he stood no chance against my excellent taste in music. I still remember his face. {#DialogueItalicFormat}Hahaha{#PreviousFormat}. Priceless." },
 			},
 			ApolloAboutArtemis01 =
 			{
@@ -3565,7 +3565,7 @@ if ModUtil ~= nil then
 				RequiredGodLoot = "ArtemisUpgrade",
 				{ Cue = "/VO/Apollo_0066",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My sister is a bit antisocial at times. I tried to help her out of her shell, but even I can't do anything. Maybe you can help her out." },
+					Text = "My sister can be a bit... {#DialogueItalicFormat}antisocial{#PreviousFormat} at times. I tried to help her out of her shell, but even I couldn't do anything. Maybe you can help her out." },
 			},
 			ApolloAboutArtemis02 =
 			{
@@ -3577,7 +3577,7 @@ if ModUtil ~= nil then
 				RequiredGodLoot = "ArtemisUpgrade",
 				{ Cue = "/VO/Apollo_0067",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Artemis is older than me by a few seconds, but she loves to make me feel like I am the youngest. I mean it was only a few seconds... That doesn't count, right?" },
+					Text = "Artemis is only older than me by a few seconds, but she loves to make me feel like I am the youngest. I mean, it was only a few seconds. That doesn't count, right?" },
 			},
 			ApolloAboutArtemis03 =
 			{
@@ -3589,7 +3589,7 @@ if ModUtil ~= nil then
 				RequiredGodLoot = "ArtemisUpgrade",
 				{ Cue = "/VO/Apollo_0068",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I wonder if I could beat Artemis in an archery competition... We are both pretty good... Tell me, Zagzag... You would bet on me, right?" },
+					Text = "I wonder if I could beat Artemis in an archery competition? We're both pretty good.... Tell me, Zagzag, you'd bet on me, right?" },
 			},
 			ApolloAboutMusic01 =
 			{
@@ -3600,7 +3600,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "OrpheusWithEurydice01", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0069",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "As the god of music, I know better than most of my relatives that cooperation is key. I always try to add my special spice to the mix, but I know art is always better as a collective effort. I hope our cooperation will help you escape." },
+					Text = "As a musical god, I know better than most of my relatives that cooperation is key. I always try to add my special spice to the mix, but I know art is better as a collective effort. I hope our cooperation will help you escape." },
 			},
 			ApolloAboutHarpQuest01 =
 			{
@@ -3611,7 +3611,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "OrpheusMusicProgress02", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0070",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Are you learning some form of music, Zagzag? I sense hours of practice over the tips of your fingers. Someday, you might want to quit, but you must persist like you are now! It will be all worth in the end. Trust me." },
+					Text = "Are you learning some form of music, Zagzag? I sense hours of practice on the tips of your fingers. Someday, you might want to quit, but you must persist like you're doing now! It will be all worth it in the end, trust me." },
 			},
 			ApolloAboutHarpQuest02 =
 			{
@@ -3622,7 +3622,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "OrpheusMusicProgress04", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0071",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard that you are a musician now, Zagzag? Ooh! Maybe Pan and Orpheus would like to join us, and we can make a band! What do you say? Oh wait, you're still there, and I am still here... hmm. We'll workshop." },
+					Text = "I heard you're a musician now, Zagzag? Ooh! Maybe Pan and Orpheus would like to join us, and we can make a band! What do you say? Oh, wait... you're still there, and I'm still here... hmm. We'll workshop it." },
 			},
 			ApolloAboutOrpheus01 =
 			{
@@ -3644,7 +3644,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloAboutOrpheus01", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0073",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know. I don't like to brag, Zagzag, but I did give Orpheus his golden lyre. He probably still has it! A perfect instrument for a near-perfect musician. Okay, I might like to brag a little bit." },
+					Text = "You know, I don't like to brag, Zagzag, but I did give Orpheus his golden lyre. He probably still has it! A perfect instrument for a near-perfect musician. Okay, I might like to brag a little bit." },
 			},
 			ApolloAboutLeto01 =
 			{
@@ -3657,7 +3657,7 @@ if ModUtil ~= nil then
 					"ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0084",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I may be Zeus's son, Zagzag, but Hera is not my mother. My mother's name is Leto. She taught Artemis and I everything we know. Uh. Sometimes I wish she was here in Olympus with us, but that just can't happen. Hera kind of hates her." },
+					Text = "I may be Zeus's son, Zagzag, but Hera is not my mother. My mother's name is Leto. She taught Artemis and I everything we know. {#DialogueItalicFormat}Ahh{#PreviousFormat}. Sometimes I wish she was here in Olympus with us, but that just can't happen. Hera... kind of hates her." },
 			},
 			ApolloAboutLeto02 =
 			{
@@ -3669,7 +3669,7 @@ if ModUtil ~= nil then
 				RequiredMinRunsCleared = 2,
 				{ Cue = "/VO/Apollo_0085",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Leto gave birth to my sister and I on an island. I believe, Delos was the name. She was fleeing a Python, but not to worry, I defeated the mighty beast and now she's free to go anywhere she pleases... Well, except for Olympus..." },
+					Text = "Leto gave birth to my sister and I on an island. I believe Delos was the name. She was fleeing a python, but not to worry, I defeated the mighty beast, and now she's free to go anywhere she pleases. Well, except for Olympus...." },
 			},
 			ApolloAboutArtemisLeto01 =
 			{
@@ -3682,7 +3682,7 @@ if ModUtil ~= nil then
 				RequiredMinRunsCleared = 2,
 				{ Cue = "/VO/Apollo_0086",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My sister doesn't speak much about our mother, Leto. Though, I guess that's just how she is. She's not a very vocal character when it isn't about hunting something... Though I'm sure you have noticed that by now." },
+					Text = "My sister doesn't speak much about our mother, Leto. Though, I guess that's just how she is. She's not a very vocal character when it isn't about hunting something. Though, I'm sure you have noticed that by now." },
 			},
 			ApolloPostGiftPickup01 =
 			{
@@ -3692,7 +3692,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloGift02", },
 				{ Cue = "/VO/Apollo_0087",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't know why, but you are in my mind a lot lately. I just have this feeling that I must meet you somehow... This here should help make it happen." },
+					Text = "I don't know why, but you're on my mind a lot lately. I just have this feeling that I must meet you somehow. This here should help make that happen." },
 			},
 			ApolloPostGiftPickup02 =
 			{
@@ -3713,7 +3713,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloGift04", },
 				{ Cue = "/VO/Apollo_0089",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I can see you are really trying to escape this time, Zagzag. And you know what? This could be the one. All you have to do is escape once, and it would be over. And you can finally be with us. I believe in you, Zagzag." },
+					Text = "I can see that you're really trying to escape this time, Zagzag. And you know what? This could be the one. All you have to do is escape once, and it would be over, and you can finally come be with us. I believe in you, Zagzag." },
 			},
 			ApolloAboutKeepsake01 =
 			{
@@ -3724,7 +3724,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0080",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Emote = "PortraitEmoteMusical",
-					Text = "I am flattered that you brought my Harmonious Harp with you. I knew we shared a special bond, Zagzag." },
+					Text = "I'm flattered that you brought my Harmonious Harp with you. I knew we shared a special bond, Zagzag." },
 			},
 			ApolloRunCleared01 =
 			{
@@ -3737,7 +3737,7 @@ if ModUtil ~= nil then
 				RequiresLastRunCleared = true,
 				{ Cue = "/VO/Apollo_0079",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What are you doing there, Zagzag? I saw in a vision that you escaped. Why did you go back? Maybe you forgot something? Oh well, I also saw that you would do it again. So, no worries." },
+					Text = "What are you doing there, Zagzag? I saw in a vision that you escaped. Why did you go back? Maybe you forgot something? Oh well, I saw that you would do it again, so... no worries." },
 			},
 			ApolloBackstory01 =
 			{
@@ -3757,7 +3757,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloBackstory01" },
 				{ Cue = "/VO/Apollo_0091",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I'm sorry I didn't reach out sooner, Zagzag. I tried to, but it seemed the fates were intending on keeping us apart. I wonder what changed." },
+					Text = "I'm sorry I didn't reach out sooner, Zagzag. I tried to, but it seemed like the Fates were intent on keeping us apart. I wonder what changed." },
 			},
 			ApolloBackstory03 =
 			{
@@ -3768,7 +3768,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "PersephoneReturnsHome01", "ApolloBackstory03b" },
 				{ Cue = "/VO/Apollo_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I try not to eavesdrop, but I heard that Hades once had a Queen. I assumed it was Nyx, but I had a vision lately and...  Oh, I won't give away to much of the fun. You'll see what I mean." },
+					Text = "I try not to eavesdrop, but I heard that Hades once had a queen. I assumed it was Nyx, but I had a vision lately and...  Oh, I won't give away to much of the fun. You'll see what I mean." },
 			},
 			ApolloBackstory03b =
 			{
@@ -3779,7 +3779,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "ApolloBackstory03" },
 				{ Cue = "/VO/Apollo_0166",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I was really rooting for you and your mother to reunite, Zagzag. Hopefully you won't ever be separated again." },
+					Text = "I was really rooting for you and your mother to reunite, Zagzag. Hopefully, you won't ever be separated again." },
 			},
 			ApolloBackstory04 =
 			{
@@ -3790,7 +3790,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "PersephoneReturnsHome01", "ApolloBackstory04b" },
 				{ Cue = "/VO/Apollo_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I have to tell you the truth, Zagzag. I know about your secret... Don't worry! I understand. I did what I had to do to protect my own mother and I sense you would do the same. We're very alike, aren't we?" },
+					Text = "I have to tell you the truth, Zagzag. I know about your secret. Don't worry! I understand. I did what I had to do to protect my own mother, and I sense you would do the same. We're very alike, aren't we?" },
 			},
 			ApolloBackstory04b =
 			{
@@ -3801,7 +3801,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "ApolloBackstory04" },
 				{ Cue = "/VO/Apollo_0167",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I have to tell you the truth, Zagzag. I knew about your secret for a long time... I just didn't want to spoil the surprise for everyone else. Always on quest to find our mothers. We're very alike, aren't we?" },
+					Text = "I have to tell you the truth, Zagzag. I knew about your secret for a long time. I just didn't want to spoil the surprise for everyone else. Always on quest to find our mothers.... We're very alike, aren't we?" },
 			},
 			ApolloBackstory05 =
 			{
@@ -3812,7 +3812,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "PersephoneReturnsHome01" },
 				{ Cue = "/VO/Apollo_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I hope you find your mother once you have escaped. Be rid of that place and until your father is ready to change never return. May the fates be ever in your favor, Cousin." },
+					Text = "I hope you find your mother once you've escaped. Be rid of that place, and until your father is ready to change, never return. May the Fates be ever in your favor, Cousin." },
 			},
 			ApolloRunProgress01 =
 			{
@@ -3822,7 +3822,7 @@ if ModUtil ~= nil then
 				RequiredMinRunsCleared = 4,
 				{ Cue = "/VO/Apollo_0074",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I had a vision of you with someone from the surface. She was somehow related to... Demeter? I guess my vision isn't what it used to be, Zagzag." },
+					Text = "I saw a vision of you with someone from the surface. She was somehow related to... Demeter? {#DialogueItalicFormat}Ahh{#PreviousFormat}, I guess my vision isn't what it used to be, Zagzag." },
 			},
 			ApolloRunProgress02 =
 			{
@@ -3831,7 +3831,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0075",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Okay, {#PreviousFormat}I saw you escape at least once. Seriously! I'm not lying! If you got out of the Underworld, you would tell me, right?" },
+					Text = "{#DialogueItalicFormat}Okay{#PreviousFormat}, I saw you escape at least once. Seriously! I'm not lying! If you got out of the Underworld, you would tell me, right?" },
 			},
 			ApolloRunProgress03 =
 			{
@@ -3843,7 +3843,7 @@ if ModUtil ~= nil then
 				RequiredMinRunsCleared = 2,
 				{ Cue = "/VO/Apollo_0076",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Trust me, Zagzag. Going through Elysium is no walk in the park. I've written songs and stories about their heroes and all of their legends. Maybe just try being nice to them, some of them have ego issues after all that glory went to their heads." },
+					Text = "Trust me, Zagzag, going through Elysium is no walk in the park. I've written songs and stories about their heroes and all of their legends. Maybe just try being nice to them? Some of them have ego issues after all that glory went to their heads." },
 			},
 			ApolloRunProgress04 =
 			{
@@ -3854,7 +3854,7 @@ if ModUtil ~= nil then
 				RequiresLastRunCleared = false,
 				{ Cue = "/VO/Apollo_0077",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You almost had a glimpse of light, I heard. I believe you can go further this time. And this here might be exactly what you needed." },
+					Text = "You almost got a glimpse of light, I heard. I believe you can go farther this time. And this here might just be exactly what you needed." },
 			},
 			ApolloRunProgress05 =
 			{
@@ -3863,7 +3863,7 @@ if ModUtil ~= nil then
 				RequiredRoom = "D_Hub",
 				{ Cue = "/VO/Apollo_0078",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Facing a three-headed dogs, eh Zagzag. Well, I'll offer you a bit of informational poetry. {#DialogueItalicFormat} Um-um {#PreviousFormat}. “The trick with any beast is ter know how to calms 'em. Jus” play “im a bit o” music an' he'll go straight ter sleep—'" },
+					Text = "Facing a three-headed dog, eh Zagzag? Well, I'll offer you a bit of informational poetry. {#DialogueItalicFormat}Ahem{#PreviousFormat}. “The trick with any beast is ter know how to calm 'em. Jus' play 'im a bit o' music an' he'll fall straight ter sleep!”" },
 			},
 			ApolloLowHealth01 =
 			{
@@ -3877,7 +3877,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0082",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Emote = "PortraitEmoteSurprise",
-					Text = "{#DialogueItalicFormat} Oh {#PreviousFormat}, that must hurt. Like really, really hurt. I don't think it will make the difference this time, but this is better than nothing." },
+					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, that must hurt. Like, really, really hurt. I don't know if it'll make the difference this time, but this is better than nothing." },
 			},
 			ApolloLowHealth02 =
 			{
@@ -3890,7 +3890,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Apollo_0083",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I see my healing power would be very useful to you right now. You are just a bit too far away for me to use it. I can manage to give you this instead thought." },
+					Text = "I see my healing power would be really useful to you right now. You're just... a bit too far away for me to use it. I can manage to give you this instead, though." },
 			},
 			ApolloLegendaryPickUp01 =
 			{
@@ -3904,7 +3904,7 @@ if ModUtil ~= nil then
 				},
 				{ Cue = "/VO/Apollo_0081",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I gathered all my divine power to give you this blessing, Zagzag. Don't let it go to waste. {#DialogueItalicFormat} Yawn {#PreviousFormat}, I get to take a small nap. You got this." },
+					Text = "I gathered all my divine power to give you this blessing, Zagzag. Don't let it go to waste! {#DialogueItalicFormat}Aaaaaah{#PreviousFormat}, I'm going to take a small nap. You've got this." },
 			},
 		},
 
@@ -3924,7 +3924,7 @@ if ModUtil ~= nil then
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "I come all this way to help you out and the first thing you do is confuse me with my sister? Not the best first impression, Cousin." },
+					Text = "I come all this way to help you out, and the first thing you do is confuse me with my sister? Not the best first impression, Cousin." },
 			},
 			ApolloMiscPickup01 =
 			{
@@ -3942,7 +3942,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0003",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Take my blessing, Cousin. It will light up your way to Olympus." },
+					Text = "Take this blessing, Cousin. It'll light up your way to Olympus." },
 			},
 			ApolloMiscPickup03 =
 			{
@@ -3972,7 +3972,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0006",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "A real musician knows when to persevere. And you, Zagzag, have a real musician heart." },
+					Text = "A real musician knows when to persevere. And you, Zagzag, have a real musician's heart." },
 			},
 			ApolloMiscPickup06 =
 			{
@@ -3981,7 +3981,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0007",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Tag! You're it. Now you have to come to me. Just the rules of the game, Zagzag. Maybe this will help you catch up." },
+					Text = "Tag! You're it. Now you have to come get me. Just the rules of the game, Zagzag. Maybe this will help you catch up." },
 			},
 			ApolloMiscPickup07 =
 			{
@@ -3990,7 +3990,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0008",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "By the fates! You are still going at it, Zagzag. I see you are well determined to come meet us then. Wish you all the best!" },
+					Text = "By the Fates! You're still going at it, Zagzag? I see you're well determined to come meet us, then. Wish you all the best!" },
 			},
 			ApolloMiscPickup08 =
 			{
@@ -4028,7 +4028,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0012",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\nMade a haiku just for you,\nGood luck escaping.{#PreviousFormat}" },
+					Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\nmade a haiku, just for you.\nGood luck escaping.{#PreviousFormat}" },
 			},
 			ApolloMiscPickup12 =
 			{
@@ -4037,7 +4037,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0013",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Trying to escape again, Zagzag? I believe the fates are set on keeping you down there. But then again, I've been wrong before. Against all odds, I believe in you, Cousin." },
+					Text = "Trying to escape again, Zagzag? I believe the Fates are set on keeping you down there. But, then again, I've been wrong before. Against all odds, I believe in you, Cousin." },
 			},
 			ApolloMiscPickup13 =
 			{
@@ -4046,7 +4046,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0014",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Zagzag? Your perseverance inspires me! I mean, I'm writing songs like crazy up here. You have escape if you wanna hear them though!" },
+					Text = "You know, Zagzag? Your perseverance inspires me! I mean, I'm writing songs like crazy up here. You have to escape if you wanna hear them, though!" },
 			},
 			ApolloMiscPickup14 =
 			{
@@ -4058,7 +4058,7 @@ if ModUtil ~= nil then
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					Emote = "PortraitEmoteMusical",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Da-Da-Dum... Da-Da-Dum... Oh. Hello there. Sorry I was working on a song. I can probably finish it by the time you arrive. In the meantime, take this." },
+					Text = "{#DialogueItalicFormat}Da-Da-Dum... Da-Da-Dum...{#PreviousFormat} Oh. Hello there. Sorry, I was working on a song. I can probably finish it by the time you arrive. In the meantime, take this." },
 			},
 			ApolloMiscPickup15 =
 			{
@@ -4085,7 +4085,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0018",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I keep giving you my finest blessings but I'm not seeing any results, Zagzag. Luckily for you, I'm willing to wait as long as you need." },
+					Text = "I keep giving you my finest blessings, but I'm not seeing any results, Zagzag. Luckily for you, I'm willing to wait as long as you need." },
 			},
 			ApolloMiscPickup18 =
 			{
@@ -4107,7 +4107,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				{ Cue = "/VO/Apollo_0020",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Is your father keeping you in his realm, Zagzag. Sometimes fathers are strict, but we must show them we are our own gods. You and I are very alike, Zagzag. The difference between us is I usually succeed in what I start. You should probably give that a try sometime." },
+					Text = "Is your father keeping you in this realm, Zagzag? Sometimes fathers are strict, but we must show them we are our own gods. You and I are very alike, Zagzag. The difference between us is I usually succeed in what I start. You should probably give that a try sometime." },
 			},
 
 			-- shorter acknowledgments
@@ -4136,7 +4136,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 				{ Cue = "/VO/Apollo_0023",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "With this blessing, Zagzag. The light shall burn your enemies." },
+					Text = "With this blessing, Zagzag, the light shall burn your enemies." },
 			},
 			ApolloMiscPickup23 =
 			{
@@ -4145,7 +4145,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 				{ Cue = "/VO/Apollo_0024",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Like I always say. Where words failed, music thrives." },
+					Text = "Like I always say: where words failed, music thrives." },
 			},
 			ApolloMiscPickup24 =
 			{
@@ -4209,7 +4209,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 				{ Cue = "/VO/Apollo_0031",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hope is being able to always see the light despite the darkness." },
+					Text = "Hope is being able to always see the light, despite the darkness." },
 			},
 			ApolloMiscPickup31 =
 			{
@@ -4227,7 +4227,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 				{ Cue = "/VO/Apollo_0033",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't make mistakes. I make prophecies which immediately turn out to be wrong." },
+					Text = "I don't make mistakes. I make prophecies! ...Which immediately turn out to be wrong." },
 			},
 			ApolloMiscPickup33 =
 			{
@@ -4236,7 +4236,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 				{ Cue = "/VO/Apollo_0034",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I sense your heart is pure. This blessing should be handy then. Good luck." },
+					Text = "I sense your heart is pure. This blessing should be handy, then. Good luck." },
 			},
 			ApolloMiscPickup34 =
 			{
@@ -4247,7 +4247,7 @@ if ModUtil ~= nil then
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					Emote = "PortraitEmoteMusical",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am your sunshine~~\nYour only sunshine~~\nI give you blessings~~\nwhen skies are gray~~" },
+					Text = "I am your sunshine,\nyour only sunshine,\nI give you blessings,\nwhen skies are gray!" },
 			},
 			ApolloMiscPickup35 =
 			{
@@ -4283,7 +4283,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.ApolloBasicPickUpTextLines,
 				{ Cue = "/VO/Apollo_0039",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I have given you all I can. You'll have to do the rest on your own." },
+					Text = "I've given you all I can, Zagzag. You'll have to do the rest on your own." },
 			},
 			ApolloMiscPickup39 =
 			{
@@ -4328,7 +4328,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Apollo_0097",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You didn't have to pay for my blessing, Zagzag. I would have helped you if you would just asked." },
+					Text = "You didn't have to pay for my blessing, Zagzag. I would have helped you if you had just asked." },
 			},
 		},
 
@@ -4340,7 +4340,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0098",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Did you just choose somebody else over me, Cousin? I guess you've decided to stay down there." },
+					Text = "Did you just... choose somebody else over me, Cousin? I guess you've decided to stay down there." },
 			},
 			ApolloRejection02 =
 			{
@@ -4364,7 +4364,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0101",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Are you blind, Cousin? I hope you meant to choose me. Because, if not, what I am going to do is very justified." },
+					Text = "Are you blind, Cousin? I hope you meant to choose me. Because if not, what I am going to do is very justified." },
 			},
 			ApolloRejection05 =
 			{
@@ -4404,7 +4404,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0106",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Let me sing you a song, Cousin. It's called “Zagreus dies once more”. It's very catchy." },
+					Text = "Let me sing you a song, Cousin. It's called “Zagreus dies once more.” It's very catchy." },
 			},
 			ApolloRejection10 =
 			{
@@ -4412,7 +4412,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0107",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I can't believe you've done this, Cousin. I though we were friends." },
+					Text = "I can't believe you've done this, Cousin. I thought we were friends." },
 			},
 			ApolloRejection11 =
 			{
@@ -4428,7 +4428,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0109",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Seems like you have death wish. Wait, that's an excellent name for a band! Here, deal with these guys while I go write that down." },
+					Text = "It seems like you have death wish. Wait, that's an excellent name for a band! Here, deal with these guys while I go write that down." },
 			},
 		},
 
@@ -4470,7 +4470,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0111",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I knew this moment would come. Don't worry, Zagzag. No hard feeling." },
+					Text = "I knew this moment would come. Don't worry, Zagzag. No hard feelings." },
 			},
 			ApolloMakeUp03 =
 			{
@@ -4478,7 +4478,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0112",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Why are we fighting again, Zagzag? You know what I forgive you. Just don't do it again." },
+					Text = "Why are we fighting again, Zagzag? You know what, I forgive you. Just... don't do it again?" },
 			},
 			ApolloMakeUp04 =
 			{
@@ -4486,7 +4486,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0113",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Everybody stops! I've got a song in my head and I need to go write it down. We are done here." },
+					Text = "Everybody stop! I've got a song in my head and I need to go write it down. We're done here." },
 			},
 			ApolloMakeUp05 =
 			{
@@ -4494,7 +4494,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0114",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Wait a second... You didn't die. Oh, I think that might actually happen later. Um, yea. My bad. Carry on." },
+					Text = "Wait a second... you didn't die? Oh, I think that might actually happen later. {#DialogueItalicFormat}Hmm{#PreviousFormat}, yeah, my bad. Carry on." },
 			},
 			ApolloMakeUp06 =
 			{
@@ -4502,7 +4502,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0115",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know respect is like a duet, Zagzag. I am willing to play my part, if you play yours." },
+					Text = "You know, respect is like a duet, Zagzag. I am willing to play my part, if you play yours." },
 			},
 			ApolloMakeUp07 =
 			{
@@ -4510,7 +4510,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0116",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Friendship is all about its lows and its highs. That was our low,  so how about a high?" },
+					Text = "Friendship is all about its lows and its highs. That was our low, so how about a high?" },
 			},
 			ApolloMakeUp08 =
 			{
@@ -4526,7 +4526,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0118",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat} Hahaha {#PreviousFormat}, you almost had me there for a second, Zagzag! Now, let's get back to the matter at hand." },
+					Text = "{#DialogueItalicFormat}Hahahaha{#PreviousFormat}, you almost had me there for a second, Zagzag! Now, let's get back to the matter at hand." },
 			},
 			ApolloMakeUp10 =
 			{
@@ -4580,11 +4580,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Lord Apollo, your light is very welcome in this darker part of the world. I must thank you for this." },
+					Text = "Lord Apollo, your light is very welcome in this darker part of the world. I have to thank you for this." },
 				{ Cue = "/VO/Apollo_0123",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "It must be hard to find such good Nectar where you are. I truly appreciate the gesture. Any future gift is completely unnecessary." },
+					Text = "It must be hard to find such good nectar where you are. I truly appreciate the gesture. Any future gift is completely unnecessary." },
 			},
 			ApolloGift03 =
 			{
@@ -4595,11 +4595,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I know you said to stop this, Lord Apollo. This is just a little something for all your help." },
+					Text = "I know you said to stop this, Lord Apollo, but this is just a little something for all your help." },
 				{ Cue = "/VO/Apollo_0124",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Yet another gift? You know what is an even better gift you could give me, Zagzag? Coming to visit us sometime soon." },
+					Text = "Yet another gift? You know what's an even better gift you could give me, Zagzag? Coming to visit us sometime soon." },
 			},
 			ApolloGift04 =
 			{
@@ -4614,7 +4614,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0125",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Well, until we meet, this could do the trick. But seriously, think a little more about yourself and... Just focus on escaping." },
+					Text = "Well, until we meet, this should do the trick. But, seriously, think a little more about yourself and... just focus on escaping." },
 			},
 			ApolloGift05 =
 			{
@@ -4625,11 +4625,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Your blessings have made me grasp life more, and I wanted to show my appreciation towards you, Lord Apollo. It's all I can give you for now." },
+					Text = "Your blessings have made me appreciate life more, and I wanted to show my appreciation towards you, Lord Apollo. It's all I can give you for now." },
 				{ Cue = "/VO/Apollo_0126",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How do you have so many of these? Isn't Nectar rare in your realm? I mean I saw it coming. Just wow." },
+					Text = "How do you have so many of these? Isn't nectar rare in your realm? I mean, I saw it coming. Just... wow." },
 			},
 			ApolloGift06 =
 			{
@@ -4644,7 +4644,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Apollo_0127",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I will take this, but no more Nectar, Zagzag. I mean it. Just escape. You have your place here. And everybody is rooting for you." },
+					Text = "I will take this, but no more nectar, Zagzag. I mean it. Just escape. You have your place here, and everybody's rooting for you." },
 			},
 			ApolloGift07 =
 			{
@@ -4655,13 +4655,13 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I know you said no more Nectar, Lord Apollo. But I must show you what you mean to me. Here's something you probably already have up there... But it's important for me you have this." },
+					Text = "I know you said no more nectar, Lord Apollo. But I want to show you what you mean to me. Here's something you probably already have up there... but, it's important to me you have this." },
 				{ Cue = "/VO/Apollo_0128",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 					PostLineFunctionArgs = { Text = "NPC_Apollo_01", Icon = "Keepsake_ApolloSticker_Max" },
-					Text = "Is that Ambrosia? How did you find this? I don't know what to say besides thank you, my friend. I just hope we can see each other soon. So, I may share it with you. For now, thought, have this. And take care of yourself." },
+					Text = "Is that... ambrosia? How did you find this? I don't know what to say besides thank you, my friend. I just hope we can see each other soon, so I may share it with you. For now, though, have this. And take care of yourself." },
 			},
 		},
 
@@ -4687,17 +4687,17 @@ if ModUtil ~= nil then
 
 				-- Put your fate in the light!
 				{ Cue = "/VO/Apollo_0129" },
-				-- Do, Re, Mi! Your end I see!
+				-- Do, re, mi! Your end I see!
 				{ Cue = "/VO/Apollo_0130" },
-				-- La, Si, Do! Your pain will grow!
+				-- La, ti, do! Your pain will grow!
 				{ Cue = "/VO/Apollo_0164" },
-				-- You're in Treble now!
+				-- You're in treble now!
 				{ Cue = "/VO/Apollo_0131" },
 				-- Back for another round?
 				{ Cue = "/VO/Apollo_0132" },
 				-- Better keep up with the rhythm!
 				{ Cue = "/VO/Apollo_0133" },
-				-- Didn't I hear someone ask for an encore?
+				-- Did I hear someone ask for an encore?
 				{ Cue = "/VO/Apollo_0134", RequiredMinKillEnemies = 2 },
 				-- I'll never get tired of this sound.
 				{ Cue = "/VO/Apollo_0135", RequiredMinKillEnemies = 2 },
@@ -4712,13 +4712,13 @@ if ModUtil ~= nil then
 
 				-- Is it because I called you Zagzag?
 				{ Cue = "/VO/Apollo_0136" },
-				-- You have chosen... Poorly!
+				-- You have chosen... poorly!
 				{ Cue = "/VO/Apollo_0137" },
-				-- Let's go then! Double Time!
+				-- Let's go, then! Double time!
 				{ Cue = "/VO/Apollo_0138" },
 				-- You were the chosen one!
 				{ Cue = "/VO/Apollo_0139" },
-				-- You were my cousin, Zagzag. I loved you.
+				-- You were my cousin, Zagzag! I loved you!
 				{ Cue = "/VO/Apollo_0140" },
 			},
 		},
@@ -4785,14 +4785,14 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "MasterBoltTrait",
 		{ Cue = "/VO/Zeus_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Is that the bow I gave to Artemis and you, young Son! {#DialogueItalicFormat} Haha {#PreviousFormat}, it's been awhile since I saw this old recurve." },
+			Text = "Is that the bow I gave to you and Artemis, young son? {#DialogueItalicFormat}Haha{#PreviousFormat}, it's been a while since I saw this old recurve." },
 		{ Cue = "/VO/Apollo_0049",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "Of course, I never leave without it, Father. Perhaps we could give the young prince here something just as valuable. I am sure he can make it worth the effort." },
+			Text = "Of course, I never leave without it, Father. Perhaps we could give the young prince here something just as valuable? I am sure he can make it worth the effort." },
 	}
 	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithApollo01 = {
 		Name = "PoseidonWithApollo01",
@@ -4801,7 +4801,7 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "SeaChanteyTrait",
 		{ Cue = "/VO/Poseidon_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Hey ho, isn't it another one of my Nephew! Let's sing a sailor's song." },
+			Text = "Hey ho, if it isn't another one of my nephews! Let's sing a sailor's song." },
 		{ Cue = "/VO/Apollo_0050",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -4817,14 +4817,14 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "DamageReduceDistanceTrait",
 		{ Cue = "/VO/Athena_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "I see. You are helping Zagreus as well, Step-brother. For someone who claims to be faster than Hermes, you took your sweet time." },
+			Text = "I see you are helping Zagreus as well, Step-Brother. For someone who claims to be faster than Hermes, you took your sweet time." },
 		{ Cue = "/VO/Apollo_0051",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "You know what, step-sister, just because I appreciate the finer things in life doesn't mean I want to help him any less than you do. And help him we shall!" },
+			Text = "You know what, Step-Sister, just because I appreciate the finer things in life doesn't mean I want to help him any less than you do. And help him we shall!" },
 	}
 	OlympusLootData.AresUpgrade.DuoPickupTextLineSets.AresWithApollo01 = {
 		Name = "AresWithApollo01",
@@ -4840,7 +4840,7 @@ if ModUtil ~= nil then
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "Um, Brother... I really don't think my Foresight is an instrument to be used. How about we try working together instead?  {#DialogueItalicFormat} Urgh, {#PreviousFormat}  do you see what I put up with to try to help you, Zagzag? You owe me one." },
+			Text = "Um, Brother... I really don't think my foresight is an instrument to be used. How about we try working together instead?  {#DialogueItalicFormat}Urgh{#PreviousFormat}, do you see what I put up with to try to help you, Zagzag? You owe me one." },
 	}
 	OlympusLootData.AphroditeUpgrade.DuoPickupTextLineSets.AphroditeWithApollo01 = {
 		Name = "AphroditeWithApollo01",
@@ -4849,14 +4849,14 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "HyacinthTrait",
 		{ Cue = "/VO/Aphrodite_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Well, lovely as ever, Apollo. From all my relatives, you are by far the only one to understand beauty and perfection." },
+			Text = "You're looking lovely as ever, Apollo. Of all my relatives, you are the only one to truly understand beauty and perfection." },
 		{ Cue = "/VO/Apollo_0053",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}! Well thank you, Aphrodite. You are not too bad yourself. Let's help Zagzag here step up to our league." },
+			Text = "{#DialogueItalicFormat}Aww{#PreviousFormat}! Well, thank you, Aphrodite. You're not too bad yourself. Let's help Zagzag here step up to our league." },
 	}
 	OlympusLootData.ArtemisUpgrade.DuoPickupTextLineSets.ArtemisWithApollo01 = {
 		Name = "ArtemisWithApollo01",
@@ -4865,14 +4865,14 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "FamedDuetTrait",
 		{ Cue = "/VO/Artemis_0251",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Apollo! How many times did I ask you not to include me in any forms of get together! {#DialogueItalicFormat} Arrg {#PreviousFormat}! I'll make an exception, only because it's Zagreus, but it's the last time." },
+			Text = "Apollo! How many times did I ask you not to include me in any form of get together! {#DialogueItalicFormat}Ugh{#PreviousFormat}! I'll make an exception, only because it's Zagreus, but this is the last time." },
 		{ Cue = "/VO/Apollo_0054",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "Oh, is my sister going soft? Is she ready to have a social life? I think I found her weak spot, Zagzag. Let me thank you with this!" },
+			Text = "Oh? Is my sister going soft? Is she ready to have a social life? I think I found her weak spot, Zagzag. Let me thank you with this!" },
 	}
 	OlympusLootData.DionysusUpgrade.DuoPickupTextLineSets.DionysusWithApollo01 = {
 		Name = "DionysusWithApollo01",
@@ -4897,14 +4897,14 @@ if ModUtil ~= nil then
 		HasTraitNameInRoom = "BlindDurationTrait",
 		{ Cue = "/VO/Demeter_0371",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Since Apollo is here, I figured we must help you, young Zagreus. Even if Apollo's flare is a bit much for me." },
+			Text = "Since Apollo is here, I figure we ought to help you, young Zagreus. ...Even if Apollo's flare is a bit much for me." },
 		{ Cue = "/VO/Apollo_0056",
 			PortraitExitWait = 0.35,
 			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 			StartSound = "/SFX/LyreMedium",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat} But she's right, Zagzag, we'll do what it takes to help you." },
+			Text = "My flare makes me who I am, Aunty! {#DialogueItalicFormat}Pff{#PreviousFormat}, but she's right, Zagzag, we'll do what it takes to help you." },
 	}
 	-- Duo LootData
 	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.FamedDuetTrait =
@@ -5073,7 +5073,7 @@ if ModUtil ~= nil then
 
 		{ Cue = "/VO/Hermes_0240",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-			Text = "Some say Apollo is faster than me. Well, here's your proof that I am the fastest among us, Boss!" },
+			Text = "Some say Apollo's even faster than me. Well, here's your proof that I'm the fastest among us, Boss!" },
 	}
 
 	-- Gift Section
@@ -5215,7 +5215,7 @@ if ModUtil ~= nil then
 		function(baseFunc, victim, attacker, args)
 			local missRate = 0.4
 			if HeroHasTrait("MissChanceTrait") then
-				missRate = 0.65
+				missRate = 0.6
 			end
 			-- Enemies misses
 			if args and args.EffectName ~= "StyxPoison" and attacker and

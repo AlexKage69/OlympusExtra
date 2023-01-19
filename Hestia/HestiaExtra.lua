@@ -1928,6 +1928,19 @@ if ModUtil ~= nil then
 		CustomTrayText = "HestiaRangedTrait_Tray",
 		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		PreEquipWeapons = { "HestiaLavaProjectile" },
+		TraitDependencyTextOverrides =
+		{
+			ShieldLoadAmmoTrait =
+			{
+				Name = "ShieldLoadAmmo_HestiaRangedTrait",
+				CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
+			},
+			BowLoadAmmoTrait =
+			{
+				Name = "BowLoadAmmo_HestiaRangedTrait",
+				CustomTrayText = "BowLoadAmmo_HestiaRangedTrait_Tray",
+			},
+		},
 		RarityLevels =
 		{
 			Common =
@@ -2047,128 +2060,12 @@ if ModUtil ~= nil then
 			}
 		}
 	}
-	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait =
+	--[[OlympusTraitData.ShieldLoadAmmo_HestiaRangedTrait = 
 	{
-		InheritFrom = { "ShopTier1Trait" },
-		God = "Hestia",
-		Slot = "Ranged",
-		Icon = "Boon_Hestia_05",
+		InheritFrom = {"HestiaRangedTrait"},
+		Skip = true,
 		CustomTrayText = "ShieldLoadAmmo_HestiaRangedTrait_Tray",
-        RequiredTrait = "ShieldLoadAmmoTrait",
-		PreEquipWeapons = { "HestiaLavaProjectile" },
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.000,
-			},
-			Rare =
-			{
-				Multiplier = 1.145,
-			},
-			Epic =
-			{
-				Multiplier = 1.290,
-			},
-			Heroic =
-			{
-				Multiplier = 1.435,
-			}
-		},
-		PropertyChanges =
-		{
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "Projectile",
-				ChangeValue = "HestiaProjectile",
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "FireFx",
-				ChangeValue = "ProjectileFireRing-Hestia",
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileName = "HestiaProjectile",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 60,
-				BaseMax = 60,
-				DepthMult = DepthDamageMultiplier,
-				DeriveSource = "DamageBurst",
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},
-			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageBurst"
-			},
-			{
-				WeaponNames = { "HestiaLavaProjectile" },
-				ProjectileProperty = "DamageLow",
-				BaseMin = 16,
-				BaseMax = 16,
-				DeriveSource = "DamageField",
-				DepthMult = DepthDamageMultiplier,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateStrongMultiplier,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamageLava",
-				}
-			},
-			{
-				WeaponNames = { "HestiaLavaProjectile" },
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageField"
-			},
-			{
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                WeaponProperty = "FireOnRelease",
-                ChangeValue = false,
-                ChangeType = "Absolute",
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "Type",
-                ChangeValue = "INSTANT",
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "DamageRadius",
-                ChangeValue = 330
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "IgnoreCoverageAngles",
-                ChangeValue = false
-            },
-            {
-                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-                ProjectileProperty = "DetonateGraphic",
-                ChangeValue = "RadialNovaSwordParry-Hestia"
-            },
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "BaseRangedDamage",
-				External = true,
-				BaseType = "Projectile",
-				BaseName = "RangedWeapon",
-				BaseProperty = "DamageLow",
-			}
-		}
+        RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait", }
 	}]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
@@ -3575,7 +3472,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaForgiveness03",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift06" },
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 7 },
 				{ Cue = "/VO/Hestia_0175",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -3703,7 +3600,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaForgiveness01",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift01" },
 				RequiredFalseTextLines = { "HestiaForgiveness03" },
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 1 },
 				{ Cue = "/VO/Hestia_0173",
@@ -3714,7 +3611,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HestiaForgiveness02",
 				PlayOnce = true,
-				RequiredTextLines = { "HestiaFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "HestiaForgiveness01", "HestiaGift03" },
 				RequiredFalseTextLines = { "HestiaForgiveness03" },
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 3 },
 				{ Cue = "/VO/Hestia_0174",
@@ -6116,16 +6013,16 @@ if ModUtil ~= nil then
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
 
 	-- For testing purposes
-	-- ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	-- 	function(baseFunc)		
-    --         HestiaShout()
-	-- 		-- if (not CanOpenCodex()) and IsSuperValid() then
-	-- 		-- 	BuildSuperMeter(CurrentRun, 50)
-	-- 		-- end
-	-- 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-	-- 		-- baseFunc()
-	-- 	end
-	-- )
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+		function(baseFunc)		
+            
+			if (not CanOpenCodex()) and IsSuperValid() then
+				BuildSuperMeter(CurrentRun, 50)
+			end
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+			baseFunc()
+		end
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 

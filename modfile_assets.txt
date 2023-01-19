@@ -35,12 +35,23 @@ To "Win/Maps/RoomPreRun.thing_bin"
 Replace "Packages/Maps/RoomPreRun.thing_bin"
 
 :: Audio
+To "Audio/FMOD/Build/Desktop/VO.h"
+Replace "Audio/VO.h"
+To "Audio/FMOD/Build/Desktop/VO.txt"
+Replace "Audio/VO.txt"
+To "Audio/FMOD/Build/Desktop/VO.fsb"
+Replace "Audio/VO.fsb" 
+
 
 :: Subtitles
 To "Subtitles/en/ZagreusScratch.csv"
 Replace "Audio/Subtitles/Subtitle.en.csv"
 
 :: Movies
+To "Movies/720p/MainMenuIn.bik"
+Replace "Movies/720p/MainMenuIn.bik"
+To "Movies/720p/MainMenuLoop.bik"
+Replace "Movies/720p/MainMenuLoop.bik"
 To "Movies/MainMenuIn.bik"
 Replace "Movies/MainMenuIn.bik"
 To "Movies/MainMenuLoop.bik"
