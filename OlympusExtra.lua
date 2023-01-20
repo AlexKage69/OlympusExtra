@@ -96,7 +96,7 @@ if ModUtil ~= nil then
             {
                 PlayOnce = true,
                 Name = "ApolloFreePass01",
-                { Cue = "/VO/Apollo_0372",
+                { Cue = "/VO/Apollo_0371",
                     PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
                     StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
                     Text = "You think Lady Hestia is generous? Well, Zagzag, I'll show {#DialogueItalicFormat}you{#PreviousFormat} generosity. No fight this time, just blessings. I bet you'll think twice before you cross me again." },
