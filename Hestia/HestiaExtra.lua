@@ -2928,7 +2928,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaLavaProjectile", "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileProperty = "DamageLow",
-				ChangeValue="5.0",
+				ChangeValue=5.0,
 				ChangeType="MultiplyBase",
 				ExtractValue =
 				{
@@ -2939,7 +2939,7 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaLavaProjectile", "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileProperty = "DamageHigh",
-				ChangeValue="5.0",
+				ChangeValue=5.0,
 				ChangeType="MultiplyBase",
 			}
 		},
