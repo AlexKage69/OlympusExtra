@@ -40,7 +40,7 @@
 		{
       		Id = "ApolloBlind"
 			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have at least {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
       		Id = "DamageResist"
@@ -50,7 +50,7 @@
 		{
       		Id = "Dazzled"
 			DisplayName = "Dazzled"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have a {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have at least {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
 			Id = "ApolloWeaponTrait"
@@ -97,7 +97,7 @@
 		{
       		Id = "FlashBomb"
 			DisplayName = "Flash Bomb"
-			Description = "Detonates after a brief moment, inflicting {$Keywords.ApolloBlind} on foes in an area for {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}."
+			Description = "Detonates after a brief moment, inflicting {$Keywords.ApolloBlind} on foes in the area for {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}."
 		}
 		{
 			Id = "Combat_Miss"
@@ -110,17 +110,17 @@
 		{
 			Id = "ApolloShoutTrait"
 			DisplayName = "Apollo's Aid"
-			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
 		}		
 		{
 			Id = "ApolloShoutTrait_Tray"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
 		}	
 		{
 			Id = "ApolloShoutTrait_Initial"
 			InheritFrom = "ApolloShoutTrait"
-			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Beam Damage"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.NewTotal1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Beam Damage"
 		} 
 		{
 			Id = "ApolloRangedTrait"
@@ -180,12 +180,12 @@
 		{
 			Id = "FountainDefenseTrait_Initial",
 			InheritFrom = "FountainDefenseTrait"
-			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Resistance per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
     	}
 		{
 			Id = "FountainDefenseTrait_Tray",
 			InheritFrom = "FountainDefenseTrait"
-			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Resistance per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage Resistance: \Column 380 {$TooltipData.DisplayDelta1}"
     	}
 		{
 			Id = "ApolloBlindedTrait"
@@ -215,17 +215,17 @@
 		{
 			Id = "RerollBoonTrait"
 			DisplayName = "Future Sight"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}."
 		}
 		{
 			Id = "RerollBoonTrait_Initial"
 			InheritFrom = "RerollBoonTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
 		}	
 		{
 			Id = "RerollBoonDrop"
 			InheritFrom = "RerollBoonTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount}{#BoldFormatGraft} {$Keywords.GodBoon} {#PreviousFormat}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
 		}	
 		{
 			Id = "ApolloRetaliateTrait"
@@ -263,12 +263,12 @@
 		{
 			Id = "ApolloHealTrait"
 			DisplayName = "Panacea's Elixir"
-			Description = "Foes inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} items when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "ApolloHealTrait_Initial"
 			InheritFrom = "ApolloHealTrait"
-			Description = "Foes inflicted with {$Keywords.ApolloBlind} have a chance to drop {!Icons.HealthRestore_Small} when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} items when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
 		}
 		{
 			Id = "MissChanceTrait"
@@ -303,12 +303,12 @@
 		{
 			Id = "HyacinthTrait"
 			DisplayName = "Hyacinth"
-			Description = "Foes afflicted with both {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. Does not apply to {$Keywords.BossPlural}."
+			Description = "Foes afflicted with both {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. (Does not apply to {$Keywords.BossPlural}.)"
     	}
 		{
 			Id = "SeaChanteyTrait"
 			DisplayName = "Sea Shanty"
-			Description = "When fighting {$Keywords.BossPlural}, you deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat} more damage, but take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat} more damage."
+			Description = "When fighting {$Keywords.BossPlural}, you deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat}damage, but take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat}damage."
 		}	
 		{
 			Id = "SeaChanteyText",
