@@ -1943,7 +1943,19 @@ if ModUtil ~= nil then
 				WeaponName = "ApolloShoutWeapon",
 				ProjectileProperty = "MaxAdjustRate",
 				ChangeValue = math.rad(180)
-			}
+			},
+			{
+				WeaponName = "ApolloShoutWeapon",
+				ProjectileProperty = "Fuse",
+				ChangeValue = 0.1,
+				ExtractValue =
+				{
+					SkipAutoExtract = true,
+					ExtractAs = "TooltipInterval",
+					DecimalPlaces = 1,
+				}
+
+			},
 		}
 	}
 	OlympusTraitData.FountainDefenseTrait =
@@ -3353,9 +3365,9 @@ if ModUtil ~= nil then
 				},
 				RequiredTextLines = { "ApolloGift06" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Apollo_0170",
+				{ Cue = "/VO/Apollo_0172",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Woah, Zagzag! Look at this music collection. You should be proud of it. Ask something good to play next time you are with Orpheus." },
+					Text = "Woah, Zagzag! Look at that music collection you've got. You should be proud of it. Ask that music box of yours to play something good next time you're with Orpheus." },
 			},
 			ApolloAboutZagzag01 =
 			{
@@ -3406,14 +3418,14 @@ if ModUtil ~= nil then
 				RequiredMinAnyCosmetics =
 				{
 					Cosmetics = GameData.CosmeticsMusic,
-					Count = 5,
+					Count = 3,
 				},
 				RequiredTextLines = { "ApolloGift01" },
 				RequiredFalseTextLines = { "ApolloMusicSheets03" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Apollo_0170",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You found a way to retrieve all the finest music Orpheus has to offer. I would be curious hearing some of them one day. You should probably acquire them first." },
+					Text = "You've got a device that can play all of Orpheus's finest works? Well, I'd love to hear some of them one day. You'll have to acquire them first, of course." },
 			},		
 			ApolloMusicSheets02 =
 			{
@@ -3427,11 +3439,21 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloGift03", "ApolloMusicSheets01" },
 				RequiredFalseTextLines = { "ApolloMusicSheets03" },
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Apollo_0170",
+				{ Cue = "/VO/Apollo_0171",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Paper is not paper, once you wrote a song, your court musician Orpheus got that right. Maybe you should help him gaining some more." },
+					Text = "Paper's no longer paper once it's got music written on it, and your court musician Orpheus is an expert at that. Why don't you support a fellow artist, and buy a few more of his songs?" },
 			},		
 			-- about other gods
+			ApolloGodOfLight01 =
+			{
+				Name = "ApolloGodOfLight01",
+				PlayOnce = true,
+				RequiredTextLines = { "ApolloGift02" },
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				{ Cue = "/VO/Apollo_0168",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I may be the god of light, but I also jam out with my music, write poetry, and see the future. With my powers on your side, there's no way you'll fail this time." },
+			},	
 			ApolloAboutZeus01 =
 			{
 				Name = "ApolloAboutZeus01",
