@@ -75,6 +75,7 @@ if ModUtil ~= nil then
 	OlympusQuestData.HomeWarmthQuest = {
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "SuperGems",
+		Spacing = 60,
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements =
 		{
@@ -227,9 +228,9 @@ if ModUtil ~= nil then
 					CooldownName = "TheseusWrathLinesPlayedRecently",
 					SuccessiveChanceToPlay = 0.5,
 
-					-- Lady Hestia, bring him to me!
+					-- Lady Hestia, bring him to me..
 					{ Cue = "/VO/Theseus_0602" },
-					-- Lady Hestia, pull him under!
+					-- Lady Hestia, pull him under.
 					{ Cue = "/VO/Theseus_0603" },
 				},
 				[2] = GlobalVoiceLines.TheseusWrathActivationVoiceLines,
@@ -352,7 +353,7 @@ if ModUtil ~= nil then
 	})
 	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, {
 		-- Hestia!!
-		Cue = "/VO/ZagreusField_4951", RequiredTrait = "HestiaShoutTrait", RequiredFalseSpurnedGodName = "HestiaUpgrade"
+		Cue = "/VO/ZagreusField_4951", RequiredTrait = "ApolloShoutTrait", RequiredFalseSpurnedGodName = "ApolloUpgrade"
 	})
 	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
 		RandomRemaining = true,
@@ -3404,7 +3405,7 @@ if ModUtil ~= nil then
 					HasTraitNameInRoom = "FishingRewardExtraTrait",
 					{ Cue = "/VO/Hestia_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
+						Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
 					{ Cue = "/VO/Poseidon_0260",
 						Emote = "PortraitEmoteFiredUp",
 						PortraitExitWait = 0.35,
@@ -3550,7 +3551,7 @@ if ModUtil ~= nil then
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 7 },
 				{ Cue = "/VO/Hestia_0175",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Looks like most of my relatives did their best to be kind when the time came for them to forgive. I hope one day we can be one big family, and that's thanks to you, young one. Thanks." },
+					Text = "Looks like most of my relative did their best to be kind when the time came for them to forgive. I hope one day we can be one big family, and that's thanks to you, young one. Thanks." },
 			},
 			HestiaAboutOlympianReunionQuest01 =
 			{

@@ -3220,7 +3220,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "MasterBoltTrait",
 				{ Cue = "/VO/Apollo_0041",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Seeing you struggle with your father has made me realize something, Zagzag. Fathers and sons work much better together. My father and I have put together something that might help you." },
+					Text = "Seeing you struggle with your father has made me realise something, Zagzag. Fathers and sons work much better together. My father and I have put together something that might help you." },
 				{ Cue = "/VO/Zeus_0250",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -3622,7 +3622,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "OrpheusWithEurydice01", "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0069",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "As a maestro myself, I know better than most of my relatives that cooperation is key. I always try to add my special spice to the mix, but I know that art is better as a collective effort. I hope our cooperation will help you escape." },
+					Text = "As a musical god, I know better than most of my relatives that cooperation is key. I always try to add my special spice to the mix, but I know art is better as a collective effort. I hope our cooperation will help you escape." },
 			},
 			ApolloAboutHarpQuest01 =
 			{
