@@ -8,7 +8,7 @@
       HomingAllegiance = "ENEMIES"
       AffectsEnemies = true
       MaxAdjustRate = 200
-      Speed = 300
+      Speed = 400
       Acceleration = 0
       Range = 1000.0
       DamageLow = 200
@@ -140,11 +140,11 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
-      ImmunityDuration = 0.75
+      ImmunityDuration = 0.2
       SilentImpactOnInvulnerable = true
       GroupName = "FX_Terrain"
       VacuumStrength = 0
@@ -194,7 +194,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
@@ -259,7 +259,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
@@ -327,11 +327,11 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5
-      Fuse = 0.25
+      Fuse = 0.2
       Range = 0
       UseVulnerability = false
       ConsecutiveHitWindow = 0.8
-      ImmunityDuration = 0.75
+      ImmunityDuration = 0.2
       SilentImpactOnInvulnerable = true
       GroupName = "FX_Terrain"
       VacuumStrength = 0
@@ -385,7 +385,7 @@
       ImpactVelocity = 0
       MultiDetonate = true
       TotalFuse = 5.0
-      Fuse = 0.01
+      Fuse = 0.055
       ImpactFx = null
       DetonateGraphic = null
       //DissipateGraphic = "HestiaRushProjectileImpact"
@@ -394,9 +394,6 @@
       SilentImpactOnInvulnerable = true
       SpawnOnDetonate = "HestiaFire"
       SpawnType = "PROJECTILE"
-      //SpawnCount = 10
-      //SpawnsEvenlySpaced = true
-      //SpawnsSpeedModifierScaleY = 0.65
       GroupName = "Standing"
       Thing = 
       {
@@ -447,7 +444,7 @@
       Fuse = 0.1
       Range = 0
       UseVulnerability = false
-      ImmunityDuration = 0.6
+      ImmunityDuration = 0.2
       SilentImpactOnInvulnerable = true
       GroupName = "FX_Terrain_Top"
       IgnoreCoverageAngles = true
@@ -475,6 +472,28 @@
             Y = 45
           }]
       }
+      Effects = [
+          {
+            Name = "DemeterSlow"
+            IgnoreName = "_PlayerUnit"
+            Duration = 8.0
+            Stacks = true
+            ExtendDurationOnReapply = true
+            IsVulnerabilityEffect = true
+            MaxStacks = 10
+            Active = false
+            StartFx = "DemeterSlowImpact"
+            ReapplyFx = "DemeterSlowImpactReapply"
+            Sound = "/SFX/Player Sounds/DemeterFrozenDebuffSFX"
+            StopSoundOnFinishFade = 0.5
+            FrontFx = "DemeterSlowFront"
+            BackFx = "DemeterSlowBack"
+            FlashFrontFxWhenExpiring = true
+            FlashBackFxWhenExpiring = true
+            TimeModifierFraction = 0
+            ExpiringRapidFlashThreshold = 0.3
+            ElapsedTimeMultiplier = 0.96
+          }]
     }
     {
       Name = "ArtemisHestiaExplosion"
@@ -503,7 +522,7 @@
     {
       Name = "HestiaSuper"
       InheritFrom = "1_BasePlayerSmallProjectile"
-      DetonateGraphic = "HadesCastNovaHit"
+      DetonateGraphic = "HestiaCastNovaHit"
       Type = "STRAIGHT"
       DetonateSound = "null"
       Fuse = 0.0
@@ -539,7 +558,7 @@
     {
       Name = "HestiaMaxSuper"
       InheritFrom = "1_BasePlayerSmallProjectile"
-      DetonateGraphic = "HadesCastNovaHit"
+      DetonateGraphic = "HestiaCastNovaHit"
       Type = "STRAIGHT"
       DetonateSound = "null"
       Fuse = 0.0

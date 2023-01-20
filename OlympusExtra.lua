@@ -6,18 +6,59 @@ if ModUtil ~= nil then
         DebugPrint({Text = "Trying to load package "..package..".pkg"})
         LoadPackages({Name = "OEHestia"})
         LoadPackages({Name = "OEApollo"})
+        LoadPackages({Name = "OEMinor"})
         return baseFunc()
     end)
     ModUtil.Mod.Register("OlympusExtra")
     -- Apollo Hestia Duo   
         local OlympusLootData = ModUtil.Entangled.ModData(LootData)   
         local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
-    if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil  then     
-        OlympusTraitData.BlindExtraHealTrait = {
+    if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil then     
+        OlympusTraitData.ShoutMoreHealTrait = 
+        {
             InheritFrom = { "SynergyTrait" },
             Icon = "Hestia_Apollo_01",
-            RequiredFalseTrait = "BlindExtraHealTrait",	
+            RequiredFalseTrait = "ShoutMoreHealTrait",	
+            AddOutgoingLifestealModifiers =
+            {
+                --Unique = true,
+                ValidWeapons = {"HestiaMaxSuper", "HestiaSuper" },
+                ValidMultiplier = 0.00,
+                MaxLifesteal = 4,
+                MinLifesteal = 4,
+                ExtractValues =
+                {
+                    {
+                        Key = "MinLifesteal",
+                        ExtractAs = "TooltipLifesteal",
+                    },
+                }
+            },
+            ExtractValues =
+            {
+                {
+                    ExtractAs = "TooltipWrathStocks",
+                    Format = "ExistingWrathStocks",
+                    SkipAutoExtract = true
+                }
+            }
         }
+        OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait = 
+            {
+                OneFromEachSet =
+                {
+                    { "HestiaShoutTrait"},
+                    { "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait"}
+                }
+            }
+        OlympusLootData.ApolloUpgrade.LinkedUpgrades.ShoutMoreHealTrait = 
+            {
+                OneFromEachSet =
+                {
+                    { "HestiaShoutTrait"},
+                    { "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait"}
+                }
+            }
         OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HestiaWithApollo01 = {
             Name = "HestiaWithApollo01",
             PlayOnce = true,
@@ -32,7 +73,7 @@ if ModUtil ~= nil then
                 StartSound = "/SFX/LyreMedium",
                 EndSound = "/Leftovers/World Sounds/MapZoomInShort",
                 Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-                Text = "Ah, Lady Hestia, nothing makes me more happy than helping my beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, I'm here now." },
+                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
         }
         OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.ApolloWithHestia01 = {
             Name = "ApolloWithHestia01",
@@ -41,7 +82,7 @@ if ModUtil ~= nil then
             HasTraitNameInRoom = "BlindAuraTrait",
             { Cue = "/VO/Apollo_0301",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs in the sky above with us." },
+                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
             { Cue = "/VO/Hestia_0167",
                 PortraitExitWait = 0.35,
                 PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -55,10 +96,10 @@ if ModUtil ~= nil then
             {
                 PlayOnce = true,
                 Name = "ApolloFreePass01",
-                { Cue = "/VO/Apollo_0262",
+                { Cue = "/VO/Apollo_0371",
                     PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
                     StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-                    Text = "You think Hestia is generous? Well, Zagzag, I'll show you generosity. No fight this time, just blessings. Now you'll think twice before your next decision." },
+                    Text = "You think Lady Hestia is generous? Well, Zagzag, I'll show {#DialogueItalicFormat}you{#PreviousFormat} generosity. No fight this time, just blessings. I bet you'll think twice before you cross me again." },
             },
         }
     end
@@ -123,16 +164,18 @@ if ModUtil ~= nil then
             table.insert(OlympusCodexMenuData.Duos, "FreeHealthTrait")
             table.insert(OlympusCodexMenuData.Duos, "MoreTrapDamageTrait")
             table.insert(OlympusCodexMenuData.Duos, "ExplosionTrait")             
-            --table.insert(OlympusCodexMenuData.Duos, "LavaCrystalTrait")        
-            --table.insert(OlympusCodexMenuData.Duos, "FullHealBossTrait")        
-            --table.insert(OlympusCodexMenuData.Duos, "CloseDamageBuffTrait")        
-            --table.insert(OlympusCodexMenuData.Duos, "ShoutMaxIncreaseTrait")    
-            --table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait") 0        
-            
+            table.insert(OlympusCodexMenuData.Duos, "ChillFireTrait")        
+            table.insert(OlympusCodexMenuData.Duos, "FullHealBossTrait")        
+            table.insert(OlympusCodexMenuData.Duos, "FoesNumberDamageTrait")        
+            table.insert(OlympusCodexMenuData.Duos, "PullZeusCastTrait")    
+            table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait")        
+            if ModUtil.Mods.Data["ApolloExtra"] ~= nil then 
+                table.insert(OlympusCodexMenuData.Duos, "ShoutMoreHealTrait")                  
+            end
             -- CentaurSoul-CodexMenu
             table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")
         end
-        -- Hestia 
+        
         --[[if ModUtil.Mods.Data["CerberusAssist"] ~= nil then
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")            
         end]]

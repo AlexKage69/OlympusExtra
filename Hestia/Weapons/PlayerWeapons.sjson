@@ -132,5 +132,21 @@
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
     }
+    {
+      Name = "FoesNumberDamageBuff"
+      InheritFrom = "MagicShield"
+      Projectile = "FoesNumberDamageBuff"
+      Effect = 
+      {
+        Name = "FoesNumberDamageBuff"
+        Modifier = 1.0
+        Duration = 1000
+        Active = true
+        CanAffectInvulnerable = true
+        BackFx = null
+        OnlyAffectName = "_PlayerUnit"
+        FrontFx = "HestiaEncounterStartBuff"
+      }
+    }
   ]
 }

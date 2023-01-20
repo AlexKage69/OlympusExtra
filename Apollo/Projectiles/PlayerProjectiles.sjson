@@ -219,8 +219,8 @@
       AffectsEnemies = true
       AffectsFriends = false
       AffectsSelf = false
-      DamageLow = 5
-      DamageHigh = 5
+      DamageLow = 0
+      DamageHigh = 0
       IgnoreCoverageAngles = true
       UseVulnerability = false
       CanCrit = false
@@ -236,11 +236,19 @@
             Amount = 40.0
             Cooldown = 1
             Duration = 5
-            ExtendDurationOnReapply = true
+            ExtendDurationOnReapply = false
             FrontFx = "BlindStaticArcEmitter"
             Active = true
             TimeModifierFraction = 0
-          }
+          },
+        {
+          Name = "ZeusAttackPenalty"
+          FrontFx = "ZeusStaticArcEmitter"
+          BackFx = "null"
+          Duration = 10
+          Active = false
+          IsVulnerabilityEffect = true
+        }
       ]
     }
     {
@@ -322,48 +330,56 @@
         }
     }
     {
-      Name = "ApolloCastBeam"
-      InheritFrom = "1_BasePlayerSmallProjectile"
-      Type = "BEAM"
-      AutoAdjustForTarget = false
+      Name = "ApolloShoutProjectile"
+      InheritFrom = "1_BaseDamagingProjectile"
+      DetonateGraphic = "null"
       CanBeProjectileDefenseDestroyed = false
+      Type = "BEAM"
       AffectsEnemies = true
       AffectsFriends = false
       AffectsSelf = false
+      AttachToOwner = true
       CheckUnitImpact = true
       CheckObstacleImpact = true
       UnlimitedUnitPenetration = false
-      MaxAdjustRate = 9
-      Range = 1000
-      Speed = 0
-      DamageLow = 0
-      DamageHigh = 0
+      AutoAdjustForTarget = false
+      MaxAdjustRate = 0
+      Range = 1100.0
+      Speed = 0.0
+      DamageLow = 5
+      DamageHigh = 5
       ImpactVelocity = 0
       MultiDetonate = true
       Fuse = 0.1
-      TotalFuse = 13.0
+      TotalFuse = 12
       DrawAsBeam = true
       GroupName = "FX_Dark"
-      TipFx = "ApolloLaserTip"
-      AttachToOwner = true
+      TipFx = "HadesLaserTip"
       DissipateGraphic = "ApolloLaserEnd"
-      Thing = {
+      DangerDistance = 0
+      Thing = 
+      {
         Graphic = "ApolloLaserPreview"
-        OffsetZ = 70
+        OffsetZ = 100
         Grip = 999999
-        RotateGeometry = true
-        UseBoundsForSortDrawArea = true
-        SortBoundsScale = 0.33
-        Tallness = 50        
-      }
-    }
-    {
-      Name = "ApolloCastBeamNoTracking"
-      InheritFrom = "ApolloCastBeam"
-      MaxAdjustRate = 0
-      TipFx = "ApolloLaserTipNoParticles"
-      Thing = {
-        AttachedAnim = "ApolloLaserOriginNoLight"
+        Tallness = 10
+        Points = [
+          {
+            X = 0
+            Y = 24
+          }
+          {
+            X = 12
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -24
+          }
+          {
+            X = -12
+            Y = 0
+          }]
       }
     }
     {

@@ -2796,7 +2796,7 @@
       CreateAnimation = null
     }
     {
-      Name = "HadesAmmoPushRingEdgeFx"
+      Name = "HestiaAmmoPushRingEdgeFx"
       Type = "Constant"
       FilePath = "Particles\particle_snowDust_01"
       NumFrames = 1
@@ -2827,6 +2827,26 @@
       ScaleFromOwner = "Ignore"
       GroupName = "Standing"
       SortMode = "FromParent"
+    }
+    {
+      Name = "HestiaCastNovaHit"
+      FilePath = "Fx\ShadeNova\ShadeNova"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      EndFrame = 28
+      NumFrames = 28
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      Ambient = 0.0
+      Hue = 0.3
+      Scale = 1
+      ScaleY = 1.0
+      PlaySpeed = 80
+      OffsetZ = 30
+      Red = 1.0
+      Green = 0
+      Blue = 0.81
     }
     /* Hestia - Duos */
     /* Theseus - Wrath */
@@ -2990,30 +3010,94 @@
       StartFrame = 1
       LocationZFromOwner = "Ignore"
       ScaleFromOwner = "Ignore"
-      ScaleRadius = 150.0
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
       Ambient = 0.0
-      ChainTo = "HestiaSpinLoopOut"
-      //Alpha = 0.7
-      //AddColor = true
-      /*Color = {
-        Red = 0.8
-        Green = 0.7
-        Blue = 0.9
-      }*/
+      ChainTo = "HestiaSpinLoopOut"    
       ColorFromOwner = "Ignore"
-      //VisualFx = "CandleFlame"
-      //VisualFxIntervalMin = 0.1
-      //VisualFxIntervalMax = 0.2
       SortMode = "Secondary"
       OverlayVfx = false
       TransferFrameFromThis = true
       Material = "Unlit"
-      ScaleX = 1.2
-      ScaleY = 2.5
+      ScaleX = 3
+      ScaleY = 4
       CreateAnimations = [
-        //{ Name = "HestiaSpinLight" }
         { Name = "LavaEmber" }
       ]
+    }
+    {
+      Name = "HestiaDemeterSpinLoop"
+      FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      RandomStartFrame = true
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
+      Ambient = 0.0
+      ChainTo = "HestiaDemeterSpinLoopOut"    
+      ColorFromOwner = "Ignore"
+      SortMode = "Secondary"
+      OverlayVfx = false
+      TransferFrameFromThis = true
+      Material = "Unlit"
+      ScaleX = 3
+      ScaleY = 4
+      CreateAnimations = [
+        { Name = "LavaEmber" }
+      ]
+    }
+    {
+      Name = "HestiaDemeterSpinIn"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      TransferFrameFromThis = false
+      ChainTo = "HestiaDemeterSpinLoop"
+      FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
+      Sound = "/null"
+      EndFrame = 5
+      Loop = false
+      NumFrames = 5
+      StartFrame = 1
+      StartAlpha = 0
+      EndAlpha = 1
+    }
+    {
+      Name = "HestiaDemeterSpinOut"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      TransferFrameFromThis = false
+      TransferFrameToThis = false
+      ChainTo = "null"
+      FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
+      Sound = "/EmptyCue"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 35
+      VisualFx = null
+      EndFrame = 15
+      Loop = false
+      NumFrames = 15
+      StartFrame = 1
+      EndAlpha = 0
+      ChildAnimation = "HestiaDemeterSpinOut2"
+    }
+    {
+      Name = "HestiaDemeterSpinOut2"
+      InheritFrom = "HestiaDemeterSpinOut"
+      ChildAnimation = null
     }
     {
       Name = "HestiaSpinLight"
@@ -3040,6 +3124,19 @@
       EndAlpha = 0
       HoldLastFrame = false
       ChainTo = null
+    }
+    {
+      Name = "HestiaDemeterSpinLoopOut"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      ChainTo = "HestiaDemeterSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
     }
     {
       Name = "HestiaSpinLoopOut"
@@ -3363,6 +3460,118 @@
         }]
     }
     {
+      Name = "HestiaEncounterStartBuff"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      VisualFxIntervalMin = 0.7
+      VisualFxIntervalMax = 0.71
+      VisualFx = "HestiaEncounterStartBuffFront"
+      Sound = "/SFX/AresWrathBattle"
+      StopSoundOnFinishFade = 0.2
+    }
+    {
+      Name = "HestiaEncounterStartBuffFront"
+      Type = "Book"
+      FilePath = "Fx\PowerUpFront\PowerUpFront"
+      NumFrames = 28
+      PlaySpeed = 45
+      GroupName = "FX_Standing_Add"
+      AddColor = true
+      Blue = 0.17
+      Green = 0.08
+      Red = 0.39
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Scale = 0.66
+      CreateAnimations = [
+        {
+          Name = "HestiaEncounterStartBuffBack"
+        }
+        {
+          Name = "HestiaEncounterStartBuffGlow"
+        }
+        {
+          Name = "HestiaEncounterStartBuffFx"
+        }]
+    }
+    {
+      Name = "HestiaEncounterStartBuffBack"
+      InheritFrom = "HestiaEncounterStartBuffFront"
+      FilePath = "Fx\PowerUpBack\PowerUpBack"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      GroupName = "FX_Terrain_Add"
+    }
+    {
+      Name = "HestiaEncounterStartBuffFx"
+      Type = "Book"
+      FilePath = "Fx\AresKillDamageBuff\AresKillDamageBuff"
+      NumFrames = 30
+      AngleMin = 0
+      AngleMax = 1
+      AddColor = false
+      GroupName = "FX_Standing_Add"
+      AngleFromOwner = "Ignore"
+      RandomFlipVertical = false
+      RandomFlipHorizontal = true
+      PostRotateScaleY = 1.0
+      StartScale = 0.8
+      EndScale = 1.2
+      EaseIn = 0.9
+      EaseOut = 1.0
+      StartAlpha = 0
+      EndAlpha = 1
+      PingPongColor = true
+      PlaySpeed = 30
+      SortMode = "FromParent"
+      Loop = false
+      OffsetZ = 80
+      Scale = 2
+      Hue = 0.916
+      DieWithOwner = true
+    }
+    {
+      Name = "HestiaEncounterStartBuffGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow_egg"
+      Blue = 0.17
+      Green = 0.08
+      Red = 0.39
+      StartAlpha = 0.5
+      EndAlpha = 0
+      PingPongColor = false
+      Loop = false
+      Duration = 1.0
+      ScaleFromOwner = "Ignore"
+      OffsetZ = 60
+      StartScale = 1
+      EndScale = 1.75
+      EaseIn = 0.9
+      EaseOut = 1.0
+      GroupName = "FX_Standing_Add"
+      DieWithOwner = true
+    }
+    {
+      Name = "HestiaEncounterStartBuffFloor"
+      Type = "Book"
+      FilePath = "Fx\BloodstoneHelixTrail\BloodstoneHelixTrail"
+      NumFrames = 50
+      PlaySpeed = 30
+      PostRotateScaleY = 0.5
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      AddColor = true
+      GroupName = "FX_Terrain_Add"
+      StartBlue = 0.17
+      StartGreen = 0.08
+      StartRed = 0.39
+      Loop = true
+      OffsetZ = -10
+      StartAlpha = 1
+      EndAlpha = 0
+      DieWithOwner = true
+    }
+    {
       Name = "BlinkTrailFlat-Hestia"
       InheritFrom = "BlinkTrailFlat"
       ChildAnimation = "null"
@@ -3663,7 +3872,8 @@
       Name = "HestiaLavaPuddleSmallest"
       InheritFrom = "HestiaLavaPuddle"
       GroupName = "FX_Terrain"
-      Sound = "/SFX/LavaPuddleAmbientLoop"
+      //Sound = "/SFX/LavaPuddleAmbientLoop"
+      //StopSoundOnFinishFade = 0.2
       Scale = 0.5
       //OffsetX = 5
       OffsetY = 25
@@ -3678,7 +3888,7 @@
       InheritFrom = "HestiaLavaPuddle"
       GroupName = "FX_Terrain"
       Sound = "/SFX/LavaPuddleAmbientLoop"
-      //StopSoundOnFinishFade = 0.2
+      StopSoundOnFinishFade = 0.2
       Scale = 0.9
     }
     {
@@ -3843,7 +4053,7 @@
           Name = "DisplaceShockwaveHemi"
         }
         {
-          Name = "ExplosionScorchDecal"
+          Name = "ExplosionScorchDecalFade"
         }]
     }
     {
@@ -3997,6 +4207,74 @@
       Ambient = 0.0
       SortMode = "FromParent"
       LocationZFromOwner = "Ignore"
+    }
+    // Cerberus Assist Fx
+    {
+      Name = "Cerberus_ZagreusAssistJump_ToRun"
+      FilePath = "Animations\Cerberus\HadesAssistJumpIn\CerberusHadesAssistJumpIn"
+      Type = "Slide"
+      AngleFromOwner = "Ignore"
+      ChainTo = "Cerberus_HadesAssistRun"
+      VideoTexture = "Cerberus_HadesAssistJumpIn_Bink"
+      Velocity = 300
+      Sound = "null"
+      EndFrame = 13
+      NumAngles = 1
+      NumFrames = 13
+      StartFrame = 1
+      OffsetY = -114.0
+      StartAlpha = 0
+      EndAlpha = 1
+      Slides = [
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }]
+      Material = 
+      {
+        Ambient = 0.0
+        Diffuse = 0.0
+        Directionality = 0.0
+      }
     }
   ]
 }
