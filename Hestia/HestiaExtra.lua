@@ -3817,7 +3817,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HestiaFirstPickUp", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
 				RequiredFalseTextLines = { "HestiaWithHera01", "HeraWithHestia01" },
 				RequiredGodLoot = "HeraUpgrade",
-				{ Cue = "/VO/Hestia_0065",
+				{ Cue = "/VO/Hestia_0165",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I don't know if you've met her yet, but Sister Hera is younger than me. She can be strict, but she's still widely respected; she is queen of Olympus, after all. Maybe someday, she will show the same compassion that I am showing you now." },
 			},
