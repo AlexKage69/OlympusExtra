@@ -2061,7 +2061,7 @@ if ModUtil ~= nil then
 				TraitName = "LavaAutoTrait",
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 250,
+				ChangeValue = 100,
 				ChangeType = "Add",
 			},
 			{
@@ -2334,7 +2334,7 @@ if ModUtil ~= nil then
 				TraitName = "LavaAutoTrait",
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 250,
+				ChangeValue = 100,
 				ChangeType = "Add",
 			},
 			{
@@ -2570,7 +2570,7 @@ if ModUtil ~= nil then
 				TraitName = "LavaAutoTrait",
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 250,
+				ChangeValue = 100,
 				ChangeType = "Add",
 			},
 			{
@@ -2745,7 +2745,7 @@ if ModUtil ~= nil then
 				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
 				ProjectileName = "HestiaField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 250,
+				ChangeValue = 100,
 				ChangeType = "Add",
 			},
 			{
@@ -2759,7 +2759,7 @@ if ModUtil ~= nil then
 				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileName = "HestiaSmallField",
 				ProjectileProperty = "VacuumStrength",
-				ChangeValue = 250,
+				ChangeValue = 100,
 				ChangeType = "Add",
 			},
 			{
