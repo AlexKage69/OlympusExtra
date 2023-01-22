@@ -352,7 +352,7 @@
 		{
 			Id = "PullZeusCastTrait"
 			DisplayName = "Magnetic Force"
-			Description = "Your {$Keywords.Cast} bounces {#BoldFormat}3 {#PreviousFormat} additional times and pulls foes towards you on hit."
+			Description = "Your chain-lightning effects pulls enemies on contact and bounce more times before expiring. \n {!Icons.Bullet}{#PropertyFormat}Lightning Bounces: \Column 380 {#UpgradeFormat}+3"
 		}
 		{
 			Id = "FishingRewardExtraTrait"
