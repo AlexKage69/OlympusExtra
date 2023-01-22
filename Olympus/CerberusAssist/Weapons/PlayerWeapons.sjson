@@ -7,9 +7,9 @@
       Type = "GUN"
       Projectile = "NPC_Cerberus_01_Assist"
       //ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging"
-      NumProjectiles = 75
+      NumProjectiles = 85
       ProjectileInterval = 0.03
-      ProjectileSpacing = 75
+      ProjectileSpacing = 70
       ProjectileOffsetStart = "LEFT"
       ProjectileAngleOffset = 100
       ProjectileAngleOffsetScaleY = 0.7

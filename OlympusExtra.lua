@@ -73,7 +73,7 @@ if ModUtil ~= nil then
                 StartSound = "/SFX/LyreMedium",
                 EndSound = "/Leftovers/World Sounds/MapZoomInShort",
                 Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-                Text = "Ah, Lady Hestia, nothing makes me more happy than helping my beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, I'm here now." },
+                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
         }
         OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.ApolloWithHestia01 = {
             Name = "ApolloWithHestia01",
@@ -82,7 +82,7 @@ if ModUtil ~= nil then
             HasTraitNameInRoom = "BlindAuraTrait",
             { Cue = "/VO/Apollo_0301",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs in the sky above with us." },
+                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
             { Cue = "/VO/Hestia_0167",
                 PortraitExitWait = 0.35,
                 PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
@@ -96,10 +96,10 @@ if ModUtil ~= nil then
             {
                 PlayOnce = true,
                 Name = "ApolloFreePass01",
-                { Cue = "/VO/Apollo_0262",
+                { Cue = "/VO/Apollo_0371",
                     PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
                     StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-                    Text = "You think Hestia is generous? Well, Zagzag, I'll show you generosity. No fight this time, just blessings. Now you'll think twice before your next decision." },
+                    Text = "You think Lady Hestia is generous? Well, Zagzag, I'll show {#DialogueItalicFormat}you{#PreviousFormat} generosity. No fight this time, just blessings. I bet you'll think twice before you cross me again." },
             },
         }
     end

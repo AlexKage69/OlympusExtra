@@ -75,7 +75,6 @@ if ModUtil ~= nil then
 	OlympusQuestData.HomeWarmthQuest = {
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "SuperGems",
-		Spacing = 60,
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements =
 		{
@@ -228,9 +227,9 @@ if ModUtil ~= nil then
 					CooldownName = "TheseusWrathLinesPlayedRecently",
 					SuccessiveChanceToPlay = 0.5,
 
-					-- Lady Hestia, bring him to me..
+					-- Lady Hestia, bring him to me!
 					{ Cue = "/VO/Theseus_0602" },
-					-- Lady Hestia, pull him under.
+					-- Lady Hestia, pull him under!
 					{ Cue = "/VO/Theseus_0603" },
 				},
 				[2] = GlobalVoiceLines.TheseusWrathActivationVoiceLines,
@@ -353,7 +352,7 @@ if ModUtil ~= nil then
 	})
 	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, {
 		-- Hestia!!
-		Cue = "/VO/ZagreusField_4951", RequiredTrait = "ApolloShoutTrait", RequiredFalseSpurnedGodName = "ApolloUpgrade"
+		Cue = "/VO/ZagreusField_4951", RequiredTrait = "HestiaShoutTrait", RequiredFalseSpurnedGodName = "HestiaUpgrade"
 	})
 	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
 		RandomRemaining = true,
@@ -2048,6 +2047,31 @@ if ModUtil ~= nil then
 				ProjectileProperty = "DetonateGraphic",
 				ChangeValue = "RadialNovaSwordParry-Hestia"
 			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+				TraitName = "LavaLongerTrait",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleLargest",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
+			},
 		},
 		ExtractValues =
 		{
@@ -2296,6 +2320,31 @@ if ModUtil ~= nil then
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
 			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaLongerTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
+			},
 		},
 	}
 	OlympusTraitData.HealthDefianceTrait =
@@ -2506,6 +2555,31 @@ if ModUtil ~= nil then
 				WeaponName = "HestiaOnDeath",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaLongerTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaLavaPuddleSmall",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumStrength",
+				ChangeValue = 250,
+				ChangeType = "Add",
+			},
+			{
+				WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+				TraitName = "LavaAutoTrait",
+				ProjectileName = "HestiaSmallField",
+				ProjectileProperty = "VacuumDistance",
+				ChangeValue = 400,
+				ChangeType = "Add",
 			},
 		},
 	}
@@ -3082,7 +3156,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Zeus_01",
-		RequiredFalseTrait = "PullZeusCastTrait",
+		RequiredFalseTraits = { "PullZeusCastTrait", "ShieldLoadAmmoTrait" },
 		OnWeaponHitFunctions = {
 			ValidWeapons = { "RangedWeapon" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
@@ -3205,7 +3279,7 @@ if ModUtil ~= nil then
 			{
 				OneFromEachSet =
 				{
-					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+					{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait" },
 					{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait",
 						"ShieldLoadAmmo_AthenaRangedTrait" }
 				},
@@ -3231,7 +3305,7 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "LastStandDamageReduceTrait", "HealthDefianceTrait", "HealthDamageTrait" },
-					{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait" },
+					{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait", "FishingTrait" },
 				},
 			},
 			ShoutMoreHealTrait =
@@ -3247,14 +3321,14 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "HestiaDashTrait" },
-					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait" },
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait" },
 				},
 			},
 			PullZeusCastTrait = 
 			{
 				OneFromEachSet =
 				{
-					{ "ZeusRangedTrait" },
+					{ "ZeusWeaponTrait", "ZeusRangedTrait" },
 					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
 				},
 			},
@@ -3330,7 +3404,7 @@ if ModUtil ~= nil then
 					HasTraitNameInRoom = "FishingRewardExtraTrait",
 					{ Cue = "/VO/Hestia_0042",
 						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
+						Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
 					{ Cue = "/VO/Poseidon_0260",
 						Emote = "PortraitEmoteFiredUp",
 						PortraitExitWait = 0.35,
@@ -3476,7 +3550,7 @@ if ModUtil ~= nil then
 				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 7 },
 				{ Cue = "/VO/Hestia_0175",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Looks like most of my relative did their best to be kind when the time came for them to forgive. I hope one day we can be one big family, and that's thanks to you, young one. Thanks." },
+					Text = "Looks like most of my relatives did their best to be kind when the time came for them to forgive. I hope one day we can be one big family, and that's thanks to you, young one. Thanks." },
 			},
 			HestiaAboutOlympianReunionQuest01 =
 			{
@@ -5165,7 +5239,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
+			{ "HestiaRangedTrait", "HestiaRevengeTrait", "LavaDeathTrait" },
 			{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait",
 				"ShieldLoadAmmo_AthenaRangedTrait" }
 		}
@@ -5201,7 +5275,7 @@ if ModUtil ~= nil then
 		OneFromEachSet =
 		{
 			{ "HestiaDashTrait" },
-			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait" },
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait" },
 		},
 	}
 	
@@ -5209,7 +5283,7 @@ if ModUtil ~= nil then
 	{
 		OneFromEachSet =
 		{
-			{ "ZeusRangedTrait" },
+			{ "ZeusWeaponTrait", "ZeusRangedTrait" },
 			{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
 		},
 	}
@@ -5219,7 +5293,7 @@ if ModUtil ~= nil then
 		OneFromEachSet =
 		{
 			{ "LastStandDamageReduceTrait", "HealthDefianceTrait", "HealthDamageTrait" },
-			{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait" },
+			{ "RoomRewardBonusTrait", "PoseidonPickedUpMinorLootTrait", "FishingTrait" },
 		}
 	}
 	-- Other gods modification
@@ -5890,7 +5964,7 @@ if ModUtil ~= nil then
 			return false
 		end
 		local number = RandomFloat(0, 1)
-		return number <= 0.05
+		return number <= 0.20
 	end
 
 	function StartDevotionTestPresentationFreePass(currentRoom, alternateLootData, alternateLootId)
