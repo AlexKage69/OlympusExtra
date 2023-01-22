@@ -42,7 +42,8 @@ OlympusTraitData.GoodBoyAssistTrait =
 		InRackIcon = "Keepsake_Cerberus_Plush_Menu",
 
 		--PreEquipWeapons = { "NPC_Goodboy_01_Assist" },
-		EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
+		-- EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
+		EquipSound = "/VO/CerberusCuteGrowl_2", 
 		KeepsakeRarityGameStateRequirements =
 		{
 			[1] = {
