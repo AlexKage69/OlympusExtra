@@ -242,7 +242,7 @@
 		{
 			Id = "HealthDamageTrait"
 			DisplayName = "Melting Heart"
-			Description = "Your {$Keywords.Attack}+{$Keywords.Special} gain bonus damage when you pick up a {$Keywords.CentaurSoul} or a {$Keywords.CentaurHeart}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage per {!Icons.HealthUp_Small} Item: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n Receive {#BoldFormat}1 {#PreviousFormat} {$Keywords.CentaurSoul} now. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.Attack} and {$Keywords.Special} Bonus Damage: \Column 381 {#UpgradeFormat} {$TooltipData.TooltipDamage:P}"
 		} 
 		{
 			Id = "HealthDamageTrait_Tray"
