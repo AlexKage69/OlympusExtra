@@ -2928,8 +2928,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaLavaProjectile", "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileProperty = "DamageLow",
-				ChangeValue=5.0,
-				ChangeType="MultiplyBase",
+				ChangeValue = 2.0,
+				ChangeType = "Multiply",
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamage",
@@ -2939,8 +2939,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "HestiaLavaProjectile", "HestiaOnDeath", "HestiaOnRevenge" },
 				ProjectileProperty = "DamageHigh",
-				ChangeValue=5.0,
-				ChangeType="MultiplyBase",
+				ChangeValue = 2.0,
+				ChangeType = "Multiply",
 			}
 		},
 		EnemyIncomingDamageModifiers =
@@ -6085,27 +6085,5 @@ if ModUtil ~= nil then
 	})
 
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
-
-	-- For testing purposes
-	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)		
-            
-			if (not CanOpenCodex()) and IsSuperValid() then
-				BuildSuperMeter(CurrentRun, 50)
-			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			baseFunc()
-		end
-	)]]
-	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
-		return base( triggerArgs ) 
-	end )]]
-
-	-- OnControlPressed{ "Codex",
-	-- 	function( triggerArgs )
-	-- 		HestiaShout()
-	-- 	end 
-	-- }
 
 end

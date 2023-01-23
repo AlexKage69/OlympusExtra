@@ -246,34 +246,4 @@ OlympusTraitData.GoodBoyAssistTrait =
 		consumableData.NotRequiredPickup = true
 		GiveRandomConsumables( consumableData )]]
 	end
-	
-	ModUtil.Path.Wrap( "DoAssist", 
-		function(baseFunc, unit)	
-			baseFunc(unit)	
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("After Do Assist")) 
-		end)
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)		
-			if (not CanOpenCodex()) and IsSuperValid() then
-				AddKeepsakeCharge({})
-			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(ModUtil.Mods.Data)) 
-			
-			--InitializeGiftData()
-			baseFunc()
-		end
-	)
-	--[[OnWeaponFired{
-		function( triggerArgs )
-	
-			if triggerArgs.OwnerTable.ObjectId == CurrentRun.Hero.ObjectId then
-				CheckPlayerOnFirePowers( triggerArgs )
-			end
-			local weaponData = GetWeaponData(triggerArgs.OwnerTable, triggerArgs.name)
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(weaponData)) 
-			if weaponData == nil then
-				return
-			end	
-			--CurrentRun.WeaponsFiredRecord[weaponData.Name] = (CurrentRun.WeaponsFiredRecord[weaponData.Name] or 0) + 1
-		end}]]
 end
