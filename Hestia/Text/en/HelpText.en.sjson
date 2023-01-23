@@ -338,7 +338,7 @@
 		{
 			Id = "FullHealBossTrait"
 			DisplayName = "Quick Drink"
-			Description = "Upon encounters with {$Keywords.BossPlural} and {$Keywords.MiniBoss}, restores {!Icons.Health_Small}.\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.BossPlural} Heal: \Column 380 {#UpgradeFormat}100% \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.MiniBoss} Heal: \Column 380 {#UpgradeFormat}50%"
+			Description = "Upon entering {$Keywords.BossPlural} and {$Keywords.MiniBoss} rooms, restore {!Icons.Health_Small}.\n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.BossPlural}: \Column 380 {#UpgradeFormat}100%{!Icons.Health_Small_Tooltip} \n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.MiniBoss}: \Column 380 {#UpgradeFormat}50%{!Icons.Health_Small_Tooltip}"
 		}
 		{
 			Id = "FullHealBossText",
