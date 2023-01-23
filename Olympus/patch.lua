@@ -127,3 +127,13 @@ ModUtil.Path.Wrap( "EquipAssist",
         end
 	end
 )]]
+--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+		function(baseFunc)		
+            
+			if (not CanOpenCodex()) and IsSuperValid() then
+				BuildSuperMeter(CurrentRun, 50)
+			end
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+			baseFunc()
+		end
+	)]]
