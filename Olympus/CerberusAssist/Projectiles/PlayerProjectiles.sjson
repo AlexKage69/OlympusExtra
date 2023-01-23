@@ -20,8 +20,8 @@
       CheckUnitImpact = false
       CheckObstacleImpact = false
       UnlimitedUnitPenetration = true
-      DamageLow = 1500
-      DamageHigh = 1500
+      DamageLow = 2000
+      DamageHigh = 2000
       ImpactVelocity = 0
       CriticalFx = "CriticalHit"
       HitVulnerabilityFx = "Backstab"
