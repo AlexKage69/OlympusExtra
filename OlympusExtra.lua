@@ -7,6 +7,7 @@ if ModUtil ~= nil then
         LoadPackages({Name = "OEHestia"})
         LoadPackages({Name = "OEApollo"})
         LoadPackages({Name = "OEMinor"})
+        LoadPackages({Name = "OEHera"})
         return baseFunc()
     end)
     ModUtil.Mod.Register("OlympusExtra")

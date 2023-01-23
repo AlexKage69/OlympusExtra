@@ -1914,8 +1914,10 @@ end]]
 		SellTraitCostMultiplier = {
 			BaseValue = 1.5
 		},
-		InfernalTroveRewardMultiplier = {
-			BaseValue = 1.5
+		ChallengeRewardIncrease =
+		{
+			BaseValue = 1.5,
+			SourceIsMultiplier = true,
 		},
 		UrnsRewardMultiplier = {
 			BaseValue = 1.5

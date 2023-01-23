@@ -31,6 +31,15 @@ Replace "Packages/OEMinor.pkg_manifest"
 To "Win/Packages/720p/OEMinor.pkg_manifest"
 Replace "Packages/OEMinor.pkg_manifest"
 
+To "Win/Packages/OEHera.pkg"
+Replace "Packages/OEHera.pkg"
+To "Win/Packages/720p/OEHera.pkg"
+Replace "Packages/OEHera.pkg"
+To "Win/Packages/OEHera.pkg_manifest"
+Replace "Packages/OEHera.pkg_manifest"
+To "Win/Packages/720p/OEHera.pkg_manifest"
+Replace "Packages/OEHera.pkg_manifest"
+
 :: Maps
 To "Win/Maps/RoomPreRun.thing_bin"
 Replace "Packages/Maps/RoomPreRun.thing_bin"
