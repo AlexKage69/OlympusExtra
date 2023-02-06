@@ -184,6 +184,9 @@ if ModUtil ~= nil then
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HestiaProjectile")
+	OlympusWeaponData.ChainLightning = {
+		Name = "ChainLightning"
+	}
 	OlympusWeaponData.HestiaShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -3103,6 +3106,26 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Dionysus_01",
 		RequiredFalseTrait = "FullHealBossTrait",
+		HealingReduction = 1,
+		HealingReductionHalf = 1,
+		CustomNameWithMetaUpgrade =
+		{
+			MetaUpgradeName = "HealingReductionShrineUpgrade",
+			Name = "FullHealBossTrait_Reduced",
+		},
+		ExtractValues =
+		{
+			{
+				Key = "HealingReduction",
+				ExtractAs = "TooltipHeal",
+				Format = "PercentHealLast",
+			},
+			{
+				Key = "HealingReductionHalf",
+				ExtractAs = "TooltipHealHalf",
+				Format = "PercentHealHalf",
+			},
+		}
 	}
 	OlympusTraitData.FoesNumberDamageTrait =
 	{
@@ -3158,7 +3181,7 @@ if ModUtil ~= nil then
 		Icon = "Hestia_Zeus_01",
 		RequiredFalseTraits = { "PullZeusCastTrait", "ShieldLoadAmmoTrait" },
 		OnWeaponHitFunctions = {
-			ValidWeapons = { "RangedWeapon" },
+			ValidWeapons = { "RangedWeapon", "ChainLightning" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
@@ -3168,7 +3191,7 @@ if ModUtil ~= nil then
 					Traits = {
 						ZeusRangedTrait = {
 							Range = 1500,
-							PullForce = 2000,
+							PullForce = 1500,
 							Arc = 360,
 							Count = 2,
 							Distance = 75,
@@ -3178,7 +3201,7 @@ if ModUtil ~= nil then
 				},
 				ChainLightning = {
 					Range = 1500,
-					PullForce = 2000,
+					PullForce = 1500,
 					Arc = 360,
 					Count = 2,
 					Distance = 75,
@@ -4645,6 +4668,7 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				Name = "HestiaFreePass02",
 				RequiredTextLines = { "HestiaFreePass01" },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 3 },
 				{ Cue = "/VO/Hestia_0169",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -5718,17 +5742,42 @@ if ModUtil ~= nil then
 	ModUtil.Path.Wrap("StartEncounter",
 		function(baseFunc, currentRun, currentRoom, currentEncounter)
 			if HeroHasTrait("FullHealBossTrait") then
+				local healAmount = round( CurrentRun.Hero.MaxHealth * CalculateHealingMultiplier())
+				if healAmount < 0.05 then
+					healAmount = round( CurrentRun.Hero.MaxHealth * 0.05)
+				end
 				if 	(currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
 					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and 
 					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
 					thread(FullHealBossAnnouncement)
-					Heal(CurrentRun.Hero, { HealAmount = CurrentRun.Hero.MaxHealth, SourceName = "FullHealBossTrait" })
+					Heal(CurrentRun.Hero, { HealAmount = healAmount, SourceName = "FullHealBossTrait" })
 				elseif currentRun.CurrentRoom.IsMiniBossRoom then
 					thread(FullHealBossAnnouncement)
-					Heal(CurrentRun.Hero, { HealAmount = (CurrentRun.Hero.MaxHealth/2), SourceName = "FullHealBossTrait" })
+					Heal(CurrentRun.Hero, { HealAmount = (healAmount/2), SourceName = "FullHealBossTrait" })
 				end
 			end
 			baseFunc(currentRun, currentRoom, currentEncounter)
+		end
+	)
+	ModUtil.Path.Wrap("FormatExtractedValue",
+		function(baseFunc, value, extractData)
+			if extractData.Format ~= nil then
+				if extractData.Format == "PercentHealLast" then
+					value = value * CalculateHealingMultiplier()
+					if value < 0.05 then
+						value = 0.05
+					end
+					value = value * 100
+				end
+				if extractData.Format == "PercentHealHalf" then
+					value = (value * CalculateHealingMultiplier())/2
+					if value < 0.03 then
+						value = 0.03
+					end
+					value = value * 100
+				end
+			end
+			return baseFunc(value, extractData)
 		end
 	)
 	function FullHealBossAnnouncement()
@@ -5963,8 +6012,16 @@ if ModUtil ~= nil then
 		if IsEmpty(allEligibleLines) then
 			return false
 		end
+		if GameState.ForgivenessEncounteredCount == nil then
+			GameState.ForgivenessEncounteredCount = {}
+		end
+		if GameState.ForgivenessEncounteredCount[alternateLootData.Name] == nil then
+			GameState.ForgivenessEncounteredCount[alternateLootData.Name] = 1
+		else
+			GameState.ForgivenessEncounteredCount[alternateLootData.Name] = GameState.ForgivenessEncounteredCount[alternateLootData.Name] + 1
+		end
 		local number = RandomFloat(0, 1)
-		return number <= 0.20
+		return number <= (0.20 * GameState.ForgivenessEncounteredCount[alternateLootData.Name])
 	end
 
 	function StartDevotionTestPresentationFreePass(currentRoom, alternateLootData, alternateLootId)
