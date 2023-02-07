@@ -1,32 +1,19 @@
 local OlympusUnitSetData = ModUtil.Entangled.ModData(UnitSetData)
 local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusDeathLoopData = ModUtil.Entangled.ModData(DeathLoopData)
--- Macaria, Id = 370025
-OlympusUnitSetData.NPCs.NPC_Macaria_01 =
-{
-	InheritFrom = { "NPC_Neutral"}, --, "NPC_Giftable" 
+local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
+-- Makaria, Id = 370025, 370024, 370002
 
+OlympusUnitSetData.NPCs.NPC_Makaria_01 =
+{
+	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+	Name = "NPC_Makaria_01",
 	UseText = "UseTalkToChildGhost",
 	Portrait = "Portrait_ChildGhost_Default_01",
 	AnimOffsetZ = 220,
 	EmoteOffsetX = -20,
 	EmoteOffsetY = -160,
-	--[[EndTextLinesThreadedFunctionName = "HypnosReturnToSleep",
-	EndTextLinesFunctionArgs =
-	{
-		HighChanceToPlay = 0.85,
-		LowChanceToPlay = 0.3,
-		RandomWaitMin = 5.0,
-		RandomWaitMax = 10.0,
-		OutsideDistance = 450,
-		OutsideAnimation = "HypnosReturnToSleeping",
-		OutsideVfx = "StatusSleeping",
-		OutsideGlobalVoiceLines = "HypnosDozingOffVoiceLines",
-		InsideDistance = 320,
-		InsideAnimation = "HypnosWakeUp",
-		InsideGlobalVoiceLines = "HypnosAwakenedVoiceLines",
-		InsideVfx = "StatusAwakened",
-	},]]
 
 	Groups = { "NPCs" },
 	SubtitleColor = Color.HypnosVoice,
@@ -47,77 +34,46 @@ OlympusUnitSetData.NPCs.NPC_Macaria_01 =
 
 	InteractTextLineSets =
 	{
-		MacariaFirstMeeting =
-		{
-			PlayOnce = false,
-			UseableOffSource = true,
-			RequiredCompletedRuns = 0,
-			EndVoiceLines =
+		MakariaFirstMeeting =
 			{
-				PreLineWait = 0.35,
-				RequiredMinElapsedTime = 4,
-				UsePlayerSource = true,
-				-- Some of us more than others.
-				{ Cue = "/VO/ZagreusScratch_0013" },
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				{ Cue = "/VO/Sisyphus_0129",
+					PreLineAnim = "SisyphusExplaining",
+					Text = "Hey, Prince Z. Must look like I'm slacking off with the old boulder, here, but... I was just getting back on my feet. The Fury Sisters don't often leave me be. Where'd they go, anyway? And... what are you doing here?" },
+				{ Cue = "/VO/ZagreusField_0522", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+					Text = "Oh, you know, just out on a little stroll is all. Do me a favor, though, you see the Fury Sisters, let them know I was headed down the way I came from, will you...?" },
+				{ Cue = "/VO/Sisyphus_0130",
+					Text = "Oh I'll let them know, all right, I hear you loud and clear, Your Highness. I'll just go about my business now, and you take care." },
+				{
+					Text = "Sisyphus_OfferText01",
+					Choices = PresetEventArgs.SisyphusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
 			},
-			{ Cue = "/VO/Hypnos_0002",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Welcome to the House of Hades, where... wait, I know {#DialogueItalicFormat}you{#PreviousFormat}! Guess that means you died out there, huh? Well don't be sad, though, pretty much everybody dies sometime!" },
-			OnQueuedFunctionName = "CheckDistanceTriggerThread",
-			OnQueuedFunctionArgs = PresetEventArgs.Sleeping,
-			StatusAnimation = false,
-		},
 	},
 
 	RepeatableTextLineSets =
 	{
-		MacariaChat01 =
+		MakariaRepeat01 =
 		{
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Hypnos",
-			{ Cue = "/VO/Hypnos_0024",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Welcome to the House of Hades! Glory in Death!" },
-			OnQueuedFunctionName = "CheckDistanceTriggerThread",
-			OnQueuedFunctionArgs = PresetEventArgs.SleepingRepeatable,
-			StatusAnimation = false,
-		},
-
-		MacariaHighRelationshipChat01 =
-		{
-			RequiredTextLines = { "MacariaGift08" },
-			UseableOffSource = true,
-			{ Cue = "/VO/Hypnos_0299",
-				Text = "Welcome to the House of... oh, you know!" },
-			OnQueuedFunctions =
-			{
-				{
-					Name = "CheckDistanceTriggerThread",
-					Args = PresetEventArgs.SleepingRepeatable,
-					GameStateRequirements =
-					{
-						RequiredFalseTextLines = { "ThanatosWithHypnos06" },
-					},
-				},
-				{
-					Name = "CheckDistanceTriggerThread",
-					Args = PresetEventArgs.GreetingRepeatable,
-					GameStateRequirements =
-					{
-						RequiredTextLines = { "ThanatosWithHypnos06" },
-					},
-				}
-			},
-			StatusAnimation = false,
+			InitialGiftableOffSource = true,
+			GiftableOffSource = true,
+			{ Cue = "/VO/Nyx_0367",
+				Text = "Chaos and I have much catching up to do." },
 		},
 	},
 
 	GiftTextLineSets =
 	{
 		-- grants a gift
-		MacariaGift01 =
+		MakariaGift01 =
 		{
 			PlayOnce = true,
 			{ Cue = "/VO/ZagreusHome_0114", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
@@ -286,17 +242,41 @@ OlympusUnitSetData.NPCs.NPC_Macaria_01 =
 		{ Cue = "/VO/ZagreusHome_0310" },
 	},
 }
+OlympusEncounterSets.EncounterEventsMakariaPool =
+{
+	{ FunctionName = "StartCinematicMakariaPool" },
+}
+function StartCinematicMakariaPool()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Cinematic")) 
+end
+-- New rooms section
+OlympusRoomSetData.Tartarus.A_Makaria01 =
+	{
+		Name = "A_Makaria01",
+		InheritFrom = { "BaseTartarus" },
+		LegalEncounters = { "Empty" },
+		UnthreadedEvents = EncounterSets.EncounterEventsNonCombat,
+		TimerBlock = "StoryRoom",
+		GameStateRequirements =
+		{
+			RequiredMaxBiomeDepth = 12,
+		},
+		NoReward = true,
+		EntranceDirection = "Right",
+		NumExits = 0,
+		ZoomFraction = 0.95,
+	}
 -- Gift Section
 --[[local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
 table.insert(OlympusGiftOrdering, 29, "NewRoomsTrait")
 
-OlympusGiftData.NPC_Macaria_01 =
+OlympusGiftData.NPC_Makaria_01 =
 {
 	InheritFrom = { "DefaultGiftData" },
 	MaxedIcon = "Keepsake_Hypnos_Max",
 	MaxedSticker = "Keepsake_HypnosSticker_Max",
-	MaxedRequirement = { RequiredTextLines = { "MacariaGift08" }, },
+	MaxedRequirement = { RequiredTextLines = { "MakariaGift08" }, },
 	Locked = 7,
 	Maximum = 8,
 	[1] = { Gift = "NewRoomsTrait" },
@@ -333,15 +313,15 @@ OlympusTraitData.NewRoomsTrait =
 		SignOffData =
 		{
 		  {
-			Text = "MacariaSignoff",
+			Text = "MakariaSignoff",
 		  },
 		  {
-			RequiredTextLines = { "MacariaGift08" },
-			Text = "MacariaSignoff_Max"
+			RequiredTextLines = { "MakariaGift08" },
+			Text = "MakariaSignoff_Max"
 		  }
 		},
 	}]]
--- Macaria activation requirements
+-- Makaria activation requirements
 table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, {
 	FunctionName = "ActivateRotatingNPCs",
 	GameStateRequirements =
@@ -352,18 +332,18 @@ table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, {
 	{
 		Types =
 		{
-			"NPC_Macaria_01",
+			"NPC_Makaria_01",
 		},
-		ActivationCapMin = 1,
-		ActivationCapMax = 1,
+		ActivationCapMin = 3,
+		ActivationCapMax = 3,
 		SkipPresentation = true,
 	},
 })
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 local OlympusCodex = ModUtil.Entangled.ModData(Codex)
-table.insert(OlympusCodexOrdering.ChthonicGods.Order, "NPC_Macaria_01")
-OlympusCodex.ChthonicGods.Entries["NPC_Macaria_01"] =
+table.insert(OlympusCodexOrdering.ChthonicGods.Order, "NPC_Makaria_01")
+OlympusCodex.ChthonicGods.Entries["NPC_Makaria_01"] =
 {
 	Entries =
 	{
@@ -383,15 +363,16 @@ OlympusCodex.ChthonicGods.Entries["NPC_Macaria_01"] =
 	Image = "Codex_Portrait_Hestia",
 }
 -- Fountain Divination
+OlympusDeathLoopData.RoomPreRun.Binks = {
+	"CharonIdleShop_Bink",
+	"CharonIdleGreeting_Bink",
+}
 OlympusDeathLoopData.RoomPreRun.ObstacleData[557483] =
 {
 	Template = "HealthFountain",
 	Activate = true,
 	ActivateIds = { 557483, },
-	SetupGameStateRequirements =
-	{
-
-	},
+	SetupGameStateRequirements = { },
 }
 OlympusObstacleData.DivinationGods =
 {
@@ -411,3 +392,38 @@ OlympusObstacleData.DivinationGods =
 		},
 	},
 }
+
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	function(baseFunc)		
+		if (not CanOpenCodex()) and IsSuperValid() then
+			BuildSuperMeter(CurrentRun, 50)
+		end
+		ForceNextRoomFunc()
+		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(challengeBaseIds)) 
+		baseFunc()
+	end
+)
+function ForceNextRoomFunc()
+    local ForceNextRoomValue = "A_Makaria01"
+    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click"))
+
+    -- Stomp any rooms already assigned to doors
+    for doorId, door in pairs( OfferedExitDoors ) do
+        local room = door.Room
+        if room ~= nil then
+            --ForceNextEncounter = "MiniBossSpreadShot"
+
+            local forcedRoomData = RoomData[ForceNextRoomValue]
+            local forcedRoom = CreateRoom( forcedRoomData )
+            AssignRoomToExitDoor( door, forcedRoom )
+        end
+    end
+end
+OnUsed{ "NPCs",
+	function( triggerArgs )
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Interact")) 
+	end
+}
+OverwriteTableKeys( EnemyData, UnitSetData.NPCs )
+OverwriteTableKeys( RoomData, OlympusRoomSetData.Tartarus)

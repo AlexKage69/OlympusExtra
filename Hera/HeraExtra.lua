@@ -112,6 +112,15 @@ if ModUtil ~= nil then
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HeraProjectile")
+	OlympusWeaponSets.AllJealousyWeapons = {
+		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon2", "SpearWeapon3",
+		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
+		"SpearWeaponDash", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeaponRush", "ShieldThrow",
+		"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
+		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
+		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
+		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash", "RangedWeapon"
+	}
 	OlympusWeaponData.HeraShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -211,6 +220,12 @@ if ModUtil ~= nil then
 				{ Name = "/SFX/Player Sounds/ElectricZapSmall" },
 			},
 		},
+	}
+
+	OlympusEffectData.JelousyCurseEffect =
+	{
+		DamageTextStartColor = Color.RamaDamageStart,
+		DamageTextColor = Color.RamaDamageEnd,
 	}
 	--OlympusEffectData.DelayedDamage.OnApplyFunctionName = "DelayDamageApply"
 	--OlympusEffectData.DelayedDamage.OnClearFunctionName = "DelayDamageClear"
@@ -1262,7 +1277,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_03",
+		Icon = "Boon_Hera_05",
 		Slot = "Rush",
 		PreEquipWeapons = { "MineTossZagreus" },
 		RarityLevels =
@@ -1349,13 +1364,25 @@ end]]
 				}
 			},
 		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipSnareDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "SnareCurse",
+				BaseProperty = "Duration",
+			},
+		}
 	}
 	OlympusTraitData.HeraRangedTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Ranged",
-		Icon = "Boon_Hera_04",
+		Icon = "Boon_Hera_03",
 		CustomTrayText = "HeraRangedTrait_Tray",
 		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		PreEquipWeapons = { "" },
@@ -1548,7 +1575,7 @@ end]]
 		CustomTrayText = "HeraShoutTrait_Tray",
 		God = "Hera",
 		Slot = "Shout",
-		Icon = "Boon_Hera_06",
+		Icon = "Boon_Hera_04",
 		RarityLevels =
 		{
 			Common =
@@ -1769,7 +1796,7 @@ end]]
 
 	OlympusTraitData.DiscountHeraTrait =
 	{
-		Icon = "Boon_Hera_07",
+		Icon = "Boon_Hera_09",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "DiscountHeraTrait",
 		God = "Hera",
@@ -1793,7 +1820,7 @@ end]]
 			}
 		},
 		StoreCostMultiplier = {
-			BaseValue = 0.8
+			BaseValue = 0.85
 		},
 		ExtractValues =
 		{
@@ -1806,7 +1833,7 @@ end]]
 	}
 	OlympusTraitData.PriviledgeHeraTrait =
 	{
-		Icon = "Boon_Hera_08",
+		Icon = "Boon_Hera_00",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		RequiredMetaUpgradeSelected = "GodEnhancementMetaUpgrade",
@@ -1846,7 +1873,7 @@ end]]
 	}
 	OlympusTraitData.FamilyHeraTrait =
 	{
-		Icon = "Boon_Hera_08",
+		Icon = "Boon_Hera_10",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		MinRequiredVulnerabilityEffects = 2,
@@ -1890,7 +1917,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_09",
+		Icon = "Boon_Hera_11",
 		RequiredFalseTrait = "MoreRewardTrait",
 		RarityLevels =
 		{
@@ -1934,7 +1961,7 @@ end]]
 	OlympusTraitData.SnareOverTimeTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
-		Icon = "Boon_Hera_14",
+		Icon = "Boon_Hera_00",
 		RequiredFalseTrait = "SnareOverTimeTrait",
 		RarityLevels =
 		{
@@ -1964,7 +1991,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_10",
+		Icon = "Boon_Hera_00",
 		RarityLevels =
 		{
 			Common =
@@ -1989,7 +2016,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_11",
+		Icon = "Boon_Hera_00",
 		RarityLevels =
 		{
 			Common =
@@ -2014,7 +2041,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_12",
+		Icon = "Boon_Hera_00",
 		RarityLevels =
 		{
 			Common =
@@ -2044,7 +2071,7 @@ end]]
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
 		God = "Hera",
-		Icon = "Boon_Hera_13",
+		Icon = "Boon_Hera_00",
 		RarityLevels =
 		{
 			Common =
@@ -2074,7 +2101,7 @@ end]]
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "BetterSnareTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_15",
+		Icon = "Boon_Hera_00",
 		PropertyChanges =
 		{
 
@@ -2085,7 +2112,7 @@ end]]
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "BetterSnareTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_15",
+		Icon = "Boon_Hera_06",
 		PropertyChanges =
 		{
 
@@ -2185,10 +2212,10 @@ end]]
 		Icon = "BoonSymbolHera",
 		BoonInfoIcon = "BoonInfoSymbolHeraIcon",
 		DoorIcon = "BoonSymbolHeraIsometric",
-		Color = { 123, 22, 53, 255 },
-		LightingColor = { 123, 22, 53, 255 },
-		LootColor = { 123, 22, 53, 255 },
-		SubtitleColor = { 0.48, 0.09, 0.21, 1.0 },
+		Color = { 22, 128, 140, 255 },
+		LightingColor = { 22, 128, 140, 255 },
+		LootColor = { 22, 128, 140, 255 },
+		SubtitleColor = { 0.09, 0.50, 0.55, 1.0 },
 		EventEndSound = "/SFX/ArtemisBoonArrow",
 		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
 		LootRejectionAnimation = "BoonDissipateA_Hera",
@@ -4047,16 +4074,58 @@ end]]
 	)
 	ModUtil.Path.Wrap("GenerateSellTraitShop",
 		function(baseFunc, currentRun, currentRoom, args)
-			table.insert(args, "MoreRewardTrait")
+			if args and args.ExclusionNames then
+				table.insert(args.ExclusionNames, "MoreRewardTrait")
+			else
+				args = { ExclusionNames = { "MoreRewardTrait" } }
+			end
 			baseFunc(currentRun, currentRoom, args)
 		end
 	)
 	ModUtil.Path.Wrap("GetTraitValue",
 		function(baseFunc, traitData)
 			local value = baseFunc(traitData)
-			return value * GetTotalHeroTraitValue("SellTraitCostMultiplier", {IsMultiplier = true})
+			return round(value * GetTotalHeroTraitValue("SellTraitCostMultiplier", { IsMultiplier = true }))
 		end
 	)
+	ModUtil.Path.Wrap("FindAllSwappableBreakables",
+		function(baseFunc)
+			local legalBreakables = {}
+			local multiplier = GetTotalHeroTraitValue("UrnsRewardMultiplier", { IsMultiplier = true })
+			for id, enemy in pairs(ActiveEnemies) do
+				if enemy.ValueOptions ~= nil then
+					legalBreakables[id] = enemy
+					if HeroHasTrait("MoreRewardTrait") then
+						for id2, options in pairs(legalBreakables[id].ValueOptions) do
+							if options.MoneyDropOnDeath.MinValue then
+								options.MoneyDropOnDeath.MinValue = round(options.MoneyDropOnDeath.MinValue * multiplier)
+								options.MoneyDropOnDeath.MaxValue = options.MoneyDropOnDeath.MinValue
+							end
+						end
+					end
+				end
+			end
+			return legalBreakables
+		end
+	)
+	ModUtil.Path.Wrap("DamageEnemy",
+		function(baseFunc, victim, triggerArgs)
+			baseFunc(victim, triggerArgs)
+			local sourceWeaponData = triggerArgs.AttackerWeaponData
+			-- Jealousy Stuff
+			if sourceWeaponData ~= nil and not triggerArgs.PureDamage and not IsEmpty(ActiveEnemies) and victim and
+				not victim.IsDead and IsEmpty(victim.InvulnerableFlags) and IsEmpty(victim.PersistentInvulnerableFlags)
+				and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and
+				Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) then
+				local damageAmount = triggerArgs.DamageAmount * 0.10 * TableLength(victim.VulnerabilityEffects)
+				if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
+					damageAmount = 0
+				end
+				Damage(victim, { EffectName = "JelousyCurseEffect", DamageAmount = damageAmount, Silent = false, PureDamage = true })
+			end
+		end
+	)
+
 
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
@@ -4079,6 +4148,8 @@ end]]
 
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
+			else
+				--CreateLoot({ Name = "HeraUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 			end
 			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetTotalHeroTraitValue("SellTraitCostMultiplier", {IsMultiplier = true})))
 			if not HeroHasTrait("DiscountTrait") then

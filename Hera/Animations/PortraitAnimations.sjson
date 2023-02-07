@@ -51,7 +51,7 @@
       Name = "Portrait_Hera_Default_01"
       InheritFrom = "Portrait_God_01"
       ChildAnimation = "PortraitGodRayEmitter_Hera"
-      FilePath = "Hera\Portraits_Hera_01"
+      FilePath = "Portraits\Portraits_Aphrodite_01"
       EndFrame = 1
       StartFrame = 1
       Scale = 1

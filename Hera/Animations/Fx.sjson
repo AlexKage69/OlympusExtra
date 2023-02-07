@@ -19,7 +19,7 @@
         { DurationFrames = 1 }
         /*Frame 1*/
         { DurationFrames = 1 }
-        { DurationFrames = 1 VisualFx = "QuickFlashOrange" }
+        { DurationFrames = 1 VisualFx = "QuickFlashClearBlue" }
         { DurationFrames = 1 }
         { DurationFrames = 1 }
         { DurationFrames = 1 }
@@ -79,7 +79,7 @@
     }{
       Name = "SwordSwipeB-Hera"
       InheritFrom = "SwordSwipeB"
-      ChildAnimation = "QuickFlashOrange"
+      ChildAnimation = "QuickFlashClearBlue"
       StartRed = 1.0
       StartGreen = 1.0
       StartBlue = 1.0
@@ -190,7 +190,7 @@
           Name = "SwordSwipeC-Arthur-Chroma"
         }
         {
-          Name = "QuickFlashOrangeSmall"
+          Name = "QuickFlashClearBlueSmall"
         }]
     }{
       Name = "ChargeAttack-Hera"
@@ -230,7 +230,7 @@
           Name = "SwordParrySpikeHera"
         }
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }]
     }{
       Name = "SwordParrySpikeHera"
@@ -247,7 +247,7 @@
       InheritFrom = "SpearThrustProjectile"
       ChainTo = "SpearThrustDissipate-Hera"
       ChildAnimation = "SpearThrustTrail-Hera"
-      CreateAnimation = "QuickFlashOrange"
+      CreateAnimation = "QuickFlashClearBlue"
       Sound = "/EmptyCue"
       StartRed = 1.0
       StartGreen = 1.0
@@ -573,7 +573,7 @@
     {
       Name = "SpearThrowProjectileGlow-Hera"
       InheritFrom = "SpearThrowProjectileGlow"
-      ChildAnimation = "QuickFlashOrange"
+      ChildAnimation = "QuickFlashClearBlue"
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05
@@ -619,7 +619,7 @@
           Name = "SpearRushDashPuff"
         }
         {
-          Name = "QuickFlashOrangeSmall"
+          Name = "QuickFlashClearBlueSmall"
         }]
     }{
       Name = "SpearRushTrail-Hera"
@@ -677,7 +677,7 @@
       EaseOut = 1.0
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "HeraBowTwinkle"
@@ -1030,7 +1030,7 @@
       VisualFxIntervalMin = 0.05
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "ShieldSwipeADisplace"
@@ -1174,7 +1174,7 @@
     {
       Name = "ShieldRush3D-Hera"
       InheritFrom = "ShieldRush3D"
-      CreateAnimation = "QuickFlashOrange"
+      CreateAnimation = "QuickFlashClearBlue"
       VisualFx = "ShieldRushTrail-Hera"
       Sound = "/SFX/Player Sounds/ZagreusShieldRush"
       StartRed = 0.80
@@ -1199,7 +1199,7 @@
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "WeaponProjectile-HeraSparkles"
@@ -1269,7 +1269,7 @@
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "BeowulfShieldSlamDark"
@@ -1432,7 +1432,7 @@
           Name = "ShieldThrowTrailMirageDark"
         }
         {
-          Name = "QuickFlashOrangeSmall"
+          Name = "QuickFlashClearBlueSmall"
         }
         {
           Name = "RadialNovaShieldThrow-Hera"
@@ -1806,7 +1806,7 @@
       StartBlue = 0.05
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "GrenadeExplosionLightingHera"
@@ -1910,7 +1910,7 @@
           Name = "LuciferBombDropDisplace"
         }
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }]
     }
     {
@@ -2018,7 +2018,7 @@
       StartBlue = 0.05  
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "ShotgunBlastWaveA-Hera"
@@ -2035,7 +2035,7 @@
       CreateAnimation = "GunShotgunBlastDarkFlipped"
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "ShotgunBlastWaveA-Hera"
@@ -2222,7 +2222,7 @@
           Name = "SwordParrySpike"
         }
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }]
     }{
       Name = "ClawSwipe-Hera"
@@ -2236,7 +2236,7 @@
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }]
     }
     {
@@ -2373,7 +2373,7 @@
       Red = 0.80
       Green = 0.55
       Blue = 0.05
-      ChildAnimation = "QuickFlashOrange"
+      ChildAnimation = "QuickFlashClearBlue"
     }
      {
       Name = "ProjectileFireRingFireball-Hera"
@@ -3004,7 +3004,7 @@
           Name = "TheseusWrathSpikeHera"
         }
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }
         {
           Name = "RadialNovaHera-Sparkles"
@@ -3182,9 +3182,9 @@
       InheritFrom = "BoonDropA"
       ChildAnimation = "BoonDropB-Hera"
       Color = {
-        Red = 1.0
-        Green = 0.64
-        Blue = 0.41
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
       }
     }
     {
@@ -3192,9 +3192,9 @@
       InheritFrom = "BoonDropB"
       ChildAnimation = "BoonDropC-Hera"
       Color = {
-        Red = 1.0
-        Green = 0.7
-        Blue = 0.1
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
       }
     }
     {
@@ -3202,19 +3202,19 @@
       InheritFrom = "BoonDropC"
       ChildAnimation = "BoonDropHeraIcon"
       Color = {
-        Red = 0.98
-        Green = 0.45
-        Blue = 0.12
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
       }
     }
     {
       Name = "BoonDropHeraIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Hestia\HestiaIconSpin\HestiaIconSpin"
+      FilePath = "Hera\Hera1"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
-      Scale = 0.4
+      //Scale = 0.4
     }
     {
       Name = "BoonDissipateA_Hera"
@@ -3237,25 +3237,25 @@
     {
       Name = "BoonDissipateB_Hera"
       InheritFrom = "BoonDissipateB"
-      Red = 1.0
-      Green = 0.64
-      Blue = 0.41
+      Red = 0.09
+      Green = 0.50
+      Blue = 0.55
     }
     {
       Name = "BoonDissipateVertical_Hera"
       InheritFrom = "BoonDissipateVertical"
       Hue = 0.4
-      Red = 1.0
-      Green = 0.64
-      Blue = 0.41
+      Red = 0.09
+      Green = 0.50
+      Blue = 0.55
       AddColor = true
     } 
     {
       Name = "BoonDissipateGlow_Hera"
       InheritFrom = "BoonDissipateGlow"
-      Red = 1.0
-      Green = 0.64
-      Blue = 0.41
+      Red = 0.09
+      Green = 0.50
+      Blue = 0.55
     }
     /* Dash */
     {
@@ -3321,7 +3321,7 @@
           Name = "AthenaProjectileImpactSwordParry"
         }
         {
-          Name = "QuickFlashOrange"
+          Name = "QuickFlashClearBlue"
         }]
     }
     {
@@ -3329,69 +3329,72 @@
       InheritFrom = "BlinkTrailVerticalB"
       ChildAnimation = "BlinkTrailFlat-Hera"
       Color = {
-        Red = 1.0
-        Green = 0.57
-        Blue = 0.31
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
       }
     }{
       Name = "BlinkTrailFlat-Hera"
       InheritFrom = "BlinkTrailFlat"
       ChildAnimation = "BlinkTrailVerticalA-Hera"
       Color = {
-        Red = 1.0
-        Green = 0.64
-        Blue = 0.41
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
       }
     }{
       Name = "BlinkTrailVerticalA-Hera"
       InheritFrom = "BlinkTrailVerticalA"
       ChildAnimation = "BlinkTrailFlash-Hera"
       Color = {
-        Red = 0.98
-        Green = 0.45
-        Blue = 0.12
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
       }
     }
     {
       Name = "BlinkTrailFlash-Hera"
-      InheritFrom = "QuickFlashOrange"
+      InheritFrom = "QuickFlashClearBlue"
       AngleFromOwner = "Take"
       Duration = 0.4
       Scale = 0.5
     }
     /* Blind Fx */
     {
-      Name = "HeraHoverLoop"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Animations\Shade\ShadeShield\ShadeShield"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      Name = "HeraOverLoop"
+      //ChainTo = "DionysusStatusFxDissipate"
+      FilePath = "Fx\DionysusStatusFx\DionysusStatusFx"
+      GroupName = "Combat_UI"
+      Type = "Book"
+      //VisualFx = "DionysusRainbowParty_InPlace"
+      AngleFromOwner = "Ignore"
+      //Sound = "/SFX/Player Sounds/DionysusBlightWineDamageLoop"
       StopSoundOnFinishFade = 0.2
-      AddColor = true
-      EaseOut = 1.0
-      EndFrame = 32
-      Red = 0.7
-      Green = 0.7
-      Blue = 0.7
-      Scale = 0.8
+      ColorFromOwner = "Ignore"
+      EndFrame = 45
       Loop = true
-      NumFrames = 32
+      NumFrames = 45
+      PlaySpeed = 30.0
       StartFrame = 1
-      DieWithOwner = true
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
+      OffsetZ = 160.0
+      TransferFrameFromThis = true
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.3
+      VisualFxIntervalMin = 0.2
     }
     {
       Name = "HeraBelowLoop"
       InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Animations\Shade\SpearAttack\ShadeSpearAttacks"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      FilePath = "Particles\AuraBasicFillCircle"
+      //Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
       StopSoundOnFinishFade = 0.2
       AddColor = true
       EaseOut = 1.0
       EndFrame = 32
-      Red = 0.7
-      Green = 0.7
-      Blue = 0.7
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
       Scale = 0.8
       Loop = true
       NumFrames = 32
@@ -3527,23 +3530,23 @@
       FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
     }
     {
-      Name = "QuickFlashOrange"
+      Name = "QuickFlashClearBlue"
       InheritFrom = "QuickFlash"
       FilePath = "Particles\particle_quickflash"
       AddColor = false
-      StartRed = 0.98
-      StartGreen = 0.45
-      StartBlue = 0.12
+      StartRed = 0.09
+      StartGreen = 0.50
+      StartBlue = 0.55
       EndBlue = 0.0
       EndGreen = 0.0
-      EndBlue = 0.9
+      EndBlue = 0.1
       EndScale = 0.6
       StartScale = 1.5
       TimeModifierFraction = 1.0
     }
     {
-      Name = "QuickFlashOrangeSmall"
-      InheritFrom = "QuickFlashOrange"
+      Name = "QuickFlashClearBlueSmall"
+      InheritFrom = "QuickFlashClearBlue"
       Scale = 0.5
       OffsetZ = 90
     }

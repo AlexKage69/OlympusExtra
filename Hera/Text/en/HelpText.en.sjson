@@ -35,7 +35,7 @@
 		{
       		Id = "JealousyCurse"
 			DisplayName = "Jealousy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., victim takes {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} more damage with {$Keywords.Attack} and {$Keywords.Special} per {$Keywords.Curse} applied."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., victim takes {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} more damage from {$Keywords.Attack} and {$Keywords.Special}"
 		}
 		{
       		Id = "EnvyCurse"
@@ -45,7 +45,7 @@
 		{
       		Id = "HeraTrap"
 			DisplayName = "Traps"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Deals damage upon triggered by foes."
+			Description = "Traps stay on the ground until victim walks on it. Only 5 traps at a time."
 		}
 		{
       		Id = "Aura"
@@ -243,7 +243,7 @@
 		}
 		{
 			Id = "ForceHeraBoonTrait"
-			DisplayName = "Bottomless Cauldron"
+			DisplayName = "Skulls Ornements"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hera{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
@@ -253,7 +253,7 @@
 		}
 		{
 			Id = "ForceHeraBoonTrait_Inactive"
-			DisplayName = "Bottomless Cauldron"
+			DisplayName = "Skulls Ornements"
 			Description = "Hera's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
@@ -315,132 +315,11 @@
 		}
 		{
 			Id = "LtUpgrade_Hera"
-			DisplayName = "Blessed foes now attract you."
+			DisplayName = "Blessed foes now curse you."
 		}				
 		{
 			Id = "ClearRequiredTraitsHera"
 			DisplayName = "{!Icons.RunClearStar}Disciple of Hera{!Icons.RunClearStar}"
-		}
-		// Fish Doubled
-		{
-		Id = "Fish_Tartarus_Common_01_Doubled"
-		DisplayName = "Hellfish x2"
-		}
-		{
-		Id = "Fish_Tartarus_Rare_01_Doubled"
-		DisplayName = "Knucklehead x2"
-		}
-		{
-		Id = "Fish_Tartarus_Legendary_01_Doubled"
-		DisplayName = "Scyllascion x2"
-		}
-		{
-		Id = "Fish_Asphodel_Common_01_Doubled"
-		DisplayName = "Slavug x2"
-		}
-		{
-		Id = "Fish_Asphodel_Rare_01_Doubled"
-		DisplayName = "Chrustacean x2"
-		}
-		{
-		Id = "Fish_Asphodel_Legendary_01_Doubled"
-		DisplayName = "Flameater x2"
-		}
-		{
-		Id = "Fish_Elysium_Common_01_Doubled"
-		DisplayName = "Chlam x2"
-		}
-		{
-		Id = "Fish_Elysium_Rare_01_Doubled"
-		DisplayName = "Charp x2"
-		}
-		{
-		Id = "Fish_Elysium_Legendary_01_Doubled"
-		DisplayName = "Seamare x2"
-		}
-		{
-		Id = "Fish_Styx_Common_01_Doubled"
-		DisplayName = "Gupp x2"
-		}
-		{
-		Id = "Fish_Styx_Rare_01_Doubled"
-		DisplayName = "Scuffer x2"
-		}
-		{
-		Id = "Fish_Styx_Legendary_01_Doubled"
-		DisplayName = "Stonewhal x2"
-		}
-		{
-		Id = "Fish_Chaos_Common_01_Doubled"
-		DisplayName = "Mati x2"
-		}
-		{
-		Id = "Fish_Chaos_Rare_01_Doubled"
-		DisplayName = "Projelly x2"
-		}
-		{
-		Id = "Fish_Chaos_Legendary_01_Doubled"
-		DisplayName = "Voidskate x2"
-		}
-		{
-		Id = "Fish_Surface_Common_01_Doubled"
-		DisplayName = "Trout x2"
-		}
-		{
-		Id = "Fish_Surface_Rare_01_Doubled"
-		DisplayName = "Bass x2"
-		}
-		{
-		Id = "Fish_Surface_Legendary_01_Doubled"
-		DisplayName = "Sturgeon x2"
-		}
-		{
-			Id = "FreePassTextBanner"
-			DisplayName = "Forgiven!"
-		}
-		{
-			Id = "ZeusUpgradeFreePass"
-			DisplayName = "Spark of reconciliation"
-		}
-		{
-			Id = "PoseidonUpgradeFreePass"
-			DisplayName = "There's one fire, water won't extinguish"
-		}
-		{
-			Id = "AthenaUpgradeFreePass"
-			DisplayName = "A tactical retreat"
-		}
-		{
-			Id = "AphroditeUpgradeFreePass"
-			DisplayName = "Make love, not war"
-		}
-		{
-			Id = "ArtemisUpgradeFreePass"
-			DisplayName = "The hunt never stops"
-		}
-		{
-			Id = "AresUpgradeFreePass"
-			DisplayName = "A battle of kindness he can't win"
-		}
-		{
-			Id = "DionysusUpgradeFreePass"
-			DisplayName = "A favour returned"
-		}
-		{
-			Id = "DemeterUpgradeFreePass"
-			DisplayName = "If you see this, you are a magician..."
-		}
-		{
-			Id = "HeraUpgradeFreePass"
-			DisplayName = "His mercy shines on you"
-		}
-		{
-			Id = "HeraUpgradeFreePass"
-			DisplayName = "May compassion guide your path"
-		}
-		{
-			Id = "HeraUpgradeFreePass"
-			DisplayName = "Queens can also forgive"
 		}
 	]
 }

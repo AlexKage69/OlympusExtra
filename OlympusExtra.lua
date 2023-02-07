@@ -113,6 +113,13 @@ if ModUtil ~= nil then
         local OlympusRealGodNames = CodexMenu.RealGodNames
         local OlympusCodexBoonTable = CodexMenu.BoonTable
         local OlympusConsumableTable = CodexMenu.ConsumableTable
+        local OlympusCodexBossTable = CodexMenu.BossTable
+        OlympusCodexBossTable.Tartarus = RoomSetData.Tartarus.A_Makaria01
+        OlympusCodexBossTable.Asphodel = RoomSetData.Tartarus.A_Combat01
+        OlympusCodexBossTable.Elysium = RoomSetData.Elysium.C_Reprieve01
+        OlympusCodexBossTable.Styx = RoomSetData.Styx.D_Reprieve01
+        OlympusCodexBossTable.Secrets = RoomSetData.Secrets.RoomSecret01
+        OlympusCodexBossTable.Surface = RoomSetData.Surface.E_Intro
         --Apollo
         if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
             OlympusCodexMenuData.ApolloUpgrade = {

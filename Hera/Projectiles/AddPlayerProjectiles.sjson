@@ -7,9 +7,9 @@ Projectiles = {
       {
         Name = "JealousyCurse"
         IgnoreName = "_PlayerUnit"
-        FrontFx = "HeraHoverLoop"
+        FrontFx = "DemeterSlowFront"
         BackFx = "null"
-        Duration = 3
+        Duration = 15
         Modifier = 1
         Amount = 0.05
         Active = false
@@ -20,11 +20,11 @@ Projectiles = {
       {
         Name = "EnvyCurse"
         IgnoreName = "_PlayerUnit"
-        FrontFx = "HeraBelowLoop"
+        FrontFx = "StatusIconStunnedCombat"
+        Type = "SPEED"
+        Modifier = 0.01
         BackFx = "null"
-        Duration = 5
-        Modifier = 1
-        Amount = 0.05
+        Duration = 15.0
         Active = false
         ExtendDurationOnReapply = true
         IsVulnerabilityEffect = true
