@@ -238,7 +238,6 @@ OlympusTraitData.GoodBoyAssistTrait =
 			--Destroy({ Id = targetId })	
 			--wait(2, RoomThreadName)
 		--end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Finish")) 
 	
 		--[[wait(1, RoomThreadName)
 		local consumableData = DeepCopyTable( assistData )
@@ -252,17 +251,6 @@ OlympusTraitData.GoodBoyAssistTrait =
 			baseFunc(unit)	
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("After Do Assist")) 
 		end)
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)		
-			if (not CanOpenCodex()) and IsSuperValid() then
-				AddKeepsakeCharge({})
-			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(ModUtil.Mods.Data)) 
-			
-			--InitializeGiftData()
-			baseFunc()
-		end
-	)
 	--[[OnWeaponFired{
 		function( triggerArgs )
 	

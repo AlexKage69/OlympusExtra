@@ -513,7 +513,7 @@ end]]
 		{
 			{
 				WeaponNames = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "JealousyCurse",
+				EffectName = "EnvyCurse",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
@@ -927,21 +927,21 @@ end]]
 		ExtractValues =
 		{
 			{
-				ExtractAs = "TooltipJealousyDuration",
+				ExtractAs = "TooltipEnvyDuration",
 				SkipAutoExtract = true,
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
+				BaseName = "EnvyCurse",
 				BaseProperty = "Duration",
 			},
 			{
-				ExtractAs = "TooltipJealousyPower",
+				ExtractAs = "TooltipEnvyPower",
 				SkipAutoExtract = true,
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
+				BaseName = "EnvyCurse",
 				BaseProperty = "Amount",
 				Format = "Percent"
 			}
@@ -978,7 +978,7 @@ end]]
 		{
 			{
 				WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "JealousyCurse",
+				EffectName = "EnvyCurse",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
@@ -1238,21 +1238,21 @@ end]]
 		ExtractValues =
 		{
 			{
-				ExtractAs = "TooltipJealousyDuration",
+				ExtractAs = "TooltipEnvyDuration",
 				SkipAutoExtract = true,
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
+				BaseName = "EnvyCurse",
 				BaseProperty = "Duration",
 			},
 			{
-				ExtractAs = "TooltipJealousyPower",
+				ExtractAs = "TooltipEnvyPower",
 				SkipAutoExtract = true,
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
+				BaseName = "EnvyCurse",
 				BaseProperty = "Amount",
 				Format = "Percent"
 			}
@@ -1833,13 +1833,13 @@ end]]
 		},
 		AddOutgoingDamageModifiers =
 		{
-			PerUniqueGodMultiplier = 1.025,
+			PerSameGodMultiplier = 0.05,
 			ExtractValues =
 			{
 				{
-					Key = "PerUniqueGodMultiplier",
+					Key = "PerSameGodMultiplier",
 					ExtractAs = "TooltipDamage",
-					Format = "PercentDelta",
+					Format = "Percent",
 				},
 			}
 		},
@@ -4057,7 +4057,6 @@ end]]
 			return value * GetTotalHeroTraitValue("SellTraitCostMultiplier", {IsMultiplier = true})
 		end
 	)
-	
 
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
@@ -4075,21 +4074,21 @@ end]]
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
 
 	-- For testing purposes
-	ModUtil.Path.Wrap("BeginOpeningCodex",
+	--[[ModUtil.Path.Wrap("BeginOpeningCodex",
 		function(baseFunc)
 
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
 			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetTotalHeroTraitValue("SellTraitCostMultiplier", {IsMultiplier = true})))
-			--[[if not HeroHasTrait("DiscountTrait") then
+			if not HeroHasTrait("DiscountTrait") then
 				AddTraitToHero({ TraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = "DiscountTrait" }) })
-			end]]
+			end
 			--CreateLoot({ Name = "HeraUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering))
 			baseFunc()
 		end
-	)
+	)]]
 	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
 		return base( triggerArgs ) 

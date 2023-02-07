@@ -18,15 +18,15 @@ Projectiles = {
         TimeModifierFraction = 0
       }
       {
-        Name = "SnareCurse"
+        Name = "EnvyCurse"
         IgnoreName = "_PlayerUnit"
         FrontFx = "HeraBelowLoop"
-        Type = "SPEED"
-        Modifier = 1.0
         BackFx = "null"
-        Duration = 5.0
+        Duration = 5
+        Modifier = 1
+        Amount = 0.05
         Active = false
-        ExtendDurationOnReapply = false
+        ExtendDurationOnReapply = true
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
       }

@@ -5301,7 +5301,6 @@ if ModUtil ~= nil then
 			if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and
 				HeroHasTrait("ZeusChargedBoltTrait") and args.FirstInVolley then
 				if Contains({ "BlindLightningEffector" }, weaponName) then
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("FIre"))
 					FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId,
 						DestinationId = victim.ObjectId, FireFromTarget = true })
 				end

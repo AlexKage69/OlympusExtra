@@ -411,14 +411,3 @@ OlympusObstacleData.DivinationGods =
 		},
 	},
 }
-
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if (not CanOpenCodex()) and IsSuperValid() then
-			BuildSuperMeter(CurrentRun, 50)
-		end
-		local challengeBaseIds = GetIdsByType({ Name = "NPC_Macaria_01" })
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(challengeBaseIds)) 
-		baseFunc()
-	end
-)
