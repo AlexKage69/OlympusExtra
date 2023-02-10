@@ -9,6 +9,30 @@
       ProjectileInterval = 0
     }
     {
+      Name = "JealousyCurseApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          FrontFx = "DemeterSlowFront"
+          BackFx = "null"
+          Duration = 15
+          Modifier = 1
+          Amount = 0.05
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }]
+    }
+    {
       Name = "AreaWeakenHera"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"

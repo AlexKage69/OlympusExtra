@@ -393,7 +393,7 @@ OlympusObstacleData.DivinationGods =
 	},
 }
 
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
+--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
@@ -403,7 +403,7 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(challengeBaseIds)) 
 		baseFunc()
 	end
-)
+)]]
 function ForceNextRoomFunc()
     local ForceNextRoomValue = "A_Makaria01"
     ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click"))

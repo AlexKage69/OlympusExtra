@@ -4,7 +4,7 @@
     {
       Name = "Keepsake_Skull_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_ThemeChthonic_01"
+      FilePath = "Hera\Hera_Keepsake"
       Scale = 0.5
       EndFrame = 1
       StartFrame = 1
@@ -12,7 +12,7 @@
     {
       Name = "Keepsake_Skull"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_ThemeChthonic_01"
+      FilePath = "Hera\Hera_Keepsake"
       Scale = 1.2
       EndFrame = 1
       StartFrame = 1
@@ -58,9 +58,9 @@
         }]
       Color = 
       {
-        Red = 0.906
-        Green = 0.859
-        Blue = 0.812
+        Red = 0.706
+        Green = 0.659
+        Blue = 0.612
       }
     }
     {
@@ -70,9 +70,9 @@
       Scale = 0.5
       Color = 
       {
-        Red = 0.906
-        Green = 0.859
-        Blue = 0.812
+        Red = 0.706
+        Green = 0.659
+        Blue = 0.612
       }
     }
     {
@@ -271,42 +271,42 @@
       {
       Name = "Boon_Hera_12_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\CompanionBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_12_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\CompanionBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_13_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\EnvyBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_13_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\EnvyBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\QueensGambit_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\QueensGambit_large"
       EndFrame = 1
       StartFrame = 1
     }

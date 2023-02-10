@@ -124,6 +124,10 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                     if modifierData.PerSameGodMultiplier and attacker == CurrentRun.Hero then
                         addDamageMultiplier( modifierData, 1 + ( modifierData.PerSameGodMultiplier  * GetHeroSameGodCount( attacker )))
                     end
+                    if modifierData.ExactlyRequiredVulnerabilityEffects and victim.VulnerabilityEffects and TableLength( victim.VulnerabilityEffects ) == modifierData.ExactlyRequiredVulnerabilityEffects then
+                        --DebugPrint({Text = " min required vulnerability " .. modifierData.PerVulnerabilityEffectAboveMinMultiplier})
+                        addDamageMultiplier( modifierData, modifierData.PerVulnerabilityEffectExactlyMultiplier)
+                    end
                 end
             end
         end
@@ -172,7 +176,7 @@ function GetHeroSameGodCount( hero )
 	return hero.SameGodCount
 end
 
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
+--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
@@ -180,7 +184,7 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.SameGodCount)) 
 		baseFunc()
 	end
-)
+)]]
 --[[ModUtil.Path.Wrap( "AddRerolls", 
 	function(baseFunc, amount, source, args )
         if type(amount) == "number" then

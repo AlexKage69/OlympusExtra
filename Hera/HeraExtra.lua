@@ -43,7 +43,7 @@ if ModUtil ~= nil then
 			RequiredTraitsTaken =
 			{
 				"HeraWeaponTrait",
-				"HeraDashTrait",
+				"HeraRushTrait",
 				"HeraRangedTrait",
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
@@ -222,10 +222,18 @@ if ModUtil ~= nil then
 		},
 	}
 
-	OlympusEffectData.JelousyCurseEffect =
+	OlympusEffectData.JealousyCurse =
 	{
 		DamageTextStartColor = Color.RamaDamageStart,
 		DamageTextColor = Color.RamaDamageEnd,
+		OnApplyFunctionName = "JealousyCurseApply",
+	}
+	OlympusEffectData.EnvyCurse =
+	{
+		DamageTextStartColor = Color.RamaDamageStart,
+		DamageTextColor = Color.RamaDamageEnd,
+		OnApplyFunctionName = "EnvyCurseApply",
+		OnClearFunctionName = "EnvyCurseClear",
 	}
 	--OlympusEffectData.DelayedDamage.OnApplyFunctionName = "DelayDamageApply"
 	--OlympusEffectData.DelayedDamage.OnClearFunctionName = "DelayDamageClear"
@@ -385,7 +393,7 @@ if ModUtil ~= nil then
 			RequiredCountOfTraits =
 			{
 				"HeraWeaponTrait",
-				"HeraDashTrait",
+				"HeraRushTrait",
 				"HeraRangedTrait",
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
@@ -413,7 +421,7 @@ if ModUtil ~= nil then
 	)
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "JealousyCurse", "SnareCurse", "SnareTrap", "Aura", "SpecialDiscount" })
+	ModUtil.Table.Merge(OlympusKeywordList, { "JealousyCurse", "EnvyCurse", "HeraTrap", "Aura", "SpecialDiscount" })
 	ResetKeywords()
 
 	-- This is not working since the Icons are too big or small to be used and there's no Scale.
@@ -503,27 +511,6 @@ end]]
 		God = "Hera",
 		Slot = "Melee",
 		Icon = "Boon_Hera_01",
-		AddOutgoingDamageModifiers =
-		{
-			ValidWeaponMultiplier =
-			{
-				BaseValue = 1.50,
-				SourceIsMultiplier = true,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateMultiplier,
-				},
-			},
-			ValidWeapons = WeaponSets.HeroPhysicalWeapons,
-			ExtractValues =
-			{
-				{
-					Key = "ValidWeaponMultiplier",
-					ExtractAs = "TooltipDamage",
-					Format = "PercentDelta",
-				},
-			}
-		},
 		PropertyChanges =
 		{
 			{
@@ -531,6 +518,25 @@ end]]
 				EffectName = "EnvyCurse",
 				EffectProperty = "Active",
 				ChangeValue = true,
+			},
+			{
+				WeaponNames = WeaponSets.HeroPhysicalWeapons,
+				EffectName = "EnvyCurse",
+				EffectProperty = "Modifier",
+				ChangeType = "Add",
+				BaseMin = 20,
+				BaseMax = 20,
+				MinMultiplier = 0.335,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
 			},
 			{
 				WeaponName = "SwordWeapon",
@@ -957,7 +963,7 @@ end]]
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
 				BaseName = "EnvyCurse",
-				BaseProperty = "Amount",
+				BaseProperty = "Modifier",
 				Format = "Percent"
 			}
 		}
@@ -968,27 +974,6 @@ end]]
 		God = "Hera",
 		Slot = "Secondary",
 		Icon = "Boon_Hera_02",
-		AddOutgoingDamageModifiers =
-		{
-			ValidWeaponMultiplier =
-			{
-				BaseValue = 1.4,
-				SourceIsMultiplier = true,
-				IdenticalMultiplier =
-				{
-					Value = DuplicateMultiplier,
-				},
-			},
-			ValidWeapons = WeaponSets.HeroSecondaryWeapons,
-			ExtractValues =
-			{
-				{
-					Key = "ValidWeaponMultiplier",
-					ExtractAs = "TooltipDamage",
-					Format = "PercentDelta",
-				},
-			}
-		},
 		PropertyChanges =
 		{
 			{
@@ -996,6 +981,25 @@ end]]
 				EffectName = "EnvyCurse",
 				EffectProperty = "Active",
 				ChangeValue = true,
+			},
+			{
+				WeaponNames = WeaponSets.HeroSecondaryWeapons,
+				EffectName = "EnvyCurse",
+				EffectProperty = "Modifier",
+				ChangeType = "Add",
+				BaseMin = 35,
+				BaseMax = 35,
+				MinMultiplier = 0.335,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
 			},
 			{
 				WeaponName = "SwordParry",
@@ -1268,7 +1272,7 @@ end]]
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
 				BaseName = "EnvyCurse",
-				BaseProperty = "Amount",
+				BaseProperty = "Modifier",
 				Format = "Percent"
 			}
 		}
@@ -1350,8 +1354,8 @@ end]]
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileProperty = "DamageLow",
-				BaseMin = 8,
-				BaseMax = 8,
+				BaseMin = 30,
+				BaseMax = 30,
 				AsInt = true,
 				MinMultiplier = 0.1,
 				IdenticalMultiplier =
@@ -1366,15 +1370,6 @@ end]]
 		},
 		ExtractValues =
 		{
-			{
-				ExtractAs = "TooltipSnareDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "SnareCurse",
-				BaseProperty = "Duration",
-			},
 		}
 	}
 	OlympusTraitData.HeraRangedTrait =
@@ -1442,6 +1437,25 @@ end]]
 				BaseType = "Projectile",
 				BaseName = "RangedWeapon",
 				BaseProperty = "DamageLow",
+			},
+			{
+				ExtractAs = "TooltipJealousyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipJealousyPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Modifier",
+				Format = "Percent"
 			}
 		}
 	}
@@ -1450,7 +1464,7 @@ end]]
 	InheritFrom = { "ShopTier1Trait" },
 	God = "Hera",
 	Slot = "Ranged",
-	Icon = "Boon_Hera_05",
+	Icon = "Boon_Hera_03",
 	CustomTrayText = "ShieldLoadAmmo_HeraRangedTrait_Tray",
 	RequiredTrait = "ShieldLoadAmmoTrait",
 	PreEquipWeapons = { "HeraLavaProjectile" },
@@ -1580,19 +1594,19 @@ end]]
 		{
 			Common =
 			{
-				Multiplier = 1.0,
+				Multiplier = 1.2,
 			},
 			Rare =
 			{
-				Multiplier = 1.1,
+				Multiplier = 1.3,
 			},
 			Epic =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.4,
 			},
 			Heroic =
 			{
-				Multiplier = 1.3,
+				Multiplier = 1.5,
 			}
 		},
 		AddShout =
@@ -1674,7 +1688,6 @@ end]]
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamage",
-					Format = "Percent",
 				}
 			},
 			{
@@ -1834,7 +1847,7 @@ end]]
 	OlympusTraitData.PriviledgeHeraTrait =
 	{
 		Icon = "Boon_Hera_00",
-		InheritFrom = { "ShopTier1Trait" },
+		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		RequiredMetaUpgradeSelected = "GodEnhancementMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 3,
@@ -1874,9 +1887,8 @@ end]]
 	OlympusTraitData.FamilyHeraTrait =
 	{
 		Icon = "Boon_Hera_10",
-		InheritFrom = { "ShopTier1Trait" },
+		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		MinRequiredVulnerabilityEffects = 2,
 		RequiredMetaUpgradeSelected = "VulnerabilityEffectBonusMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 3,
 		RequiredFalseTrait = "PriviledgeHeraTrait",
@@ -1901,12 +1913,12 @@ end]]
 		},
 		AddOutgoingDamageModifiers =
 		{
-			MinRequiredVulnerabilityEffects = 2,
-			PerVulnerabilityEffectAboveMinMultiplier = 1.20,
+			ExactlyRequiredVulnerabilityEffects = 1,
+			PerVulnerabilityEffectExactlyMultiplier = 1.20,
 			ExtractValues =
 			{
 				{
-					Key = "PerVulnerabilityEffectAboveMinMultiplier",
+					Key = "PerVulnerabilityEffectExactlyMultiplier",
 					ExtractAs = "TooltipDamage",
 					Format = "PercentDelta",
 				},
@@ -1958,11 +1970,12 @@ end]]
 			}
 		}
 	}
-	OlympusTraitData.SnareOverTimeTrait =
+	OlympusTraitData.PeriodicCurseTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
-		Icon = "Boon_Hera_00",
-		RequiredFalseTrait = "SnareOverTimeTrait",
+		Icon = "Boon_Hera_07",
+		RequiredFalseTrait = "PeriodicCurseTrait",
+		PreEquipWeapons = {"JealousyCurseApplicator"},
 		RarityLevels =
 		{
 			Common =
@@ -1971,27 +1984,63 @@ end]]
 			},
 			Rare =
 			{
-				Multiplier = 0.94,
+				Multiplier = 0.86,
 			},
 			Epic =
 			{
-				Multiplier = 0.88,
+				Multiplier = 0.71,
 			},
 			Heroic =
 			{
-				Multiplier = 0.82,
+				Multiplier = 0.57,
 			}
+		},
+		SetupFunction =
+		{
+			Name = "AddJealousyOnRandomFoe",
+			RunOnce = true,
+		},
+		JealousyIntervalApply = {
+			BaseValue = 7.0
 		},
 		PropertyChanges =
 		{
 
 		},
+		ExtractValues =
+		{
+			{
+				Key = "JealousyIntervalApply",
+				ExtractAs = "TooltipTimeInterval",
+				--Format = "Percent",
+			},
+			{
+				ExtractAs = "TooltipJealousyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipJealousyPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Modifier",
+				Format = "Percent"
+			}
+		}
 	}
-	OlympusTraitData.DeathDamageTrait =
+	OlympusTraitData.GiveCurseDeathTrait =
 	{
-		InheritFrom = { "ShopTier1Trait" },
+		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_06",
+		RequiredFalseTrait = "GiveCurseDeathTrait",
 		RarityLevels =
 		{
 			Common =
@@ -2012,11 +2061,11 @@ end]]
 			}
 		},
 	}
-	OlympusTraitData.JealousyBurstTrait =
+	OlympusTraitData.EnvyBurstTrait =
 	{
-		InheritFrom = { "ShopTier1Trait" },
+		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_13",
 		RarityLevels =
 		{
 			Common =
@@ -2036,12 +2085,24 @@ end]]
 				Multiplier = 1.7
 			}
 		},
+		EnvyBurstMultiplier = {
+			BaseValue = 0.20,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDamage",
+				Format = "Percent",
+			}
+		}
 	}
-	OlympusTraitData.JealousyCastTrait =
+	OlympusTraitData.StrongerJealousyTrait =
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_08",
 		RarityLevels =
 		{
 			Common =
@@ -2067,11 +2128,11 @@ end]]
 	}
 	OlympusTraitData.MoreCompanionTrait =
 	{
-		InheritFrom = { "ShopTier2Trait" },
+		InheritFrom = { "ShopTier1Trait" },
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_12",
 		RarityLevels =
 		{
 			Common =
@@ -2096,23 +2157,23 @@ end]]
 
 		},
 	}
-	OlympusTraitData.BetterSnareTrait =
+	OlympusTraitData.HealthAsObolTrait =
 	{
-		InheritFrom = { "ShopTier3Trait" },
-		RequiredFalseTrait = "BetterSnareTrait",
+		InheritFrom = { "ShopTier2Trait" },
+		RequiredFalseTrait = "HealthAsObolTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_14",
 		PropertyChanges =
 		{
 
 		},
 	}
-	OlympusTraitData.BetterJealousyTrait =
+	OlympusTraitData.StatusOverTimeTrait =
 	{
 		InheritFrom = { "ShopTier3Trait" },
-		RequiredFalseTrait = "BetterSnareTrait",
+		RequiredFalseTrait = "StatusOverTimeTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_06",
+		Icon = "Boon_Hera_00",
 		PropertyChanges =
 		{
 
@@ -2226,19 +2287,42 @@ end]]
 
 		TraitsList = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait" },
 
-		PriorityUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait" }, --, "HeraRangedTrait" },
-		WeaponUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraShoutTrait" }, --, "HeraRangedTrait", "HeraShoutTrait" },
-		Traits = { "DiscountHeraTrait", "MoreRewardTrait" }, --"", "MoreCompanionTrait", "DeathDamageTrait" },
+		PriorityUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+		WeaponUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait", "HeraShoutTrait" },
+		Traits = { "MoreRewardTrait", "PeriodicCurseTrait", "MoreCompanionTrait" },
 		Consumables = {},
 
 		LinkedUpgrades =
 		{
-			PriviledgeHeraTrait = {
-				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait" }, --, "HeraRangedTrait"
+			GiveCurseDeathTrait = {
+				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait" }, 
 			},
+			EnvyBurstTrait = {
+				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait" }, 
+			},
+			StrongerJealousyTrait = {
+				OneOf = { "HeraRangedTrait", "PeriodicCurseTrait" }, 
+			},
+			PriviledgeHeraTrait = {
+				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
+			},			
 			FamilyHeraTrait = {
-				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait" }, --, "HeraRangedTrait"
-			}
+				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
+			},
+			DiscountHeraTrait = {
+				OneOf = { "MoreRewardTrait", "MoreCompanionTrait" }, 
+			},
+			HealthAsObolTrait = {
+				OneOf = { "MoreRewardTrait", "MoreCompanionTrait" }, 				
+			},
+			StatusOverTimeTrait = {
+				OneFromEachSet =
+				{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait", "PeriodicCurseTrait" },
+				}
+			},
+			-- Duos
+
 		},
 
 		Speaker = "NPC_Hera_01",
@@ -4115,17 +4199,84 @@ end]]
 			-- Jealousy Stuff
 			if sourceWeaponData ~= nil and not triggerArgs.PureDamage and not IsEmpty(ActiveEnemies) and victim and
 				not victim.IsDead and IsEmpty(victim.InvulnerableFlags) and IsEmpty(victim.PersistentInvulnerableFlags)
-				and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and
+				and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and victim.JealousyModifier and
 				Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) then
-				local damageAmount = triggerArgs.DamageAmount * 0.10 * TableLength(victim.VulnerabilityEffects)
+				local damageAmount = triggerArgs.DamageAmount * victim.JealousyModifier * TableLength(victim.VulnerabilityEffects)
 				if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
 					damageAmount = 0
 				end
-				Damage(victim, { EffectName = "JelousyCurseEffect", DamageAmount = damageAmount, Silent = false, PureDamage = true })
+				Damage(victim, { EffectName = "JealousyCurse", DamageAmount = damageAmount, Silent = false, PureDamage = false })
 			end
 		end
 	)
-
+	function AddJealousyOnRandomFoe()
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Run Jealousy")) 
+		thread(JealousyOnRandomFoeThread, {})
+	end
+	function JealousyOnRandomFoeThread()
+		local randomEnemy = nil
+		local time = GetTotalHeroTraitValue("JealousyIntervalApply")
+		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
+			wait(time, "RoomThread") --0.01
+			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+				for _, id in pairs( GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = 9999 })) do
+					randomEnemy = ActiveEnemies[id]
+					if randomEnemy ~= nil and not randomEnemy.IsDead and (not randomEnemy.ActiveEffects or not randomEnemy.ActiveEffects.JealousyCurse) then
+						ApplyEffectFromWeapon({ WeaponName = "JealousyCurseApplicator", EffectName = "JealousyCurse", Id = CurrentRun.Hero.ObjectId, DestinationId = randomEnemy.ObjectId })
+						break
+					end
+				end
+			end
+		end
+	end
+	function EnvyCurseApply(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		victim.EnvyNextDamage = triggerArgs.Modifier
+		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
+			victim.EnvyNextDamage = victim.EnvyNextDamage + victim.EnvyNextDamage * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
+		end
+	end
+	function EnvyCurseClear(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		victim.EnvyNextDamage = nil
+	end
+	function JealousyCurseApply(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		victim.JealousyModifier = triggerArgs.Modifier
+	end
+	ModUtil.Hades.Triggers.OnEffectApply.Combat[1].Call = ModUtil.Wrap(ModUtil.Hades.Triggers.OnEffectApply.Combat[1].Call,
+		function( baseFunc, triggerArgs )
+			local victim = triggerArgs.TriggeredByTable
+			if not victim or ( victim.IsDead and victim ~= CurrentRun.Hero ) then
+				return
+			end
+			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+				Damage(victim, { EffectName = "EnvyCurse", DamageAmount = victim.EnvyNextDamage, Silent = false, PureDamage = false })
+				if triggerArgs.EffectName ~= "EnvyCurse" then
+					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse" })					
+				end
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.Reapplied)) 
+			end
+			baseFunc(triggerArgs)
+		end
+	)
+	ModUtil.Path.Wrap("Kill",
+	function(baseFunc, victim, triggerArgs)
+		if HeroHasTrait("GiveCurseDeathTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "EnvyCurse" }) then
+			local id = GetClosest({ Id = victim.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 800 })
+			local enemy = ActiveEnemies[id]
+			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock and victim.ActiveEffects then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(victim.ActiveEffects)) 
+				if enemy.ActiveEffects == nil then
+					enemy.ActiveEffects = {}
+				end
+				--ModUtil.Table.Merge(enemy.ActiveEffects,victim.ActiveEffects)
+			end
+		end
+		baseFunc(victim, triggerArgs)
+	end
+)
 
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
