@@ -3,7 +3,7 @@ deppth pk -s OEMinor -t OEMinor.pkg
 
 Remove-Item 'OEMinor' -Recurse
 
-texture_packing_wheel pk -s PackMe/Hestia -b OEHestia
-deppth pk -s OEHestia -t OEHestia.pkg
+texture_packing_wheel pk -s PackMe/Hera -b OEHera
+deppth pk -s OEHera -t OEHera.pkg
 
-Remove-Item 'OEHestia' -Recurse
+Remove-Item 'OEHera' -Recurse

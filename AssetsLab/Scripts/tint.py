@@ -3,10 +3,10 @@ from PIL.ImageColor import getcolor, getrgb
 from PIL.ImageOps import grayscale
 import os
 
-color = '#a2b2fe' 
+color = '#FF0000'
 #color = '#e7eefe'
 #directory = '../OGAssets/MineExplosion'
-directory = 'LavaFire'
+directory = 'ZagAmmoWeaponCirclesBright'
 output_dir = 'Tinted'
 saturation_degree = 1 # 1
 contrast_degree = 3 # 5
@@ -56,7 +56,7 @@ for filename in os.listdir(directory):
         img = brighten(img, brighten_degree)
         # img =  saturate(img, saturation_degree)
         
-        filename = filename.replace("Fire", "FireDemeter")
+        filename = filename.replace("Hades", "Zag")
         output_path = os.path.join(output_dir, filename)
         save_img(img, output_path)
         # img.show()
