@@ -1860,6 +1860,8 @@ if ModUtil ~= nil then
 		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
 		RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait" }
 	}
+	
+	table.insert(OlympusTraitData.ArtemisAmmoExitTrait.RequiredFalseTraits, "ApolloRangedTrait")
 	OlympusTraitData.ApolloShoutTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },

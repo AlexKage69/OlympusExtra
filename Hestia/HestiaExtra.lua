@@ -3242,6 +3242,7 @@ if ModUtil ~= nil then
 
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
+	table.insert(OlympusLootData.ArtemisUpgrade.LinkedUpgrades.ArtemisAmmoExitTrait.OneOf, "HestiaRangedTrait")
 	OlympusLootData.HestiaUpgrade = {
 		Name = "HestiaUpgrade",
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
