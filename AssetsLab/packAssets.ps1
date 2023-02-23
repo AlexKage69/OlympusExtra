@@ -1,7 +1,7 @@
-texture_packing_wheel pk -s PackMe/Minor -b OEMinor
-deppth pk -s OEMinor -t OEMinor.pkg
+texture_packing_wheel pk -s PackMe/Apollo -b OEApollo
+deppth pk -s OEApollo -t OEApollo.pkg
 
-Remove-Item 'OEMinor' -Recurse
+Remove-Item 'OEApollo' -Recurse
 
 texture_packing_wheel pk -s PackMe/Hera -b OEHera
 deppth pk -s OEHera -t OEHera.pkg
