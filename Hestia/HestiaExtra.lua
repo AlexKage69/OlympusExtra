@@ -5143,10 +5143,10 @@ if ModUtil ~= nil then
 		},
 	}
 	OlympusLootData.AphroditeUpgrade.FreePassVoiceLines = {
-		PoseidonFreePass01 =
+		AphroditeFreePass01 =
 		{
 			PlayOnce = true,
-			Name = "PoseidonFreePass01",
+			Name = "AphroditeFreePass01",
 			{ Cue = "/VO/Poseidon_0242",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -5177,7 +5177,7 @@ if ModUtil ~= nil then
 	}
 	OlympusLootData.DemeterUpgrade.RejectionTextLines.DemeterFakeFreePass01 = {
 		PlayOnce = true,
-		Name = "DemeterFreePass01",
+		Name = "DemeterFakeFreePass01",
 		RequiredAnyTextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AthenaFreePass01", "AresFreePass01",
 			"AphroditeFreePass01", "ArtemisFreePass01", "DionysusFreePass01", },
 		{ Cue = "/VO/Demeter_0382",
@@ -5187,7 +5187,7 @@ if ModUtil ~= nil then
 	}
 	OlympusLootData.DemeterUpgrade.MakeUpTextLines.DemeterFakeFreePassFollow01 = {
 		PlayOnce = true,
-		Name = "DemeterFreePass01",
+		Name = "DemeterFakeFreePassFollow01",
 		Priority = true,
 		RequiredTextLines = { "DemeterFakeFreePass01" },
 		{ Cue = "/VO/Demeter_0383",

@@ -3820,6 +3820,28 @@
       VisualFxIntervalMax = 0.02
       VisualFxIntervalMin = 0.01
     }
+    {
+      Name = "ApolloBomb"
+      FilePath = "Animations\BloodlessGrenadier\Pot\BloodlessGrenadierPot0001"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      EndFrame = 1
+      Loop = true
+      NumFrames = 1
+      StartFrame = 1
+      OriginX = 55.0
+      OriginY = 104.0
+      AddColor = true
+      Red = 0.2
+      Green = 0.2
+      Blue = 0.2
+      Material = 
+      {
+        Ambient = 0.0
+        Diffuse = 0.0
+        Directionality = 0.0
+      }
+    }
    {
       Name = "ApolloLobProjectileSmokeContainer"
       CreateAnimation = "ApolloLobProjectileSmoke"
