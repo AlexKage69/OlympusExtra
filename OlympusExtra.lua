@@ -9,7 +9,6 @@ if ModUtil ~= nil then
     end)
     ModUtil.Mod.Register("OlympusExtra")
     -- Apollo Hestia Duo
-end
 ModUtil.LoadOnce(function()
     -- CodexMenu Compatibility
     if CodexMenu ~= nil then
@@ -95,3 +94,4 @@ ModUtil.LoadOnce(function()
     SetupRunData()
 
 end)
+end
