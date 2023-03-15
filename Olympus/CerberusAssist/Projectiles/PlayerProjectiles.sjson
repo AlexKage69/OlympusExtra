@@ -9,7 +9,7 @@
       DetonateSound = "null"
       Fuse = 0.4
       UseStartLocation = true
-      //StartFx = "ClawSwipeFlippedDash"
+      //StartFx = "CerberusAssist"
       AffectsEnemies = true
       AffectsFriends = false
       Range = 1.0

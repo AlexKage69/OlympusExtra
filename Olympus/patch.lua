@@ -133,7 +133,7 @@ ModUtil.Path.Wrap( "EquipAssist",
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+			LoadMap({ Name ="A_Combat01", ResetBinks = true, ResetWeaponBinks = true })
 			baseFunc()
 		end
 	)]]

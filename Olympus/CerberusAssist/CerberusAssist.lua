@@ -85,7 +85,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		AddAssist =
 		{
 			FunctionName = "GoodboyAttackSpawn",
-			CerberusWeapon = "NPC_Goodboy_01_Assist",
+			WeaponName = "NPC_Goodboy_01_Assist",
 			GameStateRequirements = {
 				CurrentRoomValueFalse = "BlockHadesAssistTraits",
 				--RequiredFalseRooms = { "D_Boss01" },
@@ -129,6 +129,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		LoadBinks =
 		{
 			"Cerberus_HadesAssistJumpIn_Bink",
+			"Cerberus_HadesAssistRun_Bink"
 		},
 		SignOffData =
 		{
@@ -220,31 +221,11 @@ OlympusTraitData.GoodBoyAssistTrait =
 		},
 	}
 	function GoodboyAttackSpawn( assistData )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(assistData)) 
-		--[[local locationId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = 500, RequiredLocationUnblocked = true })
-		if locationId == 0 then
-			-- Try again, allowing for blocked targets
-			locationId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = 500 })
-		end
-		if locationId == 0 then
-			locationId = CurrentRun.Hero.ObjectId
-		end]]
-		EquipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = assistData.CerberusWeapon, LoadPackages = true })
-		--for i = 1, 2, 1 do
-			--local targetId = SpawnObstacle({ Name = "BlankObstacle", Group = "FX_Terrain", DestinationId = locationId, OffsetX = 0, OffsetY = 0 })
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("1")) 
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("2")) 
-			FireWeaponFromUnit({ Weapon = assistData.CerberusWeapon, Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })		
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("3")) 
-			--Destroy({ Id = targetId })	
-			--wait(2, RoomThreadName)
-		--end
-		-- ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Finish")) 
-	
-		--[[wait(1, RoomThreadName)
-		local consumableData = DeepCopyTable( assistData )
-		consumableData.DestinationId = targetId
-		consumableData.NotRequiredPickup = true
-		GiveRandomConsumables( consumableData )]]
+		local targetId = SpawnObstacle({ Name = "BlankObstacle", Group = "FX_Terrain", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = -1200, OffsetY = 865 })
+		CreateAnimation({ Name = "CerberusAssist", DestinationId = targetId, GroupName = "Overlay" })
+		Move({Id = targetId, Angle = 30, Distance = 4000, Duration = 3, SmoothStep = true })
+		wait(3)
+		StopAnimation({ Name = "CerberusAssist", DestinationId = targetId })
+		Destroy({ Id = targetId })
 	end
 end

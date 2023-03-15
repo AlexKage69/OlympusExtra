@@ -2661,6 +2661,20 @@ if ModUtil ~= nil then
 		EffectProperty = "Stacks",
 		ChangeValue    = true,
 	})
+	table.insert(OlympusTraitData.CurseSickTrait.PropertyChanges, {
+		TraitName = "ApolloRangedTrait",
+		WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+		EffectName = "DelayedDamage",
+		EffectProperty = "RefreshOnExpireWithEffectAlt",
+		ChangeValue = "ReduceDamageOutput",
+	})
+	table.insert(OlympusTraitData.CurseSickTrait.PropertyChanges, {
+		TraitName = "ApolloRangedTrait",
+		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+		EffectName = "DelayedDamage",
+		EffectProperty = "RefreshOnExpireWithEffectAltMultiplier",
+		DeriveValueFrom = "DeriveSource",
+	})
 	OlympusTraitData.HyacinthTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
@@ -5035,6 +5049,16 @@ if ModUtil ~= nil then
 	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusDefenseTrait.OneOf, "MasterLobApolloTrait")
 	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusComboVulnerability.OneFromEachSet[1],
 		"MasterLobApolloTrait")
+	OlympusLootData.ZeusUpgrade.LinkedUpgrades.AutoRetaliateTrait.OneFromEachSet = {
+		{ "AresRetaliateTrait", "RetaliateWeaponTrait", "AthenaRetaliateTrait", "AphroditeRetaliateTrait", "DemeterRetaliateTrait", "ApolloRetaliateTrait", "HestiaRevengeTrait" },
+		{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusRushTrait", "ZeusShoutTrait", "ShieldLoadAmmo_ZeusRangedTrait" },
+		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRangedTrait", "AresRushTrait", "AresShoutTrait", "ShieldLoadAmmo_AresRangedTrait" },
+	}
+	OlympusLootData.AresUpgrade.LinkedUpgrades.AutoRetaliateTrait.OneFromEachSet = {
+		{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusRushTrait", "ZeusShoutTrait", "ShieldLoadAmmo_ZeusRangedTrait" },
+		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRangedTrait", "AresRushTrait", "AresShoutTrait", "ShieldLoadAmmo_AresRangedTrait" },
+		{ "AresRetaliateTrait", "RetaliateWeaponTrait", "AthenaRetaliateTrait", "DemeterRetaliateTrait", "AphroditeRetaliateTrait" },
+	}
 
 
 

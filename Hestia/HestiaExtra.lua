@@ -2096,6 +2096,7 @@ if ModUtil ~= nil then
 	}]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
+		Name = "HestiaShoutTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
 		RequiredFalseTraits = { "RegeneratingCappedSuperTrait" },
@@ -2212,14 +2213,49 @@ if ModUtil ~= nil then
 				}
 			},
 		},
+		RarityStatMultiplier = 
+		{ 
+			CustomRarityMultiplier =
+			{
+				Common =
+				{
+					MinMultiplier = 1.00,
+					MaxMultiplier = 1.00,
+				},
+				Rare =
+				{
+					MinMultiplier = 2.0,
+					MaxMultiplier = 2.0,
+				},
+				Epic =
+				{
+					MinMultiplier = 3.0,
+					MaxMultiplier = 3.0,
+				},
+				Heroic =
+				{
+					MinMultiplier = 4.0,
+					MaxMultiplier = 4.0,
+				},
+			},
+			BaseValue = 1
+		},
 		AddOutgoingLifestealModifiers =
 		{
-			--Unique = true,
+			Unique = true,
 			ValidWeapons = { "HestiaMaxSuper", "HestiaSuper" },
 			ValidMultiplier = 0.00,
 			MaxLifesteal = 1,
 			MinLifesteal = 1,
-		}
+		},		
+		ExtractValues =
+		{
+			{
+				Key = "RarityStatMultiplier",
+				ExtractAs = "TooltipHeal",
+				SkipAutoExtract = true,
+			},
+		},
 	}
 
 	table.insert(OlympusTraitData.RegeneratingCappedSuperTrait.RequiredFalseTraits,
@@ -5892,7 +5928,16 @@ if ModUtil ~= nil then
 		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FullHealBossText", Duration = 1 })
 	end
-
+	-- Hestia Shout Heal Rarity
+	ModUtil.Path.Wrap("AddTraitData",
+		function(baseFunc, unit, traitData, args)
+			if traitData.AddOutgoingLifestealModifiers and traitData.RarityStatMultiplier then
+				traitData.AddOutgoingLifestealModifiers.MaxLifesteal = traitData.AddOutgoingLifestealModifiers.MaxLifesteal * traitData.RarityStatMultiplier
+				traitData.AddOutgoingLifestealModifiers.MinLifesteal = traitData.AddOutgoingLifestealModifiers.MinLifesteal * traitData.RarityStatMultiplier
+			end
+			baseFunc(unit, traitData, args)
+		end
+	)
 	-- Poseidon Duo
 	ModUtil.Path.Wrap("GetFish",
 		function(baseFunc, biome, fishingState)
