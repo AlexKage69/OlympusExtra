@@ -42,7 +42,8 @@ OlympusTraitData.GoodBoyAssistTrait =
 		InRackIcon = "Keepsake_Cerberus_Plush_Menu",
 
 		--PreEquipWeapons = { "NPC_Goodboy_01_Assist" },
-		EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
+		-- EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
+		EquipSound = "/VO/CerberusCuteGrowl_2", 
 		KeepsakeRarityGameStateRequirements =
 		{
 			[1] = {
@@ -84,10 +85,10 @@ OlympusTraitData.GoodBoyAssistTrait =
 		AddAssist =
 		{
 			FunctionName = "GoodboyAttackSpawn",
-			CerberusWeapon = "NPC_Goodboy_01_Assist",
+			WeaponName = "NPC_Goodboy_01_Assist",
 			GameStateRequirements = {
 				CurrentRoomValueFalse = "BlockHadesAssistTraits",
-				RequiredFalseRooms = { "D_Boss01" },
+				--RequiredFalseRooms = { "D_Boss01" },
 			},
 			AssistPresentationPortrait = "Portrait_Cerberus_Default_01",
 			AssistPresentationPortraitOffsetY = 55,
@@ -100,7 +101,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 			{
 				WeaponName = "NPC_Goodboy_01_Assist",
 				ProjectileProperty = "DamageLow",
-				ChangeValue = 1500,
+				ChangeValue = 2000,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -128,6 +129,7 @@ OlympusTraitData.GoodBoyAssistTrait =
 		LoadBinks =
 		{
 			"Cerberus_HadesAssistJumpIn_Bink",
+			"Cerberus_HadesAssistRun_Bink"
 		},
 		SignOffData =
 		{
@@ -147,7 +149,7 @@ OlympusTraitData.GoodBoyAssistTrait =
     local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)    
     OlympusGiftData.NPC_Cerberus_01[7] = { Gift = "GoodBoyAssistTrait", RequiredResource = "SuperGiftPoints" }
     local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)    
-	table.insert(OlympusGiftOrdering, 34,"GoodBoyAssistTrait")
+	table.insert(OlympusGiftOrdering, "GoodBoyAssistTrait")
 
     local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
@@ -215,53 +217,15 @@ OlympusTraitData.GoodBoyAssistTrait =
 		},
 		Binks =
 		{
-			--"Enemy_MegaeraMultiFurySkyDive_Bink"
+			"Cerberus_HadesAssistJumpIn_Bink"
 		},
 	}
 	function GoodboyAttackSpawn( assistData )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(assistData)) 
-		--[[local locationId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = 500, RequiredLocationUnblocked = true })
-		if locationId == 0 then
-			-- Try again, allowing for blocked targets
-			locationId = GetClosest({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, Distance = 500 })
-		end
-		if locationId == 0 then
-			locationId = CurrentRun.Hero.ObjectId
-		end]]
-		EquipWeapon({ DestinationId = CurrentRun.Hero.ObjectId, Name = assistData.CerberusWeapon, LoadPackages = true })
-		--for i = 1, 2, 1 do
-			--local targetId = SpawnObstacle({ Name = "BlankObstacle", Group = "FX_Terrain", DestinationId = locationId, OffsetX = 0, OffsetY = 0 })
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("1")) 
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("2")) 
-			FireWeaponFromUnit({ Weapon = assistData.CerberusWeapon, Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })		
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("3")) 
-			--Destroy({ Id = targetId })	
-			--wait(2, RoomThreadName)
-		--end
-	
-		--[[wait(1, RoomThreadName)
-		local consumableData = DeepCopyTable( assistData )
-		consumableData.DestinationId = targetId
-		consumableData.NotRequiredPickup = true
-		GiveRandomConsumables( consumableData )]]
+		local targetId = SpawnObstacle({ Name = "BlankObstacle", Group = "FX_Terrain", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = -1200, OffsetY = 865 })
+		CreateAnimation({ Name = "CerberusAssist", DestinationId = targetId, GroupName = "Overlay" })
+		Move({Id = targetId, Angle = 30, Distance = 4000, Duration = 3, SmoothStep = true })
+		wait(3)
+		StopAnimation({ Name = "CerberusAssist", DestinationId = targetId })
+		Destroy({ Id = targetId })
 	end
-	
-	ModUtil.Path.Wrap( "DoAssist", 
-		function(baseFunc, unit)	
-			baseFunc(unit)	
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("After Do Assist")) 
-		end)
-	--[[OnWeaponFired{
-		function( triggerArgs )
-	
-			if triggerArgs.OwnerTable.ObjectId == CurrentRun.Hero.ObjectId then
-				CheckPlayerOnFirePowers( triggerArgs )
-			end
-			local weaponData = GetWeaponData(triggerArgs.OwnerTable, triggerArgs.name)
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(weaponData)) 
-			if weaponData == nil then
-				return
-			end	
-			--CurrentRun.WeaponsFiredRecord[weaponData.Name] = (CurrentRun.WeaponsFiredRecord[weaponData.Name] or 0) + 1
-		end}]]
 end

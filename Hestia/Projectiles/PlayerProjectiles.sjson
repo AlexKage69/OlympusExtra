@@ -8,7 +8,7 @@
       HomingAllegiance = "ENEMIES"
       AffectsEnemies = true
       MaxAdjustRate = 200
-      Speed = 300
+      Speed = 400
       Acceleration = 0
       Range = 1000.0
       DamageLow = 200
@@ -522,7 +522,7 @@
     {
       Name = "HestiaSuper"
       InheritFrom = "1_BasePlayerSmallProjectile"
-      DetonateGraphic = "HadesCastNovaHit"
+      DetonateGraphic = "HestiaCastNovaHit"
       Type = "STRAIGHT"
       DetonateSound = "null"
       Fuse = 0.0
@@ -558,7 +558,7 @@
     {
       Name = "HestiaMaxSuper"
       InheritFrom = "1_BasePlayerSmallProjectile"
-      DetonateGraphic = "HadesCastNovaHit"
+      DetonateGraphic = "HestiaCastNovaHit"
       Type = "STRAIGHT"
       DetonateSound = "null"
       Fuse = 0.0

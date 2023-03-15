@@ -2796,7 +2796,7 @@
       CreateAnimation = null
     }
     {
-      Name = "HadesAmmoPushRingEdgeFx"
+      Name = "HestiaAmmoPushRingEdgeFx"
       Type = "Constant"
       FilePath = "Particles\particle_snowDust_01"
       NumFrames = 1
@@ -2827,6 +2827,26 @@
       ScaleFromOwner = "Ignore"
       GroupName = "Standing"
       SortMode = "FromParent"
+    }
+    {
+      Name = "HestiaCastNovaHit"
+      FilePath = "Fx\ShadeNova\ShadeNova"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      EndFrame = 28
+      NumFrames = 28
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      Ambient = 0.0
+      Hue = 0.3
+      Scale = 1
+      ScaleY = 1.0
+      PlaySpeed = 80
+      OffsetZ = 30
+      Red = 1.0
+      Green = 0
+      Blue = 0.81
     }
     /* Hestia - Duos */
     /* Theseus - Wrath */
@@ -3024,18 +3044,19 @@
       StartFrame = 1
       LocationZFromOwner = "Ignore"
       ScaleFromOwner = "Ignore"
-      ScaleRadius = 250.0
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
       Ambient = 0.0
-      ChainTo = "HestiaDemeterSpinLoopOut"
+      ChainTo = "HestiaDemeterSpinLoopOut"    
       ColorFromOwner = "Ignore"
       SortMode = "Secondary"
       OverlayVfx = false
       TransferFrameFromThis = true
       Material = "Unlit"
-      ScaleX = 1.2
-      ScaleY = 2.5
+      ScaleX = 3
+      ScaleY = 4
       CreateAnimations = [
-        //{ Name = "HestiaSpinLight" }
         { Name = "LavaEmber" }
       ]
     }
@@ -3075,7 +3096,7 @@
     }
     {
       Name = "HestiaDemeterSpinOut2"
-      InheritFrom = "HestiaSpinOut"
+      InheritFrom = "HestiaDemeterSpinOut"
       ChildAnimation = null
     }
     {
@@ -3103,6 +3124,19 @@
       EndAlpha = 0
       HoldLastFrame = false
       ChainTo = null
+    }
+    {
+      Name = "HestiaDemeterSpinLoopOut"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      ChainTo = "HestiaDemeterSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
     }
     {
       Name = "HestiaSpinLoopOut"
@@ -3838,7 +3872,8 @@
       Name = "HestiaLavaPuddleSmallest"
       InheritFrom = "HestiaLavaPuddle"
       GroupName = "FX_Terrain"
-      Sound = "/SFX/LavaPuddleAmbientLoop"
+      //Sound = "/SFX/LavaPuddleAmbientLoop"
+      //StopSoundOnFinishFade = 0.2
       Scale = 0.5
       //OffsetX = 5
       OffsetY = 25
@@ -3853,7 +3888,7 @@
       InheritFrom = "HestiaLavaPuddle"
       GroupName = "FX_Terrain"
       Sound = "/SFX/LavaPuddleAmbientLoop"
-      //StopSoundOnFinishFade = 0.2
+      StopSoundOnFinishFade = 0.2
       Scale = 0.9
     }
     {

@@ -1,6 +1,6 @@
 -: Mod Name: Goddess Codex
     Author - AlexKage
-    Author - Phypoh
+    Author - physiX
 :-
 
 :: Assets
@@ -59,6 +59,13 @@ To "Maps/A_Makaria01.map_text"
 Replace "Packages/Maps/A_Makaria01.map_text"
 
 :: Audio
+To "Audio/FMOD/Build/Desktop/VO.h"
+Replace "Audio/VO.h"
+To "Audio/FMOD/Build/Desktop/VO.txt"
+Replace "Audio/VO.txt"
+To "Audio/FMOD/Build/Desktop/VO.fsb"
+Replace "Audio/VO.fsb" 
+
 
 :: Subtitles and Texts
 To "Subtitles/en/ZagreusScratch.csv"
@@ -67,6 +74,10 @@ To "Game/Text/en/HelpText.en.sjson"
 SJSON "Characters/Text/en/HelpText.en.sjson"
 
 :: Movies
+To "Movies/720p/MainMenuIn.bik"
+Replace "Movies/720p/MainMenuIn.bik"
+To "Movies/720p/MainMenuLoop.bik"
+Replace "Movies/720p/MainMenuLoop.bik"
 To "Movies/MainMenuIn.bik"
 Replace "Movies/MainMenuIn.bik"
 To "Movies/MainMenuLoop.bik"

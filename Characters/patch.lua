@@ -176,15 +176,6 @@ function GetHeroSameGodCount( hero )
 	return hero.SameGodCount
 end
 
---[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if (not CanOpenCodex()) and IsSuperValid() then
-			BuildSuperMeter(CurrentRun, 50)
-		end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.SameGodCount)) 
-		baseFunc()
-	end
-)]]
 --[[ModUtil.Path.Wrap( "AddRerolls", 
 	function(baseFunc, amount, source, args )
         if type(amount) == "number" then
@@ -192,3 +183,13 @@ end
         end
 	end
 )]]
+--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+		function(baseFunc)		
+            
+			if (not CanOpenCodex()) and IsSuperValid() then
+				BuildSuperMeter(CurrentRun, 50)
+			end
+			LoadMap({ Name ="A_Combat01", ResetBinks = true, ResetWeaponBinks = true })
+			baseFunc()
+		end
+	)]]
