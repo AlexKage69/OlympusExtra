@@ -305,7 +305,7 @@
           }
         ]
         Thing = {
-          Graphic = "Projectile_BloodlessGrenadier"
+          Graphic = "ApolloBomb"
           Scale = 0.1
           OffsetZ = 101
           AttachedAnim = "GrenadierShadow"
@@ -706,7 +706,7 @@
           }
         ]
         Thing = {
-          Graphic = "Projectile_BloodlessGrenadier"
+          Graphic = "ApolloBomb"
           Scale = 0.1
           OffsetZ = 101
           AttachedAnim = "GrenadierShadow"

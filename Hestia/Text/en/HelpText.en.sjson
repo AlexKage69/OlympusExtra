@@ -130,17 +130,17 @@
 		{
 			Id = "HestiaShoutTrait"
 			DisplayName = "Hestia's Aid"
-			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {#BoldFormat}1 {#PreviousFormat} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
+			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {$TooltipData.TooltipHeal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
 		}		
 		{
 			Id = "HestiaShoutTrait_Tray"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {#BoldFormat}1 {#PreviousFormat} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {$TooltipData.TooltipHeal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
 		}	
 		{
 			Id = "HestiaShoutTrait_Initial"
 			InheritFrom = "HestiaShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {#BoldFormat}1 {#PreviousFormat} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
+			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {$TooltipData.TooltipHeal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}"
 		} 
 		{
 			Id = "HestiaRangedTrait"
@@ -341,18 +341,23 @@
 			Description = "Upon entering {$Keywords.BossPlural} and {$Keywords.MiniBoss} rooms, restore {!Icons.Health_Small}.\n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.BossPlural}: \Column 380 {#UpgradeFormat}100%{!Icons.Health_Small_Tooltip} \n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.MiniBoss}: \Column 380 {#UpgradeFormat}50%{!Icons.Health_Small_Tooltip}"
 		}
 		{
+			Id = "FullHealBossTrait_Reduced"
+			DisplayName = "Quick Drink"
+			Description = "Upon entering {$Keywords.BossPlural} and {$Keywords.MiniBoss} rooms, restore {!Icons.Health_Small}.\n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.BossPlural}: \Column 380 {#AltPenaltyFormat}{$TooltipData.TooltipHeal}%{!Icons.Health_Small_Tooltip}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Healing from {$Keywords.MiniBoss}: \Column 380 {#AltPenaltyFormat}{$TooltipData.TooltipHealHalf}%{!Icons.Health_Small_Tooltip}{#PreviousFormat}"
+		}
+		{
 			Id = "FullHealBossText",
 			DisplayName = "{#CombatTextHighlightFormat}Quick Drink!{#PreviousFormat}!"
     	}
 		{
 			Id = "FoesNumberDamageTrait"
 			DisplayName = "Raging Flames"
-			Description = "When facing at least {$TooltipData.EnemyThreshold} foes, your {$Keywords.Attack}+{$Keywords.Special} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+			Description = "When facing at least {$TooltipData.EnemyThreshold} foes, your {$Keywords.Attack}, {$Keywords.Special} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
 		}	
 		{
 			Id = "PullZeusCastTrait"
 			DisplayName = "Magnetic Force"
-			Description = "Your chain-lightning effects attact enemies and bounce more times. \n {!Icons.Bullet}{#PropertyFormat}Lightning Bounces: \Column 380 {#UpgradeFormat}+3"
+			Description = "Your chain-lightning effects attract enemies and bounce more times. \n {!Icons.Bullet}{#PropertyFormat}Lightning Bounces: \Column 380 {#UpgradeFormat}+3"
 		}
 		{
 			Id = "FishingRewardExtraTrait"
@@ -361,8 +366,8 @@
 		}
 		{
 			Id = "ShoutMoreHealTrait"
-			DisplayName = "Summertime" 
-			Description = "Your {$Keywords.WrathDerivedStocks} restores {#BoldFormat}5{#PreviousFormat} {!Icons.Health_Small} per foe hit."
+			DisplayName = "Summertime"
+			Description = "Your {$Keywords.WrathDerivedStocks} restores {#BoldFormat}+4{#PreviousFormat} {!Icons.Health_Small} per foe hit."
 		}
 		{
 			Id = "LtUpgrade_Hestia"

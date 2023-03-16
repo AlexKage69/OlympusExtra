@@ -185,7 +185,7 @@
 		{
 			Id = "FountainDefenseTrait_Tray",
 			InheritFrom = "FountainDefenseTrait"
-			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage Resistance: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDefense:P}"
     	}
 		{
 			Id = "ApolloBlindedTrait"
@@ -210,7 +210,7 @@
 		{
 			Id = "RerollObolDrop"
 			InheritFrom = "RerollObolTrait"
-			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small}."
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
 		}
 		{
 			Id = "RerollBoonTrait"

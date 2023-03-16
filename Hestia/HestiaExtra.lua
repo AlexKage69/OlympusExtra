@@ -110,13 +110,13 @@ if ModUtil ~= nil then
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements =
 		{
-			RequiredTextLines = { "HestiaFreePass01" },		
+			RequiredTextLines = { "HestiaFreePass01" },
 		},
 		CompleteGameStateRequirements =
 		{
 			RequiredTextLines =
 			{
-				"ZeusFreePass01", 
+				"ZeusFreePass01",
 				"PoseidonFreePass01",
 				"AresFreePass01",
 				"DionysusFreePass01",
@@ -127,8 +127,8 @@ if ModUtil ~= nil then
 				--"HeraFreePass01",
 				"HestiaFreePass02",
 			},
-			
-		},		
+
+		},
 		IncompleteName = "Quest_UnknownCondition",
 		CashedOutVoiceLines =
 		{
@@ -184,6 +184,9 @@ if ModUtil ~= nil then
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HestiaProjectile")
+	OlympusWeaponData.ChainLightning = {
+		Name = "ChainLightning"
+	}
 	OlympusWeaponData.HestiaShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -2093,6 +2096,7 @@ if ModUtil ~= nil then
 	}]]
 	OlympusTraitData.HestiaShoutTrait =
 	{
+		Name = "HestiaShoutTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
 		RequiredFalseTraits = { "RegeneratingCappedSuperTrait" },
@@ -2209,19 +2213,54 @@ if ModUtil ~= nil then
 				}
 			},
 		},
+		RarityStatMultiplier = 
+		{ 
+			CustomRarityMultiplier =
+			{
+				Common =
+				{
+					MinMultiplier = 1.00,
+					MaxMultiplier = 1.00,
+				},
+				Rare =
+				{
+					MinMultiplier = 2.0,
+					MaxMultiplier = 2.0,
+				},
+				Epic =
+				{
+					MinMultiplier = 3.0,
+					MaxMultiplier = 3.0,
+				},
+				Heroic =
+				{
+					MinMultiplier = 4.0,
+					MaxMultiplier = 4.0,
+				},
+			},
+			BaseValue = 1
+		},
 		AddOutgoingLifestealModifiers =
 		{
-			--Unique = true,
+			Unique = true,
 			ValidWeapons = { "HestiaMaxSuper", "HestiaSuper" },
 			ValidMultiplier = 0.00,
 			MaxLifesteal = 1,
 			MinLifesteal = 1,
-		}
+		},		
+		ExtractValues =
+		{
+			{
+				Key = "RarityStatMultiplier",
+				ExtractAs = "TooltipHeal",
+				SkipAutoExtract = true,
+			},
+		},
 	}
-	
+
 	table.insert(OlympusTraitData.RegeneratingCappedSuperTrait.RequiredFalseTraits,
 		"HestiaShoutTrait")
-	
+
 	OlympusTraitData.StrongAttractionTrait =
 	{
 		Icon = "Boon_Hestia_07",
@@ -3103,6 +3142,26 @@ if ModUtil ~= nil then
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hestia_Dionysus_01",
 		RequiredFalseTrait = "FullHealBossTrait",
+		HealingReduction = 1,
+		HealingReductionHalf = 1,
+		CustomNameWithMetaUpgrade =
+		{
+			MetaUpgradeName = "HealingReductionShrineUpgrade",
+			Name = "FullHealBossTrait_Reduced",
+		},
+		ExtractValues =
+		{
+			{
+				Key = "HealingReduction",
+				ExtractAs = "TooltipHeal",
+				Format = "PercentHealLast",
+			},
+			{
+				Key = "HealingReductionHalf",
+				ExtractAs = "TooltipHealHalf",
+				Format = "PercentHealHalf",
+			},
+		}
 	}
 	OlympusTraitData.FoesNumberDamageTrait =
 	{
@@ -3139,7 +3198,7 @@ if ModUtil ~= nil then
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
-					  Value = -0.8,
+					Value = -0.8,
 				},
 			},
 			ExtractValues =
@@ -3158,7 +3217,7 @@ if ModUtil ~= nil then
 		Icon = "Hestia_Zeus_01",
 		RequiredFalseTraits = { "PullZeusCastTrait", "ShieldLoadAmmoTrait" },
 		OnWeaponHitFunctions = {
-			ValidWeapons = { "RangedWeapon" },
+			ValidWeapons = { "RangedWeapon", "ChainLightning" },
 			FunctionName = "CheckProjectileVacuumAllNearbyEnemies",
 			FunctionArgs =
 			{
@@ -3168,7 +3227,7 @@ if ModUtil ~= nil then
 					Traits = {
 						ZeusRangedTrait = {
 							Range = 1500,
-							PullForce = 2000,
+							PullForce = 1500,
 							Arc = 360,
 							Count = 2,
 							Distance = 75,
@@ -3178,7 +3237,7 @@ if ModUtil ~= nil then
 				},
 				ChainLightning = {
 					Range = 1500,
-					PullForce = 2000,
+					PullForce = 1500,
 					Arc = 360,
 					Count = 2,
 					Distance = 75,
@@ -3216,9 +3275,39 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "FishingRewardExtraTrait",
 	}
 
-
+	-- Apollo Stuff
+	OlympusTraitData.ShoutMoreHealTrait =
+	{
+		InheritFrom = { "SynergyTrait" },
+		Icon = "Hestia_Apollo_01",
+		RequiredFalseTrait = "ShoutMoreHealTrait",
+		AddOutgoingLifestealModifiers =
+		{
+			--Unique = true,
+			ValidWeapons = { "HestiaMaxSuper", "HestiaSuper" },
+			ValidMultiplier = 0.00,
+			MaxLifesteal = 4,
+			MinLifesteal = 4,
+			ExtractValues =
+			{
+				{
+					Key = "MinLifesteal",
+					ExtractAs = "TooltipLifesteal",
+				},
+			}
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWrathStocks",
+				Format = "ExistingWrathStocks",
+				SkipAutoExtract = true
+			}
+		}
+	}
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
+	table.insert(OlympusLootData.ArtemisUpgrade.LinkedUpgrades.ArtemisAmmoExitTrait.OneOf, "HestiaRangedTrait")
 	OlympusLootData.HestiaUpgrade = {
 		Name = "HestiaUpgrade",
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
@@ -3321,10 +3410,11 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "HestiaDashTrait" },
-					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait" },
+					{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait",
+						"ShieldLoadAmmo_DemeterRangedTrait" },
 				},
 			},
-			PullZeusCastTrait = 
+			PullZeusCastTrait =
 			{
 				OneFromEachSet =
 				{
@@ -3332,7 +3422,7 @@ if ModUtil ~= nil then
 					{ "HestiaWeaponTrait", "HestiaSecondaryTrait" },
 				},
 			},
-			FoesNumberDamageTrait = 
+			FoesNumberDamageTrait =
 			{
 				OneFromEachSet =
 				{
@@ -3380,40 +3470,40 @@ if ModUtil ~= nil then
 		DuoPickupTextLineSets =
 		{
 			HestiaWithZeus01 =
-				{
-					Name = "HestiaWithZeus01",
-					PlayOnce = true,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "PullZeusCastTrait",
-					{ Cue = "/VO/Hestia_0041",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Foster-Brother. How's ruling over all your relatives making you feel? A word of advice from your big sister: treat others as you treat yourself, because they might just do the same." },
-					{ Cue = "/VO/Zeus_0260",
-						PortraitExitWait = 0.35,
-						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						StartSound = "/SFX/ZeusBoonThunder",
-						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
-						Text = "I know how to rule my realm, Foster-Sister. Something you don't have to do anymore. I even have extra time to help our young Zagreus here!" },
-				},
+			{
+				Name = "HestiaWithZeus01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "PullZeusCastTrait",
+				{ Cue = "/VO/Hestia_0041",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Foster-Brother. How's ruling over all your relatives making you feel? A word of advice from your big sister: treat others as you treat yourself, because they might just do the same." },
+				{ Cue = "/VO/Zeus_0260",
+					PortraitExitWait = 0.35,
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/ZeusBoonThunder",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
+					Text = "I know how to rule my realm, Foster-Sister. Something you don't have to do anymore. I even have extra time to help our young Zagreus here!" },
+			},
 			HestiaWithPoseidon01 =
-				{
-					Name = "HestiaWithPoseidon01",
-					PlayOnce = true,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "FishingRewardExtraTrait",
-					{ Cue = "/VO/Hestia_0042",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
-					{ Cue = "/VO/Poseidon_0260",
-						Emote = "PortraitEmoteFiredUp",
-						PortraitExitWait = 0.35,
-						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						StartSound = "/SFX/PoseidonBoonWaveCrash", UseEventEndSound = true,
-						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
-						Text = "Now hold on there, Hestia! I always do my best. And how can I be reponsible for something I didn't do? I always take action. Like I'm doing right this moment, with Zagreus." },
-				},
+			{
+				Name = "HestiaWithPoseidon01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "FishingRewardExtraTrait",
+				{ Cue = "/VO/Hestia_0042",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
+				{ Cue = "/VO/Poseidon_0260",
+					Emote = "PortraitEmoteFiredUp",
+					PortraitExitWait = 0.35,
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/PoseidonBoonWaveCrash", UseEventEndSound = true,
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
+					Text = "Now hold on there, Hestia! I always do my best. And how can I be reponsible for something I didn't do? I always take action. Like I'm doing right this moment, with Zagreus." },
+			},
 			HestiaWithAthena01 =
 			{
 				Name = "HestiaWithAthena01",
@@ -3432,42 +3522,42 @@ if ModUtil ~= nil then
 					Text = "I only did what I believed should be done. I gave Zagreus the opportunity to escape. The rest is up to him now. We should continue to help in any way we can." },
 			},
 			HestiaWithAres01 =
-				{
-					Name = "HestiaWithAres01",
-					PlayOnce = true,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "FoesNumberDamageTrait",
-					RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HestiaWithAres02" },
-					{ Cue = "/VO/Hestia_0044",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
-					{ Cue = "/VO/Ares_0250",
-						PortraitExitWait = 0.35,
-						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						StartSound = "/SFX/AresWrathBattle",
-						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-						Text = "I can only agree with you, Aunt Hestia. And my kin here is in the midst of a war. He must fight to achieve peace in his realm." },
-				},
-				HestiaWithAres02 =
-				{
-					Name = "HestiaWithAres02",
-					PlayOnce = true,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "FoesNumberDamageTrait",
-					RequiredTextLines = { "OlympianReunionQuestComplete" },
-					RequiredFalseTextLines = { "HestiaWithAres01" },
-					{ Cue = "/VO/Hestia_0044",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
-					{ Cue = "/VO/Ares_0253",
-						PortraitExitWait = 0.35,
-						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						StartSound = "/SFX/AresWrathBattle",
-						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-						Text = "I can only agree with you, Aunt Hestia. And even though my kin has brought peace to his realm, he must continue to fight so that he might maintain it." },
-				},
+			{
+				Name = "HestiaWithAres01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "FoesNumberDamageTrait",
+				RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HestiaWithAres02" },
+				{ Cue = "/VO/Hestia_0044",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
+				{ Cue = "/VO/Ares_0250",
+					PortraitExitWait = 0.35,
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/AresWrathBattle",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
+					Text = "I can only agree with you, Aunt Hestia. And my kin here is in the midst of a war. He must fight to achieve peace in his realm." },
+			},
+			HestiaWithAres02 =
+			{
+				Name = "HestiaWithAres02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "FoesNumberDamageTrait",
+				RequiredTextLines = { "OlympianReunionQuestComplete" },
+				RequiredFalseTextLines = { "HestiaWithAres01" },
+				{ Cue = "/VO/Hestia_0044",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
+				{ Cue = "/VO/Ares_0253",
+					PortraitExitWait = 0.35,
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/AresWrathBattle",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
+					Text = "I can only agree with you, Aunt Hestia. And even though my kin has brought peace to his realm, he must continue to fight so that he might maintain it." },
+			},
 			HestiaWithAphrodite01 =
 			{
 				Name = "HestiaWithAphrodite01",
@@ -3506,38 +3596,38 @@ if ModUtil ~= nil then
 				},
 			},
 			HestiaWithDionysus01 =
-				{
-					Name = "HestiaWithDionysus01",
-					PlayOnce = true,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "FullHealBossTrait",
-					{ Cue = "/VO/Hestia_0047",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Taking my place as an Olympian isn't too hard, my child? I remember when I was there—I argued with Zeus all the time. I hope you are not as headstrong as I was." },
-					{ Cue = "/VO/Dionysus_0240",
-						PortraitExitWait = 0.35,
-						PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-						StartSound = "/SFX/DionysusBoonWineLaugh",
-						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
-						Text = "{#DialogueItalicFormat}Oh{#PreviousFormat} don't you worry, Lady Hestia, I'm trying a more chill approach. I still care and act, but just when it's necessary, yeah? Like right now, with Zag." },
-				},
+			{
+				Name = "HestiaWithDionysus01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "FullHealBossTrait",
+				{ Cue = "/VO/Hestia_0047",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Taking my place as an Olympian isn't too hard, my child? I remember when I was there—I argued with Zeus all the time. I hope you are not as headstrong as I was." },
+				{ Cue = "/VO/Dionysus_0240",
+					PortraitExitWait = 0.35,
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/DionysusBoonWineLaugh",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
+					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat} don't you worry, Lady Hestia, I'm trying a more chill approach. I still care and act, but just when it's necessary, yeah? Like right now, with Zag." },
+			},
 			HestiaWithDemeter01 =
-				{
-					Name = "HestiaWithDemeter01",
-					PlayOnce = true,
-					PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-					HasTraitNameInRoom = "ChillFireTrait",
-					{ Cue = "/VO/Hestia_0048",
-						StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your love, for once? If not for me, do it for Zagreus." },
-					{ Cue = "/VO/Demeter_0380",
-						PortraitExitWait = 0.35,
-						StartSound = "/SFX/DemeterBoonFrost",
-						EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-						Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-						Text = "You know very well why. And I don't have to justify anything to you. But I will not drag Zagreus into our affairs. Take it, Zagreus. And go." },
-				},
+			{
+				Name = "HestiaWithDemeter01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "ChillFireTrait",
+				{ Cue = "/VO/Hestia_0048",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your love, for once? If not for me, do it for Zagreus." },
+				{ Cue = "/VO/Demeter_0380",
+					PortraitExitWait = 0.35,
+					StartSound = "/SFX/DemeterBoonFrost",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
+					Text = "You know very well why. And I don't have to justify anything to you. But I will not drag Zagreus into our affairs. Take it, Zagreus. And go." },
+			},
 		},
 
 		SuperPriorityPickupTextLineSets =
@@ -3547,7 +3637,9 @@ if ModUtil ~= nil then
 				Name = "HestiaForgiveness03",
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift06" },
-				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 7 },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AresFreePass01",
+					"DionysusFreePass01", "AthenaFreePass01", "ArtemisFreePass01", "AphroditeFreePass01", "ApolloFreePass01",
+					"HeraFreePass01", "HestiaFreePass01", "HestiaFreePass02" }, Count = 7 },
 				{ Cue = "/VO/Hestia_0175",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Looks like most of my relatives did their best to be kind when the time came for them to forgive. I hope one day we can be one big family, and that's thanks to you, young one. Thanks." },
@@ -3676,7 +3768,9 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "HestiaGift01" },
 				RequiredFalseTextLines = { "HestiaForgiveness03" },
-				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 1 },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AresFreePass01",
+					"DionysusFreePass01", "AthenaFreePass01", "ArtemisFreePass01", "AphroditeFreePass01", "ApolloFreePass01",
+					"HeraFreePass01", "HestiaFreePass01", "HestiaFreePass02" }, Count = 1 },
 				{ Cue = "/VO/Hestia_0173",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Vanity and arrogance is something in our blood. Power can bring selfishness, but it can also ask for forgiveness. I am sure anyone is able to forgive you when the time will come." },
@@ -3687,7 +3781,9 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				RequiredTextLines = { "HestiaFirstPickUp", "HestiaForgiveness01", "HestiaGift03" },
 				RequiredFalseTextLines = { "HestiaForgiveness03" },
-				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01","AresFreePass01","DionysusFreePass01","AthenaFreePass01","ArtemisFreePass01","AphroditeFreePass01","ApolloFreePass01","HeraFreePass01","HestiaFreePass01","HestiaFreePass02" }, Count = 3 },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AresFreePass01",
+					"DionysusFreePass01", "AthenaFreePass01", "ArtemisFreePass01", "AphroditeFreePass01", "ApolloFreePass01",
+					"HeraFreePass01", "HestiaFreePass01", "HestiaFreePass02" }, Count = 3 },
 				{ Cue = "/VO/Hestia_0174",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Young one, I have heard of some of my relatives forgave the wrong you did to them. I am so proud of them! And of you, for showing them the way to forgiveness. Keep it up!" },
@@ -3814,7 +3910,8 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HestiaFirstPickUp", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
+				RequiredTextLines = { "HestiaFirstPickUp", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp",
+					"AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
 				RequiredFalseTextLines = { "HestiaWithHera01", "HeraWithHestia01" },
 				RequiredGodLoot = "HeraUpgrade",
 				{ Cue = "/VO/Hestia_0165",
@@ -4645,6 +4742,9 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				Name = "HestiaFreePass02",
 				RequiredTextLines = { "HestiaFreePass01" },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AresFreePass01",
+					"DionysusFreePass01", "AthenaFreePass01", "ArtemisFreePass01", "AphroditeFreePass01", "ApolloFreePass01",
+					"HeraFreePass01", "HestiaFreePass01", "HestiaFreePass02" }, Count = 3 },
 				{ Cue = "/VO/Hestia_0169",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -5043,10 +5143,10 @@ if ModUtil ~= nil then
 		},
 	}
 	OlympusLootData.AphroditeUpgrade.FreePassVoiceLines = {
-		PoseidonFreePass01 =
+		AphroditeFreePass01 =
 		{
 			PlayOnce = true,
-			Name = "PoseidonFreePass01",
+			Name = "AphroditeFreePass01",
 			{ Cue = "/VO/Poseidon_0242",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
@@ -5077,7 +5177,7 @@ if ModUtil ~= nil then
 	}
 	OlympusLootData.DemeterUpgrade.RejectionTextLines.DemeterFakeFreePass01 = {
 		PlayOnce = true,
-		Name = "DemeterFreePass01",
+		Name = "DemeterFakeFreePass01",
 		RequiredAnyTextLines = { "ZeusFreePass01", "PoseidonFreePass01", "AthenaFreePass01", "AresFreePass01",
 			"AphroditeFreePass01", "ArtemisFreePass01", "DionysusFreePass01", },
 		{ Cue = "/VO/Demeter_0382",
@@ -5087,7 +5187,7 @@ if ModUtil ~= nil then
 	}
 	OlympusLootData.DemeterUpgrade.MakeUpTextLines.DemeterFakeFreePassFollow01 = {
 		PlayOnce = true,
-		Name = "DemeterFreePass01",
+		Name = "DemeterFakeFreePassFollow01",
 		Priority = true,
 		RequiredTextLines = { "DemeterFakeFreePass01" },
 		{ Cue = "/VO/Demeter_0383",
@@ -5275,10 +5375,11 @@ if ModUtil ~= nil then
 		OneFromEachSet =
 		{
 			{ "HestiaDashTrait" },
-			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait", "ShieldLoadAmmo_DemeterRangedTrait" },
+			{ "DemeterWeaponTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait",
+				"ShieldLoadAmmo_DemeterRangedTrait" },
 		},
 	}
-	
+
 	OlympusLootData.ZeusUpgrade.LinkedUpgrades.PullZeusCastTrait =
 	{
 		OneFromEachSet =
@@ -5372,6 +5473,71 @@ if ModUtil ~= nil then
 		[7] = { RequiredResource = "SuperGiftPoints" },
 		UnlockGameStateRequirements = { RequiredTextLines = { "HestiaForgiveness03" } }
 	}
+
+	-- Multi Gods compatibility
+	if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+        OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait =
+        {
+            OneFromEachSet =
+            {
+                { "HestiaShoutTrait" },
+                { "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait" }
+            }
+        }
+        OlympusLootData.ApolloUpgrade.LinkedUpgrades.ShoutMoreHealTrait =
+        {
+            OneFromEachSet =
+            {
+                { "HestiaShoutTrait" },
+                { "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait" }
+            }
+        }
+        OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HestiaWithApollo01 = {
+            Name = "HestiaWithApollo01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "BlindAuraTrait",
+            { Cue = "/VO/Hestia_0166",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "Young Apollo, it seems like our tardiness in assisting Zagreus has made him fail to escape more than once. We should do the upmost to make up for our delay." },
+            { Cue = "/VO/Apollo_0300",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                StartSound = "/SFX/LyreMedium",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
+        }
+        OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.ApolloWithHestia01 = {
+            Name = "ApolloWithHestia01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "BlindAuraTrait",
+            { Cue = "/VO/Apollo_0301",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
+            { Cue = "/VO/Hestia_0167",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                StartSound = "/SFX/BurnDamage",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+                Text = "Haha, always the poet, I see. I must say, since Zagreus cannot, that I appreciate everything you do for our {#DialogueItalicFormat}Zagzag{#PreviousFormat}. Though, I wouldn't call him that, since he could find a worse nickname in turn." },
+        }
+        OlympusLootData.ApolloUpgrade.FreePassVoiceLines = {
+            ApolloFreePass01 =
+            {
+                PlayOnce = true,
+                Name = "ApolloFreePass01",
+                { Cue = "/VO/Apollo_0371",
+                    PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+                    StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+                    Text = "You think Lady Hestia is generous? Well, Zagzag, I'll show {#DialogueItalicFormat}you{#PreviousFormat} generosity. No fight this time, just blessings. I bet you'll think twice before you cross me again." },
+            },
+        }
+    end
+
+
 	-- FUNCTIONS
 	-- Attraction functions
 	function GetAllNearestEnemiesArgs(args, targetId)
@@ -5448,7 +5614,7 @@ if ModUtil ~= nil then
 					-- if HeroHasTrait("StrongAttractionTrait") then
 					-- 	force = args.PullForce * GetTotalHeroTraitValue("AttractionCount")
 					-- else
-						force = args.PullForce
+					force = args.PullForce
 					-- end
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
@@ -5554,7 +5720,7 @@ if ModUtil ~= nil then
 			baseFunc(eventSource, args)
 		end
 	)
-	
+
 	function SpawnCentaurSoul()
 		local dropItemName = "RoomRewardEmptyHealthDrop"
 		GiveRandomConsumables({
@@ -5693,17 +5859,18 @@ if ModUtil ~= nil then
 			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead
 				and IsCombatEncounterActive(CurrentRun) and not IsEmpty(RequiredKillEnemies) then
 				local enemiesNumberThreshold = args.EnemiesNumberThreshold or 0
-				
-				if TableLength( RequiredKillEnemies ) >= enemiesNumberThreshold and not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "FoesNumberDamageBuff" }) then
+
+				if TableLength(RequiredKillEnemies) >= enemiesNumberThreshold and
+					not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "FoesNumberDamageBuff" }) then
 					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-					WeaponName = "FoesNumberDamageBuff", EffectName = "FoesNumberDamageBuff" })
-				elseif TableLength( RequiredKillEnemies ) < enemiesNumberThreshold and HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "FoesNumberDamageBuff" }) then
+						WeaponName = "FoesNumberDamageBuff", EffectName = "FoesNumberDamageBuff" })
+				elseif TableLength(RequiredKillEnemies) < enemiesNumberThreshold and
+					HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "FoesNumberDamageBuff" }) then
 					ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "FoesNumberDamageBuff" })
 				end
 			end
 		end
 	end
-	
 
 	-- Artemis Duo
 	ModUtil.Path.Wrap("DamageEnemy",
@@ -5718,17 +5885,42 @@ if ModUtil ~= nil then
 	ModUtil.Path.Wrap("StartEncounter",
 		function(baseFunc, currentRun, currentRoom, currentEncounter)
 			if HeroHasTrait("FullHealBossTrait") then
-				if 	(currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
-					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and 
+				local healAmount = round(CurrentRun.Hero.MaxHealth * CalculateHealingMultiplier())
+				if healAmount < 0.05 then
+					healAmount = round(CurrentRun.Hero.MaxHealth * 0.05)
+				end
+				if (currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
 					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
 					thread(FullHealBossAnnouncement)
-					Heal(CurrentRun.Hero, { HealAmount = CurrentRun.Hero.MaxHealth, SourceName = "FullHealBossTrait" })
+					Heal(CurrentRun.Hero, { HealAmount = healAmount, SourceName = "FullHealBossTrait" })
 				elseif currentRun.CurrentRoom.IsMiniBossRoom then
 					thread(FullHealBossAnnouncement)
-					Heal(CurrentRun.Hero, { HealAmount = (CurrentRun.Hero.MaxHealth/2), SourceName = "FullHealBossTrait" })
+					Heal(CurrentRun.Hero, { HealAmount = (healAmount / 2), SourceName = "FullHealBossTrait" })
 				end
 			end
 			baseFunc(currentRun, currentRoom, currentEncounter)
+		end
+	)
+	ModUtil.Path.Wrap("FormatExtractedValue",
+		function(baseFunc, value, extractData)
+			if extractData.Format ~= nil then
+				if extractData.Format == "PercentHealLast" then
+					value = value * CalculateHealingMultiplier()
+					if value < 0.05 then
+						value = 0.05
+					end
+					value = value * 100
+				end
+				if extractData.Format == "PercentHealHalf" then
+					value = (value * CalculateHealingMultiplier()) / 2
+					if value < 0.03 then
+						value = 0.03
+					end
+					value = value * 100
+				end
+			end
+			return baseFunc(value, extractData)
 		end
 	)
 	function FullHealBossAnnouncement()
@@ -5736,7 +5928,16 @@ if ModUtil ~= nil then
 		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "FullHealBossText", Duration = 1 })
 	end
-
+	-- Hestia Shout Heal Rarity
+	ModUtil.Path.Wrap("AddTraitData",
+		function(baseFunc, unit, traitData, args)
+			if traitData.AddOutgoingLifestealModifiers and traitData.RarityStatMultiplier then
+				traitData.AddOutgoingLifestealModifiers.MaxLifesteal = traitData.AddOutgoingLifestealModifiers.MaxLifesteal * traitData.RarityStatMultiplier
+				traitData.AddOutgoingLifestealModifiers.MinLifesteal = traitData.AddOutgoingLifestealModifiers.MinLifesteal * traitData.RarityStatMultiplier
+			end
+			baseFunc(unit, traitData, args)
+		end
+	)
 	-- Poseidon Duo
 	ModUtil.Path.Wrap("GetFish",
 		function(baseFunc, biome, fishingState)
@@ -5900,7 +6101,7 @@ if ModUtil ~= nil then
 			end
 			currentEncounter.ChosenGodName = chosenLootName
 			currentEncounter.SpurnedGodName = alternateLootData.Name
-			
+
 			-- wait until slot upgrade is done
 			DebugPrint({ Text = "Apply " .. alternateLootData.Name .. " to Enemies" })
 			AddEnemyUpgrade(alternateLootData.Name, CurrentRun)
@@ -5963,8 +6164,17 @@ if ModUtil ~= nil then
 		if IsEmpty(allEligibleLines) then
 			return false
 		end
+		if GameState.ForgivenessEncounteredCount == nil then
+			GameState.ForgivenessEncounteredCount = {}
+		end
+		if GameState.ForgivenessEncounteredCount[alternateLootData.Name] == nil then
+			GameState.ForgivenessEncounteredCount[alternateLootData.Name] = 1
+		else
+			GameState.ForgivenessEncounteredCount[alternateLootData.Name] = GameState.ForgivenessEncounteredCount[
+				alternateLootData.Name] + 1
+		end
 		local number = RandomFloat(0, 1)
-		return number <= 0.20
+		return number <= (0.20 * GameState.ForgivenessEncounteredCount[alternateLootData.Name])
 	end
 
 	function StartDevotionTestPresentationFreePass(currentRoom, alternateLootData, alternateLootId)

@@ -1860,6 +1860,8 @@ if ModUtil ~= nil then
 		CustomTrayText = "ShieldLoadAmmo_ApolloRangedTrait_Tray",
 		RequiredOneOfTraits = { "BowLoadAmmoTrait", "ShieldLoadAmmoTrait" }
 	}
+	
+	table.insert(OlympusTraitData.ArtemisAmmoExitTrait.RequiredFalseTraits, "ApolloRangedTrait")
 	OlympusTraitData.ApolloShoutTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
@@ -1964,6 +1966,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Apollo",
 		CustomTrayText = "FountainDefenseTrait_Tray",
+		LootSource = "ApolloUpgrade",
 		RequiredFalseTrait = "FountainDefenseTrait",
 		RequiredCosmetics = { "TartarusReprieve" },
 		RarityLevels =
@@ -1987,13 +1990,9 @@ if ModUtil ~= nil then
 		},
 		FountainDefenseBonus =
 		{
-			BaseValue = 0.97,
+			BaseValue = 0.95,
 			ToNearest = 0.01,
 			SourceIsMultiplier = true,
-			IdenticalMultiplier =
-			{
-				Value = -0.5,
-			},
 		},
 		AccumulatedFountainDefenseBonus = 1,
 		AddIncomingDamageModifiers =
@@ -2010,7 +2009,7 @@ if ModUtil ~= nil then
 			},
 			{
 				Key = "AccumulatedFountainDefenseBonus",
-				ExtractAs = "TooltipAccumulatedBonus",
+				ExtractAs = "TooltipTotalDefense",
 				Format = "NegativePercentDelta"
 			},
 		},
@@ -2307,25 +2306,25 @@ if ModUtil ~= nil then
 		Icon = "Boon_Apollo_10",
 		RequiredFalseTraits = { "RerollObolTrait", "RerollBoonTrait" },
 		BoonCount = {
-			BaseValue = 1
+			BaseValue = 4
 		},
 		RarityLevels =
 		{
 			Common =
 			{
-				Multiplier = 4,
+				Multiplier = 1,
 			},
 			Rare =
 			{
-				Multiplier = 3,
+				Multiplier = 0.75,
 			},
 			Epic =
 			{
-				Multiplier = 2,
+				Multiplier = 0.5,
 			},
 			Heroic =
 			{
-				Multiplier = 1,
+				Multiplier = 0.25,
 			}
 		},
 		ExtractValues =
@@ -2344,25 +2343,25 @@ if ModUtil ~= nil then
 		Icon = "Boon_Apollo_12",
 		RequiredFalseTraits = { "RerollObolTrait", "RerollBoonTrait" },
 		ObolCount = {
-			BaseValue = 1
+			BaseValue = 300
 		},
 		RarityLevels =
 		{
 			Common =
 			{
-				Multiplier = 300,
+				Multiplier = 1,
 			},
 			Rare =
 			{
-				Multiplier = 250,
+				Multiplier = 0.83,
 			},
 			Epic =
 			{
-				Multiplier = 200,
+				Multiplier = 0.67,
 			},
 			Heroic =
 			{
-				Multiplier = 150,
+				Multiplier = 0.5,
 			}
 		},
 		ExtractValues =
@@ -2661,6 +2660,20 @@ if ModUtil ~= nil then
 		EffectName     = "DelayedDamage",
 		EffectProperty = "Stacks",
 		ChangeValue    = true,
+	})
+	table.insert(OlympusTraitData.CurseSickTrait.PropertyChanges, {
+		TraitName = "ApolloRangedTrait",
+		WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+		EffectName = "DelayedDamage",
+		EffectProperty = "RefreshOnExpireWithEffectAlt",
+		ChangeValue = "ReduceDamageOutput",
+	})
+	table.insert(OlympusTraitData.CurseSickTrait.PropertyChanges, {
+		TraitName = "ApolloRangedTrait",
+		WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+		EffectName = "DelayedDamage",
+		EffectProperty = "RefreshOnExpireWithEffectAltMultiplier",
+		DeriveValueFrom = "DeriveSource",
 	})
 	OlympusTraitData.HyacinthTrait =
 	{
@@ -5036,6 +5049,16 @@ if ModUtil ~= nil then
 	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusDefenseTrait.OneOf, "MasterLobApolloTrait")
 	table.insert(OlympusLootData.DionysusUpgrade.LinkedUpgrades.DionysusComboVulnerability.OneFromEachSet[1],
 		"MasterLobApolloTrait")
+	OlympusLootData.ZeusUpgrade.LinkedUpgrades.AutoRetaliateTrait.OneFromEachSet = {
+		{ "AresRetaliateTrait", "RetaliateWeaponTrait", "AthenaRetaliateTrait", "AphroditeRetaliateTrait", "DemeterRetaliateTrait", "ApolloRetaliateTrait", "HestiaRevengeTrait" },
+		{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusRushTrait", "ZeusShoutTrait", "ShieldLoadAmmo_ZeusRangedTrait" },
+		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRangedTrait", "AresRushTrait", "AresShoutTrait", "ShieldLoadAmmo_AresRangedTrait" },
+	}
+	OlympusLootData.AresUpgrade.LinkedUpgrades.AutoRetaliateTrait.OneFromEachSet = {
+		{ "AresRetaliateTrait", "RetaliateWeaponTrait", "AthenaRetaliateTrait", "DemeterRetaliateTrait", "AphroditeRetaliateTrait", "ApolloRetaliateTrait", "HestiaRevengeTrait" },
+		{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusRushTrait", "ZeusShoutTrait", "ShieldLoadAmmo_ZeusRangedTrait" },
+		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRangedTrait", "AresRushTrait", "AresShoutTrait", "ShieldLoadAmmo_AresRangedTrait" },
+	}
 
 
 
