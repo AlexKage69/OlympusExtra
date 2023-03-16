@@ -4027,59 +4027,65 @@ end]]
 	}
 	-- FUNCTIONS
 	function HeraShout()
-		if CurrentRun.Hero.NextHeraGod == "Zeus" then
-			ZeusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Athena" then
-			AthenaShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Poseidon" then
-			PoseidonShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Artemis" then
-			ArtemisShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Aphrodite" then
-			AphroditeShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Ares" then
-			AresShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Dionysus" then
-			DionysusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Demeter" then
-			DemeterShout()
-		else -- glitched
-			--Nothing in case of other mods Gods
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
+				ZeusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
+				AthenaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" then
+				PoseidonShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Artemis" then
+				ArtemisShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Aphrodite" then
+				AphroditeShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
+				AresShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Dionysus" then
+				DionysusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
+				DemeterShout()
+			else -- glitched
+				--Nothing in case of other mods Gods
+			end				
 		end
 	end
 
 	function HeraMaxShout()
-		if CurrentRun.Hero.NextHeraGod == "Zeus" then
-			ZeusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Athena" then
-			AthenaShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Poseidon" then
-			PoseidonShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Artemis" then
-			ArtemisMaxShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Aphrodite" then
-			AphroditeMaxShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Ares" then
-			AresShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Dionysus" then
-			DionysusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Demeter" then
-			DemeterMaxShout()
-		else -- glitched
-			--Nothing in case of other mods Gods
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
+				ZeusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
+				AthenaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" then
+				PoseidonShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Artemis" then
+				ArtemisMaxShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Aphrodite" then
+				AphroditeMaxShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
+				AresShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Dionysus" then
+				DionysusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
+				DemeterMaxShout()
+			else -- glitched
+				--Nothing in case of other mods Gods
+			end			
 		end
 	end
 
 	function EndHera()
-		if CurrentRun.Hero.NextHeraGod == "Athena" then
-			EndAthenaShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Poseidon" or CurrentRun.Hero.NextHeraGod == "Ares" then
-			EndSurge()
-		elseif CurrentRun.Hero.NextHeraGod == "Demeter" then
-			EndDemeter()
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
+				EndAthenaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.NextHeraGod == "Ares" then
+				EndSurge()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
+				EndDemeter()
+			end
 		end
 		SetupHeraNextShout()
-		BuildSuperMeter(CurrentRun, 25)
+		--BuildSuperMeter(CurrentRun, 25)
 	end
 
 	HeraExtra.NumberOfGods = 8
@@ -4094,19 +4100,36 @@ end]]
 		"Demeter",
 	}
 	function SetupHeraNextShout()
+		local components = screen.Components
+		if CurrentRun.Hero.HeraShout == nil then
+			CurrentRun.Hero.HeraShout = {}
+		end		
+		if CurrentRun.Hero.HeraShout.Icon and CurrentRun.Hero.HeraShout.NextHeraGod then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.HeraShout.Icon.Id))
+			Destroy({ Id = CurrentRun.Hero.HeraShout.Icon.Id})
+			--StopAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
+		end
 		local index = RandomNumber(HeraExtra.NumberOfGods)
-		CurrentRun.Hero.NextHeraGod = HeraExtra.GodsList[index]
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Choose " .. CurrentRun.Hero.NextHeraGod))
+		CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[index]
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Choose " .. CurrentRun.Hero.HeraShout.NextHeraGod))
+		if CurrentRun.Hero.HeraShout.Icon and CurrentRun.Hero.HeraShout.NextHeraGod then
+			--CreateAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
+			--StopAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
+		end
 	end
 
 	ModUtil.Path.Wrap("ShowTraitUI",
 		function(baseFunc)
 			baseFunc()
-			local wrathIcon = SpawnObstacle({ Name = "TraitTray_SlotIcon_Wrath", Group = "Combat_UI_Backing",
-				OffsetX = TraitUI.IconStartX - CombatUI.FadeDistance.Trait, OffsetY = TraitUI.StartY + 490.5 })
-			FadeObstacleIn({ Id = wrathIcon, Duration = CombatUI.FadeInDuration, Distance = CombatUI.FadeDistance.Trait,
-				Direction = 0 })
-			table.insert(ScreenAnchors.TraitPlaceholderIcons, wrathIcon)
+			local icon = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
+			table.insert( ScreenAnchors.TraitAnchorIds, icon.Id )
+			if CurrentRun.Hero.HeraShout and CurrentRun.Hero.HeraShout.NextHeraGod then
+				CurrentRun.Hero.HeraShout.Icon = icon
+				SetAnimation({ Name = "PactThermometerExcessHeat1", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
+				--CreateAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = icon.Id })
+				--SetScale({ Id = icon.Id, Fraction = 0.40 })
+			end
+			--Destroy({Id = icon})
 		end
 	)
 	ModUtil.Path.Wrap("CreateStoreButtons",

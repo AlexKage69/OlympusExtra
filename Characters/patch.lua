@@ -183,13 +183,13 @@ end
         end
 	end
 )]]
---[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
             
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-			LoadMap({ Name ="A_Combat01", ResetBinks = true, ResetWeaponBinks = true })
+			--LoadMap({ Name ="A_Combat01", ResetBinks = true, ResetWeaponBinks = true })
 			baseFunc()
 		end
-	)]]
+	)

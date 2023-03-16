@@ -3210,7 +3210,7 @@
     {
       Name = "BoonDropHeraIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Hera\Hera1"
+      FilePath = "Hera\HeraDoorIcon"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
