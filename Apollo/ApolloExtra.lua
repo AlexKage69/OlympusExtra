@@ -5055,9 +5055,9 @@ if ModUtil ~= nil then
 		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRangedTrait", "AresRushTrait", "AresShoutTrait", "ShieldLoadAmmo_AresRangedTrait" },
 	}
 	OlympusLootData.AresUpgrade.LinkedUpgrades.AutoRetaliateTrait.OneFromEachSet = {
+		{ "AresRetaliateTrait", "RetaliateWeaponTrait", "AthenaRetaliateTrait", "DemeterRetaliateTrait", "AphroditeRetaliateTrait", "ApolloRetaliateTrait", "HestiaRevengeTrait" },
 		{ "ZeusWeaponTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusRushTrait", "ZeusShoutTrait", "ShieldLoadAmmo_ZeusRangedTrait" },
 		{ "AresWeaponTrait", "AresSecondaryTrait", "AresRangedTrait", "AresRushTrait", "AresShoutTrait", "ShieldLoadAmmo_AresRangedTrait" },
-		{ "AresRetaliateTrait", "RetaliateWeaponTrait", "AthenaRetaliateTrait", "DemeterRetaliateTrait", "AphroditeRetaliateTrait" },
 	}
 
 
