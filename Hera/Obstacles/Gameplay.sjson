@@ -11,5 +11,115 @@
         Graphic = "BoonDropHera"
       }
     }
+    {
+      Name = "HeraShoutAresIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Ares2"
+      }
+    }
+    {
+      Name = "HeraShoutAphroditeIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Aphrodite2"
+      }
+    }
+    {
+      Name = "HeraShoutArtemisIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Artemis2"
+      }
+    }
+    {
+      Name = "HeraShoutAthenaIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Athena2"
+      }
+    }
+    {
+      Name = "HeraShoutDemeterIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Demeter2"
+      }
+    }
+    {
+      Name = "HeraShoutDionysusIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Dionysus2"
+      }
+    }
+    {
+      Name = "HeraShoutZeusIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Zeus2"
+      }
+    }
+    {
+      Name = "HeraShoutPoseidonIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Poseidon2"
+      }
+    }
+    {
+      Name = "HeraShoutHestiaIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "Hestia\Hestia2"
+      }
+    }
+    {
+      Name = "HeraShoutApolloIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.2
+        EditorOutlineDrawBounds = false
+        Graphic = "GUI\Screens\BoonSelectSymbols\Apollo"
+      }
+    }
   ]
 }

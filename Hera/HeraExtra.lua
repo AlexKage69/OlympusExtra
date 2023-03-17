@@ -507,6 +507,7 @@ end]]
 	}
 	OlympusTraitData.HeraWeaponTrait =
 	{
+		Name = "HeraWeaponTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Melee",
@@ -970,6 +971,7 @@ end]]
 	}
 	OlympusTraitData.HeraSecondaryTrait =
 	{
+		Name = "HeraSecondaryTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Secondary",
@@ -1279,6 +1281,7 @@ end]]
 	}
 	OlympusTraitData.HeraRushTrait =
 	{
+		Name = "HeraRushTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_05",
@@ -1374,6 +1377,7 @@ end]]
 	}
 	OlympusTraitData.HeraRangedTrait =
 	{
+		Name = "HeraRangedTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Ranged",
@@ -1584,6 +1588,7 @@ end]]
 }]]
 	OlympusTraitData.HeraShoutTrait =
 	{
+		Name = "HeraShoutTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
 		CustomTrayText = "HeraShoutTrait_Tray",
@@ -1809,6 +1814,7 @@ end]]
 
 	OlympusTraitData.DiscountHeraTrait =
 	{
+		Name = "DiscountHeraTrait",
 		Icon = "Boon_Hera_09",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "DiscountHeraTrait",
@@ -1846,6 +1852,7 @@ end]]
 	}
 	OlympusTraitData.PriviledgeHeraTrait =
 	{
+		Name = "PriviledgeHeraTrait",
 		Icon = "Boon_Hera_00",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
@@ -1873,19 +1880,46 @@ end]]
 		},
 		AddOutgoingDamageModifiers =
 		{
-			PerSameGodMultiplier = 0.05,
-			ExtractValues =
-			{
-				{
-					Key = "PerSameGodMultiplier",
-					ExtractAs = "TooltipDamage",
-					Format = "Percent",
-				},
-			}
+		  UseTraitValue = "AccumulatedGodDamageBonus",
+		  IsMultiplier = true,
+		  Unique = true,
 		},
+		GodDamageBonus =
+		{
+			BaseValue = 1.03,
+			SourceIsMultiplier = true,
+			DecimalPlaces = 2,
+			MinMultiplier = 0.1,
+			IdenticalMultiplier =
+			{
+				Value = -0.8,
+			},	
+		},
+		AccumulatedGodDamageBonus = 1,
+		--FromGod = "test",
+		ExtractValues =
+		{
+			{
+				Key = "AccumulatedGodDamageBonus",
+				ExtractAs = "TooltipAccumulatedBonus",
+				Format = "PercentDelta",
+				DecimalPlaces = 1,
+			},
+			{
+				Key = "GodDamageBonus",
+				ExtractAs = "TooltipGodBonus",
+				Format = "PercentDelta",
+				DecimalPlaces = 1,
+			},
+			{
+				Key = "FromGod",
+				ExtractAs = "TooltipGodName",
+			}
+		}
 	}
 	OlympusTraitData.FamilyHeraTrait =
 	{
+		Name = "FamilyHeraTrait",
 		Icon = "Boon_Hera_10",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
@@ -1927,6 +1961,7 @@ end]]
 	}
 	OlympusTraitData.MoreRewardTrait =
 	{
+		Name = "MoreRewardTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_11",
@@ -1972,6 +2007,7 @@ end]]
 	}
 	OlympusTraitData.PeriodicCurseTrait =
 	{
+		Name = "PeriodicCurseTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		Icon = "Boon_Hera_07",
 		RequiredFalseTrait = "PeriodicCurseTrait",
@@ -2037,6 +2073,7 @@ end]]
 	}
 	OlympusTraitData.GiveCurseDeathTrait =
 	{
+		Name = "GiveCurseDeathTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_06",
@@ -2063,6 +2100,7 @@ end]]
 	}
 	OlympusTraitData.EnvyBurstTrait =
 	{
+		Name = "EnvyBurstTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_13",
@@ -2100,6 +2138,7 @@ end]]
 	}
 	OlympusTraitData.StrongerJealousyTrait =
 	{
+		Name = "StrongerJealousyTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_08",
@@ -2128,6 +2167,7 @@ end]]
 	}
 	OlympusTraitData.MoreCompanionTrait =
 	{
+		Name = "MoreCompanionTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
@@ -2159,6 +2199,7 @@ end]]
 	}
 	OlympusTraitData.HealthAsObolTrait =
 	{
+		Name = "HealthAsObolTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "HealthAsObolTrait",
 		God = "Hera",
@@ -2170,6 +2211,7 @@ end]]
 	}
 	OlympusTraitData.StatusOverTimeTrait =
 	{
+		Name = "StatusOverTimeTrait",
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "StatusOverTimeTrait",
 		God = "Hera",
@@ -2182,6 +2224,7 @@ end]]
 	-- Duo Traits
 	OlympusTraitData.AuraExposedTrait =
 	{
+		Name = "AuraExposedTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Athena_01",
 		RequiredFalseTrait = "AuraExposedTrait",
@@ -2192,6 +2235,7 @@ end]]
 	}
 	OlympusTraitData.CurseLongerTrait =
 	{
+		Name = "CurseLongerTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Aphrodite_01",
 		RequiredFalseTrait = "CurseLongerTrait",
@@ -2202,6 +2246,7 @@ end]]
 	}
 	OlympusTraitData.BetterTrapsTrait =
 	{
+		Name = "BetterTrapsTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Artemis_01",
 		RequiredFalseTrait = "BetterTrapsTrait",
@@ -2212,6 +2257,7 @@ end]]
 	}
 	OlympusTraitData.HeroicBoonsTrait =
 	{
+		Name = "HeroicBoonsTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Demeter_01",
 		RequiredFalseTrait = "HeroicBoonsTrait",
@@ -2222,6 +2268,7 @@ end]]
 	}
 	OlympusTraitData.JealousyStacksTrait =
 	{
+		Name = "JealousyStacksTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Dionysus_01",
 		RequiredFalseTrait = "JealousyStacksTrait",
@@ -2232,6 +2279,7 @@ end]]
 	}
 	OlympusTraitData.KillMarkedTrait =
 	{
+		Name = "KillMarkedTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Ares_01",
 		RequiredFalseTrait = "KillMarkedTrait",
@@ -2242,6 +2290,7 @@ end]]
 	}
 	OlympusTraitData.GaugeLightningTrait =
 	{
+		Name = "GaugeLightningTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Zeus_01",
 		RequiredFalseTrait = "GaugeLightningTrait",
@@ -2252,6 +2301,7 @@ end]]
 	}
 	OlympusTraitData.AuraRuptureTrait =
 	{
+		Name = "AuraRuptureTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Poseidon_01",
 		RequiredFalseTrait = "AuraRuptureTrait",
@@ -4078,7 +4128,7 @@ end]]
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
 			if CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
 				EndAthenaShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.NextHeraGod == "Ares" then
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
 				EndSurge()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
 				EndDemeter()
@@ -4088,7 +4138,6 @@ end]]
 		--BuildSuperMeter(CurrentRun, 25)
 	end
 
-	HeraExtra.NumberOfGods = 8
 	HeraExtra.GodsList = {
 		"Zeus",
 		"Athena",
@@ -4100,36 +4149,50 @@ end]]
 		"Demeter",
 	}
 	function SetupHeraNextShout()
-		local components = screen.Components
 		if CurrentRun.Hero.HeraShout == nil then
 			CurrentRun.Hero.HeraShout = {}
 		end		
-		if CurrentRun.Hero.HeraShout.Icon and CurrentRun.Hero.HeraShout.NextHeraGod then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.HeraShout.Icon.Id))
-			Destroy({ Id = CurrentRun.Hero.HeraShout.Icon.Id})
-			--StopAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
-		end
-		local index = RandomNumber(HeraExtra.NumberOfGods)
-		CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[index]
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Choose " .. CurrentRun.Hero.HeraShout.NextHeraGod))
-		if CurrentRun.Hero.HeraShout.Icon and CurrentRun.Hero.HeraShout.NextHeraGod then
-			--CreateAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
-			--StopAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
-		end
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load " .. CurrentRun.Hero.HeraShout.NextHeraGod))
 	end
+	function UpdateHeraShoutIcon()	
+		if CurrentRun.Hero.HeraShout == nil then
+			CurrentRun.Hero.HeraShout = {}
+		end	
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.Icon then
+				CurrentRun.Hero.HeraShout.PreviousIcon = CurrentRun.Hero.HeraShout.Icon
+			end
+			CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
+			table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.HeraShout.Icon))
+		end
+		if CurrentRun.Hero.HeraShout.PreviousIcon then
+			Destroy({ Id = CurrentRun.Hero.HeraShout.PreviousIcon.Id})
+			CurrentRun.Hero.HeraShout.PreviousIcon = nil
+		end
+
+	end
+	ModUtil.Path.Wrap("StopSuper",
+		function(baseFunc)
+			baseFunc()
+			if CurrentRun.Hero.HeraShout == nil then
+				CurrentRun.Hero.HeraShout = {}
+			end	
+			CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[RandomNumber(TableLength(HeraExtra.GodsList))]
+			UpdateHeraShoutIcon()
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Select " .. CurrentRun.Hero.HeraShout.NextHeraGod))
+		end
+	)
+	
 
 	ModUtil.Path.Wrap("ShowTraitUI",
 		function(baseFunc)
 			baseFunc()
-			local icon = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
-			table.insert( ScreenAnchors.TraitAnchorIds, icon.Id )
-			if CurrentRun.Hero.HeraShout and CurrentRun.Hero.HeraShout.NextHeraGod then
-				CurrentRun.Hero.HeraShout.Icon = icon
-				SetAnimation({ Name = "PactThermometerExcessHeat1", DestinationId = CurrentRun.Hero.HeraShout.Icon.Id })
-				--CreateAnimation({ Name = "BoonHeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", DestinationId = icon.Id })
-				--SetScale({ Id = icon.Id, Fraction = 0.40 })
-			end
-			--Destroy({Id = icon})
+			UpdateHeraShoutIcon()
+			--[[if CurrentRun.Hero.HeraShout and CurrentRun.Hero.HeraShout.NextHeraGod then
+				CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
+				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
+			end]]
 		end
 	)
 	ModUtil.Path.Wrap("CreateStoreButtons",
@@ -4301,6 +4364,11 @@ end]]
 	end
 )
 
+	ModUtil.Path.Wrap("AddTraitData",
+		function(baseFunc, unit, traitData, args)
+			baseFunc(unit, traitData, args)
+		end
+	)
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {

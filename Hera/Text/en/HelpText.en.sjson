@@ -169,12 +169,12 @@
 		{
 			Id = "PriviledgeHeraTrait"
 			DisplayName = "Royal Favor"
-			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipAccumulatedBonus}{#PreviousFormat} \n From {$TooltipData.TooltipGodName}"
 		}
 		{
 			Id = "PriviledgeHeraTrait_Initial"
 			InheritFrom = "PriviledgeHeraTrait"
-			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Boon: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipGodBonus}{#PreviousFormat}"
 		}
 		{
 			Id = "PriviledgeHeraTrait_Tray"
