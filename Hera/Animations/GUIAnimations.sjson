@@ -145,84 +145,84 @@
     {
       Name = "Boon_Hera_03_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "Hera\HeraDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_03_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "Hera\HeraDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_04_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraAid_large"
+      FilePath = "Hera\HeraRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_04_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraAid_large"
+      FilePath = "Hera\HeraRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_05_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraDash_large"
+      FilePath = "Hera\HeraAid_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_05_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraDash_large"
+      FilePath = "Hera\HeraAid_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_06_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraLegendary_large"
+      FilePath = "Hera\LoyalRelations_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_06_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraLegendary_large"
+      FilePath = "Hera\LoyalRelations_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hera_07_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraSkull1_large"
+      FilePath = "Hera\HeraFavour_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_07_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraSkull1_large"
+      FilePath = "Hera\HeraFavour_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hera_08_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraSkull2_large"
+      FilePath = "Hera\HeraStatus_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_08_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraSkull2_large"
+      FilePath = "Hera\HeraStatus_large"
       EndFrame = 1
       StartFrame = 1
     }
@@ -243,84 +243,98 @@
     {
       Name = "Boon_Hera_10_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\NobleStatus_large"
+      FilePath = "Hera\HeraSkull1_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_10_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\NobleStatus_large"
+      FilePath = "Hera\HeraSkull1_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_11_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\RoyalInheritance_large"
+      FilePath = "Hera\EnvyBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_11_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\RoyalInheritance_large"
+      FilePath = "Hera\EnvyBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
       {
       Name = "Boon_Hera_12_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\CompanionBoon_large"
+      FilePath = "Hera\EnvyBoon2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_12_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\CompanionBoon_large"
+      FilePath = "Hera\EnvyBoon2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_13_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\EnvyBoon_large"
+      FilePath = "Hera\HeraSkull2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_13_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\EnvyBoon_large"
+      FilePath = "Hera\HeraSkull2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\QueensGambit_large"
+      FilePath = "Hera\CompanionBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\QueensGambit_large"
+      FilePath = "Hera\CompanionBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_15_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\HeraLegendary_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_15_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\HeraLegendary_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hera_16_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hera\QueensGambit_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hera_16_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hera\QueensGambit_large"
       EndFrame = 1
       StartFrame = 1
     }

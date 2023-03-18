@@ -48,7 +48,7 @@ if ModUtil ~= nil then
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
 				"DiscountHeraTrait",
-				"PriviledgeHeraTrait",
+				"PrivilegeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
 				"SnareOverTimeTrait",
@@ -398,7 +398,7 @@ if ModUtil ~= nil then
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
 				"DiscountHeraTrait",
-				"PriviledgeHeraTrait",
+				"PrivilegeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
 				"SnareOverTimeTrait",
@@ -1281,7 +1281,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_05",
+		Icon = "Boon_Hera_03",
 		Slot = "Rush",
 		PreEquipWeapons = { "MineTossZagreus" },
 		RarityLevels =
@@ -1377,7 +1377,7 @@ end]]
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Ranged",
-		Icon = "Boon_Hera_03",
+		Icon = "Boon_Hera_04",
 		CustomTrayText = "HeraRangedTrait_Tray",
 		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		PreEquipWeapons = { "" },
@@ -1589,7 +1589,7 @@ end]]
 		CustomTrayText = "HeraShoutTrait_Tray",
 		God = "Hera",
 		Slot = "Shout",
-		Icon = "Boon_Hera_04",
+		Icon = "Boon_Hera_05",
 		RarityLevels =
 		{
 			Common =
@@ -1809,7 +1809,7 @@ end]]
 
 	OlympusTraitData.DiscountHeraTrait =
 	{
-		Icon = "Boon_Hera_09",
+		Icon = "Boon_Hera_06",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "DiscountHeraTrait",
 		God = "Hera",
@@ -1844,9 +1844,9 @@ end]]
 			}
 		}
 	}
-	OlympusTraitData.PriviledgeHeraTrait =
+	OlympusTraitData.PrivilegeHeraTrait =
 	{
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_07",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		RequiredMetaUpgradeSelected = "GodEnhancementMetaUpgrade",
@@ -1886,12 +1886,12 @@ end]]
 	}
 	OlympusTraitData.FamilyHeraTrait =
 	{
-		Icon = "Boon_Hera_10",
+		Icon = "Boon_Hera_08",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		RequiredMetaUpgradeSelected = "VulnerabilityEffectBonusMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 3,
-		RequiredFalseTrait = "PriviledgeHeraTrait",
+		RequiredFalseTrait = "PrivilegeHeraTrait",
 		RarityLevels =
 		{
 			Common =
@@ -1929,7 +1929,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_11",
+		Icon = "Boon_Hera_09",
 		RequiredFalseTrait = "MoreRewardTrait",
 		RarityLevels =
 		{
@@ -1973,7 +1973,7 @@ end]]
 	OlympusTraitData.PeriodicCurseTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },
-		Icon = "Boon_Hera_07",
+		Icon = "Boon_Hera_10",
 		RequiredFalseTrait = "PeriodicCurseTrait",
 		PreEquipWeapons = {"JealousyCurseApplicator"},
 		RarityLevels =
@@ -2039,7 +2039,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_06",
+		Icon = "Boon_Hera_12",
 		RequiredFalseTrait = "GiveCurseDeathTrait",
 		RarityLevels =
 		{
@@ -2065,7 +2065,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_13",
+		Icon = "Boon_Hera_11",
 		RarityLevels =
 		{
 			Common =
@@ -2102,7 +2102,7 @@ end]]
 	{
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_08",
+		Icon = "Boon_Hera_13",
 		RarityLevels =
 		{
 			Common =
@@ -2132,7 +2132,7 @@ end]]
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
 		God = "Hera",
-		Icon = "Boon_Hera_12",
+		Icon = "Boon_Hera_14",
 		RarityLevels =
 		{
 			Common =
@@ -2162,7 +2162,7 @@ end]]
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "HealthAsObolTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_14",
+		Icon = "Boon_Hera_16",
 		PropertyChanges =
 		{
 
@@ -2173,7 +2173,7 @@ end]]
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "StatusOverTimeTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_15",
 		PropertyChanges =
 		{
 
@@ -2303,7 +2303,7 @@ end]]
 			StrongerJealousyTrait = {
 				OneOf = { "HeraRangedTrait", "PeriodicCurseTrait" }, 
 			},
-			PriviledgeHeraTrait = {
+			PrivilegeHeraTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
 			},			
 			FamilyHeraTrait = {
