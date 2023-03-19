@@ -35,11 +35,11 @@
       RandomPlaySpeedMax = 50.0
       RandomPlaySpeedMin = 30.0
       StartFrame = 1
-      OffsetZ = 60.0
+      OffsetZ = 60.0 
       RandomOffsetY = 40.0
       LocationFromOwner = "Ignore"
       LocationZFromOwner = "Ignore"
-      Acceleration = -400.0
+      Acceleration = -400.0 
       Gravity = 50.0
       VelocityMax = 500.0
       VelocityMin = 100.0
@@ -3301,11 +3301,11 @@
     {
       Name = "BoonDropHeraIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Hera\Hera1"
+      FilePath = "Hera\HeraIconSpin\HeraIconSpin"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
-      //Scale = 0.4
+      Scale = 0.34
     }
     {
       Name = "BoonDissipateA_Hera"
