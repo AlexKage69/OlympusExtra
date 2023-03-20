@@ -229,14 +229,14 @@
         {
       Name = "Boon_Hera_09_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\LoyalRelations_large"
+      FilePath = "Hera\RoyalInheritance_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_09_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\LoyalRelations_large"
+      FilePath = "Hera\RoyalInheritance_large"
       EndFrame = 1
       StartFrame = 1
     }

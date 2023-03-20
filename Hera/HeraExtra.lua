@@ -1393,8 +1393,7 @@ end]]
 		Slot = "Ranged",
 		Icon = "Boon_Hera_04",
 		CustomTrayText = "HeraRangedTrait_Tray",
-		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
-		PreEquipWeapons = { "" },
+        RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
 		{
 			Common =
@@ -1416,32 +1415,76 @@ end]]
 		},
 		PropertyChanges =
 		{
-			-- Beowulf
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "FireOnRelease",
-				ChangeValue = false,
+				WeaponProperty = "Projectile",
+				ChangeValue = "HeraProjectile",
 				ChangeType = "Absolute",
 			},
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "Type",
-				ChangeValue = "INSTANT",
+				WeaponProperty = "FireFx",
+				ChangeValue = "ProjectileFireRing-Hera",
+				ChangeType = "Absolute",
 			},
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "DamageRadius",
-				ChangeValue = 400
+				ProjectileProperty = "DamageLow",
+				BaseMin = 65,
+				BaseMax = 65,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
 			},
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "RadialNovaSwordParry-Hera"
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
 			},
+			--[[{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "CriticalHitChance",
+				ChangeValue = 0.10,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCritChance",
+					Format = "Percent",
+					SkipAutoExtract = true
+				}
+			},]]
+			-- Beowulf
+			{
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                WeaponProperty = "FireOnRelease",
+                ChangeValue = false,
+                ChangeType = "Absolute",
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "Type",
+                ChangeValue = "INSTANT",
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DamageRadius",
+                ChangeValue = 400
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DetonateGraphic",
+                ChangeValue = "RadialNovaSwordParry-Artemis"
+            },
 		},
 		ExtractValues =
 		{
@@ -1451,28 +1494,10 @@ end]]
 				BaseType = "Projectile",
 				BaseName = "RangedWeapon",
 				BaseProperty = "DamageLow",
-			},
-			{
-				ExtractAs = "TooltipJealousyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipJealousyPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Modifier",
-				Format = "Percent"
 			}
 		}
 	}
+
 	--[[OlympusTraitData.ShieldLoadAmmo_HeraRangedTrait =
 {
 	InheritFrom = { "ShopTier1Trait" },
@@ -1904,15 +1929,9 @@ end]]
 			},	
 		},
 		AccumulatedGodDamageBonus = 1,
-		--FromGod = "test",
+		FromGodIndex = 0,
 		ExtractValues =
 		{
-			{
-				Key = "AccumulatedGodDamageBonus",
-				ExtractAs = "TooltipAccumulatedBonus",
-				Format = "PercentDelta",
-				DecimalPlaces = 1,
-			},
 			{
 				Key = "GodDamageBonus",
 				ExtractAs = "TooltipGodBonus",
@@ -1920,7 +1939,13 @@ end]]
 				DecimalPlaces = 1,
 			},
 			{
-				Key = "FromGod",
+				Key = "AccumulatedGodDamageBonus",
+				ExtractAs = "TooltipAccumulatedBonus",
+				Format = "PercentDelta",
+				DecimalPlaces = 1,
+			},
+			{
+				Key = "FromGodIndex",
 				ExtractAs = "TooltipGodName",
 			}
 		}
@@ -2117,7 +2142,16 @@ end]]
 				Key = "SpreadRadiusCurse",
 				ExtractAs = "TooltipMultiplier",
 				Format = "Percent",
-			}
+			},
+			{
+				ExtractAs = "TooltipEnvyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "EnvyCurse",
+				BaseProperty = "Duration",
+			},
 		}
 	}
 	OlympusTraitData.EnvyBurstTrait =
@@ -2158,6 +2192,15 @@ end]]
 				Key = "EnvyBurstMultiplier",
 				ExtractAs = "TooltipMultiplier",
 				Format = "Percent",
+			},
+			{
+				ExtractAs = "TooltipEnvyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "EnvyCurse",
+				BaseProperty = "Duration",
 			}
 		}
 	}
@@ -2188,7 +2231,44 @@ end]]
 		},
 		PropertyChanges =
 		{
+			{
+				TraitName = "HeraRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName= "JealousyCurse",
+				EffectProperty = "Modifier",
+				ChangeValue = 1.15,
+				ChangeType = "Multiply",
+				DeriveSource = "DeriveSource",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipMultiplier",
+					Format = "Percent",
+					--DecimalPlaces = 1,
+				}
+			},
 		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipJealousyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipJealousyPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Modifier",
+				Format = "Percent"
+			}
+		}
 	}
 	OlympusTraitData.MoreCompanionTrait =
 	{
@@ -2250,10 +2330,39 @@ end]]
 		RequiredFalseTrait = "HealthAsObolTrait",
 		God = "Hera",
 		Icon = "Boon_Hera_16",
-		PropertyChanges =
+		RarityLevels =
 		{
-
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.4,
+			},
+			Epic =
+			{
+				Multiplier = 1.8,
+			},
+			Heroic =
+			{
+				Multiplier = 2.2,
+			}
 		},
+		CharonHealMultiplier = {
+			BaseValue = 25,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+		},
+		ExtractValues =
+		{
+			{
+				Key = "CharonHealMultiplier",
+				ExtractAs = "TooltipMultiplier",
+			}
+		}
 	}
 	OlympusTraitData.StatusOverTimeTrait =
 	{
@@ -2262,9 +2371,52 @@ end]]
 		RequiredFalseTrait = "StatusOverTimeTrait",
 		God = "Hera",
 		Icon = "Boon_Hera_15",
+		SetupFunction =
+		{
+			Name = "TrackMaximumStatusOverTime",
+			RunOnce = true,
+		},
+		PreEquipWeapons = { "HeraLegendaryWeapon" },
 		PropertyChanges =
 		{
 
+			{
+				WeaponName = "HeraLegendaryWeapon",
+				EffectName = "HeraLegendaryEffect",
+				EffectProperty = "ElapsedTimeMultiplier",
+				BaseValue = 0.9,
+				SourceIsMultiplier = true,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipSlow",
+					Format = "NegativePercentDelta",
+				},
+				ChangeType = "Multiply",
+			},
+
+			{
+				WeaponName = "HeraLegendaryWeapon",
+				EffectName = "HeraLegendaryEffect",
+				EffectProperty = "Amount",
+				BaseValue = 20,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+				ChangeType = "Add",
+			},
+			{
+				WeaponName = "HeraLegendaryWeapon",
+				EffectName = "HeraLegendaryEffect",
+				EffectProperty = "Cooldown",
+				ChangeValue = 0.5,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipTickRate",
+					DecimalPlaces = 1,
+				},
+				ChangeType = "Absolute",
+			},
 		},
 	}
 	-- Duo Traits
@@ -2385,7 +2537,7 @@ end]]
 
 		PriorityUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
 		WeaponUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait", "HeraShoutTrait" },
-		Traits = { "MoreRewardTrait", "PeriodicCurseTrait", "MoreCompanionTrait", "HealthAsObolTrait" },
+		Traits = { "MoreRewardTrait", "MoreCompanionTrait", "HealthAsObolTrait", "PeriodicCurseTrait" },
 		Consumables = {},
 
 		LinkedUpgrades =
@@ -4431,6 +4583,29 @@ end]]
 			baseFunc(unit, traitData, args)
 		end
 	)
+	function TrackMaximumStatusOverTime(hero, args)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Legendary tracker"))
+		--thread( MaximumChillThread, args )
+	end
+	function MaximumChillThread( args )
+		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
+			wait(0.2, RoomThreadName)
+			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
+				local allEnemiesFrozen = true
+				for enemyId, enemy in pairs(RequiredKillEnemies) do
+					if not enemy.Slowed then
+						allEnemiesFrozen = false
+					end
+				end
+	
+				if allEnemiesFrozen then
+					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationIds = GetAllKeys( RequiredKillEnemies ), WeaponName = "DemeterWorldChill", EffectName = "DemeterWorldChill" })
+				else
+					ClearEffect({ Ids = GetAllKeys( RequiredKillEnemies ), Name = "DemeterWorldChill" })
+				end
+			end
+		end
+	end
 
 	function DoFullSuperDualPresentation( traitData, secondGod )
 		local currentRun = CurrentRun

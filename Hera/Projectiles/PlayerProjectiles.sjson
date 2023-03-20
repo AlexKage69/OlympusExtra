@@ -3,6 +3,67 @@
       "_append"
       {
       Name = "HeraProjectile"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      DissipateGraphic = "EnemyProjectileImpact"
+      AffectsSelf = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = false
+      Range = 1200
+      Fuse = 5
+      Speed = 570
+      DamageLow = 5
+      DamageHigh = 5
+      DangerDistance = 200
+      UnpauseResetLocation = true
+      Thing = 
+      {
+        Graphic = "EnemyProjectileIn"
+        OffsetZ = 50
+        Tallness = 60
+        AttachedAnim = "EnemyProjectileLight"
+        Grip = 999999
+        UseBoundsForSortDrawArea = true
+        RotateGeometry = true
+        Points = [
+          {
+            X = -24
+            Y = 0
+          }
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }]
+      }
+      Effects = 
+        [{
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    /*  {
+      Name = "HeraProjectile"
       InheritFrom = "1_BaseNonPhysicalProjectile"
       Type = "HOMING"
       HomingAllegiance = "ENEMIES"
@@ -46,26 +107,8 @@
             Y = 16
           }]
       }
-      Effects = [
-        {
-          Name = "OnHitStun"
-          Duration = 0.7
-          DisableMove = true
-          DisableRotate = true
-          DisableAttack = true
-          Active = true
-          CanAffectInvulnerable = false
-          FrontFx = "null"
-        }
-        {
-          Name = "RushGrip"
-          Type = "GRIP"
-          Duration = 0.15
-          Modifier = 0.8
-          HaltOnEnd = true
-          Active = false
-        }]
-    }
+      Effects = []
+    }*/
     {
         Name = "ApolloDashProjectile"
         InheritFrom = "DefaultRushProjectile"

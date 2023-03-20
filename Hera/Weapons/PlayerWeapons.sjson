@@ -177,5 +177,24 @@
         BackFx = "null"
       }
     }
+     {
+      Name = "HeraLegendaryWeapon"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      Effect = 
+      {
+        Name = "HeraLegendaryEffect"
+        Duration = 100
+        Active = true
+        TimeModifierFraction = 0
+        ExpiringRapidFlashThreshold = 1.5
+        ElapsedTimeMultiplier = 1.0
+        IgnoreName = "_PlayerUnit"
+        Type = "DAMAGE_OVER_TIME"
+        Amount = 0.0
+        Cooldown = 0.5
+      }
+    }
   ]
 }
