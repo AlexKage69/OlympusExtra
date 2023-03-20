@@ -74,15 +74,9 @@
     {
       Name = "SwordSwipeAFlipped-Hera"
       InheritFrom = "SwordSwipeAFlipped"
-      StartRed = 1.0
-      StartGreen = 1.0
-      StartBlue = 1.0
-      AddColor = true
-      Color = {
-        Red = 0.00
-        Green = 1.00
-        Blue = 1.00
-      }
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
       ClearSlides = true
       VisualFxIntervalMax = 0.0011
       VisualFxIntervalMin = 0.001
@@ -159,7 +153,6 @@
     {
       Name = "SwordSwipeA-HeraFeatherA"
       InheritFrom = "HeraFeatherA"
-      Type = "Book"
       AngleMax = 80.0 
       AngleMin = -60.0 
       RandomPlaySpeedMax = 50.0
@@ -224,11 +217,38 @@
       Name = "SwordSwipeB-Hera"
       InheritFrom = "SwordSwipeB"
       ChildAnimation = "QuickFlashClearBlue"
-      StartRed = 1.0
-      StartGreen = 1.0
-      StartBlue = 1.0
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
       ClearSlides = true
       CreateAnimations = [
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
         
       ]
       Slides = [
@@ -296,32 +316,97 @@
         }]
     }
     {
+      Name = "SwordSwipeB-Feathers"
+      InheritFrom = "Animations\HermesFeather\HermesFeather"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "SwordSwipeB-HeraFeatherA"
+        }
+        {
+          Name = "SwordSwipeB-HeraFeatherB"
+        }]
+    }
+    {
+      Name = "SwordSwipeB-HeraFeatherA"
+      InheritFrom = "HeraFeatherA"
+      AngleFromOwner = "Take"
+      AngleNumOffset = 8
+      HoldLastFrame = true
+      RadialOffsetMax = 0.0
+      RadialOffsetMin = 0.0
+      RadialOffsetScaleRadius = 200.0
+      RadialOffsetScaleY = 0.66
+      LocationFromOwner = "Ignore"
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Acceleration = 0.0
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+    }
+    {
+      Name = "SwordSwipeB-HeraFeatherB"
+      InheritFrom = "SwordSwipeB-HeraFeatherA"
+      FilePath = "Hera\Fx\HeraFeatherB\HeraFeatherB"
+    }
+    {
       Name = "SwordSwipeBImpact-Hera"
       InheritFrom = "SwordSwipeBImpact"
       ChildAnimation = "QuickFlashPinkSwordSwipeBImpact"
-      StartRed = 0.80
+      StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.05
+      StartBlue = 0.53
     }
     {
       Name = "SwordSwipeC-Hera"
       InheritFrom = "SwordSwipeC-ArthurBase"
       ChildAnimation = "RailgunLineSword3-Hera"
-      StartRed = 1.0
-      StartGreen = 1.0
-      StartBlue = 1.0
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
       CreateAnimations = [
         {
           Name = "SwordSwipeC-Arthur-Chroma"
         }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        {
+          Name = "SwordSwipeB-Feathers"
+        }
+        
       ]
     }
     {
       Name = "RailgunLineSword3-Hera"
       InheritFrom = "RailgunLineSword3"
-      StartRed = 1.0
-      StartGreen = 1.0
-      StartBlue = 1.0
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
     }
     {
       Name = "SwordSwipeC-Hera-Arthur"
@@ -339,9 +424,9 @@
     }{
       Name = "ChargeAttack-Hera"
       InheritFrom = "ChargeAttack"
-      StartRed = 1.0
-      StartGreen = 1.0
-      StartBlue = 1.0
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
     }
     /* Hera - Sword - SecondaryTrait */
     {
