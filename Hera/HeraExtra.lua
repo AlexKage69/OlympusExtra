@@ -238,12 +238,19 @@ if ModUtil ~= nil then
 		DamageTextColor = Color.RamaDamageEnd,
 		OnApplyFunctionName = "JealousyCurseApply",
 	}
-	OlympusEffectData.EnvyCurse =
+	OlympusEffectData.EnvyCurseAttack =
 	{
 		DamageTextStartColor = Color.RamaDamageStart,
-		DamageTextColor = Color.RamaDamageEnd,
-		OnApplyFunctionName = "EnvyCurseApply",
-		OnClearFunctionName = "EnvyCurseClear",
+		DamageTextColor = Color.RamaDamageStart,
+		OnApplyFunctionName = "EnvyCurseAttackApply",
+		OnClearFunctionName = "EnvyCurseAttackClear",
+	}
+	OlympusEffectData.EnvyCurseSecondary =
+	{
+		DamageTextStartColor = Color.RamaDamageStart,
+		DamageTextColor = Color.RamaDamageStart,
+		OnApplyFunctionName = "EnvyCurseSecondaryApply",
+		OnClearFunctionName = "EnvyCurseSecondaryClear",
 	}
 	--OlympusEffectData.DelayedDamage.OnApplyFunctionName = "DelayDamageApply"
 	--OlympusEffectData.DelayedDamage.OnClearFunctionName = "DelayDamageClear"
@@ -526,13 +533,13 @@ end]]
 		{
 			{
 				WeaponNames = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "EnvyCurse",
+				EffectName = "EnvyCurseAttack",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
 			{
 				WeaponNames = WeaponSets.HeroPhysicalWeapons,
-				EffectName = "EnvyCurse",
+				EffectName = "EnvyCurseAttack",
 				EffectProperty = "Modifier",
 				ChangeType = "Add",
 				BaseMin = 20,
@@ -964,7 +971,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurse",
+				BaseName = "EnvyCurseAttack",
 				BaseProperty = "Duration",
 			},
 			{
@@ -973,7 +980,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurse",
+				BaseName = "EnvyCurseAttack",
 				BaseProperty = "Modifier",
 				Format = "Percent"
 			}
@@ -990,13 +997,13 @@ end]]
 		{
 			{
 				WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "EnvyCurse",
+				EffectName = "EnvyCurseSecondary",
 				EffectProperty = "Active",
 				ChangeValue = true,
 			},
 			{
 				WeaponNames = WeaponSets.HeroSecondaryWeapons,
-				EffectName = "EnvyCurse",
+				EffectName = "EnvyCurseSecondary",
 				EffectProperty = "Modifier",
 				ChangeType = "Add",
 				BaseMin = 35,
@@ -1274,7 +1281,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurse",
+				BaseName = "EnvyCurseSecondary",
 				BaseProperty = "Duration",
 			},
 			{
@@ -1283,7 +1290,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurse",
+				BaseName = "EnvyCurseSecondary",
 				BaseProperty = "Modifier",
 				Format = "Percent"
 			}
@@ -2149,7 +2156,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurse",
+				BaseName = "EnvyCurseAttack",
 				BaseProperty = "Duration",
 			},
 		}
@@ -2199,7 +2206,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurse",
+				BaseName = "EnvyCurseAttack",
 				BaseProperty = "Duration",
 			}
 		}
@@ -4497,6 +4504,7 @@ end]]
 			end
 		end
 	)
+	
 	function AddJealousyOnRandomFoe()
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Run Jealousy")) 
 		thread(JealousyOnRandomFoeThread, {})
@@ -4517,50 +4525,69 @@ end]]
 			end
 		end
 	end
-	function EnvyCurseApply(triggerArgs)
+	function EnvyCurseAttackApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
-		victim.EnvyNextDamage = triggerArgs.Modifier
-		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
-			victim.EnvyNextDamage = victim.EnvyNextDamage + victim.EnvyNextDamage * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
-		end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("NextDamage"..triggerArgs.Modifier)) 	
+		ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurseSecondary" })	
+		victim.EnvyNextDamage = {Activated = false, Source = "Attack"}
+		ApplyEnvyCurse(victim, triggerArgs.Modifier)
 	end
-	function EnvyCurseClear(triggerArgs)
+	function EnvyCurseSecondaryApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
-		--victim.EnvyNextDamage = nil
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear"..triggerArgs.TriggeredByTable.EnvyNextDamage)) 	
+		ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurseAttack" })	
+		victim.EnvyNextDamage = {Activated = false, Source = "Secondary"}
+		ApplyEnvyCurse(victim, triggerArgs.Modifier)
+	end
+	function ApplyEnvyCurse(victim, amount)
+		victim.EnvyNextDamage.Amount = amount
+		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
+			victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
+		end
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.EnvyNextDamage.Amount))
+	end
+	function EnvyCurseAttackClear(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		if victim.ActiveEffects["EnvyCurseSecondary"] == nil then
+			victim.EnvyNextDamage = nil	
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear Attack"))
+		end
+	end
+	function EnvyCurseSecondaryClear(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		if victim.ActiveEffects["EnvyCurseAttack"] == nil then
+			victim.EnvyNextDamage = nil	
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear Secondary"))
+		end
 	end
 	function JealousyCurseApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
 		victim.JealousyModifier = triggerArgs.Modifier
-	end
+	end	
 	ModUtil.Hades.Triggers.OnEffectApply.Combat[1].Call = ModUtil.Wrap(ModUtil.Hades.Triggers.OnEffectApply.Combat[1].Call,
 		function( baseFunc, triggerArgs )
 			local victim = triggerArgs.TriggeredByTable
 			if not victim or ( victim.IsDead and victim ~= CurrentRun.Hero ) then
 				return
 			end
-			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect and not victim.EnvyFlag then
-				ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse" })	
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Skip")) 		
-				Damage(victim, { EffectName = "EnvyCurse", DamageAmount = victim.EnvyNextDamage, Silent = false, PureDamage = false })
-				if triggerArgs.EffectName ~= "EnvyCurse" then		
-					victim.EnvyNextDamage = victim.EnvyNextDamage * 2
-				else
-					--ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, WeaponName = "ArmorBreakAttack", EffectName = "EnvyCurse" })
-					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Other Envy")) 	
+			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
+					victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount
 				end
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.Reapplied)) 
-				victim.EnvyFlag = true
-				ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, WeaponName = "SwordWeapon", EffectName = "EnvyCurse" })
-			else
-				victim.EnvyFlag = false
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call")) 		
-				baseFunc(triggerArgs)
+				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })
+					
+				victim.EnvyNextDamage = nil		
 			end
+			baseFunc(triggerArgs)
 		end
 	)
+	ModUtil.Hades.Triggers.OnHit.Combat[1].Call = ModUtil.Wrap(ModUtil.Hades.Triggers.OnHit.Combat[1].Call,
+		function( baseFunc, triggerArgs )
+			if triggerArgs.EffectName == "EnvyCurse" then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Hit"))
+			end
+			baseFunc(triggerArgs)
+		end
+	)
+
 	ModUtil.Path.Wrap("Kill",
 	function(baseFunc, victim, triggerArgs)
 		if HeroHasTrait("GiveCurseDeathTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "EnvyCurse" }) then
@@ -4585,9 +4612,9 @@ end]]
 	)
 	function TrackMaximumStatusOverTime(hero, args)
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Legendary tracker"))
-		--thread( MaximumChillThread, args )
+		--thread( MaximumStatusOverTimeThread, args )
 	end
-	function MaximumChillThread( args )
+	function MaximumStatusOverTimeThread( args )
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			wait(0.2, RoomThreadName)
 			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then

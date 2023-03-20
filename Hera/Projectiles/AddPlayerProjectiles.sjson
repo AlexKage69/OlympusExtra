@@ -18,7 +18,19 @@ Projectiles = {
         TimeModifierFraction = 0
       }
       {
-        Name = "EnvyCurse"
+        Name = "EnvyCurseAttack"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "StatusIconStunnedCombat"
+        BackFx = "null"
+        Duration = 3.0
+        Modifier = 0
+        Active = false
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+      }
+      {
+        Name = "EnvyCurseSecondary"
         IgnoreName = "_PlayerUnit"
         FrontFx = "StatusIconStunnedCombat"
         BackFx = "null"
