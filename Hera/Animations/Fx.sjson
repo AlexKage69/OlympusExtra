@@ -22,27 +22,38 @@
      {
       Name = "HeraFeatherA"
       FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
-      GroupName = "FX_Standing_Add"
+      GroupName = "FX_Standing"
       Type = "Book"
       AngleFromOwner = "Take"
-      AngleMax = 200.0
-      AngleMin = 160.0
-      EndGreen = 0.5
-      StartBlue = 1.0
+      AngleMax = 80.0 
+      AngleMin = -60.0 
+      StartRed = 1.0
       StartGreen = 1.0
+      StartBlue = 1.0
+      EndRed = 1.0
+      EndGreen = 1.0
+      EndBlue = 1.0
       EndFrame = 49
       NumFrames = 49
       RandomPlaySpeedMax = 50.0
       RandomPlaySpeedMin = 30.0
       StartFrame = 1
       OffsetZ = 60.0 
-      RandomOffsetY = 40.0
+      RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 /* 40.0 */
+
+      RadialOffsetMax = 200.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleRadius = 500.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+
       LocationFromOwner = "Ignore"
       LocationZFromOwner = "Ignore"
-      Acceleration = -400.0 
+      Acceleration = 0.0 /* -400.0 */ 
       Gravity = 50.0
-      VelocityMax = 500.0
-      VelocityMin = 100.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
       RandomRotation = true
       RandomRotationSpeedMax = 360.0
       RandomRotationSpeedMin = -360.0
@@ -130,6 +141,7 @@
         { DurationFrames = 0 }
       ]
     }
+    
     {
       Name = "SwordSwipeA-Hera"
       InheritFrom = "SwordSwipeAFlipped-Hera"
