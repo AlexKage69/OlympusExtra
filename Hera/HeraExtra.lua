@@ -121,6 +121,16 @@ if ModUtil ~= nil then
 		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
 		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash", "RangedWeapon"
 	}
+	OlympusWeaponSets.AssistWeapons = {
+		"NPC_Thanatos_01_Assist",
+		"NPC_FurySister_01_Assist",
+		"NPC_Sisyphus_01_Assist",
+		"NPC_Achilles_01_Assist",
+		"NPC_Patroclus_01_Assist",
+		"DusaFreezeShotSpray",
+		"DusaFreezeShotSpread",
+		"NPC_Cerberus_01_Assist",
+	}
 	OlympusWeaponData.HeraShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -507,6 +517,7 @@ end]]
 	}
 	OlympusTraitData.HeraWeaponTrait =
 	{
+		Name = "HeraWeaponTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Melee",
@@ -970,6 +981,7 @@ end]]
 	}
 	OlympusTraitData.HeraSecondaryTrait =
 	{
+		Name = "HeraSecondaryTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Secondary",
@@ -1279,6 +1291,7 @@ end]]
 	}
 	OlympusTraitData.HeraRushTrait =
 	{
+		Name = "HeraRushTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_03",
@@ -1338,24 +1351,24 @@ end]]
 				ChangeType = "Absolute",
 			},
 			--[[
-		{
-			WeaponNames = WeaponSets.HeroRushWeapons,
-			ProjectileProperty = "Range",
-			ChangeValue = 0.0,
-			ChangeType = "Absolute",
-		},
-		{
-			WeaponNames = WeaponSets.HeroRushWeapons,
-			EffectName = "DamageOverTime",
-			EffectProperty = "Active",
-			ChangeValue = true,
-		},
-		]]
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileProperty = "Range",
+				ChangeValue = 0.0,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				EffectName = "DamageOverTime",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			]]
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileProperty = "DamageLow",
-				BaseMin = 30,
-				BaseMax = 30,
+				BaseMin = 50,
+				BaseMax = 50,
 				AsInt = true,
 				MinMultiplier = 0.1,
 				IdenticalMultiplier =
@@ -1374,13 +1387,13 @@ end]]
 	}
 	OlympusTraitData.HeraRangedTrait =
 	{
+		Name = "HeraRangedTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Ranged",
 		Icon = "Boon_Hera_04",
 		CustomTrayText = "HeraRangedTrait_Tray",
-		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
-		PreEquipWeapons = { "" },
+        RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
 		{
 			Common =
@@ -1402,32 +1415,76 @@ end]]
 		},
 		PropertyChanges =
 		{
-			-- Beowulf
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				WeaponProperty = "FireOnRelease",
-				ChangeValue = false,
+				WeaponProperty = "Projectile",
+				ChangeValue = "HeraProjectile",
 				ChangeType = "Absolute",
 			},
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "Type",
-				ChangeValue = "INSTANT",
+				WeaponProperty = "FireFx",
+				ChangeValue = "ProjectileFireRing-Hera",
+				ChangeType = "Absolute",
 			},
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "DamageRadius",
-				ChangeValue = 400
+				ProjectileProperty = "DamageLow",
+				BaseMin = 65,
+				BaseMax = 65,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
 			},
 			{
-				TraitName = "ShieldLoadAmmoTrait",
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "RadialNovaSwordParry-Hera"
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
 			},
+			--[[{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileProperty = "CriticalHitChance",
+				ChangeValue = 0.10,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCritChance",
+					Format = "Percent",
+					SkipAutoExtract = true
+				}
+			},]]
+			-- Beowulf
+			{
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                WeaponProperty = "FireOnRelease",
+                ChangeValue = false,
+                ChangeType = "Absolute",
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "Type",
+                ChangeValue = "INSTANT",
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DamageRadius",
+                ChangeValue = 400
+            },
+            {
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "DetonateGraphic",
+                ChangeValue = "RadialNovaSwordParry-Artemis"
+            },
 		},
 		ExtractValues =
 		{
@@ -1437,28 +1494,10 @@ end]]
 				BaseType = "Projectile",
 				BaseName = "RangedWeapon",
 				BaseProperty = "DamageLow",
-			},
-			{
-				ExtractAs = "TooltipJealousyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipJealousyPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Modifier",
-				Format = "Percent"
 			}
 		}
 	}
+
 	--[[OlympusTraitData.ShieldLoadAmmo_HeraRangedTrait =
 {
 	InheritFrom = { "ShopTier1Trait" },
@@ -1584,6 +1623,7 @@ end]]
 }]]
 	OlympusTraitData.HeraShoutTrait =
 	{
+		Name = "HeraShoutTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
 		CustomTrayText = "HeraShoutTrait_Tray",
@@ -1873,16 +1913,42 @@ end]]
 		},
 		AddOutgoingDamageModifiers =
 		{
-			PerSameGodMultiplier = 0.05,
-			ExtractValues =
-			{
-				{
-					Key = "PerSameGodMultiplier",
-					ExtractAs = "TooltipDamage",
-					Format = "Percent",
-				},
-			}
+		  UseTraitValue = "AccumulatedGodDamageBonus",
+		  IsMultiplier = true,
+		  Unique = true,
 		},
+		GodDamageBonus =
+		{
+			BaseValue = 1.03,
+			SourceIsMultiplier = true,
+			DecimalPlaces = 2,
+			MinMultiplier = 0.1,
+			IdenticalMultiplier =
+			{
+				Value = -0.8,
+			},	
+		},
+		AccumulatedGodDamageBonus = 1,
+		FromGodIndex = 0,
+		ExtractValues =
+		{
+			{
+				Key = "GodDamageBonus",
+				ExtractAs = "TooltipGodBonus",
+				Format = "PercentDelta",
+				DecimalPlaces = 1,
+			},
+			{
+				Key = "AccumulatedGodDamageBonus",
+				ExtractAs = "TooltipAccumulatedBonus",
+				Format = "PercentDelta",
+				DecimalPlaces = 1,
+			},
+			{
+				Key = "FromGodIndex",
+				ExtractAs = "TooltipGodName",
+			}
+		}
 	}
 	OlympusTraitData.FamilyHeraTrait =
 	{
@@ -1927,6 +1993,7 @@ end]]
 	}
 	OlympusTraitData.MoreRewardTrait =
 	{
+		Name = "MoreRewardTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_09",
@@ -1972,6 +2039,7 @@ end]]
 	}
 	OlympusTraitData.PeriodicCurseTrait =
 	{
+		Name = "PeriodicCurseTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		Icon = "Boon_Hera_10",
 		RequiredFalseTrait = "PeriodicCurseTrait",
@@ -2037,6 +2105,7 @@ end]]
 	}
 	OlympusTraitData.GiveCurseDeathTrait =
 	{
+		Name = "GiveCurseDeathTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_12",
@@ -2060,9 +2129,34 @@ end]]
 				Multiplier = 2.50,
 			}
 		},
+		SpreadRadiusCurse = {
+			BaseValue = 1.0,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+		},
+		ExtractValues =
+		{
+			{
+				Key = "SpreadRadiusCurse",
+				ExtractAs = "TooltipMultiplier",
+				Format = "Percent",
+			},
+			{
+				ExtractAs = "TooltipEnvyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "EnvyCurse",
+				BaseProperty = "Duration",
+			},
+		}
 	}
 	OlympusTraitData.EnvyBurstTrait =
 	{
+		Name = "EnvyBurstTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_11",
@@ -2091,15 +2185,28 @@ end]]
 			{
 				Value = DuplicateMultiplier,
 			},
-			ExtractValue =
+		},
+		ExtractValues =
+		{
 			{
-				ExtractAs = "TooltipDamage",
+				Key = "EnvyBurstMultiplier",
+				ExtractAs = "TooltipMultiplier",
 				Format = "Percent",
+			},
+			{
+				ExtractAs = "TooltipEnvyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "EnvyCurse",
+				BaseProperty = "Duration",
 			}
 		}
 	}
 	OlympusTraitData.StrongerJealousyTrait =
 	{
+		Name = "StrongerJealousyTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_13",
@@ -2124,10 +2231,48 @@ end]]
 		},
 		PropertyChanges =
 		{
+			{
+				TraitName = "HeraRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName= "JealousyCurse",
+				EffectProperty = "Modifier",
+				ChangeValue = 1.15,
+				ChangeType = "Multiply",
+				DeriveSource = "DeriveSource",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipMultiplier",
+					Format = "Percent",
+					--DecimalPlaces = 1,
+				}
+			},
 		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipJealousyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipJealousyPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Modifier",
+				Format = "Percent"
+			}
+		}
 	}
 	OlympusTraitData.MoreCompanionTrait =
 	{
+		Name = "MoreCompanionTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
@@ -2152,6 +2297,27 @@ end]]
 				Multiplier = 1.86,
 			}
 		},
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseValue = 1.30,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ValidWeapons = WeaponSets.AssistWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		},
 		PropertyChanges =
 		{
 
@@ -2159,29 +2325,104 @@ end]]
 	}
 	OlympusTraitData.HealthAsObolTrait =
 	{
+		Name = "HealthAsObolTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "HealthAsObolTrait",
 		God = "Hera",
 		Icon = "Boon_Hera_16",
-		PropertyChanges =
+		RarityLevels =
 		{
-
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.4,
+			},
+			Epic =
+			{
+				Multiplier = 1.8,
+			},
+			Heroic =
+			{
+				Multiplier = 2.2,
+			}
 		},
+		CharonHealMultiplier = {
+			BaseValue = 25,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+		},
+		ExtractValues =
+		{
+			{
+				Key = "CharonHealMultiplier",
+				ExtractAs = "TooltipMultiplier",
+			}
+		}
 	}
 	OlympusTraitData.StatusOverTimeTrait =
 	{
+		Name = "StatusOverTimeTrait",
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "StatusOverTimeTrait",
 		God = "Hera",
 		Icon = "Boon_Hera_15",
+		SetupFunction =
+		{
+			Name = "TrackMaximumStatusOverTime",
+			RunOnce = true,
+		},
+		PreEquipWeapons = { "HeraLegendaryWeapon" },
 		PropertyChanges =
 		{
 
+			{
+				WeaponName = "HeraLegendaryWeapon",
+				EffectName = "HeraLegendaryEffect",
+				EffectProperty = "ElapsedTimeMultiplier",
+				BaseValue = 0.9,
+				SourceIsMultiplier = true,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipSlow",
+					Format = "NegativePercentDelta",
+				},
+				ChangeType = "Multiply",
+			},
+
+			{
+				WeaponName = "HeraLegendaryWeapon",
+				EffectName = "HeraLegendaryEffect",
+				EffectProperty = "Amount",
+				BaseValue = 20,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+				ChangeType = "Add",
+			},
+			{
+				WeaponName = "HeraLegendaryWeapon",
+				EffectName = "HeraLegendaryEffect",
+				EffectProperty = "Cooldown",
+				ChangeValue = 0.5,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipTickRate",
+					DecimalPlaces = 1,
+				},
+				ChangeType = "Absolute",
+			},
 		},
 	}
 	-- Duo Traits
 	OlympusTraitData.AuraExposedTrait =
 	{
+		Name = "AuraExposedTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Athena_01",
 		RequiredFalseTrait = "AuraExposedTrait",
@@ -2192,6 +2433,7 @@ end]]
 	}
 	OlympusTraitData.CurseLongerTrait =
 	{
+		Name = "CurseLongerTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Aphrodite_01",
 		RequiredFalseTrait = "CurseLongerTrait",
@@ -2202,6 +2444,7 @@ end]]
 	}
 	OlympusTraitData.BetterTrapsTrait =
 	{
+		Name = "BetterTrapsTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Artemis_01",
 		RequiredFalseTrait = "BetterTrapsTrait",
@@ -2212,6 +2455,7 @@ end]]
 	}
 	OlympusTraitData.HeroicBoonsTrait =
 	{
+		Name = "HeroicBoonsTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Demeter_01",
 		RequiredFalseTrait = "HeroicBoonsTrait",
@@ -2222,6 +2466,7 @@ end]]
 	}
 	OlympusTraitData.JealousyStacksTrait =
 	{
+		Name = "JealousyStacksTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Dionysus_01",
 		RequiredFalseTrait = "JealousyStacksTrait",
@@ -2232,6 +2477,7 @@ end]]
 	}
 	OlympusTraitData.KillMarkedTrait =
 	{
+		Name = "KillMarkedTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Ares_01",
 		RequiredFalseTrait = "KillMarkedTrait",
@@ -2242,6 +2488,7 @@ end]]
 	}
 	OlympusTraitData.GaugeLightningTrait =
 	{
+		Name = "GaugeLightningTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Zeus_01",
 		RequiredFalseTrait = "GaugeLightningTrait",
@@ -2252,6 +2499,7 @@ end]]
 	}
 	OlympusTraitData.AuraRuptureTrait =
 	{
+		Name = "AuraRuptureTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Poseidon_01",
 		RequiredFalseTrait = "AuraRuptureTrait",
@@ -2289,7 +2537,7 @@ end]]
 
 		PriorityUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
 		WeaponUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait", "HeraShoutTrait" },
-		Traits = { "MoreRewardTrait", "PeriodicCurseTrait", "MoreCompanionTrait" },
+		Traits = { "MoreRewardTrait", "MoreCompanionTrait", "HealthAsObolTrait", "PeriodicCurseTrait" },
 		Consumables = {},
 
 		LinkedUpgrades =
@@ -2310,15 +2558,13 @@ end]]
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
 			},
 			DiscountHeraTrait = {
-				OneOf = { "MoreRewardTrait", "MoreCompanionTrait" }, 
-			},
-			HealthAsObolTrait = {
-				OneOf = { "MoreRewardTrait", "MoreCompanionTrait" }, 				
+				OneOf = { "MoreRewardTrait", "MoreCompanionTrait", "HealthAsObolTrait" }, 
 			},
 			StatusOverTimeTrait = {
 				OneFromEachSet =
 				{
 					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait", "PeriodicCurseTrait" },
+					{ "GiveCurseDeathTrait", "EnvyBurstTrait", "StrongerJealousyTrait", "PrivilegeHeraTrait" },
 				}
 			},
 			-- Duos
@@ -4027,62 +4273,67 @@ end]]
 	}
 	-- FUNCTIONS
 	function HeraShout()
-		if CurrentRun.Hero.NextHeraGod == "Zeus" then
-			ZeusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Athena" then
-			AthenaShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Poseidon" then
-			PoseidonShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Artemis" then
-			ArtemisShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Aphrodite" then
-			AphroditeShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Ares" then
-			AresShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Dionysus" then
-			DionysusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Demeter" then
-			DemeterShout()
-		else -- glitched
-			--Nothing in case of other mods Gods
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
+				ZeusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
+				AthenaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" then
+				PoseidonShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Artemis" then
+				ArtemisShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Aphrodite" then
+				AphroditeShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
+				AresShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Dionysus" then
+				DionysusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
+				DemeterShout()
+			else -- glitched
+				--Nothing in case of other mods Gods
+			end				
 		end
 	end
 
 	function HeraMaxShout()
-		if CurrentRun.Hero.NextHeraGod == "Zeus" then
-			ZeusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Athena" then
-			AthenaShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Poseidon" then
-			PoseidonShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Artemis" then
-			ArtemisMaxShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Aphrodite" then
-			AphroditeMaxShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Ares" then
-			AresShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Dionysus" then
-			DionysusShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Demeter" then
-			DemeterMaxShout()
-		else -- glitched
-			--Nothing in case of other mods Gods
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
+				ZeusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
+				AthenaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" then
+				PoseidonShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Artemis" then
+				ArtemisMaxShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Aphrodite" then
+				AphroditeMaxShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
+				AresShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Dionysus" then
+				DionysusShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
+				DemeterMaxShout()
+			else -- glitched
+				--Nothing in case of other mods Gods
+			end			
 		end
 	end
 
 	function EndHera()
-		if CurrentRun.Hero.NextHeraGod == "Athena" then
-			EndAthenaShout()
-		elseif CurrentRun.Hero.NextHeraGod == "Poseidon" or CurrentRun.Hero.NextHeraGod == "Ares" then
-			EndSurge()
-		elseif CurrentRun.Hero.NextHeraGod == "Demeter" then
-			EndDemeter()
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
+				EndAthenaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
+				EndSurge()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
+				EndDemeter()
+			end
 		end
 		SetupHeraNextShout()
-		BuildSuperMeter(CurrentRun, 25)
+		--BuildSuperMeter(CurrentRun, 25)
 	end
 
-	HeraExtra.NumberOfGods = 8
 	HeraExtra.GodsList = {
 		"Zeus",
 		"Athena",
@@ -4094,19 +4345,56 @@ end]]
 		"Demeter",
 	}
 	function SetupHeraNextShout()
-		local index = RandomNumber(HeraExtra.NumberOfGods)
-		CurrentRun.Hero.NextHeraGod = HeraExtra.GodsList[index]
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Choose " .. CurrentRun.Hero.NextHeraGod))
+		if CurrentRun.Hero.HeraShout == nil then
+			CurrentRun.Hero.HeraShout = {}
+		end		
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load " .. CurrentRun.Hero.HeraShout.NextHeraGod))
 	end
+	function UpdateHeraShoutIcon()	
+		if CurrentRun.Hero.HeraShout == nil then
+			CurrentRun.Hero.HeraShout = {}
+		end	
+		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			if CurrentRun.Hero.HeraShout.Icon then
+				CurrentRun.Hero.HeraShout.PreviousIcon = CurrentRun.Hero.HeraShout.Icon
+			end
+			if ScreenAnchors.TraitAnchorIds then
+				CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
+				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
+			end
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.HeraShout.Icon))
+		end
+		if CurrentRun.Hero.HeraShout.PreviousIcon then
+			Destroy({ Id = CurrentRun.Hero.HeraShout.PreviousIcon.Id})
+			CurrentRun.Hero.HeraShout.PreviousIcon = nil
+		end
+
+	end
+	ModUtil.Path.Wrap("StopSuper",
+		function(baseFunc)
+			baseFunc()
+			if HeroHasTrait("HeraShoutTrait") then
+				if CurrentRun.Hero.HeraShout == nil then
+					CurrentRun.Hero.HeraShout = {}
+				end	
+				CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[RandomNumber(TableLength(HeraExtra.GodsList))]
+				UpdateHeraShoutIcon()
+			end
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Select " .. CurrentRun.Hero.HeraShout.NextHeraGod))
+		end
+	)
+	
 
 	ModUtil.Path.Wrap("ShowTraitUI",
 		function(baseFunc)
 			baseFunc()
-			local wrathIcon = SpawnObstacle({ Name = "TraitTray_SlotIcon_Wrath", Group = "Combat_UI_Backing",
-				OffsetX = TraitUI.IconStartX - CombatUI.FadeDistance.Trait, OffsetY = TraitUI.StartY + 490.5 })
-			FadeObstacleIn({ Id = wrathIcon, Duration = CombatUI.FadeInDuration, Distance = CombatUI.FadeDistance.Trait,
-				Direction = 0 })
-			table.insert(ScreenAnchors.TraitPlaceholderIcons, wrathIcon)
+			if HeroHasTrait("HeraShoutTrait") then
+				UpdateHeraShoutIcon()
+			end
+			--[[if CurrentRun.Hero.HeraShout and CurrentRun.Hero.HeraShout.NextHeraGod then
+				CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
+				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
+			end]]
 		end
 	)
 	ModUtil.Path.Wrap("CreateStoreButtons",
@@ -4235,10 +4523,12 @@ end]]
 		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
 			victim.EnvyNextDamage = victim.EnvyNextDamage + victim.EnvyNextDamage * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
 		end
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("NextDamage"..triggerArgs.Modifier)) 	
 	end
 	function EnvyCurseClear(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
-		victim.EnvyNextDamage = nil
+		--victim.EnvyNextDamage = nil
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear"..triggerArgs.TriggeredByTable.EnvyNextDamage)) 	
 	end
 	function JealousyCurseApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
@@ -4250,15 +4540,25 @@ end]]
 			if not victim or ( victim.IsDead and victim ~= CurrentRun.Hero ) then
 				return
 			end
-			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect and not victim.EnvyFlag then
+				ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse" })	
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Skip")) 		
 				Damage(victim, { EffectName = "EnvyCurse", DamageAmount = victim.EnvyNextDamage, Silent = false, PureDamage = false })
-				if triggerArgs.EffectName ~= "EnvyCurse" then
-					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse" })					
+				if triggerArgs.EffectName ~= "EnvyCurse" then		
+					victim.EnvyNextDamage = victim.EnvyNextDamage * 2
+				else
+					--ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, WeaponName = "ArmorBreakAttack", EffectName = "EnvyCurse" })
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Other Envy")) 	
 				end
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.Reapplied)) 
+				victim.EnvyFlag = true
+				ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, WeaponName = "SwordWeapon", EffectName = "EnvyCurse" })
+			else
+				victim.EnvyFlag = false
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call")) 		
+				baseFunc(triggerArgs)
 			end
-			baseFunc(triggerArgs)
 		end
 	)
 	ModUtil.Path.Wrap("Kill",
@@ -4278,6 +4578,166 @@ end]]
 	end
 )
 
+	ModUtil.Path.Wrap("AddTraitData",
+		function(baseFunc, unit, traitData, args)
+			baseFunc(unit, traitData, args)
+		end
+	)
+	function TrackMaximumStatusOverTime(hero, args)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Legendary tracker"))
+		--thread( MaximumChillThread, args )
+	end
+	function MaximumChillThread( args )
+		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
+			wait(0.2, RoomThreadName)
+			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
+				local allEnemiesFrozen = true
+				for enemyId, enemy in pairs(RequiredKillEnemies) do
+					if not enemy.Slowed then
+						allEnemiesFrozen = false
+					end
+				end
+	
+				if allEnemiesFrozen then
+					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationIds = GetAllKeys( RequiredKillEnemies ), WeaponName = "DemeterWorldChill", EffectName = "DemeterWorldChill" })
+				else
+					ClearEffect({ Ids = GetAllKeys( RequiredKillEnemies ), Name = "DemeterWorldChill" })
+				end
+			end
+		end
+	end
+
+	function DoFullSuperDualPresentation( traitData, secondGod )
+		local currentRun = CurrentRun
+		SetPlayerInvulnerable( "Super" )
+		--AddInputBlock({ Name = "SuperPresentation" })
+		HideCombatUI("SuperPresentation")
+	
+		thread( DoRumble, { { RightTriggerStart = 2, RightTriggerStrengthFraction = 0.3, RightTriggerFrequencyFraction = 0.15, RightTriggerTimeout = 0.25, }, } )
+	
+		SetAnimation({ Name = "ZagreusWrath", DestinationId = currentRun.Hero.ObjectId })
+		CreateAnimation({ Name = "ZagreusWrathFire", DestinationId = CurrentRun.Hero.ObjectId, Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		ApplyEffectFromWeapon({ Id = currentRun.Hero.ObjectId, DestinationId = currentRun.Hero.ObjectId, WeaponName = "ShoutSelfSlow", EffectName = "ShoutSelfSlow", AutoEquip = true })
+		Rumble({ RightFraction = 0.7, Duration = 0.3 })
+		FocusCamera({ Fraction = 0.9, Duration = 0.02, ZoomType = "Ease" })
+		AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
+		AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
+		AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 0 })
+		AdjustRadialBlurDistance({ Fraction = 0.125, Duration = 0 })
+		AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.03, Delay=0 })
+		AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03, Delay=0 })
+	
+		--SetThingProperty({ Property = "TimeModifierFraction", Value = 1.0, DestinationId = currentRun.Hero.ObjectId, DataValue = false })
+	
+		--SetSoundCueValue({ Id = GetMixingId({}), Names = { "LowPass" }, Value = 1.0, Duration = 0.25 })
+		-- super activation sound
+		--PlaySound({ Name = "/Leftovers/SFX/MeteorStrikeShort" })
+		--PlaySound({ Name = "/VO/ZagreusEmotes/EmotePoweringUp", Id = currentRun.Hero.ObjectId })
+	
+		-- audio
+		local sourceName = traitData.God.."Upgrade"
+		thread( PlayVoiceLines, traitData.FullSuperActivatedVoiceLines or HeroVoiceLines.FullSuperActivatedVoiceLines )
+		PlaySound({ Name = LootData[sourceName].ShoutActivationSound or "/Leftovers/SFX/MeteorStrikeShort" })
+		AudioState.ShoutEffectSoundId = PlaySound({ Name = "/SFX/WrathStartNoEmote", Id = CurrentRun.Hero.ObjectId })
+	
+		--thread( PlayVoiceLines, HeroVoiceLines.SuperActivatedVoiceLines )
+		local wrathPresentationOffsetY = 150
+		local wrathStreak = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_UI" })
+		Teleport({ Id = wrathStreak, OffsetX = (1920/2), OffsetY = 800 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { wrathStreak } })
+		CreateAnimation({ Name = "WrathPresentationStreak", DestinationId = wrathStreak, Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		local godImage = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_Menu" })
+		Teleport({ Id = godImage, OffsetX = -300, OffsetY = (1080/2) + 80 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { godImage } })
+		CreateAnimation({ Name = LootData[traitData.God .. "Upgrade"].WrathPortrait, DestinationId = godImage, Scale = "1.0" })
+
+		local godImage2 = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_UI" })
+		Teleport({ Id = godImage2, OffsetX = 60, OffsetY = (1080/2) + 90 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { godImage2 } })
+		CreateAnimation({ Name = LootData[secondGod .. "Upgrade"].WrathPortrait, DestinationId = godImage2, Scale = "1.0" })
+		
+		local wrathStreakFront = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_Menu_Overlay" })
+		Teleport({ Id = wrathStreakFront, OffsetX = 900, OffsetY = 1150 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { wrathStreakFront } })
+		CreateAnimation({ Name = "WrathPresentationBottomDivider", DestinationId = wrathStreakFront, Scale = "1.25", Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		local wrathVignette = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+		CreateAnimation({ Name = "WrathVignette", DestinationId = wrathVignette, Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		thread( ShoutSlow )
+	
+		ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Scripting", X = ScreenCenterX, Y = ScreenCenterY })
+	
+		local fullscreenAlertDisplacementFx = SpawnObstacle({ Name = "FullscreenAlertDisplace", Group = "FX_Displacement", DestinationId = ScreenAnchors.FullscreenAlertFxAnchor})
+		DrawScreenRelative({ Id = fullscreenAlertDisplacementFx })
+	
+		Move({ Id = godImage, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
+		Move({ Id = godImage2, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
+		Move({ Id = wrathStreakFront, Angle = 8, Distance = 200, Duration = 0.5, EaseIn = 0.9, EaseOut = 1, TimeModifierFraction = 0 })
+		Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
+	
+		SetColor({ Id = godImage, Color = {0, 0, 0, 1}, Duration = 0.05, TimeModifierFraction = 0 })
+		SetColor({ Id = wrathVignette, Color = {0, 0, 0, 0.4}, Duration = 0.05, TimeModifierFraction = 0 })
+	
+		waitScreenTime( 0.25, RoomThreadName )
+		AdjustFullscreenBloom({ Name = "Off", Duration = 0.1, Delay = 0 })
+		Move({ Id = godImage, Angle = 8, Distance = 100, Duration = 1, EaseIn = 0.5, EaseOut = 0.5, TimeModifierFraction = 0 })
+		Move({ Id = godImage2, Angle = 8, Distance = 100, Duration = 1, EaseIn = 0.5, EaseOut = 0.5, TimeModifierFraction = 0 })
+		Move({ Id = wrathStreakFront, Angle = 8, Distance = 25, Duration = 1, EaseIn = 0.5, EaseOut = 1, TimeModifierFraction = 0 })
+	
+		waitScreenTime( 0.35, RoomThreadName )
+		thread( PlayVoiceLines, LootData[sourceName].ShoutVoiceLines, false, LootData[sourceName] )
+	
+		waitScreenTime( 0.35, RoomThreadName )
+		FocusCamera({ Fraction = currentRun.CurrentRoom.ZoomFraction or 0.75, Duration = 0.25, ZoomType = "Ease" })
+	
+		-- Move({ Id = godImage, Angle = 170, Speed = 7000, TimeModifierFraction = 0 })
+		PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal3" })
+	
+		waitScreenTime( 0.1, RoomThreadName )
+		SetColor({ Id = godImage, Color = {1,1,1,1}, Duration = 0.1, TimeModifierFraction = 0 })
+		waitScreenTime( 0.1, RoomThreadName )
+		--SetThingProperty({ Property = "TimeModifierFraction", Value = 1.0, DestinationId = currentRun.Hero.ObjectId, DataValue = false })
+	
+		SetAlpha({ Id = godImage, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
+		SetAlpha({ Id = godImage2, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
+		SetAlpha({ Id = wrathVignette, Fraction = 0, Duration = 0.06 })
+		SetAlpha({ Id = fullscreenAlertDisplacementFx, Fraction = 0, Duration = 0.06 })
+		thread( CleanUpShoutPresentation, fullscreenAlertDisplacementFx)
+	
+		for k, enemy in pairs( ActiveEnemies ) do
+			if enemy.WrathReactionVoiceLines ~= nil then
+				local currentHealthFraction = enemy.Health / enemy.MaxHealth
+				if enemy.WrathReactionVoiceLines ~= nil and currentHealthFraction > (enemy.WrathReactionVoiceLineMinHealthThreshold or 0) then
+					thread( PlayVoiceLines, enemy.WrathReactionVoiceLines, nil, enemy )
+				end
+			end
+		end
+	
+		thread( CrowdReactionPresentation, { AnimationNames = { "StatusIconOhBoy", "StatusIconFear" }, Sound = "/SFX/TheseusCrowdCheer", ReactionChance = 0.08, Requirements = { RequiredRoom = "C_Boss01" }, Delay = 1, Shake = true, RadialBlur = true } )
+	
+		ShowCombatUI("SuperPresentation")
+		--RemoveInputBlock({ Name = "SuperPresentation" })
+		thread( RevulnerablePlayerAfterShout )
+	end
+	
+	ModUtil.Path.Wrap("FullSuperUsedPresentation",
+		function(baseFunc, traitData)
+			if traitData.God == "Hera" then
+				DoFullSuperDualPresentation(traitData, CurrentRun.Hero.HeraShout.NextHeraGod)
+				CheckAchievement( { Name = "AchGreaterCall" } )
+				if CurrentRun.CurrentRoom.Encounter.EncounterType == "Devotion" then
+					if CurrentRun.CurrentRoom.Encounter.SpurnedGodName == traitData.God.."Upgrade" then
+						CheckAchievement( { Name = "AchGreaterCallSpurned" } )
+					end
+				end	
+			else
+				baseFunc(traitData)			
+			end
+		end
+	)
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {

@@ -229,14 +229,14 @@
         {
       Name = "Boon_Hera_09_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\LoyalRelations_large"
+      FilePath = "Hera\RoyalInheritance_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hera_09_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\LoyalRelations_large"
+      FilePath = "Hera\RoyalInheritance_large"
       EndFrame = 1
       StartFrame = 1
     }
@@ -497,6 +497,66 @@
       Name = "Keepsake_HeraSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
       FilePath = "Hera\HeraBadge_max"
+    }
+    {
+      Name = "BoonHeraShoutAresIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Ares2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutAphroditeIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Aphrodite2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutArtemisIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Artemis2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutAthenaIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Athena2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutDemeterIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Demeter2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutDionysusIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Dionysus2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutPoseidonIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Poseidon2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutZeusIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Zeus2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutHestiaIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "Hestia\Hestia2"
+      Scale = 0.2
+    }
+    {
+      Name = "BoonHeraShoutApolloIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      Scale = 0.2
     }
   ]
 }

@@ -68,7 +68,7 @@ ModUtil.Path.Wrap("EquipAssist",
         baseFunc(heroUnit, traitName, args)
     end
 )
-ModUtil.Path.Wrap("CalculateDamageMultipliers",
+--[[ModUtil.Path.Wrap("CalculateDamageMultipliers",
     function(baseFunc, attacker, victim, weaponData, triggerArgs)
         local damageReductionMultipliers = 1
         local damageMultipliers = 1.0
@@ -134,21 +134,30 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         local vanillaMultiplier = baseFunc(attacker, victim, weaponData, triggerArgs)
         return vanillaMultiplier * damageMultipliers * damageReductionMultipliers
     end
-)
+)]]
 ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
     function(baseFunc)
         baseFunc()
         local godDictionary = {}
         local highestCount = 0
+        local name = nil
         for i, trait in pairs(CurrentRun.Hero.Traits) do
             if GetLootSourceName( trait.Name ) then
                 godDictionary[GetLootSourceName( trait.Name )] = (godDictionary[GetLootSourceName( trait.Name )]  or 0) + 1
                 if highestCount < godDictionary[GetLootSourceName( trait.Name )] then
                     highestCount = godDictionary[GetLootSourceName( trait.Name )]
+                    name = GetLootSourceName( trait.Name )
                 end
             end
         end
         CurrentRun.Hero.SameGodCount = highestCount
+        for k, traitData in pairs(CurrentRun.Hero.Traits) do
+            if traitData.GodDamageBonus then
+                traitData.AccumulatedGodDamageBonus = traitData.AccumulatedGodDamageBonus + (traitData.GodDamageBonus - 1)
+                --traitData.FromGod = name
+                ExtractValues( CurrentRun.Hero, traitData, traitData )
+            end
+        end
     end
 )
 
@@ -183,13 +192,13 @@ end
         end
 	end
 )]]
---[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
             
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-			LoadMap({ Name ="A_Combat01", ResetBinks = true, ResetWeaponBinks = true })
+			--LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
 			baseFunc()
 		end
-	)]]
+	)

@@ -505,30 +505,58 @@
         }]
     }
     {
-      Name = "SpearThrustProjectile-HeraSparkles"
-      InheritFrom = "GenericSparkles"
+      Name = "HeraFeather"
+      FilePath = "Animations\HermesFeather\HermesFeather"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "HeraFeatherA"
+        }
+        {
+          Name = "HeraFeatherB"
+        }]
+    }
+    {
+      Name = "HermesFeatherA"
+      FilePath = "Fx\HermesFeatherA\HermesFeatherA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
       AngleFromOwner = "Take"
-      AngleNumOffset = 8
-      HoldLastFrame = true
-      RadialOffsetMax = 1.0
-      RadialOffsetMin = 1.0
-      RadialOffsetScaleRadius = 1000.0
-      RadialOffsetScaleY = 0.99
-      LocationFromOwner = "Take"
-      AlphaMax = 1.0
-      AlphaMin = 0.8
-      AddColor = true
-      Color = {
-        Red = 0.90
-        Green = 0.55
-        Blue = 0.05
-      }
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-      RandomDurationMax = 0.6
-      RandomDurationMin = 0.2
-      VelocityMax = 5.0
-      VelocityMin = 1.0
-      Scale = 1.0
+      AngleMax = 200.0
+      AngleMin = 160.0
+      EndGreen = 0.5
+      StartBlue = 1.0
+      StartGreen = 1.0
+      EndFrame = 49
+      NumFrames = 49
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      OffsetZ = 60.0
+      RandomOffsetY = 40.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      Acceleration = -400.0
+      Gravity = 50.0
+      VelocityMax = 500.0
+      VelocityMin = 100.0
+      RandomRotation = true
+      RandomRotationSpeedMax = 360.0
+      RandomRotationSpeedMin = -360.0
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.6
+      ScaleMin = 0.2
+      Ambient = 0.0
+      CancelOverCap = true
+      OnlyWhenVisible = true
+    }
+    {
+      Name = "HermesFeatherB"
+      InheritFrom = "HermesFeatherA"
+      FilePath = "Fx\HermesFeatherB\HermesFeatherB"
     }
     {
       Name = "SpearThrustDissipate-Hera"
