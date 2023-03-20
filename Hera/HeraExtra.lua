@@ -14,7 +14,7 @@ if ModUtil ~= nil then
 	--Color
 	local OlympusColor = ModUtil.Entangled.ModData(Color)
 	OlympusColor.HeraVoice = { 54, 67, 55, 255 }
-	OlympusColor.HeraDamageLight = { 72, 107, 255 }
+	OlympusColor.HeraDamageLight = { 54, 67, 55, 255 }
 	OlympusColor.HeraDamage = { 54, 67, 55, 255 }
 	--EnemyUpgradeData
 	local OlympusEnemyUpgradeData = ModUtil.Entangled.ModData(EnemyUpgradeData)
@@ -112,14 +112,14 @@ if ModUtil ~= nil then
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HeraProjectile")
-	OlympusWeaponSets.AllJealousyWeapons = {
+	OlympusWeaponSets.AllJealousyWeapons = { "SwordWeapon",
 		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon2", "SpearWeapon3",
 		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
 		"SpearWeaponDash", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeaponRush", "ShieldThrow",
 		"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
 		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
 		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
-		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash", "RangedWeapon"
+		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
 	}
 	OlympusWeaponSets.AssistWeapons = {
 		"NPC_Thanatos_01_Assist",
@@ -237,6 +237,7 @@ if ModUtil ~= nil then
 		DamageTextStartColor = Color.RamaDamageStart,
 		DamageTextColor = Color.RamaDamageEnd,
 		OnApplyFunctionName = "JealousyCurseApply",
+		OnClearFunctionName = "JealousyCurseClear",		
 	}
 	OlympusEffectData.EnvyCurseAttack =
 	{
@@ -349,30 +350,16 @@ if ModUtil ~= nil then
 		DamageTextStartColor = OlympusColor.HeraDamageLight,
 		DamageTextColor = OlympusColor.HeraDamage
 	}
-	OlympusProjectileData.HeraProjectile = {
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HeraColorProjectile" },
-	}
-	OlympusProjectileData.HeraField =
+	OlympusProjectileData.HeraProjectile =
 	{
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HeraColorProjectile" },
-		SpawnedProjectile = true,
+		InheritFrom = { "NoSlowFrameProjectile", "HeraColorProjectile" },
+		StoreAmmoInLastHit = true,
+	}
+	OlympusProjectileData.HeraProjectileSmall =
+	{
+		InheritFrom = { "NoSlowFrameProjectile", "HeraColorProjectile" },
 		NeverStore = true,
 	}
-	OlympusProjectileData.HeraFireDashField = {
-		InheritFrom = { "HeraColorProjectile" },
-	}
-	OlympusProjectileData.HeraFire = {
-		InheritFrom = { "HeraColorProjectile" },
-	}
-	OlympusProjectileData.HeraSmallField =
-	{
-		InheritFrom = { "NoSlowFrameProjectile", "NoShakeProjectile", "HeraColorProjectile" },
-		SpawnedProjectile = true,
-	}
-	--[[OlympusWeaponData.AreaWeakenHera =
-{
-	InheritFrom = { "HeraColorProjectile" },
-}]]
 	OlympusWeaponData.HeraSuper = {
 		InheritFrom = { "HeraColorProjectile", "NoSlowFrameProjectile", "NoShakeProjectile" },
 	}
@@ -1434,8 +1421,10 @@ end]]
 				ChangeValue = "ProjectileFireRing-Hera",
 				ChangeType = "Absolute",
 			},
+			
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 65,
 				BaseMax = 65,
@@ -1451,8 +1440,43 @@ end]]
 			},
 			{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
 				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				BaseMin = 65,
+				BaseMax = 65,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateStrongMultiplier,
+				},
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectileSmall",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 20,
+				BaseMax = 20,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateVeryStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageSmall",
+				}
+			},
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectileSmall",
+				ProjectileProperty = "DamageHigh",
+				BaseMin = 20,
+				BaseMax = 20,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateVeryStrongMultiplier,
+				},
 			},
 			--[[{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
@@ -1501,6 +1525,25 @@ end]]
 				BaseType = "Projectile",
 				BaseName = "RangedWeapon",
 				BaseProperty = "DamageLow",
+			},
+			{
+				ExtractAs = "TooltipJealousyDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				ProjectileName = "RangedWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipJealousyPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				ProjectileName = "RangedWeapon",
+				BaseName = "JealousyCurse",
+				BaseProperty = "Modifier",
+				Format = "Percent"
 			}
 		}
 	}
@@ -2094,7 +2137,7 @@ end]]
 				SkipAutoExtract = true,
 				External = true,
 				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
+				WeaponName = "JealousyCurseApplicator",
 				BaseName = "JealousyCurse",
 				BaseProperty = "Duration",
 			},
@@ -2103,7 +2146,7 @@ end]]
 				SkipAutoExtract = true,
 				External = true,
 				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
+				WeaponName = "JealousyCurseApplicator",
 				BaseName = "JealousyCurse",
 				BaseProperty = "Modifier",
 				Format = "Percent"
@@ -2211,7 +2254,7 @@ end]]
 			}
 		}
 	}
-	OlympusTraitData.StrongerJealousyTrait =
+	--[[OlympusTraitData.StrongerJealousyTrait =
 	{
 		Name = "StrongerJealousyTrait",
 		InheritFrom = { "ShopTier2Trait" },
@@ -2276,7 +2319,7 @@ end]]
 				Format = "Percent"
 			}
 		}
-	}
+	}]]
 	OlympusTraitData.MoreCompanionTrait =
 	{
 		Name = "MoreCompanionTrait",
@@ -2555,9 +2598,9 @@ end]]
 			EnvyBurstTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait" }, 
 			},
-			StrongerJealousyTrait = {
+			--[[StrongerJealousyTrait = {
 				OneOf = { "HeraRangedTrait", "PeriodicCurseTrait" }, 
-			},
+			},]]
 			PrivilegeHeraTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
 			},			
@@ -2571,7 +2614,7 @@ end]]
 				OneFromEachSet =
 				{
 					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait", "PeriodicCurseTrait" },
-					{ "GiveCurseDeathTrait", "EnvyBurstTrait", "StrongerJealousyTrait", "PrivilegeHeraTrait" },
+					{ "GiveCurseDeathTrait", "EnvyBurstTrait", "PrivilegeHeraTrait" },
 				}
 			},
 			-- Duos
@@ -4495,12 +4538,13 @@ end]]
 			if sourceWeaponData ~= nil and not triggerArgs.PureDamage and not IsEmpty(ActiveEnemies) and victim and
 				not victim.IsDead and IsEmpty(victim.InvulnerableFlags) and IsEmpty(victim.PersistentInvulnerableFlags)
 				and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and victim.JealousyModifier and
-				Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) then
+				Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) and triggerArgs.EffectName == nil then
 				local damageAmount = triggerArgs.DamageAmount * victim.JealousyModifier * TableLength(victim.VulnerabilityEffects)
 				if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
 					damageAmount = 0
 				end
 				Damage(victim, { EffectName = "JealousyCurse", DamageAmount = damageAmount, Silent = false, PureDamage = false })
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Jealousy Damage"))
 			end
 		end
 	)
@@ -4562,6 +4606,10 @@ end]]
 		local victim = triggerArgs.TriggeredByTable
 		victim.JealousyModifier = triggerArgs.Modifier
 	end	
+	function JealousyCurseClear(triggerArgs)
+		local victim = triggerArgs.TriggeredByTable
+		victim.JealousyModifier = nil
+	end	
 	ModUtil.Hades.Triggers.OnEffectApply.Combat[1].Call = ModUtil.Wrap(ModUtil.Hades.Triggers.OnEffectApply.Combat[1].Call,
 		function( baseFunc, triggerArgs )
 			local victim = triggerArgs.TriggeredByTable
@@ -4575,14 +4623,7 @@ end]]
 				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })
 					
 				victim.EnvyNextDamage = nil		
-			end
-			baseFunc(triggerArgs)
-		end
-	)
-	ModUtil.Hades.Triggers.OnHit.Combat[1].Call = ModUtil.Wrap(ModUtil.Hades.Triggers.OnHit.Combat[1].Call,
-		function( baseFunc, triggerArgs )
-			if triggerArgs.EffectName == "EnvyCurse" then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Hit"))
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
 			end
 			baseFunc(triggerArgs)
 		end
@@ -4611,7 +4652,7 @@ end]]
 		end
 	)
 	function TrackMaximumStatusOverTime(hero, args)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Legendary tracker"))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Legendary tracker"))
 		--thread( MaximumStatusOverTimeThread, args )
 	end
 	function MaximumStatusOverTimeThread( args )

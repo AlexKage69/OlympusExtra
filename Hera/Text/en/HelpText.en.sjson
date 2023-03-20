@@ -117,17 +117,17 @@
 		{
 			Id = "HeraRangedTrait"
 			DisplayName = "Resentful Shot"
-			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Small Orb Damage: \Column 380 {$TooltipData.DisplayDelta2}"
 		}
 		{
 			Id = "HeraRangedTrait_Initial"
 			InheritFrom = "HeraRangedTrait"
-			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Small Orb Damage: \Column 380 {$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "HeraRangedTrait_Tray"
 			InheritFrom = "HeraRangedTrait"
-			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1}"
+			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Small Orb Damage: \Column 380 {$TooltipData.NewTotal2}"
 		}
 		{
 			Id = "ShieldLoadAmmo_HeraRangedTrait"

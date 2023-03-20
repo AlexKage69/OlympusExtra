@@ -5,19 +5,6 @@ Projectiles = {
     Effects = [
       "_append" 
       {
-        Name = "JealousyCurse"
-        IgnoreName = "_PlayerUnit"
-        FrontFx = "DemeterSlowFront"
-        BackFx = "null"
-        Duration = 5
-        Modifier = 1
-        Amount = 0.1
-        Active = false
-        ExtendDurationOnReapply = true
-        IsVulnerabilityEffect = true
-        TimeModifierFraction = 0
-      }
-      {
         Name = "EnvyCurseAttack"
         IgnoreName = "_PlayerUnit"
         FrontFx = "StatusIconStunnedCombat"
