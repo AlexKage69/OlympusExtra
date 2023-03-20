@@ -4162,8 +4162,10 @@ end]]
 			if CurrentRun.Hero.HeraShout.Icon then
 				CurrentRun.Hero.HeraShout.PreviousIcon = CurrentRun.Hero.HeraShout.Icon
 			end
-			CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
-			table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
+			if ScreenAnchors.TraitAnchorIds then
+				CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
+				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
+			end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.HeraShout.Icon))
 		end
 		if CurrentRun.Hero.HeraShout.PreviousIcon then
@@ -4175,11 +4177,13 @@ end]]
 	ModUtil.Path.Wrap("StopSuper",
 		function(baseFunc)
 			baseFunc()
-			if CurrentRun.Hero.HeraShout == nil then
-				CurrentRun.Hero.HeraShout = {}
-			end	
-			CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[RandomNumber(TableLength(HeraExtra.GodsList))]
-			UpdateHeraShoutIcon()
+			if HeroHasTrait("HeraShoutTrait") then
+				if CurrentRun.Hero.HeraShout == nil then
+					CurrentRun.Hero.HeraShout = {}
+				end	
+				CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[RandomNumber(TableLength(HeraExtra.GodsList))]
+				UpdateHeraShoutIcon()
+			end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Select " .. CurrentRun.Hero.HeraShout.NextHeraGod))
 		end
 	)
@@ -4188,7 +4192,9 @@ end]]
 	ModUtil.Path.Wrap("ShowTraitUI",
 		function(baseFunc)
 			baseFunc()
-			UpdateHeraShoutIcon()
+			if HeroHasTrait("HeraShoutTrait") then
+				UpdateHeraShoutIcon()
+			end
 			--[[if CurrentRun.Hero.HeraShout and CurrentRun.Hero.HeraShout.NextHeraGod then
 				CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
 				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
@@ -4321,10 +4327,12 @@ end]]
 		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
 			victim.EnvyNextDamage = victim.EnvyNextDamage + victim.EnvyNextDamage * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
 		end
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("NextDamage"..triggerArgs.Modifier)) 	
 	end
 	function EnvyCurseClear(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
-		victim.EnvyNextDamage = nil
+		--victim.EnvyNextDamage = nil
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear"..triggerArgs.TriggeredByTable.EnvyNextDamage)) 	
 	end
 	function JealousyCurseApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
@@ -4336,15 +4344,25 @@ end]]
 			if not victim or ( victim.IsDead and victim ~= CurrentRun.Hero ) then
 				return
 			end
-			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect and not victim.EnvyFlag then
+				ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse" })	
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Skip")) 		
 				Damage(victim, { EffectName = "EnvyCurse", DamageAmount = victim.EnvyNextDamage, Silent = false, PureDamage = false })
-				if triggerArgs.EffectName ~= "EnvyCurse" then
-					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse" })					
+				if triggerArgs.EffectName ~= "EnvyCurse" then		
+					victim.EnvyNextDamage = victim.EnvyNextDamage * 2
+				else
+					--ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, WeaponName = "ArmorBreakAttack", EffectName = "EnvyCurse" })
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Other Envy")) 	
 				end
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Called")) 
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.Reapplied)) 
+				victim.EnvyFlag = true
+				ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId, WeaponName = "SwordWeapon", EffectName = "EnvyCurse" })
+			else
+				victim.EnvyFlag = false
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call")) 		
+				baseFunc(triggerArgs)
 			end
-			baseFunc(triggerArgs)
 		end
 	)
 	ModUtil.Path.Wrap("Kill",
@@ -4367,6 +4385,138 @@ end]]
 	ModUtil.Path.Wrap("AddTraitData",
 		function(baseFunc, unit, traitData, args)
 			baseFunc(unit, traitData, args)
+		end
+	)
+
+	function DoFullSuperDualPresentation( traitData, secondGod )
+		local currentRun = CurrentRun
+		SetPlayerInvulnerable( "Super" )
+		--AddInputBlock({ Name = "SuperPresentation" })
+		HideCombatUI("SuperPresentation")
+	
+		thread( DoRumble, { { RightTriggerStart = 2, RightTriggerStrengthFraction = 0.3, RightTriggerFrequencyFraction = 0.15, RightTriggerTimeout = 0.25, }, } )
+	
+		SetAnimation({ Name = "ZagreusWrath", DestinationId = currentRun.Hero.ObjectId })
+		CreateAnimation({ Name = "ZagreusWrathFire", DestinationId = CurrentRun.Hero.ObjectId, Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		ApplyEffectFromWeapon({ Id = currentRun.Hero.ObjectId, DestinationId = currentRun.Hero.ObjectId, WeaponName = "ShoutSelfSlow", EffectName = "ShoutSelfSlow", AutoEquip = true })
+		Rumble({ RightFraction = 0.7, Duration = 0.3 })
+		FocusCamera({ Fraction = 0.9, Duration = 0.02, ZoomType = "Ease" })
+		AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
+		AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
+		AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 0 })
+		AdjustRadialBlurDistance({ Fraction = 0.125, Duration = 0 })
+		AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.03, Delay=0 })
+		AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03, Delay=0 })
+	
+		--SetThingProperty({ Property = "TimeModifierFraction", Value = 1.0, DestinationId = currentRun.Hero.ObjectId, DataValue = false })
+	
+		--SetSoundCueValue({ Id = GetMixingId({}), Names = { "LowPass" }, Value = 1.0, Duration = 0.25 })
+		-- super activation sound
+		--PlaySound({ Name = "/Leftovers/SFX/MeteorStrikeShort" })
+		--PlaySound({ Name = "/VO/ZagreusEmotes/EmotePoweringUp", Id = currentRun.Hero.ObjectId })
+	
+		-- audio
+		local sourceName = traitData.God.."Upgrade"
+		thread( PlayVoiceLines, traitData.FullSuperActivatedVoiceLines or HeroVoiceLines.FullSuperActivatedVoiceLines )
+		PlaySound({ Name = LootData[sourceName].ShoutActivationSound or "/Leftovers/SFX/MeteorStrikeShort" })
+		AudioState.ShoutEffectSoundId = PlaySound({ Name = "/SFX/WrathStartNoEmote", Id = CurrentRun.Hero.ObjectId })
+	
+		--thread( PlayVoiceLines, HeroVoiceLines.SuperActivatedVoiceLines )
+		local wrathPresentationOffsetY = 150
+		local wrathStreak = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_UI" })
+		Teleport({ Id = wrathStreak, OffsetX = (1920/2), OffsetY = 800 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { wrathStreak } })
+		CreateAnimation({ Name = "WrathPresentationStreak", DestinationId = wrathStreak, Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		local godImage = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_Menu" })
+		Teleport({ Id = godImage, OffsetX = -300, OffsetY = (1080/2) + 80 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { godImage } })
+		CreateAnimation({ Name = LootData[traitData.God .. "Upgrade"].WrathPortrait, DestinationId = godImage, Scale = "1.0" })
+
+		local godImage2 = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_UI" })
+		Teleport({ Id = godImage2, OffsetX = 60, OffsetY = (1080/2) + 90 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { godImage2 } })
+		CreateAnimation({ Name = LootData[secondGod .. "Upgrade"].WrathPortrait, DestinationId = godImage2, Scale = "1.0" })
+		
+		local wrathStreakFront = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "Combat_Menu_Overlay" })
+		Teleport({ Id = wrathStreakFront, OffsetX = 900, OffsetY = 1150 + wrathPresentationOffsetY })
+		DrawScreenRelative({ Ids = { wrathStreakFront } })
+		CreateAnimation({ Name = "WrathPresentationBottomDivider", DestinationId = wrathStreakFront, Scale = "1.25", Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		local wrathVignette = SpawnObstacle({ Name = "BlankObstacle", DestinationId = currentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+		CreateAnimation({ Name = "WrathVignette", DestinationId = wrathVignette, Color = LootData[traitData.God .. "Upgrade"].LootColor })
+	
+		thread( ShoutSlow )
+	
+		ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Scripting", X = ScreenCenterX, Y = ScreenCenterY })
+	
+		local fullscreenAlertDisplacementFx = SpawnObstacle({ Name = "FullscreenAlertDisplace", Group = "FX_Displacement", DestinationId = ScreenAnchors.FullscreenAlertFxAnchor})
+		DrawScreenRelative({ Id = fullscreenAlertDisplacementFx })
+	
+		Move({ Id = godImage, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
+		Move({ Id = godImage2, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
+		Move({ Id = wrathStreakFront, Angle = 8, Distance = 200, Duration = 0.5, EaseIn = 0.9, EaseOut = 1, TimeModifierFraction = 0 })
+		Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
+	
+		SetColor({ Id = godImage, Color = {0, 0, 0, 1}, Duration = 0.05, TimeModifierFraction = 0 })
+		SetColor({ Id = wrathVignette, Color = {0, 0, 0, 0.4}, Duration = 0.05, TimeModifierFraction = 0 })
+	
+		waitScreenTime( 0.25, RoomThreadName )
+		AdjustFullscreenBloom({ Name = "Off", Duration = 0.1, Delay = 0 })
+		Move({ Id = godImage, Angle = 8, Distance = 100, Duration = 1, EaseIn = 0.5, EaseOut = 0.5, TimeModifierFraction = 0 })
+		Move({ Id = godImage2, Angle = 8, Distance = 100, Duration = 1, EaseIn = 0.5, EaseOut = 0.5, TimeModifierFraction = 0 })
+		Move({ Id = wrathStreakFront, Angle = 8, Distance = 25, Duration = 1, EaseIn = 0.5, EaseOut = 1, TimeModifierFraction = 0 })
+	
+		waitScreenTime( 0.35, RoomThreadName )
+		thread( PlayVoiceLines, LootData[sourceName].ShoutVoiceLines, false, LootData[sourceName] )
+	
+		waitScreenTime( 0.35, RoomThreadName )
+		FocusCamera({ Fraction = currentRun.CurrentRoom.ZoomFraction or 0.75, Duration = 0.25, ZoomType = "Ease" })
+	
+		-- Move({ Id = godImage, Angle = 170, Speed = 7000, TimeModifierFraction = 0 })
+		PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal3" })
+	
+		waitScreenTime( 0.1, RoomThreadName )
+		SetColor({ Id = godImage, Color = {1,1,1,1}, Duration = 0.1, TimeModifierFraction = 0 })
+		waitScreenTime( 0.1, RoomThreadName )
+		--SetThingProperty({ Property = "TimeModifierFraction", Value = 1.0, DestinationId = currentRun.Hero.ObjectId, DataValue = false })
+	
+		SetAlpha({ Id = godImage, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
+		SetAlpha({ Id = godImage2, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
+		SetAlpha({ Id = wrathVignette, Fraction = 0, Duration = 0.06 })
+		SetAlpha({ Id = fullscreenAlertDisplacementFx, Fraction = 0, Duration = 0.06 })
+		thread( CleanUpShoutPresentation, fullscreenAlertDisplacementFx)
+	
+		for k, enemy in pairs( ActiveEnemies ) do
+			if enemy.WrathReactionVoiceLines ~= nil then
+				local currentHealthFraction = enemy.Health / enemy.MaxHealth
+				if enemy.WrathReactionVoiceLines ~= nil and currentHealthFraction > (enemy.WrathReactionVoiceLineMinHealthThreshold or 0) then
+					thread( PlayVoiceLines, enemy.WrathReactionVoiceLines, nil, enemy )
+				end
+			end
+		end
+	
+		thread( CrowdReactionPresentation, { AnimationNames = { "StatusIconOhBoy", "StatusIconFear" }, Sound = "/SFX/TheseusCrowdCheer", ReactionChance = 0.08, Requirements = { RequiredRoom = "C_Boss01" }, Delay = 1, Shake = true, RadialBlur = true } )
+	
+		ShowCombatUI("SuperPresentation")
+		--RemoveInputBlock({ Name = "SuperPresentation" })
+		thread( RevulnerablePlayerAfterShout )
+	end
+	
+	ModUtil.Path.Wrap("FullSuperUsedPresentation",
+		function(baseFunc, traitData)
+			if traitData.God == "Hera" then
+				DoFullSuperDualPresentation(traitData, CurrentRun.Hero.HeraShout.NextHeraGod)
+				CheckAchievement( { Name = "AchGreaterCall" } )
+				if CurrentRun.CurrentRoom.Encounter.EncounterType == "Devotion" then
+					if CurrentRun.CurrentRoom.Encounter.SpurnedGodName == traitData.God.."Upgrade" then
+						CheckAchievement( { Name = "AchGreaterCallSpurned" } )
+					end
+				end	
+			else
+				baseFunc(traitData)			
+			end
 		end
 	)
 	-- Changes to Maps
