@@ -40,7 +40,7 @@
       StartFrame = 1
       OffsetZ = 60.0 
       RandomOffsetX = 50.0
-      RandomOffsetY = 25.0 /* 40.0 */
+      RandomOffsetY = 25.0 
 
       RadialOffsetMax = 200.0
       RadialOffsetMin = 150.0
@@ -88,31 +88,31 @@
       VisualFxIntervalMin = 0.001
       CreateAnimations = [
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
         {
-          Name = "HeraFeather"
+          Name = "SwordSwipeA-Feathers"
         }
 
       ]
@@ -141,7 +141,48 @@
         { DurationFrames = 0 }
       ]
     }
-    
+    {
+      Name = "SwordSwipeA-Feathers"
+      InheritFrom = "Animations\HermesFeather\HermesFeather"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "SwordSwipeA-HeraFeatherA"
+        }
+        {
+          Name = "SwordSwipeA-HeraFeatherB"
+        }]
+    }
+    {
+      Name = "SwordSwipeA-HeraFeatherA"
+      InheritFrom = "HeraFeatherA"
+      Type = "Book"
+      AngleMax = 80.0 
+      AngleMin = -60.0 
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      OffsetZ = 60.0 
+      RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 
+
+      RadialOffsetMax = 200.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleRadius = 500.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Acceleration = 0.0
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+    }
+    {
+      Name = "SwordSwipeA-HeraFeatherB"
+      InheritFrom = "SwordSwipeA-HeraFeatherA"
+      FilePath = "Hera\Fx\HeraFeatherB\HeraFeatherB"
+    }
     {
       Name = "SwordSwipeA-Hera"
       InheritFrom = "SwordSwipeAFlipped-Hera"
