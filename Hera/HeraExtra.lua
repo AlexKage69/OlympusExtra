@@ -48,7 +48,7 @@ if ModUtil ~= nil then
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
 				"DiscountHeraTrait",
-				"PriviledgeHeraTrait",
+				"PrivilegeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
 				"SnareOverTimeTrait",
@@ -120,6 +120,16 @@ if ModUtil ~= nil then
 		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
 		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
 		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash", "RangedWeapon"
+	}
+	OlympusWeaponSets.AssistWeapons = {
+		"NPC_Thanatos_01_Assist",
+		"NPC_FurySister_01_Assist",
+		"NPC_Sisyphus_01_Assist",
+		"NPC_Achilles_01_Assist",
+		"NPC_Patroclus_01_Assist",
+		"DusaFreezeShotSpray",
+		"DusaFreezeShotSpread",
+		"NPC_Cerberus_01_Assist",
 	}
 	OlympusWeaponData.HeraShoutWeapon = {
 		BlockWrathGain = true,
@@ -398,7 +408,7 @@ if ModUtil ~= nil then
 				"HeraSecondaryTrait",
 				"HeraShoutTrait",
 				"DiscountHeraTrait",
-				"PriviledgeHeraTrait",
+				"PrivilegeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
 				"SnareOverTimeTrait",
@@ -1284,7 +1294,7 @@ end]]
 		Name = "HeraRushTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_05",
+		Icon = "Boon_Hera_03",
 		Slot = "Rush",
 		PreEquipWeapons = { "MineTossZagreus" },
 		RarityLevels =
@@ -1341,24 +1351,24 @@ end]]
 				ChangeType = "Absolute",
 			},
 			--[[
-		{
-			WeaponNames = WeaponSets.HeroRushWeapons,
-			ProjectileProperty = "Range",
-			ChangeValue = 0.0,
-			ChangeType = "Absolute",
-		},
-		{
-			WeaponNames = WeaponSets.HeroRushWeapons,
-			EffectName = "DamageOverTime",
-			EffectProperty = "Active",
-			ChangeValue = true,
-		},
-		]]
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileProperty = "Range",
+				ChangeValue = 0.0,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				EffectName = "DamageOverTime",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			]]
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				ProjectileProperty = "DamageLow",
-				BaseMin = 30,
-				BaseMax = 30,
+				BaseMin = 50,
+				BaseMax = 50,
 				AsInt = true,
 				MinMultiplier = 0.1,
 				IdenticalMultiplier =
@@ -1381,7 +1391,7 @@ end]]
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
 		Slot = "Ranged",
-		Icon = "Boon_Hera_03",
+		Icon = "Boon_Hera_04",
 		CustomTrayText = "HeraRangedTrait_Tray",
 		--RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		PreEquipWeapons = { "" },
@@ -1594,7 +1604,7 @@ end]]
 		CustomTrayText = "HeraShoutTrait_Tray",
 		God = "Hera",
 		Slot = "Shout",
-		Icon = "Boon_Hera_04",
+		Icon = "Boon_Hera_05",
 		RarityLevels =
 		{
 			Common =
@@ -1814,8 +1824,7 @@ end]]
 
 	OlympusTraitData.DiscountHeraTrait =
 	{
-		Name = "DiscountHeraTrait",
-		Icon = "Boon_Hera_09",
+		Icon = "Boon_Hera_06",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "DiscountHeraTrait",
 		God = "Hera",
@@ -1850,10 +1859,9 @@ end]]
 			}
 		}
 	}
-	OlympusTraitData.PriviledgeHeraTrait =
+	OlympusTraitData.PrivilegeHeraTrait =
 	{
-		Name = "PriviledgeHeraTrait",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_07",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		RequiredMetaUpgradeSelected = "GodEnhancementMetaUpgrade",
@@ -1919,13 +1927,12 @@ end]]
 	}
 	OlympusTraitData.FamilyHeraTrait =
 	{
-		Name = "FamilyHeraTrait",
-		Icon = "Boon_Hera_10",
+		Icon = "Boon_Hera_08",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		RequiredMetaUpgradeSelected = "VulnerabilityEffectBonusMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 3,
-		RequiredFalseTrait = "PriviledgeHeraTrait",
+		RequiredFalseTrait = "PrivilegeHeraTrait",
 		RarityLevels =
 		{
 			Common =
@@ -1964,7 +1971,7 @@ end]]
 		Name = "MoreRewardTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_11",
+		Icon = "Boon_Hera_09",
 		RequiredFalseTrait = "MoreRewardTrait",
 		RarityLevels =
 		{
@@ -2009,7 +2016,7 @@ end]]
 	{
 		Name = "PeriodicCurseTrait",
 		InheritFrom = { "ShopTier1Trait" },
-		Icon = "Boon_Hera_07",
+		Icon = "Boon_Hera_10",
 		RequiredFalseTrait = "PeriodicCurseTrait",
 		PreEquipWeapons = {"JealousyCurseApplicator"},
 		RarityLevels =
@@ -2076,7 +2083,7 @@ end]]
 		Name = "GiveCurseDeathTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_06",
+		Icon = "Boon_Hera_12",
 		RequiredFalseTrait = "GiveCurseDeathTrait",
 		RarityLevels =
 		{
@@ -2097,13 +2104,28 @@ end]]
 				Multiplier = 2.50,
 			}
 		},
+		SpreadRadiusCurse = {
+			BaseValue = 1.0,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+		},
+		ExtractValues =
+		{
+			{
+				Key = "SpreadRadiusCurse",
+				ExtractAs = "TooltipMultiplier",
+				Format = "Percent",
+			}
+		}
 	}
 	OlympusTraitData.EnvyBurstTrait =
 	{
 		Name = "EnvyBurstTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_13",
+		Icon = "Boon_Hera_11",
 		RarityLevels =
 		{
 			Common =
@@ -2129,9 +2151,12 @@ end]]
 			{
 				Value = DuplicateMultiplier,
 			},
-			ExtractValue =
+		},
+		ExtractValues =
+		{
 			{
-				ExtractAs = "TooltipDamage",
+				Key = "EnvyBurstMultiplier",
+				ExtractAs = "TooltipMultiplier",
 				Format = "Percent",
 			}
 		}
@@ -2141,7 +2166,7 @@ end]]
 		Name = "StrongerJealousyTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
-		Icon = "Boon_Hera_08",
+		Icon = "Boon_Hera_13",
 		RarityLevels =
 		{
 			Common =
@@ -2172,7 +2197,7 @@ end]]
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
 		God = "Hera",
-		Icon = "Boon_Hera_12",
+		Icon = "Boon_Hera_14",
 		RarityLevels =
 		{
 			Common =
@@ -2192,6 +2217,27 @@ end]]
 				Multiplier = 1.86,
 			}
 		},
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseValue = 1.30,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ValidWeapons = WeaponSets.AssistWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamage",
+					Format = "PercentDelta",
+				},
+			}
+		},
 		PropertyChanges =
 		{
 
@@ -2203,7 +2249,7 @@ end]]
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "HealthAsObolTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_14",
+		Icon = "Boon_Hera_16",
 		PropertyChanges =
 		{
 
@@ -2215,7 +2261,7 @@ end]]
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "StatusOverTimeTrait",
 		God = "Hera",
-		Icon = "Boon_Hera_00",
+		Icon = "Boon_Hera_15",
 		PropertyChanges =
 		{
 
@@ -2339,7 +2385,7 @@ end]]
 
 		PriorityUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
 		WeaponUpgrades = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait", "HeraShoutTrait" },
-		Traits = { "MoreRewardTrait", "PeriodicCurseTrait", "MoreCompanionTrait" },
+		Traits = { "MoreRewardTrait", "PeriodicCurseTrait", "MoreCompanionTrait", "HealthAsObolTrait" },
 		Consumables = {},
 
 		LinkedUpgrades =
@@ -2353,22 +2399,20 @@ end]]
 			StrongerJealousyTrait = {
 				OneOf = { "HeraRangedTrait", "PeriodicCurseTrait" }, 
 			},
-			PriviledgeHeraTrait = {
+			PrivilegeHeraTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
 			},			
 			FamilyHeraTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
 			},
 			DiscountHeraTrait = {
-				OneOf = { "MoreRewardTrait", "MoreCompanionTrait" }, 
-			},
-			HealthAsObolTrait = {
-				OneOf = { "MoreRewardTrait", "MoreCompanionTrait" }, 				
+				OneOf = { "MoreRewardTrait", "MoreCompanionTrait", "HealthAsObolTrait" }, 
 			},
 			StatusOverTimeTrait = {
 				OneFromEachSet =
 				{
 					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait", "PeriodicCurseTrait" },
+					{ "GiveCurseDeathTrait", "EnvyBurstTrait", "StrongerJealousyTrait", "PrivilegeHeraTrait" },
 				}
 			},
 			-- Duos

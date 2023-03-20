@@ -96,7 +96,7 @@ ModUtil.LoadOnce(function()
             OlympusCodexMenuData.HeraUpgrade = {
                 "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait",
                 "HeraShoutTrait", "PeriodicCurseTrait", "MoreCompanionTrait", "GiveCurseDeathTrait",
-                "DiscountHeraTrait", "PriviledgeHeraTrait", "FamilyHeraTrait", "MoreRewardTrait",
+                "DiscountHeraTrait", "PrivilegeHeraTrait", "FamilyHeraTrait", "MoreRewardTrait",
                 "EnvyBurstTrait", "StrongerJealousyTrait", "StatusOverTimeTrait", "HealthAsObolTrait"
             }
 
