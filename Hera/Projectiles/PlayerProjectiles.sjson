@@ -11,17 +11,23 @@
       AffectsSelf = true
       CheckUnitImpact = true
       CheckObstacleImpact = true
-      UnlimitedUnitPenetration = false
-      Range = 1200
+      UnlimitedUnitPenetration = true
+      MultipleUnitCollisions = false
+      MultipleObstacleCollisions = false
+      Range = 600
       Fuse = 5
       Speed = 570
-      DamageLow = 5
-      DamageHigh = 5
-      DangerDistance = 200
+      DamageLow = 0
+      DamageHigh = 0
       UnpauseResetLocation = true
-      Thing = 
-      {
-        Graphic = "EnemyProjectileIn"
+      FlashBeforeExpireDuration = 0.5
+      SpawnOnDeath = "HeraProjectileSmall"
+      SpawnType = "PROJECTILE"
+      SpawnCount = 10
+      SpawnsEvenlySpaced = true
+      SpawnsSpeedModifierScaleY = 0.65
+      Thing = {
+        Graphic = "HeraRangedProjectile"
         OffsetZ = 50
         Tallness = 60
         AttachedAnim = "EnemyProjectileLight"
@@ -44,6 +50,78 @@
       }
       Effects = 
         [{
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          FrontFx = "DemeterSlowFront"
+          BackFx = "null"
+          Duration = 6
+          Modifier = 0.25
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    {
+      Name = "HeraProjectileSmall"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      DissipateGraphic = "EnemyProjectileImpact"
+      AffectsSelf = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = false
+      Range = 600
+      Speed = 570
+      DamageLow = 1
+      DamageHigh = 1
+      StartDelay = 0.2
+      InvulnerableToProjectileDefenseBeforeStart = true
+      ImpactFx = "EnemyProjectileImpactSmall"
+      Thing = {
+        Graphic = "EnemyProjectile"
+        OffsetZ = 50
+        Tallness = 60
+        AttachedAnim = "EnemyProjectileLight"
+        Grip = 999999
+        UseBoundsForSortDrawArea = true
+        RotateGeometry = true
+        Points = [
+          {
+            X = -24
+            Y = 0
+          }
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }]
+      }
+      Effects = 
+      [{
           Name = "OnHitStun"
           Duration = 0.7
           DisableMove = true

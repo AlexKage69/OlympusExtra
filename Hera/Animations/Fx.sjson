@@ -3947,63 +3947,24 @@
     }
     /* Cast */
     {
-      Name = "HeraLobProjectile"
-      CreateAnimation = "HeraLobProjectileDark"
-      FilePath = "Fx\DionysusProjectile\DionysusProjectile"
-      Type = "Book"
-      VisualFx = "HeraLobProjectileSmokeContainer"
-      EndFrame = 61
-      Loop = true
-      LoopFramesOnly = true
-      NumFrames = 61
-      PlaySpeed = 60.0
-      StartFrame = 1
-      RotationSpeed = 720.0
-      Ambient = 0.0
-      Color = {
-        Red = 0.0
-        Green = 1.0
-        Blue = -0.9
-      }
-      VisualFxIntervalMax = 0.02
-      VisualFxIntervalMin = 0.01
-    }
-   {
-      Name = "HeraLobProjectileSmokeContainer"
-      CreateAnimation = "HeraLobProjectileSmoke"
-      FilePath = "Dev\blank_invisible"
-      Type = "Constant"
-      EndAngle = 2.0
-      StartAngle = -2.0
+      Name = "HeraRangedProjectile"
+      InheritFrom = "EnemyProjectile"
+      ChainTo = "EnemyProjectile"
+      StartScale = 0.5
+      EndScale = 1
+      EaseIn = 0.9
+      EaseOut = 1.0
       Duration = 0.1
-      EndFrame = 1
-      NumFrames = 1
-      StartFrame = 1
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Take"
+      //AddColor = true
+      StartRed = 1.0
+      StartGreen = 1.0
+      StartBlue = 1.0
+      Loop = false
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      TransferFrameFromThis = true
+      RandomRotation = true
     }
-    {
-      Name = "HeraLobProjectileDark"
-      FilePath = "Fx/ProjectileFire/ProjectileFire"
-      GroupName = "FX_Dark"
-      Type = "Book"
-      ColorFromOwner = "Ignore"
-      Sound = "/SFX/Player Sounds/DionysusLobProjectileGas"
-      StopSoundOnFinishFade = 0.2
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      StartFrame = 1
-      DieWithOwner = true
-      Scale = 2.0
-      Ambient = 0.0
-      Color = 
-      {
-        Red = 2.0
-        Green = 2.0
-        Blue = 2.0
-      }
-    }    
     {
       Name = "HeraStrikeIndicator"
       Type = "Book"
