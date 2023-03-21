@@ -27,10 +27,10 @@
       AngleFromOwner = "Take"
       AngleMax = 80.0 
       AngleMin = -60.0 
-      StartRed = 1.0
+      StartRed = 0.0
       StartGreen = 1.0
       StartBlue = 1.0
-      EndRed = 1.0
+      EndRed = 0.0
       EndGreen = 1.0
       EndBlue = 1.0
       EndFrame = 49
@@ -431,11 +431,11 @@
     /* Hera - Sword - SecondaryTrait */
     {
       Name = "RadialNovaSwordParry-Hera"
-      InheritFrom = "RadialNova"
+      InheritFrom = "RadialNovaHera"
       GroupName = "FX_Terrain_Add"
-      StartRed = 1.0
-      StartGreen = 1.0
-      StartBlue = 1.0
+      /* StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53 */
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 24
@@ -460,16 +460,154 @@
         }
         {
           Name = "QuickFlashClearBlue"
-        }]
-    }{
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeather"
+        }
+        ]
+    }
+    {
       Name = "SwordParrySpikeHera"
       InheritFrom = "SwordParrySpike"
       Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
       }
     }
+    {
+      Name = "RadialNovaSwordParry-HeraFeather"
+      InheritFrom = "Animations\HermesFeather\HermesFeather"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "RadialNovaSwordParry-HeraFeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-HeraFeatherB"
+        }
+      ]
+    }
+    {
+      Name = "RadialNovaSwordParry-HeraFeatherA"
+      InheritFrom = "HeraFeatherA"
+      AngleMax = 360.0 
+      AngleMin = -360.0 
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      OffsetZ = 60.0 
+      RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 
+
+      RadialOffsetMax = 500.0
+      RadialOffsetMin = 400.0
+      RadialOffsetScaleRadius = 1000.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Acceleration = 0.0
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+    }
+    {
+      Name = "RadialNovaSwordParry-HeraFeatherB"
+      InheritFrom = "RadialNovaSwordParry-HeraFeatherA"
+      FilePath = "Hera\Fx\HeraFeatherB\HeraFeatherB"
+    }
+
     /* Hera - Spear - WeaponTrait */
     {
       Name = "SpearThrustProjectile-Hera"
@@ -478,7 +616,7 @@
       ChildAnimation = "SpearThrustTrail-Hera"
       CreateAnimation = "QuickFlashClearBlue"
       Sound = "/EmptyCue"
-      StartRed = 1.0
+      StartRed = 0.0
       StartGreen = 1.0
       StartBlue = 1.0
       ClearSlides = true
@@ -1098,7 +1236,7 @@
       Scale = 0.35
       CancelOverCap = true
       Color = {
-        Red = 1.0
+        Red = 0.0
         Green = 1.0
         Blue = 1.0
       }
@@ -1119,7 +1257,7 @@
       ScaleX = 2.5
       CancelOverCap = true
       Color = {
-        Red = 1.0
+        Red = 0.0
         Green = 1.0
         Blue = 1.0
       }
@@ -2108,7 +2246,7 @@
       Name = "GunGrenadeLuciferOrb-Hera"
       InheritFrom = "GunGrenadeLuciferOrb"
       ChildAnimation = "GunGrenadeLuciferOrbGlow-Hera"
-      Red = 1.0
+      Red = 0.0
       Green = 1.0
       Blue = 1.0
       StartRed = 0.80
@@ -2119,7 +2257,7 @@
     {
       Name = "GunGrenadeLuciferOrbGlow-Hera"
       InheritFrom = "GunGrenadeLuciferOrbGlow"
-      Red = 1.0
+      Red = 0.0
       Green = 1.0
       Blue = 1.0
       StartRed = 0.80
@@ -3318,9 +3456,9 @@
       LocationZFromOwner = "Take"
       GroupName = "Standing"
       Color = {
-        Red = 0.90
+        Red = 0.00
         Green = 0.55
-        Blue = 0.05
+        Blue = 0.53
       }
     }
     {
@@ -3549,9 +3687,9 @@
       Name = "RadialNova-Hera"
       InheritFrom = "RadialNova"
       GroupName = "FX_Terrain_Add"
-      Red = 0.98
-      Green = 0.45
-      Blue = 0.12
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 3
@@ -3649,7 +3787,7 @@
       AddColor = true
       EaseOut = 1.0
       EndFrame = 32
-      Red = 1.0
+      Red = 0.0
       Green = 1.0
       Blue = 1.0
       Scale = 0.8
@@ -3823,7 +3961,7 @@
       RotationSpeed = 720.0
       Ambient = 0.0
       Color = {
-        Red = 1.0
+        Red = 0.0
         Green = 1.0
         Blue = -0.9
       }
@@ -3879,7 +4017,7 @@
       Scale = 0.70
       Alpha = 0.5
       AddColor = true
-      StartRed = 1.0
+      StartRed = 0.0
       StartGreen = 0.65
       StartBlue = 0.0
       EndRed = 0.999
@@ -3917,7 +4055,7 @@
       FilePath = "Particles\particle_glow"
       GroupName = "FX_Standing_Add"
       ScaleFromOwner = "Ignore"
-      StartRed = 1.0
+      StartRed = 0.0
       StartGreen = 0.65
       StartBlue = 0.0
       EndRed = 0.5
@@ -3939,7 +4077,7 @@
       Material = "Unlit"
       Loop = true
       Alpha = 0.6
-      Red = 1.0
+      Red = 0.0
       Green = 0.65
       Blue = 0.0
       AngleFromOwner = "Ignore"
@@ -3969,17 +4107,7 @@
       AngleFromOwner = "Ignore"
       Scale = 0.4
     }
-    {
-      Name = "RadialNovaHera"
-      InheritFrom = "RadialNova"
-      LocationZFromOwner = "Take"
-      GroupName = "Standing"
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
+
     {
       Name = "AuraFxLight"
       FilePath = "Fx\BloodMine\BloodMineLight"
