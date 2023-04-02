@@ -18,8 +18,27 @@
           Name = "HeraFeatherB"
         }]
     }
-
-     {
+    {
+      Name = "QuickFlashTeal"
+      InheritFrom = "QuickFlash"
+      FilePath = "Particles\particle_quickflash"
+      AddColor = false
+      StartRed = 0.00
+      StartGreen = 1.0
+      StartBlue = 1.0
+      EndBlue = 0.55
+      EndGreen = 0.53
+      EndScale = 0.6
+      StartScale = 1.5
+      TimeModifierFraction = 1.0
+    }
+    {
+      Name = "QuickFlashTealSmall"
+      InheritFrom = "QuickFlashTeal"
+      Scale = 0.5
+      OffsetZ = 90
+    }
+    {
       Name = "HeraFeatherA"
       FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
       GroupName = "FX_Standing"
@@ -115,7 +134,7 @@
         { DurationFrames = 1 }
         /*Frame 1*/
         { DurationFrames = 1 }
-        { DurationFrames = 1 VisualFx = "QuickFlashClearBlue" }
+        { DurationFrames = 1 VisualFx = "QuickFlashTeal" }
         { DurationFrames = 1 }
         { DurationFrames = 1 }
         { DurationFrames = 1 }
@@ -216,7 +235,7 @@
     }{
       Name = "SwordSwipeB-Hera"
       InheritFrom = "SwordSwipeB"
-      ChildAnimation = "QuickFlashClearBlue"
+      ChildAnimation = "QuickFlashTeal"
       StartRed = 0.0
       StartGreen = 0.55
       StartBlue = 0.53
@@ -419,7 +438,7 @@
           Name = "SwordSwipeC-Arthur-Chroma"
         }
         {
-          Name = "QuickFlashClearBlueSmall"
+          Name = "QuickFlashTealSmall"
         }]
     }{
       Name = "ChargeAttack-Hera"
@@ -433,9 +452,9 @@
       Name = "RadialNovaSwordParry-Hera"
       InheritFrom = "RadialNovaHera"
       GroupName = "FX_Terrain_Add"
-      /* StartRed = 0.0
+      StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.53 */
+      StartBlue = 0.53 
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 24
@@ -459,7 +478,7 @@
           Name = "SwordParrySpikeHera"
         }
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "RadialNovaSwordParry-HeraFeather"
@@ -614,11 +633,11 @@
       InheritFrom = "SpearThrustProjectile"
       ChainTo = "SpearThrustDissipate-Hera"
       ChildAnimation = "SpearThrustTrail-Hera"
-      CreateAnimation = "QuickFlashClearBlue"
+      CreateAnimation = "QuickFlashTeal"
       Sound = "/EmptyCue"
       StartRed = 0.0
-      StartGreen = 1.0
-      StartBlue = 1.0
+      StartGreen = 0.55
+      StartBlue = 0.53
       ClearSlides = true
       Slides = [
         {
@@ -643,58 +662,41 @@
         }]
     }
     {
-      Name = "HeraFeather"
-      FilePath = "Animations\HermesFeather\HermesFeather"
+      Name = "SpearThrustProjectile-HeraFeather"
+      InheritFrom = "Animations\HermesFeather\HermesFeather"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
       StartFrame = 1
       Random = [
         {
-          Name = "HeraFeatherA"
+          Name = "SpearThrustProjectile-HeraFeatherA"
         }
         {
-          Name = "HeraFeatherB"
+          Name = "SpearThrustProjectile-HeraFeatherB"
         }]
     }
     {
-      Name = "HermesFeatherA"
-      FilePath = "Fx\HermesFeatherA\HermesFeatherA"
-      GroupName = "FX_Standing_Add"
-      Type = "Book"
+      Name = "SpearThrustProjectile-HeraFeatherA"
+      InheritFrom = "HeraFeatherA"
       AngleFromOwner = "Take"
-      AngleMax = 200.0
-      AngleMin = 160.0
-      EndGreen = 0.5
-      StartBlue = 1.0
-      StartGreen = 1.0
-      EndFrame = 49
-      NumFrames = 49
-      RandomPlaySpeedMax = 50.0
-      RandomPlaySpeedMin = 30.0
-      StartFrame = 1
-      OffsetZ = 60.0
-      RandomOffsetY = 40.0
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
-      Acceleration = -400.0
+      AngleNumOffset = 8
+      HoldLastFrame = false
+      RadialOffsetMax = 1.0
+      RadialOffsetMin = 1.0
+      RadialOffsetScaleRadius = 1000.0
+      RadialOffsetScaleY = 0.99
+      LocationFromOwner = "Take"
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Acceleration = 0.0
       Gravity = 50.0
-      VelocityMax = 500.0
-      VelocityMin = 100.0
-      RandomRotation = true
-      RandomRotationSpeedMax = 360.0
-      RandomRotationSpeedMin = -360.0
-      ScaleFromOwner = "Ignore"
-      ScaleMax = 0.6
-      ScaleMin = 0.2
-      Ambient = 0.0
-      CancelOverCap = true
-      OnlyWhenVisible = true
+      VelocityMax = 100.0
+      VelocityMin = -100.0
     }
     {
-      Name = "HermesFeatherB"
-      InheritFrom = "HermesFeatherA"
-      FilePath = "Fx\HermesFeatherB\HermesFeatherB"
+      Name = "SpearThrustProjectile-HeraFeatherB"
+      InheritFrom = "SpearThrustProjectile-HeraFeatherA"
+      FilePath = "Hera\Fx\HeraFeatherB\HeraFeatherB"
     }
     {
       Name = "SpearThrustDissipate-Hera"
@@ -705,41 +707,41 @@
       StartBlue = 0.05
       CreateAnimations = [
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }]
     }{
       Name = "SpearThrustTrail-Hera"
       InheritFrom = "SpearThrustTrail"
-      StartRed = 0.80
+      StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.05
+      StartBlue = 0.53
     }
     {
       Name = "SpearDashSwipe-Hera"
@@ -748,52 +750,52 @@
     }{
       Name = "SpearDashSwipeFx-Hera"
       InheritFrom = "SpearDashSwipeFx"
-      StartRed = 0.80
+      StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.05
+      StartBlue = 0.53
       ChildAnimation = "SpearDashSwipeFxB-Hera"
     }{
       Name = "SpearDashSwipeFxB-Hera"
       InheritFrom = "SpearDashSwipeFxB"
-      StartRed = 0.80
+      StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.05
+      StartBlue = 0.53
       CreateAnimations = [
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
         {
-          Name = "SpearThrustProjectile-HeraSparkles"
+          Name = "SpearThrustProjectile-HeraFeather"
         }
       ]
     }
     {
       Name = "SpearSwipeDashBaseParticles-Hera"
       InheritFrom = "SpearSwipeDashBaseParticles"
-      StartRed = 0.80
+      StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.05
+      StartBlue = 0.53
     }{
       Name = "TheseusSpearSwipeHera"
       InheritFrom = "SpearSwipe360-Hera"
@@ -968,7 +970,7 @@
     {
       Name = "SpearThrowProjectileGlow-Hera"
       InheritFrom = "SpearThrowProjectileGlow"
-      ChildAnimation = "QuickFlashClearBlue"
+      ChildAnimation = "QuickFlashTeal"
       StartRed = 0.80
       StartGreen = 0.55
       StartBlue = 0.05
@@ -1014,7 +1016,7 @@
           Name = "SpearRushDashPuff"
         }
         {
-          Name = "QuickFlashClearBlueSmall"
+          Name = "QuickFlashTealSmall"
         }]
     }{
       Name = "SpearRushTrail-Hera"
@@ -1072,7 +1074,7 @@
       EaseOut = 1.0
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "HeraBowTwinkle"
@@ -1425,7 +1427,7 @@
       VisualFxIntervalMin = 0.05
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "ShieldSwipeADisplace"
@@ -1569,7 +1571,7 @@
     {
       Name = "ShieldRush3D-Hera"
       InheritFrom = "ShieldRush3D"
-      CreateAnimation = "QuickFlashClearBlue"
+      CreateAnimation = "QuickFlashTeal"
       VisualFx = "ShieldRushTrail-Hera"
       Sound = "/SFX/Player Sounds/ZagreusShieldRush"
       StartRed = 0.80
@@ -1594,7 +1596,7 @@
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "WeaponProjectile-HeraSparkles"
@@ -1664,7 +1666,7 @@
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "BeowulfShieldSlamDark"
@@ -1827,7 +1829,7 @@
           Name = "ShieldThrowTrailMirageDark"
         }
         {
-          Name = "QuickFlashClearBlueSmall"
+          Name = "QuickFlashTealSmall"
         }
         {
           Name = "RadialNovaShieldThrow-Hera"
@@ -2201,7 +2203,7 @@
       StartBlue = 0.05
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "GrenadeExplosionLightingHera"
@@ -2305,7 +2307,7 @@
           Name = "LuciferBombDropDisplace"
         }
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }]
     }
     {
@@ -2413,7 +2415,7 @@
       StartBlue = 0.05  
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "ShotgunBlastWaveA-Hera"
@@ -2430,7 +2432,7 @@
       CreateAnimation = "GunShotgunBlastDarkFlipped"
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "ShotgunBlastWaveA-Hera"
@@ -2617,7 +2619,7 @@
           Name = "SwordParrySpike"
         }
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }]
     }{
       Name = "ClawSwipe-Hera"
@@ -2631,7 +2633,7 @@
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }]
     }
     {
@@ -2768,7 +2770,7 @@
       Red = 0.80
       Green = 0.55
       Blue = 0.05
-      ChildAnimation = "QuickFlashClearBlue"
+      ChildAnimation = "QuickFlashTeal"
     }
      {
       Name = "ProjectileFireRingFireball-Hera"
@@ -3399,7 +3401,7 @@
           Name = "TheseusWrathSpikeHera"
         }
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }
         {
           Name = "RadialNovaHera-Sparkles"
@@ -3716,7 +3718,7 @@
           Name = "AthenaProjectileImpactSwordParry"
         }
         {
-          Name = "QuickFlashClearBlue"
+          Name = "QuickFlashTeal"
         }]
     }
     {
@@ -3749,7 +3751,7 @@
     }
     {
       Name = "BlinkTrailFlash-Hera"
-      InheritFrom = "QuickFlashClearBlue"
+      InheritFrom = "QuickFlashTeal"
       AngleFromOwner = "Take"
       Duration = 0.4
       Scale = 0.5
@@ -3925,7 +3927,7 @@
       FilePath = "Fx\ZeusStaticArcC\ZeusStaticArcC"
     }
     {
-      Name = "QuickFlashClearBlue"
+      Name = "QuickFlashTeal"
       InheritFrom = "QuickFlash"
       FilePath = "Particles\particle_quickflash"
       AddColor = false
@@ -3940,8 +3942,8 @@
       TimeModifierFraction = 1.0
     }
     {
-      Name = "QuickFlashClearBlueSmall"
-      InheritFrom = "QuickFlashClearBlue"
+      Name = "QuickFlashTealSmall"
+      InheritFrom = "QuickFlashTeal"
       Scale = 0.5
       OffsetZ = 90
     }
