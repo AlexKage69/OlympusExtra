@@ -40,22 +40,22 @@
 		{
       		Id = "EnvyCurse"
 			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., victim takes additionnal damage upon applying {$Keywords.Status}."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., victim takes additional damage upon applying a {$Keywords.Status}. Double damage if applied {$Keywords.Status} is not Envy."
 		}
 		{
       		Id = "HeraTrap"
 			DisplayName = "Traps"
-			Description = "Traps stay on the ground until victim walks on it. Only 5 traps at a time."
+			Description = "Traps remain on the ground until a victim walks on it. A maximum of 5 traps can be present at one time."
 		}
 		{
       		Id = "Aura"
 			DisplayName = "Aura"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Foes in radius receive Curse"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Nearby foes are affected by a specific {$Keywords.Status}"
 		}
 		{
       		Id = "SpecialDiscount"
-			DisplayName = "Special Discount"
-			Description = "One item from Well of Charon is cheaper than others."
+			DisplayName = "Special Sale"
+			Description = "One of the items from the Well of Charon is cheaper than the others."
 		}
 		{
 			Id = "HeraWeaponTrait"
@@ -80,12 +80,12 @@
 		{
 			Id = "HeraRushTrait"
 			DisplayName = "Trap Dash"
-			Description = "Your {$Keywords.Dash} leaves {$Keywords.HeraTrap} behind. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}Number of {$Keywords.HeraTrap}: \Column 380 {#UpgradeFormat}5"
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}Number of {$Keywords.HeraTrap}: \Column 380 {#UpgradeFormat}5"
 		} 
 		{
 			Id = "HeraRushTrait_Initial"
 			InheritFrom = "HeraRushTrait"
-			Description = "Your {$Keywords.Dash} leaves {$Keywords.HeraTrap} behind. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}\n {!Icons.Bullet}{#PropertyFormat}Number of {$Keywords.HeraTrap}: \Column 380 {#UpgradeFormat}5"
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}\n {!Icons.Bullet}{#PropertyFormat}Number of {$Keywords.HeraTrap}: \Column 380 {#UpgradeFormat}5"
 		}
 		{
 			Id = "HeraSignoff"
@@ -102,17 +102,17 @@
 		{
 			Id = "HeraShoutTrait"
 			DisplayName = "Hera's Aid"
-			Description = "Your {$Keywords.WrathDerivedStocks} comes from another god's {$Keywords.WrathDerivedStocks}. \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}%{#PreviousFormat}"
+			Description = "Your {$Keywords.WrathDerivedStocks} summons another god's or goddess's {$Keywords.WrathDerivedStocks}. \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}%{#PreviousFormat}"
 		}		
 		{
 			Id = "HeraShoutTrait_Tray"
 			InheritFrom = "HeraShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} comes from another god's {$Keywords.WrathDerivedStocks}. \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}%{#PreviousFormat}"
+			Description = "Your {$Keywords.WrathDerivedStocks} summons another god's or goddess's {$Keywords.WrathDerivedStocks}. \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}%{#PreviousFormat}"
 		}	
 		{
 			Id = "HeraShoutTrait_Initial"
 			InheritFrom = "HeraShoutTrait"
-			Description = "Your {$Keywords.WrathDerivedStocks} comes from another god's {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}%{#PreviousFormat}"
+			Description = "Your {$Keywords.WrathDerivedStocks} summons another god's or goddess's {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}%{#PreviousFormat}"
 		} 
 		{
 			Id = "HeraRangedTrait"
@@ -158,13 +158,13 @@
 		}
 		{
 			Id = "DiscountHeraTrait",
-			DisplayName = "Loyal Relation"
-			Description = "All items are discounted. {$Keywords.SpecialDiscount} available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
+			DisplayName = "Loyal Relations"
+			Description = "All items are discounted. Sometimes, a {$Keywords.SpecialDiscount} is available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
     	}
 		{
 			Id = "DiscountHeraTrait_Initial",
 			InheritFrom = "DiscountHeraTrait"
-			Description = "All items are discounted. {$Keywords.SpecialDiscount} available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
+			Description = "All items are discounted. Sometimes, a {$Keywords.SpecialDiscount} is available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
     	}
 		{
 			Id = "PrivilegeHeraTrait"
@@ -174,12 +174,12 @@
 		{
 			Id = "PrivilegeHeraTrait_Initial"
 			InheritFrom = "PrivilegeHeraTrait"
-			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Boon: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "For each of your {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian, deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Boon: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "PrivilegeHeraTrait_Tray"
 			InheritFrom = "PrivilegeHeraTrait"
-			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "For each of your {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian, deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "FamilyHeraTrait"
@@ -194,32 +194,32 @@
 		{
 			Id = "MoreRewardTrait"
 			DisplayName = "Royal Inheritance"
-			Description = "Pool of Purging, Infernal Trove and Urns are more rewarding. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Pools of Purging, Infernal Troves and Urns are more rewarding. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "MoreRewardTrait_Initial"
 			InheritFrom = "MoreRewardTrait"
-			Description = "Pool of Purging, Infernal Trove and Urns are more rewarding. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "Pools of Purging, Infernal Troves and Urns are more rewarding. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "PeriodicCurseTrait"
 			DisplayName = "Constant Torment"
-			Description = "After some time, a random foe gets inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
+			Description = "Every few seconds, a random foe is inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
 		}
 		{
 			Id = "PeriodicCurseTrait_Initial"
 			InheritFrom = "PeriodicCurseTrait"
-			Description = "After some time, a random foe gets inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
+			Description = "Every few seconds, a random foe is inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
 		}
 		{
 			Id = "GiveCurseDeathTrait"
 			DisplayName = "Last Goodbye"
-			Description = "Foes dying with {$Keywords.EnvyCurse} gives their curse to the nearest foe. \n {!Icons.Bullet}{#PropertyFormat}Radius: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "When foes inflicted with {$Keywords.EnvyCurse} are slain, transfer their inflicted {$Keywords.Status} to a nearby foe."
 		}
 		{
 			Id = "GiveCurseDeathTrait_Initial"
 			InheritFrom = "GiveCurseDeathTrait"
-			Description = "Foes dying with {$Keywords.EnvyCurse} gives their curse to the nearest foe. \n {!Icons.Bullet}{#PropertyFormat}Radius: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "When foes inflicted with {$Keywords.EnvyCurse} are slain, transfer their inflicted {$Keywords.Status} to a nearby foe."
 		}
 		{
 			Id = "StrongerJealousyTrait"
@@ -234,17 +234,17 @@
 		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied to a foe, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "EnvyBurstTrait_Initial"
 			InheritFrom = "EnvyBurstTrait"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied to a foe, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "MoreCompanionTrait"
 			DisplayName = "Favored Chaperone"
-			Description = "Visiting Charon gives {#UpgradeFormat}+1 {#PreviousFormat} use of your {#BoldFormat}Chthonic Companion{#PreviousFormat}'s {$Keywords.Assist}. \n {!Icons.Bullet}{#PropertyFormat}Chthonic Companion Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Visiting Charon replenishes {#UpgradeFormat}+1 {#PreviousFormat} use of your {#BoldFormat}Chthonic Companion{#PreviousFormat}'s {$Keywords.Assist}. \n {!Icons.Bullet}{#PropertyFormat}Chthonic Companion Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "MoreCompanionTrait_Initial"
@@ -264,11 +264,11 @@
 		{
 			Id = "StatusOverTimeTrait"
 			DisplayName = "Sovereign Sanctuary"
-			Description = "Foe afflicted by at least 3 {$Keywords.Status}, foe decays. \n {!Icons.Bullet}{#PropertyFormat}Decay Damage: \Column 380 {$TooltipData.TooltipDamage} {#ItalicFormat}(every {$TooltipData.TooltipTickRate} Sec.)"
+			Description = "Foes afflicted by at least 3 {$Keywords.Status}s decay. \n {!Icons.Bullet}{#PropertyFormat}Decay Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}{#PreviousFormat} {#ItalicFormat}(every {$TooltipData.TooltipTickRate} Sec.)"
 		}
 		{
 			Id = "ForceHeraBoonTrait"
-			DisplayName = "Skulls Ornements"
+			DisplayName = "Skull Ornaments"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Hera{#PreviousFormat}. Her blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
@@ -278,7 +278,7 @@
 		}
 		{
 			Id = "ForceHeraBoonTrait_Inactive"
-			DisplayName = "Skulls Ornements"
+			DisplayName = "Skull Ornaments"
 			Description = "Hera's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat} or better."
 		}
 		{
@@ -286,58 +286,6 @@
 			DisplayName = "Danger Zone"
 			Description = "{$Keywords.Traps} and {$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Traps} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.LavaSplash} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}{#AltUpgradeFormat}" 
 		}	
-		{
-			Id = "FreeHealthTrait"
-			DisplayName = "Unrequited Love"
-			Description = "After you defeat {$Keywords.BossPlural}, gain a {$Keywords.CentaurHeart}.\n After you defeat {$Keywords.MiniBoss}, gain a {$Keywords.CentaurSoul}."
-		}	
-		{
-			Id = "FreeHealthText",
-			DisplayName = "{#CombatTextHighlightFormat}Loving Embrace!{#PreviousFormat}!"
-		}
-		{
-			Id = "UseEmptyHealthDrop"
-			DisplayName = "{I} Gain {#UseTextHealingFormat}+{$TempTextData.TooltipMaxHealth} {!Icons.HealthUpAlt_Small} {#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
-		}
-		{
-			Id = "ExplosionTrait"
-			DisplayName = "Striking Sparks"
-			Description = "Your {$Keywords.Crit} effects create an explosion. \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
-    	}
-		{
-			Id = "ChillFireTrait"
-			DisplayName = "Icy Scorches"
-			Description = "Your {$Keywords.Dash} inflicts continous {$Keywords.Chill} and creates {#BoldFormat}2 {#PreviousFormat} additionnal trail of fire."
-		}	
-		{
-			Id = "FullHealBossTrait"
-			DisplayName = "Quick Drink"
-			Description = "Encounters with {$Keywords.BossPlural} and {$Keywords.MiniBoss} restores {#ItalicFormat}all {#PreviousFormat}{!Icons.Health_Small} upon entering."
-		}
-		{
-			Id = "FullHealBossText",
-			DisplayName = "{#CombatTextHighlightFormat}Quick Drink!{#PreviousFormat}!"
-    	}
-		{
-			Id = "FoesNumberDamageTrait"
-			DisplayName = "Raging Flames"
-			Description = "When there's at least {#BoldFormat}6 {#PreviousFormat} foes, your {$Keywords.Attack}, {$Keywords.Special}, and {$Keywords.Cast} deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
-		}	
-		{
-			Id = "PullZeusCastTrait"
-			DisplayName = "Magnetic Force"
-			Description = "Your {$Keywords.Cast} bounces {#BoldFormat}3 {#PreviousFormat} additionnal times and pulls foes on hit."
-		}
-		{
-			Id = "FishingRewardExtraTrait"
-			DisplayName = "Fish Stew" 
-			Description = "{$Keywords.FishingPoint}{#BoldFormat}s {#PreviousFormat} gives more rewards and {#AltUpgradeFormat}+1 Lv.{!Icons.RandomPomSmall} {#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Fish caught: \Column 380 {#UpgradeFormat}x2"
-		}
-		{
-			Id = "ShoutMoreHealTrait"
-			DisplayName = "Summertime" 
-			Description = "Your {$Keywords.WrathDerivedStocks} restores {#BoldFormat}5{#PreviousFormat} {!Icons.Health_Small} per foe hit."
-		}
 		{
 			Id = "LtUpgrade_Hera"
 			DisplayName = "Blessed foes now curse you."
