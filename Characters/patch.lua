@@ -192,13 +192,30 @@ end
         end
 	end
 )]]
+function ForceNextRoomFunc(value)
+    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Forced:"..value))
+
+    -- Stomp any rooms already assigned to doors
+    for doorId, door in pairs( OfferedExitDoors ) do
+        local room = door.Room
+        if room ~= nil then
+            --ForceNextEncounter = "MiniBossSpreadShot"
+
+            local forcedRoomData = RoomData[value]
+            local forcedRoom = CreateRoom( forcedRoomData )
+            AssignRoomToExitDoor( door, forcedRoom )
+        end
+    end
+end
 ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
             
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
+            --ForceNextRoomFunc("A_Shop01")
 			--LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
+            --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
 			baseFunc()
 		end
 	)

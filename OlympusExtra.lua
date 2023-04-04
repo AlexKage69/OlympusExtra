@@ -97,7 +97,7 @@ ModUtil.LoadOnce(function()
                 "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait",
                 "HeraShoutTrait", "PeriodicCurseTrait", "MoreCompanionTrait", "GiveCurseDeathTrait",
                 "DiscountHeraTrait", "PrivilegeHeraTrait", "FamilyHeraTrait", "MoreRewardTrait",
-                "EnvyBurstTrait", "StrongerJealousyTrait", "StatusOverTimeTrait", "HealthAsObolTrait"
+                "EnvyBurstTrait", "StatusOverTimeTrait", "HealthAsObolTrait"
             }
 
             -- Apollo duos

@@ -16,6 +16,10 @@ if ModUtil ~= nil then
 	OlympusColor.HeraVoice = { 54, 67, 55, 255 }
 	OlympusColor.HeraDamageLight = { 54, 67, 55, 255 }
 	OlympusColor.HeraDamage = { 54, 67, 55, 255 }
+	OlympusColor.JealousyDamageStart = { 158,136,121,255 }
+	OlympusColor.JealousyDamageEnd = { 128,111,104,255 }
+	OlympusColor.EnvyDamageStart = {35,123,94,255 }
+	OlympusColor.EnvyDamageEnd = { 34,110,86,255 }
 	--EnemyUpgradeData
 	local OlympusEnemyUpgradeData = ModUtil.Entangled.ModData(EnemyUpgradeData)
 	OlympusEnemyUpgradeData.HeraUpgrade =
@@ -234,22 +238,22 @@ if ModUtil ~= nil then
 
 	OlympusEffectData.JealousyCurse =
 	{
-		DamageTextStartColor = Color.RamaDamageStart,
-		DamageTextColor = Color.RamaDamageEnd,
+		DamageTextStartColor = Color.JealousyDamageStart,
+		DamageTextColor = Color.JealousyDamageEnd,
 		OnApplyFunctionName = "JealousyCurseApply",
 		OnClearFunctionName = "JealousyCurseClear",		
 	}
 	OlympusEffectData.EnvyCurseAttack =
 	{
-		DamageTextStartColor = Color.RamaDamageStart,
-		DamageTextColor = Color.RamaDamageStart,
+		DamageTextStartColor = Color.EnvyDamageStart,
+		DamageTextColor = Color.EnvyDamageEnd,
 		OnApplyFunctionName = "EnvyCurseAttackApply",
 		OnClearFunctionName = "EnvyCurseAttackClear",
 	}
 	OlympusEffectData.EnvyCurseSecondary =
 	{
-		DamageTextStartColor = Color.RamaDamageStart,
-		DamageTextColor = Color.RamaDamageStart,
+		DamageTextStartColor = Color.EnvyDamageStart,
+		DamageTextColor = Color.EnvyDamageEnd,
 		OnApplyFunctionName = "EnvyCurseSecondaryApply",
 		OnClearFunctionName = "EnvyCurseSecondaryClear",
 	}
@@ -2326,6 +2330,7 @@ end]]
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredFalseTrait = "MoreCompanionTrait",
 		RequiredFalseBiome = "Styx",
+		RequiredSlottedTrait = "Assist",
 		God = "Hera",
 		Icon = "Boon_Hera_14",
 		RarityLevels =
@@ -2378,6 +2383,7 @@ end]]
 		Name = "HealthAsObolTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "HealthAsObolTrait",
+		RequiredFalseBiome = "Styx",
 		God = "Hera",
 		Icon = "Boon_Hera_16",
 		RarityLevels =
@@ -4626,20 +4632,24 @@ end]]
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
 			end
 			baseFunc(triggerArgs)
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs))
+			
 		end
 	)
-
 	ModUtil.Path.Wrap("Kill",
 	function(baseFunc, victim, triggerArgs)
-		if HeroHasTrait("GiveCurseDeathTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "EnvyCurse" }) then
+		if HeroHasTrait("GiveCurseDeathTrait") --[[and HasEffect({ Id = victim.ObjectId, EffectName = "EnvyCurse" })]] then
 			local id = GetClosest({ Id = victim.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 800 })
 			local enemy = ActiveEnemies[id]
 			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock and victim.ActiveEffects then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(victim.ActiveEffects)) 
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Name)) 
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(victim.ActiveEffects)) 
 				if enemy.ActiveEffects == nil then
 					enemy.ActiveEffects = {}
 				end
 				--ModUtil.Table.Merge(enemy.ActiveEffects,victim.ActiveEffects)
+				Damage(enemy, { DamageAmount = 1, Silent = false, PureDamage = false })
+				
 			end
 		end
 		baseFunc(victim, triggerArgs)
@@ -4790,7 +4800,182 @@ end]]
 		--RemoveInputBlock({ Name = "SuperPresentation" })
 		thread( RevulnerablePlayerAfterShout )
 	end
+	-- HealthAsObol crazy mechanics
 	
+	--[[ModUtil.Path.Wrap("SpawnStoreItemInWorld",
+		function(baseFunc, itemData, kitId)
+			baseFunc(itemData, kitId)			
+			for index, item in ipairs(CurrentRun.CurrentRoom.Store.SpawnedStoreItems) do
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(item)) 
+			end
+		end
+	)]]
+	OnControlPressed{ "Gift",
+		function( triggerArgs )
+			local target = triggerArgs.UseTarget
+			if target == nil then
+				return
+			end
+			if target.SacrificeCost then
+				if target.Rarity then
+					local interactionBlocked = false
+					if not CurrentRun.CurrentRoom.AlwaysAllowLootInteraction then
+						for enemyId, enemy in pairs( ActiveEnemies ) do
+							if enemy.BlocksLootInteraction then
+								interactionBlocked = true
+								break
+								--DebugPrint({ Text = "blockedByEnemy = "..GetTableString( nil, enemy ) })
+							end
+						end
+					end
+
+					if interactionBlocked then
+						local userTable = triggerArgs.TriggeredByTable
+						thread( CannotUseLootPresentation, triggerArgs.triggeredById, userTable )
+						CreateAnimation({ Name = "ShoutFlare", DestinationId = triggerArgs.triggeredById })
+					elseif not AreScreensActive() then		
+						if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
+							CantAffordPresentation( target )
+							return
+						end
+						if target.SacrificeCost ~= nil and target.SacrificeCost > 0 then
+							target.Purchased = true
+							SacrificeHealth({ SacrificeHealth = target.SacrificeCost, MinHealth = 1 })
+							RemoveStoreItem({Name = target.Name, IsBoon = true, BoonRaritiesOverride = target.BoonRaritiesOverride, StackNum = target.StackNum })
+							PlaySound({ Name = "/Leftovers/Menu Sounds/StoreBuyingItem" })
+							thread( PlayVoiceLines, GlobalVoiceLines.PurchasedConsumableVoiceLines, true )
+						end
+
+						if target.RarityBoosted then
+							UseHeroTraitsWithValue("RarityBonus", true )
+						end
+						
+						SetPlayerInvulnerable( "HandleLootPickupAnimation" )
+						PlayInteractAnimation( triggerArgs.triggeredById )
+						HandleLootPickup( CurrentRun, target )
+						SetPlayerVulnerable( "HandleLootPickupAnimation" )
+					end
+				else
+					if CurrentRun.Hero.HandlingDeath then
+						return
+					end
+			
+					if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
+						CantAffordPresentation( target )
+						return
+					end
+					if target.SacrificeCost ~= nil and target.SacrificeCost > 0 and target.PurchaseRequirements ~= nil and not IsGameStateEligible( CurrentRun, target.PurchaseRequirements ) then
+						CantPurchaseWorldItemPresentation( target )
+						return
+					end
+					target.UseSacrifice = true
+					PurchaseConsumableItem( CurrentRun, target, triggerArgs )
+				end
+			end
+		end
+	}
+	ModUtil.Path.Wrap("HandleLootPickup",
+		function(baseFunc, currentRun, loot)
+			if loot.SacrificeId then
+				Destroy({ Id = loot.SacrificeId })
+			end
+			baseFunc(currentRun, loot)
+		end
+	)
+	ModUtil.Path.Wrap("PurchaseConsumableItem",
+		function(baseFunc, currentRun, consumableItem, args)
+			if consumableItem.SacrificeCost and consumableItem.UseSacrifice then
+				ConsumableUsedPresentation( currentRun, consumableItem, args )
+		
+				IncrementTableValue( GameState.ItemInteractions, consumableItem.Name )
+				CheckCodexUnlock( "Items", GetGenusName( consumableItem ))
+		
+				currentRun.ConsumableRecord[consumableItem.Name] = (currentRun.ConsumableRecord[consumableItem.Name] or 0) + 1
+		
+				RemoveStoreItem({ Name = consumableItem.Name })
+				SacrificeHealth({ SacrificeHealth = consumableItem.SacrificeCost, MinHealth = 1 })
+				consumableItem.IgnorePurchase = true
+			end
+			if consumableItem.SacrificeId then
+				Destroy({ Id = consumableItem.SacrificeId })
+			end
+			baseFunc(currentRun, consumableItem, args)
+		end
+	)
+	ModUtil.Path.Wrap("UpdateHealthUI",
+		function(baseFunc, damageEventArgs)
+			baseFunc(damageEventArgs)
+			if CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.SpawnedStoreItems ~= nil then
+				for i, item in pairs(CurrentRun.CurrentRoom.Store.SpawnedStoreItems) do
+					UpdateCostText( item, true )
+				end
+			end
+		end
+	)
+	ModUtil.Path.Wrap("UpdateCostText",
+		function(baseFunc, object, textExists)
+			baseFunc(object, textExists)
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(object.Name))
+			if object.SacrificeCost ~= nil and object.SacrificeCost > 0 then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(object.SacrificeCost))
+				local costFontColor = Color.CostAffordable
+				if CurrentRun.Hero.Health < object.SacrificeCost and not object.Purchased then
+					costFontColor = Color.CostUnaffordable
+				end
+
+				if object.SacrificeId then
+					ModifyTextBox({ Id = object.SacrificeId, ColorTarget = costFontColor, ColorDuration = 0.2 })
+				else
+					object.SacrificeId = SpawnObstacle({ Name = "BlankObstacle", DestinationId = object.ObjectId, Group = "Standing" })
+					CreateTextBox({ Id = object.SacrificeId, Text = "Shop_ItemSacrifice", TextSymbolScale = 0.6, LuaKey = "TempTextData", LuaValue = { SacrificeCost = object.SacrificeCost }, FontSize = 24, OffsetY = -280, Color = costFontColor, Justification = "CENTER",
+						Font="AlegreyaSansSCBold",
+						FontSize=36,
+						ShadowColor = {0,0,0,1},
+						ShadowOffset= {0,2},
+						ShadowAlpha=1,
+						ShadowBlur=0,
+						OutlineColor={0,0,0,1},
+						OutlineThickness=2,
+					})
+				end
+			end
+		end
+	)
+	ModUtil.Path.Wrap("CreateLoot",
+		function(baseFunc, args)
+			local loot = baseFunc(args)
+			if HeroHasTrait("HealthAsObolTrait") then
+				ManageSacrificeCost(loot)
+				UpdateCostText( loot )
+			end
+			return loot
+		end
+	)
+	
+	ModUtil.Path.Wrap("CreateConsumableItemFromData",
+		function(baseFunc, consumableId, consumableItem, costOverride, args)
+			local consumable = baseFunc(consumableId, consumableItem, costOverride, args)
+			if HeroHasTrait("HealthAsObolTrait") then
+				ManageSacrificeCost(consumable)
+				UpdateCostText( consumable )
+			end
+			return consumable
+		end
+	)
+	function ManageSacrificeCost(object)
+		if object.Cost ~= nil and object.Cost > 0 and object.HealFraction == nil and object.HealthCost == nil then
+			object.SacrificeCost = round(object.Cost*0.9)
+			if object.SacrificeCost <= 0 then
+				object.SacrificeCost = 1
+			end
+			if object.PurchaseText then
+				object.PurchaseText = object.PurchaseText.."_HealthAsObolText"
+			else
+				object.PurchaseText = "Shop_UseText_HealthAsObolText"
+			end
+		end
+	end
+	-- END OF HealthAsObolTrait
 	ModUtil.Path.Wrap("FullSuperUsedPresentation",
 		function(baseFunc, traitData)
 			if traitData.God == "Hera" then
@@ -4806,6 +4991,24 @@ end]]
 			end
 		end
 	)
+	function EncounterShop()
+		if HeroHasTrait("MoreCompanionTrait") then
+			AddKeepsakeCharge({ Thread = true, Delay = 0.1, NumCharges = 1 })
+			thread(InCombatTextArgs,
+			{ TargetId = CurrentRun.Hero.ObjectId, Text = "MoreCompanionText_Alt", Duration = 1, LuaKey = "TempTextData",
+				LuaValue = { TraitName = "MoreCompanionTrait",
+					Amount = 1 } })
+			wait(1.0)
+		end
+		if HeroHasTrait("HealthAsObolTrait") then
+			local amount = round(GetTotalHeroTraitValue("CharonHealMultiplier"))
+			Heal( CurrentRun.Hero, { HealAmount = amount, SourceName = "HealthAsObolTrait" } )
+			thread(InCombatTextArgs,
+			{ TargetId = CurrentRun.Hero.ObjectId, Text = "HealthAsObolText_Alt", Duration = 1, LuaKey = "TempTextData",
+				LuaValue = { TraitName = "HealthAsObolTrait",
+					Amount = amount } })
+		end
+	end
 	-- Changes to Maps
 	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 	table.insert(OlympusRoomSetData.Tartarus.RoomOpening.ForcedRewards, {
@@ -4817,6 +5020,10 @@ end]]
 			RequiredOnlyNotPickedUp = "HeraUpgrade",
 			RequiredOnlyNotPickedUpIgnoreName = "DemeterUpgrade",
 		}
+	})
+	table.insert(OlympusRoomSetData.Tartarus.A_Shop01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		FunctionName = "EncounterShop"
 	})
 
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)

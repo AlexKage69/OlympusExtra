@@ -398,28 +398,13 @@ OlympusObstacleData.DivinationGods =
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
 		end
-		ForceNextRoomFunc()
+		ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(challengeBaseIds)) 
 		baseFunc()
 	end
 )]]
-function ForceNextRoomFunc()
-    local ForceNextRoomValue = "A_Makaria01"
-    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click"))
 
-    -- Stomp any rooms already assigned to doors
-    for doorId, door in pairs( OfferedExitDoors ) do
-        local room = door.Room
-        if room ~= nil then
-            --ForceNextEncounter = "MiniBossSpreadShot"
-
-            local forcedRoomData = RoomData[ForceNextRoomValue]
-            local forcedRoom = CreateRoom( forcedRoomData )
-            AssignRoomToExitDoor( door, forcedRoom )
-        end
-    end
-end
 OnUsed{ "NPCs",
 	function( triggerArgs )
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Interact")) 
