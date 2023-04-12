@@ -533,8 +533,8 @@ end]]
 				EffectName = "EnvyCurseAttack",
 				EffectProperty = "Modifier",
 				ChangeType = "Add",
-				BaseMin = 20,
-				BaseMax = 20,
+				BaseMin = 10,
+				BaseMax = 10,
 				MinMultiplier = 0.335,
 				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
@@ -997,8 +997,8 @@ end]]
 				EffectName = "EnvyCurseSecondary",
 				EffectProperty = "Modifier",
 				ChangeType = "Add",
-				BaseMin = 35,
-				BaseMax = 35,
+				BaseMin = 15,
+				BaseMax = 15,
 				MinMultiplier = 0.335,
 				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
@@ -4632,7 +4632,7 @@ end]]
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
 			end
 			baseFunc(triggerArgs)
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs))
 			
 		end
 	)

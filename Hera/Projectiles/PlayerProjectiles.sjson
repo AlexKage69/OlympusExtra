@@ -7,7 +7,7 @@
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false
-      DissipateGraphic = "EnemyProjectileImpact"
+      //DissipateGraphic = "EnemyProjectileImpact"
       AffectsSelf = true
       CheckUnitImpact = true
       CheckObstacleImpact = true
@@ -21,16 +21,16 @@
       DamageHigh = 0
       UnpauseResetLocation = true
       FlashBeforeExpireDuration = 0.5
-      SpawnOnDeath = "HeraProjectileSmall"
-      SpawnType = "PROJECTILE"
-      SpawnCount = 10
-      SpawnsEvenlySpaced = true
-      SpawnsSpeedModifierScaleY = 0.65
+      //SpawnOnDeath = "HeraProjectileSmall"
+      //SpawnType = "PROJECTILE"
+      //SpawnCount = 10
+      //SpawnsEvenlySpaced = true
+      //SpawnsSpeedModifierScaleY = 0.65
       Thing = {
         Graphic = "HeraRangedProjectile"
         OffsetZ = 50
         Tallness = 60
-        AttachedAnim = "EnemyProjectileLight"
+        //AttachedAnim = "EnemyProjectileLight"
         Grip = 999999
         UseBoundsForSortDrawArea = true
         RotateGeometry = true
@@ -139,102 +139,6 @@
           HaltOnEnd = true
           Active = false
         }]
-    }
-    /*  {
-      Name = "HeraProjectile"
-      InheritFrom = "1_BaseNonPhysicalProjectile"
-      Type = "HOMING"
-      HomingAllegiance = "ENEMIES"
-      AffectsEnemies = true
-      MaxAdjustRate = 200
-      Speed = 300
-      Acceleration = 0
-      Range = 1000.0
-      DamageLow = 200
-      DamageHigh = 200
-      DetonateGraphic = "null"
-      MultipleUnitCollisions = false
-      MultipleObstacleCollisions = false
-      CheckObstacleImpact = true
-      CheckUnitImpact = true
-      UnlimitedUnitPenetration = false
-      DetonateAtVictimLocation = true
-      UseVulnerability = false
-      GroupName = "FX_Standing_Add"
-      IgnoreCoverageAngles = true
-      Thing = 
-      {
-        Graphic = "HeraLavaSplashProjectileHead"//"HeraSlowLavaSplash"
-        OffsetZ = 112
-        Grip = 999999
-        Points = [
-          {
-            X = 76
-            Y = 16
-          }
-          {
-            X = 76
-            Y = -16
-          }
-          {
-            X = -32
-            Y = -16
-          }
-          {
-            X = -32
-            Y = 16
-          }]
-      }
-      Effects = []
-    }*/
-    {
-        Name = "ApolloDashProjectile"
-        InheritFrom = "DefaultRushProjectile"
-        DetonateGraphic = "RadialNova-Apollo"
-        Type = "INSTANT"
-        FuseMin = 0.25
-        FuseMax = 0.25
-        TotalFuse = 0.75
-        DamageLow = 0
-        DamageHigh = 0
-        DamageRadius = 220.0
-        DamageRadiusScaleY = 0.6
-        DamageRadiusScaleX = 1.1
-        AutoAdjustForTarget = false
-        UseVulnerability = false
-        NumPenetrations = 999
-        SpawnRadius = 0
-        SpawnCount = 0
-        UseStartLocation = true
-        CanHitWithoutDamage = true
-        SilentImpactOnInvulnerable = true
-        Thing = {
-            Graphic = "null"
-            OffsetZ = 70
-            AttachedAnim = "null"
-            RotateGeometry = true
-            Grip = 999999
-            Points = [
-            {
-                X = 48
-                Y = 48
-            }
-            {
-                X = 48
-                Y = -48
-            }
-            {
-                X = -48
-                Y = -48
-            }
-            {
-                X = -48
-                Y = 48
-            }
-            ]
-        }
-        Effects = [
-        ]
     }
     {
       Name = "HeraDashProjectile"
