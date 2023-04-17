@@ -4860,7 +4860,7 @@ end]]
 						return
 					end
 			
-					if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
+					if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < (target.SacrificeCost+1) then
 						CantAffordPresentation( target )
 						return
 					end
@@ -5025,8 +5025,30 @@ end]]
 		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
 	})
+	table.insert(OlympusRoomSetData.Tartarus.A_PreBoss01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		FunctionName = "EncounterShop"
+	})
+	--[[table.insert(OlympusRoomSetData.Asphodel.B_Shop01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		FunctionName = "EncounterShop"
+	})
+	table.insert(OlympusRoomSetData.Asphodel.B_PreBoss01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		FunctionName = "EncounterShop"
+	})
+	table.insert(OlympusRoomSetData.Elysium.C_Shop01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		FunctionName = "EncounterShop"
+	})
+	table.insert(OlympusRoomSetData.Elysium.C_PreBoss01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		FunctionName = "EncounterShop"
+	})]]
 
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
+	OverwriteTableKeys(RoomData, RoomSetData.Asphodel)
+	OverwriteTableKeys(RoomData, RoomSetData.Elysium)
 
 	-- For testing purposes
 	--[[ModUtil.Path.Wrap("BeginOpeningCodex",
