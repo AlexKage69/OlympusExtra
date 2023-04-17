@@ -419,6 +419,7 @@
       Name = "Keepsake_Apollo_Max"
       InheritFrom = "KeepsakeMax_Corner"
       FilePath = "Apollo\ApolloBadge"
+      Scale = 0.15
     }
     {
       Name = "Keepsake_ApolloSticker_Max"
