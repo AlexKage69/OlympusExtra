@@ -21,11 +21,11 @@
       DamageHigh = 0
       UnpauseResetLocation = true
       FlashBeforeExpireDuration = 0.5
-      //SpawnOnDeath = "HeraProjectileSmall"
-      //SpawnType = "PROJECTILE"
-      //SpawnCount = 10
-      //SpawnsEvenlySpaced = true
-      //SpawnsSpeedModifierScaleY = 0.65
+      SpawnOnDeath = "HeraProjectileSmall"
+      SpawnType = "PROJECTILE"
+      SpawnCount = 10
+      SpawnsEvenlySpaced = true
+      SpawnsSpeedModifierScaleY = 0.65
       Thing = {
         Graphic = "HeraRangedProjectile"
         OffsetZ = 50
