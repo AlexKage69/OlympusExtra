@@ -558,5 +558,12 @@
       FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
       Scale = 0.2
     }
+    {
+      Name = "DiscountItemIcon"
+      FilePath = "Hera\hera_discount"
+      Type = "ConstantNoUpdate"
+      Scale = 1.0
+      Material = "Unlit"
+    }
   ]
 }

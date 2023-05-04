@@ -1934,6 +1934,7 @@ end]]
 
 	OlympusTraitData.DiscountHeraTrait =
 	{
+		Name = "DiscountHeraTrait",
 		Icon = "Boon_Hera_06",
 		InheritFrom = { "ShopTier2Trait" },
 		RequiredFalseTrait = "DiscountHeraTrait",
@@ -1957,6 +1958,11 @@ end]]
 				Multiplier = 0.81,
 			}
 		},
+		RefreshShop =
+		{
+			OnAdd = true,
+			OnRemove = true,
+		},
 		StoreCostMultiplier = {
 			BaseValue = 0.85
 		},
@@ -1971,6 +1977,7 @@ end]]
 	}
 	OlympusTraitData.PrivilegeHeraTrait =
 	{
+		Name = "PrivilegeHeraTrait",
 		Icon = "Boon_Hera_07",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
@@ -2034,6 +2041,7 @@ end]]
 	}
 	OlympusTraitData.FamilyHeraTrait =
 	{
+		Name = "FamilyHeraTrait",
 		Icon = "Boon_Hera_08",
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
@@ -2445,6 +2453,11 @@ end]]
 			{
 				Multiplier = 2.2,
 			}
+		},		
+		RefreshShop =
+		{
+			OnAdd = true,
+			OnRemove = true,
 		},
 		CharonHealMultiplier = {
 			BaseValue = 25,
@@ -5298,8 +5311,94 @@ end]]
 			end]]
 		end
 	)
+	function RefreshStoreItems()
+		if CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
+			for i, data in pairs( CurrentRun.CurrentRoom.Store.SpawnedStoreItems ) do
+				UpdateCostText( data, true )		
+			end
+		end	
+	end
+	ModUtil.Path.Wrap("CreateLoot",
+		function(baseFunc, args)
+			local loot = baseFunc(args)
+			if args.Cost ~= nil and args.Cost > 0 then
+				loot.OriginalCost = args.Cost
+			end
+			return loot
+		end
+	)
+	ModUtil.Path.Wrap("CreateConsumableItemFromData",
+		function(baseFunc, consumableId, consumableItem, costOverride, args )
+			local OriginalCost = nil
+			if costOverride then
+				OriginalCost = costOverride
+			elseif consumableItem.Cost ~= nil and consumableItem.Cost > 0 then
+				OriginalCost = consumableItem.Cost
+			end
+			local consumable = baseFunc(consumableId, consumableItem, costOverride, args)
+			if OriginalCost then
+				consumable.OriginalCost = OriginalCost
+			end
+			return consumable
+		end
+	)
+	--[[ModUtil.Path.Wrap("UpdateCostButton",
+		function(baseFunc, button)			
+			baseFunc(button)
+			local upgradeData = button.Data
+			if upgradeData.OriginalCost ~= nil and upgradeData.OriginalCost > 0 then
+				local costString = "@GUI\\Icons\\Currency_Small"
+				costString = upgradeData.Cost .. " " .. costString
+
+				if upgradeData.HealthCost then
+					costString = upgradeData.HealthCost .. " @GUI\\Icons\\Life_Small"
+				end
+
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(upgradeData.Name..";"..upgradeData.OriginalCost..";"..upgradeData.Cost))	
+				ModifyTextBox({ Id = button.Id, Text = costString })
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Updated"))
+			end
+		end
+	)]]
+	ModUtil.Path.Wrap("UpdateCostText",
+		function(baseFunc, object, textExists)
+			baseFunc(object, textExists)
+			if object.OriginalCost ~= nil and object.OriginalCost > 0 and textExists then
+				local costMultiplier = 1 + ( GetNumMetaUpgrades( "ShopPricesShrineUpgrade" ) * ( MetaUpgradeData.ShopPricesShrineUpgrade.ChangeValue - 1 ) )
+				costMultiplier = costMultiplier * GetTotalHeroTraitValue("StoreCostMultiplier", {IsMultiplier = true})
+				--if costMultiplier ~= 1 or object.Cost ~= object.OriginalCost then
+				object.Cost = round( object.OriginalCost * costMultiplier )
+				--end
+
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(object.Name..";"..object.OriginalCost..";"..object.Cost..";"..costMultiplier))
+				ModifyTextBox({ Id = object.ObjectId, Text = "Shop_ItemCost", LuaKey = "TempTextData", LuaValue = { Amount = object.Cost } })
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Updated"))
+			end
+		end
+	)
+	
+	ModUtil.Path.Wrap("HandleStorePurchase",
+		function(baseFunc, screen, button)
+			baseFunc(screen, button)
+			if screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] ~= nil then
+				Destroy({ Id = screen.Components["PurchaseButton"..button.Index.."DiscountIcon"].Id })
+				screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] = nil
+			end
+		end
+	)
+
 	ModUtil.Path.Wrap("CreateStoreButtons",
 		function(baseFunc)
+			local itemIndex = nil
+			local upgradeData = nil
+			for i, data in pairs( CurrentRun.CurrentRoom.Store.StoreOptions ) do
+				--[[if not data.OriginalCost then
+					data.OriginalCost = data.Cost
+				end]]
+				if data.Processed then 
+					data.Processed = false
+				end
+			end
 			if HeroHasTrait("DiscountHeraTrait") then
 				local numButtons = StoreData.WorldShop.MaxOffers
 				if numButtons == nil then
@@ -5308,8 +5407,8 @@ end]]
 						numButtons = numButtons + groupData.Offers
 					end
 				end
-				local itemIndex = RandomNumber(numButtons)
-				local upgradeData = CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex]
+				itemIndex = RandomNumber(numButtons)
+				upgradeData = CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex]
 
 				if upgradeData ~= nil then
 					if not upgradeData.Processed then
@@ -5332,6 +5431,7 @@ end]]
 						local costMultiplier = 1 +
 							(GetNumMetaUpgrades("ShopPricesShrineUpgrade") * (MetaUpgradeData.ShopPricesShrineUpgrade.ChangeValue - 1))
 						costMultiplier = costMultiplier * (GetTotalHeroTraitValue("StoreCostMultiplier", { IsMultiplier = true }) - 0.2)
+						--upgradeData.OriginalCost = upgradeData.Cost
 						if costMultiplier ~= 1 then
 							upgradeData.Cost = round(upgradeData.Cost * costMultiplier)
 						end
@@ -5340,9 +5440,35 @@ end]]
 					end
 				end
 				CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex] = upgradeData
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Discount on " .. upgradeData.Name))
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Discount on " .. upgradeData.Name))
 			end
 			baseFunc()
+			if itemIndex ~= nil and upgradeData ~= nil then
+				local offsetY = ShopUI.ShopItemStartY + ShopUI.ShopItemSpacerY * (itemIndex-1) - 65
+				local offsetX = ShopUI.ShopItemStartX + 210
+				CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..itemIndex.."DiscountIcon"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu", X = offsetX , Y = offsetY })
+				SetAnimation({ DestinationId = CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..itemIndex.."DiscountIcon"].Id, Name = "DiscountItemIcon" })
+			end
+
+		end
+	)
+	
+	ModUtil.Path.Wrap("AddTraitData",
+		function(baseFunc, unit, traitData, args)
+			baseFunc(unit, traitData, args)
+			if TraitData[traitData.Name].RefreshShop and TraitData[traitData.Name].RefreshShop.OnAdd then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh on Add: " .. traitData.Name))
+				RefreshStoreItems()
+			end
+		end
+	)
+	ModUtil.Path.Wrap("RemoveTrait",
+		function(baseFunc, unit, traitName, args)
+			baseFunc(unit, traitName, args)
+			if TraitData[traitName].RefreshShop and TraitData[traitName].RefreshShop.OnRemove then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh on Remove: " .. traitName))
+				RefreshStoreItems()
+			end
 		end
 	)
 	ModUtil.Path.Wrap("GenerateSellTraitShop",
@@ -5487,8 +5613,8 @@ end]]
 			local id = GetClosest({ Id = victim.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 800 })
 			local enemy = ActiveEnemies[id]
 			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock and victim.ActiveEffects then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Name)) 
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(victim.ActiveEffects)) 
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Name)) 
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(victim.ActiveEffects)) 
 				if enemy.ActiveEffects == nil then
 					enemy.ActiveEffects = {}
 				end
@@ -5501,11 +5627,6 @@ end]]
 	end
 )
 
-	ModUtil.Path.Wrap("AddTraitData",
-		function(baseFunc, unit, traitData, args)
-			baseFunc(unit, traitData, args)
-		end
-	)
 
 	function DoFullSuperDualPresentation( traitData, secondGod )
 		local currentRun = CurrentRun
@@ -5629,7 +5750,7 @@ end]]
 			if target == nil then
 				return
 			end
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(target.SacrificeCost))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(target.SacrificeCost))
 			if target.SacrificeCost then
 				if target.Rarity then
 					local interactionBlocked = false
@@ -5828,7 +5949,7 @@ end]]
 		local weaponName = args.WeaponName
 		--local intervalData = args.Interval or { Min = 1.0, Max = 1.0 }
 		local range = args.Range
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Range..":"..args.WeaponName))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Range..":"..args.WeaponName))
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			--[[local interval = intervalData
 						if type(intervalData) == "table" then
@@ -5991,7 +6112,7 @@ end]]
 	end
 	function DeathMarkedThread(args)
 		--local PreviousCloseEnemiesList = {}
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			local noMark = true
 			wait(0.2, "RoomThread") -- 0.2
@@ -6116,19 +6237,8 @@ end]]
 
 	--[[OnControlPressed{ "Codex",
 		function( triggerArgs )
-			local dropItemName = "RoomRewardEmptyHealthDrop"
-			GiveRandomConsumables({
-				Delay = 0.5,
-				NotRequiredPickup = true,
-				LootOptions =
-				{
-					{
-						Name = dropItemName,
-						Chance = 1,
-					}
-				}
-			})
+			RefreshStoreItems()
 		end 
-	}]] --
+	}]]
 
 end
