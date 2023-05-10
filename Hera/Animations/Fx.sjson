@@ -5,19 +5,49 @@
     /* Hera - Feather Animations */
     {
       Name = "HeraWings"
-      FilePath = "Fx\HermesWings\HermesWings"
-      GroupName = "FX_Standing_Add"
+      FilePath = "Hera\Fx\HeraWings\HeraWings"
+      //GroupName = "Standing_Back_Add"
+      GroupName = "Standing_Back"
+      Type = "Book"
+      //VisualFx = "HermesFeather"
+      //AngleFromOwner = "Take"
+      UseFrameAngleFromOwner = true
+      //Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Duration = 1
+      Alpha = 1.0
+      Blue = 1.0
+      Green = 1.0
+      Red = 1.0
+      EaseIn = 0.01
+      //EaseOut = 0.1
+      EndFrame = 1
+      NumAngles = 32
+      NumFrames = 1
+      StartFrame = 1
+      OffsetZ = 105.0
+      //OffsetY = -105.0
+      //RadialOffsetScaleY = 0.5
+      //RadialOffsetMax = -50.0
+      //RadialOffsetMin = -49.0
+      Ambient = 0.0
+      Scale = 2.0
+      OverlayVfx = false
+      Loop = true
+    }
+    {
+      Name = "HeraWingsFlap"
+      FilePath = "Hera\Fx\HeraWings\HeraWings"
+      GroupName = "FX_Standing"
       Type = "Book"
       //VisualFx = "HermesFeather"
       AngleFromOwner = "Take"
       Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
-      EndGreen = 0.5
-      EndRed = 0.9999
       StartAlpha = 1.0
       StartBlue = 1.0
       StartGreen = 1.0
       StartRed = 1.0
-      Duration = 0.25
+      Duration = 1.0
       EaseIn = 0.01
       EaseOut = 0.1
       EndFrame = 1
@@ -25,16 +55,15 @@
       NumFrames = 1
       StartFrame = 1
       OffsetZ = 120.0
-      RadialOffsetMax = 101.0
-      RadialOffsetMin = 100.0
+      RadialOffsetMax = -50.0
+      RadialOffsetMin = -49.0
       EndScale = 2.5
       StartScale = 2.0
       Ambient = 0.0
       VisualFxCap = 3
       VisualFxIntervalMax = 0.06
       VisualFxIntervalMin = 0.03
-      OverlayVfx = true
-      HoldLastFrame = true
+      OverlayVfx = false
     }
     {
       Name = "QuickFlashTeal"
@@ -3298,6 +3327,59 @@
       StartRed = 0.0
       StartGreen = 0.55
       StartBlue = 0.53
+    }
+    {
+      Name = "DeathMarkedCurseOut"
+      FilePath = "Fx\ThanatosScytheOut\ThanatosScytheOut"
+      GroupName = "Combat_UI"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/Leftovers/SFX/PlayerScoreMedium"
+      ColorFromOwner = "Ignore"
+      EndFrame = 16
+      NumFrames = 16
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetZ = 240.0
+      SortMode = "FromParent"
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      Slides = [
+        {
+          DurationFrames = 1
+          Sound = "/SFX/Player Sounds/ZagreusSwordLunge"
+          Frame = 5
+        }]
+    }
+    {
+      Name = "DeathMarkedCurseIn"
+      InheritFrom = "DeathMarkedCurseOut"
+      ChainTo = "DeathMarkedCurseLoop"
+      FilePath = "Fx\ThanatosScytheIn\ThanatosScytheIn"
+      Sound = "/SFX/ThanatosAttackBell"
+      EndFrame = 9
+      NumFrames = 9
+      PlaySpeed = 30.0
+      StartFrame = 1
+      DieWithOwner = true
+    }
+    {
+      Name = "DeathMarkedCurseLoop"
+      InheritFrom = "DeathMarkedCurseOut"
+      FilePath = "Fx\ThanatosScytheLoop\ThanatosScytheLoop"
+      Sound = "/Leftovers/SFX/AuraAmbientLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 30
+      Loop = true
+      NumFrames = 30
+      PlaySpeed = 30.0
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      StartFrame = 1
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+      DieWithOwner = true
     }
     /* Boon FX */
     {

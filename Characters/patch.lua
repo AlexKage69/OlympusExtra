@@ -135,55 +135,6 @@ ModUtil.Path.Wrap("EquipAssist",
         return vanillaMultiplier * damageMultipliers * damageReductionMultipliers
     end
 )]]
-ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
-    function(baseFunc)
-        baseFunc()
-        local godDictionary = {}
-        local highestCount = 0
-        local name = nil
-        for i, trait in pairs(CurrentRun.Hero.Traits) do
-            if GetLootSourceName( trait.Name ) then
-                godDictionary[GetLootSourceName( trait.Name )] = (godDictionary[GetLootSourceName( trait.Name )]  or 0) + 1
-                if highestCount < godDictionary[GetLootSourceName( trait.Name )] then
-                    highestCount = godDictionary[GetLootSourceName( trait.Name )]
-                    name = GetLootSourceName( trait.Name )
-                end
-            end
-        end
-        CurrentRun.Hero.SameGodCount = highestCount
-        for k, traitData in pairs(CurrentRun.Hero.Traits) do
-            if traitData.GodDamageBonus then
-                traitData.AccumulatedGodDamageBonus = traitData.AccumulatedGodDamageBonus + (traitData.GodDamageBonus - 1)
-                --traitData.FromGod = name
-                ExtractValues( CurrentRun.Hero, traitData, traitData )
-            end
-        end
-    end
-)
-
-function GetHeroSameGodCount( hero )
-	if not hero then
-		return 0
-	end
-
-	if hero.SameGodCount then
-		return hero.SameGodCount
-	end
-
-	local godDictionary = {}
-    local highestCount = 0
-	for traitName in pairs( hero.TraitDictionary ) do
-		if GetLootSourceName( traitName ) then
-			godDictionary[GetLootSourceName( traitName )] = (godDictionary[GetLootSourceName( traitName )]  or 0) + 1
-            if highestCount < godDictionary[GetLootSourceName( traitName )] then
-                highestCount = godDictionary[GetLootSourceName( traitName )]
-            end
-        end
-	end
-	
-	hero.SameGodCount = highestCount
-	return hero.SameGodCount
-end
 
 --[[ModUtil.Path.Wrap( "AddRerolls", 
 	function(baseFunc, amount, source, args )
@@ -209,11 +160,14 @@ function ForceNextRoomFunc(value)
 end
 ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)		
-            
+            --PresentationNewSameGodIncrease()
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
 			end
-            --ForceNextRoomFunc("A_Shop01")
+            --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })            
+            --ForceNextRoomFunc("B_Shop01")
+                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
+            
 			--LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
             --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
 			baseFunc()

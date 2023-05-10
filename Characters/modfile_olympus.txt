@@ -1,6 +1,6 @@
 
-:: Import "CerberusAssist/CerberusAssist.lua"
-:: Import "MakariaNPC/MakariaNPC.lua"
+Import "CerberusAssist/CerberusAssist.lua"
+Include "MakariaNPC/modfile_makaria.txt"
 Import "patch.lua"
 Import "extender.lua"
 

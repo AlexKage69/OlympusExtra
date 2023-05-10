@@ -32,6 +32,133 @@
         }]
     }
     {
+      Name = "RuptureCurseApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+          Name = "DamageOverDistance"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_OVER_DISTANCE"
+          Cooldown = 0.2
+          Duration = 0.5
+          Modifier = 1
+          Active = true
+          TimeModifierFraction = 0
+          MaxTriggerDamage = 10
+          FrontFx = "PoseidonDebuffSurge"
+          ExpiringTimeThreshold = 0.1
+          ExpiringFrontFx = "PoseidonDebuffExpire"
+          MinSpeed = 0
+          SilentImpact = true
+          SpeedCap = 0
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+        }]
+    }
+    {
+      Name = "ExposedCurseApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+          Name = "AthenaBackstabVulnerability"
+          Modifier = 0.5
+          IgnoreName = "_PlayerUnit"
+          FrontFx = "null"
+          BackFx = "AthenaBackstabDebuffStatus"
+          Duration = 0.5
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+        }]
+    }
+    {
+      Name = "BlindCurseApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+        Name = "ApolloBlind"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "ApolloHoverLoop"
+        BackFx = "null"
+        Duration = 0.5
+        Modifier = 1
+        Amount = 0.5
+        Active = true
+        TimeModifierFraction = 0
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+      }]
+    }
+    {
+      Name = "DecayCurseApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+        Name = "HeraDecay"
+        Duration = 100
+        Active = true
+        TimeModifierFraction = 0
+        ExpiringRapidFlashThreshold = 1.5
+        ElapsedTimeMultiplier = 1.0
+        IgnoreName = "_PlayerUnit"
+        Type = "DAMAGE_OVER_TIME"
+        Amount = 0.0
+        Cooldown = 0.5
+      }]
+    }
+    {
+      Name = "DeathMarkedApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+          Name = "DeathMarkedCurse"
+          IgnoreName = "_PlayerUnit"
+          Type = "DAMAGE_TAKEN"
+          Duration = 100
+          Modifier = 2.0
+          Active = true
+          FrontFx = "DeathMarkedCurseIn"
+          BackFx = "null"
+          Active = true
+          TimeModifierFraction = 0
+          ExpiringTimeThreshold = 0.26
+          ExpiringFrontFx = "DeathMarkedCurseOut"
+          //ClearFx = "ThanatosDeathsHead"
+          TimeModifierFraction = 0
+          IsVulnerabilityEffect = false
+        }]
+    }
+    {
       Name = "AreaWeakenHera"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
@@ -42,6 +169,20 @@
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
       Cooldown = 0.4
+    }
+    {
+      Name = "HeraCurseCount"
+      InheritFrom = "MagicShield"
+      Projectile = "HeraCurseCount"
+      Effect = 
+      {
+        Name = "HeraCurseCount"
+        Duration = 100
+        Modifier = 0
+        Active = true
+        FrontFx = "PoseidonEncounterStartBuff"
+        BackFx = "null"
+      }
     }
     {
       Name = "HeraSuper"
@@ -65,135 +206,6 @@
       IgnoreOwnerAttackDisabled = true
       NumProjectiles = 3
       ProjectileInterval = 0.5
-    }
-    {
-      Name = "HeraRetaliate"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "LavaSplashLob"
-      FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "HeraOnDeath"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "HeraSmallField"
-      //FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "HeraOnRevenge"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "HeraSmallField"
-      //FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "HeraOnDeathDefense"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "HeraSmallFieldDefense"
-      //FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "HeraLavaProjectile"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "HeraField"
-      //FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "ArtemisHeraExplosion"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "ArtemisHeraExplosion"
-      FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "HeraFieldDefense"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "HeraFieldDefense"
-      //FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "HeraSmallFieldDefense"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "HeraSmallFieldDefense"
-      //FireSound = "/SFX/BurnDamageSizzle"
-      ClearFireRequestOnChargeCancel = false
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-    }
-    {
-      Name = "FoesNumberDamageBuff"
-      InheritFrom = "MagicShield"
-      Projectile = "FoesNumberDamageBuff"
-      Effect = 
-      {
-        Name = "FoesNumberDamageBuff"
-        Duration = 100
-        Modifier = 0
-        Active = true
-        FrontFx = "PoseidonEncounterStartBuff"
-        BackFx = "null"
-      }
-    }
-     {
-      Name = "HeraLegendaryWeapon"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "null"
-      Effect = 
-      {
-        Name = "HeraLegendaryEffect"
-        Duration = 100
-        Active = true
-        TimeModifierFraction = 0
-        ExpiringRapidFlashThreshold = 1.5
-        ElapsedTimeMultiplier = 1.0
-        IgnoreName = "_PlayerUnit"
-        Type = "DAMAGE_OVER_TIME"
-        Amount = 0.0
-        Cooldown = 0.5
-      }
     }
   ]
 }
