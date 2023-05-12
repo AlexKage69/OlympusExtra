@@ -1,12 +1,25 @@
 {
   Weapons = [
-    "_append"  
+    "_append" 
     {
-      Name = "MineTossZagreus"
-      InheritFrom = "MineToss"
-      Projectile = "MineTossZagreus"
-      NumProjectiles = 1
-      ProjectileInterval = 0
+      Name = "HeraMineWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "HeraMineProjectile"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    } 
+    {
+      Name = "HeraMineBlast"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "HeraMineBlast"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
     }
     {
       Name = "JealousyCurseApplicator"
@@ -21,7 +34,7 @@
         {
           Name = "JealousyCurse"
           IgnoreName = "_PlayerUnit"
-          FrontFx = "DemeterSlowFront"
+          FrontFx = "JealousyHeraLoop"
           BackFx = "null"
           Duration = 6
           Modifier = 0.25

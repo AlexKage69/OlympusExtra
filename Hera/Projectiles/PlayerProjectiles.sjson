@@ -52,7 +52,7 @@
         [{
           Name = "JealousyCurse"
           IgnoreName = "_PlayerUnit"
-          FrontFx = "DemeterSlowFront"
+          FrontFx = "JealousyHeraLoop"
           BackFx = "null"
           Duration = 6
           Modifier = 0.25
@@ -157,11 +157,11 @@
       AutoAdjustForTarget = false
       UseVulnerability = false
       NumPenetrations = 999
-      SpawnOnDetonate = "BloodMine"
-      SpawnsInheritGroups = false
-      SkipSpawnsIfBlocked = true
-      SpawnGroup = "FX_Terrain"
-      SpawnType = "UNIT"
+      //SpawnOnDetonate = "BloodMine"
+      //SpawnsInheritGroups = false
+      //SkipSpawnsIfBlocked = true
+      //SpawnGroup = "FX_Terrain"
+      //SpawnType = "UNIT"
       UseStartLocation = true
       CanHitWithoutDamage = true
       SilentImpactOnInvulnerable = true
@@ -195,127 +195,109 @@
       ]
     }
     {
-      Name = "MineTossZagreus"
-      InheritFrom = "1_BasePlayerLargeProjectile"
-      ReflectFx = "null"
-      DetonateGraphic = "BloodlessGrenadierPotDropDust"
-      DetonateSound = "null"
-      Type = "LOB"
+      Name = "HeraMineProjectile"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      Type = "INSTANT"
       DamageLow = 0
       DamageHigh = 0
-      DamageRadius = 0.0
-      AutoAdjustForTarget = true
-      Speed = 1000
-      SpeedVariance = 150
-      LaunchAngle = 50
-      SpinRate = 0
-      MinRange = 0.0
-      ImpactVelocity = 0.0
+      DamageRadius = 100.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 1000
+      Fuse = 0.1
       AffectsFriends = false
       AffectsSelf = false
+      AffectsEnemies = true
       CheckUnitImpact = false
-      CheckObstacleImpact = true
-      SpawnOnDetonate = "BloodMine"
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "Standing"
+      SpawnOnDetonate = "HeraMine"
       SpawnsInheritGroups = false
-      SkipSpawnsIfBlocked = true
-      SpawnGroup = "FX_Terrain"
+      SpawnGroup = "Standing"
       SpawnType = "UNIT"
+      SkipSpawnsIfBlocked = true
+      SpawnCap = 12
+      FizzleOldSpawnsOnDetonate = true
       DangerDistance = 0
+    }
+    {
+      Name = "HeraMineBlast"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "null"
+      DetonateSound = "/SFX/Enemy Sounds/Hades/HadesLostSoulHandsShort"
+      Type = "INSTANT"
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      DamageLow = 20
+      DamageHigh = 20
+      DamageRadius = 380.0
+      BlastSpeed = 800
+      DamageRadiusScaleY = 0.55
+      Fuse = 0.3
+      MultiDetonate = false
+      BlastDuration = 1.0
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      AttachToOwner = true
+      CanCrit = false
+      MaxVictimZ = 9999
+      DangerDistance = 0
+      Effects = [
+        /*{
+          Name = "GraspingHands"
+          Duration = 1.0
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "DionysusStunnedFx"
+          Cancelable = false
+          StartAnimation = "ZagreusStun"
+          OnlyAffectName = "_PlayerUnit"
+        }
+        {
+          Name = "MeleeAttackVictimGrip"
+          Type = "GRIP"
+          Duration = 0.3
+          Modifier = 0.05
+          HaltOnEnd = true
+          Active = true
+        }*/]
       Thing = 
       {
-        Graphic = "BloodMineInAir"
-        Scale = 0.3
-        OffsetZ = 101
-        AttachedAnim = "LootShadowHydraTooth"
+        Graphic = "HeraTrapGraspingHandsFx"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = 
+        {
+          Opacity = 1.0
+          Red = 1.0
+          Green = 1.0
+          Blue = 1.0
+        }
         Points = [
           {
             X = 0
-            Y = 24
+            Y = 8
           }
           {
-            X = 24
+            X = 32
             Y = 0
           }
           {
             X = 0
-            Y = -24
+            Y = -8
           }
           {
-            X = -24
+            X = -32
             Y = 0
           }]
-      }
-    }
-    {
-      Name = "HeraSuper"
-      InheritFrom = "1_BasePlayerSmallProjectile"
-      DetonateGraphic = "HadesCastNovaHit"
-      Type = "STRAIGHT"
-      DetonateSound = "null"
-      Fuse = 0.0
-      CanBeReflected = false
-      CanBeProjectileDefenseDestroyed = false
-      AffectsEnemies = true
-      //AffectsFriends = true
-      Range = 1.0
-      DamageRadius = 1600
-      DamageRadiusScaleY = 0.5
-      BlastSpeed = 875
-      NumPenetrations = 9999
-      AffectsSelf = false
-      CheckUnitImpact = true
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      ResetCollisionOutsideDetonation = true
-      HollowBlastRadiusBand = 40
-      DangerDistance = 200
-      DamageLow = 20
-      DamageHigh = 20
-      ImpactVelocity = 0
-      CriticalFx = "CriticalHit"
-      HitVulnerabilityFx = "Backstab"
-      UseArmor = false
-      UseVulnerability = false
-      Thing = 
-      {
-        Graphic = "HeraRing"
-        Grip = 999999
-      }      
-    }
-    {
-      Name = "HeraMaxSuper"
-      InheritFrom = "1_BasePlayerSmallProjectile"
-      DetonateGraphic = "HadesCastNovaHit"
-      Type = "STRAIGHT"
-      DetonateSound = "null"
-      Fuse = 0.0
-      CanBeReflected = false
-      CanBeProjectileDefenseDestroyed = false
-      AffectsEnemies = true
-      //AffectsFriends = true
-      Range = 1.0
-      DamageRadius = 2200
-      DamageRadiusScaleY = 0.5
-      BlastSpeed = 875
-      NumPenetrations = 9999
-      AffectsSelf = false
-      CheckUnitImpact = true
-      CheckObstacleImpact = false
-      UnlimitedUnitPenetration = true
-      ResetCollisionOutsideDetonation = true
-      HollowBlastRadiusBand = 40
-      DangerDistance = 200
-      DamageLow = 50
-      DamageHigh = 50
-      ImpactVelocity = 0
-      CriticalFx = "CriticalHit"
-      HitVulnerabilityFx = "Backstab"
-      UseArmor = false
-      UseVulnerability = false
-      Thing = 
-      {
-        Graphic = "HeraRing"
-        Grip = 999999
       }
     }
   ]

@@ -110,12 +110,35 @@ if ModUtil ~= nil then
 			"DevotionHera",
 		},
 	}
+	OlympusEnemyData.HeraMine =
+	{
+		InheritFrom = { "BaseTrap" },
+		--InheritFrom = { "IsNeutral", "BaseVulnerableEnemy" },
+		IsBossDamage = true,
+		MaxHealth = 1,
+		SkipDamageText = true,
+		HideHealthBar = true,
+		HideLevelDisplay = true,
+		RequiredKill = false,
+
+		MoneyDropOnDeath =
+		{
+			Chance = 0.0,
+		},
+		OutgoingDamageModifiers =
+		{
+			{
+				NonPlayerMultiplier = 1.0,
+				PlayerMultiplier = 0.0
+			},
+		},		
+	}
 	--WeaponData
 	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
-	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HeraProjectile")
+	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HeraTrap")
 	OlympusWeaponSets.AllJealousyWeapons = { "SwordWeapon",
 		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon2", "SpearWeapon3",
 		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
@@ -1306,7 +1329,7 @@ end]]
 		God = "Hera",
 		Icon = "Boon_Hera_03",
 		Slot = "Rush",
-		PreEquipWeapons = { "MineTossZagreus" },
+		PreEquipWeapons = { "HeraMineWeapon" },
 		RarityLevels =
 		{
 			Common =
@@ -1326,6 +1349,29 @@ end]]
 				Multiplier = 1.66,
 			}
 		},
+		SetupFunction =
+		{
+			Name = "SetupHeraDashTrap",
+			RunOnce = true,
+		},
+		AddRush =
+		{
+			FunctionName = "HeraTrapDash",
+			RunOnce = true,
+			FunctionArgs =
+			{
+				Range = 700,
+				Cooldown = 5,
+				ExtractValues =
+				{
+					{
+						Key = "Cooldown",
+						ExtractAs = "TooltipCooldown",
+					},
+				}
+			},
+			
+		},
 		PropertyChanges =
 		{
 			{
@@ -1342,12 +1388,12 @@ end]]
 				ChangeType = "Absolute",
 			},
 
-			{
+			--[[{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				WeaponProperty = "Projectile",
 				ChangeValue = "HeraDashProjectile",
 				ChangeType = "Absolute",
-			},
+			},]]
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				WeaponProperty = "BlinkDetonateAtOrigin",
@@ -1360,25 +1406,12 @@ end]]
 				ChangeValue = false,
 				ChangeType = "Absolute",
 			},
-			--[[
 			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				ProjectileProperty = "Range",
-				ChangeValue = 0.0,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				EffectName = "DamageOverTime",
-				EffectProperty = "Active",
-				ChangeValue = true,
-			},
-			]]
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
+				WeaponName = "HeraMineBlast",
+				ProjectileName = "HeraMineBlast",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 35,
-				BaseMax = 35,
+				BaseMin = 100,
+				BaseMax = 100,
 				AsInt = true,
 				MinMultiplier = 0.1,
 				IdenticalMultiplier =
@@ -1389,6 +1422,38 @@ end]]
 				{
 					ExtractAs = "TooltipDamage",
 				}
+			},
+			{
+				WeaponName = "HeraMineWeapon",
+				ProjectileName = "HeraMineProjectile",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+		},
+		EnemyPropertyChanges =
+		{
+			{
+				WeaponName = "HeraMineBlast",
+				ProjectileName = "HeraMineBlast",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 100,
+				BaseMax = 100,
+				AsInt = true,
+				MinMultiplier = 0.1,
+				IdenticalMultiplier =
+				{
+					Value = -0.8,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "HeraMineBlast",
+				ProjectileName = "HeraMineBlast",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
 			},
 		},
 		ExtractValues =
@@ -2508,12 +2573,12 @@ end]]
 				WeaponName = "DecayCurseApplicator",
 				EffectName = "HeraDecay",
 				EffectProperty = "Amount",
-				BaseValue = 15,
+				ChangeValue = 15,
+				ChangeType = "Absolute",
 				ExtractValue =
 				{
 					ExtractAs = "TooltipDamage",
 				},
-				ChangeType = "Add",
 			},
 			{
 				WeaponName = "DecayCurseApplicator",
@@ -5312,7 +5377,7 @@ end]]
 		end
 	)
 	function RefreshStoreItems()
-		if CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
+		if CurrentRun and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
 			for i, data in pairs( CurrentRun.CurrentRoom.Store.SpawnedStoreItems ) do
 				UpdateCostText( data, true )		
 			end
@@ -5940,6 +6005,77 @@ end]]
 	end
 	
 	-- END OF HealthAsObolTrait
+
+	-- DASHING STUFF
+	
+	ModUtil.Path.Wrap("DisableRoomTraps",
+		function(baseFunc)
+			baseFunc()
+			DestroyHeraTraps()
+		end
+	)
+	function DestroyHeraTraps()
+		if CurrentRun and CurrentRun.Hero.AllTraps then
+			for k, enemy in pairs( CurrentRun.Hero.AllTraps ) do
+				if not enemy.IsDead then
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString(enemy.Name))
+					SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
+					thread( Kill, enemy )
+				end
+			end
+		end
+	end
+	function HeraTrapDash( traitArgs, triggerArgs )
+		if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+			if CurrentRun.Hero.TrapDash > 0 then
+				CurrentRun.Hero.TrapDash = CurrentRun.Hero.TrapDash - 1
+				FireWeaponFromUnit({ Weapon = "HeraMineWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+				--local newUnit = DeepCopyTable( EnemyData["HeraMine"] )
+				--[[newUnit.ObjectId = SpawnUnit({ Name = "HeraMine", Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, DoActivatePresentation = false })
+				SetupEnemyObject( newUnit, CurrentRun)
+				table.insert( CurrentRun.Hero.AllTraps, newUnit )]]
+				HasDashed(traitArgs.Cooldown)
+			end
+		end
+	end
+	function HasDashed(delay)
+		thread( ReloadRangedDashTrap, delay )
+		--[[StartAmmoReloadPresentation( delay )
+
+		if triggerArgs.Ammo == 0 then
+			RangedLastAmmoPresentation()
+		end
+		thread( UpdateAmmoUI, triggerArgs )]]
+
+	end
+	function ReloadRangedDashTrap( delay )
+		wait( delay, RoomThreadName )
+		CurrentRun.Hero.TrapDash = CurrentRun.Hero.TrapDash + 1
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Gain Charge: "..CurrentRun.Hero.TrapDash))
+		--[[if IsMetaUpgradeActive("ReloadAmmoMetaUpgrade") then
+			EndAmmoReloadPresentation()
+		end
+	
+		RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { 1 } })
+		if IsMetaUpgradeActive("ReloadAmmoMetaUpgrade") then
+			ReloadAmmoPresentation()
+		else
+			AddAmmoPresentation()
+		end]]
+	
+	end
+	function GetBaseDashTrapReloadTime()
+		return TraitData.HeraRushTrait.DashTrap.DashTrap.Value
+	end
+	function SetupHeraDashTrap()
+		if HeroHasTrait("BetterTrapsTrait") then
+			CurrentRun.Hero.TrapDash = 3
+		else
+			CurrentRun.Hero.TrapDash = 1
+		end
+		CurrentRun.Hero.AllTraps = {}
+	end	
+	-- END
 	-- SameGoodTrait
 	function TrackHeraFullSuperMeter( hero, args )
 		thread( HeraFullSuperMeterThread, args )
@@ -6094,7 +6230,7 @@ end]]
 					if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
 						ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
 					end
-					if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
+					if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
 						ApplyEffectFromWeapon({ WeaponName = "DecayCurseApplicator", EffectName = "HeraDecay", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
 					end
 					if distanceSquared <= 400 and HeroHasTrait("AuraExposedTrait") then
@@ -6213,6 +6349,13 @@ end]]
 	OverwriteTableKeys(RoomData, RoomSetData.Elysium)
 
 	-- For testing purposes
+	function Spawner( coors, list )
+		local count = 0
+		for i, spawnData in pairs(list) do
+			local spawnId = SpawnObstacle({ Name = spawnData.Name, Group = spawnData.GroupName or "Standing", LocationX = coors.X + count, LocationY = coors.Y })
+			count = count + 100
+		end
+	end
 	--[[ModUtil.Path.Wrap("BeginOpeningCodex",
 		function(baseFunc)
 
@@ -6235,10 +6378,20 @@ end]]
 		return base( triggerArgs ) 
 	end )]]
 
-	--[[OnControlPressed{ "Codex",
+	OnControlPressed{ "Codex",
 		function( triggerArgs )
-			RefreshStoreItems()
+			--[[Spawner( {X = 5954, Y = 4358 },{
+				{ Name = "EnemySpear" },
+				{ Name = "EnemyJavelin" },
+				{ Name = "EnemyShield" },
+				{ Name = "EnemyBow" },
+				{ Name = "EnemyMagicGauntlets" },
+				{ Name = "EnemySword" },
+				{ Name = "HealthMetaUpgrade" },
+				{ Name = "WeaponDamageMetaUpgrade" },
+				{ Name = "MagicDamageMetaUpgrade" },
+			})]]
 		end 
-	}]]
+	}
 
 end

@@ -3571,9 +3571,9 @@
     }
     /* Jealousy/Envy Fx */
     {
-      Name = "HeraOverLoop"
+      Name = "JealousyHeraLoop"
       //ChainTo = "DionysusStatusFxDissipate"
-      FilePath = "Fx\DionysusStatusFx\DionysusStatusFx"
+      FilePath = "Fx\DionysusStatusFx\DionysusStatusFx" // "Hera\HeraStatusIcon_Cream"
       GroupName = "Combat_UI"
       Type = "Book"
       //VisualFx = "DionysusRainbowParty_InPlace"
@@ -3727,6 +3727,196 @@
       StartFrame = 1
       Scale = 0.3
       Ambient = 0.0
+    }
+     {
+      Name = "HeraTrapExplode"
+      Type = "Book"
+      FilePath = "Fx\HadesStunTotemExplode\HadesStunTotemExplode"
+      Scale = 4
+      NumFrames = 47
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 40
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      CreateAnimation = "QuickFlashGreen"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      Sound = "/Leftovers/Menu Sounds/PlayerKilledLong_Small"
+    }
+    {
+      Name = "HeraTrapSpawn"
+      Type = "Book"
+      FilePath = "Fx\HadesStunTotemSpawn\HadesStunTotemSpawn"
+      ChainTo = "HeraTrapStunTotemStatic"
+      Scale = 4
+      NumFrames = 60
+      PlaySpeed = 30
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      OwnerInvulnerable = true
+      ChildAnimation = "HeraTrapStunTotemFlameSpawn"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapActivate"
+      FilePath = "Tilesets\Surface\Surface_Gravemarker_01Active"
+      GroupName = "Standing"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      Ambient = 0.0
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemFlame"
+      Type = "Book"
+      FilePath = "Fx\HadesStunTotemFlame\HadesStunTotemFlame"
+      NumFrames = 40
+      Loop = true
+      PlaySpeed = 30
+      RandomStartFrame = false
+      ReRandomizeOnLoop = false
+      Material = "Unlit"
+      ScaleFromOwner = "Ignore"
+      SortMode = "FromParent"
+      OffsetY = -490
+      Scale = 1.25
+      LocationZFromOwner = "Ignore"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemFlameSpawn"
+      Type = "Book"
+      FilePath = "Fx\HadesStunTotemFlame\HadesStunTotemFlame"
+      NumFrames = 40
+      PlaySpeed = 20
+      Loop = false
+      Material = "Unlit"
+      ScaleFromOwner = "Ignore"
+      SortMode = "FromParent"
+      OffsetY = -490
+      Scale = 1.25
+      StartAlpha = 0
+      EndAlpha = 1
+      ColorFromOwner = "Ignore"
+      HoldLastFrame = true
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemSpawnDecal"
+      Type = "Slide"
+      GroupName = "FX_Terrain"
+      FilePath = "Fx\HadesStunTotemSpawnDecal\HadesStunTotemSpawnDecal"
+      NumFrames = 60
+      Scale = 1
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      Ambient = 0.2
+      OffsetZ = -30
+      CancelOverCap = false
+      OnlyWhenVisible = false
+      RandomFlipHorizontal = true
+      ChainTo = "HeraTrapStunTotemSpawnDecalFade"
+      DieWithOwner = true
+      Slides = [
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 9999 }
+      ]
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+
+    {
+      Name = "HeraTrapStunTotemSpawnDecalFade"
+      Type = "Constant"
+      FilePath = "Fx\HadesStunTotemSpawnDecal\HadesStunTotemSpawnDecal0060"
+      NumFrames = 60
+      Scale = 1
+      OffsetY = -280
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      CancelOverCap = false
+      OnlyWhenVisible = false
+      StartAlpha = 1
+      EndAlpha = 0
+      Ambient = 0.2
+      RandomDurationMin = 1
+      RandomDurationMax = 2
+      UseOwnAngle = false
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemStatic"
+      Type = "Constant"
+      FilePath = "Tilesets\Surface\Surface_Gravemarker_01Active"
+      Material = "Unlit"
+      ChildAnimation = "HeraTrapStunTotemFlame"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapGraspingHandsFx"
+      Type = "Book"
+      FilePath = "Fx\GraspingHands\GraspingHands"
+      NumFrames = 69
+      RandomFlipHorizontal = true
+      Material = "Unlit"
+      GroupName = "FX_Terrain"
+      AngleFromOwner = "Ignore"
+      DieWithOwner = false
+      RandomPlaySpeedMin = 45
+      RandomPlaySpeedMax = 45
+      ScaleRadius = 185
+      Sound = "/Leftovers/SFX/BallHoldingAmbience"
+      StopSoundOnFinishFade = 0.25
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
     }
     /* Character Fx */
   ]

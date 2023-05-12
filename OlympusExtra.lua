@@ -99,7 +99,8 @@ ModUtil.LoadOnce(function()
                 "HealthAsObolTrait","PrivilegeHeraTrait", "FamilyHeraTrait", "MoreRewardTrait", 
                 "EnvyBurstTrait", "StatusOverTimeTrait"
             }
-
+            table.insert(OlympusCodexMenuData.Legendaries, "StatusOverTimeTrait")
+            
             -- Hera duos
             table.insert(OlympusCodexMenuData.Duos, "AuraExposedTrait")
             table.insert(OlympusCodexMenuData.Duos, "CurseLongerTrait")
