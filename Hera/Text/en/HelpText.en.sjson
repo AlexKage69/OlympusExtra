@@ -352,7 +352,7 @@
 		}
 		{
 			Id = "AuraExposedTrait"
-			DisplayName = "Royal Aegis"
+			DisplayName = "Regal Aegis"
 			Description = "{$Keywords.Aura}: Foes are {$Keywords.Stagger}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Big{#AltUpgradeFormat}" 
 		}	
 		{
@@ -362,7 +362,7 @@
 		}	
 		{
 			Id = "AuraBlindTrait"
-			DisplayName = "Aura Apollo"
+			DisplayName = "Blinding Radiance"
 			Description = "{$Keywords.Aura}: Foes are {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Average{#AltUpgradeFormat}" 
 		}	
 		{
