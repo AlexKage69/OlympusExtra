@@ -352,12 +352,12 @@
 		}
 		{
 			Id = "AuraExposedTrait"
-			DisplayName = "Aura Athena"
+			DisplayName = "Royal Aegis"
 			Description = "{$Keywords.Aura}: Foes are {$Keywords.Stagger}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Big{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "AuraRuptureTrait"
-			DisplayName = "Aura Poseidon"
+			DisplayName = "Unyielding Undertow"
 			Description = "{$Keywords.Aura}: Foes are {$Keywords.Rupture}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Very Small{#AltUpgradeFormat}" 
 		}	
 		{
@@ -367,12 +367,12 @@
 		}	
 		{
 			Id = "CurseLongerTrait"
-			DisplayName = "Sense"
+			DisplayName = "Unfading Charms"
 			Description = "Your {$Keywords.Status} effects have a longer duration, except {$Keywords.Curse}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Duration: \Column 380 {#UpgradeFormat}+{$TooltipData.NewTotal1} Sec.{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "BetterTrapsTrait"
-			DisplayName = "Artemis Traps"
+			DisplayName = "Moonlit Snares"
 			Description = "Your {$Keywords.HeraTrap} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
 		}	
 		{
