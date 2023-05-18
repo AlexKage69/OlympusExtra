@@ -86,47 +86,58 @@
       OffsetZ = 90
     }
     {
-      Name = "HeraFeatherC"
-      FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
-      GroupName = "FX_Standing"
+      Name = "HeraEnvyHoverDrop"
+      FilePath = "Fx\AresSwordHoverDrop\AresSwordHoverDrop"
+      GroupName = "Combat_UI"
       Type = "Book"
-      AngleFromOwner = "Take"
-      StartRed = 0.0
-      StartGreen = 1.0
-      StartBlue = 1.0
-      EndRed = 0.0
-      EndGreen = 1.0
-      EndBlue = 1.0
-      EndFrame = 49
-      NumFrames = 49
-      RandomPlaySpeedMax = 50.0
-      RandomPlaySpeedMin = 30.0
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageStab"
+      ColorFromOwner = "Ignore"
+      EndFrame = 26
+      NumFrames = 26
+      PlaySpeed = 30.0
       StartFrame = 1
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
+      OffsetZ = 240.0
+      Scale = 0.9
       ScaleFromOwner = "Ignore"
-      ScaleMax = 0.6
-      ScaleMin = 0.2
-      //OffsetZ = 60.0 
-      /*RandomOffsetX = 50.0
-      RandomOffsetY = 25.0 
-
-      RadialOffsetMax = 200.0
-      RadialOffsetMin = 150.0
-      RadialOffsetScaleRadius = 500.0
-      RadialOffsetScaleY = 0.66
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-
-      Gravity = 50.0
-      VelocityMax = 100.0
-      VelocityMin = -100.0
-      RandomRotation = true
-      RandomRotationSpeedMax = 360.0
-      RandomRotationSpeedMin = -360.0
       Ambient = 0.0
-      CancelOverCap = true
-      OnlyWhenVisible = true*/
-    } 
+      UseAttachedFlasher = false
+    }
+
+    {
+      Name = "HeraEnvyHoverDropParry"
+      FilePath = "Fx\AresSwordHoverDrop\AresSwordHoverDrop"
+      GroupName = "Combat_UI"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageHit"
+      ColorFromOwner = "Ignore"
+      EndFrame = 25
+      NumFrames = 19
+      PlaySpeed = 45.0
+      StartFrame = 7
+      OffsetZ = 240.0
+      Scale = 0.9
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      UseAttachedFlasher = false
+    }
+
+    {
+      Name = "HeraEnvyHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverLoop\HeraEnvyHoverLoop"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
     {
       Name = "HeraFeatherA"
       FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
@@ -169,6 +180,48 @@
       VelocityMax = 300.0
       VelocityMin = 100.0
     }
+    {
+      Name = "HeraFeatherC"
+      FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
+      GroupName = "FX_Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      StartRed = 0.0
+      StartGreen = 1.0
+      StartBlue = 1.0
+      EndRed = 0.0
+      EndGreen = 1.0
+      EndBlue = 1.0
+      EndFrame = 49
+      NumFrames = 49
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.6
+      ScaleMin = 0.2
+      //OffsetZ = 60.0 
+      /*RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 
+
+      RadialOffsetMax = 200.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleRadius = 500.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+      RandomRotation = true
+      RandomRotationSpeedMax = 360.0
+      RandomRotationSpeedMin = -360.0
+      Ambient = 0.0
+      CancelOverCap = true
+      OnlyWhenVisible = true*/
+    } 
     {
       Name = "SwordSwipeA-FeatherB"
       InheritFrom = "HeraFeatherB"

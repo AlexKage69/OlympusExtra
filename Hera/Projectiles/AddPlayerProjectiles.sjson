@@ -4,10 +4,22 @@ Projectiles = {
   0 = { 
     Effects = [
       "_append" 
-      {
+      /*{
         Name = "EnvyCurseAttack"
         IgnoreName = "_PlayerUnit"
-        FrontFx = "StatusIconStunnedCombat"
+        FrontFx = "StatusIconEnvy"
+        BackFx = "null"
+        Duration = 3.0
+        Modifier = 0
+        Active = false
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+      }*/
+      {
+        Name = "EnvyCurseSecondary"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "StatusIconEnvy"
         BackFx = "null"
         Duration = 3.0
         Modifier = 0
@@ -17,9 +29,9 @@ Projectiles = {
         TimeModifierFraction = 0
       }
       {
-        Name = "EnvyCurseSecondary"
+        Name = "EnvyCurseAttack"
         IgnoreName = "_PlayerUnit"
-        FrontFx = "StatusIconStunnedCombat"
+        FrontFx = "HeraEnvyHoverLoop"
         BackFx = "null"
         Duration = 3.0
         Modifier = 0
@@ -27,6 +39,8 @@ Projectiles = {
         ExtendDurationOnReapply = true
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
+        // ConsumedFx = "AresSwordHoverExplode"
+        // ConsumedFx = "AresSwordHoverDrop"
       }
     ] 
   }

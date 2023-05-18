@@ -565,5 +565,33 @@
       Scale = 1.0
       Material = "Unlit"
     }
+    {
+      Name = "StatusIconEnvy"
+      InheritFrom = "StatusIconBase"
+      FilePath = "Hera\HeraStatusIcon2"
+      EndFrame = 1
+      StartFrame = 1
+      OffsetZ = 260.0
+      Scale = 0.3
+      StartAlpha = 0.7
+      EndAlpha = 1.0
+      Duration = 0.5
+      Loop = true
+    }
+    {
+      Name = "StatusIconEnvyCombat"
+      InheritFrom = "StatusIconBase"
+      FilePath = "Hera\HeraStatusIcon2"
+      EndAlpha = 1.0
+      StartAlpha = 0.7
+      Duration = 0.5
+      EndFrame = 1
+      Loop = true
+      PingPong = true
+      StartFrame = 1
+      OffsetZ = 260.0
+      Scale = 0.5
+      StartScale = 0.7
+    }
   ]
 }
