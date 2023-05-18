@@ -39,8 +39,9 @@ Projectiles = {
         ExtendDurationOnReapply = true
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
-        // ConsumedFx = "AresSwordHoverExplode"
-        // ConsumedFx = "AresSwordHoverDrop"
+
+        ExpiringTimeThreshold = 0.26
+        ExpiringFrontFx = "HeraEnvyHoverDrop"
       }
     ] 
   }

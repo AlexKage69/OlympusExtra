@@ -87,7 +87,7 @@
     }
     {
       Name = "HeraEnvyHoverDrop"
-      FilePath = "Fx\AresSwordHoverDrop\AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverDrop\HeraEnvyHoverDrop"
       GroupName = "Combat_UI"
       Type = "Book"
       AngleFromOwner = "Ignore"
@@ -103,26 +103,6 @@
       Ambient = 0.0
       UseAttachedFlasher = false
     }
-
-    {
-      Name = "HeraEnvyHoverDropParry"
-      FilePath = "Fx\AresSwordHoverDrop\AresSwordHoverDrop"
-      GroupName = "Combat_UI"
-      Type = "Book"
-      AngleFromOwner = "Ignore"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageHit"
-      ColorFromOwner = "Ignore"
-      EndFrame = 25
-      NumFrames = 19
-      PlaySpeed = 45.0
-      StartFrame = 7
-      OffsetZ = 240.0
-      Scale = 0.9
-      ScaleFromOwner = "Ignore"
-      Ambient = 0.0
-      UseAttachedFlasher = false
-    }
-
     {
       Name = "HeraEnvyHoverLoop"
       InheritFrom = "AresSwordHoverDrop"
