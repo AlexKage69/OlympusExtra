@@ -5407,24 +5407,7 @@ end]]
 			return consumable
 		end
 	)
-	--[[ModUtil.Path.Wrap("UpdateCostButton",
-		function(baseFunc, button)			
-			baseFunc(button)
-			local upgradeData = button.Data
-			if upgradeData.OriginalCost ~= nil and upgradeData.OriginalCost > 0 then
-				local costString = "@GUI\\Icons\\Currency_Small"
-				costString = upgradeData.Cost .. " " .. costString
-
-				if upgradeData.HealthCost then
-					costString = upgradeData.HealthCost .. " @GUI\\Icons\\Life_Small"
-				end
-
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(upgradeData.Name..";"..upgradeData.OriginalCost..";"..upgradeData.Cost))	
-				ModifyTextBox({ Id = button.Id, Text = costString })
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Updated"))
-			end
-		end
-	)]]
+	
 	ModUtil.Path.Wrap("UpdateCostText",
 		function(baseFunc, object, textExists)
 			baseFunc(object, textExists)
@@ -5448,6 +5431,10 @@ end]]
 			if screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] ~= nil then
 				Destroy({ Id = screen.Components["PurchaseButton"..button.Index.."DiscountIcon"].Id })
 				screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] = nil
+			end
+			if screen.Components["SacrificeButton"..button.Index] ~= nil then
+				Destroy({ Id = screen.Components["SacrificeButton"..button.Index].Id })
+				screen.Components["SacrificeButton"..button.Index] = nil
 			end
 		end
 	)
@@ -5505,9 +5492,56 @@ end]]
 					end
 				end
 				CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex] = upgradeData
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Discount on " .. upgradeData.Name))
 			end
+			
 			baseFunc()
+			local itemLocationStartY = ShopUI.ShopItemStartY
+			local itemLocationYSpacer = ShopUI.ShopItemSpacerY
+			local itemLocationMaxY = itemLocationStartY + 4 * itemLocationYSpacer
+			local itemLocationStartX = ShopUI.ShopItemStartX
+			local itemLocationXSpacer = ShopUI.ShopItemSpacerX
+			local itemLocationMaxX = itemLocationStartX + 1 * itemLocationXSpacer
+
+			local itemLocationX = itemLocationStartX
+			local itemLocationY = itemLocationStartY
+			for i, button in pairs( CurrentRun.CurrentRoom.Store.Buttons ) do
+				local upgradeData = CurrentRun.CurrentRoom.Store.StoreOptions[button.Index]
+				if HeroHasTrait("HealthAsObolTrait") and upgradeData.Cost ~= nil and upgradeData.Cost > 0 and upgradeData.HealFraction == nil and upgradeData.HealthCost == nil and upgradeData.Processed and upgradeData.SacrificeCost == nil then
+					upgradeData.SacrificeCost = round(upgradeData.Cost*0.9)
+					if upgradeData.SacrificeCost <= 0 then
+						upgradeData.SacrificeCost = 1
+					end
+				end
+				if upgradeData.SacrificeCost then
+					local costFontColor = Color.CostAffordable
+					if upgradeData.SacrificeCost ~= nil and upgradeData.SacrificeCost > 0 and (CurrentRun.Hero.Health+1) < upgradeData.SacrificeCost then
+						costFontColor = Color.CostUnaffordable
+					end
+					local itemSacrificeButtonKey = "SacrificeButton"..button.Index
+					local components = CurrentRun.CurrentRoom.Store.Screen.Components
+					local costString = upgradeData.SacrificeCost .. " @GUI\\Icons\\Life_Small"
+					local offset = { X = 320, Y = -350 + button.Index * itemLocationYSpacer }
+					components[itemSacrificeButtonKey] = CreateScreenComponent({ Name = "BoonSlot1", Scale = 0.2, Sound = "/SFX/Menu Sounds/GeneralWhooshMENU", Group = "Combat_Menu"})
+					Attach({ Id = components[itemSacrificeButtonKey].Id, DestinationId = components.ShopBackground.Id, OffsetX = offset.X, OffsetY = offset.Y })	
+					components[itemSacrificeButtonKey].Data = upgradeData
+					components[itemSacrificeButtonKey].OnPressedFunctionName = "SacrificeButtonPressed"
+					components[itemSacrificeButtonKey].SacrificeCost = upgradeData.SacrificeCost
+					components[itemSacrificeButtonKey].Index = button.Index
+					button.SacrificeId = components[itemSacrificeButtonKey].Id
+					CreateTextBox({ Id = components[itemSacrificeButtonKey].Id, Text = costString,
+						FontSize = 28, OffsetX = 0, OffsetY = 0, Width = 720, Font = "AlegreyaSansSCRegular",
+						ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2}, Justification = "Left",
+						Color = costFontColor
+					})
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load: " .. button.Index))
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button))
+					itemLocationX = itemLocationX + itemLocationXSpacer
+					if itemLocationX >= itemLocationMaxX then
+						itemLocationX = itemLocationStartX
+						itemLocationY = itemLocationY + itemLocationYSpacer
+					end
+				end
+			end
 			if itemIndex ~= nil and upgradeData ~= nil then
 				local offsetY = ShopUI.ShopItemStartY + ShopUI.ShopItemSpacerY * (itemIndex-1) - 65
 				local offsetX = ShopUI.ShopItemStartX + 210
@@ -5517,7 +5551,99 @@ end]]
 
 		end
 	)
+	function SacrificeButtonPressed(screen, button)
+		local upgradeData = button.Data
+
+		if upgradeData.SacrificeCost and (CurrentRun.Hero.Health+1) <= upgradeData.SacrificeCost then
+			Flash({ Id = screen.Components["PurchaseButton".. button.Index].Id, Speed = 2, MinFraction = 1, MaxFraction = 0.0, Color = Color.CostUnaffordable, ExpireAfterCycle = true })
+			CantAffordPresentation( upgradeData )
+			return
+		end
 	
+		if upgradeData.Cost ~= nil and upgradeData.Cost > 0 and upgradeData.PurchaseRequirements ~= nil and not IsGameStateEligible( CurrentRun, upgradeData.PurchaseRequirements ) then
+			CantPurchasePresentation( screen.Components["PurchaseButton".. button.Index] )
+			return
+		end
+	
+		StorePurchasePresentation( screen, button, upgradeData )
+	
+		CurrentRun.WellPurchases =  (CurrentRun.WellPurchases or 0) + 1
+	
+		SacrificeHealth({ SacrificeHealth = upgradeData.SacrificeCost, MinHealth = 1 })
+		local values = {}
+		for i, value in pairs (CurrentRun.CurrentRoom.Store.StoreOptions) do
+			if value.Name == upgradeData.Name then
+				CurrentRun.CurrentRoom.Store.StoreOptions[i] = nil
+			end
+		end
+	
+		if upgradeData.Type == "Trait" then
+			AddTraitToHero({ TraitData = upgradeData })
+			IncrementTableValue( GameState.ItemInteractions, upgradeData.Name )
+			CheckCodexUnlock( "Items", upgradeData.Name )
+		elseif upgradeData.Type == "Consumable" then
+			local consumableName = upgradeData.Name
+			local consumableId = SpawnObstacle({ Name = consumableName, DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
+			local consumable = CreateConsumableItemFromData( consumableId, upgradeData, 0 )
+		end
+	
+		if upgradeData.CloseScreen then
+			thread( PlayRandomEligibleVoiceLines, { upgradeData.PurchasedLines } )
+			CloseStoreScreen( screen, button )
+			return
+		end
+		if screen.Components["PurchaseButton"..button.Index.."QuestIcon"] ~= nil then
+			Destroy({ Id = screen.Components["PurchaseButton"..button.Index.."QuestIcon"].Id })
+			screen.Components["PurchaseButton"..button.Index.."QuestIcon"] = nil
+		end
+	
+		Destroy({ Id = screen.Components["PurchaseButtonTitle".. button.Index].Id })
+		screen.Components["PurchaseButtonTitle".. button.Index] = nil
+	
+		CreateAnimation({ Name = "BoonSlotPurchase", DestinationId = screen.Components["Backing".. button.Index].Id, OffsetX = -380 })
+	
+		Destroy({ Id = screen.Components["PurchaseButton".. button.Index].Id })
+		screen.Components["PurchaseButton".. button.Index] = nil
+	
+		Destroy({ Id = screen.Components["Icon".. button.Index].Id })
+		screen.Components["Icon".. button.Index] = nil
+
+		if screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] ~= nil then
+			Destroy({ Id = screen.Components["PurchaseButton"..button.Index.."DiscountIcon"].Id })
+			screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] = nil
+		end
+		if screen.Components["SacrificeButton"..button.Index] ~= nil then
+			Destroy({ Id = screen.Components["SacrificeButton"..button.Index].Id })
+			screen.Components["SacrificeButton"..button.Index] = nil
+		end
+		thread( PlayRandomEligibleVoiceLines, { upgradeData.PurchasedLines } )
+	
+		for i, button in pairs(CurrentRun.CurrentRoom.Store.Buttons) do
+			UpdateCostButton( button )
+		end
+	end
+	ModUtil.Path.Wrap("UpdateCostButton",
+		function(baseFunc, button)			
+			baseFunc(button)
+			if button == nil then
+				return
+			end
+		
+			UpdateSacrificeCostButton(button)
+		end
+	)
+	function UpdateSacrificeCostButton(button)
+		if button.SacrificeId then
+			local upgradeData = button.Data
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Update ".. upgradeData.Name))
+			local costColor = Color.CostAffordable
+			if (CurrentRun.Hero.Health+1) < upgradeData.SacrificeCost then
+				costColor = Color.CostUnaffordable
+			end
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Current ".. CurrentRun.Hero.Health))
+			ModifyTextBox({ Id = button.SacrificeId, ColorTarget = costColor, ColorDuration = 0.2 })
+		end
+	end
 	ModUtil.Path.Wrap("AddTraitData",
 		function(baseFunc, unit, traitData, args)
 			baseFunc(unit, traitData, args)
@@ -5530,8 +5656,7 @@ end]]
 	ModUtil.Path.Wrap("RemoveTrait",
 		function(baseFunc, unit, traitName, args)
 			baseFunc(unit, traitName, args)
-			if TraitData[traitName].RefreshShop and TraitData[traitName].RefreshShop.OnRemove then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh on Remove: " .. traitName))
+			if traitName ~= nil and TraitData[traitName] ~= nil and TraitData[traitName].RefreshShop and TraitData[traitName].RefreshShop.OnRemove then
 				RefreshStoreItems()
 			end
 		end
@@ -5815,7 +5940,6 @@ end]]
 			if target == nil then
 				return
 			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(target.SacrificeCost))
 			if target.SacrificeCost then
 				if target.Rarity then
 					local interactionBlocked = false
@@ -5984,6 +6108,11 @@ end]]
 			baseFunc(victim, triggerArgs)
 			if victim == CurrentRun.Hero then
 				UpdateHealthCostTexts()
+				if CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.Buttons then
+					for i, button in pairs(CurrentRun.CurrentRoom.Store.Buttons) do
+						UpdateSacrificeCostButton( button )
+					end
+				end
 			end
 		end
 	)
