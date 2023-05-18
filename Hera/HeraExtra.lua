@@ -518,7 +518,7 @@ end]]
 		InheritFrom = { "GiftTrait" },
 		--New Data
 		InRackTitle = "ForceHeraBoonTrait_Rack",
-		Icon = "CosmeticIcon_PedestalA",
+		Icon = "Keepsake_Skull",
 		EquipSound = "/SFX/WrathOver2",
 		ForceBoonName = "HeraUpgrade",
 		Uses = 1,
