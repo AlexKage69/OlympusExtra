@@ -3697,7 +3697,7 @@
     }
     {
       Name = "HeraProjectileImpact"
-      CreateAnimation = "QuickFlashTeal"
+      CreateAnimation = "QuickFlashTealSmall"
       FilePath = "Hera\Fx\HeraProjectileImpact\HeraProjectileImpact"
       GroupName = "Standing"
       Type = "Book"
@@ -3742,18 +3742,8 @@
       Scale = 0.6
       ScaleFromOwner = "Ignore"
       CreateAnimations = [
-        { Name = "DisplaceShockwave-HeraProjectileImpactSmall" }
+        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
       ]
-    }
-    {
-      Name = "DisplaceShockwave-HeraProjectileImpactSmall"
-      InheritFrom = "DisplaceShockwave-EnemyProjectileImpactSmall"
-      //Color = 
-      //  {
-          Red = 0.0
-          Green = 0.55
-          Blue = 0.53
-      //  }
     }
     {
       Name = "HeraProjectileImpactParticles"
