@@ -86,7 +86,7 @@
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false
-      DissipateGraphic = "EnemyProjectileImpact"
+      DissipateGraphic = "HeraProjectileImpact"
       AffectsSelf = true
       CheckUnitImpact = true
       CheckObstacleImpact = true
@@ -97,12 +97,12 @@
       DamageHigh = 1
       StartDelay = 0.2
       InvulnerableToProjectileDefenseBeforeStart = true
-      ImpactFx = "EnemyProjectileImpactSmall"
+      ImpactFx = "HeraProjectileImpactSmall"
       Thing = {
-        Graphic = "EnemyProjectile"
+        Graphic = "HeraRangedProjectile"
         OffsetZ = 50
         Tallness = 60
-        AttachedAnim = "EnemyProjectileLight"
+        AttachedAnim = "HeraProjectileLight"
         Grip = 999999
         UseBoundsForSortDrawArea = true
         RotateGeometry = true
