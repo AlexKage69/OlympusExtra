@@ -249,7 +249,7 @@
       DangerDistance = 0
       Effects = [
         /*{
-          Name = "GraspingHands"
+          Name = "HeraGraspingHands"
           Duration = 1.0
           DisableMove = true
           DisableRotate = true

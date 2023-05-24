@@ -3850,7 +3850,7 @@
      {
       Name = "HeraTrapExplode"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemExplode\HadesStunTotemExplode"
+      FilePath = "Hera\Fx\HeraStunTotemExplode\HeraStunTotemExplode"
       Scale = 4
       NumFrames = 47
       RandomPlaySpeedMin = 30
@@ -3868,7 +3868,7 @@
     {
       Name = "HeraTrapSpawn"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemSpawn\HadesStunTotemSpawn"
+      FilePath = "Hera\Fx\HeraStunTotemSpawn\HeraStunTotemSpawn"
       ChainTo = "HeraTrapStunTotemStatic"
       Scale = 4
       NumFrames = 60
@@ -3903,7 +3903,7 @@
     {
       Name = "HeraTrapStunTotemFlame"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemFlame\HadesStunTotemFlame"
+      FilePath = "Hera\Fx\HeraStunTotemFlame\HeraStunTotemFlame"
       NumFrames = 40
       Loop = true
       PlaySpeed = 30
@@ -3924,7 +3924,7 @@
     {
       Name = "HeraTrapStunTotemFlameSpawn"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemFlame\HadesStunTotemFlame"
+      FilePath = "Hera\Fx\HeraStunTotemFlame\HeraStunTotemFlame"
       NumFrames = 40
       PlaySpeed = 20
       Loop = false
@@ -3947,7 +3947,7 @@
       Name = "HeraTrapStunTotemSpawnDecal"
       Type = "Slide"
       GroupName = "FX_Terrain"
-      FilePath = "Fx\HadesStunTotemSpawnDecal\HadesStunTotemSpawnDecal"
+      FilePath = "Hera\Fx\HeraStunTotemSpawnDecal\HeraStunTotemSpawnDecal"
       NumFrames = 60
       Scale = 1
       LocationFromOwner = "Take"
@@ -3981,7 +3981,7 @@
     {
       Name = "HeraTrapStunTotemSpawnDecalFade"
       Type = "Constant"
-      FilePath = "Fx\HadesStunTotemSpawnDecal\HadesStunTotemSpawnDecal0060"
+      FilePath = "Hera\Fx\HeraStunTotemSpawnDecal\HeraStunTotemSpawnDecal0060"
       NumFrames = 60
       Scale = 1
       OffsetY = -280
@@ -4007,7 +4007,7 @@
     {
       Name = "HeraTrapStunTotemStatic"
       Type = "Constant"
-      FilePath = "Tilesets\Surface\Surface_Gravemarker_01Active"
+      FilePath = "Hera\Surface_Gravemarker_01Active"
       Material = "Unlit"
       ChildAnimation = "HeraTrapStunTotemFlame"
       Color = {
@@ -4019,7 +4019,7 @@
     {
       Name = "HeraTrapGraspingHandsFx"
       Type = "Book"
-      FilePath = "Fx\GraspingHands\GraspingHands"
+      FilePath = "Hera\Fx\HeraGraspingHands\HeraGraspingHands"
       NumFrames = 69
       RandomFlipHorizontal = true
       Material = "Unlit"
