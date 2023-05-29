@@ -52,7 +52,7 @@
         [{
           Name = "JealousyCurse"
           IgnoreName = "_PlayerUnit"
-          FrontFx = "JealousyHeraLoop"
+          FrontFx = "CharonGhostChargeProjectile"
           BackFx = "null"
           Duration = 6
           Modifier = 0.25
