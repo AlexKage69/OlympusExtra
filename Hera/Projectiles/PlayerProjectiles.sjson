@@ -230,8 +230,8 @@
       Type = "INSTANT"
       CanBeReflected = false
       CanBeProjectileDefenseDestroyed = false
-      DamageLow = 20
-      DamageHigh = 20
+      DamageLow = 50
+      DamageHigh = 50
       DamageRadius = 380.0
       BlastSpeed = 800
       DamageRadiusScaleY = 0.55

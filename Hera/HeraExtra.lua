@@ -2348,7 +2348,7 @@ end]]
 			}
 		},
 		EnvyBurstMultiplier = {
-			BaseValue = 0.20,
+			BaseValue = 1.80,
 			IdenticalMultiplier =
 			{
 				Value = DuplicateMultiplier,
@@ -2359,7 +2359,7 @@ end]]
 			{
 				Key = "EnvyBurstMultiplier",
 				ExtractAs = "TooltipMultiplier",
-				Format = "Percent",
+				Format = "PercentDelta",
 			},
 			{
 				ExtractAs = "TooltipEnvyDuration",
@@ -5751,7 +5751,7 @@ end]]
 	function ApplyEnvyCurse(victim, amount)
 		victim.EnvyNextDamage.Amount = amount
 		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
-			victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
+			victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
 		end
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.EnvyNextDamage.Amount))
 	end
@@ -6297,7 +6297,7 @@ end]]
 		return hero.SameGodCount
 	end
 	function PresentationNewSameGodIncrease()
-		--wait(1.0)
+		wait(1.0)
 		CreateAnimation({ Name = "HeraWingsFlap", DestinationId = CurrentRun.Hero.ObjectId })
 	end
 	function SetupHeroicBoonsTrait( args )

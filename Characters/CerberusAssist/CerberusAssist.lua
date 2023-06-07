@@ -224,7 +224,11 @@ OlympusTraitData.GoodBoyAssistTrait =
 		local targetId = SpawnObstacle({ Name = "BlankObstacle", Group = "FX_Terrain", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = -1200, OffsetY = 865 })
 		CreateAnimation({ Name = "CerberusAssist", DestinationId = targetId, GroupName = "Overlay" })
 		Move({Id = targetId, Angle = 30, Distance = 4000, Duration = 3, SmoothStep = true })
-		wait(3)
+		wait( 0.3 )
+		PlaySound({ Name = "/VO/CerberusBarks2" })
+		wait( 0.4 )
+		PlaySound({ Name = "/VO/CerberusBarks" })
+		wait( 2.3 )
 		StopAnimation({ Name = "CerberusAssist", DestinationId = targetId })
 		Destroy({ Id = targetId })
 	end

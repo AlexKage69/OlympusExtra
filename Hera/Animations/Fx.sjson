@@ -3912,6 +3912,7 @@
       ScaleRadius = 185
       Sound = "/Leftovers/SFX/BallHoldingAmbience"
       StopSoundOnFinishFade = 0.25
+      AddColor = true
       Color = {
         Red = 1.0
         Green = 1.0
