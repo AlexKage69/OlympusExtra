@@ -52,6 +52,7 @@
         [{
           Name = "JealousyCurse"
           IgnoreName = "_PlayerUnit"
+          //FrontFx = "CharonGhostChargeProjectile"
           FrontFx = "JealousyHeraLoop"
           BackFx = "null"
           Duration = 6
@@ -86,7 +87,7 @@
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false
-      DissipateGraphic = "EnemyProjectileImpact"
+      DissipateGraphic = "HeraProjectileImpact"
       AffectsSelf = true
       CheckUnitImpact = true
       CheckObstacleImpact = true
@@ -97,12 +98,12 @@
       DamageHigh = 1
       StartDelay = 0.2
       InvulnerableToProjectileDefenseBeforeStart = true
-      ImpactFx = "EnemyProjectileImpactSmall"
+      ImpactFx = "HeraProjectileImpactSmall"
       Thing = {
-        Graphic = "EnemyProjectile"
+        Graphic = "HeraRangedProjectile"
         OffsetZ = 50
         Tallness = 60
-        AttachedAnim = "EnemyProjectileLight"
+        AttachedAnim = "HeraProjectileLight"
         Grip = 999999
         UseBoundsForSortDrawArea = true
         RotateGeometry = true
@@ -249,7 +250,7 @@
       DangerDistance = 0
       Effects = [
         /*{
-          Name = "GraspingHands"
+          Name = "HeraGraspingHands"
           Duration = 1.0
           DisableMove = true
           DisableRotate = true

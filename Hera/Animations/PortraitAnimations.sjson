@@ -4,24 +4,24 @@
     {
       Name = "PortraitRayParticle_Hera"
       InheritFrom = "PortraitRayParticle"
-      StartRed = 0.48
-      StartGreen = 0.09
-      StartBlue = 0.21
-      EndRed = 0.82
-      EndGreen = 0.2
-      EndBlue = 0.5
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
       OffsetX = 0
       OffsetY = -300
     }
     {
       Name = "PortraitVerticalRay_Hera"
       InheritFrom = "PortraitVerticalRay"
-      StartRed = 0.48
-      StartGreen = 0.09
-      StartBlue = 0.21
-      EndRed = 0.82
-      EndGreen = 0.2
-      EndBlue = 0.5
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
 
       OffsetX = 0
       CreateAnimation = "PortraitRayParticle_Hera"
@@ -29,12 +29,12 @@
     {
       Name = "PortraitVerticalRayEmitter_Hera"
       InheritFrom = "PortraitVerticalRayEmitter_Base"
-      StartRed = 0.48
-      StartGreen = 0.09
-      StartBlue = 0.21
-      EndRed = 0.82
-      EndGreen = 0.2
-      EndBlue = 0.5
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
       OffsetX = 0
       VisualFx = "PortraitVerticalRay_Hera"
     }
@@ -51,18 +51,18 @@
       Name = "Portrait_Hera_Default_01"
       InheritFrom = "Portrait_God_01"
       ChildAnimation = "PortraitGodRayEmitter_Hera"
-      FilePath = "Hera\Portraits_Hera_02"
+      FilePath = "Hera\Portraits_Hera_01"
       EndFrame = 1
       StartFrame = 1
-      Scale = 0.60
+      Scale = 0.50
     }
     {
       Name = "Portrait_Hera_Default_01_Exit"
       InheritFrom = "Portrait_Base_01_Exit"
-      FilePath = "Hera\Portraits_Hera_02"
+      FilePath = "Hera\Portraits_Hera_01"
       EndFrame = 1
       StartFrame = 1
-      Scale = 0.60
+      Scale = 0.50
     }
     {
       Name = "Portrait_Hera_Wrath_01"

@@ -86,47 +86,38 @@
       OffsetZ = 90
     }
     {
-      Name = "HeraFeatherC"
-      FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
-      GroupName = "FX_Standing"
+      Name = "HeraEnvyHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverDrop\HeraEnvyHoverDrop"
+      GroupName = "Combat_UI"
       Type = "Book"
-      AngleFromOwner = "Take"
-      StartRed = 0.0
-      StartGreen = 1.0
-      StartBlue = 1.0
-      EndRed = 0.0
-      EndGreen = 1.0
-      EndBlue = 1.0
-      EndFrame = 49
-      NumFrames = 49
-      RandomPlaySpeedMax = 50.0
-      RandomPlaySpeedMin = 30.0
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageStab"
+      ColorFromOwner = "Ignore"
+      EndFrame = 26
+      NumFrames = 26
+      PlaySpeed = 30.0
       StartFrame = 1
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
+      OffsetZ = 240.0
+      Scale = 0.9
       ScaleFromOwner = "Ignore"
-      ScaleMax = 0.6
-      ScaleMin = 0.2
-      //OffsetZ = 60.0 
-      /*RandomOffsetX = 50.0
-      RandomOffsetY = 25.0 
-
-      RadialOffsetMax = 200.0
-      RadialOffsetMin = 150.0
-      RadialOffsetScaleRadius = 500.0
-      RadialOffsetScaleY = 0.66
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-
-      Gravity = 50.0
-      VelocityMax = 100.0
-      VelocityMin = -100.0
-      RandomRotation = true
-      RandomRotationSpeedMax = 360.0
-      RandomRotationSpeedMin = -360.0
       Ambient = 0.0
-      CancelOverCap = true
-      OnlyWhenVisible = true*/
-    } 
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraEnvyHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverLoop\HeraEnvyHoverLoop"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
     {
       Name = "HeraFeatherA"
       FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
@@ -169,6 +160,48 @@
       VelocityMax = 300.0
       VelocityMin = 100.0
     }
+    {
+      Name = "HeraFeatherC"
+      FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
+      GroupName = "FX_Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      StartRed = 0.0
+      StartGreen = 1.0
+      StartBlue = 1.0
+      EndRed = 0.0
+      EndGreen = 1.0
+      EndBlue = 1.0
+      EndFrame = 49
+      NumFrames = 49
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.6
+      ScaleMin = 0.2
+      //OffsetZ = 60.0 
+      /*RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 
+
+      RadialOffsetMax = 200.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleRadius = 500.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+      RandomRotation = true
+      RandomRotationSpeedMax = 360.0
+      RandomRotationSpeedMin = -360.0
+      Ambient = 0.0
+      CancelOverCap = true
+      OnlyWhenVisible = true*/
+    } 
     {
       Name = "SwordSwipeA-FeatherB"
       InheritFrom = "HeraFeatherB"
@@ -3638,7 +3671,7 @@
     {
       Name = "HeraRangedProjectile"
       //CreateAnimation = "HeraProjectileGlow"
-      FilePath = "Fx\EnemyProjectile\EnemyProjectile"
+      FilePath = "Hera\Fx\HeraProjectile\HeraProjectile"
       Type = "Book"
       //VisualFx = "DisplaceHeatTrail"
       VisualFxManagerCap = 400
@@ -3651,9 +3684,9 @@
       NumFrames = 60
       RandomPlaySpeedMax = 90.0
       RandomPlaySpeedMin = 60.0
-      Red = 0.5
-      Green = 1.0
-      Blue = 0.5
+      //Red = 0.5
+      //Green = 1.0
+      //Blue = 0.5
       StartFrame = 1
       OffsetZ = 30.0
       Scale = 0.6
@@ -3661,6 +3694,92 @@
       VisualFxIntervalMax = 0.1
       VisualFxIntervalMin = 0.11
       OverlayVfx = true
+    }
+    {
+      Name = "HeraProjectileImpact"
+      CreateAnimation = "QuickFlashTealSmall"
+      FilePath = "Hera\Fx\HeraProjectileImpact\HeraProjectileImpact"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileDetonateExplode"
+      ColorFromOwner = "Ignore"
+      EndFrame = 16
+      NumFrames = 16
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 45.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      SortMode = "FromParent"
+      RandomRotation = true
+      Scale = 1.2
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      OnlyWhenVisible = true
+      OverlayVfx = true
+	    VisualFxManagerCap = 400
+      CreateAnimations = [
+        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
+      ]
+      Slides = [
+        { DurationFrames = 1 Frame = 1 }
+        { DurationFrames = 1 Frame = 2 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 3 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 4 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 5 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 6 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 7 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 8 VisualFx = "HeraProjectileImpactParticles" }
+      ]
+    }
+    {
+      Name = "HeraProjectileImpactSmall"
+      InheritFrom = "HeraProjectileImpact"
+      ClearCreateAnimations = true
+      Scale = 0.6
+      ScaleFromOwner = "Ignore"
+      CreateAnimations = [
+        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
+      ]
+    }
+    {
+      Name = "HeraProjectileImpactParticles"
+      FilePath = "Particles\particle_ascension_01"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleMax = 360.00
+      AngleFromOwner = "Ignore"
+      EndFrame = 1
+      NumFrames = 1
+      RandomDurationMax = 1.0
+      RandomDurationMin = 0.25
+      StartFrame = 1
+      LocationFromOwner = "Take"
+      VelocityMax = 400.0
+      VelocityMin = 200.0
+      EndScale = 0.0
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.3
+      Ambient = 0.0
+      RandomAccelerationMax = -400.0
+      RandomAccelerationMin = -900.0
+      CancelOverCap = true
+      OnlyWhenVisible = true
+      Color = { Red = 0.0 Green = 0.55 Blue = 0.53 }
+    }
+    {
+      Name = "HeraProjectileLight"
+      InheritFrom = "EnemyProjectileLight"
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
     }
     {
       Name = "HeraProjectileGlow"
@@ -3731,7 +3850,7 @@
      {
       Name = "HeraTrapExplode"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemExplode\HadesStunTotemExplode"
+      FilePath = "Hera\Fx\HeraStunTotemExplode\HeraStunTotemExplode"
       Scale = 4
       NumFrames = 47
       RandomPlaySpeedMin = 30
@@ -3749,7 +3868,7 @@
     {
       Name = "HeraTrapSpawn"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemSpawn\HadesStunTotemSpawn"
+      FilePath = "Hera\Fx\HeraStunTotemSpawn\HeraStunTotemSpawn"
       ChainTo = "HeraTrapStunTotemStatic"
       Scale = 4
       NumFrames = 60
@@ -3784,7 +3903,7 @@
     {
       Name = "HeraTrapStunTotemFlame"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemFlame\HadesStunTotemFlame"
+      FilePath = "Hera\Fx\HeraStunTotemFlame\HeraStunTotemFlame"
       NumFrames = 40
       Loop = true
       PlaySpeed = 30
@@ -3805,7 +3924,7 @@
     {
       Name = "HeraTrapStunTotemFlameSpawn"
       Type = "Book"
-      FilePath = "Fx\HadesStunTotemFlame\HadesStunTotemFlame"
+      FilePath = "Hera\Fx\HeraStunTotemFlame\HeraStunTotemFlame"
       NumFrames = 40
       PlaySpeed = 20
       Loop = false
@@ -3828,7 +3947,7 @@
       Name = "HeraTrapStunTotemSpawnDecal"
       Type = "Slide"
       GroupName = "FX_Terrain"
-      FilePath = "Fx\HadesStunTotemSpawnDecal\HadesStunTotemSpawnDecal"
+      FilePath = "Hera\Fx\HeraStunTotemSpawnDecal\HeraStunTotemSpawnDecal"
       NumFrames = 60
       Scale = 1
       LocationFromOwner = "Take"
@@ -3862,7 +3981,7 @@
     {
       Name = "HeraTrapStunTotemSpawnDecalFade"
       Type = "Constant"
-      FilePath = "Fx\HadesStunTotemSpawnDecal\HadesStunTotemSpawnDecal0060"
+      FilePath = "Hera\Fx\HeraStunTotemSpawnDecal\HeraStunTotemSpawnDecal0060"
       NumFrames = 60
       Scale = 1
       OffsetY = -280
@@ -3888,7 +4007,7 @@
     {
       Name = "HeraTrapStunTotemStatic"
       Type = "Constant"
-      FilePath = "Tilesets\Surface\Surface_Gravemarker_01Active"
+      FilePath = "Hera\Surface_Gravemarker_01Active"
       Material = "Unlit"
       ChildAnimation = "HeraTrapStunTotemFlame"
       Color = {
@@ -3900,7 +4019,7 @@
     {
       Name = "HeraTrapGraspingHandsFx"
       Type = "Book"
-      FilePath = "Fx\GraspingHands\GraspingHands"
+      FilePath = "Hera\Fx\HeraGraspingHands\HeraGraspingHands"
       NumFrames = 69
       RandomFlipHorizontal = true
       Material = "Unlit"

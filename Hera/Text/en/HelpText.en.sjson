@@ -44,7 +44,7 @@
 		}
 		{
       		Id = "HeraTrap"
-			DisplayName = "Traps"
+			DisplayName = "Trap"
 			Description = "Traps can be broken. A maximum of 5 traps can be present at one time."
 		}
 		{
