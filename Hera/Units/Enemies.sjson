@@ -2,7 +2,7 @@
   Units = [
     "_append"
     {
-      Name = "HestiaUpgradeRoomWeapon"
+      Name = "HeraUpgradeRoomWeapon"
       InheritFrom = "PassiveRoomWeapon"
       DisplayInEditor = true
       Thing = {

@@ -19,7 +19,7 @@ Projectiles = {
       {
         Name = "EnvyCurseSecondary"
         IgnoreName = "_PlayerUnit"
-        FrontFx = "StatusIconEnvy"
+        FrontFx = "HeraEnvyHoverLoop"
         BackFx = "null"
         Duration = 3.0
         Modifier = 0
@@ -40,8 +40,8 @@ Projectiles = {
         IsVulnerabilityEffect = true
         TimeModifierFraction = 0
 
-        ExpiringTimeThreshold = 0.26
-        ExpiringFrontFx = "HeraEnvyHoverDrop"
+        //ExpiringTimeThreshold = 0.26
+        //ExpiringFrontFx = "HeraEnvyHoverDrop"
       }
     ] 
   }

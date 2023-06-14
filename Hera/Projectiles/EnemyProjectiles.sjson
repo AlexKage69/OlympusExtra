@@ -119,24 +119,72 @@
     }
     {
       Name = "DevotionHera"
-      InheritFrom = "TheseusHeraBolt"
-      DetonateGraphic = "RadialNovaDevotion-Hera"
-      Type = "INSTANT"
-      DamageLow = 15
-      DamageHigh = 15
-      DamageRadius = 270.0
-      DamageRadiusScaleY = 0.6
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      Type = "HOMING"
+      //DetonateGraphic = "AphroditeProjectileImpactMaxShout"
+      AllowTargetInvulnerable = true
+      DamageLow = 8
+      DamageHigh = 8
       ImpactVelocity = 0
-      Fuse = 1.0
-      TotalFuse = 3.6
-      MultiDetonate = true
-      //Speed = 150
-      Range = 1500
+      ImpactVelocityCap = 0
+      MaxAdjustRate = 200
+      Fuse = 10.0
+      Speed = 275
+      FlashBeforeExpireDuration = 0.5
+      Range = 999999
+      UnlimitedUnitPenetration = false
       DieWithOwner = true
       InheritOwnerElapsedTimeMultiplier = false
-      DangerDistance = 0
-      NumBounces = 999
-      CheckObstacleImpact = true
+      //ImpactFx = "AphroditeHeartDash"
+      GroupName = "FX_Standing_Add"
+      CanBeProjectileDefenseDestroyed = false
+      CanBeReflected = false
+      ImmunityDuration = 0.2
+      DangerDistance = 200
+      Thing = 
+      {
+        Graphic = "DevotionHeraProjectile"
+        RotateGeometry = true
+        Scale = 1.0
+        Points = [
+          {
+            X = 20
+            Y = 50
+          }
+          {
+            X = 20
+            Y = -50
+          }
+          {
+            X = -80
+            Y = -50
+          }
+          {
+            X = -80
+            Y = 50
+          }]
+      }
+      /*Effect = 
+      {
+        Name = "ZagreusAphroditeStun"
+        Duration = 0.75
+        DisableMove = true
+        DisableRotate = true
+        DisableAttack = true
+        Active = true
+        CanAffectInvulnerable = false
+        FrontFx = "AphroditeDebuffStatus"
+        Cancelable = false
+        StartAnimation = "ZagreusStun"
+        OnlyAffectName = "_PlayerUnit"
+      }*/
     }
     {
       Name = "TheseusPullHeraBolt"

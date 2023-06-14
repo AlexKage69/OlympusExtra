@@ -132,7 +132,7 @@
       Effects = [
         {
         Name = "HeraDecay"
-        Duration = 100
+        Duration = 0.9
         Active = true
         TimeModifierFraction = 0
         ExpiringRapidFlashThreshold = 1.5

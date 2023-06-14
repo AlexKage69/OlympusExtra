@@ -234,12 +234,12 @@
 		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied to a foe, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "EnvyBurstTrait_Initial"
 			InheritFrom = "EnvyBurstTrait"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied to a foe, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
     		Id = "MoreCompanionText_Alt"
@@ -402,8 +402,8 @@
 		}	
 		{
 			Id = "EnhancedNPCTrait"
-			DisplayName = "Royal Seal"
-			Description = "You receive more help from Underworld's Commoners. \n {!Icons.Bullet}{#PropertyFormat}Reward from friends : \Column 380 {#UpgradeFormat}All{#AltUpgradeFormat}\n {!Icons.Bullet}{#PropertyFormat}Reward after {$Keywords.BossPlural} : \Column 380 {#UpgradeFormat}1{#AltUpgradeFormat}" 
+			DisplayName = "Royal Pact"
+			Description = "You receive more help from Underworld's Commoners. \n {!Icons.Bullet}{#PropertyFormat}Reward from friends : \Column 380 {#UpgradeFormat}All{#AltUpgradeFormat}\n {!Icons.Bullet}{#PropertyFormat}Possible reward after {$Keywords.BossPlural} : \Column 380 {#UpgradeFormat}1{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "LtUpgrade_Hera"
