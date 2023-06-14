@@ -89,20 +89,21 @@ if ModUtil ~= nil then
 		DefaultAIData =
 		{
 			DeepInheritance = true,
-			PreAttackDuration = 0.1,
+			PreAttackDuration = 0.0,
+			PreFireAnimation = "DevotionPreAttackBase_Aphrodite",
+			PreFireDuration = 1.2,
 			FireDuration = 0.0,
 			PostAttackDuration = 0.0,
-			PostAttackCooldownMin = 3.0,
-			PostAttackCooldownMax = 3.0,
+			PostAttackCooldownMin = 0.4,
+			PostAttackCooldownMax = 0.7,
 			CreateOwnTargetFromOriginalTarget = true,
-			RandomTargetAngle = false,
-			TargetOffsetDistanceMin = 0,
-			TargetOffsetDistanceMax = 0,
+			RandomTargetAngle = true,
+			TargetOffsetDistanceMin = 400,
+			TargetOffsetDistanceMax = 450,
 			TeleportToTargetId = true,
 
-			AIFireTicksMin = 1,
-			AIFireTicksMax = 1,
-			FireCooldown = 0.3,
+			FireTicks = 1,
+			FireCooldown = 0.0,
 		},
 
 		WeaponOptions =
@@ -426,6 +427,16 @@ if ModUtil ~= nil then
 		"HeraMiscPickup15",
 		"HeraMiscPickup16",
 		"HeraMiscPickup17"
+	}
+	HeraExtra.GodsList = {
+		"Zeus",
+		"Athena",
+		"Poseidon",
+		"Artemis",
+		"Aphrodite",
+		"Ares",
+		"Dionysus",
+		"Demeter",
 	}
 	GameData.RunClearMessageData.ClearRequiredTraitsHera =
 	{
@@ -3542,6 +3553,7 @@ end]]
 					{ "ZeusWeaponTrait", "ZeusRushTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusShoutTrait" },
 				},
 			},
+			
 		},
 
 		Speaker = "NPC_Hera_01",
@@ -5154,7 +5166,74 @@ end]]
 			-- You are going to burn it to the ground, aren't you?
 			{ Cue = "/VO/Hera_0148" },
 		},
-	} -- Other gods modification
+	} 
+	-- Other gods modification
+	OlympusLootData.AphroditeUpgrade.LinkedUpgrades.CurseLongerTrait =
+	{
+		OneFromEachSet =
+		{
+			{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+			{ "AphroditeWeaponTrait", "AphroditeSecondaryTrait", "AphroditeRushTrait", "AphroditeRangedTrait" }
+		}
+	}
+	OlympusLootData.AthenaUpgrade.LinkedUpgrades.AuraExposedTrait =
+	{
+		OneFromEachSet =
+		{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+					{ "AthenaWeaponTrait", "AthenaSecondaryTrait", "AthenaRushTrait", "AthenaRangedTrait",
+						"ShieldLoadAmmo_AthenaRangedTrait" }
+				}
+	}
+	OlympusLootData.ArtemisUpgrade.LinkedUpgrades.BetterTrapsTrait =
+	{
+		OneFromEachSet =
+				{
+					{ "HeraRushTrait" },
+					{ "ArtemisWeaponTrait", "ArtemisSecondaryTrait", "ArtemisRangedTrait", "CritBonusTrait" }
+				},
+	}
+	OlympusLootData.DionysusUpgrade.LinkedUpgrades.SlowerHangoverTrait =
+	{
+		OneFromEachSet =
+				{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+					{ "DionysusWeaponTrait", "DionysusRushTrait", "DionysusSecondaryTrait", "DionysusShoutTrait" },
+				}
+	}
+	OlympusLootData.PoseidonUpgrade.LinkedUpgrades.AuraRuptureTrait =
+	{
+		OneFromEachSet =
+				{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+					{ "PoseidonWeaponTrait", "PoseidonSecondaryTrait", "PoseidonRushTrait", "PoseidonRangedTrait" },
+				}
+	}
+	OlympusLootData.AresUpgrade.LinkedUpgrades.KillMarkedTrait =
+	{
+		OneFromEachSet =
+				{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+					{ "AresWeaponTrait", "AresSecondaryTrait", "AresRushTrait", "AresRangedTrait" },
+				},
+	}
+	OlympusLootData.DemeterUpgrade.LinkedUpgrades.HeroicBoonsTrait =
+	{
+		OneFromEachSet =
+				{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+					{ "DemeterWeaponTrait", "DemeterRushTrait", "DemeterSecondaryTrait", "DemeterShoutTrait", "DemeterRangedTrait" },
+				},
+	}
+	OlympusLootData.ZeusUpgrade.LinkedUpgrades.GaugeLightningTrait =
+	{
+		OneFromEachSet =
+				{
+					{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+					{ "ZeusWeaponTrait", "ZeusRushTrait", "ZeusSecondaryTrait", "ZeusRangedTrait", "ZeusShoutTrait" },
+				},
+	}
+	
 	-- AthenaUpgrade
 	table.insert(OlympusLootData.AthenaUpgrade.PriorityPickupTextLineSets.AthenaVsOlympians01.RequiredTextLines,
 		"HeraFirstPickUp")
@@ -5244,6 +5323,120 @@ end]]
 		[7] = { RequiredResource = "SuperGiftPoints" },
 		UnlockGameStateRequirements = { RequiredTextLines = { "HeraBackstory04" } }
 	}
+	-- Multi Gods compatibility
+	if ModUtil.Mods.Data["HestiaExtra"] ~= nil then 
+		OlympusLootData.HeraUpgrade.LinkedUpgrades.EnhancedNPCTrait =
+		{
+			OneFromEachSet =
+			{
+				{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+				{ "HestiaWeaponTrait", "HestiaDashTrait", "HestiaSecondaryTrait", "HestiaRangedTrait", "HestiaShoutTrait" },
+			},
+		}
+		OlympusLootData.HestiaUpgrade.LinkedUpgrades.EnhancedNPCTrait =
+		{
+			OneFromEachSet =
+					{
+						{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+						{ "HestiaWeaponTrait", "HestiaDashTrait", "HestiaSecondaryTrait", "HestiaRangedTrait", "HestiaShoutTrait" },
+					},
+		}
+        OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HeraWithHestia01 = {
+            Name = "HeraWithHestia01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "EnhancedNPCTrait",
+            { Cue = "/VO/Hestia_0166",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "Young Apollo, it seems like our tardiness in assisting Zagreus has made him fail to escape more than once. We should do the upmost to make up for our delay." },
+            { Cue = "/VO/Apollo_0300",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                StartSound = "/SFX/LyreMedium",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
+        }
+        OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.HestiaWithHera01 = {
+            Name = "HestiaWithHera01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "EnhancedNPCTrait",
+            { Cue = "/VO/Apollo_0301",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
+            { Cue = "/VO/Hestia_0167",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                StartSound = "/SFX/BurnDamage",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+                Text = "Haha, always the poet, I see. I must say, since Zagreus cannot, that I appreciate everything you do for our {#DialogueItalicFormat}Zagzag{#PreviousFormat}. Though, I wouldn't call him that, since he could find a worse nickname in turn." },
+        }
+        OlympusLootData.HeraUpgrade.FreePassVoiceLines = {
+            HeraFreePass01 =
+            {
+                PlayOnce = true,
+                Name = "HeraFreePass01",
+                { Cue = "/VO/Hera_0371",
+                    PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+                    StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+                    Text = "You think Lady Hestia is generous? Well, Zagzag, I'll show {#DialogueItalicFormat}you {#PreviousFormat}generosity. No fight this time, just blessings. I bet you'll think twice before you cross me again." },
+            },
+        }
+		table.insert(HeraExtra.GodsList, "Hestia")		
+	end
+	if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+        OlympusLootData.HeraUpgrade.LinkedUpgrades.AuraBlindTrait =
+		{
+			OneFromEachSet =
+			{
+				{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+				{ "ApolloWeaponTrait", "ApolloDashTrait", "ApolloSecondaryTrait", "ApolloRangedTrait", "ApolloShoutTrait" },
+			},
+		}
+		OlympusLootData.ApolloUpgrade.LinkedUpgrades.AuraBlindTrait =
+		{
+			OneFromEachSet =
+					{
+						{ "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait" },
+						{ "ApolloWeaponTrait", "ApolloDashTrait", "ApolloSecondaryTrait", "ApolloRangedTrait", "ApolloShoutTrait" },
+					},
+		}
+        OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HeraWithApollo01 = {
+            Name = "HeraWithApollo01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "BlindAuraTrait",
+            { Cue = "/VO/Hestia_0166",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "Young Apollo, it seems like our tardiness in assisting Zagreus has made him fail to escape more than once. We should do the upmost to make up for our delay." },
+            { Cue = "/VO/Apollo_0300",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                StartSound = "/SFX/LyreMedium",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
+                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
+        }
+        OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.ApolloWithHera01 = {
+            Name = "ApolloWithHera01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "BlindAuraTrait",
+            { Cue = "/VO/Apollo_0301",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
+            { Cue = "/VO/Hestia_0167",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                StartSound = "/SFX/BurnDamage",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+                Text = "Haha, always the poet, I see. I must say, since Zagreus cannot, that I appreciate everything you do for our {#DialogueItalicFormat}Zagzag{#PreviousFormat}. Though, I wouldn't call him that, since he could find a worse nickname in turn." },
+        }
+		table.insert(HeraExtra.GodsList, "Apollo")
+    end
 	-- FUNCTIONS
 	function HeraShout()
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
@@ -5263,6 +5456,10 @@ end]]
 				DionysusShout()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
 				DemeterShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Hestia" then
+				HestiaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
+				ApolloShout()
 			else -- glitched
 				--Nothing in case of other mods Gods
 			end				
@@ -5287,6 +5484,10 @@ end]]
 				DionysusShout()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
 				DemeterMaxShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Hestia" then
+				HestiaShout()
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
+				ApolloShout()
 			else -- glitched
 				--Nothing in case of other mods Gods
 			end			
@@ -5297,7 +5498,7 @@ end]]
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
 			if CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
 				EndAthenaShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
+			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" or CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
 				EndSurge()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
 				EndDemeter()
@@ -5306,17 +5507,6 @@ end]]
 		SetupHeraNextShout()
 		--BuildSuperMeter(CurrentRun, 25)
 	end
-
-	HeraExtra.GodsList = {
-		"Zeus",
-		"Athena",
-		"Poseidon",
-		"Artemis",
-		"Aphrodite",
-		"Ares",
-		"Dionysus",
-		"Demeter",
-	}
 	function SetupHeraNextShout()
 		if CurrentRun.Hero.HeraShout == nil then
 			CurrentRun.Hero.HeraShout = {}
@@ -5533,7 +5723,7 @@ end]]
 						ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2}, Justification = "Left",
 						Color = costFontColor
 					})
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load: " .. button.Index))
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load: " .. button.Index))
 					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button))
 					itemLocationX = itemLocationX + itemLocationXSpacer
 					if itemLocationX >= itemLocationMaxX then
@@ -5635,12 +5825,12 @@ end]]
 	function UpdateSacrificeCostButton(button)
 		if button.SacrificeId then
 			local upgradeData = button.Data
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Update ".. upgradeData.Name))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Update ".. upgradeData.Name))
 			local costColor = Color.CostAffordable
 			if (CurrentRun.Hero.Health+1) < upgradeData.SacrificeCost then
 				costColor = Color.CostUnaffordable
 			end
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Current ".. CurrentRun.Hero.Health))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Current ".. CurrentRun.Hero.Health))
 			ModifyTextBox({ Id = button.SacrificeId, ColorTarget = costColor, ColorDuration = 0.2 })
 		end
 	end
@@ -5787,8 +5977,10 @@ end]]
 				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount
 				end
-				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })
-					
+				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })	
+				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
+					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse"..victim.EnvyNextDamage.Source })	
+				end
 				victim.EnvyNextDamage = nil		
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
 			end
@@ -6347,6 +6539,22 @@ end]]
 	end
 	function AuraThread(args)
 		--local PreviousCloseEnemiesList = {}
+		if HeroHasTrait("AuraRuptureTrait") then
+			StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })
+			CreateAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
+		end
+		if HeroHasTrait("StatusOverTimeTrait") then
+			StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })
+			CreateAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
+		end
+		if HeroHasTrait("AuraExposedTrait") then
+			StopAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })
+			CreateAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })			
+		end
+		if HeroHasTrait("AuraBlindTrait") then
+			StopAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })
+			CreateAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })			
+		end
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			wait(0.2, "RoomThread") -- 0.2
 			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then

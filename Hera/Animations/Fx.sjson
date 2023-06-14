@@ -743,7 +743,77 @@
       StartRed = 0.0
       StartGreen = 0.55
       StartBlue = 0.53
-      CreateAnimations = []
+      CreateAnimations = [
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+      ]
+    }{
+      Name = "SpearThrustDissipate-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = -400.0
+      RadialOffsetMin = -400.0
+      AngleMax = 5.0
+      AngleMin = -5.0
+      Acceleration = -1000.0
+      VelocityMax = 900.0
+      VelocityMin = 250.0
+    }
+    {
+      Name = "SpearThrustDissipate-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = -400.0
+      RadialOffsetMin = -400.0
+      AngleMax = 5.0
+      AngleMin = -5.0
+      Acceleration = -1000.0
+      VelocityMax = 900.0
+      VelocityMin = 250.0
     }{
       Name = "SpearThrustTrail-Hera"
       InheritFrom = "SpearThrustTrail"
@@ -754,7 +824,60 @@
     {
       Name = "SpearDashSwipe-Hera"
       InheritFrom = "SpearDashSwipe"
-      CreateAnimation = "SpearDashSwipeFx-Hera"
+      //CreateAnimation = "SpearDashSwipeFx-Hera"
+      CreateAnimations = [
+        {
+          Name = "SpearDashSwipeFx-Hera"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+      ]
     }{
       Name = "SpearDashSwipeFx-Hera"
       InheritFrom = "SpearDashSwipeFx"
@@ -768,8 +891,6 @@
       StartRed = 0.0
       StartGreen = 0.55
       StartBlue = 0.53
-      CreateAnimations = [
-      ]
     }
     {
       Name = "SpearSwipeDashBaseParticles-Hera"
@@ -801,7 +922,7 @@
       AngleMax = 360.0
       AngleMin = 0.0
       Acceleration = -300.0
-      VelocityMax = 300.0
+      VelocityMax = 500.0
       VelocityMin = 100.0
     }
     {
@@ -812,7 +933,7 @@
       AngleMax = 360.0
       AngleMin = 0.0
       Acceleration = -300.0
-      VelocityMax = 300.0
+      VelocityMax = 500.0
       VelocityMin = 100.0
     }
     {
@@ -2535,12 +2656,6 @@
           Name = "FistFx-FeatherA"
         }
         {
-          Name = "FistFx-FeatherA"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
           Name = "FistFx-FeatherB"
         }
         {
@@ -2735,6 +2850,12 @@
         }
         {
           Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherB"
         }
         {
           Name = "FistFx-FeatherB"
@@ -3175,7 +3296,6 @@
       Loop = true
       DieWithOwner = true
     }
-    /* Hestia - Duos */
     
     /* Theseus - Wrath */
     {
@@ -3318,18 +3438,6 @@
       StopSoundOnFinishFade = 0.2
     }
     {
-      Name = "DevotionPreAttackFx_Hera"
-      InheritFrom = "DevotionPreAttackFx"
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "DevotionRings_Hera"
-        }
-        {
-          Name = "DevotionLines_Hera"
-        }]
-    }
-    {
       Name = "DevotionLines_Hera"
       InheritFrom = "DevotionLines"
       Red = 1
@@ -3341,6 +3449,106 @@
       ColorFromOwner = "Ignore"
     }
     {
+      Name = "DevotionHeraProjectile"
+      CreateAnimation = "QuickFlashTeal"
+      FilePath = "Fx\AsphodelSkullDeath\AsphodelSkullDeath"
+      GroupName = "Standing"
+      Type = "Book"
+      VisualFx = "ArtemisRangedTrail_Hera"
+      DurationFrames = 48
+      EaseIn = 0.01
+      EaseOut = 0.02
+      EndFrame = 1
+      NumAngles = 60
+      NumFrames = 1
+      StartFrame = 1
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      Scale = 0.4
+      AddColor = true
+      StartRed = 1
+      EndRed = 0
+      StartGreen = 1
+      EndGreen = 0
+      StartBlue = 1
+      EndBlue = 0
+      PingPongColor = true
+      VisualFxDistanceMin = 20
+      VisualFxDistanceMax = 22
+      Sound = "/SFX/AphroditeDevotionSFX"
+      ChildAnimation = "DevotionHeraProjectileGlow"
+    }
+    {
+      Name = "ArtemisRangedTrail_Hera"
+      FilePath = "Fx\ArtemisRangedTrail\ArtemisRangedTrail"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 120.0
+      RandomPlaySpeedMin = 90.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Scale = 1
+      StartScaleY = 0.5
+      EndScaleY = 1
+      Ambient = 0.0
+      Hue = 0.08
+      CreateAnimations = [
+        {
+          Name = "ArtemisRangedTrail_Hera_Dark"
+        }]
+    }
+    {
+      Name = "ArtemisRangedTrail_Hera_Dark"
+      InheritFrom = "ArtemisRangedTrail_Hera"
+      ClearCreateAnimations = true
+      GroupName = "FX_Dark"
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 60.0
+      LocationZFromOwner = "Maintain"
+      ScaleY = 0.7
+      OffsetY = 5
+      ScaleX = 0.5
+      StartScaleY = 0
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "DevotionHeraProjectileGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      ColorFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Alpha = 0.4
+    }
+    {
+      Name = "DevotionPreAttackFx_Hera"
+      InheritFrom = "DevotionPreAttackFx"
+      Scale = 0.5
+      Alpha = 0.2
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "DevotionRings_Hera"
+        }
+        {
+          Name = "DevotionLines_Hera"
+        }]
+    }
+     {
       Name = "DevotionRings_Hera"
       InheritFrom = "DevotionRings"
       Red = 1
@@ -3357,9 +3565,7 @@
       Red = 1
       Green = 1
       Blue = 1
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      CreateAnimation = "SwordParrySpikeHera"
     }
     {
       Name = "DeathMarkedCurseOut"
@@ -4031,6 +4237,49 @@
       ScaleRadius = 185
       Sound = "/Leftovers/SFX/BallHoldingAmbience"
       StopSoundOnFinishFade = 0.25
+      AddColor = true
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "AuraFx"
+      Type = "Book"
+      FilePath = "Fx\ImpulseMinePull\ImpulseMinePull"
+      GroupName = "FX_Terrain_Add"
+      PlaySpeed = 30
+      NumFrames = 30
+      ScaleRadius = 200.0
+      TimeModifierFraction = 0.0
+      ChainTo = null
+      TransferFrameFromThis = true
+      ColorFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Material = "Unlit"
+      Loop = true
+    }
+    {
+      Name = "AuraFx-Rupture"
+      InheritFrom = "AuraFx"
+      Scale = 1.9
+    }
+    {
+      Name = "AuraFx-Legendary"
+      InheritFrom = "AuraFx"
+      Scale = 2.8
+    }
+    {
+      Name = "AuraFx-Exposed"
+      InheritFrom = "AuraFx"
+      Scale = 3.7
+    }
+    {
+      Name = "AuraFx-Blind"
+      InheritFrom = "AuraFx"
+      Scale = 4.6
       AddColor = true
       Color = {
         Red = 1.0

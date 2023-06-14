@@ -228,7 +228,11 @@ OlympusTraitData.GoodBoyAssistTrait =
 		PlaySound({ Name = "/VO/CerberusBarks2" })
 		wait( 0.4 )
 		PlaySound({ Name = "/VO/CerberusBarks" })
-		wait( 2.3 )
+		wait( 0.3 )
+		ShakeScreen({ Speed = 900, Distance = 15, Duration = 4, FalloffSpeed = 1400 })
+		thread( DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.3, Duration = 4.0 }, } )
+		PlaySound({ Name = "/SFX/Enemy Sounds/Hades/CerberusSummonCanned" })
+		wait( 2.0 )
 		StopAnimation({ Name = "CerberusAssist", DestinationId = targetId })
 		Destroy({ Id = targetId })
 	end

@@ -9,8 +9,8 @@ Import "SeparateGoddess.lua"
 
 :: Include "Weapons/modfile_weapons.txt"
 
-:: Include "Apollo/modfile_apollo.txt"
-:: Include "Hestia/modfile_hestia.txt"
+Include "Apollo/modfile_apollo.txt"
+Include "Hestia/modfile_hestia.txt"
 Include "Hera/modfile_hera.txt"
 
 :: Merge all together
