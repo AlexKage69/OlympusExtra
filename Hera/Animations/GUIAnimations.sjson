@@ -501,61 +501,61 @@
     {
       Name = "BoonHeraShoutAresIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Ares2"
+      FilePath = "Hera\ShoutIcons\Ares3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutAphroditeIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Aphrodite2"
+      FilePath = "Hera\ShoutIcons\Aphrodite3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutArtemisIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Artemis2"
+      FilePath = "Hera\ShoutIcons\Artemis3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutAthenaIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Athena2"
+      FilePath = "Hera\ShoutIcons\Athena3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutDemeterIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Demeter2"
+      FilePath = "Hera\ShoutIcons\Demeter3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutDionysusIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Dionysus2"
+      FilePath = "Hera\ShoutIcons\Dionysus3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutPoseidonIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Poseidon2"
+      FilePath = "Hera\ShoutIcons\Poseidon3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutZeusIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Zeus2"
+      FilePath = "Hera\ShoutIcons\Zeus3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutHestiaIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hestia\Hestia2"
+      FilePath = "Hera\ShoutIcons\Hestia3"
       Scale = 0.2
     }
     {
       Name = "BoonHeraShoutApolloIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      FilePath = "Hera\ShoutIcons\Apollo3"
       Scale = 0.2
     }
     {
