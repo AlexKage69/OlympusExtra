@@ -3812,7 +3812,7 @@
     {
       Name = "JealousyHeraLoop"
       //ChainTo = "DionysusStatusFxDissipate"
-      FilePath = "Fx\DionysusStatusFx\DionysusStatusFx" // "Hera\HeraStatusIcon_Cream"
+      FilePath = "Hera\Fx\HeraStatusIconCream\HeraStatusIconCream"
       GroupName = "Combat_UI"
       Type = "Book"
       //VisualFx = "DionysusRainbowParty_InPlace"
@@ -3820,17 +3820,19 @@
       //Sound = "/SFX/Player Sounds/DionysusBlightWineDamageLoop"
       StopSoundOnFinishFade = 0.2
       ColorFromOwner = "Ignore"
-      EndFrame = 45
+      EndFrame = 2
       Loop = true
       NumFrames = 45
       PlaySpeed = 30.0
       StartFrame = 1
-      OffsetZ = 160.0
+      OffsetX = -150.0
+      OffsetZ = 170.0
       TransferFrameFromThis = true
       ScaleFromOwner = "Ignore"
       Ambient = 0.0
       VisualFxIntervalMax = 0.3
       VisualFxIntervalMin = 0.2
+      Scale = 0.2
     }
     {
       Name = "HeraBelowLoop"
