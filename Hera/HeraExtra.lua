@@ -78,6 +78,74 @@ if ModUtil ~= nil then
 			{ Cue = "/VO/ZagreusHome_3778" },
 		},
 	}
+	local OlympusPresetEventArgs = ModUtil.Entangled.ModData(PresetEventArgs)
+	OlympusPresetEventArgs.HeraSisyphusBenefitChoices =
+	{
+		{
+			ChoiceText = "ChoiceText_Healing",
+			{ PostLineFunctionName = "HeraSisyphusHealing", },
+		},
+		{
+			ChoiceText = "ChoiceText_Darkness",
+			{ PostLineFunctionName = "HeraSisyphusMetaPoints", },
+		},
+		{
+			ChoiceText = "ChoiceText_Money",
+			{ PostLineFunctionName = "HeraSisyphusMoney", },
+		},
+	}
+	OlympusPresetEventArgs.HeraPatroclusBenefitChoices =
+	{
+		{
+			RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
+			ChoiceText = "ChoiceText_BuffExtraChance",
+			{
+				PostLineThreadedFunctionName = "PatroclusBuff",
+				PostLineFunctionArgs = {
+					LastStand = {
+						Count = 100,
+						Icon = "ExtraLifeStyx",
+						WeaponName = "LastStandMetaUpgradeShield",
+						HealFraction = 0.5
+					}
+				}
+			},
+		},
+		{
+			RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
+			ChoiceText = "ChoiceText_BuffExtraChanceReplenish",
+			{
+				PostLineThreadedFunctionName = "PatroclusBuff",
+				PostLineFunctionArgs =
+				{
+					TraitName = "UpgradedTemporaryLastStandHealTrait",
+				}
+			},
+		},
+		{
+			ChoiceText = "ChoiceText_BuffHealing",
+			{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryDoorHealTrait_Patroclus", } },
+		},
+		{
+			ChoiceText = "ChoiceText_BuffWeapon",
+			{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
+		},
+	}
+	OlympusPresetEventArgs.HeraEurydiceBenefitChoices =
+	{
+		{
+			ChoiceText = "ChoiceText_BuffSlottedBoonRarity",
+			{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BoonRarity = true } },
+		},
+		{
+			ChoiceText = "ChoiceText_BuffMegaPom",
+			{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { StackTraits = true } },
+		},
+		{
+			ChoiceText = "ChoiceText_BuffFutureBoonRarity",
+			{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BuffFutureRarity = true } },
+		},
+	}
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
 	table.insert(OlympusQuestOrderData, 30, "HeraUpgrades")
 
@@ -158,16 +226,7 @@ if ModUtil ~= nil then
 		"DusaFreezeShotSpray",
 		"DusaFreezeShotSpread",
 		"NPC_Cerberus_01_Assist",
-	}
-	OlympusWeaponSets.PoissonWeapons = { "SwordWeapon",
-		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon2", "SpearWeapon3",
-		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
-		"SpearWeaponDash", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeaponRush", "ShieldThrow",
-		"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
-		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
-		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
-		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
-	}
+	}	
 	OlympusWeaponData.HeraShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -2023,15 +2082,15 @@ end]]
 			},
 			Rare =
 			{
-				Multiplier = 0.94,
+				Multiplier = 0.941,
 			},
 			Epic =
 			{
-				Multiplier = 0.87,
+				Multiplier = 0.882,
 			},
 			Heroic =
 			{
-				Multiplier = 0.81,
+				Multiplier = 0.823,
 			}
 		},
 		RefreshShop =
@@ -2282,57 +2341,7 @@ end]]
 			}
 		}
 	}
-	OlympusTraitData.GiveCurseDeathTrait =
-	{
-		Name = "GiveCurseDeathTrait",
-		InheritFrom = { "ShopTier2Trait" },
-		God = "Hera",
-		Icon = "Boon_Hera_12",
-		RequiredFalseTrait = "GiveCurseDeathTrait",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.50,
-			},
-			Epic =
-			{
-				Multiplier = 2.00,
-			},
-			Heroic =
-			{
-				Multiplier = 2.50,
-			}
-		},
-		SpreadRadiusCurse = {
-			BaseValue = 1.0,
-			IdenticalMultiplier =
-			{
-				Value = DuplicateMultiplier,
-			},
-		},
-		ExtractValues =
-		{
-			{
-				Key = "SpreadRadiusCurse",
-				ExtractAs = "TooltipMultiplier",
-				Format = "Percent",
-			},
-			{
-				ExtractAs = "TooltipEnvyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurseAttack",
-				BaseProperty = "Duration",
-			},
-		}
-	}
+	
 	OlympusTraitData.EnvyBurstTrait =
 	{
 		Name = "EnvyBurstTrait",
@@ -2382,73 +2391,7 @@ end]]
 				BaseProperty = "Duration",
 			}
 		}
-	}
-	--[[OlympusTraitData.StrongerJealousyTrait =
-	{
-		Name = "StrongerJealousyTrait",
-		InheritFrom = { "ShopTier2Trait" },
-		God = "Hera",
-		Icon = "Boon_Hera_13",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.50,
-			},
-			Heroic =
-			{
-				Multiplier = 1.75,
-			}
-		},
-		PropertyChanges =
-		{
-			{
-				TraitName = "HeraRangedTrait",
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
-				EffectName= "JealousyCurse",
-				EffectProperty = "Modifier",
-				ChangeValue = 1.15,
-				ChangeType = "Multiply",
-				DeriveSource = "DeriveSource",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipMultiplier",
-					Format = "Percent",
-					--DecimalPlaces = 1,
-				}
-			},
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipJealousyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipJealousyPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Modifier",
-				Format = "Percent"
-			}
-		}
-	}]]
+	}	
 	OlympusTraitData.MoreCompanionTrait =
 	{
 		Name = "MoreCompanionTrait",
@@ -3462,15 +3405,10 @@ end]]
 
 		LinkedUpgrades =
 		{
-			--[[GiveCurseDeathTrait = {
-				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait" }, 
-			},]]
+
 			EnvyBurstTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait" }, 
 			},
-			--[[StrongerJealousyTrait = {
-				OneOf = { "HeraRangedTrait", "PeriodicCurseTrait" }, 
-			},]]
 			PrivilegeHeraTrait = {
 				OneOf = { "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRangedTrait" }, --, "HeraRangedTrait"
 			},			
@@ -4710,7 +4648,68 @@ end]]
 					Text = "I suppose this is the price of showing compassion towards Charon for all he is doing for you. Though, it's not much, when you think about it." },
 			},
 		},
-
+		StoryDuoTextLines = {
+			FirstStory01 =
+			{
+				Name = "FirstStory01",
+				PlayOnce = true,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_1000",
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Zagreus, you are now in possession of the Royal Pact. Anyone must help you. They do not have to fear any retaliation from your father. But remember, if you fail, it is the end the contract. Understood?" },
+			},
+			HeraStory08 =
+			{
+				Name = "HeraStory08",
+				RequiredTextLines = { "FirstStory01" },
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_1000",
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					Text = "Take this before you leave, young one. I know someone wants you well." },
+				{
+					PortraitExitWait = 0.35,
+					Text = "Hera_OfferText",
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+			},
+			FirstBoss01 =
+			{
+				Name = "FirstBoss01",
+				PlayOnce = true,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "C_Boss01" },
+				{ Cue = "/VO/Hestia_1000",
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/BurnDamage",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+					Text = "As the new owner of the the Royal Pact. You can get as much help from your friends without retaliation. Meaning someone meant to give you this before you move on." },
+				{
+					PortraitExitWait = 0.35,
+					Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+					Text = "Hestia_OfferText",
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+			},
+			HestiaBoss08 =
+			{
+				Name = "HestiaBoss08",
+				RequiredTextLines = { "FirstBoss01" },
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "C_Boss01" },
+				{ Cue = "/VO/Hestia_1000",
+					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+					StartSound = "/SFX/BurnDamage",
+					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+					Text = "Take this before you leave, young one. I know someone wants you well." },
+				{
+					PortraitExitWait = 0.35,
+					Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
+					Text = "Hestia_OfferText",
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+			},
+		},
 		RejectionTextLines =
 		{
 			HeraRejection01 =
@@ -5440,6 +5439,7 @@ end]]
 	-- FUNCTIONS
 	function HeraShout()
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			CurrentRun.Hero.HeraShout.GetNext = true
 			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
 				ZeusShout()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
@@ -5468,6 +5468,7 @@ end]]
 
 	function HeraMaxShout()
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
+			CurrentRun.Hero.HeraShout.GetNext = true
 			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
 				ZeusShout()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
@@ -5485,7 +5486,7 @@ end]]
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
 				DemeterMaxShout()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Hestia" then
-				HestiaShout()
+				HestiaMaxShout()
 			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
 				ApolloShout()
 			else -- glitched
@@ -5504,20 +5505,24 @@ end]]
 				EndDemeter()
 			end
 		end
-		SetupHeraNextShout()
+		UpdateHeraShoutIcon()
 		--BuildSuperMeter(CurrentRun, 25)
 	end
 	function SetupHeraNextShout()
 		if CurrentRun.Hero.HeraShout == nil then
 			CurrentRun.Hero.HeraShout = {}
 		end		
+		CurrentRun.Hero.HeraShout.GetNext = true
 		UpdateHeraShoutIcon()
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load " .. CurrentRun.Hero.HeraShout.NextHeraGod))
 	end
 	function UpdateHeraShoutIcon()	
 		if CurrentRun.Hero.HeraShout == nil then
 			CurrentRun.Hero.HeraShout = {}
 		end	
+		if CurrentRun.Hero.HeraShout.GetNext then
+			CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[RandomNumber(TableLength(HeraExtra.GodsList))]
+			CurrentRun.Hero.HeraShout.GetNext = false
+		end
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
 			if CurrentRun.Hero.HeraShout.Icon then
 				CurrentRun.Hero.HeraShout.PreviousIcon = CurrentRun.Hero.HeraShout.Icon
@@ -5546,10 +5551,19 @@ end]]
 				if CurrentRun.Hero.HeraShout == nil then
 					CurrentRun.Hero.HeraShout = {}
 				end	
-				CurrentRun.Hero.HeraShout.NextHeraGod = HeraExtra.GodsList[RandomNumber(TableLength(HeraExtra.GodsList))]
 				UpdateHeraShoutIcon()
 			end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Select " .. CurrentRun.Hero.HeraShout.NextHeraGod))
+		end
+	)
+	ModUtil.Path.Wrap("RemoveTraitData",
+		function(baseFunc, unit, trait, args)
+			baseFunc(unit, trait, args)
+			if CurrentRun and CurrentRun.Hero.HeraShout then
+				if CurrentRun.Hero.HeraShout.Icon then
+					Destroy({Id = CurrentRun.Hero.HeraShout.Icon.Id})
+				end
+			end
 		end
 	)
 	
@@ -5629,19 +5643,54 @@ end]]
 		end
 	)
 
+	--[[ModUtil.Path.Wrap("FillInShopOptions",
+		function(baseFunc, args)
+			local store = baseFunc(args)
+			if store.StoreOptions ~= nil and HeroHasTrait("DiscountHeraTrait") then
+				local itemIndex = RandomNumber(TableLength(store.StoreOptions))
+				store.StoreOptions[itemIndex].HasDiscount = true
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Discount on: " .. itemIndex))
+				CurrentRun.CurrentRoom.Store.
+			end
+			return store
+		end
+	)]]
+	ModUtil.Path.Wrap("GetProcessedTraitData",
+		function(baseFunc, args)
+			local traitData = baseFunc(args)
+			if HeroHasTrait("DiscountHeraTrait") and CurrentRun and CurrentRun.CurrentRoom and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.DiscountItem and CurrentRun.CurrentRoom.Store.DiscountItem == traitData.Name then
+				traitData.Cost = round(traitData.Cost * 0.8)
+				if traitData.HealthCost then
+					traitData.HealthCost = round(traitData.HealthCost * 0.8)
+				end
+				traitData.HasDiscount = true
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Trait: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
+			end
+			return traitData
+		end
+	)
+	ModUtil.Path.Wrap("GetRampedConsumableData",
+		function(baseFunc, consumableData, rarity)
+			local rampedData = baseFunc(consumableData, rarity)
+			if HeroHasTrait("DiscountHeraTrait") and CurrentRun and CurrentRun.CurrentRoom and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.DiscountItem and CurrentRun.CurrentRoom.Store.DiscountItem == rampedData.Name then
+				rampedData.Cost = round(rampedData.Cost * 0.8)
+				if rampedData.HealthCost then
+					rampedData.HealthCost = round(rampedData.HealthCost * 0.8)
+				end
+				rampedData.HasDiscount = true
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Consumable: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
+			end
+			return rampedData
+		end
+	)
 	ModUtil.Path.Wrap("CreateStoreButtons",
 		function(baseFunc)
-			local itemIndex = nil
-			local upgradeData = nil
 			for i, data in pairs( CurrentRun.CurrentRoom.Store.StoreOptions ) do
-				--[[if not data.OriginalCost then
-					data.OriginalCost = data.Cost
-				end]]
 				if data.Processed then 
 					data.Processed = false
 				end
 			end
-			if HeroHasTrait("DiscountHeraTrait") then
+			if HeroHasTrait("DiscountHeraTrait") and CurrentRun.CurrentRoom.Store.StoreOptions ~= nil and CurrentRun.CurrentRoom.Store.DiscountItem == nil then
 				local numButtons = StoreData.WorldShop.MaxOffers
 				if numButtons == nil then
 					numButtons = 0
@@ -5649,39 +5698,9 @@ end]]
 						numButtons = numButtons + groupData.Offers
 					end
 				end
-				itemIndex = RandomNumber(numButtons)
-				upgradeData = CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex]
-
-				if upgradeData ~= nil then
-					if not upgradeData.Processed then
-						if upgradeData.Type == "Trait" then
-							upgradeData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = upgradeData.Name })
-							if upgradeData.CostIncreasePerStack ~= nil then
-								upgradeData.Cost = upgradeData.Cost +
-									GetTraitCount(CurrentRun.Hero, upgradeData) * upgradeData.CostIncreasePerStack
-							end
-							upgradeData.Type = "Trait"
-							SetTraitTextData(upgradeData)
-						elseif upgradeData.Type == "Consumable" then
-							upgradeData = GetRampedConsumableData(ConsumableData[upgradeData.Name])
-							upgradeData.Type = "Consumable"
-						elseif upgradeData.Type == "Cosmetic" then
-							upgradeData = DeepCopyTable(ConditionalItemData[upgradeData.Name])
-							upgradeData.Type = "Cosmetic"
-						end
-
-						local costMultiplier = 1 +
-							(GetNumMetaUpgrades("ShopPricesShrineUpgrade") * (MetaUpgradeData.ShopPricesShrineUpgrade.ChangeValue - 1))
-						costMultiplier = costMultiplier * (GetTotalHeroTraitValue("StoreCostMultiplier", { IsMultiplier = true }) - 0.2)
-						--upgradeData.OriginalCost = upgradeData.Cost
-						if costMultiplier ~= 1 then
-							upgradeData.Cost = round(upgradeData.Cost * costMultiplier)
-						end
-
-						upgradeData.Processed = true
-					end
-				end
-				CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex] = upgradeData
+				local itemIndex = RandomNumber(numButtons)
+				CurrentRun.CurrentRoom.Store.DiscountItem = CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex].Name
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Set: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
 			end
 			
 			baseFunc()
@@ -5701,6 +5720,13 @@ end]]
 					if upgradeData.SacrificeCost <= 0 then
 						upgradeData.SacrificeCost = 1
 					end
+				end
+				if HeroHasTrait("DiscountHeraTrait") and upgradeData.HasDiscount then
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
+					local offsetY = ShopUI.ShopItemStartY + ShopUI.ShopItemSpacerY * (button.Index-1) - 65
+					local offsetX = ShopUI.ShopItemStartX + 210
+					CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu", X = offsetX , Y = offsetY })
+					SetAnimation({ DestinationId = CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..button.Index.."DiscountIcon"].Id, Name = "DiscountItemIcon" })
 				end
 				if upgradeData.SacrificeCost then
 					local costFontColor = Color.CostAffordable
@@ -5732,13 +5758,6 @@ end]]
 					end
 				end
 			end
-			if itemIndex ~= nil and upgradeData ~= nil then
-				local offsetY = ShopUI.ShopItemStartY + ShopUI.ShopItemSpacerY * (itemIndex-1) - 65
-				local offsetX = ShopUI.ShopItemStartX + 210
-				CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..itemIndex.."DiscountIcon"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu", X = offsetX , Y = offsetY })
-				SetAnimation({ DestinationId = CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..itemIndex.."DiscountIcon"].Id, Name = "DiscountItemIcon" })
-			end
-
 		end
 	)
 	function SacrificeButtonPressed(screen, button)
@@ -5978,10 +5997,12 @@ end]]
 					victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount
 				end
 				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })	
-				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
+				if victim and victim.ObjectId and triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse"..victim.EnvyNextDamage.Source })	
 				end
-				victim.EnvyNextDamage = nil		
+				if victim then
+					victim.EnvyNextDamage = nil		
+				end				
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
 			end
 			baseFunc(triggerArgs)
@@ -5989,27 +6010,159 @@ end]]
 			
 		end
 	)
-	ModUtil.Path.Wrap("Kill",
-	function(baseFunc, victim, triggerArgs)
-		if HeroHasTrait("GiveCurseDeathTrait") --[[and HasEffect({ Id = victim.ObjectId, EffectName = "EnvyCurse" })]] then
-			local id = GetClosest({ Id = victim.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 800 })
-			local enemy = ActiveEnemies[id]
-			if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock and victim.ActiveEffects then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Name)) 
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(victim.ActiveEffects)) 
-				if enemy.ActiveEffects == nil then
-					enemy.ActiveEffects = {}
-				end
-				--ModUtil.Table.Merge(enemy.ActiveEffects,victim.ActiveEffects)
-				Damage(enemy, { DamageAmount = 1, Silent = false, PureDamage = false })
-				
+	-- HESTIA DUO
+	
+	ModUtil.Path.Wrap("LeaveRoom",
+		function(baseFunc, currentRun, door)
+			if HeroHasTrait("EnhancedNPCTrait") and CheckHeraDialog() then
+				StartHeraHestiaDialog()
+				return
 			end
+			baseFunc(currentRun, door)
 		end
-		baseFunc(victim, triggerArgs)
+	)
+	ModUtil.Path.Wrap("DisplayTextLine",
+		function(baseFunc, screen, source, line, parentLine)
+			if HeroHasTrait("EnhancedNPCTrait") then
+				if Contains({"Sisyphus_OfferText01"}, line.Text) and not CurrentRun.HeraTartarusStory and not CurrentRun.HeraTartarusBoss then
+					line.Choices = nil
+					line.Text = "Sisyphus_EnhancedOfferText01"
+					line.PostLineThreadedFunctionName = "EnhancedSisyphusBuff"
+					CurrentRun.HeraTartarusStory = true
+				end
+				if Contains({"Eurydice_OfferText01","Eurydice_OfferText02","Eurydice_OfferText03"}, line.Text) and not CurrentRun.HeraAsphodelStory and not CurrentRun.HeraAsphodelBoss then
+					line.Choices = nil
+					line.Text = "Eurydice_EnhancedOfferText01"
+					line.PostLineThreadedFunctionName = "EurydiceBuff"
+					line.PostLineFunctionArgs = { BoonRarity = true, StackTraits = true, BuffFutureRarity = true }
+					CurrentRun.HeraAsphodelStory = true
+				end
+				if Contains({"Patroclus_OfferText02","Patroclus_OfferText03","Patroclus_OfferText04","Patroclus_OfferText05"}, line.Text) and not CurrentRun.HeraElysiumStory and not CurrentRun.HeraElysiumBoss then
+					line.Choices = nil
+					line.Text = "Patroclus_EnhancedOfferText01"
+					line.PostLineThreadedFunctionName = "EnhancedPatroclusBuff"
+					CurrentRun.HeraElysiumStory = true
+				end
+				if "Hera_OfferText" == line.Text or  "Hestia_OfferText" == line.Text then
+					if Contains({"A_Boss01","A_Boss02","A_Boss03",}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraTartarusStory and not CurrentRun.HeraTartarusBoss then
+						line.Text = line.Text.."01"
+						line.Choices = PresetEventArgs.HeraSisyphusBenefitChoices
+						CurrentRun.CurrentRoom.SkipLoadNextMap = true
+						CurrentRun.HeraTartarusBoss = true
+					end
+					if Contains({"B_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraAsphodelStory and not CurrentRun.HeraAsphodelBoss then
+						line.Text = line.Text.."02"
+						line.Choices = PresetEventArgs.HeraEurydiceBenefitChoices
+						CurrentRun.CurrentRoom.SkipLoadNextMap = true
+						CurrentRun.HeraAsphodelBoss = true
+					end
+					if Contains({"C_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraElysiumStory and not CurrentRun.HeraElysiumBoss then
+						line.Text = line.Text.."03"
+						line.Choices = PresetEventArgs.HeraPatroclusBenefitChoices
+						CurrentRun.CurrentRoom.SkipLoadNextMap = true
+						CurrentRun.HeraElysiumBoss = true
+					end
+				end
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call"))
+			end
+			baseFunc(screen, source, line, parentLine)
+		end
+	)
+	function HeraSisyphusHealing( source, args )
+		DropHealth( "RoomRewardHealDrop", CurrentRun.Hero.ObjectId, 130, 0, true )
+	end	
+	function HeraSisyphusMetaPoints( source, args )
+		local consumableId = SpawnObstacle({ Name = "RoomRewardMetaPointDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
+		local cost = 0
+		local consumable = CreateConsumableItem( consumableId, "RoomRewardMetaPointDrop", cost )
+		local amount = RandomInt( 50, 60 )
+		consumable.AddResources = { MetaPoints = round( amount * CalculateMetaPointMultiplier() ) }
+		ApplyUpwardForce({ Id = consumableId, Speed = 700 })
+		--local forceAngle = GetAngleBetween({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+		--ApplyForce({ Id = consumableId, Speed = 100, Angle = forceAngle, SelfApplied = true })
+	end	
+	function HeraSisyphusMoney( source, args )
+		local amount = RandomInt(  101, 115 )
+		local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
+		amount = round( amount * moneyMultiplier )
+		thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = "Sisyphus", } )
 	end
-)
+	function EnhancedSisyphusBuff(source, args)
+		DropHealth( "RoomRewardHealDrop", source.ObjectId, 130, 0, true )
+		wait(0.5)
+		local consumableId = SpawnObstacle({ Name = "RoomRewardMetaPointDrop", DestinationId = source.ObjectId, Group = "Standing" })
+		local cost = 0
+		local consumable = CreateConsumableItem( consumableId, "RoomRewardMetaPointDrop", cost )
+		local amount = RandomInt( source.MetaPointMin, source.MetaPointMax )
+		consumable.AddResources = { MetaPoints = round( amount * CalculateMetaPointMultiplier() ) }
+		SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
+		ApplyUpwardForce({ Id = consumableId, Speed = 700 })
+		local forceAngle = GetAngleBetween({ Id = source.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+		ApplyForce({ Id = consumableId, Speed = 100, Angle = forceAngle, SelfApplied = true })
+		wait(0.5)		
+		local amount = RandomInt(  source.MoneyMin, source.MoneyMax )
+		local moneyMultiplier = GetTotalHeroTraitValue( "MoneyMultiplier", { IsMultiplier = true } )
+		amount = round( amount * moneyMultiplier )
+		thread( GushMoney, { Amount = amount, LocationId = CurrentRun.Hero.ObjectId, Radius = 100, Source = "Sisyphus", } )
+	end
+	function EnhancedEurydiceBuff( source, args )
+		EurydicePreBuffPresentation( source, args )
+		if args.BoonRarity ~= nil then
+			AddRarityToTraits( source, { NumTraits = 2 } )
+		end
+		wait(0.5)
+		if args.StackTraits ~= nil then
+			AddStackToTraits( source, { NumTraits = 4, NumStacks = 1 } )
+		end
+		wait(0.5)
+		if args.BuffFutureRarity ~= nil then
+			AddSuperRarityBoost()
+		end
+		EurydicePostBuffPresentation( source, args )
+	end
+	function EnhancedPatroclusBuff( source, args )
+		local args = args or {}
+		PatroclusPreBuffPresentation( source, args )
+		if IsGameStateEligible( CurrentRun, { RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade", RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade" }) then
+			AddLastStand({
+				Count = 100,
+				Icon = "ExtraLifeStyx",
+				WeaponName = "LastStandMetaUpgradeShield",
+				HealFraction = 0.5
+			})
+		elseif IsGameStateEligible( CurrentRun, { RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade", RequiredMetaUpgradeSelected = "ExtraChanceReplenishMetaUpgrade" }) then
+			AddTraitToHero({ TraitData = TraitData["UpgradedTemporaryLastStandHealTrait"] })
+			args.TraitName = "UpgradedTemporaryLastStandHealTrait"
+		end
+		wait(0.5)
+		AddTraitToHero({ TraitData = TraitData["TemporaryDoorHealTrait_Patroclus"] })
+		wait(0.5)
+		AddTraitToHero({ TraitData = TraitData["TemporaryImprovedWeaponTrait_Patroclus"] })
+		PatroclusPostBuffPresentation( source, args )
+	end
+	function CheckHeraDialog()
+		if Contains({"A_Boss01","A_Boss02","A_Boss03",}, CurrentRun.CurrentRoom.Name) and CurrentRun.HeraTartarusBoss or
+		   Contains({"B_Boss01"}, CurrentRun.CurrentRoom.Name) and CurrentRun.HeraAsphodelBoss or
+		   Contains({"C_Boss01"}, CurrentRun.CurrentRoom.Name) and CurrentRun.HeraElysiumBoss then
+			CurrentRun.CurrentRoom.SkipLoadNextMap = false
+		end
+		return Contains({"A_Story01", "A_Boss01","A_Boss02","A_Boss03",}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraTartarusStory and not CurrentRun.HeraTartarusBoss or 
+			   Contains({"B_Story01", "B_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraAsphodelStory and not CurrentRun.HeraAsphodelBoss or 
+			   Contains({"C_Story01", "C_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraElysiumStory and not CurrentRun.HeraElysiumBoss
 
-
+	end
+	function StartHeraHestiaDialog()
+		SetPlayerInvulnerable( "HandleLootPickup" )
+		local lootData = LootData["HeraUpgrade"]
+		local loot = DeepCopyTable( lootData )
+		PlayRandomRemainingTextLines( loot, loot.StoryDuoTextLines )
+		SetPlayerVulnerable( "HandleLootPickup" )
+	end
+	function EncounterStory()
+		if HeroHasTrait("EnhancedNPCTrait") and CheckHeraDialog() then
+			StartHeraHestiaDialog()
+		end
+	end
 	function DoFullSuperDualPresentation( traitData, secondGod )
 		local currentRun = CurrentRun
 		SetPlayerInvulnerable( "Super" )
@@ -6079,9 +6232,10 @@ end]]
 		Move({ Id = godImage, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
 		Move({ Id = godImage2, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
 		Move({ Id = wrathStreakFront, Angle = 8, Distance = 200, Duration = 0.5, EaseIn = 0.9, EaseOut = 1, TimeModifierFraction = 0 })
-		Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
+		--Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
 	
 		SetColor({ Id = godImage, Color = {0, 0, 0, 1}, Duration = 0.05, TimeModifierFraction = 0 })
+		SetColor({ Id = godImage2, Color = {0, 0, 0, 1}, Duration = 0.1, TimeModifierFraction = 0 })
 		SetColor({ Id = wrathVignette, Color = {0, 0, 0, 0.4}, Duration = 0.05, TimeModifierFraction = 0 })
 	
 		waitScreenTime( 0.25, RoomThreadName )
@@ -6099,8 +6253,6 @@ end]]
 		-- Move({ Id = godImage, Angle = 170, Speed = 7000, TimeModifierFraction = 0 })
 		PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal3" })
 	
-		waitScreenTime( 0.1, RoomThreadName )
-		SetColor({ Id = godImage, Color = {1,1,1,1}, Duration = 0.1, TimeModifierFraction = 0 })
 		waitScreenTime( 0.1, RoomThreadName )
 		--SetThingProperty({ Property = "TimeModifierFraction", Value = 1.0, DestinationId = currentRun.Hero.ObjectId, DataValue = false })
 	
@@ -6656,6 +6808,7 @@ end]]
 			RequiredOnlyNotPickedUpIgnoreName = "DemeterUpgrade",
 		}
 	})
+	-- Charon/Hera Upgrade
 	table.insert(OlympusRoomSetData.Tartarus.A_Shop01.DistanceTriggers, {
 		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
@@ -6669,18 +6822,40 @@ end]]
 		FunctionName = "EncounterShop"
 	})
 	OlympusRoomSetData.Asphodel.B_PreBoss01.DistanceTriggers =  {
+		{
+			TriggerObjectType = "NPC_Charon_01", WithinDistance = 200,
+			FunctionName = "EncounterShop"
+		}
+	}
+	OlympusRoomSetData.Elysium.C_Shop01.DistanceTriggers =  { {
 		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
-	}
-	OlympusRoomSetData.Elysium.C_Shop01.DistanceTriggers =  {
+	} }
+	OlympusRoomSetData.Elysium.C_PreBoss01.DistanceTriggers = { {
 		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
+	} }
+	--Hestia/Hera Duo
+	local OlympusEncounterData = ModUtil.Entangled.ModData(EncounterData)
+	table.insert(OlympusEncounterData.Story_Sisyphus_01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 25,
+		FunctionName = "EncounterStory"
+	})
+	table.insert(OlympusEncounterData.Story_Eurydice_01.DistanceTriggers, {
+		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 25,
+		FunctionName = "EncounterStory"
+	})
+	OlympusEncounterData.Story_Patroclus_01.DistanceTriggers = {
+		{
+			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 25,
+			FunctionName = "EncounterStory"
+		}
 	}
-	OlympusRoomSetData.Elysium.C_PreBoss01.DistanceTriggers =  {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
-		FunctionName = "EncounterShop"
-	}
-
+	--[[OlympusRoomSetData.Tartarus.A_Boss01.ExitFunctionName = "EncounterStory"
+	OlympusRoomSetData.Tartarus.A_Boss02.ExitFunctionName = "EncounterStory"
+	OlympusRoomSetData.Tartarus.A_Boss03.ExitFunctionName = "EncounterStory"
+	OlympusRoomSetData.Asphodel.B_Boss01.ExitFunctionName = "EncounterStory"
+	OlympusRoomSetData.Elysium.C_Boss01.ExitFunctionName = "EncounterStory"]]
 	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
 	OverwriteTableKeys(RoomData, RoomSetData.Asphodel)
 	OverwriteTableKeys(RoomData, RoomSetData.Elysium)
@@ -6716,7 +6891,11 @@ end]]
 	end )]]
 
 	OnControlPressed{ "Codex",
-		function( triggerArgs )
+		function( triggerArgs )			
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CheckHeraDialog())) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraTartarusStory)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraTartarusBoss)) 
+			--ForceNextRoomFunc("A_Story01")
 			--[[Spawner( {X = 5954, Y = 4358 },{
 				{ Name = "EnemySpear" },
 				{ Name = "EnemyJavelin" },

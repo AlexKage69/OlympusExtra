@@ -212,26 +212,6 @@
 			Description = "Every few seconds, a random foe is inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
 		}
 		{
-			Id = "GiveCurseDeathTrait"
-			DisplayName = "Last Goodbye"
-			Description = "When foes inflicted with {$Keywords.EnvyCurse} are slain, transfer their inflicted {$Keywords.Status} to a nearby foe."
-		}
-		{
-			Id = "GiveCurseDeathTrait_Initial"
-			InheritFrom = "GiveCurseDeathTrait"
-			Description = "When foes inflicted with {$Keywords.EnvyCurse} are slain, transfer their inflicted {$Keywords.Status} to a nearby foe."
-		}
-		{
-			Id = "StrongerJealousyTrait"
-			DisplayName = "Growing Resentment"
-			Description = "{$Keywords.JealousyCurse} is stronger. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.JealousyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
-		}
-		{
-			Id = "StrongerJealousyTrait_Initial"
-			InheritFrom = "StrongerJealousyTrait"
-			Description = "{$Keywords.JealousyCurse} is stronger. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.JealousyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
-		}
-		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
 			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
