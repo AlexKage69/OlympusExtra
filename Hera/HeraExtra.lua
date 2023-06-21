@@ -225,7 +225,7 @@ if ModUtil ~= nil then
 		"NPC_Patroclus_01_Assist",
 		"DusaFreezeShotSpray",
 		"DusaFreezeShotSpread",
-		"NPC_Cerberus_01_Assist",
+		"NPC_Goodboy_01_Assist",
 	}	
 	OlympusWeaponData.HeraShoutWeapon = {
 		BlockWrathGain = true,
@@ -1476,7 +1476,7 @@ end]]
 				ChangeValue = false,
 				ChangeType = "Absolute",
 			},
-			{
+			--[[{
 				WeaponName = "HeraMineBlast",
 				ProjectileName = "HeraMineBlast",
 				ProjectileProperty = "DamageLow",
@@ -1492,7 +1492,7 @@ end]]
 				{
 					ExtractAs = "TooltipDamage",
 				}
-			},
+			},]]
 			{
 				WeaponName = "HeraMineWeapon",
 				ProjectileName = "HeraMineProjectile",
@@ -2183,6 +2183,7 @@ end]]
 		RequiredMetaUpgradeSelected = "VulnerabilityEffectBonusMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 3,
 		RequiredFalseTrait = "PrivilegeHeraTrait",
+		PreEquipWeapons = { "HeraCurseCountWeapon" },
 		RarityLevels =
 		{
 			Common =
@@ -2212,11 +2213,11 @@ end]]
 			RequiredEffects = { "HeraCurseCount" },
 			RequiredSelfEffectsMultiplier =
 			{
-				BaseValue = 1.5,
+				BaseValue = 1.2,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
-					  Value = -0.8,
+					  Value = -0.7,
 				},
 			},
 			ExtractValues =
@@ -2368,7 +2369,7 @@ end]]
 			}
 		},
 		EnvyBurstMultiplier = {
-			BaseValue = 1.80,
+			BaseValue = 2.50,
 			IdenticalMultiplier =
 			{
 				Value = DuplicateMultiplier,
@@ -2422,6 +2423,7 @@ end]]
 		},
 		AddOutgoingDamageModifiers =
 		{
+			BypassIgnore = true,
 			ValidWeaponMultiplier =
 			{
 				BaseValue = 1.30,
@@ -2431,7 +2433,7 @@ end]]
 					Value = DuplicateMultiplier,
 				},
 			},
-			ValidWeapons = WeaponSets.AssistWeapons,
+			ValidWeapons = OlympusWeaponSets.AssistWeapons,
 			ExtractValues =
 			{
 				{
@@ -6149,7 +6151,6 @@ end]]
 		return Contains({"A_Story01", "A_Boss01","A_Boss02","A_Boss03",}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraTartarusStory and not CurrentRun.HeraTartarusBoss or 
 			   Contains({"B_Story01", "B_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraAsphodelStory and not CurrentRun.HeraAsphodelBoss or 
 			   Contains({"C_Story01", "C_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraElysiumStory and not CurrentRun.HeraElysiumBoss
-
 	end
 	function StartHeraHestiaDialog()
 		SetPlayerInvulnerable( "HandleLootPickup" )
@@ -6159,6 +6160,7 @@ end]]
 		SetPlayerVulnerable( "HandleLootPickup" )
 	end
 	function EncounterStory()
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call"))
 		if HeroHasTrait("EnhancedNPCTrait") and CheckHeraDialog() then
 			StartHeraHestiaDialog()
 		end
@@ -6491,7 +6493,7 @@ end]]
 		if CurrentRun and CurrentRun.Hero.AllTraps then
 			for k, enemy in pairs( CurrentRun.Hero.AllTraps ) do
 				if not enemy.IsDead then
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString(enemy.Name))
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(enemy.Name))
 					SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
 					thread( Kill, enemy )
 				end
@@ -6581,18 +6583,22 @@ end]]
 
 	function HeraCurseCountThread( args )
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
-			wait(0.2, RoomThreadName)
+			wait(1.0, RoomThreadName) --0.2
 			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
 				local count = 0
 				for enemyId, enemy in pairs(RequiredKillEnemies) do
-					if not enemy.Slowed then
+					if enemy.VulnerabilityEffects ~= nil and TableLength(enemy.VulnerabilityEffects) > 0 then
 						count = count + 1
 					end
 				end
 
-				if count >= 1 then -- 4
-					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, WeaponName = "HeraCurseCount", EffectName = "HeraCurseCount" })
-				else
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(count)) -- 4
+				if count >= 0 and 
+					not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
+					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+						WeaponName = "HeraCurseCountWeapon", EffectName = "HeraCurseCount" })
+				elseif count < 0 and
+					HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
 					ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "HeraCurseCount" })
 				end
 			end
@@ -6838,16 +6844,16 @@ end]]
 	--Hestia/Hera Duo
 	local OlympusEncounterData = ModUtil.Entangled.ModData(EncounterData)
 	table.insert(OlympusEncounterData.Story_Sisyphus_01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 25,
+		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 60,
 		FunctionName = "EncounterStory"
 	})
 	table.insert(OlympusEncounterData.Story_Eurydice_01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 25,
+		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 60,
 		FunctionName = "EncounterStory"
 	})
 	OlympusEncounterData.Story_Patroclus_01.DistanceTriggers = {
 		{
-			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 25,
+			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 60,
 			FunctionName = "EncounterStory"
 		}
 	}
@@ -6893,8 +6899,8 @@ end]]
 	OnControlPressed{ "Codex",
 		function( triggerArgs )			
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CheckHeraDialog())) 
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraTartarusStory)) 
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraTartarusBoss)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraElysiumStory)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraElysiumBoss)) 
 			--ForceNextRoomFunc("A_Story01")
 			--[[Spawner( {X = 5954, Y = 4358 },{
 				{ Name = "EnemySpear" },
