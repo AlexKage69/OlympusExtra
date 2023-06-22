@@ -358,12 +358,12 @@
 		{
 			Id = "AuraRuptureTrait"
 			DisplayName = "Unyielding Undertow"
-			Description = "{$Keywords.Aura}: Foes are {$Keywords.Rupture}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Very Small{#AltUpgradeFormat}" 
+			Description = "{$Keywords.Aura}: Foes are afflicted with {$Keywords.Rupture}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Very Small{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "AuraBlindTrait"
 			DisplayName = "Blinding Radiance"
-			Description = "{$Keywords.Aura}: Foes are {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Average{#AltUpgradeFormat}" 
+			Description = "{$Keywords.Aura}: Foes are afflicted with {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Average{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "CurseLongerTrait"
@@ -373,7 +373,7 @@
 		{
 			Id = "BetterTrapsTrait"
 			DisplayName = "Moonlit Snares"
-			Description = "Your {$Keywords.HeraTrap} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
+			Description = "Your {$Keywords.HeraTrap}{#BoldFormat}s{#PreviousFormat} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "HeroicBoonsTrait"
