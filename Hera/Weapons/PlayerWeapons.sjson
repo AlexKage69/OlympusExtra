@@ -172,6 +172,53 @@
         }]
     }
     {
+      Name = "BurstEnvyApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+          Name = "BurstEnvy"
+          IgnoreName = "_PlayerUnit"
+          Duration = 3.0
+          Modifier = 0
+          Active = true
+          FrontFx = "HeraBurstEnvyHoverLoop"
+          BackFx = "null"
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = false
+          TimeModifierFraction = 0
+        }]
+    }
+     {
+      Name = "LowBurstEnvyWeapon"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "LowBurstEnvyProjectile"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+     {
+      Name = "HighBurstEnvyWeapon"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "HighBurstEnvyProjectile"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
       Name = "AreaWeakenHera"
       InheritFrom = "1_BaseMagicWeapon"
       Type = "GUN"
@@ -194,7 +241,7 @@
         Modifier = 0
         Active = true
         OnlyAffectName = "_PlayerUnit"
-        BackFx = "HermesSlowBack"
+        BackFx = "HeraCurstStatus"
       }
     }
     {

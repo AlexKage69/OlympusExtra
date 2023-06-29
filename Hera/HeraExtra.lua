@@ -459,6 +459,14 @@ if ModUtil ~= nil then
 		InheritFrom = { "NoSlowFrameProjectile", "HeraColorProjectile" },
 		NeverStore = true,
 	}
+	OlympusWeaponData.LowBurstEnvyWeapon =
+	{
+		InheritFrom = { "HeraColorProjectile" },
+	}
+	OlympusWeaponData.HighBurstEnvyWeapon =
+	{
+		InheritFrom = { "HeraColorProjectile" },
+	}
 	OlympusWeaponData.HeraSuper = {
 		InheritFrom = { "HeraColorProjectile", "NoSlowFrameProjectile", "NoShakeProjectile" },
 	}
@@ -2349,6 +2357,7 @@ end]]
 		InheritFrom = { "ShopTier2Trait" },
 		God = "Hera",
 		Icon = "Boon_Hera_11",
+		PreEquipWeapons = {"BurstEnvyApplicator", "LowBurstEnvyWeapon", "HighBurstEnvyWeapon"},
 		RarityLevels =
 		{
 			Common =
@@ -2357,30 +2366,64 @@ end]]
 			},
 			Rare =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.25,
 			},
 			Epic =
 			{
-				Multiplier = 1.4,
+				Multiplier = 1.5,
 			},
 			Heroic =
 			{
-				Multiplier = 1.7
+				Multiplier = 1.75
 			}
 		},
-		EnvyBurstMultiplier = {
-			BaseValue = 2.50,
-			IdenticalMultiplier =
+		PropertyChanges = {
 			{
-				Value = DuplicateMultiplier,
+				WeaponName = "LowBurstEnvyWeapon",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 35,
+				BaseMax = 35,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
 			},
+			{
+				WeaponName = "LowBurstEnvyWeapon",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+			{
+				WeaponName = "HighBurstEnvyWeapon",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 70,
+				BaseMax = 70,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				}
+			},
+			{
+				WeaponName = "HighBurstEnvyWeapon",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
+		EnvyBurstChance = {
+			BaseValue = 0.08,
 		},
 		ExtractValues =
 		{
 			{
-				Key = "EnvyBurstMultiplier",
-				ExtractAs = "TooltipMultiplier",
-				Format = "PercentDelta",
+				Key = "EnvyBurstChance",
+				ExtractAs = "TooltipChance",
+				Format = "Percent",
 			},
 			{
 				ExtractAs = "TooltipEnvyDuration",
@@ -3036,11 +3079,7 @@ end]]
 			ChangeValue = 0.70,
 			ChangeType = "Multiply",
 			DeriveSource = "DeriveSource",
-			ExtractValue =
-			{
-				ExtractAs = "TooltipTickRate",
-				DecimalPlaces = 2,
-			}
+			
 		  },
 		  {
 			TraitName = "DionysusWeaponTrait",
@@ -3081,6 +3120,7 @@ end]]
 			DeriveValueFrom = "DeriveSource",
 		  },
 		},
+		FakeTickRate = 0.35,
 		ExtractValues =
 		{
 			{
@@ -3110,7 +3150,12 @@ end]]
 				BaseName = "DamageOverTime",
 				BaseProperty = "Cooldown",
 				DecimalPlaces = 1,
-			}
+			},
+			{
+				Key = "FakeTickRate",
+				ExtractAs = "TooltipTickRate",
+				DecimalPlaces = 2,
+			},
 		}
 	}
 	OlympusTraitData.SlowerHangoverTrait =
@@ -3368,10 +3413,8 @@ end]]
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Hestia_01",
 		RequiredFalseTrait = "EnhancedNPCTrait",
-		PropertyChanges =
-		{
-
-		},
+		RequiredFalseSeenRooms = {"C_Boss01"},
+		PropertyChanges = {},
 	}
 
 
@@ -5581,14 +5624,7 @@ end]]
 				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
 			end]]
 		end
-	)
-	function RefreshStoreItems()
-		if CurrentRun and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
-			for i, data in pairs( CurrentRun.CurrentRoom.Store.SpawnedStoreItems ) do
-				UpdateCostText( data, true )		
-			end
-		end	
-	end
+	)	
 	ModUtil.Path.Wrap("CreateLoot",
 		function(baseFunc, args)
 			local loot = baseFunc(args)
@@ -5762,6 +5798,23 @@ end]]
 			end
 		end
 	)
+	ModUtil.Path.Wrap("DestroyStoreButtons",
+		function(baseFunc)
+			local components = CurrentRun.CurrentRoom.Store.Screen.Components
+			local toDestroy = {}
+			for index = 1, StoreData.RoomShop.MaxOffers do
+				local destroyIndexes = { "SacrificeButton"..index }
+				for i, indexName in pairs( destroyIndexes ) do
+					if components[indexName] then
+						table.insert(toDestroy, components[indexName].Id)
+					end
+				end
+			end
+			Destroy({ Ids = toDestroy })
+			baseFunc()
+		end
+	)
+	
 	function SacrificeButtonPressed(screen, button)
 		local upgradeData = button.Data
 
@@ -5858,17 +5911,21 @@ end]]
 	ModUtil.Path.Wrap("AddTraitData",
 		function(baseFunc, unit, traitData, args)
 			baseFunc(unit, traitData, args)
-			if TraitData[traitData.Name].RefreshShop and TraitData[traitData.Name].RefreshShop.OnAdd then
+			local once = false
+			if TraitData[traitData.Name].RefreshShop and TraitData[traitData.Name].RefreshShop.OnAdd and not once then
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh on Add: " .. traitData.Name))
 				RefreshStoreItems()
+				once = true
 			end
 		end
 	)
 	ModUtil.Path.Wrap("RemoveTrait",
 		function(baseFunc, unit, traitName, args)
 			baseFunc(unit, traitName, args)
-			if traitName ~= nil and TraitData[traitName] ~= nil and TraitData[traitName].RefreshShop and TraitData[traitName].RefreshShop.OnRemove then
+			local once = false
+			if traitName ~= nil and TraitData[traitName] ~= nil and TraitData[traitName].RefreshShop and TraitData[traitName].RefreshShop.OnRemove and not once then
 				RefreshStoreItems()
+				once = true
 			end
 		end
 	)
@@ -5950,19 +6007,22 @@ end]]
 	function EnvyCurseAttackApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
 		ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurseSecondary" })	
-		victim.EnvyNextDamage = {Activated = false, Source = "Attack"}
+		victim.EnvyNextDamage = {Activated = true, Source = "Attack"}
 		ApplyEnvyCurse(victim, triggerArgs.Modifier)
 	end
 	function EnvyCurseSecondaryApply(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
 		ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurseAttack" })	
-		victim.EnvyNextDamage = {Activated = false, Source = "Secondary"}
+		victim.EnvyNextDamage = {Activated = true, Source = "Secondary"}
 		ApplyEnvyCurse(victim, triggerArgs.Modifier)
 	end
 	function ApplyEnvyCurse(victim, amount)
 		victim.EnvyNextDamage.Amount = amount
-		if HeroHasTrait("EnvyBurstTrait") and (victim.VulnerabilityEffects == nil or TableLength( victim.VulnerabilityEffects ) == 0) then
-			victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount * GetTotalHeroTraitValue("EnvyBurstMultiplier", { IsMultiplier = true })
+		if HeroHasTrait("EnvyBurstTrait") then
+			if not victim.EnvyFlag or ( victim.EnvyFlag and RandomFloat(0, 1) <= GetTotalHeroTraitValue("EnvyBurstChance")) then
+				ApplyEffectFromWeapon({ WeaponName = "BurstEnvyApplicator", EffectName = "BurstEnvy", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId })
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Add"))
+			end
 		end
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.EnvyNextDamage.Amount))
 	end
@@ -5995,14 +6055,29 @@ end]]
 				return
 			end
 			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+				local isLow = true
 				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount
+					isLow = false
 				end
 				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })	
 				if victim and victim.ObjectId and triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse"..victim.EnvyNextDamage.Source })	
 				end
+				if victim and HasEffect({ Id = victim.ObjectId, EffectName = "BurstEnvy" }) then
+					if isLow then
+						FireWeaponFromUnit({ Weapon = "LowBurstEnvyWeapon", Id = CurrentRun.Hero.ObjectId,
+						DestinationId = victim.ObjectId, FireFromTarget = true })
+						--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("LowBurst"))
+					else
+						FireWeaponFromUnit({ Weapon = "HighBurstEnvyWeapon", Id = CurrentRun.Hero.ObjectId,
+						DestinationId = victim.ObjectId, FireFromTarget = true })
+						--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("HighBurst"))
+					end
+					ClearEffect({ Id = victim.ObjectId, Name = "BurstEnvy" })
+				end
 				if victim then
+					victim.EnvyFlag = true
 					victim.EnvyNextDamage = nil		
 				end				
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
@@ -6408,12 +6483,37 @@ end]]
 				spawnedItem = GiveLoot( itemData.Args )
 				spawnedItem.CanReceiveGift = false
 				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
-			end
-			if HeroHasTrait("HealthAsObolTrait") and spawnedItem.Cost ~= nil and spawnedItem.Cost > 0 and spawnedItem.HealFraction == nil and spawnedItem.HealthCost == nil then
-				spawnedItem.SacrificeCost = round(spawnedItem.Cost*0.9)
-				if spawnedItem.SacrificeCost <= 0 then
-					spawnedItem.SacrificeCost = 1
+			end			
+			if spawnedItem ~= nil then
+				SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = spawnedItem.ObjectId })
+				spawnedItem.SpawnPointId = kitId
+				spawnedItem.UseText = spawnedItem.PurchaseText or "Shop_UseText"
+				table.insert( CurrentRun.CurrentRoom.Store.SpawnedStoreItems, spawnedItem )
+			end						
+			RefreshStoreItems()
+		end
+	)	
+	function RefreshStoreItems()
+		if CurrentRun and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
+			for i, data in pairs( CurrentRun.CurrentRoom.Store.SpawnedStoreItems ) do
+				if HeroHasTrait("HealthAsObolTrait") then
+					AddHealthAsObolText(data)
+				else
+					RemoveHealthAsObolText(data)
 				end
+				UpdateCostText( data, true )
+				UpdateHealthCostText(data)
+			end
+		end	
+	end
+	function AddHealthAsObolText(spawnedItem)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(spawnedItem.SacrificeId))
+		if HeroHasTrait("HealthAsObolTrait") and spawnedItem.Cost ~= nil and spawnedItem.Cost > 0 and spawnedItem.HealFraction == nil and spawnedItem.HealthCost == nil then
+			spawnedItem.SacrificeCost = round(spawnedItem.Cost*0.9)
+			if spawnedItem.SacrificeCost <= 0 then
+				spawnedItem.SacrificeCost = 1
+			end
+			if spawnedItem.SacrificeId == nil then
 				spawnedItem.SacrificeId = SpawnObstacle({ Name = "BlankObstacle", DestinationId = spawnedItem.ObjectId, Group = "Standing" })
 				CreateTextBox({ Id = spawnedItem.SacrificeId, Text = "Shop_ItemSacrifice", TextSymbolScale = 0.6, LuaKey = "TempTextData", LuaValue = { SacrificeCost = spawnedItem.SacrificeCost }, FontSize = 24, OffsetY = -280, Color = Color.CostUnaffordable, Justification = "CENTER",
 						Font="AlegreyaSansSCBold",
@@ -6424,23 +6524,28 @@ end]]
 						ShadowBlur=0,
 						OutlineColor={0,0,0,1},
 						OutlineThickness=2,
-					}) 
+					})
+				if spawnedItem.NoneSacrificeUseText == nil then
+					spawnedItem.NoneSacrificeUseText = spawnedItem.PurchaseText or "Shop_UseText"
+				end
 				if spawnedItem.PurchaseText then
-					spawnedItem.PurchaseText = spawnedItem.PurchaseText.."_HealthAsObolText"
+					spawnedItem.UseText = spawnedItem.PurchaseText.."_HealthAsObolText"
 				else
-					spawnedItem.PurchaseText = "Shop_UseText_HealthAsObolText"
-				end		
+					spawnedItem.UseText = "Shop_UseText_HealthAsObolText"
+				end
 			end
-			if spawnedItem ~= nil then
-				SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = spawnedItem.ObjectId })
-				spawnedItem.SpawnPointId = kitId
-				spawnedItem.UseText = spawnedItem.PurchaseText or "Shop_UseText"
-				table.insert( CurrentRun.CurrentRoom.Store.SpawnedStoreItems, spawnedItem )
-			end
-			
 		end
-	)	
-	
+	end
+	function RemoveHealthAsObolText(spawnedItem)
+		if spawnedItem.SacrificeId then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Remove"..spawnedItem.SacrificeId))
+			DestroyTextBox({ Id = spawnedItem.SacrificeId })
+			spawnedItem.SacrificeId = nil
+			if spawnedItem.NoneSacrificeUseText then
+				spawnedItem.UseText = spawnedItem.NoneSacrificeUseText
+			end
+		end
+	end
 	ModUtil.Path.Wrap("Heal",
 		function(baseFunc, victim, triggerArgs)
 			baseFunc(victim, triggerArgs)
@@ -6471,11 +6576,16 @@ end]]
 	end
 	function UpdateHealthCostText(object)
 		if object.SacrificeCost ~= nil and object.SacrificeCost > 0 then
+			object.SacrificeCost = round(object.Cost*0.9)
+			if object.SacrificeCost <= 0 then
+				object.SacrificeCost = 1
+			end
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(object.SacrificeId))
 			local costFontColor = Color.CostAffordable
-			if (CurrentRun.Hero.Health+1) < object.SacrificeCost and not object.Purchased then
+			if (CurrentRun.Hero.Health) < object.SacrificeCost and not object.Purchased then
 				costFontColor = Color.CostUnaffordable
 			end
-			ModifyTextBox({ Id = object.SacrificeId, ColorTarget = costFontColor, ColorDuration = 0.2 })
+			ModifyTextBox({ Id = object.SacrificeId, Text = "Shop_ItemSacrifice", LuaKey = "TempTextData", LuaValue = { SacrificeCost = object.SacrificeCost }, ColorTarget = costFontColor, ColorDuration = 0.2  })
 		end
 	end
 	
