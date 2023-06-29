@@ -453,28 +453,28 @@
     {
       Name = "Hera_Apollo_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\Duos\HeraApollo_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Apollo_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\Duos\HeraApollo_01"
       EndFrame = 1
       StartFrame = 1
     }    
     {
       Name = "Hera_Hestia_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\Duos\HeraHestia_01"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Hera_Hestia_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hera\Duos\HeraHestia_01"
       EndFrame = 1
       StartFrame = 1
     }  
