@@ -184,12 +184,12 @@
 		{
 			Id = "FamilyHeraTrait"
 			DisplayName = "Noble Status"
-			Description = "When 4 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "When 3 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "FamilyHeraTrait_Initial"
 			InheritFrom = "FamilyHeraTrait"
-			Description = "When 4 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "When 3 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "MoreRewardTrait"
@@ -214,12 +214,12 @@
 		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
 			Id = "EnvyBurstTrait_Initial"
 			InheritFrom = "EnvyBurstTrait"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
     		Id = "MoreCompanionText_Alt"

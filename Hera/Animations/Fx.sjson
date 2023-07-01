@@ -12,7 +12,7 @@
       //VisualFx = "HermesFeather"
       //AngleFromOwner = "Take"
       UseFrameAngleFromOwner = true
-      //Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
+      Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
       VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
       Duration = 1
       Alpha = 1.0
@@ -25,7 +25,9 @@
       NumAngles = 32
       NumFrames = 1
       StartFrame = 1
-      OffsetZ = 105.0
+      OffsetZ = 120.0
+      //RadialOffsetMax = -50.0
+      //RadialOffsetMin = -49.0
       //OffsetY = -105.0
       //RadialOffsetScaleY = 0.5
       //RadialOffsetMax = -50.0
@@ -117,6 +119,38 @@
       DieWithOwner = true
       PingPongShiftOverDuration = true
       UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraBurstEnvyHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverLoop\HeraEnvyHoverLoop"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      Alpha = 0.3
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      Scale = 1.1
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "RadialBurstNovaHera"
+      InheritFrom = "RadialNova"
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
     }
     {
       Name = "HeraFeatherA"
@@ -2274,6 +2308,9 @@
       StartRed = 0.0
       StartGreen = 0.55
       StartBlue = 0.53
+      EndRed = 0.0
+      EndGreen = 0.54
+      EndBlue = 0.54
     }
     {
       Name = "GunLaserFeatherB-Hera"
@@ -3853,6 +3890,70 @@
       DieWithOwner = true
       PingPongShiftOverDuration = true
       UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraCurstStatus"
+      Type = "Book"
+      FilePath = "Fx\EliteUnitStatus\EliteUnitStatus"
+      NumFrames = 40
+      PlaySpeed = 30
+      RandomFlipHorizontal = true
+      ReRandomizeOnLoop = false
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Ignore"
+      Loop = true
+      OffsetZ = 0
+      UseAttachedFlasher = false
+      UseAttachedShake = false
+      DrawBehindOwner = true
+      DieWithOwner = true
+      ColorFromOwner = "Ignore"
+      Hue = 0.0
+      Scale = 1
+      FlipVertical = true
+      CreateAnimation = "EliteUnitStatusGlow"
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      RotationSpeed = 20
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      CreateAnimations = [
+        {
+          Name = "HeraCurstStatusGlow"
+        }
+        {
+          Name = "HeraCurstStatus_Add"
+        }]
+    }
+    {
+      Name = "HeraCurstStatus_Add"
+      InheritFrom = "EliteUnitStatus"
+      ClearCreateAnimations = true
+      GroupName = "FX_Terrain_Add"
+      Red = 1
+      Green = 1
+      Blue = 1
+    }
+    {
+      Name = "HeraCurstStatusGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      Alpha = 0.2
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Maintain"
+      UseAttachedFlasher = false
+      Scale = 0.7
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
     }
     {
       Name = "QuickFlashTeal"
