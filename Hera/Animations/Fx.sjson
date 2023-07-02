@@ -3606,7 +3606,7 @@
     }
     {
       Name = "DeathMarkedCurseOut"
-      FilePath = "Fx\ThanatosScytheOut\ThanatosScytheOut"
+      FilePath = "Hera\Fx\HeraScytheOut\HeraScytheOut"
       GroupName = "Combat_UI"
       Type = "Book"
       AngleFromOwner = "Ignore"
@@ -3631,7 +3631,7 @@
       Name = "DeathMarkedCurseIn"
       InheritFrom = "DeathMarkedCurseOut"
       ChainTo = "DeathMarkedCurseLoop"
-      FilePath = "Fx\ThanatosScytheIn\ThanatosScytheIn"
+      FilePath = "Hera\Fx\HeraScytheIn\HeraScytheIn"
       Sound = "/SFX/ThanatosAttackBell"
       EndFrame = 9
       NumFrames = 9
@@ -3642,7 +3642,7 @@
     {
       Name = "DeathMarkedCurseLoop"
       InheritFrom = "DeathMarkedCurseOut"
-      FilePath = "Fx\ThanatosScytheLoop\ThanatosScytheLoop"
+      FilePath = "Hera\Fx\HeraScytheLoop\HeraScytheLoop"
       Sound = "/Leftovers/SFX/AuraAmbientLoop"
       StopSoundOnFinishFade = 0.2
       EaseOut = 1.0
