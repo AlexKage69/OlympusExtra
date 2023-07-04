@@ -6867,7 +6867,7 @@ end]]
 				
 				if noMark then				
 					local randomEnemy = GetRandomValue(RequiredKillEnemies)
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString(randomEnemy.Name))
+					-- ModUtil.Hades.PrintStackChunks(ModUtil.ToString(randomEnemy.Name))
 					if randomEnemy.IsBoss then
 						ApplyEffectFromWeapon({ WeaponName = "DeathMarkedApplicator", EffectName = "DeathMarkedCurse", Id = CurrentRun.Hero.ObjectId, DestinationId = randomEnemy.ObjectId })
 						wait(5.0, "RoomThread")
