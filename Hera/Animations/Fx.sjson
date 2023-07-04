@@ -3463,16 +3463,25 @@
       InheritFrom = "DevotionPreAttackBase"
       VisualFx = "DevotionPreAttackFx_Hera"
       CreateAnimationOnEnd = "DevotionPreAttackBaseEnd_Hera"
-      Red = 1
-      Green = 1
-      Blue = 1
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      ColorFromOwner = "Ignore"
-      EndAlpha = 0.2
-      Sound = "/Leftovers/Menu Sounds/ChoirLoop"
-      StopSoundOnFinishFade = 0.2
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      EndAlpha = 0.5
+      HoldLastFrame = false
+    }
+    {
+      Name = "DevotionPreAttackFx_Hera"
+      InheritFrom = "DevotionPreAttackFx"
+      Scale = 0.5
+      Alpha = 0.2
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "DevotionRings_Hera"
+        }
+        {
+          Name = "DevotionLines_Hera"
+        }]
     }
     {
       Name = "DevotionLines_Hera"
@@ -4081,6 +4090,61 @@
       Color = { Red = 0.0 Green = 0.55 Blue = 0.53 }
     }
     {
+      Name = "DevotionHeraMegaProjectile"
+      CreateAnimation = "EnemyProjectileGlow"
+      FilePath = "Fx\EnemyProjectileMulti\EnemyProjectileMulti"
+      Type = "Book"
+      VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientBig"
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      Alpha = 0.5
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 45.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      OffsetZ = 60.0
+      Scale = 0.75
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.21
+      VisualFxIntervalMin = 0.2
+      OverlayVfx = true
+    }
+    {
+      Name = "DevotionHeraProjectile"
+      //CreateAnimation = "HeraProjectileGlow"
+      FilePath = "Hera\Fx\HeraProjectile\HeraProjectile"
+      Type = "Book"
+      //VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientLoop"
+      SoundManagerCap = 28
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      StartFrame = 1
+      OffsetZ = 30.0
+      Scale = 0.6
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.1
+      VisualFxIntervalMin = 0.11
+      OverlayVfx = true
+    }    
+    {
       Name = "HeraProjectileLight"
       InheritFrom = "EnemyProjectileLight"
       Color = 
@@ -4089,7 +4153,7 @@
         Green = 0.55
         Blue = 0.53
       }
-    }
+    }    
     {
       Name = "HeraProjectileGlow"
       FilePath = "Particles\particle_quickflash"

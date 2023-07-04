@@ -6063,8 +6063,8 @@ if ModUtil ~= nil then
 				baseFunc(eventSource, args)
 			end
 		end)
-	ModUtil.Path.Wrap("StartDevotionTest",
-		function(baseFunc, currentRun, currentRoom, currentEncounter)
+	ModUtil.Path.Override("StartDevotionTest",
+		function(currentRun, currentRoom, currentEncounter)
 			currentRun = currentRun or CurrentRun
 			currentRoom = currentRoom or CurrentRun.CurrentRoom
 			currentEncounter = currentEncounter or CurrentRun.CurrentRoom.Encounter
