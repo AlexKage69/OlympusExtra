@@ -17,9 +17,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Ares2"
+        Graphic = "Hera\ShoutIcons\Ares3"
       }
     }
     {
@@ -28,9 +28,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Aphrodite2"
+        Graphic = "Hera\ShoutIcons\Aphrodite3"
       }
     }
     {
@@ -39,9 +39,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Artemis2"
+        Graphic = "Hera\ShoutIcons\Artemis3"
       }
     }
     {
@@ -50,9 +50,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Athena2"
+        Graphic = "Hera\ShoutIcons\Athena3"
       }
     }
     {
@@ -61,9 +61,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Demeter2"
+        Graphic = "Hera\ShoutIcons\Demeter3"
       }
     }
     {
@@ -72,9 +72,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Dionysus2"
+        Graphic = "Hera\ShoutIcons\Dionysus3"
       }
     }
     {
@@ -83,9 +83,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Zeus2"
+        Graphic = "Hera\ShoutIcons\Zeus3"
       }
     }
     {
@@ -94,9 +94,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Poseidon2"
+        Graphic = "Hera\ShoutIcons\Poseidon3"
       }
     }
     {
@@ -105,9 +105,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "Hestia\Hestia2"
+        Graphic = "Hera\ShoutIcons\Hestia3"
       }
     }
     {
@@ -116,9 +116,9 @@
       DisplayInEditor = false
       Thing =
       {
-        Scale = 0.2
+        Scale = 0.08
         EditorOutlineDrawBounds = false
-        Graphic = "GUI\Screens\BoonSelectSymbols\Apollo"
+        Graphic = "Hera\ShoutIcons\Apollo3"
       }
     }
   ]

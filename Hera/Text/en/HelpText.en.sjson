@@ -80,12 +80,12 @@
 		{
 			Id = "HeraRushTrait"
 			DisplayName = "Trap Dash"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
 		} 
 		{
 			Id = "HeraRushTrait_Initial"
 			InheritFrom = "HeraRushTrait"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
 		}
 		{
 			Id = "HeraSignoff"
@@ -184,12 +184,12 @@
 		{
 			Id = "FamilyHeraTrait"
 			DisplayName = "Noble Status"
-			Description = "When 4 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "When 3 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "FamilyHeraTrait_Initial"
 			InheritFrom = "FamilyHeraTrait"
-			Description = "When 4 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "When 3 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "MoreRewardTrait"
@@ -212,34 +212,14 @@
 			Description = "Every few seconds, a random foe is inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
 		}
 		{
-			Id = "GiveCurseDeathTrait"
-			DisplayName = "Last Goodbye"
-			Description = "When foes inflicted with {$Keywords.EnvyCurse} are slain, transfer their inflicted {$Keywords.Status} to a nearby foe."
-		}
-		{
-			Id = "GiveCurseDeathTrait_Initial"
-			InheritFrom = "GiveCurseDeathTrait"
-			Description = "When foes inflicted with {$Keywords.EnvyCurse} are slain, transfer their inflicted {$Keywords.Status} to a nearby foe."
-		}
-		{
-			Id = "StrongerJealousyTrait"
-			DisplayName = "Growing Resentment"
-			Description = "{$Keywords.JealousyCurse} is stronger. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.JealousyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
-		}
-		{
-			Id = "StrongerJealousyTrait_Initial"
-			InheritFrom = "StrongerJealousyTrait"
-			Description = "{$Keywords.JealousyCurse} is stronger. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.JealousyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
-		}
-		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
 			Id = "EnvyBurstTrait_Initial"
 			InheritFrom = "EnvyBurstTrait"
-			Description = "When {$Keywords.EnvyCurse} is the first {$Keywords.Status} applied, it deals more damage. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EnvyCurse} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
     		Id = "MoreCompanionText_Alt"
@@ -333,7 +313,7 @@
 		{
 			Id = "StatusOverTimeTrait"
 			DisplayName = "Sovereign Sanctuary"
-			Description = "{$Keywords.Aura}: Foes with {$Keywords.EnvyCurse} or {$Keywords.JealousyCurse} decay. \n {!Icons.Bullet}{#PropertyFormat}Decay Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}{#PreviousFormat} {#ItalicFormat} (every {$TooltipData.TooltipTickRate} Sec.) \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Small{#AltUpgradeFormat}"
+			Description = "{$Keywords.Aura}: Foes with {$Keywords.EnvyCurse} or {$Keywords.JealousyCurse} decay. \n {!Icons.Bullet}{#PropertyFormat}Decay Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat} {#ItalicFormat} (every {$TooltipData.TooltipTickRate} Sec.) \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Small{#AltUpgradeFormat}"
 		}
 		{
 			Id = "ForceHeraBoonTrait"
@@ -358,12 +338,12 @@
 		{
 			Id = "AuraRuptureTrait"
 			DisplayName = "Unyielding Undertow"
-			Description = "{$Keywords.Aura}: Foes are {$Keywords.Rupture}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Very Small{#AltUpgradeFormat}" 
+			Description = "{$Keywords.Aura}: Foes are afflicted with {$Keywords.Rupture}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Very Small{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "AuraBlindTrait"
 			DisplayName = "Blinding Radiance"
-			Description = "{$Keywords.Aura}: Foes are {$Keywords.Blind}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Average{#AltUpgradeFormat}" 
+			Description = "{$Keywords.Aura}: Foes are afflicted with {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Average{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "CurseLongerTrait"
@@ -373,7 +353,7 @@
 		{
 			Id = "BetterTrapsTrait"
 			DisplayName = "Moonlit Snares"
-			Description = "Your {$Keywords.HeraTrap} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
+			Description = "Your {$Keywords.HeraTrap}{#BoldFormat}s{#PreviousFormat} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "HeroicBoonsTrait"

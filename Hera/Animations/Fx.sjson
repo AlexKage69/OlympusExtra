@@ -12,7 +12,7 @@
       //VisualFx = "HermesFeather"
       //AngleFromOwner = "Take"
       UseFrameAngleFromOwner = true
-      //Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
+      Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
       VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
       Duration = 1
       Alpha = 1.0
@@ -25,7 +25,9 @@
       NumAngles = 32
       NumFrames = 1
       StartFrame = 1
-      OffsetZ = 105.0
+      OffsetZ = 120.0
+      //RadialOffsetMax = -50.0
+      //RadialOffsetMin = -49.0
       //OffsetY = -105.0
       //RadialOffsetScaleY = 0.5
       //RadialOffsetMax = -50.0
@@ -117,6 +119,38 @@
       DieWithOwner = true
       PingPongShiftOverDuration = true
       UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraBurstEnvyHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverLoop\HeraEnvyHoverLoop"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      Alpha = 0.3
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      Scale = 1.1
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "RadialBurstNovaHera"
+      InheritFrom = "RadialNova"
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
     }
     {
       Name = "HeraFeatherA"
@@ -2274,6 +2308,9 @@
       StartRed = 0.0
       StartGreen = 0.55
       StartBlue = 0.53
+      EndRed = 0.0
+      EndGreen = 0.54
+      EndBlue = 0.54
     }
     {
       Name = "GunLaserFeatherB-Hera"
@@ -3426,16 +3463,25 @@
       InheritFrom = "DevotionPreAttackBase"
       VisualFx = "DevotionPreAttackFx_Hera"
       CreateAnimationOnEnd = "DevotionPreAttackBaseEnd_Hera"
-      Red = 1
-      Green = 1
-      Blue = 1
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      ColorFromOwner = "Ignore"
-      EndAlpha = 0.2
-      Sound = "/Leftovers/Menu Sounds/ChoirLoop"
-      StopSoundOnFinishFade = 0.2
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      EndAlpha = 0.5
+      HoldLastFrame = false
+    }
+    {
+      Name = "DevotionPreAttackFx_Hera"
+      InheritFrom = "DevotionPreAttackFx"
+      Scale = 0.5
+      Alpha = 0.2
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "DevotionRings_Hera"
+        }
+        {
+          Name = "DevotionLines_Hera"
+        }]
     }
     {
       Name = "DevotionLines_Hera"
@@ -3569,7 +3615,7 @@
     }
     {
       Name = "DeathMarkedCurseOut"
-      FilePath = "Fx\ThanatosScytheOut\ThanatosScytheOut"
+      FilePath = "Hera\Fx\HeraScytheOut\HeraScytheOut"
       GroupName = "Combat_UI"
       Type = "Book"
       AngleFromOwner = "Ignore"
@@ -3594,7 +3640,7 @@
       Name = "DeathMarkedCurseIn"
       InheritFrom = "DeathMarkedCurseOut"
       ChainTo = "DeathMarkedCurseLoop"
-      FilePath = "Fx\ThanatosScytheIn\ThanatosScytheIn"
+      FilePath = "Hera\Fx\HeraScytheIn\HeraScytheIn"
       Sound = "/SFX/ThanatosAttackBell"
       EndFrame = 9
       NumFrames = 9
@@ -3605,7 +3651,7 @@
     {
       Name = "DeathMarkedCurseLoop"
       InheritFrom = "DeathMarkedCurseOut"
-      FilePath = "Fx\ThanatosScytheLoop\ThanatosScytheLoop"
+      FilePath = "Hera\Fx\HeraScytheLoop\HeraScytheLoop"
       Sound = "/Leftovers/SFX/AuraAmbientLoop"
       StopSoundOnFinishFade = 0.2
       EaseOut = 1.0
@@ -3812,7 +3858,7 @@
     {
       Name = "JealousyHeraLoop"
       //ChainTo = "DionysusStatusFxDissipate"
-      FilePath = "Fx\DionysusStatusFx\DionysusStatusFx" // "Hera\HeraStatusIcon_Cream"
+      FilePath = "Hera\Fx\HeraStatusIconCream\HeraStatusIconCream"
       GroupName = "Combat_UI"
       Type = "Book"
       //VisualFx = "DionysusRainbowParty_InPlace"
@@ -3820,17 +3866,19 @@
       //Sound = "/SFX/Player Sounds/DionysusBlightWineDamageLoop"
       StopSoundOnFinishFade = 0.2
       ColorFromOwner = "Ignore"
-      EndFrame = 45
+      EndFrame = 2
       Loop = true
       NumFrames = 45
       PlaySpeed = 30.0
       StartFrame = 1
-      OffsetZ = 160.0
+      OffsetX = -150.0
+      OffsetZ = 170.0
       TransferFrameFromThis = true
       ScaleFromOwner = "Ignore"
       Ambient = 0.0
       VisualFxIntervalMax = 0.3
       VisualFxIntervalMin = 0.2
+      Scale = 0.2
     }
     {
       Name = "HeraBelowLoop"
@@ -3851,6 +3899,70 @@
       DieWithOwner = true
       PingPongShiftOverDuration = true
       UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraCurstStatus"
+      Type = "Book"
+      FilePath = "Fx\EliteUnitStatus\EliteUnitStatus"
+      NumFrames = 40
+      PlaySpeed = 30
+      RandomFlipHorizontal = true
+      ReRandomizeOnLoop = false
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Ignore"
+      Loop = true
+      OffsetZ = 0
+      UseAttachedFlasher = false
+      UseAttachedShake = false
+      DrawBehindOwner = true
+      DieWithOwner = true
+      ColorFromOwner = "Ignore"
+      Hue = 0.0
+      Scale = 1
+      FlipVertical = true
+      CreateAnimation = "EliteUnitStatusGlow"
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      RotationSpeed = 20
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      CreateAnimations = [
+        {
+          Name = "HeraCurstStatusGlow"
+        }
+        {
+          Name = "HeraCurstStatus_Add"
+        }]
+    }
+    {
+      Name = "HeraCurstStatus_Add"
+      InheritFrom = "EliteUnitStatus"
+      ClearCreateAnimations = true
+      GroupName = "FX_Terrain_Add"
+      Red = 1
+      Green = 1
+      Blue = 1
+    }
+    {
+      Name = "HeraCurstStatusGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      Alpha = 0.2
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Maintain"
+      UseAttachedFlasher = false
+      Scale = 0.7
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
     }
     {
       Name = "QuickFlashTeal"
@@ -3978,6 +4090,61 @@
       Color = { Red = 0.0 Green = 0.55 Blue = 0.53 }
     }
     {
+      Name = "DevotionHeraMegaProjectile"
+      CreateAnimation = "EnemyProjectileGlow"
+      FilePath = "Fx\EnemyProjectileMulti\EnemyProjectileMulti"
+      Type = "Book"
+      VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientBig"
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      Alpha = 0.5
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 45.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      OffsetZ = 60.0
+      Scale = 0.75
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.21
+      VisualFxIntervalMin = 0.2
+      OverlayVfx = true
+    }
+    {
+      Name = "DevotionHeraProjectile"
+      //CreateAnimation = "HeraProjectileGlow"
+      FilePath = "Hera\Fx\HeraProjectile\HeraProjectile"
+      Type = "Book"
+      //VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientLoop"
+      SoundManagerCap = 28
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      StartFrame = 1
+      OffsetZ = 30.0
+      Scale = 0.6
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.1
+      VisualFxIntervalMin = 0.11
+      OverlayVfx = true
+    }    
+    {
       Name = "HeraProjectileLight"
       InheritFrom = "EnemyProjectileLight"
       Color = 
@@ -3986,7 +4153,7 @@
         Green = 0.55
         Blue = 0.53
       }
-    }
+    }    
     {
       Name = "HeraProjectileGlow"
       FilePath = "Particles\particle_quickflash"
