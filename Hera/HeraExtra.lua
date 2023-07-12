@@ -74,8 +74,8 @@ if ModUtil ~= nil then
 				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
 			},
 
-			-- This was done with your help, Queen Hera.
-			{ Cue = "/VO/ZagreusHome_3778" },
+			-- This is in your honor, Queen Hera.
+			{ Cue = "/VO/ZagreusHome_3780" },
 		},
 	}
 	local OlympusPresetEventArgs = ModUtil.Entangled.ModData(PresetEventArgs)
@@ -367,29 +367,29 @@ if ModUtil ~= nil then
 		Source = { SubtitleColor = Color.HeraVoice },
 
 		-- A fine performance.
-		{ Cue = "/VO/Hera_0149" },
+		{ Cue = "/VO/Hera_0162" },
 		-- You can do better.
-		{ Cue = "/VO/Hera_0150" },
+		{ Cue = "/VO/Hera_0163" },
 		-- Do it for your queen.
-		{ Cue = "/VO/Hera_0151" },
+		{ Cue = "/VO/Hera_0164" },
 		-- Lasted longer than I expected.
-		{ Cue = "/VO/Hera_0152" },
+		{ Cue = "/VO/Hera_0165" },
 		-- Barely made it, I assume.
-		{ Cue = "/VO/Hera_0153" },
+		{ Cue = "/VO/Hera_0166" },
 		-- With this, you'd better not lose.
-		{ Cue = "/VO/Hera_0154" },
+		{ Cue = "/VO/Hera_0167" },
 		-- There's nothing better than my blessings.
-		{ Cue = "/VO/Hera_0155" },
+		{ Cue = "/VO/Hera_0168" },
 		-- You never give up, do you?
-		{ Cue = "/VO/Hera_0156" },
+		{ Cue = "/VO/Hera_0169" },
 		-- That's right, bow to your queen.
-		{ Cue = "/VO/Hera_0157" },
+		{ Cue = "/VO/Hera_0170" },
 		-- Likely to fail, but I am still helping you.
-		{ Cue = "/VO/Hera_0158" },
+		{ Cue = "/VO/Hera_0171" },
 		-- I can be generous.
-		{ Cue = "/VO/Hera_0159" },
+		{ Cue = "/VO/Hera_0172" },
 		-- The best of all Olympus.
-		{ Cue = "/VO/Hera_0160" },
+		{ Cue = "/VO/Hera_0173" },
 	})
 	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
 		RandomRemaining = true,
@@ -398,29 +398,29 @@ if ModUtil ~= nil then
 		PreLineWait = 0.75,
 		RequiredLastGodLoot = "HeraUpgrade",
 		-- Glorious!
-		{ Cue = "/VO/ZagreusField_4841" },
+		{ Cue = "/VO/ZagreusField_4973" },
 		-- From royalty.
-		{ Cue = "/VO/ZagreusField_4842" },
+		{ Cue = "/VO/ZagreusField_4974" },
 		-- Bond to be good.
-		{ Cue = "/VO/ZagreusField_4843" },
+		{ Cue = "/VO/ZagreusField_4975" },
 		-- Queen of Olympus.
-		{ Cue = "/VO/ZagreusField_4844" },
+		{ Cue = "/VO/ZagreusField_4976" },
 		-- For your reign.
-		{ Cue = "/VO/ZagreusField_4845" },
+		{ Cue = "/VO/ZagreusField_4977" },
 		-- I'll be loyal to you.
-		{ Cue = "/VO/ZagreusField_4846" },
+		{ Cue = "/VO/ZagreusField_4978" },
 		-- I won't cheat.
-		{ Cue = "/VO/ZagreusField_4847" },
+		{ Cue = "/VO/ZagreusField_4979" },
 		-- In all its glory.
-		{ Cue = "/VO/ZagreusField_4848" },
+		{ Cue = "/VO/ZagreusField_4980" },
 		-- Justice!
-		{ Cue = "/VO/ZagreusField_4849" },
+		{ Cue = "/VO/ZagreusField_4981" },
 		-- Fairest of them all.
-		{ Cue = "/VO/ZagreusField_4850" },
+		{ Cue = "/VO/ZagreusField_4982" },
 	})
 	table.insert(OlympusHeroVoiceLines.FullSuperActivatedVoiceLines, {
-		-- Hera!!
-		Cue = "/VO/ZagreusField_4951", RequiredTrait = "HeraShoutTrait", RequiredFalseSpurnedGodName = "HeraUpgrade"
+		-- Queen Hera!!
+		Cue = "/VO/ZagreusField_4987", RequiredTrait = "HeraShoutTrait", RequiredFalseSpurnedGodName = "HeraUpgrade"
 	})
 	table.insert(OlympusHeroVoiceLines.SwapUpgradePickedVoiceLines, {
 		RandomRemaining = true,
@@ -433,11 +433,11 @@ if ModUtil ~= nil then
 		CooldownTime = 40,
 
 		-- I'm sure Queen Hera won't mind.
-		{ Cue = "/VO/ZagreusField_4929" },
+		{ Cue = "/VO/ZagreusField_4983" },
 		-- Surely Hera won't mind.
-		{ Cue = "/VO/ZagreusField_4930" },
+		{ Cue = "/VO/ZagreusField_4984" },
 		-- Queen Hera won't mind, will she?
-		{ Cue = "/VO/ZagreusField_4931" },
+		{ Cue = "/VO/ZagreusField_4985" },
 	})
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
@@ -494,6 +494,40 @@ if ModUtil ~= nil then
 		"HeraMiscPickup15",
 		"HeraMiscPickup16",
 		"HeraMiscPickup17"
+	}
+	OlympusGameData.RoyalPactNPCTextLines = {
+		"HeraFirstNPC01",
+		"HeraGenericNPC01",
+		"HeraGenericNPC02",
+		"HeraGenericNPC03",
+		"HeraGenericNPC04",
+		"HeraGenericNPC05",
+		"HeraGenericNPC06",
+		"HeraGenericNPC07",
+		"HestiaGenericNPC01",
+		"HestiaGenericNPC02",
+		"HestiaGenericNPC03",
+		"HestiaGenericNPC04",
+		"HestiaGenericNPC05",
+		"HestiaGenericNPC06",
+		"HestiaGenericNPC07",
+	}
+	OlympusGameData.RoyalPactBossTextLines = {
+		"HestiaFirstBoss01",
+		"HeraGenericBoss01",
+		"HeraGenericBoss02",
+		"HeraGenericBoss03",
+		"HeraGenericBoss04",
+		"HeraGenericBoss05",
+		"HeraGenericBoss06",
+		"HeraGenericBoss07",
+		"HestiaGenericBoss01",
+		"HestiaGenericBoss02",
+		"HestiaGenericBoss03",
+		"HestiaGenericBoss04",
+		"HestiaGenericBoss05",
+		"HestiaGenericBoss06",
+		"HestiaGenericBoss07",
 	}
 	HeraExtra.GodsList = {
 		"Zeus",
@@ -3584,14 +3618,14 @@ end]]
 				HasTraitNameInRoom = "PullZeusCastTrait",
 				{ Cue = "/VO/Hera_0041",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Foster-Brother. How's ruling over all your relatives making you feel? A word of advice from your big sister: treat others as you treat yourself, because they might just do the same." },
-				{ Cue = "/VO/Zeus_0260",
+					Text = "My dear, it seems I only see you when we have common duties. Do you not feel our old passion any longer? Or are you busy elsewhere once more?" },
+				{ Cue = "/VO/Zeus_0270",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/ZeusBoonThunder",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
-					Text = "I know how to rule my realm, Foster-Sister. Something you don't have to do anymore. I even have extra time to help our young Zagreus here!" },
+					Text = "Hera, I made you my wife, my queen. I have given you everything I have, and yet still there is an...emptiness between us. Maybe helping Zagreus will help us fill that void!" },
 			},
 			HeraWithPoseidon01 =
 			{
@@ -3601,15 +3635,15 @@ end]]
 				HasTraitNameInRoom = "FishingRewardExtraTrait",
 				{ Cue = "/VO/Hera_0042",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Ah. Poseidon. I know we haven't talked in a long while, but it seems you still haven't taken responsibility for your actions, or lackthereof." },
-				{ Cue = "/VO/Poseidon_0260",
+					Text = "Poseidon. I can't seem to remember the last time you showed favor to your queen. Am I not important enough?" },
+				{ Cue = "/VO/Poseidon_0270",
 					Emote = "PortraitEmoteFiredUp",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/PoseidonBoonWaveCrash", UseEventEndSound = true,
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
-					Text = "Now hold on there, Hera! I always do my best. And how can I be reponsible for something I didn't do? I always take action. Like I'm doing right this moment, with Zagreus." },
+					Text = "Long time no see, Hera! I've been quite busy, helping little Hades escape from his father. If it's my favor you're after, help me with this one first." },
 			},
 			HeraWithAthena01 =
 			{
@@ -3619,14 +3653,14 @@ end]]
 				HasTraitNameInRoom = "MoreTrapDamageTrait",
 				{ Cue = "/VO/Hera_0043",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I wanted to thank you, young Athena. You were the first to help out our beloved Zagreus on his quest of freedom. It is you who started all this." },
-				{ Cue = "/VO/Athena_0250",
+					Text = "I know we don't always share the same taste in heroes, Athena, but I believe we can agree in this instance that Zagreus requires our help. He shall escape that wretched realm." },
+				{ Cue = "/VO/Athena_0260",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/AthenaBoonHolyShield",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Athena_01", Portrait = "Portrait_Athena_Default_01",
-					Text = "I only did what I believed should be done. I gave Zagreus the opportunity to escape. The rest is up to him now. We should continue to help in any way we can." },
+					Text = "I can remember a time when we did get along in our inspiration. I'll help you and Zagreus, Queen Hera. In honor of those times of glory." },
 			},
 			HeraWithAres01 =
 			{
@@ -3637,33 +3671,14 @@ end]]
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HeraWithAres02" },
 				{ Cue = "/VO/Hera_0044",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
-				{ Cue = "/VO/Ares_0240",
+					Text = "Ares, my dearest. Everyone else has failed to bring Zagreus to us. I'm here asking only the best to assist me in finally helping him out of that wretched place." },
+				{ Cue = "/VO/Ares_0260",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/AresWrathBattle",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-					Text = "I can only agree with you, Aunt Hera. And my kin here is in the midst of a war. He must fight to achieve peace in his realm." },
-			},
-			HeraWithAres02 =
-			{
-				Name = "HeraWithAres02",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "FoesNumberDamageTrait",
-				RequiredTextLines = { "OlympianReunionQuestComplete" },
-				RequiredFalseTextLines = { "HeraWithAres01" },
-				{ Cue = "/VO/Hera_0044",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I know you like to fight, Nephew. But a real warrior knows when to start a war and when to maintain peace—there's a fine line between the two." },
-				{ Cue = "/VO/Ares_0240",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/AresWrathBattle",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-					Text = "I can only agree with you, Aunt Hera. And even though my kin has brought peace to his realm, he must continue to fight so that he might maintain it." },
+					Text = "It would be my pleasure, mother. I know that with our help, he can learn the true meaning of winning the war." },
 			},
 			HeraWithAphrodite01 =
 			{
@@ -3674,13 +3689,13 @@ end]]
 				RequiredTextLines = { "HeraGift01", "AphroditeGift01" },
 				{ Cue = "/VO/Hera_0045",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I know your heart is warm, but you could have put a little more on in front of Zagreus, young Aphrodite." },
-				{ Cue = "/VO/Aphrodite_0230",
+					Text = "There you are. Always in a man's company...and yet it never seems to be your {#DialogueItalicFormat}husband{#PreviousFormat}. I see. Well, I suppose I can stay and chaperone this rendez-vous you have with Zagreus." },
+				{ Cue = "/VO/Aphrodite_0250",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
-					Text = "I don't have anything to hide. And I must say, I've never heard Zagreus complain about the view, if you get my meaning."
+					Text = "Oh, that's simply unnecessary, my queen. Zagreus and I are just... Fine. Since you're already here, let's get this over with."
 				},
 			},
 			HeraWithArtemis01 =
@@ -3692,14 +3707,14 @@ end]]
 				RequiredTextLines = { "HeraGift01", "ArtemisGift01" },
 				{ Cue = "/VO/Hera_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Young Artemis, nothing good is going to come out of being alone. Showing affection and care to others is the best way to accept yourself. Try it with Zagreus." },
-				{ Cue = "/VO/Artemis_0250",
+					Text = "Placeholder" },
+				{ Cue = "/VO/Artemis_0270",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/ArtemisBoonArrow",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Artemis_01", Portrait = "Portrait_Artemis_Default_01",
-					Text = "I show plenty of affection, to those worthy of it. In fact, I'll prove it right now: Zagreus, this is for you, from us, to show that we {#DialogueItalicFormat}care{#PreviousFormat}."
+					Text = "Placeholder"
 				},
 			},
 			HeraWithDionysus01 =
@@ -3710,14 +3725,14 @@ end]]
 				HasTraitNameInRoom = "FullHealBossTrait",
 				{ Cue = "/VO/Hera_0047",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Taking my place as an Olympian isn't too hard, my child? I remember when I was there—I argued with Zeus all the time. I hope you are not as headstrong as I was." },
-				{ Cue = "/VO/Dionysus_0230",
+					Text = "Placeholder" },
+				{ Cue = "/VO/Dionysus_0250",
 					PortraitExitWait = 0.35,
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
 					StartSound = "/SFX/DionysusBoonWineLaugh",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
-					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat} don't you worry, Queen Hera, I'm trying a more chill approach. I still care and act, but just when it's necessary, yeah? Like right now, with Zag." },
+					Text = "Placeholder" },
 			},
 			HeraWithDemeter01 =
 			{
@@ -3727,13 +3742,13 @@ end]]
 				HasTraitNameInRoom = "ChillFireTrait",
 				{ Cue = "/VO/Hera_0048",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your love, for once? If not for me, do it for Zagreus." },
-				{ Cue = "/VO/Demeter_0370",
+					Text = "Placeholder" },
+				{ Cue = "/VO/Demeter_0390",
 					PortraitExitWait = 0.35,
 					StartSound = "/SFX/DemeterBoonFrost",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-					Text = "You know very well why. And I don't have to justify anything to you. But I will not drag Zagreus into our affairs. Take it, Zagreus. And go." },
+					Text = "Placeholder" },
 			},
 		},
 
@@ -3744,37 +3759,18 @@ end]]
 				Name = "HeraAboutOlympianReunionQuest01",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-				RequiredFalseTextLines = { "HeraAboutOlympianReunionQuest01b" },
 				{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance to reunite with my father, Queen Hera!" },
+					Text = "I should probably invite her... In the name of Hades! Olympus, this is an official message! The underworld is open to all, especially royalty." },
 				{ Cue = "/VO/Hera_0057",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
 					Emote = "PortraitEmoteDepressed",
-					Text = "Young one. This is such a nice gesture, but I am not an official Olympian anymore. I don't believe I have a place among my siblings. Tell Hades I wish him well." },
-			},
-			HeraAboutOlympianReunionQuest01b =
-			{
-				Name = "HeraAboutOlympianReunionQuest01",
-				PlayOnce = true,
-				RequiredTextLines = { "HeraFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-				RequiredFalseTextLines = { "HeraAboutOlympianReunionQuest01" },
-				{ Cue = "/VO/ZagreusField_4901", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.33 },
-					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero",
-					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I hope she can make it. In the name of Hades! Olympus, this is an official message! Here's a chance to reunite with my father, Queen Hera!" },
-				{ Cue = "/VO/Hera_0170",
-					PortraitExitWait = 1.25,
-					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-					UseEventEndSound = true,
-					Emote = "PortraitEmoteDepressed",
-					Text = "Young one. This is such a nice gesture, but I am not an official Olympian anymore. I wish I could see all of the home improvement you did for me, but I don't believe I have a place among my siblings. Tell Hades I wish him well." },
-			},
+					Text = "What is this? An invitation? Can't you see that I'm very busy managing Olympus? After all, it's not like Zeus is doing his part. I'm sure he'll go to your little gathering, and I will inevitably be forced to hold down the mountain all on my own. Forget it." },
+			},			
 			HeraPostEpilogue01 =
 			{
 				Name = "HeraPostEpilogue01",
@@ -3784,75 +3780,8 @@ end]]
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Hera_0161",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Everyone told me that your little gathering went well. I am glad Hades can finally understand the meaning of family. You are never truly home without one." },
-			},
-			HeraHomeWarmthQuest01 =
-			{
-				Name = "HeraHomeWarmthQuest01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraGift01", "HeraAboutHades02" },
-				RequiredCosmetics = { "PostBossGiftRack", "QuestLog", "ChallengeSwitches1", "BreakableValue1", "OrpheusUnlockItem" },
-				{ Cue = "/VO/Hera_0068",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Young one, I have a favor to ask. I know how Hades is. He doesn't open up easily to others. Could you please add some lights to his domain? Show him what's in front of him." },
-			},
-			HeraHomeWarmthQuest02 =
-			{
-				Name = "HeraHomeWarmthQuest02",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraHomeWarmthQuest01" },
-				RequiredCosmetics = { "Cosmetic_HouseCandles02" },
-				{ Cue = "/VO/Hera_0069",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Thank you, young one. Those candles should give Hades something to look at. But perhaps more fire could bring some warmth to his life. Try adding some." },
-			},
-			HeraHomeWarmthQuest03 =
-			{
-				Name = "HeraHomeWarmthQuest03",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraHomeWarmthQuest02" },
-				RequiredCosmetics = { "Cosmetic_MainHallTikiTorches", "Cosmetic_KitchenStoveFlame" },
-				{ Cue = "/VO/Hera_0070",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am sure it's nice and warm now, but perhaps it's not enough. Add a fireplace—this should be a place of reunion for the people of his domain. A place to commune." },
-			},
-			HeraHomeWarmthQuest04 =
-			{
-				Name = "HeraHomeWarmthQuest04",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraHomeWarmthQuest03" },
-				RequiredAnyCosmetics = { "Cosmetic_MainHallFireplace", "Cosmetic_MainHallFireplaceA" },
-				{ Cue = "/VO/Hera_0071",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The fireplace is perfect, young one. Now, perhaps you should break the silence with some music. Ask Orpheus to play something for your father." },
-			},
-			HeraHomeWarmthQuest05 =
-			{
-				Name = "HeraHomeWarmthQuest05",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraHomeWarmthQuest04" },
-				RequiredCosmetics = { "Cosmetic_MusicPlayer" },
-				--RequiredMusicName = { "MusicMusicPlayerMusicAsphodel2MusicPlayer" },
-				{ Cue = "/VO/Hera_0072",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Hmm{#PreviousFormat}. Some music will do. And Orpheus plays it so well. Everything is almost perfect. Ask Thanatos for the final touch, if I correctly recall Hades's taste in home decor." },
-			},
-			HeraHomeWarmthQuest06 =
-			{
-				Name = "HeraHomeWarmthQuest06",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraHomeWarmthQuest05" },
-				RequiredCosmetics = { "Cosmetic_ThanatosBrazier" },
-				{ Cue = "/VO/Hera_0073",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You did it! Those flames are what was missing. Now I am sure Hades is in a good place. And in good hands. You are a good son, Zagreus. Don't let anybody make you think otherwise." },
-			},
+					Text = "Zeus told me about your little reunion. How about we have the feast up here next time, hmm? That is, if you manage to join us one day." },
+			},			
 		},
 
 		PriorityPickupTextLineSets =
@@ -3864,100 +3793,25 @@ end]]
 				PlayOnce = true,
 				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp",
-					"AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "HeraWithZeus01", "ZeusWithHera01" },
+				RequiredTextLines = { "ZeusFirstPickUp", "AresFirstPickUp", "HeraFirstPickUp" },
+				--RequiredFalseTextLines = { "HeraWithZeus01", "ZeusWithHera01" },
+				RequiredGodLoot = "ZeusUpgrade",
+				{ Cue = "/VO/Hera_0063",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "My husband Zeus certainly has his flaws. Many flaws, actually. But nonetheless, I promised fidelity to him and his throne. A promise is not something you can break without consequences. My destiny is chained to Zeus, as is his with mine." },
+			},
+			HeraAboutZeus02 =
+			{
+				Name = "HeraAboutZeus02",
+				PlayOnce = true,
+				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "ZeusFirstPickUp", "AresFirstPickUp", "HeraFirstPickUp" },
+				--RequiredFalseTextLines = { "HeraWithZeus01", "ZeusWithHera01" },
 				RequiredGodLoot = "ZeusUpgrade",
 				{ Cue = "/VO/Hera_0064",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am the oldest and Zeus is the youngest among our siblings. I supposed this makes me the wisest, and Zeus the strongest. Or maybe I am just wise enough to let him believe that." },
-			},
-			HeraAboutDemeter01 =
-			{
-				Name = "HeraAboutDemeter01",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp",
-					"AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "DemeterFirstPickUp", "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "HeraWithDemeter01", "DemeterWithHera01" },
-				RequiredGodLoot = "DemeterUpgrade",
-				{ Cue = "/VO/Hera_0171",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't know why, but Demeter never seemed to like me. All I did was give her advice on how to make her daughter happy, and she would yell at me, saying that I am not a mother and thus don't know anything about it. Maybe you, Zagreus, will heed my advice." },
-			},
-			HeraAboutDemeter02 =
-			{
-				Name = "HeraAboutDemeter02",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraAboutDemeter01" },
-				RequiredFalseTextLines = { "HeraWithDemeter01", "DemeterWithHera01" },
-				RequiredGodLoot = "DemeterUpgrade",
-				{ Cue = "/VO/Hera_0058",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "When I learned that Demeter's daughter fled from Olympus, I knew exactly why. I believe Demeter knew as well, but she always remained angry at me after that. I can only hope that time may heal her relationship with her daughter someday." },
-			},
-			HeraAboutDionysus01 =
-			{
-				Name = "HeraAboutDionysus01",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraBackstory02", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp",
-					"AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "HeraWithDionysus01", "DionysusWithHera01" },
-				RequiredGodLoot = "DionysusUpgrade",
-				{ Cue = "/VO/Hera_0059",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "As you might know, I gave my seat as an Olympian to young Dionysus. Elders need to know when to pass the torch to the newer generation. That is something that my siblings will need to learn in time. You are part of the newer generation, Zagreus. This should be of help." },
-			},
-			HeraAboutHeraAspect01 =
-			{
-				Name = "HeraAboutHeraAspect01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredWeapon = "GunWeapon",
-				RequiredTrait = "GunManualReloadTrait",
-				{ Cue = "/VO/Hera_0060",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oh, my Aspect! I haven't used it in a while. I was much younger then, and believed flames had other purposes. I make much better use of them now. But if it helps you do your deeds, be my guest." },
-			},
-			HeraAboutHades01 =
-			{
-				Name = "HeraAboutHades01",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp",
-					"AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "DemeterFirstPickUp", "HeraFirstPickUp" },
-				{ Cue = "/VO/Hera_0162",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I remember your father. Always fair and just. He found balance in all things. Maybe there's a reason he doesn't want you to escape." },
-			},
-			HeraAboutHades02 =
-			{
-				Name = "HeraAboutHades02",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraAboutHades01" },
-				{ Cue = "/VO/Hera_0163",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Even if you disagree with your father, you must continue to show him respect. He's been through so much, even I couldn't know where to start. Maybe start by listening to him." },
-			},
-			HeraAboutHades03 =
-			{
-				Name = "HeraAboutHades03",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraAboutHades02" },
-				{ Cue = "/VO/Hera_0066",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I was not on good terms with my own father, and that's something I had to learn to live with. Do not be like me, do not wait until it is too late to fix it. Maybe you should go back to talk to him. For now, this is for you." },
+					Text = "Placeholder" },
 			},
 			HeraAboutPoseidon01 =
 			{
@@ -3971,288 +3825,215 @@ end]]
 				RequiredGodLoot = "PoseidonUpgrade",
 				{ Cue = "/VO/Hera_0065",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Poseidon doesn't take his responsibilities seriously. When Zeus refused to bring Hades back, he didn't speak up. That's what family should be for. That's something I'll have a hard time forgiving." },
+					Text = "Placeholder" },
 			},
-			--[[HeraAboutHera01 =
+			HeraAboutQueenDuty01 =
 			{
-				Name = "HeraAboutHera01",
-				PlayOnce = true,
-				RequiredFalseTextLinesThisRun = GameData.GodAboutGodVoiceLines,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraFirstPickUp", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp", "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "HeraWithHera01", "HeraWithHera01" },
-				RequiredGodLoot = "HeraUpgrade",
-				{ Cue = "/VO/Hera_0065",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't know if you've met her yet, but Sister Hera is younger than me. She can be strict, but she's still widely respected; she is queen of Olympus, after all. Maybe someday, she will show the same compassion that I am showing you now." },
-			},]]
-			HeraAboutCooking01 =
-			{
-				Name = "HeraAboutCooking01",
+				Name = "HeraAboutQueenDuty01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredCosmetics = { "Cosmetic_KitchenIsland" },
-				{ Cue = "/VO/Hera_0061",
+				{ Cue = "/VO/Hera_0066",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard you have a professional chef in your realm. I always enjoy cooking with my heart rather than following recipes. If you get here, I might just be able to give you the feast of your life." },
+					Text = "Every day, many come to see me for advice and guidance. Some want my power, others my wisdom, and as their rightful queen, it is my duty to help them. Let me show you what I mean." },
 			},
-			HeraAboutCooking02 =
+			HeraAboutQueenDuty02 =
 			{
-				Name = "HeraAboutCooking02",
+				Name = "HeraAboutQueenDuty02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraAboutCooking01" },
-				RequiredCosmetics = { "Cosmetic_SpiceRack", "Cosmetic_Knives" },
-				{ Cue = "/VO/Hera_0062",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I cook for my family to stop all fights, even if it's just for a moment—that moment where everybody enjoys the power of a good meal, knowing everything will be alright. I wish you could share it with us right now, young one." },
-			},
-			HeraAboutUnderworld01 =
-			{
-				Name = "HeraAboutUnderworld01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraAboutHades01" },
-				{ Cue = "/VO/Hera_0063",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I've never been to your father's domain, though I've heard it's larger than Olympus. I can understand how you keep getting lost. I hope this helps guide you." },
-			},
-			HeraAboutYoungGods01 =
-			{
-				Name = "HeraAboutUnderworld01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp",
-					"DionysusFirstPickUp", "HeraFirstPickUp" },
+				RequiredTextLines = { "HeraFirstPickUp", "HeraAboutQueenDuty01" },
 				{ Cue = "/VO/Hera_0067",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't know what to think about this new generation. They are all so focused on their own goals and responsibilities that they forget the essentials: love and affection. At least they are aiding you on your quest, and I hope this can assist as well." },
+					Text = "My role on Olympus is far more important than that of our king. Zeus is always absent, making my work twice as hard. Are you to blame for this recently, Zagreus?" },
 			},
-			HeraPostGiftPickup01 =
+			HeraAboutQueenDuty03 =
 			{
-				Name = "HeraPostGiftPickup01",
+				Name = "HeraAboutQueenDuty03",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraGift01", },
-				{ Cue = "/VO/Hera_0087",
+				RequiredTextLines = { "HeraFirstPickUp", "HeraAboutQueenDuty02" },
+				{ Cue = "/VO/Hera_0068",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Do you remember when you shared that gift with me? Well, I gave it to someone who needed it. Your deed did further good, and I wanted you to know." },
+					Text = "I often receive gifts for my excellent work as queen. Peasants are always eager to shower me with offerings. When you are up here, I hope you'll do the same." },
 			},
-			HeraPostGiftPickup02 =
+			HeraAboutQueenDuty04 =
 			{
-				Name = "HeraPostGiftPickup02",
+				Name = "HeraAboutQueenDuty04",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraGift02", },
-				{ Cue = "/VO/Hera_0088",
+				RequiredTextLines = { "HeraFirstPickUp", "HeraAboutQueenDuty03" },
+				{ Cue = "/VO/Hera_0069",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Each time I sense you, I feel wonderful. That is a sign of a good relationship. Always cherish what you have, young one." },
+					Text = "I may be queen, but that doesn't mean I can't spend time amongst the commoners from time to time. Unfortunately, I am much too busy of late to indulge in such frivolity." },
 			},
-
-			HeraPostGiftPickup03 =
+			HeraAboutQueenDuty05 =
 			{
-				Name = "HeraPostGiftPickup03",
+				Name = "HeraAboutQueenDuty05",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraGift03", },
-				{ Cue = "/VO/Hera_0089",
+				RequiredTextLines = { "HeraFirstPickUp", "HeraAboutQueenDuty04" },
+				{ Cue = "/VO/Hera_0070",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I hope you may see me as a motherly figure. I know many do. And I don't mind, as long as it can help them find their way." },
+					Text = "Of all my duties as a queen, your escape is becoming my most time-consuming. I hope you will fix this matter quickly, Zagreus. Don't make me wait." },
 			},
-			HeraAboutKeepsake01 =
+			HeraAboutCerberus01 =
 			{
-				Name = "HeraAboutKeepsake01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTrait = "ForceHeraBoonTrait",
-				{ Cue = "/VO/Hera_0081",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					--Emote = "PortraitEmoteMusical",
-					Text = "My Bottomless Cauldron! I was looking everywhere for it! I probably gave it to you, right? I completly forgot, haha. Keep it. At least I know where it is now." },
-			},
-			HeraRunCleared01 =
-			{
-				Name = "HeraRunCleared01",
+				Name = "HeraAboutCerberus01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredMinRunsCleared = 2,
-				RequiresLastRunCleared = true,
-				{ Cue = "/VO/Hera_0079",
+				{ Cue = "/VO/Hera_0071",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You finally got out last time, but fresh air doesn't seem to be your cup of tea. Maybe breathing some more will fix it for you. Try again, young one." },
+					Text = "I must admit, of all the Underworlds' subjects, there is one I would like you to greet for me. Next time you see Cerberus, please tell him... \"Who's a good boy?\" Hah. That will be all." },
 			},
-			HeraRunCleared0 =
+			HeraAboutCoronacht01 =
 			{
-				Name = "HeraRunCleared02",
+				Name = "HeraAboutCoronacht01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				RequiredMinRunsCleared = 3,
-				RequiresLastRunCleared = true,
-				{ Cue = "/VO/Hera_0080",
+				RequiredWeapon = "BowWeapon",
+				--RequiredTrait = "GunManualReloadTrait",
+				{ Cue = "/VO/Hera_0072",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I know you got out, yet you returned to your father's house once more. And I know why: deep down within your heart, you know you must help the people of your realm find their own place. We shall wait until you are done there. I know I will." },
+					Text = "Coronacht! Oh, how long it's been since I saw this perfectly balanced weapon. I was so young then. If you use it well, Zagreus, it shall defeat any enemies in your way." },
 			},
-			HeraBackstory01 =
+			HeraAboutHeraAspect01 =
 			{
-				Name = "HeraBackstory01",
+				Name = "HeraAboutHeraAspect01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "ZeusFirstPickUp", "DionysusFirstPickUp", "AthenaFirstPickUp", "HeraFirstPickUp" },
-				{ Cue = "/VO/Hera_0090",
+				RequiredTextLines = { "HeraFirstPickUp", "HeraAboutCoronacht01" },
+				RequiredWeapon = "BowWeapon",
+				RequiredTrait = "BowLoadAmmoTrait",
+				{ Cue = "/VO/Hera_0073",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "As you might know, there are twelve seats at the table of Olympus. Only the strongest and wisest of us can be there. I used to have my place there, you know. But I knew when my time was up, and gave back to the younger generation. Youth contains a fire that can extinguish only if you let it." },
+					Text = "You dare to use my aspect of Coronacht without first obtaining my permission?! You are bold, little one. Make use of it while you can, for now that I know where it disappeared to, I know where to find it when I next need it." },
 			},
-			HeraBackstory02 =
+			HeraAboutPersephoneQueen01 =
 			{
-				Name = "HeraBackstory02",
+				Name = "HeraAboutPersephoneQueen01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraBackstory01", "AresFirstPickUp", "ArtemisFirstPickUp", "AphroditeFirstPickUp" },
-				{ Cue = "/VO/Hera_0091",
+				RequiredTextLines = { "HeraFirstPickUp", "PersephoneHomeMeeting03" },
+				{ Cue = "/VO/Hera_0074",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I believe you know Dionysus by now. I gave him my seat, because I saw that behind his relaxed attitude, he knew how to handle any stressful situation. {#DialogueItalicFormat}Hum{#PreviousFormat}. Or maybe it's the wine that makes him relaxed.... Of that, I am not sure. {#DialogueItalicFormat}Hehe{#PreviousFormat}." },
+					Text = "Pomegranates are often given to me as offerings, and they symbolize my rightful role as queen. However, I recently heard that lately, someone else is getting pomegranates instead of me. I cannot let this slight stand, and if I catch this false queen... Oooh." },
 			},
-			HeraBackstory03 =
+			HeraAboutPersephoneQueen02 =
 			{
-				Name = "HeraBackstory03",
+				Name = "HeraAboutPersephoneQueen02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "PersephoneMeeting02", "HeraBackstory02" },
-				{ Cue = "/VO/Hera_0092",
+				RequiredTextLines = { "HeraAboutPersephoneQueen01", "PersephoneHomeMeeting04" },
+				{ Cue = "/VO/Hera_0075",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Zagreus, we Elder Gods—your father included—had many challenges to get where we are now. Even myself. This escape is only one of many challenges you'll have to face on your own." },
+					Text = "Even if you disagree with your father, you must continue to show him respect. He's been through so much, even I couldn't know where to start. Maybe start by listening to him." },
 			},
-			HeraBackstory04 =
+			HeraOlympusSecurity01 =
 			{
-				Name = "HeraBackstory04",
+				Name = "HeraOlympusSecurity01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraBackstory03", "HeraAboutPoseidon01", "HeraAboutZeus01" },
-				{ Cue = "/VO/Hera_0093",
+				RequiredTextLines = { "HeraFirstPickUp", "Ending01" },
+				-- I'm grateful.
+				EndCue = "/VO/ZagreusField_4962",
+				EndWait = 0.45,
+				{ Cue = "/VO/Hera_0076",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I have two sisters and three foster-brothers. When we were younger, your father and I used to be close. But much happened, and we grew apart. My flame is the only one that can burn him. Keeping my distance is how I show my love." },
-			},
-			HeraBackstory05 =
-			{
-				Name = "HeraBackstory05",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraBackstory04", "HeraAboutHades02" },
-				RequiredFalseTextLines = { "PersephoneReturnsHome01" },
-				{ Cue = "/VO/Hera_0094",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "One of the last suggestions I gave while I was at the table of Olympus was to return your father to our mountain. Some agreed and some refused, but to everyone's suprise, it was your father who decided to stay there. There must have been something more important than his freedom from the Underworld, I suppose." },
+					Text = "I hear you're Head of Underworld Security now. We have one of those up here too, you know. I suspect he's far better at it than you are. Pff. I suppose we'll never know." },
 			},
 			HeraRunProgress01 =
 			{
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
+				RequiredBiome = "Elysium",
 				RequiredMinRunsCleared = 1,
-				{ Cue = "/VO/Hera_0074",
+				{ Cue = "/VO/Hera_0077",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard a strange rumor that you defeated your father. Though I doubt it, since you would be here with us.... Unless your home is not up here. But you won't know unless you try. So try again." },
+					Text = "You made it to Elysium? Good work. Say hello to Theseus for me. He is such a genuine hero." },
 			},
 			HeraRunProgress02 =
 			{
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredRoomLastRun = "C_Boss01",
-				RequiredFalseRoomLastRun = "D_Intro",
-				{ Cue = "/VO/Hera_0075",
+				RequiredAnyRoomsThisRun = { "C_Boss01", "C_MiniBoss01" },
+				{ Cue = "/VO/Hera_0078",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I believe you've met Theseus, King of Athens. He always defined himself by the love of others, but self-identity starts by looking inside oneself. One day, he might understand. And so will you." },
+					Text = "Did you meet Asterius on your way up? He's very committed to his... friendship with Theseus, and I respect that in a hero." },
 			},
 			HeraRunProgress03 =
 			{
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredMinTimesSeenRoom = { A_Boss01 = 3, A_Boss02 = 3, A_Boss03 = 3 },
-				RequiredRoomLastRun = "A_Boss01",
-				RequiredFalseRoomLastRun = "B_Intro",
-				{ Cue = "/VO/Hera_0076",
+				RequiredBiome = "Tartarus",
+				{ Cue = "/VO/Hera_0079",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Megaera and her sisters are hard on the outside. But on the inside, I know they can become as kind as I am to you right now. Continue spreading kindness and you'll see." },
-			},
-			HeraRunProgress04 =
+					Text = "Still in Tartarus, Zagreus? What are you doing? Hurry up! For the love of Zeus!" },
+			},	
+			HeraRunCleared01 =
 			{
+				Name = "HeraRunCleared01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredAnyRoomsLastRun = { "D_Intro" },
-				RequiresLastRunCleared = false,
-				{ Cue = "/VO/Hera_0077",
+				RequiredMinRunsCleared = 1,
+				RequiresLastRunCleared = true,
+				{ Cue = "/VO/Hera_0080",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Getting to the surface and defeating your father might be hard, but I think fighting is your own way of showing your affection towards another. Though remember that violence is rarely the solution." },
+					Text = "I was informed that you got out? Finally... And yet you returned because you perished before reaching us up here? The surface can be harsh sometimes. At least you proved it is possible. I'll continue my support until you make it to Olympus." },
 			},
-			HeraRunProgress05 =
+			HeraAboutDefiance01 =
 			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredAnyRoomsLastRun = { "C_PreBoss01" },
-				RequiresLastRunCleared = false,
-				{ Cue = "/VO/Hera_0078",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Were you defeated by Asterius? Don't hold any grudges against him, he's always been alone. I suppose Theseus' friendship is what he always wanted, and he feels the need to show his appreciation by helping him keep you away from the surface. Friendship comes in all forms." },
-			},
-			HeraLowHealth01 =
-			{
-				Name = "HeraLowHealth01",
+				Name = "HeraAboutDefiance01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredMaxHealthFraction = 0.20,
-				RequiredMaxLastStands = 1,
-
+				RequiredMinLastStandsUsed = 1,
+				{ Cue = "/VO/Hera_0081",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I see you've used that Defiance to keep you alive when you should've perished, Zagreus. Messing with our own death is risky, but every risk is worth taking when we have nothing to lose. Keep trying." },
+			},
+			HeraAboutDefiance02 =
+			{
+				Name = "HeraAboutDefiance02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraFirstPickUp" },
+				RequiredFalseGodLoots = { "AthenaUpgrade", "HestiaUpgrade" },
+				RequiredMinLastStandsUsed = 1,
+				RequiredMaxLastStands = 0,
+				{ Cue = "/VO/Hera_0082",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "No more Defiance to help you? Maybe you should ask Hestia or Athena. I've heard they have some to spare. Until then, take this." },
+			},
+			HeraAboutDefiance03 =
+			{
+				Name = "HeraAboutDefiance03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraFirstPickUp" },
+				RequiredMinLastStandsUsed = 1,
+				RequiredMaxLastStands = 3,
 				{ Cue = "/VO/Hera_0083",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Emote = "PortraitEmoteSurprise",
-					Text = "You don't seem well, young one. Maybe you should go back before you faint. But in case you don't heed my advice, this is for you." },
+					Text = "You keep getting that Defiance back, I see. Is it some kind of parlor trick Nyx showed you to cheat death? I look forward to seeing a demonstration in person upon your arrival on Olympus." },
 			},
-			HeraLowHealth02 =
+			HeraAboutKeepsake01 =
 			{
-				Name = "HeraLowHealth02",
+				Name = "HeraAboutKeepsake01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredMaxHealthFraction = 0.15,
-				RequiredMaxLastStands = 1,
-
+				RequiredTrait = "ForceHeraBoonTrait",
 				{ Cue = "/VO/Hera_0084",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I can sense your fire going out. Take some time to rest. Continue only when you feel you are ready." },
-			},
-			HeraLowHealth03 =
-			{
-				Name = "HeraLowHealth03",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredMaxHealthFraction = 0.10,
-				RequiredMaxLastStands = 1,
-
-				{ Cue = "/VO/Hera_0085",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I sense your life essence growing weak. This blessing might reignite your will to live on." },
-			},
-			HeraLowHealth04 =
-			{
-				Name = "HeraLowHealth04",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredMaxHealthFraction = 0.25,
-				RequiredMaxLastStands = 1,
-
-				{ Cue = "/VO/Hera_0086",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard that death is nothing to you, and your father will always welcome you back into his realm. The next time you fall, perhaps you should go and thank him for what he does." },
+					--Emote = "PortraitEmoteMusical",
+					Text = "My KEEPSAKE! I can't believe I gave it to someone like you. You're not even a hero. Hmph. Anyway, a gift from a queen is forever. Cherish it." },
 			},
 			HeraLegendaryPickUp01 =
 			{
@@ -4264,10 +4045,131 @@ end]]
 					AllAtLeastRarity = "Rare",
 					HasAtLeastRarity = "Epic",
 				},
-				{ Cue = "/VO/Hera_0082",
+				{ Cue = "/VO/Hera_0085",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I offer you my strongest fire. There's always a chance of getting burned, but I know you'll use it well. I also know you'll rise from your own ashes, young one." },
+					Text = "This is the best you'll ever get from me, Zagreus. Don't make me regret my decision to expend this much effort on your cause." },
 			},
+			HeraLowHealth01 =
+			{
+				Name = "HeraLowHealth01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraFirstPickUp" },
+				RequiredMaxHealthFraction = 0.30,
+				RequiredMaxLastStands = 0,
+
+				{ Cue = "/VO/Hera_0086",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Emote = "PortraitEmoteSurprise",
+					Text = "Aw, look who's about to die. Just make sure to send my blessing back. A real hero might need it." },
+			},
+			HeraLowHealth02 =
+			{
+				Name = "HeraLowHealth02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraFirstPickUp" },
+				RequiredMaxHealthFraction = 0.30,
+				RequiredMaxLastStands = 0,
+
+				{ Cue = "/VO/Hera_0087",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Life is short. Yours, especially, it seems. Still, as a generous queen, I give you this." },
+			},
+			HeraLowHealth03 =
+			{
+				Name = "HeraLowHealth03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraFirstPickUp" },
+				RequiredMaxHealthFraction = 0.30,
+				RequiredMaxLastStands = 0,
+
+				{ Cue = "/VO/Hera_0088",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Let's make this quick. You clearly won't make it very far anyway." },
+			},
+			HeraPostGiftPickup01 =
+			{
+				Name = "HeraPostGiftPickup01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraGift01", },
+				{ Cue = "/VO/Hera_0089",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I prepared this blessing for another hero, but he died before I could give it to him. You can use it, little hero, since he won't be needing it in your realm." },
+			},
+			HeraPostGiftPickup02 =
+			{
+				Name = "HeraPostGiftPickup02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraGift02", },
+				{ Cue = "/VO/Hera_0090",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I call you little hero because I see you as weaker than other heroes. Not because of your height. I just wanted to be clear." },
+			},
+
+			HeraPostGiftPickup03 =
+			{
+				Name = "HeraPostGiftPickup03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraGift03", },
+				{ Cue = "/VO/Hera_0091",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I already used all the gifts you gave me, little hero. Don't worry, Nectar and Ambrosia are terribly common here. Join us, if you'd like some." },
+			},
+			HeraBackstory01 =
+			{
+				Name = "HeraBackstory01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraFirstPickUp" },
+				{ Cue = "/VO/Hera_0092",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Placeholder" },
+			},
+			HeraBackstory02 =
+			{
+				Name = "HeraBackstory02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraBackstory01"},
+				{ Cue = "/VO/Hera_0093",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Placeholder" },
+			},
+			HeraBackstory03 =
+			{
+				Name = "HeraBackstory03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraBackstory02" },
+				{ Cue = "/VO/Hera_0094",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Placeholder" },
+			},
+			HeraBackstory04 =
+			{
+				Name = "HeraBackstory04",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraBackstory03" },
+				{ Cue = "/VO/Hera_0095",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Placeholder" },
+			},
+			HeraBackstory05 =
+			{
+				Name = "HeraBackstory05",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HeraBackstory04"},
+				{ Cue = "/VO/Hera_0096",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Placeholder" },
+			},				
 		},
 
 		PickupTextLineSets =
@@ -4277,16 +4179,16 @@ end]]
 				Name = "HeraFirstPickUp",
 				PlayOnce = true,
 				RequiredTextLines = { "AthenaFirstPickUp", "DionysusFirstPickUp", },
-				{ Cue = "/VO/ZagreusField_4900", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4960", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 4.23 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Who can this be? It feels so... warm. In the name of Hades! Olympus! I accept this message." },
+					Text = "The power of a queen.… I know only one person this could be. In the name of Hades! Olympus! I accept this message." },
 				{ Cue = "/VO/Hera_0001",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "Hello, young one. It is a pleasure to meet you, Zagreus. I have heard word of your problem—this here is to show my compassion towards your cause. Until next time." },
+					Text = "I have heard very much about you, Zagreus. I remain unsure if you are a hero, or more like your father. I suppose the only way to know is by allowing you to borrow my blessing to get out of this wretched realm. Don't disappoint me." },
 			},
 			HeraMiscPickup01 =
 			{
@@ -4295,7 +4197,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0002",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Love is the tact of every god—the only warmth and the only peace. Take this, and remember it well." },
+					Text = "Still climbing this wretched realm, Zagreus? I'm not terribly fond of your father, but at least he gets results." },
 			},
 			HeraMiscPickup02 =
 			{
@@ -4304,7 +4206,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0003",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The fire you kindle for your enemy often burns yourself more than them. Be good to others, as I am with you now." },
+					Text = "I haven't a clue why every soul here places their obols on you escaping from this place. I don't think you have it in you, but I'll give you a chance. Don't disappoint me, Zagreus." },
 			},
 			HeraMiscPickup03 =
 			{
@@ -4315,7 +4217,7 @@ end]]
 				RequiredMaxHealthFraction = 0.75,
 				{ Cue = "/VO/Hera_0004",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "It feels as though you don't really want to escape; rather, you are trying to find your place. Whether that is true or not, I shall support you in your quest. Take this." },
+					Text = "There's always someone stronger than you, Zagreus. No one escapes that fate, save one. ...Obviously, I'm not talking about you, but you might be just strong enough to pass your father's security. Here; you can thank me when you finally succeed." },
 			},
 			HeraMiscPickup04 =
 			{
@@ -4325,7 +4227,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0005",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Friendship is a fire. But whether it is going to warm your hearth or burn down your house, one can never tell. Still, we continue to try." },
+					Text = "You can learn a lot by observing others. I was tricked many times when I was much younger, and more naive. Now, I know better. Let me show you a thing or two." },
 			},
 			HeraMiscPickup05 =
 			{
@@ -4334,7 +4236,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0006",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Always be kind to others. No one needs to light a fire under you when there’s a fire within you. Kill them with kindness, young one." },
+					Text = "A true hero isn't born a hero. A hero is defined by their actions. But even a hero must answer to their queen. If you want to be a hero one day, Zagreus, you'd do well to remember this." },
 			},
 			HeraMiscPickup06 =
 			{
@@ -4343,7 +4245,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0007",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I use my fire to guide home all who have lost their way, including you, young one. I know you can find a home up here." },
+					Text = "I always saw you Underworld gods as beneath us... That's all. You keep trying to do... whatever it is you're doing. Oh, poor you." },
 			},
 			HeraMiscPickup07 =
 			{
@@ -4352,7 +4254,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0008",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Warmth, kindness, and friendship are the most yearned for commodities in the world, Zagreus. If you can provide them, you will never be lonely." },
+					Text = "If your sad escape attempts continue to utterly fail at producing results, Zagreus, I may consider withdrawing my help for your cause. It's verging on pathetic at this point, really." },
 			},
 			HeraMiscPickup08 =
 			{
@@ -4361,7 +4263,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0009",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There is no formula for generating the authentic warmth of a home. It needs to be genuine. But if you continue like this, I know you will find it." },
+					Text = "You can't always rely on others, Zagreus. You must learn how to pick yourself up when you fall." },
 			},
 			HeraMiscPickup09 =
 			{
@@ -4370,7 +4272,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0010",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember, young one: kindness is the language which the deaf can hear and the blind can see." },
+					Text = "Olympus is full of our egocentric relatives all proclaiming their own magnificence. I hope that when you get here, it won't be adding one more. I won't allow it." },
 			},
 			HeraMiscPickup10 =
 			{
@@ -4381,7 +4283,7 @@ end]]
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				{ Cue = "/VO/Hera_0011",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am not going to stop helping you until you find what you are looking for. We share the same kind of determination, I suppose." },
+					Text = "My blessing comes with a price. One that I hope you'll be willing to pay, when the time comes." },
 			},
 			HeraMiscPickup11 =
 			{
@@ -4390,7 +4292,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0012",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Once a fire spreads, there's no limit to what it consumes. Be careful not to burn yourself with this, Zagreus." },
+					Text = "When I agreed to help you with your rebellion against your father, I didn't think it would take {#DialogueItalicFormat}forever{#PreviousFormat}. Do hurry up." },
 			},
 			HeraMiscPickup12 =
 			{
@@ -4399,7 +4301,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0013",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If it isn't a passion, it isn't burning. If it isn't on fire, you haven't lived yet. This flame should help you, young one." },
+					Text = "The world can be cruel at times. Luckily, we are there to improve it. Don't let anyone make you think otherwise." },
 			},
 			HeraMiscPickup13 =
 			{
@@ -4408,7 +4310,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0014",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If your desire to escape was strong enough, you would already be out. Something deep inside you makes you fail. Maybe you should figure that out first, hm?" },
+					Text = "Once a year, when I bathe at Kanathos, I feel fresh and revived, like new feathers on a bird after a molt. I'm sure you feel the same when you die and come out of your pool full of... {#DialogueItalicFormat}blood{#PreviousFormat}... Or perhaps not." },
 			},
 			HeraMiscPickup14 =
 			{
@@ -4420,16 +4322,16 @@ end]]
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					Emote = "PortraitEmoteMusical",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Instead of fighting, take a moment to reflect on yourself. You are the only one that defines yourself." },
+					Text = "If you manage to get to the surface, you ought to try the white substance that comes from these majestic surface creatures. I was the first to call them cows, and then everyone else started using the name... Anyhow, that's only if you ever get up there." },
 			},
 			HeraMiscPickup15 =
 			{
 				Name = "HeraMiscPickup15",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraFirstPickUp", "HeraGift01" },
+				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0016",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Someday you shall make it up here and I will cook something for you, young one. But first, you must believe that you can have a home here." },
+					Text = "You've never truly lost until you give up. That's why I keep supporting your cause, even if I think you should have given up ages ago. But what do I know? I always succeed in my pursuits. Unlike you." },
 			},
 			HeraMiscPickup16 =
 			{
@@ -4438,7 +4340,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0017",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Still trying to find your place in this world, Zagreus? If you haven't figured that out, maybe you should talk to more people. Different perspectives always help in defining your own." },
+					Text = "Look at you, still doing your best after all those failed attempts. I almost feel pity for you, little hero." },
 			},
 			HeraMiscPickup17 =
 			{
@@ -4447,7 +4349,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0018",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I have talked to my relatives about your situation. Some of them wanted to stop supporting you, but I pleaded your case and they will double down their assitance. You're welcome!" },
+					Text = "I am once more here for you, little hero. But when are you going to return the favor, {#DialogueItalicFormat}hm{#PreviousFormat}? Soon, I hope." },
 			},
 			HeraMiscPickup18 =
 			{
@@ -4455,21 +4357,19 @@ end]]
 				Priority = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				{ Cue = "/VO/Hera_0019",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Normally I try to keep away from the family drama, but everyone deserves to rest at the hearth of their own home.  I hope this helps you reach the hearth of Olympus, young one." },
+					Text = "You have died many times by now. And yet, you've never given up. I can admit, I admire your perseverance, little hero." },
 			},
 			HeraMiscPickup19 =
 			{
 				Name = "HeraMiscPickup19",
 				Priority = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HeraFirstPickUp" },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+				RequiredTextLines = { "HeraFirstPickUp", "HeraGift07" },
 				{ Cue = "/VO/Hera_0020",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Maybe instead of fighting your father, you should tell him how you really feel. You never know; maybe all he wants is the love of his son?" },
+					Text = "You could have given up, but I know it's my help that keeps you going, little hero. I won't give up on you, as long as you do the same." },
 			},
 
 			-- shorter acknowledgments
@@ -4480,7 +4380,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0021",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Fight your way back, like a wildfire that never goes out." },
+					Text = "Off with their heads, Zagreus. Show no mercy." },
 			},
 			HeraMiscPickup21 =
 			{
@@ -4489,7 +4389,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0022",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "This is how the fire starts. This is how they'll burn." },
+					Text = "Think like me, Zagreus. A queen is not afraid to fail. Failure is simply another steppingstone to greatness." },
 			},
 			HeraMiscPickup22 =
 			{
@@ -4498,7 +4398,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0023",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Keep a little fire burning; however small, however hidden. It shall make you strong." },
+					Text = "When everyone else is losing their head, it is important to keep yours." },
 			},
 			HeraMiscPickup23 =
 			{
@@ -4507,7 +4407,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0024",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Life is a flame that is always burning itself out, but it catches fire again every time a child is born." },
+					Text = "I am a queen, and I demand to be treated like a queen. Show them all, Zagreus." },
 			},
 			HeraMiscPickup24 =
 			{
@@ -4516,7 +4416,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0025",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What fire does not destroy, it hardens and makes stronger." },
+					Text = "The secret of a happy marriage remains a secret." },
 			},
 			HeraMiscPickup25 =
 			{
@@ -4525,7 +4425,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0026",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Fire is a good servant, but a bad master. Tame it well, young one." },
+					Text = "A successful marriage requires falling in love over and over again with the same person." },
 			},
 			HeraMiscPickup26 =
 			{
@@ -4534,7 +4434,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0027",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What matters most is how well you walk through the fire. You are doing well. Keep going." },
+					Text = "Marriage is neither heaven nor hell, it is simply purgatory." },
 			},
 			HeraMiscPickup27 =
 			{
@@ -4543,7 +4443,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0028",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "A hearth fire brings warmth and never stops, and you shall do the same. This is for you." },
+					Text = "By my name, Zagreus... wake up and show some results." },
 			},
 			HeraMiscPickup28 =
 			{
@@ -4552,7 +4452,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0029",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Respect those who deserve your respect. The rest will burn in their own malice." },
+					Text = "For once, I believe you can succeed. Truly. After all, it is impossible to fail that many times in a row." },
 			},
 			HeraMiscPickup29 =
 			{
@@ -4561,7 +4461,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0030",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Zagreus... I don't know what to do anymore. I suppose this is what you are looking for. Is that enough?" },
+					Text = "Of all the peasants of the Underworld, you could say you are not my least favorite. Feel free to take that as a compliment." },
 			},
 
 			HeraMiscPickup30 =
@@ -4571,7 +4471,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0031",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't understand the rush to escape. Nobody is going to die.... Except perhaps you, I guess. I'm sorry, young one." },
+					Text = "If this was your father, I am sure he would be out by now. Olympus can't be that far, Zagreus." },
 			},
 			HeraMiscPickup31 =
 			{
@@ -4580,7 +4480,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0032",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There's always time to talk to others. Communication is key to any relationship. You should start with your father." },
+					Text = "Marriage is about commitment, and you have showed yours. Keep doing... whatever you do." },
 			},
 			HeraMiscPickup32 =
 			{
@@ -4589,7 +4489,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0033",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Get this blessing while it's hot. It's fresh out of the oven, {#DialogueItalicFormat}haha{#PreviousFormat}!" },
+					Text = "Is there something else I can help you with? I have others duties besides you, you know." },
 			},
 			HeraMiscPickup33 =
 			{
@@ -4598,7 +4498,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0034",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How many times have you died by now? And every time, people were there to welcome you back. You should go and thank them, young one." },
+					Text = "You are not the center of the world, Zagreus. Take this and get out." },
 			},
 			HeraMiscPickup34 =
 			{
@@ -4609,7 +4509,7 @@ end]]
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					Emote = "PortraitEmoteMusical",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Fire doesn't care if you are good or bad; it burns all. This is why you must control it, so only the good remains." },
+					Text = "I am starting to doubt you ever want to come to Olympus. But you would never lie to your queen. Am I right?" },
 			},
 			HeraMiscPickup35 =
 			{
@@ -4618,7 +4518,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0036",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Such youth. Such tenacity. I wish I was younger, like you. I hope this old lady's blessing is good enough, Zagreus." },
+					Text = "You won't find any more committed than me, Zagreus. I'll keep helping you until you join us." },
 			},
 			HeraMiscPickup36 =
 			{
@@ -4627,7 +4527,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0037",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Always look forward in life... and, in your case, death as well. Haha. But seriously, keep going." },
+					Text = "Dying must be a common thing for you at this point. Strange hobby." },
 			},
 			HeraMiscPickup37 =
 			{
@@ -4636,7 +4536,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0038",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "It must be dark down there. Maybe this fire can illuminate your path to a better ending." },
+					Text = "You are always welcome on Olympus. That is, if you can prove yourself worthy of it." },
 			},
 			HeraMiscPickup38 =
 			{
@@ -4645,7 +4545,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0039",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There's always someone to turn you down. But remember, there are also people to lift you up when that happens. Be nice to others." },
+					Text = "I have others duties to attend to. Take this and I'll be on my way." },
 			},
 			HeraMiscPickup39 =
 			{
@@ -4654,7 +4554,7 @@ end]]
 				RequiredTextLines = GameData.HeraBasicPickUpTextLines,
 				{ Cue = "/VO/Hera_0040",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I finally found you. I kept this for you. You know what to do now, right, Zagreus?" },
+					Text = "Another deed done. What's next on my list? A queen's job is never finished." },
 			},
 		},
 
@@ -4665,10 +4565,12 @@ end]]
 				Name = "HeraLootBought01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-
-				{ Cue = "/VO/Hera_0095",
+				-- You just did.
+				EndCue = "/VO/ZagreusField_4988",
+				EndWait = 0.45,
+				{ Cue = "/VO/Hera_0099",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Charon sold my blessing to you? He should be giving them away for free. I'll try to convince him next time." },
+					Text = "Part of what you just gave to Charon is coming back to me; it's part of our trade arrangement. I won't say anything so prosaic as, \"thank you for your purchase.\"" },
 			},
 			HeraLootBought02 =
 			{
@@ -4677,9 +4579,9 @@ end]]
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 
-				{ Cue = "/VO/Hera_0096",
+				{ Cue = "/VO/Hera_0100",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Obols are of no importance; only love and relationships matter. You did well not getting attached to that coin." },
+					Text = "I suppose the cost was low enough for your rank, this time. Good for you." },
 			},
 			HeraLootBought03 =
 			{
@@ -4688,9 +4590,9 @@ end]]
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 
-				{ Cue = "/VO/Hera_0097",
+				{ Cue = "/VO/Hera_0101",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I suppose this is the price of showing compassion towards Charon for all he is doing for you. Though, it's not much, when you think about it." },
+					Text = "And here I thought you would never have enough obols for my blessings." },
 			},
 		},
 		StoryDuoTextLines = {
@@ -4760,87 +4662,87 @@ end]]
 			HeraRejection01 =
 			{
 				Name = "HeraRejection01",
-				{ Cue = "/VO/Hera_0098",
+				{ Cue = "/VO/Hera_0102",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I showed you how to sacrifice yourself for others. Now, you'll have to sacrifice yourself for me." },
+					Text = "Nobody says no to the queen! You'll feel my wrath to its fullest!" },
 			},
 			HeraRejection02 =
 			{
 				Name = "HeraRejection02",
-				{ Cue = "/VO/Hera_0099",
+				{ Cue = "/VO/Hera_0103",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Here's some wisdom: choose me next time." },
+					Text = "How dare you, miserable imp! You should have been grateful for my offer. You won't make that mistake again, trust me!" },
 			},
 			HeraRejection03 =
 			{
 				Name = "HeraRejection03",
-				{ Cue = "/VO/Hera_0100",
+				{ Cue = "/VO/Hera_0104",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "That was a risky move. Don't stand too close to the fire, Zagreus. You'll burn yourself." },
+					Text = "I suppose that was to be expected from a peasant like yourself. Not everybody has what it takes to make the correct decision, when faced with a choice." },
 			},
 			HeraRejection04 =
 			{
 				Name = "HeraRejection04",
-				{ Cue = "/VO/Hera_0101",
+				{ Cue = "/VO/Hera_0105",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I use fire to illuminate the right path. However, it does have other uses. Allow me show you, young one." },
+					Text = "Adoration is something you earn. Even if I have to use excessive force, I'll get yours." },
 			},
 			HeraRejection05 =
 			{
 				Name = "HeraRejection05",
-				{ Cue = "/VO/Hera_0102",
+				{ Cue = "/VO/Hera_0106",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Sometimes you need to be harsh to teach your children. Pay attention to this lesson, young one." },
+					Text = "Peasant once, peasant always. You were all but doomed to make the wrong decision. Poor thing." },
 			},
 			HeraRejection06 =
 			{
 				Name = "HeraRejection06",
-				{ Cue = "/VO/Hera_0103",
+				{ Cue = "/VO/Hera_0107",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I generally think you should be equally nice to everyone, but next time, I would appreciate it if you picked me." },
+					Text = "Be more like your father: know when to quit, and always do as the queen asks of you." },
 			},
 			HeraRejection07 =
 			{
 				Name = "HeraRejection07",
-				{ Cue = "/VO/Hera_0104",
+				{ Cue = "/VO/Hera_0108",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Family shouldn't fight, but sometimes it's the only way to resolve our differences. So be it." },
+					Text = "Wrong! I'll make you bow to the queen, peasant!" },
 			},
 			HeraRejection08 =
 			{
 				Name = "HeraRejection08",
-				{ Cue = "/VO/Hera_0105",
+				{ Cue = "/VO/Hera_0109",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "That's not how you show compassion. You need to be taught a lesson." },
+					Text = "I hear you keep cheating death. Well, you'd better prepare yourself: it's coming soon." },
 			},
 			HeraRejection09 =
 			{
 				Name = "HeraRejection09",
-				{ Cue = "/VO/Hera_0106",
+				{ Cue = "/VO/Hera_0110",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Why choose between us? You'll always make someone mad at you. So young, and so much to learn." },
+					Text = "I don't take \"no\" for an answer. You'd best remember that, peasant." },
 			},
 			HeraRejection10 =
 			{
 				Name = "HeraRejection10",
-				{ Cue = "/VO/Hera_0107",
+				{ Cue = "/VO/Hera_0111",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The solution here was neither. You'll learn it the hard way." },
+					Text = "I'll show you what it's like to go against a queen. I won't go easy." },
 			},
 			HeraRejection11 =
 			{
 				Name = "HeraRejection11",
-				{ Cue = "/VO/Hera_0108",
+				{ Cue = "/VO/Hera_0112",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I already forgive you, but that doesn't mean I won't make it hard." },
@@ -4848,10 +4750,10 @@ end]]
 			HeraRejection12 =
 			{
 				Name = "HeraRejection12",
-				{ Cue = "/VO/Hera_0109",
+				{ Cue = "/VO/Hera_0113",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Some choices are hard to make. I hope you had your reasons. Still, here it comes." },
+					Text = "I didn't even wanted to give you my blessing. But if you show yourself worthy of it, I might reconsider giving it to you..." },
 			},
 		},
 		FreePassVoiceLines = {
@@ -4859,10 +4761,10 @@ end]]
 			{
 				PlayOnce = true,
 				Name = "HeraFreePass01",
-				{ Cue = "/VO/Hera_0098",
+				{ Cue = "/VO/Hera_0174",
 					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I believe you know me enough by now. I don't like conflict. I don't see the point of fighting you. Take this and be on your way, young one." },
+					Text = "But... My sister isn't even an Olympian anymore. And I am your Queen! Zagreus. You poor misguided soul. I... suppose I forgive you for your ignorance. {#DialogueItalicFormat}Hmph{#PreviousFormat}." },
 			},
 		},
 		RejectionVoiceLines =
@@ -4875,14 +4777,14 @@ end]]
 				SuccessiveChanceToPlay = 0.33,
 				UsePlayerSource = true,
 
-				-- I didn't mean to, Queen Hera.
-				{ Cue = "/VO/ZagreusField_4902" },
-				-- I am very sorry, Queen Hera.
-				{ Cue = "/VO/ZagreusField_4903" },
-				-- It isn't anything against you, Queen Hera.
-				{ Cue = "/VO/ZagreusField_4904" },
-				-- I don't know why I did that, Queen Hera.
-				{ Cue = "/VO/ZagreusField_4905" },
+				-- Oops, big mistake.
+				{ Cue = "/VO/ZagreusField_4991" },
+				-- Gulp, not the queen.
+				{ Cue = "/VO/ZagreusField_4992" },
+				-- I beg for forgiveness, your highness.
+				{ Cue = "/VO/ZagreusField_4993" },
+				-- Oh no, my bad!
+				{ Cue = "/VO/ZagreusField_4994" },
 			},
 			[2] = GlobalVoiceLines.GodRejectedVoiceLines,
 		},
@@ -4894,100 +4796,125 @@ end]]
 				Name = "HeraMakeUp01",
 
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0110",
+				{ Cue = "/VO/Hera_0118",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Forgive, and forget." },
+					Text = "You survived our little confrontation? Well, I didn't expect that from you. Take this and go." },
 			},
 			HeraMakeUp02 =
 			{
 				Name = "HeraMakeUp02",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0111",
+				{ Cue = "/VO/Hera_0119",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Blood under the bridge, isn't that what you say in your realm?" },
+					Text = "I hope you don't forget the lesson you've learned: never face the wrath of a queen." },
 			},
 			HeraMakeUp03 =
 			{
 				Name = "HeraMakeUp03",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0112",
+				{ Cue = "/VO/Hera_0120",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "We should all be selective in our battles, and try not to make every problem a war. Which is why I forgive you." },
+					Text = "Take my blessing and go. I've wasted enough time on you already." },
 			},
 			HeraMakeUp04 =
 			{
 				Name = "HeraMakeUp04",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0113",
+				{ Cue = "/VO/Hera_0121",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "By forgiving you now, I hope you can forgive those who wrong you." },
+					Text = "You might have survived this one, Zagreus, but next time you go against me, I won't hold back like I did here." },
 			},
 			HeraMakeUp05 =
 			{
 				Name = "HeraMakeUp05",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0114",
+				{ Cue = "/VO/Hera_0122",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't like fighting. I just wanted to teach you that there can be consequences for our actions." },
+					Text = "I hope this \"fight\" has reminded you of why you should always be loyal to me, peasant. Godlings... Always thinking they're better than others. You'll learn, young one. You'll learn." },
 			},
 			HeraMakeUp06 =
 			{
 				Name = "HeraMakeUp06",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0115",
+				{ Cue = "/VO/Hera_0123",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Communication comes in many forms. Fighting is one of them. But it is certainly not my favorite." },
+					Text = "Next time I say \"jump,\" you say, \"how high?\" Understood?" },
 			},
 			HeraMakeUp07 =
 			{
 				Name = "HeraMakeUp07",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0116",
+				{ Cue = "/VO/Hera_0124",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You didn't choose me because you knew I would understand. You just didn't want to make the others feel bad. How kind of you." },
+					Text = "You'd better not go around telling people you defeated me. I'll deny it and you'll look like a fool. Don't try me." },
 			},
 			HeraMakeUp08 =
 			{
 				Name = "HeraMakeUp08",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0117",
+				{ Cue = "/VO/Hera_0125",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Stop! I do not want to fight you. It is never the solution." },
+					Text = "How— No one crosses the queen and remains alive. You must have cheated somehow. Cheater.  {#DialogueItalicFormat}Hmph{#PreviousFormat}. Here, take your ill-gotten winnings." },
 			},
 			HeraMakeUp09 =
 			{
 				Name = "HeraMakeUp09",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0118",
+				{ Cue = "/VO/Hera_0126",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "War will only bring more war. Let's make peace to stop the cycle of hate." },
+					Text = "Congratulations, Zagreus. You've proved you're one of the few who can cross me and live to tell about it. Stay vigilant, for I won't forget this." },
 			},
 			HeraMakeUp10 =
 			{
 				Name = "HeraMakeUp10",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0119",
+				{ Cue = "/VO/Hera_0127",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "We might have our differences, but it's not worth fighting over. It is never worth fighting." },
+					Text = "Frankly, I'm glad it's over. I have much more important things to do. The task list of a queen is endless." },
 			},
 			HeraMakeUp11 =
 			{
 				Name = "HeraMakeUp11",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0120",
+				{ Cue = "/VO/Hera_0128",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Truce! You cannot defeat me and I refuse to defeat you. Let's end it here." },
+					Text = "I'll let you win this time, Zagreus. A queen can be forgiving, on occasion." },
 			},
 			HeraMakeUp12 =
 			{
 				Name = "HeraMakeUp12",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hera_0121",
+				{ Cue = "/VO/Hera_0129",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What are you doing? I came here to help you. Let's stop fighting, and take this." },
+					Text = "That's it. I order this fight to end. Good, you are listening to reason again." },
 			},
 		},
-
+		MakeUpFailedTextLines = {
+			HeraMakeUpFailed01 =
+			{
+				Name = "HeraMakeUpFailed01",
+				PlayOnce = true,
+				-- Denied.
+				EndCue = "/VO/ZagreusField_4963",
+				EndWait = 0.45,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				{ Cue = "/VO/Hera_0130",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Pff. You thought I would give you a blessing after disrespecting me like you did? Go find me elsewhere if you want another boon." },
+			},
+			HeraMakeUpFailed02 =
+			{
+				Name = "HeraMakeUpFailed02",
+				PlayOnce = true,
+				-- Nothing.
+				EndCue = "/VO/ZagreusField_4964",
+				EndWait = 0.45,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				{ Cue = "/VO/Hera_0131",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Haha. See, all this trouble for what? Nothing! Absolutely nothing. Next time, worship your queen." },
+			},
+		},
 		GiftTextLineSets =
 		{
 			-- gives gift in exchange
@@ -4995,121 +4922,789 @@ end]]
 			{
 				Name = "HeraGift01",
 				PlayOnce = true,
-				{ Cue = "/VO/ZagreusHome_3871", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4965", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "You've been so kind to me, Queen Hera. I found this, and wanted to give it to you to show my appreciation." },
-				{ Cue = "/VO/Hera_0122",
+					Text = "You seemed to think little of me, Queen Hera. I hope this gift may improve our relationship." },
+				{ Cue = "/VO/Hera_0132",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Giving to others while you don't have much yourself, {#DialogueItalicFormat}hm{#PreviousFormat}? This shows how good your heart is. I shall return the kindness, if you'll allow me." },
+					Text = "{#DialogueItalicFormat}Pff{#PreviousFormat}. As queen of Olympus, I receive countless gifts and offerings each day. Yours makes no difference; you'll never be remembered as a true hero. Still, I suppose you could try by starting with this. Use it wisely." },
 			},
 			HeraGift02 =
 			{
 				Name = "HeraGift02",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraGift01" },
-				{ Cue = "/VO/ZagreusHome_3872", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4966", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "You seemed to have enjoyed my last gift, Queen Hera. Here's a little more for you." },
-				{ Cue = "/VO/Hera_0123",
+					Text = "I don't want to be remembered like the heroes stuck in Elysium. I just want to make a genuine connection with you, Queen Hera." },
+				{ Cue = "/VO/Hera_0133",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Young one, I feel the genuine warmth. The affection. No joke! I am touched by your gesture." },
+					Text = "In order to form a connection, both parties must be in agreement, and I don't see any reason to connect with you. I don't fraternize with lower ranked little godlings." },
 			},
 			HeraGift03 =
 			{
 				Name = "HeraGift03",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraGift02" },
-				{ Cue = "/VO/ZagreusHome_3873", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4967", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Queen Hera, you are so motherly. I feel like you should get this for everything you do." },
-				{ Cue = "/VO/Hera_0124",
+					Text = "I know you might never see me as an equal, Queen Hera. But I am persistent, and this is my way to show you the truth of my words." },
+				{ Cue = "/VO/Hera_0134",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I do not have children, but if I did, I could only hope they would act as you do. Good deeds are always rewarded." },
+					Text = "Truth? Hah. You speak like someone else I know, and I do not need another hero like him in my life. Cease with this nonsense, or I'll stop accepting your gifts." },
 			},
 			HeraGift04 =
 			{
 				Name = "HeraGift04",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraGift03" },
-				{ Cue = "/VO/ZagreusHome_3874", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4968", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I found this and I really wanted you to have it. It's my way to repay all the kindness you're showing me." },
-				{ Cue = "/VO/Hera_0125",
+					Text = "I didn't mean to upset you, Queen Hera. This gift is not to prove that I'm a hero. It's only to show my respect for you." },
+				{ Cue = "/VO/Hera_0135",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oh! I was running short on that. However, I don't believe you should be the one to provide it to me, since it's so rare within your realm." },
+					Text = "Many before you have given me gifts with ill intentions. I shall judge myself if you are worthy of my respect." },
 			},
 			HeraGift05 =
 			{
 				Name = "HeraGift05",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraGift04" },
-				{ Cue = "/VO/ZagreusHome_3875", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4969", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "It was hard, but I finally found this. And I wanted to give it to you, Queen Hera. I hope you'll accept it." },
-				{ Cue = "/VO/Hera_0126",
+					Text = "I don't know what it is with you and heroes, Queen Hera, but I hope we can become friends." },
+				{ Cue = "/VO/Hera_0136",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Sharing even when you have nothing is very kind of you. I also try to share as much as I can, and spread love to others." },
+					Text = "Stop this nonsense, Zagreus. I don't have friends, I have servants. Now go fetch more gifts for your queen." },
 			},
 			HeraGift06 =
 			{
 				Name = "HeraGift06",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraGift05" },
-				{ Cue = "/VO/ZagreusHome_3876", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4970", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "You seem to appreciate all my gifts. I didn't know you liked Nectar so much, Queen Hera. I wanted to give you some more." },
-				{ Cue = "/VO/Hera_0127",
+					Text = "I found some more Nectar for you, Queen Hera. Even though those aren't exactly rare in your realm." },
+				{ Cue = "/VO/Hera_0137",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I must confess, I keep giving your gifts to those in need. I suppose it would be faster if you gave those to others from now on. I'm sorry I didn't tell you sooner." },
+					Text = "Indeed. And I am growing tired of it. Unless you can find me something of more substance, I order you to cease with this meaningless gift giving." },
 			},
 			HeraGift07 =
 			{
 				Name = "HeraGift07",
 				PlayOnce = true,
 				RequiredTextLines = { "HeraGift06" },
-				{ Cue = "/VO/ZagreusHome_3877", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_4971", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "You said that you gave all my gifts to others, but I wanted to give you something more valuable, Queen Hera. I hope you'll keep this one." },
-				{ Cue = "/VO/Hera_0128",
+					Text = "This is no Nectar, my queen. And I know this doesn't make me a hero, or whatever, I just wanted you to have it. I promise I'll stop bothering you from now on, if that's what you'd prefer." },
+				{ Cue = "/VO/Hera_0138",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 					PostLineFunctionArgs = { Text = "NPC_Hera_01", Icon = "Keepsake_HeraSticker_Max" },
-					Text = "This is too much! You know what? With this gift, I prononce us the Warmth and Compassion Brigade! It might sound silly, but if we can make others laugh at the name, we're already well on our way to bringing people together. Now, here's your badge to prove it." },
+					Text = "{#DialogueItalicFormat}Hmph{#PreviousFormat}. I see you went to a fair amount of trouble to bring me this bottle. Such a shame, when I already have several. You are obviously no hero... Perhaps, at best, a little hero. Maybe we will be able to make something of you, in the end." },
 			},
 		},
-
+		RoyalPactVoiceLines = {
+			-- NPC HERA
+			HeraFirstNPC01 =
+			{
+				Name = "HeraFirstNPC01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0175",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Zagreus, you are now in possession of the Royal Pact. Anyone you meet is obligated to aid you, without fear of retaliation from your father. But if you fail, the contract ends and you start afresh. Understood?" },
+			},
+			HeraTartarusNPC01 =
+			{
+				Name = "HeraTartarusNPC01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "A_Story01",
+				{ Cue = "/VO/Hera_0176",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Old King, Zagreus possesses the Royal Pact. You may help Zagreus without fear of Hades' servants. I made sure of it." },
+			},
+			HeraTartarusNPC02 =
+			{
+				Name = "HeraTartarusNPC02",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "A_Story01",
+				{ Cue = "/VO/Hera_0177",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You may take a break from your endless punishment, Old King. Zagreus needs your help once again." },
+			},
+			HeraTartarusNPC03 =
+			{
+				Name = "HeraTartarusNPC03",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "A_Story01",
+				{ Cue = "/VO/Hera_0178",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I heard you are an expert at unfinished tasks. Perhaps you might have more success with helping Zagreus on his tasks than pushing that damned rock." },
+			},
+			HeraTartarusNPC04 =
+			{
+				Name = "HeraTartarusNPC04",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "A_Story01",
+				{ Cue = "/VO/Hera_0179",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Is that a face on that rock? I hope you didn't give it a name. Never mind that, Zagreus is here to receive your precious gifts." },
+			},
+			HeraTartarusNPC05 =
+			{
+				Name = "HeraTartarusNPC05",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "A_Story01",
+				{ Cue = "/VO/Hera_0180",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Old King. Do good deed for Zagreus. See this as an extension of your punishment." },
+			},
+			HeraAsphodelNPC01 =
+			{
+				Name = "HeraAsphodelNPC01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "B_Story01",
+				{ Cue = "/VO/Hera_0181",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Dryad, I have heard your meals have assisted Zagreus in the past. You may prepare your best dishes for him." },
+			},
+			HeraAsphodelNPC02 =
+			{
+				Name = "HeraAsphodelNPC02",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "B_Story01",
+				{ Cue = "/VO/Hera_0182",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I allow you to cook a feast, Dryad. Zagreus needs all the strength he can get." },
+			},
+			HeraAsphodelNPC03 =
+			{
+				Name = "HeraAsphodelNPC03",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "B_Story01",
+				{ Cue = "/VO/Hera_0183",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Provide Zagreus with whatever aid you can offer. As mentioned in the Royal Pact, you have my permission." },
+			},
+			HeraAsphodelNPC04 =
+			{
+				Name = "HeraAsphodelNPC04",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "B_Story01",
+				{ Cue = "/VO/Hera_0184",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I heard you sing very well, Dryad. But more cooking and less singing. Zagreus needs all the strength he can get." },
+			},
+			HeraAsphodelNPC05 =
+			{
+				Name = "HeraAsphodelNPC05",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "B_Story01",
+				{ Cue = "/VO/Hera_0185",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Use your best ingredients, Dryad. As long as the Royal Pact applies, you must help Zagreus in his quest." },
+			},
+			HeraElysiumNPC01 =
+			{
+				Name = "HeraElysiumNPC01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "C_Story01",
+				{ Cue = "/VO/Hera_0186",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Finally, a champion. Prove to me that you deserve your place in Elysium. By this Royal Pact, I order you to help Zagreus in his quest." },
+			},
+			HeraElysiumNPC02 =
+			{
+				Name = "HeraElysiumNPC02",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "C_Story01",
+				{ Cue = "/VO/Hera_0187",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You must once again be there for Zagreus, Hero. This Royal Pact will ensure you have no retaliation for your action." },
+			},
+			HeraElysiumNPC03 =
+			{
+				Name = "HeraElysiumNPC03",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "C_Story01",
+				{ Cue = "/VO/Hera_0188",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I understand helping Zagreus isn't the most heroic task. But even so, heed my decree and aid him." },
+			},
+			HeraElysiumNPC04 =
+			{
+				Name = "HeraElysiumNPC04",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "C_Story01",
+				{ Cue = "/VO/Hera_0189",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "With this Royal Pact, Hades cannot interfere with your aid, Hero. You may help Zagreus as you please." },
+			},
+			HeraElysiumNPC05 =
+			{
+				Name = "HeraElysiumNPC05",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRoom = "C_Story01",
+				{ Cue = "/VO/Hera_0190",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Must I ask another hero, Patroclus? It seems like you lack the dedication for the task at hand. As long as the Royal Pact is in Zagreus possession, you must help him no matter what." },
+			},
+			HeraGenericNPC01 =
+			{
+				Name = "HeraGenericNPC01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0191",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "As you may be aware, Zagreus struggles with the simplest task of escaping his father's domain. Your assistance is required." },
+			},
+			HeraGenericNPC02 =
+			{
+				Name = "HeraGenericNPC02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0192",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "By this Royal Pact, I hereby order you to help Zagreus to the utmost of your abilities. That will be all." },
+			},
+			HeraGenericNPC03 =
+			{
+				Name = "HeraGenericNPC03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0193",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Maybe with the Royal Pact, Zagreus will show himself worthy of entering Olympus. We shall see." },
+			},
+			HeraGenericNPC04 =
+			{
+				Name = "HeraGenericNPC04",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0194",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Hestia and I created this Royal Pact to help heroes in their quest, even if Zagreus is not a hero, we made an exception. Go ahead." },
+			},
+			HeraGenericNPC05 =
+			{
+				Name = "HeraGenericNPC05",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0195",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "It was Hestia's idea to write down the Royal Pact for you, Zagreus. I signed it out of pity for you, since I knew you cannot escape your father's realm unaided." },
+			},
+			HeraGenericNPC06 =
+			{
+				Name = "HeraGenericNPC06",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0196",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "By my status of queen and by this Royal Pact, any capable shade must help Zagreus in his escape from the underworld." },
+			},
+			HeraGenericNPC07 =
+			{
+				Name = "HeraGenericNPC07",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HeraFirstNPC01",
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0197",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Even with your help Zagreus seems incapable of escaping, still he is in possession of the Royal Pact. Keep helping him and one day he might succeed." },
+			},
+			HeraRepeatNPC01 =
+			{
+				Name = "HeraRepeatNPC01",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0198",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Anybody able to help Zagreus are forced to help him escape. No exception." },
+			},
+			HeraRepeatNPC02 =
+			{
+				Name = "HeraRepeatNPC02",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0199",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Stop. Helping Zagreus is your new priority. Once done, you may get back to your business." },
+			},
+			HeraRepeatNPC03 =
+			{
+				Name = "HeraRepeatNPC03",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0200",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Zagreus has the Royal Pact. You know what to do." },
+			},
+			HeraRepeatNPC04 =
+			{
+				Name = "HeraRepeatNPC04",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0201",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Once again, you must help Zagreus as much as you are capable." },
+			},
+			HeraRepeatNPC05 =
+			{
+				Name = "HeraRepeatNPC05",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0202",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Since Zagreus is in possession of the Royal Pact, you must help him in his quest." },
+			},
+			HeraRepeatNPC06 =
+			{
+				Name = "HeraRepeatNPC06",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0203",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "All the help you can deliver is requested here. Do not hold back." },
+			},
+			HeraRepeatNPC07 =
+			{
+				Name = "HeraRepeatNPC07",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactNPCTextLines,
+				RequiredRooms = { "A_Story01", "B_Story01", "C_Story01" },
+				{ Cue = "/VO/Hera_0204",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Another time to perform your duty. And to please your queen. Go on." },
+			},
+			-- Boss Hera			
+			HeraTartarusBoss01 =
+			{
+				Name = "HeraTartarusBoss01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03"},
+				{ Cue = "/VO/Hera_0205",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The Old King heard you have the Royal Pact, Zagreus. This is coming from him. He must have been too busy pushing this rock of his to deliver it himself." },
+			},
+			HeraTartarusBoss02 =
+			{
+				Name = "HeraTartarusBoss02",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03"},
+				{ Cue = "/VO/Hera_0206",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The Old King sent you this. He said its from him and... Bouldy? Not sure who that it." },
+			},
+			HeraTartarusBoss03 =
+			{
+				Name = "HeraTartarusBoss03",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03"},
+				{ Cue = "/VO/Hera_0207",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Another delivery from your Tartarus friend. I should make Hermes do these, I have more important things to do." },
+			},
+			HeraTartarusBoss04 =
+			{
+				Name = "HeraTartarusBoss04",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03"},
+				{ Cue = "/VO/Hera_0208",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The Old King prepared if by chance you succeed bypassing the furies. I suppose this is another reward for you." },
+			},
+			HeraTartarusBoss05 =
+			{
+				Name = "HeraTartarusBoss05",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03"},
+				{ Cue = "/VO/Hera_0209",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The Old King thank me for helping you. So I wanted to clarify the situation. I said I would get you to our domain, and I only have one word. Hopefully, you'll get here soon." },
+			},
+			HeraAsphodelBoss01 =
+			{
+				Name = "HeraAsphodelBoss01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "B_Boss01", "B_Boss02" },
+				{ Cue = "/VO/Hera_0210",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The Dryad knows the existence of the Royal Pact and wanted to prepare this to regain your strength after defeating that Lernaean Hydra. You can thank me for bringing it to you." },
+			},
+			HeraAsphodelBoss02 =
+			{
+				Name = "HeraAsphodelBoss02",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "B_Boss01", "B_Boss02" },
+				{ Cue = "/VO/Hera_0211",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I do not know if that meal is still hot since it took you forever to defeat that Lernaean Hydra, but here. The Dryad prepared it for you." },
+			},
+			HeraAsphodelBoss03 =
+			{
+				Name = "HeraAsphodelBoss03",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "B_Boss01", "B_Boss02" },
+				{ Cue = "/VO/Hera_0212",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Time to leave this inferno, Zagreus. But with the Royal Pact in hand, you get to leave it with some leftovers." },
+			},
+			HeraAsphodelBoss04 =
+			{
+				Name = "HeraAsphodelBoss04",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "B_Boss01", "B_Boss02" },
+				{ Cue = "/VO/Hera_0213",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "The Dryad prepared some nurishment for you. Tell yourself that you will have any food you want once you are with us. This might be the motivation you were missing." },
+			},
+			HeraAsphodelBoss05 =
+			{
+				Name = "HeraAsphodelBoss05",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "B_Boss01", "B_Boss02" },
+				{ Cue = "/VO/Hera_0214",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "For as long as the Royal Pact is in your hand, the Dryad will bring you what you need. I'll make sure of it." },
+			},
+			HeraElysiumBoss01 =
+			{
+				Name = "HeraElysiumBoss01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "C_Boss01" },
+				{ Cue = "/VO/Hera_0215",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Elysium host many heroes. Yet only one offered to help you. You can thank Patrocleus next time you see him." },
+			},
+			HeraElysiumBoss02 =
+			{
+				Name = "HeraElysiumBoss02",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "C_Boss01" },
+				{ Cue = "/VO/Hera_0216",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Seems like you defeated Theseus. Maybe you are not as worthless as I though. Patrocleus sent you this to celebrate your victory. I'll see you soon then." },
+			},
+			HeraElysiumBoss03 =
+			{
+				Name = "HeraElysiumBoss03",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "C_Boss01" },
+				{ Cue = "/VO/Hera_0217",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You are done with Elysium, I see. There's no way you can fail from here. Even Patrocleus pitch this in." },
+			},
+			HeraElysiumBoss04 =
+			{
+				Name = "HeraElysiumBoss04",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "C_Boss01" },
+				{ Cue = "/VO/Hera_0218",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Defeating Asterius, I understand. But Theseus, not bad. I suppose you are worthy of this delivery from Patrocleus." },
+			},
+			HeraElysiumBoss05 =
+			{
+				Name = "HeraElysiumBoss05",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "C_Boss01" },
+				{ Cue = "/VO/Hera_0219",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Defeating Theseus doesn't make you a hero. But I believe this is enough to keep receiving gifts from Patrocleus. As long as you have the Royal Pact, of course." },
+			},
+			HeraGenericBoss01 =
+			{
+				Name = "HeraGenericBoss01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0220",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "As you know, the Royal Pact is there for your acquaintance to help you in your quest. That being when you find yourself worthy of it." },
+			},
+			HeraGenericBoss02 =
+			{
+				Name = "HeraGenericBoss02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0221",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Someone wants the best for you. It's not me. I am just here to give it to you." },
+			},
+			HeraGenericBoss03 =
+			{
+				Name = "HeraGenericBoss03",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0222",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Why did I accept to create the Royal Pact? I have better things to do than deliever futile gift to you Zagreus. " },
+			},
+			HeraGenericBoss04 =
+			{
+				Name = "HeraGenericBoss04",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0223",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Here's a farewell gift from one of your friend. It would be awkward if didn't really left your father's domain.  Don't you think?" },
+			},
+			HeraGenericBoss05 =
+			{
+				Name = "HeraGenericBoss05",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0224",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "What do you need to finally succeed your escape? Maybe this is what you needed?" },
+			},
+			HeraGenericBoss06 =
+			{
+				Name = "HeraGenericBoss06",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0225",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I should make Hestia do all the dirty work. Do I look like Hermes?" },
+			},
+			HeraGenericBoss07 =
+			{
+				Name = "HeraGenericBoss07",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLine = "HestiaFirstBoss01",
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0226",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "I made sure your acquaintances keep following the Royal Pact commitment. They should keep giving you their support. As long as you have the Royal Pact at hand." },
+			},
+			HeraRepeatBoss01 =
+			{
+				Name = "HeraRepeatBoss01",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0227",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Are you done here? Good. I don't like people who keeps me waiting. This is for you." },
+			},
+			HeraRepeatBoss02 =
+			{
+				Name = "HeraRepeatBoss02",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0228",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "That was a worthy performance, I suppose. Take this and move on." },
+			},
+			HeraRepeatBoss03 =
+			{
+				Name = "HeraRepeatBoss03",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0229",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Won the battle, Zagreus? Now it's time to win the war. With this." },
+			},
+			HeraRepeatBoss04 =
+			{
+				Name = "HeraRepeatBoss04",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0230",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Another gift, Zagreus? They must be very annoyed of your failure to escape. I know I am." },
+			},
+			HeraRepeatBoss05 =
+			{
+				Name = "HeraRepeatBoss05",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0231",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You survive that? I don't see why you would fail from here. But again, you desapointed me before, Zagreus." },
+			},
+			HeraRepeatBoss06 =
+			{
+				Name = "HeraRepeatBoss06",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0232",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Another delivery from one of your acquaintances, Zagreus. Good. It means my Royal Pact is useful." },
+			},
+			HeraRepeatBoss07 =
+			{
+				Name = "HeraRepeatBoss07",
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = GameData.RoyalPactBossTextLines,
+				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
+				{ Cue = "/VO/Hera_0233",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Another gift coming your way, Zagreus. I am sure you are going to waste them like the others." },
+			},
+		},
 		GiftGivenVoiceLines =
 		{
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
 
-			-- I'll allow it. Thanks for your kindness, Queen Hera.
-			{ Cue = "/VO/ZagreusField_4912" },
+			-- I'll try, Queen Hera.
+			{ Cue = "/VO/ZagreusField_4972" },
 		},
 
-		ShoutActivationSound = "/SFX/BurnDamage",
+		--ShoutActivationSound = "/SFX/BurnDamage",
 		ShoutVoiceLines =
 		{
 			Queue = "Interrupt",
@@ -5119,22 +5714,20 @@ end]]
 				RequiredKillEnemiesFound = true,
 				RequiredFalseSpurnedGodName = "HeraUpgrade",
 
-				-- Punish those who misbehave!
-				{ Cue = "/VO/Hera_0129" },
-				-- Only ashes shall remain.
-				{ Cue = "/VO/Hera_0130" },
-				-- So much violence!
-				{ Cue = "/VO/Hera_0164" },
-				-- We will bring peace to this realm.
-				{ Cue = "/VO/Hera_0131" },
-				-- Let's teach them a lesson.
-				{ Cue = "/VO/Hera_0132" },
-				-- No soup for you!
-				{ Cue = "/VO/Hera_0133" },
-				-- Fire knows no limit!
-				{ Cue = "/VO/Hera_0134" },
-				-- We are the Warmth and Compassion Brigade!
-				{ Cue = "/VO/Hera_0135", RequiredTextLines = { "HeraGift07" } },
+				-- All shall be defeated.
+				{ Cue = "/VO/Hera_0139" },
+				-- Bow before me!
+				{ Cue = "/VO/Hera_0140" },
+				-- Long live the queen.
+				{ Cue = "/VO/Hera_0141" },
+				-- Show these peasants.
+				{ Cue = "/VO/Hera_0142" },
+				-- Divine punishment.
+				{ Cue = "/VO/Hera_0143" },
+				-- Lowly subjects.
+				{ Cue = "/VO/Hera_0144" },
+				-- Pathetic.
+				{ Cue = "/VO/Hera_0145" },
 			},
 			{
 				BreakIfPlayed = true,
@@ -5144,16 +5737,16 @@ end]]
 				RequiredSpurnedGodName = "HeraUpgrade",
 				RequireCurrentEncounterNotComplete = true,
 
-				-- Why are you doing this?
-				{ Cue = "/VO/Hera_0136" },
-				-- I was only kind to you...
-				{ Cue = "/VO/Hera_0137" },
-				-- This nonsense has to stop...
-				{ Cue = "/VO/Hera_0138" },
-				-- There's no reason to fight like this.
-				{ Cue = "/VO/Hera_0139" },
-				-- Fighting is not the solution...
-				{ Cue = "/VO/Hera_0140" },
+				-- How could you!
+				{ Cue = "/VO/Hera_0146" },
+				-- But I am the queen.
+				{ Cue = "/VO/Hera_0147" },
+				-- This is mine, not yours.
+				{ Cue = "/VO/Hera_0148" },
+				-- You miserable—!
+				{ Cue = "/VO/Hera_0149" },
+				-- No!
+				{ Cue = "/VO/Hera_0150" },
 			},
 		},
 
@@ -5168,12 +5761,12 @@ end]]
 			RequiresLastUpgradeSwapped = true,
 			UsePlayerSource = true,
 
-			-- Oh, that's warmer thanks to you, Queen Hera.
-			{ Cue = "/VO/ZagreusField_4936" },
-			-- Queen Hera, you've always been kind to me.
-			{ Cue = "/VO/ZagreusField_4937" },
-			-- Queen Hera, I feel at home thanks to you.
-			{ Cue = "/VO/ZagreusField_4938" },
+			-- Very generous of you, Queen Hera.
+			{ Cue = "/VO/ZagreusField_4995" },
+			-- All thanks to you, Queen Hera.
+			{ Cue = "/VO/ZagreusField_4996" },
+			-- Your grace.
+			{ Cue = "/VO/ZagreusField_4997" },
 		},
 
 		DeathTauntVoiceLines =
@@ -5183,12 +5776,12 @@ end]]
 			PreLineWait = 1.25,
 			NoTarget = true,
 
-			-- I didn't it want to come to this. Forgive me.
-			{ Cue = "/VO/Hera_0141" },
-			-- Go back to your father. Find your true home.
-			{ Cue = "/VO/Hera_0142" },
-			-- I did this out of kindness. I know someday you'll understand.
-			{ Cue = "/VO/Hera_0143" },
+			-- Don't pick fights you cannot win, peasant.
+			{ Cue = "/VO/Hera_0154" },
+			-- Nothing. You are nothing.
+			{ Cue = "/VO/Hera_0155" },
+			-- Stay down for your own good.
+			{ Cue = "/VO/Hera_0156" },
 		},
 
 		BlindBoxOpenedVoiceLines =
@@ -5199,18 +5792,147 @@ end]]
 			Source = { SubtitleColor = Color.HeraVoice },
 			TriggerCooldowns = { "ZagreusBoonTakenSpeech" },
 
-			-- Oh hoh, you are on fire, young one!
-			{ Cue = "/VO/Hera_0144" },
-			-- This shall keep you warm.
-			{ Cue = "/VO/Hera_0145" },
-			-- We can do this together.
-			{ Cue = "/VO/Hera_0146" },
-			-- I appreciate your gesture, young one.
-			{ Cue = "/VO/Hera_0147" },
-			-- You are going to burn it to the ground, aren't you?
-			{ Cue = "/VO/Hera_0148" },
+			-- You choose the queen. Huh.
+			{ Cue = "/VO/Hera_0157" },
+			-- You made it this far?
+			{ Cue = "/VO/Hera_0158" },
+			-- You probably won't last much longer.
+			{ Cue = "/VO/Hera_0159" },
+			-- The best choice you were offered, I suppose.
+			{ Cue = "/VO/Hera_0160" },
+			-- Fine, I'll bring you to the surface.
+			{ Cue = "/VO/Hera_0161" },
 		},
-	} 
+	}
+	-- Duo lines
+	OlympusLootData.ZeusUpgrade.DuoPickupTextLineSets.ZeusWithHera01 = {
+		Name = "ZeusWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "GaugeLightningTrait",
+		{ Cue = "/VO/Zeus_0271",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0051",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.PoseidonUpgrade.DuoPickupTextLineSets.PoseidonWithHera01 = {
+		Name = "PoseidonWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "AuraRuptureTrait",
+		{ Cue = "/VO/Poseidon_0271",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0052",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.AthenaUpgrade.DuoPickupTextLineSets.AthenaWithHera01 = {
+		Name = "AthenaWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "AuraExposedTrait",
+		{ Cue = "/VO/Athena_0261",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0053",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.AresUpgrade.DuoPickupTextLineSets.AresWithHera01 = {
+		Name = "AresWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "KillMarkedTrait",
+		{ Cue = "/VO/Ares_0261",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0054",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.AphroditeUpgrade.DuoPickupTextLineSets.AphroditeWithHera01 = {
+		Name = "AphroditeWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "CurseLongerTrait",
+		{ Cue = "/VO/Aphrodite_0271",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0055",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.ArtemisUpgrade.DuoPickupTextLineSets.ArtemisWithHera01 = {
+		Name = "ArtemisWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "BetterTrapsTrait",
+		{ Cue = "/VO/Artemis_0271",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0056",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.DionysusUpgrade.DuoPickupTextLineSets.DionysusWithHera01 = {
+		Name = "DionysusWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "SlowerHangoverTrait",
+		{ Cue = "/VO/Dionysus_0251",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0057",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
+	OlympusLootData.DemeterUpgrade.DuoPickupTextLineSets.DemeterWithHera01 = {
+		Name = "DemeterWithHera01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "HeroicBoonsTrait",
+		{ Cue = "/VO/Demeter_0271",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Placeholder" },
+		{ Cue = "/VO/Hera_0051",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "Placeholder" },
+	}
 	-- Other gods modification
 	OlympusLootData.AphroditeUpgrade.LinkedUpgrades.CurseLongerTrait =
 	{
@@ -5320,7 +6042,7 @@ end]]
 	table.insert(OlympusLootData.HermesUpgrade.PriorityPickupTextLineSets.HermesExpectingMiscOlympian06.RequiredOneOfTraits
 		, "ForceHeraBoonTrait")
 
-	OlympusLootData.HeraUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingHeraFail01 =
+	OlympusLootData.HermesUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingHeraFail01 =
 	{
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
@@ -5328,11 +6050,23 @@ end]]
 		RequiredTextLines = { "HermesFirstPickUp" },
 		RequiredFalseGodLoot = "HeraUpgrade",
 		RequiredTrait = "ForceHeraBoonTrait",
-		EndVoiceLines = GlobalVoiceLines.RushedHermesVoiceLines,
-
-		{ Cue = "/VO/Hermes_0241",
+		--EndVoiceLines = GlobalVoiceLines.RushedHermesVoiceLines,
+		-- Insolent fool.
+		EndCue = "/VO/Hera_0098",
+		EndWait = 0.45,
+		{ Cue = "/VO/Hermes_0242",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Boss, you know how you're the boss? Let me tell you, Hera is everyone's boss, and she—" },
+		{ Cue = "/VO/Hera_0097",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			--StartSound = "/SFX/BurnDamage",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+			Text = "What do you think you're doing, Hermes?! Are you trying to intercept my message to young Zagreus?! I hope not..." },
+		{ Cue = "/VO/Hermes_0243",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-			Text = "Hi, boss. Hera wanted to be here, but you know what they say: she had a fire to put out. Anyway, that blessing will still be warm!" },
+			Text = "Hi, boss Hera! No, no, umm, I was just passing by... I have somewhere to go, so, see you soon boss Zagr— Nevermind." },
 	}
 	OlympusLootData.HermesUpgrade.SuperPriorityPickupTextLineSets.HermesExpectingHera01 =
 	{
@@ -5343,10 +6077,9 @@ end]]
 		RequiredFalseGodLoot = "HeraUpgrade",
 		RequiredTrait = "ForceHeraBoonTrait",
 		EndVoiceLines = GlobalVoiceLines.RushedHermesVoiceLines,
-
-		{ Cue = "/VO/Hermes_0241",
+		{ Cue = "/VO/Hermes_0244",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-			Text = "Hi, boss. Hera wanted to be here, but you know what they say: she had a fire to put out. Anyway, that blessing will still be warm!" },
+			Text = "Hera isn't here, is she? No? Good. Quick, take this, and you'd better keep going before we get caught again." },
 	}
 
 	-- Gift Section
@@ -5385,37 +6118,38 @@ end]]
 						{ "HestiaWeaponTrait", "HestiaDashTrait", "HestiaSecondaryTrait", "HestiaRangedTrait", "HestiaShoutTrait" },
 					},
 		}
-        OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HeraWithHestia01 = {
+        OlympusLootData.HeraUpgrade.DuoPickupTextLineSets.HeraWithHestia01 = {
             Name = "HeraWithHestia01",
             PlayOnce = true,
             PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
             HasTraitNameInRoom = "EnhancedNPCTrait",
-            { Cue = "/VO/Hestia_0166",
+			PostLineFunctionName = "ChangeLootSource", PostLineFunctionArgs = { NewSource = "HeraUpgrade", },
+            { Cue = "/VO/Hera_0050",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "Young Apollo, it seems like our tardiness in assisting Zagreus has made him fail to escape more than once. We should do the upmost to make up for our delay." },
-            { Cue = "/VO/Apollo_0300",
-                PortraitExitWait = 0.35,
-                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-                StartSound = "/SFX/LyreMedium",
-                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
-        }
-        OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.HestiaWithHera01 = {
-            Name = "HestiaWithHera01",
-            PlayOnce = true,
-            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-            HasTraitNameInRoom = "EnhancedNPCTrait",
-            { Cue = "/VO/Apollo_0301",
-                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
-            { Cue = "/VO/Hestia_0167",
+                Text = "Drop the act, sister. Being kind to all won't bring peace. It will only allow the vile creature to stab you in the back. Better safe than sorry." },
+            { Cue = "/VO/Hestia_0300",
                 PortraitExitWait = 0.35,
                 PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
                 StartSound = "/SFX/BurnDamage",
                 EndSound = "/Leftovers/World Sounds/MapZoomInShort",
                 Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
-                Text = "Haha, always the poet, I see. I must say, since Zagreus cannot, that I appreciate everything you do for our {#DialogueItalicFormat}Zagzag{#PreviousFormat}. Though, I wouldn't call him that, since he could find a worse nickname in turn." },
+                Text = "Always seeing what could go wrong. Not every soul wants to take you down if you open your heart. Zagreus, once you are here could you give us your opinion on the matter? Until then, we prepared this for you together." },
+        }
+        OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HestiaWithHera01 = {
+            Name = "HestiaWithHera01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "EnhancedNPCTrait",
+            { Cue = "/VO/Hestia_0301",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "Sister. How long as it been? I am sure you remember why I left. That doesn't mean I can't help others when they are in need. Like this poor soul here." },
+            { Cue = "/VO/Hera_0060",
+                PortraitExitWait = 0.35,
+                PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+                --StartSound = "/SFX/BurnDamage",
+                EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+                Text = "I do remember. And you are family after all, I'll allow you to continue helping Zagreus. He doesnt seem to be able to do much on his own. " },
         }
         OlympusLootData.HeraUpgrade.FreePassVoiceLines = {
             HeraFreePass01 =
@@ -5447,21 +6181,21 @@ end]]
 						{ "ApolloWeaponTrait", "ApolloDashTrait", "ApolloSecondaryTrait", "ApolloRangedTrait", "ApolloShoutTrait" },
 					},
 		}
-        OlympusLootData.HestiaUpgrade.DuoPickupTextLineSets.HeraWithApollo01 = {
+        OlympusLootData.HeraUpgrade.DuoPickupTextLineSets.HeraWithApollo01 = {
             Name = "HeraWithApollo01",
             PlayOnce = true,
             PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
             HasTraitNameInRoom = "BlindAuraTrait",
-            { Cue = "/VO/Hestia_0166",
+            { Cue = "/VO/Hera_0049",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "Young Apollo, it seems like our tardiness in assisting Zagreus has made him fail to escape more than once. We should do the upmost to make up for our delay." },
-            { Cue = "/VO/Apollo_0300",
+                Text = "Placeholder" },
+            { Cue = "/VO/Apollo_0310",
                 PortraitExitWait = 0.35,
                 PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
                 StartSound = "/SFX/LyreMedium",
                 EndSound = "/Leftovers/World Sounds/MapZoomInShort",
                 Speaker = "NPC_Apollo_01", Portrait = "Portrait_Apollo_Default_01",
-                Text = "Ah, Lady Hestia, nothing makes me more happy than helping our beloved Zagzag. But Artemis should have told me about him way earlier! Anyway, what's important is that we're here now." },
+                Text = "Placeholder" },
         }
         OlympusLootData.ApolloUpgrade.DuoPickupTextLineSets.ApolloWithHera01 = {
             Name = "ApolloWithHera01",
@@ -5470,18 +6204,23 @@ end]]
             HasTraitNameInRoom = "BlindAuraTrait",
             { Cue = "/VO/Apollo_0301",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "With my light and your warmth, Aunty, Zagzag truly has the power of the sun on his side. And the sun belongs up in the sky with us." },
-            { Cue = "/VO/Hestia_0167",
+                Text = "Placeholder" },
+            { Cue = "/VO/Hera_0059",
                 PortraitExitWait = 0.35,
                 PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-                StartSound = "/SFX/BurnDamage",
+                --StartSound = "/SFX/BurnDamage",
                 EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Speaker = "NPC_Hestia_01", Portrait = "Portrait_Hestia_Default_01",
-                Text = "Haha, always the poet, I see. I must say, since Zagreus cannot, that I appreciate everything you do for our {#DialogueItalicFormat}Zagzag{#PreviousFormat}. Though, I wouldn't call him that, since he could find a worse nickname in turn." },
+                Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
+                Text = "Placeholder" },
         }
 		table.insert(HeraExtra.GodsList, "Apollo")
     end
 	-- FUNCTIONS
+	function ChangeLootSource( source, args )
+		if args ~= nil and args.NewSource then
+			source = LootData[args.NewSource]
+		end
+	end
 	function HeraShout()
 		if CurrentRun.Hero.HeraShout.NextHeraGod then
 			CurrentRun.Hero.HeraShout.GetNext = true
