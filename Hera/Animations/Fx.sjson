@@ -4428,8 +4428,30 @@
       Material = "Unlit"
       Loop = true
     }
-    {
+     {
       Name = "AuraFx-Rupture"
+      InheritFrom = "RadialNova"
+      //CreateAnimation = "BowTrailRandom-Hera2"
+      GroupName = "Standing_Back"
+      PlaySpeed = 45.0
+      LocationZFromOwner = "Take"
+      ScaleFromOwner = "Ignore"
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.7
+      VisualFxIntervalMin = 0.7
+      TimeModifierFraction = 0.6
+      Scale = 0.5
+      Alpha = 0.4
+      Loop = true
+      Color = 
+      {
+        Red = 0.0
+        Green = 1.0
+        Blue = 0.5
+      }
+    }
+    {
+      Name = "AuraFx-Rupture2"
       InheritFrom = "AuraFx"
       Scale = 1.9
     }
@@ -4446,7 +4468,7 @@
     {
       Name = "AuraFx-Blind"
       InheritFrom = "AuraFx"
-      Scale = 4.6
+      Scale = 4.0
       AddColor = true
       Color = {
         Red = 1.0

@@ -3381,6 +3381,18 @@ end]]
 			Name = "SetupAura",
 			RunOnce = true,
 		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipRuptureDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "RuptureCurseApplicator",
+				BaseName = "AuraDamageOverDistance",
+				BaseProperty = "Duration",
+			},
+		}
 	}
 	table.insert(OlympusTraitData.SlipperyTrait.PropertyChanges,
 	{
@@ -3388,6 +3400,14 @@ end]]
 		WeaponName = "RuptureCurseApplicator",
 		EffectName = "DamageOverDistance",
 		EffectProperty = "MaxTriggerDamage",
+		DeriveValueFrom = "DeriveSource",
+	})
+	table.insert(OlympusTraitData.SlipperyTrait.PropertyChanges,
+	{
+		TraitName = "AuraRuptureTrait",
+		WeaponName = "RuptureCurseApplicator",
+		EffectName = "DamageOverDistance",
+		EffectProperty = "MinTriggerDamage",
 		DeriveValueFrom = "DeriveSource",
 	})
 	OlympusTraitData.AuraBlindTrait =
@@ -6061,7 +6081,7 @@ end]]
 					isLow = false
 				end
 				Damage(victim, { EffectName = "EnvyCurse"..victim.EnvyNextDamage.Source, DamageAmount = victim.EnvyNextDamage.Amount, Silent = false, PureDamage = false })	
-				if victim and victim.ObjectId and triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
+				if victim and victim.EnvyNextDamage ~= nil and victim.ObjectId and triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					ClearEffect({ Id = victim.ObjectId, Name = "EnvyCurse"..victim.EnvyNextDamage.Source })	
 				end
 				if victim and HasEffect({ Id = victim.ObjectId, EffectName = "BurstEnvy" }) then
