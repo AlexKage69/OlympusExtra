@@ -163,11 +163,11 @@ if ModUtil ~= nil then
 			FireDuration = 0.0,
 			PostAttackDuration = 0.0,
 			PostAttackCooldownMin = 0.2,
-			PostAttackCooldownMax = 0.6,
+			PostAttackCooldownMax = 0.4,
 			CreateOwnTargetFromOriginalTarget = true,
 			RandomTargetAngle = true,
-			TargetOffsetDistanceMin = 400,
-			TargetOffsetDistanceMax = 500,
+			TargetOffsetDistanceMin = 350,
+			TargetOffsetDistanceMax = 600,
 			TeleportToTargetId = true,
 
 			FireTicks = 1,
@@ -271,9 +271,9 @@ if ModUtil ~= nil then
 					SuccessiveChanceToPlay = 0.5,
 
 					-- Queen Hera, bring him to me..
-					{ Cue = "/VO/Theseus_0602" },
+					{ Cue = "/VO/Theseus_0604" },
 					-- Queen Hera, pull him under.
-					{ Cue = "/VO/Theseus_0603" },
+					{ Cue = "/VO/Theseus_0605" },
 				},
 				[2] = GlobalVoiceLines.TheseusWrathActivationVoiceLines,
 				[3] = HeroVoiceLines.TheseusWrathReactionVoiceLines_F,
@@ -300,22 +300,21 @@ if ModUtil ~= nil then
 
 		AIData = {
 			FireTicks = 1,
-			FireCooldown = 0.1,
-			FireInterval = 0.1,
+			FireCooldown = 0.01,
+			FireInterval = 0.01,
 
-			AttackSlotInterval = 5.0,
-			AttackSlotsPerTickMin = 1,
-			AttackSlotsPerTickMax = 1,
+			AttackSlotInterval = 0.01,
+			AttackSlotsPerTick = 6,
 			AttackSlots =
 			{
 				-- WrathTargetSetA
-				{ UseMapObjectId = 525346 },
-				{ UseMapObjectId = 525411 },
-				{ UseMapObjectId = 525410 },
-				{ UseMapObjectId = 525408 },
-				{ UseMapObjectId = 525409 },
-				{ UseMapObjectId = 525406 },
-				{ UseMapObjectId = 543853 },
+				--{ UseMapObjectId = 525346 },
+				{ UseMapObjectId = 525411 , PauseDuration = 0.35 },
+				{ UseMapObjectId = 525406 , PauseDuration = 0.35 },
+				{ UseMapObjectId = 543853 , PauseDuration = 0.35 },
+				{ UseMapObjectId = 525410 , PauseDuration = 0.35 },
+				{ UseMapObjectId = 525409 , PauseDuration = 0.35 },
+				{ UseMapObjectId = 525408 , PauseDuration = 0.35 },
 			},
 		},
 
@@ -458,6 +457,10 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "HeraColorProjectile" },
 		NeverStore = true,
+	}
+	OlympusWeaponData.DecayCurseApplicator = {
+		InheritFrom = { "HeraColorProjectile" },
+		PureDamage = true
 	}
 	OlympusWeaponData.LowBurstEnvyWeapon =
 	{
@@ -1434,6 +1437,26 @@ end]]
 			}
 		}
 	}
+	OlympusTraitData.ShieldLoadAmmoTrait.AnimDefinitions.HeraWeaponTrait =
+	{
+		Unloaded =
+		{
+			Graphic = "ShieldRush3DBeowulf-Hera",
+			DissipateGraphic = "ShieldRush3DBeowulf-Out-Hera",
+			StartFx = "null",
+			StartFx2 = "null",
+			AttachedAnim = "null",
+		},
+		Loaded =
+		{
+			Graphic = "ShieldRush3DBeowulf-Hera",
+			DissipateGraphic = "ShieldRush3DBeowulf-Out-Hera",
+			StartFx = "null",
+			StartFx2 = "null",
+			AttachedAnim = "ShieldRush3DBeowulfMax-Hera",
+		},
+	}
+
 	OlympusTraitData.HeraRushTrait =
 	{
 		Name = "HeraRushTrait",
@@ -1726,7 +1749,7 @@ end]]
                 TraitName = "ShieldLoadAmmoTrait",
                 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
                 ProjectileProperty = "DetonateGraphic",
-                ChangeValue = "RadialNovaSwordParry-Artemis"
+                ChangeValue = "RadialNovaSwordParry-Hera"
             },
 		},
 		ExtractValues =
@@ -4852,8 +4875,8 @@ end]]
 			{
 				Name = "HeraMakeUpFailed01",
 				PlayOnce = true,
-				-- Denied.
-				EndCue = "/VO/ZagreusField_4963",
+				-- Denied. (Nothing.)
+				EndCue = "ZagreusHome_0434",--"/VO/ZagreusField_4963",
 				EndWait = 0.45,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Hera_0130",
@@ -4865,7 +4888,7 @@ end]]
 				Name = "HeraMakeUpFailed02",
 				PlayOnce = true,
 				-- Nothing.
-				EndCue = "/VO/ZagreusField_4964",
+				EndCue = "/VO/ZagreusHome_0434",
 				EndWait = 0.45,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				{ Cue = "/VO/Hera_0131",
@@ -7291,6 +7314,18 @@ end]]
 				RefreshStoreItems()
 				once = true
 			end
+			if traitName == "AuraRuptureTrait" then
+				StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
+			end
+			if traitName ==  "StatusOverTimeTrait" then
+				StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
+			end
+			if traitName ==  "AuraExposedTrait" then
+				StopAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })		
+			end
+			if traitName == "AuraBlindTrait" then
+				StopAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })		
+			end
 		end
 	)
 	ModUtil.Path.Wrap("GenerateSellTraitShop",
@@ -7504,9 +7539,8 @@ end]]
 						CurrentRun.HeraElysiumBoss = true
 					end
 				end
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call"))
 			end
-			baseFunc(screen, source, line, parentLine)
+			return baseFunc(screen, source, line, parentLine)
 		end
 	)
 	function HeraSisyphusHealing( source, args )
@@ -7920,6 +7954,12 @@ end]]
 	)
 	ModUtil.Path.Wrap("Damage",
 		function(baseFunc, victim, triggerArgs)
+			if triggerArgs ~= nil and triggerArgs.AttackerTable ~= nil and triggerArgs.SourceWeapon ~= nil then
+			local sourceWeaponData = GetWeaponData( triggerArgs.AttackerTable, triggerArgs.SourceWeapon )
+				if sourceWeaponData ~= nil and sourceWeaponData.PureDamage and not triggerArgs.PureDamage then
+					triggerArgs.PureDamage = true
+				end				
+			end
 			baseFunc(victim, triggerArgs)
 			if victim == CurrentRun.Hero then
 				UpdateHealthCostTexts()
@@ -8161,7 +8201,7 @@ end]]
 				numTraits = numTraits - 1
 			end
 			--harvestTraitData.TraitListTextString = "HarvestBoonTraitList"..tostring(TableLength(harvestTraitData.HarvestBoons))
-			thread( HarvestBoonTraitPresentation, upgradedTraits, 2.0 )
+			thread( HarvestBoonTraitPresentation, upgradedTraits, 1.5 )
 			--AddTraitToHero({TraitData = harvestTraitData })
 			CurrentRun.Hero.HeroicBoonsTraitFlag = true
 		end
@@ -8290,29 +8330,29 @@ end]]
 	})
 	-- Charon/Hera Upgrade
 	table.insert(OlympusRoomSetData.Tartarus.A_Shop01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
 		FunctionName = "EncounterShop"
 	})
 	table.insert(OlympusRoomSetData.Tartarus.A_PreBoss01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
 		FunctionName = "EncounterShop"
 	})
 	table.insert(OlympusRoomSetData.Asphodel.B_Shop01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
 		FunctionName = "EncounterShop"
 	})
 	OlympusRoomSetData.Asphodel.B_PreBoss01.DistanceTriggers =  {
 		{
-			TriggerObjectType = "NPC_Charon_01", WithinDistance = 200,
+			TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
 			FunctionName = "EncounterShop"
 		}
 	}
 	OlympusRoomSetData.Elysium.C_Shop01.DistanceTriggers =  { {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
 		FunctionName = "EncounterShop"
 	} }
 	OlympusRoomSetData.Elysium.C_PreBoss01.DistanceTriggers = { {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
 		FunctionName = "EncounterShop"
 	} }
 	--Hestia/Hera Duo

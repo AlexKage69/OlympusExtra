@@ -7,14 +7,12 @@
       DetonateGraphic = "RadialNovaTheseusWrath-Hera"
       DetonateSound = "/SFX/Explosion1"
       Type = "INSTANT"
-      VacuumStrength = 300
-      VacuumDistance = 4000
-      DamageLow = 15
-      DamageHigh = 15
+      DamageLow = 5
+      DamageHigh = 5
       DamageRadius = 270.0
       DamageRadiusScaleY = 0.6
       ImpactVelocity = 0
-      Fuse = 0.75
+      Fuse = 0.55
       AffectsFriends = false
       AffectsSelf = false
       AffectsEnemies = true
@@ -33,63 +31,9 @@
         Scale = 1.0
         Color = 
         {
-          Red = 0.82
-          Green = 0.20
-          Blue = 0.50
-          Opacity = 1.0
-        }
-        Points = [
-          {
-            X = 0
-            Y = 8
-          }
-          {
-            X = 32
-            Y = 0
-          }
-          {
-            X = 0
-            Y = -8
-          }
-          {
-            X = -32
-            Y = 0
-          }]
-      }
-    }
-    {
-      Name = "TheseusHeraBoltNoPull"
-      InheritFrom = "1_BaseEnemyMagicProjectile"
-      DetonateGraphic = "RadialNovaTheseusWrath-Hera"
-      DetonateSound = "/SFX/Explosion1"
-      Type = "INSTANT"
-      DamageLow = 15
-      DamageHigh = 15
-      DamageRadius = 270.0
-      DamageRadiusScaleY = 0.6
-      ImpactVelocity = 0
-      Fuse = 0.75
-      AffectsFriends = false
-      AffectsSelf = false
-      AffectsEnemies = true
-      CheckUnitImpact = false
-      CheckObstacleImpact = false
-      CanCrit = false
-      MaxVictimZ = 9999
-      SpawnRadius = 0
-      GroupName = "FX_Terrain"
-      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
-      DangerDistance = 0
-      Thing = 
-      {
-        Graphic = "TheseusGodPowerPreviewDecal_Hera"
-        RotateGeometry = false
-        Scale = 1.0
-        Color = 
-        {
-          Red = 0.82
-          Green = 0.20
-          Blue = 0.50
+          Red = 0.0
+          Green = 0.55
+          Blue = 0.53
           Opacity = 1.0
         }
         Points = [
@@ -113,8 +57,10 @@
     }
     {
       Name = "TheseusHeraBoltPassive"
-      InheritFrom = "TheseusHeraBoltNoPull"
-      DamageRadius = 400
+      InheritFrom = "TheseusHeraBolt"
+      DamageRadius = 475
+      DamageLow = 7
+      DamageHigh = 7
       Fuse = 1.0
     }
     {
@@ -131,7 +77,7 @@
       MultipleUnitCollisions = false
       MultipleObstacleCollisions = false
       Range = 0
-      Fuse = 3
+      Fuse = 0.1
       Speed = 0
       DamageLow = 0
       DamageHigh = 0
@@ -143,7 +89,7 @@
       SpawnsEvenlySpaced = true
       SpawnsSpeedModifierScaleY = 0.65
       Thing = {
-        Graphic = "DevotionHeraMegaProjectile"
+        //Graphic = "DevotionHeraMegaProjectile"
         OffsetZ = 50
         Tallness = 60
         //AttachedAnim = "EnemyProjectileLight"
@@ -176,7 +122,7 @@
       CheckUnitImpact = true
       CheckObstacleImpact = true
       UnlimitedUnitPenetration = false
-      Range = 1200
+      Range = 1800
       Speed = 570
       DamageLow = 5
       DamageHigh = 5
@@ -205,27 +151,6 @@
             Y = -24
           }]
       }
-    }
-    {
-      Name = "TheseusPullHeraBolt"
-      InheritFrom = "TheseusHeraBolt"
-      DetonateGraphic = "RadialNovaDevotion-Hera"
-      Type = "INSTANT"
-      DamageLow = 15
-      DamageHigh = 15
-      DamageRadius = 350.0
-      DamageRadiusScaleY = 0.6
-      ImpactVelocity = 0
-      Fuse = 1.0
-      TotalFuse = 5.0
-      MultiDetonate = true
-      //Speed = 150
-      Range = 1500
-      DieWithOwner = true
-      InheritOwnerElapsedTimeMultiplier = false
-      DangerDistance = 0
-      NumBounces = 999
-      CheckObstacleImpact = true
     }
   ]
 }

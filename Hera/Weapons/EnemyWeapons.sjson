@@ -15,7 +15,7 @@
       Name = "TheseusHeraUpgradeWrath"
       InheritFrom = "1_BasePlayerSlowWeapon"
       Type = "GUN"
-      Projectile = "TheseusHeraBoltNoPull"
+      Projectile = "TheseusHeraBolt"
       FullyAutomatic = true
       AutoLock = true
       FireFx = "null"
@@ -24,7 +24,7 @@
     {
       Name = "TheseusHeraUpgradePassive"
       InheritFrom = "TheseusHeraUpgradeWrath"
-      Projectile = "TheseusHeraBolt"
+      Projectile = "TheseusHeraBoltPassive"
     }
   ]
 }

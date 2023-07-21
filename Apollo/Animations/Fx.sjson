@@ -121,6 +121,41 @@
         }
         {
           Name = "SwordSwipeADisplace"
+        }{
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
         }]
     }
     {
@@ -137,6 +172,41 @@
         }
         {
           Name = "SwordSwipeAFlippedDisplace"
+        }{
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
+        }
+        {
+          Name = "SwordSwipeA-Sparkles"
         }]
     }{
       Name = "SwordSwipeB-Apollo"
@@ -332,6 +402,30 @@
         }
         {
           Name = "QuickFlashOrangeSmall"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
+        }
+        {
+          Name = "SwordSwipeB-Sparkles"
         }]
     }{
       Name = "ChargeAttack-Apollo"

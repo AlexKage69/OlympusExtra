@@ -223,7 +223,7 @@
 		}
 		{
     		Id = "MoreCompanionText_Alt"
-      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Summon!"     
+      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount} Summon!"     
     	}
 		{
 			Id = "MoreCompanionTrait"

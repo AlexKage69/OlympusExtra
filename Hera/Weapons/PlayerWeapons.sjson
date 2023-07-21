@@ -241,7 +241,7 @@
         Modifier = 0
         Active = true
         OnlyAffectName = "_PlayerUnit"
-        BackFx = "HeraCurstStatus"
+        BackFx = "HeraCurseStatus"
       }
     }
     {

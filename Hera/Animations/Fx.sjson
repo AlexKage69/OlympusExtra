@@ -341,6 +341,42 @@
         }
         {
           Name = "SwordSwipeADisplace"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
         }]
     }
     {
@@ -357,6 +393,42 @@
         }
         {
           Name = "SwordSwipeAFlippedDisplace"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
         }]
     }{
       Name = "SwordSwipeB-Hera"
@@ -396,8 +468,7 @@
         }
         {
           Name = "SwordSwipeB-FeatherB"
-        }
-        
+        }        
       ]
       Slides = [
         {
@@ -575,6 +646,39 @@
         }
         {
           Name = "QuickFlashTealSmall"
+        }
+        {
+          Name = "SwordSwipeC-Arthur-Chroma"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
         }]
     }{
       Name = "ChargeAttack-Hera"
@@ -586,17 +690,22 @@
     /* Hera - Sword - SecondaryTrait */
     {
       Name = "RadialNovaSwordParry-Hera"
-      InheritFrom = "RadialNovaHera"
+      InheritFrom = "RadialNova"
       GroupName = "FX_Terrain_Add"
-      StartRed = 0.0
+      /*StartRed = 0.0
       StartGreen = 0.55
-      StartBlue = 0.53 
+      StartBlue = 0.53 */
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 24
       VisualFxIntervalMax = 0.00011
       VisualFxIntervalMin = 0.0001
-      TimeModifierFraction = 0.0
+      TimeModifierFraction = 0.0      
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
       CreateAnimations = [
         {
           Name = "RadialNovaSwordParryDark"
@@ -2259,9 +2368,11 @@
     {
       Name = "GunLaser-Hera"
       InheritFrom = "GunLaser"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
       VisualFx = "GunLaserFeathers-Hera"
       ClearCreateAnimations = true
       CreateAnimations = [
@@ -2278,16 +2389,20 @@
     {
       Name = "GunLaserGlow-Hera"
       InheritFrom = "GunLaserGlow"
+      Color = {
         Red = 0.0
         Green = 0.55
         Blue = 0.53
+      }
     }
     {
       Name = "GunLaserHalo-Hera"
       InheritFrom = "GunLaserHalo"
+      Color = {
         Red = 0.0
         Green = 0.55
         Blue = 0.53
+      }
       VisualFxIntervalMin = 0.1
       VisualFxIntervalMax = 0.11
     }
@@ -2305,12 +2420,11 @@
     {
       Name = "GunLaserFeatherA-Hera"
       InheritFrom = "GunLaserFeatherA"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      EndRed = 0.0
-      EndGreen = 0.54
-      EndBlue = 0.54
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
     }
     {
       Name = "GunLaserFeatherB-Hera"
@@ -3408,17 +3522,6 @@
         }]
     }
     {
-      Name = "RadialNovaHera"
-      InheritFrom = "RadialNova"
-      LocationZFromOwner = "Take"
-      GroupName = "Standing"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
       Name = "RadialNovaHera-FeatherA"
       InheritFrom = "HeraFeatherA"
       RadialOffsetMax = 50.0
@@ -3467,6 +3570,7 @@
       Green = 0.55
       Blue = 0.53
       EndAlpha = 0.5
+      ScaleRadius = 25
       HoldLastFrame = false
     }
     {
@@ -3483,15 +3587,27 @@
           Name = "DevotionLines_Hera"
         }]
     }
+     {
+      Name = "DevotionRings_Hera"
+      InheritFrom = "DevotionRings"
+      Red = 0
+      Green = 0.55
+      Blue = 0.53
+      Scale = 0.5
+      //StartRed = 0.0
+      //StartGreen = 0.55
+      //StartBlue = 0.53
+      ColorFromOwner = "Ignore"
+    }
     {
       Name = "DevotionLines_Hera"
       InheritFrom = "DevotionLines"
-      Red = 1
-      Green = 1
-      Blue = 1
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      Red = 0
+      Green = 0.55
+      Blue = 0.53
+      //StartRed = 0.0
+      //StartGreen = 0.55
+      //StartBlue = 0.53
       ColorFromOwner = "Ignore"
     }
     {
@@ -3579,31 +3695,6 @@
       ColorFromOwner = "Ignore"
       ScaleFromOwner = "Ignore"
       Alpha = 0.4
-    }
-    {
-      Name = "DevotionPreAttackFx_Hera"
-      InheritFrom = "DevotionPreAttackFx"
-      Scale = 0.5
-      Alpha = 0.2
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "DevotionRings_Hera"
-        }
-        {
-          Name = "DevotionLines_Hera"
-        }]
-    }
-     {
-      Name = "DevotionRings_Hera"
-      InheritFrom = "DevotionRings"
-      Red = 1
-      Green = 1
-      Blue = 1
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      ColorFromOwner = "Ignore"
     }
     {
       Name = "DevotionPreAttackBaseEnd_Hera"
@@ -3901,7 +3992,7 @@
       UseAttachedFlasher = false
     }
     {
-      Name = "HeraCurstStatus"
+      Name = "HeraCurseStatus"
       Type = "Book"
       FilePath = "Fx\EliteUnitStatus\EliteUnitStatus"
       NumFrames = 40
@@ -3923,39 +4014,58 @@
       Hue = 0.0
       Scale = 1
       FlipVertical = true
-      CreateAnimation = "EliteUnitStatusGlow"
+      //CreateAnimation = "HeraUnitStatusGlow"
       GroupName = "FX_Terrain"
       PostRotateScaleY = 0.5
       RotationSpeed = 20
-      Red = 1.0
-      Green = 1.0
-      Blue = 1.0
+      //AddColor = true
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
       CreateAnimations = [
         {
-          Name = "HeraCurstStatusGlow"
+          Name = "HeraCurseStatusGlow"
         }
         {
-          Name = "HeraCurstStatus_Add"
+          Name = "HeraCurseStatus_Add"
         }]
     }
     {
-      Name = "HeraCurstStatus_Add"
+      Name = "HeraCurseStatus_Add"
       InheritFrom = "EliteUnitStatus"
       ClearCreateAnimations = true
       GroupName = "FX_Terrain_Add"
-      Red = 1
-      Green = 1
-      Blue = 1
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
     }
     {
-      Name = "HeraCurstStatusGlow"
+      Name = "HeraCurseStatusGlow"
       Type = "Constant"
       FilePath = "Particles\particle_glow"
       Material = "Unlit"
       GroupName = "FX_Standing_Add"
-      Red = 1.0
-      Green = 1.0
-      Blue = 1.0
+      AddColor = true
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      Alpha = 0.2
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Maintain"
+      UseAttachedFlasher = false
+      Scale = 0.7
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
+    }
+    {
+      Name = "HeraUnitStatusGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
       Alpha = 0.2
       LocationFromOwner = "Maintain"
       LocationZFromOwner = "Maintain"
@@ -4457,16 +4567,154 @@
     }
     {
       Name = "AuraFx-Legendary"
-      InheritFrom = "AuraFx"
-      Scale = 2.8
+      FilePath = "Fx\ThanatosAoE\ThanatosAoERingB"
+      GroupName = "Standing_Back"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      AddColor = true
+      //StartBlue = 1.0
+      //StartGreen = 0.3
+      //StartRed = 0.5
+      Duration = 0.25
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1 
+      StartFrame = 1
+      FlipHorizontal = true
+      RotationSpeed = 17.0
+      PostRotateScaleY = 0.5
+      //ScaleRadius = 200.0
+      Scale = 0.40
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.33
+      }
     }
+    
     {
       Name = "AuraFx-Exposed"
+      FilePath = "Fx\ShielderNova\ShielderNova"
+      GroupName = "Standing_Back"
+      Type = "Book"
+      EndFrame = 26
+      NumFrames = 14
+      PlaySpeed = 22.0
+      StartFrame = 7
+      ScaleRadius = 700.0
+      Ambient = 0.0
+      AngleFromOwner = "Ignore"
+      Loop = true
+      Scale = 1.4
+      AddColor = true
+      Alpha = 0.6
+      Color = {
+        Red = 0.5
+        Green = 0.2
+        Blue = 0.0
+      }
+      /*Color = {
+        Red = 0.847
+        Green = 0.604
+        Blue = 0.494
+      }*/
+    }
+    {
+      Name = "AuraFx-Exposed2"
       InheritFrom = "AuraFx"
       Scale = 3.7
     }
     {
       Name = "AuraFx-Blind"
+      Type = "Book"
+      FilePath = "Fx\DevotionRings\DevotionRings"
+      //CreateAnimation = "AuraFx-BlindDark"
+      //VisualFx = "StatueSparkles"
+      NumFrames = 1
+      RandomStartFrame = true
+      //StartFrame = 1
+      PlaySpeed = 1e-07
+      //StartScale = 2
+      //EndScale = 2.03
+      //EaseIn = 0
+      //EaseOut = 1
+      ScaleMin = 1.6
+      ScaleMax = 1.65
+      //StartAlpha = 0
+      //EndAlpha = 1
+      Alpha = 1
+      PostRotateScaleY = 0.5
+      //RandomRotation = true
+      GroupName = "Standing_Back"
+      //RandomDurationMin = 0.6
+      //RandomDurationMax = 0.8
+      Duration = 0.8
+      ScaleFromOwner = "Ignore"
+      PingPongColor = true
+      PingPongScale = true
+      //AddColor = true
+      UseOwnAngle = false
+      AngleFromOwner = "Ignore"
+      RandomFlipVertical = true
+      RandomFlipHorizontal = true
+      ScaleRadius = 300
+      ColorFromOwner = "Ignore"
+      Color = {
+        Red = 0.80
+        Green = 0.55
+        Blue = 0.05
+      }
+      Loop = true
+    }   
+    {
+      Name = "RadialNovaSwordParry-ApolloSparkles2"
+      InheritFrom = "RadialNovaSwordParry-ApolloSparkles"
+      HoldLastFrame = false
+      Loop = true
+    } 
+    {
+      Name = "AuraFx-BlindDark"
+      Type = "Book"
+      FilePath = "Fx\DevotionRingsDark\DevotionRingsDark"
+      NumFrames = 3
+      RandomStartFrame = true
+      //StartFrame = 1
+      PlaySpeed = 1e-07      
+      StartScale = 4
+      EndScale = 4.03
+      /*StartScale = 1
+      EndScale = 2.05
+      Scale = 2.15
+      ScaleMin = 1.99
+      ScaleMax = 2.01*/
+      Alpha = 0.2
+      PostRotateScaleY = 0.5
+      RandomRotation = true
+      GroupName = "Standing_Back"
+      //RandomDurationMin = 0.5
+      //RandomDurationMax = 0.6
+      Duration = 0.8
+      ScaleFromOwner = "Ignore"
+      RandomFlipVertical = true
+      RandomFlipHorizontal = true
+      PingPongScale = true
+      //PingPongColor = true
+      DieWithOwner = true
+      ScaleRadius = 300
+      Color = {
+        Red = 0.80
+        Green = 0.55
+        Blue = 0.05
+      }
+      Loop = true
+    }
+    {
+      Name = "AuraFx-Blind2"
       InheritFrom = "AuraFx"
       Scale = 4.0
       AddColor = true
