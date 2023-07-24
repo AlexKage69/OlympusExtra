@@ -123,6 +123,19 @@
       }
       Effects = 
       [{
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          //FrontFx = "CharonGhostChargeProjectile"
+          FrontFx = "JealousyHeraLoop"
+          BackFx = "null"
+          Duration = 6
+          Modifier = 0.25
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+        {
           Name = "OnHitStun"
           Duration = 0.7
           DisableMove = true

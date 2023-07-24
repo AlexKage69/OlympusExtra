@@ -13,9 +13,9 @@ if ModUtil ~= nil then
 	local DuplicateVeryStrongMultiplier = -0.20
 	--Color
 	local OlympusColor = ModUtil.Entangled.ModData(Color)
-	OlympusColor.HeraVoice = { 54, 67, 55, 255 }
-	OlympusColor.HeraDamageLight = { 54, 67, 55, 255 }
-	OlympusColor.HeraDamage = { 54, 67, 55, 255 }
+	OlympusColor.HeraVoice = { 158,136,121,255 }
+	OlympusColor.HeraDamageLight = { 158,136,121,255 }
+	OlympusColor.HeraDamage = { 128,111,104,255  }
 	OlympusColor.JealousyDamageStart = { 158,136,121,255 }
 	OlympusColor.JealousyDamageEnd = { 128,111,104,255 }
 	OlympusColor.EnvyDamageStart = {35,123,94,255 }
@@ -209,12 +209,12 @@ if ModUtil ~= nil then
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HeraTrap")
 	OlympusWeaponSets.AllJealousyWeapons = { "SwordWeapon",
-		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon2", "SpearWeapon3",
+		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
 		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
-		"SpearWeaponDash", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeaponRush", "ShieldThrow",
-		"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
-		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
-		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
+		"SpearWeaponDash", "SpearWeaponThrow", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeapon", "ShieldWeaponRush", "ShieldThrow",
+		"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrow", "ShieldThrowDash", "BowWeapon", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
+		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
+		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon", "GunWeapon",
 		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
 	}
 	OlympusWeaponSets.AssistWeapons = {
@@ -457,6 +457,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "NoSlowFrameProjectile", "HeraColorProjectile" },
 		NeverStore = true,
+		MultipleProjectileMultiplier = 0.10,
 	}
 	OlympusWeaponData.DecayCurseApplicator = {
 		InheritFrom = { "HeraColorProjectile" },
@@ -1622,7 +1623,7 @@ end]]
 		Slot = "Ranged",
 		Icon = "Boon_Hera_04",
 		CustomTrayText = "HeraRangedTrait_Tray",
-        RequiredFalseTrait = "ShieldLoadAmmoTrait",
+        --RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
 		{
 			Common =
@@ -1689,8 +1690,8 @@ end]]
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HeraProjectileSmall",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 20,
-				BaseMax = 20,
+				BaseMin = 15,
+				BaseMax = 15,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
@@ -1705,13 +1706,75 @@ end]]
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
 				ProjectileName = "HeraProjectileSmall",
 				ProjectileProperty = "DamageHigh",
-				BaseMin = 20,
-				BaseMax = 20,
+				BaseMin = 15,
+				BaseMax = 15,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
 					Value = DuplicateVeryStrongMultiplier,
 				},
+			},
+			--[[{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireOnRelease",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},]]
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
+				ProjectileProperty = "Range",
+				ChangeValue = 10,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
+				ProjectileProperty = "Fuse",
+				ChangeValue = 0.1,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
+				ProjectileProperty = "UnlimitedUnitPenetration",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "BowLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "FireOnRelease",
+				ChangeValue = false,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
+				ProjectileProperty = "Range",
+				ChangeValue = 15,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
+				ProjectileProperty = "Fuse",
+				ChangeValue = 0.4,
+				ChangeType = "Absolute",
+			},
+			{
+				TraitName = "ShieldLoadAmmoTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "HeraProjectile",
+				ProjectileProperty = "UnlimitedUnitPenetration",
+				ChangeValue = false,
+				ChangeType = "Absolute",
 			},
 			--[[{
 				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
@@ -1726,7 +1789,7 @@ end]]
 				}
 			},]]
 			-- Beowulf
-			{
+			--[[{
                 TraitName = "ShieldLoadAmmoTrait",
                 WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
                 WeaponProperty = "FireOnRelease",
@@ -1751,6 +1814,12 @@ end]]
                 ProjectileProperty = "DetonateGraphic",
                 ChangeValue = "RadialNovaSwordParry-Hera"
             },
+			{
+                TraitName = "ShieldLoadAmmoTrait",
+                WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+                ProjectileProperty = "Range",
+                ChangeValue = "1"
+            },]]
 		},
 		ExtractValues =
 		{
@@ -7364,24 +7433,7 @@ end]]
 			return legalBreakables
 		end
 	)
-	ModUtil.Path.Wrap("DamageEnemy",
-		function(baseFunc, victim, triggerArgs)
-			baseFunc(victim, triggerArgs)
-			local sourceWeaponData = triggerArgs.AttackerWeaponData
-			-- Jealousy Stuff
-			if sourceWeaponData ~= nil and not triggerArgs.PureDamage and not IsEmpty(ActiveEnemies) and victim and
-				not victim.IsDead and IsEmpty(victim.InvulnerableFlags) and IsEmpty(victim.PersistentInvulnerableFlags)
-				and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and victim.JealousyModifier and
-				Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) and triggerArgs.EffectName == nil then
-				local damageAmount = triggerArgs.DamageAmount * victim.JealousyModifier * TableLength(victim.VulnerabilityEffects)
-				if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
-					damageAmount = 0
-				end
-				Damage(victim, { EffectName = "JealousyCurse", DamageAmount = damageAmount, Silent = false, PureDamage = false })
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Jealousy Damage"))
-			end
-		end
-	)
+
 	
 	function AddJealousyOnRandomFoe()
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Run Jealousy")) 
@@ -7972,7 +8024,7 @@ end]]
 		end
 	)
 	function UpdateHealthCostTexts()
-		if CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.SpawnedStoreItems ~= nil then
+		if CurrentRun and CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.SpawnedStoreItems ~= nil then
 			for i, item in pairs(CurrentRun.CurrentRoom.Store.SpawnedStoreItems) do
 				UpdateHealthCostText(item)
 			end

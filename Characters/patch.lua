@@ -44,7 +44,7 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                     damageReductionMultipliers = damageReductionMultipliers * multiplier
                 else
                     damageMultipliers = damageMultipliers + multiplier - 1
-                end                
+                end
             else
                 if data.Additive then
                     damageMultipliers = damageMultipliers + multiplier - 1
@@ -53,22 +53,26 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                 end
             end
         end
-        if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and ( weaponData ~= nil and weaponData.IgnoreOutgoingDamageModifiers ) then
+        if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and (weaponData ~= nil and weaponData.IgnoreOutgoingDamageModifiers) then
             local appliedEffectTable = {}
             for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
-                local validEffect = modifierData.ValidEffects == nil or ( triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName ))
-                local validWeapon = modifierData.ValidWeaponsLookup == nil or ( modifierData.ValidWeaponsLookup[ triggerArgs.SourceWeapon ] ~= nil and triggerArgs.EffectName == nil )
-                local validTrait = modifierData.RequiredTrait == nil or ( attacker == CurrentRun.Hero and HeroHasTrait( modifierData.RequiredTrait ) )
-                local validUniqueness = modifierData.Unique == nil or not modifierData.Name or not appliedEffectTable[modifierData.Name]
-                local validEnchantment = true     
-    
+                local validEffect = modifierData.ValidEffects == nil or
+                (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
+                local validWeapon = modifierData.ValidWeaponsLookup == nil or
+                (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
+                local validTrait = modifierData.RequiredTrait == nil or
+                (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
+                local validUniqueness = modifierData.Unique == nil or not modifierData.Name or
+                not appliedEffectTable[modifierData.Name]
+                local validEnchantment = true
+
                 if validUniqueness and validWeapon and validEffect and validTrait and validEnchantment and modifierData.BypassIgnore then
                     if modifierData.Name then
-                        appliedEffectTable[ modifierData.Name] = true
-                    end                   
+                        appliedEffectTable[modifierData.Name] = true
+                    end
                     if modifierData.ValidWeaponMultiplier then
-                        addDamageMultiplier( modifierData, modifierData.ValidWeaponMultiplier)
-                    end                    
+                        addDamageMultiplier(modifierData, modifierData.ValidWeaponMultiplier)
+                    end
                 end
             end
         end
@@ -76,6 +80,57 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         return vanillaMultiplier * damageMultipliers * damageReductionMultipliers
     end
 )
+ModUtil.Path.Wrap("DamageEnemy",
+    function(baseFunc, victim, triggerArgs)
+        local sourceWeaponData = triggerArgs.AttackerWeaponData
+        if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
+            triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceWeaponData.Name, sourceWeaponData
+            .MultipleProjectileMultiplier)
+        elseif victim and triggerArgs.SourceProjectile then
+            local sourceProjectileData = ProjectileData[triggerArgs.SourceProjectile]
+            if sourceProjectileData and sourceProjectileData.MultipleProjectileMultiplier then
+                triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceProjectileData.Name, sourceProjectileData
+                .MultipleProjectileMultiplier)
+            end
+        end
+        baseFunc(victim, triggerArgs)
+        -- Jealousy Stuff
+        if sourceWeaponData ~= nil and not triggerArgs.PureDamage and not IsEmpty(ActiveEnemies) and victim and
+            not victim.IsDead and IsEmpty(victim.InvulnerableFlags) and IsEmpty(victim.PersistentInvulnerableFlags)
+            and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and victim.JealousyModifier and
+            Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) and triggerArgs.EffectName == nil then
+            local damageAmount = triggerArgs.DamageAmount * victim.JealousyModifier *
+            TableLength(victim.VulnerabilityEffects)
+            if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
+                damageAmount = 0
+            end
+            Damage(victim,
+                { EffectName = "JealousyCurse", DamageAmount = damageAmount, Silent = false, PureDamage = false })
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Jealousy Damage"))
+        end
+        if (HeroHasTrait("ExplosionTrait") and triggerArgs.IsCrit) then
+            FireWeaponFromUnit({
+                Weapon = "ArtemisHestiaExplosion",
+                Id = CurrentRun.Hero.ObjectId,
+                DestinationId = victim.ObjectId,
+                ClearAllFireRequests = true,
+                FireFromTarget = true
+            })
+        end
+    end
+)
+function TrackDamageWithTime(triggerArgs, victim, name, mutliplier)
+    if victim.TimeOfLastDamage and victim.TimeOfLastDamage[name] and
+        _worldTime - victim.TimeOfLastDamage[name] < 0.05 then
+        return triggerArgs.DamageAmount * mutliplier
+    else
+        if not victim.TimeOfLastDamage then
+            victim.TimeOfLastDamage = {}
+        end
+        victim.TimeOfLastDamage[name] = _worldTime
+        return triggerArgs.DamageAmount
+    end
+end
 
 --[[ModUtil.Path.Wrap( "AddRerolls",
 	function(baseFunc, amount, source, args )
