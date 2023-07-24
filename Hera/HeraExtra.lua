@@ -5427,6 +5427,9 @@ end]]
 				{ Cue = "/VO/Hera_0205",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The Old King heard you have the Royal Pact, Zagreus. This is coming from him. He must have been too busy pushing this rock of his to deliver it himself." },
+				{
+					Text = "Hera_OfferText",
+				},
 			},
 			HeraTartarusBoss02 =
 			{
@@ -5439,6 +5442,9 @@ end]]
 				{ Cue = "/VO/Hera_0206",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The Old King sent you this. He said its from him and... Bouldy? Not sure who that it." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraTartarusBoss03 =
 			{
@@ -5451,6 +5457,9 @@ end]]
 				{ Cue = "/VO/Hera_0207",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Another delivery from your Tartarus friend. I should make Hermes do these, I have more important things to do." },
+						{
+							Text = "Hera_OfferText",
+						},
 			},
 			HeraTartarusBoss04 =
 			{
@@ -5463,6 +5472,9 @@ end]]
 				{ Cue = "/VO/Hera_0208",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The Old King prepared if by chance you succeed bypassing the furies. I suppose this is another reward for you." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraTartarusBoss05 =
 			{
@@ -5475,6 +5487,9 @@ end]]
 				{ Cue = "/VO/Hera_0209",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The Old King thank me for helping you. So I wanted to clarify the situation. I said I would get you to our domain, and I only have one word. Hopefully, you'll get here soon." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraAsphodelBoss01 =
 			{
@@ -5487,6 +5502,9 @@ end]]
 				{ Cue = "/VO/Hera_0210",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The Dryad knows the existence of the Royal Pact and wanted to prepare this to regain your strength after defeating that Lernaean Hydra. You can thank me for bringing it to you." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraAsphodelBoss02 =
 			{
@@ -5499,6 +5517,9 @@ end]]
 				{ Cue = "/VO/Hera_0211",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I do not know if that meal is still hot since it took you forever to defeat that Lernaean Hydra, but here. The Dryad prepared it for you." },
+						{
+							Text = "Hera_OfferText",
+						},
 			},
 			HeraAsphodelBoss03 =
 			{
@@ -5511,6 +5532,9 @@ end]]
 				{ Cue = "/VO/Hera_0212",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Time to leave this inferno, Zagreus. But with the Royal Pact in hand, you get to leave it with some leftovers." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraAsphodelBoss04 =
 			{
@@ -5523,6 +5547,9 @@ end]]
 				{ Cue = "/VO/Hera_0213",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The Dryad prepared some nurishment for you. Tell yourself that you will have any food you want once you are with us. This might be the motivation you were missing." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraAsphodelBoss05 =
 			{
@@ -5535,6 +5562,9 @@ end]]
 				{ Cue = "/VO/Hera_0214",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "For as long as the Royal Pact is in your hand, the Dryad will bring you what you need. I'll make sure of it." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraElysiumBoss01 =
 			{
@@ -5547,6 +5577,9 @@ end]]
 				{ Cue = "/VO/Hera_0215",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Elysium host many heroes. Yet only one offered to help you. You can thank Patrocleus next time you see him." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraElysiumBoss02 =
 			{
@@ -5559,6 +5592,9 @@ end]]
 				{ Cue = "/VO/Hera_0216",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Seems like you defeated Theseus. Maybe you are not as worthless as I though. Patrocleus sent you this to celebrate your victory. I'll see you soon then." },
+						{
+							Text = "Hera_OfferText",
+						},
 			},
 			HeraElysiumBoss03 =
 			{
@@ -5571,6 +5607,9 @@ end]]
 				{ Cue = "/VO/Hera_0217",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You are done with Elysium, I see. There's no way you can fail from here. Even Patrocleus pitch this in." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraElysiumBoss04 =
 			{
@@ -5583,6 +5622,9 @@ end]]
 				{ Cue = "/VO/Hera_0218",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Defeating Asterius, I understand. But Theseus, not bad. I suppose you are worthy of this delivery from Patrocleus." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraElysiumBoss05 =
 			{
@@ -5595,6 +5637,9 @@ end]]
 				{ Cue = "/VO/Hera_0219",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Defeating Theseus doesn't make you a hero. But I believe this is enough to keep receiving gifts from Patrocleus. As long as you have the Royal Pact, of course." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraGenericBoss01 =
 			{
@@ -5606,6 +5651,9 @@ end]]
 				{ Cue = "/VO/Hera_0220",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "As you know, the Royal Pact is there for your acquaintance to help you in your quest. That being when you find yourself worthy of it." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraGenericBoss02 =
 			{
@@ -5617,6 +5665,9 @@ end]]
 				{ Cue = "/VO/Hera_0221",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Someone wants the best for you. It's not me. I am just here to give it to you." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraGenericBoss03 =
 			{
@@ -5628,6 +5679,9 @@ end]]
 				{ Cue = "/VO/Hera_0222",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Why did I accept to create the Royal Pact? I have better things to do than deliever futile gift to you Zagreus. " },
+						{
+							Text = "Hera_OfferText",
+						},
 			},
 			HeraGenericBoss04 =
 			{
@@ -5639,6 +5693,9 @@ end]]
 				{ Cue = "/VO/Hera_0223",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Here's a farewell gift from one of your friend. It would be awkward if didn't really left your father's domain.  Don't you think?" },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraGenericBoss05 =
 			{
@@ -5650,6 +5707,9 @@ end]]
 				{ Cue = "/VO/Hera_0224",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "What do you need to finally succeed your escape? Maybe this is what you needed?" },
+						{
+							Text = "Hera_OfferText",
+						},
 			},
 			HeraGenericBoss06 =
 			{
@@ -5661,6 +5721,9 @@ end]]
 				{ Cue = "/VO/Hera_0225",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I should make Hestia do all the dirty work. Do I look like Hermes?" },
+						{
+							Text = "Hera_OfferText",
+						},
 			},
 			HeraGenericBoss07 =
 			{
@@ -5672,6 +5735,9 @@ end]]
 				{ Cue = "/VO/Hera_0226",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I made sure your acquaintances keep following the Royal Pact commitment. They should keep giving you their support. As long as you have the Royal Pact at hand." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss01 =
 			{
@@ -5682,6 +5748,9 @@ end]]
 				{ Cue = "/VO/Hera_0227",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Are you done here? Good. I don't like people who keeps me waiting. This is for you." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss02 =
 			{
@@ -5692,6 +5761,9 @@ end]]
 				{ Cue = "/VO/Hera_0228",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "That was a worthy performance, I suppose. Take this and move on." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss03 =
 			{
@@ -5702,6 +5774,9 @@ end]]
 				{ Cue = "/VO/Hera_0229",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Won the battle, Zagreus? Now it's time to win the war. With this." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss04 =
 			{
@@ -5712,6 +5787,9 @@ end]]
 				{ Cue = "/VO/Hera_0230",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Another gift, Zagreus? They must be very annoyed of your failure to escape. I know I am." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss05 =
 			{
@@ -5722,6 +5800,9 @@ end]]
 				{ Cue = "/VO/Hera_0231",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You survive that? I don't see why you would fail from here. But again, you desapointed me before, Zagreus." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss06 =
 			{
@@ -5732,6 +5813,9 @@ end]]
 				{ Cue = "/VO/Hera_0232",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Another delivery from one of your acquaintances, Zagreus. Good. It means my Royal Pact is useful." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			HeraRepeatBoss07 =
 			{
@@ -5742,6 +5826,9 @@ end]]
 				{ Cue = "/VO/Hera_0233",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Another gift coming your way, Zagreus. I am sure you are going to waste them like the others." },
+					{
+						Text = "Hera_OfferText",
+					},
 			},
 			-- NPC HESTIA			
 			HestiaTartarusNPC01 =
@@ -6082,6 +6169,9 @@ end]]
 				{ Cue = "/VO/Hestia_0331",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "As the new owner of the the Royal Pact, you can get as much help from your friends without retaliation. Meaning someone meant to give you this before you move on." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaTartarusBoss01 =
 			{
@@ -6094,6 +6184,9 @@ end]]
 				{ Cue = "/VO/Hestia_0332",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Are you leaving Tartarus? I am sure you'll need this if you want to get past Asphodel." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaTartarusBoss02 =
 			{
@@ -6106,6 +6199,9 @@ end]]
 				{ Cue = "/VO/Hestia_0333",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I am happy to deliver this to you, young one. It's from Sisyphus and his... boulder? Huh." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaTartarusBoss03 =
 			{
@@ -6118,6 +6214,9 @@ end]]
 				{ Cue = "/VO/Hestia_0334",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You defeated the fury sisters? Well, it's a time to celebrate. Good thing Sisyphus is sending you this." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaTartarusBoss04 =
 			{
@@ -6130,6 +6229,9 @@ end]]
 				{ Cue = "/VO/Hestia_0335",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Another fight with the fury sisters? Sisyphus and I think you should try discussing your issues next time. Anyway, he sent you this." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaTartarusBoss05 =
 			{
@@ -6142,6 +6244,9 @@ end]]
 				{ Cue = "/VO/Hestia_0336",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I'll talk with Sisyphus and convince him to help you as much as he can. As long as you keep visiting him from time to time." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaAsphodelBoss01 =
 			{
@@ -6154,6 +6259,9 @@ end]]
 				{ Cue = "/VO/Hestia_0337",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You fought the Lernaean Hydra and got out victorious? Well, it's a good thing Eurydice sent you this to celebrate." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaAsphodelBoss02 =
 			{
@@ -6166,6 +6274,9 @@ end]]
 				{ Cue = "/VO/Hestia_0338",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Young one. You must be exhausted after such a fight. Have this a warm meal. It will fix you right up." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaAsphodelBoss03 =
 			{
@@ -6178,6 +6289,9 @@ end]]
 				{ Cue = "/VO/Hestia_0339",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You might not get the chance to hear a victory song from Eurydice, young one. But she prepared this for you. How lucky!" },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaAsphodelBoss04 =
 			{
@@ -6190,6 +6304,9 @@ end]]
 				{ Cue = "/VO/Hestia_0340",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Seems like you are done with the heat of Asphodel. Let's hope you can cool down in Elysium." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaAsphodelBoss05 =
 			{
@@ -6202,6 +6319,9 @@ end]]
 				{ Cue = "/VO/Hestia_0341",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I am happy to deliver anything Eurydice prepare to you, as long as you have the Royal Pact at hand. Wouldn't want to make anyone angry, would we?" },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaElysiumBoss01 =
 			{
@@ -6214,6 +6334,9 @@ end]]
 				{ Cue = "/VO/Hestia_0342",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You missed Patroclus as you were visiting Elysium? Don't worry, he wishes you the best and sent you this." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaElysiumBoss02 =
 			{
@@ -6226,6 +6349,9 @@ end]]
 				{ Cue = "/VO/Hestia_0343",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Patroclus heard you have the Royal Pact and thought I could bring you this. How nice of him." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaElysiumBoss03 =
 			{
@@ -6238,6 +6364,9 @@ end]]
 				{ Cue = "/VO/Hestia_0344",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Did you just defeat Theseus and Asterius by your own? Even if I mislike violence, I am happy you got out safely." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaElysiumBoss04 =
 			{
@@ -6250,6 +6379,9 @@ end]]
 				{ Cue = "/VO/Hestia_0345",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Did you think Elysium was pretty, young one? Wait until you see Olympus. You can bring this if you want." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaElysiumBoss05 =
 			{
@@ -6262,6 +6394,9 @@ end]]
 				{ Cue = "/VO/Hestia_0346",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You didn't get to say farewell to Patroclus, young one. But fear not, he sent me this farewell gift for you." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaGenericBoss01 =
 			{
@@ -6273,6 +6408,9 @@ end]]
 				{ Cue = "/VO/Hestia_0347",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You are never alone, young one. Others are there to help as well. Even more now that you have the Royal Pact in your possession." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaGenericBoss02 =
 			{
@@ -6284,6 +6422,9 @@ end]]
 				{ Cue = "/VO/Hestia_0348",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I am happy to have convinced Hera to give you the Royal Pact. I hope you are enjoying the gifts!" },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaGenericBoss03 =
 			{
@@ -6295,6 +6436,9 @@ end]]
 				{ Cue = "/VO/Hestia_0349",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I know this is usually Hermes' job to deliver messages, but I just like spreading love." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaGenericBoss04 =
 			{
@@ -6306,6 +6450,9 @@ end]]
 				{ Cue = "/VO/Hestia_0350",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "When you are good to others, others return the favor when you need it. I feel like you need it right now." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaGenericBoss05 =
 			{
@@ -6317,6 +6464,9 @@ end]]
 				{ Cue = "/VO/Hestia_0351",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I have another gift for you. When you do good to others, they always return the favor someday." },
+						{
+							Text = "Hestia_OfferText",
+						},
 			},
 			HestiaGenericBoss06 =
 			{
@@ -6328,6 +6478,9 @@ end]]
 				{ Cue = "/VO/Hestia_0352",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Were you thinking of someone just now? Because I am here to give you this. They were thinking of you too." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaGenericBoss07 =
 			{
@@ -6339,6 +6492,9 @@ end]]
 				{ Cue = "/VO/Hestia_0353",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I appreciate all the efforts you put into showing compassion to others. As you can see, others started to reciprocate your good deeds. Like with this gift." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaRepeatBoss01 =
 			{
@@ -6349,6 +6505,9 @@ end]]
 				{ Cue = "/VO/Hestia_0354",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Take this before you leave, young one. With well wishes from your friends." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaRepeatBoss02 =
 			{
@@ -6359,6 +6518,9 @@ end]]
 				{ Cue = "/VO/Hestia_0355",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I am very happy to deliver this to you, young one. I know you'll do good with it." },
+						{
+							Text = "Hestia_OfferText",
+						},
 			},
 			HestiaRepeatBoss03 =
 			{
@@ -6369,6 +6531,9 @@ end]]
 				{ Cue = "/VO/Hestia_0356",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Were you expecting something from someone? Well, you're right. Here you go!" },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaRepeatBoss04 =
 			{
@@ -6379,6 +6544,9 @@ end]]
 				{ Cue = "/VO/Hestia_0357",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Gift coming right up. It's always good to see people getting along." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaRepeatBoss05 =
 			{
@@ -6389,6 +6557,9 @@ end]]
 				{ Cue = "/VO/Hestia_0358",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "You must have done something right, young one. This gift is for you." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaRepeatBoss06 =
 			{
@@ -6399,6 +6570,9 @@ end]]
 				{ Cue = "/VO/Hestia_0359",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Good deeds are always rewarded. So here's your reward!" },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 			HestiaRepeatBoss07 =
 			{
@@ -6409,6 +6583,9 @@ end]]
 				{ Cue = "/VO/Hestia_0360",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Don't leave yet. I still haven't delivered this to you. Enjoy." },
+					{
+						Text = "Hestia_OfferText",
+					},
 			},
 		},
 		GiftGivenVoiceLines =
@@ -7571,14 +7748,14 @@ end]]
 					line.PostLineThreadedFunctionName = "EnhancedPatroclusBuff"
 					CurrentRun.HeraElysiumStory = true
 				end
-				if "Hera_OfferText" == line.Text or  "Hestia_OfferText" == line.Text then
+				if "Hera_OfferText" == line.Text or "Hestia_OfferText" == line.Text then
 					if Contains({"A_Boss01","A_Boss02","A_Boss03",}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraTartarusStory and not CurrentRun.HeraTartarusBoss then
 						line.Text = line.Text.."01"
 						line.Choices = PresetEventArgs.HeraSisyphusBenefitChoices
 						CurrentRun.CurrentRoom.SkipLoadNextMap = true
 						CurrentRun.HeraTartarusBoss = true
 					end
-					if Contains({"B_Boss01"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraAsphodelStory and not CurrentRun.HeraAsphodelBoss then
+					if Contains({"B_Boss01", "B_Boss02"}, CurrentRun.CurrentRoom.Name) and not CurrentRun.HeraAsphodelStory and not CurrentRun.HeraAsphodelBoss then
 						line.Text = line.Text.."02"
 						line.Choices = PresetEventArgs.HeraEurydiceBenefitChoices
 						CurrentRun.CurrentRoom.SkipLoadNextMap = true
@@ -8382,44 +8559,44 @@ end]]
 	})
 	-- Charon/Hera Upgrade
 	table.insert(OlympusRoomSetData.Tartarus.A_Shop01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
 	})
 	table.insert(OlympusRoomSetData.Tartarus.A_PreBoss01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
 	})
 	table.insert(OlympusRoomSetData.Asphodel.B_Shop01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
 	})
 	OlympusRoomSetData.Asphodel.B_PreBoss01.DistanceTriggers =  {
 		{
-			TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
+			TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 			FunctionName = "EncounterShop"
 		}
 	}
 	OlympusRoomSetData.Elysium.C_Shop01.DistanceTriggers =  { {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
 	} }
 	OlympusRoomSetData.Elysium.C_PreBoss01.DistanceTriggers = { {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 500,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
 		FunctionName = "EncounterShop"
 	} }
 	--Hestia/Hera Duo
 	local OlympusEncounterData = ModUtil.Entangled.ModData(EncounterData)
 	table.insert(OlympusEncounterData.Story_Sisyphus_01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 60,
+		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 40,
 		FunctionName = "EncounterStory"
 	})
 	table.insert(OlympusEncounterData.Story_Eurydice_01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 60,
+		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 40,
 		FunctionName = "EncounterStory"
 	})
 	OlympusEncounterData.Story_Patroclus_01.DistanceTriggers = {
 		{
-			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 60,
+			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 40,
 			FunctionName = "EncounterStory"
 		}
 	}
