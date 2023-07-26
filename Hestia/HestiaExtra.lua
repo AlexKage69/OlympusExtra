@@ -5872,15 +5872,6 @@ if ModUtil ~= nil then
 		end
 	end
 
-	-- Artemis Duo
-	ModUtil.Path.Wrap("DamageEnemy",
-		function(baseFunc, victim, triggerArgs)
-			baseFunc(victim, triggerArgs)
-			if (HeroHasTrait("ExplosionTrait") and triggerArgs.IsCrit) then
-				FireWeaponFromUnit({ Weapon = "ArtemisHestiaExplosion", Id = CurrentRun.Hero.ObjectId,
-					DestinationId = victim.ObjectId, ClearAllFireRequests = true, FireFromTarget = true })
-			end
-		end)
 	-- Dionysus Duo
 	ModUtil.Path.Wrap("StartEncounter",
 		function(baseFunc, currentRun, currentRoom, currentEncounter)

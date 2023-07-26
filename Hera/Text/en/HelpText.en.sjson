@@ -393,5 +393,10 @@
 			Id = "ClearRequiredTraitsHera"
 			DisplayName = "{!Icons.RunClearStar}Disciple of Hera{!Icons.RunClearStar}"
 		}
+		{
+			Id = "SynergyUpgrades2"
+			DisplayName = "More Divine Pairings"
+			Description = "The son of the god of the dead shall someday earn even more various Duo Boons offered by pairs of Olympians."
+		}
 	]
 }

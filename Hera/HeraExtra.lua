@@ -6979,7 +6979,7 @@ end]]
 	-- Gift Section
 	local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 	local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-	table.insert(OlympusGiftOrdering, 21, "ForceHeraBoonTrait")
+	table.insert(OlympusGiftOrdering, 22, "ForceHeraBoonTrait")
 
 	OlympusGiftData.HeraUpgrade =
 	{
@@ -7109,6 +7109,109 @@ end]]
         }
 		table.insert(HeraExtra.GodsList, "Apollo")
     end
+	if ModUtil.Mods.Data["ApolloExtra"] ~= nil and ModUtil.Mods.Data["HestiaExtra"] ~= nil then
+		OlympusQuestData.SynergyUpgrades2 =
+		{
+			Name = "SynergyUpgrades2",
+			InheritFrom = { "DefaultQuestItem" },
+			RewardResourceName = "SuperGiftPoints",
+			RewardResourceAmount = 15,
+			Spacing = 28,
+			FontSize = 18,
+			MaxEntriesPerColumn = 14,
+			UnlockGameStateRequirements =
+			{
+				RequiredAnyTraitsTaken =
+				{
+					"FamedDuetTrait",
+					"WarSongTrait",
+					"MasterBoltTrait",
+					"HyacinthTrait",
+					"BlindDurationTrait",
+					"DamageReduceDistanceTrait",
+					"SeaChanteyTrait",
+					"MasterLobDionysusTrait",
+					"MasterLobApolloTrait",
+
+					"FreeHealthTrait",
+					"MoreTrapDamageTrait",
+					"ExplosionTrait",
+					"FullHealBossTrait",
+					"FoesNumberDamageTrait",
+					"ChillFireTrait",
+					"PullZeusCastTrait",
+					"FishingRewardExtraTrait",
+
+					"ShoutMoreHealTrait",
+
+					"CurseLongerTrait",
+					"AuraExposedTrait",
+					"BetterTrapsTrait",
+					"SlowerHangoverTrait",
+					"AuraRuptureTrait",
+					"KillMarkedTrait",
+					"HeroicBoonsTrait",
+					"GaugeLightningTrait",
+
+					"AuraBlindTrait",
+					"EnhancedNPCTrait",
+				}
+			},
+			CompleteGameStateRequirements =
+			{
+				RequiredTraitsTaken =
+				{
+					"FamedDuetTrait",
+					"WarSongTrait",
+					"MasterBoltTrait",
+					"HyacinthTrait",
+					"BlindDurationTrait",
+					"DamageReduceDistanceTrait",
+					"SeaChanteyTrait",
+					"MasterLobDionysusTrait",
+					"MasterLobApolloTrait",
+
+					"FreeHealthTrait",
+					"MoreTrapDamageTrait",
+					"ExplosionTrait",
+					"FullHealBossTrait",
+					"FoesNumberDamageTrait",
+					"ChillFireTrait",
+					"PullZeusCastTrait",
+					"FishingRewardExtraTrait",
+
+					"ShoutMoreHealTrait",
+
+					"CurseLongerTrait",
+					"AuraExposedTrait",
+					"BetterTrapsTrait",
+					"SlowerHangoverTrait",
+					"AuraRuptureTrait",
+					"KillMarkedTrait",
+					"HeroicBoonsTrait",
+					"GaugeLightningTrait",
+					
+					"AuraBlindTrait",
+					"EnhancedNPCTrait",
+				},
+			},
+
+			CashedOutVoiceLines =
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.4,
+				Cooldowns =
+				{
+					{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
+				},
+
+				-- The Olympians aren't all on the best of terms I guess.
+				{ Cue = "/VO/ZagreusHome_2980" },
+			},
+		}
+		table.insert(OlympusQuestOrderData, 34, "SynergyUpgrades2")
+	end
 	-- FUNCTIONS
 	function ChangeLootSource( source, args )
 		if args ~= nil and args.NewSource then
@@ -8201,7 +8304,7 @@ end]]
 		end
 	)
 	function UpdateHealthCostTexts()
-		if CurrentRun and CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.SpawnedStoreItems ~= nil then
+		if CurrentRun and CurrentRun.CurrentRoom and CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.SpawnedStoreItems ~= nil then
 			for i, item in pairs(CurrentRun.CurrentRoom.Store.SpawnedStoreItems) do
 				UpdateHealthCostText(item)
 			end
@@ -8563,51 +8666,53 @@ end]]
 		FunctionName = "EncounterShop"
 	})
 	table.insert(OlympusRoomSetData.Tartarus.A_PreBoss01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 800,
 		FunctionName = "EncounterShop"
 	})
 	table.insert(OlympusRoomSetData.Asphodel.B_Shop01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 800,
 		FunctionName = "EncounterShop"
 	})
 	OlympusRoomSetData.Asphodel.B_PreBoss01.DistanceTriggers =  {
 		{
-			TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+			TriggerObjectType = "NPC_Charon_01", WithinDistance = 800,
 			FunctionName = "EncounterShop"
 		}
 	}
 	OlympusRoomSetData.Elysium.C_Shop01.DistanceTriggers =  { {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 1200,
 		FunctionName = "EncounterShop"
 	} }
 	OlympusRoomSetData.Elysium.C_PreBoss01.DistanceTriggers = { {
-		TriggerObjectType = "NPC_Charon_01", WithinDistance = 600,
+		TriggerObjectType = "NPC_Charon_01", WithinDistance = 1200,
 		FunctionName = "EncounterShop"
 	} }
 	--Hestia/Hera Duo
 	local OlympusEncounterData = ModUtil.Entangled.ModData(EncounterData)
 	table.insert(OlympusEncounterData.Story_Sisyphus_01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 40,
+		TriggerObjectType = "NPC_Sisyphus_01", WithinDistance = 100,
 		FunctionName = "EncounterStory"
 	})
 	table.insert(OlympusEncounterData.Story_Eurydice_01.DistanceTriggers, {
-		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 40,
+		TriggerObjectType = "NPC_Eurydice_01", WithinDistance = 100,
 		FunctionName = "EncounterStory"
 	})
 	OlympusEncounterData.Story_Patroclus_01.DistanceTriggers = {
 		{
-			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 40,
+			TriggerObjectType = "NPC_Patroclus_01", WithinDistance = 100,
 			FunctionName = "EncounterStory"
 		}
 	}
+	
+	local OlympusRoomData = ModUtil.Entangled.ModData(RoomData)
 	--[[OlympusRoomSetData.Tartarus.A_Boss01.ExitFunctionName = "EncounterStory"
 	OlympusRoomSetData.Tartarus.A_Boss02.ExitFunctionName = "EncounterStory"
 	OlympusRoomSetData.Tartarus.A_Boss03.ExitFunctionName = "EncounterStory"
 	OlympusRoomSetData.Asphodel.B_Boss01.ExitFunctionName = "EncounterStory"
 	OlympusRoomSetData.Elysium.C_Boss01.ExitFunctionName = "EncounterStory"]]
-	OverwriteTableKeys(RoomData, RoomSetData.Tartarus)
-	OverwriteTableKeys(RoomData, RoomSetData.Asphodel)
-	OverwriteTableKeys(RoomData, RoomSetData.Elysium)
+	OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Tartarus)
+	OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Asphodel)
+	OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Elysium)
 
 	-- For testing purposes
 	function Spawner( coors, list )
@@ -8641,7 +8746,20 @@ end]]
 
 	OnControlPressed{ "Codex",
 		function( triggerArgs )			
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CheckHeraDialog())) 
+			--[[if CurrentRun.CurrentRoom.Encounter and CurrentRun.CurrentRoom.Encounter.DistanceTriggers then
+				for i, trigger in pairs(CurrentRun.CurrentRoom.Encounter.DistanceTriggers) do
+					if trigger.TriggerObjectType and trigger.WithinDistance then
+						if trigger.TriggerObjectType == "NPC_Charon_01" then
+							trigger.WithinDistance = 25
+						end
+						ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trigger.TriggerObjectType..":"..trigger.WithinDistance))
+						if trigger.FunctionName then
+							ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trigger.FunctionName))
+						end
+					end
+				end
+			end]]
+			
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraElysiumStory)) 
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraElysiumBoss)) 
 			--ForceNextRoomFunc("A_Story01")
