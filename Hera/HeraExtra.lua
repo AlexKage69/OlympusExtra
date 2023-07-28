@@ -7317,7 +7317,6 @@ end]]
 					trait.CurrentGod = CurrentRun.Hero.HeraShout.NextHeraGod
 				end
 			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.HeraShout.Icon))
 		end
 		if CurrentRun.Hero.HeraShout.PreviousIcon then
 			Destroy({ Id = CurrentRun.Hero.HeraShout.PreviousIcon.Id})
@@ -7333,7 +7332,6 @@ end]]
 				end	
 				UpdateHeraShoutIcon()
 			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Select " .. CurrentRun.Hero.HeraShout.NextHeraGod))
 		end
 	)
 	ModUtil.Path.Wrap("RemoveTraitData",
@@ -7410,13 +7408,8 @@ end]]
 			if object.OriginalCost ~= nil and object.OriginalCost > 0 and textExists then
 				local costMultiplier = 1 + ( GetNumMetaUpgrades( "ShopPricesShrineUpgrade" ) * ( MetaUpgradeData.ShopPricesShrineUpgrade.ChangeValue - 1 ) )
 				costMultiplier = costMultiplier * GetTotalHeroTraitValue("StoreCostMultiplier", {IsMultiplier = true})
-				--if costMultiplier ~= 1 or object.Cost ~= object.OriginalCost then
 				object.Cost = round( object.OriginalCost * costMultiplier )
-				--end
-
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(object.Name..";"..object.OriginalCost..";"..object.Cost..";"..costMultiplier))
 				ModifyTextBox({ Id = object.ObjectId, Text = "Shop_ItemCost", LuaKey = "TempTextData", LuaValue = { Amount = object.Cost } })
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Updated"))
 			end
 		end
 	)
@@ -7456,7 +7449,6 @@ end]]
 					traitData.HealthCost = round(traitData.HealthCost * 0.8)
 				end
 				traitData.HasDiscount = true
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Trait: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
 			end
 			return traitData
 		end
@@ -7470,7 +7462,6 @@ end]]
 					rampedData.HealthCost = round(rampedData.HealthCost * 0.8)
 				end
 				rampedData.HasDiscount = true
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Consumable: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
 			end
 			return rampedData
 		end
@@ -7492,7 +7483,6 @@ end]]
 				end
 				local itemIndex = RandomNumber(numButtons)
 				CurrentRun.CurrentRoom.Store.DiscountItem = CurrentRun.CurrentRoom.Store.StoreOptions[itemIndex].Name
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Set: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
 			end
 			
 			baseFunc()
@@ -7514,7 +7504,6 @@ end]]
 					end
 				end
 				if HeroHasTrait("DiscountHeraTrait") and upgradeData.HasDiscount then
-					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call: " .. CurrentRun.CurrentRoom.Store.DiscountItem))
 					local offsetY = ShopUI.ShopItemStartY + ShopUI.ShopItemSpacerY * (button.Index-1) - 65
 					local offsetX = ShopUI.ShopItemStartX + 210
 					CurrentRun.CurrentRoom.Store.Screen.Components["PurchaseButton"..button.Index.."DiscountIcon"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu", X = offsetX , Y = offsetY })
@@ -7541,8 +7530,6 @@ end]]
 						ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2}, Justification = "Left",
 						Color = costFontColor
 					})
-					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Load: " .. button.Index))
-					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button))
 					itemLocationX = itemLocationX + itemLocationXSpacer
 					if itemLocationX >= itemLocationMaxX then
 						itemLocationX = itemLocationStartX
@@ -7653,12 +7640,10 @@ end]]
 	function UpdateSacrificeCostButton(button)
 		if button.SacrificeId then
 			local upgradeData = button.Data
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Update ".. upgradeData.Name))
 			local costColor = Color.CostAffordable
 			if (CurrentRun.Hero.Health+1) < upgradeData.SacrificeCost then
 				costColor = Color.CostUnaffordable
 			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Current ".. CurrentRun.Hero.Health))
 			ModifyTextBox({ Id = button.SacrificeId, ColorTarget = costColor, ColorDuration = 0.2 })
 		end
 	end
@@ -7667,7 +7652,6 @@ end]]
 			baseFunc(unit, traitData, args)
 			local once = false
 			if TraitData[traitData.Name].RefreshShop and TraitData[traitData.Name].RefreshShop.OnAdd and not once then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh on Add: " .. traitData.Name))
 				RefreshStoreItems()
 				once = true
 			end
@@ -7734,7 +7718,6 @@ end]]
 
 	
 	function AddJealousyOnRandomFoe()
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Run Jealousy")) 
 		thread(JealousyOnRandomFoeThread, {})
 	end
 	function JealousyOnRandomFoeThread()
@@ -7770,23 +7753,19 @@ end]]
 		if HeroHasTrait("EnvyBurstTrait") then
 			if not victim.EnvyFlag or ( victim.EnvyFlag and RandomFloat(0, 1) <= GetTotalHeroTraitValue("EnvyBurstChance")) then
 				ApplyEffectFromWeapon({ WeaponName = "BurstEnvyApplicator", EffectName = "BurstEnvy", Id = CurrentRun.Hero.ObjectId, DestinationId = victim.ObjectId })
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Add"))
 			end
 		end
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.EnvyNextDamage.Amount))
 	end
 	function EnvyCurseAttackClear(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
 		if victim.ActiveEffects["EnvyCurseSecondary"] == nil then
 			victim.EnvyNextDamage = nil	
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear Attack"))
 		end
 	end
 	function EnvyCurseSecondaryClear(triggerArgs)
 		local victim = triggerArgs.TriggeredByTable
 		if victim.ActiveEffects["EnvyCurseAttack"] == nil then
 			victim.EnvyNextDamage = nil	
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Clear Secondary"))
 		end
 	end
 	function JealousyCurseApply(triggerArgs)
@@ -7817,11 +7796,9 @@ end]]
 					if isLow then
 						FireWeaponFromUnit({ Weapon = "LowBurstEnvyWeapon", Id = CurrentRun.Hero.ObjectId,
 						DestinationId = victim.ObjectId, FireFromTarget = true })
-						--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("LowBurst"))
 					else
 						FireWeaponFromUnit({ Weapon = "HighBurstEnvyWeapon", Id = CurrentRun.Hero.ObjectId,
 						DestinationId = victim.ObjectId, FireFromTarget = true })
-						--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("HighBurst"))
 					end
 					ClearEffect({ Id = victim.ObjectId, Name = "BurstEnvy" })
 				end
@@ -7829,10 +7806,8 @@ end]]
 					victim.EnvyFlag = true
 					victim.EnvyNextDamage = nil		
 				end				
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("EnvyCurse Damage"))
 			end
 			baseFunc(triggerArgs)
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(triggerArgs))
 			
 		end
 	)
@@ -7983,7 +7958,6 @@ end]]
 		SetPlayerVulnerable( "HandleLootPickup" )
 	end
 	function EncounterStory()
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call"))
 		if HeroHasTrait("EnhancedNPCTrait") and CheckHeraDialog() then
 			StartHeraHestiaDialog()
 		end
@@ -8255,7 +8229,6 @@ end]]
 		end	
 	end
 	function AddHealthAsObolText(spawnedItem)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(spawnedItem.SacrificeId))
 		if HeroHasTrait("HealthAsObolTrait") and spawnedItem.Cost ~= nil and spawnedItem.Cost > 0 and spawnedItem.HealFraction == nil and spawnedItem.HealthCost == nil then
 			spawnedItem.SacrificeCost = round(spawnedItem.Cost*0.9)
 			if spawnedItem.SacrificeCost <= 0 then
@@ -8286,7 +8259,6 @@ end]]
 	end
 	function RemoveHealthAsObolText(spawnedItem)
 		if spawnedItem.SacrificeId then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Remove"..spawnedItem.SacrificeId))
 			DestroyTextBox({ Id = spawnedItem.SacrificeId })
 			spawnedItem.SacrificeId = nil
 			if spawnedItem.NoneSacrificeUseText then
@@ -8334,7 +8306,6 @@ end]]
 			if object.SacrificeCost <= 0 then
 				object.SacrificeCost = 1
 			end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(object.SacrificeId))
 			local costFontColor = Color.CostAffordable
 			if (CurrentRun.Hero.Health) < object.SacrificeCost and not object.Purchased then
 				costFontColor = Color.CostUnaffordable
@@ -8357,7 +8328,6 @@ end]]
 		if CurrentRun and CurrentRun.Hero and CurrentRun.Hero.TrapDash and CurrentRun.Hero.TrapDash.AllTraps then
 			for k, enemy in pairs( CurrentRun.Hero.TrapDash.AllTraps ) do
 				if not enemy.IsDead then
-					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(enemy.Name))
 					SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
 					thread( Kill, enemy )
 				end
@@ -8390,7 +8360,6 @@ end]]
 	function ReloadRangedDashTrap( delay )
 		wait( delay, RoomThreadName )
 		CurrentRun.Hero.TrapDash.Count = CurrentRun.Hero.TrapDash.Count + 1
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Gain Charge: "..CurrentRun.Hero.TrapDash))
 		EndTrapDashReloadPresentation()
 		
 	
@@ -8461,7 +8430,6 @@ end]]
 			--CurrentRun.Hero.TrapDash.Icon = CreateScreenComponent({ Name = "HeraShoutZeusIcon", Group = "Combat_Menu_TraitTray", X = 75, Y = 610 })
 			--table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.TrapDash.Icon.Id )
 		--end
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Test"))
 		--[[ScreenAnchors.TrapDashIndicatorUI = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray",  X = 75, Y = 700 })
 		SetAnimation({ Name = "TrapDashIndicatorIcon", DestinationId = ScreenAnchors.TrapDashIndicatorUI})
 		CreateTextBox(MergeTables({ Id = ScreenAnchors.TrapDashIndicatorUI, OffsetX = 24, OffsetY = -2,
@@ -8525,7 +8493,6 @@ end]]
 		local weaponName = args.WeaponName
 		--local intervalData = args.Interval or { Min = 1.0, Max = 1.0 }
 		local range = args.Range
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Range..":"..args.WeaponName))
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			--[[local interval = intervalData
 						if type(intervalData) == "table" then
@@ -8557,8 +8524,7 @@ end]]
 					end
 				end
 
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(count)) -- 4
-				if count >= 0 and 
+				if count >= 3 and 
 					not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
 					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
 						WeaponName = "HeraCurseCountWeapon", EffectName = "HeraCurseCount" })
@@ -8708,7 +8674,6 @@ end]]
 	end
 	function DeathMarkedThread(args)
 		--local PreviousCloseEnemiesList = {}
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			local noMark = true
 			wait(0.2, "RoomThread") -- 0.2
@@ -8722,7 +8687,6 @@ end]]
 				
 				if noMark then				
 					local randomEnemy = GetRandomValue(RequiredKillEnemies)
-					-- ModUtil.Hades.PrintStackChunks(ModUtil.ToString(randomEnemy.Name))
 					if randomEnemy.IsBoss then
 						ApplyEffectFromWeapon({ WeaponName = "DeathMarkedApplicator", EffectName = "DeathMarkedCurse", Id = CurrentRun.Hero.ObjectId, DestinationId = randomEnemy.ObjectId })
 						wait(5.0, "RoomThread")
@@ -8832,68 +8796,5 @@ end]]
 	OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Tartarus)
 	OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Asphodel)
 	OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Elysium)
-
-	-- For testing purposes
-	function Spawner( coors, list )
-		local count = 0
-		for i, spawnData in pairs(list) do
-			local spawnId = SpawnObstacle({ Name = spawnData.Name, Group = spawnData.GroupName or "Standing", LocationX = coors.X + count, LocationY = coors.Y })
-			count = count + 100
-		end
-	end
-	--[[ModUtil.Path.Wrap("BeginOpeningCodex",
-		function(baseFunc)
-
-			if (not CanOpenCodex()) and IsSuperValid() then
-				BuildSuperMeter(CurrentRun, 50)
-			else
-				--CreateLoot({ Name = "HeraUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-			end
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetTotalHeroTraitValue("SellTraitCostMultiplier", {IsMultiplier = true})))
-			if not HeroHasTrait("DiscountTrait") then
-				AddTraitToHero({ TraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = "DiscountTrait" }) })
-			end
-			--CreateLoot({ Name = "HeraUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering))
-			baseFunc()
-		end
-	)]]
-	--[[ModUtil.Path.Wrap("ModUtil.Hades.Triggers.OnHit.Combat.1.Call", function( base, triggerArgs ) 
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ModUtil.Hades.Triggers)) 
-		return base( triggerArgs ) 
-	end )]]
-
-	OnControlPressed{ "Codex",
-		function( triggerArgs )			
-			--[[if CurrentRun.CurrentRoom.Encounter and CurrentRun.CurrentRoom.Encounter.DistanceTriggers then
-				for i, trigger in pairs(CurrentRun.CurrentRoom.Encounter.DistanceTriggers) do
-					if trigger.TriggerObjectType and trigger.WithinDistance then
-						if trigger.TriggerObjectType == "NPC_Charon_01" then
-							trigger.WithinDistance = 25
-						end
-						ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trigger.TriggerObjectType..":"..trigger.WithinDistance))
-						if trigger.FunctionName then
-							ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trigger.FunctionName))
-						end
-					end
-				end
-			end]]
-			
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraElysiumStory)) 
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.HeraElysiumBoss)) 
-			--ForceNextRoomFunc("A_Story01")
-			--[[Spawner( {X = 5954, Y = 4358 },{
-				{ Name = "EnemySpear" },
-				{ Name = "EnemyJavelin" },
-				{ Name = "EnemyShield" },
-				{ Name = "EnemyBow" },
-				{ Name = "EnemyMagicGauntlets" },
-				{ Name = "EnemySword" },
-				{ Name = "HealthMetaUpgrade" },
-				{ Name = "WeaponDamageMetaUpgrade" },
-				{ Name = "MagicDamageMetaUpgrade" },
-			})]]
-		end 
-	}
 
 end
