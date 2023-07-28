@@ -593,5 +593,26 @@
       Scale = 0.5
       StartScale = 0.7
     }
+    {
+      Name = "TrapDashMultipleReloadTimer"
+      InheritFrom = "AmmoReloadTimer"
+      //ChildAnimation = "TrapDashMultipleReloadTimerIcon"
+      OffsetY = -5
+      Scale = 0.45
+      ScaleX = 0.5
+      VisualFx = null
+    }
+    {
+      Name = "TrapDashMultipleReloadTimerIcon"
+      FilePath = "GUI\Icons\Status\TrapSprung"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      DieWithOwner = true
+      SortMode = "Id"
+      ScaleFromOwner = "Ignore"
+      Material = "Unlit"
+      Scale = 0.75
+    }
+    
   ]
 }

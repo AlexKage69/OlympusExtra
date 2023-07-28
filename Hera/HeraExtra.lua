@@ -1497,7 +1497,7 @@ end]]
 			FunctionArgs =
 			{
 				Range = 700,
-				Cooldown = 5,
+				Cooldown = 4,
 				ExtractValues =
 				{
 					{
@@ -3457,7 +3457,7 @@ end]]
 		Name = "GaugeLightningTrait",
 		InheritFrom = { "SynergyTrait" },
 		Icon = "Hera_Zeus_01",
-		RequiredFalseTrait = "GaugeLightningTrait",
+		RequiredFalseTraits = {"GaugeLightningTrait", "RegeneratingCappedSuperTrait"},
 		RequiredSlottedTrait = "Shout",
 		PreEquipWeapons = { "ZeusAmmoWeapon" },
 		SetupFunction =
@@ -7323,7 +7323,6 @@ end]]
 			Destroy({ Id = CurrentRun.Hero.HeraShout.PreviousIcon.Id})
 			CurrentRun.Hero.HeraShout.PreviousIcon = nil
 		end
-
 	end
 	ModUtil.Path.Wrap("StopSuper",
 		function(baseFunc)
@@ -7355,10 +7354,29 @@ end]]
 			if HeroHasTrait("HeraShoutTrait") then
 				UpdateHeraShoutIcon()
 			end
+			if HeroHasTrait("HeraRushTrait") then
+				ShowTrapDashUI()
+			end
 			--[[if CurrentRun.Hero.HeraShout and CurrentRun.Hero.HeraShout.NextHeraGod then
 				CurrentRun.Hero.HeraShout.Icon = CreateScreenComponent({ Name = "HeraShout"..CurrentRun.Hero.HeraShout.NextHeraGod.."Icon", Group = "Combat_Menu_TraitTray", X = 75, Y = 700 })
 				table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.HeraShout.Icon.Id )
 			end]]
+		end
+	)	
+	ModUtil.Path.Wrap("HideTraitUI",
+		function(baseFunc)
+			baseFunc()
+			if HeroHasTrait("HeraRushTrait") then
+				HideTrapDashUI()
+			end
+		end
+	)		
+	ModUtil.Path.Wrap("DestroyTraitUI",
+		function(baseFunc)
+			baseFunc()
+			if HeroHasTrait("HeraRushTrait") then
+				DestroyTrapDashUI()
+			end
 		end
 	)	
 	ModUtil.Path.Wrap("CreateLoot",
@@ -8336,8 +8354,8 @@ end]]
 		end
 	)
 	function DestroyHeraTraps()
-		if CurrentRun and CurrentRun.Hero.AllTraps then
-			for k, enemy in pairs( CurrentRun.Hero.AllTraps ) do
+		if CurrentRun and CurrentRun.Hero and CurrentRun.Hero.TrapDash and CurrentRun.Hero.TrapDash.AllTraps then
+			for k, enemy in pairs( CurrentRun.Hero.TrapDash.AllTraps ) do
 				if not enemy.IsDead then
 					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(enemy.Name))
 					SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
@@ -8348,8 +8366,8 @@ end]]
 	end
 	function HeraTrapDash( traitArgs, triggerArgs )
 		if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
-			if CurrentRun.Hero.TrapDash > 0 then
-				CurrentRun.Hero.TrapDash = CurrentRun.Hero.TrapDash - 1
+			if CurrentRun.Hero.TrapDash and CurrentRun.Hero.TrapDash.Count > 0 then
+				CurrentRun.Hero.TrapDash.Count = CurrentRun.Hero.TrapDash.Count - 1
 				FireWeaponFromUnit({ Weapon = "HeraMineWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
 				--local newUnit = DeepCopyTable( EnemyData["HeraMine"] )
 				--[[newUnit.ObjectId = SpawnUnit({ Name = "HeraMine", Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, DoActivatePresentation = false })
@@ -8361,23 +8379,22 @@ end]]
 	end
 	function HasDashed(delay)
 		thread( ReloadRangedDashTrap, delay )
-		--[[StartAmmoReloadPresentation( delay )
+		StartTrapDashReloadPresentation( delay )
 
-		if triggerArgs.Ammo == 0 then
+		--[[if triggerArgs.Ammo == 0 then
 			RangedLastAmmoPresentation()
-		end
-		thread( UpdateAmmoUI, triggerArgs )]]
+		end]]
+		--thread( UpdateTrapDashUI )
 
 	end
 	function ReloadRangedDashTrap( delay )
 		wait( delay, RoomThreadName )
-		CurrentRun.Hero.TrapDash = CurrentRun.Hero.TrapDash + 1
+		CurrentRun.Hero.TrapDash.Count = CurrentRun.Hero.TrapDash.Count + 1
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Gain Charge: "..CurrentRun.Hero.TrapDash))
-		--[[if IsMetaUpgradeActive("ReloadAmmoMetaUpgrade") then
-			EndAmmoReloadPresentation()
-		end
+		EndTrapDashReloadPresentation()
+		
 	
-		RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { 1 } })
+		--[[RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { 1 } })
 		if IsMetaUpgradeActive("ReloadAmmoMetaUpgrade") then
 			ReloadAmmoPresentation()
 		else
@@ -8389,13 +8406,115 @@ end]]
 		return TraitData.HeraRushTrait.DashTrap.DashTrap.Value
 	end
 	function SetupHeraDashTrap()
-		if HeroHasTrait("BetterTrapsTrait") then
-			CurrentRun.Hero.TrapDash = 3
-		else
-			CurrentRun.Hero.TrapDash = 1
+		if not CurrentRun.Hero.TrapDash then
+			CurrentRun.Hero.TrapDash = {}
 		end
-		CurrentRun.Hero.AllTraps = {}
+		if HeroHasTrait("BetterTrapsTrait") then
+			CurrentRun.Hero.TrapDash.Max = 3
+			CurrentRun.Hero.TrapDash.Count = 3
+		else
+			CurrentRun.Hero.TrapDash.Max = 1
+			CurrentRun.Hero.TrapDash.Count = 1
+		end
+		
+		CurrentRun.Hero.TrapDash.AllTraps = {}
+		ResetTrapDashUI()
+		ShowTrapDashUI()
 	end	
+	function ResetTrapDashUI()
+		GameState.TrapDashUI =
+		{
+			RunningThreads = 0
+		}
+	end
+	function StartTrapDashReloadPresentation( delay )
+		ScreenAnchors.TrapDashIndicatorUIReloads = ScreenAnchors.TrapDashIndicatorUIReloads or {}
+		local reloadTimer = delay
+		local id = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu", Y = 610, X = 70 - 25 * #ScreenAnchors.TrapDashIndicatorUIReloads })
+		SetAnimation({ Name = "TrapDashMultipleReloadTimer", DestinationId = id, PlaySpeed = 100 / reloadTimer })
+		SetColor({ Id = ScreenAnchors.TrapDashIndicatorUI, Color = {0.5, 0.5, 0.5, 1.0} })
+		table.insert( ScreenAnchors.TrapDashIndicatorUIReloads, id )		
+	end
+	function EndTrapDashReloadPresentation()
+
+		if IsEmpty(ScreenAnchors.TrapDashIndicatorUIReloads ) then
+			return
+		end
+	
+		SetColor({ Id = ScreenAnchors.TrapDashIndicatorUI, Color = {1.0, 1.0, 1.0, 1.0} })
+		CreateAnimation({ DestinationId = ScreenAnchors.TrapDashIndicatorUI, Name = "AmmoReloadFinishedFlare" })
+		table.remove( ScreenAnchors.TrapDashIndicatorUIReloads, 1 )
+		local destroyIds = {}
+		for i, id in pairs( ScreenAnchors.TrapDashIndicatorUIReloads ) do
+			local targetId = SpawnObstacle({ Name = "InvisibleTarget", OffsetX = 70 - 25 * (i - 1 ), OffsetY = 610, Group = "Standing" })
+			Move({ Id = id, DestinationId = targetId, Duration = 0.25 })
+			table.insert( destroyIds, targetId )
+		end
+		PlaySound({ Name = "/SFX/BloodstoneAmmoRecharged", Id = CurrentRun.Hero.ObjectId })
+		Destroy({ Ids = destroyIds })
+	end
+	function ShowTrapDashUI()
+		if ScreenAnchors.TrapDashIndicatorUI ~= nil then
+			return
+		end
+		--if ScreenAnchors.TraitAnchorIds then
+			--CurrentRun.Hero.TrapDash.Icon = CreateScreenComponent({ Name = "HeraShoutZeusIcon", Group = "Combat_Menu_TraitTray", X = 75, Y = 610 })
+			--table.insert( ScreenAnchors.TraitAnchorIds, CurrentRun.Hero.TrapDash.Icon.Id )
+		--end
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Test"))
+		--[[ScreenAnchors.TrapDashIndicatorUI = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray",  X = 75, Y = 700 })
+		SetAnimation({ Name = "TrapDashIndicatorIcon", DestinationId = ScreenAnchors.TrapDashIndicatorUI})
+		CreateTextBox(MergeTables({ Id = ScreenAnchors.TrapDashIndicatorUI, OffsetX = 24, OffsetY = -2,
+				Font = "AlegreyaSansSCBold", FontSize = 24, ShadowRed = 0.1, ShadowBlue = 0.1, ShadowGreen = 0.1,
+				OutlineColor = {0.113, 0.113, 0.113, 1}, OutlineThickness = 1,
+				ShadowAlpha = 1.0, ShadowBlur = 0, ShadowOffsetY = 2, ShadowOffsetX = 0, Justification = "Left",
+				}, LocalizationData.UIScripts.TrapDashUI ))]]
+		--thread( UpdateTrapDashUI )
+	
+		--FadeObstacleIn({ Id = ScreenAnchors.TrapDashIndicatorUI, Duration = CombatUI.FadeInDuration, IncludeText = true, Distance = CombatUI.FadeDistance.TrapDash, Direction = 0 })
+	end
+	
+	function UpdateTrapDashUI( triggerArgs )
+		if ScreenAnchors.TrapDashIndicatorUI == nil or CurrentRun.Hero == nil then
+			return
+		end
+		triggerArgs = triggerArgs or {}
+		local TrapDashData =
+		{
+			Current = triggerArgs.TrapDash or GetWeaponProperty({ Id = CurrentRun.Hero.ObjectId, WeaponName = "RangedWeapon", Property = "TrapDash" }),
+			Maximum = triggerArgs.MaxTrapDash or CurrentRun.Hero.TrapDash.Max
+		}
+		PulseText({ ScreenAnchorReference = "TrapDashIndicatorUI", ScaleTarget = 1.04, ScaleDuration = 0.05, HoldDuration = 0.05, PulseBias = 0.02})
+		ModifyTextBox({ Id = ScreenAnchors.TrapDashIndicatorUI, Text = "UI_TrapDashText", OffsetY = -2, LuaKey = "TempTextData", LuaValue = TrapDashData, AutoSetDataProperties = false, })
+	end
+	
+	function HideTrapDashUI()
+		if ScreenAnchors.TrapDashIndicatorUI == nil then
+			return
+		end
+		ScreenAnchors.TrapDashIndicatorUIReloads = ScreenAnchors.TrapDashIndicatorUIReloads or {}
+	
+		local ids = CombineTables( { ScreenAnchors.TrapDashIndicatorUI }, ScreenAnchors.TrapDashIndicatorUIReloads )
+	
+		for i, reloadId in pairs( ids ) do
+			HideObstacle({ Id = reloadId, IncludeText = true, Distance = CombatUI.FadeDistance.TrapDash, Angle = 180, Duration = CombatUI.FadeDuration, SmoothStep = true })
+		end
+		ScreenAnchors.TrapDashIndicatorUI = nil
+		ScreenAnchors.TrapDashIndicatorUIReloads = nil
+	
+		wait( CombatUI.FadeDuration, RoomThreadName )
+	
+		Destroy({ Ids = ids })
+	end
+	
+	function DestroyTrapDashUI()
+		if ScreenAnchors.TrapDashIndicatorUI == nil then
+			return
+		end
+		Destroy({ Id = ScreenAnchors.TrapDashIndicatorUI })
+		Destroy({ Ids = ScreenAnchors.TrapDashIndicatorUIReloads })
+		ScreenAnchors.TrapDashIndicatorUI = nil
+	end
 	-- END
 	-- SameGoodTrait
 	function TrackHeraFullSuperMeter( hero, args )
