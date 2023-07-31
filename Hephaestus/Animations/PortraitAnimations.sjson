@@ -1,0 +1,85 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "PortraitRayParticle_Hera"
+      InheritFrom = "PortraitRayParticle"
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
+      OffsetX = 0
+      OffsetY = -300
+    }
+    {
+      Name = "PortraitVerticalRay_Hera"
+      InheritFrom = "PortraitVerticalRay"
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
+
+      OffsetX = 0
+      CreateAnimation = "PortraitRayParticle_Hera"
+    }
+    {
+      Name = "PortraitVerticalRayEmitter_Hera"
+      InheritFrom = "PortraitVerticalRayEmitter_Base"
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
+      OffsetX = 0
+      VisualFx = "PortraitVerticalRay_Hera"
+    }
+    {
+      Name = "PortraitGodRayEmitter_Hera"
+      InheritFrom = "PortraitGodRayEmitter"
+      EndFrame = 1
+      StartFrame = 1
+      VisualFxOffsetX = -30.0
+      VisualFxOffsetY = 120.0
+      CreateAnimation = "PortraitVerticalRayEmitter_Hera"
+    }
+    {
+      Name = "Portrait_Hera_Default_01"
+      InheritFrom = "Portrait_God_01"
+      ChildAnimation = "PortraitGodRayEmitter_Hera"
+      FilePath = "Hera\Portraits_Hera_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.60
+    }
+    {
+      Name = "Portrait_Hera_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Hera\Portraits_Hera_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.60
+    }
+    {
+      Name = "Portrait_Hera_Wrath_01"
+      InheritFrom = "Portrait_Hera_Default_01"
+      ChildAnimation = "null"
+      AddColor = true
+      EndFrame = 1
+      StartFrame = 1
+      CreateAnimation = "null"
+    }
+    {
+      Name = "Codex_Portrait_Hera"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Hera\CodexPortrait_Hera"
+      Scale = 0.29
+      EndFrame = 1
+      StartFrame = 1
+    }
+  ]
+}

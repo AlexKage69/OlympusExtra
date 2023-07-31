@@ -12,6 +12,7 @@ Import "SeparateGoddess.lua"
 Include "Apollo/modfile_apollo.txt"
 Include "Hestia/modfile_hestia.txt"
 Include "Hera/modfile_hera.txt"
+Include "Hephaestus/modfile_hephaestus.txt"
 
 :: Merge all together
 Import "OlympusExtra.lua"

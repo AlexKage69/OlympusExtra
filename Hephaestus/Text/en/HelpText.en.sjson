@@ -1,0 +1,217 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "NPC_Hephaestus_01"
+			DisplayName = "Hephaestus"
+			Description = "Blacksmith of the gods"
+		}		
+		{
+			Id = "HephaestusFirstPickUp"
+			DisplayName = "Met Hephaestus"
+		}
+		{
+			Id = "HephaestusUpgrade"
+			DisplayName = "Hephaestus"
+			Description = "Blacksmith of the gods"
+		}
+		{
+			Id = "HephaestusUpgrades"
+			DisplayName = "Blacksmith of the gods"
+			Description = "The son of the god of the dead shall someday earn various Boons of Hephaestus."
+		}
+		{
+			Id = "HephaestusUpgrade_FlavorText01"
+			DisplayName = "hard work is the greatest gift you can make to yourself."
+		}
+		{
+			Id = "HephaestusUpgrade_FlavorText02"
+			DisplayName = "there's always place for improvement."
+		}
+		{
+			Id = "HephaestusUpgrade_FlavorText03"
+			DisplayName = "perfection is never far, but never reached."
+		}	
+		{
+			Id = "HephaestusWeaponTrait"
+			DisplayName = "Steady Strike"
+			Description = "Your {$Keywords.Attack} inflicts {$Keywords.EnvyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Envy Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
+		} 		
+		{
+			Id = "HephaestusWeaponTrait_Initial"
+			InheritFrom = "HephaestusWeaponTrait"
+			Description = "Your {$Keywords.Attack} inflicts {$Keywords.EnvyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Envy Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HephaestusSecondaryTrait"
+			DisplayName = "Steady Flourish"
+			Description = "Your {$Keywords.Special} inflicts {$Keywords.EnvyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Envy Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 	
+		{
+			Id = "HephaestusSecondaryTrait_Initial"
+			InheritFrom = "HephaestusSecondaryTrait"
+			Description = "Your {$Keywords.Special} inflicts {$Keywords.EnvyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Envy Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}		
+		{
+			Id = "HephaestusRushTrait"
+			DisplayName = "Mega Sprint"
+			Description = "Your {$Keywords.Dash} goes further. \n {!Icons.Bullet}{#PropertyFormat}Distance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HephaestusTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+		} 
+		{
+			Id = "HephaestusRushTrait_Initial"
+			InheritFrom = "HephaestusRushTrait"
+			Description = "Your {$Keywords.Dash} goes further. \n {!Icons.Bullet}{#PropertyFormat}Distance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HephaestusTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+		}
+		{
+			Id = "HephaestusSignoff"
+			DisplayName = "From Hephaestus"
+		}
+		{
+			Id = "HephaestusSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Hephaestus{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Professional Bond
+
+				{#AwardDarkFlavorFormat}You are the best commisionner he never encountered.
+			"""
+		}
+		{
+			Id = "HephaestusShoutTrait"
+			DisplayName = "Metal goons"
+			Description = "Your {$Keywords.WrathDerivedStocks} summons another god's or goddess's {$Keywords.WrathDerivedStocks}. \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}%{#PreviousFormat}"
+		}		
+		{
+			Id = "HephaestusShoutTrait_Tray"
+			InheritFrom = "HephaestusShoutTrait"
+			Description = "Your {$Keywords.WrathDerivedStocks} summons another god's or goddess's {$Keywords.WrathDerivedStocks}. \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}%{#PreviousFormat} \n {#ItalicFormat}Current God: {$TooltipData.CurrentGod}{#PreviousFormat}"
+		}	
+		{
+			Id = "HephaestusShoutTrait_Initial"
+			InheritFrom = "HephaestusShoutTrait"
+			Description = "Your {$Keywords.WrathDerivedStocks} summons another god's or goddess's {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Damage Boost: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}%{#PreviousFormat}"
+		} 
+		{
+			Id = "HephaestusRangedTrait"
+			DisplayName = "Rewarding Shot"
+			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}Small Orb Damage: \Column 380 {$TooltipData.DisplayDelta2}"
+		}
+		{
+			Id = "HephaestusRangedTrait_Initial"
+			InheritFrom = "HephaestusRangedTrait"
+			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#OldFormat}{$TooltipData.BaseRangedDamage}{!Icons.RightArrow}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Small Orb Damage: \Column 380 {$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "HephaestusRangedTrait_Tray"
+			InheritFrom = "HephaestusRangedTrait"
+			Description = "Your {$Keywords.Cast} is a orb that inflicts {$Keywords.JealousyCurse} and split into smaller orbs. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}Small Orb Damage: \Column 380 {$TooltipData.NewTotal2}"
+		}
+		{
+			Id = "FullHealthExtraRewardTrait",
+			DisplayName = "Fire up"
+			Description = "Gain random upgrade (+1 boon level(5%), +25 obol(10%), +10 Darkness(50%), +5 Gem(35%)) when you completing a room with full health (Armor protects you from that happening)"
+    	}
+		{
+			Id = "FullHealthExtraRewardTrait_Initial",
+			InheritFrom = "FullHealthExtraRewardTrait"
+			Description = "All items are discounted. Sometimes, a {$Keywords.SpecialDiscount} is available. \n {!Icons.Bullet}{#PropertyFormat}Discount: \Column 380 {#UpgradeFormat}-{$TooltipData.TooltipDiscount}%{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialDiscount}: \Column 380 {#UpgradeFormat}-20%{#PreviousFormat}"
+    	}
+		{
+			Id = "DropMoneyTrait"
+			DisplayName = "Smithing gold"
+			Description = "For each {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian , deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat}"
+		}
+		{
+			Id = "DropMoneyTrait_Initial"
+			InheritFrom = "DropMoneyTrait"
+			Description = "For each of your {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} from the same Olympian, deal bonus damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Per Boon: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "DamageBoostTrait"
+			DisplayName = "Steady race"
+			Description = "When 3 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "DamageBoostTrait_Initial"
+			InheritFrom = "DamageBoostTrait"
+			Description = "When 3 or more foes are {$Keywords.Status} afflicted, deal more damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorBossTrait"
+			DisplayName = "Reforging fate"
+			Description = "Pools of Purging, Infernal Troves and Urns are more rewarding. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorBossTrait_Initial"
+			InheritFrom = "ArmorBossTrait"
+			Description = "Pools of Purging, Infernal Troves and Urns are more rewarding. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorEncounterTrait"
+			DisplayName = "Perfect work"
+			Description = "Every few seconds, a random foe is inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorEncounterTrait_Initial"
+			InheritFrom = "ArmorEncounterTrait"
+			Description = "Every few seconds, a random foe is inflicted by {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Time Interval: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTimeInterval} sec{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorDefianceTrait"
+			DisplayName = "Lasting punishment"
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
+		}
+		{
+			Id = "ArmorDefianceTrait_Initial"
+			InheritFrom = "ArmorDefianceTrait"
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
+		}
+		{
+			Id = "HephaestusDistantTrait"
+			DisplayName = "Far Distances"
+			Description = "Visiting Charon replenishes {#UpgradeFormat}+1 {#PreviousFormat} use of your {#BoldFormat}Chthonic Companion{#PreviousFormat}'s {$Keywords.Assist}. \n {!Icons.Bullet}{#PropertyFormat}Chthonic Companion Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "HephaestusDistantTrait_Initial"
+			InheritFrom = "HephaestusDistantTrait"
+			Description = "Visiting Charon gives {#UpgradeFormat}+1 {#PreviousFormat} use of your {#BoldFormat}Chthonic Companion{#PreviousFormat}'s {$Keywords.Assist}. \n {!Icons.Bullet}{#PropertyFormat}Chthonic Companion Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}		
+		{
+			Id = "HephaestusTrapTrait"
+			DisplayName = "Clever Mechanism"
+			Description = "Visiting Charon restores some {!Icons.Health_Small}. You may pay Charon with {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Health_Small} restored: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "HephaestusTrapTrait_Initial"
+			InheritFrom = "HephaestusTrapTrait"
+			Description = "Visiting Charon restores some {!Icons.Health_Small}. You may pay Charon with {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Health_Small} restored: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorLegendaryTrait"
+			DisplayName = "Weapon Master"
+			Description = "{$Keywords.Aura}: Foes with {$Keywords.EnvyCurse} or {$Keywords.JealousyCurse} decay. \n {!Icons.Bullet}{#PropertyFormat}Decay Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat} {#ItalicFormat} (every {$TooltipData.TooltipTickRate} Sec.) \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Small{#AltUpgradeFormat}"
+		}
+		{
+			Id = "ForceHephaestusBoonTrait"
+			DisplayName = "Primordial Fire"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait."
+		}
+		{
+			Id = "ForceHephaestusBoonTrait_Rack"
+			InheritFrom = "ForceHephaestusBoonTrait"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "ForceHephaestusBoonTrait_Inactive"
+			DisplayName = "Primordial Fire"
+			Description = "You may reroll Daedalus Hammer Trait."
+		}				
+		{
+			Id = "ClearRequiredTraitsHephaestus"
+			DisplayName = "{!Icons.RunClearStar}Client of Hephaestus{!Icons.RunClearStar}"
+		}
+		{
+			Id = "HephaestusImprovedUpgrades"
+			DisplayName = "Perfectionist"
+			Description = "The son of the god of the dead shall someday earn all the gods' improvements by Hephaestus."
+		}
+	]
+}

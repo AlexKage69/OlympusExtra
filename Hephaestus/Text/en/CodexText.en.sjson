@@ -1,0 +1,24 @@
+{
+  /*
+  Made by AlexKage and physiX
+  Additional writing by bessyboo
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_Hera_0001"
+      Speaker = "Achilles"
+      DisplayName = "'...Part 1...'"
+    }
+    {
+      Id = "CodexData_Hera_0002"
+      Speaker = "Achilles"      
+      DisplayName = "'...Part 1, Part 2...'"
+    }
+    {
+      Id = "CodexData_Hera_0003"
+      Speaker = "Achilles" 
+      DisplayName = "'...Part 1, Part 2, Part 3.'"
+    }
+  ]
+}

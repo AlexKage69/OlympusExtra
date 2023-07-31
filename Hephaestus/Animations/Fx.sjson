@@ -1,0 +1,4729 @@
+{
+  Animations = [
+    "_append"
+
+    /* Hera - Feather Animations */
+    {
+      Name = "HeraWings"
+      FilePath = "Hera\Fx\HeraWings\HeraWings"
+      //GroupName = "Standing_Back_Add"
+      GroupName = "Standing_Back"
+      Type = "Book"
+      //VisualFx = "HermesFeather"
+      //AngleFromOwner = "Take"
+      UseFrameAngleFromOwner = true
+      Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Duration = 1
+      Alpha = 1.0
+      Blue = 1.0
+      Green = 1.0
+      Red = 1.0
+      EaseIn = 0.01
+      //EaseOut = 0.1
+      EndFrame = 1
+      NumAngles = 32
+      NumFrames = 1
+      StartFrame = 1
+      OffsetZ = 120.0
+      //RadialOffsetMax = -50.0
+      //RadialOffsetMin = -49.0
+      //OffsetY = -105.0
+      //RadialOffsetScaleY = 0.5
+      //RadialOffsetMax = -50.0
+      //RadialOffsetMin = -49.0
+      Ambient = 0.0
+      Scale = 2.0
+      OverlayVfx = false
+      Loop = true
+    }
+    {
+      Name = "HeraWingsFlap"
+      FilePath = "Hera\Fx\HeraWings\HeraWings"
+      GroupName = "FX_Standing"
+      Type = "Book"
+      //VisualFx = "HermesFeather"
+      AngleFromOwner = "Take"
+      Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
+      StartAlpha = 1.0
+      StartBlue = 1.0
+      StartGreen = 1.0
+      StartRed = 1.0
+      Duration = 1.0
+      EaseIn = 0.01
+      EaseOut = 0.1
+      EndFrame = 1
+      NumAngles = 32
+      NumFrames = 1
+      StartFrame = 1
+      OffsetZ = 120.0
+      RadialOffsetMax = -50.0
+      RadialOffsetMin = -49.0
+      EndScale = 2.5
+      StartScale = 2.0
+      Ambient = 0.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.06
+      VisualFxIntervalMin = 0.03
+      OverlayVfx = false
+    }
+    {
+      Name = "QuickFlashTeal"
+      InheritFrom = "QuickFlash"
+      FilePath = "Particles\particle_quickflash"
+      AddColor = false
+      StartRed = 0.00
+      StartGreen = 1.0
+      StartBlue = 1.0
+      EndBlue = 0.55
+      EndGreen = 0.53
+      EndScale = 0.6
+      StartScale = 1.5
+      TimeModifierFraction = 1.0
+    }
+    {
+      Name = "QuickFlashTealSmall"
+      InheritFrom = "QuickFlashTeal"
+      Scale = 0.5
+      OffsetZ = 90
+    }
+    {
+      Name = "HeraEnvyHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverDrop\HeraEnvyHoverDrop"
+      GroupName = "Combat_UI"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageStab"
+      ColorFromOwner = "Ignore"
+      EndFrame = 26
+      NumFrames = 26
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetZ = 240.0
+      Scale = 0.9
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraEnvyHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverLoop\HeraEnvyHoverLoop"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraBurstEnvyHoverLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Hera\Fx\HeraEnvyHoverLoop\HeraEnvyHoverLoop"
+      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      Alpha = 0.3
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      StartFrame = 1
+      DieWithOwner = true
+      Scale = 1.1
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "RadialBurstNovaHera"
+      InheritFrom = "RadialNova"
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "HeraFeatherA"
+      FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
+      GroupName = "FX_Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 49
+      NumFrames = 49
+      StartFrame = 1
+      OffsetZ = 60.0
+      RandomOffsetY = 40.0
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      Gravity = 50.0
+      RandomRotation = true
+      RandomRotationSpeedMax = 360.0
+      RandomRotationSpeedMin = -360.0
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.6
+      ScaleMin = 0.2
+      Ambient = 0.0
+      CancelOverCap = true
+      OnlyWhenVisible = true
+    }
+    {
+      Name = "HeraFeatherB"
+      InheritFrom = "HeraFeatherA"
+      FilePath = "Hera\Fx\HeraFeatherB\HeraFeatherB"
+    }
+    {
+      Name = "SwordSwipeA-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 120.0
+      AngleMin = -90.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "HeraFeatherC"
+      FilePath = "Hera\Fx\HeraFeatherA\HeraFeatherA"
+      GroupName = "FX_Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      StartRed = 0.0
+      StartGreen = 1.0
+      StartBlue = 1.0
+      EndRed = 0.0
+      EndGreen = 1.0
+      EndBlue = 1.0
+      EndFrame = 49
+      NumFrames = 49
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.6
+      ScaleMin = 0.2
+      //OffsetZ = 60.0 
+      /*RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 
+
+      RadialOffsetMax = 200.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleRadius = 500.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+      RandomRotation = true
+      RandomRotationSpeedMax = 360.0
+      RandomRotationSpeedMin = -360.0
+      Ambient = 0.0
+      CancelOverCap = true
+      OnlyWhenVisible = true*/
+    } 
+    {
+      Name = "SwordSwipeA-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 120.0
+      AngleMin = -90.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+
+    /* Hera - Sword - WeaponTrait */
+    {
+      Name = "SwordSwipeAFlipped-Hera"
+      InheritFrom = "SwordSwipeAFlipped"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearSlides = true
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      CreateAnimations = [
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+      ]
+      Slides = [
+
+        { DurationFrames = 1 }
+        /*Frame 1*/
+        { DurationFrames = 1 }
+        { DurationFrames = 1 VisualFx = "QuickFlashTeal" }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        /*Frame 10*/
+
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 1 }
+        { DurationFrames = 0 }
+        { DurationFrames = 0 }
+        { DurationFrames = 0 }
+        { DurationFrames = 0 }
+      ]
+    }
+    {
+      Name = "SwordSwipeA-Hera"
+      InheritFrom = "SwordSwipeAFlipped-Hera"
+      FlipVertical = false
+    }
+    {
+      Name = "SwordSwipeA-Hera-Arthur"
+      InheritFrom = "SwordSwipeAFlipped-Hera"
+      Scale = 2.0
+      ClearCreateAnimations = true
+      FlipVertical = false
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeAChroma"
+        }
+        {
+          Name = "SwordSwipeADark-Arthur"
+        }
+        {
+          Name = "SwordSwipeADisplace"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }]
+    }
+    {
+      Name = "SwordSwipeAFlipped-Hera-Arthur"
+      InheritFrom = "SwordSwipeAFlipped-Hera"
+      Scale = 2.0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeAChromaFlipped"
+        }
+        {
+          Name = "SwordSwipeAFlippedDark-Arthur"
+        }
+        {
+          Name = "SwordSwipeAFlippedDisplace"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherA"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }
+        {
+          Name="SwordSwipeA-FeatherB"
+        }]
+    }{
+      Name = "SwordSwipeB-Hera"
+      InheritFrom = "SwordSwipeB"
+      ChildAnimation = "QuickFlashTeal"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearSlides = true
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeB-FeatherA"
+        }
+        {
+          Name = "SwordSwipeB-FeatherA"
+        }
+        {
+          Name = "SwordSwipeB-FeatherA"
+        }
+        {
+          Name = "SwordSwipeB-FeatherA"
+        }
+        {
+          Name = "SwordSwipeB-FeatherA"
+        }
+        {
+          Name = "SwordSwipeB-FeatherB"
+        }
+        {
+          Name = "SwordSwipeB-FeatherB"
+        }
+        {
+          Name = "SwordSwipeB-FeatherB"
+        }
+        {
+          Name = "SwordSwipeB-FeatherB"
+        }
+        {
+          Name = "SwordSwipeB-FeatherB"
+        }        
+      ]
+      Slides = [
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+          VisualFx = "SwordSwipeB-Displace"
+        }
+        {
+          DurationFrames = 2
+          VisualFx = "SwordSwipeBImpact-Hera"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    
+    {
+      Name = "SwordSwipeB-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 20.0
+      RadialOffsetMin = 20.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -200.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "SwordSwipeB-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 20.0
+      RadialOffsetMin = 20.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -200.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "SwordSwipeBImpact-Hera"
+      InheritFrom = "SwordSwipeBImpact"
+      ChildAnimation = "QuickFlashPinkSwordSwipeBImpact"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SwordSwipeC-Hera"
+      InheritFrom = "SwordSwipeC-ArthurBase"
+      ChildAnimation = "RailgunLineSword3-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeC-Arthur-Chroma"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        
+      ]
+    }
+    {
+      Name = "SwordSwipeC-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      Acceleration = -300.0
+      VelocityMax = 700.0
+      VelocityMin = 400.0
+    }
+    {
+      Name = "SwordSwipeC-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      Acceleration = -300.0
+      VelocityMax = 700.0
+      VelocityMin = 400.0
+    }
+    {
+      Name = "RailgunLineSword3-Hera"
+      InheritFrom = "RailgunLineSword3"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SwordSwipeC-Hera-Arthur"
+      InheritFrom = "SwordSwipeC-Hera"
+      OffsetZ = 52
+      ClearCreateAnimations = true
+      CreateAnimation = "SwordSwipeC-Displace-Arthur"
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeC-Arthur-Chroma"
+        }
+        {
+          Name = "QuickFlashTealSmall"
+        }
+        {
+          Name = "SwordSwipeC-Arthur-Chroma"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherA"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }
+        {
+          Name = "SwordSwipeC-FeatherB"
+        }]
+    }{
+      Name = "ChargeAttack-Hera"
+      InheritFrom = "ChargeAttack"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    /* Hera - Sword - SecondaryTrait */
+    {
+      Name = "RadialNovaSwordParry-Hera"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      /*StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53 */
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 24
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0      
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "DoorCloseDust"
+        }
+        {
+          Name = "SwordParryGroundCrack"
+        }
+        {
+          Name = "DisplaceShockwaveSwordParry"
+        }
+        {
+          Name = "SwordParrySpikeHera"
+        }
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherA"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        {
+          Name = "RadialNovaSwordParry-FeatherB"
+        }
+        ]
+    }
+    {
+      Name = "RadialNovaSwordParry-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 500.0
+      VelocityMin = 200.0
+    }
+    {
+      Name = "RadialNovaSwordParry-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 500.0
+      VelocityMin = 200.0
+    }
+    {
+      Name = "SwordParrySpikeHera"
+      InheritFrom = "SwordParrySpike"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "RadialNovaSwordParry-HeraFeather"
+      InheritFrom = "HeraFeather"
+      AngleMax = 360.0 
+      AngleMin = -360.0 
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 30.0
+      OffsetZ = 60.0 
+      RandomOffsetX = 50.0
+      RandomOffsetY = 25.0 
+
+      RadialOffsetMax = 500.0
+      RadialOffsetMin = 400.0
+      RadialOffsetScaleRadius = 1000.0
+      RadialOffsetScaleY = 0.66
+      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
+      Acceleration = 0.0
+      Gravity = 50.0
+      VelocityMax = 100.0
+      VelocityMin = -100.0
+    }
+    /* Hera - Spear - WeaponTrait */
+    {
+      Name = "SpearThrustProjectile-Hera"
+      InheritFrom = "SpearThrustProjectile"
+      ChainTo = "SpearThrustDissipate-Hera"
+      ChildAnimation = "SpearThrustTrail-Hera"
+      CreateAnimation = "QuickFlashTeal"
+      Sound = "/EmptyCue"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearSlides = true
+      Slides = [
+        {
+          DurationFrames = 1
+          Frame = 1
+          VisualFx = "SpearThrustProjectileDark"
+        }
+        {
+          DurationFrames = 1
+          Frame = 2
+          VisualFx = "SpearThrustProjectileDark"
+        }
+        {
+          DurationFrames = 1
+          Frame = 3
+          VisualFx = "SpearDistortion"
+        }
+        {
+          DurationFrames = 1
+          Frame = 4
+          VisualFx = "SpearDistortion"
+        }]
+    }    
+    {
+      Name = "SpearThrustDissipate-Hera"
+      InheritFrom = "SpearThrustDissipate"
+      ChildAnimation = "SpearThrustTrail-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+      ]
+    }{
+      Name = "SpearThrustDissipate-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = -400.0
+      RadialOffsetMin = -400.0
+      AngleMax = 5.0
+      AngleMin = -5.0
+      Acceleration = -1000.0
+      VelocityMax = 900.0
+      VelocityMin = 250.0
+    }
+    {
+      Name = "SpearThrustDissipate-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = -400.0
+      RadialOffsetMin = -400.0
+      AngleMax = 5.0
+      AngleMin = -5.0
+      Acceleration = -1000.0
+      VelocityMax = 900.0
+      VelocityMin = 250.0
+    }{
+      Name = "SpearThrustTrail-Hera"
+      InheritFrom = "SpearThrustTrail"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SpearDashSwipe-Hera"
+      InheritFrom = "SpearDashSwipe"
+      //CreateAnimation = "SpearDashSwipeFx-Hera"
+      CreateAnimations = [
+        {
+          Name = "SpearDashSwipeFx-Hera"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherA"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+        {
+          Name = "SpearThrustDissipate-FeatherB"
+        }
+      ]
+    }{
+      Name = "SpearDashSwipeFx-Hera"
+      InheritFrom = "SpearDashSwipeFx"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ChildAnimation = "SpearDashSwipeFxB-Hera"
+    }{
+      Name = "SpearDashSwipeFxB-Hera"
+      InheritFrom = "SpearDashSwipeFxB"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SpearSwipeDashBaseParticles-Hera"
+      InheritFrom = "SpearSwipeDashBaseParticles"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }{
+      Name = "TheseusSpearSwipeHera"
+      InheritFrom = "SpearSwipe360-Hera"
+      AngleChangeAcceleration = -150.0
+      PlaySpeed = 90.0
+      FlipHorizontal = true
+      RotationSpeed = 90.0
+      PostRotateScaleY = 0.6
+      Scale = 2.1
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = null
+      CreateAnimations = [
+        {
+          Name = "QuickFlashEnemy"
+        }]
+    }
+     {
+      Name = "SpearSwipe360-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 500.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "SpearSwipe360-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 500.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "SpearSwipe360-Hera"
+      InheritFrom = "SpearSwipe360"
+      ChildAnimation = "SpearSwipe360B-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SpearSwipe360B-Hera"
+      InheritFrom = "SpearSwipe360B"
+      ChildAnimation = "SpearSwipeGlow-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherA"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+        {
+          Name = "SpearSwipe360-FeatherB"
+        }
+      ]
+      Slides = [
+        {
+          DurationFrames = 1
+          Frame = 4
+        }]
+    }
+    {
+      Name = "SpearSwipeGlow-Hera"
+      InheritFrom = "SpearSwipeGlow"
+      ChildAnimation = "SpearSwipe360-Hera-Emitter"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SpearSwipe360-Hera-Emitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      Duration = 0.2
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.011
+      VisualFxIntervalMin = 0.01
+    }
+    /* Hera - Spear - SecondaryTrait */
+    {
+      Name = "SpearThrowProjectile-Hera"
+      InheritFrom = "SpearThrowProjectile"
+      CreateAnimation = "SpearThrowProjectileGlow-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "SpearThrustProjectile-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "SpearThrustProjectile-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "SpearThrowProjectileGlow-Hera"
+      InheritFrom = "SpearThrowProjectileGlow"
+      ChildAnimation = "QuickFlashTeal"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "SpearThrustProjectile-FeatherA"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherA"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherA"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherA"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherA"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherB"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherB"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherB"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherB"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherB"
+        }
+      ]
+    }{
+      Name = "SpearRushTrailFx-Hera"
+      InheritFrom = "SpearRushTrailFx"
+      VisualFx = "SpearRushTrail-Hera"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SpearRushTrailFxDark"
+        }
+        {
+          Name = "SpearRushDashPuff"
+        }
+        {
+          Name = "QuickFlashTealSmall"
+        }]
+    }{
+      Name = "SpearRushTrail-Hera"
+      InheritFrom = "SpearRushTrail"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SpearRushTrail_Dark"
+        }
+        {
+          Name = "SpearThrowParticles_Rush-Hera"
+        }]
+    }
+    {
+      Name = "SpearThrowParticles_Rush-Hera"
+      InheritFrom = "SpearThrustParticles"
+      AngleFromOwner = "Take"
+      RandomDurationMax = 0.8
+      RandomDurationMin = 0.5
+      OffsetZ = 60.0
+      RandomOffsetY = 60
+      RadialOffsetMax = 150.0
+      VelocityMin = 1.0
+      StartScaleX = 32.0
+      ScaleMin = 0.2
+      ScaleMax = 1.0
+      CreateAnimations = [
+        {
+          Name = "SpearThrustProjectile-FeatherA"
+        }
+        {
+          Name = "SpearThrustProjectile-FeatherB"
+        }
+      ]
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      OriginX = 64
+      OriginY = 32
+      ScaleY = 0.5
+      EaseIn = 0.999
+      EaseOut = 1.0
+    }
+    /* Hera - Bow - WeaponTrait */
+    {
+      Name = "BowWeaponArrow-Hera"
+      InheritFrom = "BowWeaponArrow"
+      ChildAnimation = null
+      VisualFx = "BowTrail-Hera"
+      Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      EaseIn = 0.9
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "HeraBowTwinkle"
+        }]
+    }
+     {
+      Name = "WeaponProjectile-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "WeaponProjectile-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "BowWeaponArrow-Hera-SplitShot"
+      InheritFrom = "BowWeaponArrow-Hera"
+      ChildAnimation = "null"
+      CreateAnimation = "null"
+      ClearCreateAnimations = true
+      VisualFx = "BowTrail-Hera-SplitShot"
+      
+    }
+    {
+      Name = "HeraBowTwinkle"
+      InheritFrom = "HeraDashTwinkle"
+      PlaySpeed = 90.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      UseAttachedMarkerLocation = "head_TRACKING"
+      Velocity = 0.0
+      EndScale = 0.5
+      StartScale = 1.5
+      RadialOffsetMax = 1
+      RadialOffsetMin = 0
+    }
+    {
+      Name = "BowTrail-Hera"
+      CreateAnimations = [
+        {
+          Name = "BowTrailRandom-Hera"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }]
+    }
+    {
+      Name = "BowTrailRandom-Hera"
+      FilePath = "Animations\BowTrail-Artemis\BowTrail-Artemis"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "BowTrailA-Hera"
+        }
+        {
+          Name = "BowTrailB-Hera"
+        }]
+    }
+    {
+      Name = "BowTrail-Hera-SplitShot"
+      CreateAnimations = [
+        {
+          Name = "BowTrailRandom-Hera-SplitShot"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }]
+    }
+    {
+      Name = "BowTrailRandom-Hera-SplitShot"
+      FilePath = "Animations\BowTrail-Artemis\BowTrail-Artemis"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "BowTrailA-Hera-SplitShot"
+        }
+        {
+          Name = "BowTrailB-Hera-SplitShot"
+        }]
+    }
+    {
+      Name = "BowTrailA-Hera"
+      InheritFrom = "BowTrailA"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      EaseIn = 0.9
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "HeraRangedTrailLeavesRandom"
+        }
+        {
+          Name = "HeraBowTrailHelix"
+        }
+        {
+          Name = "HeraBowTrailHelixSide"
+        }]
+    }
+    {
+      Name = "BowTrailA-Hera-SplitShot"
+      InheritFrom = "BowTrailA-Hera"
+      ClearCreateAnimations = true
+      CreateAnimation = null
+      ChildAnimation = null
+      VisualFx = null
+      CreateAnimations = [
+        {
+          Name = "HeraBowTrailHelixSide"
+        }
+        {
+          Name = "HeraBowTrailLeaves"
+        }
+        {
+          Name = "BowTrailA_Dark"
+        }]
+    }
+    {
+      Name = "HeraBowTrailHelix"
+      InheritFrom = "BloodstoneHelixTrail"
+      VisualFx = "null"
+      AngleFromOwner = "Take"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      PlaySpeed = 360.0
+      RandomPlaySpeedMax = 160.0
+      RandomPlaySpeedMin = 90.0
+      OffsetZ = 60.0
+      Scale = 0.35
+      CancelOverCap = true
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "HeraBowTrailHelixSide"
+      InheritFrom = "BloodstoneHelixSide"
+      AngleFromOwner = "Take"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      RandomPlaySpeedMax = 160.0
+      RandomPlaySpeedMin = 90.0
+      OffsetZ = 60.0
+      VelocityMax = 200.0
+      VelocityMin = 10.0
+      Scale = 0.5
+      ScaleX = 2.5
+      CancelOverCap = true
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "BowTrailA-Hera-Particles"
+      InheritFrom = "ArtemisRangedTrailLeavesRandom"
+    }
+    {
+      Name = "BowTrailB-Hera"
+      InheritFrom = "BowTrailA-Hera"
+      CreateAnimation = "BowTrailB_Dark"
+      FilePath = "Fx\BowTrailB\BowTrailB"
+      EndFrame = 60
+      NumFrames = 60
+      StartFrame = 1
+    }
+    {
+      Name = "BowTrailB-Hera-SplitShot"
+      InheritFrom = "BowTrailA-Hera-SplitShot"
+      CreateAnimation = "BowTrailB_Dark"
+      FilePath = "Fx\BowTrailB\BowTrailB"
+      EndFrame = 60
+      NumFrames = 60
+      StartFrame = 1
+    }
+    {
+      Name = "BowCharge-Hera"
+      InheritFrom = "BowCharge"
+      ChainTo = "BowChargedLoop-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "BowChargedLoop-Hera"
+      InheritFrom = "BowChargedLoop"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "BowChargeFast-Hera"
+      InheritFrom = "BowCharge-Hera"
+      ChainTo = "BowChargedFastLoop-Hera"
+      PlaySpeed = 200.0
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargedFastLoop-Hera"
+      InheritFrom = "BowChargedLoop-Hera"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargeRama-Hera"
+      InheritFrom = "BowChargeRama"
+      ChildAnimation = "BowChargeRamaGlow-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ChainTo = "BowChargedLoopRama-Hera"
+    }
+    {
+      Name = "BowChargeRamaDash-Hera"
+      InheritFrom = "BowChargeRama-Hera"
+      ChainTo = "BowChargedLoopRamaDash-Hera"
+      ChildAnimation = "BowChargeRamaGlowCharged-Hera"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargeRamaGlow-Hera"
+      InheritFrom = "BowChargeRamaGlow"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "BowChargeRamaGlowCharged-Hera"
+      InheritFrom = "BowChargeRamaGlowCharged"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "BowChargedLoopRama-Hera"
+      InheritFrom = "BowChargedLoopRama"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      ChildAnimation = "BowChargeRamaGlowCharged-Hera"
+    }
+    {
+      Name = "BowChargedLoopRamaDash-Hera"
+      InheritFrom = "BowChargedLoopRama-Hera"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "RamaWideShot-Hera"
+      InheritFrom = "RamaWideShot"
+      VisualFx = "RamaWideShotTrail-Hera"
+      ClearCreateAnimations = true
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      CreateAnimations = [
+        {
+          Name = "RamaWideShotDark-Hera"
+        }
+        {
+          Name = "RamaWideShotGlow-Hera"
+        }]
+    }
+    {
+      Name = "RamaWideShotDark-Hera"
+      InheritFrom = "RamaWideShotDark"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "RamaWideShotTrail-Hera"
+      InheritFrom = "RamaWideShotTrail"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "RamaWideShotGlow-Hera"
+      InheritFrom = "RamaWideShotGlow"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "BowWeaponArrow-Hera-Alt01"
+      InheritFrom = "BowWeaponArrow-Hera"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Hera-Alt02"
+      InheritFrom = "BowWeaponArrow-Hera"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
+    }
+    /* Hera - Bow - SecondaryTrait */
+    {
+      Name = "BowWeaponArrow-Hera-SplitShot-Alt01"
+      InheritFrom = "BowWeaponArrow-Hera-SplitShot"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Hera-SplitShot-Alt02"
+      InheritFrom = "BowWeaponArrow-Hera-SplitShot"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
+    }
+    /* Hera - Shield - WeaponTrait */
+    {
+      Name = "ShieldSwipe-Hera"
+      InheritFrom = "ShieldSwipe"
+      ClearCreateAnimations = true
+      VisualFxCap = 3
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      VisualFxIntervalMax = 0.06
+      VisualFxIntervalMin = 0.05
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "ShieldSwipeADisplace"
+        }
+        {
+          Name = "ShieldSwipeADark"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        ]
+    }
+    {
+      Name = "ShieldSwipe-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "ShieldSwipe-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "ShieldSwipeDash-Hera"
+      InheritFrom = "ShieldSwipe-Hera"
+      FlipVertical = true
+      ClearCreateAnimations = true
+      Scale = 1.4
+      CreateAnimations = [
+        {
+          Name = "QuickFlashYellow"
+        }
+        {
+          Name = "ShieldSwipeADisplace_Dash"
+        }
+        {
+          Name = "ShieldSwipeADark_Dash"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherA"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }
+        {
+          Name = "ShieldSwipe-FeatherB"
+        }]
+    }
+    {
+      Name = "ShieldRush3D-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "ShieldRush3D-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "ShieldCharge-Hera"
+      InheritFrom = "ShieldCharge"
+      ChainTo = "ShieldChargedLoop-Hera"
+      ChildAnimation = "ShieldChargeB-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "ShieldChargeB-Hera"
+      InheritFrom = "ShieldCharge-Hera"
+      ChainTo = "ShieldChargedLoopB-Hera"
+      ChildAnimation = "null"
+      PostRotateScaleY = 1.0
+    }
+    {
+      Name = "ShieldRush3D-Hera"
+      InheritFrom = "ShieldRush3D"
+      CreateAnimation = "QuickFlashTeal"
+      VisualFx = "ShieldRushTrail-Hera"
+      Sound = "/SFX/Player Sounds/ZagreusShieldRush"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "ShieldRush3D-Out-Hera"
+      InheritFrom = "ShieldRush3D-Hera"
+      ChildAnimation = "null"
+      VisualFx = "null"
+      HoldLastFrame = false
+      EndScale = 0.0
+      StartScale = 1.25
+    }
+    {
+      Name = "ShieldRush3DBeowulf-Hera"
+      InheritFrom = "ShieldRush3D-Hera"
+      NumAngles = 64
+      FilePath = "Fx\BeowulfShieldRush3D\BeowulfShieldRush3D"
+      CreateAnimation = "ShieldRush3DBeowulfDark"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }]
+    }
+    {
+      Name = "ShieldRush3DBeowulfMax-Hera"
+      InheritFrom = "ShieldRush3DBeowulfMax"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      StartAlpha = 1
+      EndAlpha = 0.4
+    }
+    {
+      Name = "ShieldRush3DBeowulf-Out-Hera"
+      InheritFrom = "ShieldRush3DBeowulf-Out"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "ShieldRushTrail-Hera"
+      InheritFrom = "ShieldRushTrail"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "ShieldRush3D-FeatherA"
+        }
+        {
+          Name = "ShieldRush3D-FeatherA"
+        }
+        {
+          Name = "ShieldRush3D-FeatherB"
+        }
+        {
+          Name = "ShieldRush3D-FeatherB"
+        }]
+    }
+    {
+      Name = "ShieldChargedLoop-Hera"
+      InheritFrom = "ShieldChargedLoop"
+      ChildAnimation = "ShieldChargedLoopB-Hera"
+    }
+    {
+      Name = "ShieldChargedLoopB-Hera"
+      InheritFrom = "ShieldChargedLoopB"
+    }
+    {
+      Name = "BeowulfShieldSlam-Hera"
+      InheritFrom = "BeowulfShieldSlam"
+      VisualFx = "BeowulfShieldSlamParticles-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "BeowulfShieldSlamDark"
+        }
+        {
+          Name = "SwordParryGroundCrack-Beowulf"
+        }
+        {
+          Name = "BeowulfShieldSlamWave-Hera"
+        }
+        {
+          Name = "BeowulfShieldSlamWaveDark"
+        }
+        {
+          Name = "BeowulfShieldSlamFire"
+        }
+        {
+          Name = "ShieldRush3D-FeatherA"
+        }
+        {
+          Name = "ShieldRush3D-FeatherA"
+        }
+        {
+          Name = "ShieldRush3D-FeatherA"
+        }
+        {
+          Name = "ShieldRush3D-FeatherA"
+        }
+        {
+          Name = "ShieldRush3D-FeatherB"
+        }
+        {
+          Name = "ShieldRush3D-FeatherB"
+        }
+        {
+          Name = "ShieldRush3D-FeatherB"
+        }
+        {
+          Name = "ShieldRush3D-FeatherB"
+        }]
+    }
+    {
+      Name = "BeowulfShieldSlamParticles-Hera"
+      InheritFrom = "BeowulfShieldSlamParticles"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "BeowulfShieldSlamWave-Hera"
+      InheritFrom = "BeowulfShieldSlamWave"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    /* Hera - Shield - SecondaryTrait  */
+    {
+      Name = "ProjectileShield-Hera"
+      InheritFrom = "ProjectileShield"
+      CreateAnimation = "ProjectileShieldFlare-Hera"
+      VisualFx = "ShieldThrowTrail-Hera"
+    }
+    {
+      Name = "ProjectileShieldAlt01-Hera"
+      InheritFrom = "ProjectileShieldAlt01"
+      CreateAnimation = "ProjectileShieldFlare-Hera"
+      VisualFx = "ShieldThrowTrail-Hera"
+    }
+    {
+      Name = "ProjectileShieldAlt03-Hera"
+      InheritFrom = "ProjectileShieldAlt03"
+      CreateAnimation = "ProjectileShieldFlare-Hera"
+      VisualFx = "ShieldThrowTrailBeowulf-Hera"
+    }
+    {
+      Name = "ProjectileShieldAlt02-Hera"
+      InheritFrom = "ProjectileShieldMirage"
+      CreateAnimation = "ProjectileShieldMirageLight-Hera"
+      VisualFx = null
+    }
+    {
+      Name = "ProjectileShieldFlare-Hera"
+      InheritFrom = "ProjectileShieldFlare-Ares"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "ShieldThrowTrail-Hera"
+      InheritFrom = "ShieldThrowTrail"
+      CreateAnimation = "null"
+      VisualFx = "ShieldThrowTrailParticle-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "ShieldThrowTrailDark"
+        }
+        {
+          Name = "ShieldThrowTrail-HeraFx"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }]
+    }
+    {
+      Name = "ShieldThrowTrailBeowulf-Hera"
+      InheritFrom = "ShieldThrowTrail-Hera"
+      CreateAnimation = "ShieldThrowTrailBeowulfDark"
+      RotationSpeed = 0
+      Scale = 2
+      FilePath = "Fx\BeowulfShieldSpin\BeowulfShieldSpin"
+      NumFrames = 8
+      RandomPlaySpeedMin = 30
+      ClearCreateAnimations = true
+      RandomPlaySpeedMax = 60
+    }
+    {
+      Name = "ShieldThrowTrail-HeraFx"
+      FilePath = "Fx\AthenaProtectionFrontOut\AthenaProtectionFrontOut"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      AngleMax = 360.0
+      EndFrame = 8
+      NumFrames = 8
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Take"
+      SortMode = "FromParent"
+      Scale = 0.5
+      Ambient = 0.0
+    }
+    {
+      Name = "ShieldThrowTrailMirage-Hera"
+      InheritFrom = "ShieldThrowTrailMirage"
+      VisualFx = "ShieldThrowTrailMirageB-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ShieldThrowTrailMirageDark"
+        }
+        {
+          Name = "QuickFlashTealSmall"
+        }
+        {
+          Name = "RadialNovaShieldThrow-Hera"
+        }]
+    }{
+      Name = "ShieldThrowTrailMirageB-Hera"
+      InheritFrom = "ShieldThrowTrailMirageB"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "RadialNovaShieldThrow-FeatherA"
+        }
+        {
+          Name = "RadialNovaShieldThrow-FeatherA"
+        }
+        {
+          Name = "RadialNovaShieldThrow-FeatherB"
+        }
+        {
+          Name = "RadialNovaShieldThrow-FeatherB"
+        }]
+    }
+    {
+      Name = "RadialNovaShieldThrow-Hera"
+      InheritFrom = "RadialNovaShieldThrow"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }    
+    {
+      Name = "RadialNovaShieldThrow-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "RadialNovaShieldThrow-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    /* Hera - Gun - WeaponTrait */
+ {
+      Name = "GunWeaponProjectile-Hera"
+      InheritFrom = "GunWeaponProjectile"
+      CreateAnimation = "GunWeaponMuzzleFlash-Hera"
+      VisualFx = "GunTrail-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "GunWeaponMuzzleFlash-Hera"
+      InheritFrom = "GunWeaponMuzzleFlash"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "GunTrail-Hera"
+      CreateAnimations = [
+        {
+          Name = "GunTrailRandom-Hera"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }]
+    }
+    {
+      Name = "GunTrailRandom-Hera"
+      FilePath = "Animations\GunTrail\GunTrail"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunTrailA-Hera"
+        }
+        {
+          Name = "GunTrailB-Hera"
+        }]
+    }
+    {
+      Name = "GunTrailA-Hera"
+      InheritFrom = "GunTrailA"
+      ClearCreateAnimations = true
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      EaseIn = 0.5
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "GunTrailA-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Hera"
+        }]
+    }
+    {
+      Name = "GunTrailFloorGlow-Hera"
+      InheritFrom = "GunTrailFloorGlow"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "GunTrailB-Hera"
+      InheritFrom = "GunTrailA-Hera"
+      ClearCreateAnimations = true
+      FilePath = "Fx\GunTrailB\GunTrailB"
+      EndFrame = 42
+      NumFrames = 42
+      StartFrame = 1
+      CreateAnimations = [
+        {
+          Name = "GunTrailB-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Hera"
+        }]
+    }
+    {
+      Name = "GunTrail-Ares-Homing"
+      CreateAnimations = [
+        {
+          Name = "GunTrailRandom-Hera-Homing"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherA"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }
+        {
+          Name = "WeaponProjectile-FeatherB"
+        }]
+    }
+    {
+      Name = "GunTrailRandom-Hera-Homing"
+      FilePath = "Animations\GunTrail\GunTrail"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunTrailA-Hera-Homing"
+        }
+        {
+          Name = "GunTrailB-Hera-Homing"
+        }]
+    }
+    {
+      Name = "GunTrailA-Hera-Homing"
+      InheritFrom = "GunTrailA"
+      ClearCreateAnimations = true
+      StartBlue = 0.001
+      StartGreen = 0.001
+      EaseIn = 0.5
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "GunTrailA-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Hera"
+        }]
+    }
+    {
+      Name = "GunTrailB-Hera-Homing"
+      InheritFrom = "GunTrailA-Hera"
+      ClearCreateAnimations = true
+      FilePath = "Fx\GunTrailB\GunTrailB"
+      EndFrame = 42
+      NumFrames = 42
+      StartFrame = 1
+      CreateAnimations = [
+        {
+          Name = "GunTrailB-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Hera"
+        }]
+    }
+    {
+      Name = "GunFire-Hera"
+      FilePath = "Animations\GunFire-Ares\GunFire-Ares"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunFireA-Hera"
+        }
+        {
+          Name = "GunFireB-Hera"
+        }]
+    }
+    {
+      Name = "GunFireA-Hera"
+      InheritFrom = "GunFireA"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "GunFireB-Hera"
+      InheritFrom = "GunFireA-Hera"
+      CreateAnimation = "GunFireB-Dark"
+      FilePath = "Fx\GunFireB\GunFireB"
+      EndFrame = 33
+      NumFrames = 33
+      StartFrame = 1
+    }
+    {
+      Name = "GunWeaponImpact-Hera"
+      InheritFrom = "GunWeaponImpact"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "GunLaser-Hera"
+      InheritFrom = "GunLaser"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+      VisualFx = "GunLaserFeathers-Hera"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "GunLaserDark"
+        }
+        {
+          Name = "GunLaserGlow-Hera"
+        }
+        {
+          Name = "GunLaserHalo-Hera"
+        }]
+    }
+    {
+      Name = "GunLaserGlow-Hera"
+      InheritFrom = "GunLaserGlow"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "GunLaserHalo-Hera"
+      InheritFrom = "GunLaserHalo"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+      VisualFxIntervalMin = 0.1
+      VisualFxIntervalMax = 0.11
+    }
+    {
+      Name = "GunLaserFeathers-Hera"
+      Type = "Random"
+      Random = [
+        {
+          Name = "GunLaserFeatherA-Hera"
+        }
+        {
+          Name = "GunLaserFeatherB-Hera"
+        }]
+    }
+    {
+      Name = "GunLaserFeatherA-Hera"
+      InheritFrom = "GunLaserFeatherA"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "GunLaserFeatherB-Hera"
+      InheritFrom = "GunLaserFeatherA-Hera"
+    }
+    {
+      Name = "GunLaserOriginFlare-Hera"
+      InheritFrom = "GunLaserOriginFlare"
+      VisualFx = "GunLaserFeathers-Hera"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "GunLaserTipFlare-Hera"
+      InheritFrom = "GunLaserTipFlare"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "GunCharge-Hera"
+      InheritFrom = "BowCharge-Hera"
+      ChainTo = "null"
+      DieWithoutWeaponCharge = "GunWeapon"
+      UseAttachedMarkerLocation = "weapon_2_TRACKING"
+    }
+    {
+      Name = "GunLaserEnd-Hera"
+      InheritFrom = "GunLaser-Hera"
+      TransferCopyBody = true
+      TransferAngle = true
+      ClearCreateAnimations = true
+      Loop = false
+      Duration = 0.09
+      StartScaleY = 1
+      EndScaleY = 0
+      GroupName = "Standing"
+      CreateAnimation = "null"
+    }
+    /* Hera - Gun - SecondaryTrait */
+    {
+      Name = "ZagGrenadeExplosionHera"
+      InheritFrom = "ZagGrenadeExplosionBase"
+      ClearCreateAnimations = true
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "GrenadeExplosionLightingHera"
+        }
+        {
+          Name = "DisplaceShockwaveHemiGrenade"
+        }
+        {
+          Name = "ExplosionScorchDecalFade"
+        }
+        {
+          Name = "ZagGrenadeExplosionHeraB"
+        }
+        {
+          Name = "RadialNovaSwordParry-Hera"
+        }]
+    }
+    {
+      Name = "Explosion-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "Explosion-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "GunGrenadeLuciferOrb-Hera"
+      InheritFrom = "GunGrenadeLuciferOrb"
+      ChildAnimation = "GunGrenadeLuciferOrbGlow-Hera"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      VisualFx = "GunGrenadeTrailContainer-LuciferOrb-Hera"
+    }
+    {
+      Name = "GunGrenadeLuciferOrbGlow-Hera"
+      InheritFrom = "GunGrenadeLuciferOrbGlow"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      StartRed = 0.80
+      StartGreen = 0.55
+      StartBlue = 0.05  
+      VisualFx = "GunGrenadeLuciferOrbFlare-Hera"
+    }
+    {
+      Name = "GunGrenadeLuciferOrbFlare-Hera"
+      InheritFrom = "GunGrenadeLuciferOrbFlare"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "LuciferOrbAoE-Hera"
+      InheritFrom = "LuciferOrbAoE"
+      CreateAnimation = "LuciferOrbAoEDissipate-Hera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "LuciferOrbAoEDissipate-Hera"
+      InheritFrom = "LuciferOrbAoEDissipate"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53 
+    }
+    {
+      Name = "LuciferBomb-Hera"
+      InheritFrom = "LuciferBomb"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "LuciferBombDark"
+        }
+        {
+          Name = "LuciferBombGlow-Hera"
+        }
+        {
+          Name = "LuciferBombDropDisplace"
+        }
+        {
+          Name = "QuickFlashTeal"
+        }]
+    }
+    {
+      Name = "LuciferBombGlow-Hera"
+      InheritFrom = "LuciferBombGlow"
+      ColorFromOwner = "Ignore"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "GunGrenadeTrailContainer-LuciferOrb-Hera"
+      InheritFrom = "GunGrenadeTrailContainer-LuciferOrb"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "GunGrenadeTrail-LuciferOrb"
+        }
+        {
+          Name = "GunGrenadeParticles-LuciferOrb-Hera"
+        }]
+    }
+    {
+      Name = "GunGrenadeParticles-LuciferOrb-Hera"
+      Type = "Random"
+      Random = [
+        {
+          Name = "GunGrenadeParticles-LuciferOrb-HeraA"
+        }
+        /*{
+          Name = "GunGrenadeParticles-LuciferOrb-HeraB"
+        }*/
+        ]
+    }
+    {
+      Name = "GunGrenadeParticles-LuciferOrb-HeraA"
+      InheritFrom = "GunGrenadeParticles-LuciferOrb"
+      FilePath = "Particles\particle_kira"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      StartAlpha = 1.0
+      EndAlpha = 0.99
+      Scale = 0.5
+      EndScale = 0
+      UseOwnAngle = false
+      RandomRotation = false
+      AlphaMin = 0.99
+    }
+    /*{
+      Name = "GunGrenadeParticles-LuciferOrb-HeraB"
+      InheritFrom = "GunGrenadeParticles-LuciferOrb-HeraA"
+      FilePath = "Particles\particle_kira"
+    }*/
+    {
+      Name = "ZagGrenadeExplosionHeraB"
+      InheritFrom = "ZagGrenadeExplosionBaseB"
+      DrawBehindOwner = true
+      GroupName = "Standing"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "Explosion-FeatherA"
+        }
+        {
+          Name = "Explosion-FeatherA"
+        }
+        {
+          Name = "Explosion-FeatherA"
+        }
+        {
+          Name = "Explosion-FeatherB"
+        }
+        {
+          Name = "Explosion-FeatherB"
+        }
+        {
+          Name = "Explosion-FeatherB"
+        }
+      ]
+    }
+    {
+      Name = "GrenadeExplosionLightingHera"
+      InheritFrom = "GrenadeExplosionLightingBase"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "GunShotgunBlastRandomFlip-Hera"
+      Type = "Random"
+      Random = [
+        {
+          Name = "GunShotgunBlast-Hera"
+        }
+        {
+          Name = "GunShotgunBlastFlipped-Hera"
+        }]
+    }
+    {
+      Name = "GunShotgunBlast-Hera"
+      InheritFrom = "GunShotgunBlast"
+      ClearCreateAnimations = true
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "ShotgunBlastWaveA-Hera"
+        }
+        {
+          Name = "ShotgunBlastWaveB-Hera"
+        }]
+    }
+    {
+      Name = "GunShotgunBlastFlipped-Hera"
+      InheritFrom = "GunShotgunBlast-Hera"
+      FlipVertical = true
+      ClearCreateAnimations = true
+      CreateAnimation = "GunShotgunBlastDarkFlipped"
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "ShotgunBlastWaveA-Hera"
+        }
+        {
+          Name = "ShotgunBlastWaveB-Hera"
+        }]
+    }
+    {
+      Name = "ShotgunBlastWaveA-Hera"
+      InheritFrom = "ShotgunBlastWaveA"
+      Hue = 0
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "ShotgunBlastWaveB-Hera"
+      InheritFrom = "ShotgunBlastWaveB"
+      Hue = 0
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+    }
+    {
+      Name = "GunWeaponProjectile_Homing-Hera"
+      InheritFrom = "GunWeaponProjectile_Homing"
+      CreateAnimation = "GunWeaponMuzzleFlash-Hera"
+      VisualFx = "GunTrail-Hera"
+      Red = 1
+      Green = 1
+      Blue = 1
+      EndRed = 0.80
+      EndGreen = 0.55
+      EndBlue = 0.05  
+    }
+    /* Hera - Fist - WeaponTrait */
+    {
+      Name = "FistFxHera"
+      InheritFrom = "FistFxBase"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ChildAnimation = "FistGlowHera"
+    }
+    {
+      Name = "FistFx-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "FistFx-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "FistFxHera_Reach"
+      InheritFrom = "FistFxHera"
+      StartScaleX = 1.8
+      EndScaleX = 1
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "FistFxDark_Reach"
+        }
+        {
+          Name = "FistFxDisplacement_Reach"
+        }]
+    }
+    {
+      Name = "FistGlowHera"
+      InheritFrom = "FistGlow"
+      StartAlpha = 0.75
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53 
+      CreateAnimations = [
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+      ]
+    }
+    {
+      Name = "FistFxSwipeHera"
+      InheritFrom = "FistFxSwipe"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ChildAnimation = "FistGlowHera"
+      ClearCreateAnimations = true     
+      CreateAnimation = "HeraFistSwipeSwirl"
+    }
+    
+    {
+      Name = "HeraFistSwipeSwirl"
+      InheritFrom = "ArtemisDashIso"
+      CreateAnimation = "null"
+      FilePath = "Fx\ArtemisDashSwirl\ArtemisDashSwirl"
+      Angle = 0.0
+      AngleMax = 0.01
+      AngleMin = 0.0
+      Sound = "/SFX/Player Sounds/ArtemisLeavesWeaponSlashUpgrade"
+      EndFrame = 41
+      NumFrames = 41
+      PlaySpeed = 180.0
+      RadialOffsetMin = 300
+      RadialOffsetMax = 301
+      RadialOffsetScaleY = 0.5
+      OffsetZ = 30
+      StartFrame = 1
+      FlipHorizontal = true
+      FlipVertical = false
+      OriginX = 315.0
+      OriginY = 248.0
+      LocationFromOwner = "Take"
+      IsometricSkew = "None"
+      PostRotateScaleY = 0.5
+    }
+    {
+      Name = "FistFxUppercutHera"
+      InheritFrom = "FistFxUppercut"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "RadialNovaFistUppercut-Hera"
+        }
+        {
+          Name = "FistFxUppercutDark"
+        }
+        {
+          Name = "FistUppercutSmoke"
+        }]
+    }
+    {
+      Name = "RadialNovaFistUppercut-Hera"
+      InheritFrom = "RadialNovaSwordParry"
+      ClearCreateAnimations = true
+      VisualFxCap = 8
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "DoorCloseDust"
+        }
+        {
+          Name = "SwordParryGroundCrack"
+        }
+        {
+          Name = "DisplaceShockwaveSwordParry"
+        }
+        {
+          Name = "SwordParrySpike"
+        }
+        {
+          Name = "QuickFlashTeal"
+        }]
+    }{
+      Name = "ClawSwipe-Hera"
+      InheritFrom = "ClawSwipe"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.02
+      VisualFxCap = 6
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashTeal"
+        }]
+    }
+    {
+      Name = "ClawSwipeFlipped-Hera"
+      InheritFrom = "ClawSwipe-Hera"
+      CreateAnimation = "ClawSwipeDarkFlipped"
+      FlipVertical = true
+    }
+    {
+      Name = "ClawSwipeFlippedDash-Hera"
+      InheritFrom = "ClawSwipeFlipped-Hera"
+      CreateAnimation = "ClawSwipeDarkFlippedDash"
+      FlipVertical = true
+      RadialOffsetMin = 50
+      RadialOffsetMax = 51
+    }
+    {
+      Name = "ClawSwipeUppercut-Hera"
+      InheritFrom = "FistFxUppercutDirectionalHera"
+      OverlayVfx = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ClawSwipeUppercutCone-Hera"
+        }
+        {
+          Name = "ClawSwipeUppercutDark"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercutSpecial-Hera"
+      InheritFrom = "ClawSwipeUppercutSpecial"
+      Red = 1
+      Green = 1
+      Blue = 1
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      OverlayVfx = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ClawSwipeUppercutCone-Hera"
+        }
+        {
+          Name = "ClawSwipeUppercutDark"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercutCone-Hera"
+      InheritFrom = "ClawSwipeUppercutCone"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ChildAnimation = "FistGlowUppercutConeHera"
+      ClearCreateAnimations = true
+      VisualFx = "null"
+      CreateAnimations = [
+        {
+          Name = "QuickFlashGreen"
+        }
+        {
+          Name = "FistUppercutConeHeraSwirl"
+        }]
+    }
+    
+    {
+      Name = "FistFxUppercutDirectionalHera"
+      InheritFrom = "FistFxUppercut"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "FistUppercutConeHera"
+        }
+        {
+          Name = "FistFxUppercutDark"
+        }]
+    }{
+      Name = "FistUppercutConeHera"
+      InheritFrom = "FistUppercutCone"
+      ChildAnimation = "FistGlowUppercutConeHera"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimations = [
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }]
+    }{
+      Name = "FistGlowUppercutConeHera"
+      InheritFrom = "FistGlowUppercutCone"
+      StartAlpha = 0.75
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+    }
+    {
+      Name = "FistFireballFx-Hera"
+      InheritFrom = "FistFireballFx"
+      ClearCreateAnimations = true
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      VisualFx = "ProjectileFireRingFireball-Hera"
+      CreateAnimations = [
+        {
+          Name = "FistFireballFxStart-Hera"
+        }
+        {
+          Name = "CastDustFireball"
+        }]
+    }
+    {
+      Name = "FistFireballFxStart-Hera"
+      InheritFrom = "FistFireballFxStart"
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      ChildAnimation = "QuickFlashTeal"
+    }
+     {
+      Name = "ProjectileFireRingFireball-Hera"
+      InheritFrom = "ProjectileFireRingFireball"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      CreateAnimation = "HeraParticleMixGun"
+    }
+    {
+      Name = "HeraParticleMixGun"
+      FilePath = "Particles\particle_kira"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherA"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }
+        {
+          Name = "FistFx-FeatherB"
+        }]
+    }
+    {
+      Name = "FistSpecialLandFx_Hera"
+      InheritFrom = "RadialNovaSwordParry-Hera"
+      VisualFx = "EnemyBurrowDirtRadial_ScaleRadius"
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.02
+      VisualFxCap = 200
+      CreateAnimations = [
+        {
+          Name = "DustRingFront"
+        }
+        {
+          Name = "DustRingBackPetrified"
+        }
+        {
+          Name = "FistSpecialGroundCracks"
+        }
+        {
+          Name = "FistUppercutSmoke"
+        }]
+    }
+    /* Hera - Fist - SecondaryTrait */
+    {
+      Name = "FistFxUppercutDirectionalHera_FlashKick"
+      InheritFrom = "FistFxUppercutDirectionalHera"
+      FilePath = "Fx\SpearDashSwipe\SpearDashSwipe"
+      Type = "Slide"
+      StartFrame = 1
+      NumFrames = 9
+      OffsetZ = 0
+      UseOwnAngle = true
+      OriginX = 480
+      OriginY = 480
+      IsometricSkew = "X"
+      AngleFromOwner = "Take"
+      Scale = 0.75
+      Slides = [
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    /* Hera - Shout - Beam */
+    {
+      Name = "HeraLaserPreview"
+      ChainTo = "HeraLaser"
+      FilePath = "Fx\HeraBeam\HeraBeam"
+      Type = "Book"
+      Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamPreAttack"
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 30
+      NumFrames = 30
+      PlaySpeed = 80.0
+      StartFrame = 1
+      OriginX = 10.0
+      OriginY = 85.0
+      ScaleLength = 120.0
+      ScaleRadius = 160.0
+      ScaleY = 0.80
+      Ambient = 0.0
+      OverlayVfx = true
+      TransferCopyBody = false
+    }    
+    {
+      Name = "ZagreusShootLazer"
+      FilePath = "Animations\Zagreus\RangedWeapon\ZagreusRangedWeapon"
+      Type = "Book"
+      VideoTexture = "ZagreusRangedWeapon_Bink"
+      FrameDataFile = "Game\Animations\FrameData\ZagreusRangedWeapon.sga"
+      EndFrame = 100
+      Loop = true
+      NumAngles = 32
+      NumFrames = 120
+      StartFrame = 1
+      OffsetY = -105.0
+      SetOwnerEndAngle = true
+      Scale = 1.05
+      CancelOnOwnerMove = true
+    }
+    {
+      Name = "HeraLaser"
+      ChainTo = "HeraLaserEnd"
+      FilePath = "Fx\HeraBeam\HeraBeam"
+      Type = "Book"
+      Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamAttackLoop"
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 30
+      LoopFramesOnly = true
+      NumFrames = 30
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OriginX = 10.0
+      OriginY = 85.0
+      TransferFrameFromThis = true
+      ScaleLength = 120.0
+      ScaleRadius = 160.0
+      Ambient = 0.0
+      OverlayVfx = true
+      TransferCopyBody = false
+    }
+    {
+      Name = "Invincibubble_Hera_Loop"
+      ChildAnimation = "InvincibubbleLoop_Hera_Offset"
+      FilePath = "Fx\InvincibubbleIn\InvincibubbleIn"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/Leftovers/SFX/PerfectTiming"
+      ColorFromOwner = "Ignore"
+      EndFrame = 27
+      HoldLastFrame = true
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+      NumFrames = 27
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetY = -50.0
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      UseAttachedMarkerLocation = "ZAxis_TRACKING"
+      ScaleFromOwner = "Ignore"
+      ScaleY = 0.75
+      Ambient = 0.0
+      CreateAnimationOnEnd = "InvincibubbleOut_Zag"
+    }
+    {
+      Name = "InvincibubbleLoop_Hera_Offset"
+      InheritFrom = "InvincibubbleLoop"
+      ChildAnimation = "HeraLaserOrigin"
+      GroupName = "FX_Standing_Add"
+      PingPongColor = true      
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+      DieWithOwner = false
+      LocationZFromOwner = "Ignore"
+      ScaleY = 0.75
+    }
+    {
+      Name = "HeraLaserGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      ScaleLength = 200
+      GroupName = "FX_Standing_Add"
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Maintain"
+      DieWithOwner = true
+      //OriginX = 0
+     // OriginY = 0
+      ScaleY = 2.0
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      StartAlpha = 0.9
+      EndAlpha = 1.0
+      PingPongColor = true
+      RandomDurationMin = 0.05
+      RandomDurationMax = 0.1
+      Loop = true
+    }
+    {
+      Name = "HeraLaserGlowTerrain"
+      InheritFrom = "HeraLaserGlow"
+      GroupName = "FX_Terrain_Add"
+      LocationZFromOwner = "Ignore"
+    }
+    {
+      Name = "HeraLaserDark"
+      InheritFrom = "HeraLaser"
+      GroupName = "FX_Dark"
+      Red = 0
+      Green = 0
+      Blue = 0
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      CreateAnimationOnEnd = null
+      ScaleY = 1.0
+      StartScaleY = 1.0
+      EndScaleY = 1.2
+      EaseIn = 0
+      EaseOut = 1
+      PingPongScale = true
+      DieWithOwner = true
+    }
+    {
+      Name = "HeraLaserEnd"
+      InheritFrom = "HeraLaser"
+      Sound = "/EmptyCue"
+      LoopFramesOnly = true
+      StartScaleY = 0.66
+      EndScaleY = 0
+      ChainTo = null
+      CreateAnimationOnEnd = null
+      EaseIn = 0.5
+      EaseOut = 1.0
+      Loop = false
+      ClearCreateAnimations = true
+      CreateAnimation = null
+      ChildAnimation = null
+      Duration = 0.25
+    }
+    {
+      Name = "HeraLaserOrigin"
+      ChildAnimation = "HeraLaserOriginGlow"
+      FilePath = "Fx\HadesBeamCapEnd\HadesBeamCapEnd"
+      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
+      GroupName = "Standing"
+      FlipHorizontal = true
+      Type = "Book"
+      ColorFromOwner = "Ignore"
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      PlaySpeed = 30.0
+      StartFrame = 1
+      DieWithOwner = true
+      SortMode = "FromParent"
+      ScaleFromOwner = "Ignore"
+      Scale = 1.0
+      ScaleX = 2
+      OriginX = 0
+      OriginY = 0
+      RandomFlipVertical = true
+    }
+    {
+      Name = "HeraLaserOriginNoLight"
+      InheritFrom = "HeraLaserOrigin"
+      CreateAnimation = null
+    }
+    {
+      Name = "HeraLaserTip"
+      Type = "Book"
+      FilePath = "Fx\HadesBeamCapStart\HadesBeamCapStart"
+      Material = "Unlit"
+      GroupName = "Standing"
+      SortMode = "FromParent"
+      NumFrames = 40
+      Loop = true
+      LoopFramesOnly = true
+      StartScale = 0.5
+      EndScale = 1.0
+      EaseIn = 0
+      EaseOut = 1
+      PingPongScale = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 50
+      ScaleMin = 0.98
+      ReRandomizeOnLoop = true
+      ScaleMax = 1.02
+      Scale = 0.9
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      RandomStartFrame = true
+      LocationFromOwner = "Ignore"
+      FlipHorizontal = true
+      RandomFlipVertical = true
+      VisualFx = "HeraLaserTipParticles"
+      VisualFxManagerCap = 400
+      VisualFxIntervalMax = 0.3
+      VisualFxIntervalMin = 0.2
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      DieWithOwner = true
+      CreateAnimation = "HeraLaserTipGlow"
+    }
+    {
+      Name = "HeraLaserTipGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_quickflash"
+      Red = 1
+      Green = 1
+      Blue = 0.2
+      StartScale = 1
+      EndScale = 1.2
+      PingPongScale = true
+      StartAlpha = 0.8
+      EndAlpha = 1
+      PingPongColor = true
+      DieWithOwner = true
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      LocationFromOwner = "Ignore"
+      GroupName = "FX_Standing_Add"
+      Material = "Unlit"
+      Scale = 0.6
+      RandomRotation = true
+    }
+    {
+      Name = "HeraLaserTipIntro"
+      InheritFrom = "HeraLaserTip"
+      LoopFramesOnly = true
+      ChainTo = "HeraLaserTip"
+      StartScale = 0
+      EndScale = 0.3
+      Loop = false
+      Duration = 0.75
+      TransferFrameToThis = false
+      TransferFrameFromThis = true
+      VisualFx = null
+    }
+    {
+      Name = "HeraLaserTipIntroNoParticles"
+      InheritFrom = "HeraLaserTipIntro"
+      ChainTo = "HeraLaserTipNoParticles"
+    }
+    {
+      Name = "HeraLaserTipNoParticles"
+      InheritFrom = "HeraLaserTip"
+      VisualFx = null
+    }
+    {
+      Name = "HeraLaserOriginGlow"
+      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      SortMode = "FromParent"
+      ScaleY = 2
+      Scale = 0.66
+      AngleFromOwner = "Ignore"
+      LocationZFromOwner = "Maintain"
+      LocationFromOwner = "Maintain"
+      Red = 1
+      Green = 0.6
+      Blue = 0
+      StartAlpha = 0.7
+      EndAlpha = 1.0
+      PingPongColor = true
+      RandomDurationMin = 0.3
+      RandomDurationMax = 0.5
+      ReRandomizeOnLoop = true
+      Loop = true
+      DieWithOwner = true
+    }
+    
+    /* Theseus - Wrath */
+    {
+      Name = "RadialNovaTheseusWrath-Hera"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 16
+      VisualFxIntervalMax = 0.03
+      VisualFxIntervalMin = 0.01
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "TheseusWrathSpikeHera"
+        }
+        {
+          Name = "QuickFlashTeal"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherA"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }
+        {
+          Name = "RadialNovaHera-FeatherB"
+        }]
+    }
+    {
+      Name = "RadialNovaHera-FeatherA"
+      InheritFrom = "HeraFeatherA"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "RadialNovaHera-FeatherB"
+      InheritFrom = "HeraFeatherB"
+      RadialOffsetMax = 50.0
+      RadialOffsetMin = 50.0
+      AngleMax = 360.0
+      AngleMin = 0.0
+      Acceleration = -300.0
+      VelocityMax = 300.0
+      VelocityMin = 100.0
+    }
+    {
+      Name = "TheseusWrathSpikeHera"
+      InheritFrom = "TheseusWrathSpike"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "TheseusGodPowerPreviewDecal_Hera"
+      InheritFrom = "TheseusGodPowerPreviewDecalDark"
+      Color = {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }
+    {
+      Name = "DevotionPreAttackBase_Hera"
+      InheritFrom = "DevotionPreAttackBase"
+      VisualFx = "DevotionPreAttackFx_Hera"
+      CreateAnimationOnEnd = "DevotionPreAttackBaseEnd_Hera"
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      EndAlpha = 0.5
+      ScaleRadius = 25
+      HoldLastFrame = false
+    }
+    {
+      Name = "DevotionPreAttackFx_Hera"
+      InheritFrom = "DevotionPreAttackFx"
+      Scale = 0.5
+      Alpha = 0.2
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "DevotionRings_Hera"
+        }
+        {
+          Name = "DevotionLines_Hera"
+        }]
+    }
+     {
+      Name = "DevotionRings_Hera"
+      InheritFrom = "DevotionRings"
+      Red = 0
+      Green = 0.55
+      Blue = 0.53
+      Scale = 0.5
+      //StartRed = 0.0
+      //StartGreen = 0.55
+      //StartBlue = 0.53
+      ColorFromOwner = "Ignore"
+    }
+    {
+      Name = "DevotionLines_Hera"
+      InheritFrom = "DevotionLines"
+      Red = 0
+      Green = 0.55
+      Blue = 0.53
+      //StartRed = 0.0
+      //StartGreen = 0.55
+      //StartBlue = 0.53
+      ColorFromOwner = "Ignore"
+    }
+    {
+      Name = "DevotionHeraProjectile"
+      CreateAnimation = "QuickFlashTeal"
+      FilePath = "Fx\AsphodelSkullDeath\AsphodelSkullDeath"
+      GroupName = "Standing"
+      Type = "Book"
+      VisualFx = "ArtemisRangedTrail_Hera"
+      DurationFrames = 48
+      EaseIn = 0.01
+      EaseOut = 0.02
+      EndFrame = 1
+      NumAngles = 60
+      NumFrames = 1
+      StartFrame = 1
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      Scale = 0.4
+      AddColor = true
+      StartRed = 1
+      EndRed = 0
+      StartGreen = 1
+      EndGreen = 0
+      StartBlue = 1
+      EndBlue = 0
+      PingPongColor = true
+      VisualFxDistanceMin = 20
+      VisualFxDistanceMax = 22
+      Sound = "/SFX/AphroditeDevotionSFX"
+      ChildAnimation = "DevotionHeraProjectileGlow"
+    }
+    {
+      Name = "ArtemisRangedTrail_Hera"
+      FilePath = "Fx\ArtemisRangedTrail\ArtemisRangedTrail"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 120.0
+      RandomPlaySpeedMin = 90.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Scale = 1
+      StartScaleY = 0.5
+      EndScaleY = 1
+      Ambient = 0.0
+      Hue = 0.08
+      CreateAnimations = [
+        {
+          Name = "ArtemisRangedTrail_Hera_Dark"
+        }]
+    }
+    {
+      Name = "ArtemisRangedTrail_Hera_Dark"
+      InheritFrom = "ArtemisRangedTrail_Hera"
+      ClearCreateAnimations = true
+      GroupName = "FX_Dark"
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 60.0
+      LocationZFromOwner = "Maintain"
+      ScaleY = 0.7
+      OffsetY = 5
+      ScaleX = 0.5
+      StartScaleY = 0
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "DevotionHeraProjectileGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      ColorFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Alpha = 0.4
+    }
+    {
+      Name = "DevotionPreAttackBaseEnd_Hera"
+      InheritFrom = "DevotionPreAttackBaseEnd"
+      Red = 1
+      Green = 1
+      Blue = 1
+      CreateAnimation = "SwordParrySpikeHera"
+    }
+    {
+      Name = "DeathMarkedCurseOut"
+      FilePath = "Hera\Fx\HeraScytheOut\HeraScytheOut"
+      GroupName = "Combat_UI"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/Leftovers/SFX/PlayerScoreMedium"
+      ColorFromOwner = "Ignore"
+      EndFrame = 16
+      NumFrames = 16
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetZ = 240.0
+      SortMode = "FromParent"
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      Slides = [
+        {
+          DurationFrames = 1
+          Sound = "/SFX/Player Sounds/ZagreusSwordLunge"
+          Frame = 5
+        }]
+    }
+    {
+      Name = "DeathMarkedCurseIn"
+      InheritFrom = "DeathMarkedCurseOut"
+      ChainTo = "DeathMarkedCurseLoop"
+      FilePath = "Hera\Fx\HeraScytheIn\HeraScytheIn"
+      Sound = "/SFX/ThanatosAttackBell"
+      EndFrame = 9
+      NumFrames = 9
+      PlaySpeed = 30.0
+      StartFrame = 1
+      DieWithOwner = true
+    }
+    {
+      Name = "DeathMarkedCurseLoop"
+      InheritFrom = "DeathMarkedCurseOut"
+      FilePath = "Hera\Fx\HeraScytheLoop\HeraScytheLoop"
+      Sound = "/Leftovers/SFX/AuraAmbientLoop"
+      StopSoundOnFinishFade = 0.2
+      EaseOut = 1.0
+      EndFrame = 30
+      Loop = true
+      NumFrames = 30
+      PlaySpeed = 30.0
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      StartFrame = 1
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+      DieWithOwner = true
+    }
+    /* Boon FX */
+    {
+      Name = "BoonDropHera"
+      InheritFrom = "BoonDropGold"
+      ChildAnimation = "BoonDropA-Hera"
+    }
+    {
+      Name = "BoonDropA-Hera"
+      InheritFrom = "BoonDropA"
+      ChildAnimation = "BoonDropB-Hera"
+      Color = {
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      }
+    }
+    {
+      Name = "BoonDropB-Hera"
+      InheritFrom = "BoonDropB"
+      ChildAnimation = "BoonDropC-Hera"
+      Color = {
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      }
+    }
+    {
+      Name = "BoonDropC-Hera"
+      InheritFrom = "BoonDropC"
+      ChildAnimation = "BoonDropHeraIcon"
+      Color = {
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      }
+    }
+    {
+      Name = "BoonDropHeraIcon"
+      InheritFrom = "BoonDropIcon"
+      FilePath = "Hera\HeraIconSpin\HeraIconSpin"
+      StartFrame = 1
+      EndFrame = 3
+      NumFrames = 3
+      Scale = 0.34
+    }
+    {
+      Name = "BoonDissipateA_Hera"
+      InheritFrom = "BoonDissipateA"
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "BoonDissipateB_Hera"
+        }
+        {
+          Name = "BoonDissipateVertical_Hera"
+        }
+        {
+          Name = "BoonDissipateGlow_Hera"
+        }]
+    }
+    {
+      Name = "BoonDissipateB_Hera"
+      InheritFrom = "BoonDissipateB"
+      Red = 0.09
+      Green = 0.50
+      Blue = 0.55
+    }
+    {
+      Name = "BoonDissipateVertical_Hera"
+      InheritFrom = "BoonDissipateVertical"
+      Hue = 0.4
+      Red = 0.09
+      Green = 0.50
+      Blue = 0.55
+      AddColor = true
+    } 
+    {
+      Name = "BoonDissipateGlow_Hera"
+      InheritFrom = "BoonDissipateGlow"
+      Red = 0.09
+      Green = 0.50
+      Blue = 0.55
+    }
+    /* Dash */
+    {
+      Name = "ZagreusDashNoCollide_Hera"
+      InheritFrom = "ZagreusDashNoCollide"
+      ChainTo = "ZagreusDashCollide_Hera"
+      ChildAnimation = "ZagreusDashNoCollideVFX_Hera"
+      EndFrame = 60
+      StartFrame = 1
+    }
+    {
+      Name = "ZagreusDashCollide_Hera"
+      InheritFrom = "ZagreusDashCollide"
+      ChildAnimation = "ZagreusDashCollideVFX_Hera"
+      EndFrame = 60
+      StartFrame = 1
+    }
+    {
+      Name = "ZagreusDashNoCollideVFX_Hera"
+      InheritFrom = "ZagreusDashNoCollideVFX"
+      EndFrame = 60
+      StartFrame = 1
+      Hue = 0.08
+    }
+
+    {
+      Name = "ZagreusDashCollideVFX_Hera"
+      InheritFrom = "ZagreusDashCollideVFX"
+      EndFrame = 60
+      StartFrame = 1
+      Hue = 0.08
+    }
+    {
+      Name = "RadialNova-Hera"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "DoorCloseDust"
+        }
+        {
+          Name = "SwordParryGroundCrack"
+        }
+        {
+          Name = "DisplaceShockwaveSwordParry"
+        }
+        {
+          Name = "SwordParrySpikeAthena"
+        }
+        {
+          Name = "AthenaProjectileImpactSwordParry"
+        }
+        {
+          Name = "QuickFlashTeal"
+        }]
+    }
+    {
+      Name = "BlinkTrailVerticalB-Hera"
+      InheritFrom = "BlinkTrailVerticalB"
+      ChildAnimation = "BlinkTrailFlat-Hera"
+      Color = {
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      }
+    }{
+      Name = "BlinkTrailFlat-Hera"
+      InheritFrom = "BlinkTrailFlat"
+      ChildAnimation = "BlinkTrailVerticalA-Hera"
+      Color = {
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      }
+    }{
+      Name = "BlinkTrailVerticalA-Hera"
+      InheritFrom = "BlinkTrailVerticalA"
+      ChildAnimation = "BlinkTrailFlash-Hera"
+      Color = {
+        Red = 0.09
+        Green = 0.50
+        Blue = 0.55
+      }
+    }
+    {
+      Name = "BlinkTrailFlash-Hera"
+      InheritFrom = "QuickFlashTeal"
+      AngleFromOwner = "Take"
+      Duration = 0.4
+      Scale = 0.5
+    }
+    /* Jealousy/Envy Fx */
+    {
+      Name = "JealousyHeraLoop"
+      //ChainTo = "DionysusStatusFxDissipate"
+      FilePath = "Hera\Fx\HeraStatusIconCream\HeraStatusIconCream"
+      GroupName = "Combat_UI"
+      Type = "Book"
+      //VisualFx = "DionysusRainbowParty_InPlace"
+      AngleFromOwner = "Ignore"
+      //Sound = "/SFX/Player Sounds/DionysusBlightWineDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      ColorFromOwner = "Ignore"
+      EndFrame = 2
+      Loop = true
+      NumFrames = 45
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetX = -150.0
+      OffsetZ = 170.0
+      TransferFrameFromThis = true
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.3
+      VisualFxIntervalMin = 0.2
+      Scale = 0.2
+    }
+    {
+      Name = "HeraBelowLoop"
+      InheritFrom = "AresSwordHoverDrop"
+      FilePath = "Particles\AuraBasicFillCircle"
+      //Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
+      StopSoundOnFinishFade = 0.2
+      AddColor = true
+      EaseOut = 1.0
+      EndFrame = 32
+      Red = 0.0
+      Green = 1.0
+      Blue = 1.0
+      Scale = 0.8
+      Loop = true
+      NumFrames = 32
+      StartFrame = 1
+      DieWithOwner = true
+      PingPongShiftOverDuration = true
+      UseAttachedFlasher = false
+    }
+    {
+      Name = "HeraCurseStatus"
+      Type = "Book"
+      FilePath = "Fx\EliteUnitStatus\EliteUnitStatus"
+      NumFrames = 40
+      PlaySpeed = 30
+      RandomFlipHorizontal = true
+      ReRandomizeOnLoop = false
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Ignore"
+      Loop = true
+      OffsetZ = 0
+      UseAttachedFlasher = false
+      UseAttachedShake = false
+      DrawBehindOwner = true
+      DieWithOwner = true
+      ColorFromOwner = "Ignore"
+      Hue = 0.0
+      Scale = 1
+      FlipVertical = true
+      //CreateAnimation = "HeraUnitStatusGlow"
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      RotationSpeed = 20
+      //AddColor = true
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      CreateAnimations = [
+        {
+          Name = "HeraCurseStatusGlow"
+        }
+        {
+          Name = "HeraCurseStatus_Add"
+        }]
+    }
+    {
+      Name = "HeraCurseStatus_Add"
+      InheritFrom = "EliteUnitStatus"
+      ClearCreateAnimations = true
+      GroupName = "FX_Terrain_Add"
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+    }
+    {
+      Name = "HeraCurseStatusGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      AddColor = true
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      Alpha = 0.2
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Maintain"
+      UseAttachedFlasher = false
+      Scale = 0.7
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
+    }
+    {
+      Name = "HeraUnitStatusGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      Alpha = 0.2
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Maintain"
+      UseAttachedFlasher = false
+      Scale = 0.7
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
+    }
+    {
+      Name = "QuickFlashTeal"
+      InheritFrom = "QuickFlash"
+      FilePath = "Particles\particle_quickflash"
+      AddColor = false
+      StartRed = 0.0
+      StartGreen = 0.55
+      StartBlue = 0.53
+      EndBlue = 0.0
+      EndGreen = 0.0
+      EndBlue = 0.1
+      EndScale = 0.6
+      StartScale = 1.5
+      TimeModifierFraction = 1.0
+    }
+    {
+      Name = "QuickFlashTealSmall"
+      InheritFrom = "QuickFlashTeal"
+      Scale = 0.5
+      OffsetZ = 90
+    }
+    /* Cast */
+    {
+      Name = "HeraRangedProjectile"
+      //CreateAnimation = "HeraProjectileGlow"
+      FilePath = "Hera\Fx\HeraProjectile\HeraProjectile"
+      Type = "Book"
+      //VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientLoop"
+      SoundManagerCap = 28
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      //Red = 0.5
+      //Green = 1.0
+      //Blue = 0.5
+      StartFrame = 1
+      OffsetZ = 30.0
+      Scale = 0.6
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.1
+      VisualFxIntervalMin = 0.11
+      OverlayVfx = true
+    }
+    {
+      Name = "HeraProjectileImpact"
+      CreateAnimation = "QuickFlashTealSmall"
+      FilePath = "Hera\Fx\HeraProjectileImpact\HeraProjectileImpact"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileDetonateExplode"
+      ColorFromOwner = "Ignore"
+      EndFrame = 16
+      NumFrames = 16
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 45.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      SortMode = "FromParent"
+      RandomRotation = true
+      Scale = 1.2
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      OnlyWhenVisible = true
+      OverlayVfx = true
+	    VisualFxManagerCap = 400
+      CreateAnimations = [
+        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
+      ]
+      Slides = [
+        { DurationFrames = 1 Frame = 1 }
+        { DurationFrames = 1 Frame = 2 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 3 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 4 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 5 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 6 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 7 VisualFx = "HeraProjectileImpactParticles" }
+        { DurationFrames = 1 Frame = 8 VisualFx = "HeraProjectileImpactParticles" }
+      ]
+    }
+    {
+      Name = "HeraProjectileImpactSmall"
+      InheritFrom = "HeraProjectileImpact"
+      ClearCreateAnimations = true
+      Scale = 0.6
+      ScaleFromOwner = "Ignore"
+      CreateAnimations = [
+        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
+      ]
+    }
+    {
+      Name = "HeraProjectileImpactParticles"
+      FilePath = "Particles\particle_ascension_01"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleMax = 360.00
+      AngleFromOwner = "Ignore"
+      EndFrame = 1
+      NumFrames = 1
+      RandomDurationMax = 1.0
+      RandomDurationMin = 0.25
+      StartFrame = 1
+      LocationFromOwner = "Take"
+      VelocityMax = 400.0
+      VelocityMin = 200.0
+      EndScale = 0.0
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.3
+      Ambient = 0.0
+      RandomAccelerationMax = -400.0
+      RandomAccelerationMin = -900.0
+      CancelOverCap = true
+      OnlyWhenVisible = true
+      Color = { Red = 0.0 Green = 0.55 Blue = 0.53 }
+    }
+    {
+      Name = "DevotionHeraMegaProjectile"
+      CreateAnimation = "EnemyProjectileGlow"
+      FilePath = "Fx\EnemyProjectileMulti\EnemyProjectileMulti"
+      Type = "Book"
+      VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientBig"
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      Alpha = 0.5
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 45.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      OffsetZ = 60.0
+      Scale = 0.75
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.21
+      VisualFxIntervalMin = 0.2
+      OverlayVfx = true
+    }
+    {
+      Name = "DevotionHeraProjectile"
+      //CreateAnimation = "HeraProjectileGlow"
+      FilePath = "Hera\Fx\HeraProjectile\HeraProjectile"
+      Type = "Book"
+      //VisualFx = "DisplaceHeatTrail"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientLoop"
+      SoundManagerCap = 28
+      StopSoundOnFinishFade = 0.25
+      EndFrame = 60
+      Loop = true
+      NumFrames = 60
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      Red = 0.0
+      Green = 0.55
+      Blue = 0.53
+      StartFrame = 1
+      OffsetZ = 30.0
+      Scale = 0.6
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.1
+      VisualFxIntervalMin = 0.11
+      OverlayVfx = true
+    }    
+    {
+      Name = "HeraProjectileLight"
+      InheritFrom = "EnemyProjectileLight"
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.53
+      }
+    }    
+    {
+      Name = "HeraProjectileGlow"
+      FilePath = "Particles\particle_quickflash"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      Alpha = 0.25
+      EndAlpha = 1.0
+      PingPongColor = true
+      StartAlpha = 0.5
+      EndFrame = 1
+      Loop = true
+      NumFrames = 1
+      RandomDurationMax = 0.8
+      RandomDurationMin = 0.4
+      StartFrame = 1
+      OffsetZ = 30.0
+      OriginX = 246.0
+      OriginY = 246.0
+      DieWithOwner = true
+      RandomRotation = true
+      Scale = 0.4
+      OverlayVfx = true
+      AddColor = true
+      Color = 
+      {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraStrikeAreaSmoke"
+      Type = "Book"
+      FilePath = "Fx\DemeterCycloneLoop\DemeterCycloneLoop"
+      NumFrames = 40
+      Material = "Unlit"
+      Loop = true
+      Alpha = 0.6
+      Red = 0.0
+      Green = 0.65
+      Blue = 0.0
+      AngleFromOwner = "Ignore"
+      ScaleRadius = 200
+      PlaySpeed = 24
+      FlipHorizontal = false
+      Scale = 1.35
+      OffsetZ = 30
+    }
+    {
+      Name = "AuraFxLight"
+      FilePath = "Fx\BloodMine\BloodMineLight"
+      Type = "Constant"
+      //Sound = "/SFX/BloodMineBeepBasic"
+      //StopSoundOnFinishFade = 0.2
+      StartAlpha = 1.0
+      Duration = 0.5
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      Loop = true
+      NumFrames = 1
+      StartFrame = 1
+      Scale = 0.3
+      Ambient = 0.0
+    }
+     {
+      Name = "HeraTrapExplode"
+      Type = "Book"
+      FilePath = "Hera\Fx\HeraStunTotemExplode\HeraStunTotemExplode"
+      Scale = 4
+      NumFrames = 47
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 40
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      CreateAnimation = "QuickFlashGreen"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      Sound = "/Leftovers/Menu Sounds/PlayerKilledLong_Small"
+    }
+    {
+      Name = "HeraTrapSpawn"
+      Type = "Book"
+      FilePath = "Hera\Fx\HeraStunTotemSpawn\HeraStunTotemSpawn"
+      ChainTo = "HeraTrapStunTotemStatic"
+      Scale = 4
+      NumFrames = 60
+      PlaySpeed = 30
+      Material = "Unlit"
+      AngleFromOwner = "Ignore"
+      OwnerInvulnerable = true
+      ChildAnimation = "HeraTrapStunTotemFlameSpawn"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapActivate"
+      FilePath = "Tilesets\Surface\Surface_Gravemarker_01Active"
+      GroupName = "Standing"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      Ambient = 0.0
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemFlame"
+      Type = "Book"
+      FilePath = "Hera\Fx\HeraStunTotemFlame\HeraStunTotemFlame"
+      NumFrames = 40
+      Loop = true
+      PlaySpeed = 30
+      RandomStartFrame = false
+      ReRandomizeOnLoop = false
+      Material = "Unlit"
+      ScaleFromOwner = "Ignore"
+      SortMode = "FromParent"
+      OffsetY = -490
+      Scale = 1.25
+      LocationZFromOwner = "Ignore"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemFlameSpawn"
+      Type = "Book"
+      FilePath = "Hera\Fx\HeraStunTotemFlame\HeraStunTotemFlame"
+      NumFrames = 40
+      PlaySpeed = 20
+      Loop = false
+      Material = "Unlit"
+      ScaleFromOwner = "Ignore"
+      SortMode = "FromParent"
+      OffsetY = -490
+      Scale = 1.25
+      StartAlpha = 0
+      EndAlpha = 1
+      ColorFromOwner = "Ignore"
+      HoldLastFrame = true
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemSpawnDecal"
+      Type = "Slide"
+      GroupName = "FX_Terrain"
+      FilePath = "Hera\Fx\HeraStunTotemSpawnDecal\HeraStunTotemSpawnDecal"
+      NumFrames = 60
+      Scale = 1
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      Ambient = 0.2
+      OffsetZ = -30
+      CancelOverCap = false
+      OnlyWhenVisible = false
+      RandomFlipHorizontal = true
+      ChainTo = "HeraTrapStunTotemSpawnDecalFade"
+      DieWithOwner = true
+      Slides = [
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
+        { DurationFrames = 9999 }
+      ]
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+
+    {
+      Name = "HeraTrapStunTotemSpawnDecalFade"
+      Type = "Constant"
+      FilePath = "Hera\Fx\HeraStunTotemSpawnDecal\HeraStunTotemSpawnDecal0060"
+      NumFrames = 60
+      Scale = 1
+      OffsetY = -280
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      CancelOverCap = false
+      OnlyWhenVisible = false
+      StartAlpha = 1
+      EndAlpha = 0
+      Ambient = 0.2
+      RandomDurationMin = 1
+      RandomDurationMax = 2
+      UseOwnAngle = false
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapStunTotemStatic"
+      Type = "Constant"
+      FilePath = "Hera\Surface_Gravemarker_01Active"
+      Material = "Unlit"
+      ChildAnimation = "HeraTrapStunTotemFlame"
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "HeraTrapGraspingHandsFx"
+      Type = "Book"
+      FilePath = "Hera\Fx\HeraGraspingHands\HeraGraspingHands"
+      NumFrames = 69
+      RandomFlipHorizontal = true
+      Material = "Unlit"
+      GroupName = "FX_Terrain"
+      AngleFromOwner = "Ignore"
+      DieWithOwner = false
+      RandomPlaySpeedMin = 45
+      RandomPlaySpeedMax = 45
+      ScaleRadius = 185
+      Sound = "/Leftovers/SFX/BallHoldingAmbience"
+      StopSoundOnFinishFade = 0.25
+      AddColor = true
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    {
+      Name = "AuraFx"
+      Type = "Book"
+      FilePath = "Fx\ImpulseMinePull\ImpulseMinePull"
+      GroupName = "FX_Terrain_Add"
+      PlaySpeed = 30
+      NumFrames = 30
+      ScaleRadius = 200.0
+      TimeModifierFraction = 0.0
+      ChainTo = null
+      TransferFrameFromThis = true
+      ColorFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Material = "Unlit"
+      Loop = true
+    }
+     {
+      Name = "AuraFx-Rupture"
+      InheritFrom = "RadialNova"
+      //CreateAnimation = "BowTrailRandom-Hera2"
+      GroupName = "Standing_Back"
+      PlaySpeed = 45.0
+      LocationZFromOwner = "Take"
+      ScaleFromOwner = "Ignore"
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.7
+      VisualFxIntervalMin = 0.7
+      TimeModifierFraction = 0.6
+      Scale = 0.5
+      Alpha = 0.4
+      Loop = true
+      Color = 
+      {
+        Red = 0.0
+        Green = 1.0
+        Blue = 0.5
+      }
+    }
+    {
+      Name = "AuraFx-Rupture2"
+      InheritFrom = "AuraFx"
+      Scale = 1.9
+    }
+    {
+      Name = "AuraFx-Legendary"
+      FilePath = "Fx\ThanatosAoE\ThanatosAoERingB"
+      GroupName = "Standing_Back"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      AddColor = true
+      //StartBlue = 1.0
+      //StartGreen = 0.3
+      //StartRed = 0.5
+      Duration = 0.25
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1 
+      StartFrame = 1
+      FlipHorizontal = true
+      RotationSpeed = 17.0
+      PostRotateScaleY = 0.5
+      //ScaleRadius = 200.0
+      Scale = 0.40
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.55
+        Blue = 0.33
+      }
+    }
+    
+    {
+      Name = "AuraFx-Exposed"
+      FilePath = "Fx\ShielderNova\ShielderNova"
+      GroupName = "Standing_Back"
+      Type = "Book"
+      EndFrame = 26
+      NumFrames = 14
+      PlaySpeed = 22.0
+      StartFrame = 7
+      ScaleRadius = 700.0
+      Ambient = 0.0
+      AngleFromOwner = "Ignore"
+      Loop = true
+      Scale = 1.4
+      AddColor = true
+      Alpha = 0.6
+      Color = {
+        Red = 0.5
+        Green = 0.2
+        Blue = 0.0
+      }
+      /*Color = {
+        Red = 0.847
+        Green = 0.604
+        Blue = 0.494
+      }*/
+    }
+    {
+      Name = "AuraFx-Exposed2"
+      InheritFrom = "AuraFx"
+      Scale = 3.7
+    }
+    {
+      Name = "AuraFx-Blind"
+      Type = "Book"
+      FilePath = "Fx\DevotionRings\DevotionRings"
+      //CreateAnimation = "AuraFx-BlindDark"
+      //VisualFx = "StatueSparkles"
+      NumFrames = 1
+      RandomStartFrame = true
+      //StartFrame = 1
+      PlaySpeed = 1e-07
+      //StartScale = 2
+      //EndScale = 2.03
+      //EaseIn = 0
+      //EaseOut = 1
+      ScaleMin = 1.6
+      ScaleMax = 1.65
+      //StartAlpha = 0
+      //EndAlpha = 1
+      Alpha = 1
+      PostRotateScaleY = 0.5
+      //RandomRotation = true
+      GroupName = "Standing_Back"
+      //RandomDurationMin = 0.6
+      //RandomDurationMax = 0.8
+      Duration = 0.8
+      ScaleFromOwner = "Ignore"
+      PingPongColor = true
+      PingPongScale = true
+      //AddColor = true
+      UseOwnAngle = false
+      AngleFromOwner = "Ignore"
+      RandomFlipVertical = true
+      RandomFlipHorizontal = true
+      ScaleRadius = 300
+      ColorFromOwner = "Ignore"
+      Color = {
+        Red = 0.80
+        Green = 0.55
+        Blue = 0.05
+      }
+      Loop = true
+    }   
+    {
+      Name = "RadialNovaSwordParry-ApolloSparkles2"
+      InheritFrom = "RadialNovaSwordParry-ApolloSparkles"
+      HoldLastFrame = false
+      Loop = true
+    } 
+    {
+      Name = "AuraFx-BlindDark"
+      Type = "Book"
+      FilePath = "Fx\DevotionRingsDark\DevotionRingsDark"
+      NumFrames = 3
+      RandomStartFrame = true
+      //StartFrame = 1
+      PlaySpeed = 1e-07      
+      StartScale = 4
+      EndScale = 4.03
+      /*StartScale = 1
+      EndScale = 2.05
+      Scale = 2.15
+      ScaleMin = 1.99
+      ScaleMax = 2.01*/
+      Alpha = 0.2
+      PostRotateScaleY = 0.5
+      RandomRotation = true
+      GroupName = "Standing_Back"
+      //RandomDurationMin = 0.5
+      //RandomDurationMax = 0.6
+      Duration = 0.8
+      ScaleFromOwner = "Ignore"
+      RandomFlipVertical = true
+      RandomFlipHorizontal = true
+      PingPongScale = true
+      //PingPongColor = true
+      DieWithOwner = true
+      ScaleRadius = 300
+      Color = {
+        Red = 0.80
+        Green = 0.55
+        Blue = 0.05
+      }
+      Loop = true
+    }
+    {
+      Name = "AuraFx-Blind2"
+      InheritFrom = "AuraFx"
+      Scale = 4.0
+      AddColor = true
+      Color = {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+    }
+    /* Character Fx */
+  ]
+}
