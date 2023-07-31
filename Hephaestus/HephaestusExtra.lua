@@ -40,17 +40,16 @@ if ModUtil ~= nil then
 				"HephaestusRangedTrait",
 				"HephaestusSecondaryTrait",
 				"HephaestusShoutTrait",
-				"DiscountHephaestusTrait",
-				"PrivilegeHephaestusTrait",
-				"FamilyHephaestusTrait",
-				"MoreRewardTrait",
-				"SnareOverTimeTrait",
-				"DeathDamageTrait",
-				"JealousyBurstTrait",
-				"JealousyCastTrait",
-				"MoreCompanionTrait",
-				"BetterSnareTrait",
-				"BetterJealousyTrait",
+				"FullHealthExtraRewardTrait",
+				"DropMoneyTrait",
+				"DamageBoostTrait",
+				"ArmorBossTrait",
+				"ArmorEncounterTrait",
+				"ArmorDefianceTrait",
+				"SpawnWeaponsTrait",
+				"HephaestusDistantTrait",
+				"HephaestusTrapTrait",
+				"ArmorLegendaryTrait",
 			},
 		},
 		CashedOutVoiceLines =
@@ -119,7 +118,7 @@ if ModUtil ~= nil then
 	}
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
 	table.insert(OlympusQuestOrderData, 30, "HephaestusUpgrades")
-	table.insert(OlympusQuestOrderData, 31, "HephaestusUpgrades")
+	table.insert(OlympusQuestOrderData, 31, "HephaestusLegendaryUpgrades")
 
 	--WeaponData
 	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
