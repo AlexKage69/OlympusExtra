@@ -2871,13 +2871,6 @@ end]]
 			EffectProperty = "Duration",
 			DeriveValueFrom = "DeriveSource",
 		  },
-		  {
-			TraitName = "AmmoFieldTrait",
-			WeaponName = "DionysusAmmoWeapon",
-			EffectName= "DamageOverTime",
-			EffectProperty = "Duration",
-			DeriveValueFrom = "DeriveSource",
-		  },
 		  -- Jolted
 		  {
 			TraitName = "ZeusWeaponTrait",
@@ -3228,13 +3221,6 @@ end]]
 			EffectProperty = "Cooldown",
 			DeriveValueFrom = "DeriveSource",
 		  },
-		  {
-			TraitName = "AmmoFieldTrait",
-			WeaponName = "DionysusAmmoWeapon",
-			EffectName= "DamageOverTime",
-			EffectProperty = "Cooldown",
-			DeriveValueFrom = "DeriveSource",
-		  },
 		},
 		EnemyPropertyChanges =
 		{
@@ -3328,13 +3314,6 @@ end]]
 			DeriveValueFrom = "DeriveSource",
 		  },
 		  {
-			TraitName = "AmmoFieldTrait",
-			WeaponName = "DionysusAmmoWeapon",
-			EffectName= "DamageOverTime",
-			EffectProperty = "Cooldown",
-			DeriveValueFrom = "DeriveSource",
-		  },
-		  {
 			TraitName = "DionysusRushTrait",
 			WeaponNames = WeaponSets.HeroRushWeapons,
 			EffectName = "DamageOverTime",
@@ -3369,15 +3348,6 @@ end]]
 		  {
 			TraitName = "DionysusShoutTrait",
 			WeaponName = "DionysusShoutWeapon",
-			EffectName = "DamageOverTime",
-			EffectProperty = "Amount",
-			BaseValue = 2.5,
-			ChangeType = "Multiply",
-			AsInt = true,
-		  },
-		  {
-			TraitName = "AmmoFieldTrait",
-			WeaponName = "DionysusAmmoWeapon",
 			EffectName = "DamageOverTime",
 			EffectProperty = "Amount",
 			BaseValue = 2.5,

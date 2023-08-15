@@ -57,13 +57,13 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
             local appliedEffectTable = {}
             for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
                 local validEffect = modifierData.ValidEffects == nil or
-                (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
+                    (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
                 local validWeapon = modifierData.ValidWeaponsLookup == nil or
-                (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
+                    (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
                 local validTrait = modifierData.RequiredTrait == nil or
-                (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
+                    (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
                 local validUniqueness = modifierData.Unique == nil or not modifierData.Name or
-                not appliedEffectTable[modifierData.Name]
+                    not appliedEffectTable[modifierData.Name]
                 local validEnchantment = true
 
                 if validUniqueness and validWeapon and validEffect and validTrait and validEnchantment and modifierData.BypassIgnore then
@@ -85,12 +85,13 @@ ModUtil.Path.Wrap("DamageEnemy",
         local sourceWeaponData = triggerArgs.AttackerWeaponData
         if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
             triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceWeaponData.Name, sourceWeaponData
-            .MultipleProjectileMultiplier)
+                .MultipleProjectileMultiplier)
         elseif victim and triggerArgs.SourceProjectile then
             local sourceProjectileData = ProjectileData[triggerArgs.SourceProjectile]
             if sourceProjectileData and sourceProjectileData.MultipleProjectileMultiplier then
-                triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceProjectileData.Name, sourceProjectileData
-                .MultipleProjectileMultiplier)
+                triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceProjectileData.Name,
+                    sourceProjectileData
+                    .MultipleProjectileMultiplier)
             end
         end
         baseFunc(victim, triggerArgs)
@@ -100,7 +101,7 @@ ModUtil.Path.Wrap("DamageEnemy",
             and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and victim.JealousyModifier and
             Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) and triggerArgs.EffectName == nil then
             local damageAmount = triggerArgs.DamageAmount * victim.JealousyModifier *
-            TableLength(victim.VulnerabilityEffects)
+                TableLength(victim.VulnerabilityEffects)
             if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
                 damageAmount = 0
             end
@@ -164,7 +165,7 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
         --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
         --ForceNextRoomFunc("B_Shop01")
         --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
-
+        --CreateHephaestusLoot({ OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
         --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
         --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
         baseFunc()
@@ -403,4 +404,36 @@ ModUtil.Path.Wrap("HandleLootPickup",
         else
             baseFunc(currentRun, loot)
         end
-    end)
+    end
+)
+
+ModUtil.Path.Wrap("IsGameStateEligible",
+    function(baseFunc, currentRun, source, requirements, args)
+        local result = baseFunc(currentRun, source, requirements, args)
+        if result == true then
+            if IsEmpty(requirements) then
+                return true
+            end
+            if requirements.Force then
+                return true
+            end
+            -- All the new Requirements goes here --
+            if requirements.RequiredMaxHephaestusUpgrades ~= nil then
+                local numUpgrades = 0
+                if currentRun.LootTypeHistory and currentRun.LootTypeHistory.HephaestusUpgrade then
+                    if currentRun.LootTypeHistory.HephaestusUpgrade > requirements.RequiredMaxHephaestusUpgrades then
+                        return false
+                    else
+                        numUpgrades = currentRun.LootTypeHistory.HephaestusUpgrade
+                    end
+                end
+                if currentRun.CurrentRoom ~= nil and currentRun.CurrentRoom.ChosenRewardType == "HephaestusUpgrade" and (numUpgrades + 1) > requirements.RequiredMaxHephaestusUpgrades then
+                    return false
+                end
+            end
+        else
+            return false
+        end
+        return true
+    end
+)

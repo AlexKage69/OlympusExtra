@@ -126,7 +126,26 @@ ModUtil.LoadOnce(function()
             --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true     
             table.insert(OlympusCodexBoonTable, "HeraUpgrade")
             table.insert(OlympusRealGodNames, "Hera")
-        end     
+        end   
+        --Apollo
+        if ModUtil.Mods.Data["HephaestusExtra"] ~= nil then
+            OlympusCodexMenuData.HephaestusUpgrade = {
+                "HephaestusWeaponTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusSecondaryTrait",
+				"HephaestusShoutTrait",	"FullHealthExtraRewardTrait", "DropMoneyTrait", "DamageBoostTrait",
+                "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "SpawnWeaponsTrait",
+                "HephaestusDistantTrait", "HephaestusTrapTrait", "ArmorLegendaryTrait",
+                "HermesPlannedRushTrait", "HermesRangedTrait"
+            }
+            --table.insert(OlympusCodexMenuData.Consumables, "RerollObolDrop")
+            --table.insert(OlympusCodexMenuData.Consumables, "RerollBoonDrop")
+            table.insert(OlympusCodexMenuData.Legendaries, "ArmorLegendaryTrait")
+            --OlympusCodexMenuData.ConsumableTraits.RerollObolDrop = "RerollObolTrait"
+            --OlympusCodexMenuData.ConsumableTraits.RerollBoonDrop = "RerollBoonTrait"
+            --OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
+            --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true
+            table.insert(OlympusCodexBoonTable, "HephaestusUpgrade")
+            table.insert(OlympusRealGodNames, "Hephaestus")
+        end  
         --[[if ModUtil.Mods.Data["CerberusAssist"] ~= nil then
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")            
         end]]

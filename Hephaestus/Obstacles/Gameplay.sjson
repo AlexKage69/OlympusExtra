@@ -8,7 +8,7 @@
       Thing =
       {
         EditorOutlineDrawBounds = false
-        Graphic = "BoonDropHera"
+        Graphic = "BoonDropHephaestus"
       }
     }
   ]

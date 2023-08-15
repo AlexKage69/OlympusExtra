@@ -4,7 +4,7 @@
     {
       Name = "Keepsake_Skull_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "Hera\Hera_Keepsake"
+      FilePath = "Hephaestus\Hephaestus_Keepsake"
       Scale = 0.5
       EndFrame = 1
       StartFrame = 1
@@ -12,7 +12,7 @@
     {
       Name = "Keepsake_Skull"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "Hera\Hera_Keepsake"
+      FilePath = "Hephaestus\Hephaestus_Keepsake"
       Scale = 1.2
       EndFrame = 1
       StartFrame = 1
@@ -25,594 +25,338 @@
       StartFrame = 1
     }
     {
-      Name = "BoonSymbolGlow_Hera"
+      Name = "BoonSymbolGlow_Hephaestus"
       InheritFrom = "BoonSymbolGlow"
       Color = 
       {
-        Red = 0.906
-        Green = 0.859
-        Blue = 0.812
+        Red = 0.384
+        Green = 0.137
+        Blue = 0.098
       }
     }
     {
-      Name = "BoonSymbolFlare_Hera"
+      Name = "BoonSymbolFlare_Hephaestus"
       InheritFrom = "BoonSymbolFlare"
       Color = 
       {
-        Red = 0.906
-        Green = 0.859
-        Blue = 0.812
+        Red = 0.384
+        Green = 0.137
+        Blue = 0.098
       }
     }
     {
-      Name = "BoonSymbolHera"
+      Name = "BoonSymbolHephaestus"
       InheritFrom = "BoonBackingA"
-      ChildAnimation = "BoonBackingB_Hera"
+      ChildAnimation = "BoonBackingB_Hephaestus"
       Scale = 0.5
       CreateAnimations = [
         {
-          Name = "BoonSymbolGlow_Hera"
+          Name = "BoonSymbolGlow_Hephaestus"
         }
         {
-          Name = "BoonSymbolFlare_Hera"
+          Name = "BoonSymbolFlare_Hephaestus"
         }]
       Color = 
       {
-        Red = 0.706
-        Green = 0.659
-        Blue = 0.612
+        Red = 0.384
+        Green = 0.137
+        Blue = 0.098
       }
     }
     {
-      Name = "BoonBackingB_Hera"
+      Name = "BoonBackingB_Hephaestus"
       InheritFrom = "BoonBackingB"
-      ChildAnimation = "BoonBackingC_Hera"
+      ChildAnimation = "BoonBackingC_Hephaestus"
       Scale = 0.5
       Color = 
       {
-        Red = 0.706
-        Green = 0.659
-        Blue = 0.612
+        Red = 0.384
+        Green = 0.137
+        Blue = 0.098
       }
     }
     {
-      Name = "BoonBackingC_Hera"
+      Name = "BoonBackingC_Hephaestus"
       InheritFrom = "BoonBackingC"
-      ChildAnimation = "BoonSymbolHeraIcon"
+      ChildAnimation = "BoonSymbolHephaestusIcon"
     }
     {
-      Name = "BoonInfoSymbolHeraIcon"
+      Name = "BoonInfoSymbolHephaestusIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\Hera1"
+      FilePath = "Hephaestus\Hephaestus1"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "BoonSymbolHeraIcon"
+      Name = "BoonSymbolHephaestusIcon"
       InheritFrom = "BoonSymbolBase"
-      FilePath = "Hera\Hera1"
+      FilePath = "Hephaestus\Hephaestus1"
       Scale = 0.70
     }
     {
-      Name = "BoonSymbolHeraIsometric"
+      Name = "BoonSymbolHephaestusIsometric"
       InheritFrom = "BoonSymbolBaseIsometric"
-      FilePath = "Hera\HeraDoorIcon"
+      FilePath = "Hephaestus\HephaestusDoorIcon"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_00_Small"
+      Name = "Boon_Hephaestus_00_Small"
       InheritFrom = "BoonTrayIcon"
       FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_00_Large"
+      Name = "Boon_Hephaestus_00_Large"
       InheritFrom = "BoonIcon"
       FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_01_Small"
+      Name = "Boon_Hephaestus_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraStrike_large"
+      FilePath = "Hephaestus\HephaestusStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_01_Large"
+      Name = "Boon_Hephaestus_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraStrike_large"
+      FilePath = "Hephaestus\HephaestusStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_02_Small"
+      Name = "Boon_Hephaestus_02_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraFlourish_large"
+      FilePath = "Hephaestus\HephaestusFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_02_Large"
+      Name = "Boon_Hephaestus_02_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraFlourish_large"
+      FilePath = "Hephaestus\HephaestusFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_03_Small"
+      Name = "Boon_Hephaestus_03_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraDash_large"
+      FilePath = "Hephaestus\HephaestusDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_03_Large"
+      Name = "Boon_Hephaestus_03_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraDash_large"
+      FilePath = "Hephaestus\HephaestusDash_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_04_Small"
+      Name = "Boon_Hephaestus_04_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "Hephaestus\HephaestusRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_04_Large"
+      Name = "Boon_Hephaestus_04_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraRanged_large"
+      FilePath = "Hephaestus\HephaestusRanged_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_05_Small"
+      Name = "Boon_Hephaestus_05_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraAid_large"
+      FilePath = "Hephaestus\HephaestusAid_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_05_Large"
+      Name = "Boon_Hephaestus_05_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraAid_large"
+      FilePath = "Hephaestus\HephaestusAid_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_06_Small"
+      Name = "Boon_Hephaestus_06_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\LoyalRelations_large"
+      FilePath = "Hephaestus\LoyalRelations_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_06_Large"
+      Name = "Boon_Hephaestus_06_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\LoyalRelations_large"
+      FilePath = "Hephaestus\LoyalRelations_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
-      Name = "Boon_Hera_07_Small"
+      Name = "Boon_Hephaestus_07_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraFavour_large"
+      FilePath = "Hephaestus\HephaestusFavour_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_07_Large"
+      Name = "Boon_Hephaestus_07_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraFavour_large"
+      FilePath = "Hephaestus\HephaestusFavour_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
-      Name = "Boon_Hera_08_Small"
+      Name = "Boon_Hephaestus_08_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraStatus_large"
+      FilePath = "Hephaestus\HephaestusStatus_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_08_Large"
+      Name = "Boon_Hephaestus_08_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraStatus_large"
+      FilePath = "Hephaestus\HephaestusStatus_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
-      Name = "Boon_Hera_09_Small"
+      Name = "Boon_Hephaestus_09_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\RoyalInheritance_large"
+      FilePath = "Hephaestus\RoyalInheritance_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_09_Large"
+      Name = "Boon_Hephaestus_09_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\RoyalInheritance_large"
+      FilePath = "Hephaestus\RoyalInheritance_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_10_Small"
+      Name = "Boon_Hephaestus_10_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraSkull1_large"
+      FilePath = "Hephaestus\HephaestusSkull1_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_10_Large"
+      Name = "Boon_Hephaestus_10_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraSkull1_large"
+      FilePath = "Hephaestus\HephaestusSkull1_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_11_Small"
+      Name = "Boon_Hephaestus_11_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\EnvyBoon_large"
+      FilePath = "Hephaestus\EnvyBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_11_Large"
+      Name = "Boon_Hephaestus_11_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\EnvyBoon_large"
+      FilePath = "Hephaestus\EnvyBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
       {
-      Name = "Boon_Hera_12_Small"
+      Name = "Boon_Hephaestus_12_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\EnvyBoon2_large"
+      FilePath = "Hephaestus\EnvyBoon2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_12_Large"
+      Name = "Boon_Hephaestus_12_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\EnvyBoon2_large"
+      FilePath = "Hephaestus\EnvyBoon2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_13_Small"
+      Name = "Boon_Hephaestus_13_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraSkull2_large"
+      FilePath = "Hephaestus\HephaestusSkull2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_13_Large"
+      Name = "Boon_Hephaestus_13_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraSkull2_large"
+      FilePath = "Hephaestus\HephaestusSkull2_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_14_Small"
+      Name = "Boon_Hephaestus_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\CompanionBoon_large"
+      FilePath = "Hephaestus\CompanionBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_14_Large"
+      Name = "Boon_Hephaestus_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\CompanionBoon_large"
+      FilePath = "Hephaestus\CompanionBoon_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_15_Small"
+      Name = "Boon_Hephaestus_15_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\HeraLegendary_large"
+      FilePath = "Hephaestus\HephaestusLegendary_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_15_Large"
+      Name = "Boon_Hephaestus_15_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\HeraLegendary_large"
+      FilePath = "Hephaestus\HephaestusLegendary_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
-      Name = "Boon_Hera_16_Small"
+      Name = "Boon_Hephaestus_16_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\QueensGambit_large"
+      FilePath = "Hephaestus\QueensGambit_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Boon_Hera_16_Large"
+      Name = "Boon_Hephaestus_16_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hera\QueensGambit_large"
+      FilePath = "Hephaestus\QueensGambit_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Hera_Aphrodite_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraAphrodite_01"
-      EndFrame = 1
-      StartFrame = 1
+      Name = "Keepsake_Hephaestus_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hephaestus\HephaestusBadge"
     }
     {
-      Name = "Hera_Aphrodite_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraAphrodite_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Ares_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraAres_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Ares_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraAres_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Artemis_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraArtemis_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Artemis_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraArtemis_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Athena_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraAthena_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Athena_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraAthena_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Demeter_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraDemeter_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Demeter_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraDemeter_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Dionysus_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraDionysus_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Dionysus_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraDionysus_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Poseidon_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraPoseidon_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Poseidon_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraPoseidon_01"
-      EndFrame = 1
-      StartFrame = 1
-    } 
-    {
-      Name = "Hera_Zeus_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraZeus_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Zeus_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraZeus_01"
-      EndFrame = 1
-      StartFrame = 1
-    }     
-    {
-      Name = "Hera_Apollo_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraApollo_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Apollo_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraApollo_01"
-      EndFrame = 1
-      StartFrame = 1
+      Name = "Keepsake_HephaestusSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hephaestus\HephaestusBadge_max"
     }    
     {
-      Name = "Hera_Hestia_01_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hera\Duos\HeraHestia_01"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Hera_Hestia_01_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hera\Duos\HeraHestia_01"
-      EndFrame = 1
-      StartFrame = 1
-    }  
-    {
-      Name = "Keepsake_Hera_Max"
+      Name = "Keepsake_Hephaestus_Max"
       InheritFrom = "KeepsakeMax_Corner"
-      FilePath = "Hera\HeraBadge"
+      FilePath = "Hephaestus\HephaestusBadge"
     }
     {
-      Name = "Keepsake_HeraSticker_Max"
+      Name = "Keepsake_HephaestusSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
-      FilePath = "Hera\HeraBadge_max"
+      FilePath = "Hephaestus\HephaestusBadge_max"
     }    
-    {
-      Name = "Keepsake_Hera_Max"
-      InheritFrom = "KeepsakeMax_Corner"
-      FilePath = "Hera\HeraBadge"
-    }
-    {
-      Name = "Keepsake_HeraSticker_Max"
-      InheritFrom = "KeepsakeMax_Sticker"
-      FilePath = "Hera\HeraBadge_max"
-    }
-    {
-      Name = "BoonHeraShoutAresIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Ares3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutAphroditeIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Aphrodite3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutArtemisIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Artemis3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutAthenaIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Athena3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutDemeterIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Demeter3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutDionysusIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Dionysus3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutPoseidonIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Poseidon3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutZeusIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Zeus3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutHestiaIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Hestia3"
-      Scale = 0.2
-    }
-    {
-      Name = "BoonHeraShoutApolloIcon"
-      InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hera\ShoutIcons\Apollo3"
-      Scale = 0.2
-    }
-    {
-      Name = "DiscountItemIcon"
-      FilePath = "Hera\hera_discount"
-      Type = "ConstantNoUpdate"
-      Scale = 1.0
-      Material = "Unlit"
-    }
-    {
-      Name = "StatusIconEnvy"
-      InheritFrom = "StatusIconBase"
-      FilePath = "Hera\HeraStatusIcon2"
-      EndFrame = 1
-      StartFrame = 1
-      OffsetZ = 260.0
-      Scale = 0.3
-      StartAlpha = 0.7
-      EndAlpha = 1.0
-      Duration = 0.5
-      Loop = true
-    }
-    {
-      Name = "StatusIconEnvyCombat"
-      InheritFrom = "StatusIconBase"
-      FilePath = "Hera\HeraStatusIcon2"
-      EndAlpha = 1.0
-      StartAlpha = 0.7
-      Duration = 0.5
-      EndFrame = 1
-      Loop = true
-      PingPong = true
-      StartFrame = 1
-      OffsetZ = 260.0
-      Scale = 0.5
-      StartScale = 0.7
-    }
-    {
-      Name = "TrapDashMultipleReloadTimer"
-      InheritFrom = "AmmoReloadTimer"
-      //ChildAnimation = "TrapDashMultipleReloadTimerIcon"
-      OffsetY = -5
-      Scale = 0.45
-      ScaleX = 0.5
-      VisualFx = null
-    }
-    {
-      Name = "TrapDashMultipleReloadTimerIcon"
-      FilePath = "GUI\Icons\Status\TrapSprung"
-      Type = "Constant"
-      AngleFromOwner = "Ignore"
-      DieWithOwner = true
-      SortMode = "Id"
-      ScaleFromOwner = "Ignore"
-      Material = "Unlit"
-      Scale = 0.75
-    }
-    
   ]
 }

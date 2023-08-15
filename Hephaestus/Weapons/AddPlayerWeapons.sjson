@@ -1,0 +1,175 @@
+
+Weapons = { 
+  "_sequence" = true 
+  5 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+   6 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+   7 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+   8 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+  9 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+  12 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+  21 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+  26 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+  34 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "RushHyperArmor"
+          Type = "DAMAGE_TAKEN"
+          Duration = 5
+          Modifier = 1.0
+          FrontFx = "HyperArmorLoop"
+          ExtendDurationOnReapply = true
+          BackFx = "null"
+          Active = false
+          FlashFrontFxWhenExpiring = true
+          FlashBackFxWhenExpiring = true
+          ImmuneToForce = true
+          ClearOnAttack = false
+        }
+    ] 
+  }
+}

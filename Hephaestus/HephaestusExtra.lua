@@ -13,13 +13,9 @@ if ModUtil ~= nil then
 	local DuplicateVeryStrongMultiplier = -0.20
 	--Color
 	local OlympusColor = ModUtil.Entangled.ModData(Color)
-	OlympusColor.HephaestusVoice = { 158,136,121,255 }
-	OlympusColor.HephaestusDamageLight = { 158,136,121,255 }
-	OlympusColor.HephaestusDamage = { 128,111,104,255  }
-	OlympusColor.JealousyDamageStart = { 158,136,121,255 }
-	OlympusColor.JealousyDamageEnd = { 128,111,104,255 }
-	OlympusColor.EnvyDamageStart = {35,123,94,255 }
-	OlympusColor.EnvyDamageEnd = { 34,110,86,255 }
+	OlympusColor.HephaestusVoice = { 98,35,28,255 }
+	OlympusColor.HephaestusDamageLight = { 98,35,28,255 }
+	OlympusColor.HephaestusDamage = { 73,18,15,255  }
 	--QuestData
 	local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
 	OlympusQuestData.HephaestusUpgrades =
@@ -119,12 +115,54 @@ if ModUtil ~= nil then
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
 	table.insert(OlympusQuestOrderData, 30, "HephaestusUpgrades")
 	table.insert(OlympusQuestOrderData, 31, "HephaestusLegendaryUpgrades")
-
+	--Loot
+	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	OlympusConsumableData.HephaestusUpgradeDrop =
+	{
+		InheritFrom = { "BaseConsumable", },
+		Cost =
+		{
+			BaseValue = 150,
+			DepthMult = 0,
+			AsInt = true,
+		},
+		UseText = "UsePurchaseLoot",
+		UseFunctionName = "CreateHephaestusLoot",
+		RequiredMaxHephaestusUpgrades = 0,
+		RequiredTextLines = {  "HephaestusFirstPickUp" },
+	}
+	local OlympusRewardStoreData = ModUtil.Entangled.ModData(RewardStoreData)
+	table.insert(OlympusRewardStoreData.RunProgress, {
+		Name = "HephaestusUpgrade",
+		GameStateRequirements =
+		{
+			RequiredMaxHephaestusUpgrades = 1,
+			RequiredFalseLootPickup = "HermesUpgrade",
+			RequiredNotInStore = "HephaestusUpgradeDrop",
+			RequiredMinCompletedRuns = 3,
+			RequiredMinDepth = 13,
+		}
+	})
 	--WeaponData
 	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
-
+	OlympusWeaponSets.PrimaryWeapons = { "SwordWeapon",
+		"SwordWeapon2", "SwordWeapon3", "SwordWeaponDash", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
+		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", 
+		"SpearWeaponDash", "ShieldWeapon", "ShieldWeaponRush", 
+		"ShieldWeaponDash", "BowWeapon", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
+		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", 
+		"FistWeaponDash", "GunWeapon",
+		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash" --"FistWeaponLandAreaAttack",
+	}
+	OlympusWeaponSets.SecondaryWeapons = { 
+		"SwordParry", "SpearWeaponThrow", "SpearThrowImmolation",
+		"SpearWeaponThrow", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldThrow",
+		"ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", 
+		"BowWeapon2", "FistWeaponSpecial",
+		"FistWeaponSpecialDash", "GunGrenadeToss", "GunBombWeapon",
+	}
 	--table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HephaestusTrap")	
 	
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
@@ -267,9 +305,9 @@ if ModUtil ~= nil then
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
-	table.insert(OlympusCodexOrdering.OlympianGoddess.Order, "HephaestusUpgrade")
+	table.insert(OlympusCodexOrdering.OlympianGods.Order, "HephaestusUpgrade")
 
-	OlympusCodex.OlympianGoddess.Entries["HephaestusUpgrade"] =
+	OlympusCodex.OlympianGods.Entries["HephaestusUpgrade"] =
 	{
 		Entries =
 		{
@@ -329,727 +367,441 @@ if ModUtil ~= nil then
 	}
 	OlympusTraitData.HephaestusWeaponTrait =
 	{
-		Name = "HephaestusWeaponTrait",
 		InheritFrom = { "ShopTier1Trait" },
-		God = "Hephaestus",
-		Slot = "Melee",
-		Icon = "Boon_Hephaestus_01",
+		Icon = "Boon_Hephaestus_06",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.20,
+			},
+			Epic =
+			{
+				Multiplier = 1.40,
+			},
+			Heroic =
+			{
+				Multiplier = 1.80,
+			}
+		},
 		PropertyChanges =
 		{
 			{
-				WeaponName = "SwordWeapon",
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeAFlipped-Hephaestus",
+				WeaponNames = OlympusWeaponSets.PrimaryWeapons,
+				EffectName = "RushHyperArmor",
+				EffectProperty = "Active",
+				ChangeValue = true,
+				ChangeType = "Absolute",
+			},
+			{
+				WeaponNames = OlympusWeaponSets.PrimaryWeapons,
+				EffectName= "RushHyperArmor",
+				EffectProperty = "Modifier",
+				BaseMin = 0.7,
+				BaseMax = 0.7,
+				SourceIsMultiplier = true,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageReduction",
+					Format = "NegativePercentDelta",
+				}
+			},
+			{
+				WeaponNames = OlympusWeaponSets.PrimaryWeapons,
+				EffectName= "RushHyperArmor",
+				EffectProperty = "Duration",
+				BaseValue = 0.5,
+				ChangeType = "Absolute",
+			},
+			--[[{
+				WeaponNames = { "SwordWeapon" },
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesSwipeLineA",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 			{
-				WeaponName = "SwordWeapon2",
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeB-Hephaestus",
+				WeaponNames = { "SwordWeapon2" },
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesSwipeLineB",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 			{
-				WeaponName = "SwordWeapon3",
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeC-Hephaestus",
+				WeaponNames = { "SwordWeapon3" },
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesSwipeLineC_Sword3",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
-			{
-				WeaponName = "SwordWeaponDash",
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeC-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "SwordWeapon3",
-				WeaponProperty = "ChargeFx",
-				ChangeValue = "ChargeAttack-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "SwordWeaponDash",
-				WeaponProperty = "ChargeFx",
-				ChangeValue = "ChargeAttack-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "SpearWeapon",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "SpearThrustProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "SpearWeapon2",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "SpearThrustProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "SpearWeapon3",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "SpearThrustProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "SpearWeaponDash",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "SpearDashSwipe-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "SpearWeaponSpin",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "SpearSwipe360-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "SpearWeaponSpin2",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "SpearSwipe360-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "SpearWeaponSpin3",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "SpearSwipe360-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "BowWeapon",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "BowWeapon",
-				WeaponProperty = "MinChargeStartFx",
-				ChangeValue = "BowCharge-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "BowWeaponDash",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "BowWeaponDash",
-				WeaponProperty = "ChargeStartFx",
-				ChangeValue = "BowChargeFast-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "ShieldWeapon",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ShieldSwipe-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "ShieldWeaponDash",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ShieldSwipeDash-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "ShieldWeaponRush",
-				WeaponProperty = "ChargeStartFx",
-				ChangeValue = "ShieldCharge-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "ShieldWeaponRush",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "ShieldRush3D-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "ShieldWeaponRush",
-				ProjectileProperty = "DissipateGraphic",
-				ChangeValue = "ShieldRush3D-Out-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunWeapon",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "GunWeaponProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunWeapon",
-				WeaponProperty = "FireFx",
-				ChangeValue = "GunFire-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunWeapon",
-				ProjectileProperty = "ImpactFx",
-				ChangeValue = "GunWeaponImpact-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunWeaponDash",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "GunWeaponProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunWeaponDash",
-				WeaponProperty = "FireFx",
-				ChangeValue = "GunFire-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunWeaponDash",
-				ProjectileProperty = "ImpactFx",
-				ChangeValue = "GunWeaponImpact-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "FistFxHephaestus",
-				ChangeType = "Absolute"
-			},
-			{
-				WeaponName = "FistWeaponDash",
-				ProjectileProperty = "StartFx",
-				ChangeValue = "FistFxSwipe",
-				ChangeType = "Absolute",
-			},
-
 			{
 				TraitName = "SwordConsecrationTrait",
 				WeaponNames = { "SwordWeapon" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeC-Hephaestus-Arthur",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "SwordConsecrationTrait",
-				WeaponNames = { "SwordWeapon2" },
-				WeaponProperty = "ChargeFx",
-				ChangeValue = "ChargeAttack-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "SwordConsecrationTrait",
-				WeaponNames = { "SwordWeapon2" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeA-Hephaestus-Arthur",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "SwordConsecrationTrait",
-				WeaponNames = { "SwordWeapon3" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeAFlipped-Hephaestus-Arthur",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "SwordConsecrationTrait",
-				WeaponNames = { "SwordWeapon3" },
-				WeaponProperty = "ChargeFx",
-				ChangeValue = "ChargeAttack-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "SwordConsecrationTrait",
-				WeaponNames = { "SwordWeaponDash" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeC-Hephaestus-Arthur",
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesSwipeLineC_Sword3_Arthur",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 
 			{
-				TraitName = "BowBondTrait",
+				WeaponNames = { "SwordWeapon", "SwordWeapon2", "SwordWeapon3" },
+				WeaponProperty = "ChargeTime",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon" },
+				EffectName = "SwordDisableHeavy",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "SwordWeapon" },
+				EffectName = "SwordDisableCancelableAndLockTrigger",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon2" },
+				EffectName = "SwordDisableCancelableAndLockTrigger2",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon2" },
+				EffectName = "SwordDisableArthurCancellable2",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon3" },
+				EffectName = "SwordDisable3",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon3" },
+				EffectName = "SwordDisableAttackCancelable3",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+
+
+
+
+			{
+				WeaponNames = { "SpearWeapon", "SpearWeapon2", "SpearWeapon3" },
+				WeaponProperty = "ChargeTime",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SpearWeapon" },
+				EffectName = "SpearDisableCancelableAndLockTrigger",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SpearWeapon" },
+				EffectName = "SpearDisableCancelableAndLockRotation",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SpearWeapon2" },
+				EffectName = "SpearDisableCancelableAndLockTrigger2",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SpearWeapon2" },
+				EffectName = "SpearDisableCancelableAndLockRotation",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SpearWeapon3" },
+				EffectName = "SpearDisableCancelable3",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "SpearWeapon", "SpearWeapon2", "SpearWeapon3" },
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesSwipeLineC_Spear",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "ShieldWeapon" },
+				WeaponProperty = "ChargeTime",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "ShieldWeapon" },
+				WeaponProperty = "ReloadTime",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "ShieldWeapon" },
+				EffectName = "ShieldDisableAttack",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "ShieldWeapon" },
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesSwipeLineB_Shield",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+
+			{
+				WeaponNames = { "ShieldWeaponRush" },
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesWings_ShieldRush",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "BowWeapon" },
+				WeaponProperty = "ChargeTime",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+
+			{
 				WeaponName = "BowWeapon",
-				WeaponProperty = "MinChargeStartFx",
-				ChangeValue = "BowChargeRama-Hephaestus",
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesBowTrail",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 
 			{
-				TraitName = "BowBondTrait",
-				WeaponName = "BowWeaponDash",
-				WeaponProperty = "ChargeStartFx",
-				ChangeValue = "BowChargeRamaDash-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				TraitName = "BowBondTrait",
-				WeaponNames = { "BowWeapon", "BowWeaponDash" },
-				ProjectileProperty = "AttachedAnim",
-				ChangeValue = "RamaWideShot-Hephaestus",
-				ChangeType = "Absoawlute",
+				WeaponNames = { "GunWeapon" },
+				WeaponProperty = "Cooldown",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
 				ExcludeLinked = true,
 			},
 
 			{
 				TraitName = "GunLoadedGrenadeTrait",
+				WeaponNames = { "GunWeapon" },
+				ProjectileProperty = "Fuse",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+
+			{
 				WeaponName = "GunWeapon",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "GunLaser-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponName = "GunWeapon",
-				ProjectileProperty = "AttachedAnim",
-				ChangeValue = "GunLaserOriginFlare-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponName = "GunWeapon",
-				ProjectileProperty = "TipFx",
-				ChangeValue = "GunLaserTipFlare-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponName = "GunWeapon",
-				WeaponProperty = "ChargeStartFx",
-				ChangeValue = "GunCharge-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponNames = { "GunWeapon", "GunWeaponDash" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "null",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponName = "GunWeapon",
-				ProjectileProperty = "DissipateGraphic",
-				ChangeValue = "GunLaserEnd-Hephaestus",
+				ProjectileProperty = "StartFx2",
+				ChangeValue = "HermesGunTrail",
 				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 
-			{
-				TraitName = "ShieldLoadAmmoTrait",
-				WeaponName = "ShieldWeapon",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "BeowulfShieldSlam-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				TraitName = "BowMarkHomingTrait",
-				WeaponNames = { "BowWeapon" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus-Alt01",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "BowLoadAmmoTrait",
-				WeaponNames = { "BowWeapon" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus-Alt02",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponNames = { "FistWeapon", "FistWeapon3", "FistWeapon5" },
-				TraitName = "FistDetonateTrait",
-				WeaponProperty = "FireFx",
-				ChangeValue = "ClawSwipe-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponNames = { "FistWeapon2", "FistWeapon4" },
-				TraitName = "FistDetonateTrait",
-				WeaponProperty = "FireFx",
-				ChangeValue = "ClawSwipeFlipped-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
 			{
 				WeaponNames = { "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5" },
-				TraitName = "FistDetonateTrait",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "null",
-				ChangeType = "Absolute"
-			},
-			{
-				WeaponNames = { "FistWeaponDash" },
-				ProjectileProperty = "StartFx",
-				ChangeValue = "ClawSwipeFlippedDash-Hephaestus",
-				ChangeType = "Absolute",
+				WeaponProperty = "ChargeTime",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
 				ExcludeLinked = true,
 			},
-
+			{
+				WeaponNames = { "FistWeapon" },
+				EffectName = "FistDisableAndLockTrigger",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon" },
+				EffectName = "FistChargeDisableAndLockTrigger",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon2" },
+				EffectName = "FistDisableAndLockTrigger2",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon2" },
+				EffectName = "FistChargeDisableAndLockTrigger2",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon3" },
+				EffectName = "FistDisableAndLockTrigger3",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon3" },
+				EffectName = "FistChargeDisableAndLockTrigger3",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon4" },
+				EffectName = "FistDisableAndLockTrigger4",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "FistWeapon5" },
+				EffectName = "FistDisableAndLockTrigger5",
+				EffectProperty = "Duration",
+				BaseValue = 0.7,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},]]
+		},
+		ExtractEntry =
+		{
+			BaseValue = 0.70,
 		},
 		ExtractValues =
 		{
 			{
-				ExtractAs = "TooltipEnvyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurseAttack",
-				BaseProperty = "Duration",
+				Key = "ExtractEntry",
+				DecimalPlaces = 2,
+				Format = "NegativePercentDelta",
+				ExtractAs = "TooltipSpeedIncrease",
 			},
-			{
-				ExtractAs = "TooltipEnvyPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurseAttack",
-				BaseProperty = "Modifier",
-				Format = "Percent"
-			}
 		}
 	}
+	
 	OlympusTraitData.HephaestusSecondaryTrait =
 	{
-		Name = "HephaestusSecondaryTrait",
 		InheritFrom = { "ShopTier1Trait" },
-		God = "Hephaestus",
-		Slot = "Secondary",
-		Icon = "Boon_Hephaestus_02",
+		Icon = "Boon_Hephaestus_09",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.20,
+			},
+			Epic =
+			{
+				Multiplier = 1.40,
+			},
+			Heroic =
+			{
+				Multiplier = 1.80,
+			}
+		},
 		PropertyChanges =
 		{
+			
 			{
-				WeaponName = "SwordParry",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "RadialNovaSwordParry-Hephaestus",
+				WeaponNames = OlympusWeaponSets.SecondaryWeapons,
+				EffectName = "RushHyperArmor",
+				EffectProperty = "Active",
+				ChangeValue = true,
 				ChangeType = "Absolute",
-				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = OlympusWeaponSets.SecondaryWeapons,
+				EffectName= "RushHyperArmor",
+				EffectProperty = "Modifier",
+				BaseMin = 0.7,
+				BaseMax = 0.7,
+				SourceIsMultiplier = true,
+				ChangeType = "Absolute",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageReduction",
+					Format = "NegativePercentDelta",
+				}
+			},
+			{
+				WeaponNames = OlympusWeaponSets.SecondaryWeapons,
+				EffectName= "RushHyperArmor",
+				EffectProperty = "Duration",
+				BaseValue = 0.5,
+				ChangeType = "Absolute",
 			},
 
-			{
-				WeaponName = "SpearWeaponThrow",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "SpearThrowProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "SpearWeaponThrowReturn",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "SpearThrowProjectile-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "SpearWeaponThrow",
-				ProjectileProperty = "StartFx",
-				ChangeValue = "HephaestusSpearThrowStartFx",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "BowSplitShot",
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus-SplitShot",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "BowSplitShot",
-				WeaponProperty = "MinChargeStartFx",
-				ChangeValue = "BowCharge-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				ProjectileName = "ShieldThrow",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ShieldSwipe-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponNames = { "ShieldThrowDash" },
-				ProjectileName = "ShieldThrowDash",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ShieldSwipe-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				WeaponProperty = "ChargeStartFx",
-				ChangeValue = "ShieldCharge-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponName = "GunGrenadeToss",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ZagGrenadeExplosionHephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "ProjectileShield-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "ShieldRushBonusProjectileTrait",
-				ProjectileProperty = "Graphic",
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-				ChangeValue = "ProjectileShieldAlt01-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "ShieldLoadAmmoTrait",
-				ProjectileProperty = "Graphic",
-				WeaponNames = { "ShieldThrow", "ShieldThrowDash", "ChaosShieldThrow" },
-				ChangeValue = "ProjectileShieldAlt03-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "ShieldTwoShieldTrait",
-				ProjectileProperty = "Graphic",
-				WeaponName = "ShieldThrow",
-				ChangeValue = "ProjectileShieldAlt02-Poseidon",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "ShieldTwoShieldTrait",
-				WeaponName = "ShieldThrow",
-				ProjectileName = "ShieldThrow",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ShieldThrowTrailMirage-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunGrenadeToss",
-				WeaponProperty = "FireFx",
-				ChangeValue = "SwordSwipeAFlipped-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				WeaponName = "GunGrenadeToss",
-				ProjectileProperty = "StartFx",
-				ChangeValue = "SwordSwipeA-Emitter-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				TraitName = "SpearTeleportTrait",
-				WeaponName = "SpearRushWeapon",
-				ProjectileName = "SpearRushWeapon",
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "SpearRushTrailFx-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "FistFxUppercutDirectionalHephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponNames = { "GunGrenadeToss" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "GunGrenadeLuciferOrb-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponNames = { "GunGrenadeToss" },
-				ProjectileProperty = "GroupName",
-				ChangeValue = "FX_Standing_Add",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponNames = { "GunBombWeapon" },
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "ZagGrenadeExplosionHephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponName = "GunGrenadeToss",
-				ProjectileProperty = "StartFx",
-				ChangeValue = "null",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponName = "GunGrenadeToss",
-				WeaponProperty = "FireFx",
-				ChangeValue = "null",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				WeaponNames = { "GunBombImmolation" },
-				ProjectileProperty = "DetonateGraphic",
-				ChangeValue = "LuciferOrbAoE-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "BowMarkHomingTrait",
-				WeaponNames = { "BowSplitShot" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus-SplitShot-Alt01",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "BowLoadAmmoTrait",
-				WeaponNames = { "BowSplitShot" },
-				ProjectileProperty = "Graphic",
-				ChangeValue = "BowWeaponArrow-Hephaestus-SplitShot-Alt02",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "FistDetonateTrait",
-				WeaponNames = { "FistWeaponSpecial" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "ClawSwipeUppercut-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "FistDetonateTrait",
-				WeaponNames = { "FistWeaponSpecialDash" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "ClawSwipeUppercutSpecial-Hephaestus",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
-			{
-				TraitName = "FistTeleportSpecialTrait",
-				WeaponNames = { "FistWeaponSpecial", "FistWeaponSpecialDash" },
-				WeaponProperty = "FireFx",
-				ChangeValue = "FistFxUppercutDirectionalHephaestus_FlashKick",
-				ChangeType = "Absolute",
-				ExcludeLinked = true,
-			},
 		},
-		EnemyPropertyChanges =
+		ExtractEntry =
 		{
-			{
-				TraitName = "GunLoadedGrenadeTrait",
-				LegalUnits = { "GunBombUnit" },
-				ThingProperty = "Graphic",
-				ChangeValue = "LuciferBomb-Hephaestus",
-				ChangeType = "Absolute",
-			},
+			BaseValue = 0.9,
+			SourceIsMultiplier = true,
+
 		},
 		ExtractValues =
 		{
 			{
-				ExtractAs = "TooltipEnvyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurseSecondary",
-				BaseProperty = "Duration",
+				Key = "ExtractEntry",
+				DecimalPlaces = 2,
+				Format = "NegativePercentDelta",
+				ExtractAs = "TooltipSpeedIncrease",
 			},
-			{
-				ExtractAs = "TooltipEnvyPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "SwordWeapon",
-				BaseName = "EnvyCurseSecondary",
-				BaseProperty = "Modifier",
-				Format = "Percent"
-			}
-		}
+		},
 	}
 	
 	OlympusTraitData.HephaestusRushTrait =
@@ -1058,8 +810,6 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		God = "Hephaestus",
 		Icon = "Boon_Hephaestus_03",
-		Slot = "Rush",
-		PreEquipWeapons = { "HephaestusMineWeapon" },
 		RarityLevels =
 		{
 			Common =
@@ -1079,135 +829,20 @@ if ModUtil ~= nil then
 				Multiplier = 1.66,
 			}
 		},
-		SetupFunction =
-		{
-			Name = "SetupHephaestusDashTrap",
-			RunOnce = true,
-		},
-		AddRush =
-		{
-			FunctionName = "HephaestusTrapDash",
-			RunOnce = true,
-			FunctionArgs =
-			{
-				Range = 700,
-				Cooldown = 4,
-				ExtractValues =
-				{
-					{
-						Key = "Cooldown",
-						ExtractAs = "TooltipCooldown",
-					},
-				}
-			},
-			
-		},
 		PropertyChanges =
 		{
 			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				WeaponProperty = "FireFx",
-				ChangeValue = "BlinkTrailVerticalB-Hephaestus",
-				ChangeType = "Absolute",
-			},
-
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				WeaponProperty = "FireGraphic",
-				ChangeValue = "ZagreusDashNoCollide_Hephaestus",
-				ChangeType = "Absolute",
-			},
-
-			--[[{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				WeaponProperty = "Projectile",
-				ChangeValue = "HephaestusDashProjectile",
-				ChangeType = "Absolute",
-			},]]
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				WeaponProperty = "BlinkDetonateAtOrigin",
-				ChangeValue = true,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				WeaponProperty = "BlinkDetonateAtEndpoint",
-				ChangeValue = false,
-				ChangeType = "Absolute",
-			},
-			--[[{
-				WeaponName = "HephaestusMineBlast",
-				ProjectileName = "HephaestusMineBlast",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 100,
-				BaseMax = 100,
-				AsInt = true,
-				MinMultiplier = 0.1,
-				IdenticalMultiplier =
-				{
-					Value = -0.8,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},]]
-			{
-				WeaponName = "HephaestusMineWeapon",
-				ProjectileName = "HephaestusMineProjectile",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
-			},
+                WeaponNames = { "RushWeapon" },
+                WeaponProperty = "WeaponRange",
+                BaseValue = 1.5,
+                ChangeType = "Multiply",
+                ExtractValue =
+                {
+                    ExtractAs = "TooltipPenalty",
+                    Format = "NegativePercentDelta",
+                },
+            },
 		},
-		EnemyPropertyChanges =
-		{
-			{
-				WeaponName = "HephaestusMineBlast",
-				ProjectileName = "HephaestusMineBlast",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 100,
-				BaseMax = 100,
-				AsInt = true,
-				MinMultiplier = 0.1,
-				IdenticalMultiplier =
-				{
-					Value = -0.8,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},
-			{
-				WeaponName = "HephaestusMineBlast",
-				ProjectileName = "HephaestusMineBlast",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
-			},
-		},
-		ExtractValues =
-		{
-			{
-				ExtractAs = "TooltipJealousyDuration",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "JealousyCurseApplicator",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Duration",
-			},
-			{
-				ExtractAs = "TooltipJealousyPower",
-				SkipAutoExtract = true,
-				External = true,
-				BaseType = "Effect",
-				WeaponName = "JealousyCurseApplicator",
-				BaseName = "JealousyCurse",
-				BaseProperty = "Modifier",
-				Format = "Percent"
-			}
-		}
 	}
 	OlympusTraitData.HephaestusRangedTrait =
 	{
@@ -1746,17 +1381,18 @@ if ModUtil ~= nil then
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
 		CanReceiveGift = true,
 		AlwaysShowDefaultUseText = true,
+		GodLoot = false,
+		TreatAsGodLootByShops = true,
 		Weight = 10,
 		Icon = "BoonSymbolHephaestus",
 		BoonInfoIcon = "BoonInfoSymbolHephaestusIcon",
 		DoorIcon = "BoonSymbolHephaestusIsometric",
-		Color = { 22, 128, 140, 255 },
-		LightingColor = { 22, 128, 140, 255 },
-		LootColor = { 22, 128, 140, 255 },
-		SubtitleColor = { 0.09, 0.50, 0.55, 1.0 },
+		Color = { 98,35,28, 255 },
+		LightingColor = { 98,35,28, 255 },
+		LootColor = { 98,35,28, 255 },
+		SubtitleColor = { 0.384, 0.137, 0.098, 1.0 },
 		EventEndSound = "/SFX/ArtemisBoonArrow",
 		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
-		LootRejectionAnimation = "BoonDissipateA_Hephaestus",
 
 		RequiredMinCompletedRuns = 10,
 		RequiredTextLines = { "HermesFirstPickUp" },
@@ -1799,8 +1435,6 @@ if ModUtil ~= nil then
 
 		Speaker = "NPC_Hephaestus_01",
 		Portrait = "Portrait_Hephaestus_Default_01",
-		WrathPortrait = "Portrait_Hephaestus_Wrath_01",
-		OverlayAnim = "HephaestusOverlay",
 		Gender = "Female",
 		SpawnSound = "/SFX/GoldCoinRewardDrop",
 		FlavorTextIds =
@@ -1830,151 +1464,7 @@ if ModUtil ~= nil then
 		{
 			[1] = GlobalVoiceLines.CheckOlympianReunionVoiceLines,
 			[2] = GlobalVoiceLines.FoundRareBoonVoiceLines,
-		},
-
-		DuoPickupTextLineSets =
-		{
-			HephaestusWithZeus01 =
-			{
-				Name = "HephaestusWithZeus01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "PullZeusCastTrait",
-				{ Cue = "/VO/Hephaestus_0041",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "My dear, it seems I only see you when we have common duties. Do you not feel our old passion any longer? Or are you busy elsewhere once more?" },
-				{ Cue = "/VO/Zeus_0270",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/ZeusBoonThunder",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
-					Text = "Hephaestus, I made you my wife, my queen. I have given you everything I have, and yet still there is an...emptiness between us. Maybe helping Zagreus will help us fill that void!" },
-			},
-			HephaestusWithPoseidon01 =
-			{
-				Name = "HephaestusWithPoseidon01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "FishingRewardExtraTrait",
-				{ Cue = "/VO/Hephaestus_0042",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Poseidon. I can't seem to remember the last time you showed favor to your queen. Am I not important enough?" },
-				{ Cue = "/VO/Poseidon_0270",
-					Emote = "PortraitEmoteFiredUp",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/PoseidonBoonWaveCrash", UseEventEndSound = true,
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
-					Text = "Long time no see, Hephaestus! I've been quite busy, helping little Hades escape from his father. If it's my favor you're after, help me with this one first." },
-			},
-			HephaestusWithAthena01 =
-			{
-				Name = "HephaestusWithAthena01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "MoreTrapDamageTrait",
-				{ Cue = "/VO/Hephaestus_0043",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I know we don't always share the same taste in heroes, Athena, but I believe we can agree in this instance that Zagreus requires our help. He shall escape that wretched realm." },
-				{ Cue = "/VO/Athena_0260",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/AthenaBoonHolyShield",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Athena_01", Portrait = "Portrait_Athena_Default_01",
-					Text = "I can remember a time when we did get along in our inspiration. I'll help you and Zagreus, Queen Hephaestus. In honor of those times of glory." },
-			},
-			HephaestusWithAres01 =
-			{
-				Name = "HephaestusWithAres01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "FoesNumberDamageTrait",
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete", "HephaestusWithAres02" },
-				{ Cue = "/VO/Hephaestus_0044",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Ares, my dearest. Everyone else has failed to bring Zagreus to us. I'm here asking only the best to assist me in finally helping him out of that wretched place." },
-				{ Cue = "/VO/Ares_0260",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/AresWrathBattle",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-					Text = "It would be my pleasure, mother. I know that with our help, he can learn the true meaning of winning the war." },
-			},
-			HephaestusWithAphrodite01 =
-			{
-				Name = "HephaestusWithAphrodite01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "FreeHealthTrait",
-				RequiredTextLines = { "HephaestusGift01", "AphroditeGift01" },
-				{ Cue = "/VO/Hephaestus_0045",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "There you are. Always in a man's company...and yet it never seems to be your {#DialogueItalicFormat}husband{#PreviousFormat}. I see. Well, I suppose I can stay and chaperone this rendez-vous you have with Zagreus." },
-				{ Cue = "/VO/Aphrodite_0250",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
-					Text = "Oh, that's simply unnecessary, my queen. Zagreus and I are just... Fine. Since you're already here, let's get this over with."
-				},
-			},
-			HephaestusWithArtemis01 =
-			{
-				Name = "HephaestusWithArtemis01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "ExplosionTrait",
-				RequiredTextLines = { "HephaestusGift01", "ArtemisGift01" },
-				{ Cue = "/VO/Hephaestus_0046",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Placeholder" },
-				{ Cue = "/VO/Artemis_0270",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/ArtemisBoonArrow",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Artemis_01", Portrait = "Portrait_Artemis_Default_01",
-					Text = "Placeholder"
-				},
-			},
-			HephaestusWithDionysus01 =
-			{
-				Name = "HephaestusWithDionysus01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "FullHealBossTrait",
-				{ Cue = "/VO/Hephaestus_0047",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Placeholder" },
-				{ Cue = "/VO/Dionysus_0250",
-					PortraitExitWait = 0.35,
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
-					StartSound = "/SFX/DionysusBoonWineLaugh",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Dionysus_01", Portrait = "Portrait_Dionysus_Default_01",
-					Text = "Placeholder" },
-			},
-			HephaestusWithDemeter01 =
-			{
-				Name = "HephaestusWithDemeter01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				HasTraitNameInRoom = "ChillFireTrait",
-				{ Cue = "/VO/Hephaestus_0048",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Placeholder" },
-				{ Cue = "/VO/Demeter_0390",
-					PortraitExitWait = 0.35,
-					StartSound = "/SFX/DemeterBoonFrost",
-					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-					Text = "Placeholder" },
-			},
-		},
+		},		
 
 		SuperPriorityPickupTextLineSets =
 		{
@@ -2819,264 +2309,7 @@ if ModUtil ~= nil then
 					Text = "And here I thought you would never have enough obols for my blessings." },
 			},
 		},
-		RejectionTextLines =
-		{
-			HephaestusRejection01 =
-			{
-				Name = "HephaestusRejection01",
-				{ Cue = "/VO/Hephaestus_0102",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Nobody says no to the queen! You'll feel my wrath to its fullest!" },
-			},
-			HephaestusRejection02 =
-			{
-				Name = "HephaestusRejection02",
-				{ Cue = "/VO/Hephaestus_0103",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How dare you, miserable imp! You should have been grateful for my offer. You won't make that mistake again, trust me!" },
-			},
-			HephaestusRejection03 =
-			{
-				Name = "HephaestusRejection03",
-				{ Cue = "/VO/Hephaestus_0104",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I suppose that was to be expected from a peasant like yourself. Not everybody has what it takes to make the correct decision, when faced with a choice." },
-			},
-			HephaestusRejection04 =
-			{
-				Name = "HephaestusRejection04",
-				{ Cue = "/VO/Hephaestus_0105",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Adoration is something you earn. Even if I have to use excessive force, I'll get yours." },
-			},
-			HephaestusRejection05 =
-			{
-				Name = "HephaestusRejection05",
-				{ Cue = "/VO/Hephaestus_0106",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Peasant once, peasant always. You were all but doomed to make the wrong decision. Poor thing." },
-			},
-			HephaestusRejection06 =
-			{
-				Name = "HephaestusRejection06",
-				{ Cue = "/VO/Hephaestus_0107",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Be more like your father: know when to quit, and always do as the queen asks of you." },
-			},
-			HephaestusRejection07 =
-			{
-				Name = "HephaestusRejection07",
-				{ Cue = "/VO/Hephaestus_0108",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Wrong! I'll make you bow to the queen, peasant!" },
-			},
-			HephaestusRejection08 =
-			{
-				Name = "HephaestusRejection08",
-				{ Cue = "/VO/Hephaestus_0109",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I hear you keep cheating death. Well, you'd better prepare yourself: it's coming soon." },
-			},
-			HephaestusRejection09 =
-			{
-				Name = "HephaestusRejection09",
-				{ Cue = "/VO/Hephaestus_0110",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't take \"no\" for an answer. You'd best remember that, peasant." },
-			},
-			HephaestusRejection10 =
-			{
-				Name = "HephaestusRejection10",
-				{ Cue = "/VO/Hephaestus_0111",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I'll show you what it's like to go against a queen. I won't go easy." },
-			},
-			HephaestusRejection11 =
-			{
-				Name = "HephaestusRejection11",
-				{ Cue = "/VO/Hephaestus_0112",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I already forgive you, but that doesn't mean I won't make it hard." },
-			},
-			HephaestusRejection12 =
-			{
-				Name = "HephaestusRejection12",
-				{ Cue = "/VO/Hephaestus_0113",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I didn't even wanted to give you my blessing. But if you show yourself worthy of it, I might reconsider giving it to you..." },
-			},
-		},
-		FreePassVoiceLines = {
-			HephaestusFreePass01 =
-			{
-				PlayOnce = true,
-				Name = "HephaestusFreePass01",
-				{ Cue = "/VO/Hephaestus_0174",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "But... My sister isn't even an Olympian anymore. And I am your Queen! Zagreus. You poor misguided soul. I... suppose I forgive you for your ignorance. {#DialogueItalicFormat}Hmph{#PreviousFormat}." },
-			},
-		},
-		RejectionVoiceLines =
-		{
-			{
-				RandomRemaining = true,
-				BreakIfPlayed = true,
-				PreLineWait = 1.3,
-				RequiredEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
-				SuccessiveChanceToPlay = 0.33,
-				UsePlayerSource = true,
-
-				-- Oops, big mistake.
-				{ Cue = "/VO/ZagreusField_4991" },
-				-- Gulp, not the queen.
-				{ Cue = "/VO/ZagreusField_4992" },
-				-- I beg for forgiveness, your highness.
-				{ Cue = "/VO/ZagreusField_4993" },
-				-- Oh no, my bad!
-				{ Cue = "/VO/ZagreusField_4994" },
-			},
-			[2] = GlobalVoiceLines.GodRejectedVoiceLines,
-		},
-
-		MakeUpTextLines =
-		{
-			HephaestusMakeUp01 =
-			{
-				Name = "HephaestusMakeUp01",
-
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0118",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You survived our little confrontation? Well, I didn't expect that from you. Take this and go." },
-			},
-			HephaestusMakeUp02 =
-			{
-				Name = "HephaestusMakeUp02",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0119",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I hope you don't forget the lesson you've learned: never face the wrath of a queen." },
-			},
-			HephaestusMakeUp03 =
-			{
-				Name = "HephaestusMakeUp03",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0120",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Take my blessing and go. I've wasted enough time on you already." },
-			},
-			HephaestusMakeUp04 =
-			{
-				Name = "HephaestusMakeUp04",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0121",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You might have survived this one, Zagreus, but next time you go against me, I won't hold back like I did here." },
-			},
-			HephaestusMakeUp05 =
-			{
-				Name = "HephaestusMakeUp05",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0122",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I hope this \"fight\" has reminded you of why you should always be loyal to me, peasant. Godlings... Always thinking they're better than others. You'll learn, young one. You'll learn." },
-			},
-			HephaestusMakeUp06 =
-			{
-				Name = "HephaestusMakeUp06",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0123",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Next time I say \"jump,\" you say, \"how high?\" Understood?" },
-			},
-			HephaestusMakeUp07 =
-			{
-				Name = "HephaestusMakeUp07",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0124",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You'd better not go around telling people you defeated me. I'll deny it and you'll look like a fool. Don't try me." },
-			},
-			HephaestusMakeUp08 =
-			{
-				Name = "HephaestusMakeUp08",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0125",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How— No one crosses the queen and remains alive. You must have cheated somehow. Cheater.  {#DialogueItalicFormat}Hmph{#PreviousFormat}. Here, take your ill-gotten winnings." },
-			},
-			HephaestusMakeUp09 =
-			{
-				Name = "HephaestusMakeUp09",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0126",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Congratulations, Zagreus. You've proved you're one of the few who can cross me and live to tell about it. Stay vigilant, for I won't forget this." },
-			},
-			HephaestusMakeUp10 =
-			{
-				Name = "HephaestusMakeUp10",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0127",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Frankly, I'm glad it's over. I have much more important things to do. The task list of a queen is endless." },
-			},
-			HephaestusMakeUp11 =
-			{
-				Name = "HephaestusMakeUp11",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0128",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I'll let you win this time, Zagreus. A queen can be forgiving, on occasion." },
-			},
-			HephaestusMakeUp12 =
-			{
-				Name = "HephaestusMakeUp12",
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0129",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "That's it. I order this fight to end. Good, you are listening to reason again." },
-			},
-		},
-		MakeUpFailedTextLines = {
-			HephaestusMakeUpFailed01 =
-			{
-				Name = "HephaestusMakeUpFailed01",
-				PlayOnce = true,
-				-- Denied. (Nothing.)
-				EndCue = "ZagreusHome_0434",--"/VO/ZagreusField_4963",
-				EndWait = 0.45,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0130",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Pff. You thought I would give you a blessing after disrespecting me like you did? Go find me elsewhere if you want another boon." },
-			},
-			HephaestusMakeUpFailed02 =
-			{
-				Name = "HephaestusMakeUpFailed02",
-				PlayOnce = true,
-				-- Nothing.
-				EndCue = "/VO/ZagreusHome_0434",
-				EndWait = 0.45,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				{ Cue = "/VO/Hephaestus_0131",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Haha. See, all this trouble for what? Nothing! Absolutely nothing. Next time, worship your queen." },
-			},
-		},
+		
 		GiftTextLineSets =
 		{
 			-- gives gift in exchange
@@ -3186,6 +2419,23 @@ if ModUtil ~= nil then
 					PostLineFunctionArgs = { Text = "NPC_Hephaestus_01", Icon = "Keepsake_HephaestusSticker_Max" },
 					Text = "{#DialogueItalicFormat}Hmph{#PreviousFormat}. I see you went to a fair amount of trouble to bring me this bottle. Such a shame, when I already have several. You are obviously no hero... Perhaps, at best, a little hero. Maybe we will be able to make something of you, in the end." },
 			},
+			HephaestusGift08 =
+			{
+				Name = "HephaestusGift08",
+				PlayOnce = true,
+				RequiredTextLines = { "HephaestusGift07" },
+				{ Cue = "/VO/ZagreusField_4971", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
+					PostLineFunctionName = "BoonInteractPresentation",
+					Text = "This is no Nectar, my queen. And I know this doesn't make me a hero, or whatever, I just wanted you to have it. I promise I'll stop bothering you from now on, if that's what you'd prefer." },
+				{ Cue = "/VO/Hephaestus_0138",
+					PortraitExitWait = 1.0,
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Text = "NPC_Hephaestus_01", Icon = "Keepsake_HephaestusSticker_Max" },
+					Text = "{#DialogueItalicFormat}Hmph{#PreviousFormat}. I see you went to a fair amount of trouble to bring me this bottle. Such a shame, when I already have several. You are obviously no hero... Perhaps, at best, a little hero. Maybe we will be able to make something of you, in the end." },
+			},
 		},		
 		GiftGivenVoiceLines =
 		{
@@ -3193,109 +2443,35 @@ if ModUtil ~= nil then
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
 
-			-- I'll try, Queen Hephaestus.
+			-- I'll try, Lord Hephaestus.
 			{ Cue = "/VO/ZagreusField_4972" },
 		},
 
 		--ShoutActivationSound = "/SFX/BurnDamage",
 		ShoutVoiceLines =
 		{
-			Queue = "Interrupt",
 			{
 				BreakIfPlayed = true,
+				PlayFromTarget = true,
 				RandomRemaining = true,
 				RequiredKillEnemiesFound = true,
-				RequiredFalseSpurnedGodName = "HephaestusUpgrade",
+				RequiredFalseSpurnedGodName = "HermesUpgrade",
 
-				-- All shall be defeated.
-				{ Cue = "/VO/Hephaestus_0139" },
-				-- Bow before me!
-				{ Cue = "/VO/Hephaestus_0140" },
-				-- Long live the queen.
-				{ Cue = "/VO/Hephaestus_0141" },
-				-- Show these peasants.
-				{ Cue = "/VO/Hephaestus_0142" },
-				-- Divine punishment.
-				{ Cue = "/VO/Hephaestus_0143" },
-				-- Lowly subjects.
-				{ Cue = "/VO/Hephaestus_0144" },
-				-- Pathetic.
-				{ Cue = "/VO/Hephaestus_0145" },
+				-- The fury of Olympus!
+				-- { Cue = "/VO/Athena_0065" },
 			},
 			{
 				BreakIfPlayed = true,
 				PlayFromTarget = true,
 				RandomRemaining = true,
 				RequiredKillEnemiesFound = true,
-				RequiredSpurnedGodName = "HephaestusUpgrade",
+				RequiredSpurnedGodName = "HermesUpgrade",
 				RequireCurrentEncounterNotComplete = true,
 
-				-- How could you!
-				{ Cue = "/VO/Hephaestus_0146" },
-				-- But I am the queen.
-				{ Cue = "/VO/Hephaestus_0147" },
-				-- This is mine, not yours.
-				{ Cue = "/VO/Hephaestus_0148" },
-				-- You miserable—!
-				{ Cue = "/VO/Hephaestus_0149" },
-				-- No!
-				{ Cue = "/VO/Hephaestus_0150" },
+				-- I strongly disapprove.
+				-- { Cue = "/VO/Athena_0103" },
 			},
-		},
-
-		SwapUpgradePickedVoiceLines =
-		{
-			BreakIfPlayed = true,
-			RandomRemaining = true,
-			PreLineWait = 1.05,
-			SuccessiveChanceToPlay = 0.33,
-			CooldownName = "SaidHephaestusRecently",
-			CooldownTime = 40,
-			RequiresLastUpgradeSwapped = true,
-			UsePlayerSource = true,
-
-			-- Very generous of you, Queen Hephaestus.
-			{ Cue = "/VO/ZagreusField_4995" },
-			-- All thanks to you, Queen Hephaestus.
-			{ Cue = "/VO/ZagreusField_4996" },
-			-- Your grace.
-			{ Cue = "/VO/ZagreusField_4997" },
-		},
-
-		DeathTauntVoiceLines =
-		{
-			RandomRemaining = true,
-			BreakIfPlayed = true,
-			PreLineWait = 1.25,
-			NoTarget = true,
-
-			-- Don't pick fights you cannot win, peasant.
-			{ Cue = "/VO/Hephaestus_0154" },
-			-- Nothing. You are nothing.
-			{ Cue = "/VO/Hephaestus_0155" },
-			-- Stay down for your own good.
-			{ Cue = "/VO/Hephaestus_0156" },
-		},
-
-		BlindBoxOpenedVoiceLines =
-		{
-			RandomRemaining = true,
-			BreakIfPlayed = true,
-			PreLineWait = 0.3,
-			Source = { SubtitleColor = Color.HephaestusVoice },
-			TriggerCooldowns = { "ZagreusBoonTakenSpeech" },
-
-			-- You choose the queen. Huh.
-			{ Cue = "/VO/Hephaestus_0157" },
-			-- You made it this far?
-			{ Cue = "/VO/Hephaestus_0158" },
-			-- You probably won't last much longer.
-			{ Cue = "/VO/Hephaestus_0159" },
-			-- The best choice you were offered, I suppose.
-			{ Cue = "/VO/Hephaestus_0160" },
-			-- Fine, I'll bring you to the surface.
-			{ Cue = "/VO/Hephaestus_0161" },
-		},
+		},		
 	}
 
 	-- Gift Section
@@ -3324,6 +2500,24 @@ if ModUtil ~= nil then
         
     end
 	-- FUNCTIONS
+ModUtil.Path.Wrap( "IsHermesBoon", 
+	function(baseFunc, traitName)
+		if traitName ~= nil then
+			local result  = baseFunc(traitName)
+			for i, loot in pairs (LootData) do
+				if loot.Icon == "BoonSymbolHermes" and loot.TraitIndex[traitName] then
+					return true
+				end
+			end
+			return false
+		end
+		return false
+	end
+)
+	function CreateHephaestusLoot( args )
+		args = args or {}
+		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
+	end
 	function AddArmor(number)
 	
 	end
