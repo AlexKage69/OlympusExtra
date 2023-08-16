@@ -1,0 +1,65 @@
+{
+  Animations = [
+	"_append"
+    {
+      Name = "MirrorIcon_LowHealthDamage"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_GemHeal"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_ExtraChanceFloor"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_DashlessBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_NoAmmoBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_AmmoBounce"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_BonusMoneyMirror"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_CombatRegeneration"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_EpicBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_NPCEncounterBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_PomFirstGod"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+    {
+      Name = "MirrorIcon_RerollPom"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "GUI\Screens\MirrorIcons\shadow presence"
+    }
+  ]
+}

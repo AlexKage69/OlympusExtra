@@ -1,0 +1,6 @@
+
+:: Import "MorosNPC.lua"
+Import "OEMirror.lua"
+
+To "Game/Animations/GUIAnimations.sjson"
+SJSON "Animations/GUIAnimations.sjson"

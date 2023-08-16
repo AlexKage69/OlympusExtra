@@ -1,6 +1,8 @@
 
 Import "CerberusAssist/CerberusAssist.lua"
 :: Include "MakariaNPC/modfile_makaria.txt"
+Include "MorosNPC/modfile_moros.txt"
+
 Import "patch.lua"
 Import "extender.lua"
 
@@ -14,3 +16,6 @@ To "Game/Projectiles/PlayerProjectiles.sjson"
 SJSON "CerberusAssist/Projectiles/PlayerProjectiles.sjson"
 :: To "Game/Units/NPCs.sjson"
 :: SJSON "NPCs.sjson"
+
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/en/HelpText.en.sjson"

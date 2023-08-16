@@ -1,10 +1,11 @@
 {
 	Texts = [
-		"_append"		
+		"_append"	
 		{
 			Id = "Codex_OlympianGoddessChapter"
 			DisplayName = "Olympian Goddesses"
-		}			
+		}		
+		//Cerberus		
 		{
 			Id = "GoodBoyAssistTrait_Rack"
 			DisplayName = "Companion Solo"
@@ -35,6 +36,278 @@
 			DisplayName = """
 				From {#AwardMaxFlavorFormat}Cerberus {#AwardDarkFlavorFormat}, goodest boy
 			"""
+		}
+		//Moros Mirror
+		{
+			Id = "LowHealthDamage"
+			DisplayName = "Crushing Presence"
+			Description = "Deal bonus damage when striking undamaged foes under {#TooltipUpgradeFormat}30%{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+    	}
+		{
+			Id = "GemHeal"
+			DisplayName = "Bright Rejuvenation"
+			Description = "Gain {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} when you collect {!Icons.GemSmall}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat} of the collected amount per rank."
+    	}
+		{
+			Id = "ExtraChanceFloor"
+			DisplayName = "Infernal Defiance"
+			Description = "Restore {#TooltipBoldFormat}40%{!Icons.Health_Small} {#PreviousFormat}instead of dying when your Life Total is depleted, {#TooltipUpgradeFormat}1 {#PreviousFormat}time {#ItalicFormat}per floor."
+    	}
+		{
+			Id = "ExtraChanceAlt2"
+			InheritFrom = "ExtraChance"
+			DisplayName = "Infernal Defiance"
+			Description = "Restore at least {#TooltipBoldFormat}40%{!Icons.Health_Small} {#PreviousFormat}when your Life Total is depleted, {#TooltipUpgradeFormat}1 {#PreviousFormat}time {#ItalicFormat}per floor."
+		}
+		{
+			Id = "DashlessBonus"
+			DisplayName = "Steady Reflex"
+			Description = "Gain {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}damage and defense {#PreviousFormat}when you don't {#BoldFormatGraft}Dash {#PreviousFormat} for 3 Sec."
+    	}
+		{
+			Id = "NoAmmoBonus"
+			DisplayName = "Hellish Blood"
+			Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage when you have no more {!Icons.Ammo}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+    	}
+		{
+			Id = "AmmoBounce"
+			DisplayName = "Sentient Soul"
+			Description = "Your {!Icons.Ammo} bounce to another foe before it drops. {#TooltipUpgradeFormat}+{$TempTextData.BaseValue} {#PreviousFormat}bounce per rank."
+    	}
+		{
+			Id = "BonusMoneyMirror"
+			DisplayName = "Richful Contact"
+			Description = "Gain more wealth from all source, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}{!Icons.Currency_Small} per rank."
+    	}
+		{
+			Id = "CombatRegeneration"
+			DisplayName = "Shedding Skins"
+			Description = "While in combat, your {!Icons.Health_Small_Tooltip} slowly recovers, {#TooltipUpgradeFormat}+{$TempTextData.BaseValue}{!Icons.HealthRestore_Small}{#ItalicFormat}(every 3 Sec.) {#PreviousFormat}per rank."
+    	}
+		{
+			Id = "EpicBonus"
+			DisplayName = "Eridium Quality"
+			Description = "Deal bonus damage for each {#EpicFormat}{$Keywords.Epic} {#PreviousFormat} or higher you've been blessed, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+    	}
+		{
+			Id = "EpicBonus_InRun"
+			DisplayName = "Eridium Quality"
+			Description = "Deal bonus damage for each {#EpicFormat}{$Keywords.Epic} {#PreviousFormat} or higher you've been blessed, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}Current Damage Bonus: {#PreviousFormat}{#TooltipUpgradeFormat}+{$TempTextData.CurrentValue}%{#PreviousFormat}"
+		}
+		{
+			Id = "NPCEncounterBonus"
+			DisplayName = "Rare Acquaintance"
+			Description = "Raise your chance to encounter {#BoldFormatGraft}Special {$Keywords.EncounterAlt} {#PreviousFormat} and {$Keywords.FountainPlural}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+    	}
+		{
+			Id = "PomFirstGod"
+			DisplayName = "Gods' Purity"
+			Description = "Your first {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} starts at a higher level, {#TooltipUpgradeFormat}gain {#UseGiftPointFormat}+1 Lv.{#PreviousFormat}"
+    	}
+		{
+			Id = "PomFirstGodMetaUpgrade_Off"
+			DisplayName = "{!Icons.MirrorInactive}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "PomFirstGodMetaUpgrade_On"
+			DisplayName = "{!Icons.MirrorPurchasedCheckmark}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RerollPom"
+			DisplayName = "Fated Reach"
+			Description = "At {$Keywords.FountainPlural}, you may spend {!Icons.ReRoll_Small} to gain {#AltUpgradeFormat}+1 Lv.{!Icons.RandomPomSmall} {#PreviousFormat}, {#TooltipUpgradeFormat}1{#PreviousFormat}{!Icons.ReRoll_Small} per rank."
+    	}
+		{
+			Id = "ReRollPanelAlt2"
+			DisplayName = "{!Icons.ReRoll_Small} Reach Persuasion"
+			Description = "At {$Keywords.FountainPlural}, you may spend {!Icons.ReRoll_Small} to gain {#AltUpgradeFormat}+1 Lv.{!Icons.RandomPomSmall} {#PreviousFormat}."
+		}
+		{
+			Id = "ReRollPanelAlt2_Small"
+			InheritFrom = "ReRollPanelAlt2"
+		}
+		{
+			Id = "LowHealthDamageMetaUpgrade"
+			DisplayName = "{$Keywords.LowHealthDamage}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "LowHealthDamageMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "GemHealMetaUpgrade"
+			DisplayName = "{$Keywords.GemHeal}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "GemHealMetaUpgrade_ShortTotal"
+      		DisplayName = "{$TempTextData.Amount:P} {#MetaUpgradeDisplayMiscFormat}of {!Icons.GemSmall}"
+		}
+		{
+			Id = "GemHealMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ExtraChanceFloorMetaUpgrade"
+			DisplayName = "{$Keywords.ExtraChanceFloor}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ExtraChanceFloorMetaUpgrade_ShortTotal"
+      		DisplayName = "{$TempTextData.Amount}{!Icons.ExtraChance}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ExtraChanceFloorMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "DashlessMetaUpgrade"
+			DisplayName = "{$Keywords.DashlessBonus}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "DashlessMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "DashlessMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "NoAmmoMetaUpgrade"
+			DisplayName = "{$Keywords.NoAmmoBonus}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "NoAmmoMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "NoAmmoMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "BounceAmmoMetaUpgrade"
+			DisplayName = "{$Keywords.AmmoBounce}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "BounceAmmoMetaUpgrade_ShortTotal"
+			DisplayName = "+{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "BounceAmmoMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "BonusMoneyMetaUpgrade"
+			DisplayName = "{$Keywords.BonusMoneyMirror}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "BonusMoneyMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount:P}{!Icons.Currency_Small}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "BonusMoneyMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount:P}{!Icons.Currency_Small}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RegenerationMetaUpgrade"
+			DisplayName = "{$Keywords.CombatRegeneration}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RegenerationMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount}{!Icons.HealthRestore_Small}" // {#ItalicFormat}(every 3 Sec.)
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RegenerationMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "EpicBonusMetaUpgrade"
+			DisplayName = "{$Keywords.EpicBonus}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "EpicBonusMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount:P} Per {#EpicFormat}{$Keywords.Epic}{#PreviousFormat}"
+		}
+		{
+			Id = "EpicBonusMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RareNPCMetaUpgrade"
+			DisplayName = "{$Keywords.NPCEncounterBonus}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RareNPCMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RareNPCMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount:P}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "PomFirstGodMetaUpgrade"
+			DisplayName = "{$Keywords.PomFirstGod}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "PomFirstGodMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "PomFirstGodMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RerollPomMetaUpgrade"
+			DisplayName = "{$Keywords.RerollPom}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RerollPomMetaUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount}{!Icons.ReRoll_Small}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "RerollPomMetaUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+     		Id = "UseGemDrop_Health"
+			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
+		}
+		{
+			Id = "UseGemDropRunProgress_Health"
+			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#UseMoneyFormat}+{$TempTextData.DropMoney}{!Icons.Currency_Small}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
 		}
     ]
 }
