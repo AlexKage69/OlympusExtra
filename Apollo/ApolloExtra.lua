@@ -5400,16 +5400,6 @@ if ModUtil ~= nil then
 			end
 		end
 	}
-	-- Song of Healing functions
-	ModUtil.Path.Wrap("StartEncounter",
-		function(baseFunc, currentRun, currentRoom, currentEncounter)
-			if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
-				thread(SeaChanteyAnnouncement)
-			end
-			baseFunc(currentRun, currentRoom, currentEncounter)
-		end
-	)
-
 	-- Sea Chantey functions
 	ModUtil.Path.Wrap("Kill",
 		function(baseFunc, victim, triggerArgs)

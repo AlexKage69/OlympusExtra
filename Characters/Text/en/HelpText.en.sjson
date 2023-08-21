@@ -309,5 +309,10 @@
 			Id = "UseGemDropRunProgress_Health"
 			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#UseMoneyFormat}+{$TempTextData.DropMoney}{!Icons.Currency_Small}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
 		}
+		{
+			Id = "Shop_UseGemDrop_Health"
+			DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
+		}
+		
     ]
 }

@@ -3,7 +3,7 @@ local OlympusMetaUpgradeOrder = ModUtil.Entangled.ModData(MetaUpgradeOrder)
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 local OlympusColor = ModUtil.Entangled.ModData(Color)
 local OlympusResourceData = ModUtil.Entangled.ModData(ResourceData)
-local OlympusRewardStoreData = ModUtil.Entangled.ModData(RewardStoreData)
+local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 
 
 OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
@@ -33,7 +33,7 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		ShortTotal = "GemHealMetaUpgrade_ShortTotal",
 		ShortTotalNoIcon = "GemHealMetaUpgrade_ShortTotalNoIcon",
 		FormatAsPercent = true,
-		ChangeValue = 1.25,
+		ChangeValue = 1.15,
 	}
 	OlympusResourceData.Gems.OnAddedFunctionName = "OnGemsAdded"
 	OlympusMetaUpgradeData.ExtraChanceFloorMetaUpgrade=
@@ -61,8 +61,26 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		CostTable = { 30, 65, 100, 150 },
 		ShortTotal = "DashlessMetaUpgrade_ShortTotal",
 		ShortTotalNoIcon = "DashlessMetaUpgrade_ShortTotalNoIcon",
-		--PreEquipWeapon = "PerfectDashEmpowerApplicator",
-		ChangeValue = 1.05, -- display variable, change below value to affect gameplay
+		PreEquipWeapons = { "DashlessBuffApplicator" },
+		--ChangeValue = 1.05, -- display variable, change below value to affect gameplay
+		--DisplayValue = 3, -- display variable used to display duration of buff
+		PropertyChanges =
+		{
+			{
+				WeaponName = "DashlessBuffApplicator",
+				EffectName = "DashlessBuffAttackApplicator",
+				EffectProperty = "Modifier",
+				ChangeValue = 0.05,
+				ChangeType = "Add",
+			},
+			{
+				WeaponName = "DashlessBuffApplicator",
+				EffectName = "DashlessBuffDefenseApplicator",
+				EffectProperty = "Modifier",
+				ChangeValue = -0.05,
+				ChangeType = "Add",
+			},
+		},
 	}
 	OlympusMetaUpgradeData.NoAmmoMetaUpgrade =
 	{
@@ -110,6 +128,76 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 				ChangeType = "Add",
 			},
 		},]]
+	}
+	OlympusWeaponData.RangedWeaponBounce =
+	{
+		UpgradeChoiceText = "UpgradeChoiceMenu_Ranged",
+
+		--ChargeCameraMotion = { ZoomType = "Overshoot", Fraction = 1.04, Duration = 0.22 },
+		--FireCameraMotion = { ZoomType = "Ease", Fraction = 1.0, Duration = 0.1 },
+		--HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.05, FalloffSpeed = 3000 },
+
+		FireRumbleParameters =
+		{
+			{ ScreenPreWait = 0.06, Fraction = 0.17, Duration = 0.17 },
+		},
+
+		StoreAmmoOnHit = 1,
+		AmmoDropDelay = 16,
+
+		CauseImpactReaction = true,
+		ImpactReactionHitsOverride = 10,
+
+		NotReadySound = "/Leftovers/SFX/OutOfAmmo2",
+		NotReadyText = "OutOfAmmo_Alt",
+		NoAmmoFunctionName = "RangedFailedNoAmmoPresentation",
+		NotReadyAmmoPackText = "RetrieveAmmo",
+		NotReadyAmmoInEnemyText = "RetrieveAmmoFromEnemy",
+		NotReadyPulseStoredAmmo = true,
+		--SkipAttackNotReadySounds = true,
+
+		Sounds =
+		{
+			ChargeSounds =
+			{
+				{
+					Name = "/Leftovers/SFX/AuraCharge",
+					StoppedBy = { "ChargeCancel", "Fired" }
+				}
+			},
+			FireSounds =
+			{
+				{
+					-- StoppedBy = { "SpeechFromCue" }
+				},
+			},
+
+			ImpactSounds =
+			{
+				Invulnerable = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+				Bone = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				Brick = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				Stone = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				Organic = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				StoneObstacle = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				BrickObstacle = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				MetalObstacle = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+				BushObstacle = "/SFX/Player Sounds/ZagreusBloodshotImpact",
+			},
+		},
+
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.02, Fraction = 0.3, LerpTime = 0 },
+			{ ScreenPreWait = 0.02, Fraction = 1.0, LerpTime = 0.07 },
+		},
+
+		Binks =
+		{
+			"ZagreusRangedWeapon_Bink"
+		},
+		SelfMultiplier = 0,
 	}
 	OlympusMetaUpgradeData.BonusMoneyMetaUpgrade =
 	{
@@ -335,15 +423,16 @@ ModUtil.Path.Wrap("InitHeroLastStands",
 		end
 	end
 )
-ModUtil.Path.Wrap("GetNumMetaUpgradeLastStands",
-	function(baseFunc)
-		return baseFunc() + GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade")
-	end
-)
+	ModUtil.Path.Wrap("GetNumMetaUpgradeLastStands",
+		function(baseFunc)
+			return baseFunc() + GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade")
+		end
+	)
 	ModUtil.Path.Wrap("GetUseText",
 		function(baseFunc, useTarget)
 			local usetext = baseFunc(useTarget)
-			if usetext == "UseGemDropRunProgress" or usetext == "UseGemDrop" and GetNumMetaUpgrades("GemHealMetaUpgrade") > 0 then
+			if usetext == "UseGemDropRunProgress" or usetext == "UseGemDrop" or usetext == "Shop_UseGemDrop" 
+			or usetext == "Shop_UseGemDrop_HealthAsObolText" and GetNumMetaUpgrades("GemHealMetaUpgrade") > 0 then
 				useTarget.MaxHealthAmount = GetGemsMaxHealthAdded(useTarget.AddResources.Gems)
 				usetext = usetext.."_Health"
 			end
@@ -352,33 +441,85 @@ ModUtil.Path.Wrap("GetNumMetaUpgradeLastStands",
 	)
 ModUtil.Path.Wrap("StartRoom",
 	function(baseFunc, currentRun, currentRoom)
-		
-	local biomeDepth = currentRun.BiomeDepthCache or GetBiomeDepth( currentRun )
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(biomeDepth))
-	if GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > 0 and biomeDepth == 1 then
-		local numRegenerationLastStands = 0
-		for i, lastStand in pairs(CurrentRun.Hero.LastStands) do
-			if lastStand.Name == "ExtraChanceFloorMetaUpgrade" then
+		--local biomeDepth = currentRun.BiomeDepthCache or GetBiomeDepth( currentRun )
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(biomeDepth))
+		if GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > 0 and Contains({"B_Intro","C_Intro","D_Intro",}, currentRoom.Name) then
+			local numRegenerationLastStands = 0
+			for i, lastStand in pairs(CurrentRun.Hero.LastStands) do
+				if lastStand.Name == "ExtraChanceFloorMetaUpgrade" then
+					numRegenerationLastStands = numRegenerationLastStands + 1
+				end
+			end
+			while GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > numRegenerationLastStands do
+				AddLastStand({
+					Name = "ExtraChanceFloorMetaUpgrade",
+					Unit = CurrentRun.Hero,
+					Icon = "ExtraLifeReplenish",
+					WeaponName = "LastStandMetaUpgradeShield",
+					HealFraction = MetaUpgradeData.ExtraChanceFloorMetaUpgrade.HealPercent,
+					Silent = true
+				})
 				numRegenerationLastStands = numRegenerationLastStands + 1
 			end
+			CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
 		end
-		while GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > numRegenerationLastStands do
-			AddLastStand({
-				Name = "ExtraChanceFloorMetaUpgrade",
-				Unit = CurrentRun.Hero,
-				Icon = "ExtraLifeReplenish",
-				WeaponName = "LastStandMetaUpgradeShield",
-				HealFraction = MetaUpgradeData.ExtraChanceFloorMetaUpgrade.HealPercent,
-				Silent = true
-			})
-			numRegenerationLastStands = numRegenerationLastStands + 1
+		if GetNumMetaUpgrades("DashlessMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
+			CurrentRun.Hero.DashlessCooldown = 1
+			AddDashlessBuff(0)
 		end
-		CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
-	end
-
 		baseFunc(currentRun, currentRoom)
 	end
 )
+OnWeaponFired{ "RushWeapon",
+	function( triggerArgs )
+		if IsMetaUpgradeActive("BounceAmmoMetaUpgrade") then
+			--local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = ammoDropData.LocationX, LocationY = ammoDropData.LocationY, })
+			FireWeaponFromUnit({ Weapon = "RangedWeaponBounce",  Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId, FireFromTarget = true, Angle = RandomFloat( 0, 360 ) }) --[[ammoDropData.Angle or]]
+		end
+		if GetNumMetaUpgrades("DashlessMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero then
+			if CurrentRun.Hero.DashlessCooldown == nil then
+				CurrentRun.Hero.DashlessCooldown = 0
+			end
+			if CurrentRun.Hero.DashlessCooldown == 0 then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Buff Removed"))	
+				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffAttackApplicator" })
+				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffDefenseApplicator" })
+			end
+			CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown + 1			
+			thread( AddDashlessBuff, 3 )
+		end
+	end
+}
+ModUtil.Path.Wrap("CheckAmmoDrop",
+	function(baseFunc, currentRun, targetId, ammoDropData, numDrops)
+		if ammoDropData == nil then
+			return
+		end
+	
+		if ammoDropData.Count == nil or ammoDropData.Count <= 0 or numDrops == 0 then
+			return
+		end
+	
+		if ammoDropData.Chance ~= nil and not RandomChance( ammoDropData.Chance ) then
+			return
+		end
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(targetId))	
+		if IsMetaUpgradeActive("BounceAmmoMetaUpgrade") then
+			local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = ammoDropData.LocationX, LocationY = ammoDropData.LocationY, })
+			FireWeaponFromUnit({ Weapon = "RangedWeapon",  Id = CurrentRun.Hero.ObjectId, DestinationId = dropLocation, FireFromTarget = true, Angle = ammoDropData.Angle or RandomFloat( 0, 360 ) })
+		end
+		baseFunc(currentRun, targetId, ammoDropData, numDrops)
+	end
+)
+function AddDashlessBuff(duration)
+	wait(duration, RoomThreadName)
+	CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown - 1
+	if CurrentRun.Hero.DashlessCooldown == 0 then 
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Buff Added"))	
+		ApplyEffectFromWeapon({ WeaponName = "DashlessBuffApplicator", EffectName = "DashlessBuffAttackApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+		ApplyEffectFromWeapon({ WeaponName = "DashlessBuffApplicator", EffectName = "DashlessBuffDefenseApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+	end
+end
 function GetTotalEpicBonus()
 	local perGodMultiplier = GetTotalStatChange( MetaUpgradeData.GodEnhancementMetaUpgrade )
 	local godDictionary = {}

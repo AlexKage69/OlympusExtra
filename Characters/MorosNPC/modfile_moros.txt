@@ -4,3 +4,5 @@ Import "OEMirror.lua"
 
 To "Game/Animations/GUIAnimations.sjson"
 SJSON "Animations/GUIAnimations.sjson"
+To "Game/Weapons/PlayerWeapons.sjson"
+SJSON "Weapons/PlayerWeapons.sjson"

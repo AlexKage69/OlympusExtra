@@ -1,0 +1,107 @@
+{
+  Weapons = [
+    "_append" 
+    {
+      Name = "DashlessBuffApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      SilentImpact = true
+      Effects = [
+        {
+          Name = "DashlessBuffAttackApplicator"
+          Type = "DAMAGE_OUTPUT"
+          Modifier = 1
+          Duration = 1000.0
+          CanAffectInvulnerable = true
+          FrontFx = "PoseidonDebuffSurge"
+          //FlashFrontFxWhenExpiring = true
+          OnlyAffectName = "_PlayerUnit"
+          ExtendDurationOnReapply = true
+          Active = true
+        }
+        {
+          Name = "DashlessBuffDefenseApplicator"
+          Type = "DAMAGE_TAKEN"
+          Modifier = 1
+          Duration = 1000.0
+          Active = true
+          OnlyAffectName = "_PlayerUnit"
+          TimeModifierFraction = 0
+        }]
+    }
+    {
+      Name = "RangedWeaponBounce"
+      InheritFrom = "1_BaseDamagingWeapon"
+      Control = "Attack1"
+      Type = "GUN"
+      Projectile = "RangedWeapon"
+      ChargeSoundFadeTime = 0.25
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      CancelMovement = true
+      ChargeCancelMovement = true
+      FullyAutomatic = false
+      BarrelLength = 32
+      AutoLock = true
+      AutoLockRange = 1000
+      AutoLockArcDistance = 75
+      AutoLockWithMouse = false
+      FireFx = "CastDust"
+      ShowFreeAimLine = true
+      AimLineAnimation = "AuraAimLineNoMovement"
+      ChargeStartAnimation = "ZagreusRangedWeapon_Charge"
+      FireGraphic = "ZagreusRangedWeapon_Fire"
+      LockTriggerForCharge = true
+      AllowExternalForceRelease = false
+      FireOnRelease = false
+      ChargeRangeMultiplier = 1.0
+      ChargeSpeedMultiplier = 1.0
+      ChargeCancelGraphic = "null"
+      ChargeFinishFx = "null"
+      Cooldown = 0.2
+      ChargeTimeFrames = 13
+      BelowMinChargeCooldown = 0
+      SwapOnFire = "null"
+      //MaxAmmo = 1
+      NumProjectiles = 1
+      ProjectileSpacing = 0
+      SelfVelocity = -320
+      CanCancelDisables = true
+      SetCompleteAngleOnFire = true
+      SetCompleteAngleOnCharge = true
+      Effects = [
+        {
+          Name = "RangedDisable"
+          DurationFrames = 6
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+        }
+        {
+          Name = "RangedDisableCancelable"
+          DurationFrames = 24
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Cancelable = true
+          RequestTriggerLock = true
+        }
+        {
+          Name = "RangedDisableCancelableFast"
+          DurationFrames = 12
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Cancelable = true
+          RequestTriggerLock = true
+          Active = false
+        }]
+    }
+  ]
+}

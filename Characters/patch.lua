@@ -404,3 +404,26 @@ ModUtil.Path.Wrap("HandleLootPickup",
             baseFunc(currentRun, loot)
         end
     end)
+    ModUtil.Path.Wrap("StartEncounter",
+        function(baseFunc, currentRun, currentRoom, currentEncounter)
+            if HeroHasTrait("FullHealBossTrait") then
+                local healAmount = round(CurrentRun.Hero.MaxHealth * CalculateHealingMultiplier())
+                if healAmount < 0.05 then
+                    healAmount = round(CurrentRun.Hero.MaxHealth * 0.05)
+                end
+                if (currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+                    currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
+                    currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
+                    thread(FullHealBossAnnouncement)
+                    Heal(CurrentRun.Hero, { HealAmount = healAmount, SourceName = "FullHealBossTrait" })
+                elseif currentRun.CurrentRoom.IsMiniBossRoom then
+                    thread(FullHealBossAnnouncement)
+                    Heal(CurrentRun.Hero, { HealAmount = (healAmount / 2), SourceName = "FullHealBossTrait" })
+                end
+            end
+            if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
+				thread(SeaChanteyAnnouncement)
+			end
+            baseFunc(currentRun, currentRoom, currentEncounter)
+        end
+    )

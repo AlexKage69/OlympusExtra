@@ -296,6 +296,10 @@
       DisplayName = "{I} Buy {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
     }
 		{
+			Id = "Shop_UseGemDrop_HealthAsObolText_Health"
+			DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}\n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
+		}
+		{
 			Id = "Shop_ItemSacrifice"
 			DisplayName = "{$TempTextData.SacrificeCost} {!Icons.Health_Small}"
 			OverwriteLocalization = true
