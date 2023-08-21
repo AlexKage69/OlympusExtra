@@ -47,21 +47,19 @@ if ModUtil ~= nil then
 			RequiredTraitsTaken =
 			{
 				"HeraWeaponTrait",
+				"HeraSecondaryTrait",
 				"HeraRushTrait",
 				"HeraRangedTrait",
-				"HeraSecondaryTrait",
 				"HeraShoutTrait",
 				"DiscountHeraTrait",
 				"PrivilegeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
-				"SnareOverTimeTrait",
-				"DeathDamageTrait",
-				"JealousyBurstTrait",
-				"JealousyCastTrait",
+				"PeriodicCurseTrait",
+				"EnvyBurstTrait",
 				"MoreCompanionTrait",
-				"BetterSnareTrait",
-				"BetterJealousyTrait",
+				"HealthAsObolTrait",
+				"StatusOverTimeTrait",
 			},
 		},
 		CashedOutVoiceLines =
@@ -552,23 +550,21 @@ if ModUtil ~= nil then
 			RequiredCountOfTraits =
 			{
 				"HeraWeaponTrait",
+				"HeraSecondaryTrait",
 				"HeraRushTrait",
 				"HeraRangedTrait",
-				"HeraSecondaryTrait",
 				"HeraShoutTrait",
 				"DiscountHeraTrait",
 				"PrivilegeHeraTrait",
 				"FamilyHeraTrait",
 				"MoreRewardTrait",
-				"SnareOverTimeTrait",
-				"DeathDamageTrait",
-				"JealousyBurstTrait",
-				"JealousyCastTrait",
+				"PeriodicCurseTrait",
+				"EnvyBurstTrait",
 				"MoreCompanionTrait",
-				"BetterSnareTrait",
-				"BetterJealousyTrait",
+				"HealthAsObolTrait",
+				"StatusOverTimeTrait",
 			},
-			RequiredOneOfTraits = { "BetterSnareTrait", "BetterJealousyTrait" },
+			RequiredOneOfTraits = { "StatusOverTimeTrait" },
 		},
 	}
 	table.insert(OlympusGameData.ConversationOrder, "HeraUpgrade")
@@ -1465,24 +1461,24 @@ end]]
 		God = "Hera",
 		Icon = "Boon_Hera_03",
 		Slot = "Rush",
-		PreEquipWeapons = { "HeraMineWeapon" },
+		--PreEquipWeapons = { "HeraMineWeapon" },
 		RarityLevels =
 		{
 			Common =
 			{
-				Multiplier = 1.00,
+				Multiplier = 1.0,
 			},
 			Rare =
 			{
-				Multiplier = 1.22,
+				Multiplier = 1.3,
 			},
 			Epic =
 			{
-				Multiplier = 1.44,
+				Multiplier = 1.6,
 			},
 			Heroic =
 			{
-				Multiplier = 1.66,
+				Multiplier = 1.8,
 			}
 		},
 		SetupFunction =
@@ -1523,13 +1519,6 @@ end]]
 				ChangeValue = "ZagreusDashNoCollide_Hera",
 				ChangeType = "Absolute",
 			},
-
-			--[[{
-				WeaponNames = WeaponSets.HeroRushWeapons,
-				WeaponProperty = "Projectile",
-				ChangeValue = "HeraDashProjectile",
-				ChangeType = "Absolute",
-			},]]
 			{
 				WeaponNames = WeaponSets.HeroRushWeapons,
 				WeaponProperty = "BlinkDetonateAtOrigin",
@@ -1542,58 +1531,26 @@ end]]
 				ChangeValue = false,
 				ChangeType = "Absolute",
 			},
-			--[[{
-				WeaponName = "HeraMineBlast",
-				ProjectileName = "HeraMineBlast",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 100,
-				BaseMax = 100,
-				AsInt = true,
-				MinMultiplier = 0.1,
-				IdenticalMultiplier =
-				{
-					Value = -0.8,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},]]
-			{
-				WeaponName = "HeraMineWeapon",
-				ProjectileName = "HeraMineProjectile",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
-			},
 		},
-		EnemyPropertyChanges =
+		HeraMineBlast =		
 		{
+			BaseValue = 45,
+			--SourceIsMultiplier = true,
+			--DecimalPlaces = 2,
+			MinMultiplier = 0.1,
+			IdenticalMultiplier =
 			{
-				WeaponName = "HeraMineBlast",
-				ProjectileName = "HeraMineBlast",
-				ProjectileProperty = "DamageLow",
-				BaseMin = 100,
-				BaseMax = 100,
-				AsInt = true,
-				MinMultiplier = 0.1,
-				IdenticalMultiplier =
-				{
-					Value = -0.8,
-				},
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamage",
-				}
-			},
-			{
-				WeaponName = "HeraMineBlast",
-				ProjectileName = "HeraMineBlast",
-				ProjectileProperty = "DamageHigh",
-				DeriveValueFrom = "DamageLow"
+				Value = -0.8,
 			},
 		},
 		ExtractValues =
 		{
+			{
+				Key = "HeraMineBlast",
+				ExtractAs = "TooltipDamage",
+				--Format = "PercentDelta",
+				--DecimalPlaces = 1,
+			},
 			{
 				ExtractAs = "TooltipJealousyDuration",
 				SkipAutoExtract = true,
@@ -8335,17 +8292,22 @@ end]]
 		end
 	end
 	function HeraTrapDash( traitArgs, triggerArgs )
-		if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+		--if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 			if CurrentRun.Hero.TrapDash and CurrentRun.Hero.TrapDash.Count > 0 then
 				CurrentRun.Hero.TrapDash.Count = CurrentRun.Hero.TrapDash.Count - 1
-				FireWeaponFromUnit({ Weapon = "HeraMineWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
-				--local newUnit = DeepCopyTable( EnemyData["HeraMine"] )
-				--[[newUnit.ObjectId = SpawnUnit({ Name = "HeraMine", Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, DoActivatePresentation = false })
+				--FireWeaponFromUnit({ Weapon = "HeraMineWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+				local newUnit = DeepCopyTable( EnemyData["HeraMine"] )
+				newUnit.ObjectId = SpawnUnit({ Name = "HeraMine", Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, DoActivatePresentation = false })
+				local damage = GetTotalHeroTraitValue("HeraMineBlast")
+				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = newUnit.ObjectId, Property = "DamageLow", Value = damage })
+				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = newUnit.ObjectId, Property = "DamageHigh", Value = damage })
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.DamageType))
 				SetupEnemyObject( newUnit, CurrentRun)
-				table.insert( CurrentRun.Hero.AllTraps, newUnit )]]
+				newUnit.OnDeathWeapons = {}
+				--table.insert( CurrentRun.Hero.AllTraps, newUnit )
 				HasDashed(traitArgs.Cooldown)
 			end
-		end
+		--end
 	end
 	function HasDashed(delay)
 		thread( ReloadRangedDashTrap, delay )
@@ -8374,7 +8336,20 @@ end]]
 	function GetBaseDashTrapReloadTime()
 		return TraitData.HeraRushTrait.DashTrap.DashTrap.Value
 	end
+	--[[ModUtil.Path.Wrap("CheckOnDeathPowers",
+		function(baseFunc, victim, attacker, weaponName)
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponName))
+			if victim ~= nil and weaponName == "HeraMineBlast" then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.ObjectId))
+				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = victim.ObjectId, Property = "DamageLow", Value = 150 })
+				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = victim.ObjectId, Property = "DamageHigh", Value = 150 })
+			end
+			baseFunc(victim, attacker, weaponName)
+		end
+	)]]
 	function SetupHeraDashTrap()
+		--SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = CurrentRun.Hero.ObjectId, Property = "DamageLow", Value = 150 })
+		--SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = CurrentRun.Hero.ObjectId, Property = "DamageHigh", Value = 150 })
 		if not CurrentRun.Hero.TrapDash then
 			CurrentRun.Hero.TrapDash = {}
 		end

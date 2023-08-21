@@ -44,8 +44,8 @@
 		}
 		{
       		Id = "HeraTrap"
-			DisplayName = "Trap"
-			Description = "Traps can be broken. A maximum of 5 traps can be present at one time."
+			DisplayName = "Trap Jar"
+			Description = "Inanimate objects dealing damage to foes upon broken."
 		}
 		{
       		Id = "Aura"
@@ -80,12 +80,12 @@
 		{
 			Id = "HeraRushTrait"
 			DisplayName = "Trap Dash"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}4 sec."
 		} 
 		{
 			Id = "HeraRushTrait_Initial"
 			InheritFrom = "HeraRushTrait"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}4 sec."
 		}
 		{
 			Id = "HeraRushIcon"
