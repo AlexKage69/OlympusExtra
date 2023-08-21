@@ -1949,36 +1949,21 @@ end]]
 			},
 			Rare =
 			{
-				Multiplier = 1.3,
+				Multiplier = 1.4,
 			},
 			Epic =
 			{
-				Multiplier = 1.4,
+				Multiplier = 1.6,
 			},
 			Heroic =
 			{
-				Multiplier = 1.5,
+				Multiplier = 1.8,
 			}
 		},
 		AddShout =
 		{
-			FunctionName = "HeraShout",
-			MaxFunctionName = "HeraMaxShout",
-			Cost = 25,
-			SuperDuration = 1.5,
-			MaxDurationMultiplier = 5,
-			IsBurst = true,
-			ExtractValues =
-			{
-				{
-					Key = "Cost",
-					ExtractAs = "TooltipWrathStocks",
-					Format = "WrathStocks",
-					SkipAutoExtract = true
-				},
-			}
+			
 		},
-		EndShout = "EndHera",
 		PreEquipWeapons = { "HeraMaxSuper", "HeraSuper", "LightningStrikeX", "AthenaShoutWeapon", "PoseidonSurfWeapon",
 			"ArtemisMaxShoutWeapon", "ArtemisShoutWeapon", "AphroditeSuperCharm", "AphroditeMaxSuperCharm", "AresSurgeWeapon",
 			"DionysusShoutWeapon", "DemeterSuper", "DemeterMaxSuper" },
@@ -6974,7 +6959,7 @@ end]]
             PlayOnce = true,
             PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
             HasTraitNameInRoom = "EnhancedNPCTrait",
-			PostLineFunctionName = "ChangeLootSource", PostLineFunctionArgs = { NewSource = "HeraUpgrade", },
+			--PostLineFunctionName = "ChangeLootSource", PostLineFunctionArgs = { NewSource = "HeraUpgrade", },
             { Cue = "/VO/Hera_0050",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
                 Text = "Drop the act, sister. Being kind to all won't bring peace. It will only allow the vile creature to stab you in the back. Better safe than sorry." },
@@ -7170,82 +7155,24 @@ end]]
 		table.insert(OlympusQuestOrderData, 34, "SynergyUpgrades2")
 	end
 	-- FUNCTIONS
-	function ChangeLootSource( source, args )
-		if args ~= nil and args.NewSource then
-			source = LootData[args.NewSource]
-		end
-	end
-	function HeraShout()
-		if CurrentRun.Hero.HeraShout.NextHeraGod then
-			CurrentRun.Hero.HeraShout.GetNext = true
-			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
-				ZeusShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
-				AthenaShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" then
-				PoseidonShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Artemis" then
-				ArtemisShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Aphrodite" then
-				AphroditeShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
-				AresShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Dionysus" then
-				DionysusShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
-				DemeterShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Hestia" then
-				HestiaShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
-				ApolloShout()
-			else -- glitched
-				--Nothing in case of other mods Gods
-			end				
-		end
-	end
-
-	function HeraMaxShout()
-		if CurrentRun.Hero.HeraShout.NextHeraGod then
-			CurrentRun.Hero.HeraShout.GetNext = true
-			if CurrentRun.Hero.HeraShout.NextHeraGod == "Zeus" then
-				ZeusShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
-				AthenaShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" then
-				PoseidonShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Artemis" then
-				ArtemisMaxShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Aphrodite" then
-				AphroditeMaxShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" then
-				AresShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Dionysus" then
-				DionysusShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
-				DemeterMaxShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Hestia" then
-				HestiaMaxShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
-				ApolloShout()
-			else -- glitched
-				--Nothing in case of other mods Gods
+	ModUtil.Path.Wrap("CommenceSuperMove",
+		function(baseFunc)
+			for i, traitData in pairs(CurrentRun.Hero.Traits) do
+				if traitData.Name == "HeraShoutTrait" and CurrentRun.Hero.HeraShout.NextHeraGod then
+					local otherTrait = TraitData[CurrentRun.Hero.HeraShout.NextHeraGod.."ShoutTrait"]
+					if otherTrait.AddShout ~= nil then
+						CurrentRun.Hero.Traits[i].AddShout = otherTrait.AddShout
+					end
+					if otherTrait.EndShout ~= nil then
+						CurrentRun.Hero.Traits[i].EndShout = otherTrait.EndShout
+					end
+				end
 			end			
+			baseFunc()
+			CurrentRun.Hero.HeraShout.GetNext = true
+			UpdateHeraShoutIcon()
 		end
-	end
-
-	function EndHera()
-		if CurrentRun.Hero.HeraShout.NextHeraGod then
-			if CurrentRun.Hero.HeraShout.NextHeraGod == "Athena" then
-				EndAthenaShout()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Poseidon" or CurrentRun.Hero.HeraShout.NextHeraGod == "Ares" or CurrentRun.Hero.HeraShout.NextHeraGod == "Apollo" then
-				EndSurge()
-			elseif CurrentRun.Hero.HeraShout.NextHeraGod == "Demeter" then
-				EndDemeter()
-			end
-		end
-		UpdateHeraShoutIcon()
-		--BuildSuperMeter(CurrentRun, 25)
-	end
+	)
 	function SetupHeraNextShout()
 		if CurrentRun.Hero.HeraShout == nil then
 			CurrentRun.Hero.HeraShout = {}
@@ -8292,7 +8219,7 @@ end]]
 		end
 	end
 	function HeraTrapDash( traitArgs, triggerArgs )
-		--if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+		if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 			if CurrentRun.Hero.TrapDash and CurrentRun.Hero.TrapDash.Count > 0 then
 				CurrentRun.Hero.TrapDash.Count = CurrentRun.Hero.TrapDash.Count - 1
 				--FireWeaponFromUnit({ Weapon = "HeraMineWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
@@ -8301,13 +8228,13 @@ end]]
 				local damage = GetTotalHeroTraitValue("HeraMineBlast")
 				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = newUnit.ObjectId, Property = "DamageLow", Value = damage })
 				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = newUnit.ObjectId, Property = "DamageHigh", Value = damage })
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.DamageType))
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.DamageType))
 				SetupEnemyObject( newUnit, CurrentRun)
 				newUnit.OnDeathWeapons = {}
 				--table.insert( CurrentRun.Hero.AllTraps, newUnit )
 				HasDashed(traitArgs.Cooldown)
 			end
-		--end
+		end
 	end
 	function HasDashed(delay)
 		thread( ReloadRangedDashTrap, delay )
