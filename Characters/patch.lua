@@ -53,18 +53,63 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                 end
             end
         end
+        if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and (not weaponData or not weaponData.IgnoreOutgoingDamageModifiers) then
+            local appliedEffectTable = {}
+            for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
+                if modifierData.GlobalMultiplier ~= nil then
+                    addDamageMultiplier(modifierData, modifierData.GlobalMultiplier)
+                end
+
+                local validEffect = modifierData.ValidEffects == nil or
+                    (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
+                local validWeapon = modifierData.ValidWeaponsLookup == nil or
+                    (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
+                local validTrait = modifierData.RequiredTrait == nil or
+                    (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
+                local validUniqueness = modifierData.Unique == nil or not modifierData.Name or
+                    not appliedEffectTable[modifierData.Name]
+                local validEnchantment = true
+                if modifierData.ValidEnchantments and attacker == CurrentRun.Hero then
+                    validEnchantment = false
+                    if modifierData.ValidEnchantments.TraitDependentWeapons then
+                        for traitName, validWeapons in pairs(modifierData.ValidEnchantments.TraitDependentWeapons) do
+                            if Contains(validWeapons, triggerArgs.SourceWeapon) and HeroHasTrait(traitName) then
+                                validEnchantment = true
+                                break
+                            end
+                        end
+                    end
+
+                    if not validEnchantment and modifierData.ValidEnchantments.ValidWeapons and Contains(modifierData.ValidEnchantments.ValidWeapons, triggerArgs.SourceWeapon) then
+                        validEnchantment = true
+                    end
+                end
+
+                if validUniqueness and validWeapon and validEffect and validTrait and validEnchantment then
+                    if modifierData.PerUniqueEpicMultiplier and attacker == CurrentRun.Hero then
+                        addDamageMultiplier(modifierData,
+                            1 + (modifierData.PerUniqueEpicMultiplier - 1) * GetHeroUniqueEpicCount(attacker))
+                    end
+                    if modifierData.PerCastActiveMultiplier and attacker == CurrentRun.Hero then
+                        addDamageMultiplier(modifierData,
+                            1 + (modifierData.PerCastActiveMultiplier - 1) * RunWeaponMethod({ Id = attacker.ObjectId, Weapon = "RangedWeapon", Method = "GetAmmo" }))
+                    end
+                end
+            end
+        end
         if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and (weaponData ~= nil and weaponData.IgnoreOutgoingDamageModifiers) then
             local appliedEffectTable = {}
             for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
                 local validEffect = modifierData.ValidEffects == nil or
-                (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
+                    (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
                 local validWeapon = modifierData.ValidWeaponsLookup == nil or
-                (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
+                    (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
                 local validTrait = modifierData.RequiredTrait == nil or
-                (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
+                    (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
                 local validUniqueness = modifierData.Unique == nil or not modifierData.Name or
-                not appliedEffectTable[modifierData.Name]
+                    not appliedEffectTable[modifierData.Name]
                 local validEnchantment = true
+
 
                 if validUniqueness and validWeapon and validEffect and validTrait and validEnchantment and modifierData.BypassIgnore then
                     if modifierData.Name then
@@ -80,17 +125,103 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         return vanillaMultiplier * damageMultipliers * damageReductionMultipliers
     end
 )
+function HeroHasPossibleStackTrait()
+    for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+        if IsGodTrait(traitData.Name) and TraitData[traitData.Name] and IsGameStateEligible(CurrentRun, TraitData[traitData.Name]) then
+            return true
+        end
+    end
+    return false
+end
+
+OnControlPressed { "Gift",
+    function(triggerArgs)
+        local target = triggerArgs.UseTarget
+        if target == nil then
+            return
+        end
+        if CurrentRun.NumRerolls > 0 and IsMetaUpgradeSelected("RerollPomMetaUpgrade") and
+            (target.Name == "HealthFountain" or target.Name == "HealthFountainAsphodel" or
+                target.Name == "HealthFountainElysium" or target.Name == "HealthFountainStyx") and
+                HeroHasPossibleStackTrait() then
+            target.CanBeRerolled = true
+            AttemptReroll(CurrentRun, target)
+        end
+        if target.SacrificeCost then
+            if target.Rarity then
+                local interactionBlocked = false
+                if not CurrentRun.CurrentRoom.AlwaysAllowLootInteraction then
+                    for enemyId, enemy in pairs(ActiveEnemies) do
+                        if enemy.BlocksLootInteraction then
+                            interactionBlocked = true
+                            break
+                            --DebugPrint({ Text = "blockedByEnemy = "..GetTableString( nil, enemy ) })
+                        end
+                    end
+                end
+
+                if interactionBlocked then
+                    local userTable = triggerArgs.TriggeredByTable
+                    thread(CannotUseLootPresentation, triggerArgs.triggeredById, userTable)
+                    CreateAnimation({ Name = "ShoutFlare", DestinationId = triggerArgs.triggeredById })
+                elseif not AreScreensActive() then
+                    if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
+                        CantAffordPresentation(target)
+                        return
+                    end
+                    if target.SacrificeCost ~= nil and target.SacrificeCost > 0 then
+                        target.Purchased = true
+                        SacrificeHealth({ SacrificeHealth = target.SacrificeCost, MinHealth = 1 })
+                        RemoveStoreItem({
+                            Name = target.Name,
+                            IsBoon = true,
+                            BoonRaritiesOverride = target.BoonRaritiesOverride,
+                            StackNum = target.StackNum
+                        })
+                        PlaySound({ Name = "/Leftovers/Menu Sounds/StoreBuyingItem" })
+                        thread(PlayVoiceLines, GlobalVoiceLines.PurchasedConsumableVoiceLines, true)
+                    end
+
+                    if target.RarityBoosted then
+                        UseHeroTraitsWithValue("RarityBonus", true)
+                    end
+
+                    SetPlayerInvulnerable("HandleLootPickupAnimation")
+                    PlayInteractAnimation(triggerArgs.triggeredById)
+                    HandleLootPickup(CurrentRun, target)
+                    SetPlayerVulnerable("HandleLootPickupAnimation")
+                end
+            else
+                if CurrentRun.Hero.HandlingDeath then
+                    return
+                end
+
+                if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < (target.SacrificeCost + 1) then
+                    CantAffordPresentation(target)
+                    return
+                end
+                if target.SacrificeCost ~= nil and target.SacrificeCost > 0 and target.PurchaseRequirements ~= nil and not IsGameStateEligible(CurrentRun, target.PurchaseRequirements) then
+                    CantPurchaseWorldItemPresentation(target)
+                    return
+                end
+                target.UseSacrifice = true
+                PurchaseConsumableItem(CurrentRun, target, triggerArgs)
+            end
+        end
+    end
+}
 ModUtil.Path.Wrap("DamageEnemy",
     function(baseFunc, victim, triggerArgs)
         local sourceWeaponData = triggerArgs.AttackerWeaponData
         if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
             triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceWeaponData.Name, sourceWeaponData
-            .MultipleProjectileMultiplier)
+                .MultipleProjectileMultiplier)
         elseif victim and triggerArgs.SourceProjectile then
             local sourceProjectileData = ProjectileData[triggerArgs.SourceProjectile]
             if sourceProjectileData and sourceProjectileData.MultipleProjectileMultiplier then
-                triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceProjectileData.Name, sourceProjectileData
-                .MultipleProjectileMultiplier)
+                triggerArgs.DamageAmount = TrackDamageWithTime(triggerArgs, victim, sourceProjectileData.Name,
+                    sourceProjectileData
+                    .MultipleProjectileMultiplier)
             end
         end
         baseFunc(victim, triggerArgs)
@@ -100,7 +231,7 @@ ModUtil.Path.Wrap("DamageEnemy",
             and victim.ActiveEffects and victim.ActiveEffects.JealousyCurse and victim.JealousyModifier and
             Contains(WeaponSets.AllJealousyWeapons, sourceWeaponData.Name) and triggerArgs.EffectName == nil then
             local damageAmount = triggerArgs.DamageAmount * victim.JealousyModifier *
-            TableLength(victim.VulnerabilityEffects)
+                TableLength(victim.VulnerabilityEffects)
             if HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
                 damageAmount = 0
             end
@@ -139,6 +270,114 @@ end
         end
 	end
 )]]
+ModUtil.Path.Wrap("HandleUpgradeChoiceSelection",
+    function(baseFunc, screen, button)
+        local addLevel = false
+        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 and IsFirstBoon(button.Data.Name) then
+            addLevel = true
+        end
+        baseFunc(screen, button)
+        if addLevel then
+            AddTraitToHero({ TraitName = button.Data.Name })
+        end
+    end
+)
+function IsFirstBoon(traitName)
+    if CurrentRun == nil and CurrentRun.Hero == nil then
+        return false
+    end
+    local source = GetLootSourceName(traitName)
+    if not source then
+        return false
+    end
+    for traitN in pairs(CurrentRun.Hero.TraitDictionary) do
+        if GetLootSourceName(traitN) == source then
+            return false
+        end
+    end
+    return true
+end
+
+ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
+    function(baseFunc)
+        baseFunc()
+        if IsEmpty(CurrentRun.Hero.Traits) then
+            CurrentRun.Hero.SameGodFrom = "none"
+            CurrentRun.Hero.SameGodCount = 0
+            CurrentRun.Hero.UniqueEpicCount = 0
+            return
+        end
+        local rareTraits = 0
+        for k, traitData in pairs(CurrentRun.Hero.Traits) do
+            if traitData.GodDamageBonus then
+                traitData.AccumulatedGodDamageBonus = 1 +
+                    GetHeroSameGodCount(CurrentRun.Hero) * (traitData.GodDamageBonus - 1)
+                --traitData.FromGod = name
+                ExtractValues(CurrentRun.Hero, traitData, traitData)
+            end
+            if traitData.Rarity == "Epic" or traitData.Rarity == "Heroic" or traitData.Rarity == "Legendary" or traitData.Rarity == "Duo" then
+                rareTraits = rareTraits + 1
+            end
+        end
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("New Rare Count:" .. rareTraits))
+        CurrentRun.Hero.UniqueEpicCount = rareTraits
+    end
+)
+function GetHeroSameGodCount(hero)
+    if not hero then
+        return 0
+    end
+
+    local godDictionary = {}
+    local highestCount = 0
+    local highestFrom = "none"
+    for traitName in pairs(hero.TraitDictionary) do
+        if GetLootSourceName(traitName) then
+            godDictionary[GetLootSourceName(traitName)] = (godDictionary[GetLootSourceName(traitName)] or 0) + 1
+            if highestCount < godDictionary[GetLootSourceName(traitName)] then
+                highestCount = godDictionary[GetLootSourceName(traitName)]
+                highestFrom = GetLootSourceName(traitName)
+            end
+        end
+    end
+    if hero.SameGodCount == nil or hero.SameGodCount < highestCount then
+        for i, trait in pairs(CurrentRun.Hero.Traits) do
+            if trait.Name == "PrivilegeHeraTrait" then
+                trait.SameGodName = highestFrom
+            end
+        end
+        thread(PresentationNewSameGodIncrease)
+    end
+    hero.SameGodFrom = highestFrom
+    hero.SameGodCount = highestCount
+    return hero.SameGodCount
+end
+
+function PresentationNewSameGodIncrease()
+    wait(1.0)
+    CreateAnimation({ Name = "HeraWingsFlap", DestinationId = CurrentRun.Hero.ObjectId })
+end
+
+function GetHeroUniqueEpicCount(hero)
+    if not hero then
+        return 0
+    end
+
+    if hero.UniqueEpicCount then
+        return hero.UniqueEpicCount
+    end
+
+    local rareTraits = 0
+    for i, traitData in pairs(CurrentRun.Hero.Traits) do
+        if traitData.Rarity == "Epic" or traitData.Rarity == "Heroic" or traitData.Rarity == "Legendary" or traitData.Rarity == "Duo" then
+            rareTraits = rareTraits + 1
+        end
+    end
+
+    hero.UniqueEpicCount = rareTraits
+    return hero.UniqueEpicCount
+end
+
 function ForceNextRoomFunc(value)
     ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Forced:" .. value))
 
@@ -155,21 +394,6 @@ function ForceNextRoomFunc(value)
     end
 end
 
-ModUtil.Path.Wrap("BeginOpeningCodex",
-    function(baseFunc)
-        --PresentationNewSameGodIncrease()
-        if (not CanOpenCodex()) and IsSuperValid() then
-            BuildSuperMeter(CurrentRun, 50)
-        end
-        --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
-        --ForceNextRoomFunc("B_Shop01")
-        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
-
-        --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
-        --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
-        baseFunc()
-    end
-)
 -- Rejection Functions
 ModUtil.Path.Wrap("SpawnRoomReward",
     function(baseFunc, eventSource, args)
@@ -404,26 +628,46 @@ ModUtil.Path.Wrap("HandleLootPickup",
             baseFunc(currentRun, loot)
         end
     end)
-    ModUtil.Path.Wrap("StartEncounter",
-        function(baseFunc, currentRun, currentRoom, currentEncounter)
-            if HeroHasTrait("FullHealBossTrait") then
-                local healAmount = round(CurrentRun.Hero.MaxHealth * CalculateHealingMultiplier())
-                if healAmount < 0.05 then
-                    healAmount = round(CurrentRun.Hero.MaxHealth * 0.05)
-                end
-                if (currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
-                    currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
-                    currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
-                    thread(FullHealBossAnnouncement)
-                    Heal(CurrentRun.Hero, { HealAmount = healAmount, SourceName = "FullHealBossTrait" })
-                elseif currentRun.CurrentRoom.IsMiniBossRoom then
-                    thread(FullHealBossAnnouncement)
-                    Heal(CurrentRun.Hero, { HealAmount = (healAmount / 2), SourceName = "FullHealBossTrait" })
-                end
+ModUtil.Path.Wrap("StartEncounter",
+    function(baseFunc, currentRun, currentRoom, currentEncounter)
+        if HeroHasTrait("FullHealBossTrait") then
+            local healAmount = round(CurrentRun.Hero.MaxHealth * CalculateHealingMultiplier())
+            if healAmount < 0.05 then
+                healAmount = round(CurrentRun.Hero.MaxHealth * 0.05)
             end
-            if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
-				thread(SeaChanteyAnnouncement)
-			end
-            baseFunc(currentRun, currentRoom, currentEncounter)
+            if (currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+                    currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
+                currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
+                thread(FullHealBossAnnouncement)
+                Heal(CurrentRun.Hero, { HealAmount = healAmount, SourceName = "FullHealBossTrait" })
+            elseif currentRun.CurrentRoom.IsMiniBossRoom then
+                thread(FullHealBossAnnouncement)
+                Heal(CurrentRun.Hero, { HealAmount = (healAmount / 2), SourceName = "FullHealBossTrait" })
+            end
         end
-    )
+        if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
+            thread(SeaChanteyAnnouncement)
+        end
+        if GetNumMetaUpgrades("DashlessMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
+			CurrentRun.Hero.DashlessCooldown = 1
+			thread( AddDashlessBuff, 3 )
+		end
+        baseFunc(currentRun, currentRoom, currentEncounter)
+    end
+)
+ModUtil.Path.Wrap("BeginOpeningCodex",
+    function(baseFunc)
+        --PresentationNewSameGodIncrease()
+        if (not CanOpenCodex()) and IsSuperValid() then
+            BuildSuperMeter(CurrentRun, 50)
+        end
+
+        --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
+        --ForceNextRoomFunc("B_Shop01")
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
+
+        --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
+        --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
+        baseFunc()
+    end
+)

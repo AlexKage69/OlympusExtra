@@ -1,0 +1,19 @@
+{
+  /*
+  Made by AlexKage and physiX
+  Additional writing by bessyboo
+  */
+  Texts = [
+	"_append"
+{
+      Id = "CodexData_VegetableTartarusCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...I am all too familiar with the so-called {#CodexItalicFormat}evil eye{#PreviousFormat}, which has been cast upon me many times while I lived and breathed; envy, hatred, distrust, all such matters, captured in a look. Purportedly, there is an ancient water creature from which the phenomenon is derived...'"
+    }
+    {
+      Id = "CodexData_VegetableTartarusCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'...I am all too familiar with the concept of the so-called {#CodexItalicFormat}evil eye{#PreviousFormat}, which has been cast upon me many times while I lived and breathed; envy, hatred, distrust, all such matters, captured in a look. Purportedly, there is an ancient water creature from which the phenomenon is derived. {#CodexBoldFormat}That these emotions are as old as time, and life itself, is both a disappointment and an understandable reality.{#PreviousFormat}'"
+    }
+  ]
+}

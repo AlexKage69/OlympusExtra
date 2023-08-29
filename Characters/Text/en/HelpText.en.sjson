@@ -62,12 +62,12 @@
 		{
 			Id = "DashlessBonus"
 			DisplayName = "Steady Reflex"
-			Description = "Gain {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}damage and defense {#PreviousFormat}when you don't {#BoldFormatGraft}Dash {#PreviousFormat} for 3 Sec."
+			Description = "Deal additionnal damage and gain more defense {#PreviousFormat}when you don't {#BoldFormatGraft}Dash {#PreviousFormat} for 3 Sec, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat} per rank."
     	}
 		{
-			Id = "NoAmmoBonus"
+			Id = "CountAmmoBonus"
 			DisplayName = "Hellish Blood"
-			Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage when you have no more {!Icons.Ammo}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+			Description = "Deal bonus {#BoldFormatGraft}Ranged {#PreviousFormat}damage for each {!Icons.Ammo} you have, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
     	}
 		{
 			Id = "AmmoBounce"
@@ -82,7 +82,7 @@
 		{
 			Id = "CombatRegeneration"
 			DisplayName = "Shedding Skins"
-			Description = "While in combat, your {!Icons.Health_Small_Tooltip} slowly recovers, {#TooltipUpgradeFormat}+{$TempTextData.BaseValue}{!Icons.HealthRestore_Small}{#ItalicFormat}(every 3 Sec.) {#PreviousFormat}per rank."
+			Description = "While in combat, you slowly recover {!Icons.Health_Small_Tooltip} while your Life Total is below {#BoldFormatGraft}30%{#PreviousFormat} , {#TooltipUpgradeFormat}+{$TempTextData.BaseValue}{!Icons.HealthRestore_Small}{#ItalicFormat}(every 3 Sec.) {#PreviousFormat}per rank."
     	}
 		{
 			Id = "EpicBonus"
@@ -183,17 +183,17 @@
 			OverwriteLocalization = true
 		}
 		{
-			Id = "NoAmmoMetaUpgrade"
-			DisplayName = "{$Keywords.NoAmmoBonus}"
+			Id = "CountAmmoMetaUpgrade"
+			DisplayName = "{$Keywords.CountAmmoBonus}"
 			OverwriteLocalization = true
 		}
 		{
-			Id = "NoAmmoMetaUpgrade_ShortTotal"
+			Id = "CountAmmoMetaUpgrade_ShortTotal"
 			DisplayName = "{$TempTextData.Amount:P}"
 			OverwriteLocalization = true
 		}
 		{
-			Id = "NoAmmoMetaUpgrade_ShortTotalNoIcon"
+			Id = "CountAmmoMetaUpgrade_ShortTotalNoIcon"
 			DisplayName = "{$TempTextData.Amount:P}"
 			OverwriteLocalization = true
 		}
@@ -303,15 +303,23 @@
 		}
 		{
      		Id = "UseGemDrop_Health"
-			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
+			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}+{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
 		}
 		{
 			Id = "UseGemDropRunProgress_Health"
-			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#UseMoneyFormat}+{$TempTextData.DropMoney}{!Icons.Currency_Small}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
+			DisplayName = "{I} Gain {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#UseMoneyFormat}+{$TempTextData.DropMoney}{!Icons.Currency_Small}     {#PreviousFormat}{#AltUpgradeFormat}+{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
 		}
 		{
 			Id = "Shop_UseGemDrop_Health"
-			DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
+			DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}+{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}"
+		}
+		{
+			Id = "UseFountainHeal_Reroll"
+			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Power-Up {#UseGiftPointFormat}(-1{!Icons.ReRoll_Small})"
+		}
+		{
+			Id = "UseFountainHeal_CannotReroll"
+			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {#UseTextDisabledFormat}Unusable"
 		}
 		
     ]

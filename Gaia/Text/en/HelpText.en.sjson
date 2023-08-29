@@ -1,0 +1,485 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "NPC_Gaia_01"
+			DisplayName = "Gaia"
+			Description = "Ancestral Mother"
+		}		
+		{
+			Id = "NPC_GaiaUnnamed_01"
+			DisplayName = "? ? ?"
+			Description = ""
+		}
+		{
+			Id = "Location_Secret_G"
+			DisplayName = "GAIA"
+		}
+		{
+			Id = "Secrets_G"
+			DisplayName = "Gaia"
+		}
+		{
+			Id = "GaiaSignoff"
+			DisplayName = "From Mother Gaia"
+		}
+		{
+			Id = "GaiaSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Mother Gaia{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Natural Bond
+
+				{#AwardDarkFlavorFormat}Of her many sons, you seem to be one of the favorite.
+			"""
+   		}
+		{
+			Id = "GardenGate"
+			DisplayName = "Garden Gate"
+			Description = "A reward of {!Icons.Health_Small} for those who stop by Gaia's Garden."
+		}
+		{
+			Id = "GardenGatePlural"
+			InheritFrom = "HealthGate"
+			DisplayName = "Garden Gates"
+		}
+		{
+			Id = "GaiaBoonTrait"
+			DisplayName = "Willow Branch"
+			Description = "Enter {$Keywords.GardenGatePlural} without losing {!Icons.Health_Small}. Blessings from {#BoldFormat}Gaia {#PreviousFormat}have {#UpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+		}
+		{
+			Id = "GaiaBoonTrait_Rack"
+			InheritFrom = "GaiaBoonTrait"
+			Description = "Enter {$Keywords.GardenGatePlural} without losing {!Icons.Health_Small}. Blessings from {#BoldFormat}Gaia {#PreviousFormat}have {#UpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "GaiaFirstPickUp"
+			DisplayName = "Met Mother Gaia"
+		}
+		{
+			Id = "GaiaBlessings"
+			DisplayName = "Primordial Boons"
+			Description = "The son of the god of the dead shall someday earn various Blessings offered by Mother Gaia."
+		}
+		{
+			Id = "GaiaDeeds"
+			DisplayName = "Primordial Banes"
+			Description = "The son of the god of the dead shall someday complete various Deeds given by Mother Gaia."
+		}
+		{
+			Id = "CompleteGarden"
+			DisplayName = "Persephone's Garden"
+			Description = "The son of the god of the dead shall make certain attempts to aid our Mother Night, who through course of time has grown far apart from Gaia, her parent and origin of all things."
+		}
+		{
+			Id = "GaiaCrops"
+			DisplayName = "Garden Goods"
+			Description = "The son of the god of the dead shall someday grow a significant number of garden goods, including an unusually rare crop, impressing Mother Gaia."
+		}
+		{
+			Id = "GaiaCropsQuestComplete"
+			DisplayName = "Grow 25 Crops, at Least One Very Rare, and Report to Mother Gaia"
+		}
+		{
+			Id = "Fish_Gaia_Common_01"
+			DisplayName = "Fish1"
+		}
+		{
+			Id = "Fish_Gaia_Rare_01"
+			DisplayName = "Fish2"
+		}
+		{
+			Id = "Fish_Gaia_Legendary_01"
+			DisplayName = "Fish3"
+		}
+		{
+			Id = "RunHistoryScreenResult_Secret_G"
+			DisplayName = "Perished in {#AltPenaltyFormat}GAIA{#PreviousFormat}"
+		}
+		{
+			Id = "ClearRequiredTraitsGaia"
+			DisplayName = "{!Icons.RunClearStar}Son of Gaia{!Icons.RunClearStar}"
+		}
+		 {
+      Id = "GardenUpgrade_FlavorText01"
+      DisplayName = "before the world existed, there was nothing but a vast and conscious void, which still remains."
+    }
+    {
+      Id = "GardenUpgrade_FlavorText02"
+      DisplayName = "the forebear of olympians and titans, and of all things beneath the heavens or the earth."
+    }
+    {
+      Id = "GardenUpgrade_FlavorText03"
+      DisplayName = "an ancient presence from which sprang forth every manner of existence."
+    }
+	{
+      Id = "GardenUpgrade"
+      DisplayName = "Gaia"
+      Description = "Origin of Creation"
+    }
+	{
+      Id = "GaiaBlessingFormat"
+      DisplayName = "Gaia Blessing/Deed"
+      Description = "{^TooltipData.Name}\n{^TooltipData.OnExpire.TraitData.Name}"
+    }
+    {
+      Id = "GaiaBlessingTrayFormat"
+      DisplayName = "{#BoldFormat}{$TooltipData.LastDeedName} {$TooltipData.LastBlessingName}{#PreviousFormat}"
+      Description = ""
+    }
+    {
+      Id = "GaiaCombo"
+      DisplayName = "{{GaiaDeed}} {{GaiaBlessing}}"
+    }
+    {
+      Id = "GaiaDeedNoMoneyTrait"
+      DisplayName = "Pauper's"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you cannot earn {!Icons.Currency_Small}."
+    }
+    {
+      Id = "GaiaDeedAmmoUseDelayTrait"
+      DisplayName = "Slippery"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you cannot collect {!Icons.Ammo} for {#AltPenaltyFormat}{$TooltipData.AmmoDropUseDelay} {#PreviousFormat}Sec."
+    }
+    {
+      Id = "GaiaDeedDeathWeaponTrait"
+      DisplayName = "Caustic"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, slain foes toss an {#BoldFormat}{$Keywords.DeathWeapon} {#PreviousFormat}at you."
+    }
+    {
+      Id = "GaiaDeedHiddenRoomReward"
+      DisplayName = "Enshrouded"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Room}{#PreviousFormat}, chamber reward previews are hidden."
+    }
+    {
+      Id = "GaiaDeedDamageTrait"
+      DisplayName = "Excruciating"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you take {#AltPenaltyFormat}{$TooltipData.TooltipDamageDeed:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaDeedTrapDamageTrait"
+      DisplayName = "Abyssal"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you take {#AltPenaltyFormat}{$TooltipData.TooltipDamageIncrease:P} {#PreviousFormat}damage from {#BoldFormat}{$Keywords.Traps}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaDeedHealthTrait"
+      DisplayName = "Atrophic"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, your Life Total is reduced by {#AltPenaltyFormat}{$TooltipData.TooltipHealthDeed}{!Icons.HealthDown_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaDeedMoveSpeedTrait"
+      DisplayName = "Slothful"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you have {#AltPenaltyFormat}{$TooltipData.TooltipSpeed}% {#PreviousFormat}move speed."
+    }
+    {
+      Id = "GaiaDeedSpawnTrait"
+      DisplayName = "Roiling"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {#PreviousFormat}standard {#BoldFormat}{$Keywords.Encounter}{#PreviousFormat}, you face {#AltPenaltyFormat}{$TooltipData.TooltipSpawnMultiplier:P} {#PreviousFormat}more foes."
+    }
+    {
+      Id = "GaiaDeedDashAttackTrait"
+      DisplayName = "Stabbing"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Dash}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaDeedPrimaryAttackTrait"
+      DisplayName = "Maimed"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Attack}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaDeedSecondaryAttackTrait"
+      DisplayName = "Flayed"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Special}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaDeedCastAttackTrait"
+      DisplayName = "Addled"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Cast}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaDeedDashRangeTrait"
+      DisplayName = "Halting"
+      Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, your {#BoldFormat}{$Keywords.Dash} {#PreviousFormat} has {#AltPenaltyFormat}-{$TooltipData.TooltipPenalty}% {#PreviousFormat}range."
+    }
+    {
+      Id = "GaiaBlessingMeleeTrait"
+      DisplayName = "Strike"
+      Description = "Afterward, your {#BoldFormat}{$Keywords.Attack} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingMeleeTrait_Complete"
+      Description = "Your {#BoldFormat}{$Keywords.Attack} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingSecondaryTrait"
+      DisplayName = "Flourish"
+      Description = "Afterward, your {#BoldFormat}{$Keywords.Special} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat} damage."
+    }
+    {
+      Id = "GaiaBlessingSecondaryTrait_Complete"
+      Description = "Your {#BoldFormat}{$Keywords.Special} {#PreviousFormat} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingDashAttackTrait"
+      DisplayName = "Lunge"
+      Description = "Afterward, your {#BoldFormat}{$Keywords.BlinkStrike} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingDashAttackTrait_Complete"
+      Description = "Your {#BoldFormat}{$Keywords.BlinkStrike} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingRangedTrait"
+      DisplayName = "Shot"
+      Description = "Afterward, your {#BoldFormat}{$Keywords.Cast} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingRangedTrait_Complete"
+      Description = "Your {#BoldFormat}{$Keywords.Cast} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+    }
+    {
+      Id = "GaiaBlessingAmmoTrait"
+      DisplayName = "Grasp"
+      Description = "Afterward, gain {#AltUpgradeFormat}+{$TooltipData.TooltipCapacity}{!Icons.Ammo}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingAmmoTrait_Complete"
+      Description = "You have {#AltUpgradeFormat}+{$TooltipData.NewTotal1}{!Icons.Ammo}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingMaxHealthTrait"
+      DisplayName = "Soul"
+      Description = "Afterward, gain {#AltUpgradeFormat}+{$TooltipData.TooltipHealth}{!Icons.HealthUp_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingMaxHealthTrait_Complete"
+      Description = "You have {#AltUpgradeFormat}+{$TooltipData.NewTotal1}{!Icons.HealthUp_Small}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingBoonRarityTrait"
+      DisplayName = "Favor"
+      Description = "Afterward, {#BoldFormat}{$Keywords.GodBoonPlural} {#PreviousFormat}have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat}chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+    }
+    {
+      Id = "GaiaBlessingBoonRarityTrait_Complete"
+      Description = "{#BoldFormat}{$Keywords.GodBoonPlural} {#PreviousFormat}have {#AltUpgradeFormat}{$TooltipData.NewTotal1} {#PreviousFormat}chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+    }
+    {
+      Id = "GaiaBlessingMoneyTrait"
+      DisplayName = "Affluence"
+      Description = "Afterward, any {!Icons.Currency_Small} you find is worth {#AltUpgradeFormat}{$TooltipData.TooltipMoneyRewardIncrease:P}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingMoneyTrait_Complete"
+      Description = "Any {!Icons.Currency_Small} you find is worth {#AltUpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingMetapointTrait"
+      DisplayName = "Eclipse"
+      Description = "Afterward, any {!Icons.MetaPoint_Small} and {!Icons.GemSmall} you find are worth {#AltUpgradeFormat}{$TooltipData.TooltipMetaPointRewardIncrease:P}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingMetapointTrait_Complete"
+      Description = "Any {!Icons.MetaPoint_Small} and {!Icons.GemSmall} you find are worth {#AltUpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}."
+    }
+    {
+      Id = "GaiaBlessingAlphaStrikeTrait"
+      DisplayName = "Assault"
+      Description = "Afterward, you deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking undamaged foes."
+    }
+    {
+      Id = "GaiaBlessingAlphaStrikeTrait_Complete"
+      Description = "You deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking undamaged foes."
+    }
+    {
+      Id = "GaiaBlessingBackstabTrait"
+      DisplayName = "Ambush"
+      Description = "Afterward, you deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking foes from behind."
+    }
+    {
+      Id = "GaiaBlessingBackstabTrait_Complete"
+      Description = "You deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking foes from behind."
+    }
+    {
+      Id = "GaiaBlessingExtraPomsTrait"
+      DisplayName = "Defiance"
+      Description = "Afterward, gain {#AltUpgradeFormat}+5 {#PreviousFormat}Lv.{!Icons.RandomPomSmall}."
+    }
+    {
+      Id = "GaiaBlessingExtraPomsTrait_Complete"
+      Description = "You have {#AltUpgradeFormat}+5 {#PreviousFormat}Lv.{!Icons.RandomPomSmall}."
+    }
+    // Crops
+    {
+      Id = "Codex_GrowChapter"
+      DisplayName = "Garden Goods"
+    }
+    {
+      Id = "KitchenMenu_Confirm"
+      DisplayName = "Give Catches"
+    }
+    {
+      Id = "KitchenMenu_Title"
+      DisplayName = "Head Chef's Kitchen"
+    }
+    {
+      Id = "KitchenMenu_Subtitle"
+      DisplayName = "Chef is ready to cook something for you."
+    }
+    {
+      Id = "KitchenMenu_RewardTitle"
+      DisplayName = "Total Rewards"
+    }
+    {
+      Id = "KitchenMenu_FishTab"
+      DisplayName = "River Denizens"
+    }
+    {
+      Id = "KitchenMenu_GrowTab"
+      DisplayName = "Garden Goods"
+    }
+    {
+      Id = "Vegetable_Tartarus_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Vegetable_Styx_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Vegetable_Erebus_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Vegetable_Asphodel_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Vegetable_Chaos_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Vegetable_Chaos_Legendary_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Fruit_Elysium_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Fruit_Surface_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Fruit_Home_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Fruit_Gaia_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Fruit_Tartarus_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Fruit_Gaia_Legendary_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Herb_Asphodel_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Herb_Chaos_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Herb_Gaia_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Herb_Elysium_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Herb_Styx_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Herb_Surface_Legendary_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Vegetable_Tartarus_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Vegetable_Styx_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Vegetable_Erebus_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Vegetable_Asphodel_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Vegetable_Chaos_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Vegetable_Chaos_Legendary_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Fruit_Elysium_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Fruit_Surface_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Fruit_Home_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Fruit_Gaia_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Fruit_Tartarus_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Fruit_Gaia_Legendary_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Herb_Asphodel_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Herb_Chaos_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Herb_Gaia_Common_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Herb_Elysium_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Herb_Styx_Rare_01"
+      DisplayName = "Mati"
+    }
+    {
+      Id = "Seed_Herb_Surface_Legendary_01"
+      DisplayName = "Mati"
+    }
+	]
+}

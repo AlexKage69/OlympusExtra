@@ -22,7 +22,7 @@
       FilePath = "GUI\Screens\MirrorIcons\shadow presence"
     }
     {
-      Name = "MirrorIcon_NoAmmoBonus"
+      Name = "MirrorIcon_CountAmmoBonus"
       InheritFrom = "BaseMetaupgradeIcon"
       FilePath = "GUI\Screens\MirrorIcons\shadow presence"
     }

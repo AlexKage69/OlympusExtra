@@ -8077,70 +8077,7 @@ end]]
 		thread( RevulnerablePlayerAfterShout )
 	end
 	-- HealthAsObolTrait Mechanic
-	OnControlPressed{ "Gift",
-		function( triggerArgs )
-			local target = triggerArgs.UseTarget
-			if target == nil then
-				return
-			end
-			if target.SacrificeCost then
-				if target.Rarity then
-					local interactionBlocked = false
-					if not CurrentRun.CurrentRoom.AlwaysAllowLootInteraction then
-						for enemyId, enemy in pairs( ActiveEnemies ) do
-							if enemy.BlocksLootInteraction then
-								interactionBlocked = true
-								break
-								--DebugPrint({ Text = "blockedByEnemy = "..GetTableString( nil, enemy ) })
-							end
-						end
-					end
-
-					if interactionBlocked then
-						local userTable = triggerArgs.TriggeredByTable
-						thread( CannotUseLootPresentation, triggerArgs.triggeredById, userTable )
-						CreateAnimation({ Name = "ShoutFlare", DestinationId = triggerArgs.triggeredById })
-					elseif not AreScreensActive() then		
-						if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
-							CantAffordPresentation( target )
-							return
-						end
-						if target.SacrificeCost ~= nil and target.SacrificeCost > 0 then
-							target.Purchased = true
-							SacrificeHealth({ SacrificeHealth = target.SacrificeCost, MinHealth = 1 })
-							RemoveStoreItem({Name = target.Name, IsBoon = true, BoonRaritiesOverride = target.BoonRaritiesOverride, StackNum = target.StackNum })
-							PlaySound({ Name = "/Leftovers/Menu Sounds/StoreBuyingItem" })
-							thread( PlayVoiceLines, GlobalVoiceLines.PurchasedConsumableVoiceLines, true )
-						end
-
-						if target.RarityBoosted then
-							UseHeroTraitsWithValue("RarityBonus", true )
-						end
-						
-						SetPlayerInvulnerable( "HandleLootPickupAnimation" )
-						PlayInteractAnimation( triggerArgs.triggeredById )
-						HandleLootPickup( CurrentRun, target )
-						SetPlayerVulnerable( "HandleLootPickupAnimation" )
-					end
-				else
-					if CurrentRun.Hero.HandlingDeath then
-						return
-					end
-			
-					if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < (target.SacrificeCost+1) then
-						CantAffordPresentation( target )
-						return
-					end
-					if target.SacrificeCost ~= nil and target.SacrificeCost > 0 and target.PurchaseRequirements ~= nil and not IsGameStateEligible( CurrentRun, target.PurchaseRequirements ) then
-						CantPurchaseWorldItemPresentation( target )
-						return
-					end
-					target.UseSacrifice = true
-					PurchaseConsumableItem( CurrentRun, target, triggerArgs )
-				end
-			end
-		end
-	}
+	
 	ModUtil.Path.Wrap("HandleLootPickup",
 		function(baseFunc, currentRun, loot)
 			if loot.SacrificeId then
@@ -8534,52 +8471,6 @@ end]]
 				end
 			end
 		end
-	end
-	ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
-		function(baseFunc)
-			baseFunc()
-			for k, traitData in pairs(CurrentRun.Hero.Traits) do
-				if traitData.GodDamageBonus then
-					traitData.AccumulatedGodDamageBonus = 1 + GetHeroSameGodCount(CurrentRun.Hero) * (traitData.GodDamageBonus - 1)
-					--traitData.FromGod = name
-					ExtractValues( CurrentRun.Hero, traitData, traitData )
-				end
-			end
-		end
-	)
-
-	function GetHeroSameGodCount( hero )
-		if not hero then
-			return 0
-		end
-
-		local godDictionary = {}
-		local highestCount = 0
-		local highestFrom = "none"
-		for traitName in pairs( hero.TraitDictionary ) do
-			if GetLootSourceName( traitName ) then
-				godDictionary[GetLootSourceName( traitName )] = (godDictionary[GetLootSourceName( traitName )]  or 0) + 1
-				if highestCount < godDictionary[GetLootSourceName( traitName )] then
-					highestCount = godDictionary[GetLootSourceName( traitName )]
-					highestFrom = GetLootSourceName( traitName )
-				end
-			end
-		end
-		if hero.SameGodCount == nil or hero.SameGodCount < highestCount then 
-			for i, trait in pairs(CurrentRun.Hero.Traits) do
-				if trait.Name == "PrivilegeHeraTrait" then
-					trait.SameGodName = highestFrom
-				end
-			end
-			thread( PresentationNewSameGodIncrease )
-		end
-		hero.SameGodFrom = highestFrom
-		hero.SameGodCount = highestCount
-		return hero.SameGodCount
-	end
-	function PresentationNewSameGodIncrease()
-		wait(1.0)
-		CreateAnimation({ Name = "HeraWingsFlap", DestinationId = CurrentRun.Hero.ObjectId })
 	end
 	function SetupHeroicBoonsTrait( args )
 		if not CurrentRun.Hero.HeroicBoonsTraitFlag then
