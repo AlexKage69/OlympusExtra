@@ -68,10 +68,10 @@
       //MaxAmmo = 1
       NumProjectiles = 1
       ProjectileSpacing = 0
-      SelfVelocity = -320
-      CanCancelDisables = true
-      SetCompleteAngleOnFire = true
-      SetCompleteAngleOnCharge = true
+      //SelfVelocity = -320
+      //CanCancelDisables = true
+      //SetCompleteAngleOnFire = true
+      //SetCompleteAngleOnCharge = true
       /*Effects = [
         {
           Name = "RangedDisable"

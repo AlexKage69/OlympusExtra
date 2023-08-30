@@ -826,6 +826,500 @@ OlympusCodex.Grow = {
 			},
 			Image = "Codex_Portrait_Vegetable_Tartarus_Common_01",
 		},
+		Seed_Vegetable_Styx_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedVegetableStyxCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedVegetableStyxCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Vegetable_Styx_Common_01",
+		},
+		Vegetable_Styx_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_VegetableStyxCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_VegetableStyxCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Vegetable_Styx_Common_01",
+		},Seed_Vegetable_Erebus_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedVegetableErebusCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedVegetableErebusCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Vegetable_Erebus_Common_01",
+		},
+		Vegetable_Erebus_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_VegetableErebusCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_VegetableErebusCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Vegetable_Erebus_Common_01",
+		},Seed_Vegetable_Asphodel_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedVegetableAsphodelRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedVegetableAsphodelRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Vegetable_Asphodel_Rare_01",
+		},
+		Vegetable_Asphodel_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_VegetableAsphodelRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_VegetableAsphodelRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Vegetable_Asphodel_Rare_01",
+		},Seed_Vegetable_Chaos_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedVegetableChaosRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedVegetableChaosRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Vegetable_Chaos_Rare_01",
+		},
+		Vegetable_Chaos_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_VegetableChaosRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_VegetableChaosRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Vegetable_Chaos_Rare_01",
+		},Seed_Vegetable_Chaos_Legendary_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedVegetableChaosLegendary01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedVegetableChaosLegendary01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Vegetable_Chaos_Legendary_01",
+		},
+		Vegetable_Chaos_Legendary_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_VegetableChaosLegendary01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_VegetableChaosLegendary01_02",
+				},
+			},
+			Image = "Codex_Portrait_Vegetable_Chaos_Legendary_01",
+		},Seed_Fruit_Elysium_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedFruitElysiumCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedFruitElysiumCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Fruit_Elysium_Common_01",
+		},
+		Fruit_Elysium_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_FruitElysiumCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_FruitElysiumCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Fruit_Elysium_Common_01",
+		},Seed_Fruit_Surface_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedFruitSurfaceCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedFruitSurfaceCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Fruit_Surface_Common_01",
+		},Fruit_Surface_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_FruitSurfaceCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_FruitSurfaceCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Fruit_Surface_Common_01",
+		},
+		Seed_Fruit_Home_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedFruitHomeCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedFruitHomeCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Fruit_Home_Common_01",
+		},
+		Fruit_Home_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_FruitHomeCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_FruitHomeCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Fruit_Home_Common_01",
+		},Seed_Fruit_Gaia_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedFruitGaiaRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedFruitGaiaRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Fruit_Gaia_Rare_01",
+		},
+		Fruit_Gaia_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_FruitGaiaRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_FruitGaiaRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Fruit_Gaia_Rare_01",
+		},Seed_Fruit_Tartarus_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedFruitTartarusRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedFruitTartarusRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Fruit_Tartarus_Rare_01",
+		},
+		Fruit_Tartarus_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_FruitTartarusRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_FruitTartarusRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Fruit_Tartarus_Rare_01",
+		},Seed_Fruit_Gaia_Legendary_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedFruitGaiaLegendary01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedFruitGaiaLegendary01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Fruit_Gaia_Legendary_01",
+		},
+		Fruit_Gaia_Legendary_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_FruitGaiaLegendary01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_FruitGaiaLegendary01_02",
+				},
+			},
+			Image = "Codex_Portrait_Fruit_Gaia_Legendary_01",
+		},Seed_Herb_Asphodel_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedHerbAsphodelCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedHerbAsphodelCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Herb_Asphodel_Common_01",
+		},
+		Herb_Asphodel_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_HerbAsphodelCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_HerbAsphodelCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Herb_Asphodel_Common_01",
+		},Seed_Herb_Chaos_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedHerbChaosCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedHerbChaosCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Herb_Chaos_Common_01",
+		},
+		Herb_Chaos_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_HerbChaosCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_HerbChaosCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Herb_Chaos_Common_01",
+		},Seed_Herb_Gaia_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedHerbGaiaCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedHerbGaiaCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Herb_Gaia_Common_01",
+		},
+		Herb_Gaia_Common_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_HerbGaiaCommon01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_HerbGaiaCommon01_02",
+				},
+			},
+			Image = "Codex_Portrait_Herb_Gaia_Common_01",
+		},Seed_Herb_Elysium_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedHerbElysiumRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedHerbElysiumRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Herb_Elysium_Rare_01",
+		},
+		Herb_Elysium_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_HerbElysiumRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_HerbElysiumRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Herb_Elysium_Rare_01",
+		},Seed_Herb_Styx_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedHerbStyxRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedHerbStyxRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Herb_Styx_Rare_01",
+		},
+		Herb_Styx_Rare_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_HerbStyxRare01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_HerbStyxRare01_02",
+				},
+			},
+			Image = "Codex_Portrait_Herb_Styx_Rare_01",
+		},Seed_Herb_Surface_Legendary_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_SeedHerbSurfaceLegendary01_01",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_SeedHerbSurfaceLegendary01_02",
+				},
+			},
+			Image = "Codex_Portrait_Seed_Herb_Surface_Legendary_01",
+		},
+		Herb_Surface_Legendary_01 =
+		{
+			Entries =
+			{
+				{
+					UnlockThreshold = 1,
+					Text = "CodexData_HerbSurfaceLegendary01_02",
+				},
+				{
+					UnlockThreshold = 2,
+					Text = "CodexData_HerbSurfaceLegendary01_02",
+				},
+			},
+			Image = "Codex_Portrait_Herb_Surface_Legendary_01",
+		},
 	}
 }
 OlympusCodexOrdering.Grow = {
