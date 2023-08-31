@@ -1,0 +1,66 @@
+{
+  Projectiles = [
+      "_append"
+    {
+      Name = "NPC_Cerberus_01_Assist"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "RadialNovaRubbleSnowCerberusBombard"
+      Type = "INSTANT"
+      DetonateSound = "null"
+      Fuse = 0.4
+      UseStartLocation = true
+      //StartFx = "CerberusAssist"
+      AffectsEnemies = true
+      AffectsFriends = false
+      Range = 1.0
+      DamageRadius = 250
+      DamageRadiusScaleY = 0.58
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      DamageLow = 2000
+      DamageHigh = 2000
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      CanCrit = false
+      GroupName = "FX_Terrain"
+      ImmunityDuration = 1.0
+      Thing = 
+      {
+        Graphic = "CerberusRockFall"
+        AttachedAnim = "BlastWarningDecal"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = 
+        {
+          Red = 1.0
+          Green = 1.0
+          Blue = 1.0
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+    }
+  ]
+}

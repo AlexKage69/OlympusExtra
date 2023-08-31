@@ -247,7 +247,7 @@
 		{
 			Id = "HealthDamageTrait_Tray"
 			InheritFrom = "HealthDamageTrait"
-			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total {$Keywords.Attack} and {$Keywords.Special} Bonus Damage : \Column 381 {#UpgradeFormat} {$TooltipData.TooltipTotalDamage:P}"
+			Description = "Gain Bonus Damage when you pick up {$Keywords.CentaurHeart} or {$Keywords.CentaurSoul}. \n {!Icons.Bullet}{#PropertyFormat}Total {$Keywords.Attack} and {$Keywords.Special} Bonus Damage: \Column 383 {#UpgradeFormat} {$TooltipData.TooltipTotalDamage:P}"
 		}
 		{
 			Id = "HealthDamageTrait_Initial"

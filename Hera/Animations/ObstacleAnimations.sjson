@@ -1,0 +1,11 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "HeraOverlay"
+      InheritFrom = "HadesOverlay"
+      FilePath = "Hera\Portraits_Hera_02"
+      Scale = 0.7
+    }
+  ]
+}

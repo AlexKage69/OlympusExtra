@@ -5236,24 +5236,7 @@ if ModUtil ~= nil then
 		end
 		return angle
 	end
-
-	ModUtil.Path.Wrap("DamageEnemy",
-		function(baseFunc, victim, triggerArgs)
-			local sourceWeaponData = triggerArgs.AttackerWeaponData
-			if sourceWeaponData and sourceWeaponData.MultipleProjectileMultiplier and victim then
-				if victim.TimeOfLastDamage and victim.TimeOfLastDamage[sourceWeaponData.Name] and
-					_worldTime - victim.TimeOfLastDamage[sourceWeaponData.Name] < 0.05 then
-					triggerArgs.DamageAmount = triggerArgs.DamageAmount * sourceWeaponData.MultipleProjectileMultiplier
-				else
-					if not victim.TimeOfLastDamage then
-						victim.TimeOfLastDamage = {}
-					end
-					victim.TimeOfLastDamage[sourceWeaponData.Name] = _worldTime
-				end
-			end
-			baseFunc(victim, triggerArgs)
-		end
-	)
+	
 	-- Blind Functions
 	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
 	ModUtil.Path.Wrap("CheckOnHitPowers",

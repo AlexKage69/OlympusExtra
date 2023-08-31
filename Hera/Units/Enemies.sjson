@@ -1,0 +1,66 @@
+{
+  Units = [
+    "_append"
+    {
+      Name = "HeraUpgradeRoomWeapon"
+      InheritFrom = "PassiveRoomWeapon"
+      DisplayInEditor = true
+      Thing = {
+        EditorOutlineDrawBounds = false
+      }
+    },
+    {
+      Name = "HeraMine"
+      InheritFrom = "Trap"
+      AutoLockable = true
+      DisplayInEditor = true
+      ImmuneToStun = true
+      NoAllegiance = true
+      OnDeathWeapon = "HeraMineBlast"
+      Life = 
+      {
+        DeathGraphic = "HeraTrapExplode"
+        DeathSound = "/SFX/Enemy Sounds/EnemyDeathExplode"
+        ProjectilesAlwaysPenetrate = true
+      }
+      Thing = 
+      {
+        AttachedAnim = "HeraTrapStunTotemSpawnDecal"
+        EditorOutlineDrawBounds = false
+        Graphic = "HeraTrapSpawn"
+        Scale = 0.35
+        Tallness = 550.0
+        Offset = 
+        {
+          X = 0
+          Y = -290
+        }
+        Points = [
+          {
+            X = 0
+            Y = 42
+          }
+          {
+            X = 88
+            Y = 0
+          }
+          {
+            X = 48
+            Y = -54
+          }
+          {
+            X = -47
+            Y = -56
+          }
+          {
+            X = -85
+            Y = 2
+          }]
+        Using = [
+          {
+            Name = "HeraTrapActivate"
+          }]
+      }
+    }
+  ]
+}

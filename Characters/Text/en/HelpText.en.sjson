@@ -1,0 +1,40 @@
+{
+	Texts = [
+		"_append"		
+		{
+			Id = "Codex_OlympianGoddessChapter"
+			DisplayName = "Olympian Goddesses"
+		}			
+		{
+			Id = "GoodBoyAssistTrait_Rack"
+			DisplayName = "Companion Solo"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in a wide area. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.TooltipKeepsakeUses}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "GoodBoyAssistTrait_Delta"
+			DisplayName = "Companion Solo"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in a wide area. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "GoodBoyAssistTrait"
+			DisplayName = "Companion Solo"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in a wide area."
+		}
+		{
+			Id = "CodexData_GoodBoyAssistTrait_01"
+			Speaker = "Achilles"
+			DisplayName = "'...When Solo first emerged from the darkness, he knew instantly that he was meant to be by the side of Mother Night and the other ruling creatures of the Underworld. However, Mother Night would frequently leave him alone for stretches of time that seemed to stretch on forever, and he grew lonely and distressed. He worried that someday, she would leave him and never return...'"
+		}    
+		{
+			Id = "CodexData_GoodBoyAssistTrait_02"
+			Speaker = "Achilles"
+			DisplayName = "'...When Solo first emerged from the darkness, he knew instantly that he was meant to be by the side of Mother Night and the other ruling creatures of the Underworld. However, Mother Night would frequently leave him alone for periods of time that seemed to stretch on forever, and he grew lonely and distressed. He worried that someday, she would leave and never return. {#CodexBoldFormat}One day, fearing he'd never see her again, Solo howled and howled, but she did not come back. He scratched gouges in the wall, but she did not come back. He tore the stuffing out of his bed, but still she didn't return. Looking around at the mess he'd made, Solo realized he might be punished for being a bad boy. But when Mother Night returned, she only looked around, knelt and patted his head, and told him that even though she couldn't be with him every minute of the day, she would always, always return to him eventually. He just needed to learn how to be patient, she explained, as she cleaned up the mess. Now, Solo knows if he just waits patiently, he'll never be lonely for too long. After all, he is a good boy.{#PreviousFormat}'"
+		}
+		{
+			Id = "CerberusSignoff_AssistMax"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Cerberus {#AwardDarkFlavorFormat}, goodest boy
+			"""
+		}
+    ]
+}

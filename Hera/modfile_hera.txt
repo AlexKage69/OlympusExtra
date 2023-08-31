@@ -1,0 +1,44 @@
+-: Mod Name: Goddess Codex
+    Author - AlexKage
+    Author - Phypoh
+:-
+
+Import "HeraExtra.lua"
+
+:: Animations
+To "Game/Animations/PortraitAnimations.sjson"
+SJSON "Animations/PortraitAnimations.sjson"
+To "Game/Animations/ObstacleAnimations.sjson"
+SJSON "Animations/ObstacleAnimations.sjson"
+To "Game/Animations/Fx.sjson" 
+SJSON "Animations/Fx.sjson"
+To "Game/Animations/GUIAnimations.sjson"
+SJSON "Animations/GUIAnimations.sjson"
+
+:: Obstacles
+To "Game/Units/Enemies.sjson"
+SJSON "Units/Enemies.sjson"
+To "Game/Obstacles/Gameplay.sjson"
+SJSON "Obstacles/Gameplay.sjson"
+To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "Projectiles/AddPlayerProjectiles.sjson"
+To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "Projectiles/PlayerProjectiles.sjson"
+To "Game/Projectiles/EnemyProjectiles.sjson"
+SJSON "Projectiles/EnemyProjectiles.sjson"
+
+:: Weapons
+To "Game/Weapons/PlayerWeapons.sjson"
+SJSON "Weapons/PlayerWeapons.sjson"
+To "Game/Weapons/EnemyWeapons.sjson"
+SJSON "Weapons/EnemyWeapons.sjson"
+
+:: Language Text
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/en/HelpText.en.sjson"
+To "Game/Text/en/CodexText.en.sjson"
+SJSON "Text/en/CodexText.en.sjson"
+To "Game/Text/en/MacroText.sjson"
+SJSON "Text/en/MacroText.en.sjson"
+To "Game/Text/en/MiscText.en.sjson"
+SJSON "Text/en/MiscText.en.sjson"

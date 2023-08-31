@@ -1,0 +1,16 @@
+
+Import "CerberusAssist/CerberusAssist.lua"
+:: Include "MakariaNPC/modfile_makaria.txt"
+Import "patch.lua"
+Import "extender.lua"
+
+To "Game/Weapons/PlayerWeapons.sjson"
+SJSON "CerberusAssist/Weapons/PlayerWeapons.sjson"
+To "Game/Animations/PortraitAnimations.sjson"
+SJSON "CerberusAssist/Animations/PortraitAnimations.sjson"
+To "Game/Animations/CharacterAnimationsEnemies.sjson"
+SJSON "CerberusAssist/Animations/CharacterAnimationsEnemies.sjson"
+To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "CerberusAssist/Projectiles/PlayerProjectiles.sjson"
+:: To "Game/Units/NPCs.sjson"
+:: SJSON "NPCs.sjson"

@@ -3,6 +3,8 @@
     Author - physiX
 :-
 
+Import "HestiaExtra.lua"
+
 :: Animations
 To "Game/Animations/PortraitAnimations.sjson"
 SJSON "Animations/PortraitAnimations.sjson"

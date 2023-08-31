@@ -1,0 +1,156 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "TheseusHeraBolt"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "RadialNovaTheseusWrath-Hera"
+      DetonateSound = "/SFX/Explosion1"
+      Type = "INSTANT"
+      DamageLow = 5
+      DamageHigh = 5
+      DamageRadius = 270.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0.55
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "FX_Terrain"
+      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
+      DangerDistance = 0
+      Thing = 
+      {
+        Graphic = "TheseusGodPowerPreviewDecal_Hera"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = 
+        {
+          Red = 0.0
+          Green = 0.55
+          Blue = 0.53
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "TheseusHeraBoltPassive"
+      InheritFrom = "TheseusHeraBolt"
+      DamageRadius = 475
+      DamageLow = 7
+      DamageHigh = 7
+      Fuse = 1.0
+    }
+    {
+      Name = "DevotionHera"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = false
+      AffectsFriends = false
+      //DissipateGraphic = "EnemyProjectileImpact"
+      AffectsSelf = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = true
+      MultipleUnitCollisions = false
+      MultipleObstacleCollisions = false
+      Range = 0
+      Fuse = 0.1
+      Speed = 0
+      DamageLow = 0
+      DamageHigh = 0
+      UnpauseResetLocation = true
+      FlashBeforeExpireDuration = 0.5
+      SpawnOnDeath = "DevotionHeraSplit"
+      SpawnType = "PROJECTILE"
+      SpawnCount = 10
+      SpawnsEvenlySpaced = true
+      SpawnsSpeedModifierScaleY = 0.65
+      Thing = {
+        //Graphic = "DevotionHeraMegaProjectile"
+        OffsetZ = 50
+        Tallness = 60
+        //AttachedAnim = "EnemyProjectileLight"
+        Grip = 999999
+        UseBoundsForSortDrawArea = true
+        RotateGeometry = true
+        Points = [
+          {
+            X = -24
+            Y = 0
+          }
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }]
+      }
+    }
+    {
+      Name = "DevotionHeraSplit"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      DissipateGraphic = "HeraProjectileImpact"
+      AffectsSelf = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = false
+      Range = 1800
+      Speed = 570
+      DamageLow = 5
+      DamageHigh = 5
+      StartDelay = 0.2
+      InvulnerableToProjectileDefenseBeforeStart = true
+      ImpactFx = "HeraProjectileImpactSmall"
+      Thing = {
+        Graphic = "DevotionHeraProjectile"
+        OffsetZ = 50
+        Tallness = 60
+        AttachedAnim = "HeraProjectileLight"
+        Grip = 999999
+        UseBoundsForSortDrawArea = true
+        RotateGeometry = true
+        Points = [
+          {
+            X = -24
+            Y = 0
+          }
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }]
+      }
+    }
+  ]
+}

@@ -40,17 +40,12 @@
 		{
       		Id = "ApolloBlind"
 			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have at least {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim have a {#UpgradeFormat}{$TooltipData.TooltipBlindPower:P}% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
       		Id = "DamageResist"
 			DisplayName = "Protection"
 			Description = "Damage from distant foes is less effective."
-		}
-		{
-      		Id = "Dazzled"
-			DisplayName = "Dazzled"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For at least {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victims have at least {#UpgradeFormat}40% {#PreviousFormat}chance to miss their next attack."
 		}
 		{
 			Id = "ApolloWeaponTrait"
