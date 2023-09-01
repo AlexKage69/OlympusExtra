@@ -40,7 +40,7 @@
 		{
       		Id = "EnvyCurse"
 			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying a {$Keywords.Status}, deals additionnal damage. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double it."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying a {$Keywords.Status}, deals additional damage. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double it."
 		}
 		{
       		Id = "HeraTrap"
@@ -218,12 +218,12 @@
 		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
-			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always guaranteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
 			Id = "EnvyBurstTrait_Initial"
 			InheritFrom = "EnvyBurstTrait"
-			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always guaranteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
     		Id = "MoreCompanionText_Alt"
