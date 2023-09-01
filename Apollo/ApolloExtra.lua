@@ -2638,7 +2638,28 @@ if ModUtil ~= nil then
 					ExtractAs = "TooltipCurseDamage",
 				}
 			},
-		}
+		},
+		ExtractValues = {
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		},
 	}
 	table.insert(OlympusTraitData.AresLongCurseTrait.PropertyChanges, {
 		TraitName = "ApolloRangedTrait",

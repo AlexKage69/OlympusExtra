@@ -155,7 +155,7 @@ function ForceNextRoomFunc(value)
     end
 end
 
-ModUtil.Path.Wrap("BeginOpeningCodex",
+--[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)
         --PresentationNewSameGodIncrease()
         if (not CanOpenCodex()) and IsSuperValid() then
@@ -169,7 +169,7 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
         --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
         baseFunc()
     end
-)
+)]]
 -- Rejection Functions
 ModUtil.Path.Wrap("SpawnRoomReward",
     function(baseFunc, eventSource, args)

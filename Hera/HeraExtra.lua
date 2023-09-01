@@ -2143,6 +2143,27 @@ end]]
 				ChangeValue = 0.25
 			},
 		},
+		FakeCost = 25,
+		ExtractValues =
+		{
+			--[[{
+				Key = "SuperDuration",
+				ExtractAs = "TooltipDuration",
+				DecimalPlaces = 2,
+			},]]
+			{
+				Key = "FakeCost",
+				ExtractAs = "TooltipWrathStocks",
+				Format = "WrathStocks",
+				SkipAutoExtract = true
+			}
+			--[[{
+				Key = "MaxDurationMultiplier",
+				ExtractAs = "TooltipMaxDurationMultiplier",
+				DecimalPlaces = 2,
+				SkipAutoExtract = true
+			}]]
+		}
 	}
 
 	OlympusTraitData.DiscountHeraTrait =
@@ -2710,6 +2731,19 @@ end]]
 			Name = "SetupAura",
 			RunOnce = true,
 		},
+		ExtractValues =
+		{
+
+			{
+				ExtractAs = "TooltipStaggerDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "ExposedCurseApplicator",
+				BaseName = "AthenaBackstabVulnerability",
+				BaseProperty = "Duration",
+			}
+		}
 	}
 	
 	table.insert(OlympusTraitData.AthenaBackstabDebuffTrait.PropertyChanges,
@@ -3459,7 +3493,7 @@ end]]
 				External = true,
 				BaseType = "Effect",
 				WeaponName = "RuptureCurseApplicator",
-				BaseName = "AuraDamageOverDistance",
+				BaseName = "DamageOverDistance",
 				BaseProperty = "Duration",
 			},
 		}
@@ -3496,6 +3530,28 @@ end]]
 			Name = "SetupAura",
 			RunOnce = true,
 		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "BlindCurseApplicator",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "BlindCurseApplicator",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		}
 	}
 	OlympusTraitData.EnhancedNPCTrait =
 	{
@@ -7160,16 +7216,16 @@ end]]
 			local isHeraShout = false
 			for i, traitData in pairs(CurrentRun.Hero.Traits) do
 				if traitData.Name == "HeraShoutTrait" and CurrentRun.Hero.HeraShout.NextHeraGod then
-
 					local otherTrait = TraitData[CurrentRun.Hero.HeraShout.NextHeraGod.."ShoutTrait"]
 					if otherTrait.AddShout ~= nil then
+						isHeraShout = true
 						CurrentRun.Hero.Traits[i].AddShout = otherTrait.AddShout
 					end
 					if otherTrait.EndShout ~= nil then
 						CurrentRun.Hero.Traits[i].EndShout = otherTrait.EndShout
 					end
 				end
-			end			
+			end
 			baseFunc()
 			if isHeraShout then
 				CurrentRun.Hero.HeraShout.GetNext = true
