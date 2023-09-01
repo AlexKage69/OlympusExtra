@@ -5,10 +5,10 @@ local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
 -- Makaria, Id = 370025, 370024, 370002
 
-OlympusUnitSetData.NPCs.NPC_Makaria_01 =
+OlympusUnitSetData.NPCs.NPC_Moros_01 =
 {
 	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
-	Name = "NPC_Makaria_01",
+	Name = "NPC_Moros_01",
 	UseText = "UseTalkToChildGhost",
 	Portrait = "Portrait_ChildGhost_Default_01",
 	AnimOffsetZ = 220,
@@ -20,11 +20,10 @@ OlympusUnitSetData.NPCs.NPC_Makaria_01 =
 
 	Binks =
 	{
-		"HypnosIdleSitting_Bink",
-		"HypnosSleepWakingSurprise_Bink",
-		"HypnosSittingToSleep_Bink",
-		"HypnosIdleSleeping_Bink",
-		"HypnosIdleGreeting_Bink",
+		"NPC_3DGhostAltFidget_Bink",
+		"NPC_3DGhostAltIdle_Bink",
+		"NPC_3DGhostAltMove_Bink",
+		"NPC_3DGhostAltStartStop_Bink",
 	},
 
 	ActivateRequirements =
@@ -34,7 +33,7 @@ OlympusUnitSetData.NPCs.NPC_Makaria_01 =
 
 	InteractTextLineSets =
 	{
-		MakariaFirstMeeting =
+		MorosFirstMeeting =
 			{
 				Priority = true,
 				PlayOnce = true,
@@ -242,86 +241,10 @@ OlympusUnitSetData.NPCs.NPC_Makaria_01 =
 		{ Cue = "/VO/ZagreusHome_0310" },
 	},
 }
-OlympusEncounterSets.EncounterEventsMakariaPool =
-{
-	{ FunctionName = "StartCinematicMakariaPool" },
-}
-function StartCinematicMakariaPool()
+function StartCinematicMorosPool()
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Cinematic")) 
 end
--- New rooms section
-OlympusRoomSetData.Tartarus.A_Makaria01 =
-	{
-		Name = "A_Makaria01",
-		InheritFrom = { "BaseTartarus" },
-		LegalEncounters = { "Empty" },
-		UnthreadedEvents = EncounterSets.EncounterEventsNonCombat,
-		TimerBlock = "StoryRoom",
-		GameStateRequirements =
-		{
-			RequiredMaxBiomeDepth = 12,
-		},
-		NoReward = true,
-		EntranceDirection = "Right",
-		NumExits = 0,
-		ZoomFraction = 0.95,
-	}
--- Gift Section
---[[local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
-local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-table.insert(OlympusGiftOrdering, 29, "NewRoomsTrait")
-
-OlympusGiftData.NPC_Makaria_01 =
-{
-	InheritFrom = { "DefaultGiftData" },
-	MaxedIcon = "Keepsake_Hypnos_Max",
-	MaxedSticker = "Keepsake_HypnosSticker_Max",
-	MaxedRequirement = { RequiredTextLines = { "MakariaGift08" }, },
-	Locked = 7,
-	Maximum = 8,
-	[1] = { Gift = "NewRoomsTrait" },
-	[7] = { RequiredResource = "SuperGiftPoints" },
-	[8] = { RequiredResource = "SuperGiftPoints" },
-	UnlockGameStateRequirements = { RequiredTextLines = { "HypnosAboutThanatos04" } }
-}
--- Keepsake
-local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
-OlympusTraitData.NewRoomsTrait =
-	{
-		Icon = "Keepsake_Purse",
-		EquipSound = "/SFX/Menu Sounds/KeepsakeHypnosCoinPurse",
-		InheritFrom = { "GiftTrait" },
-		InRackTitle = "BonusMoneyTrait_Rack",
-		CustomTrayText = "BonusMoneyTrait_Tray",
-		UnequippedKeepsakeTitle = "BonusMoneyTrait_Dead",
-		CustomTrayNameWhileDead = "BonusMoneyTrait_Tray",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.50,
-			}
-		},
-		SignOffData =
-		{
-		  {
-			Text = "MakariaSignoff",
-		  },
-		  {
-			RequiredTextLines = { "MakariaGift08" },
-			Text = "MakariaSignoff_Max"
-		  }
-		},
-	}]]
--- Makaria activation requirements
+-- Moros activation requirements
 table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, {
 	FunctionName = "ActivateRotatingNPCs",
 	GameStateRequirements =
@@ -332,7 +255,7 @@ table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, {
 	{
 		Types =
 		{
-			"NPC_Makaria_01",
+			"NPC_Moros_01",
 		},
 		ActivationCapMin = 3,
 		ActivationCapMax = 3,
@@ -342,8 +265,8 @@ table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, {
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 local OlympusCodex = ModUtil.Entangled.ModData(Codex)
-table.insert(OlympusCodexOrdering.ChthonicGods.Order, "NPC_Makaria_01")
-OlympusCodex.ChthonicGods.Entries["NPC_Makaria_01"] =
+table.insert(OlympusCodexOrdering.ChthonicGods.Order, "NPC_Moros_01")
+OlympusCodex.ChthonicGods.Entries["NPC_Moros_01"] =
 {
 	Entries =
 	{
@@ -363,7 +286,7 @@ OlympusCodex.ChthonicGods.Entries["NPC_Makaria_01"] =
 	Image = "Codex_Portrait_Hestia",
 }
 -- Fountain Divination
-OlympusDeathLoopData.RoomPreRun.Binks = {
+--[[OlympusDeathLoopData.RoomPreRun.Binks = {
 	"CharonIdleShop_Bink",
 	"CharonIdleGreeting_Bink",
 }
@@ -391,7 +314,7 @@ OlympusObstacleData.DivinationGods =
 			ChangeValue = 225,
 		},
 	},
-}
+}]]
 
 --[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
@@ -411,4 +334,3 @@ OnUsed{ "NPCs",
 	end
 }
 OverwriteTableKeys( EnemyData, UnitSetData.NPCs )
-OverwriteTableKeys( RoomData, OlympusRoomSetData.Tartarus)

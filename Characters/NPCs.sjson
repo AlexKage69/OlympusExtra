@@ -41,5 +41,48 @@
           }]
       }
     }
+    {
+      Name = "NPC_Moros_01"
+      InheritFrom = "BaseNPC"
+      CollideWithUnits = false
+      CosmeticRotationSpeed = 360.0
+      DisplayInEditor = true
+      MoveGraphic = "3DGhostAltMove"
+      RotationSpeed = 216000.0
+      Speed = 120.0
+      StartGraphic = "3DGhostAltStart"
+      StopGraphic = "3DGhostAltStop"
+      Life = 
+      {
+        DeathFx = "TartarusGhost01Dissipate"
+        DeathSound = "/SFX/GhostEvaporate"
+        ProjectilesAlwaysPenetrate = true
+      }
+      MoveAI = 
+      {
+        Name = "Pathfind"
+        LookAheadDistance = 100.0
+        SuccessDistance = 10.0
+      }
+      Thing = 
+      {
+        AttachedAnim = "MedusaShadow"
+        EditorOutlineDrawBounds = false
+        Graphic = "3DGhostAltIdle"
+        Grip = 0.0
+        SpeechCapable = false
+        Tallness = 135.0
+        Interact = 
+        {
+          Distance = 1.0
+        }
+        Points = [
+          { X = 4 Y = 5 }
+          { X = 21 Y = -4 }
+          { X = 4 Y = -12 }
+          { X = -13 Y = -4 }
+        ]
+      }
+    }
   ]
 }

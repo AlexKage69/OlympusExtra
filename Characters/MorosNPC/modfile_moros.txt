@@ -1,5 +1,5 @@
 
-:: Import "MorosNPC.lua"
+Import "MorosNPC.lua"
 Import "OEMirror.lua"
 
 To "Game/Animations/Fx.sjson"
