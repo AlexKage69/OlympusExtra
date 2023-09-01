@@ -113,7 +113,7 @@
         BackFx = "null"
         Duration = 0.5
         Modifier = 1
-        Amount = 0.5
+        Amount = 0.4
         Active = true
         TimeModifierFraction = 0
         ExtendDurationOnReapply = true

@@ -124,7 +124,7 @@ if ModUtil ~= nil then
 				"ArtemisFreePass01",
 				"AphroditeFreePass01",
 				"ApolloFreePass01",
-				--"HeraFreePass01",
+				"HeraFreePass01",
 				"HestiaFreePass02",
 			},
 
