@@ -3802,7 +3802,7 @@ end]]
 					StartSound = "/SFX/DemeterBoonFrost",
 					EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 					Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-					Text = "Not until I feel like it, dear Hera. My gried and sorrow are not yet there. You'll be the first to know that's as much as I can do. And helping Zagreus as well. The cold doesn't seem to bother him." },
+					Text = "Not until I feel like it, dear Hera. My grief and sorrow are not yet there. You'll be the first to know that's as much as I can do. And helping Zagreus as well. The cold doesn't seem to bother him." },
 			},
 		},
 
