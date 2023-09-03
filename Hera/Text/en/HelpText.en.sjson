@@ -40,12 +40,12 @@
 		{
       		Id = "EnvyCurse"
 			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying a {$Keywords.Status}, deals additional damage. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double it."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Applying a {$Keywords.Status}, deals additional damage and removes the Envy {$Keywords.Status}. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double the damage."
 		}
 		{
       		Id = "HeraTrap"
 			DisplayName = "Trap Jar"
-			Description = "Inanimate objects dealing damage to foes upon broken."
+			Description = "An inanimate object dealing damage to foes upon broken."
 		}
 		{
       		Id = "Aura"
