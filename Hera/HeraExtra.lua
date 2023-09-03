@@ -349,6 +349,12 @@ if ModUtil ~= nil then
 		OnApplyFunctionName = "EnvyCurseSecondaryApply",
 		OnClearFunctionName = "EnvyCurseSecondaryClear",
 	}
+	OlympusEffectData.HeraDecay =
+	{
+		Name = "JealousyCurse",
+		DamageTextStartColor = Color.EnvyDamageStart,
+		DamageTextColor = Color.EnvyDamageEnd,	
+	}	
 	--OlympusEffectData.DelayedDamage.OnApplyFunctionName = "DelayDamageApply"
 	--OlympusEffectData.DelayedDamage.OnClearFunctionName = "DelayDamageClear"
 	-- GlobalVoiceLines
@@ -1947,25 +1953,22 @@ end]]
 		{
 			Common =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.1,
 			},
 			Rare =
 			{
-				Multiplier = 1.4,
+				Multiplier = 1.3,
 			},
 			Epic =
 			{
-				Multiplier = 1.6,
+				Multiplier = 1.5,
 			},
 			Heroic =
 			{
-				Multiplier = 1.8,
+				Multiplier = 1.7,
 			}
 		},
-		AddShout =
-		{
-			
-		},
+		AddShout ={},
 		PreEquipWeapons = { "HeraMaxSuper", "HeraSuper", "LightningStrikeX", "AthenaShoutWeapon", "PoseidonSurfWeapon",
 			"ArtemisMaxShoutWeapon", "ArtemisShoutWeapon", "AphroditeSuperCharm", "AphroditeMaxSuperCharm", "AresSurgeWeapon",
 			"DionysusShoutWeapon", "DemeterSuper", "DemeterMaxSuper" },
@@ -1983,7 +1986,7 @@ end]]
 				BaseMax = 50,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				}
 			},
 			{
@@ -1999,7 +2002,7 @@ end]]
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				}
 			},
 			{
@@ -2021,7 +2024,7 @@ end]]
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				},
 				ExtractValue =
 				{
@@ -2055,7 +2058,7 @@ end]]
 				MinMultiplier = 0.2,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				},
 			},
 
@@ -2066,7 +2069,7 @@ end]]
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				}
 			},
 			{
@@ -2083,7 +2086,7 @@ end]]
 				MinMultiplier = 0.05,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				}
 			},
 			{
@@ -2118,7 +2121,7 @@ end]]
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				}
 			},
 			{
@@ -2129,7 +2132,7 @@ end]]
 				MinMultiplier = 0.2,
 				IdenticalMultiplier =
 				{
-					Value = 0.0,
+					Value = DuplicateStrongMultiplier,
 				}
 			},
 			{
@@ -7220,6 +7223,9 @@ end]]
 					if otherTrait.AddShout ~= nil then
 						isHeraShout = true
 						CurrentRun.Hero.Traits[i].AddShout = otherTrait.AddShout
+						if type(CurrentRun.Hero.Traits[i].AddShout.SuperDuration) == "table" then
+							CurrentRun.Hero.Traits[i].AddShout.SuperDuration = CurrentRun.Hero.Traits[i].AddShout.SuperDuration.BaseValue
+						end
 					end
 					if otherTrait.EndShout ~= nil then
 						CurrentRun.Hero.Traits[i].EndShout = otherTrait.EndShout
@@ -7627,8 +7633,9 @@ end]]
 		function(baseFunc, currentRun, currentRoom, args)
 			if args and args.ExclusionNames then
 				table.insert(args.ExclusionNames, "MoreRewardTrait")
+				table.insert(args.ExclusionNames, "HeroicBoonsTrait")
 			else
-				args = { ExclusionNames = { "MoreRewardTrait" } }
+				args = { ExclusionNames = { "MoreRewardTrait", "HeroicBoonsTrait" } }
 			end
 			baseFunc(currentRun, currentRoom, args)
 		end
