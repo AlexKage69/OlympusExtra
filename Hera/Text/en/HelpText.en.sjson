@@ -40,7 +40,7 @@
 		{
       		Id = "EnvyCurse"
 			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Applying a {$Keywords.Status}, deals additional damage and removes the Envy {$Keywords.Status}. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double the damage."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Applying a {$Keywords.Status} deals additional damage and removes {$Keywords.EnvyCurse}. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double the damage."
 		}
 		{
       		Id = "HeraTrap"
