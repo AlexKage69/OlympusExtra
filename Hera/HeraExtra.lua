@@ -3573,6 +3573,7 @@ end]]
 
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
+	table.insert(OlympusLootData.ArtemisUpgrade.LinkedUpgrades.ArtemisAmmoExitTrait.OneOf, "HeraRangedTrait")
 	OlympusLootData.HeraUpgrade = {
 		Name = "HeraUpgrade",
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
