@@ -13,12 +13,12 @@
     {
       Id = "CodexData_Hera_0002"
       Speaker = "Achilles"      
-      DisplayName = "'...Ruling the Olympus is no easy task. Like a never-ending wheel, Zeus counts on her queen for my daily job. Hera gain most of the labour to do up there. Either loved or feared, everyone must have an opinion on such a high figure. {#CodexBoldFormat}Not that anyway would deny her role in all things since she has business with all. Heroes of all times have dealt with Hera. Even the great Hercules, but that’s another story all together...{#PreviousFormat}'"
+      DisplayName = "'...Ruling the Olympus is no easy task. Like a never-ending wheel, Zeus counts on her queen for my daily job. Hera gained most of the labour to do up there. Either loved or feared, everyone must have an opinion on such a high figure. {#CodexBoldFormat}Not that anyway would deny her role in all things since she has business with all. Heroes of all times have dealt with Hera. Even the great Hercules, but that’s another story altogether...{#PreviousFormat}'"
     }
     {
       Id = "CodexData_Hera_0003"
       Speaker = "Achilles" 
-      DisplayName = "'...Ruling the Olympus is no easy task. Like a never-ending wheel, Zeus counts on her queen for my daily job. Hera gain most of the labour to do up there. Either loved or feared, everyone must have an opinion on such a high figure. Not that anyway would deny her role in all things since she has business with all. Heroes of all times have dealt with Hera. Even the great Hercules, but that’s another story all together. {#CodexBoldFormat}Hera was never found of weakness or unloyalty. Much tried to fool her more than once, but only few succeeded. And even those who succeed, paid the price.{#PreviousFormat}'"
+      DisplayName = "'...Ruling the Olympus is no easy task. Like a never-ending wheel, Zeus counts on her queen for my daily job. Hera gained most of the labour to do up there. Either loved or feared, everyone must have an opinion on such a high figure. Not that anyway would deny her role in all things since she has business with all. Heroes of all times have dealt with Hera. Even the great Hercules, but that’s another story altogether. {#CodexBoldFormat}Hera was never fond of weakness or disloyalty. Many tried to fool her more than once and they all have paid the price.{#PreviousFormat}'"
     }
   ]
 }

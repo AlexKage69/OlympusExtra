@@ -1968,7 +1968,11 @@ end]]
 				Multiplier = 1.7,
 			}
 		},
-		AddShout ={},
+		AddShout ={
+			FunctionName = "",
+			Cost = 25,
+			SuperDuration = 0.8,
+		},
 		PreEquipWeapons = { "HeraMaxSuper", "HeraSuper", "LightningStrikeX", "AthenaShoutWeapon", "PoseidonSurfWeapon",
 			"ArtemisMaxShoutWeapon", "ArtemisShoutWeapon", "AphroditeSuperCharm", "AphroditeMaxSuperCharm", "AresSurgeWeapon",
 			"DionysusShoutWeapon", "DemeterSuper", "DemeterMaxSuper" },
@@ -4807,17 +4811,6 @@ end]]
 					Text = "I didn't even wanted to give you my blessing. But if you show yourself worthy of it, I might reconsider giving it to you..." },
 			},
 		},
-		FreePassVoiceLines = {
-			HeraFreePass01 =
-			{
-				PlayOnce = true,
-				Name = "HeraFreePass01",
-				{ Cue = "/VO/Hera_0174",
-					PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "But... My sister isn't even an Olympian anymore. And I am your Queen! Zagreus. You poor misguided soul. I... suppose I forgive you for your ignorance. {#DialogueItalicFormat}Hmph{#PreviousFormat}." },
-			},
-		},
 		RejectionVoiceLines =
 		{
 			{
@@ -7054,7 +7047,7 @@ end]]
                 { Cue = "/VO/Hera_0371",
                     PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
                     StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-                    Text = "You think Lady Hestia is generous? Well, Zagzag, I'll show {#DialogueItalicFormat}you {#PreviousFormat}generosity. No fight this time, just blessings. I bet you'll think twice before you cross me again." },
+                    Text = "But... My sister isn't even an Olympian anymore. And I am your Queen! Zagreus. You poor misguided soul. I... suppose I forgive you for your ignorance. {#DialogueItalicFormat}Hmph{#PreviousFormat}." },
             },
         }
 		table.insert(HeraExtra.GodsList, "Hestia")		
@@ -7219,17 +7212,27 @@ end]]
 			local isHeraShout = false
 			for i, traitData in pairs(CurrentRun.Hero.Traits) do
 				if traitData.Name == "HeraShoutTrait" and CurrentRun.Hero.HeraShout.NextHeraGod then
-					local otherTrait = TraitData[CurrentRun.Hero.HeraShout.NextHeraGod.."ShoutTrait"]
+					--local otherTrait = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = CurrentRun.Hero.HeraShout.NextHeraGod.."ShoutTrait", Rarity = traitData.Rarity })
+					local otherTrait = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = CurrentRun.Hero.HeraShout.NextHeraGod.."ShoutTrait", Rarity = traitData.Rarity })
 					if otherTrait.AddShout ~= nil then
 						isHeraShout = true
-						CurrentRun.Hero.Traits[i].AddShout = otherTrait.AddShout
-						if type(CurrentRun.Hero.Traits[i].AddShout.SuperDuration) == "table" then
-							CurrentRun.Hero.Traits[i].AddShout.SuperDuration = CurrentRun.Hero.Traits[i].AddShout.SuperDuration.BaseValue
+						traitData.AddShout.FunctionName = otherTrait.AddShout.FunctionName
+						traitData.AddShout.MaxDurationMultiplier = otherTrait.AddShout.MaxDurationMultiplier
+						--[[if otherTrait.AddShout.MaxDurationMultiplier ~= nil then
+							traitData.AddShout.MaxDurationMultiplier = otherTrait.AddShout.MaxDurationMultiplier
+						else
+							traitData.AddShout.MaxDurationMultiplier = nil
+						end]]
+						if type(otherTrait.AddShout.SuperDuration) == "table" then
+							traitData.AddShout.SuperDuration = otherTrait.AddShout.SuperDuration.BaseValue
+						else
+							traitData.AddShout.SuperDuration = otherTrait.AddShout.SuperDuration
 						end
 					end
 					if otherTrait.EndShout ~= nil then
-						CurrentRun.Hero.Traits[i].EndShout = otherTrait.EndShout
+						traitData.EndShout = otherTrait.EndShout
 					end
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(traitData.Rarity))
 				end
 			end
 			baseFunc()
@@ -7237,6 +7240,7 @@ end]]
 				CurrentRun.Hero.HeraShout.GetNext = true
 				UpdateHeraShoutIcon()
 			end
+
 		end
 	)
 	function SetupHeraNextShout()
@@ -8165,7 +8169,7 @@ end]]
 			end						
 			RefreshStoreItems()
 		end
-	)	
+	)
 	function RefreshStoreItems()
 		if CurrentRun and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
 			for i, data in pairs( CurrentRun.CurrentRoom.Store.SpawnedStoreItems ) do
@@ -8234,7 +8238,7 @@ end]]
 				end				
 			end
 			baseFunc(victim, triggerArgs)
-			if victim == CurrentRun.Hero then
+			if victim == CurrentRun.Hero and HeroHasTrait("HealthAsObolTrait") then
 				UpdateHealthCostTexts()
 				if CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.Buttons then
 					for i, button in pairs(CurrentRun.CurrentRoom.Store.Buttons) do
@@ -8485,20 +8489,24 @@ end]]
 	function HeraCurseCountThread( args )
 		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 			wait(1.0, RoomThreadName) --0.2
-			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
-				local count = 0
-				for enemyId, enemy in pairs(RequiredKillEnemies) do
-					if enemy.VulnerabilityEffects ~= nil and TableLength(enemy.VulnerabilityEffects) > 0 then
-						count = count + 1
+			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
+				if IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
+					local count = 0
+					for enemyId, enemy in pairs(RequiredKillEnemies) do
+						if enemy.VulnerabilityEffects ~= nil and TableLength(enemy.VulnerabilityEffects) > 0 then
+							count = count + 1
+						end
 					end
-				end
 
-				if count >= 3 and 
-					not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
-					ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-						WeaponName = "HeraCurseCountWeapon", EffectName = "HeraCurseCount" })
-				elseif count < 0 and
-					HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
+					if count >= 3 and 
+						not HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
+						ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+							WeaponName = "HeraCurseCountWeapon", EffectName = "HeraCurseCount" })
+					elseif count < 3 and
+						HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
+						ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "HeraCurseCount" })
+					end
+				elseif HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "HeraCurseCount" }) then
 					ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "HeraCurseCount" })
 				end
 			end

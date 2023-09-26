@@ -4084,7 +4084,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0012",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\nmade a haiku, just for you.\nGood luck escaping.{#PreviousFormat}" },
+					Text = "{#DialogueItalicFormat}Hey, look here, Zagzag.                                                                                                       Made a haiku, just for you.                                                                                                       Good luck escaping.{#PreviousFormat}" },
 			},
 			ApolloMiscPickup12 =
 			{

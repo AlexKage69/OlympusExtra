@@ -237,7 +237,7 @@
       Effect = 
       {
         Name = "HeraCurseCount"
-        Duration = 100.0
+        Duration = 1000.0
         Modifier = 0
         Active = true
         OnlyAffectName = "_PlayerUnit"
