@@ -35,17 +35,17 @@
 		{
       		Id = "JealousyCurse"
 			DisplayName = "Jealousy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., each {$Keywords.Status} applied on victim deals {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} damage from {$Keywords.Attack} and {$Keywords.Special}"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., {$Keywords.Attack} and {$Keywords.Special} deal more damage by {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} for each {$Keywords.Status} applied on victim."
 		}
 		{
       		Id = "EnvyCurse"
 			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying a {$Keywords.Status}, deals additional damage. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double it."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying {$Keywords.Status} removes {$Keywords.EnvyCurse} to deal damage. If the {$Keywords.Status} is not Envy, double it."
 		}
 		{
       		Id = "HeraTrap"
 			DisplayName = "Trap Jar"
-			Description = "Inanimate objects dealing damage to foes upon broken."
+			Description = "An inanimate object dealing damage to foes upon broken."
 		}
 		{
       		Id = "Aura"
