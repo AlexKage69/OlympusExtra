@@ -98,9 +98,9 @@
 		{
 			Id = "HeraSignoff_Max"
 			DisplayName = """
-				From {#AwardMaxFlavorFormat}Hera{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Compassionate Bond
+				From {#AwardMaxFlavorFormat}Hera{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Regal Bond
 
-				{#AwardDarkFlavorFormat}Together, you are the founding members of the Warmth and Compassion Brigade.
+				{#AwardDarkFlavorFormat}You have the grudging approval of her Majesty, Queen of the Gods, Hera.
 			"""
 		}
 		{
