@@ -100,7 +100,7 @@
 			DisplayName = """
 				From {#AwardMaxFlavorFormat}Hera{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Regal Bond
 
-				{#AwardDarkFlavorFormat}You have the grudging approval of her Majesty, Queen of the Gods, Hera.
+				{#AwardDarkFlavorFormat}You have the grudging approval of her Majesty, Queen of Olympus, Hera.
 			"""
 		}
 		{
