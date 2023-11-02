@@ -41,12 +41,12 @@
 		{
 			Id = "LowHealthDamage"
 			DisplayName = "Crushing Presence"
-			Description = "Deal bonus damage when striking undamaged foes under {#TooltipUpgradeFormat}30%{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+			Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage on foes under {#TooltipUpgradeFormat}25%{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
     	}
 		{
 			Id = "GemHeal"
 			DisplayName = "Bright Rejuvenation"
-			Description = "Gain {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} when you collect {!Icons.GemSmall}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat} of the collected amount per rank."
+			Description = "Gain {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} when you collect {!Icons.GemSmall}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat} of the collected amount per rank. Limit of 15 {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} from {!Icons.GemSmall}"
     	}
 		{
 			Id = "ExtraChanceFloor"
@@ -62,7 +62,7 @@
 		{
 			Id = "DashlessBonus"
 			DisplayName = "Steady Reflex"
-			Description = "Deal additionnal damage and gain more defense {#PreviousFormat}when you don't {#BoldFormatGraft}Dash {#PreviousFormat} for 3 Sec, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat} per rank."
+			Description = "Deal additionnal damage and gain more defense {#PreviousFormat}when you don't {#BoldFormatGraft}Dash {#PreviousFormat} for 4 Sec, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat} per rank."
     	}
 		{
 			Id = "CountAmmoBonus"

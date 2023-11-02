@@ -20,7 +20,8 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		FormatAsPercent = true,
 		AddOutgoingDamageModifiers =
 		{
-			TargetHighHealthThreshold = 0.30,
+			ValidWeapons = WeaponSets.HeroPrimarySecondaryWeapons,
+			TargetHighHealthThreshold = 0.25,
 			TargetHighHealthDamageOutputMultiplier = 1.12
 		}
 	}
@@ -59,7 +60,7 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		InheritFrom = { "BaseMetaUpgrade", },
 		Icon = "MirrorIcon_DashlessBonus",
 		Starting = true,
-		CostTable = { 100, 250 },
+		CostTable = { 100, 250, 500, 1000 },
 		ShortTotal = "DashlessMetaUpgrade_ShortTotal",
 		ShortTotalNoIcon = "DashlessMetaUpgrade_ShortTotalNoIcon",
 		PreEquipWeapon = "DashlessBuffApplicator",
@@ -438,7 +439,11 @@ ModUtil.Path.Wrap("InitHeroLastStands",
 			local usetext = baseFunc(useTarget)			
 			if (usetext == "UseGemDropRunProgress" or usetext == "UseGemDrop" or usetext == "Shop_UseGemDrop" 
 			or usetext == "Shop_UseGemDrop_HealthAsObolText") and GetNumMetaUpgrades("GemHealMetaUpgrade") > 0 then
-				useTarget.MaxHealthAmount = GetGemsMaxHealthAdded(useTarget.AddResources.Gems)
+				local maxHealthAmount = GetGemsMaxHealthAdded(useTarget.AddResources.Gems)
+				if maxHealthAmount > 15 then
+					maxHealthAmount = 15
+				end
+				useTarget.MaxHealthAmount = maxHealthAmount
 				usetext = usetext.."_Health"
 			end
 			if usetext == "UseFountainHeal" and IsMetaUpgradeSelected("RerollPomMetaUpgrade") then
@@ -494,7 +499,7 @@ OnWeaponFired{ "RushWeapon",
 				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffDefenseApplicator" })
 			end
 			CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown + 1			
-			thread( AddDashlessBuff, 3 )
+			thread( AddDashlessBuff, 4 )
 		end
 	end
 }
@@ -600,18 +605,34 @@ ModUtil.Path.Wrap("CheckAmmoDrop",
 )
 
 function BounceAmmo(storedAmmo, victimId)
-	--CurrentRun.Hero.BounceAmmo = {} storedAmmo.Id
+	--CurrentRun.Hero.BounceAmmo = {}
 	if IsMetaUpgradeActive("BounceAmmoMetaUpgrade") then
-		local nearbyTargetIds = GetClosestIds({ Id = victimId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 1000 })
-		if not IsEmpty(nearbyTargetIds) then
-			local nearbyTargetId = GetRandomValue(nearbyTargetIds)
-			local angle = GetAngleBetween({ Id = victimId, DestinationId = nearbyTargetId })
-			FireWeaponFromUnit({ Weapon = "RangedWeaponBounce", Id = CurrentRun.Hero.ObjectId, DestinationId = nearbyTargetId, FireFromTarget = true, Angle = angle})
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Bounce"))
+		if CurrentRun.Hero.Bounce then
+			CurrentRun.Hero.Bounce = CurrentRun.Hero.Bounce + 1
 		else
-			local angle = GetAngleBetween({ Id = victimId, DestinationId = CurrentRun.Hero.ObjectId })
-			FireWeaponFromUnit({ Weapon = "RangedWeaponBounce",  Id = CurrentRun.Hero.ObjectId, DestinationId = victimId, FireFromTarget = true, Angle = angle})
+			CurrentRun.Hero.Bounce = 1
 		end
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victimId))
+		if CurrentRun.Hero.Bounce <= 3 then
+			local nearbyTargetIds = GetClosestIds({ Id = victimId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 1000 })
+			if not IsEmpty(nearbyTargetIds) then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Nearby"))
+				local nearbyTargetId = GetRandomValue(nearbyTargetIds)
+				local angle = GetAngleBetween({ Id = victimId, DestinationId = nearbyTargetId })
+				FireWeaponFromUnit({ Weapon = "RangedWeaponBounce", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = nearbyTargetId, FireFromTarget = true, Angle = angle })
+				return true
+			--[[else
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("No Target"))
+				local angle = GetAngleBetween({ Id = victimId, DestinationId = CurrentRun.Hero.ObjectId })
+				FireWeaponFromUnit({ Weapon = "RangedWeaponBounce", AutoEquip = true, Id = CurrentRun.Hero.ObjectId, DestinationId = victimId, FireFromTarget = true, Angle = angle })
+				return true]]
+			end
+		else
+			CurrentRun.Hero.Bounce = nil
+			return false
+		end
+		return false
 	end
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(storedAmmo.Id))
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fire"))	
+	
 end

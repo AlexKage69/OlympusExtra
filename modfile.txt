@@ -17,6 +17,4 @@ Include "Gaia/modfile_gaia.txt"
 :: Merge all together
 Import "OlympusExtra.lua"
 
--: Include "modfile_fr.txt" :-
-
 Include "Characters/modfile_olympus.txt"
