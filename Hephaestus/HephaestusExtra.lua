@@ -1435,7 +1435,7 @@ if ModUtil ~= nil then
 
 		Speaker = "NPC_Hephaestus_01",
 		Portrait = "Portrait_Hephaestus_Default_01",
-		Gender = "Female",
+		Gender = "Male",
 		SpawnSound = "/SFX/GoldCoinRewardDrop",
 		FlavorTextIds =
 		{
@@ -2500,20 +2500,21 @@ if ModUtil ~= nil then
         
     end
 	-- FUNCTIONS
-ModUtil.Path.Wrap( "IsHermesBoon", 
-	function(baseFunc, traitName)
-		if traitName ~= nil then
-			local result  = baseFunc(traitName)
-			for i, loot in pairs (LootData) do
-				if loot.Icon == "BoonSymbolHermes" and loot.TraitIndex[traitName] then
-					return true
+	ModUtil.Path.Wrap( "IsHermesBoon", 
+		function(baseFunc, traitName)
+			if traitName ~= nil then
+				local result  = baseFunc(traitName)
+				for i, loot in pairs (LootData) do
+					if loot.Icon == "BoonSymbolHermes" and loot.TraitIndex[traitName] then
+						return true
+					end
 				end
+				return false
 			end
 			return false
 		end
-		return false
-	end
-)
+	)
+	
 	function CreateHephaestusLoot( args )
 		args = args or {}
 		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
@@ -2525,4 +2526,16 @@ ModUtil.Path.Wrap( "IsHermesBoon",
 	function AddMaxArmor(number)
 		AddArmor(number)
 	end
+
+	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+		function(baseFunc)		
+			-- if (not CanOpenCodex()) and IsSuperValid() then
+			-- 	BuildSuperMeter(CurrentRun, 50)
+			-- end
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
+			CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
+			baseFunc()
+		end
+	)
+
 end
