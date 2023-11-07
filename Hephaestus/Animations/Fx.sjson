@@ -3796,7 +3796,7 @@
     {
       Name = "BoonDropHephaestusIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Heph\HephIconSpin\HephIconSpin"
+      FilePath = "Hephaestus\HephIconSpin\HephIconSpin"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3

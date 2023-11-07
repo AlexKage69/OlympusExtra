@@ -335,7 +335,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "GiftTrait" },
 		--New Data
 		InRackTitle = "ForceHephaestusBoonTrait_Rack",
-		Icon = "Keepsake_Skull",
+		Icon = "Keepsake_Bust",
 		EquipSound = "/SFX/WrathOver2",
 		ForceBoonName = "HephaestusUpgrade",
 		Uses = 1,

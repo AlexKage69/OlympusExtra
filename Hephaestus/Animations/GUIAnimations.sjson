@@ -2,7 +2,7 @@
   Animations = [
 	"_append"
     {
-      Name = "Keepsake_Skull_Child"
+      Name = "Keepsake_Bust_Child"
       InheritFrom = "KeepsakeTrayIcon"
       FilePath = "Hephaestus\Hephaestus_Keepsake"
       Scale = 0.5
@@ -10,17 +10,17 @@
       StartFrame = 1
     }
     {
-      Name = "Keepsake_Skull"
+      Name = "Keepsake_Bust"
       InheritFrom = "KeepsakeIcon"
       FilePath = "Hephaestus\Hephaestus_Keepsake"
-      Scale = 1.2
+      Scale = 1
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Keepsake_Skull_Small"
+      Name = "Keepsake_Bust_Small"
       InheritFrom = "KeepsakeTrayIconBacking"
-      ChildAnimation = "Keepsake_Skull_Child"
+      ChildAnimation = "Keepsake_Bust_Child"
       EndFrame = 1
       StartFrame = 1
     }
