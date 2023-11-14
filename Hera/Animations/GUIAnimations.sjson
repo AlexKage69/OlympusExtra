@@ -58,9 +58,10 @@
         }]
       Color = 
       {
-        Red = 0.706
-        Green = 0.659
-        Blue = 0.612
+        Red = 0.172
+        Green = 0.695
+        Blue = 0.676
+
       }
     }
     {
