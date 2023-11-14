@@ -229,7 +229,8 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		CostTable = { 55, 105, 155 },
 		ShortTotal = "RegenerationMetaUpgrade_ShortTotal",
 		ShortTotalNoIcon = "RegenerationMetaUpgrade_ShortTotalNoIcon",
-		ChangeValue = 1.0,
+		BaseValue = 8,
+		ChangeValue = -2.0,
 		HealthThreshold = 0.3,
 		--[[PropertyChanges =
 		{
@@ -480,9 +481,9 @@ ModUtil.Path.Wrap("StartRoom",
 			end
 			CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
 		end
-				
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
 		if GetNumMetaUpgrades("RegenerationMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
-			thread( RegenerationMetaUpgrade, CurrentRun.Hero, {Interval = 3.0, Amount = GetNumMetaUpgrades("RegenerationMetaUpgrade")} )
+			thread( RegenerationMetaUpgrade, CurrentRun.Hero, {Interval = 7.2 - 1.8*GetNumMetaUpgrades("RegenerationMetaUpgrade"), Amount = 1.0} )
 		end
 		baseFunc(currentRun, currentRoom)
 	end

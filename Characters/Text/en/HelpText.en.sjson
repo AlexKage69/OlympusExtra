@@ -82,7 +82,7 @@
 		{
 			Id = "CombatRegeneration"
 			DisplayName = "Shedding Skins"
-			Description = "While in combat, you slowly recover {!Icons.Health_Small_Tooltip} while your Life Total is below {#BoldFormatGraft}30%{#PreviousFormat} , {#TooltipUpgradeFormat}+{$TempTextData.BaseValue}{!Icons.HealthRestore_Small}{#ItalicFormat}(every 3 Sec.) {#PreviousFormat}per rank."
+			Description = "While in combat, you slowly recover {!Icons.Health_Small_Tooltip} while your Life Total is below {#BoldFormatGraft}30%{#PreviousFormat} , {#TooltipUpgradeFormat}+1 {!Icons.HealthRestore_Small}{#ItalicFormat}(every {$TempTextData.BaseValue} Sec.) {#PreviousFormat}per rank."
     	}
 		{
 			Id = "EpicBonus"
@@ -234,12 +234,12 @@
 		}
 		{
 			Id = "RegenerationMetaUpgrade_ShortTotal"
-			DisplayName = "{$TempTextData.Amount}{!Icons.HealthRestore_Small}" // {#ItalicFormat}(every 3 Sec.)
+			DisplayName = "{$TempTextData.Amount} Sec."
 			OverwriteLocalization = true
 		}
 		{
 			Id = "RegenerationMetaUpgrade_ShortTotalNoIcon"
-			DisplayName = "{$TempTextData.Amount}"
+			DisplayName = "{$TempTextData.Amount} Sec."
 			OverwriteLocalization = true
 		}
 		{
