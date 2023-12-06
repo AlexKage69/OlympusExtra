@@ -71,7 +71,7 @@ AlexKage, physiX
 ### Art
 **Apollo Portrait:** [Reikiix](https://twitter.com/Reikiix)\
 **Apollo Keepsake Badges:** [Lazy.mano](https://www.reddit.com/user/Lazymanohelp)\
-**Hestia Portrait:** Relia ([Twitter](https://twitter.com/shazari) | [Tumblr](https://artcrystals.tumblr.com/))\
+**Hestia, Hera Portrait:** Relia ([Twitter](https://twitter.com/shazari) | [Tumblr](https://artcrystals.tumblr.com/))\
 **Hestia Keepsake Badges:** [Starley](https://twitter.com/princestarley/)\
 **Additional Graphics:** physiX, bessyboo
 
@@ -79,7 +79,7 @@ AlexKage, physiX
 **Audio Engineer:** [D4v](https://github.com/GGD4V)\
 **Voice of Apollo:** [Andrew Alley](https://twitter.com/VoicesOfAlley)\
 **Voice of Hestia:** [Freddie E.H](https://freddievo.wixsite.com/start)\
-**Voice of Aphrodite:** bessyboo\
+**Voice of Hera, Aphrodite:** bessyboo\
 **Voice of Ares, Poseidon, & Theseus:** [Myles Sands](https://twitter.com/dazmighty)\
 **Voice of Artemis:** Honor Wilson ([Email](mailto:honorwilsonva@gmail.com) | [Discord](https://discordapp.com/users/491064800927809538))\
 **Voice of Dionysus:** [Kitten "Willow" Caboodle](https://discordapp.com/users/339173832659304448)\

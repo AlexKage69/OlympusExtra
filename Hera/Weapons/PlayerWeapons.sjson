@@ -113,7 +113,7 @@
         BackFx = "null"
         Duration = 0.5
         Modifier = 1
-        Amount = 0.5
+        Amount = 0.4
         Active = true
         TimeModifierFraction = 0
         ExtendDurationOnReapply = true
@@ -237,7 +237,7 @@
       Effect = 
       {
         Name = "HeraCurseCount"
-        Duration = 100.0
+        Duration = 1000.0
         Modifier = 0
         Active = true
         OnlyAffectName = "_PlayerUnit"

@@ -1,1 +1,0 @@
-Include "Apollo/modfile_fr.txt"
