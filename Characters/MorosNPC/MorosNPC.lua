@@ -152,7 +152,7 @@ OlympusUnitSetData.NPCs.NPC_Moros_01 =
 }
 -- Moros activation requirements
 table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, 3, {
-	FunctionName = "ActivatePrePlacedUnits",
+	FunctionName = "ActivateRotatingNPCs",
 	GameStateRequirements =
 	{
 		RequiredFalseFlags = { "InFlashback" },
@@ -186,9 +186,13 @@ OlympusCodex.ChthonicGods.Entries["NPC_Moros_01"] =
 	Image = "Codex_Portrait_Hestia",
 }
 
-ModUtil.Path.Wrap( "ActivatePrePlacedUnits", 
+ModUtil.Path.Wrap( "ActivateRotatingNPCs", 
 	function(baseFunc, eventSource, args)		
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.CheckConversations)) 
+		if args.Ids then
+			local id = args.Ids
+			local name = GetName({ Id = id, CheckInactive = true })
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(name)) 
+		end
 		baseFunc(eventSource, args)
 	end
 )
@@ -223,17 +227,17 @@ OlympusObstacleData.DivinationGods =
 	},
 }]]
 
---[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
 		end
-		ForceNextRoomFunc("A_Makaria01")
+		--ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(challengeBaseIds)) 
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.ActivationRecord)) 
 		baseFunc()
 	end
-)]]
+)
 
 OnUsed{ "NPCs",
 	function( triggerArgs )

@@ -127,6 +127,19 @@
       Description = ""
     }
     {
+      Id = "SeedPoint"
+      DisplayName = "Seed Point"
+      Description = "Grab a seed."
+    }
+    {
+      Id = "UseSeedPointLocked"
+      DisplayName = "{#UseTextDisabledFormat}Seed?"
+    }
+    {
+      Id = "UseSeedPoint"
+      DisplayName = "{I} Grab"
+    }
+    {
       Id = "GaiaCombo"
       DisplayName = "{{GaiaDeed}} {{GaiaBlessing}}"
     }
@@ -314,8 +327,12 @@
       DisplayName = "Garden Goods"
     }
     {
-      Id = "KitchenMenu_Confirm"
+      Id = "KitchenMenu_FishConfirm"
       DisplayName = "Give Catches"
+    }
+    {
+      Id = "KitchenMenu_GoodsConfirm"
+      DisplayName = "Give Goods"
     }
     {
       Id = "KitchenMenu_Title"
