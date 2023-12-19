@@ -1,0 +1,32 @@
+{
+  lang = "en"
+  Texts = [
+    "_append"
+	    {
+        Id = "MainMenuScreen_PatchNotes_0057"
+        OverwriteLocalization = true
+        Description = """
+            {#AlertHeaderFormat}OlympusExtra
+                This small patch has some final touches on localized text, as well as this brief update from our team:
+
+                With some months having passed since our {#AlertHighlightFormat}v1.0 Launch Update{#PreviousFormat}, we're soon going to remove the {#AlertBoldFormat}Patch Notes {#PreviousFormat}section from the Main Menu, and also remove the {#AlertBoldFormat}F10 {#PreviousFormat}bug-reporting feature {#AlertItalicFormat}(of course you may still contact us via Discord or email if you encounter any bugs){#PreviousFormat}. We feel these changes will help reflect the fact that our {#AlertHighlightFormat}Early Access {#PreviousFormat}development phase has been complete for some time.
+
+                We are humbled and grateful for the incredible support so many players have shown {#AlertHeaderFormat}Hades{#PreviousFormat}, and our team is excited to press on and figure out what's next. Thank you very much for playing,
+
+                \Column 630 {#AlertSigFormat}~Supergiant Games
+
+                {#AlertH2Format}Miscellaneous{#PreviousFormat}
+                + Various fixes and improvements to localized text in different languages
+                + Added several more names to Special Thanks in the {#AlertBoldFormat}Credits{#PreviousFormat}
+
+                {#AlertH2Format}Bug Fixes{#PreviousFormat}
+                @GUI\\Icons\\GhostPack Fixed a rare issue where the final {#AlertBoldFormat}Zeus {#PreviousFormat}affinity event would not unlock
+                + Other minor fixes
+
+                {#QuoteH2Format}Quote of the Patch{#PreviousFormat}
+                {#QuoteItalicFormat}'Farewell now, you dwellers in Olympus, and you island continents, and the salt sea between.'
+                {#QuoteBoldFormat}~Theogony {#QuoteBaseFormat}(Hesiod; M. L. West translation)
+        """
+    }
+  ]
+}

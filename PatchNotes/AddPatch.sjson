@@ -5,9 +5,9 @@
             VerticalJustification = "Center"
             X = 120
             Y = 350
-            Graphic = "GUI\\Shell\\MainMenu_Discord"
-            MouseGraphicHover = "GUI\\Shell\\MainMenu_Discord_Highlight"
-            HelpTextId = "MainMenuScreen_Feedback"
+            Graphic = "GUI\\Shell\\MainMenu_MailingList"
+            MouseGraphicHover = "GUI\\Shell\\MainMenu_MailingList_Highlight"
+            HelpTextId = "MainMenuScreen_PatchNotes"
             Font = "AlegreyaSansSCBold"
             FontSize = 16
             TextJustification = "Center"
