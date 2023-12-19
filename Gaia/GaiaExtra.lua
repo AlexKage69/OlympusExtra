@@ -3388,4 +3388,127 @@ if ModUtil ~= nil then
 
 	-- FUNCTIONS
 	
+	-- New BIOME FOR SECRET GARDEN
+	local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+	OlympusRoomSetData.Secrets.BaseSecretG = {
+		DebugOnly = true,
+
+		EntranceFunctionName = "RoomEntrancePortal",
+		NextRoomEntranceFunctionName = "RoomEntrancePortal",
+		EntranceAnimation = "ZagreusDashEntrance",
+		EntranceVfx = "ZagreusSecretDoorDiveFadeFx",
+		ExitAnimation = "ZagreusSecretDoorExit",
+		ExitVfx = "ZagreusSecretDoorDiveFadeFx",
+		ExitDoorOpenAnimation = "ExitDoorLinesSpecial",
+		ExitDoorCloseAnimation = "ExitDoorLinesSpecial",
+		SkipLastKillPresentation = true,
+		UsePromptOffsetY = 120,
+		LocationText = "Location_Secret_G",
+		ResultText = "RunHistoryScreenResult_Secret_G",
+		RichPresence = "#RichPresence_Chaos",
+		BiomeName = "Secrets",
+		LocationTextColor = { 20, 0, 255, 255 },
+		Ambience = "/Leftovers/Ambience/MountainAmbience",
+		SecretMusic = "/Music/ChaosTheme_MC",
+		SkipLeavePrevRoomSFX = true,
+		UsePreviousRoomSet = true,
+		BlockHeroLight = true,
+		ForcedRewardStore = "Secrets",
+		LegalEncounters = { "Secret" },
+		ZoomFraction = 0.75,
+		--BreakableOptions = { "BreakableIdle1", "BreakableIdle2", "BreakableIdle3" },
+		--BreakableValueOptions = { MaxHighValueBreakables = 3 },
+		SoftClamp = 0.75,
+		FishingPointChance = 0.15,
+		FishingPointRequirements =
+		{
+			RequiredCosmetics = { "FishingUnlockItem" },
+			RequiredMinRoomsSinceFishingPoint = 5,
+			RequiredAccumulatedMetaPoints = 1000,
+		},
+		EnterVoiceLines =
+		{
+		},
+	}
+	OlympusRoomSetData.Secrets.RoomSecretG01 =
+	{
+		InheritFrom = { "BaseSecretG" },
+		SpawnRewardOnId = 412405,
+		NumExits=1,
+
+		InspectPoints =
+		{
+			[505097] =
+			{
+				PlayOnce = true,
+				UseText = "UseExamineMisc",
+				InteractTextLineSets =
+				{
+					Inspect_RoomSecret01_01 =
+					{
+						-- Could you keep it down?
+						EndCue = "/VO/ZagreusField_0535",
+						EndWait = 0.35,
+						{ Cue = "/VO/Storyteller_0161",
+							Text = "{#DialogueItalicFormat}The deepest reaches of the Underworld... the void from which all life and consciousness sprang forth during the dawn of time... the realm of Chaos. A land almost unseen even to denizens of death's kingdom." },
+					},
+				},
+			},
+		},
+	}
+
+	OlympusRoomSetData.Secrets.RoomSecretG02 =
+	{
+		InheritFrom = { "BaseSecretG" },
+		SpawnRewardOnId = 412428,
+		NumExits=1,
+
+		InspectPoints =
+		{
+			[505099] =
+			{
+				PlayOnce = true,
+				UseText = "UseExamineMisc",
+				InteractTextLineSets =
+				{
+					Inspect_RoomSecret02_01 =
+					{
+						-- It wasn't all that hard to find really.
+						EndCue = "/VO/ZagreusField_0937",
+						EndWait = 0.35,
+						{ Cue = "/VO/Storyteller_0201",
+							Text = "{#DialogueItalicFormat}The fathomless expanses hidden in darkest corners of the Underworld stretch well past the notice of Lord Hades himself; and yet, the interfering Prince somehow discovers passage there." },
+					},
+				},
+			},
+		},
+	}
+
+	OlympusRoomSetData.Secrets.RoomSecretG03 =
+	{
+		InheritFrom = { "BaseSecretG" },
+		SpawnRewardOnId = 412426,
+		NumExits=1,
+
+		InspectPoints =
+		{
+			[505098] =
+			{
+				PlayOnce = true,
+				UseText = "UseExamineMisc",
+				InteractTextLineSets =
+				{
+					Inspect_RoomSecret03_01 =
+					{
+						-- I'd best take all the evidence I find.
+						EndCue = "/VO/ZagreusField_0938",
+						EndWait = 0.35,
+						{ Cue = "/VO/Storyteller_0202",
+							Text = "{#DialogueItalicFormat}Within the Underworld's quietest, most solitary, darkest abyss lies hidden evidence of the beginning of all things, of Chaos! The most ancient sculptor that has shaped this world." },
+					},
+				},
+			},
+		},
+	}
+	OverwriteTableKeys(RoomData, RoomSetData.Secrets)
 end

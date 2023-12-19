@@ -5,6 +5,8 @@ local OlympusColor = ModUtil.Entangled.ModData(Color)
 local OlympusResourceData = ModUtil.Entangled.ModData(ResourceData)
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
+local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+
 
 
 OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
@@ -55,6 +57,7 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 			Value = "ExtraChanceAlt2",
 		},
 	}
+	OlympusConsumableData.LastStandDrop.RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade"
 	OlympusMetaUpgradeData.DashlessMetaUpgrade =
 	{
 		InheritFrom = { "BaseMetaUpgrade", },

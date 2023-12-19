@@ -6,6 +6,7 @@ local OlympusCodexUnlockTypes = ModUtil.Entangled.ModData(CodexUnlockTypes)
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 local OlympusCodex = ModUtil.Entangled.ModData(Codex)
 local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
+local OlympusDeathLoopData = ModUtil.Entangled.ModData(DeathLoopData)
 --[[
 Meeting a boss all dirt patch grow counter reduce by 1 even if you die.
 If you water them, dirt patch grow counter reduce by 3.
@@ -2040,6 +2041,23 @@ ModUtil.Path.Wrap("HandleSecretSpawns",
 		end
 	end
 )
+table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, 2, {
+	FunctionName = "SpawnSeedsDeathArea",
+})
+function SpawnSeedsDeathArea(eventSource, args)
+	args = args or {}
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Testing Seeds"))
+	local seedPoints = GetInactiveIds({ Name = "SeedPoint" })
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(not IsEmpty( seedPoints )))
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(IsSeedEligible( currentRun, currentRoom )))
+	if not IsEmpty( seedPoints ) and IsSeedEligible( currentRun, currentRoom ) then
+		currentRoom.ForceSeed = true
+		UseHeroTraitsWithValue("ForceSeedPoint", true)
+		CurrentRun.CurrentRoom.SeedPointId = GetRandomValue(seedPoints)
+		Activate({ Id = CurrentRun.CurrentRoom.SeedPointId })
+		--currentRun.LastFishingPointDepth = GetRunDepth( currentRun )
+	end
+end
 ModUtil.Path.Wrap("DoUnlockRoomExits",
 	function(baseFunc, run, room)
 		baseFunc(run, room)

@@ -37,6 +37,48 @@
 				From {#AwardMaxFlavorFormat}Cerberus {#AwardDarkFlavorFormat}, goodest boy
 			"""
 		}
+		//Moros NPC
+		{
+			Id = "NPC_Moros_01"
+			DisplayName = "Moros"
+			Description = "Doom Incarnate"
+		}
+		{
+			Id = "MorosFirstMeeting"
+			DisplayName = "Met Moros"
+		}
+		{
+			Id = "MetMoros"
+			DisplayName = "Met Moros"
+		}
+		{
+			Id = "MorosSignoff"
+			DisplayName = "From Moros"
+		}
+		{
+			Id = "MorosSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Moros{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Lasting Bond
+
+				{#AwardDarkFlavorFormat}Cheers.
+			"""
+		}
+		{
+			Id = "CodexData_Moros_01"
+			DisplayName = "'...Moros Codex 1...'"
+		}
+		{
+			Id = "CodexData_Moros_02"
+			DisplayName = "'...Moros Codex 1, Moros Codex 2...{#PreviousFormat}'"
+		}
+		{
+			Id = "CodexData_Moros_03"
+			DisplayName = "'...Moros Codex 1, Moros Codex 2, Moros Codex 3...{#PreviousFormat}'"
+		}
+		{
+			Id = "UseTalkToMoros"
+			DisplayName = "{I} Talk"
+		}
 		//Moros Mirror
 		{
 			Id = "LowHealthDamage"
@@ -321,6 +363,5 @@
 			Id = "UseFountainHeal_CannotReroll"
 			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {#UseTextDisabledFormat}Unusable"
 		}
-		
     ]
 }

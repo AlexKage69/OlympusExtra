@@ -3,6 +3,8 @@ local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusDeathLoopData = ModUtil.Entangled.ModData(DeathLoopData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
+local OlympusGameData = ModUtil.Entangled.ModData(GameData)
+table.insert(OlympusGameData.ConversationOrder,"NPC_Moros_01")
 local OlympusColor = ModUtil.Entangled.ModData(Color)
 OlympusColor.MorosVoice = { 93,19,52,255 }
 -- Makaria, Id = 370025, 370024, 370002
@@ -11,8 +13,8 @@ OlympusUnitSetData.NPCs.NPC_Moros_01 =
 {
 	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 	Name = "NPC_Moros_01",
-	UseText = "UseTalkToChildGhost",
-	Portrait = "Portrait_ChildGhost_Default_01",
+	UseText = "UseTalkToMoros",
+	Portrait = "Portrait_Moros_Default_01",
 	AnimOffsetZ = 220,
 	EmoteOffsetX = -20,
 	EmoteOffsetY = -160,
@@ -34,10 +36,15 @@ OlympusUnitSetData.NPCs.NPC_Moros_01 =
 	{
 		MorosFirstMeeting =
 		{
-			PlayOnce = true,
+			TeleportToId = 370006,
+			TeleportOffsetX = -330,
+			TeleportOffsetY = 270,
+			AngleTowardTargetId = 370006,
+			InteractDistance = 400,
+			--PlayOnce = true,
 			UseableOffSource = true,
-			RequiredCompletedRuns = 0,
-			RequiredFalseTextLines = { "MorosFirstMeetingAlt" },
+			--RequiredCompletedRuns = 0,
+			--RequiredFalseTextLines = { "MorosFirstMeetingAlt" },
 			EndVoiceLines =
 			{
 				PreLineWait = 0.35,
@@ -46,21 +53,21 @@ OlympusUnitSetData.NPCs.NPC_Moros_01 =
 				-- Hope to see you again, Moros
 				{ Cue = "/VO/ZagreusScratch_0013" },
 			},
-			{ Cue = "/VO/Hypnos_0002",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
+			{ Cue = "/VO/Moros_0001",
+				--Emote = "PortraitEmoteCheerful",
+				--PreLineAnim = "HypnosIdleGreeting",
 				Text = "Prince Zagreus. Good to see you. Did I miss something it feels like I was gone for a while." },
 			{ Cue = "/VO/ZagreusHome_0236", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 				Text = "Actually, it hasn't been too long, Moros. But is everything okay? Where have you've been?" },
-			{ Cue = "/VO/Hypnos_0002",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
+			{ Cue = "/VO/Moros_0003",
+				--Emote = "PortraitEmoteCheerful",
+				--PreLineAnim = "HypnosIdleGreeting",
 				Text = "Lord Hades assigned me to the archive. Somehow, death records are getting out of hand lately. We all have a job to do." },
-			OnQueuedFunctionName = "CheckDistanceTriggerThread",
-			OnQueuedFunctionArgs = PresetEventArgs.Sleeping,
-			StatusAnimation = false,
+			--OnQueuedFunctionName = "CheckDistanceTriggerThread",
+			--OnQueuedFunctionArgs = PresetEventArgs.Sleeping,
+			--StatusAnimation = false,
 		},
 		MorosFirstMeetingAlt = 
 		{
@@ -172,30 +179,30 @@ OlympusCodex.ChthonicGods.Entries["NPC_Moros_01"] =
 	{
 		{
 			UnlockThreshold = 1,
-			Text = "CodexData_Hestia_0001"
+			Text = "CodexData_Moros_01"
 		},
 		{
 			UnlockThreshold = 5,
-			Text = "CodexData_Hestia_0002"
+			Text = "CodexData_Moros_02"
 		},
 		{
 			UnlockThreshold = 15,
-			Text = "CodexData_Hestia_0003"
+			Text = "CodexData_Moros_03"
 		}
 	},
-	Image = "Codex_Portrait_Hestia",
+	Image = "Codex_Portrait_Moros",
 }
 
-ModUtil.Path.Wrap( "ActivateRotatingNPCs", 
+--[[ModUtil.Path.Wrap( "ActivateRotatingNPCs", 
 	function(baseFunc, eventSource, args)		
 		if args.Ids then
 			local id = args.Ids
 			local name = GetName({ Id = id, CheckInactive = true })
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(name)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(name)) 
 		end
 		baseFunc(eventSource, args)
 	end
-)
+)]]
 -- Fountain Divination
 --[[OlympusDeathLoopData.RoomPreRun.Binks = {
 	"CharonIdleShop_Bink",
@@ -238,13 +245,4 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		baseFunc()
 	end
 )
-
-OnUsed{ "NPCs",
-	function( triggerArgs )
-		local npc = triggerArgs.AttachedTable		
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(triggerArgs.name)) 
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(npc.NextInteractLines)) 
-		--AngleTowardTarget({ Id = triggerArgs.UserId, DestinationId = triggerArgs.triggeredById })
-	end
-}
 OverwriteTableKeys( EnemyData, UnitSetData.NPCs )
