@@ -1,0 +1,11 @@
+{
+    MainMenuScreen = {
+        AnnouncementButton = {
+            InheritFrom = "PlayGameButton"
+            AttachTo = "PlayGameButton"
+            OffsetY = 280
+            PressSound = "/SFX/Menu Sounds/GodBoonMenuClose"
+            HelpTextId = "MainMenuScreen_Settings"
+        }
+    } 
+}
