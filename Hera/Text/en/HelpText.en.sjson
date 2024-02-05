@@ -357,7 +357,7 @@
 		{
 			Id = "BetterTrapsTrait"
 			DisplayName = "Moonlit Snares"
-			Description = "Your {$Keywords.HeraTrap}{#BoldFormat}s{#PreviousFormat} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
+			Description = "Your {$Keywords.HeraTrap}{#BoldFormat}s {#PreviousFormat}are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "HeroicBoonsTrait"

@@ -1,0 +1,9 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "RichPresence_ABoss04"
+			DisplayName = "Battling Megaera, Alecto and Tisiphone all at once"
+		}
+	]
+}
