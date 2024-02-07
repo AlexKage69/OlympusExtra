@@ -5410,19 +5410,7 @@ if ModUtil ~= nil then
 		end
 	)
 
-	-- Sea Chantey functions
-	ModUtil.Path.Wrap("Kill",
-		function(baseFunc, victim, triggerArgs)
-			if HeroHasTrait("ApolloHealTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
-				victim.HealDropOnDeath = {
-					Name = "HealDropMinor",
-					Radius = 50,
-					Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
-				}
-			end
-			baseFunc(victim, triggerArgs)
-		end
-	)
+	-- Sea Chantey functions	
 
 	function SpawnMusicNotes(args, attacker, victim)
 		if victim.IsBoss then

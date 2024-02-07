@@ -51,6 +51,10 @@ To "Win/Packages/720p/OEHera.pkg_manifest"
 Replace "Packages/OEHera.pkg_manifest"
 
 :: Maps
+To "Win/Maps/A_Boss04.thing_bin"
+Replace "Packages/Maps/A_Boss04.thing_bin"
+To "Maps/A_Boss04.map_text"
+Replace "Packages/Maps/A_Boss04.map_text"
 To "Win/Maps/RoomPreRun.thing_bin"
 Replace "Packages/Maps/RoomPreRun.thing_bin"
 To "Win/Maps/A_Makaria01.thing_bin"

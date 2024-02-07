@@ -80,6 +80,26 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         return vanillaMultiplier * damageMultipliers * damageReductionMultipliers
     end
 )
+ModUtil.Path.Wrap("Kill",
+	function(baseFunc, victim, triggerArgs)
+        local currentRoom = CurrentRun.CurrentRoom
+        -- Apollo Trait
+		if HeroHasTrait("ApolloHealTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
+			victim.HealDropOnDeath = {
+				Name = "HealDropMinor",
+				Radius = 50,
+				Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
+			}
+		end
+        -- WipeEnemiesOnKills
+        if currentRoom.Encounter ~= nil then
+            if currentRoom.Encounter.WipeEnemiesOnKills ~= nil then
+                DestroyRequiredKills( { BlockLoot = true, SkipIds = { victim.ObjectId } } )
+            end
+        end
+		baseFunc(victim, triggerArgs)
+	end
+)
 ModUtil.Path.Wrap("DamageEnemy",
     function(baseFunc, victim, triggerArgs)
         local sourceWeaponData = triggerArgs.AttackerWeaponData
