@@ -1,0 +1,44 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "SummonMegaeraHarpyBeamOE"
+      InheritFrom = "HarpyLightning"
+      Projectile = "HarpyBeamSky"
+      NumProjectiles = 8
+      ProjectileInterval = 0.3
+    }
+    {
+      Name = "SummonMegaeraWhipWhirlOE"
+      InheritFrom = "HarpyWhipWhirl"
+      Projectile = "SummonMegaeraWhipWhirl"
+      FireAtAttackTarget = true
+    }
+    {
+      Name = "SummonAlectoWhipShotOE"
+      InheritFrom = "HarpyWhipShot"
+      Projectile = "HarpyWhipShotSky"
+    }
+    {
+      Name = "SummonAlectoLightningChaseOE"
+      InheritFrom = "HarpyLightning"
+      Projectile = "HarpyLightningAlecto"
+    }
+    {
+      Name = "SummonTisiphoneBombingRunOE"
+      InheritFrom = "HarpyLightning"
+      Projectile = "HarpyLightningTisiphone"
+    }   
+    {
+      Name = "SummonTisiphoneFogOE"
+      InheritFrom = "1_BaseTrapWeapon"
+      Type = "GUN"
+      Projectile = "TisiphoneFog"
+      FireSound = "/SFX/GasBomb"
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      SilentImpact = true
+    }
+  ]
+}

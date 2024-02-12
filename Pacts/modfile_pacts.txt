@@ -1,0 +1,10 @@
+-: Mod Name: OlympusExtra
+    Author - AlexKage
+    Author - physiX
+:-
+
+Import "ExtraMeasures.lua"
+
+:: Weapons
+To "Game/Weapons/EnemyWeapons.sjson"
+SJSON "Weapons/EnemyWeapons.sjson"

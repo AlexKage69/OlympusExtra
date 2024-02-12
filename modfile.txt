@@ -19,4 +19,4 @@ Import "OlympusExtra.lua"
 -: Include "modfile_fr.txt" :-
 
 Include "Characters/modfile_olympus.txt"
-Include "ExtraMeasures/modfile_extrameasures.txt"
+Include "Pacts/modfile_pacts.txt"

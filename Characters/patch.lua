@@ -80,6 +80,52 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         return vanillaMultiplier * damageMultipliers * damageReductionMultipliers
     end
 )
+ModUtil.Path.Wrap("ChooseNextRoomData",
+	function(baseFunc, currentRun, args)
+        local currentRoom = currentRun.CurrentRoom
+        if currentRoom.LinkedRoomsByPactLevel then
+            args = args or {}
+            local nextRoomName = nil
+            local roomSetName = currentRun.CurrentRoom.RoomSetName or "Tartarus"
+            if args.ForceNextRoomSet ~= nil then
+                roomSetName = args.ForceNextRoomSet
+            elseif currentRoom.NextRoomSet ~= nil then
+                roomSetName = GetRandomValue( currentRoom.NextRoomSet )
+            elseif currentRoom.UsePreviousRoomSet then
+                local previousRoom = GetPreviousRoom(currentRun) or currentRoom
+                roomSetName = previousRoom.RoomSetName or "Tartarus"
+            elseif currentRoom.NextRoomSetNoGenerate ~= nil then
+                roomSetName = GetRandomValue( currentRoom.NextRoomSetNoGenerate )
+            end
+            local roomDataSet = args.RoomDataSet or RoomSetData[roomSetName]
+            
+            local eligibleRoomNames = {}
+			local forcedRoomNames = {}
+            local shrineLevel = GetNumMetaUpgrades( currentRoom.ShrineMetaUpgradeName )
+			for i, linkedRoomName in ipairs( CollapseTableOrdered( currentRoom.LinkedRoomsByPactLevel[shrineLevel] ) ) do
+                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(linkedRoomName))
+                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(shrineLevel))
+                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(currentRoom.LinkedRoomsByPactLevel))
+				--if IsRoomEligible( currentRun, currentRoom, roomDataSet[linkedRoomName], args ) then
+					table.insert( eligibleRoomNames, linkedRoomName )
+					--if IsRoomForced( currentRun, currentRoom, roomDataSet[linkedRoomName], args ) then
+					--	table.insert( forcedRoomNames, linkedRoomName )
+					--end
+				--end
+			end
+			if not IsEmpty( forcedRoomNames ) then
+				nextRoomName = GetRandomValue( forcedRoomNames )
+			else
+				nextRoomName = GetRandomValue( eligibleRoomNames )
+			end
+            currentRun.CurrentRoom.LinkedRoom = nextRoomName
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(currentRun.LinkedRoom))
+        end        
+         local room = baseFunc(currentRun, args)
+         --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.Name))
+         return room
+    end
+)
 ModUtil.Path.Wrap("Kill",
 	function(baseFunc, victim, triggerArgs)
         local currentRoom = CurrentRun.CurrentRoom
@@ -94,12 +140,26 @@ ModUtil.Path.Wrap("Kill",
         -- WipeEnemiesOnKills
         if currentRoom.Encounter ~= nil then
             if currentRoom.Encounter.WipeEnemiesOnKills ~= nil then
-                DestroyRequiredKills( { BlockLoot = true, SkipIds = { victim.ObjectId } } )
+                if not EnemyIncludedInActive(currentRoom.Encounter.WipeEnemiesOnKills) then
+                    DestroyRequiredKills( { BlockLoot = true, SkipIds = { victim.ObjectId } } )                    
+                end
             end
         end
 		baseFunc(victim, triggerArgs)
 	end
 )
+function EnemyIncludedInActive(enemies)
+    local enemyIds = GetAllKeys( ActiveEnemies )
+    for index, id in pairs(enemyIds) do
+        local enemy = ActiveEnemies[id]
+        for _, name in pairs(enemies) do
+            if enemy and not enemy.IsDead and enemy.Name == name then
+                return true
+            end
+        end
+    end
+    return false
+end
 ModUtil.Path.Wrap("DamageEnemy",
     function(baseFunc, victim, triggerArgs)
         local sourceWeaponData = triggerArgs.AttackerWeaponData

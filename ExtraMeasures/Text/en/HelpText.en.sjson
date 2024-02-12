@@ -1,9 +1,0 @@
-{
-	Texts = [
-		"_append"
-		{
-			Id = "RunHistoryScreenResult_A_Boss04"
-			DisplayName = "Slain by {#AltPenaltyFormat}ALL THREE FURIES {#PreviousFormat}in {#AltPenaltyFormat}TARTARUS{#PreviousFormat}"
-		}
-	]
-}
