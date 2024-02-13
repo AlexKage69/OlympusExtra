@@ -239,10 +239,10 @@ if ModUtil ~= nil then
 			{
 				PlayOnce = true,
 				UseText = "UseExamineMisc",
-				RequiredTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" },
+				RequiredTextLines = { "A_Boss_01_Inspect01", "Fury2FirstAppearance", "Fury3FirstAppearance" },
 				InteractTextLineSets =
 				{
-					A_Boss_01_Inspect01 =
+					A_Boss_04_Inspect01 =
 					{
 						EndVoiceLines =
 						{

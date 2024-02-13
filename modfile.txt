@@ -3,6 +3,8 @@
     Author - physiX
 :-
 
+Import "Characters/patch.lua"
+
 Include "modfile_assets.txt"
 
 Import "SeparateGoddess.lua"

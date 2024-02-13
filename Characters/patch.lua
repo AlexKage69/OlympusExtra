@@ -137,28 +137,34 @@ ModUtil.Path.Wrap("Kill",
 				Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
 			}
 		end
+
+		baseFunc(victim, triggerArgs)
         -- WipeEnemiesOnKills
         if currentRoom.Encounter ~= nil then
             if currentRoom.Encounter.WipeEnemiesOnKills ~= nil then
-                if not EnemyIncludedInActive(currentRoom.Encounter.WipeEnemiesOnKills) then
+                if KilledRequiredEnemies(currentRoom, currentRoom.Encounter.WipeEnemiesOnKills) then
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Kill them all"))
                     DestroyRequiredKills( { BlockLoot = true, SkipIds = { victim.ObjectId } } )                    
                 end
             end
         end
-		baseFunc(victim, triggerArgs)
 	end
 )
-function EnemyIncludedInActive(enemies)
-    local enemyIds = GetAllKeys( ActiveEnemies )
-    for index, id in pairs(enemyIds) do
-        local enemy = ActiveEnemies[id]
-        for _, name in pairs(enemies) do
-            if enemy and not enemy.IsDead and enemy.Name == name then
-                return true
-            end
-        end
-    end
-    return false
+function KilledRequiredEnemies(currentRoom, enemies)
+    local killCountGoal = TableLength(enemies)
+		local killCount = 0
+		for k, unitName in pairs(enemies) do
+			if currentRoom.Kills ~= nil and currentRoom.Kills[unitName] ~= nil and currentRoom.Kills[unitName] >= 1 then
+				killCount = killCount + 1
+			end
+		end
+
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(killCountGoal..":"..killCount))
+		if killCount >= killCountGoal then
+			return true
+		end
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Nope"))
+        return false
 end
 ModUtil.Path.Wrap("DamageEnemy",
     function(baseFunc, victim, triggerArgs)
