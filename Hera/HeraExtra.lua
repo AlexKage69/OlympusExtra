@@ -4440,7 +4440,7 @@ end]]
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					Emote = "PortraitEmoteMusical",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If you manage to get to the surface, you ought to try the white substance that comes from these majestic surface creatures. I was the first to call them cows, and then everyone else started using the name... Anyhow, that's only if you ever get up there." },
+					Text = "If you manage to get to the surface, you ought to try the white substance that comes from these majestic surface creatures. I was the first to call them cows, and then everyone else started using the name... Anyhow, that's only  {#DialogueItalicFormat}if{#PreviousFormat} you ever get up there." },
 			},
 			HeraMiscPickup15 =
 			{
@@ -5421,7 +5421,7 @@ end]]
 				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03"},
 				{ Cue = "/VO/Hera_0205",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The Old King heard you have the Royal Pact, Zagreus. This is coming from him. He must have been too busy pushing this rock of his to deliver it himself." },
+					Text = "The Old King heard you have the Royal Pact, Zagreus. This is from him. He must have been too busy pushing his rock to deliver it himself." },
 				{
 					Text = "Hera_OfferText",
 				},
@@ -5673,7 +5673,7 @@ end]]
 				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
 				{ Cue = "/VO/Hera_0222",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Why did I accept to create the Royal Pact? I have better things to do than deliever futile gift to you Zagreus. " },
+					Text = "{#DialogueItalicFormat}Uff{#PreviousFormat}. Why did I accept to create this Royal Pact? I have better things to do than deliver futile gift to you, Zagreus. " },
 						{
 							Text = "Hera_OfferText",
 						},
