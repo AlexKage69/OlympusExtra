@@ -1,0 +1,31 @@
+{
+  lang = "en"
+  Texts = [
+    "_append"
+	    {
+        Id = "MainMenuScreen_PatchNotes_0056"
+        OverwriteLocalization = true
+        Description = """
+            {#AlertHeaderFormat}OlympusExtra v1.3.4{#PreviousFormat}
+                We have patch notes now! There will be some backlog of patch notes, just for reference. But as of v1.3.4, this game has the following:
+                + {#AlertHighlightFormat}ApolloExtra {#PreviousFormat}: All basic and duo boons, voicelines, keepsake, quests, god's trial, Theseus's call 
+                + {#AlertHighlightFormat}HestiaExtra {#PreviousFormat}: All basic and duo boons, voicelines, keepsake, quests, god's trial, Theseus's call 
+                + {#AlertHighlightFormat}HeraExtra {#PreviousFormat}: All basic and duo boons, <to be confirmed>, keepsake, quests, god's trial, Theseus's call  
+                + {#AlertHighlightFormat}MinorExtra {#PreviousFormat}: Cerebus's companion (found on the second page of the keepsake box)
+                + {#AlertHighlightFormat}MorosExtra {#PreviousFormat}: Moros's mirror and conversation has been added (voicelines and sprite missing)
+
+                {#AlertH2Format}MorosExtra{#PreviousFormat}
+                As thanks for waiting this long for our updates, we've added in a little extra: MorosExtra! Moros, the god of violent death has granted Zagreus a third page of the Mirror of the Night! We currently don't have a 3D sprite for him (if you're a 3D artist hit us up {#AlertBoldFormat}wink {#PreviousFormat}), so his sprite will be a generic shade. Keep and eye out for him in the house!
+
+                {#AlertH2Format}Bug Fixes{#PreviousFormat}
+                <For Alex to add, I guess>
+
+                {#AlertH2Format}Progress{#PreviousFormat}
+                We're still working on HephaestusExtra, we took a little break to dabble in other features of the mod first. It'll be our next major to-do on the mod
+
+                {#AlertH2Format}Contacting Us{#PreviousFormat}
+                Our social media hasn't been very active lately, but we do hang out in the Hades Modding Discord (you can find the link on our NexusMod page). Feel free to drop by and give us feedback!
+        """   
+      }
+  ]
+}
