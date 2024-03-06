@@ -84,7 +84,7 @@ ModUtil.LoadOnce(function()
             table.insert(OlympusCodexMenuData.Duos, "FoesNumberDamageTrait")
             table.insert(OlympusCodexMenuData.Duos, "PullZeusCastTrait")
             table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait")
-            if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+            if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
                 table.insert(OlympusCodexMenuData.Duos, "ShoutMoreHealTrait")
             end
             -- CentaurSoul-CodexMenu
@@ -109,10 +109,10 @@ ModUtil.LoadOnce(function()
             table.insert(OlympusCodexMenuData.Duos, "KillMarkedTrait")
             table.insert(OlympusCodexMenuData.Duos, "GaugeLightningTrait")
             table.insert(OlympusCodexMenuData.Duos, "AuraRuptureTrait")
-            if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+            if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
                 table.insert(OlympusCodexMenuData.Duos, "AuraBlindTrait")
             end
-            if ModUtil.Mods.Data["HestiaExtra"] ~= nil then
+            if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
                 table.insert(OlympusCodexMenuData.Duos, "EnhancedNPCTrait")
             end
 
