@@ -394,6 +394,21 @@ function ForceNextRoomFunc(value)
     end
 end
 
+--[[ModUtil.Path.Wrap("BeginOpeningCodex",
+    function(baseFunc)
+        --PresentationNewSameGodIncrease()
+        if (not CanOpenCodex()) and IsSuperValid() then
+            BuildSuperMeter(CurrentRun, 50)
+        end
+        --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
+        --ForceNextRoomFunc("B_Shop01")
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
+
+        --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
+        --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
+        baseFunc()
+    end
+)]]
 -- Rejection Functions
 ModUtil.Path.Wrap("SpawnRoomReward",
     function(baseFunc, eventSource, args)
@@ -653,21 +668,5 @@ ModUtil.Path.Wrap("StartEncounter",
 			thread( AddDashlessBuff, 3 )
 		end
         baseFunc(currentRun, currentRoom, currentEncounter)
-    end
-)
-ModUtil.Path.Wrap("BeginOpeningCodex",
-    function(baseFunc)
-        --PresentationNewSameGodIncrease()
-        if (not CanOpenCodex()) and IsSuperValid() then
-            BuildSuperMeter(CurrentRun, 50)
-        end
-
-        --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
-        --ForceNextRoomFunc("B_Shop01")
-        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
-
-        --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
-        --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
-        baseFunc()
     end
 )

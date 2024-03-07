@@ -15,7 +15,7 @@
     }
     {
       Id = "Hera_OfferText01"
-      DisplayName = "{#DialogueItalicFormat}Hera offers a choice of benefits on behave of Sisyphus."
+      DisplayName = "{#DialogueItalicFormat}Hera offers a choice of benefits on behalf of Sisyphus."
     }
     {
       Id = "Hera_OfferText02"
@@ -23,11 +23,11 @@
     }
     {
       Id = "Hera_OfferText03"
-      DisplayName = "{#DialogueItalicFormat}Hera offers one premium goods from Patroclus."
+      DisplayName = "{#DialogueItalicFormat}Hera offers a choice of premium goods from Patroclus."
     }
     {
       Id = "Hestia_OfferText01"
-      DisplayName = "{#DialogueItalicFormat}Hestia offers a choice of benefits on behave of Sisyphus."
+      DisplayName = "{#DialogueItalicFormat}Hestia offers a choice of benefits on behalf of Sisyphus."
     }
     {
       Id = "Hestia_OfferText02"
@@ -35,7 +35,7 @@
     }
     {
       Id = "Hestia_OfferText03"
-      DisplayName = "{#DialogueItalicFormat}Hestia offers one premium goods from Patroclus."
+      DisplayName = "{#DialogueItalicFormat}Hestia offers a choice of premium goods from Patroclus."
     }
     
   ]

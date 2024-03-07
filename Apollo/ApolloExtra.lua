@@ -2301,6 +2301,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.RerollBoonTrait = -- Future Sight
 	{
 		InheritFrom = { "ShopTier1Trait" },
+		God = "Apollo",
 		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_10",
@@ -2338,6 +2339,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.RerollObolTrait = -- Golden Fleece
 	{
 		InheritFrom = { "ShopTier1Trait" },
+		God = "Apollo",
 		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_12",
@@ -2445,6 +2447,7 @@ if ModUtil ~= nil then
 	OlympusConsumableData.RerollBoonDrop =
 	{
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		God = "Apollo",
 		RequiredFalseTraits = { "RerollObolTrait", "RerollBoonTrait" },
 		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
@@ -2460,6 +2463,7 @@ if ModUtil ~= nil then
 	OlympusConsumableData.RerollObolDrop =
 	{
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		God = "Apollo",
 		RequiredFalseTraits = { "RerollObolTrait", "RerollBoonTrait" },
 		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
@@ -2638,7 +2642,28 @@ if ModUtil ~= nil then
 					ExtractAs = "TooltipCurseDamage",
 				}
 			},
-		}
+		},
+		ExtractValues = {
+			{
+				ExtractAs = "TooltipBlindDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			}
+		},
 	}
 	table.insert(OlympusTraitData.AresLongCurseTrait.PropertyChanges, {
 		TraitName = "ApolloRangedTrait",
@@ -4063,7 +4088,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "ApolloFirstPickUp" },
 				{ Cue = "/VO/Apollo_0012",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Hey, look here, Zagzag,\nmade a haiku, just for you.\nGood luck escaping.{#PreviousFormat}" },
+					Text = "{#DialogueItalicFormat}Hey, look here, Zagzag.                                                                                                       Made a haiku, just for you.                                                                                                       Good luck escaping.{#PreviousFormat}" },
 			},
 			ApolloMiscPickup12 =
 			{

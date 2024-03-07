@@ -262,27 +262,20 @@
       MaxVictimZ = 9999
       DangerDistance = 0
       Effects = [
-        /*{
-          Name = "HeraGraspingHands"
-          Duration = 1.0
-          DisableMove = true
-          DisableRotate = true
-          DisableAttack = true
-          Active = true
-          CanAffectInvulnerable = false
-          FrontFx = "DionysusStunnedFx"
-          Cancelable = false
-          StartAnimation = "ZagreusStun"
-          OnlyAffectName = "_PlayerUnit"
-        }
         {
-          Name = "MeleeAttackVictimGrip"
-          Type = "GRIP"
-          Duration = 0.3
-          Modifier = 0.05
-          HaltOnEnd = true
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          //FrontFx = "CharonGhostChargeProjectile"
+          FrontFx = "JealousyHeraLoop"
+          BackFx = "null"
+          Duration = 6
+          Modifier = 0.25
           Active = true
-        }*/]
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+      ]
       Thing = 
       {
         Graphic = "HeraTrapGraspingHandsFx"

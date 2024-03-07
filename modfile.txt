@@ -14,6 +14,8 @@ Import "SeparateGoddess.lua"
 :: Include "Hera/modfile_hera.txt"
 Include "Gaia/modfile_gaia.txt"
 
+Include "PatchNotes/modfile_patchnotes.txt"
+
 :: Merge all together
 Import "OlympusExtra.lua"
 

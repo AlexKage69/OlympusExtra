@@ -124,7 +124,7 @@ if ModUtil ~= nil then
 				"ArtemisFreePass01",
 				"AphroditeFreePass01",
 				"ApolloFreePass01",
-				--"HeraFreePass01",
+				"HeraFreePass01",
 				"HestiaFreePass02",
 			},
 
@@ -1901,6 +1901,22 @@ if ModUtil ~= nil then
 				ProjectileName = "HestiaFire",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageOverTime"
+			},
+			{
+				TraitName = "ChillFireTrait",
+				WeaponNames = { "RushWeapon" },
+				EffectName = "DemeterSlow",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "ChillFireTrait",
+				WeaponNames = { "RushWeapon" },
+				ProjectileName = "HestiaFire",
+				ProjectileProperty = "Graphic",
+				ChangeValue = "HestiaDemeterSpinIn",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
 			},
 		},
 	}
@@ -5147,7 +5163,7 @@ if ModUtil ~= nil then
 		{
 			PlayOnce = true,
 			Name = "AphroditeFreePass01",
-			{ Cue = "/VO/Poseidon_0242",
+			{ Cue = "/VO/Aphrodite_0242",
 				PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 1.0,
 				StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 				Text = "Oh? How coy of you, dearest. You don't have to pick other gods to play hard to get. It won't work on me. No contest." },
@@ -5618,7 +5634,7 @@ if ModUtil ~= nil then
 					-- end
 				end
 				if not args.RequireFirstHit or pullTarget ~= id then
-					ApplyForce({ Id = id, Speed = force,
+					ApplyForce({ Id = id, Speed = force,--[[ MaxSpeed = 1000,]]
 						Angle = GetAngleBetween({ Id = id, DestinationId = pullTarget, SelfApplied = true }) })
 					HestiaPullPresentation(id, args, pullTarget)
 				end
