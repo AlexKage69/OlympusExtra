@@ -2301,6 +2301,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.RerollBoonTrait = -- Future Sight
 	{
 		InheritFrom = { "ShopTier1Trait" },
+		God = "Apollo",
 		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_10",
@@ -2338,6 +2339,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.RerollObolTrait = -- Golden Fleece
 	{
 		InheritFrom = { "ShopTier1Trait" },
+		God = "Apollo",
 		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
 		Icon = "Boon_Apollo_12",
@@ -2445,6 +2447,7 @@ if ModUtil ~= nil then
 	OlympusConsumableData.RerollBoonDrop =
 	{
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		God = "Apollo",
 		RequiredFalseTraits = { "RerollObolTrait", "RerollBoonTrait" },
 		RequiredMetaUpgradeSelected = "RerollPanelMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
@@ -2460,6 +2463,7 @@ if ModUtil ~= nil then
 	OlympusConsumableData.RerollObolDrop =
 	{
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		God = "Apollo",
 		RequiredFalseTraits = { "RerollObolTrait", "RerollBoonTrait" },
 		RequiredMetaUpgradeSelected = "RerollMetaUpgrade",
 		RequiredMetaUpgradeStageUnlocked = 4,
