@@ -288,6 +288,10 @@
       DisplayName = "{I} Buy {!Icons.RandomLootSmall} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
     }
 	{
+      Id = "UseChaosWeaponUpgrade_HealthAsObolText"
+      DisplayName = "{I} Swap {#AltPenaltyFormat}-1 {!Icons.RandomHammerSmall}     {#PreviousFormat}{#UseMoneyFormat}+2{!Icons.RandomHammerSmall}{#PreviousFormat} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
+    }
+	{
       Id = "UseStoreRewardRandomStack_HealthAsObolText"
       DisplayName = "{I} Buy {!Icons.RandomPomSmall} Power-Up \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
     }

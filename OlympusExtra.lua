@@ -28,7 +28,7 @@ ModUtil.LoadOnce(function()
         OlympusCodexBossTable.Secrets = RoomSetData.Secrets.RoomSecret01
         OlympusCodexBossTable.Surface = RoomSetData.Surface.E_Intro
         --Apollo
-        if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+        if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
             OlympusCodexMenuData.ApolloUpgrade = {
                 "ApolloWeaponTrait", "ApolloDashTrait", "ApolloRangedTrait", "ApolloSecondaryTrait",
                 "ApolloShoutTrait", "ApolloRetaliateTrait", "FountainDefenseTrait", "FountainCoinTrait",
@@ -59,7 +59,7 @@ ModUtil.LoadOnce(function()
             table.insert(OlympusRealGodNames, "Apollo")
         end
         -- Hestia
-        if ModUtil.Mods.Data["HestiaExtra"] ~= nil then
+        if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
             --External mod interaction
             OlympusCodexMenuData.HestiaUpgrade = {
                 "HestiaWeaponTrait", "HestiaDashTrait", "HestiaRangedTrait", "HestiaSecondaryTrait",
@@ -85,14 +85,14 @@ ModUtil.LoadOnce(function()
             table.insert(OlympusCodexMenuData.Duos, "FoesNumberDamageTrait")
             table.insert(OlympusCodexMenuData.Duos, "PullZeusCastTrait")
             table.insert(OlympusCodexMenuData.Duos, "FishingRewardExtraTrait")
-            if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+            if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
                 table.insert(OlympusCodexMenuData.Duos, "ShoutMoreHealTrait")
             end
             -- CentaurSoul-CodexMenu
             table.insert(OlympusConsumableTable, "RoomRewardEmptyHealthDrop")
         end
         -- Hera
-        if ModUtil.Mods.Data["HeraExtra"] ~= nil then
+        if ModUtil.Entangled.ModData("HeraExtra") ~= nil then
             OlympusCodexMenuData.HeraUpgrade = {
                 "HeraWeaponTrait", "HeraSecondaryTrait", "HeraRushTrait", "HeraRangedTrait",
                 "HeraShoutTrait", "PeriodicCurseTrait", "MoreCompanionTrait","DiscountHeraTrait", 
@@ -110,10 +110,10 @@ ModUtil.LoadOnce(function()
             table.insert(OlympusCodexMenuData.Duos, "KillMarkedTrait")
             table.insert(OlympusCodexMenuData.Duos, "GaugeLightningTrait")
             table.insert(OlympusCodexMenuData.Duos, "AuraRuptureTrait")
-            if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+            if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
                 table.insert(OlympusCodexMenuData.Duos, "AuraBlindTrait")
             end
-            if ModUtil.Mods.Data["HestiaExtra"] ~= nil then
+            if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
                 table.insert(OlympusCodexMenuData.Duos, "EnhancedNPCTrait")
             end
 
