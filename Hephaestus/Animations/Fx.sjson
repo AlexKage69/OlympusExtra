@@ -3778,8 +3778,8 @@
       InheritFrom = "BoonDropB"
       ChildAnimation = "BoonDropC-Hephaestus"
       Color = {
-        Red = 0.09
-        Green = 0.50
+        Red = 0.65
+        Green = 0.59
         Blue = 0.55
       }
     }
@@ -3788,19 +3788,19 @@
       InheritFrom = "BoonDropC"
       ChildAnimation = "BoonDropHephaestusIcon"
       Color = {
-        Red = 0.09
-        Green = 0.50
+        Red = 0.65
+        Green = 0.59
         Blue = 0.55
       }
     }
     {
       Name = "BoonDropHephaestusIcon"
       InheritFrom = "BoonDropIcon"
-      FilePath = "Hephaestus\HephaestusIconSpin\HephaestusIconSpin"
+      FilePath = "Hephaestus\HephIconSpin\HephIconSpin"
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
-      Scale = 0.34
+      Scale = 0.12
     }
     {
       Name = "BoonDissipateA_Hephaestus"

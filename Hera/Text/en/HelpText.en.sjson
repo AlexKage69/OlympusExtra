@@ -35,17 +35,17 @@
 		{
       		Id = "JealousyCurse"
 			DisplayName = "Jealousy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., each {$Keywords.Status} applied on victim deals {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} damage from {$Keywords.Attack} and {$Keywords.Special}"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., {$Keywords.Attack} and {$Keywords.Special} deal more damage by {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} for each {$Keywords.Status} applied on victim."
 		}
 		{
       		Id = "EnvyCurse"
 			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying a {$Keywords.Status}, deals additionnal damage. When {$Keywords.Status} is not {$Keywords.EnvyCurse}, double it."
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying {$Keywords.Status} removes {$Keywords.EnvyCurse} to deal damage. If the {$Keywords.Status} is not Envy, double it."
 		}
 		{
       		Id = "HeraTrap"
-			DisplayName = "Trap"
-			Description = "Traps can be broken. A maximum of 5 traps can be present at one time."
+			DisplayName = "Trap Jar"
+			Description = "An inanimate object dealing damage to foes upon broken."
 		}
 		{
       		Id = "Aura"
@@ -80,12 +80,12 @@
 		{
 			Id = "HeraRushTrait"
 			DisplayName = "Trap Dash"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}4 sec."
 		} 
 		{
 			Id = "HeraRushTrait_Initial"
 			InheritFrom = "HeraRushTrait"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCooldown} sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}4 sec."
 		}
 		{
 			Id = "HeraRushIcon"
@@ -218,12 +218,12 @@
 		{
 			Id = "EnvyBurstTrait"
 			DisplayName = "Richful Tribune"
-			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always guaranteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
 			Id = "EnvyBurstTrait_Initial"
 			InheritFrom = "EnvyBurstTrait"
-			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always garanteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
+			Description = "Your {$Keywords.EnvyCurse} may burst. Your first burst is always guaranteed. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal2}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Burst Chance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipChance:P}{#PreviousFormat} "
 		}
 		{
     		Id = "MoreCompanionText_Alt"
@@ -357,7 +357,7 @@
 		{
 			Id = "BetterTrapsTrait"
 			DisplayName = "Moonlit Snares"
-			Description = "Your {$Keywords.HeraTrap}{#BoldFormat}s{#PreviousFormat} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
+			Description = "Your {$Keywords.HeraTrap}{#BoldFormat}s {#PreviousFormat} are bigger and you can have more at the same time. \n {!Icons.Bullet}{#PropertyFormat}Trap Size : \Column 380 {#UpgradeFormat}+150%{#AltUpgradeFormat} \n {!Icons.Bullet}{#PropertyFormat}Max Trap : \Column 380 {#UpgradeFormat}+2{#AltUpgradeFormat}" 
 		}	
 		{
 			Id = "HeroicBoonsTrait"

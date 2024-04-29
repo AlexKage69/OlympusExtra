@@ -195,7 +195,7 @@
 		}
 		{
 			Id = "ForceHephaestusBoonTrait"
-			DisplayName = "Primordial Fire"
+			DisplayName = "Bronze Replica"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait."
 		}
 		{
@@ -205,7 +205,7 @@
 		}
 		{
 			Id = "ForceHephaestusBoonTrait_Inactive"
-			DisplayName = "Primordial Fire"
+			DisplayName = "Bronze Replica"
 			Description = "You may reroll Daedalus Hammer Trait."
 		}				
 		{
