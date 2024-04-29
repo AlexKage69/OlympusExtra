@@ -330,16 +330,16 @@ if ModUtil ~= nil then
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 
-	OlympusTraitData.ForceHephaestusBoonTrait = {
-		Name = "ForceHephaestusBoonTrait",
+	OlympusTraitData.ForceWeaponUpgradeTrait = {
+		Name = "ForceWeaponUpgradeTrait",
 		InheritFrom = { "GiftTrait" },
 		--New Data
-		InRackTitle = "ForceHephaestusBoonTrait_Rack",
+		InRackTitle = "ForceWeaponUpgradeTrait_Rack",
 		Icon = "Keepsake_Skull",
 		EquipSound = "/SFX/WrathOver2",
-		ForceBoonName = "HephaestusUpgrade",
+		ForceBoonName = "WeaponUpgrade",
 		Uses = 1,
-		RarityBonus =
+		--[[RarityBonus =
 		{
 			RequiredGod = "HephaestusUpgrade",
 			RareBonus = { BaseValue = 0.1 },
@@ -353,7 +353,7 @@ if ModUtil ~= nil then
 					Format = "Percent",
 				}
 			}
-		},
+		},]]
 		SignOffData =
 		{
 			{
@@ -818,15 +818,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.22,
+				Multiplier = 1.08,
 			},
 			Epic =
 			{
-				Multiplier = 1.44,
+				Multiplier = 1.15,
 			},
 			Heroic =
 			{
-				Multiplier = 1.66,
+				Multiplier = 1.23,
 			}
 		},
 		PropertyChanges =
@@ -834,7 +834,7 @@ if ModUtil ~= nil then
 			{
                 WeaponNames = { "RushWeapon" },
                 WeaponProperty = "WeaponRange",
-                BaseValue = 1.5,
+                BaseValue = 1.3,
                 ChangeType = "Multiply",
                 ExtractValue =
                 {
@@ -1193,6 +1193,22 @@ if ModUtil ~= nil then
 		},
 		
 	}
+	OlympusConsumableData.ArmorBossDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "ArmorBossTrait",
+		Icon = "Boon_Hephaestus_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Max = 25
+			},
+			{ TraitName = "ArmorBossTrait" },
+			{ },
+		},
+	}
 	OlympusTraitData.ArmorBossTrait =
 	{
 		Name = "ArmorBossTrait",
@@ -1208,17 +1224,21 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.06,
+				Multiplier = 1.2,
 			},
 			Epic =
 			{
-				Multiplier = 1.12,
+				Multiplier = 1.47,
 			},
 			Heroic =
 			{
-				Multiplier = 1.18,
+				Multiplier = 1.6,
 			}
-		},
+		},	
+		RepairArmorOnBoss =
+		{
+			BaseValue = 15,
+		},	
 	}
 	OlympusTraitData.ArmorEncounterTrait =
 	{
@@ -1743,7 +1763,7 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredTrait = "ForceHephaestusBoonTrait",
+				RequiredTrait = "ForceWeaponUpgradeTrait",
 				{ Cue = "/VO/Hephaestus_0084",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					--Emote = "PortraitEmoteMusical",
@@ -2477,7 +2497,7 @@ if ModUtil ~= nil then
 	-- Gift Section
 	local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 	local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-	table.insert(OlympusGiftOrdering, 22, "ForceHephaestusBoonTrait")
+	table.insert(OlympusGiftOrdering, 22, "ForceWeaponUpgradeTrait")
 
 	OlympusGiftData.HephaestusUpgrade =
 	{
@@ -2488,7 +2508,7 @@ if ModUtil ~= nil then
 		Value = 0,
 		Maximum = 7,
 		Locked = 7,
-		[1] = { Gift = "ForceHephaestusBoonTrait" },
+		[1] = { Gift = "ForceWeaponUpgradeTrait" },
 		[7] = { RequiredResource = "SuperGiftPoints" },
 		UnlockGameStateRequirements = { RequiredTextLines = { "HephaestusBackstory04" } }
 	}
@@ -2500,6 +2520,74 @@ if ModUtil ~= nil then
         
     end
 	-- FUNCTIONS
+
+ModUtil.Path.Wrap( "ArmorBreakPresentation", 
+	function(baseFunc, enemy)
+		if HeroHasTrait("DropMoneyTrait") and enemy.DroppedAlready == nil then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Drop Money"))
+			CheckMoneyDrop( CurrentRun, CurrentRun.CurrentRoom, enemy, enemy.MoneyDropOnDeath )
+			enemy.DroppedAlready = true
+		end
+		baseFunc(enemy)
+	end
+)
+function AddHeroArmor(args)
+	if CurrentRun.Hero.Armor == nil then
+		CurrentRun.Hero.Armor = {
+			Amount = args.Max,
+			Max = args.Max
+		}
+	else
+		CurrentRun.Hero.Armor.Amount = CurrentRun.Hero.Armor.Amount + args.Max
+		CurrentRun.Hero.Armor.Max = CurrentRun.Hero.Armor.Max + args.Max
+	end
+	thread( UpdateHealthUI )
+end
+function RepairHeroArmor(amount)
+	if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 then
+		local newAmount = CurrentRun.Hero.Armor.Amount + amount
+		if newAmount > CurrentRun.Hero.Armor.Max then
+			newAmount = CurrentRun.Hero.Armor.Max
+		end
+		CurrentRun.Hero.Armor.Amount = newAmount
+		thread(RepairArmorPresentation)
+	end
+	thread( UpdateHealthUI )
+end
+function GainArmorPresentation( args )
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Presentation"))
+
+end
+ModUtil.Path.Wrap( "UpdateHealthUI", 
+	function(baseFunc, damageEventArgs)
+		baseFunc(damageEventArgs)
+		if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Amount > 0 then
+			local frameTarget = 1 - (CurrentRun.Hero.Armor.Amount / CurrentRun.Hero.Armor.Max)
+			SetAnimation({ Name = "HealthBarFill", DestinationId = ScreenAnchors.HealthFill, FrameTarget = frameTarget, Instant = true, Color = Color.Black })
+			SetAnimation({ Name = "HealthBarFillWhite", DestinationId = ScreenAnchors.HealthRally, FrameTarget = frameTarget, Instant = true, Color = Color.RallyHealth })
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount +"/"+CurrentRun.Hero.Armor.Max))
+		end
+	end
+)
+ModUtil.Path.Wrap("StartEncounter",
+		function(baseFunc, currentRun, currentRoom, currentEncounter)
+			if HeroHasTrait("ArmorBossTrait") then
+				local armorAmount = GetTotalHeroTraitValue("RepairArmorOnBoss", { IsMultiplier = false })
+				if ((currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
+					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil) or
+					currentRun.CurrentRoom.IsMiniBossRoom then					
+					RepairHeroArmor(armorAmount)
+				end
+			end
+			baseFunc(currentRun, currentRoom, currentEncounter)
+		end
+	)
+	function RepairArmorPresentation()
+		wait(0.2)
+		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "RepairText", Duration = 1 })
+	end
 ModUtil.Path.Wrap( "IsHermesBoon", 
 	function(baseFunc, traitName)
 		if traitName ~= nil then
@@ -2516,13 +2604,6 @@ ModUtil.Path.Wrap( "IsHermesBoon",
 )
 	function CreateHephaestusLoot( args )
 		args = args or {}
-		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
-	end
-	function AddArmor(number)
-	
-	end
-
-	function AddMaxArmor(number)
-		AddArmor(number)
+		return CreateLoot({ Name = "HephaestusUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })--CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
 end

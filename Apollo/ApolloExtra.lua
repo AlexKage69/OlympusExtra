@@ -5239,42 +5239,6 @@ if ModUtil ~= nil then
 	
 	-- Blind Functions
 	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
-	ModUtil.Path.Wrap("CheckOnHitPowers",
-		function(baseFunc, victim, attacker, args)
-			local missRate = 0.4
-			if HeroHasTrait("MissChanceTrait") then
-				missRate = 0.6
-			end
-			-- Enemies misses
-			if args and args.EffectName ~= "StyxPoison" and attacker and
-				HasEffect({ Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and
-				attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0, 1) <= missRate then
-				thread(InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, { SkipShadow = true })
-				PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
-				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
-				if not HeroHasTrait("BlindDurationTrait") then
-					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
-					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
-					if HeroHasTrait("MasterBoltTrait") then
-						ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
-					end
-				end
-
-				args.DamageAmount = nil
-				args.AttackerWeaponData = nil
-				args.IsInvulnerable = true
-				-- Zagreus misses
-			elseif attacker and HasEffect({ Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and
-				attacker.ObjectId == CurrentRun.Hero.ObjectId then
-				thread(InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, { SkipShadow = true, Cooldown = 0.7 })
-				args.DamageAmount = nil
-				args.AttackerWeaponData = nil
-				--args.IsInvulnerable = true
-			else
-				baseFunc(victim, attacker, args)
-			end
-		end
-	)
 	function ApolloBlindApply(triggerArgs)
 		if HeroHasTrait("MasterBoltTrait") then
 			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId,

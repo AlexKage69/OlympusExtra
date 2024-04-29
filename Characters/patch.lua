@@ -34,6 +34,17 @@ ModUtil.Path.Wrap("EquipAssist",
         baseFunc(heroUnit, traitName, args)
     end
 )
+ModUtil.Path.Wrap("CreateBoonLootButtons",
+    function(baseFunc, lootData, reroll)
+        if HeroHasTrait("ForceWeaponUpgradeTrait") then
+            RerollCosts.Hammer = 1;
+        else
+            RerollCosts.Hammer = -1;
+        end
+        baseFunc(lootData, reroll)
+    end
+)
+
 ModUtil.Path.Wrap("CalculateDamageMultipliers",
     function(baseFunc, attacker, victim, weaponData, triggerArgs)
         local damageReductionMultipliers = 1
@@ -120,6 +131,50 @@ ModUtil.Path.Wrap("DamageEnemy",
         end
     end
 )
+ModUtil.Path.Wrap("CheckOnHitPowers",
+		function(baseFunc, victim, attacker, args)
+            --Apollo Stuff
+			local missRate = 0.4
+			if HeroHasTrait("MissChanceTrait") then
+				missRate = 0.6
+			end
+			-- Enemies misses
+			if args and args.EffectName ~= "StyxPoison" and attacker and
+				HasEffect({ Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and
+				attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0, 1) <= missRate then
+				thread(InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, { SkipShadow = true })
+				PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
+				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
+				if not HeroHasTrait("BlindDurationTrait") then
+					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
+					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
+					if HeroHasTrait("MasterBoltTrait") then
+						ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
+					end
+				end
+
+				args.DamageAmount = nil
+				args.AttackerWeaponData = nil
+				args.IsInvulnerable = true
+				-- Zagreus misses
+			elseif attacker and HasEffect({ Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and
+				attacker.ObjectId == CurrentRun.Hero.ObjectId then
+				thread(InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, { SkipShadow = true, Cooldown = 0.7 })
+				args.DamageAmount = nil
+				args.AttackerWeaponData = nil
+				--args.IsInvulnerable = true
+			else
+                -- Hephaestus DamageBoostTrait
+                if victim == CurrentRun.Hero and HeroHasTrait("DamageBoostTrait") then
+                    ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+						WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
+                    ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+						WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostDamage" })
+                end
+				baseFunc(victim, attacker, args)
+			end
+		end
+	)
 function TrackDamageWithTime(triggerArgs, victim, name, mutliplier)
     if victim.TimeOfLastDamage and victim.TimeOfLastDamage[name] and
         _worldTime - victim.TimeOfLastDamage[name] < 0.05 then
@@ -162,6 +217,7 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
         if (not CanOpenCodex()) and IsSuperValid() then
             BuildSuperMeter(CurrentRun, 50)
         end
+        CreateHephaestusLoot()
         --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
         --ForceNextRoomFunc("B_Shop01")
         --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
