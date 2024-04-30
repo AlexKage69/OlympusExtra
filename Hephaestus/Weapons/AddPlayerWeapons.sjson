@@ -5,7 +5,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -22,9 +22,8 @@ Weapons = {
   }
    6 = { 
     Effects = [
-      "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -43,7 +42,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -62,7 +61,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -81,7 +80,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -100,7 +99,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -119,7 +118,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -138,7 +137,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0
@@ -157,7 +156,7 @@ Weapons = {
     Effects = [
       "_append" 
       {
-          Name = "RushHyperArmor"
+          Name = "IgneousArmor"
           Type = "DAMAGE_TAKEN"
           Duration = 5
           Modifier = 1.0

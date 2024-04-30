@@ -187,7 +187,10 @@ function TrackDamageWithTime(triggerArgs, victim, name, mutliplier)
         return triggerArgs.DamageAmount
     end
 end
-
+function AddEffectOnWeaponFired(args)
+    ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+						WeaponName = args.WeaponName, EffectName = args.EffectName })
+end
 --[[ModUtil.Path.Wrap( "AddRerolls",
 	function(baseFunc, amount, source, args )
         if type(amount) == "number" then
@@ -388,7 +391,57 @@ end]]
     --PlaySound({ Name = "/SFX/GodFavorBattleStart" })
     PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
 end
-
+function SetupAura(args)
+    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
+    thread( AuraThread, args )
+end
+function AuraThread(args)
+    --local PreviousCloseEnemiesList = {}
+    if HeroHasTrait("AuraRuptureTrait") then
+        StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })
+        CreateAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
+    end
+    if HeroHasTrait("StatusOverTimeTrait") then
+        StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })
+        CreateAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
+    end
+    if HeroHasTrait("AuraExposedTrait") then
+        StopAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })
+        CreateAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })			
+    end
+    if HeroHasTrait("AuraBlindTrait") then
+        StopAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })
+        CreateAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })			
+    end
+    while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
+        wait(0.2, "RoomThread") -- 0.2
+        if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
+            local enemyLocation = { 0, 0 }
+            local heroLocation = GetLocation({ Id = CurrentRun.Hero.ObjectId })
+            for enemyId, enemy in pairs(RequiredKillEnemies) do
+                enemyLocation = GetLocation({ Id = enemy.ObjectId })
+                local distanceSquared = math.sqrt((enemyLocation.X - heroLocation.X) ^ 2 +
+                    (enemyLocation.Y - heroLocation.Y) ^ 2)
+                if distanceSquared <= 100 and HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "IgneousArmor" }) then
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Apply"))
+                    ApplyEffectFromWeapon({ WeaponName = "IgneousApplicator", EffectName = "Igneous", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
+                end
+                if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
+                    ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
+                end
+                if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
+                    ApplyEffectFromWeapon({ WeaponName = "DecayCurseApplicator", EffectName = "HeraDecay", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
+                end
+                if distanceSquared <= 400 and HeroHasTrait("AuraExposedTrait") then
+                    ApplyEffectFromWeapon({ WeaponName = "ExposedCurseApplicator", EffectName = "AthenaBackstabVulnerability", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
+                end
+                if distanceSquared <= 500 and HeroHasTrait("AuraBlindTrait") then
+                    ApplyEffectFromWeapon({ WeaponName = "BlindCurseApplicator", EffectName = "ApolloBlind", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
+                end
+            end	
+        end
+    end
+end
 ModUtil.Path.Wrap("HandleLootPickup",
     function(baseFunc, currentRun, loot)
         if loot.Skip then
@@ -491,5 +544,19 @@ ModUtil.Path.Wrap("IsGameStateEligible",
             return false
         end
         return true
+    end
+)
+-- Test
+ModUtil.Path.Wrap("GetLootSourceName",
+    function(baseFunc, traitName)
+        for lootName, god in pairs(LootData) do
+            if god == nil then
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(lootName))
+                return false
+            end
+        end
+        if traitName ~= nil then
+            baseFunc(traitName)
+        end
     end
 )

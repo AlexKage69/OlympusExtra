@@ -129,13 +129,9 @@ ModUtil.LoadOnce(function()
             table.insert(OlympusRealGodNames, "Hera")
         end   
         --Apollo
-        if ModUtil.Mods.Data["HephaestusExtra"] ~= nil then
+        if ModUtil.Entangled.ModData("HephaestusExtra") ~= nil then
             OlympusCodexMenuData.HephaestusUpgrade = {
-                "HephaestusWeaponTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusSecondaryTrait",
-				"HephaestusShoutTrait",	"FullHealthExtraRewardTrait", "DropMoneyTrait", "DamageBoostTrait",
-                "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "SpawnWeaponsTrait",
-                "HephaestusDistantTrait", "HephaestusTrapTrait", "ArmorLegendaryTrait",
-                "HermesPlannedRushTrait", "HermesRangedTrait"
+                "HephaestusWeaponTrait", "ArmorLegendaryTrait"
             }
             --table.insert(OlympusCodexMenuData.Consumables, "RerollObolDrop")
             --table.insert(OlympusCodexMenuData.Consumables, "RerollBoonDrop")

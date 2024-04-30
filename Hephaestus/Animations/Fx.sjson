@@ -4539,7 +4539,7 @@
       Loop = true
     }
      {
-      Name = "AuraFx-Rupture"
+      Name = "AuraFx-Igneous"
       InheritFrom = "RadialNova"
       //CreateAnimation = "BowTrailRandom-Hephaestus2"
       GroupName = "Standing_Back"
