@@ -1,0 +1,13 @@
+{
+  Texts = [
+    "_append"
+    {
+      Id = "UpgradeChoiceMenu_Title_HephaestusUpgrade"
+      DisplayName = "Boons of Hephaestus"
+    }
+    {
+      Id = "Player_GodDispleased_HephaestusUpgrade"
+      DisplayName = "Hephaestus Grew Displeased!"
+    }
+  ]
+}

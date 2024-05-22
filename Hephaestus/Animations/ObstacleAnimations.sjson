@@ -1,0 +1,11 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "HephaestusOverlay"
+      InheritFrom = "HadesOverlay"
+      FilePath = "Hephaestus\Portraits_Hephaestus_01"
+      Scale = 0.7
+    }
+  ]
+}

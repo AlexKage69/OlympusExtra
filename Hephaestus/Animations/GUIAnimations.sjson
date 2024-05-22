@@ -1,0 +1,506 @@
+{
+  Animations = [
+	"_append"
+    {
+      Name = "Keepsake_Ember_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Hephaestus\Keepsake_Cauldron"
+      Scale = 0.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Ember"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Hephaestus\Keepsake_Cauldron"
+      Scale = 1.2
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Ember_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Ember_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "BoonSymbolGlow_Hephaestus"
+      InheritFrom = "BoonSymbolGlow"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue = 0.21
+      }
+    }
+    {
+      Name = "BoonSymbolFlare_Hephaestus"
+      InheritFrom = "BoonSymbolFlare"
+      Color = 
+      {
+        Red = 0.92
+        Green = 0.49
+        Blue = 0.77
+      }
+    }
+    {
+      Name = "BoonSymbolHephaestus"
+      InheritFrom = "BoonBackingA"
+      ChildAnimation = "BoonBackingB_Hephaestus"
+      Scale = 0.5
+      CreateAnimations = [
+        {
+          Name = "BoonSymbolGlow_Hephaestus"
+        }
+        {
+          Name = "BoonSymbolFlare_Hephaestus"
+        }]
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue = 0.21
+      }
+    }
+    {
+      Name = "BoonBackingB_Hephaestus"
+      InheritFrom = "BoonBackingB"
+      ChildAnimation = "BoonBackingC_Hephaestus"
+      Scale = 0.5
+      Color = 
+      {
+        Red = 0.92
+        Green = 0.49
+        Blue = 0.77
+      }
+    }
+    {
+      Name = "BoonBackingC_Hephaestus"
+      InheritFrom = "BoonBackingC"
+      ChildAnimation = "BoonSymbolHephaestusIcon"
+    }
+    {
+      Name = "BoonInfoSymbolHephaestusIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "Hephaestus\Hephaestus2"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.40
+    }
+    {
+      Name = "BoonSymbolHephaestusIcon"
+      InheritFrom = "BoonSymbolBase"
+      FilePath = "Hephaestus\Hephaestus3"
+      Scale = 0.30
+    }
+    {
+      Name = "BoonSymbolHephaestusIsometric"
+      InheritFrom = "BoonSymbolBaseIsometric"
+      FilePath = "Hephaestus\HephaestusDoorIcon"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.20
+    }
+    {
+      Name = "Boon_Hephaestus_00_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_00_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusStrike_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusStrike_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_02_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusFlourish_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_02_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusFlourish_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_03_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusDash_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_03_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusDash_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_04_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_04_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_05_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_05_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_06_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusAid_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_06_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusAid_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hephaestus_07_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\OpenArms_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_07_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\OpenArms_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hephaestus_08_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Vengence_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_08_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Vengence_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hephaestus_09_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Homecoming_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_09_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Homecoming_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_10_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\MeltingHeart_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_10_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\MeltingHeart_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_11_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\MoltenCore_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_11_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\MoltenCore_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+      {
+      Name = "Boon_Hephaestus_12_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HomeTurf_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_12_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HomeTurf_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_13_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\EternalFlame_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_13_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\EternalFlame_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_14_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Temperance_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_14_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Temperance_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_15_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\HephaestusAttract_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hephaestus_15_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\HephaestusAttract_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Aphrodite_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Aphrodite_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Ares_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Ares_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Artemis_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Artemis_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Athena_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Athena_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Demeter_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusDemeter_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Demeter_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusDemeter_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Dionysus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Dionysus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Poseidon_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Poseidon_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    } 
+    {
+      Name = "Hephaestus_Zeus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Zeus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }     
+    {
+      Name = "Hephaestus_Apollo_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hephaestus\Duos\HephaestusApollo_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hephaestus_Apollo_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hephaestus\Duos\HephaestusApollo_01"
+      EndFrame = 1
+      StartFrame = 1
+    }   
+    {
+      Name = "Keepsake_Hephaestus_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hephaestus\HephaestusBadge"
+    }
+    {
+      Name = "Keepsake_HephaestusSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hephaestus\HephaestusBadge_max"
+    }    
+    {
+      Name = "CentaurHeartIcon"
+      FilePath = "GUI\Icons\RoomReward\MaxHealthUp_01"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
+    }
+    {
+      Name = "CentaurSoulIcon"
+      FilePath = "GUI\Screens\ShopIcons\soul_16"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
+    }
+    {
+      Name = "ExtraLifeHephaestus"
+      FilePath = "Hephaestus\HephaestusDDIcon"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Scale = 0.6
+      Material = "Unlit"
+    }
+    {
+      Name = "Keepsake_Hephaestus_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hephaestus\HephaestusBadge"
+    }
+    {
+      Name = "Keepsake_HephaestusSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hephaestus\HephaestusBadge_max"
+    }
+  ]
+}
