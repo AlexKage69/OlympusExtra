@@ -155,6 +155,11 @@
 			Description = "Gain 25 armor. Before fighting a mini-boss/boss gain 15/18/22/25 armor.. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
+			Id = "ArmorBossDrop"
+			InheritFrom = "Reforging fate Drop"
+			Description = "Gain 25 armor. Before fighting a mini-boss/boss gain 15/18/22/25 armor.. \n {!Icons.Bullet}{#PropertyFormat}Bonus Reward: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
 			Id = "RepairText"
 			DisplayName = "{#CombatTextHighlightFormat}Repair!{#PreviousFormat}!"
 		}

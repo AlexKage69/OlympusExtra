@@ -17,6 +17,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -35,6 +45,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -54,6 +74,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -73,6 +103,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -92,6 +132,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -111,6 +161,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -130,6 +190,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -149,6 +219,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }
@@ -168,6 +248,16 @@ Weapons = {
           FlashBackFxWhenExpiring = true
           ImmuneToForce = true
           ClearOnAttack = false
+        },
+         {
+          Name = "RushWeaponSpeedBoost"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.65
+          Cancelable = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
         }
     ] 
   }

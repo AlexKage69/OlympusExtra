@@ -131,12 +131,12 @@ ModUtil.LoadOnce(function()
         --Apollo
         if ModUtil.Entangled.ModData("HephaestusExtra") ~= nil then
             OlympusCodexMenuData.HephaestusUpgrade = {
-                "HephaestusWeaponTrait", "ArmorLegendaryTrait"
+                "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait", "HephaestusRangedTrait", "FullHealthExtraRewardTrait", "DropMoneyTrait", "RevengeBoostTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "HephaestusDistantTrait", "HephaestusTrapTrait", "DamageBoostTrait", "ArmorLegendaryTrait"
             }
-            --table.insert(OlympusCodexMenuData.Consumables, "RerollObolDrop")
+            table.insert(OlympusCodexMenuData.Consumables, "ArmorBossDrop")
             --table.insert(OlympusCodexMenuData.Consumables, "RerollBoonDrop")
             table.insert(OlympusCodexMenuData.Legendaries, "ArmorLegendaryTrait")
-            --OlympusCodexMenuData.ConsumableTraits.RerollObolDrop = "RerollObolTrait"
+            OlympusCodexMenuData.ConsumableTraits.ArmorBossDrop = "ArmorBossTrait"
             --OlympusCodexMenuData.ConsumableTraits.RerollBoonDrop = "RerollBoonTrait"
             --OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
             --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true

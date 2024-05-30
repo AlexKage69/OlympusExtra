@@ -155,7 +155,7 @@
         {
             "ActivateAtRange": false,
             "ActivationRange": 600.0,
-            "Active": true,
+            "Active": false,
             "AllowMovementReaction": false,
             "Ambient": -1.0,
             "Angle": 0.0,
@@ -51425,6 +51425,61 @@
             "SkewScale": 1.0,
             "SortIndex": 0,
             "StopsLight": true,
+            "Tallness": 0.0,
+            "UseBoundsForSortArea": true,
+            "Value": 0.0
+        },
+        {
+            "ActivateAtRange": false,
+            "ActivationRange": 600.0,
+            "Active": true,
+            "AllowMovementReaction": false,
+            "Ambient": 0.0,
+            "Angle": 0.0,
+            "AttachToID": 0,
+            "AttachedIDs": [
+                421315,
+                421316,
+                421317,
+                421319
+            ],
+            "CausesOcculsion": false,
+            "Clutter": false,
+            "Collision": true,
+            "Color": {
+                "A": 255,
+                "B": 255,
+                "G": 255,
+                "R": 255
+            },
+            "Comments": null,
+            "CreatesShadows": true,
+            "DataType": "Obstacle",
+            "DrawVfxOnTop": true,
+            "FlipHorizontal": false,
+            "FlipVertical": false,
+            "GroupNames": [
+                "Standing"
+            ],
+            "HelpTextID": null,
+            "Hue": 0.0,
+            "Id": 421320,
+            "IgnoreGridManager": false,
+            "Invert": false,
+            "Location": {
+                "X": 5274.87626953125,
+                "Y": 4199.534521484375
+            },
+            "Name": "OlympianTablet",
+            "OffsetZ": 0.0,
+            "ParallaxAmount": 1.0,
+            "Points": [],
+            "Saturation": 0.0,
+            "Scale": 0.19899600744247437,
+            "SkewAngle": 0.0,
+            "SkewScale": 1.0,
+            "SortIndex": 0,
+            "StopsLight": false,
             "Tallness": 0.0,
             "UseBoundsForSortArea": true,
             "Value": 0.0

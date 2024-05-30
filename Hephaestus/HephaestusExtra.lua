@@ -147,6 +147,11 @@ if ModUtil ~= nil then
 	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
+	OlympusEffectData.IgneousEffect =
+	{
+		DamageTextStartColor = Color.RamaDamageStart,
+		DamageTextColor = Color.RamaDamageEnd,
+	}
 	
 	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
@@ -250,7 +255,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "DefaultMessage" },
 		GameStateRequirements =
 		{
-			RequiredCountOfTraitsCount = 6,
+			RequiredCountOfTraitsCount = 3,
 			RequiredCountOfTraits =
 			{
 				"HephaestusWeaponTrait",
@@ -361,50 +366,25 @@ if ModUtil ~= nil then
 				Multiplier = 1.80,
 			}
 		},
-		SetupFunction =
+		--[[SetupFunction =
 		{
 			Name = "SetupAura",
 			RunOnce = true,
-		},
+		},]]
 		OnWeaponFiredFunctions =
 		{
 			ValidWeapons = OlympusWeaponSets.PrimaryWeapons,
-			FunctionName = "AddEffectOnWeaponFired",
+			FunctionName = "AddIgneousEffect",
 			FunctionArgs =
 			{
-				EffectName = "IgneousArmor"
+				WeaponName = "ZeusDionysusCloudStrike",
+				Interval = 0.85,
+				Duration = 5,
+				Range = 400,
 			},
 		},
 		PropertyChanges =
 		{
-			{
-				WeaponNames = OlympusWeaponSets.PrimaryWeapons,
-				EffectName = "IgneousArmor",
-				EffectProperty = "Active",
-				ChangeValue = true,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = OlympusWeaponSets.PrimaryWeapons,
-				EffectName= "IgneousArmor",
-				EffectProperty = "Modifier",
-				BaseMin = 0.7,
-				BaseMax = 0.7,
-				SourceIsMultiplier = true,
-				ChangeType = "Absolute",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamageReduction",
-					Format = "NegativePercentDelta",
-				}
-			},
-			{
-				WeaponNames = OlympusWeaponSets.PrimaryWeapons,
-				EffectName= "IgneousArmor",
-				EffectProperty = "Duration",
-				BaseValue = 2.5,
-				ChangeType = "Absolute",
-			},
 			--[[{
 				WeaponNames = { "SwordWeapon" },
 				ProjectileProperty = "StartFx2",
@@ -1190,8 +1170,8 @@ if ModUtil ~= nil then
 
 		PriorityUpgrades = { },
 		WeaponUpgrades = {},
-		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait", "HephaestusRangedTrait", "FullHealthExtraRewardTrait", "DropMoneyTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "HephaestusDistantTrait", "HephaestusTrapTrait" },
-		Consumables = { },
+		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait", "HephaestusRangedTrait", "FullHealthExtraRewardTrait", "DropMoneyTrait", "RevengeBoostTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "HephaestusDistantTrait", "HephaestusTrapTrait" },
+		Consumables = { "ArmorBossDrop" },
 		LinkedUpgrades =
 		{
 			DamageBoostTrait =
@@ -3945,11 +3925,13 @@ ModUtil.Path.Wrap( "ArmorBreakPresentation",
 )
 function AddHeroArmor(args)
 	if CurrentRun.Hero.Armor == nil then
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Setup New"))
 		CurrentRun.Hero.Armor = {
 			Amount = args.Max,
 			Max = args.Max
 		}
 	else
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Already"))
 		CurrentRun.Hero.Armor.Amount = CurrentRun.Hero.Armor.Amount + args.Max
 		CurrentRun.Hero.Armor.Max = CurrentRun.Hero.Armor.Max + args.Max
 	end
@@ -3970,10 +3952,23 @@ function GainArmorPresentation( args )
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Presentation"))
 
 end
+--[[function AddHealthBuffer( amount, source, args )
+	args = args or {}
+	MapState.HealthBufferSources = MapState.HealthBufferSources or {}
+	MapState.HealthBufferSources[ source ] = amount
+	local totalHealthBuffer = 0
+	for armorSource, value in pairs( MapState.HealthBufferSources ) do
+		totalHealthBuffer = totalHealthBuffer + value 
+	end
+	CurrentRun.Hero.HealthBuffer = totalHealthBuffer
+	thread(OnPlayerArmorGain, {Amount = amount, Silent = args.Silent, Delay = args.Delay} )
+end]]
 ModUtil.Path.Wrap( "UpdateHealthUI", 
 	function(baseFunc, damageEventArgs)
 		baseFunc(damageEventArgs)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh Health"))
 		if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Amount > 0 then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh Armor"))
 			local frameTarget = 1 - (CurrentRun.Hero.Armor.Amount / CurrentRun.Hero.Armor.Max)
 			SetAnimation({ Name = "HealthBarFill", DestinationId = ScreenAnchors.HealthFill, FrameTarget = frameTarget, Instant = true, Color = Color.Black })
 			SetAnimation({ Name = "HealthBarFillWhite", DestinationId = ScreenAnchors.HealthRally, FrameTarget = frameTarget, Instant = true, Color = Color.RallyHealth })
@@ -4024,14 +4019,54 @@ ModUtil.Path.Wrap( "IsHermesBoon",
 		args = args or {}
 		return CreateLoot({ Name = "HephaestusUpgrade" })--CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
+	function AddIgneousEffect(weaponData, args)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Pressed")) 
+		IgneousEffectThread(args)
+	end
+	function IgneousEffectThread(args)
+		--[[if HeroHasTrait("AuraBlindTrait") then
+			StopAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })
+			CreateAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })			
+		end]]
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(args)) 
+		local weaponName = args.WeaponName
+		local intervalData = args.Interval
+		local duration = args.Duration
+		local range = args.Range or 500
+		local count = args.Count or 3
 
+		while duration > 0 do
+			local interval = intervalData
+			if type(intervalData) == "table" then
+				interval = RandomFloat( intervalData.Min, intervalData.Max )
+			end
+			wait( interval, RoomThreadName )
+			duration = duration - interval
+			local nearestEnemyTargetIds = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true,
+				IgnoreHomingIneligible = true, Distance = range})
+			local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
+			local allNearbyEnemies = {}
+			for _, id in pairs(nearestEnemyTargetIds) do
+				local enemy = ActiveEnemies[id]
+				if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
+					Damage( enemy, { EffectName = "IgneousEffect", DamageAmount = 1, Silent = false, PureDamage = true, AttackerTable = CurrentRun.Hero } )
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Damage"..enemy.Name)) 
+				end
+			end
+			if IsCombatEncounterActive( CurrentRun ) then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Is Active")) 
+				
+			end
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Done")) 
+		end
+	end
 	ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)		
+		function(baseFunc)
 			-- if (not CanOpenCodex()) and IsSuperValid() then
 			-- 	BuildSuperMeter(CurrentRun, 50)
 			-- end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
+			--CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
 			baseFunc()
 		end
 	)

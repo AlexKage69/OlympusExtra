@@ -1,6 +1,6 @@
 -- Separate Gods from Goddess to add more gods
 
-ModUtil.RegisterMod("SeparateGoddess")
+-- ModUtil.RegisterMod("SeparateGoddess")
 
 local OlympusCodexUI = ModUtil.Entangled.ModData(CodexUI)
 OlympusCodexUI.MaxChapters = 4;
@@ -32,13 +32,13 @@ OlympusCodexOrdering.OlympianGods.Order.ArtemisUpgrade = nil
 OlympusCodexOrdering.OlympianGods.Order.DemeterUpgrade = nil
 
 -- Added check for Goddess being check on upgrade
-ModUtil.WrapBaseFunction( "HandleUpgradeChoiceSelection", function(baseFunc, screen, button)
+ModUtil.Path.Wrap( "HandleUpgradeChoiceSelection", function(baseFunc, screen, button)
     baseFunc(screen, button)
 	CheckCodexUnlock( "OlympianGoddess", button.UpgradeName )
 end)
 
 -- Added check for Goddess being check on gift
-ModUtil.WrapBaseFunction( "AttemptGift", function(baseFunc, CurrentRun, target)
+ModUtil.Path.Wrap( "AttemptGift", function(baseFunc, CurrentRun, target)
     baseFunc(CurrentRun, target)
 	local name = GetGenusName( target )
 	local resourceName = GetNextGiftResource( name )
@@ -52,7 +52,7 @@ ModUtil.WrapBaseFunction( "AttemptGift", function(baseFunc, CurrentRun, target)
 end)
 
 -- Overwrite the same function
-ModUtil.WrapBaseFunction( "CodexScrollChaptersLeft", function(baseFunc, screen, button)
+ModUtil.Path.Wrap( "CodexScrollChaptersLeft", function(baseFunc, screen, button)
 	if not screen or not CodexUI.Screen or not IsScreenOpen( "Codex" ) or not screen.AllowInput then
 		return
 	end
