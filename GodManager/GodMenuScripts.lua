@@ -47,6 +47,9 @@ OlympusGiftData.DemeterUpgrade[4] = { UnlockExiled = true }
 OlympusGiftData.AresUpgrade[4] = { UnlockExiled = true }
 OlympusGiftData.DionysusUpgrade[4] = { UnlockExiled = true }
 OlympusGiftData.AthenaUpgrade[4] = { UnlockExiled = true }
+OlympusGiftData.DionysusUpgrade[4] = { UnlockExiled = true }
+OlympusGiftData.HermesUpgrade[4] = { UnlockExiled = true, DualGod = "HephaestusUpgrade" }
+OlympusGiftData.TrialUpgrade[4] = { UnlockExiled = true, DualGod = "QuestUpgrade" }
 
 local OlympusObjectiveSetData = ModUtil.Entangled.ModData(ObjectiveSetData)
 OlympusObjectiveSetData.OlympianTabletPrompt =
@@ -130,7 +133,7 @@ function GetAvailableExiledGods()
 	if GameState.CurrentExiledGods == nil then
 		GameState.CurrentExiledGods = {}
 	end
-	local exiledGods = {}
+	local exiledGods = {Single = {}, Dual = {}}
 	for npcName, giftData in pairs(GameState.Gift) do
 		for s = 1, GetMaxGiftLevel(npcName) do
 			local data = GetGiftLevelData(npcName, s)
@@ -143,13 +146,22 @@ function GetAvailableExiledGods()
 					broughtIt = GameState.ExiledGodUnlocks[npcName]
 					selected = GameState.CurrentExiledGods[npcName]
 				end
-				--local new = Contains(GameState.Gift[npcName].NewTraits, data.Gift)
-				table.insert(exiledGods,
-					{ Known = (s <= GetGiftLevel(npcName)), Available = available, NPC = npcName, Unlocked = broughtIt, Selected = selected })
+				if data.DualGod == nil then
+					table.insert(exiledGods.Single,
+						{ Known = (s <= GetGiftLevel(npcName)), Available = available, NPC = npcName, Unlocked = broughtIt, Selected = selected })
+				else
+					table.insert(exiledGods.Dual,
+						{ Known = (s <= GetGiftLevel(npcName) and s <= GetGiftLevel(data.DualGod)), Available = available, NPC = npcName, Unlocked = broughtIt, Selected = selected, DualGod = data.DualGod })
+				end
 			end
 		end
 	end
-	--table.sort( exiledGods, ExiledGodsSort )
+	for i = 1, 10, 1 do
+		table.insert(exiledGods.Single,
+						{ Known = false, Available = false, NPC = "TestUpgrade", Unlocked = false, Selected = false })
+	end
+	table.insert(exiledGods.Dual,
+					{ Known = false, Available = false, NPC = "TestUpgrade", Unlocked = false, Selected = false, DualGod = "TestUpgrade2" })
 	return exiledGods
 end
 
@@ -179,7 +191,9 @@ function ShowGodManagerMenu()
 	if IsScreenOpen("GodManagerMenu") then
 		return
 	end
-
+	for name, exiled in pairs( GameState.CurrentExiledGods) do
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(name))
+	end
 	OnScreenOpened({ Flag = "GodManagerMenu", PersistCombatUI = true })
 	FreezePlayerUnit()
 	EnableShopGamepadCursor()
@@ -218,7 +232,7 @@ function ShowGodManagerMenu()
 	OffsetX = 0, OffsetY = -335, Width = 840, Color = Color.SubTitle, Font = "CrimsonTextItalic",
 	ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 1}, Justification = "Center" })
 	--Exiled Left
-	components.ExilText = CreateTextBox({ Id = components.Background.Id, Text = "Exil Left:", FontSize = 19,
+	components.ExilText = CreateTextBox({ Id = components.Background.Id, Text = "Available ", FontSize = 19,
 	OffsetX = 400, OffsetY = -365, Width = 840, Color = Color.SubTitle, Font = "CrimsonTextItalic",
 	ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 1}, Justification = "Center" })
 
@@ -231,13 +245,28 @@ function ShowGodManagerMenu()
 	local startY = 300
 	local rowMax = 6
 	local rowMin = math.ceil(rowMax / 2)
-	for itemIndex, exiledGod in ipairs(UIData.GodManagerMenu.AvailableExiledGods) do
-		local localx = 0
-		local localy = 0
-		localx = startX - spacerX * rowMin/2 + ((itemIndex - 1) % rowMax + 0.5) * spacerX
-		localy = startY + math.floor( (itemIndex - 1) / rowMax)* 2 * (spacerY / 2)
-
+	local maxIndex = 0
+	for itemIndex, exiledGod in ipairs(UIData.GodManagerMenu.AvailableExiledGods.Single) do
+		local localx = startX - spacerX * rowMin/2 + ((itemIndex - 1) % rowMax + 0.5) * spacerX
+		local localy = startY + math.floor( (itemIndex - 1) / rowMax)* 2 * (spacerY / 2)
 		CreateExiledGodIcon( components, { Index = itemIndex, God = exiledGod, X = localx, Y = localy })
+		maxIndex = itemIndex
+	end
+	startY = 750
+	startX = 870
+	spacerX = 320
+	rowMax = 6
+	rowMin = math.ceil(rowMax / 2)
+	local extraIndex = 0
+
+	for itemIndex, exiledGod in ipairs(UIData.GodManagerMenu.AvailableExiledGods.Dual) do
+		local localx = startX - spacerX * rowMin/2 + ((itemIndex - 1) % rowMax + 0.5) * spacerX
+		local localy = startY + math.floor( (itemIndex - 1) / rowMax)* 2 * (spacerY / 2)
+		CreateExiledGodIcon( components, { Index = itemIndex+maxIndex+extraIndex, God = exiledGod, X = localx, Y = localy })
+		extraIndex = extraIndex + 1
+		-- Other God
+		local otherGod = { Known = exiledGod.Known, Available = exiledGod.Available, NPC = exiledGod.DualGod, Unlocked = exiledGod.Unlocked, Selected = exiledGod.Selected, DualGod = exiledGod.NPC }
+		CreateExiledGodIcon( components, { Index = itemIndex+maxIndex+extraIndex, God = otherGod, X = localx + 135, Y = localy })
 	end
 	-- CreateTextBox({ Id = components.ShopBackground.Id, Text = "GodManagerMenu_Hint", FontSize = 14, OffsetX = 0, OffsetY = 420, Width = 840, Color = Color.Gray, Font = "CrimsonTextBoldItalic", ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2}, Justification = "Center" })
 
@@ -464,7 +493,7 @@ function CreateExiledGodIcon(components, args)
 	components[buttonKey .. "Frame"] = CreateScreenComponent({ Name = "BlankObstacle", X = localx, Y = localy + 10, Group =
 	"Combat_Menu" })
 	SetAnimation({ DestinationId = components[buttonKey .. "Frame"].Id, Name = "TraitTray_DetailsBacking" })
-	SetScaleY({Id = components[buttonKey .. "Frame"].Id, Fraction = 0.45})
+	SetScaleY({Id = components[buttonKey .. "Frame"].Id, Fraction = 0.41})
 	SetScaleX({Id = components[buttonKey .. "Frame"].Id, Fraction = 0.075})
 	SetColor({ Id = components[buttonKey .. "Frame"].Id, Color = { 0.15, 0.15, 0.15, 0.95 } })
 
@@ -472,13 +501,16 @@ function CreateExiledGodIcon(components, args)
 	components[buttonKey].Data = god
 	components[buttonKey].ButtonKey = buttonKey
 	components[buttonKey].FrameId = components[buttonKey.."Frame"].Id
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(god.NPC))
 
 	components[buttonKey].OnPressedFunctionName = "HandleExiledToggle"
+	
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.GodManagerMenuScreen))
 	ScreenAnchors.GodManagerMenuScreen[components[buttonKey].Id] = components[buttonKey]
-	if LootData[god.NPC].BoonInfoIcon then
+	local lootData = LootData[god.NPC]
+	if lootData ~= nil and lootData.BoonInfoIcon then
 		if god.Known then -- lock
-			local icon = LootData[god.NPC].BoonInfoIcon
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";"..god.NPC))
+			local icon = lootData.BoonInfoIcon
 			SetAnimation({ DestinationId = components[buttonKey].Id, Name = icon })
 			SetScale({Id = components[buttonKey].Id, Fraction = 0.9})
 			components[buttonKey .. "Lock"] = CreateScreenComponent({ Name = "BlankObstacle", X = localx, Y = localy+25, Group =
@@ -492,8 +524,8 @@ function CreateExiledGodIcon(components, args)
 				SetAnimation({ DestinationId = components[buttonKey].LockId, Name = "LockedKeepsakeIcon" })
 			end
 		else
-			SetAnimation({ DestinationId = components[buttonKey].Id, Name = "Keepsake_Unknown" })
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Out"))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Out:"..god.NPC))
+			SetAnimation({ DestinationId = components[buttonKey].Id, Name = "Keepsake_Unknown" })			
 		end
 	else
 		SetAnimation({ DestinationId = components[buttonKey].Id, Name = "Keepsake_Unknown" })
@@ -809,13 +841,25 @@ function HandleExiledToggle(screen, button, textOverride)
 	local buttonKey = button.ButtonKey
 	local components = screen.Components
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click"))
-	if IsExiledGodUnlocked( godName ) then
+	if IsExiledGodUnlocked( godName ) then -- Toggle if unlocked
 		-- equip weapon upgrade
 		--if itemIndex ~= lastEquippedIndex then
 			SelectExiledGod( screen, godName)
 			UpdateExiledGodButtons( buttonKey, godName )
 		--end
-	else
+	elseif HasResource( "GiftPoints", 1 ) then -- Buy out
+		SpendResource( "GiftPoints", 1, "ExiledGodsUnlock" )
+		--UnlockOrIncreaseWeaponUpgrade( screen, weaponName, itemIndex )
+
+		Flash({ Id = button.Id, Speed = 1, MinFraction = 1, MaxFraction = 0.0, Color = Color.White, ExpireAfterCycle = true })
+		CreateAnimation({ Name = "BoonGet", DestinationId = button.Id, Scale = 1.0, GroupName = "Combat_Menu_TraitTray_Additive", Color = Color.Red, OffsetX = -500 })
+		PlaySound({ Name = "/Leftovers/Menu Sounds/TeamWipe2" })
+		PlaySound({ Name = "/Leftovers/SFX/AnnouncementThunder" })
+		thread( PlayVoiceLines, GlobalVoiceLines.UpgradedWeaponUpgradePurchasedVoiceLines, true )
+		--SetColor({ Id = ScreenAnchors.WeaponUpgradeScreen.Components["PurchaseButton" ..itemIndex.."Icon"].Id, Color = Color.White })
+		--SetAnimation({ DestinationId = ScreenAnchors.WeaponUpgradeScreen.Components["LockIcon" .. itemIndex].Id, Name = "LockedIconReleaseWeapon" })
+		--UpdateWeaponUpgradeButtons( weaponName, lastEquippedIndex )
+		--ShowNextUpgrade( button )
 		UnlockExiledGod(screen, godName)
 		UpdateExiledGodButtons( buttonKey, godName )
 	--[[elseif not IsExiledGodUnlocked(weaponName, itemIndex) and HasResource( "SuperLockKeys", GetNextWeaponUpgradeKeyCost( weaponName, itemIndex ) ) and not IsBuyWeaponUpgradeDisabled( weaponName, itemIndex ) then
@@ -935,3 +979,77 @@ function UpdateExiledGodButtons( buttonKey, godName )
 		end
 	end]]
 end
+
+-- Change God Pool Mechanic
+--[[ModUtil.Path.Wrap( "IsRoomRewardEligible", 
+	function(baseFunc, run, room, reward, previouslyChosenRewards, args)
+		if GameState.CurrentExiledGods ~= nil and Contains( GameState.CurrentExiledGods, reward.LootName ) then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Denied"))
+			return false
+		end
+		return baseFunc(run, room, reward, previouslyChosenRewards, args)
+	end
+)]]
+ModUtil.Path.Wrap( "SetupRoomReward", 
+	function(baseFunc, currentRun, room, previouslyChosenRewards, args )
+		args = args or {}
+		local excludeLootNames = {}
+		for god, exiled in pairs( GameState.CurrentExiledGods ) do
+			if exiled then
+				table.insert( excludeLootNames, god )
+			end
+		end
+		if not args.IgnoreForceLootName then
+			for k, trait in pairs( CurrentRun.Hero.Traits ) do
+				if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 and not Contains(excludeLootNames, trait.ForceBoonName) then
+					args.IgnoreForceLootName = true
+				end
+			end
+		end
+		baseFunc(currentRun, room, previouslyChosenRewards, args)
+	end
+)
+ModUtil.Path.Wrap( "GetEligibleLootNames", 
+	function(baseFunc, excludeLootNames )
+		local output = baseFunc(excludeLootNames)
+		if GameState.CurrentExiledGods ~= nil then
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("CurrentExiledGods"))
+			for _, lootName in ipairs( output ) do
+				if TableLength(output) <= 1 then
+					break
+				end
+				if GameState.CurrentExiledGods[lootName] ~= nil and GameState.CurrentExiledGods[lootName] then
+					RemoveValue( output, lootName )
+				end
+			end
+		end
+		return output
+	end
+)
+--[[ModUtil.Path.Wrap( "StartOver", 
+	function(baseFunc)
+		
+	AddInputBlock({ Name = "StartOver" })
+
+	local currentRun = CurrentRun
+	EndRun( currentRun )
+	CurrentDeathAreaRoom = nil
+	PreviousDeathAreaRoom = nil
+	currentRun = StartNewRun( currentRun )
+	StopSound({ Id = AmbientMusicId, Duration = 1.0 })
+	AmbientMusicId = nil
+	AmbientTrackName = nil
+	ResetObjectives()
+	killTaggedThreads( RoomThreadName )
+
+	SetConfigOption({ Name = "FlipMapThings", Value = false })
+
+	AddTimerBlock( currentRun, "StartOver" )
+	SetPersephoneAwayAtRunStart()
+	--StartNewRunPresentation( currentRun )
+	RemoveInputBlock({ Name = "StartOver" })
+	RemoveTimerBlock( currentRun, "StartOver" )
+	killTaggedThreads( RoomThreadName )
+
+	end
+)]]
