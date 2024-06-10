@@ -174,6 +174,36 @@ ModUtil.Path.Wrap("CheckOnHitPowers",
 			end
 		end
 	)
+ModUtil.Path.Wrap("CheckLastStand",
+    function(baseFunc, victim, triggerArgs)
+        local hasLastStand = baseFunc(victim, triggerArgs)
+        -- LastStand Hestia functions
+        if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
+            AddMaxHealth(GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait",
+                { Delay = 0.01, NoHealing = true, Thread = true })
+        end
+        if HeroHasTrait("ArmorDefianceTrait") and CurrentRun.Hero.Armor ~= nil and hasLastStand then
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Repair"))
+            local armorToAdd = CurrentRun.Hero.Armor.Max*GetTotalHeroTraitValue("RepairArmorOnDeathDefiancePercent")
+            RepairHeroArmor(armorToAdd)
+        end
+        return hasLastStand
+    end
+)
+ModUtil.Path.Wrap("CheckOnDamagedPowers",
+    function(baseFunc, victim, attacker, args)
+        baseFunc(victim, attacker, args)
+        --Apollo-Zeus Duo extra function
+        local weaponName = args.SourceWeapon
+        if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and
+            HeroHasTrait("ZeusChargedBoltTrait") and args.FirstInVolley then
+            if Contains({ "BlindLightningEffector" }, weaponName) then
+                FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId,
+                    DestinationId = victim.ObjectId, FireFromTarget = true })
+            end
+        end
+    end
+)
 function TrackDamageWithTime(triggerArgs, victim, name, mutliplier)
     if victim.TimeOfLastDamage and victim.TimeOfLastDamage[name] and
         _worldTime - victim.TimeOfLastDamage[name] < 0.05 then

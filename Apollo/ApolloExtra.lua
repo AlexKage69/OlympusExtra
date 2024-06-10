@@ -5448,19 +5448,7 @@ if ModUtil ~= nil then
 		end
 	end
 
-	--Zeus Duo extra function
-	ModUtil.Path.Wrap("CheckOnDamagedPowers",
-		function(baseFunc, victim, attacker, args)
-			baseFunc(victim, attacker, args)
-			local weaponName = args.SourceWeapon
-			if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and
-				HeroHasTrait("ZeusChargedBoltTrait") and args.FirstInVolley then
-				if Contains({ "BlindLightningEffector" }, weaponName) then
-					FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId,
-						DestinationId = victim.ObjectId, FireFromTarget = true })
-				end
-			end
-		end)
+	
 	-- Dionysus Duo Lobs
 	local countToTwo = false;
 	function SpawnAdditionalLob(triggerArgs, traitDataArgs)

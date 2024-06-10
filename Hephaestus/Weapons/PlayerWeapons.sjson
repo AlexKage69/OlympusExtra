@@ -17,7 +17,7 @@
           OnlyAffectName = "_PlayerUnit"
           //DurationFrames = 15
           Duration = 0.5
-          Modifier = 1.2
+          Modifier = 1.0
           CanAffectInvulnerable = true
           FlashFrontFxWhenExpiring = true
           Active = false
@@ -29,7 +29,7 @@
           Name = "RevengeBoostDamage"
           Type = "DAMAGE_OUTPUT"
           Duration = 0.5
-          Modifier = 1.2
+          Modifier = 1.0
           CanAffectInvulnerable = true
           OnlyAffectName = "_PlayerUnit"
           ExtendDurationOnReapply = true

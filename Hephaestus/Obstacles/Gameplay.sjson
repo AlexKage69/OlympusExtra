@@ -11,5 +11,20 @@
         Graphic = "BoonDropHephaestus"
       }
     }
+    {
+      Name = "LastStandHealthDrop"
+      InheritFrom = "BaseLoot"
+      DisplayInEditor = false
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "null"
+        Interact = 
+        {
+          AutoActivate = true
+          DestroyOnUse = true
+        }
+      }
+    }
   ]
 }

@@ -5694,18 +5694,6 @@ if ModUtil ~= nil then
 		ExpireProjectiles({ Names = { "HestiaSuper", "HestiaMaxSuper" } })
 	end
 
-	-- LastStand Hestia functions
-	ModUtil.Path.Wrap("CheckLastStand",
-		function(baseFunc, victim, triggerArgs)
-			local hasLastStand = baseFunc(victim, triggerArgs)
-			if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
-				AddMaxHealth(GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait",
-					{ Delay = 0.01, NoHealing = true, Thread = true })
-			end
-			return hasLastStand
-		end
-	)
-
 	-- Hestia FreeHealthTrait
 	ModUtil.Path.Wrap("SpawnRoomReward",
 		function(baseFunc, eventSource, args)

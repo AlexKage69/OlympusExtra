@@ -38,7 +38,7 @@ if ModUtil ~= nil then
 				"HephaestusShoutTrait",
 				"FullHealthExtraRewardTrait",
 				"DropMoneyTrait",
-				"DamageBoostTrait",
+				"RevengeBoostTrait",
 				"ArmorBossTrait",
 				"ArmorEncounterTrait",
 				"ArmorDefianceTrait",
@@ -303,6 +303,544 @@ if ModUtil ~= nil then
 		},
 		Image = "Codex_Portrait_Hephaestus",
 	}
+	--[[local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
+	OlympusEnemyData.HephaestusChariot = {
+		InheritFrom = { "BaseVulnerableEnemy" },
+		GenusName = "TrainingMelee",
+		RequiredKill = false,
+		DropItemsOnDeath = false,
+		UseShrineUpgrades = false,
+		DamagedFxStyles =
+		{
+			Default = "HitSparkEnemyDamagedPhysical",
+			Rapid = "HitSparkEnemyDamagedPhysicalRapid",
+		},
+		MaxHealth = 400,
+		HealthBarOffsetY = -145,
+		HealthBarType = "MediumLarge",
+		SkipDamageText = false,
+		AnimOffsetZ = 120,
+		UnuseableWhenDead = true,
+		SpeechCooldownTime = 9,
+		SkipModifiers = true,
+		AlwaysTraitor = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		InvincibubbleAnim = "Invincibubble_Zag",
+
+		Groups = { "FlyingEnemies", "TrainingEnemies" },
+
+		Material = "Bone",
+
+		MeterMultiplier = 0,
+
+		DefaultAIData =
+		{
+			PreAttackSound = "/Leftovers/SFX/CroneSlowHiss",
+			AIBufferDistance = 750,
+			AIAttackDistance = 600,
+			RetreatAfterAttack = true,
+			RetreatTimeout = 1.0,
+
+			PreAttackAnimation = "NPCDusaPreAttack",
+			FireAnimation = "NPCDusaAttack",
+			PostAttackAnimation = "NPCDusaIdle",
+		},
+
+		WeaponOptions =
+		{
+			"DusaFreezeShotSpray", "DusaFreezeShotSpread"
+		},
+
+		AIOptions =
+		{
+			AggroAI,
+		},
+		PostAggroAI = AttackerAI,
+
+		MoneyDropOnDeath =
+		{
+			Chance = 0,
+		},
+
+		OnSpawnVoiceLines =
+		{
+			{
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredRooms = { "A_Boss01", },
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Oh hi, sorry, Miss Meg!
+					{ Cue = "/VO/Dusa_0216" },
+					-- I really hate this part of the job, Miss Meg!
+					{ Cue = "/VO/Dusa_0217" },
+					-- Miss Meg, I am so sorry!
+					{ Cue = "/VO/Dusa_0218" },
+					-- Um hi again, Miss Meg!
+					{ Cue = "/VO/Dusa_0219" },
+					-- Prince, this is so mean!!
+					{ Cue = "/VO/Dusa_0220" },
+					-- Now break it up, you two!
+					{ Cue = "/VO/Dusa_0221" },
+					-- I hate to see you fight!
+					{ Cue = "/VO/Dusa_0222" },
+					-- No way, Miss Meg?!
+					{ Cue = "/VO/Dusa_0223" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredBiome = "Asphodel",
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+					RequiredAnyUnitAlive = { "FreezeShotUnit", "FreezeShotUnitElite" },
+					RequiredMinKillEnemies = 3,
+
+					-- What a bunch of phonies!
+					{ Cue = "/VO/Dusa_0262" },
+					-- You give gorgons a bad name!
+					{ Cue = "/VO/Dusa_0263" },
+					-- You no-good gorgons!
+					{ Cue = "/VO/Dusa_0264" },
+					-- Get ready for the real deal, gorgon heads!
+					{ Cue = "/VO/Dusa_0265" },
+					-- You ladies ready?!
+					{ Cue = "/VO/Dusa_0266" },
+					-- Come get a taste of your own medicine!
+					{ Cue = "/VO/Dusa_0267" },
+					-- Come and get it, ladies!!
+					{ Cue = "/VO/Dusa_0268" },
+					-- Gorgons causing problems for you, Prince?
+					{ Cue = "/VO/Dusa_0269" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredRooms = { "B_MiniBoss01", },
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+					RequiredAnyUnitAlive = { "HitAndRunUnit", "HitAndRunUnitElite", "HitAndRunUnitSuperElite" },
+
+					-- Whoa, big momma!
+					{ Cue = "/VO/Dusa_0270" },
+					-- May I remind you, no relation, Prince?
+					{ Cue = "/VO/Dusa_0271" },
+					-- Hey, sister, let's see what you've got!
+					{ Cue = "/VO/Dusa_0272" },
+					-- This lady's trouble, Prince!
+					{ Cue = "/VO/Dusa_0273" },
+					-- I'm not afraid of you!!
+					{ Cue = "/VO/Dusa_0274" },
+					-- You're not so tough!
+					{ Cue = "/VO/Dusa_0275" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredRooms = { "B_Boss01", "B_Boss02" },
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Oh hi Big Snake!
+					{ Cue = "/VO/Dusa_0224" },
+					-- Look at this big old snake!
+					{ Cue = "/VO/Dusa_0225" },
+					-- Oh wow that thing is huge!
+					{ Cue = "/VO/Dusa_0226" },
+					-- That big snake making trouble, Prince?
+					{ Cue = "/VO/Dusa_0227" },
+					-- I'm not afraid of snakes!
+					{ Cue = "/VO/Dusa_0228" },
+					-- I'm not afraid of snakes!! That would be weird.
+					{ Cue = "/VO/Dusa_0229", RequiredPlayed = { "/VO/Dusa_0220" } },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredRooms = { "C_MiniBoss01", },
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Oh wow this guy is huge!
+					{ Cue = "/VO/Dusa_0230" },
+					-- Whoa it's the Minotaur!
+					{ Cue = "/VO/Dusa_0231" },
+					-- Look at the size of this guy!
+					{ Cue = "/VO/Dusa_0232" },
+					-- This looks like trouble, Prince!
+					{ Cue = "/VO/Dusa_0233" },
+					-- Let's slow this bruiser down!
+					{ Cue = "/VO/Dusa_0234" },
+					-- Hey, toughguy, over here!
+					{ Cue = "/VO/Dusa_0235" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredRooms = { "C_Boss01", },
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					RequiredAnyUnitAlive = { "Theseus", "Theseus2" },
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Whoa, what a crowd!
+					{ Cue = "/VO/Dusa_0236" },
+					-- Hey, look, an audience!
+					{ Cue = "/VO/Dusa_0237" },
+					-- Would you look at this crowd?
+					{ Cue = "/VO/Dusa_0238" },
+					-- Is this the main event?!
+					{ Cue = "/VO/Dusa_0239" },
+					-- Wow look at all this!
+					{ Cue = "/VO/Dusa_0240" },
+					-- Wow this place is amazing, Prince!
+					{ Cue = "/VO/Dusa_0241" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredRooms = { "CharonFight01", },
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Oh wow, that's Charon, Prince!
+					{ Cue = "/VO/Dusa_0502" },
+					-- You stay away from him, please, Charon sir!
+					{ Cue = "/VO/Dusa_0503" },
+					-- You'll please forgive us, won't you, Charon sir?
+					{ Cue = "/VO/Dusa_0504" },
+					-- Um, no hard feelings, OK, Charon sir?
+					{ Cue = "/VO/Dusa_0505" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					RequiredRooms = { "D_Boss01", },
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Ah, it's your father, Prince!!
+					{ Cue = "/VO/Dusa_0248" },
+					-- Am I supposed to be here, Prince?!
+					{ Cue = "/VO/Dusa_0249" },
+					-- Um, I could get in lots of trouble here!
+					{ Cue = "/VO/Dusa_0250" },
+					-- Oh wow, Lord Hades, sir!!
+					{ Cue = "/VO/Dusa_0251" },
+					-- Ahh, oh no, it's him!
+					{ Cue = "/VO/Dusa_0252" },
+					-- Ahh it's the big boss!!
+					{ Cue = "/VO/Dusa_0253" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					RequiredEncounters = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
+					SuccessiveChanceToPlayAll = 0.5,
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Ooh, Thanatos!
+					{ Cue = "/VO/Dusa_0242" },
+					-- It's Thanatos, what do you need me for?
+					{ Cue = "/VO/Dusa_0243" },
+					-- Oh wow, it's Thanatos!
+					{ Cue = "/VO/Dusa_0244" },
+					-- Whoa is that Thanatos?
+					{ Cue = "/VO/Dusa_0245" },
+					-- Ah, that is Thanatos!
+					{ Cue = "/VO/Dusa_0246" },
+					-- Wait, Thanatos, that's him!
+					{ Cue = "/VO/Dusa_0247" },
+				},
+				{
+					RandomRemaining = true,
+					BreakIfPlayed = true,
+					RequiredTrait = "DusaAssistTrait",
+					PreLineWait = 2.2,
+					Queue = "Always",
+					Source = { SubtitleColor = Color.DusaVoice },
+
+					-- Time to do my thing!
+					{ Cue = "/VO/Dusa_0195" },
+					-- Time to take out the trash!
+					{ Cue = "/VO/Dusa_0196" },
+					-- Got here as fast as I could!
+					{ Cue = "/VO/Dusa_0204" },
+					-- Incomiiing!
+					{ Cue = "/VO/Dusa_0202" },
+					-- Who wants to tangle, huh?!
+					{ Cue = "/VO/Dusa_0203" },
+					-- Don't worry, I'll save you!
+					{ Cue = "/VO/Dusa_0207" },
+					-- I'm here to rescue you!!
+					{ Cue = "/VO/Dusa_0208" },
+					-- This sure beats mopping floors!
+					{ Cue = "/VO/Dusa_0209" },
+					-- Statue-making time!
+					{ Cue = "/VO/Dusa_0200" },
+					-- Who wants to get rocked?!
+					{ Cue = "/VO/Dusa_0201" },
+					-- I'm tougher than I look!
+					{ Cue = "/VO/Dusa_0212" },
+					-- I'll get right on it, Prince!
+					{ Cue = "/VO/Dusa_0214" },
+					-- You can count on me!
+					{ Cue = "/VO/Dusa_0205" },
+					-- You can count on me!
+					{ Cue = "/VO/Dusa_0215" },
+				}
+			}
+		},
+
+		OnHitVoiceLinesRequireAttackerName = "_PlayerUnit",
+		OnHitVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			PlayFromTarget = true,
+			ChanceToPlay = 0.05,
+			CooldownTime = 100,
+
+			-- Heyy!
+			{ Cue = "/VO/Dusa_0323" },
+			-- Hey!
+			{ Cue = "/VO/Dusa_0324" },
+			-- Um, hey!
+			{ Cue = "/VO/Dusa_0325" },
+			-- Oh stop!
+			{ Cue = "/VO/Dusa_0326" },
+			-- Not me, Prince!
+			{ Cue = "/VO/Dusa_0327" },
+			-- Nuh-uh!
+			{ Cue = "/VO/Dusa_0328" },
+			-- No sir!
+			{ Cue = "/VO/Dusa_0329" },
+			-- Uh, Prince?
+			{ Cue = "/VO/Dusa_0330" },
+			-- Your Highness!
+			{ Cue = "/VO/Dusa_0331" },
+			-- Honest mistake!
+			{ Cue = "/VO/Dusa_0332" },
+			-- Don't worry about me!
+			{ Cue = "/VO/Dusa_0333" },
+			-- Ow!! Kidding.
+			{ Cue = "/VO/Dusa_0334" },
+			-- I'm only here to help!
+			{ Cue = "/VO/Dusa_0335" },
+			-- Hey, what gives?
+			{ Cue = "/VO/Dusa_0336" },
+			-- Good thing we have this bond!
+			{ Cue = "/VO/Dusa_0337" },
+			-- Woo, I'm invincible!!
+			{ Cue = "/VO/Dusa_0338" },
+		},
+		KillingEnemyVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.35,
+			ChanceToPlay = 0.1,
+			PlayFromTarget = true,
+			CooldownTime = 7,
+
+			-- Got one!
+			{ Cue = "/VO/Dusa_0276" },
+			-- I got one!
+			{ Cue = "/VO/Dusa_0277" },
+			-- Take that!
+			{ Cue = "/VO/Dusa_0278" },
+			-- Got you!
+			{ Cue = "/VO/Dusa_0279" },
+			-- Go away!
+			{ Cue = "/VO/Dusa_0280" },
+			-- Go away!
+			{ Cue = "/VO/Dusa_0281" },
+			-- Ooh I got one!
+			{ Cue = "/VO/Dusa_0282" },
+			-- Got 'em!
+			{ Cue = "/VO/Dusa_0283" },
+			-- Haha!
+			{ Cue = "/VO/Dusa_0284" },
+			-- That'll show you!
+			{ Cue = "/VO/Dusa_0285" },
+			-- Rocked one!
+			{ Cue = "/VO/Dusa_0286" },
+		},
+		LastStandReactionVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			CooldownTime = 12,
+			Queue = "Always",
+
+			-- Oh no are you OK?
+			{ Cue = "/VO/Dusa_0299", PreLineWait = 2.0 },
+			-- Prince, no!
+			{ Cue = "/VO/Dusa_0300" },
+			-- Ah, watch out!
+			{ Cue = "/VO/Dusa_0301" },
+			-- Oh no!!
+			{ Cue = "/VO/Dusa_0302" },
+			-- Are you OK?
+			{ Cue = "/VO/Dusa_0303", PreLineWait = 2.0 },
+			-- Ah you're hurt!
+			{ Cue = "/VO/Dusa_0304", PreLineWait = 2.0 },
+			-- No, keep fighting!
+			{ Cue = "/VO/Dusa_0305", PreLineWait = 2.0 },
+			-- Keep fighting, Prince!
+			{ Cue = "/VO/Dusa_0306", PreLineWait = 2.0 },
+			-- Oh, ow!!
+			{ Cue = "/VO/Dusa_0307" },
+			-- No, I...!
+			{ Cue = "/VO/Dusa_0308", PreLineWait = 2.0 },
+			-- I can't look...!
+			{ Cue = "/VO/Dusa_0309", PreLineWait = 2.0 },
+			-- Prince!
+			{ Cue = "/VO/Dusa_0310", PreLineWait = 2.0 },
+			-- Zagreus!
+			{ Cue = "/VO/Dusa_0311", PreLineWait = 2.0 },
+			-- Keep fighting!
+			{ Cue = "/VO/Dusa_0312", PreLineWait = 2.0 },
+		},
+		WrathReactionVoiceLines =
+		{
+			Queue = "Interrupt",
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 2.3,
+				CooldownTime = 30,
+				SuccessiveChanceToPlayAll = 0.5,
+				RequiredTrait = "AthenaShoutTrait",
+
+				-- Oh, it's Athena, huh...
+				{ Cue = "/VO/Dusa_0319" },
+				-- Athena's helping you?
+				{ Cue = "/VO/Dusa_0320" },
+				-- Careful with that one, Prince.
+				{ Cue = "/VO/Dusa_0321" },
+				-- Help from Athena, huh?
+				{ Cue = "/VO/Dusa_0322" },
+			},
+			{
+				RandomRemaining = true,
+				PreLineWait = 2.3,
+				CooldownTime = 30,
+				SuccessiveChanceToPlayAll = 0.5,
+
+				-- Oh wow, look at you go!
+				{ Cue = "/VO/Dusa_0313" },
+				-- Whoa, that is something, Prince!
+				{ Cue = "/VO/Dusa_0314" },
+				-- Woo, you get them, Prince!
+				{ Cue = "/VO/Dusa_0315" },
+				-- Wow, would you look at that!
+				{ Cue = "/VO/Dusa_0316" },
+				-- Calling in extra favors, Prince?
+				{ Cue = "/VO/Dusa_0317" },
+				-- That'll show them!
+				{ Cue = "/VO/Dusa_0318" },
+			},
+		},
+		AssistEndedVoiceLines =
+		{
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.35,
+				Source = { SubtitleColor = Color.DusaVoice },
+				Cooldowns =
+				{
+					{ Name = "DusaAnyQuipSpeech", Time = 30 },
+				},
+
+				-- Take care, OK?!
+				{ Cue = "/VO/Dusa_0352" },
+				-- I have to go!
+				{ Cue = "/VO/Dusa_0353" },
+				-- Aah I have to go!
+				{ Cue = "/VO/Dusa_0354" },
+				-- Bye, Prince!
+				{ Cue = "/VO/Dusa_0355" },
+				-- Keep going!
+				{ Cue = "/VO/Dusa_0356" },
+				-- Hope I could help!
+				{ Cue = "/VO/Dusa_0357" },
+				-- Please be OK?
+				{ Cue = "/VO/Dusa_0358" },
+				-- I need to get back!
+				{ Cue = "/VO/Dusa_0359" },
+				-- Oh no I'm late!
+				{ Cue = "/VO/Dusa_0360" },
+				-- Keep fighting, Zagreus!
+				{ Cue = "/VO/Dusa_0361" },
+				-- OK byeee!
+				{ Cue = "/VO/Dusa_0362" },
+				-- Go on without me, Prince!
+				{ Cue = "/VO/Dusa_0363" },
+				-- Hope I did OK!
+				{ Cue = "/VO/Dusa_0364" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.2,
+				UsePlayerSource = true,
+				SuccessiveChanceToPlay = 0.2,
+				RequiredFalseBossPhase = 3,
+
+				-- Cheers!
+				{ Cue = "/VO/ZagreusField_2774", RequiredKillEnemiesFound = true, },
+				-- Bye now!
+				{ Cue = "/VO/ZagreusField_2775" },
+				-- See you!
+				{ Cue = "/VO/ZagreusField_2776" },
+				-- See you at home?
+				{ Cue = "/VO/ZagreusField_2777", RequiredFalseTraits = { "SkellyAssistTrait", "SisyphusAssistTrait" }, RequiredKillEnemiesFound = true, },
+				-- Thanks!
+				{ Cue = "/VO/ZagreusField_2778", RequiredKillEnemiesFound = true, },
+				-- Thank you!!
+				{ Cue = "/VO/ZagreusField_3012", RequiredKillEnemiesFound = true, },
+				-- I owe you one!
+				{ Cue = "/VO/ZagreusField_3013", RequiredKillEnemiesFound = true, },
+				-- OK good-bye!
+				{ Cue = "/VO/ZagreusField_3014" },
+				-- We'll chat later OK?
+				{ Cue = "/VO/ZagreusField_3015" },
+				-- Thank you for that!
+				{ Cue = "/VO/ZagreusField_3016" },
+			},
+		}
+	}]]
 
 	-- Trait Section
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
@@ -850,8 +1388,9 @@ if ModUtil ~= nil then
 		Name = "HephaestusShoutTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		RequiredTextLines = { "PoseidonWrathIntro01" },
-		CustomTrayText = "HephaestusShoutTrait_Tray",
-		Slot = "Shout",
+		RequiredSlottedTrait = "Shout",
+		--CustomTrayText = "HephaestusShoutTrait_Tray",
+		--Slot = "Shout",
 		--Icon = "Boon_Hephaestus_05",
 		RarityLevels =
 		{
@@ -914,24 +1453,36 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.33,
+				Multiplier = 3.00,
 			},
 			Epic =
 			{
-				Multiplier = 1.66,
+				Multiplier = 5.00,
 			},
 			Heroic =
 			{
-				Multiplier = 2.0,
+				Multiplier = 7.00,
 			}
 		},		
+		DropMoneyArmor = {
+			BaseValue = 0.05,
+			SourceIsMultiplier = false,
+			ExtractValues =
+			{
+				{
+					ExtractAs = "TooltipDropMoneyArmor",
+					Format = "Percent",
+				}
+			}
+		}
 	}
-	OlympusTraitData.DamageBoostTrait =
+	OlympusTraitData.RevengeBoostTrait =
 	{
-		Name = "DamageBoostTrait",
+		Name = "RevengeBoostTrait",
+		Icon = "Weapon_Shield_02",
 		--Icon = "Boon_Hephaestus_08",
 		InheritFrom = { "ShopTier2Trait" },
-		RequiredFalseTrait = "DamageBoostTrait",
+		RequiredFalseTrait = "RevengeBoostTrait",
 		RarityLevels =
 		{
 			Common =
@@ -950,14 +1501,67 @@ if ModUtil ~= nil then
 			{
 				Multiplier = 1.75,
 			}
+		},	
+		PropertyChanges =
+		{	
+			{
+				WeaponName = "RevengeBoostApplicator",
+				EffectName = "RevengeBoostSpeed",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				WeaponName = "RevengeBoostApplicator",
+				EffectName = "RevengeBoostDamage",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				WeaponName = "RevengeBoostApplicator",
+				EffectName = "RevengeBoostSpeed",
+				EffectProperty = "Modifier",
+				BaseValue = 0.5,
+				ChangeType = "Add",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipSpeedBonus",
+					Format = "Percent"
+				}
+			},
+			{
+				WeaponName = "RevengeBoostApplicator",
+				EffectName = "RevengeBoostDamage",
+				EffectProperty = "Modifier",
+				BaseValue = 0.5,
+				ChangeType = "Add",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamageBonus",
+					Format = "Percent"
+				}
+			},
 		},
+		AddOnHitWeapons = { "RevengeBoostApplicator" },
+		OnHitWeaponProperties = { IgnoreAutomatic = true, AllowInvulnerable = true, FunctionName = "OnDamageBoost" },
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipEffectDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "RevengeBoostApplicator",
+				BaseName = "RevengeBoostSpeed",
+				BaseProperty = "Duration",
+			},
+		}
 	}
 	OlympusConsumableData.ArmorBossDrop =
 	{
 		Name = "ArmorBossDrop",
 		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
 		RequiredFalseTrait = "ArmorBossTrait",
-		--Icon = "Boon_Hephaestus_09",
+		Icon = "Boon_Athena_11",
 		ConsumeSound = "/EmptyCue",
 		Cost = 0,
 		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
@@ -998,7 +1602,130 @@ if ModUtil ~= nil then
 		{
 			BaseValue = 15,
 		},	
+	}OlympusTraitData.HealthDefianceTrait =
+	{
+		Name = "HealthDefianceTrait",
+		InheritFrom = { "ShopTier1Trait" },
+		God = "Hestia",
+		Icon = "Boon_Hestia_09",
+		LootSource = "HestiaUpgrade",
+		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.50,
+			},
+			Heroic =
+			{
+				Multiplier = 1.75,
+			}
+		},
+		DefianceExtraHealth = {
+			BaseValue = 20,
+			ExtractValue =
+			{
+				ExtractAs = "TooltipBonusHealth",
+			}
+		},
+		ExtractValues =
+		{
+			{
+				Key = "DefianceExtraHealth",
+				ExtractAs = "TooltipBonusHealth",
+			},
+		},
 	}
+	OlympusConsumableData.LastStandHealthDrop =
+	{
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "ArmorEncounterTrait",
+		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
+		--RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
+		--RequiredMinMaximumLastStands = 1,
+		--Icon = "Boon_Hestia_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Max = 25
+			},
+			{ TraitName = "ArmorEncounterTrait" },
+			{ },
+		},
+	}
+	OlympusConsumableData.LastStandHealth2Drop =
+	{
+		Name = "LastStandHealth2Drop",
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "HealthDefianceTrait",
+		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
+		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
+		RequiredMinMaximumLastStands = 1,
+		Icon = "Boon_Hestia_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames = { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" },
+		UseFunctionArgs = {
+			{
+				Icon = "ExtraLifeHestia",
+				WeaponName = "LastStandMetaUpgradeShield",
+				HealFraction = 0.5,
+			},
+			{ TraitName = "HealthDefianceTrait" },
+			{},
+		},
+	}
+	OlympusConsumableData.LastArmorDrop =
+	{
+		Name = "LastArmorDrop",
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "HealthDefianceTrait",
+		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
+		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
+		RequiredMinMaximumLastStands = 1,
+		Icon = "Boon_Hestia_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames = { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" },
+		UseFunctionArgs = {
+			{
+				Icon = "ExtraLifeHestia",
+				WeaponName = "LastStandMetaUpgradeShield",
+				HealFraction = 0.5,
+			},
+			{ TraitName = "HealthDefianceTrait" },
+			{},
+		},
+	}
+	--[[OlympusConsumableData.ArmorEncounterDrop =
+	{
+		Name = "ArmorEncounterDrop",
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "ArmorEncounterTrait",
+		Icon = "Boon_Hestia_09",
+		--God = "Hephaestus",
+		--Icon = "Boon_Hephaestus_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Max = 25
+			},
+			{ TraitName = "ArmorEncounterTrait" },
+			{ },
+		},
+	}]]
 	OlympusTraitData.ArmorEncounterTrait =
 	{
 		Name = "ArmorEncounterTrait",
@@ -1024,8 +1751,30 @@ if ModUtil ~= nil then
 				Multiplier = 0.57,
 			}
 		},
+		RepairArmorOnPerfectEncounter =
+		{
+			BaseValue = 15,
+			SourceIsMultiplier = true,
+			DecimalPlaces = 3,
+		},	
 	}
-	
+	OlympusConsumableData.ArmorDefianceDrop =
+	{
+		Name = "ArmorDefianceDrop",
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "ArmorDefianceTrait",
+		--Icon = "Boon_Hephaestus_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Max = 50
+			},
+			{ TraitName = "ArmorDefianceTrait" },
+			{ },
+		},
+	}
 	OlympusTraitData.ArmorDefianceTrait =
 	{
 		Name = "ArmorDefianceTrait",
@@ -1051,6 +1800,11 @@ if ModUtil ~= nil then
 				Multiplier = 1.75
 			}
 		},
+		RepairArmorOnDeathDefiancePercent =
+		{
+			BaseValue = 0.5,
+			SourceIsMultiplier = true,
+		},	
 	}
 	OlympusTraitData.SpawnWeaponsTrait =
 	{
@@ -1127,6 +1881,23 @@ if ModUtil ~= nil then
 			}
 		},
 	}
+	OlympusConsumableData.ArmorLegendaryDrop =
+	{
+		Name = "ArmorLegendaryDrop",
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		RequiredFalseTrait = "ArmorLegendaryTrait",
+		--Icon = "Boon_Hephaestus_09",
+		ConsumeSound = "/EmptyCue",
+		Cost = 0,
+		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
+		UseFunctionArgs = {
+			{
+				Max = 100
+			},
+			{ TraitName = "ArmorLegendaryTrait" },
+			{ },
+		},
+	}
 	OlympusTraitData.ArmorLegendaryTrait =
 	{
 		Name = "ArmorLegendaryTrait",
@@ -1168,20 +1939,16 @@ if ModUtil ~= nil then
 
 		RequiredTextLines = { "HermesFirstPickUp" },
 
-		PriorityUpgrades = { },
+		PriorityUpgrades = {},
 		WeaponUpgrades = {},
-		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait", "HephaestusRangedTrait", "FullHealthExtraRewardTrait", "DropMoneyTrait", "RevengeBoostTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "HephaestusDistantTrait", "HephaestusTrapTrait" },
-		Consumables = { "ArmorBossDrop" },
+		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait"},--, --"FullHealthExtraRewardTrait", "DropMoneyTrait", "RevengeBoostTrait" },
+		Consumables = { "LastStandHealthDrop", "LastStandHealth2Drop","LastStandHealth3Drop" },--"ArmorBossDrop"},--, "ArmorEncounterDrop", "ArmorDefianceDrop" },
 		LinkedUpgrades =
 		{
-			DamageBoostTrait =
+			--[[ArmorLegendaryDrop =
 			{
-				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait", "ArmorLegendaryTrait" },
-			},
-			ArmorLegendaryTrait =
-			{
-				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
-			}
+				OneOf = { "HephaestusWeaponTrait" },--"ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
+			}]]
 		},
 
 		Speaker = "NPC_Hephaestus_01",
@@ -3905,25 +4672,26 @@ if ModUtil ~= nil then
 		UnlockGameStateRequirements = { RequiredTextLines = { "HephaestusBackstory04" } }
 	}
 	-- Multi Gods compatibility
-	if ModUtil.Mods.Data["HestiaExtra"] ~= nil then 
-		
-	end
-	if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
-        
-    end
 	-- FUNCTIONS
 
-ModUtil.Path.Wrap( "ArmorBreakPresentation", 
+ModUtil.Path.Wrap( "DoEnemyHealthBufferDeplete", 
 	function(baseFunc, enemy)
-		if HeroHasTrait("DropMoneyTrait") and enemy.DroppedAlready == nil then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Drop Money"))
-			CheckMoneyDrop( CurrentRun, CurrentRun.CurrentRoom, enemy, enemy.MoneyDropOnDeath )
+		if enemy.DroppedAlready == nil and enemy.MoneyDropOnDeath ~= nil and enemy.MoneyDropOnDeath.Chance > 0 then
+			local moneyDropOnDeath = DeepCopyTable( enemy.MoneyDropOnDeath )
+			local extraChance = GetTotalHeroTraitValue("DropMoneyArmor")
+			if moneyDropOnDeath.Chance ~= nil then
+				moneyDropOnDeath.Chance = moneyDropOnDeath.Chance + extraChance
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Drop Money:"..moneyDropOnDeath.Chance))
+			end
+			--moneyDropOnDeath.Chance = 1.0 -- test armor drop
+			CheckMoneyDrop( CurrentRun, CurrentRun.CurrentRoom, enemy, moneyDropOnDeath )
 			enemy.DroppedAlready = true
 		end
 		baseFunc(enemy)
 	end
 )
 function AddHeroArmor(args)
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call Add Armor"))
 	if CurrentRun.Hero.Armor == nil then
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Setup New"))
 		CurrentRun.Hero.Armor = {
@@ -3972,7 +4740,7 @@ ModUtil.Path.Wrap( "UpdateHealthUI",
 			local frameTarget = 1 - (CurrentRun.Hero.Armor.Amount / CurrentRun.Hero.Armor.Max)
 			SetAnimation({ Name = "HealthBarFill", DestinationId = ScreenAnchors.HealthFill, FrameTarget = frameTarget, Instant = true, Color = Color.Black })
 			SetAnimation({ Name = "HealthBarFillWhite", DestinationId = ScreenAnchors.HealthRally, FrameTarget = frameTarget, Instant = true, Color = Color.RallyHealth })
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount +"/"+CurrentRun.Hero.Armor.Max))
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount.."/"..CurrentRun.Hero.Armor.Max))
 		end
 	end
 )
@@ -3995,6 +4763,78 @@ ModUtil.Path.Wrap("StartEncounter",
 		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "RepairText", Duration = 1 })
 	end
+	
+	function OnDamageBoost(attacker, args)
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Got Damage Boost")) 
+		ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+							WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
+		ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+							WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostDamage" })
+	end
+ModUtil.Path.Wrap( "EndEncounterEffects", 
+	function(baseFunc, currentRun, currentRoom, currentEncounter)
+		baseFunc(currentRun, currentRoom, currentEncounter)
+		if currentEncounter == nil or currentEncounter.EncounterType == "NonCombat" then
+			return
+		end
+		if not currentRoom.BlockClearRewards then
+			for k, traitData in pairs(currentRun.Hero.Traits) do
+				if not currentEncounter.PlayerTookDamage and traitData.RepairArmorOnPerfectEncounter then
+					PerfectClearTraitSuccessPresentation( traitData )
+					RepairHeroArmor(traitData.RepairArmorOnPerfectEncounter)
+					--CurrentRun.CurrentRoom.PerfectEncounterCleared = true
+					--CheckAchievement( { Name = "AchBuffedButterfly", CurrentValue = traitData.AccumulatedDamageBonus } )
+				end
+			end
+		end
+	end
+)
+ModUtil.Path.Wrap( "FireShoutEffects", 
+	function(baseFunc, superName)
+		baseFunc(superName)
+		if superName ~= nil then
+			local isMax = string.find(superName, "Max")
+			if isMax then
+				thread( HephaestusMaxShout )
+			else
+				thread( HephaestusShout )
+			end
+		end		
+	end
+)
+function HephaestusShout() 
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Shout")) 
+	SpawnExplosiveChariot({Name = "ChariotSuicide", Duration = 30.0})
+end
+function HephaestusMaxShout() 
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Max Shout")) 
+	SpawnExplosiveChariot({Name = "HephaestusChariotElite", Duration = 30.0})
+end
+function SpawnExplosiveChariot( args )
+
+	local enemyName = args.Name or "ChariotSuicide"
+	local enemyData = EnemyData[enemyName]
+	local newEnemy = DeepCopyTable( enemyData )
+	newEnemy.BlocksLootInteraction = false
+
+	local invaderSpawnPoint = CurrentRun.Hero.ObjectId
+	newEnemy.ObjectId = SpawnUnit({
+			Name = enemyData.Name,
+			Group = "Standing",
+			DestinationId = invaderSpawnPoint, OffsetX = 0, OffsetY = 0 })
+
+	SetupEnemyObject( newEnemy, CurrentRun )
+	--CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
+	--CurrentRun.CurrentRoom.DestroyAssistProjectilesOnEncounterEnd = "DusaFreezeShotNonHoming"
+	thread(EndExplosiveChariot, newEnemy, args )
+end
+
+function EndExplosiveChariot( enemy, args )
+	wait( args.Duration, RoomThreadName )
+	--thread( PlayVoiceLines, enemy.AssistEndedVoiceLines )
+	--ExpireProjectiles({ Name = "DusaFreezeShotNonHoming" })
+	Kill( enemy )
+end
 ModUtil.Path.Wrap( "IsHermesBoon", 
 	function(baseFunc, traitName)
 		if traitName ~= nil then
@@ -4066,9 +4906,9 @@ ModUtil.Path.Wrap( "IsHermesBoon",
 			-- 	BuildSuperMeter(CurrentRun, 50)
 			-- end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			--CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
+			CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
 			baseFunc()
 		end
 	)
-
+	table.insert(OlympusLootData.HermesUpgrade.Consumables,"ArmorEncounterDrop")
 end
