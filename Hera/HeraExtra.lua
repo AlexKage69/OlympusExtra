@@ -3918,7 +3918,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory01"},
 				{ Cue = "/VO/Hera_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Since you seem lock down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us, like you are right now." },
+					Text = "Since you seem locked down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us away, like you are right now." },
 			},
 			HeraBackstory03 =
 			{
@@ -3928,7 +3928,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory02", "HeraGift05" },
 				{ Cue = "/VO/Hera_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember when I told you we were lock by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
+					Text = "Remember when I told you we were locked by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
 			},
 			HeraBackstory04 =
 			{

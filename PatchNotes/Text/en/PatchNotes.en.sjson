@@ -6,12 +6,12 @@
       OverwriteLocalization = true
       Description = """
 	  	{#AlertHeaderFormat}1.3.5 - ModUtil 3.1.1 - Compatibility - May 2024
-			With Hades 2 in early access, Olympus Extra wants to say they will keep on working on their roadmap.
+			With Hades 2 in early access, the OlympusExtra developer team wants to say we will keep on working on this mod, according to our roadmap.
 			
-			Some voice are still missing for our dear Hera! 
-			@{#AlertHighlightFormat}bessyboo{#PreviousFormat} is still resting and we'll deliver them soon.
+			Some voices are still missing for our dear Hera! 
+			@{#AlertHighlightFormat}bessyboo {#PreviousFormat} is still resting and we'll deliver them soon.
 
-			Most Mod stayed on ModUtil 2.10.1. It won't be compatible with them until they are upgraded to ModUtil 3.1.1
+			Most mods stayed on ModUtil 2.10.1. Note that OlympusExtra won't be compatible with them until they are upgraded to ModUtil 3.1.1
 			CodexMenu has a version compatible with ModUtil 3.1.1. Make sure you use the right one.
 
 			 \Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
