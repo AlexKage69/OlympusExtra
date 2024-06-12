@@ -1,8 +1,7 @@
-ModUtil.RegisterMod("ContentExtender")
+--ModUtil.RegisterMod("ContentExtender")
 
 --AspectExtender = {}
-
-ModUtil.BaseOverride("ShowAwardMenu", function ()
+ModUtil.Path.Override("ShowAwardMenu", function ()
     if IsScreenOpen("AwardMenu") then
 		return
 	end
@@ -252,8 +251,6 @@ function(baseFunc, button)
 	else
 		ScreenAnchors.AwardMenuScreen.LastTableSelected = "Keepsake"
 	end	
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Keepsake")) 
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button)) 
 	baseFunc(button)
 end)
 
@@ -262,8 +259,6 @@ function(baseFunc, id)
 	local button = ScreenAnchors.AwardMenuScreen[id]	
 	ScreenAnchors.AwardMenuScreen.CurrentIndex = button.Index
 	ScreenAnchors.AwardMenuScreen.LastTableSelected = "Assist"
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Assist")) 
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(ScreenAnchors.AwardMenuScreen.CurrentIndex)) 
 	baseFunc(id)
 end)]]
 --[[ModUtil.Path.Wrap( "HandleUpgradeToggle", 
@@ -280,7 +275,6 @@ end)]]
 --[[ModUtil.Path.Wrap( "GetComponentByHotkey", 
 	function(baseFunc, components, hotkey)	
 		baseFunc(components,hotkey)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(hotkey)) 
 	end
 )]]
 function HandleKeyboardManagerLoadPage(screen)
@@ -436,8 +430,6 @@ function KeepsakeChangePage(screen, direction)
 	if screen.LastTableSelected ~= "Keepsake" then
 		return
 	end	
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(screen.CurrentIndex % 10))
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(button))
 	if direction == "Left" and screen.KeepsakeCurrentPage > screen.KeepsakeFirstPage then
 		screen.KeepsakeCurrentPage = screen.KeepsakeCurrentPage - 1
 	elseif direction == "Right" and screen.KeepsakeCurrentPage < screen.KeepsakeLastPage then
@@ -483,7 +475,6 @@ function KeepsakeManagerLoadPage(screen)
             CreateKeepsakeIcon( components, { Index = keepsakeData.itemIndex, UpgradeData = keepsakeData.upgradeData, X = keepsakeData.localx, Y = keepsakeData.localy, KeyAppend = "KeepsakeItem" }) 
 			local buttonKey = "UpgradeToggle"..keepsakeData.itemIndex.."KeepsakeItem"
 			components[buttonKey].Index = keepsakeData.itemIndex
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(components[buttonKey])) 
 			--components[keepsakeData.itemIndex]--.Index = keepsakeData.itemIndex
 		end
     end

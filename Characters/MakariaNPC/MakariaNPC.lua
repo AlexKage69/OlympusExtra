@@ -247,7 +247,6 @@ OlympusEncounterSets.EncounterEventsMakariaPool =
 	{ FunctionName = "StartCinematicMakariaPool" },
 }
 function StartCinematicMakariaPool()
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Cinematic")) 
 end
 -- New rooms section
 OlympusRoomSetData.Tartarus.A_Makaria01 =
@@ -400,14 +399,12 @@ OlympusObstacleData.DivinationGods =
 		end
 		ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(challengeBaseIds)) 
 		baseFunc()
 	end
 )]]
 
 OnUsed{ "NPCs",
 	function( triggerArgs )
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Interact")) 
 	end
 }
 OverwriteTableKeys( EnemyData, UnitSetData.NPCs )

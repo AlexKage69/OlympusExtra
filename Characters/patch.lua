@@ -106,7 +106,6 @@ ModUtil.Path.Wrap("DamageEnemy",
             end
             Damage(victim,
                 { EffectName = "JealousyCurse", DamageAmount = damageAmount, Silent = false, PureDamage = false })
-            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Jealousy Damage"))
         end
         if (HeroHasTrait("ExplosionTrait") and triggerArgs.IsCrit) then
             FireWeaponFromUnit({
@@ -140,7 +139,6 @@ end
 	end
 )]]
 function ForceNextRoomFunc(value)
-    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Forced:" .. value))
 
     -- Stomp any rooms already assigned to doors
     for doorId, door in pairs(OfferedExitDoors) do
@@ -163,7 +161,6 @@ end
         end
         --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
         --ForceNextRoomFunc("B_Shop01")
-        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
 
         --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
         --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
