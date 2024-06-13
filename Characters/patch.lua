@@ -163,8 +163,8 @@ ModUtil.Path.Wrap("CheckOnHitPowers",
 				args.AttackerWeaponData = nil
 				--args.IsInvulnerable = true
 			else
-                -- Hephaestus DamageBoostTrait
-                if victim == CurrentRun.Hero and HeroHasTrait("DamageBoostTrait") then
+                -- Hephaestus RevengeBoostTrait
+                if victim == CurrentRun.Hero and HeroHasTrait("RevengeBoostTrait") then
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
 						WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,

@@ -36,14 +36,13 @@ if ModUtil ~= nil then
 				"HephaestusRangedTrait",
 				"HephaestusSecondaryTrait",
 				"HephaestusShoutTrait",
-				"FullHealthExtraRewardTrait",
+				"DamageBoostTrait",
 				"DropMoneyTrait",
 				"RevengeBoostTrait",
 				"ArmorBossTrait",
 				"ArmorEncounterTrait",
 				"ArmorDefianceTrait",
 				"SpawnWeaponsTrait",
-				"HephaestusDistantTrait",
 				"HephaestusTrapTrait",
 				"ArmorLegendaryTrait",
 			},
@@ -276,8 +275,8 @@ if ModUtil ~= nil then
 	)
 	--Keywords
 	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	--ModUtil.Table.Merge(OlympusKeywordList, { "JealousyCurse", "EnvyCurse", "HephaestusTrap", "Aura", "SpecialDiscount" })
-	--ResetKeywords()
+	ModUtil.Table.Merge(OlympusKeywordList, { "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon" })
+	ResetKeywords()
 
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -1349,7 +1348,7 @@ if ModUtil ~= nil then
                 ExtractValue =
                 {
                     ExtractAs = "TooltipPenalty",
-                    Format = "NegativePercentDelta",
+                    Format = "Percent",
                 },
             },
 		},
@@ -1381,6 +1380,22 @@ if ModUtil ~= nil then
 				Multiplier = 1.435,
 			}
 		},
+		SetupFunction =
+		{
+			Name = "SetupTemporaryAmmo",
+			RunOnce = true,
+			FunctionArgs =
+			{
+				Ammo = 3,
+				ExtractValues =
+				{
+					{
+						Key = "Ammo",
+						ExtractAs = "TooltipMaxArmor",
+					},
+				}
+			},
+		},
 	}
 
 	OlympusTraitData.HephaestusShoutTrait =
@@ -1411,33 +1426,17 @@ if ModUtil ~= nil then
 				Multiplier = 1.5,
 			}
 		},
-	}
-
-	OlympusTraitData.FullHealthExtraRewardTrait =
-	{
-		Name = "FullHealthExtraRewardTrait",
-		--Icon = "Boon_Hephaestus_06",
-		InheritFrom = { "ShopTier2Trait" },
-		RequiredFalseTrait = "FullHealthExtraRewardTrait",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.0,
-			},
-			Rare =
-			{
-				Multiplier = 0.941,
-			},
-			Epic =
-			{
-				Multiplier = 0.882,
-			},
-			Heroic =
-			{
-				Multiplier = 0.823,
-			}
+		DamageExtract = {
+			BaseValue = 100,
+			SourceIsMultiplier = false,
 		},
+		ExtractValues =
+		{
+			{
+				Key = "DamageExtract",
+				ExtractAs = "TooltipDamageExtract",
+			},
+		}
 	}
 	OlympusTraitData.DropMoneyTrait =
 	{
@@ -1467,13 +1466,14 @@ if ModUtil ~= nil then
 		DropMoneyArmor = {
 			BaseValue = 0.05,
 			SourceIsMultiplier = false,
-			ExtractValues =
+		},
+		ExtractValues =
+		{
 			{
-				{
-					ExtractAs = "TooltipDropMoneyArmor",
-					Format = "Percent",
-				}
-			}
+				Key = "DropMoneyArmor",
+				ExtractAs = "TooltipDropMoneyArmor",
+				Format = "Percent",
+			},
 		}
 	}
 	OlympusTraitData.RevengeBoostTrait =
@@ -1556,24 +1556,156 @@ if ModUtil ~= nil then
 			},
 		}
 	}
-	OlympusConsumableData.ArmorBossDrop =
+	
+	OlympusTraitData.SpawnWeaponsTrait =
 	{
-		Name = "ArmorBossDrop",
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "ArmorBossTrait",
-		Icon = "Boon_Athena_11",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
-		UseFunctionArgs = {
+		Name = "SpawnWeaponsTrait",
+		InheritFrom = { "ShopTier1Trait" },
+		RequiredFalseTrait = "SpawnWeaponsTrait",
+		RarityLevels =
+		{
+			Common =
 			{
-				Max = 25
+				Multiplier = 1.0,
 			},
-			{ TraitName = "ArmorBossTrait" },
-			{ },
+			Rare =
+			{
+				Multiplier = 1.2,
+			},
+			Epic =
+			{
+				Multiplier = 1.4,
+			},
+			Heroic =
+			{
+				Multiplier = 1.6
+			}
 		},
+		SpawnHephWeaponOnDeath =
+		{
+			BaseValue = 0.25,
+		},	
+		ExtractValues =
+		{
+			{
+				Key = "SpawnHephWeaponOnDeath",
+				ExtractAs = "TooltipChance",
+				Format = "Percent",
+			},
+		}
 	}
-	OlympusTraitData.ArmorBossTrait =
+	OlympusTraitData.ArmorEncounterTrait =
+	{
+		Name = "ArmorEncounterTrait",
+		InheritFrom = { "ShopTier1Trait" },
+		--Icon = "Boon_Hephaestus_10",
+		RequiredFalseTrait = "ArmorEncounterTrait",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.28,
+			},
+			Epic =
+			{
+				Multiplier = 1.57,
+			},
+			Heroic =
+			{
+				Multiplier = 1.86,
+			}
+		},
+		SetupFunction =
+		{
+			Name = "SetupArmor",
+			RunOnce = true,
+			FunctionArgs =
+			{
+				ArmorAtSetup = 25,
+				ExtractValues =
+				{
+					{
+						Key = "ArmorAtSetup",
+						ExtractAs = "TooltipMaxArmor",
+					},
+				}
+			},
+		},
+		RepairArmorOnPerfectEncounter =
+		{
+			BaseValue = 7,
+			SourceIsMultiplier = true,
+			--DecimalPlaces = 3,
+		},	
+		ExtractValues =
+		{
+			{
+				Key = "RepairArmorOnPerfectEncounter",
+				ExtractAs = "TooltipRepairArmor",
+			},
+		}
+	}
+	OlympusTraitData.ArmorDefianceTrait =
+	{
+		Name = "ArmorDefianceTrait",
+		InheritFrom = { "ShopTier2Trait" },
+		--Icon = "Boon_Hephaestus_11",
+		RequiredFalseTrait = "ArmorDefianceTrait",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.125,
+			},
+			Epic =
+			{
+				Multiplier = 1.25,
+			},
+			Heroic =
+			{
+				Multiplier = 1.375
+			}
+		},
+		SetupFunction =
+		{
+			Name = "SetupArmor",
+			RunOnce = true,
+			FunctionArgs =
+			{
+				ArmorAtSetup = 50,
+				ExtractValues =
+				{
+					{
+						Key = "ArmorAtSetup",
+						ExtractAs = "TooltipMaxArmor",
+					},
+				}
+			},
+		},
+		RepairArmorOnDeathDefiancePercent =
+		{
+			BaseValue = 0.4,
+			SourceIsMultiplier = true,
+		},	
+		ExtractValues =
+		{
+			{
+				Key = "RepairArmorOnDeathDefiancePercent",
+				ExtractAs = "TooltipRepairArmor",
+				Format = "Percent",
+			},
+		}
+	}
+	
+	OlympusTraitData.ArmorBossTrait = 
 	{
 		Name = "ArmorBossTrait",
 		InheritFrom = { "ShopTier1Trait" },
@@ -1598,263 +1730,33 @@ if ModUtil ~= nil then
 				Multiplier = 1.6,
 			}
 		},	
+		SetupFunction =
+		{
+			Name = "SetupArmor",
+			RunOnce = true,
+			FunctionArgs =
+			{
+				ArmorAtSetup = 25,
+				ExtractValues =
+				{
+					{
+						Key = "ArmorAtSetup",
+						ExtractAs = "TooltipMaxArmor",
+					},
+				}
+			},
+		},
 		RepairArmorOnBoss =
 		{
 			BaseValue = 15,
 		},	
-	}OlympusTraitData.HealthDefianceTrait =
-	{
-		Name = "HealthDefianceTrait",
-		InheritFrom = { "ShopTier1Trait" },
-		God = "Hestia",
-		Icon = "Boon_Hestia_09",
-		LootSource = "HestiaUpgrade",
-		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.50,
-			},
-			Heroic =
-			{
-				Multiplier = 1.75,
-			}
-		},
-		DefianceExtraHealth = {
-			BaseValue = 20,
-			ExtractValue =
-			{
-				ExtractAs = "TooltipBonusHealth",
-			}
-		},
 		ExtractValues =
 		{
 			{
-				Key = "DefianceExtraHealth",
-				ExtractAs = "TooltipBonusHealth",
+				Key = "RepairArmorOnBoss",
+				ExtractAs = "TooltipRepairArmor",
 			},
-		},
-	}
-	OlympusConsumableData.LastStandHealthDrop =
-	{
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "ArmorEncounterTrait",
-		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
-		--RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
-		--RequiredMinMaximumLastStands = 1,
-		--Icon = "Boon_Hestia_09",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
-		UseFunctionArgs = {
-			{
-				Max = 25
-			},
-			{ TraitName = "ArmorEncounterTrait" },
-			{ },
-		},
-	}
-	OlympusConsumableData.LastStandHealth2Drop =
-	{
-		Name = "LastStandHealth2Drop",
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "HealthDefianceTrait",
-		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
-		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
-		RequiredMinMaximumLastStands = 1,
-		Icon = "Boon_Hestia_09",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames = { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" },
-		UseFunctionArgs = {
-			{
-				Icon = "ExtraLifeHestia",
-				WeaponName = "LastStandMetaUpgradeShield",
-				HealFraction = 0.5,
-			},
-			{ TraitName = "HealthDefianceTrait" },
-			{},
-		},
-	}
-	OlympusConsumableData.LastArmorDrop =
-	{
-		Name = "LastArmorDrop",
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "HealthDefianceTrait",
-		--RequiredOneOfTraits = { "HestiaWeaponTrait", "HestiaRangedTrait", "HestiaDashTrait", "HestiaSecondaryTrait" },
-		RequiredMetaUpgradeSelected = "ExtraChanceMetaUpgrade",
-		RequiredMinMaximumLastStands = 1,
-		Icon = "Boon_Hestia_09",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames = { "AddLastStand", "AddTraitToHero", "GainLastStandPresentation" },
-		UseFunctionArgs = {
-			{
-				Icon = "ExtraLifeHestia",
-				WeaponName = "LastStandMetaUpgradeShield",
-				HealFraction = 0.5,
-			},
-			{ TraitName = "HealthDefianceTrait" },
-			{},
-		},
-	}
-	--[[OlympusConsumableData.ArmorEncounterDrop =
-	{
-		Name = "ArmorEncounterDrop",
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "ArmorEncounterTrait",
-		Icon = "Boon_Hestia_09",
-		--God = "Hephaestus",
-		--Icon = "Boon_Hephaestus_09",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
-		UseFunctionArgs = {
-			{
-				Max = 25
-			},
-			{ TraitName = "ArmorEncounterTrait" },
-			{ },
-		},
-	}]]
-	OlympusTraitData.ArmorEncounterTrait =
-	{
-		Name = "ArmorEncounterTrait",
-		InheritFrom = { "ShopTier1Trait" },
-		--Icon = "Boon_Hephaestus_10",
-		RequiredFalseTrait = "ArmorEncounterTrait",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.00,
-			},
-			Rare =
-			{
-				Multiplier = 0.86,
-			},
-			Epic =
-			{
-				Multiplier = 0.71,
-			},
-			Heroic =
-			{
-				Multiplier = 0.57,
-			}
-		},
-		RepairArmorOnPerfectEncounter =
-		{
-			BaseValue = 15,
-			SourceIsMultiplier = true,
-			DecimalPlaces = 3,
-		},	
-	}
-	OlympusConsumableData.ArmorDefianceDrop =
-	{
-		Name = "ArmorDefianceDrop",
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "ArmorDefianceTrait",
-		--Icon = "Boon_Hephaestus_09",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
-		UseFunctionArgs = {
-			{
-				Max = 50
-			},
-			{ TraitName = "ArmorDefianceTrait" },
-			{ },
-		},
-	}
-	OlympusTraitData.ArmorDefianceTrait =
-	{
-		Name = "ArmorDefianceTrait",
-		InheritFrom = { "ShopTier2Trait" },
-		--Icon = "Boon_Hephaestus_11",
-		RequiredFalseTrait = "ArmorDefianceTrait",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.0,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.5,
-			},
-			Heroic =
-			{
-				Multiplier = 1.75
-			}
-		},
-		RepairArmorOnDeathDefiancePercent =
-		{
-			BaseValue = 0.5,
-			SourceIsMultiplier = true,
-		},	
-	}
-	OlympusTraitData.SpawnWeaponsTrait =
-	{
-		Name = "SpawnWeaponsTrait",
-		InheritFrom = { "ShopTier1Trait" },
-		RequiredFalseTrait = "SpawnWeaponsTrait",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.0,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.5,
-			},
-			Heroic =
-			{
-				Multiplier = 1.75
-			}
-		},
-	}
-	OlympusTraitData.HephaestusDistantTrait =
-	{
-		Name = "HephaestusDistantTrait",
-		InheritFrom = { "ShopTier2Trait" },
-		RequiredFalseTrait = "HephaestusDistantTrait",
-		RarityLevels =
-		{
-			Common =
-			{
-				Multiplier = 1.0,
-			},
-			Rare =
-			{
-				Multiplier = 1.25,
-			},
-			Epic =
-			{
-				Multiplier = 1.5,
-			},
-			Heroic =
-			{
-				Multiplier = 1.75
-			}
-		},
+		}
 	}
 	OlympusTraitData.HephaestusTrapTrait =
 	{
@@ -1869,33 +1771,69 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.25,
+				Multiplier = 0.8,
 			},
 			Epic =
 			{
-				Multiplier = 1.5,
+				Multiplier = 0.4,
 			},
 			Heroic =
 			{
-				Multiplier = 1.75
+				Multiplier = 0.2
 			}
 		},
-	}
-	OlympusConsumableData.ArmorLegendaryDrop =
-	{
-		Name = "ArmorLegendaryDrop",
-		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
-		RequiredFalseTrait = "ArmorLegendaryTrait",
-		--Icon = "Boon_Hephaestus_09",
-		ConsumeSound = "/EmptyCue",
-		Cost = 0,
-		UseFunctionNames =  { "AddHeroArmor", "AddTraitToHero", "GainArmorPresentation" } ,
-		UseFunctionArgs = {
+		LimitIncomingDamageModifiers =
+		{
+			TrapDamage =
 			{
-				Max = 100
+				BaseValue = 5,
 			},
-			{ TraitName = "ArmorLegendaryTrait" },
-			{ },
+			ExtractValues =
+			{
+				{
+					Key = "TrapDamage",
+					ExtractAs = "TooltipLimitTrapDamage",
+				},
+			}	
+		}
+	}
+	OlympusTraitData.DamageBoostTrait ={
+		Name = "DamageBoostTrait",
+		InheritFrom = { "ShopTier1Trait" },
+		--Icon = "Boon_Hephaestus_10",
+		RequiredFalseTrait = "DamageBoostTrait",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.5,
+			},
+			Epic =
+			{
+				Multiplier = 2.0,
+			},
+			Heroic =
+			{
+				Multiplier = 2.5,
+			}
+		},
+		AddOutgoingDamageModifiers =
+		{
+			--ValidWeapons = WeaponSets.HeroNonPhysicalWeapons,
+			--ExcludeLinked = true,
+			ArmorDamageMultiplier = { BaseValue = 1.5, SourceIsMultiplier = true },
+			ExtractValues =
+			{
+				{
+					Key = "ArmorDamageMultiplier",
+					ExtractAs = "TooltipDamageBonus",
+					Format = "PercentDelta",
+				},
+			}
 		},
 	}
 	OlympusTraitData.ArmorLegendaryTrait =
@@ -1904,21 +1842,59 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "ArmorLegendaryTrait",
 		--Icon = "Boon_Hephaestus_15",		
+		SetupFunction =
+		{
+			Name = "SetupArmor",
+			RunOnce = true,
+			FunctionArgs =
+			{
+				ArmorAtSetup = 100,
+				ExtractValues =
+				{
+					{
+						Key = "ArmorAtSetup",
+						ExtractAs = "TooltipMaxArmor",
+					},
+				}
+			},
+		},
 	}
 	-- Improved Traits
-	--[[OlympusTraitData.AthenaLegendary =
+	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
+	--OlympusTraitData.ShieldHitTrait.RequiredFalseTrait = nil
+	--OlympusTraitData.ShieldHitTrait.RequiredFalseTraits = {"ShieldHitTrait", "ShieldHitUpgradeTrait"}
+	OlympusTraitData.ShieldHitUpgradeTrait =
 	{
-		Name = "AthenaLegendary",
-		InheritFrom = { "ShopTier3Trait" },
-		God = "Athena",
-		--Icon = "Hephaestus_Athena_01",
-		RequiredFalseTrait = "AthenaLegendary",		
-		PreEquipWeapons = {"ExposedCurseApplicator"},
-	} ]]
+		InheritFrom = { "ShopTier2Trait" },
+		Icon = "Boon_Athena_10",
+		--ReplaceTrait = "ShieldHitTrait",
+		RequiredFalseTrait = "ShieldHitTrait",
+		PreEquipWeapons = { "AthenaDefenseApplicator" },
+		SetupFunction =
+		{
+			Name = "ReactivateInvulnerability",
+		},
+		CurrentCooldown = 10,
+		TimeCooldown = 10,
+		ReactivateFunction = "ReactivateInvulnerability",
+		ExtractValues =
+		{
+			{
+				Key = "TimeCooldown",
+				ExtractAs = "TooltipCooldown",
+			}
+		}
+	}
+	--[[OlympusLootData.AthenaUpgrade.LinkedUpgrades.ShieldHitUpgradeTrait = {
+		OneFromEachSet =
+		{
+			{ "ShieldHitTrait" },
+			{ "ForceWeaponUpgradeTrait" },
+		}
+	}]]
 
 
 	-- LootData
-	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 	OlympusLootData.HephaestusUpgrade =
 	{
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
@@ -1941,14 +1917,21 @@ if ModUtil ~= nil then
 
 		PriorityUpgrades = {},
 		WeaponUpgrades = {},
-		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait"},--, --"FullHealthExtraRewardTrait", "DropMoneyTrait", "RevengeBoostTrait" },
-		Consumables = { "LastStandHealthDrop", "LastStandHealth2Drop","LastStandHealth3Drop" },--"ArmorBossDrop"},--, "ArmorEncounterDrop", "ArmorDefianceDrop" },
+		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
+		Consumables = {  },
 		LinkedUpgrades =
 		{
-			--[[ArmorLegendaryDrop =
+			ArmorLegendaryTrait =
 			{
-				OneOf = { "HephaestusWeaponTrait" },--"ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
-			}]]
+				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
+			},
+			DamageBoostTrait = {
+				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
+			},
+			HephaestusTrapTrait = {
+				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
+			}
+			-- Legendary boost
 		},
 
 		Speaker = "NPC_Hephaestus_01",
@@ -4690,22 +4673,30 @@ ModUtil.Path.Wrap( "DoEnemyHealthBufferDeplete",
 		baseFunc(enemy)
 	end
 )
-function AddHeroArmor(args)
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call Add Armor"))
+
+function SetupTemporaryAmmo(args)
+	if args.Ammo then
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Ammo))
+	end
+end
+function SetupArmor(args)
 	if CurrentRun.Hero.Armor == nil then
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Setup New"))
 		CurrentRun.Hero.Armor = {
-			Amount = args.Max,
-			Max = args.Max
+			Amount = 0,
+			Max = 0
 		}
-	else
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Already"))
-		CurrentRun.Hero.Armor.Amount = CurrentRun.Hero.Armor.Amount + args.Max
-		CurrentRun.Hero.Armor.Max = CurrentRun.Hero.Armor.Max + args.Max
+	end
+	if args.ArmorAtSetup then
+		AddMaxArmor(args.ArmorAtSetup)
 	end
 	thread( UpdateHealthUI )
 end
-function RepairHeroArmor(amount)
+
+function AddMaxArmor(num)
+	CurrentRun.Hero.Armor.Max = CurrentRun.Hero.Armor.Max + num
+	RepairArmor(num)
+end
+function RepairArmor(amount)
 	if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 then
 		local newAmount = CurrentRun.Hero.Armor.Amount + amount
 		if newAmount > CurrentRun.Hero.Armor.Max then
@@ -4714,11 +4705,9 @@ function RepairHeroArmor(amount)
 		CurrentRun.Hero.Armor.Amount = newAmount
 		thread(RepairArmorPresentation)
 	end
-	thread( UpdateHealthUI )
 end
 function GainArmorPresentation( args )
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Armor Presentation"))
-
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Some Armor Presentation"))
 end
 --[[function AddHealthBuffer( amount, source, args )
 	args = args or {}
@@ -4734,9 +4723,9 @@ end]]
 ModUtil.Path.Wrap( "UpdateHealthUI", 
 	function(baseFunc, damageEventArgs)
 		baseFunc(damageEventArgs)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh Health"))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor))
 		if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Amount > 0 then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh Armor"))
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount))
 			local frameTarget = 1 - (CurrentRun.Hero.Armor.Amount / CurrentRun.Hero.Armor.Max)
 			SetAnimation({ Name = "HealthBarFill", DestinationId = ScreenAnchors.HealthFill, FrameTarget = frameTarget, Instant = true, Color = Color.Black })
 			SetAnimation({ Name = "HealthBarFillWhite", DestinationId = ScreenAnchors.HealthRally, FrameTarget = frameTarget, Instant = true, Color = Color.RallyHealth })

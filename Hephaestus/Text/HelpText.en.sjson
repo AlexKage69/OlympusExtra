@@ -1,0 +1,241 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "NPC_Hephaestus_01"
+			DisplayName = "Hephaestus"
+			Description = "Blacksmith of the gods"
+		}		
+		{
+			Id = "HephaestusFirstPickUp"
+			DisplayName = "Met Hephaestus"
+		}
+		{
+			Id = "HephaestusUpgrade"
+			DisplayName = "Hephaestus"
+			Description = "Blacksmith of the gods"
+		}
+		{
+			Id = "HephaestusUpgrades"
+			DisplayName = "Blacksmith of the gods"
+			Description = "The son of the god of the dead shall someday earn various Boons of Hephaestus."
+		}
+		{
+			Id = "HephaestusUpgrade_FlavorText01"
+			DisplayName = "hard work is the greatest gift you can make to yourself."
+		}
+		{
+			Id = "HephaestusUpgrade_FlavorText02"
+			DisplayName = "there's always place for improvement."
+		}
+		{
+			Id = "HephaestusUpgrade_FlavorText03"
+			DisplayName = "perfection is never far, but never reached."
+		}	
+		{
+      		Id = "IgneousArmor"
+			DisplayName = "Igneous"
+			Description = "Damage done charges an armor that explode after 5 sec. Cooldown 7 sec."
+		}
+		{
+      		Id = "Armor"
+			DisplayName = "Armor"
+			Description = "Prevent damage. Max Armor: {$TooltipData.MaxArmor}"
+		}
+		{
+      		Id = "HephWeapon"
+			DisplayName = "Hephaestus' Weapons"
+			Description = "For 5 sec, gain a boost. \n Sword: close damage boost \n Bow: far damage boost. \n Shield: defense boost. \n Spear: movement speed boost."
+		}
+		{
+      		Id = "Repair"
+			DisplayName = "Repair"
+			Description = "Gain Armor. Can't exceed the Max Armor limit."
+		}
+		{
+			Id = "TemporaryAmmo"
+			DisplayName = "Temporary {!Icons.Ammo} Bloodstone"
+			Description = "Ammunition for your {A1} Cast. Retrieve from slain foes. Can only be used once per room."
+		}
+		{
+			Id = "HephaestusWeaponTrait"
+			DisplayName = "Molten Strike"
+			Description = "Using {$Keywords.Attack}, it charges {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HephaestusWeaponTrait_Initial"
+			InheritFrom = "HephaestusWeaponTrait"
+			Description = "Using {$Keywords.Attack}, it charges {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HephaestusSecondaryTrait"
+			DisplayName = "Molten Flourish"
+			Description = "Using {$Keywords.Special}, it charges {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HephaestusSecondaryTrait_Initial"
+			InheritFrom = "HephaestusSecondaryTrait"
+			Description = "Using {$Keywords.Special}, it charges {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HephaestusRushTrait"
+			DisplayName = "Mega Sprint"
+			Description = "Your {$Keywords.Dash} are faster and goes further. \n {!Icons.Bullet}{#PropertyFormat}Distance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HephaestusRushTrait_Initial"
+			InheritFrom = "HephaestusRushTrait"
+			Description = "Your {$Keywords.Dash} are faster and goes further. \n {!Icons.Bullet}{#PropertyFormat}Distance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HephaestusRangedTrait"
+			DisplayName = "Extra Ammunition"
+			Description = "Upon entering a room, gain {$Keywords.TemporaryAmmo}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.TemporaryAmmo}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HephaestusRangedTrait_Initial"
+			InheritFrom = "HephaestusRangedTrait"
+			Description = "Upon entering a room, gain {$Keywords.TemporaryAmmo}. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.TemporaryAmmo}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HephaestusSignoff"
+			DisplayName = "From Hephaestus"
+		}
+		{
+			Id = "HephaestusSignoff_Max"
+			DisplayName = """
+					From {#AwardMaxFlavorFormat}Hephaestus{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Professional Bond
+
+					{#AwardDarkFlavorFormat}You are the best commisionner he never encountered.
+				"""
+		}
+		{
+			Id = "HephaestusShoutTrait"
+			DisplayName = "Explosive Goons"
+			Description = "Create a friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}Summon 4 Flame Wheels"
+		}
+		{
+			Id = "HephaestusShoutTrait_Tray"
+			InheritFrom = "HephaestusShoutTrait"
+			Description = "Create a friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}Summon 4 Flame Wheels"
+		}
+		{
+			Id = "HephaestusShoutTrait_Initial"
+			InheritFrom = "HephaestusShoutTrait"
+			Description = "Create a friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}Summon 4 Flame Wheels"
+		}
+		{
+			Id = "DropMoneyTrait"
+			DisplayName = "Smithing gold"
+			Description = "After you break enemy's armor, it may drop a bit of wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus drop chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "DropMoneyTrait_Initial"
+			InheritFrom = "DropMoneyTrait"
+			Description = "After you break enemy's armor, it may drop a bit of wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus drop chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "DamageBoostTrait"
+			DisplayName = "Golden Armor"
+			Description = "Deal damage based on how much armor you have. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "DamageBoostTrait_Initial"
+			InheritFrom = "DamageBoostTrait"
+			Description = "Deal damage based on how much armor you have. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "RevengeBoostTrait"
+			DisplayName = "Blood Rush"
+			Description = "After taking damage, increase damage and movement speed for {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} {#PreviousFormat} sec. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeedBonus}{#PreviousFormat}"
+		}
+		{
+			Id = "RevengeBoostTrait_Initial"
+			InheritFrom = "RevengeBoostTrait"
+			Description = "After taking damage, increase damage and movement speed for {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} {#PreviousFormat} sec. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeedBonus}{#PreviousFormat}"
+		}
+		{
+			Id = "SpawnWeaponsTrait"
+			DisplayName = "Arsenal provision"
+			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "SpawnWeaponsTrait_Initial"
+			InheritFrom = "SpawnWeaponsTrait"
+			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "RepairText"
+			DisplayName = "{#CombatTextHighlightFormat}Repair!{#PreviousFormat}!"
+		}
+		{
+			Id = "ArmorBossTrait"
+			DisplayName = "Reforging fate"
+			Description = "Upon entering {$Keywords.BossPlural} and {$Keywords.MiniBoss} rooms, {$Keywords.Repair} {$Keywords.Armor}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.Armor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorBossTrait_Initial"
+			InheritFrom = "ArmorBossTrait"
+			Description = "Gain {$TooltipData.TooltipMaxArmor} {$Keywords.Armor}. Upon entering {$Keywords.BossPlural} and {$Keywords.MiniBoss} rooms, {$Keywords.Repair} {$Keywords.Armor}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.Armor}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorEncounterTrait"
+			DisplayName = "Perfect work"
+			Description = " Upon clear an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair} {$Keywords.Armor}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.Armor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorEncounterTrait_Initial"
+			InheritFrom = "ArmorEncounterTrait"
+			Description = "Gain {$TooltipData.TooltipMaxArmor} {$Keywords.Armor}. Upon clear an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair} {$Keywords.Armor}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.Armor}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorDefianceTrait"
+			DisplayName = "Lasting punishment"
+			Description = "{$Keywords.ExtraChanceChaos} {$Keywords.Repair} {$Keywords.Armor}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.Armor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorDefianceTrait_Initial"
+			InheritFrom = "ArmorDefianceTrait"
+			Description = "Gain {$TooltipData.TooltipMaxArmor} {$Keywords.Armor}. {$Keywords.ExtraChanceChaos} {$Keywords.Repair} {$Keywords.Armor}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.Armor}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "HephaestusTrapTrait"
+			DisplayName = "Clever Mechanism"
+			Description = "{$Keywords.Armor} limits the amount of damage done by {$Keywords.Traps}. \n {!Icons.Bullet}{#PropertyFormat}Limit Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+		}
+		{
+			Id = "HephaestusTrapTrait_Initial"
+			InheritFrom = "HephaestusTrapTrait"
+			Description = "{$Keywords.Armor} limits the amount of damage done by {$Keywords.Traps}. \n {!Icons.Bullet}{#PropertyFormat}Limit Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorLegendaryTrait"
+			DisplayName = "Weapon Master"
+			Description = "Gain {$TooltipData.TooltipMaxArmor} {$Keywords.Armor}. Spawn 1 {#BoldFormatGraft}Daedalus Hammer{#PreviousFormat}. Increase your {#BoldFormatGraft}Daedalus Hammers Limit{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Daedalus Hammers Limit: \Column 380 {#UpgradeFormat}4{#PreviousFormat}"
+		}
+		{
+			Id = "ForceWeaponUpgradeTrait"
+			DisplayName = "Bronze Replica"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait."
+		}
+		{
+			Id = "ForceWeaponUpgradeTrait_Rack"
+			InheritFrom = "ForceWeaponUpgradeTrait"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "ForceWeaponUpgradeTrait_Inactive"
+			DisplayName = "Bronze Replica"
+			Description = "You may reroll Daedalus Hammer Trait."
+		}				
+		{
+			Id = "ClearRequiredTraitsHephaestus"
+			DisplayName = "{!Icons.RunClearStar}Client of Hephaestus{!Icons.RunClearStar}"
+		}
+		{
+			Id = "HephaestusLegendaryUpgrades"
+			DisplayName = "Perfectionist"
+			Description = "The son of the god of the dead shall someday earn all the gods' improvements by Hephaestus."
+		}
+	]
+}
