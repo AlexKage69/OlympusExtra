@@ -11,8 +11,8 @@
 			Some voices are still missing for our dear Hera! 
 			@{#AlertHighlightFormat}bessyboo {#PreviousFormat} is still resting and we'll deliver them soon.
 
-			Most mods stayed on ModUtil 2.10.1. Note that OlympusExtra won't be compatible with them until they are upgraded to ModUtil 3.1.1
-			CodexMenu has a version compatible with ModUtil 3.1.1. Make sure you use the right one.
+			Most mods stayed on ModUtil 2.10.1. Note that OlympusExtra won't be compatible with them until they are upgraded to ModUtil 3.1.1 and above
+			CodexMenu has a version compatible with ModUtil 3.1.1 and above. Make sure you use the right one.
 
 			 \Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
 
