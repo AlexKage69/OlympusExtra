@@ -43,8 +43,7 @@ ModUtil.Path.Wrap("EquipAssist",
 ModUtil.Path.Wrap("GetLootSourceName",
     function(baseFunc, traitName)
         for lootName, god in pairs(LootData) do
-            if god == nil or traitName == nil or god.TraitIndex[traitName] == nil then
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(god.TraitIndex[traitName]))
+            if god == nil or traitName == nil or god.TraitIndex == nil then
                 return false
             end
         end
