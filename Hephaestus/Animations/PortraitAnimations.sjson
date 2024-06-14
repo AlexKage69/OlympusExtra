@@ -51,7 +51,7 @@
       Name = "Portrait_Hephaestus_Default_01"
       InheritFrom = "Portrait_God_01"
       ChildAnimation = "PortraitGodRayEmitter_Hephaestus"
-      FilePath = "Hephaestus\Portraits_Hephaestus_01"
+      FilePath = "Hephaestus\Portraits_Hephaestus_02"
       EndFrame = 1
       StartFrame = 1
       Scale = 0.60
@@ -59,7 +59,7 @@
     {
       Name = "Portrait_Hephaestus_Default_01_Exit"
       InheritFrom = "Portrait_Base_01_Exit"
-      FilePath = "Hephaestus\Portraits_Hephaestus_01"
+      FilePath = "Hephaestus\Portraits_Hephaestus_02"
       EndFrame = 1
       StartFrame = 1
       Scale = 0.60
