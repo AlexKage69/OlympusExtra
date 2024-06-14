@@ -2656,7 +2656,7 @@ end]]
 				WeaponName = "DecayCurseApplicator",
 				EffectName = "HeraDecay",
 				EffectProperty = "ElapsedTimeMultiplier",
-				BaseValue = 0.9,
+				BaseValue = 0.8,
 				SourceIsMultiplier = true,
 				ExtractValue =
 				{
@@ -7049,7 +7049,7 @@ end]]
 		UnlockGameStateRequirements = { RequiredTextLines = { "HeraBackstory05" } }
 	}
 	-- Multi Gods compatibility
-	--if ModUtil.Mods.Data["HestiaExtra"] ~= nil then 
+	if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
 		OlympusLootData.HeraUpgrade.LinkedUpgrades.EnhancedNPCTrait =
 		{
 			OneFromEachSet =
@@ -7111,8 +7111,8 @@ end]]
             },
         }
 		table.insert(HeraExtra.GodsList, "Hestia")		
-	--end
-	--if ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+	end
+	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
         OlympusLootData.HeraUpgrade.LinkedUpgrades.AuraBlindTrait =
 		{
 			OneFromEachSet =
@@ -7162,8 +7162,8 @@ end]]
                 Text = "It is Queen Hera, to you. I said I would help him escape, and I keep my word. Now help me or go away." },
         }
 		table.insert(HeraExtra.GodsList, "Apollo")
-    --end
-	--if ModUtil.Mods.Data["ApolloExtra"] ~= nil and ModUtil.Mods.Data["HestiaExtra"] ~= nil then
+    end
+	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil and ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
 		OlympusQuestData.SynergyUpgrades2 =
 		{
 			Name = "SynergyUpgrades2",
@@ -7265,7 +7265,7 @@ end]]
 			},
 		}
 		table.insert(OlympusQuestOrderData, 34, "SynergyUpgrades2")
-	--end
+	end
 	-- FUNCTIONS
 	ModUtil.Path.Wrap("CommenceSuperMove",
 		function(baseFunc)
@@ -8589,11 +8589,12 @@ end]]
 		local highestCount = 0
 		local highestFrom = "none"
 		for traitName in pairs( hero.TraitDictionary ) do
-			if GetLootSourceName( traitName ) then
-				godDictionary[GetLootSourceName( traitName )] = (godDictionary[GetLootSourceName( traitName )]  or 0) + 1
-				if highestCount < godDictionary[GetLootSourceName( traitName )] then
-					highestCount = godDictionary[GetLootSourceName( traitName )]
-					highestFrom = GetLootSourceName( traitName )
+			local lootsource = GetLootSourceName( traitName )
+			if lootsource then
+				godDictionary[lootsource] = (godDictionary[lootsource]  or 0) + 1
+				if highestCount < godDictionary[lootsource] then
+					highestCount = godDictionary[lootsource]
+					highestFrom = lootsource
 				end
 			end
 		end

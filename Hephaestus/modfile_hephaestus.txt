@@ -26,8 +26,8 @@ To "Game/Projectiles/EnemyProjectiles.sjson"
 SJSON "Projectiles/EnemyProjectiles.sjson"
 
 :: Weapons
-To "Game/Weapons/PlayerWeapons.sjson"
-SJSON "Weapons/AddPlayerWeapons.sjson"
+:: To "Game/Weapons/PlayerWeapons.sjson"
+:: SJSON "Weapons/AddPlayerWeapons.sjson"
 To "Game/Weapons/PlayerWeapons.sjson"
 SJSON "Weapons/PlayerWeapons.sjson"
 

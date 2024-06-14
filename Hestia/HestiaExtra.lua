@@ -5491,7 +5491,7 @@ if ModUtil ~= nil then
 	}
 
 	-- Multi Gods compatibility
-	if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
         OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait =
         {
             OneFromEachSet =

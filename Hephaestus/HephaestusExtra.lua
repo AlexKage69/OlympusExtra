@@ -848,6 +848,7 @@ if ModUtil ~= nil then
 		Name = "ForceWeaponUpgradeTrait",
 		InheritFrom = { "GiftTrait" },
 		--New Data
+		LootSource = "HephaestusUpgrade",
 		InRackTitle = "Keepsake_Memory_Rack",
 		Icon = "Keepsake_Memory",
 		EquipSound = "/SFX/WrathOver2",
@@ -884,6 +885,7 @@ if ModUtil ~= nil then
 		Name = "HephaestusWeaponTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		--Icon = "Boon_Hephaestus_06",
+		LootSource = "HephaestusUpgrade",
 		RarityLevels =
 		{
 			Common =
@@ -908,7 +910,7 @@ if ModUtil ~= nil then
 			Name = "SetupAura",
 			RunOnce = true,
 		},]]
-		OnWeaponFiredFunctions =
+		--[[OnWeaponFiredFunctions =
 		{
 			ValidWeapons = OlympusWeaponSets.PrimaryWeapons,
 			FunctionName = "AddIgneousEffect",
@@ -919,7 +921,7 @@ if ModUtil ~= nil then
 				Duration = 5,
 				Range = 400,
 			},
-		},
+		},]]
 		PropertyChanges =
 		{
 			--[[{
@@ -1239,6 +1241,7 @@ if ModUtil ~= nil then
 	{
 		Name = "HephaestusSecondaryTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_09",
 		RarityLevels =
 		{
@@ -1266,35 +1269,6 @@ if ModUtil ~= nil then
 		},
 		PropertyChanges =
 		{
-			
-			{
-				WeaponNames = OlympusWeaponSets.SecondaryWeapons,
-				EffectName = "IgneousArmor",
-				EffectProperty = "Active",
-				ChangeValue = true,
-				ChangeType = "Absolute",
-			},
-			{
-				WeaponNames = OlympusWeaponSets.SecondaryWeapons,
-				EffectName= "IgneousArmor",
-				EffectProperty = "Modifier",
-				BaseMin = 0.7,
-				BaseMax = 0.7,
-				SourceIsMultiplier = true,
-				ChangeType = "Absolute",
-				ExtractValue =
-				{
-					ExtractAs = "TooltipDamageReduction",
-					Format = "NegativePercentDelta",
-				}
-			},
-			{
-				WeaponNames = OlympusWeaponSets.SecondaryWeapons,
-				EffectName= "IgneousArmor",
-				EffectProperty = "Duration",
-				BaseValue = 2.5,
-				ChangeType = "Absolute",
-			},
 
 		},
 		ExtractEntry =
@@ -1318,6 +1292,7 @@ if ModUtil ~= nil then
 	{
 		Name = "HephaestusRushTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_03",
 		RarityLevels =
 		{
@@ -1357,6 +1332,7 @@ if ModUtil ~= nil then
 	{
 		Name = "HephaestusRangedTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Slot = "Ranged",
 		--Icon = "Boon_Hephaestus_04",
 		CustomTrayText = "HephaestusRangedTrait_Tray",
@@ -1402,6 +1378,7 @@ if ModUtil ~= nil then
 	{
 		Name = "HephaestusShoutTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		RequiredTextLines = { "PoseidonWrathIntro01" },
 		RequiredSlottedTrait = "Shout",
 		--CustomTrayText = "HephaestusShoutTrait_Tray",
@@ -1443,6 +1420,7 @@ if ModUtil ~= nil then
 		Name = "DropMoneyTrait",
 		--Icon = "Boon_Hephaestus_07",
 		InheritFrom = { "ShopTier2Trait" },
+		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "DropMoneyTrait",
 		RarityLevels =
 		{
@@ -1482,6 +1460,7 @@ if ModUtil ~= nil then
 		Icon = "Weapon_Shield_02",
 		--Icon = "Boon_Hephaestus_08",
 		InheritFrom = { "ShopTier2Trait" },
+		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "RevengeBoostTrait",
 		RarityLevels =
 		{
@@ -1561,6 +1540,7 @@ if ModUtil ~= nil then
 	{
 		Name = "SpawnWeaponsTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "SpawnWeaponsTrait",
 		RarityLevels =
 		{
@@ -1598,6 +1578,7 @@ if ModUtil ~= nil then
 	{
 		Name = "ArmorEncounterTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_10",
 		RequiredFalseTrait = "ArmorEncounterTrait",
 		RarityLevels =
@@ -1653,6 +1634,7 @@ if ModUtil ~= nil then
 	{
 		Name = "ArmorDefianceTrait",
 		InheritFrom = { "ShopTier2Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_11",
 		RequiredFalseTrait = "ArmorDefianceTrait",
 		RarityLevels =
@@ -1709,6 +1691,7 @@ if ModUtil ~= nil then
 	{
 		Name = "ArmorBossTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_09",
 		RequiredFalseTrait = "ArmorBossTrait",
 		RarityLevels =
@@ -1762,6 +1745,7 @@ if ModUtil ~= nil then
 	{
 		Name = "HephaestusTrapTrait",
 		InheritFrom = { "ShopTier2Trait" },
+		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "HephaestusTrapTrait",
 		RarityLevels =
 		{
@@ -1800,6 +1784,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.DamageBoostTrait ={
 		Name = "DamageBoostTrait",
 		InheritFrom = { "ShopTier1Trait" },
+		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_10",
 		RequiredFalseTrait = "DamageBoostTrait",
 		RarityLevels =
@@ -1840,6 +1825,7 @@ if ModUtil ~= nil then
 	{
 		Name = "ArmorLegendaryTrait",
 		InheritFrom = { "ShopTier3Trait" },
+		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "ArmorLegendaryTrait",
 		--Icon = "Boon_Hephaestus_15",		
 		SetupFunction =
@@ -1860,20 +1846,61 @@ if ModUtil ~= nil then
 		},
 	}
 	-- Improved Traits
-	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
-	--OlympusTraitData.ShieldHitTrait.RequiredFalseTrait = nil
-	--OlympusTraitData.ShieldHitTrait.RequiredFalseTraits = {"ShieldHitTrait", "ShieldHitUpgradeTrait"}
-	OlympusTraitData.ShieldHitUpgradeTrait =
+	-- Zeus	 
+	OlympusTraitData.ZeusChargedBoltTrait.RequiredFalseTraits = {"ZeusChargedBoltTrait", "HephaestusImproveZeus"}
+	OlympusTraitData.HephaestusImproveZeus =
 	{
-		InheritFrom = { "ShopTier2Trait" },
+		Name = "HephaestusImproveZeus",
+		Icon = "Boon_Zeus_02",
+		ReplaceTrait = "ZeusChargedBoltTrait",
+		InheritFrom = { "ShopTier3Trait" },
+		God = "Zeus",
+		PreEquipWeapons = { "ZeusLegendaryWeapon" },
+		RequiredFalseTraits = { "HephaestusImproveZeus" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "ZeusLegendaryWeapon",
+				ProjectileName = "LightningSpark",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 60,
+				BaseMax = 60,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+				AutoRamp = true,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+				DeriveSource = "DeriveSource",
+			},
+			{
+				WeaponName = "ZeusLegendaryWeapon",
+				ProjectileName = "LightningSpark",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DeriveSource",
+			},
+		},
+	}
+	-- Athena
+	OlympusTraitData.ShieldHitTrait.RequiredFalseTrait = nil
+	OlympusTraitData.ShieldHitTrait.RequiredFalseTraits = {"ShieldHitTrait", "HephaestusImproveAthena"}
+	OlympusTraitData.HephaestusImproveAthena =
+	{
+		Name = "HephaestusImproveAthena",
+		InheritFrom = { "ShopTier3Trait" },
 		Icon = "Boon_Athena_10",
-		--ReplaceTrait = "ShieldHitTrait",
-		RequiredFalseTrait = "ShieldHitTrait",
+		ReplaceTrait = "ShieldHitTrait",
+		RequiredFalseTrait = "HephaestusImproveAthena",
 		PreEquipWeapons = { "AthenaDefenseApplicator" },
 		SetupFunction =
 		{
 			Name = "ReactivateInvulnerability",
 		},
+		PreviousTimeCooldown = 20,
 		CurrentCooldown = 10,
 		TimeCooldown = 10,
 		ReactivateFunction = "ReactivateInvulnerability",
@@ -1882,18 +1909,429 @@ if ModUtil ~= nil then
 			{
 				Key = "TimeCooldown",
 				ExtractAs = "TooltipCooldown",
+			},
+			{
+				Key = "PreviousTimeCooldown",
+				ExtractAs = "TooltipPreviousCooldown",
 			}
 		}
 	}
-	--[[OlympusLootData.AthenaUpgrade.LinkedUpgrades.ShieldHitUpgradeTrait = {
-		OneFromEachSet =
+	-- Poseidon
+	OlympusTraitData.DoubleCollisionTrait.RequiredFalseTrait = nil
+	OlympusTraitData.DoubleCollisionTrait.RequiredFalseTraits = {"DoubleCollisionTrait", "HephaestusImprovePoseidon"}
+	OlympusTraitData.HephaestusImprovePoseidon =
+	{
+		Name = "HephaestusImprovePoseidon",
+		InheritFrom = { "ShopTier3Trait" },
+		RequiredFalseTrait = "HephaestusImprovePoseidon",
+		ReplaceTrait = "DoubleCollisionTrait",
+		Icon = "Boon_Poseidon_07",
+		PropertyChanges =
 		{
-			{ "ShieldHitTrait" },
-			{ "ForceWeaponUpgradeTrait" },
+			{
+				TraitName = "PoseidonRushTrait",
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				EffectName = "DelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName = "DelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonWeaponTrait",
+				WeaponNames = WeaponSets.HeroPhysicalWeapons,
+				EffectName = "DelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonSecondaryTrait",
+				WeaponNames = WeaponSets.HeroSecondaryWeapons,
+				EffectName = "DelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonAphroditeTouchTrait",
+				WeaponName = "PoseidonAphroditeTouchWeapon",
+				EffectName = "DelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonShoutTrait",
+				WeaponName = "PoseidonSurfWeapon",
+				EffectName = "DelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			-- Second Delayed
+			{
+				TraitName = "PoseidonRushTrait",
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				EffectName = "SecondDelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				EffectName = "SecondDelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonWeaponTrait",
+				WeaponNames = WeaponSets.HeroPhysicalWeapons,
+				EffectName = "SecondDelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonSecondaryTrait",
+				WeaponNames = WeaponSets.HeroSecondaryWeapons,
+				EffectName = "SecondDelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonAphroditeTouchTrait",
+				WeaponName = "PoseidonAphroditeTouchWeapon",
+				EffectName = "SecondDelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				TraitName = "PoseidonShoutTrait",
+				WeaponName = "PoseidonSurfWeapon",
+				EffectName = "SecondDelayedKnockback",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
 		}
-	}]]
+	}
+	-- Poseidon 2
+	OlympusTraitData.FishingTrait.RequiredFalseTrait = nil
+	OlympusTraitData.FishingTrait.RequiredFalseTraits = {"FishingTrait", "HephaestusImproveFishPoseidon"}
+	OlympusTraitData.HephaestusImproveFishPoseidon =
+	{
+		Name = "HephaestusImproveFishPoseidon",
+		InheritFrom = { "ShopTier3Trait" },
+		RequiredFalseTrait = "HephaestusImproveFishPoseidon",
+		RequiredTextLines = { "PoseidonFishQuest01" },
+		ReplaceTrait = "FishingTrait",
+		Icon = "Boon_Poseidon_13",
+		FishingPointChanceBonus = 0.35,
+		DisableFishRequirements = true,
+		ExtractValues =
+		{
+			{
+				Key = "FishingPointChanceBonus",
+				ExtractAs = "TooltipBonus",
+				Format = "Percent",
+			}
+		}
+	}
+	-- Artemis
+	OlympusTraitData.MoreAmmoTrait.RequiredFalseTrait = nil
+	OlympusTraitData.MoreAmmoTrait.RequiredFalseTraits = {"MoreAmmoTrait", "HephaestusImproveArtemis"}
+	OlympusTraitData.HephaestusImproveArtemis =
+	{
+		Name = "HephaestusImproveArtemis",
+		InheritFrom = { "ShopTier3Trait" },
+		Icon = "Boon_Artemis_07",
+		RequiredFalseTrait = "HephaestusImproveArtemis",
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "MaxAmmo",
+				BaseValue = 4.0,
+				ChangeType = "Add",
+				MinMultiplier = 1,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCapacity",
+				}
+			},
+		},
+	}
+	-- Aphrodite
+	OlympusTraitData.CharmTrait.RequiredFalseTrait = nil
+	OlympusTraitData.CharmTrait.RequiredFalseTraits = {"CharmTrait", "HephaestusImproveAphrodite"}
+	OlympusTraitData.HephaestusImproveAphrodite =
+	{
+		Name = "HephaestusImproveAphrodite",
+		Icon = "Boon_Aphrodite_10",
+		RequiredFalseTrait = "HephaestusImproveAphrodite",
+		God = "Aphrodite",
+		InheritFrom = { "ShopTier3Trait" },
+		AddOnEffectWeapons =
+		{
+			EffectName = "ReduceDamageOutput",
+			Weapon = "AphroditeCharmWeapon",
+			AffectChance = 0.30,
+			ExtractValues =
+			{
+				{
+					Key = "AffectChance",
+					ExtractAs = "TooltipAffectChance",
+					SkipAutoExtract = true,
+					Format = "Percent",
+				}
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponName = "AphroditeCharmWeapon",
+				EffectName = "Charm",
+				EffectProperty = "Duration",
+				ChangeValue = 4,
+				ChangeType = "Add",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+				},
+				DeriveTarget = "DurationTarget"
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipWeakDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipWeakPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ReduceDamageOutput",
+				BaseProperty = "Modifier",
+				Format = "NegativePercentDelta"
+			}
+		}
+	}
+	-- Ares
+	OlympusTraitData.AresCursedRiftTrait.RequiredFalseTrait = nil
+	OlympusTraitData.AresCursedRiftTrait.RequiredFalseTraits = {"AresCursedRiftTrait", "HephaestusImproveAres"}
+	OlympusTraitData.HephaestusImproveAres =
+	{
+		Name = "HephaestusImproveAres",
+		InheritFrom = { "ShopTier3Trait" },
+		RequiredFalseTrait = "HephaestusImproveAres",
+		Icon = "Boon_Ares_09",
+		TextStore = "AresShoutTrait",
+		PropertyChanges =
+		{
+			{
+				TraitName = "AresRangedTrait",
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				ProjectileName = "AresProjectile",
+				ProjectileProperty = "DamagePerConsecutiveProjectileHit",
+				ChangeValue = 3,
+				ChangeType = "Absolute",
+				DeriveSource = "DamageSource",
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+			},
+			{
+				TraitName = "ShieldLoadAmmo_AresRangedTrait",
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "AresRushProjectile",
+				ProjectileProperty = "DamagePerConsecutiveProjectileHit",
+				DeriveValueFrom = "DamageSource"
+			},
+			{
+				TraitName = "AresRushTrait",
+				WeaponNames = WeaponSets.HeroRushWeapons,
+				ProjectileName = "AresRushProjectile",
+				ProjectileProperty = "DamagePerConsecutiveProjectileHit",
+				DeriveValueFrom = "DamageSource"
+			},
 
+			{
+				TraitName = "AresShoutTrait",
+				WeaponNames = { "AresSurgeWeapon" },
+				ProjectileName = "AresInvisibleAoE",
+				ProjectileProperty = "DamagePerConsecutiveHit",
+				DeriveValueFrom = "DamageSource"
+			},
+			{
+				TraitName = "AresShoutTrait",
+				WeaponNames = { "AresSurgeWeapon" },
+				ProjectileName = "AresInvisibleAoE",
+				ProjectileProperty = "ConsecutiveHitWindow",
+				ChangeValue = 0.55,
+				ChangeType = "Absolute",
+				DeriveSource = "WindowSource"
+			},
+		},
+	}
+	-- Dionysus
+	OlympusTraitData.DionysusComboVulnerability.RequiredFalseTrait = nil
+	OlympusTraitData.DionysusComboVulnerability.RequiredFalseTraits = {"DionysusComboVulnerability", "HephaestusImproveDionysus"}
+	OlympusTraitData.HephaestusImproveDionysus =
+	{
+		Name = "HephaestusImproveDionysus",
+		InheritFrom = { "ShopTier3Trait" },
+		RequiredFalseTrait = "HephaestusImproveDionysus",
+		God = "Dionysus",
+		Icon = "Boon_Dionysus_08",
+		AddOutgoingDamageModifiers =
+		{
+			RequiredEffects = { "DamageOverTime", "WinePuddleVulnerability" },
+			RequiredEffectsMultiplier =
+			{
+				BaseValue = 1.8,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ExtractValues =
+			{
+				{
+					Key = "RequiredEffectsMultiplier",
+					ExtractAs = "TooltipBonus",
+					Format = "PercentDelta",
+				},
+			}
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipPoisonDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DamageOverTime",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipPoisonStacks",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DamageOverTime",
+				BaseProperty = "MaxStacks",
+			},
+			{
+				ExtractAs = "TooltipCloudDuration",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "TotalFuse",
+			},
+			{
+				ExtractAs = "TooltipCloudInterval",
+				External = true,
+				BaseType = "ProjectileBase",
+				BaseName = "DionysusField",
+				BaseProperty = "Fuse",
+				DecimalPlaces = 2,
+			}
+		}
+	}
+	-- Demeter
+	OlympusTraitData.InstantChillKill.RequiredFalseTrait = nil
+	OlympusTraitData.InstantChillKill.RequiredFalseTraits = {"InstantChillKill", "HephaestusImproveDemeter"}
+	OlympusTraitData.HephaestusImproveDemeter =
+	{
+		Name = "HephaestusImproveDemeter",
+		InheritFrom = { "ShopTier3Trait" },
+		Icon = "Boon_Demeter_10",
+		RequiredFalseTrait = "HephaestusImproveDemeter",
+		OnDamageEnemyFunction = {
+			FunctionName = "CheckChillKill",
+			FunctionArgs = {
+				ChillDeathThreshold = 0.15,
+				ExtractValues =
+				{
+					{
+						Key = "ChillDeathThreshold",
+						ExtractAs = "TooltipDeathThreshold",
+						Format = "Percent",
+					},
+				}
+			}
+		},
+		PreEquipWeapons = { "DemeterChillKill" },
+		PropertyChanges =
+		{
+			{
+				WeaponName = "DemeterChillKill",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 60,
+				BaseMax = 60,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			{
+				WeaponName = "DemeterChillKill",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+		},
+		ExtractValues =
+		{
+			{
+				ExtractAs = "TooltipChillDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "TooltipChillPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "ElapsedTimeMultiplier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipChillStacks",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "DemeterSlow",
+				BaseProperty = "MaxStacks",
+			},
+		}
+	}
 
+	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 	-- LootData
 	OlympusLootData.HephaestusUpgrade =
 	{
@@ -1930,8 +2368,71 @@ if ModUtil ~= nil then
 			},
 			HephaestusTrapTrait = {
 				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
-			}
+			},
 			-- Legendary boost
+			HephaestusImproveZeus = {
+				OneFromEachSet =
+				{
+					{ "ZeusChargedBoltTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveAthena = {
+				OneFromEachSet =
+				{
+					{ "ShieldHitTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImprovePoseidon = {
+				OneFromEachSet =
+				{
+					{ "DoubleCollisionTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveFishPoseidon = {
+				OneFromEachSet =
+				{
+					{ "FishingTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveArtemis = {
+				OneFromEachSet =
+				{
+					{ "MoreAmmoTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveAphrodite = {
+				OneFromEachSet =
+				{
+					{ "CharmTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveAres = {
+				OneFromEachSet =
+				{
+					{ "AresCursedRiftTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveDionysus = {
+				OneFromEachSet =
+				{
+					{ "DionysusComboVulnerability" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
+			HephaestusImproveDemeter = {
+				OneFromEachSet =
+				{
+					{ "InstantChillKill" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				}
+			},
 		},
 
 		Speaker = "NPC_Hephaestus_01",
@@ -4655,6 +5156,237 @@ if ModUtil ~= nil then
 		UnlockGameStateRequirements = { RequiredTextLines = { "HephaestusBackstory04" } }
 	}
 	-- Multi Gods compatibility
+	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
+		-- Demeter
+		OlympusTraitData.MissChanceTrait.RequiredFalseTrait = nil
+		OlympusTraitData.MissChanceTrait.RequiredFalseTraits = {"MissChanceTrait", "HephaestusImproveApollo"}
+		OlympusTraitData.HephaestusImproveApollo =
+		{
+			Name = "HephaestusImproveApollo",
+			Icon = "Boon_Apollo_14",
+			RequiredFalseTrait = "HephaestusImproveApollo",
+			God = "Apollo",
+			InheritFrom = { "ShopTier3Trait" },
+			PropertyChanges =
+			{
+				{
+					WeaponName = WeaponSets.HeroPhysicalWeapons,
+					EffectName = "ApolloBlind",
+					EffectProperty = "Amount",
+					ChangeValue = 0.70,
+					ChangeType = "Absolute",
+				},
+				{
+					WeaponName = WeaponSets.HeroSecondaryWeapons,
+					EffectName = "ApolloBlind",
+					EffectProperty = "Amount",
+					ChangeValue = 0.70,
+					ChangeType = "Absolute",
+				},
+				{
+					WeaponName = WeaponSets.HeroRushWeapons,
+					EffectName = "ApolloBlind",
+					EffectProperty = "Amount",
+					ChangeValue = 0.70,
+					ChangeType = "Absolute",
+				},
+				{
+					WeaponName = WeaponSets.HeroNonPhysicalWeapons,
+					EffectName = "ApolloBlind",
+					EffectProperty = "Amount",
+					ChangeValue = 0.70,
+					ChangeType = "Absolute",
+				},
+				{
+					WeaponNames = { "AreaWeakenApollo" },
+					EffectName = "ApolloBlind",
+					EffectProperty = "Amount",
+					ChangeValue = 0.70,
+					ChangeType = "Absolute",
+				},
+			},
+			ExtractValues =
+			{
+				{
+					ExtractAs = "TooltipBlindDuration",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "SwordWeapon",
+					BaseName = "ApolloBlind",
+					BaseProperty = "Duration",
+				},
+				{
+					ExtractAs = "TooltipBlindPower",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "SwordWeapon",
+					BaseName = "ApolloBlind",
+					BaseProperty = "Amount",
+					Format = "Percent"
+				}
+			}
+		}
+		OlympusLootData.HephaestusUpgrade.LinkedUpgrades.HephaestusImproveApollo =
+		{
+			OneFromEachSet =
+			{
+				{ "MissChanceTrait" },
+				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+			}
+		}
+	end
+	if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
+		-- Demeter
+		OlympusTraitData.LavaAutoTrait.RequiredFalseTrait = nil
+		OlympusTraitData.LavaAutoTrait.RequiredFalseTraits = {"LavaAutoTrait", "HephaestusImproveHestia"}
+		OlympusTraitData.HephaestusImproveHestia =
+		{
+			Name = "HephaestusImproveHestia",
+			InheritFrom = { "ShopTier3Trait" },
+			RequiredFalseTrait = "HephaestusImproveHestia",
+			God = "Hestia",
+			Icon = "Boon_Hestia_15",
+			PropertyChanges =
+			{
+				{
+					WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+					ProjectileName = "HestiaField",
+					ProjectileProperty = "VacuumStrength",
+					ChangeValue = 100,
+					ChangeType = "Add",
+				},
+				{
+					WeaponNames = { "RangedWeapon", "HestiaLavaProjectile" },
+					ProjectileName = "HestiaField",
+					ProjectileProperty = "VacuumDistance",
+					ChangeValue = 600,
+					ChangeType = "Add",
+				},
+				{
+					WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+					ProjectileName = "HestiaSmallField",
+					ProjectileProperty = "VacuumStrength",
+					ChangeValue = 100,
+					ChangeType = "Add",
+				},
+				{
+					WeaponNames = { "HestiaOnDeath", "HestiaOnRevenge" },
+					ProjectileName = "HestiaSmallField",
+					ProjectileProperty = "VacuumDistance",
+					ChangeValue = 600,
+					ChangeType = "Add",
+				},
+			},
+		}
+		OlympusLootData.HephaestusUpgrade.LinkedUpgrades.HephaestusImproveHestia =
+		{
+			OneFromEachSet =
+			{
+				{ "LavaAutoTrait" },
+				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+			}
+		}
+	end
+	if ModUtil.Entangled.ModData("HeraExtra") ~= nil then
+		-- Demeter
+		OlympusTraitData.StatusOverTimeTrait.RequiredFalseTrait = nil
+		OlympusTraitData.StatusOverTimeTrait.RequiredFalseTraits = {"StatusOverTimeTrait", "HephaestusImproveHera"}
+		OlympusTraitData.HephaestusImproveHera =
+		{
+			Name = "HephaestusImproveHera",
+			InheritFrom = { "ShopTier3Trait" },
+			RequiredFalseTrait = "HephaestusImproveHera",
+			God = "Hera",
+			Icon = "Boon_Hera_15",
+			SetupFunction =
+			{
+				Name = "SetupAura",
+				RunOnce = true,
+			},
+			PreEquipWeapons = { "DecayCurseApplicator" },
+			PropertyChanges =
+			{
+
+				{
+					WeaponName = "DecayCurseApplicator",
+					EffectName = "HeraDecay",
+					EffectProperty = "ElapsedTimeMultiplier",
+					BaseValue = 0.8,
+					SourceIsMultiplier = true,
+					ExtractValue =
+					{
+						ExtractAs = "TooltipSlow",
+						Format = "NegativePercentDelta",
+					},
+					ChangeType = "Multiply",
+				},
+
+				{
+					WeaponName = "DecayCurseApplicator",
+					EffectName = "HeraDecay",
+					EffectProperty = "Amount",
+					ChangeValue = 30,
+					ChangeType = "Absolute",
+					ExtractValue =
+					{
+						ExtractAs = "TooltipDamage",
+					},
+				},
+				{
+					WeaponName = "DecayCurseApplicator",
+					EffectName = "HeraDecay",
+					EffectProperty = "Cooldown",
+					ChangeValue = 0.5,
+					ExtractValue =
+					{
+						ExtractAs = "TooltipTickRate",
+						DecimalPlaces = 1,
+					},
+					ChangeType = "Absolute",
+				},
+			},
+			ExtractValues = {
+				{
+					ExtractAs = "TooltipEnvyDuration",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "SwordWeapon",
+					BaseName = "EnvyCurseAttack",
+					BaseProperty = "Duration",
+				},
+				{
+					ExtractAs = "TooltipJealousyDuration",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "JealousyCurseApplicator",
+					BaseName = "JealousyCurse",
+					BaseProperty = "Duration",
+				},
+				{
+					ExtractAs = "TooltipJealousyPower",
+					SkipAutoExtract = true,
+					External = true,
+					BaseType = "Effect",
+					WeaponName = "JealousyCurseApplicator",
+					BaseName = "JealousyCurse",
+					BaseProperty = "Modifier",
+					Format = "Percent"
+				}
+			},
+		}
+		OlympusLootData.HephaestusUpgrade.LinkedUpgrades.HephaestusImproveHera =
+		{
+			OneFromEachSet =
+			{
+				{ "StatusOverTimeTrait" },
+				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+			}
+		}
+	end
 	-- FUNCTIONS
 
 ModUtil.Path.Wrap( "DoEnemyHealthBufferDeplete", 
@@ -4677,6 +5409,7 @@ ModUtil.Path.Wrap( "DoEnemyHealthBufferDeplete",
 function SetupTemporaryAmmo(args)
 	if args.Ammo then
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Ammo))
+		RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { args.Ammo } })
 	end
 end
 function SetupArmor(args)

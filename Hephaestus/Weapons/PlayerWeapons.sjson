@@ -37,42 +37,5 @@
         }
       ]
     }
-    {
-      Name = "IgneousApplicator"
-      InheritFrom = "1_BaseMagicWeapon"
-      Type = "GUN"
-      Projectile = "null"
-      FullyAutomatic = true
-      AutoLock = true
-      FireFx = "null"
-      IgnoreOwnerAttackDisabled = true
-      Effects = [
-        {
-        Name = "Igneous"
-        Duration = 0.9
-        Active = true
-        TimeModifierFraction = 0
-        ExpiringRapidFlashThreshold = 1.5
-        ElapsedTimeMultiplier = 1.0
-        IgnoreName = "_PlayerUnit"
-        Type = "DAMAGE_OVER_TIME"
-        Amount = 0.0
-        Cooldown = 0.5
-      }]
-    }
-    {
-      Name = "IgneousArmorApplicator"
-      InheritFrom = "MagicShield"
-      Projectile = "IgneousArmorApplicator"
-      Effect = 
-      {
-        Name = "IgneousArmorApplicator"
-        Duration = 5.0
-        Modifier = 0
-        Active = true
-        OnlyAffectName = "_PlayerUnit"
-        BackFx = "HeraCurseStatus"
-      }
-    }
   ]
 }

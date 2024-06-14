@@ -1,5 +1,10 @@
 -- Bugs from the Base Game.
+-- Updated Vanilla Data
+local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+OlympusTraitData.FastClearDodgeBonusTrait.LootSource = "HermesUpgrade"
+OlympusTraitData.AmmoReloadTrait.LootSource = "HermesUpgrade"
 
+-- Verification Function
 ModUtil.Path.Wrap("Heal",
     function(baseFunc, victim, triggerArgs)
         if triggerArgs.HealAmount == nil then
@@ -34,6 +39,20 @@ ModUtil.Path.Wrap("EquipAssist",
         baseFunc(heroUnit, traitName, args)
     end
 )
+
+ModUtil.Path.Wrap("GetLootSourceName",
+    function(baseFunc, traitName)
+        for lootName, god in pairs(LootData) do
+            if god == nil or traitName == nil or god.TraitIndex[traitName] == nil then
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(god.TraitIndex[traitName]))
+                return false
+            end
+        end
+        return baseFunc(traitName)
+    end
+)
+
+-- Common Function for OE
 ModUtil.Path.Wrap("CreateBoonLootButtons",
     function(baseFunc, lootData, reroll)
         if HeroHasTrait("ForceWeaponUpgradeTrait") then
@@ -130,6 +149,18 @@ ModUtil.Path.Wrap("DamageEnemy",
         end
     end
 )
+function TrackDamageWithTime(triggerArgs, victim, name, mutliplier)
+    if victim.TimeOfLastDamage and victim.TimeOfLastDamage[name] and
+        _worldTime - victim.TimeOfLastDamage[name] < 0.05 then
+        return triggerArgs.DamageAmount * mutliplier
+    else
+        if not victim.TimeOfLastDamage then
+            victim.TimeOfLastDamage = {}
+        end
+        victim.TimeOfLastDamage[name] = _worldTime
+        return triggerArgs.DamageAmount
+    end
+end
 ModUtil.Path.Wrap("CheckOnHitPowers",
 		function(baseFunc, victim, attacker, args)
             --Apollo Stuff
@@ -204,62 +235,7 @@ ModUtil.Path.Wrap("CheckOnDamagedPowers",
         end
     end
 )
-function TrackDamageWithTime(triggerArgs, victim, name, mutliplier)
-    if victim.TimeOfLastDamage and victim.TimeOfLastDamage[name] and
-        _worldTime - victim.TimeOfLastDamage[name] < 0.05 then
-        return triggerArgs.DamageAmount * mutliplier
-    else
-        if not victim.TimeOfLastDamage then
-            victim.TimeOfLastDamage = {}
-        end
-        victim.TimeOfLastDamage[name] = _worldTime
-        return triggerArgs.DamageAmount
-    end
-end
-function AddEffectOnWeaponFired(args)
-    ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-						WeaponName = args.WeaponName, EffectName = args.EffectName })
-end
---[[ModUtil.Path.Wrap( "AddRerolls",
-	function(baseFunc, amount, source, args )
-        if type(amount) == "number" then
-		    baseFunc(amount, source, args)
-        end
-	end
-)]]
-function ForceNextRoomFunc(value)
-
-    -- Stomp any rooms already assigned to doors
-    for doorId, door in pairs(OfferedExitDoors) do
-        local room = door.Room
-        if room ~= nil then
-            --ForceNextEncounter = "MiniBossSpreadShot"
-
-            local forcedRoomData = RoomData[value]
-            local forcedRoom = CreateRoom(forcedRoomData)
-            AssignRoomToExitDoor(door, forcedRoom)
-        end
-    end
-end
-
---[[ModUtil.Path.Wrap("BeginOpeningCodex",
-    function(baseFunc)
-        --PresentationNewSameGodIncrease()
-        if (not CanOpenCodex()) and IsSuperValid() then
-            BuildSuperMeter(CurrentRun, 50)
-        end
-        CreateHephaestusLoot()
-        --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
-        --ForceNextRoomFunc("B_Shop01")
-        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
-        --CreateHephaestusLoot({ OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-
-        --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
-        --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
-        baseFunc()
-    end
-)]]
--- Rejection Functions
+-- Rejection / Forgiveness Functions
 ModUtil.Path.Wrap("SpawnRoomReward",
     function(baseFunc, eventSource, args)
         local currentRoom = CurrentRun.CurrentRoom
@@ -420,8 +396,8 @@ end]]
     --PlaySound({ Name = "/SFX/GodFavorBattleStart" })
     PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
 end
+-- Aura Functions
 function SetupAura(args)
-    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start"))
     thread( AuraThread, args )
 end
 function AuraThread(args)
@@ -451,10 +427,6 @@ function AuraThread(args)
                 enemyLocation = GetLocation({ Id = enemy.ObjectId })
                 local distanceSquared = math.sqrt((enemyLocation.X - heroLocation.X) ^ 2 +
                     (enemyLocation.Y - heroLocation.Y) ^ 2)
-                if distanceSquared <= 100 and HasEffect({ Id = CurrentRun.Hero.ObjectId, EffectName = "IgneousArmor" }) then
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Apply"))
-                    ApplyEffectFromWeapon({ WeaponName = "IgneousApplicator", EffectName = "Igneous", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
-                end
                 if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
                     ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
@@ -575,17 +547,45 @@ ModUtil.Path.Wrap("IsGameStateEligible",
         return true
     end
 )
--- Test
-ModUtil.Path.Wrap("GetLootSourceName",
-    function(baseFunc, traitName)
-        for lootName, god in pairs(LootData) do
-            if god == nil then
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(lootName))
-                return false
-            end
+-- Test / Utility
+--[[ModUtil.Path.Wrap("BeginOpeningCodex",
+    function(baseFunc)
+        --PresentationNewSameGodIncrease()
+        if (not CanOpenCodex()) and IsSuperValid() then
+            BuildSuperMeter(CurrentRun, 50)
         end
-        if traitName ~= nil then
-            baseFunc(traitName)
+        CreateHephaestusLoot()
+        --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
+        --ForceNextRoomFunc("B_Shop01")
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(CurrentRun.Hero.Traits))
+        --CreateHephaestusLoot({ OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+
+        --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
+        --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
+        baseFunc()
+    end
+)]]
+function ForceNextRoomFunc(value)
+
+    -- Stomp any rooms already assigned to doors
+    for doorId, door in pairs(OfferedExitDoors) do
+        local room = door.Room
+        if room ~= nil then
+            --ForceNextEncounter = "MiniBossSpreadShot"
+
+            local forcedRoomData = RoomData[value]
+            local forcedRoom = CreateRoom(forcedRoomData)
+            AssignRoomToExitDoor(door, forcedRoom)
         end
     end
-)
+end
+
+--[[function GetLootSourceNameFromGod(traitName)
+    for lootName, god in pairs(LootData) do
+        if god == nil then
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(lootName))
+            return false
+        end
+    end
+    return GetLootSourceName(traitName)
+end]]

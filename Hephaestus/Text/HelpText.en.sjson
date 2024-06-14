@@ -214,6 +214,66 @@
 			Description = "Gain {$TooltipData.TooltipMaxArmor} {$Keywords.Armor}. Spawn 1 {#BoldFormatGraft}Daedalus Hammer{#PreviousFormat}. Increase your {#BoldFormatGraft}Daedalus Hammers Limit{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Daedalus Hammers Limit: \Column 380 {#UpgradeFormat}4{#PreviousFormat}"
 		}
 		{
+			Id = "HephaestusImproveZeus"
+			DisplayName = "Fractured Bolt"
+			Description = "Whenever you strike foes with lightning {$Keywords.GodBoonPlural}, fire an electric bolt. \n {!Icons.Bullet}{#PropertyFormat}Lightning Damage: \Column 380 {#OldFormat}{$TooltipData.NewTotal2}{!Icons.RightArrow}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "HephaestusImproveAthena"
+			DisplayName = "Godlike Protection"
+      		Description = "You have a barrier that negates an instance of damage. \n {!Icons.Bullet}{#PropertyFormat} Barrier Refresh Time: \Column 380 {#OldFormat}{$TooltipData.NewTotal2}{!Icons.RightArrow}{$TooltipData.NewTotal1} {#UpgradeFormat}Sec."
+		}
+		{
+			Id = "HephaestusImprovePoseidon"
+			DisplayName = "Third Wave"
+			Description = "Your {$Keywords.GodBoonPlural} with knock-away effects shove foes multiple times. \n {!Icons.Bullet}{#PropertyFormat}Bonus Knock-Away Effects: \Column 380 {#UpgradeFormat}+2"
+		}
+		{
+			Id = "HephaestusImproveFishPoseidon"
+			DisplayName = "Massive Catch"
+			Description = "You have a greater chance to find a {$Keywords.FishingPoint} in each {$Keywords.RoomAlt}. \n {!Icons.Bullet}{#PropertyFormat}Fish Spawn Chance: \Column 380 {#OldFormat}+{$TooltipData.NewTotal2}%{!Icons.RightArrow}+{$TooltipData.TooltipBonus}%"
+		}
+		{
+			Id = "HephaestusImproveArtemis"
+			DisplayName = "Extremely Loaded"
+			Description = "Gain extra {!Icons.Ammo} for your {$Keywords.Cast}. \n {!Icons.Bullet}{#PropertyFormat}Max Bloodstones: \Column 380 {#OldFormat}2{!Icons.RightArrow}{$TooltipData.NewTotal1}{!Icons.Ammo_Small}"
+		}
+		{
+			Id = "HephaestusImproveAphrodite"
+			DisplayName = "Depraved Fixation"
+			Description = "Your {$Keywords.Weak} effects also have a {#BoldFormat}{$TooltipData.TooltipAffectChance:P} {#PreviousFormat}chance to {$Keywords.Charm} foes. \n {!Icons.Bullet}{#PropertyFormat}Charm Duration: \Column 380 {#OldFormat}{$TooltipData.NewTotal2}{!Icons.RightArrow}{#UpgradeFormat}{$TooltipData.NewTotal1} Sec."
+		}
+		{
+			Id = "HephaestusImproveAres"
+			DisplayName = "Corrupted Cycle"
+			Description = "Your {$Keywords.BladeRift} effects deal more damage for each consecutive hit. \n {!Icons.Bullet}{#PropertyFormat}Damage Increase per Hit: \Column 380 {#OldFormat}{$TooltipData.NewTotal2}{!Icons.RightArrow}{#UpgradeFormat}+{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "HephaestusImproveDionysus"
+			DisplayName = "Pitch Black"
+			Description = "{$Keywords.Poison}-afflicted foes take bonus damage in {$Keywords.Cloud}. \n {!Icons.Bullet}{#PropertyFormat}Fog Combo Damage: \Column 380 {#PreviousFormat}{#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "HephaestusImproveDemeter"
+			DisplayName = "Hiemal Harvest"
+			Description = "{$Keywords.Chill}-afflicted foes shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}, inflicting {$Keywords.Chill} nearby. \n {!Icons.Bullet}{#PropertyFormat}Shatter Area Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "HephaestusImproveApollo"
+			DisplayName = "Purest Dawn"
+			Description = "Your {$Keywords.ApolloBlind} effects are more potent. \n {!Icons.Bullet}{#PropertyFormat}Miss Chance: \Column 380 {#OldFormat}60%{!Icons.RightArrow}{#UpgradeFormat}70%"
+		}
+		{
+			Id = "HephaestusImproveHestia"
+			DisplayName = "Imperial Hearth"
+			Description = "Your {$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} attract foes."
+		}
+		{
+			Id = "HephaestusImproveHera"
+			DisplayName = "Monarchical Sanctuary"
+			Description = "{$Keywords.Aura}: Foes with {$Keywords.EnvyCurse} or {$Keywords.JealousyCurse} decay. \n {!Icons.Bullet}{#PropertyFormat}Decay Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat} {#ItalicFormat} (every {$TooltipData.TooltipTickRate} Sec.) \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Small{#AltUpgradeFormat}"
+		}
+		{
 			Id = "ForceWeaponUpgradeTrait"
 			DisplayName = "Bronze Replica"
 			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait."
