@@ -905,23 +905,7 @@ if ModUtil ~= nil then
 				Multiplier = 1.80,
 			}
 		},
-		--[[SetupFunction =
-		{
-			Name = "SetupAura",
-			RunOnce = true,
-		},]]
-		--[[OnWeaponFiredFunctions =
-		{
-			ValidWeapons = OlympusWeaponSets.PrimaryWeapons,
-			FunctionName = "AddIgneousEffect",
-			FunctionArgs =
-			{
-				WeaponName = "ZeusDionysusCloudStrike",
-				Interval = 0.85,
-				Duration = 5,
-				Range = 400,
-			},
-		},]]
+		
 		PropertyChanges =
 		{
 			--[[{
@@ -1360,7 +1344,7 @@ if ModUtil ~= nil then
 		{
 			Name = "SetupTemporaryAmmo",
 			RunOnce = true,
-			FunctionArgs =
+			Args =
 			{
 				Ammo = 3,
 				ExtractValues =
@@ -1604,9 +1588,10 @@ if ModUtil ~= nil then
 		{
 			Name = "SetupArmor",
 			RunOnce = true,
-			FunctionArgs =
+			Args =
 			{
 				ArmorAtSetup = 25,
+				Source = "ArmorEncounterTrait",
 				ExtractValues =
 				{
 					{
@@ -1660,9 +1645,10 @@ if ModUtil ~= nil then
 		{
 			Name = "SetupArmor",
 			RunOnce = true,
-			FunctionArgs =
+			Args =
 			{
 				ArmorAtSetup = 50,
+				Source = "ArmorDefianceTrait",
 				ExtractValues =
 				{
 					{
@@ -1717,9 +1703,10 @@ if ModUtil ~= nil then
 		{
 			Name = "SetupArmor",
 			RunOnce = true,
-			FunctionArgs =
+			Args =
 			{
 				ArmorAtSetup = 25,
+				Source = "ArmorBossTrait",
 				ExtractValues =
 				{
 					{
@@ -1832,9 +1819,10 @@ if ModUtil ~= nil then
 		{
 			Name = "SetupArmor",
 			RunOnce = true,
-			FunctionArgs =
+			Args = 
 			{
 				ArmorAtSetup = 100,
+				Source = "ArmorLegendaryTrait",
 				ExtractValues =
 				{
 					{
@@ -2261,7 +2249,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImproveDemeter",
 		OnDamageEnemyFunction = {
 			FunctionName = "CheckChillKill",
-			FunctionArgs = {
+			Args = {
 				ChillDeathThreshold = 0.15,
 				ExtractValues =
 				{
@@ -5156,7 +5144,7 @@ if ModUtil ~= nil then
 		UnlockGameStateRequirements = { RequiredTextLines = { "HephaestusBackstory04" } }
 	}
 	-- Multi Gods compatibility
-	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
+	if ApolloExtra ~= nil then
 		-- Demeter
 		OlympusTraitData.MissChanceTrait.RequiredFalseTrait = nil
 		OlympusTraitData.MissChanceTrait.RequiredFalseTraits = {"MissChanceTrait", "HephaestusImproveApollo"}
@@ -5237,7 +5225,7 @@ if ModUtil ~= nil then
 			}
 		}
 	end
-	if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
+	if HestiaExtra then
 		-- Demeter
 		OlympusTraitData.LavaAutoTrait.RequiredFalseTrait = nil
 		OlympusTraitData.LavaAutoTrait.RequiredFalseTraits = {"LavaAutoTrait", "HephaestusImproveHestia"}
@@ -5289,7 +5277,7 @@ if ModUtil ~= nil then
 			}
 		}
 	end
-	if ModUtil.Entangled.ModData("HeraExtra") ~= nil then
+	if HeraExtra ~= nil then
 		-- Demeter
 		OlympusTraitData.StatusOverTimeTrait.RequiredFalseTrait = nil
 		OlympusTraitData.StatusOverTimeTrait.RequiredFalseTraits = {"StatusOverTimeTrait", "HephaestusImproveHera"}
@@ -5412,24 +5400,31 @@ function SetupTemporaryAmmo(args)
 		RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { args.Ammo } })
 	end
 end
-function SetupArmor(args)
+function SetupArmor(hero, args)
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Setup Armor"))
 	if CurrentRun.Hero.Armor == nil then
 		CurrentRun.Hero.Armor = {
 			Amount = 0,
-			Max = 0
+			Max = 0,
+			Sources = {},
 		}
 	end
-	if args.ArmorAtSetup then
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args))
+	if args.ArmorAtSetup ~= nil and not Contains( CurrentRun.Hero.Armor.Sources, args.Source ) then
 		AddMaxArmor(args.ArmorAtSetup)
+		table.insert(CurrentRun.Hero.Armor.Sources, args.Source)
 	end
+	--ShowArmorUI()
 	thread( UpdateHealthUI )
 end
 
 function AddMaxArmor(num)
 	CurrentRun.Hero.Armor.Max = CurrentRun.Hero.Armor.Max + num
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Max))
 	RepairArmor(num)
 end
 function RepairArmor(amount)
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Max))
 	if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 then
 		local newAmount = CurrentRun.Hero.Armor.Amount + amount
 		if newAmount > CurrentRun.Hero.Armor.Max then
@@ -5442,28 +5437,136 @@ end
 function GainArmorPresentation( args )
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Some Armor Presentation"))
 end
---[[function AddHealthBuffer( amount, source, args )
-	args = args or {}
-	MapState.HealthBufferSources = MapState.HealthBufferSources or {}
-	MapState.HealthBufferSources[ source ] = amount
-	local totalHealthBuffer = 0
-	for armorSource, value in pairs( MapState.HealthBufferSources ) do
-		totalHealthBuffer = totalHealthBuffer + value 
+
+ModUtil.Path.Wrap( "Damage", 
+	function (baseFunc, victim, triggerArgs )
+		if victim == nil or victim.Health == nil or ( victim.IsDead and not triggerArgs.PureDamage ) then
+			return
+		end
+		if victim == CurrentRun.Hero and victim.Armor ~= nil and victim.Armor.Amount > 0 then
+			victim.Armor.Amount = victim.Armor.Amount - triggerArgs.DamageAmount
+			if victim.Armor.Amount < 0 then
+				victim.Armor.Amount = 0
+			end
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Armor.Amount)) 
+			DamageHero( victim, triggerArgs )
+			if victim.Armor.Amount <= 0 then
+				ArmorDepletedPresentation()
+			end
+		else
+			baseFunc(victim, triggerArgs)
+		end
 	end
-	CurrentRun.Hero.HealthBuffer = totalHealthBuffer
-	thread(OnPlayerArmorGain, {Amount = amount, Silent = args.Silent, Delay = args.Delay} )
-end]]
+)
+function ArmorDepletedPresentation()
+	wait(0.2)
+	--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+	thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "ArmorDepleted", Duration = 1 })
+end
+ModUtil.Path.Wrap( "ShowHealthUI", 
+	function(baseFunc)
+		if not ConfigOptionCache.ShowUIAnimations then
+			return
+		end
+		baseFunc()
+		ShowArmorUI()
+	end
+)
+function ShowArmorUI()
+		local unit = CurrentRun.Hero
+		if unit == nil or unit.Armor == nil then
+			return
+		end
+		local currentArmor = unit.Armor.Amount
+		local maxArmor = unit.Armor.Max
+		if currentArmor == nil or maxArmor == nil then
+			return
+		end
+		if ScreenAnchors.ArmorBack ~= nil then
+			return
+		end
+
+		if ScreenAnchors.Shadow == nil then
+			ScreenAnchors.Shadow = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI_Backing", X = 0, Y = ScreenHeight })
+			SetAnimation({ Name = "BarShadow", DestinationId = ScreenAnchors.Shadow })
+		end
+
+		ScreenAnchors.ArmorBack = CreateScreenObstacle({Name = "BlankObstacle", Group = "Combat_UI", X = 10 - CombatUI.FadeDistance.Health, Y = ScreenHeight - 50})
+		ScreenAnchors.ArmorFill = CreateScreenObstacle({Name = "BlankObstacle", Group = "Combat_UI", X = 10 - CombatUI.FadeDistance.Health, Y = ScreenHeight - 50})
+		ScreenAnchors.ArmorFlash =  CreateScreenObstacle({Name = "BlankObstacle", Group = "Combat_UI", X = 10 - CombatUI.FadeDistance.Health, Y = ScreenHeight - 50})
+
+		CreateTextBox(MergeTables({ Id = ScreenAnchors.ArmorBack, OffsetX = 392, OffsetY = -38,
+				Font = "AlegreyaSansSCBold", FontSize = 24, ShadowRed = 0.1, ShadowBlue = 0.1, ShadowGreen = 0.1,
+				OutlineColor = {0.113, 0.113, 0.113, 1}, OutlineThickness = 1,
+				ShadowAlpha = 1.0, ShadowBlur = 0, ShadowOffsetY = 2, ShadowOffsetX = 0, Justification = "Left",
+				}, LocalizationData.UIScripts.HealthUI ))
+
+		--SetAnimation({ Name = "HealthBar", DestinationId = ScreenAnchors.ArmorBack })
+
+		local frameTarget = 1-(currentArmor / maxArmor)
+		SetAnimation({ Name = "HealthBarFill", DestinationId = ScreenAnchors.ArmorFill, FrameTarget = frameTarget, Instant = true, Color = Color.Yellow })
+
+		thread(UpdateHealthUI)
+
+		FadeObstacleIn({ Id = ScreenAnchors.ArmorBack, Duration = CombatUI.FadeInDuration, IncludeText = true, Distance = CombatUI.FadeDistance.Health, Direction = 0 })
+		FadeObstacleIn({ Id = ScreenAnchors.ArmorFill, Duration = CombatUI.FadeInDuration, IncludeText = false, Distance = CombatUI.FadeDistance.Health, Direction = 0 })
+		FadeObstacleIn({ Id = ScreenAnchors.ArmorFlash, Duration = CombatUI.FadeInDuration, IncludeText = false, Distance = CombatUI.FadeDistance.Health, Direction = 0 })
+end
 ModUtil.Path.Wrap( "UpdateHealthUI", 
 	function(baseFunc, damageEventArgs)
 		baseFunc(damageEventArgs)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor))
-		if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Amount > 0 then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount))
-			local frameTarget = 1 - (CurrentRun.Hero.Armor.Amount / CurrentRun.Hero.Armor.Max)
-			SetAnimation({ Name = "HealthBarFill", DestinationId = ScreenAnchors.HealthFill, FrameTarget = frameTarget, Instant = true, Color = Color.Black })
-			SetAnimation({ Name = "HealthBarFillWhite", DestinationId = ScreenAnchors.HealthRally, FrameTarget = frameTarget, Instant = true, Color = Color.RallyHealth })
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount.."/"..CurrentRun.Hero.Armor.Max))
+		local unit = CurrentRun.Hero
+		if unit == nil or unit.Armor == nil then
+			return
 		end
+
+		local currentArmor = unit.Armor.Amount
+		local maxArmor = unit.Armor.Max
+		if currentArmor == nil or maxArmor == nil then
+			return
+		end
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Armor.Amount.."/"..CurrentRun.Hero.Armor.Max)) 
+
+		if ScreenAnchors.ArmorBack ~= nil then
+			ModifyTextBox({ Id = ScreenAnchors.ArmorBack, Text = "UI_PlayerArmor", LuaKey = "TempTextData", LuaValue = { Current = math.ceil(currentArmor), Maximum = math.ceil(maxArmor) }, AutoSetDataProperties = false })
+		end
+
+		if ScreenAnchors.ArmorFill ~= nil then
+			SetAnimationFrameTarget({ Name = "HealthBarFill", Fraction = 1-(currentArmor / maxArmor), DestinationId = ScreenAnchors.ArmorFill })
+		end
+	end
+)
+ModUtil.Path.Wrap( "HideHealthUI", 
+	function(baseFunc)
+		if ScreenAnchors.ArmorBack == nil then
+			return
+		end
+		local ArmorIds = { "ArmorBack", "ArmorFill", "ArmorFlash" }
+		local armorAnchorIds = {}
+		for i, id in pairs( ArmorIds ) do
+			table.insert(armorAnchorIds, ScreenAnchors[id])
+		end
+
+		ScreenAnchors.ArmorBack = nil
+		ScreenAnchors.ArmorFill = nil
+		ScreenAnchors.ArmorFlash = nil
+
+		HideObstacle({ Ids = armorAnchorIds, IncludeText = true, FadeTarget = 0, Duration = CombatUI.FadeDuration, Angle = 180, Distance = CombatUI.FadeDistance.Health })
+		baseFunc()
+		--wait( CombatUI.FadeDuration, RoomThreadName )
+		Destroy({ Ids = armorAnchorIds })
+	end
+)
+ModUtil.Path.Wrap( "DestroyHealthUI", 
+	function(baseFunc)
+		baseFunc()
+		local ids = { ScreenAnchors.ArmorBack, ScreenAnchors.ArmorFill, ScreenAnchors.ArmorFlash }
+		if not IsEmpty( ids ) then
+			Destroy({ Ids = ids })
+		end
+		ScreenAnchors.ArmorBack = nil
+		ScreenAnchors.ArmorFill = nil
+		ScreenAnchors.ArmorFlash = nil
 	end
 )
 ModUtil.Path.Wrap("StartEncounter",
@@ -5474,7 +5577,7 @@ ModUtil.Path.Wrap("StartEncounter",
 					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
 					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil) or
 					currentRun.CurrentRoom.IsMiniBossRoom then					
-					RepairHeroArmor(armorAmount)
+						RepairArmor(armorAmount)
 				end
 			end
 			baseFunc(currentRun, currentRoom, currentEncounter)
@@ -5503,7 +5606,7 @@ ModUtil.Path.Wrap( "EndEncounterEffects",
 			for k, traitData in pairs(currentRun.Hero.Traits) do
 				if not currentEncounter.PlayerTookDamage and traitData.RepairArmorOnPerfectEncounter then
 					PerfectClearTraitSuccessPresentation( traitData )
-					RepairHeroArmor(traitData.RepairArmorOnPerfectEncounter)
+					RepairArmor(traitData.RepairArmorOnPerfectEncounter)
 					--CurrentRun.CurrentRoom.PerfectEncounterCleared = true
 					--CheckAchievement( { Name = "AchBuffedButterfly", CurrentValue = traitData.AccumulatedDamageBonus } )
 				end
@@ -5515,11 +5618,13 @@ ModUtil.Path.Wrap( "FireShoutEffects",
 	function(baseFunc, superName)
 		baseFunc(superName)
 		if superName ~= nil then
-			local isMax = string.find(superName, "Max")
-			if isMax then
-				thread( HephaestusMaxShout )
-			else
-				thread( HephaestusShout )
+			if HeroHasTrait("HephaestusShoutTrait")then
+				local isMax = string.find(superName, "Max")
+				if isMax then
+					thread( HephaestusMaxShout )
+				else
+					thread( HephaestusShout )
+				end
 			end
 		end		
 	end
@@ -5581,48 +5686,7 @@ ModUtil.Path.Wrap( "IsHermesBoon",
 		args = args or {}
 		return CreateLoot({ Name = "HephaestusUpgrade" })--CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
-	function AddIgneousEffect(weaponData, args)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Pressed")) 
-		IgneousEffectThread(args)
-	end
-	function IgneousEffectThread(args)
-		--[[if HeroHasTrait("AuraBlindTrait") then
-			StopAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })
-			CreateAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })			
-		end]]
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(args)) 
-		local weaponName = args.WeaponName
-		local intervalData = args.Interval
-		local duration = args.Duration
-		local range = args.Range or 500
-		local count = args.Count or 3
-
-		while duration > 0 do
-			local interval = intervalData
-			if type(intervalData) == "table" then
-				interval = RandomFloat( intervalData.Min, intervalData.Max )
-			end
-			wait( interval, RoomThreadName )
-			duration = duration - interval
-			local nearestEnemyTargetIds = GetClosestIds({ Id = CurrentRun.Hero.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true,
-				IgnoreHomingIneligible = true, Distance = range})
-			local facingAngle = GetAngle({ Id = CurrentRun.Hero.ObjectId })
-			local allNearbyEnemies = {}
-			for _, id in pairs(nearestEnemyTargetIds) do
-				local enemy = ActiveEnemies[id]
-				if enemy ~= nil and not enemy.IsDead and not enemy.IgnoreAutoLock then
-					Damage( enemy, { EffectName = "IgneousEffect", DamageAmount = 1, Silent = false, PureDamage = true, AttackerTable = CurrentRun.Hero } )
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Damage"..enemy.Name)) 
-				end
-			end
-			if IsCombatEncounterActive( CurrentRun ) then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Is Active")) 
-				
-			end
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Done")) 
-		end
-	end
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)
 			-- if (not CanOpenCodex()) and IsSuperValid() then
 			-- 	BuildSuperMeter(CurrentRun, 50)
@@ -5631,6 +5695,5 @@ ModUtil.Path.Wrap( "IsHermesBoon",
 			CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
 			baseFunc()
 		end
-	)
-	table.insert(OlympusLootData.HermesUpgrade.Consumables,"ArmorEncounterDrop")
+	)]]
 end
