@@ -7049,7 +7049,7 @@ end]]
 		UnlockGameStateRequirements = { RequiredTextLines = { "HeraBackstory05" } }
 	}
 	-- Multi Gods compatibility
-	if ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
+	if HestiaExtra ~= nil then
 		OlympusLootData.HeraUpgrade.LinkedUpgrades.EnhancedNPCTrait =
 		{
 			OneFromEachSet =
@@ -7110,9 +7110,73 @@ end]]
                     Text = "But... My sister isn't even an Olympian anymore. And I am your Queen! Zagreus. You poor misguided soul. I... suppose I forgive you for your ignorance. {#DialogueItalicFormat}Hmph{#PreviousFormat}." },
             },
         }
-		table.insert(HeraExtra.GodsList, "Hestia")		
+		-- Added Shout
+		table.insert(HeraExtra.GodsList, "Hestia")			
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponNames = { "HestiaSuper" },
+			ProjectileProperty = "DamageLow",
+			BaseMin = 150,
+			BaseMax = 150,
+			DepthMult = DepthDamageMultiplier,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDamage",
+			}
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponNames = { "HestiaSuper", },
+			ProjectileProperty = "DamageHigh",
+			DeriveValueFrom = "DamageLow",
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponNames = { "HestiaMaxSuper" },
+			ProjectileProperty = "DamageLow",
+			BaseMin = 200,
+			BaseMax = 200,
+			DepthMult = DepthDamageMultiplier,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDamageMax",
+				--SkipAutoExtract = true
+			}
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponNames = { "HestiaMaxSuper" },
+			ProjectileProperty = "DamageHigh",
+			BaseMin = 200,
+			BaseMax = 200,
+			DepthMult = DepthDamageMultiplier,
+			ExcludeLinked = true,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponNames = { "HestiaMaxSuper", },
+			WeaponProperty = "NumProjectiles",
+			ChangeValue = 3,
+			ChangeType = "Absolute",
+			--[[ExtractValue =
+			{
+				ExtractAs = "TooltipProjectiles",
+			}]]
+		})
 	end
-	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
+	if ApolloExtra ~= nil then
         OlympusLootData.HeraUpgrade.LinkedUpgrades.AuraBlindTrait =
 		{
 			OneFromEachSet =
@@ -7161,9 +7225,50 @@ end]]
                 Speaker = "NPC_Hera_01", Portrait = "Portrait_Hera_Default_01",
                 Text = "It is Queen Hera, to you. I said I would help him escape, and I keep my word. Now help me or go away." },
         }
+		-- Added Shout
 		table.insert(HeraExtra.GodsList, "Apollo")
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponName = "ApolloShoutWeapon",
+			ProjectileProperty = "DamageLow",
+			BaseMin = 35,
+			BaseMax = 35,
+			DepthMult = DepthDamageMultiplier,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateMultiplier,
+			},
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDamage",
+			}
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponName = "ApolloShoutWeapon",
+			ProjectileProperty = "DamageHigh",
+			DeriveValueFrom = "DamageLow"
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponName = "ApolloShoutWeapon",
+			ProjectileProperty = "MaxAdjustRate",
+			ChangeValue = math.rad(180)
+		})
+		table.insert(OlympusTraitData.HeraShoutTrait.PropertyChanges, 
+		{
+			WeaponName = "ApolloShoutWeapon",
+			ProjectileProperty = "Fuse",
+			ChangeValue = 0.1,
+			ExtractValue =
+			{
+				SkipAutoExtract = true,
+				ExtractAs = "TooltipInterval",
+				DecimalPlaces = 1,
+			}
+		})
     end
-	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil and ModUtil.Entangled.ModData("HestiaExtra") ~= nil then
+	if ApolloExtra ~= nil and HestiaExtra ~= nil then
 		OlympusQuestData.SynergyUpgrades2 =
 		{
 			Name = "SynergyUpgrades2",

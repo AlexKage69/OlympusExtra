@@ -69,8 +69,6 @@ Replace "Audio/VO.fsb"
 :: Subtitles and Texts
 To "Subtitles/en/ZagreusScratch.csv"
 Replace "Audio/Subtitles/Subtitle.en.csv"
-To "Game/Text/en/HelpText.en.sjson"
-SJSON "Characters/Text/en/HelpText.en.sjson"
 
 :: Movies
 To "Movies/720p/MainMenuIn.bik"

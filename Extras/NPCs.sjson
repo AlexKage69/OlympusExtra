@@ -1,0 +1,45 @@
+{
+  Units = [
+    "_append"
+    {
+      Name = "NPC_Makaria_01"
+      InheritFrom = "BaseNPC"
+      DisplayInEditor = true
+      Thing = 
+      {
+        AttachedAnim = "NPCShadow"
+        EditorOutlineDrawBounds = false
+        Graphic = "HypnosAwakeLoop"
+        OffsetZ = 30.0
+        Tallness = 150.0
+        Points = [
+          {
+            X = 4
+            Y = 26
+          }
+          {
+            X = 68
+            Y = -6
+          }
+          {
+            X = -8
+            Y = -44
+          }
+          {
+            X = -72
+            Y = -12
+          }]
+        SubtitleColor = 
+        {
+          Red = 0.44
+          Green = 0.5
+          Blue = 0.83
+        }
+        Using = [
+          {
+            Name = "HypnosIdle"
+          }]
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+-: Mod Name: Goddess Codex
+    Author - AlexKage
+    Author - physiX
+:-
+
+Import "SeparateGoddess.lua"
+Import "patch.lua"
+Import "extender.lua"

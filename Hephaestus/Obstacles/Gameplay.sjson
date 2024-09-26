@@ -11,5 +11,57 @@
         Graphic = "BoonDropHephaestus"
       }
     }
+    {
+      Name = "SwordHephWeaponDrop"
+      InheritFrom = "HealDrop1"
+      DisplayInEditor = true
+      VelocityAbsorbtionFraction = 0.5
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Scale = 0.8
+        StopsProjectiles = false
+        StopsUnits = false
+      }
+    }
+    {
+      Name = "BowHephWeaponDrop"
+      InheritFrom = "HealDrop1"
+      DisplayInEditor = true
+      VelocityAbsorbtionFraction = 0.5
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Scale = 0.8
+        StopsProjectiles = false
+        StopsUnits = false
+      }
+    }
+    {
+      Name = "SpearHephWeaponDrop"
+      InheritFrom = "HealDrop1"
+      DisplayInEditor = true
+      VelocityAbsorbtionFraction = 0.5
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Scale = 0.8
+        StopsProjectiles = false
+        StopsUnits = false
+      }
+    }
+    {
+      Name = "ShieldHephWeaponDrop"
+      InheritFrom = "HealDrop1"
+      DisplayInEditor = true
+      VelocityAbsorbtionFraction = 0.5
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Scale = 0.8
+        StopsProjectiles = false
+        StopsUnits = false
+      }
+    }
   ]
 }

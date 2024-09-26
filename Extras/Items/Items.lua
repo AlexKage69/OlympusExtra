@@ -1,7 +1,7 @@
 -- Separate Gods from Goddess to add more gods
 
 if ModUtil ~= nil then
-
+	--GUI\\Screens\\ShopIcons\\cosmetic_item
 	ModUtil.Mod.Register("ApolloExtra")
 
 	local mod = "ApolloExtra"

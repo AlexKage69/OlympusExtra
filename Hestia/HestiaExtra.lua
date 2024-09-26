@@ -2216,7 +2216,6 @@ if ModUtil ~= nil then
 				{
 					ExtractAs = "TooltipProjectiles",
 				}]]
-
 			},
 			{
 				TraitName = "RegeneratingCappedSuperTrait",
@@ -3052,7 +3051,7 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponNames = { "ArtemisHestiaExplosion" },
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
@@ -5491,7 +5490,7 @@ if ModUtil ~= nil then
 	}
 
 	-- Multi Gods compatibility
-	if ModUtil.Entangled.ModData("ApolloExtra") ~= nil then
+	if ApolloExtra ~= nil then
         OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait =
         {
             OneFromEachSet =

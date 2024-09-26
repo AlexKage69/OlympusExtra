@@ -1,0 +1,164 @@
+{
+  Projectiles = [
+      "_append"
+    {
+      Name = "TheseusApolloBolt"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "RadialNovaTheseusWrath-Apollo"
+      Type = "INSTANT"
+      DamageLow = 10
+      DamageHigh = 10
+      DamageRadius = 250.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0.75
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "FX_Terrain_Add"
+      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
+      DangerDistance = 0
+      Thing = {
+        Graphic = "DevotionPreAttackBase_Apollo"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = {
+          Red = 0.0
+          Green = 0.05
+          Blue = 1.0
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+      Effects = {
+        Name = "ZagreusApolloBlind"
+        Type = "INVULNERABLE"
+        Duration = 3.0
+        Modifier = 1.0
+        FrontFx = "ApolloHoverLoop"
+        OnlyAffectName = "_PlayerUnit"
+        Active = true        
+        ExtendDurationOnReapply = false
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+      }
+    }
+    {
+      Name = "TheseusApolloBoltHeal"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "RadialNovaTheseusWrath-Apollo"
+      Type = "INSTANT"
+      DamageLow = 10
+      DamageHigh = 10
+      DamageRadius = 250.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0.75
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "FX_Terrain_Add"
+      DissipateGraphic = "TheseusGodPowerPreviewDecalDarkFade"
+      DangerDistance = 0
+      Thing = {
+        Graphic = "DevotionPreAttackBase_Apollo"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = {
+          Red = 0.0
+          Green = 0.05
+          Blue = 1.0
+          Opacity = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "TheseusApolloBoltPassive"
+      InheritFrom = "TheseusApolloBolt"
+      DamageRadius = 350
+      Fuse = 1.0
+    }    
+    {
+      Name = "DevotionApollo"
+      InheritFrom = "TheseusApolloBolt"
+      Type = "INSTANT"
+      DamageLow = 10
+      DamageHigh = 10
+      DamageRadius = 350.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 1.0
+      DieWithOwner = true
+      InheritOwnerElapsedTimeMultiplier = false
+      AffectsFriends = false
+      AffectsEnemies = true
+      AffectsSelf = false
+      SpawnOnDetonate = "DevotionApolloHeal"
+      SpawnType = "PROJECTILE"
+      CanBeProjectileDefenseDestroyed = false
+      CanBeReflected = false
+      DangerDistance = 0
+    }
+    {
+      Name = "DevotionApolloHeal"
+      InheritFrom = "TheseusApolloBoltHeal"
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 350.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 0
+      Fuse = 0
+      Heal = 500
+      DieWithOwner = true
+      InheritOwnerElapsedTimeMultiplier = false
+      AffectsFriends = true
+      AffectsEnemies = false
+      AffectsSelf = false
+      DangerDistance = 0
+    }
+  ]
+}

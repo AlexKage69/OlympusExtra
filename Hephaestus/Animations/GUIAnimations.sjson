@@ -2,25 +2,25 @@
   Animations = [
 	"_append"
     {
-      Name = "Keepsake_Bust_Child"
+      Name = "Keepsake_Statue_Child"
       InheritFrom = "KeepsakeTrayIcon"
       FilePath = "Hephaestus\Hephaestus_Keepsake"
-      Scale = 0.5
+      Scale = 0.4
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Keepsake_Bust"
+      Name = "Keepsake_Statue"
       InheritFrom = "KeepsakeIcon"
       FilePath = "Hephaestus\Hephaestus_Keepsake"
-      Scale = 1
+      Scale = 0.75
       EndFrame = 1
       StartFrame = 1
     }
     {
-      Name = "Keepsake_Bust_Small"
+      Name = "Keepsake_Statue_Small"
       InheritFrom = "KeepsakeTrayIconBacking"
-      ChildAnimation = "Keepsake_Bust_Child"
+      ChildAnimation = "Keepsake_Statue_Child"
       EndFrame = 1
       StartFrame = 1
     }
@@ -83,22 +83,24 @@
     {
       Name = "BoonInfoSymbolHephaestusIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hephaestus\Hephaestus1"
+      FilePath = "Hephaestus\Hepheastus1"
       EndFrame = 1
       StartFrame = 1
+      Scale = 0.20
     }
     {
       Name = "BoonSymbolHephaestusIcon"
       InheritFrom = "BoonSymbolBase"
-      FilePath = "Hephaestus\Hephaestus1"
-      Scale = 0.70
+      FilePath = "Hephaestus\Hepheastus1"
+      Scale = 0.20
     }
     {
       Name = "BoonSymbolHephaestusIsometric"
       InheritFrom = "BoonSymbolBaseIsometric"
-      FilePath = "Hephaestus\HephaestusDoorIcon"
+      FilePath = "Hephaestus\Hepheastus1"
       EndFrame = 1
       StartFrame = 1
+      Scale = 0.20
     }
     {
       Name = "Boon_Hephaestus_00_Small"

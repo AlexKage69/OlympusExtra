@@ -33,14 +33,19 @@
 			DisplayName = "perfection is never far, but never reached."
 		}	
 		{
+			Id = "IgneousArmorDamage"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
       		Id = "IgneousArmor"
 			DisplayName = "Igneous"
 			Description = "Damage done charges an armor that explode after 5 sec. Cooldown 7 sec."
 		}
 		{
       		Id = "Armor"
-			DisplayName = "Armor"
-			Description = "Prevent damage. Max Armor: {$TooltipData.MaxArmor}"
+			DisplayName = "{!Icons.ArmorIcon}"
+			Description = "Prevent damage. Max {!Icons.ArmorIcon}: {$TooltipData.MaxArmor}"
 		}
 		{
       		Id = "HephWeapon"
@@ -50,7 +55,7 @@
 		{
       		Id = "Repair"
 			DisplayName = "Repair"
-			Description = "Gain Armor. Can't exceed the Max Armor limit."
+			Description = "Gain {!Icons.ArmorIcon}. Can't exceed the Max {!Icons.ArmorIcon} limit."
 		}
 		{
 			Id = "TemporaryAmmo"
@@ -147,12 +152,12 @@
 		{
 			Id = "RevengeBoostTrait"
 			DisplayName = "Blood Rush"
-			Description = "After taking damage, increase damage and movement speed for {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} {#PreviousFormat} sec. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeedBonus}{#PreviousFormat}"
+			Description = "After you take damage, increase damage and movement speed. \n {!Icons.Bullet}{#PropertyFormat}Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} sec.{#PreviousFormat}"
 		}
 		{
 			Id = "RevengeBoostTrait_Initial"
 			InheritFrom = "RevengeBoostTrait"
-			Description = "After taking damage, increase damage and movement speed for {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} {#PreviousFormat} sec. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Bonus Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeedBonus}{#PreviousFormat}"
+			Description = "After you take damage, increase damage and movement speed. \n {!Icons.Bullet}{#PropertyFormat}Bonus: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} sec.{#PreviousFormat}"
 		}
 		{
 			Id = "SpawnWeaponsTrait"
@@ -276,17 +281,17 @@
 		{
 			Id = "ForceWeaponUpgradeTrait"
 			DisplayName = "Bronze Replica"
-			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait."
+			Description = "Next chamber reward is a {#BoldFormat}Daedalus Hammer{#PreviousFormat}. {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll {#BoldFormat}Daedalus Hammer{#PreviousFormat}."
 		}
 		{
 			Id = "ForceWeaponUpgradeTrait_Rack"
 			InheritFrom = "ForceWeaponUpgradeTrait"
-			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Daedalus{#PreviousFormat}. You may reroll Daedalus Hammer Trait. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+			Description = "Next chamber reward is a {#BoldFormat}Daedalus Hammer{#PreviousFormat}. {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll {#BoldFormat}Daedalus Hammer{#PreviousFormat}. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "ForceWeaponUpgradeTrait_Inactive"
 			DisplayName = "Bronze Replica"
-			Description = "You may reroll Daedalus Hammer Trait."
+			Description = "{#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll {#BoldFormat}Daedalus Hammer{#PreviousFormat}."
 		}				
 		{
 			Id = "ClearRequiredTraitsHephaestus"
@@ -299,8 +304,13 @@
 		}
 		{
 			Id = "UI_PlayerArmor"
-			DisplayName = "{$TempTextData.Current} {!Icons.Clock}"
+			DisplayName = "{$TempTextData.Current} {!Icons.ArmorIcon}"
 			OverwriteLocalization = true
+		}
+		{
+			Id = "ArmorIcon"
+			DisplayName = "{!Icons.ArmorIcon}"
+			//Description = "Your Life Total. Lose it all for an express trip back to the House of Hades."
 		}
 	]
 }

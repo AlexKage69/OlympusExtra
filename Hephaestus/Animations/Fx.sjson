@@ -1,849 +1,184 @@
 {
   Animations = [
     "_append"
-
-    /* Hephaestus - Feather Animations */
+    // HitSparkArmorA for armor hit animation.
+    // EnemyDeathFxBack (Fx\DeathFxBack\DeathFxBack) is for explosion of armor.
+    /* Hephaestus - Attack/Special */
     {
-      Name = "HephaestusWings"
-      FilePath = "Hephaestus\Fx\HephaestusWings\HephaestusWings"
-      //GroupName = "Standing_Back_Add"
-      GroupName = "Standing_Back"
-      Type = "Book"
-      //VisualFx = "HermesFeather"
-      //AngleFromOwner = "Take"
-      UseFrameAngleFromOwner = true
-      Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-      Duration = 1
-      Alpha = 1.0
-      Blue = 1.0
-      Green = 1.0
-      Red = 1.0
-      EaseIn = 0.01
-      //EaseOut = 0.1
-      EndFrame = 1
-      NumAngles = 32
-      NumFrames = 1
-      StartFrame = 1
-      OffsetZ = 120.0
-      //RadialOffsetMax = -50.0
-      //RadialOffsetMin = -49.0
-      //OffsetY = -105.0
-      //RadialOffsetScaleY = 0.5
-      //RadialOffsetMax = -50.0
-      //RadialOffsetMin = -49.0
-      Ambient = 0.0
-      Scale = 2.0
-      OverlayVfx = false
-      Loop = true
-    }
-    {
-      Name = "HephaestusWingsFlap"
-      FilePath = "Hephaestus\Fx\HephaestusWings\HephaestusWings"
-      GroupName = "FX_Standing"
-      Type = "Book"
-      //VisualFx = "HermesFeather"
-      AngleFromOwner = "Take"
-      Sound = "/SFX/Player Sounds/HermesWhooshUpgradeSFX"
-      StartAlpha = 1.0
-      StartBlue = 1.0
-      StartGreen = 1.0
-      StartRed = 1.0
-      Duration = 1.0
-      EaseIn = 0.01
-      EaseOut = 0.1
-      EndFrame = 1
-      NumAngles = 32
-      NumFrames = 1
-      StartFrame = 1
-      OffsetZ = 120.0
-      RadialOffsetMax = -50.0
-      RadialOffsetMin = -49.0
-      EndScale = 2.5
-      StartScale = 2.0
-      Ambient = 0.0
-      VisualFxCap = 3
-      VisualFxIntervalMax = 0.06
-      VisualFxIntervalMin = 0.03
-      OverlayVfx = false
-    }
-    {
-      Name = "QuickFlashTeal"
-      InheritFrom = "QuickFlash"
-      FilePath = "Particles\particle_quickflash"
-      AddColor = false
-      StartRed = 0.00
-      StartGreen = 1.0
-      StartBlue = 1.0
-      EndBlue = 0.55
-      EndGreen = 0.53
-      EndScale = 0.6
-      StartScale = 1.5
-      TimeModifierFraction = 1.0
-    }
-    {
-      Name = "QuickFlashTealSmall"
-      InheritFrom = "QuickFlashTeal"
-      Scale = 0.5
-      OffsetZ = 90
-    }
-    {
-      Name = "HephaestusEnvyHoverDrop"
-      FilePath = "Hephaestus\Fx\HephaestusEnvyHoverDrop\HephaestusEnvyHoverDrop"
-      GroupName = "Combat_UI"
+      Name = "IgneousHitSparkArmorA"
+      FilePath = "Fx\HitSparkArmorA\HitSparkArmorA"
+      GroupName = "FX_Standing_Add"
       Type = "Book"
       AngleFromOwner = "Ignore"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageStab"
       ColorFromOwner = "Ignore"
-      EndFrame = 26
-      NumFrames = 26
+      UseOwnAngle = false
+      EndFrame = 13
+      NumFrames = 13
+      RandomPlaySpeedMin = 50
+      RandomPlaySpeedMax = 60
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Take"
+      ScaleFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Scale = 2.0
+      Ambient = 0.0
+      ScaleX = 0.85
+      UseAttachedFlasher = false
+      ChildAnimation = "HitSparkArmorFlash"
+      Hue = 0.070
+      //Alpha = 0.01
+      UseAttachedShake = false
+      VisualFxManagerCap = 400
+      CreateAnimations = [
+        {
+          //Name = "QuickFlashArmorHit"
+        }]
+    }
+    {
+      Name = "IgneousHitSparkArmorB"
+      InheritFrom = "IgneousHitSparkArmorA"
+      FilePath = "Fx\HitSparkArmorB\HitSparkArmorB"
+      NumFrames = 14
+      EndFrame = 14
+    }
+    {
+      Name = "IgneousHitSparkArmorC"
+      InheritFrom = "IgneousHitSparkArmorA"
+      FilePath = "Fx\HitSparkArmorC\HitSparkArmorC"
+    }
+    {
+      Name = "IgneousHitSparkArmor"
+      FilePath = "Animations\HitSparkArmor\HitSparkArmor"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "IgneousHitSparkArmorA"
+        }
+        {
+          Name = "IgneousHitSparkArmorB"
+        }
+        {
+          Name = "IgneousHitSparkArmorC"
+        }]
+    }
+    {
+      Name = "IgneousExplosion"
+      FilePath = "Fx\ShielderNova\ShielderNova"
+      GroupName = "Standing"
+      Type = "Book"
+      EndFrame = 22
+      NumFrames = 22
       PlaySpeed = 30.0
       StartFrame = 1
-      OffsetZ = 240.0
-      Scale = 0.9
-      ScaleFromOwner = "Ignore"
+      RandomFlipHorizontal = true
+      ScaleRadius = 485.0
       Ambient = 0.0
-      UseAttachedFlasher = false
+      AngleFromOwner = "Ignore"
+      CreateAnimations = [
+        {
+          Name = "ShielderNovaLighting"
+        }
+        {
+          Name = "ShielderNovaFlare"
+        }
+        {
+          Name = "ShielderNovaDissipate"
+        }
+        {
+          Name = "ShielderNovaShadow"
+        }]
     }
     {
-      Name = "HephaestusEnvyHoverLoop"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Hephaestus\Fx\HephaestusEnvyHoverLoop\HephaestusEnvyHoverLoop"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      EaseOut = 1.0
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      StartFrame = 1
-      DieWithOwner = true
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
-    }
-    {
-      Name = "HephaestusBurstEnvyHoverLoop"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Hephaestus\Fx\HephaestusEnvyHoverLoop\HephaestusEnvyHoverLoop"
-      Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      EaseOut = 1.0
-      Alpha = 0.3
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      StartFrame = 1
-      DieWithOwner = true
-      Scale = 1.1
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
-    }
-    {
-      Name = "RadialBurstNovaHephaestus"
-      InheritFrom = "RadialNova"
-      Color = 
-      {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
-      Name = "HephaestusFeatHephaestus"
-      FilePath = "Hephaestus\Fx\HephaestusFeatHephaestus\HephaestusFeatHephaestus"
-      GroupName = "FX_Standing"
-      Type = "Book"
-      AngleFromOwner = "Take"
-      EndFrame = 49
-      NumFrames = 49
-      StartFrame = 1
-      OffsetZ = 60.0
-      RandomOffsetY = 40.0
-      RandomPlaySpeedMax = 50.0
-      RandomPlaySpeedMin = 30.0
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
-      Gravity = 50.0
-      RandomRotation = true
-      RandomRotationSpeedMax = 360.0
-      RandomRotationSpeedMin = -360.0
-      ScaleFromOwner = "Ignore"
-      ScaleMax = 0.6
-      ScaleMin = 0.2
-      Ambient = 0.0
-      CancelOverCap = true
-      OnlyWhenVisible = true
-    }
-    {
-      Name = "HephaestusFeatherB"
-      InheritFrom = "HephaestusFeatHephaestus"
-      FilePath = "Hephaestus\Fx\HephaestusFeatherB\HephaestusFeatherB"
-    }
-    {
-      Name = "SwordSwipeA-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 120.0
-      AngleMin = -90.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "HephaestusFeatherC"
-      FilePath = "Hephaestus\Fx\HephaestusFeatHephaestus\HephaestusFeatHephaestus"
-      GroupName = "FX_Standing"
-      Type = "Book"
-      AngleFromOwner = "Take"
-      StartRed = 0.0
-      StartGreen = 1.0
+      Name = "ShielderNovaLighting"
+      FilePath = "Fx\BasicGlow\BasicGlow"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      EndBlue = 0.999
+      EndGreen = 0.5
+      StartAlpha = 0.5
       StartBlue = 1.0
-      EndRed = 0.0
-      EndGreen = 1.0
-      EndBlue = 1.0
-      EndFrame = 49
-      NumFrames = 49
-      RandomPlaySpeedMax = 50.0
-      RandomPlaySpeedMin = 30.0
+      StartGreen = 1.0
+      StartRed = 0.2
+      Duration = 0.25
+      EndFrame = 1
+      NumFrames = 1
       StartFrame = 1
+      Scale = 1.5
+      Ambient = 0.0
+    }
+    {
+      Name = "ShielderNovaLighting_DeathAlly"
+      InheritFrom = "ShielderNovaLighting"
+      StartBlue = 0.999
+      StartGreen = 0.2
+      StartRed = 0
+      EndAlpha = 0.25
+      EndBlue = 1.0
+      EndGreen = 0.5
+      EndRed = 0.2
+      StartAlpha = 0
+      PingPongColor = true
+      Duration = 0.5
+    }
+    {
+      Name = "ShielderNovaFlare"
+      FilePath = "Tilesets\Lensflare\Flare_poseidon"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      Duration = 0.2
+      EaseIn = 0.8
+      EaseOut = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      EndScale = 0.0
+      ScaleFromOwner = "Ignore"
+      StartScale = 4.0
+    }
+    {
+      Name = "ShielderNovaShadow"
+      FilePath = "Particles\AuraBasicFillCircle"
+      GroupName = "FX_Terrain"
+      Type = "Constant"
+      StartAlpha = 1.0
+      Duration = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      EndScale = 1.15
+      PostRotateScaleY = 0.5
+      ScaleRadius = 128.0
+      StartScale = 0.9
+      Ambient = 0.0
+    }
+    {
+      Name = "ShielderNovaDissipate"
+      FilePath = "Fx\ShielderNova\ShielderNovaDissipate"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
       LocationFromOwner = "Ignore"
       LocationZFromOwner = "Ignore"
-      ScaleFromOwner = "Ignore"
-      ScaleMax = 0.6
-      ScaleMin = 0.2
-      //OffsetZ = 60.0 
-      /*RandomOffsetX = 50.0
-      RandomOffsetY = 25.0 
-
-      RadialOffsetMax = 200.0
-      RadialOffsetMin = 150.0
-      RadialOffsetScaleRadius = 500.0
-      RadialOffsetScaleY = 0.66
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-
-      Gravity = 50.0
-      VelocityMax = 100.0
-      VelocityMin = -100.0
-      RandomRotation = true
-      RandomRotationSpeedMax = 360.0
-      RandomRotationSpeedMin = -360.0
+      StartAlpha = 1.0
+      Duration = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      EndScale = 1.15
+      ScaleRadius = 300.0
+      StartScale = 0.9
       Ambient = 0.0
-      CancelOverCap = true
-      OnlyWhenVisible = true*/
-    } 
-    {
-      Name = "SwordSwipeA-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 120.0
-      AngleMin = -90.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-
-    /* Hephaestus - Sword - WeaponTrait */
-    {
-      Name = "SwordSwipeAFlipped-Hephaestus"
-      InheritFrom = "SwordSwipeAFlipped"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      ClearSlides = true
-      VisualFxIntervalMax = 0.0011
-      VisualFxIntervalMin = 0.001
-      CreateAnimations = [
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-      ]
-      Slides = [
-
-        { DurationFrames = 1 }
-        /*Frame 1*/
-        { DurationFrames = 1 }
-        { DurationFrames = 1 VisualFx = "QuickFlashTeal" }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        /*Frame 10*/
-
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 1 }
-        { DurationFrames = 0 }
-        { DurationFrames = 0 }
-        { DurationFrames = 0 }
-        { DurationFrames = 0 }
-      ]
-    }
-    {
-      Name = "SwordSwipeA-Hephaestus"
-      InheritFrom = "SwordSwipeAFlipped-Hephaestus"
-      FlipVertical = false
-    }
-    {
-      Name = "SwordSwipeA-Hephaestus-Arthur"
-      InheritFrom = "SwordSwipeAFlipped-Hephaestus"
-      Scale = 2.0
-      ClearCreateAnimations = true
-      FlipVertical = false
-      CreateAnimations = [
-        {
-          Name = "SwordSwipeAChroma"
-        }
-        {
-          Name = "SwordSwipeADark-Arthur"
-        }
-        {
-          Name = "SwordSwipeADisplace"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }]
-    }
-    {
-      Name = "SwordSwipeAFlipped-Hephaestus-Arthur"
-      InheritFrom = "SwordSwipeAFlipped-Hephaestus"
-      Scale = 2.0
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "SwordSwipeAChromaFlipped"
-        }
-        {
-          Name = "SwordSwipeAFlippedDark-Arthur"
-        }
-        {
-          Name = "SwordSwipeAFlippedDisplace"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatHephaestus"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }
-        {
-          Name="SwordSwipeA-FeatherB"
-        }]
-    }{
-      Name = "SwordSwipeB-Hephaestus"
-      InheritFrom = "SwordSwipeB"
-      ChildAnimation = "QuickFlashTeal"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      ClearSlides = true
-      CreateAnimations = [
-        {
-          Name = "SwordSwipeB-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeB-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeB-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeB-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeB-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeB-FeatherB"
-        }
-        {
-          Name = "SwordSwipeB-FeatherB"
-        }
-        {
-          Name = "SwordSwipeB-FeatherB"
-        }
-        {
-          Name = "SwordSwipeB-FeatherB"
-        }
-        {
-          Name = "SwordSwipeB-FeatherB"
-        }        
-      ]
-      Slides = [
-        {
-          DurationFrames = 0
-        }
-        {
-          DurationFrames = 0
-        }
-        {
-          DurationFrames = 1
-          VisualFx = "SwordSwipeB-Displace"
-        }
-        {
-          DurationFrames = 2
-          VisualFx = "SwordSwipeBImpact-Hephaestus"
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }
-        {
-          DurationFrames = 1
-        }]
-    }
-    
-    {
-      Name = "SwordSwipeB-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 20.0
-      RadialOffsetMin = 20.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -200.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "SwordSwipeB-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 20.0
-      RadialOffsetMin = 20.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -200.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "SwordSwipeBImpact-Hephaestus"
-      InheritFrom = "SwordSwipeBImpact"
-      ChildAnimation = "QuickFlashPinkSwordSwipeBImpact"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "SwordSwipeC-Hephaestus"
-      InheritFrom = "SwordSwipeC-ArthurBase"
-      ChildAnimation = "RailgunLineSword3-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "SwordSwipeC-Arthur-Chroma"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        
-      ]
-    }
-    {
-      Name = "SwordSwipeC-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      Acceleration = -300.0
-      VelocityMax = 700.0
-      VelocityMin = 400.0
-    }
-    {
-      Name = "SwordSwipeC-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      Acceleration = -300.0
-      VelocityMax = 700.0
-      VelocityMin = 400.0
-    }
-    {
-      Name = "RailgunLineSword3-Hephaestus"
-      InheritFrom = "RailgunLineSword3"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "SwordSwipeC-Hephaestus-Arthur"
-      InheritFrom = "SwordSwipeC-Hephaestus"
-      OffsetZ = 52
-      ClearCreateAnimations = true
-      CreateAnimation = "SwordSwipeC-Displace-Arthur"
-      CreateAnimations = [
-        {
-          Name = "SwordSwipeC-Arthur-Chroma"
-        }
-        {
-          Name = "QuickFlashTealSmall"
-        }
-        {
-          Name = "SwordSwipeC-Arthur-Chroma"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatHephaestus"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }
-        {
-          Name = "SwordSwipeC-FeatherB"
-        }]
-    }{
-      Name = "ChargeAttack-Hephaestus"
-      InheritFrom = "ChargeAttack"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    /* Hephaestus - Sword - SecondaryTrait */
-    {
-      Name = "RadialNovaSwordParry-Hephaestus"
-      InheritFrom = "RadialNova"
-      GroupName = "FX_Terrain_Add"
-      /*StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53 */
-      PlaySpeed = 75.0
-      ScaleRadius = 350.0
-      VisualFxCap = 24
-      VisualFxIntervalMax = 0.00011
-      VisualFxIntervalMin = 0.0001
-      TimeModifierFraction = 0.0      
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-      CreateAnimations = [
-        {
-          Name = "RadialNovaSwordParryDark"
-        }
-        {
-          Name = "DoorCloseDust"
-        }
-        {
-          Name = "SwordParryGroundCrack"
-        }
-        {
-          Name = "DisplaceShockwaveSwordParry"
-        }
-        {
-          Name = "SwordParrySpikeHephaestus"
-        }
-        {
-          Name = "QuickFlashTeal"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        {
-          Name = "RadialNovaSwordParry-FeatherB"
-        }
-        ]
-    }
-    {
-      Name = "RadialNovaSwordParry-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 500.0
-      VelocityMin = 200.0
-    }
-    {
-      Name = "RadialNovaSwordParry-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 500.0
-      VelocityMin = 200.0
-    }
-    {
-      Name = "SwordParrySpikeHephaestus"
-      InheritFrom = "SwordParrySpike"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
-      Name = "RadialNovaSwordParry-HephaestusFeather"
-      InheritFrom = "HephaestusFeather"
-      AngleMax = 360.0 
-      AngleMin = -360.0 
-      RandomPlaySpeedMax = 50.0
-      RandomPlaySpeedMin = 30.0
-      OffsetZ = 60.0 
-      RandomOffsetX = 50.0
-      RandomOffsetY = 25.0 
-
-      RadialOffsetMax = 500.0
-      RadialOffsetMin = 400.0
-      RadialOffsetScaleRadius = 1000.0
-      RadialOffsetScaleY = 0.66
-      VisualFxUseAttachedMarkerLocation = "weapon_2_TRACKING"
-      Acceleration = 0.0
-      Gravity = 50.0
-      VelocityMax = 100.0
-      VelocityMin = -100.0
     }
     /* Hephaestus - Spear - WeaponTrait */
     {
@@ -851,12 +186,19 @@
       InheritFrom = "SpearThrustProjectile"
       ChainTo = "SpearThrustDissipate-Hephaestus"
       ChildAnimation = "SpearThrustTrail-Hephaestus"
-      CreateAnimation = "QuickFlashTeal"
+      CreateAnimation = "QuickFlashDarkPurple"
       Sound = "/EmptyCue"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ClearSlides = true
+      CreateAnimations = [
+        {
+          Name = "HephaestusMeleeSplash"
+        }]
       Slides = [
         {
           DurationFrames = 1
@@ -878,314 +220,278 @@
           Frame = 4
           VisualFx = "SpearDistortion"
         }]
-    }    
+    }
     {
       Name = "SpearThrustDissipate-Hephaestus"
       InheritFrom = "SpearThrustDissipate"
       ChildAnimation = "SpearThrustTrail-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-      ]
-    }{
-      Name = "SpearThrustDissipate-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = -400.0
-      RadialOffsetMin = -400.0
-      AngleMax = 5.0
-      AngleMin = -5.0
-      Acceleration = -1000.0
-      VelocityMax = 900.0
-      VelocityMin = 250.0
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
-      Name = "SpearThrustDissipate-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = -400.0
-      RadialOffsetMin = -400.0
-      AngleMax = 5.0
-      AngleMin = -5.0
-      Acceleration = -1000.0
-      VelocityMax = 900.0
-      VelocityMin = 250.0
-    }{
       Name = "SpearThrustTrail-Hephaestus"
       InheritFrom = "SpearThrustTrail"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      Slides = [
+        {
+          DurationFrames = 2
+          VisualFx = "SpearThrustParticles-Hephaestus"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }]
+    }
+    {
+      Name = "SpearThrustParticles-Hephaestus"
+      FilePath = "Hephaestus\Fx\HephaestusWallSplash\HephaestusWallSplash"
+      Type = "Book"
+      Angle = 180.0
+      AngleFromOwner = "Take"
+      EndFrame = 35
+      NumFrames = 35
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      OffsetZ = 60.0
+      OriginX = 20.0
+      OriginY = 160.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Ambient = 0.0
     }
     {
       Name = "SpearDashSwipe-Hephaestus"
       InheritFrom = "SpearDashSwipe"
-      //CreateAnimation = "SpearDashSwipeFx-Hephaestus"
-      CreateAnimations = [
-        {
-          Name = "SpearDashSwipeFx-Hephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-        {
-          Name = "SpearThrustDissipate-FeatherB"
-        }
-      ]
-    }{
+      CreateAnimation = "SpearDashSwipeFx-Hephaestus"
+    }
+    {
       Name = "SpearDashSwipeFx-Hephaestus"
       InheritFrom = "SpearDashSwipeFx"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      CreateAnimation = "HephaestusMeleeSplash"
       ChildAnimation = "SpearDashSwipeFxB-Hephaestus"
-    }{
+      VisualFx = "SpearSwipeDashBaseParticles-Hephaestus"
+    }
+    {
       Name = "SpearDashSwipeFxB-Hephaestus"
       InheritFrom = "SpearDashSwipeFxB"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "SpearSwipeDashBaseParticles-Hephaestus"
       InheritFrom = "SpearSwipeDashBaseParticles"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }{
-      Name = "TheseusSpearSwipeHephaestus"
-      InheritFrom = "SpearSwipe360-Hephaestus"
-      AngleChangeAcceleration = -150.0
-      PlaySpeed = 90.0
-      FlipHorizontal = true
-      RotationSpeed = 90.0
-      PostRotateScaleY = 0.6
-      Scale = 2.1
-      ScaleFromOwner = "Ignore"
-      ScaleRadius = null
-      CreateAnimations = [
-        {
-          Name = "QuickFlashEnemy"
-        }]
-    }
-     {
-      Name = "SpearSwipe360-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 500.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "SpearSwipe360-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 500.0
-      VelocityMin = 100.0
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "SpearSwipe360-Hephaestus"
       InheritFrom = "SpearSwipe360"
       ChildAnimation = "SpearSwipe360B-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "SpearSwipe360B-Hephaestus"
-      InheritFrom = "SpearSwipe360B"
-      ChildAnimation = "SpearSwipeGlow-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatHephaestus"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-        {
-          Name = "SpearSwipe360-FeatherB"
-        }
-      ]
+      //Sound = "/SFX/Player Sounds/PoseidonWaterImpactDetonate"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
       Slides = [
         {
           DurationFrames = 1
@@ -1193,17 +499,32 @@
         }]
     }
     {
+      Name = "SpearSwipe360B-Hephaestus"
+      InheritFrom = "SpearSwipe360B"
+      ChildAnimation = "SpearSwipeGlow-Hephaestus"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
       Name = "SpearSwipeGlow-Hephaestus"
       InheritFrom = "SpearSwipeGlow"
       ChildAnimation = "SpearSwipe360-Hephaestus-Emitter"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "SpearSwipe360-Hephaestus-Emitter"
       FilePath = "Dev\blank_invisible"
       Type = "Constant"
+      //VisualFx = "SpearSwipe360-Poseidon-Splashes"
       Duration = 0.2
       EndFrame = 1
       NumFrames = 1
@@ -1215,101 +536,37 @@
     {
       Name = "SpearThrowProjectile-Hephaestus"
       InheritFrom = "SpearThrowProjectile"
+      ChildAnimation = null
       CreateAnimation = "SpearThrowProjectileGlow-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "SpearThrustProjectile-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "SpearThrustProjectile-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
+      VisualFx = "SpearThrowParticles-Hephaestus"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "SpearThrowProjectileGlow-Hephaestus"
       InheritFrom = "SpearThrowProjectileGlow"
-      ChildAnimation = "QuickFlashTeal"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "SpearThrustProjectile-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatherB"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatherB"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatherB"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatherB"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatherB"
-        }
-      ]
-    }{
-      Name = "SpearRushTrailFx-Hephaestus"
-      InheritFrom = "SpearRushTrailFx"
-      VisualFx = "SpearRushTrail-Hephaestus"
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "SpearRushTrailFxDark"
-        }
-        {
-          Name = "SpearRushDashPuff"
-        }
-        {
-          Name = "QuickFlashTealSmall"
-        }]
-    }{
-      Name = "SpearRushTrail-Hephaestus"
-      InheritFrom = "SpearRushTrail"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "SpearRushTrail_Dark"
-        }
-        {
-          Name = "SpearThrowParticles_Rush-Hephaestus"
-        }]
+      ChildAnimation = "QuickFlashDarkPurple"
+      CreateAnimation = "SpearThrowProjectile-Hephaestus-Emitter"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearThrowParticles-Hephaestus"
+      InheritFrom = "SpearThrowParticles"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "SpearThrowParticles_Rush-Hephaestus"
@@ -1324,109 +581,170 @@
       StartScaleX = 32.0
       ScaleMin = 0.2
       ScaleMax = 1.0
-      CreateAnimations = [
-        {
-          Name = "SpearThrustProjectile-FeatHephaestus"
-        }
-        {
-          Name = "SpearThrustProjectile-FeatherB"
-        }
-      ]
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       OriginX = 64
       OriginY = 32
       ScaleY = 0.5
       EaseIn = 0.999
       EaseOut = 1.0
     }
+    {
+      Name = "HephaestusMeleeSplashDetached"
+      InheritFrom = "HephaestusMeleeSplash"
+      UseAttachedMarkerLocation = null
+      OffsetZ = 52
+    }
+    {
+      Name = "HephaestusMeleeSplash_SwordSwipeC"
+      InheritFrom = "HephaestusMeleeSplash"
+      OffsetZ = -90.0
+      OriginY = 500.0
+      LocationZFromOwner = "Ignore"
+      Hue = -0.1
+    }
+    {
+      Name = "HephaestusSplashNova"
+      CreateAnimation = "HephaestusMeleeSplash"
+      FilePath = "Fx\HitSparkC\HitSparkC"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      AddColor = true
+      ColorFromOwner = "Ignore"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EndFrame = 23
+      NumFrames = 23
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetZ = 50.0
+      OriginX = 90.0
+      OriginY = 160.0
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleX = 1.5
+      ScaleY = 0.5
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      TimeModifierFraction = 0.75
+    }
+    {
+      Name = "HephaestusSplashNovaShout"
+      InheritFrom = "HephaestusSplashNova"
+      Sound = "/EmptyCue"
+    }
+    {
+      Name = "HephaestusSplashNovaSpearThrow"
+      InheritFrom = "HephaestusSplashNova"
+      OffsetZ = 0.0
+      LocationFromOwner = "Take"
+      ScaleX = 1.0
+    }
+    {
+      Name = "SpearRushTrailFx-Hephaestus"
+      InheritFrom = "SpearRushTrailFx"
+      VisualFx = "SpearRushTrail-Hephaestus"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SpearRushTrailFxDark"
+        }
+        {
+          Name = "SpearRushDashPuff"
+        }
+        {
+          Name = "QuickFlashDarkPurpleSmall"
+        }
+      ]
+    }
     /* Hephaestus - Bow - WeaponTrait */
     {
       Name = "BowWeaponArrow-Hephaestus"
       InheritFrom = "BowWeaponArrow"
-      ChildAnimation = null
+      //ChildAnimation = "HephaestusArrowFront"
       VisualFx = "BowTrail-Hephaestus"
-      Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      CreateAnimation = null
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       EaseIn = 0.9
       EaseOut = 1.0
-      CreateAnimations = [
-        {
-          Name = "QuickFlashTeal"
-        }
-        {
-          Name = "HephaestusBowTwinkle"
-        }]
-    }
-     {
-      Name = "WeaponProjectile-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "WeaponProjectile-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
     }
     {
       Name = "BowWeaponArrow-Hephaestus-SplitShot"
       InheritFrom = "BowWeaponArrow-Hephaestus"
       ChildAnimation = "null"
-      CreateAnimation = "null"
-      ClearCreateAnimations = true
-      VisualFx = "BowTrail-Hephaestus-SplitShot"
-      
     }
     {
-      Name = "HephaestusBowTwinkle"
-      InheritFrom = "HephaestusDashTwinkle"
-      PlaySpeed = 90.0
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
-      UseAttachedMarkerLocation = "head_TRACKING"
-      Velocity = 0.0
+      Name = "HephaestusArrowFront"
+      FilePath = "Hephaestus\Fx\HephaestusWallSplash\HephaestusWallSplash"
+      ChildAnimation = "HephaestusProjectileHeadDripFlare"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      ColorFromOwner = "Ignore"
+      EndFrame = 35
+      NumFrames = 35
+      PlaySpeed = 120.0
+      StartFrame = 1
+      FlipHorizontal = true
+      EndScaleY = 2.0
+      ScaleFromOwner = "Ignore"
+      StartScaleY = 0.0
+      Ambient = 0.0
+    }
+    {
+      Name = "HephaestusProjectileHeadDripFlare"
+      FilePath = "Hephaestus\Flare_Hephaestus"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndAlpha = 0.2
+      StartAlpha = 1.0
+      StartRed = 1.0
+      Duration = 0.5
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      HoldLastFrame = false
+      DieWithOwner = true
+      SortMode = "FromParent"
       EndScale = 0.5
-      StartScale = 1.5
-      RadialOffsetMax = 1
-      RadialOffsetMin = 0
+      ScaleX = 2.0
+      Ambient = 0.0
+      ChainTo = "HephaestusProjectileHeadDripFlareLoop"
+    }
+    {
+      Name = "HephaestusProjectileHeadDripFlareLoop"
+      InheritFrom = "HephaestusProjectileHeadDripFlare"
+      StartAlpha = 0.2
+      EndAlpha = 0.25
+      PingPongColor = true
+      ChainTo = null
+      StartScale = 0.501
+      EndScale = 0.54
+      PingPongScale = true
+      Loop = true
+      EaseIn = 0
+      DieWithOwner = true
     }
     {
       Name = "BowTrail-Hephaestus"
-      CreateAnimations = [
-        {
-          Name = "BowTrailRandom-Hephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }]
-    }
-    {
-      Name = "BowTrailRandom-Hephaestus"
-      FilePath = "Animations\BowTrail-Artemis\BowTrail-Artemis"
+      FilePath = "Animations\BowTrail-Poseidon\BowTrail-Poseidon"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
@@ -1441,20 +759,7 @@
     }
     {
       Name = "BowTrail-Hephaestus-SplitShot"
-      CreateAnimations = [
-        {
-          Name = "BowTrailRandom-Hephaestus-SplitShot"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }]
-    }
-    {
-      Name = "BowTrailRandom-Hephaestus-SplitShot"
-      FilePath = "Animations\BowTrail-Artemis\BowTrail-Artemis"
+      FilePath = "Animations\BowTrail-Poseidon\BowTrail-Poseidon"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
@@ -1470,84 +775,56 @@
     {
       Name = "BowTrailA-Hephaestus"
       InheritFrom = "BowTrailA"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      CreateAnimation = "BowTrailA-Hephaestus-Particles"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       EaseIn = 0.9
       EaseOut = 1.0
-      CreateAnimations = [
-        {
-          Name = "HephaestusRangedTrailLeavesRandom"
-        }
-        {
-          Name = "HephaestusBowTrailHelix"
-        }
-        {
-          Name = "HephaestusBowTrailHelixSide"
-        }]
     }
     {
       Name = "BowTrailA-Hephaestus-SplitShot"
-      InheritFrom = "BowTrailA-Hephaestus"
-      ClearCreateAnimations = true
-      CreateAnimation = null
-      ChildAnimation = null
-      VisualFx = null
-      CreateAnimations = [
-        {
-          Name = "HephaestusBowTrailHelixSide"
-        }
-        {
-          Name = "HephaestusBowTrailLeaves"
-        }
-        {
-          Name = "BowTrailA_Dark"
-        }]
-    }
-    {
-      Name = "HephaestusBowTrailHelix"
-      InheritFrom = "BloodstoneHelixTrail"
-      VisualFx = "null"
-      AngleFromOwner = "Take"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      PlaySpeed = 360.0
-      RandomPlaySpeedMax = 160.0
-      RandomPlaySpeedMin = 90.0
-      OffsetZ = 60.0
-      Scale = 0.35
-      CancelOverCap = true
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
-      Name = "HephaestusBowTrailHelixSide"
-      InheritFrom = "BloodstoneHelixSide"
-      AngleFromOwner = "Take"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      RandomPlaySpeedMax = 160.0
-      RandomPlaySpeedMin = 90.0
-      OffsetZ = 60.0
-      VelocityMax = 200.0
-      VelocityMin = 10.0
-      Scale = 0.5
-      ScaleX = 2.5
-      CancelOverCap = true
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
+      InheritFrom = "BowTrailA-Poseidon"
     }
     {
       Name = "BowTrailA-Hephaestus-Particles"
-      InheritFrom = "ArtemisRangedTrailLeavesRandom"
+      FilePath = "Hephaestus\Fx\HephaestusMeleeSplash\HephaestusMeleeSplash"
+      GroupName = "Standing"
+      Type = "Book"
+      Angle = 90.0
+      AngleFromOwner = "Take"
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      SortMode = "FromParent"
+      ScaleMax = 0.6
+      ScaleMin = 0.3
+      Ambient = 0.0
+    }
+    {
+      Name = "BowTrailA-Hephaestus-ParticlesDark"
+      InheritFrom = "BowTrailA-Hephaestus-Particles"
+      GroupName = "FX_Dark"
+      ColorFromOwner = "Ignore"
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 40.0
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.0
+        Blue = 0.0
+      }
     }
     {
       Name = "BowTrailB-Hephaestus"
@@ -1560,27 +837,28 @@
     }
     {
       Name = "BowTrailB-Hephaestus-SplitShot"
-      InheritFrom = "BowTrailA-Hephaestus-SplitShot"
-      CreateAnimation = "BowTrailB_Dark"
-      FilePath = "Fx\BowTrailB\BowTrailB"
-      EndFrame = 60
-      NumFrames = 60
-      StartFrame = 1
+      InheritFrom = "BowTrailB-Hephaestus"
     }
     {
       Name = "BowCharge-Hephaestus"
       InheritFrom = "BowCharge"
       ChainTo = "BowChargedLoop-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "BowChargedLoop-Hephaestus"
       InheritFrom = "BowChargedLoop"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "BowChargeFast-Hephaestus"
@@ -1599,8 +877,11 @@
       InheritFrom = "BowChargeRama"
       ChildAnimation = "BowChargeRamaGlow-Hephaestus"
       StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      StartGreen = 0.6
+      StartBlue = 1.0
+      EndRed = 0.01
+      EndGreen = 1.0
+      EndBlue = 0.5
       ChainTo = "BowChargedLoopRama-Hephaestus"
     }
     {
@@ -1613,23 +894,23 @@
     {
       Name = "BowChargeRamaGlow-Hephaestus"
       InheritFrom = "BowChargeRamaGlow"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
     }
     {
       Name = "BowChargeRamaGlowCharged-Hephaestus"
       InheritFrom = "BowChargeRamaGlowCharged"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
     }
     {
       Name = "BowChargedLoopRama-Hephaestus"
       InheritFrom = "BowChargedLoopRama"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
       ChildAnimation = "BowChargeRamaGlowCharged-Hephaestus"
     }
     {
@@ -1642,9 +923,9 @@
       InheritFrom = "RamaWideShot"
       VisualFx = "RamaWideShotTrail-Hephaestus"
       ClearCreateAnimations = true
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
       CreateAnimations = [
         {
           Name = "RamaWideShotDark-Hephaestus"
@@ -1657,58 +938,43 @@
       Name = "RamaWideShotDark-Hephaestus"
       InheritFrom = "RamaWideShotDark"
       StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      StartGreen = 0.6
+      StartBlue = 1.0
+      EndRed = 0.01
+      EndGreen = 1.0
+      EndBlue = 0.5
     }
     {
       Name = "RamaWideShotTrail-Hephaestus"
       InheritFrom = "RamaWideShotTrail"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
     }
     {
       Name = "RamaWideShotGlow-Hephaestus"
       InheritFrom = "RamaWideShotGlow"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-    }
-    {
-      Name = "BowWeaponArrow-Hephaestus-Alt01"
-      InheritFrom = "BowWeaponArrow-Hephaestus"
-      FilePath = "Fx\Arrow\Arrow_Alt01"
-    }
-    {
-      Name = "BowWeaponArrow-Hephaestus-Alt02"
-      InheritFrom = "BowWeaponArrow-Hephaestus"
-      FilePath = "Fx\Arrow\Arrow_Alt02"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
     }
     /* Hephaestus - Bow - SecondaryTrait */
-    {
-      Name = "BowWeaponArrow-Hephaestus-SplitShot-Alt01"
-      InheritFrom = "BowWeaponArrow-Hephaestus-SplitShot"
-      FilePath = "Fx\Arrow\Arrow_Alt01"
-    }
-    {
-      Name = "BowWeaponArrow-Hephaestus-SplitShot-Alt02"
-      InheritFrom = "BowWeaponArrow-Hephaestus-SplitShot"
-      FilePath = "Fx\Arrow\Arrow_Alt02"
-    }
-    /* Hephaestus - Shield - WeaponTrait */
-    {
+    /* Hephaestus - Shield - WeaponTrail */
+{
       Name = "ShieldSwipe-Hephaestus"
       InheritFrom = "ShieldSwipe"
       ClearCreateAnimations = true
-      VisualFxCap = 3
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       VisualFxIntervalMax = 0.06
       VisualFxIntervalMin = 0.05
       CreateAnimations = [
         {
-          Name = "QuickFlashTeal"
+          Name = "QuickFlashDarkPurple"
         }
         {
           Name = "ShieldSwipeADisplace"
@@ -1717,52 +983,40 @@
           Name = "ShieldSwipeADark"
         }
         {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        ]
+          Name = "HephaestusSplashNova"
+        }]
     }
     {
-      Name = "ShieldSwipe-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "ShieldSwipe-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
+      Name = "HephaestusSplashNova"
+      CreateAnimation = "HephaestusMeleeSplash"
+      FilePath = "Fx\HitSparkC\HitSparkC"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      AddColor = true
+      ColorFromOwner = "Ignore"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EndFrame = 23
+      NumFrames = 23
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetZ = 50.0
+      OriginX = 90.0
+      OriginY = 160.0
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleX = 1.5
+      ScaleY = 0.5
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      TimeModifierFraction = 0.75
     }
     {
       Name = "ShieldSwipeDash-Hephaestus"
@@ -1772,7 +1026,7 @@
       Scale = 1.4
       CreateAnimations = [
         {
-          Name = "QuickFlashYellow"
+          Name = "QuickFlashDarkPurple"
         }
         {
           Name = "ShieldSwipeADisplace_Dash"
@@ -1781,60 +1035,20 @@
           Name = "ShieldSwipeADark_Dash"
         }
         {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatHephaestus"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
-        }
-        {
-          Name = "ShieldSwipe-FeatherB"
+          Name = "HephaestusSplashNova"
         }]
-    }
-    {
-      Name = "ShieldRush3D-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "ShieldRush3D-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
     }
     {
       Name = "ShieldCharge-Hephaestus"
       InheritFrom = "ShieldCharge"
       ChainTo = "ShieldChargedLoop-Hephaestus"
       ChildAnimation = "ShieldChargeB-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "ShieldChargeB-Hephaestus"
@@ -1846,102 +1060,140 @@
     {
       Name = "ShieldRush3D-Hephaestus"
       InheritFrom = "ShieldRush3D"
-      CreateAnimation = "QuickFlashTeal"
-      VisualFx = "ShieldRushTrail-Hephaestus"
-      Sound = "/SFX/Player Sounds/ZagreusShieldRush"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      CreateAnimation = "QuickFlashDarkPurple"
+      VisualFx = "ShieldRush3D-Hephaestus-Particles"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterDashUpgrade"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
+    {
+      Name = "ShieldRush3D-Hephaestus-Particles"
+      //CreateAnimation = "HephaestusWaveDashSprite"
+      FilePath = "Hephaestus\Fx\HephaestusWallSplash\HephaestusWallSplash"
+      GroupName = "Standing"
+      Type = "Book"
+      //AddColor = true
+      Angle = 180.0
+      EndFrame = 35
+      NumFrames = 35
+      Red = 0.50
+      Green = 0.50
+      Blue = 0.50
+      RandomPlaySpeedMax = 120.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      OffsetZ = 60.0
+      OriginX = 20.0
+      OriginY = 160.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.4
+      Ambient = 0.0
+    }    
     {
       Name = "ShieldRush3D-Out-Hephaestus"
       InheritFrom = "ShieldRush3D-Hephaestus"
-      ChildAnimation = "null"
       VisualFx = "null"
+      Sound = "/EmptyCue"
       HoldLastFrame = false
       EndScale = 0.0
       StartScale = 1.25
+    }
+    {
+      Name = "ShieldRushTrail-Hephaestus"
+      InheritFrom = "ShieldRushTrail"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ShieldChargedLoop-Hephaestus"
+      InheritFrom = "ShieldChargedLoop"
+      ChildAnimation = "ShieldChargedLoopB-Hephaestus"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ShieldChargedLoopB-Hephaestus"
+      InheritFrom = "ShieldChargedLoopB"
+      Color = 
+      {
+        Red = 0.41
+        Green = 0.08
+        Blue = 0.18
+      }
     }
     {
       Name = "ShieldRush3DBeowulf-Hephaestus"
       InheritFrom = "ShieldRush3D-Hephaestus"
       NumAngles = 64
       FilePath = "Fx\BeowulfShieldRush3D\BeowulfShieldRush3D"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.4
+      StartAlpha = 1
+      EndAlpha = 0.4
       CreateAnimation = "ShieldRush3DBeowulfDark"
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashTeal"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
+          Name = "QuickFlashPurple"
         }]
     }
     {
       Name = "ShieldRush3DBeowulfMax-Hephaestus"
       InheritFrom = "ShieldRush3DBeowulfMax"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.3
       StartAlpha = 1
       EndAlpha = 0.4
     }
     {
       Name = "ShieldRush3DBeowulf-Out-Hephaestus"
       InheritFrom = "ShieldRush3DBeowulf-Out"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "ShieldRushTrail-Hephaestus"
-      InheritFrom = "ShieldRushTrail"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "ShieldRush3D-FeatHephaestus"
-        }
-        {
-          Name = "ShieldRush3D-FeatHephaestus"
-        }
-        {
-          Name = "ShieldRush3D-FeatherB"
-        }
-        {
-          Name = "ShieldRush3D-FeatherB"
-        }]
-    }
-    {
-      Name = "ShieldChargedLoop-Hephaestus"
-      InheritFrom = "ShieldChargedLoop"
-      ChildAnimation = "ShieldChargedLoopB-Hephaestus"
-    }
-    {
-      Name = "ShieldChargedLoopB-Hephaestus"
-      InheritFrom = "ShieldChargedLoopB"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "BeowulfShieldSlam-Hephaestus"
       InheritFrom = "BeowulfShieldSlam"
       VisualFx = "BeowulfShieldSlamParticles-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashTeal"
+          Name = "QuickFlashDarkPurple"
         }
         {
           Name = "BeowulfShieldSlamDark"
@@ -1956,46 +1208,25 @@
           Name = "BeowulfShieldSlamWaveDark"
         }
         {
-          Name = "BeowulfShieldSlamFire"
-        }
-        {
-          Name = "ShieldRush3D-FeatHephaestus"
-        }
-        {
-          Name = "ShieldRush3D-FeatHephaestus"
-        }
-        {
-          Name = "ShieldRush3D-FeatHephaestus"
-        }
-        {
-          Name = "ShieldRush3D-FeatHephaestus"
-        }
-        {
-          Name = "ShieldRush3D-FeatherB"
-        }
-        {
-          Name = "ShieldRush3D-FeatherB"
-        }
-        {
-          Name = "ShieldRush3D-FeatherB"
-        }
-        {
-          Name = "ShieldRush3D-FeatherB"
+          Name = "HephaestusProjectileSplash2-SwordSwipeImpact"
         }]
     }
     {
       Name = "BeowulfShieldSlamParticles-Hephaestus"
       InheritFrom = "BeowulfShieldSlamParticles"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Red = 0.41
+      Green = 0.08
+      Blue = 0.18
     }
-    {
+     {
       Name = "BeowulfShieldSlamWave-Hephaestus"
       InheritFrom = "BeowulfShieldSlamWave"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     /* Hephaestus - Shield - SecondaryTrait  */
     {
@@ -2023,180 +1254,229 @@
       VisualFx = null
     }
     {
-      Name = "ProjectileShieldFlare-Hephaestus"
-      InheritFrom = "ProjectileShieldFlare-Ares"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
       Name = "ShieldThrowTrail-Hephaestus"
       InheritFrom = "ShieldThrowTrail"
-      CreateAnimation = "null"
       VisualFx = "ShieldThrowTrailParticle-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      ColorFromOwner = "Take"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFxIntervalMax = 0.02
+      VisualFxIntervalMin = 0.01
       CreateAnimations = [
         {
           Name = "ShieldThrowTrailDark"
         }
         {
           Name = "ShieldThrowTrail-HephaestusFx"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
         }]
     }
     {
       Name = "ShieldThrowTrailBeowulf-Hephaestus"
       InheritFrom = "ShieldThrowTrail-Hephaestus"
-      CreateAnimation = "ShieldThrowTrailBeowulfDark"
+      CreateAnimation = "null"
       RotationSpeed = 0
       Scale = 2
       FilePath = "Fx\BeowulfShieldSpin\BeowulfShieldSpin"
       NumFrames = 8
       RandomPlaySpeedMin = 30
-      ClearCreateAnimations = true
       RandomPlaySpeedMax = 60
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ShieldThrowTrailBeowulfDark"
+        }]
     }
     {
       Name = "ShieldThrowTrail-HephaestusFx"
-      FilePath = "Fx\AthenaProtectionFrontOut\AthenaProtectionFrontOut"
-      GroupName = "FX_Standing_Add"
+      FilePath = "Hephaestus\Fx\HephaestusWallSplash\HephaestusWallSplash"
+      ColorFromOwner = "Take"
       Type = "Book"
-      AngleFromOwner = "Ignore"
-      AngleMax = 360.0
-      EndFrame = 8
-      NumFrames = 8
-      RandomPlaySpeedMax = 45.0
-      RandomPlaySpeedMin = 30.0
+      Angle = 180.0
+      AngleFromOwner = "Take"
+      EndFrame = 35
+      NumFrames = 35      
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 80.0
       StartFrame = 1
-      RandomFlipHorizontal = true
       RandomFlipVertical = true
-      LocationFromOwner = "Take"
-      LocationZFromOwner = "Take"
+      OffsetZ = 60.0
+      OriginX = 20.0
+      OriginY = 160.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
       SortMode = "FromParent"
-      Scale = 0.5
+      ScaleMax = 0.8
+      ScaleMin = 0.6
+      ScaleX = 0.7
+      StartScaleY = 0.5
       Ambient = 0.0
+    }
+    {
+      Name = "ProjectileShieldFlare-Hephaestus"
+      InheritFrom = "ProjectileShieldFlare-Hephaestus"
+      VisualFxIntervalMax = 0.06
+      VisualFxIntervalMin = 0.05
+      Color = 
+      {
+        Red = 0.41
+        Green = 0.08
+        Blue = 0.18
+      }
     }
     {
       Name = "ShieldThrowTrailMirage-Hephaestus"
       InheritFrom = "ShieldThrowTrailMirage"
       VisualFx = "ShieldThrowTrailMirageB-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ClearCreateAnimations = true
       CreateAnimations = [
         {
           Name = "ShieldThrowTrailMirageDark"
         }
         {
-          Name = "QuickFlashTealSmall"
+          Name = "QuickFlashDarkPurpleSmall"
         }
         {
           Name = "RadialNovaShieldThrow-Hephaestus"
+        }
+        {
+          Name = "ShieldThrowTrailMirage-Hephaestus-Emitter"
         }]
-    }{
+    }
+    {
+      Name = "ShieldThrowTrailMirage-Hephaestus-Emitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "HephaestusShieldThrowMiragePiece"
+      Duration = 0.15
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.011
+      VisualFxIntervalMin = 0.01
+    }
+    {
+      Name = "HephaestusShieldThrowMiragePiece"
+      FilePath = "Hephaestus\Fx\HephaestusProjectileImpactPiece\HephaestusProjectileImpactPiece"
+      GroupName = "FX_Terrain"
+      Type = "Book"
+      AngleMax = 360.0
+      ColorFromOwner = "Ignore"
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      EndFrame = 54
+      NumFrames = 54
+      RandomPlaySpeedMax = 120.0
+      RandomPlaySpeedMin = 90.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      RadialOffsetMax = 160.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleY = 0.5
+      AngleFromOwner = "Ignore"
+      LocationFromOwner = "Maintain"
+      SortMode = "FromParent"
+      Acceleration = -700.0
+      VelocityMax = 500.0
+      VelocityMin = 400.0
+      PostRotateScaleY = 0.5
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.5
+      Ambient = 0.0
+      StartScaleX = 0.75
+      StartScaleY = 1.25
+      EndScaleX = 2
+      EndScaleY = 0.75
+      LocationZFromOwner = "Take"
+      DrawBehindOwner = true
+      AngleChangeSpeedMax = -240
+      AngleChangeSpeedMin = -280
+      AngleChangeAcceleration = 1440
+      StartAlpha = 1
+      EndAlpha = 0.6
+      OffsetZ = 60
+      CreateAnimation = null
+    }
+    {
+      Name = "HephaestusShieldThrowMiragePieceIso"
+      InheritFrom = "HephaestusShieldThrowMiragePiece"
+      IsometricSkew = "X"
+      PostRotateScaleY = 1.0
+      CreateAnimation = null
+      AngleChangeSpeedMin = 0
+      AngleChangeSpeedMax = 0
+      AngleChangeAcceleration = 0
+      StartScaleX = 1
+      StartScaleY = 0.2
+      EndScaleX = 0.8
+      EndScaleY = 1
+      StartAlpha = 0.5
+      EndAlpha = 0
+    }
+    {
       Name = "ShieldThrowTrailMirageB-Hephaestus"
       InheritFrom = "ShieldThrowTrailMirageB"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "RadialNovaShieldThrow-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaShieldThrow-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaShieldThrow-FeatherB"
-        }
-        {
-          Name = "RadialNovaShieldThrow-FeatherB"
-        }]
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "RadialNovaShieldThrow-Hephaestus"
       InheritFrom = "RadialNovaShieldThrow"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }    
-    {
-      Name = "RadialNovaShieldThrow-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "RadialNovaShieldThrow-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     /* Hephaestus - Gun - WeaponTrait */
- {
+{
       Name = "GunWeaponProjectile-Hephaestus"
       InheritFrom = "GunWeaponProjectile"
       CreateAnimation = "GunWeaponMuzzleFlash-Hephaestus"
       VisualFx = "GunTrail-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "GunWeaponMuzzleFlash-Hephaestus"
       InheritFrom = "GunWeaponMuzzleFlash"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      CreateAnimation = "QuickFlashDarkPurple"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "GunTrail-Hephaestus"
-      CreateAnimations = [
-        {
-          Name = "GunTrailRandom-Hephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }]
-    }
-    {
-      Name = "GunTrailRandom-Hephaestus"
-      FilePath = "Animations\GunTrail\GunTrail"
+      FilePath = "Animations\GunTrail-Poseidon\GunTrail-Poseidon"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
@@ -2213,9 +1493,12 @@
       Name = "GunTrailA-Hephaestus"
       InheritFrom = "GunTrailA"
       ClearCreateAnimations = true
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       EaseIn = 0.5
       EaseOut = 1.0
       CreateAnimations = [
@@ -2227,14 +1510,51 @@
         }
         {
           Name = "GunTrailFloorGlow-Hephaestus"
+        }
+        {
+          Name = "GunTrailA-Hephaestus-Particles"
         }]
+    }
+    {
+      Name = "GunTrailA-Hephaestus-Particles"
+      FilePath = "Hephaestus\Fx\HephaestusWallSplash\HephaestusWallSplash"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      Angle = 0
+      AngleFromOwner = "Take"
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      RadialOffsetMin = 0
+      RadialOffsetMax = 40
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      UseVelocityAngleFromOwner = true
+      SortMode = "Isometric"
+      ScaleMax = 0.6
+      ScaleMin = 0.3
+      Ambient = 0.0
+      ScaleX = 2
+      StartScaleY = 1
+      EndScaleY = 2
+      EaseIn = 0.9
+      EaseOut = 1.0
+      Gravity = 200
+      //AlphaMin = 0.3
+      Alpha = 1.0
     }
     {
       Name = "GunTrailFloorGlow-Hephaestus"
       InheritFrom = "GunTrailFloorGlow"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "GunTrailB-Hephaestus"
@@ -2253,83 +1573,14 @@
         }
         {
           Name = "GunTrailFloorGlow-Hephaestus"
-        }]
-    }
-    {
-      Name = "GunTrail-Ares-Homing"
-      CreateAnimations = [
-        {
-          Name = "GunTrailRandom-Hephaestus-Homing"
         }
         {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatHephaestus"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }
-        {
-          Name = "WeaponProjectile-FeatherB"
-        }]
-    }
-    {
-      Name = "GunTrailRandom-Hephaestus-Homing"
-      FilePath = "Animations\GunTrail\GunTrail"
-      Type = "Random"
-      EndFrame = 1
-      NumFrames = 1
-      StartFrame = 1
-      Random = [
-        {
-          Name = "GunTrailA-Hephaestus-Homing"
-        }
-        {
-          Name = "GunTrailB-Hephaestus-Homing"
-        }]
-    }
-    {
-      Name = "GunTrailA-Hephaestus-Homing"
-      InheritFrom = "GunTrailA"
-      ClearCreateAnimations = true
-      StartBlue = 0.001
-      StartGreen = 0.001
-      EaseIn = 0.5
-      EaseOut = 1.0
-      CreateAnimations = [
-        {
-          Name = "GunTrailA-Dark"
-        }
-        {
-          Name = "GunTrailDisplacement"
-        }
-        {
-          Name = "GunTrailFloorGlow-Hephaestus"
-        }]
-    }
-    {
-      Name = "GunTrailB-Hephaestus-Homing"
-      InheritFrom = "GunTrailA-Hephaestus"
-      ClearCreateAnimations = true
-      FilePath = "Fx\GunTrailB\GunTrailB"
-      EndFrame = 42
-      NumFrames = 42
-      StartFrame = 1
-      CreateAnimations = [
-        {
-          Name = "GunTrailB-Dark"
-        }
-        {
-          Name = "GunTrailDisplacement"
-        }
-        {
-          Name = "GunTrailFloorGlow-Hephaestus"
+          Name = "GunTrailA-Hephaestus-Particles"
         }]
     }
     {
       Name = "GunFire-Hephaestus"
-      FilePath = "Animations\GunFire-Ares\GunFire-Ares"
+      FilePath = "Animations\GunFire-Poseidon\GunFire-Poseidon"
       Type = "Random"
       EndFrame = 1
       NumFrames = 1
@@ -2345,9 +1596,12 @@
     {
       Name = "GunFireA-Hephaestus"
       InheritFrom = "GunFireA"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "GunFireB-Hephaestus"
@@ -2361,18 +1615,32 @@
     {
       Name = "GunWeaponImpact-Hephaestus"
       InheritFrom = "GunWeaponImpact"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "BowWeaponArrow-Hephaestus-Alt01"
+      InheritFrom = "BowWeaponArrow-Hephaestus"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Hephaestus-Alt02"
+      InheritFrom = "BowWeaponArrow-Hephaestus"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
     }
     {
       Name = "GunLaser-Hephaestus"
       InheritFrom = "GunLaser"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       VisualFx = "GunLaserFeathers-Hephaestus"
       ClearCreateAnimations = true
       CreateAnimations = [
@@ -2389,64 +1657,86 @@
     {
       Name = "GunLaserGlow-Hephaestus"
       InheritFrom = "GunLaserGlow"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
     }
     {
       Name = "GunLaserHalo-Hephaestus"
       InheritFrom = "GunLaserHalo"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      //VisualFx = "HephaestusLaserParticles"
       VisualFxIntervalMin = 0.1
       VisualFxIntervalMax = 0.11
+    }
+    {
+      Name = "HephaestusLaserParticles"
+      Type = "Book"
+      FilePath = "Hephaestus\Fx\HephaestusWallSplash\HephaestusWallSplash"
+      NumFrames = 35
+      Material = "Unlit"
+      LocationZFromOwner = "Take"
+      AngleFromOwner = "Take"
+      LocationFromOwner = "Ignore"
+      OriginX = 0
+      OriginY = 160
+      ScaleLength = 320
+      GroupName = "Standing"
+      RandomFlipVertical = true
+      ScaleY = 0.75
+      ScaleMin = 0.6
+      ScaleMax = 1.25
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 120
     }
     {
       Name = "GunLaserFeathers-Hephaestus"
       Type = "Random"
       Random = [
         {
-          Name = "GunLaserFeatHephaestus-Hephaestus"
+          Name = "GunLaserFeatherA-Hephaestus"
         }
         {
           Name = "GunLaserFeatherB-Hephaestus"
         }]
     }
     {
-      Name = "GunLaserFeatHephaestus-Hephaestus"
-      InheritFrom = "GunLaserFeatHephaestus"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
+      Name = "GunLaserFeatherA-Hephaestus"
+      InheritFrom = "GunLaserFeatherA"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "GunLaserFeatherB-Hephaestus"
-      InheritFrom = "GunLaserFeatHephaestus-Hephaestus"
+      InheritFrom = "GunLaserFeatherA-Hephaestus"
     }
     {
       Name = "GunLaserOriginFlare-Hephaestus"
       InheritFrom = "GunLaserOriginFlare"
       VisualFx = "GunLaserFeathers-Hephaestus"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Color = 
+      {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
       }
     }
     {
       Name = "GunLaserTipFlare-Hephaestus"
       InheritFrom = "GunLaserTipFlare"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Color = 
+      {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
       }
     }
     {
@@ -2474,12 +1764,15 @@
       Name = "ZagGrenadeExplosionHephaestus"
       InheritFrom = "ZagGrenadeExplosionBase"
       ClearCreateAnimations = true
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       CreateAnimations = [
         {
-          Name = "QuickFlashTeal"
+          Name = "QuickFlashDarkPurple"
         }
         {
           Name = "GrenadeExplosionLightingHephaestus"
@@ -2494,104 +1787,49 @@
           Name = "ZagGrenadeExplosionHephaestusB"
         }
         {
-          Name = "RadialNovaSwordParry-Hephaestus"
+          Name = "ZagGrenadeExplosionHephaestusSplash"
         }]
     }
     {
-      Name = "Explosion-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
+      Name = "ZagGrenadeExplosionHephaestusB"
+      InheritFrom = "ZagGrenadeExplosionBaseB"
+      GroupName = "Standing"
+      DrawBehindOwner = true
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
-      Name = "Explosion-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
+      Name = "ZagGrenadeExplosionHephaestusSplash"
+      InheritFrom = "RadialNovaSwordParry-Hephaestus"
+      VisualFxCap = 6
     }
     {
       Name = "GunGrenadeLuciferOrb-Hephaestus"
       InheritFrom = "GunGrenadeLuciferOrb"
       ChildAnimation = "GunGrenadeLuciferOrbGlow-Hephaestus"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
       VisualFx = "GunGrenadeTrailContainer-LuciferOrb-Hephaestus"
     }
     {
       Name = "GunGrenadeLuciferOrbGlow-Hephaestus"
       InheritFrom = "GunGrenadeLuciferOrbGlow"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      StartRed = 0.80
-      StartGreen = 0.55
-      StartBlue = 0.05  
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
       VisualFx = "GunGrenadeLuciferOrbFlare-Hephaestus"
     }
     {
       Name = "GunGrenadeLuciferOrbFlare-Hephaestus"
       InheritFrom = "GunGrenadeLuciferOrbFlare"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-    }
-    {
-      Name = "LuciferOrbAoE-Hephaestus"
-      InheritFrom = "LuciferOrbAoE"
-      CreateAnimation = "LuciferOrbAoEDissipate-Hephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "LuciferOrbAoEDissipate-Hephaestus"
-      InheritFrom = "LuciferOrbAoEDissipate"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53 
-    }
-    {
-      Name = "LuciferBomb-Hephaestus"
-      InheritFrom = "LuciferBomb"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "LuciferBombDark"
-        }
-        {
-          Name = "LuciferBombGlow-Hephaestus"
-        }
-        {
-          Name = "LuciferBombDropDisplace"
-        }
-        {
-          Name = "QuickFlashTeal"
-        }]
-    }
-    {
-      Name = "LuciferBombGlow-Hephaestus"
-      InheritFrom = "LuciferBombGlow"
-      ColorFromOwner = "Ignore"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
     }
     {
       Name = "GunGrenadeTrailContainer-LuciferOrb-Hephaestus"
@@ -2607,184 +1845,104 @@
     }
     {
       Name = "GunGrenadeParticles-LuciferOrb-Hephaestus"
-      Type = "Random"
-      Random = [
-        {
-          Name = "GunGrenadeParticles-LuciferOrb-HephaestusA"
-        }
-        /*{
-          Name = "GunGrenadeParticles-LuciferOrb-HephaestusB"
-        }*/
-        ]
-    }
-    {
-      Name = "GunGrenadeParticles-LuciferOrb-HephaestusA"
       InheritFrom = "GunGrenadeParticles-LuciferOrb"
-      FilePath = "Particles\particle_kira"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      FilePath = "Hephaestus\Fx\HephaestusProjectileSplash\HephaestusProjectileSplash"
+      Type = "Book"
+      NumFrames = 41
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      Hue = -0.05
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 90
       StartAlpha = 1.0
       EndAlpha = 0.99
+      ScaleY = 0.5
       Scale = 0.5
-      EndScale = 0
+      ScaleMin = 0.2
+      ScaleMax = 1.0
       UseOwnAngle = false
-      RandomRotation = false
+      RandomRotation = true
+      EndScale = 0.99
       AlphaMin = 0.99
-    }
-    /*{
-      Name = "GunGrenadeParticles-LuciferOrb-HephaestusB"
-      InheritFrom = "GunGrenadeParticles-LuciferOrb-HephaestusA"
-      FilePath = "Particles\particle_kira"
-    }*/
-    {
-      Name = "ZagGrenadeExplosionHephaestusB"
-      InheritFrom = "ZagGrenadeExplosionBaseB"
-      DrawBehindOwner = true
       GroupName = "Standing"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimations = [
-        {
-          Name = "Explosion-FeatHephaestus"
-        }
-        {
-          Name = "Explosion-FeatHephaestus"
-        }
-        {
-          Name = "Explosion-FeatHephaestus"
-        }
-        {
-          Name = "Explosion-FeatherB"
-        }
-        {
-          Name = "Explosion-FeatherB"
-        }
-        {
-          Name = "Explosion-FeatherB"
-        }
-      ]
     }
     {
-      Name = "GrenadeExplosionLightingHephaestus"
-      InheritFrom = "GrenadeExplosionLightingBase"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      Name = "LuciferOrbAoE-Hephaestus"
+      InheritFrom = "LuciferOrbAoE"
+      CreateAnimation = "LuciferOrbAoEDissipate-Hephaestus"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
-      Name = "GunShotgunBlastRandomFlip-Hephaestus"
-      Type = "Random"
-      Random = [
-        {
-          Name = "GunShotgunBlast-Hephaestus"
-        }
-        {
-          Name = "GunShotgunBlastFlipped-Hephaestus"
-        }]
+      Name = "LuciferOrbAoEDissipate-Hephaestus"
+      InheritFrom = "LuciferOrbAoEDissipate"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
-      Name = "GunShotgunBlast-Hephaestus"
-      InheritFrom = "GunShotgunBlast"
+      Name = "BowWeaponArrow-Hephaestus-SplitShot-Alt01"
+      InheritFrom = "BowWeaponArrow-Hephaestus-SplitShot"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Hephaestus-SplitShot-Alt02"
+      InheritFrom = "BowWeaponArrow-Hephaestus-SplitShot"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
+    }
+    {
+      Name = "LuciferBomb-Hephaestus"
+      InheritFrom = "LuciferBomb"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
       ClearCreateAnimations = true
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
       CreateAnimations = [
         {
-          Name = "QuickFlashTeal"
+          Name = "LuciferBombDark"
         }
         {
-          Name = "ShotgunBlastWaveA-Hephaestus"
+          Name = "LuciferBombGlow-Hephaestus"
         }
         {
-          Name = "ShotgunBlastWaveB-Hephaestus"
+          Name = "LuciferBombDropDisplace"
+        }
+        {
+          Name = "QuickFlashDarkPurple"
         }]
-    }
-    {
-      Name = "GunShotgunBlastFlipped-Hephaestus"
-      InheritFrom = "GunShotgunBlast-Hephaestus"
-      FlipVertical = true
-      ClearCreateAnimations = true
-      CreateAnimation = "GunShotgunBlastDarkFlipped"
-      CreateAnimations = [
-        {
-          Name = "QuickFlashTeal"
-        }
-        {
-          Name = "ShotgunBlastWaveA-Hephaestus"
-        }
-        {
-          Name = "ShotgunBlastWaveB-Hephaestus"
-        }]
-    }
-    {
-      Name = "ShotgunBlastWaveA-Hephaestus"
-      InheritFrom = "ShotgunBlastWaveA"
-      Hue = 0
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-    }
-    {
-      Name = "ShotgunBlastWaveB-Hephaestus"
-      InheritFrom = "ShotgunBlastWaveB"
-      Hue = 0
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-    }
-    {
-      Name = "GunWeaponProjectile_Homing-Hephaestus"
-      InheritFrom = "GunWeaponProjectile_Homing"
-      CreateAnimation = "GunWeaponMuzzleFlash-Hephaestus"
-      VisualFx = "GunTrail-Hephaestus"
-      Red = 1
-      Green = 1
-      Blue = 1
-      EndRed = 0.80
-      EndGreen = 0.55
-      EndBlue = 0.05  
     }
     /* Hephaestus - Fist - WeaponTrait */
-    {
+{
       Name = "FistFxHephaestus"
       InheritFrom = "FistFxBase"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ChildAnimation = "FistGlowHephaestus"
-    }
-    {
-      Name = "FistFx-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "FistFx-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
+      CreateAnimation = "HephaestusMeleeSplash_Fist"
     }
     {
       Name = "FistFxHephaestus_Reach"
       InheritFrom = "FistFxHephaestus"
       StartScaleX = 1.8
       EndScaleX = 1
+      CreateAnimation = null
       ClearCreateAnimations = true
       CreateAnimations = [
+        {
+          Name = "HephaestusMeleeSplash_Fist"
+        }
         {
           Name = "FistFxDark_Reach"
         }
@@ -2793,69 +1951,176 @@
         }]
     }
     {
+      Name = "HephaestusMeleeSplash_Fist"
+      FilePath = "Hephaestus\Fx\HephaestusMeleeSplash\HephaestusMeleeSplash"
+      Type = "Book"
+      AngleFromOwner = "Maintain"
+      Sound = "/EmptyCue"
+      ColorFromOwner = "Ignore"
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      OriginX = 120.0
+      OriginY = 375.0
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Take"
+      UseAttachedMarkerLocation = "weapon_1_TRACKING"
+      ScaleFromOwner = "Ignore"
+      GroupName = "FX_Dark"
+      ScaleMax = 0.9
+      ScaleMin = 0.7
+      Ambient = 0.0
+      Hue = 0
+      Angle = -90
+    }
+    {
       Name = "FistGlowHephaestus"
       InheritFrom = "FistGlow"
       StartAlpha = 0.75
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53 
-      CreateAnimations = [
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-      ]
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
     {
       Name = "FistFxSwipeHephaestus"
       InheritFrom = "FistFxSwipe"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ChildAnimation = "FistGlowHephaestus"
-      ClearCreateAnimations = true     
-      CreateAnimation = "HephaestusFistSwipeSwirl"
+      DieWithOwner = true
+      CreateAnimations = [
+        {
+          Name = "FistFxSwipeHephaestusEmitter"
+        }
+        {
+          Name = "FistFxSwipeHephaestusSplash"
+        }
+        {
+          Name = "FistFxSwipeHephaestusSplashB"
+        }]
     }
-    
     {
-      Name = "HephaestusFistSwipeSwirl"
-      InheritFrom = "ArtemisDashIso"
-      CreateAnimation = "null"
-      FilePath = "Fx\ArtemisDashSwirl\ArtemisDashSwirl"
-      Angle = 0.0
-      AngleMax = 0.01
-      AngleMin = 0.0
-      Sound = "/SFX/Player Sounds/ArtemisLeavesWeaponSlashUpgrade"
-      EndFrame = 41
-      NumFrames = 41
-      PlaySpeed = 180.0
-      RadialOffsetMin = 300
-      RadialOffsetMax = 301
-      RadialOffsetScaleY = 0.5
-      OffsetZ = 30
+      Name = "FistFxSwipeHephaestusSplash"
+      Type = "Book"
+      FilePath = "Hephaestus\Fx\HephaestusProjectileImpactPiece\HephaestusProjectileImpactPiece"
+      NumFrames = 48
       StartFrame = 1
-      FlipHorizontal = true
-      FlipVertical = false
-      OriginX = 315.0
-      OriginY = 248.0
+      PlaySpeed = 140
+      Material = "Unlit"
+      PostRotateScaleY = 1.0
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      OffsetZ = 60
+      ScaleX = 0.8
+      ScaleY = 1.0
+      Angle = 22
+      AngleChangeSpeedMin = 22
+      AngleChangeSpeedMax = 90
+      OriginX = 120
+      OriginY = 120
+      RadialOffsetMin = 100
+      RadialOffsetMax = 110
+      Velocity = 300
+      StartScaleX = 1
+      EndScaleX = 1.5
+      EaseIn = 0.8
+      EaseOut = 1.0
+      IsometricSkew = "X"
+      Acceleration = -400
       LocationFromOwner = "Take"
+      AngleFromOwner = "Take"
+      RandomFlipVertical = true
+      GroupName = "FX_Standing_Add"
+      Hue = -0.05
+    }
+    {
+      Name = "FistFxSwipeHephaestusSplashB"
+      InheritFrom = "FistFxSwipeHephaestusSplash"
       IsometricSkew = "None"
       PostRotateScaleY = 0.5
+      StartFrame = 1
+      NumFrames = 49
+      PlaySpeed = 180
+      Acceleration = -400
+    }
+    {
+      Name = "FistFxSwipeHephaestusEmitter"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      Scale = 0.25
+      Material = "Unlit"
+      UseAttachedTipLocation = true
+      VisualFxUse3DAngle = true
+      VisualFxDistanceMax = 5.0
+      VisualFxDistanceMin = 4.0
+      VisualFxRadialInterpolationLength = 3.0
+      AttachedTipLocationScaleY = 0.5
+      VisualFx = "HephaestusFistSwipeParticles"
+      VisualFxCap = 10
+      Duration = 0.08
+      LocationFromOwner = "Maintain"
+    }
+    {
+      Name = "HephaestusFistSwipeParticles"
+      FilePath = "Particles\particle_water_droplet"
+      GroupName = "Standing"
+      Type = "Constant"
+      AngleMin = 40
+      AngleMax = 60
+      AngleChangeSpeedMin = 45
+      AngleChangeSpeedMax = 180
+      AngleFromOwner = "Ignore"
+      //AddColor = true
+      ColorFromOwner = "Ignore"
+      //StartBlue = 1.0
+      //StartGreen = 1.0
+      //StartRed = 1.0
+      EndRed = 0
+      EndGreen = 1
+      EndBlue = 0.5
+      EaseIn = 0.7
+      EaseOut = 1.0
+      RandomDurationMax = 0.9
+      RandomDurationMin = 0.2
+      StartFrame = 1
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Acceleration = -600.0
+      VelocityMax = 500.0
+      VelocityMin = 400.0
+      EndScale = 0.0
+      Scale = 0.3
+      ScaleMax = 0.8
+      ScaleMin = 0.2
+      StartScale = 2.0
+      Ambient = 0.0
+      ScaleFromOwner = "Ignore"
+      Hue = -0.2
     }
     {
       Name = "FistFxUppercutHephaestus"
       InheritFrom = "FistFxUppercut"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ClearCreateAnimations = true
       CreateAnimations = [
         {
@@ -2870,8 +2135,9 @@
     }
     {
       Name = "RadialNovaFistUppercut-Hephaestus"
-      InheritFrom = "RadialNovaSwordParry"
+      InheritFrom = "RadialNovaSwordParry-Hephaestus"
       ClearCreateAnimations = true
+      VisualFx = "HephaestusProjectileImpactPieceIso_ScaleRadius"
       VisualFxCap = 8
       CreateAnimations = [
         {
@@ -2881,37 +2147,124 @@
           Name = "DoorCloseDust"
         }
         {
-          Name = "SwordParryGroundCrack"
-        }
-        {
           Name = "DisplaceShockwaveSwordParry"
         }
         {
           Name = "SwordParrySpike"
         }
         {
-          Name = "QuickFlashTeal"
+          Name = "SwordParrySpikeHephaestus"
+        }
+        {
+          Name = "QuickFlashDarkPurple"
         }]
-    }{
+    }
+    {
+      Name = "SwordParrySpikeHephaestus"
+      InheritFrom = "SwordParrySpike"
+      Color = 
+      {
+        Red = 0.80
+        Green = 0.20
+        Blue = 0.20
+      }
+    }
+    {
       Name = "ClawSwipe-Hephaestus"
       InheritFrom = "ClawSwipe"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFx = "HephaestusClawSwipeFx"
       VisualFxIntervalMin = 0.01
       VisualFxIntervalMax = 0.02
       VisualFxCap = 6
       ClearCreateAnimations = true
       CreateAnimations = [
         {
-          Name = "QuickFlashTeal"
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "ClawSwipe-HephaestusFx"
         }]
+    }
+    {
+      Name = "HephaestusClawSwipeFx"
+      Type = "Book"
+      FilePath = "Hephaestus\Fx\HephaestusProjectileSplash\HephaestusProjectileSplash"
+      NumFrames = 41
+      StartFrame = 1
+      PostRotateScaleY = 0.5
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      Material = "Unlit"
+      LocationFromOwner = "Ignore"
+      AngleFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      AngleMin = -45
+      AngleMax = 45
+      UseOwnAngle = true
+      RadialOffsetMin = 100
+      RadialOffsetMax = 150
+      IsometricSkew = "X"
+      RandomFlipVertical = true
+      RandomFlipHorizontal = true
+      ScaleMin = 0.2
+      ScaleMax = 0.8
+      RandomPlaySpeedMin = 90
+      RandomPlaySpeedMax = 120
+      VelocityMin = 100
+      VelocityMax = 150
+      Acceleration = -100
+      Hue = -0.05
+      AlphaMin = 0.25
+      AlphaMax = 1.0
+    }
+    {
+      Name = "ClawSwipe-HephaestusFx"
+      Type = "Book"
+      FilePath = "Fx\SwordSwipeA-Poseidon\SwordSwipeA-Poseidon"
+      NumFrames = 29
+      Material = "Unlit"
+      PostRotateScaleY = 0.66
+      AngleFromOwner = "Take"
+      ScaleFromOwner = "Ignore"
+      Scale = 1.33
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 90
+      GroupName = "FX_Dark"
+      ColorFromOwner = "Ignore"
+      LocationFromOwner = "Take"
+    }
+    {
+      Name = "ClawSwipeFlipped-HephaestusFx"
+      InheritFrom = "ClawSwipe-HephaestusFx"
+      FlipVertical = true
+    }
+    {
+      Name = "ClawSwipeDash-HephaestusFx"
+      InheritFrom = "ClawSwipe-HephaestusFx"
+      FlipVertical = true
+      RadialOffsetMin = 50
+      RadialOffsetMax = 51
     }
     {
       Name = "ClawSwipeFlipped-Hephaestus"
       InheritFrom = "ClawSwipe-Hephaestus"
       CreateAnimation = "ClawSwipeDarkFlipped"
       FlipVertical = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "ClawSwipeFlipped-HephaestusFx"
+        }]
     }
     {
       Name = "ClawSwipeFlippedDash-Hephaestus"
@@ -2920,6 +2273,14 @@
       FlipVertical = true
       RadialOffsetMin = 50
       RadialOffsetMax = 51
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPuple"
+        }
+        {
+          Name = "ClawSwipeDash-HephaestusFx"
+        }]
     }
     {
       Name = "ClawSwipeUppercut-Hephaestus"
@@ -2940,9 +2301,12 @@
       Red = 1
       Green = 1
       Blue = 1
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       OverlayVfx = true
       ClearCreateAnimations = true
       CreateAnimations = [
@@ -2956,27 +2320,47 @@
     {
       Name = "ClawSwipeUppercutCone-Hephaestus"
       InheritFrom = "ClawSwipeUppercutCone"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ChildAnimation = "FistGlowUppercutConeHephaestus"
       ClearCreateAnimations = true
       VisualFx = "null"
       CreateAnimations = [
         {
-          Name = "QuickFlashGreen"
+          Name = "QuickFlashDarkPurple"
         }
         {
-          Name = "FistUppercutConeHephaestusSwirl"
+          Name = "HephaestusSplashUppercut"
+        }
+        {
+          Name = "HephaestusSplashUppercut2"
         }]
+    }    
+    {
+      Name = "FistGlowUppercutConeHephaestus"
+      InheritFrom = "FistGlowUppercutCone"
+      StartAlpha = 0.75
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
     }
-    
+    /* Hephaestus - Fist - SecondaryTrait */
     {
       Name = "FistFxUppercutDirectionalHephaestus"
       InheritFrom = "FistFxUppercut"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       ClearCreateAnimations = true
       CreateAnimations = [
         {
@@ -2985,127 +2369,61 @@
         {
           Name = "FistFxUppercutDark"
         }]
-    }{
+    }
+    {
       Name = "FistUppercutConeHephaestus"
       InheritFrom = "FistUppercutCone"
       ChildAnimation = "FistGlowUppercutConeHephaestus"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
       CreateAnimations = [
         {
-          Name = "FistFx-FeatHephaestus"
+          Name = "HephaestusSplashUppercut"
         }
         {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }]
-    }{
-      Name = "FistGlowUppercutConeHephaestus"
-      InheritFrom = "FistGlowUppercutCone"
-      StartAlpha = 0.75
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-    }
-    {
-      Name = "FistFireballFx-Hephaestus"
-      InheritFrom = "FistFireballFx"
-      ClearCreateAnimations = true
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      VisualFx = "ProjectileFireRingFireball-Hephaestus"
-      CreateAnimations = [
-        {
-          Name = "FistFireballFxStart-Hephaestus"
-        }
-        {
-          Name = "CastDustFireball"
+          Name = "HephaestusSplashUppercut2"
         }]
     }
     {
-      Name = "FistFireballFxStart-Hephaestus"
-      InheritFrom = "FistFireballFxStart"
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      ChildAnimation = "QuickFlashTeal"
-    }
-     {
-      Name = "ProjectileFireRingFireball-Hephaestus"
-      InheritFrom = "ProjectileFireRingFireball"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      CreateAnimation = "HephaestusParticleMixGun"
-    }
-    {
-      Name = "HephaestusParticleMixGun"
-      FilePath = "Particles\particle_kira"
-      Type = "Random"
-      EndFrame = 1
-      NumFrames = 1
-      StartFrame = 1
-      Random = [
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatHephaestus"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }
-        {
-          Name = "FistFx-FeatherB"
-        }]
+      Name = "HephaestusSplashUppercut"
+      Type = "Book"
+      FilePath = "Hephaestus\Fx\HephaestusMeleeSplash\HephaestusMeleeSplash"
+      NumFrames = 30
+      PlaySpeed = 50
+      Scale = 1.5
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      Material = "Unlit"
+      UseOwnAngle = false
+      AngleFromOwner = "Take"
+      RadialOffsetMin = 250
+      RadialOffsetMax = 250
+      Hue = -0.05
+      OffsetZ = 60
+      Gravity = 200
+      LocationFromOwner = "Take"
     }
     {
-      Name = "FistSpecialLandFx_Hephaestus"
-      InheritFrom = "RadialNovaSwordParry-Hephaestus"
-      VisualFx = "EnemyBurrowDirtRadial_ScaleRadius"
-      VisualFxIntervalMin = 0.01
-      VisualFxIntervalMax = 0.02
-      VisualFxCap = 200
-      CreateAnimations = [
-        {
-          Name = "DustRingFront"
-        }
-        {
-          Name = "DustRingBackPetrified"
-        }
-        {
-          Name = "FistSpecialGroundCracks"
-        }
-        {
-          Name = "FistUppercutSmoke"
-        }]
+      Name = "HephaestusSplashUppercut2"
+      InheritFrom = "HephaestusSplashUppercut"
+      FilePath = "Hephaestus\Fx\HephaestusProjectileSplash\HephaestusProjectileSplash"
+      NumFrames = 40
+      PlaySpeed = 60
+      Scale = 1.25
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      UseOwnAngle = true
+      RadialOffsetMin = 200
+      RadialOffsetMax = 200
+      Hue = -0.1
+      OffsetZ = 120
     }
-    /* Hephaestus - Fist - SecondaryTrait */
     {
       Name = "FistFxUppercutDirectionalHephaestus_FlashKick"
       InheritFrom = "FistFxUppercutDirectionalHephaestus"
@@ -3149,614 +2467,155 @@
           DurationFrames = 1
         }]
     }
-    /* Hephaestus - Shout - Beam */
+    /* Hephaestus - Shout - Hellring */
     {
-      Name = "HephaestusLaserPreview"
-      ChainTo = "HephaestusLaser"
-      FilePath = "Fx\HephaestusBeam\HephaestusBeam"
-      Type = "Book"
-      Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamPreAttack"
-      StopSoundOnFinishFade = 0.25
-      EndFrame = 30
-      NumFrames = 30
-      PlaySpeed = 80.0
-      StartFrame = 1
-      OriginX = 10.0
-      OriginY = 85.0
-      ScaleLength = 120.0
-      ScaleRadius = 160.0
-      ScaleY = 0.80
-      Ambient = 0.0
-      OverlayVfx = true
-      TransferCopyBody = false
-    }    
-    {
-      Name = "ZagreusShootLazer"
-      FilePath = "Animations\Zagreus\RangedWeapon\ZagreusRangedWeapon"
-      Type = "Book"
-      VideoTexture = "ZagreusRangedWeapon_Bink"
-      FrameDataFile = "Game\Animations\FrameData\ZagreusRangedWeapon.sga"
-      EndFrame = 100
-      Loop = true
-      NumAngles = 32
-      NumFrames = 120
-      StartFrame = 1
-      OffsetY = -105.0
-      SetOwnerEndAngle = true
-      Scale = 1.05
-      CancelOnOwnerMove = true
-    }
-    {
-      Name = "HephaestusLaser"
-      ChainTo = "HephaestusLaserEnd"
-      FilePath = "Fx\HephaestusBeam\HephaestusBeam"
-      Type = "Book"
-      Sound = "/SFX/Enemy Sounds/Brimstone/CrystalBeamAttackLoop"
-      StopSoundOnFinishFade = 0.25
-      EndFrame = 30
-      LoopFramesOnly = true
-      NumFrames = 30
-      PlaySpeed = 60.0
-      StartFrame = 1
-      OriginX = 10.0
-      OriginY = 85.0
-      TransferFrameFromThis = true
-      ScaleLength = 120.0
-      ScaleRadius = 160.0
-      Ambient = 0.0
-      OverlayVfx = true
-      TransferCopyBody = false
-    }
-    {
-      Name = "Invincibubble_Hephaestus_Loop"
-      ChildAnimation = "InvincibubbleLoop_Hephaestus_Offset"
-      FilePath = "Fx\InvincibubbleIn\InvincibubbleIn"
-      GroupName = "FX_Standing_Add"
-      Type = "Book"
-      AngleFromOwner = "Ignore"
-      Sound = "/Leftovers/SFX/PerfectTiming"
-      ColorFromOwner = "Ignore"
-      EndFrame = 27
-      HoldLastFrame = true
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-      NumFrames = 27
-      PlaySpeed = 60.0
-      StartFrame = 1
-      OffsetY = -50.0
-      LocationZFromOwner = "Ignore"
-      SortMode = "FromParent"
-      UseAttachedMarkerLocation = "ZAxis_TRACKING"
-      ScaleFromOwner = "Ignore"
-      ScaleY = 0.75
-      Ambient = 0.0
-      CreateAnimationOnEnd = "InvincibubbleOut_Zag"
-    }
-    {
-      Name = "InvincibubbleLoop_Hephaestus_Offset"
-      InheritFrom = "InvincibubbleLoop"
-      ChildAnimation = "HephaestusLaserOrigin"
-      GroupName = "FX_Standing_Add"
-      PingPongColor = true      
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-      DieWithOwner = false
-      LocationZFromOwner = "Ignore"
-      ScaleY = 0.75
-    }
-    {
-      Name = "HephaestusLaserGlow"
+      Name = "HephaestusRing"
+      FilePath = "Dev\blank_invisible"
+      GroupName = "FX_Terrain"
       Type = "Constant"
-      FilePath = "Particles\particle_glow"
-      ScaleLength = 200
-      GroupName = "FX_Standing_Add"
-      LocationFromOwner = "Maintain"
-      LocationZFromOwner = "Maintain"
-      DieWithOwner = true
-      //OriginX = 0
-     // OriginY = 0
-      ScaleY = 2.0
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      StartAlpha = 0.9
-      EndAlpha = 1.0
-      PingPongColor = true
-      RandomDurationMin = 0.05
-      RandomDurationMax = 0.1
-      Loop = true
-    }
-    {
-      Name = "HephaestusLaserGlowTerrain"
-      InheritFrom = "HephaestusLaserGlow"
-      GroupName = "FX_Terrain_Add"
-      LocationZFromOwner = "Ignore"
-    }
-    {
-      Name = "HephaestusLaserDark"
-      InheritFrom = "HephaestusLaser"
-      GroupName = "FX_Dark"
-      Red = 0
-      Green = 0
-      Blue = 0
-      CreateAnimation = null
-      ClearCreateAnimations = true
-      CreateAnimationOnEnd = null
-      ScaleY = 1.0
-      StartScaleY = 1.0
-      EndScaleY = 1.2
-      EaseIn = 0
-      EaseOut = 1
-      PingPongScale = true
-      DieWithOwner = true
-    }
-    {
-      Name = "HephaestusLaserEnd"
-      InheritFrom = "HephaestusLaser"
-      Sound = "/EmptyCue"
-      LoopFramesOnly = true
-      StartScaleY = 0.66
-      EndScaleY = 0
-      ChainTo = null
-      CreateAnimationOnEnd = null
-      EaseIn = 0.5
-      EaseOut = 1.0
-      Loop = false
-      ClearCreateAnimations = true
-      CreateAnimation = null
-      ChildAnimation = null
-      Duration = 0.25
-    }
-    {
-      Name = "HephaestusLaserOrigin"
-      ChildAnimation = "HephaestusLaserOriginGlow"
-      FilePath = "Fx\HadesBeamCapEnd\HadesBeamCapEnd"
-      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
-      GroupName = "Standing"
-      FlipHorizontal = true
-      Type = "Book"
-      ColorFromOwner = "Ignore"
-      EndFrame = 40
-      Loop = true
-      NumFrames = 40
-      PlaySpeed = 30.0
-      StartFrame = 1
-      DieWithOwner = true
-      SortMode = "FromParent"
-      ScaleFromOwner = "Ignore"
-      Scale = 1.0
-      ScaleX = 2
-      OriginX = 0
-      OriginY = 0
-      RandomFlipVertical = true
-    }
-    {
-      Name = "HephaestusLaserOriginNoLight"
-      InheritFrom = "HephaestusLaserOrigin"
-      CreateAnimation = null
-    }
-    {
-      Name = "HephaestusLaserTip"
-      Type = "Book"
-      FilePath = "Fx\HadesBeamCapStart\HadesBeamCapStart"
-      Material = "Unlit"
-      GroupName = "Standing"
-      SortMode = "FromParent"
-      NumFrames = 40
-      Loop = true
-      LoopFramesOnly = true
-      StartScale = 0.5
-      EndScale = 1.0
-      EaseIn = 0
-      EaseOut = 1
-      PingPongScale = true
-      RandomPlaySpeedMin = 30
-      RandomPlaySpeedMax = 50
-      ScaleMin = 0.98
-      ReRandomizeOnLoop = true
-      ScaleMax = 1.02
-      Scale = 0.9
-      ScaleFromOwner = "Ignore"
-      ColorFromOwner = "Ignore"
-      RandomStartFrame = true
-      LocationFromOwner = "Ignore"
-      FlipHorizontal = true
-      RandomFlipVertical = true
-      VisualFx = "HephaestusLaserTipParticles"
-      VisualFxManagerCap = 400
-      VisualFxIntervalMax = 0.3
-      VisualFxIntervalMin = 0.2
-      TransferFrameToThis = true
-      TransferFrameFromThis = false
-      DieWithOwner = true
-      CreateAnimation = "HephaestusLaserTipGlow"
-    }
-    {
-      Name = "HephaestusLaserTipGlow"
-      Type = "Constant"
-      FilePath = "Particles\particle_quickflash"
-      Red = 1
-      Green = 1
-      Blue = 0.2
-      StartScale = 1
-      EndScale = 1.2
-      PingPongScale = true
-      StartAlpha = 0.8
-      EndAlpha = 1
-      PingPongColor = true
-      DieWithOwner = true
-      ScaleFromOwner = "Ignore"
-      ColorFromOwner = "Ignore"
-      LocationFromOwner = "Ignore"
-      GroupName = "FX_Standing_Add"
-      Material = "Unlit"
-      Scale = 0.6
-      RandomRotation = true
-    }
-    {
-      Name = "HephaestusLaserTipIntro"
-      InheritFrom = "HephaestusLaserTip"
-      LoopFramesOnly = true
-      ChainTo = "HephaestusLaserTip"
-      StartScale = 0
-      EndScale = 0.3
-      Loop = false
-      Duration = 0.75
-      TransferFrameToThis = false
-      TransferFrameFromThis = true
-      VisualFx = null
-    }
-    {
-      Name = "HephaestusLaserTipIntroNoParticles"
-      InheritFrom = "HephaestusLaserTipIntro"
-      ChainTo = "HephaestusLaserTipNoParticles"
-    }
-    {
-      Name = "HephaestusLaserTipNoParticles"
-      InheritFrom = "HephaestusLaserTip"
-      VisualFx = null
-    }
-    {
-      Name = "HephaestusLaserOriginGlow"
-      ChildAnimation = "InvincibubbleShadow_Zag_Offset"
-      Type = "Constant"
-      FilePath = "Particles\particle_glow"
-      Material = "Unlit"
-      GroupName = "FX_Standing_Add"
-      SortMode = "FromParent"
-      ScaleY = 2
-      Scale = 0.66
-      AngleFromOwner = "Ignore"
-      LocationZFromOwner = "Maintain"
-      LocationFromOwner = "Maintain"
-      Red = 1
-      Green = 0.6
-      Blue = 0
-      StartAlpha = 0.7
-      EndAlpha = 1.0
-      PingPongColor = true
-      RandomDurationMin = 0.3
-      RandomDurationMax = 0.5
-      ReRandomizeOnLoop = true
-      Loop = true
-      DieWithOwner = true
-    }
-    
-    /* Theseus - Wrath */
-    {
-      Name = "RadialNovaTheseusWrath-Hephaestus"
-      InheritFrom = "RadialNova"
-      GroupName = "FX_Terrain_Add"
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      PlaySpeed = 75.0
-      ScaleRadius = 350.0
-      VisualFxCap = 16
-      VisualFxIntervalMax = 0.03
-      VisualFxIntervalMin = 0.01
-      TimeModifierFraction = 0.0
-      CreateAnimations = [
-        {
-          Name = "RadialNovaSwordParryDark"
-        }
-        {
-          Name = "TheseusWrathSpikeHephaestus"
-        }
-        {
-          Name = "QuickFlashTeal"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatHephaestus"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }
-        {
-          Name = "RadialNovaHephaestus-FeatherB"
-        }]
-    }
-    {
-      Name = "RadialNovaHephaestus-FeatHephaestus"
-      InheritFrom = "HephaestusFeatHephaestus"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "RadialNovaHephaestus-FeatherB"
-      InheritFrom = "HephaestusFeatherB"
-      RadialOffsetMax = 50.0
-      RadialOffsetMin = 50.0
-      AngleMax = 360.0
-      AngleMin = 0.0
-      Acceleration = -300.0
-      VelocityMax = 300.0
-      VelocityMin = 100.0
-    }
-    {
-      Name = "TheseusWrathSpikeHephaestus"
-      InheritFrom = "TheseusWrathSpike"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
-      Name = "TheseusGodPowerPreviewDecal_Hephaestus"
-      InheritFrom = "TheseusGodPowerPreviewDecalDark"
-      Color = {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }
-    {
-      Name = "DevotionPreAttackBase_Hephaestus"
-      InheritFrom = "DevotionPreAttackBase"
-      VisualFx = "DevotionPreAttackFx_Hephaestus"
-      CreateAnimationOnEnd = "DevotionPreAttackBaseEnd_Hephaestus"
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-      EndAlpha = 0.5
-      ScaleRadius = 25
-      HoldLastFrame = false
-    }
-    {
-      Name = "DevotionPreAttackFx_Hephaestus"
-      InheritFrom = "DevotionPreAttackFx"
-      Scale = 0.5
-      Alpha = 0.2
-      ClearCreateAnimations = true
-      CreateAnimations = [
-        {
-          Name = "DevotionRings_Hephaestus"
-        }
-        {
-          Name = "DevotionLines_Hephaestus"
-        }]
-    }
-     {
-      Name = "DevotionRings_Hephaestus"
-      InheritFrom = "DevotionRings"
-      Red = 0
-      Green = 0.55
-      Blue = 0.53
-      Scale = 0.5
-      //StartRed = 0.0
-      //StartGreen = 0.55
-      //StartBlue = 0.53
-      ColorFromOwner = "Ignore"
-    }
-    {
-      Name = "DevotionLines_Hephaestus"
-      InheritFrom = "DevotionLines"
-      Red = 0
-      Green = 0.55
-      Blue = 0.53
-      //StartRed = 0.0
-      //StartGreen = 0.55
-      //StartBlue = 0.53
-      ColorFromOwner = "Ignore"
-    }
-    {
-      Name = "DevotionHephaestusProjectile"
-      CreateAnimation = "QuickFlashTeal"
-      FilePath = "Fx\AsphodelSkullDeath\AsphodelSkullDeath"
-      GroupName = "Standing"
-      Type = "Book"
-      VisualFx = "ArtemisRangedTrail_Hephaestus"
-      DurationFrames = 48
-      EaseIn = 0.01
-      EaseOut = 0.02
+      AddColor = true
       EndFrame = 1
-      NumAngles = 60
       NumFrames = 1
       StartFrame = 1
+      DieWithOwner = true
+      RandomRotation = false
       ScaleFromOwner = "Ignore"
+      ScaleRadius = 960.0
       Ambient = 0.0
-      Scale = 0.4
-      AddColor = true
-      StartRed = 1
-      EndRed = 0
-      StartGreen = 1
-      EndGreen = 0
-      StartBlue = 1
-      EndBlue = 0
-      PingPongColor = true
-      VisualFxDistanceMin = 20
-      VisualFxDistanceMax = 22
-      Sound = "/SFX/AphroditeDevotionSFX"
-      ChildAnimation = "DevotionHephaestusProjectileGlow"
-    }
-    {
-      Name = "ArtemisRangedTrail_Hephaestus"
-      FilePath = "Fx\ArtemisRangedTrail\ArtemisRangedTrail"
-      GroupName = "FX_Standing_Add"
-      Type = "Book"
-      AngleFromOwner = "Take"
-      EndFrame = 53
-      NumFrames = 53
-      RandomPlaySpeedMax = 120.0
-      RandomPlaySpeedMin = 90.0
-      StartFrame = 1
-      RandomFlipVertical = true
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Ignore"
-      SortMode = "FromParent"
-      Scale = 1
-      StartScaleY = 0.5
-      EndScaleY = 1
-      Ambient = 0.0
-      Hue = 0.08
-      CreateAnimations = [
-        {
-          Name = "ArtemisRangedTrail_Hephaestus_Dark"
-        }]
-    }
-    {
-      Name = "ArtemisRangedTrail_Hephaestus_Dark"
-      InheritFrom = "ArtemisRangedTrail_Hephaestus"
-      ClearCreateAnimations = true
-      GroupName = "FX_Dark"
-      RandomPlaySpeedMax = 70.0
-      RandomPlaySpeedMin = 60.0
-      LocationZFromOwner = "Maintain"
-      ScaleY = 0.7
-      OffsetY = 5
-      ScaleX = 0.5
-      StartScaleY = 0
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      VisualFx = "HephaestusAmmoPushRingCirclesBright"
+      VisualFxIntervalMin = 0.15
+      VisualFxIntervalMax = 0.2
+      IgnoreFrameCap = true
+      CreateAnimation = "HephaestusAmmoPushRingDisplacement"
       Color = 
       {
-        Red = 0.0
-        Green = 0.0
-        Blue = 0.0
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
       }
+      Sound = "/Leftovers/Menu Sounds/TextReveal2"
     }
     {
-      Name = "DevotionHephaestusProjectileGlow"
+      Name = "HephaestusAmmoPushRingDisplacement"
       Type = "Constant"
-      FilePath = "Particles\particle_glow"
+      FilePath = "Fx\HadesAmmoWeapon\HadesAmmoWeaponDisplacement"
       Material = "Unlit"
-      Red = 1.0
-      Green = 1.0
-      Blue = 1.0
+      ScaleRadius = 400
+      GroupName = "FX_Displacement"
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
       ColorFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      UseAttachedAddColor = false
+      StartAlpha = 1
+      EndAlpha = 0
+      Duration = 2
+      SortMode = "FromParent"
+      VisualFx = "HephaestusAmmoPushRingEdgeFx"
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.011
+      IgnoreFrameCap = true
+    }
+    {
+      Name = "HephaestusAmmoPushRingCirclesBright"
+      Type = "Book"
+      FilePath = "Hephaestus\Fx\HadesAmmoWeaponCirclesBright\HadesAmmoWeaponCirclesBright"
+      NumFrames = 6
+      Material = "Unlit"
+      ScaleRadius = 920
+      ScaleMin = 0.98
+      ScaleMax = 1.03
+      StartScale = 0.95
+      EndScale = 1.05
+      EaseIn = 0.5
+      EaseOut = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      RandomDurationMin = 0.45
+      RandomDurationMax = 0.7
+      GroupName = "FX_Terrain_Add"
+      StartAlpha = 0
+      EndAlpha = 1
+      PingPongColor = true
+      Loop = false
+      DieWithOwner = false
+      AngleFromOwner = "Ignore"
+      PlaySpeed = 1e-13
+      RandomStartFrame = true
+      CreateAnimation = "HephaestusAmmoPushRingCirclesDark"
+      IgnoreFrameCap = true
+      Scale = 1
       ScaleFromOwner = "Ignore"
-      Alpha = 0.4
+      ColorFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      UseAttachedAddColor = false
+      //Color
     }
     {
-      Name = "DevotionPreAttackBaseEnd_Hephaestus"
-      InheritFrom = "DevotionPreAttackBaseEnd"
-      Red = 1
-      Green = 1
-      Blue = 1
-      CreateAnimation = "SwordParrySpikeHephaestus"
+      Name = "HephaestusAmmoPushRingCirclesDark"
+      InheritFrom = "HephaestusAmmoPushRingCirclesBright"
+      FilePath = "Fx\HadesAmmoWeaponCirclesDark\HadesAmmoWeaponCirclesDark"
+      NumFrames = 3
+      GroupName = "FX_Terrain"
+      CreateAnimation = null
     }
     {
-      Name = "DeathMarkedCurseOut"
-      FilePath = "Hephaestus\Fx\HephaestusScytheOut\HephaestusScytheOut"
-      GroupName = "Combat_UI"
+      Name = "HephaestusAmmoPushRingEdgeFx"
+      Type = "Constant"
+      FilePath = "Particles\particle_snowDust_01"
+      NumFrames = 1
+      Material = "Unlit"
+      AngleMin = 0
+      AngleMax = 360
+      UseOwnAngle = false
+      RadialOffsetMin = 100
+      RadialOffsetMax = 101
+      RadialOffsetScaleRadius = 100
+      RadialOffsetScaleY = 0.5
+      VelocityMin = 100
+      VelocityMax = 200
+      UpwardVelocityMin = 100
+      UpwardVelocityMax = 200
+      StartScale = 0.4
+      EndScale = 0.75
+      Scale = 1.9
+      ScaleMin = 0.8
+      ScaleMax = 1.0
+      StartAlpha = 1
+      EndAlpha = 0
+      Gravity = 120
+      RandomDurationMin = 0.45
+      RandomDurationMax = 0.5
+      Acceleration = -900
+      LocationFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      GroupName = "Standing"
+      SortMode = "FromParent"
+    }
+    {
+      Name = "HephaestusCastNovaHit"
+      FilePath = "Fx\ShadeNova\ShadeNova"
       Type = "Book"
       AngleFromOwner = "Ignore"
-      Sound = "/Leftovers/SFX/PlayerScoreMedium"
-      ColorFromOwner = "Ignore"
-      EndFrame = 16
-      NumFrames = 16
-      PlaySpeed = 60.0
+      EndFrame = 28
+      NumFrames = 28
       StartFrame = 1
-      OffsetZ = 240.0
-      SortMode = "FromParent"
-      ScaleFromOwner = "Ignore"
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
       Ambient = 0.0
-      Slides = [
-        {
-          DurationFrames = 1
-          Sound = "/SFX/Player Sounds/ZagreusSwordLunge"
-          Frame = 5
-        }]
+      Hue = 0.3
+      Scale = 1
+      ScaleY = 1.0
+      PlaySpeed = 80
+      OffsetZ = 30
+      Red = 1.0
+      Green = 0
+      Blue = 0.81
     }
-    {
-      Name = "DeathMarkedCurseIn"
-      InheritFrom = "DeathMarkedCurseOut"
-      ChainTo = "DeathMarkedCurseLoop"
-      FilePath = "Hephaestus\Fx\HephaestusScytheIn\HephaestusScytheIn"
-      Sound = "/SFX/ThanatosAttackBell"
-      EndFrame = 9
-      NumFrames = 9
-      PlaySpeed = 30.0
-      StartFrame = 1
-      DieWithOwner = true
-    }
-    {
-      Name = "DeathMarkedCurseLoop"
-      InheritFrom = "DeathMarkedCurseOut"
-      FilePath = "Hephaestus\Fx\HephaestusScytheLoop\HephaestusScytheLoop"
-      Sound = "/Leftovers/SFX/AuraAmbientLoop"
-      StopSoundOnFinishFade = 0.2
-      EaseOut = 1.0
-      EndFrame = 30
-      Loop = true
-      NumFrames = 30
-      PlaySpeed = 30.0
-      RandomPlaySpeedMax = 34.0
-      RandomPlaySpeedMin = 28.0
-      StartFrame = 1
-      PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
-      DieWithOwner = true
-    }
+    /* Hephaestus - Duos */
+    /* Theseus - Wrath */
     /* Boon FX */
     {
       Name = "BoonDropHephaestus"
@@ -3768,9 +2627,9 @@
       InheritFrom = "BoonDropA"
       ChildAnimation = "BoonDropB-Hephaestus"
       Color = {
-        Red = 0.38
-        Green = 0.14
-        Blue = 0.09
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
       }
     }
     {
@@ -3778,20 +2637,15 @@
       InheritFrom = "BoonDropB"
       ChildAnimation = "BoonDropC-Hephaestus"
       Color = {
-        Red = 0.65
-        Green = 0.59
-        Blue = 0.55
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
       }
     }
     {
       Name = "BoonDropC-Hephaestus"
       InheritFrom = "BoonDropC"
       ChildAnimation = "BoonDropHephaestusIcon"
-      Color = {
-        Red = 0.65
-        Green = 0.59
-        Blue = 0.55
-      }
     }
     {
       Name = "BoonDropHephaestusIcon"
@@ -3800,14 +2654,14 @@
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
-      Scale = 0.12
+      Scale = 0.16
     }
     {
       Name = "BoonDissipateA_Hephaestus"
       InheritFrom = "BoonDissipateA"
-        Red = 0.09
-        Green = 0.50
-        Blue = 0.55
+      Red = 0.3
+      Green = 1
+      Blue = 0
       ClearCreateAnimations = true
       CreateAnimations = [
         {
@@ -3823,27 +2677,688 @@
     {
       Name = "BoonDissipateB_Hephaestus"
       InheritFrom = "BoonDissipateB"
-      Red = 0.09
-      Green = 0.50
-      Blue = 0.55
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
     }
     {
       Name = "BoonDissipateVertical_Hephaestus"
       InheritFrom = "BoonDissipateVertical"
       Hue = 0.4
-      Red = 0.09
-      Green = 0.50
-      Blue = 0.55
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
       AddColor = true
     } 
     {
       Name = "BoonDissipateGlow_Hephaestus"
       InheritFrom = "BoonDissipateGlow"
-      Red = 0.09
-      Green = 0.50
-      Blue = 0.55
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "QuickFlashDarkPurple"
+      InheritFrom = "QuickFlashRed"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.3
+      EaseIn = 0.99
+      EaseOut = 1.0
+      Scale = 0.7
+    }
+    {
+      Name = "QuickFlashDarkPurpleSmall"
+      InheritFrom = "QuickFlashDarkPurple"
+      Scale = 0.5
+      OffsetZ = 90
     }
     /* Dash */
+    {
+      Name = "BlinkTrailVerticalB-Hephaestus"
+      //InheritFrom = "BlinkTrailVerticalB"
+      ChildAnimation = "null"
+      //Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      StopSoundOnFinishFade = 0.2
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+      Color = 
+      {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
+      }
+    }
+    {
+      Name = "HephaestusRushProjectileHead"
+      Type = "Book"
+      //FilePath = "Fx\DemeterSmokeDirectional\DemeterSmokeDirectional"
+      NumFrames = 43
+      PlaySpeed = 60
+      Material = "Unlit"
+      Scale = 1.5
+      AngleFromOwner = "Maintain"
+      UseOwnAngle = true
+      SortMode = "FromParent"
+      //Sound = "/SFX/Player Sounds/DemeterColdNovaRush"
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      AddColor = false
+      EaseIn = 0.9
+      EaseOut = 1.0
+      VisualFxDistanceMin = 30
+      VisualFxDistanceMax = 40
+      VisualFxCap = 16
+      VisualFx = "HephaestusRushProjectileTrail"
+    }
+    {
+      Name = "HephaestusSpinLoop"
+      FilePath = "Hephaestus\Fx\LavaFire\LavaFire"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      RandomStartFrame = true
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
+      Ambient = 0.0
+      ChainTo = "HephaestusSpinLoopOut"    
+      ColorFromOwner = "Ignore"
+      SortMode = "Secondary"
+      OverlayVfx = false
+      TransferFrameFromThis = true
+      Material = "Unlit"
+      ScaleX = 3
+      ScaleY = 4
+      CreateAnimations = [
+        { Name = "LavaEmber" }
+      ]
+    }
+    {
+      Name = "HephaestusDemeterSpinLoop"
+      FilePath = "Hephaestus\Fx\LavaFireDemeter\LavaFireDemeter"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      RandomStartFrame = true
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
+      Ambient = 0.0
+      ChainTo = "HephaestusDemeterSpinLoopOut"    
+      ColorFromOwner = "Ignore"
+      SortMode = "Secondary"
+      OverlayVfx = false
+      TransferFrameFromThis = true
+      Material = "Unlit"
+      ScaleX = 3
+      ScaleY = 4
+      CreateAnimations = [
+        { Name = "LavaEmber" }
+      ]
+    }
+    {
+      Name = "HephaestusDemeterSpinIn"
+      InheritFrom = "HephaestusDemeterSpinLoop"
+      TransferFrameFromThis = false
+      ChainTo = "HephaestusDemeterSpinLoop"
+      FilePath = "Hephaestus\Fx\LavaFireDemeter\LavaFireDemeter"
+      Sound = "/null"
+      EndFrame = 5
+      Loop = false
+      NumFrames = 5
+      StartFrame = 1
+      StartAlpha = 0
+      EndAlpha = 1
+    }
+    {
+      Name = "HephaestusDemeterSpinOut"
+      InheritFrom = "HephaestusDemeterSpinLoop"
+      TransferFrameFromThis = false
+      TransferFrameToThis = false
+      ChainTo = "null"
+      FilePath = "Hephaestus\Fx\LavaFireDemeter\LavaFireDemeter"
+      Sound = "/EmptyCue"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 35
+      VisualFx = null
+      EndFrame = 15
+      Loop = false
+      NumFrames = 15
+      StartFrame = 1
+      EndAlpha = 0
+      ChildAnimation = "HephaestusDemeterSpinOut2"
+    }
+    {
+      Name = "HephaestusDemeterSpinOut2"
+      InheritFrom = "HephaestusDemeterSpinOut"
+      ChildAnimation = null
+    }
+    {
+      Name = "HephaestusSpinLight"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      GroupName = "FX_Terrain_Add"
+      StartAlpha = 0
+      EndAlpha = 0.3
+      PingPongColor = false
+      Duration = 0.25
+      DieWithOwner = true
+      Scale = 2
+      ScaleY = 0.5
+      HoldLastFrame = true
+      ChainTo = "HephaestusSpinLightOut"
+    }
+    {
+      Name = "HephaestusSpinLightOut"
+      InheritFrom = "HephaestusSpinLight"
+      StartAlpha = 0.3
+      EndAlpha = 0
+      HoldLastFrame = false
+      ChainTo = null
+    }
+    {
+      Name = "HephaestusDemeterSpinLoopOut"
+      InheritFrom = "HephaestusDemeterSpinLoop"
+      ChainTo = "HephaestusDemeterSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
+    }
+    {
+      Name = "HephaestusSpinLoopOut"
+      InheritFrom = "HephaestusSpinLoop"
+      ChainTo = "HephaestusSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
+    }
+    {
+      Name = "HephaestusDefenseLoop"
+      FilePath = "Fx\Immolation\Immolation"
+      Type = "Book"
+      AngleMax = 10.0
+      AngleMin = -10.0
+      EndFrame = 43
+      Loop = true
+      NumFrames = 43
+      Alpha = 0.9
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+      //RandomPlaySpeedMax = 80.0
+      //RandomPlaySpeedMin = 50.0      
+      TransferFrameFromThis = true
+      OriginX = 128.0
+      OriginY = 150.0
+      RandomOffsetX = 20.0
+      RandomOffsetY = 6.0
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      SortMode = "FromParent"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      OffsetZ = 80
+      ScaleMax = 0.9
+      ScaleMin = 0.6
+    }   
+    {
+      Name = "DefenseSmoke"
+      Type = "Book"
+      FilePath = "Fx\GroundFogIso\GroundFogIso"
+      NumFrames = 138
+      //Loop = true
+      Material = "Unlit"
+      Alpha = 1.0
+      ScaleFromOwner = "Ignore"
+      Scale = 1.25
+      ChainTo = "DefenseSmokeFadeOut"
+      AngleFromOwner = "Ignore"
+      GroupName = "Standing"
+      //RandomStartFrame = true
+      PlaySpeed = 20
+      OffsetY = 0
+      OffsetZ = 100
+      //RandomFlipHorizontal = true
+      DieWithOwner = true
+      TransferFrameToThis = true
+    }
+    {
+      Name = "DefenseSmokeFadeIn"
+      InheritFrom = "DefenseSmoke"
+      Loop = false
+      StartAlpha = 0
+      EndAlpha = 0.4
+      LoopFramesOnly = true
+      Duration = 0.2
+      ChainTo = "DefenseSmoke"
+      DieWithOwner = true
+      TransferFrameFromThis = true
+      TransferFrameToThis = false
+    }
+    {
+      Name = "DefenseSmokeFadeOut"
+      InheritFrom = "DefenseSmoke"
+      Loop = false
+      StartAlpha = 0.4
+      EndAlpha = 0
+      ChainTo = null
+      DieWithOwner = true
+      SortMode = "Isometric"
+    }
+    {
+      Name = "HephaestusSpinIn"
+      InheritFrom = "HephaestusSpinLoop"
+      TransferFrameFromThis = false
+      ChainTo = "HephaestusSpinLoop"
+      //CreateAnimation = "QuickFlashIce"
+      FilePath = "Hephaestus\Fx\LavaFire\LavaFire"
+      Sound = "/null"
+      EndFrame = 5
+      Loop = false
+      NumFrames = 5
+      StartFrame = 1
+      StartAlpha = 0
+      EndAlpha = 1
+    }
+    {
+      Name = "HephaestusSpinOut"
+      InheritFrom = "HephaestusSpinLoop"
+      TransferFrameFromThis = false
+      TransferFrameToThis = false
+      ChainTo = "null"
+      FilePath = "Hephaestus\Fx\LavaFire\LavaFire"
+      Sound = "/EmptyCue"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 35
+      VisualFx = null
+      EndFrame = 15
+      Loop = false
+      NumFrames = 15
+      StartFrame = 1
+      EndAlpha = 0
+      ChildAnimation = "HephaestusSpinOut2"
+    }
+    {
+      Name = "HephaestusSpinOut2"
+      InheritFrom = "HephaestusSpinOut"
+      ChildAnimation = null
+    }
+    {
+      Name = "HephaestusRushProjectileTrail"
+      Type = "Book"
+      FilePath = "Fx\KnockbackLines\KnockbackLines"
+      AddColor = false
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      NumFrames = 21
+      LocationFromOwner = "Ignore"
+      RandomFlipVertical = true
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 90
+      StartAlpha = 0.8
+      EndAlpha = 0
+      PostRotateScaleY = 1.0
+      Scale = 0.5
+      StartScaleX = 2
+      EndScaleX = 1
+      ScaleY = 0.5
+      OriginX = -50
+      OriginY = 135
+      OffsetZ = -30
+      GroupName = "FX_Terrain"
+    }
+    {
+      Name = "HephaestusRushProjectileImpact"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      CreateAnimation = "HephaestusRushProjectileImpactFx"
+      Duration = 0.1
+    }
+    {
+      Name = "HephaestusRushProjectileImpactFx"
+      Type = "Slide"
+      FilePath = "Fx\DemeterSmokeA\DemeterSmokeA"
+      NumFrames = 47
+      Material = "Unlit"
+      StartScale = 0.7
+      EndScale = 0.69
+      DieWithOwner = false
+      ColorFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      OverlayVfx = true
+      UseOwnAngle = false
+      //Sound = "/SFX/Player Sounds/DemeterRushImpactPoof"
+      CreateAnimation = "QuickFlashDarkPurple"
+      Slides = [
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    {
+      Name = "HephaestusEncounterStartBuff"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      VisualFxIntervalMin = 0.7
+      VisualFxIntervalMax = 0.71
+      VisualFx = "HephaestusEncounterStartBuffFront"
+      Sound = "/SFX/AresWrathBattle"
+      StopSoundOnFinishFade = 0.2
+    }
+    {
+      Name = "HephaestusEncounterStartBuffFront"
+      Type = "Book"
+      FilePath = "Fx\PowerUpFront\PowerUpFront"
+      NumFrames = 28
+      PlaySpeed = 45
+      GroupName = "FX_Standing_Add"
+      AddColor = true
+      Blue = 0.17
+      Green = 0.08
+      Red = 0.39
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Scale = 0.66
+      CreateAnimations = [
+        {
+          Name = "HephaestusEncounterStartBuffBack"
+        }
+        {
+          Name = "HephaestusEncounterStartBuffGlow"
+        }
+        {
+          Name = "HephaestusEncounterStartBuffFx"
+        }]
+    }
+    {
+      Name = "HephaestusEncounterStartBuffBack"
+      InheritFrom = "HephaestusEncounterStartBuffFront"
+      FilePath = "Fx\PowerUpBack\PowerUpBack"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      GroupName = "FX_Terrain_Add"
+    }
+    {
+      Name = "HephaestusEncounterStartBuffFx"
+      Type = "Book"
+      FilePath = "Fx\AresKillDamageBuff\AresKillDamageBuff"
+      NumFrames = 30
+      AngleMin = 0
+      AngleMax = 1
+      AddColor = false
+      GroupName = "FX_Standing_Add"
+      AngleFromOwner = "Ignore"
+      RandomFlipVertical = false
+      RandomFlipHorizontal = true
+      PostRotateScaleY = 1.0
+      StartScale = 0.8
+      EndScale = 1.2
+      EaseIn = 0.9
+      EaseOut = 1.0
+      StartAlpha = 0
+      EndAlpha = 1
+      PingPongColor = true
+      PlaySpeed = 30
+      SortMode = "FromParent"
+      Loop = false
+      OffsetZ = 80
+      Scale = 2
+      Hue = 0.916
+      DieWithOwner = true
+    }
+    {
+      Name = "HephaestusEncounterStartBuffGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow_egg"
+      Blue = 0.17
+      Green = 0.08
+      Red = 0.39
+      StartAlpha = 0.5
+      EndAlpha = 0
+      PingPongColor = false
+      Loop = false
+      Duration = 1.0
+      ScaleFromOwner = "Ignore"
+      OffsetZ = 60
+      StartScale = 1
+      EndScale = 1.75
+      EaseIn = 0.9
+      EaseOut = 1.0
+      GroupName = "FX_Standing_Add"
+      DieWithOwner = true
+    }
+    {
+      Name = "HephaestusEncounterStartBuffFloor"
+      Type = "Book"
+      FilePath = "Fx\BloodstoneHelixTrail\BloodstoneHelixTrail"
+      NumFrames = 50
+      PlaySpeed = 30
+      PostRotateScaleY = 0.5
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      AddColor = true
+      GroupName = "FX_Terrain_Add"
+      StartBlue = 0.17
+      StartGreen = 0.08
+      StartRed = 0.39
+      Loop = true
+      OffsetZ = -10
+      StartAlpha = 1
+      EndAlpha = 0
+      DieWithOwner = true
+    }
+    {
+      Name = "BlinkTrailFlat-Hephaestus"
+      InheritFrom = "BlinkTrailFlat"
+      ChildAnimation = "null"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BlinkTrailVerticalA-Hephaestus"
+      InheritFrom = "BlinkTrailVerticalA"
+      ChildAnimation = "BlinkTrailFlash-Hephaestus"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
     {
       Name = "ZagreusDashNoCollide_Hephaestus"
       InheritFrom = "ZagreusDashNoCollide"
@@ -3859,12 +3374,13 @@
       EndFrame = 60
       StartFrame = 1
     }
+
     {
       Name = "ZagreusDashNoCollideVFX_Hephaestus"
       InheritFrom = "ZagreusDashNoCollideVFX"
       EndFrame = 60
       StartFrame = 1
-      Hue = 0.08
+      Hue = 0.916
     }
 
     {
@@ -3872,15 +3388,458 @@
       InheritFrom = "ZagreusDashCollideVFX"
       EndFrame = 60
       StartFrame = 1
-      Hue = 0.08
+      Hue = 0.916
     }
     {
-      Name = "RadialNova-Hephaestus"
+      Name = "StunnedFrontHephaestus"
+      InheritFrom = "StunnedFront"
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+    }
+    {
+      Name = "StunnedBackHephaestus"
+      InheritFrom = "StunnedBack"
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+    }
+    /* Attraction Fx */
+    {
+      Name = "HephaestusFistVacuumFx"
+      Type = "Book"
+      FilePath = "Fx\FistVacuumFx\FistVacuumFx"
+      NumFrames = 14
+      AddColor = true
+      StartRed = 0.6
+      StartGreen = 0
+      StartBlue = 1
+      EndRed = 0.4
+      EndBlue = 0.999
+      EndGreen = 0.001
+      GroupName = "FX_Standing_Add"
+      OriginX = 25
+      OriginY = 100
+      OffsetZ = 60
+      StartAlpha = 1.0
+      EndAlpha = 0.9
+      ScaleY = 1.5
+      SortMode = "FromParent"
+      ScaleFromOwner = "Ignore"
+      LocationFromOwner = "Ignore"
+      AngleFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      RandomFlipVertical = true
+      ScaleLength = 485
+      //VisualFx = "FistVacuumParticles"
+      VisualFxCap = 16
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.03
+      CreateAnimations = [
+        /*{
+          Name = "FistVacuumFxDark"
+        }
+        {
+          Name = "FistVacuumFxDisplacement"
+        }*/]
+    }
+    /* Cast */
+    {
+      Name = "HephaestusLavaSplashProjectileHead"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
+      Type = "Book"
+      VisualFx = "HephaestusLavaSplashProjectileTrail"
+      Color ={       
+       Red = 1.0
+       Blue = 1.0
+       Green = 1.0 
+      }
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      PlaySpeed = 6.0
+      StartFrame = 1
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrail"
+      FilePath = "Animations\LavaSplashProjectileTrail\LavaSplashProjectileTrail"
+      Type = "Random"
+      EndFrame = 1.0
+      NumFrames = 1.0
+      StartFrame = 1.0
+      Random = [
+        {
+          Name = "HephaestusLavaSplashProjectileTrailA"
+        }
+        {
+          Name = "HephaestusLavaSplashProjectileTrailB"
+        }
+        {
+          Name = "HephaestusLavaSplashProjectileTrailC"
+        }
+        {
+          Name = "HephaestusLavaSplashProjectileTrailD"
+        }]
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      Color ={
+        Red = 1.0
+        Blue = 1.0
+        Green = 1.0
+      }
+      AddColor = false
+      AngleMax = 5.0
+      AngleMin = -5.0
+      EndFrame = 50
+      NumFrames = 50
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      ScaleMax = 1.2
+      ScaleMin = 0.8
+      Ambient = 0.0
+      CancelOverCap = true
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailB"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailC"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailD"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+    }
+    {
+      Name = "HephaestusLavaPuddle"
+      CreateAnimation = "LavaHeatWavesPuddle"
+      FilePath = "Hephaestus\Fx\LavaPuddleIn\LavaPuddleIn"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      VisualFx = "HephaestusLavaPuddleParticles"
+      //VisualFxManagerCap = 300
+      //ScaleRadius = 110
+      Color ={
+        Red = 0.9
+        Blue = 0.9
+        Green = 0.9
+      }
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 17
+      HoldLastFrame = true
+      NumFrames = 17
+      PlaySpeed = 30.0
+      StartFrame = 1
+      //OriginX = 25.0
+      OffsetZ = 50.0
+      //Scale = 1.0
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.2
+      VisualFxIntervalMin = 0.1
+    }
+    {
+      Name = "ConsecrationAoEE"
+      Type = "Constant"
+      FilePath = "Fx\Arthur\ConsecrationAoE_1"
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      RotationSpeed = 2
+      Material = "Unlit"
+      VisualFx = "ConsecrationAoE3_VFX"
+      VisualFxIntervalMin = 0.5
+      VisualFxIntervalMax = 0.51
+      StartRed = 0.2
+      StartGreen = 0.5
+      StartBlue = 1
+      EndRed = 0
+      EndGreen = 0
+      EndBlue = 0
+      AddColor = true
+      EndAlpha = 0.75
+      Duration = 0.3
+      EaseIn = 0.8
+      EaseOut = 1.0
+      StartScale = 0.8
+      EndScale = 1.0
+      HoldLastFrame = true
+      Sound = "/Leftovers/SFX/ConsecrationLoopSFX"
+      StopSoundOnFinishFade = 0.2
+      AngleFromOwner = "Ignore"
+      ScaleRadius = 500
+      CreateAnimations = [
+        {
+          Name = "ConsecrationAoE2"
+        }
+        {
+          Name = "ConsecrationAoE2A"
+        }
+        {
+          Name = "ConsecrationAoE3"
+        }
+        {
+          Name = "ConsecrationStartGlow"
+        }
+        {
+          Name = "ConsecrationStartSpike"
+        }]
+    }
+    {
+      Name = "HephaestusLavaPuddleOutLarge"
+      InheritFrom = "HephaestusLavaPuddle"
+      GroupName = "FX_Terrain"
+      CreateAnimation = "null"
+      FilePath = "Hephaestus\Fx\LavaPuddleOut\LavaPuddleOut"
+      //UseOwnAngle = false
+      EndFrame = 20
+      HoldLastFrame = false
+      OffsetX = 8
+      OffsetY = 54
+      NumFrames = 20
+      StartFrame = 1
+      Scale = 1.0
+    }
+    {
+      Name = "HephaestusLavaPuddleOutSmallest"
+      InheritFrom = "HephaestusLavaPuddleOutLarge"      
+      OffsetX = 5
+      OffsetY = 54
+    }
+    {
+      Name = "HephaestusLavaPuddleOutSmall"
+      InheritFrom = "HephaestusLavaPuddleOutLarge"      
+      OffsetX = 6
+      OffsetY = 56
+    }
+    {
+      Name = "HephaestusLavaPuddleOutLargest"
+      InheritFrom = "HephaestusLavaPuddleOutLarge"      
+      OffsetX = 12
+      OffsetY = 64
+    }
+    {
+      Name = "HephaestusLavaPuddleSmallest"
+      InheritFrom = "HephaestusLavaPuddle"
+      GroupName = "FX_Terrain"
+      //Sound = "/SFX/LavaPuddleAmbientLoop"
+      //StopSoundOnFinishFade = 0.2
+      Scale = 0.5
+      //OffsetX = 5
+      OffsetY = 25
+    }
+    {
+      Name = "HephaestusLavaPuddleSmall"
+      InheritFrom = "HephaestusLavaPuddleSmallest"
+      Scale = 0.7
+    }
+    {
+      Name = "HephaestusLavaPuddleLarge"
+      InheritFrom = "HephaestusLavaPuddle"
+      GroupName = "FX_Terrain"
+      Sound = "/SFX/LavaPuddleAmbientLoop"
+      StopSoundOnFinishFade = 0.2
+      Scale = 0.9
+    }
+    {
+      Name = "HephaestusLavaPuddleLargest"
+      InheritFrom = "HephaestusLavaPuddleLarge"
+      Scale = 1.2
+    }
+    {
+      Name = "HephaestusLavaPuddleParticles"
+      FilePath = "Animations\LavaPuddleParticles\LavaPuddleParticles"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "HephaestusLavaSplashProjectileTrailPuddleA"
+        }
+        {
+          Name = "HephaestusLavaSplashProjectileTrailPuddleB"
+        }
+        {
+          Name = "HephaestusLavaSplashProjectileTrailPuddleC"
+        }
+        {
+          Name = "HephaestusLavaSplashProjectileTrailPuddleD"
+        }]
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailPuddleA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      AngleMax = 295.0
+      AngleMin = 245.0
+      EndFrame = 50
+      NumFrames = 50
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      //AddColor = true
+      Color ={
+        Red = 0.8
+        Blue = 0.8
+        Green = 0.8
+      }
+      StartFrame = 1
+      RandomOffsetX = 120.0
+      RandomOffsetY = 20.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleMax = 1.2
+      ScaleMin = 0.8
+      Ambient = 0.0
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailPuddleB"
+      InheritFrom = "HephaestusLavaSplashProjectileTrailPuddleA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailPuddleC"
+      InheritFrom = "LavaSplashProjectileTrailPuddleA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+    }
+    {
+      Name = "HephaestusLavaSplashProjectileTrailPuddleD"
+      InheritFrom = "LavaSplashProjectileTrailPuddleA"
+      FilePath = "Hephaestus\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+    }
+    
+     {
+      Name = "ProjectileFireRing-Hephaestus"
+      InheritFrom = "ProjectileFireRing"
+      CreateAnimation = "QuickFlashDarkPurple"
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      OffsetZ = 110.0
+    }
+    {
+      Name = "HephaestusRangedTrail"
+      FilePath = "Fx\ArtemisRangedTrail\ArtemisRangedTrail"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 91.0
+      RandomPlaySpeedMin = 60.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      Scale = 0.4
+      ScaleY = 0.75
+      Ambient = 0.0
+      /*CreateAnimations = [
+        { Name = "ArtemisRangedTrailDark" }
+        { Name = "ArtemisRangedTrailHelixRandom" }
+        { Name = "ArtemisRangedTrailLeavesRandom" }
+      ]*/
+    }
+    {
+      Name = "HephaestusHitFx"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Standing_Top"
+      Light = "null"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/ArtemisLeavesImpactDetonate"
+      PlaySpeed = 120.0
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      LocationFromOwner = "Ignore"
+      IsometricSkew = "X"
+      PostRotateScaleY = 1.0
+      Scale = 0.25
+      ScaleFromOwner = "Ignore"
+      CreateAnimations = [
+        { Name = "QuickFlashGreen" }
+        { Name = "ArtemisHitTwinkle-IgnoreLocation" }
+      ]
+      Color = { Red = 0.50 Green = 1.0 Blue = 0.0 }
+    }
+    /* Character Fx */
+    {
+      Name = "ArtemisExplosion"
+      FilePath = "Hephaestus\Fx\ArtemisExplosion\ArtemisExplosion"
+      GroupName = "Standing"
+      Type = "Book"
+      VisualFx = "MineExplosionSparks"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      SortFromOwner = "Take"
+      SortMode = "FromParent"
+      ScaleRadius = 240.0
+      Ambient = 0.0
+      VisualFxCap = 24
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      UseBoundsForSortArea = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashGreen"
+        }
+        {
+          Name = "MineExplosionLighting"
+        }
+        {
+          Name = "DisplaceShockwaveHemi"
+        }
+        {
+          Name = "ExplosionScorchDecalFade"
+        }]
+    }
+    {
+      Name = "TheseusGodPowerPreviewDecal_Hephaestus"
+      InheritFrom = "TheseusGodPowerPreviewDecalDark"
+      Color = 
+      {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
+    }
+    {
+      Name = "RadialNovaTheseusWrath-Hephaestus"
       InheritFrom = "RadialNova"
       GroupName = "FX_Terrain_Add"
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
+      EndRed = 0.999
+      StartBlue = 0.50
+      StartGreen = 0.20
+      StartRed = 0.82
       PlaySpeed = 75.0
       ScaleRadius = 350.0
       VisualFxCap = 3
@@ -3892,838 +3851,196 @@
           Name = "RadialNovaSwordParryDark"
         }
         {
-          Name = "DoorCloseDust"
+          Name = "TheseusWrathSpikeHephaestus"
         }
+        /*{
+          Name = "AresSwordHoverDropParry"
+        }*/
+        /*{
+          Name = "AresBladeSpinOutParry"
+        }*/
         {
-          Name = "SwordParryGroundCrack"
-        }
-        {
-          Name = "DisplaceShockwaveSwordParry"
-        }
-        {
-          Name = "SwordParrySpikeAthena"
-        }
-        {
-          Name = "AthenaProjectileImpactSwordParry"
-        }
-        {
-          Name = "QuickFlashTeal"
+          Name = "QuickFlashDarkPurple"
         }]
     }
     {
-      Name = "BlinkTrailVerticalB-Hephaestus"
-      InheritFrom = "BlinkTrailVerticalB"
-      ChildAnimation = "BlinkTrailFlat-Hephaestus"
-      Color = {
-        Red = 0.09
-        Green = 0.50
-        Blue = 0.55
-      }
-    }{
-      Name = "BlinkTrailFlat-Hephaestus"
-      InheritFrom = "BlinkTrailFlat"
-      ChildAnimation = "BlinkTrailVerticalA-Hephaestus"
-      Color = {
-        Red = 0.09
-        Green = 0.50
-        Blue = 0.55
-      }
-    }{
-      Name = "BlinkTrailVerticalA-Hephaestus"
-      InheritFrom = "BlinkTrailVerticalA"
-      ChildAnimation = "BlinkTrailFlash-Hephaestus"
-      Color = {
-        Red = 0.09
-        Green = 0.50
-        Blue = 0.55
-      }
+      Name = "RadialNovaDevotion-Hephaestus"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      EndRed = 0.999
+      StartBlue = 0.50
+      StartGreen = 0.20
+      StartRed = 0.82
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        /*{
+          Name = "AresSwordHoverDropParry"
+        }
+        {
+          Name = "AresBladeSpinOutParry"
+        }*/
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
     }
     {
-      Name = "BlinkTrailFlash-Hephaestus"
-      InheritFrom = "QuickFlashTeal"
-      AngleFromOwner = "Take"
-      Duration = 0.4
-      Scale = 0.5
+      Name = "TheseusWrathSpikeHephaestus"
+      InheritFrom = "TheseusWrathSpike"
+      Color = 
+      {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
     }
-    /* Jealousy/Envy Fx */
+    /* Centaur Soul */
     {
-      Name = "JealousyHephaestusLoop"
-      //ChainTo = "DionysusStatusFxDissipate"
-      FilePath = "Hephaestus\Fx\HephaestusStatusIconCream\HephaestusStatusIconCream"
-      GroupName = "Combat_UI"
+      Name = "RoomRewardEmptyHealthDrop"
+      CreateAnimation = "PickupFlare"
+      FilePath = "Hephaestus\Fx\CentaurSoul\CentaurSoul"
       Type = "Book"
-      //VisualFx = "DionysusRainbowParty_InPlace"
-      AngleFromOwner = "Ignore"
-      //Sound = "/SFX/Player Sounds/DionysusBlightWineDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      ColorFromOwner = "Ignore"
-      EndFrame = 2
+      VisualFx = "RoomRewardEmptyHealthDropParticles"
+      EaseOut = 1.0
+      EndFrame = 24
       Loop = true
-      NumFrames = 45
-      PlaySpeed = 30.0
+      NumFrames = 24
+      PlaySpeed = 24.0
       StartFrame = 1
-      OffsetX = -150.0
-      OffsetZ = 170.0
-      TransferFrameFromThis = true
-      ScaleFromOwner = "Ignore"
+      EndOffsetY = 10.0
+      Scale = 0.66
       Ambient = 0.0
       VisualFxIntervalMax = 0.3
       VisualFxIntervalMin = 0.2
-      Scale = 0.2
-    }
-    {
-      Name = "HephaestusBelowLoop"
-      InheritFrom = "AresSwordHoverDrop"
-      FilePath = "Particles\AuraBasicFillCircle"
-      //Sound = "/SFX/Player Sounds/AresDelayedDamageLoop"
-      StopSoundOnFinishFade = 0.2
-      AddColor = true
-      EaseOut = 1.0
-      EndFrame = 32
-      Red = 0.0
-      Green = 1.0
-      Blue = 1.0
-      Scale = 0.8
-      Loop = true
-      NumFrames = 32
-      StartFrame = 1
-      DieWithOwner = true
       PingPongShiftOverDuration = true
-      UseAttachedFlasher = false
-    }
-    {
-      Name = "HephaestusCurseStatus"
-      Type = "Book"
-      FilePath = "Fx\EliteUnitStatus\EliteUnitStatus"
-      NumFrames = 40
-      PlaySpeed = 30
-      RandomFlipHorizontal = true
-      ReRandomizeOnLoop = false
-      Material = "Unlit"
-      AngleFromOwner = "Ignore"
-      UseOwnAngle = false
-      LocationFromOwner = "Maintain"
-      LocationZFromOwner = "Ignore"
-      Loop = true
-      OffsetZ = 0
-      UseAttachedFlasher = false
-      UseAttachedShake = false
-      DrawBehindOwner = true
-      DieWithOwner = true
-      ColorFromOwner = "Ignore"
-      Hue = 0.0
-      Scale = 1
-      FlipVertical = true
-      //CreateAnimation = "HephaestusUnitStatusGlow"
-      GroupName = "FX_Terrain"
-      PostRotateScaleY = 0.5
-      RotationSpeed = 20
-      //AddColor = true
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-      CreateAnimations = [
+      Slides = [
         {
-          Name = "HephaestusCurseStatusGlow"
+          DurationFrames = 1
+          Sound = "/SFX/HeartPulsate1"
+          Frame = 5
         }
         {
-          Name = "HephaestusCurseStatus_Add"
+          DurationFrames = 1
+          Sound = "/SFX/HeartPulsate2"
+          Frame = 12
         }]
     }
     {
-      Name = "HephaestusCurseStatus_Add"
-      InheritFrom = "EliteUnitStatus"
-      ClearCreateAnimations = true
-      GroupName = "FX_Terrain_Add"
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-    }
-    {
-      Name = "HephaestusCurseStatusGlow"
-      Type = "Constant"
-      FilePath = "Particles\particle_glow"
-      Material = "Unlit"
-      GroupName = "FX_Standing_Add"
-      AddColor = true
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-      Alpha = 0.2
-      LocationFromOwner = "Maintain"
-      LocationZFromOwner = "Maintain"
-      UseAttachedFlasher = false
-      Scale = 0.7
-      DieWithOwner = true
-      AngleFromOwner = "Ignore"
-    }
-    {
-      Name = "HephaestusUnitStatusGlow"
-      Type = "Constant"
-      FilePath = "Particles\particle_glow"
-      Material = "Unlit"
-      GroupName = "FX_Standing_Add"
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-      Alpha = 0.2
-      LocationFromOwner = "Maintain"
-      LocationZFromOwner = "Maintain"
-      UseAttachedFlasher = false
-      Scale = 0.7
-      DieWithOwner = true
-      AngleFromOwner = "Ignore"
-    }
-    {
-      Name = "QuickFlashTeal"
-      InheritFrom = "QuickFlash"
-      FilePath = "Particles\particle_quickflash"
-      AddColor = false
-      StartRed = 0.0
-      StartGreen = 0.55
-      StartBlue = 0.53
-      EndBlue = 0.0
-      EndGreen = 0.0
-      EndBlue = 0.1
-      EndScale = 0.6
-      StartScale = 1.5
-      TimeModifierFraction = 1.0
-    }
-    {
-      Name = "QuickFlashTealSmall"
-      InheritFrom = "QuickFlashTeal"
-      Scale = 0.5
-      OffsetZ = 90
-    }
-    /* Cast */
-    {
-      Name = "HephaestusRangedProjectile"
-      //CreateAnimation = "HephaestusProjectileGlow"
-      FilePath = "Hephaestus\Fx\HephaestusProjectile\HephaestusProjectile"
-      Type = "Book"
-      //VisualFx = "DisplaceHeatTrail"
-      VisualFxManagerCap = 400
-      AngleFromOwner = "Ignore"
-      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientLoop"
-      SoundManagerCap = 28
-      StopSoundOnFinishFade = 0.25
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      RandomPlaySpeedMax = 90.0
-      RandomPlaySpeedMin = 60.0
-      //Red = 0.5
-      //Green = 1.0
-      //Blue = 0.5
-      StartFrame = 1
-      OffsetZ = 30.0
-      Scale = 0.6
-      Ambient = 0.0
-      VisualFxIntervalMax = 0.1
-      VisualFxIntervalMin = 0.11
-      OverlayVfx = true
-    }
-    {
-      Name = "HephaestusProjectileImpact"
-      CreateAnimation = "QuickFlashTealSmall"
-      FilePath = "Hephaestus\Fx\HephaestusProjectileImpact\HephaestusProjectileImpact"
-      GroupName = "Standing"
-      Type = "Book"
-      AngleFromOwner = "Ignore"
-      Sound = "/SFX/Enemy Sounds/EnemyProjectileDetonateExplode"
-      ColorFromOwner = "Ignore"
-      EndFrame = 16
-      NumFrames = 16
-      RandomPlaySpeedMax = 60.0
-      RandomPlaySpeedMin = 45.0
-      StartFrame = 1
-      RandomFlipHorizontal = true
-      RandomFlipVertical = true
-      LocationFromOwner = "Ignore"
-      LocationZFromOwner = "Take"
-      SortMode = "FromParent"
-      RandomRotation = true
-      Scale = 1.2
-      ScaleFromOwner = "Ignore"
-      Ambient = 0.0
-      OnlyWhenVisible = true
-      OverlayVfx = true
-	    VisualFxManagerCap = 400
-      CreateAnimations = [
-        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
-      ]
-      Slides = [
-        { DurationFrames = 1 Frame = 1 }
-        { DurationFrames = 1 Frame = 2 VisualFx = "HephaestusProjectileImpactParticles" }
-        { DurationFrames = 1 Frame = 3 VisualFx = "HephaestusProjectileImpactParticles" }
-        { DurationFrames = 1 Frame = 4 VisualFx = "HephaestusProjectileImpactParticles" }
-        { DurationFrames = 1 Frame = 5 VisualFx = "HephaestusProjectileImpactParticles" }
-        { DurationFrames = 1 Frame = 6 VisualFx = "HephaestusProjectileImpactParticles" }
-        { DurationFrames = 1 Frame = 7 VisualFx = "HephaestusProjectileImpactParticles" }
-        { DurationFrames = 1 Frame = 8 VisualFx = "HephaestusProjectileImpactParticles" }
-      ]
-    }
-    {
-      Name = "HephaestusProjectileImpactSmall"
-      InheritFrom = "HephaestusProjectileImpact"
-      ClearCreateAnimations = true
-      Scale = 0.6
-      ScaleFromOwner = "Ignore"
-      CreateAnimations = [
-        { Name = "DisplaceShockwave-EnemyProjectileImpact" }
-      ]
-    }
-    {
-      Name = "HephaestusProjectileImpactParticles"
+      Name = "RoomRewardEmptyHealthDropParticles"
       FilePath = "Particles\particle_ascension_01"
-      GroupName = "FX_Standing_Add"
+      GroupName = "FX_Standing_Top"
       Type = "Constant"
-      AngleMax = 360.00
-      AngleFromOwner = "Ignore"
+      AngleMax = 360.0
+      UseOwnAngle = false
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.03
+      StartRed = 1.0
       EndFrame = 1
       NumFrames = 1
-      RandomDurationMax = 1.0
-      RandomDurationMin = 0.25
+      RandomDurationMax = 1.5
+      RandomDurationMin = 0.5
       StartFrame = 1
+      RadialOffsetMax = 30.0
+      RadialOffsetMin = 25.0
       LocationFromOwner = "Take"
-      VelocityMax = 400.0
-      VelocityMin = 200.0
-      EndScale = 0.0
+      VelocityMax = 100.0
+      VelocityMin = 50.0
+      PingPongScale = true
       ScaleFromOwner = "Ignore"
-      ScaleMax = 1.0
-      ScaleMin = 0.3
+      ScaleMax = 0.5
+      ScaleMin = 0.25
+      StartScale = 0.0
       Ambient = 0.0
-      RandomAccelerationMax = -400.0
-      RandomAccelerationMin = -900.0
-      CancelOverCap = true
-      OnlyWhenVisible = true
-      Color = { Red = 0.0 Green = 0.55 Blue = 0.53 }
+      RandomAccelerationMax = -50.0
+      RandomAccelerationMin = -60.0
     }
     {
-      Name = "DevotionHephaestusMegaProjectile"
-      CreateAnimation = "EnemyProjectileGlow"
-      FilePath = "Fx\EnemyProjectileMulti\EnemyProjectileMulti"
+      Name = "RoomRewardEmptyHealthDropPickupFx"
+      FilePath = "Fx\MaxHealthUpPickup\MaxHealthUpPickup"
       Type = "Book"
-      VisualFx = "DisplaceHeatTrail"
-      VisualFxManagerCap = 400
-      AngleFromOwner = "Ignore"
-      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientBig"
-      StopSoundOnFinishFade = 0.25
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-      Alpha = 0.5
-      RandomPlaySpeedMax = 60.0
-      RandomPlaySpeedMin = 45.0
+      EndFrame = 42
+      NumFrames = 42
+      PlaySpeed = 30.0
       StartFrame = 1
-      RandomFlipHorizontal = true
-      OffsetZ = 60.0
-      Scale = 0.75
       Ambient = 0.0
-      VisualFxIntervalMax = 0.21
-      VisualFxIntervalMin = 0.2
-      OverlayVfx = true
-    }
-    {
-      Name = "DevotionHephaestusProjectile"
-      //CreateAnimation = "HephaestusProjectileGlow"
-      FilePath = "Hephaestus\Fx\HephaestusProjectile\HephaestusProjectile"
-      Type = "Book"
-      //VisualFx = "DisplaceHeatTrail"
-      VisualFxManagerCap = 400
-      AngleFromOwner = "Ignore"
-      Sound = "/SFX/Enemy Sounds/EnemyProjectileAmbientLoop"
-      SoundManagerCap = 28
-      StopSoundOnFinishFade = 0.25
-      EndFrame = 60
-      Loop = true
-      NumFrames = 60
-      RandomPlaySpeedMax = 90.0
-      RandomPlaySpeedMin = 60.0
-      Red = 0.0
-      Green = 0.55
-      Blue = 0.53
-      StartFrame = 1
-      OffsetZ = 30.0
-      Scale = 0.6
-      Ambient = 0.0
-      VisualFxIntervalMax = 0.1
-      VisualFxIntervalMin = 0.11
-      OverlayVfx = true
-    }    
-    {
-      Name = "HephaestusProjectileLight"
-      InheritFrom = "EnemyProjectileLight"
-      Color = 
-      {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.53
-      }
-    }    
-    {
-      Name = "HephaestusProjectileGlow"
-      FilePath = "Particles\particle_quickflash"
-      GroupName = "FX_Standing_Add"
-      Type = "Constant"
-      AngleFromOwner = "Ignore"
-      Alpha = 0.25
-      EndAlpha = 1.0
-      PingPongColor = true
-      StartAlpha = 0.5
-      EndFrame = 1
-      Loop = true
-      NumFrames = 1
-      RandomDurationMax = 0.8
-      RandomDurationMin = 0.4
-      StartFrame = 1
-      OffsetZ = 30.0
-      OriginX = 246.0
-      OriginY = 246.0
-      DieWithOwner = true
-      RandomRotation = true
-      Scale = 0.4
-      OverlayVfx = true
-      AddColor = true
-      Color = 
-      {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "HephaestusStrikeAreaSmoke"
-      Type = "Book"
-      FilePath = "Fx\DemeterCycloneLoop\DemeterCycloneLoop"
-      NumFrames = 40
-      Material = "Unlit"
-      Loop = true
-      Alpha = 0.6
-      Red = 0.0
-      Green = 0.65
-      Blue = 0.0
-      AngleFromOwner = "Ignore"
-      ScaleRadius = 200
-      PlaySpeed = 24
-      FlipHorizontal = false
-      Scale = 1.35
-      OffsetZ = 30
-    }
-    {
-      Name = "AuraFxLight"
-      FilePath = "Fx\BloodMine\BloodMineLight"
-      Type = "Constant"
-      //Sound = "/SFX/BloodMineBeepBasic"
-      //StopSoundOnFinishFade = 0.2
-      StartAlpha = 1.0
-      Duration = 0.5
-      EaseIn = 0.9
-      EaseOut = 1.0
-      EndFrame = 1
-      Loop = true
-      NumFrames = 1
-      StartFrame = 1
-      Scale = 0.3
-      Ambient = 0.0
-    }
-     {
-      Name = "HephaestusTrapExplode"
-      Type = "Book"
-      FilePath = "Hephaestus\Fx\HephaestusStunTotemExplode\HephaestusStunTotemExplode"
-      Scale = 4
-      NumFrames = 47
-      RandomPlaySpeedMin = 30
-      RandomPlaySpeedMax = 40
-      Material = "Unlit"
-      AngleFromOwner = "Ignore"
-      CreateAnimation = "QuickFlashGreen"
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-      Sound = "/Leftovers/Menu Sounds/PlayerKilledLong_Small"
-    }
-    {
-      Name = "HephaestusTrapSpawn"
-      Type = "Book"
-      FilePath = "Hephaestus\Fx\HephaestusStunTotemSpawn\HephaestusStunTotemSpawn"
-      ChainTo = "HephaestusTrapStunTotemStatic"
-      Scale = 4
-      NumFrames = 60
-      PlaySpeed = 30
-      Material = "Unlit"
-      AngleFromOwner = "Ignore"
-      OwnerInvulnerable = true
-      ChildAnimation = "HephaestusTrapStunTotemFlameSpawn"
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "HephaestusTrapActivate"
-      FilePath = "Tilesets\Surface\Surface_Gravemarker_01Active"
-      GroupName = "Standing"
-      Type = "Constant"
-      AngleFromOwner = "Ignore"
-      EndFrame = 1
-      NumFrames = 1
-      StartFrame = 1
-      RandomFlipHorizontal = true
-      Ambient = 0.0
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "HephaestusTrapStunTotemFlame"
-      Type = "Book"
-      FilePath = "Hephaestus\Fx\HephaestusStunTotemFlame\HephaestusStunTotemFlame"
-      NumFrames = 40
-      Loop = true
-      PlaySpeed = 30
-      RandomStartFrame = false
-      ReRandomizeOnLoop = false
-      Material = "Unlit"
-      ScaleFromOwner = "Ignore"
       SortMode = "FromParent"
-      OffsetY = -490
-      Scale = 1.25
       LocationZFromOwner = "Ignore"
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
     }
+    // Cerberus Assist Fx
     {
-      Name = "HephaestusTrapStunTotemFlameSpawn"
-      Type = "Book"
-      FilePath = "Hephaestus\Fx\HephaestusStunTotemFlame\HephaestusStunTotemFlame"
-      NumFrames = 40
-      PlaySpeed = 20
-      Loop = false
-      Material = "Unlit"
-      ScaleFromOwner = "Ignore"
-      SortMode = "FromParent"
-      OffsetY = -490
-      Scale = 1.25
+      Name = "Cerberus_ZagreusAssistJump_ToRun"
+      FilePath = "Animations\Cerberus\HadesAssistJumpIn\CerberusHadesAssistJumpIn"
+      Type = "Slide"
+      AngleFromOwner = "Ignore"
+      ChainTo = "Cerberus_HadesAssistRun"
+      VideoTexture = "Cerberus_HadesAssistJumpIn_Bink"
+      Velocity = 300
+      Sound = "null"
+      EndFrame = 13
+      NumAngles = 1
+      NumFrames = 13
+      StartFrame = 1
+      OffsetY = -114.0
       StartAlpha = 0
       EndAlpha = 1
-      ColorFromOwner = "Ignore"
-      HoldLastFrame = true
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "HephaestusTrapStunTotemSpawnDecal"
-      Type = "Slide"
-      GroupName = "FX_Terrain"
-      FilePath = "Hephaestus\Fx\HephaestusStunTotemSpawnDecal\HephaestusStunTotemSpawnDecal"
-      NumFrames = 60
-      Scale = 1
-      LocationFromOwner = "Take"
-      LocationZFromOwner = "Ignore"
-      ScaleFromOwner = "Ignore"
-      AngleFromOwner = "Ignore"
-      ColorFromOwner = "Ignore"
-      Ambient = 0.2
-      OffsetZ = -30
-      CancelOverCap = false
-      OnlyWhenVisible = false
-      RandomFlipHorizontal = true
-      ChainTo = "HephaestusTrapStunTotemSpawnDecalFade"
-      DieWithOwner = true
       Slides = [
-        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
-        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
-        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
-        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
-        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
-        { DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }{ DurationFrames = 2 }
-        { DurationFrames = 9999 }
-      ]
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-
-    {
-      Name = "HephaestusTrapStunTotemSpawnDecalFade"
-      Type = "Constant"
-      FilePath = "Hephaestus\Fx\HephaestusStunTotemSpawnDecal\HephaestusStunTotemSpawnDecal0060"
-      NumFrames = 60
-      Scale = 1
-      OffsetY = -280
-      LocationFromOwner = "Take"
-      LocationZFromOwner = "Ignore"
-      ScaleFromOwner = "Ignore"
-      AngleFromOwner = "Ignore"
-      ColorFromOwner = "Ignore"
-      CancelOverCap = false
-      OnlyWhenVisible = false
-      StartAlpha = 1
-      EndAlpha = 0
-      Ambient = 0.2
-      RandomDurationMin = 1
-      RandomDurationMax = 2
-      UseOwnAngle = false
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "HephaestusTrapStunTotemStatic"
-      Type = "Constant"
-      FilePath = "Hephaestus\Surface_Gravemarker_01Active"
-      Material = "Unlit"
-      ChildAnimation = "HephaestusTrapStunTotemFlame"
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "HephaestusTrapGraspingHandsFx"
-      Type = "Book"
-      FilePath = "Hephaestus\Fx\HephaestusGraspingHands\HephaestusGraspingHands"
-      NumFrames = 69
-      RandomFlipHorizontal = true
-      Material = "Unlit"
-      GroupName = "FX_Terrain"
-      AngleFromOwner = "Ignore"
-      DieWithOwner = false
-      RandomPlaySpeedMin = 45
-      RandomPlaySpeedMax = 45
-      ScaleRadius = 185
-      Sound = "/Leftovers/SFX/BallHoldingAmbience"
-      StopSoundOnFinishFade = 0.25
-      AddColor = true
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    {
-      Name = "AuraFx"
-      Type = "Book"
-      FilePath = "Fx\ImpulseMinePull\ImpulseMinePull"
-      GroupName = "FX_Terrain_Add"
-      PlaySpeed = 30
-      NumFrames = 30
-      ScaleRadius = 200.0
-      TimeModifierFraction = 0.0
-      ChainTo = null
-      TransferFrameFromThis = true
-      ColorFromOwner = "Ignore"
-      AngleFromOwner = "Ignore"
-      ScaleFromOwner = "Ignore"
-      Material = "Unlit"
-      Loop = true
-    }
-     {
-      Name = "AuraFx-Igneous"
-      InheritFrom = "RadialNova"
-      //CreateAnimation = "BowTrailRandom-Hephaestus2"
-      GroupName = "Standing_Back"
-      PlaySpeed = 45.0
-      LocationZFromOwner = "Take"
-      ScaleFromOwner = "Ignore"
-      VisualFxCap = 1
-      VisualFxIntervalMax = 0.7
-      VisualFxIntervalMin = 0.7
-      TimeModifierFraction = 0.6
-      Scale = 0.5
-      Alpha = 0.4
-      Loop = true
-      Color = 
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }]
+      Material = 
       {
-        Red = 0.0
-        Green = 1.0
-        Blue = 0.5
+        Ambient = 0.0
+        Diffuse = 0.0
+        Directionality = 0.0
       }
     }
-    {
-      Name = "AuraFx-Rupture2"
-      InheritFrom = "AuraFx"
-      Scale = 1.9
-    }
-    {
-      Name = "AuraFx-Legendary"
-      FilePath = "Fx\ThanatosAoE\ThanatosAoERingB"
-      GroupName = "Standing_Back"
-      Type = "Constant"
-      AngleFromOwner = "Ignore"
-      ScaleFromOwner = "Ignore"
-      ColorFromOwner = "Ignore"
-      AddColor = true
-      //StartBlue = 1.0
-      //StartGreen = 0.3
-      //StartRed = 0.5
-      Duration = 0.25
-      EaseIn = 0.9
-      EaseOut = 1.0
-      EndFrame = 1
-      HoldLastFrame = true
-      NumFrames = 1 
-      StartFrame = 1
-      FlipHorizontal = true
-      RotationSpeed = 17.0
-      PostRotateScaleY = 0.5
-      //ScaleRadius = 200.0
-      Scale = 0.40
-      Color = 
-      {
-        Red = 0.0
-        Green = 0.55
-        Blue = 0.33
-      }
-    }
-    
-    {
-      Name = "AuraFx-Exposed"
-      FilePath = "Fx\ShielderNova\ShielderNova"
-      GroupName = "Standing_Back"
-      Type = "Book"
-      EndFrame = 26
-      NumFrames = 14
-      PlaySpeed = 22.0
-      StartFrame = 7
-      ScaleRadius = 700.0
-      Ambient = 0.0
-      AngleFromOwner = "Ignore"
-      Loop = true
-      Scale = 1.4
-      AddColor = true
-      Alpha = 0.6
-      Color = {
-        Red = 0.5
-        Green = 0.2
-        Blue = 0.0
-      }
-      /*Color = {
-        Red = 0.847
-        Green = 0.604
-        Blue = 0.494
-      }*/
-    }
-    {
-      Name = "AuraFx-Exposed2"
-      InheritFrom = "AuraFx"
-      Scale = 3.7
-    }
-    {
-      Name = "AuraFx-Blind"
-      Type = "Book"
-      FilePath = "Fx\DevotionRings\DevotionRings"
-      //CreateAnimation = "AuraFx-BlindDark"
-      //VisualFx = "StatueSparkles"
-      NumFrames = 1
-      RandomStartFrame = true
-      //StartFrame = 1
-      PlaySpeed = 1e-07
-      //StartScale = 2
-      //EndScale = 2.03
-      //EaseIn = 0
-      //EaseOut = 1
-      ScaleMin = 1.6
-      ScaleMax = 1.65
-      //StartAlpha = 0
-      //EndAlpha = 1
-      Alpha = 1
-      PostRotateScaleY = 0.5
-      //RandomRotation = true
-      GroupName = "Standing_Back"
-      //RandomDurationMin = 0.6
-      //RandomDurationMax = 0.8
-      Duration = 0.8
-      ScaleFromOwner = "Ignore"
-      PingPongColor = true
-      PingPongScale = true
-      //AddColor = true
-      UseOwnAngle = false
-      AngleFromOwner = "Ignore"
-      RandomFlipVertical = true
-      RandomFlipHorizontal = true
-      ScaleRadius = 300
-      ColorFromOwner = "Ignore"
-      Color = {
-        Red = 0.80
-        Green = 0.55
-        Blue = 0.05
-      }
-      Loop = true
-    }   
-    {
-      Name = "RadialNovaSwordParry-ApolloSparkles2"
-      InheritFrom = "RadialNovaSwordParry-ApolloSparkles"
-      HoldLastFrame = false
-      Loop = true
-    } 
-    {
-      Name = "AuraFx-BlindDark"
-      Type = "Book"
-      FilePath = "Fx\DevotionRingsDark\DevotionRingsDark"
-      NumFrames = 3
-      RandomStartFrame = true
-      //StartFrame = 1
-      PlaySpeed = 1e-07      
-      StartScale = 4
-      EndScale = 4.03
-      /*StartScale = 1
-      EndScale = 2.05
-      Scale = 2.15
-      ScaleMin = 1.99
-      ScaleMax = 2.01*/
-      Alpha = 0.2
-      PostRotateScaleY = 0.5
-      RandomRotation = true
-      GroupName = "Standing_Back"
-      //RandomDurationMin = 0.5
-      //RandomDurationMax = 0.6
-      Duration = 0.8
-      ScaleFromOwner = "Ignore"
-      RandomFlipVertical = true
-      RandomFlipHorizontal = true
-      PingPongScale = true
-      //PingPongColor = true
-      DieWithOwner = true
-      ScaleRadius = 300
-      Color = {
-        Red = 0.80
-        Green = 0.55
-        Blue = 0.05
-      }
-      Loop = true
-    }
-    {
-      Name = "AuraFx-Blind2"
-      InheritFrom = "AuraFx"
-      Scale = 4.0
-      AddColor = true
-      Color = {
-        Red = 1.0
-        Green = 1.0
-        Blue = 1.0
-      }
-    }
-    /* Character Fx */
   ]
 }

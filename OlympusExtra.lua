@@ -131,21 +131,12 @@ ModUtil.LoadOnce(function()
         --Apollo
         if ModUtil.Entangled.ModData("HephaestusExtra") ~= nil then
             OlympusCodexMenuData.HephaestusUpgrade = {
-                "LastStandHealthDrop", "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusShoutTrait", "ArmorBossDrop", "ArmorEncounterDrop", "ArmorDefianceDrop", "DropMoneyTrait", "RevengeBoostTrait", "ArmorLegendaryTrait"
+                "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", 
+                "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", 
+                "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "DamageBoostTrait",
+                "HephaestusTrapTrait", "ArmorLegendaryTrait"
             }
-            table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")
-            table.insert(OlympusCodexMenuData.Consumables, "ArmorBossDrop")
-            table.insert(OlympusCodexMenuData.Consumables, "ArmorEncounterDrop")
-            table.insert(OlympusCodexMenuData.Consumables, "ArmorDefianceDrop")
-            --table.insert(OlympusCodexMenuData.Consumables, "RerollBoonDrop")
             table.insert(OlympusCodexMenuData.Legendaries, "ArmorLegendaryTrait")
-            OlympusCodexMenuData.ConsumableTraits.LastStandHealthDrop = "ArmorEncounterTrait"
-            OlympusCodexMenuData.ConsumableTraits.ArmorBossDrop = "ArmorBossTrait"
-            OlympusCodexMenuData.ConsumableTraits.ArmorEncounterDrop = "ArmorEncounterTrait"
-            OlympusCodexMenuData.ConsumableTraits.ArmorDefianceDrop = "ArmorDefianceTrait"
-            --OlympusCodexMenuData.ConsumableTraits.RerollBoonDrop = "RerollBoonTrait"
-            --OlympusCodexMenuReloadShouldSkip.RerollBoonTrait = true
-            --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true
             table.insert(OlympusCodexBoonTable, "HephaestusUpgrade")
             table.insert(OlympusRealGodNames, "Hephaestus")
         end  
