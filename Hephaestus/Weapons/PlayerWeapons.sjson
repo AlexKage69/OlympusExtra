@@ -119,5 +119,29 @@
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
     }
+    {
+      Name = "IgneousRangedExplosion"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "IgneousRangedExplosion"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "IgneousTrapExplosion"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "IgneousTrapExplosion"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
   ]
 }

@@ -73,28 +73,34 @@
       Type = "Book"
       EndFrame = 22
       NumFrames = 22
-      PlaySpeed = 30.0
+      PlaySpeed = 60.0
       StartFrame = 1
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
       RandomFlipHorizontal = true
       ScaleRadius = 485.0
       Ambient = 0.0
       AngleFromOwner = "Ignore"
       CreateAnimations = [
         {
-          Name = "ShielderNovaLighting"
+          Name = "IgneousExplosionLighting"
         }
         {
-          Name = "ShielderNovaFlare"
+          Name = "IgneousExplosionFlare"
         }
         {
-          Name = "ShielderNovaDissipate"
+          Name = "IgneousExplosionDissipate"
         }
         {
-          Name = "ShielderNovaShadow"
+          Name = "IgneousExplosionShadow"
         }]
     }
     {
-      Name = "ShielderNovaLighting"
+      Name = "IgneousExplosionLighting"
       FilePath = "Fx\BasicGlow\BasicGlow"
       GroupName = "FX_Standing_Add"
       Type = "Constant"
@@ -112,26 +118,18 @@
       Ambient = 0.0
     }
     {
-      Name = "ShielderNovaLighting_DeathAlly"
-      InheritFrom = "ShielderNovaLighting"
-      StartBlue = 0.999
-      StartGreen = 0.2
-      StartRed = 0
-      EndAlpha = 0.25
-      EndBlue = 1.0
-      EndGreen = 0.5
-      EndRed = 0.2
-      StartAlpha = 0
-      PingPongColor = true
-      Duration = 0.5
-    }
-    {
-      Name = "ShielderNovaFlare"
+      Name = "IgneousExplosionFlare"
       FilePath = "Tilesets\Lensflare\Flare_poseidon"
       GroupName = "FX_Standing_Add"
       Type = "Constant"
       AngleFromOwner = "Ignore"
       Duration = 0.2
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
       EaseIn = 0.8
       EaseOut = 1.0
       EndFrame = 1
@@ -142,12 +140,18 @@
       StartScale = 4.0
     }
     {
-      Name = "ShielderNovaShadow"
+      Name = "IgneousExplosionShadow"
       FilePath = "Particles\AuraBasicFillCircle"
       GroupName = "FX_Terrain"
       Type = "Constant"
       StartAlpha = 1.0
       Duration = 1.0
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
       EaseIn = 0.9
       EaseOut = 1.0
       EndFrame = 1
@@ -160,7 +164,7 @@
       Ambient = 0.0
     }
     {
-      Name = "ShielderNovaDissipate"
+      Name = "IgneousExplosionDissipate"
       FilePath = "Fx\ShielderNova\ShielderNovaDissipate"
       GroupName = "FX_Standing_Add"
       Type = "Constant"
@@ -169,6 +173,12 @@
       LocationFromOwner = "Ignore"
       LocationZFromOwner = "Ignore"
       StartAlpha = 1.0
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
       Duration = 1.0
       EaseIn = 0.9
       EaseOut = 1.0

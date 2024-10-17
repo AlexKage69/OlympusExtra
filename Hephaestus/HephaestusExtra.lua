@@ -36,7 +36,7 @@ if ModUtil ~= nil then
 				"HephaestusRangedTrait",
 				"HephaestusSecondaryTrait",
 				"HephaestusShoutTrait",
-				"DamageBoostTrait",
+				"DamageReturnTrait",
 				"DropMoneyTrait",
 				"RevengeBoostTrait",
 				"ArmorBossTrait",
@@ -120,6 +120,7 @@ if ModUtil ~= nil then
 	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
 	OlympusConsumableData.HephaestusUpgradeDrop =
 	{
+		Name = "HephaestusUpgradeDrop",
 		InheritFrom = { "BaseConsumable", },
 		Cost =
 		{
@@ -188,11 +189,22 @@ if ModUtil ~= nil then
 			},
 		},
 	}
+	local OlympusStoreData = ModUtil.Entangled.ModData(StoreData)
+	--Hermes Shop
+	OlympusStoreData.WorldShop.GroupsOf[3].OptionsData[2].ReplaceRequirements = { RequiredMaxHermesUpgrades = 0, RequiredTextLines = {  "HermesFirstPickUp" }, RequiredFalseTrait = "ForceWeaponUpgradeTrait", RequiredFalseGodLoot = "HephaestusUpgrade"}
+	OlympusStoreData.D_WorldShop.GroupsOf[4].OptionsData[1].ReplaceRequirements.RequiredFalseTrait = "ForceWeaponUpgradeTrait"
+	OlympusStoreData.D_WorldShop.GroupsOf[4].OptionsData[1].ReplaceRequirements.RequiredFalseGodLoot = "HephaestusUpgrade"
+	--Hephaestus Shop
+	table.insert(OlympusStoreData.WorldShop.GroupsOf[3].OptionsData,{ Name = "HephaestusUpgradeDrop", ReplaceRequirements = { RequiredMaxHephaestusUpgrades = 0, RequiredTextLines = {  "HephaestusFirstPickUp" }, RequiredFalseTrait = "FastClearDodgeBonusTrait", RequiredFalseGodLoot = "HermesUpgrade" }})
+	table.insert(OlympusStoreData.D_WorldShop.GroupsOf[4].OptionsData, { Name = "HephaestusUpgradeDrop", Cost = 500, UpgradeChance = 1.0, UpgradedCost = 500, ReplaceRequirements = { RequiredTextLines = {  "HephaestusFirstPickUp" }, RequiredFalseTrait = "FastClearDodgeBonusTrait", RequiredFalseGodLoot = "HermesUpgrade" }})
+	
 	local OlympusRewardStoreData = ModUtil.Entangled.ModData(RewardStoreData)
 	table.insert(OlympusRewardStoreData.RunProgress, {
 		Name = "HephaestusUpgrade",
 		GameStateRequirements =
 		{
+			RequiredFalseGodLoot = "HermesUpgrade",
+			RequiredFalseTrait = "FastClearDodgeBonusTrait",
 			RequiredMaxHephaestusUpgrades = 1,
 			--RequiredFalseLootPickup = "HermesUpgrade",
 			RequiredNotInStore = "HephaestusUpgradeDrop",
@@ -200,22 +212,10 @@ if ModUtil ~= nil then
 			RequiredMinDepth = 13,
 		}
 	})
+	OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredFalseTraits = {"ForceWeaponUpgradeTrait"}
+	OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredFalseGodLoot = "HephaestusUpgrade"
+	--OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredMinDepth = 2
 	--WeaponData
-	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
-	OlympusWeaponSets.AllPrimaryWeapons = { "SwordWeapon",
-		"SwordWeapon2", "SwordWeapon3", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
-		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3",
-		"SpearWeaponDash", "SpearWeaponThrow",  "ShieldWeapon", "ShieldWeaponRush", "ShieldThrow",
-		"ShieldWeaponDash", "BowWeapon", "BowWeaponDash", "ChargeBowWeapon1",
-		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5",
-		"FistWeaponDash", "GunWeapon",
-		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
-	}
-	OlympusWeaponSets.AllSecondaryWeapons = { "SwordParry", "SpearWeaponThrow", "SpearThrowImmolation",
-		"SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldThrow",
-		"ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", "FistWeaponSpecial",
-		"FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
-	}
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 	
@@ -340,10 +340,6 @@ if ModUtil ~= nil then
 		"HephaestusAboutZeus01"
 	}
 	)
-	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon", "ArmorIcon" })
-	ResetKeywords()
 
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -468,7 +464,7 @@ if ModUtil ~= nil then
 		InRackTitle = "ForceWeaponUpgradeTrait_Rack",
 		Icon = "Keepsake_Statue",
 		EquipSound = "/SFX/WeaponUpgradeHammerDrop2",
-		ForceBoonName = "WeaponUpgrade",
+		ForceRewardName = "WeaponUpgrade",
 		Uses = 1,
 		RarityLevels =
 		{
@@ -547,23 +543,24 @@ if ModUtil ~= nil then
 			Args =
 			{
 				Duration = 5,
-				Cooldown = 7,
+				Cooldown = 12,
 				DamageTransfer = {
-					BaseValue = 0.07,
+					BaseValue = 0.50,
 				},
 				ExtractValues =
 				{
 					{
+						Key = "DamageTransfer",
+						ExtractAs = "TooltipDamageTransfer",
+						Format = "Percent",
+					},
+					{
 						Key = "Cooldown",
-						ExtractAs = "TooltipCooldown",
+						ExtractAs = "TooltipIgneousCooldown",
 					},
 					{
 						Key = "Duration",
-						ExtractAs = "TooltipDuration",
-					},
-					{
-						Key = "DamageTransfer",
-						ExtractAs = "TooltipDamageTransfer",
+						ExtractAs = "TooltipIgneousDuration",
 					},
 				}
 			},
@@ -623,17 +620,24 @@ if ModUtil ~= nil then
 			Args =
 			{
 				Duration = 5,
-				Cooldown = 7,
-				DamageTransfer = 0.07,
+				Cooldown = 12,
+				DamageTransfer = {
+					BaseValue = 0.50,
+				},
 				ExtractValues =
 				{
 					{
+						Key = "DamageTransfer",
+						ExtractAs = "TooltipDamageTransfer",
+						Format = "Percent",
+					},
+					{
 						Key = "Cooldown",
-						ExtractAs = "TooltipCooldown",
+						ExtractAs = "TooltipIgneousCooldown",
 					},
 					{
 						Key = "Duration",
-						ExtractAs = "TooltipDuration",
+						ExtractAs = "TooltipIgneousDuration",
 					},
 				}
 			},
@@ -706,6 +710,7 @@ if ModUtil ~= nil then
 		--Slot = "Ranged",
 		--Icon = "Boon_Hephaestus_04",
 		CustomTrayText = "HephaestusRangedTrait_Tray",
+		PreEquipWeapons = { "IgneousRangedExplosion" },
         --RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
 		{
@@ -715,31 +720,39 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.145,
+				Multiplier = 1.1,
 			},
 			Epic =
 			{
-				Multiplier = 1.290,
+				Multiplier = 1.2,
 			},
 			Heroic =
 			{
-				Multiplier = 1.435,
+				Multiplier = 1.3,
 			}
 		},
-		SetupFunction =
+		PropertyChanges =
 		{
-			Name = "SetupTemporaryAmmo",
-			RunOnce = true,
-			Args =
 			{
-				Ammo = 3,
-				ExtractValues =
+				WeaponNames = { "IgneousRangedExplosion" },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 50,
+				BaseMax = 50,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
 				{
-					{
-						Key = "Ammo",
-						ExtractAs = "TooltipMaxArmor",
-					},
+					Value = DuplicateVeryStrongMultiplier,
+				},
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
 				}
+			},
+			{
+				WeaponNames = { "IgneousRangedExplosion" },
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
 			},
 		},
 	}
@@ -782,6 +795,11 @@ if ModUtil ~= nil then
 			{
 				Key = "DamageExtract",
 				ExtractAs = "TooltipDamageExtract",
+			},
+			{
+				ExtractAs = "TooltipWrathStocks",
+				Format = "ExistingWrathStocks",
+				SkipAutoExtract = true
 			},
 		}
 	}
@@ -951,7 +969,7 @@ if ModUtil ~= nil then
 		},
 		SpawnHephWeaponOnDeath =
 		{
-			BaseValue = 0.25,
+			BaseValue = 1.0,
 		},	
 		ExtractValues =
 		{
@@ -969,6 +987,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_10",
 		RequiredFalseTrait = "ArmorEncounterTrait",
+		CustomTrayText = "ArmorEncounterTrait_Tray",
 		RarityLevels =
 		{
 			Common =
@@ -1005,6 +1024,7 @@ if ModUtil ~= nil then
 				}
 			},
 		},
+		AccumulatedMaxArmor = 0,
 		RepairArmorOnPerfectEncounter =
 		{
 			BaseValue = 3,
@@ -1026,6 +1046,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_11",
 		RequiredFalseTrait = "ArmorDefianceTrait",
+		CustomTrayText = "ArmorDefianceTrait_Tray",
 		RarityLevels =
 		{
 			Common =
@@ -1062,6 +1083,7 @@ if ModUtil ~= nil then
 				}
 			},
 		},
+		AccumulatedMaxArmor = 0,
 		RepairArmorOnDeathDefiancePercent =
 		{
 			BaseValue = 0.4,
@@ -1084,6 +1106,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_09",
 		RequiredFalseTrait = "ArmorBossTrait",
+		CustomTrayText = "ArmorBossTrait_Tray",
 		RarityLevels =
 		{
 			Common =
@@ -1120,6 +1143,7 @@ if ModUtil ~= nil then
 				}
 			},
 		},
+		AccumulatedMaxArmor = 0,
 		RepairArmorOnBoss =
 		{
 			BaseValue = 15,
@@ -1138,6 +1162,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "HephaestusTrapTrait",
+		PreEquipWeapons = { "IgneousTrapExplosion" },
 		RarityLevels =
 		{
 			Common =
@@ -1146,71 +1171,79 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 0.8,
+				Multiplier = 1.1,
 			},
 			Epic =
 			{
-				Multiplier = 0.4,
+				Multiplier = 1.2,
 			},
 			Heroic =
 			{
-				Multiplier = 0.2
+				Multiplier = 1.3
 			}
 		},
-		LimitIncomingDamageModifiers =
+		PropertyChanges =
 		{
-			TrapDamage =
 			{
-				BaseValue = 5,
-			},
-			ExtractValues =
-			{
+				WeaponNames = { "IgneousTrapExplosion" },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 50,
+				BaseMax = 50,
+				AsInt = true,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
 				{
-					Key = "TrapDamage",
-					ExtractAs = "TooltipLimitTrapDamage",
+					Value = DuplicateVeryStrongMultiplier,
 				},
-			}	
-		}
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponNames = { "IgneousTrapExplosion" },
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+		},
 	}
-	OlympusTraitData.DamageBoostTrait ={
-		Name = "DamageBoostTrait",
+	OlympusTraitData.DamageReturnTrait ={
+		Name = "DamageReturnTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
 		--Icon = "Boon_Hephaestus_10",
-		RequiredFalseTrait = "DamageBoostTrait",
+		RequiredFalseTrait = "DamageReturnTrait",
 		RarityLevels =
 		{
 			Common =
 			{
-				Multiplier = 1.00,
+				Multiplier = 1.0,
 			},
 			Rare =
 			{
-				Multiplier = 1.5,
+				Multiplier = 1.2,
 			},
 			Epic =
 			{
-				Multiplier = 2.0,
+				Multiplier = 1.4,
 			},
 			Heroic =
 			{
-				Multiplier = 2.5,
+				Multiplier = 1.6,
 			}
 		},
-		AddOutgoingDamageModifiers =
+		RevengeDamage =
 		{
-			--ValidWeapons = WeaponSets.HeroNonPhysicalWeapons,
-			--ExcludeLinked = true,
-			ArmorDamageMultiplier = { BaseValue = 1.5, SourceIsMultiplier = true },
-			ExtractValues =
+			BaseValue = 0.5,
+		},	
+		ExtractValues =
+		{
 			{
-				{
-					Key = "ArmorDamageMultiplier",
-					ExtractAs = "TooltipDamageBonus",
-					Format = "PercentDelta",
-				},
-			}
-		},
+				Key = "RevengeDamage",
+				ExtractAs = "TooltipRevengeDamage",
+				Format = "Percent",
+			},
+		}
 	}
 	OlympusTraitData.ArmorLegendaryTrait =
 	{
@@ -1227,6 +1260,7 @@ if ModUtil ~= nil then
 			{
 				ArmorAtSetup = 100,
 				Source = "ArmorLegendaryTrait",
+				SpawnWeaponUpgrade = true,
 				ExtractValues =
 				{
 					{
@@ -1236,7 +1270,40 @@ if ModUtil ~= nil then
 				}
 			},
 		},
+		AccumulatedMaxArmor = 0,
 	}
+	table.insert(OlympusRewardStoreData.RunProgress, {
+		Name = "WeaponUpgrade",
+		GameStateRequirements =
+		{
+			RequiredTrait = "ArmorLegendaryTrait",
+			RequiredMaxWeaponUpgrades = 1,
+			RequiredNotInStore = "WeaponUpgradeDrop",
+			RequiredMinCompletedRuns = 3,
+		}
+	})
+	table.insert(OlympusRewardStoreData.RunProgress, {
+		Name = "WeaponUpgrade",
+		GameStateRequirements =
+		{
+			RequiredTrait = "ArmorLegendaryTrait",
+			RequiredMaxWeaponUpgrades = 2,
+			RequiredNotInStore = "WeaponUpgradeDrop",
+			RequiredMinCompletedRuns = 3,
+			RequiredMinDepth = 21, --13
+		}
+	})
+	table.insert(OlympusRewardStoreData.RunProgress, {
+		Name = "WeaponUpgrade",
+		GameStateRequirements =
+		{
+			RequiredTrait = "ArmorLegendaryTrait",
+			RequiredMaxWeaponUpgrades = 3,
+			RequiredNotInStore = "WeaponUpgradeDrop",
+			RequiredMinCompletedRuns = 3,
+			RequiredMinDepth = 26,
+		}
+	})
 	-- Improved Traits
 	-- Zeus	 
 	OlympusTraitData.ZeusChargedBoltTrait.RequiredFalseTraits = {"ZeusChargedBoltTrait", "HephaestusImproveZeus"}
@@ -1249,6 +1316,7 @@ if ModUtil ~= nil then
 		God = "Zeus",
 		PreEquipWeapons = { "ZeusLegendaryWeapon" },
 		RequiredFalseTraits = { "HephaestusImproveZeus" },
+		CustomTrayText = "HephaestusImproveZeus_Tray",		
 		PropertyChanges =
 		{
 			{
@@ -1288,13 +1356,14 @@ if ModUtil ~= nil then
 		ReplaceTrait = "ShieldHitTrait",
 		RequiredFalseTrait = "HephaestusImproveAthena",
 		PreEquipWeapons = { "AthenaDefenseApplicator" },
+		CustomTrayText = "HephaestusImproveAthena_Tray",		
 		SetupFunction =
 		{
 			Name = "ReactivateInvulnerability",
 		},
 		PreviousTimeCooldown = 20,
-		CurrentCooldown = 10,
-		TimeCooldown = 10,
+		CurrentCooldown = 12,
+		TimeCooldown = 12,
 		ReactivateFunction = "ReactivateInvulnerability",
 		ExtractValues =
 		{
@@ -1318,6 +1387,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImprovePoseidon",
 		ReplaceTrait = "DoubleCollisionTrait",
 		Icon = "Boon_Poseidon_07",
+		CustomTrayText = "HephaestusImprovePoseidon_Tray",		
 		PropertyChanges =
 		{
 			{
@@ -1418,6 +1488,7 @@ if ModUtil ~= nil then
 		RequiredTextLines = { "PoseidonFishQuest01" },
 		ReplaceTrait = "FishingTrait",
 		Icon = "Boon_Poseidon_13",
+		CustomTrayText = "HephaestusImproveFishPoseidon_Tray",
 		FishingPointChanceBonus = 0.35,
 		DisableFishRequirements = true,
 		ExtractValues =
@@ -1439,6 +1510,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Artemis_07",
 		RequiredFalseTrait = "HephaestusImproveArtemis",
 		ReplaceTrait = "MoreAmmoTrait",
+		CustomTrayText = "HephaestusImproveArtemis_Tray",
 		PropertyChanges =
 		{
 			{
@@ -1464,6 +1536,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImproveAphrodite",
 		God = "Aphrodite",
 		InheritFrom = { "ShopTier3Trait" },
+		CustomTrayText = "HephaestusImproveAphrodite_Tray",
 		ReplaceTrait = "CharmTrait",
 		AddOnEffectWeapons =
 		{
@@ -1528,6 +1601,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImproveAres",
 		Icon = "Boon_Ares_09",
 		TextStore = "AresShoutTrait",
+		CustomTrayText = "HephaestusImproveAres_Tray",
 		ReplaceTrait = "AresCursedRiftTrait",
 		PropertyChanges =
 		{
@@ -1587,6 +1661,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImproveDionysus",
 		God = "Dionysus",
 		Icon = "Boon_Dionysus_08",
+		CustomTrayText = "HephaestusImproveDionysus_Tray",
 		ReplaceTrait = "DionysusComboVulnerability",
 		AddOutgoingDamageModifiers =
 		{
@@ -1655,6 +1730,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		Icon = "Boon_Demeter_10",
 		RequiredFalseTrait = "HephaestusImproveDemeter",
+		CustomTrayText = "HephaestusImproveDemeter_Tray",
 		ReplaceTrait = "InstantChillKill",
 		OnDamageEnemyFunction = {
 			FunctionName = "CheckChillKill",
@@ -1676,8 +1752,8 @@ if ModUtil ~= nil then
 			{
 				WeaponName = "DemeterChillKill",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 60,
-				BaseMax = 60,
+				BaseMin = 75,
+				BaseMax = 75,
 				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				ExtractValue =
@@ -1752,18 +1828,12 @@ if ModUtil ~= nil then
 
 		PriorityUpgrades = {},
 		WeaponUpgrades = {},
-		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
+		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "DamageReturnTrait", "HephaestusTrapTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
 		Consumables = {  },
 		LinkedUpgrades =
 		{
 			ArmorLegendaryTrait =
 			{
-				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
-			},
-			DamageBoostTrait = {
-				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
-			},
-			HephaestusTrapTrait = {
 				OneOf = { "ArmorBossTrait", "ArmorEncounterTrait", "ArmorDefianceTrait" },
 			},
 			-- Legendary boost
@@ -4802,12 +4872,6 @@ ModUtil.Path.Wrap( "DoEnemyHealthBufferDeplete",
 		baseFunc(enemy)
 	end
 )
-
-function SetupTemporaryAmmo(hero, args)
-	if args.Ammo then
-		RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { args.Ammo } })
-	end
-end
 function SetupArmor(hero, args)
 	if CurrentRun.Hero.Armor == nil then
 		CurrentRun.Hero.Armor = {
@@ -4821,6 +4885,14 @@ function SetupArmor(hero, args)
 		AddMaxArmor(args.ArmorAtSetup)
 		table.insert(CurrentRun.Hero.Armor.Sources, args.Source)
 		ShowArmorUI()
+		if args.SpawnWeaponUpgrade ~= nil and args.SpawnWeaponUpgrade then
+			CreateWeaponLoot({ SpawnPoint = CurrentRun.Hero.ObjectId, OffsetX = 0, OffsetY = 0, SuppressSpawnSounds = CurrentRun.CurrentRoom.SuppressRewardSpawnSounds })
+			-- Count as a Drop
+			if CurrentRun.LootTypeHistory.WeaponUpgrade == nil then
+                CurrentRun.LootTypeHistory.WeaponUpgrade = 0
+            end
+            currentRun.LootTypeHistory.WeaponUpgrade = currentRun.LootTypeHistory.WeaponUpgrade + 1
+		end
 	end
 end
 
@@ -4829,7 +4901,7 @@ function AddMaxArmor(num)
 	RepairArmor(num)
 end
 function RepairArmor(amount)
-	if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 then
+	if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 and CurrentRun.Hero.Armor.Amount < CurrentRun.Hero.Armor.Max then
 		local newAmount = CurrentRun.Hero.Armor.Amount + amount
 		if newAmount > CurrentRun.Hero.Armor.Max then
 			newAmount = CurrentRun.Hero.Armor.Max
@@ -4843,28 +4915,6 @@ function GainArmorPresentation( args )
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Some Armor Presentation"))
 end
 
-ModUtil.Path.Wrap( "Damage", 
-	function (baseFunc, victim, triggerArgs )
-		if victim == nil or victim.Health == nil or ( victim.IsDead and not triggerArgs.PureDamage ) then
-			return
-		end
-		if victim == CurrentRun.Hero and victim.Armor ~= nil and victim.Armor.Amount > 0 and not triggerArgs.SkipArmor then
-			victim.Armor.Amount = victim.Armor.Amount - triggerArgs.DamageAmount
-			if victim.Armor.Amount < 0 then
-				victim.Armor.Amount = 0
-			end
-			triggerArgs.DamageAmount = 0
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.Armor.Amount)) 
-			DamageHero( victim, triggerArgs )
-			InvalidateCheckpoint()
-			if victim.Armor.Amount <= 0 then
-				ArmorDepletedPresentation()
-			end
-		else
-			baseFunc(victim, triggerArgs)
-		end
-	end
-)
 ModUtil.Path.Wrap( "SacrificeHealth", 
 	function (baseFunc, args )
 		if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Amount > 0 then
@@ -5017,7 +5067,7 @@ ModUtil.Path.Wrap("StartEncounter",
 	)
 	function RepairArmorPresentation()
 		wait(0.2)
-		--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinLand", Id = CurrentRun.Hero.ObjectId })
+		PlaySound({ Name = "/SFX/PlayerHammerExplosions", Id = CurrentRun.Hero.ObjectId })
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "RepairText", Duration = 1 })
 	end
 	
@@ -5042,6 +5092,36 @@ ModUtil.Path.Wrap( "EndEncounterEffects",
 					--CheckAchievement( { Name = "AchBuffedButterfly", CurrentValue = traitData.AccumulatedDamageBonus } )
 				end
 			end
+		end
+	end
+)
+ModUtil.Path.Wrap( "ReloadAmmoPresentation", 
+	function(baseFunc)
+		baseFunc()
+		if HeroHasTrait("HephaestusRangedTrait") then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Reload"))
+			FireWeaponFromUnit({
+				Weapon = "IgneousRangedExplosion",
+				Id = CurrentRun.Hero.ObjectId,
+				DestinationId = CurrentRun.Hero.ObjectId,
+				ClearAllFireRequests = true,
+				FireFromTarget = true
+			})
+		end
+	end
+)
+ModUtil.Path.Wrap( "AddAmmoPresentation", 
+	function(baseFunc)
+		baseFunc()
+		if HeroHasTrait("HephaestusRangedTrait") then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Ammo"))
+			FireWeaponFromUnit({
+				Weapon = "IgneousRangedExplosion",
+				Id = CurrentRun.Hero.ObjectId,
+				DestinationId = CurrentRun.Hero.ObjectId,
+				ClearAllFireRequests = true,
+				FireFromTarget = true
+			})
 		end
 	end
 )
@@ -5192,12 +5272,12 @@ end
 		end
 	end
 	)]]
-	ModUtil.Path.Wrap( "CreateHermesLoot", 
+	--[[ModUtil.Path.Wrap( "CreateHermesLoot", 
 		function(baseFunc, args)
 			--baseFunc(args)
 			return CreateHephaestusLoot(args)
 		end
-	)
+	)]]
 	function CreateHephaestusLoot( args )
 		args = args or {}
 		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )

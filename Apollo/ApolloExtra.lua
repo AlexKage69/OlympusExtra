@@ -551,10 +551,6 @@ if ModUtil ~= nil then
 		"ApolloAboutHarpQuest02", "ApolloAboutOrpheus01", "ApolloAboutOrpheus02"
 	}
 	)
-	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb", "DamageResist" })
-	ResetKeywords()
 
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)

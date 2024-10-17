@@ -290,7 +290,7 @@
 		{
 			Id = "LavaAutoTrait"
 			DisplayName = "Royal Hearth"
-			Description = "Your {$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} attract foes."
+			Description = "Your {$Keywords.LavaSplash}{#BoldFormat}s {#PreviousFormat} attract foes. \n {!Icons.Bullet}{#PropertyFormat}Range : \Column 380 {#UpgradeFormat}Average{#AltUpgradeFormat}"
 		}
 		{
 			Id = "ForceHestiaBoonTrait"

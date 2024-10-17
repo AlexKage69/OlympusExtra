@@ -80,6 +80,15 @@
       InheritFrom = "BoonBackingC"
       ChildAnimation = "BoonSymbolHephaestusIcon"
     }
+    
+    {
+      Name = "HephaestusUpgradePreview"
+      InheritFrom = "BoonSymbolBaseIsometric"
+      FilePath = "Hephaestus\Hepheastus1"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.15
+    }
     {
       Name = "BoonInfoSymbolHephaestusIcon"
       InheritFrom = "BoonInfoSymbolBase"
@@ -92,7 +101,7 @@
       Name = "BoonSymbolHephaestusIcon"
       InheritFrom = "BoonSymbolBase"
       FilePath = "Hephaestus\Hepheastus1"
-      Scale = 0.20
+      Scale = 0.15
     }
     {
       Name = "BoonSymbolHephaestusIsometric"

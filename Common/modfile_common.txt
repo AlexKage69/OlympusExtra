@@ -6,3 +6,8 @@
 Import "SeparateGoddess.lua"
 Import "patch.lua"
 Import "extender.lua"
+
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/HelpText.en.sjson"
+To "Game/Text/en/CodexText.en.sjson"
+SJSON "Text/CodexText.en.sjson"

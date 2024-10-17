@@ -469,10 +469,6 @@ if ModUtil ~= nil then
 		"HestiaAboutZeus01"
 	}
 	)
-	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash", "CentaurHeart", "CentaurSoul", "MiniBoss" })
-	ResetKeywords()
 
 	-- This is not working since the Icons are too big or small to be used and there's no Scale.
 	--[[local OlympusIconData = ModUtil.Entangled.ModData(IconData)
@@ -522,11 +518,11 @@ if ModUtil ~= nil then
 		{
 			{
 				UnlockThreshold = 1,
-				Text = "CodexData_Hestia_0004",
+				Text = "CodexData_EmptyHealth_0001",
 			},
 			{
 				UnlockThreshold = 10,
-				Text = "CodexData_Hestia_0005",
+				Text = "CodexData_EmptyHealth_0002",
 			},
 		},
 		Image = "Codex_Portrait_CentaurSoul",
@@ -5657,22 +5653,6 @@ if ModUtil ~= nil then
 					if (traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, triggerArgs.name)) and traitData.FunctionName
 						and _G[traitData.FunctionName] then
 						thread(_G[traitData.FunctionName], weaponData, triggerArgs, traitData.FunctionArgs)
-					end
-				end
-			end
-		end
-	}
-	OnHit {
-		function(triggerArgs)
-			local attacker = triggerArgs.AttackerTable
-			local attackerWeaponName = triggerArgs.SourceWeapon
-			triggerArgs.AttackerWeaponData = GetWeaponData(attacker, attackerWeaponName)
-			local victim = triggerArgs.TriggeredByTable
-			if victim ~= nil and (victim.CanBeAggroed or victim.Name == "TrainingMelee") and victim ~= CurrentRun.Hero then
-				for i, traitData in pairs(GetHeroTraitValues("OnWeaponHitFunctions")) do
-					if (traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, attackerWeaponName)) and
-						traitData.FunctionName and _G[traitData.FunctionName] then
-						thread(_G[traitData.FunctionName], triggerArgs.AttackerWeaponData, victim.ObjectId, traitData.FunctionArgs)
 					end
 				end
 			end

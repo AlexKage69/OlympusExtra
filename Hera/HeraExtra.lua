@@ -206,25 +206,6 @@ if ModUtil ~= nil then
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 	table.insert(OlympusWeaponSets.ExpireProjectileExcludeProjectileNames, "HeraTrap")
-	OlympusWeaponSets.AllJealousyWeapons = { "SwordWeapon",
-		"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
-		"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
-		"SpearWeaponDash", "SpearWeaponThrow", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeapon", "ShieldWeaponRush", "ShieldThrow",
-		"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrow", "ShieldThrowDash", "BowWeapon", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
-		"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
-		"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon", "GunWeapon",
-		"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
-	}
-	OlympusWeaponSets.AssistWeapons = {
-		"NPC_Thanatos_01_Assist",
-		"NPC_FurySister_01_Assist",
-		"NPC_Sisyphus_01_Assist",
-		"NPC_Achilles_01_Assist",
-		"NPC_Patroclus_01_Assist",
-		"DusaFreezeShotSpray",
-		"DusaFreezeShotSpread",
-		"NPC_Goodboy_01_Assist",
-	}	
 	OlympusWeaponData.HeraShoutWeapon = {
 		BlockWrathGain = true,
 	}
@@ -582,10 +563,6 @@ if ModUtil ~= nil then
 		"HeraAboutPoseidon01"
 	}
 	)
-	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "JealousyCurse", "EnvyCurse", "HeraTrap", "Aura", "SpecialDiscount" })
-	ResetKeywords()
 
 	-- This is not working since the Icons are too big or small to be used and there's no Scale.
 	--[[local OlympusIconData = ModUtil.Entangled.ModData(IconData)
@@ -8286,53 +8263,7 @@ end]]
 			end
 			baseFunc(currentRun, consumableItem, args)
 		end
-	)
-	ModUtil.Path.Wrap("SpawnStoreItemInWorld",
-		function(baseFunc, itemData, kitId)
-			local spawnedItem = nil
-			if itemData.Name == "StackUpgradeDrop" then
-				spawnedItem = CreateStackLoot({ SpawnPoint = kitId, Cost = GetProcessedValue( ConsumableData.StackUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, } )
-			elseif itemData.Name == "WeaponUpgradeDrop" then
-				spawnedItem = CreateWeaponLoot({ SpawnPoint = kitId, Cost = itemData.Cost or GetProcessedValue( ConsumableData.WeaponUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, } )
-			elseif itemData.Name =="HermesUpgradeDrop" then
-				spawnedItem = CreateHermesLoot({ SpawnPoint = kitId, Cost = itemData.Cost or GetProcessedValue( ConsumableData.HermesUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, BoughtFromShop = true, AddBoostedAnimation = itemData.AddBoostedAnimation, BoonRaritiesOverride = itemData.BoonRaritiesOverride })
-				spawnedItem.CanReceiveGift = false
-				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
-			elseif itemData.Name == "StoreTrialUpgradeDrop" then
-				local args  = { BoughtFromShop = true, DoesNotBlockExit = true, Cost = GetProcessedValue( ConsumableData.StoreTrialUpgradeDrop.Cost ) }
-				args.SpawnPoint = kitId
-				args.DoesNotBlockExit = true
-				args.SuppressSpawnSounds = true
-				args.Name = "TrialUpgrade"
-				spawnedItem = GiveLoot( args )
-				spawnedItem.CanReceiveGift = false
-				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
-			elseif itemData.Name == "StackUpgradeDropRare" then
-				spawnedItem = CreateStackLoot({ SpawnPoint = kitId, Cost = GetProcessedValue( ConsumableData.StackUpgradeDropRare.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, StackNum = 2, AddBoostedAnimation = true, })
-			elseif itemData.Type == "Consumable" then
-				local consumablePoint = SpawnObstacle({ Name = itemData.Name, DestinationId = kitId, Group = "Standing" })
-				local upgradeData =  GetRampedConsumableData( ConsumableData[itemData.Name] )
-				spawnedItem = CreateConsumableItemFromData( consumablePoint, upgradeData )
-				ApplyConsumableItemResourceMultiplier( CurrentRun.CurrentRoom, spawnedItem )
-				ExtractValues( CurrentRun.Hero, spawnedItem, spawnedItem )
-			elseif itemData.Type == "Boon" then
-				itemData.Args.SpawnPoint = kitId
-				itemData.Args.DoesNotBlockExit = true
-				itemData.Args.SuppressSpawnSounds = true
-				itemData.Args.SuppressFlares = true
-				spawnedItem = GiveLoot( itemData.Args )
-				spawnedItem.CanReceiveGift = false
-				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
-			end			
-			if spawnedItem ~= nil then
-				SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = spawnedItem.ObjectId })
-				spawnedItem.SpawnPointId = kitId
-				spawnedItem.UseText = spawnedItem.PurchaseText or "Shop_UseText"
-				table.insert( CurrentRun.CurrentRoom.Store.SpawnedStoreItems, spawnedItem )
-			end						
-			RefreshStoreItems()
-		end
-	)
+	)	
 	function RefreshStoreItems()
 		if CurrentRun and CurrentRun.CurrentRoom.Store and CurrentRun.CurrentRoom.Store.SpawnedStoreItems then
 			for i, data in pairs( CurrentRun.CurrentRoom.Store.SpawnedStoreItems ) do
@@ -8392,25 +8323,7 @@ end]]
 			end
 		end
 	)
-	ModUtil.Path.Wrap("Damage",
-		function(baseFunc, victim, triggerArgs)
-			if triggerArgs ~= nil and triggerArgs.AttackerTable ~= nil and triggerArgs.SourceWeapon ~= nil then
-			local sourceWeaponData = GetWeaponData( triggerArgs.AttackerTable, triggerArgs.SourceWeapon )
-				if sourceWeaponData ~= nil and sourceWeaponData.PureDamage and not triggerArgs.PureDamage then
-					triggerArgs.PureDamage = true
-				end				
-			end
-			baseFunc(victim, triggerArgs)
-			if victim == CurrentRun.Hero and HeroHasTrait("HealthAsObolTrait") then
-				UpdateHealthCostTexts()
-				if CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.Buttons then
-					for i, button in pairs(CurrentRun.CurrentRoom.Store.Buttons) do
-						UpdateSacrificeCostButton( button )
-					end
-				end
-			end
-		end
-	)
+	
 	function UpdateHealthCostTexts()
 		if CurrentRun and CurrentRun.CurrentRoom and CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.SpawnedStoreItems ~= nil then
 			for i, item in pairs(CurrentRun.CurrentRoom.Store.SpawnedStoreItems) do
@@ -8482,16 +8395,7 @@ end]]
 	function ReloadRangedDashTrap( delay )
 		wait( delay, RoomThreadName )
 		CurrentRun.Hero.TrapDash.Count = CurrentRun.Hero.TrapDash.Count + 1
-		EndTrapDashReloadPresentation()
-		
-	
-		--[[RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { 1 } })
-		if IsMetaUpgradeActive("ReloadAmmoMetaUpgrade") then
-			ReloadAmmoPresentation()
-		else
-			AddAmmoPresentation()
-		end]]
-	
+		EndTrapDashReloadPresentation()	
 	end
 	function GetBaseDashTrapReloadTime()
 		return TraitData.HeraRushTrait.DashTrap.DashTrap.Value
@@ -8672,18 +8576,6 @@ end]]
 			end
 		end
 	end
-	ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
-		function(baseFunc)
-			baseFunc()
-			for k, traitData in pairs(CurrentRun.Hero.Traits) do
-				if traitData.GodDamageBonus then
-					traitData.AccumulatedGodDamageBonus = 1 + GetHeroSameGodCount(CurrentRun.Hero) * (traitData.GodDamageBonus - 1)
-					--traitData.FromGod = name
-					ExtractValues( CurrentRun.Hero, traitData, traitData )
-				end
-			end
-		end
-	)
 
 	function GetHeroSameGodCount( hero )
 		if not hero then

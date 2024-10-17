@@ -38,16 +38,6 @@
 			DisplayName = "he shines so brightly, he can ward off evil."
 		}		
 		{
-      		Id = "ApolloBlind"
-			DisplayName = "Blind"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim have a {#UpgradeFormat}{$TooltipData.TooltipBlindPower:P} {#PreviousFormat}chance to miss their next attack."
-		}
-		{
-      		Id = "DamageResist"
-			DisplayName = "Protection"
-			Description = "Damage from distant foes is less effective."
-		}
-		{
 			Id = "ApolloWeaponTrait"
 			DisplayName = "Blinding Strike"
 			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 

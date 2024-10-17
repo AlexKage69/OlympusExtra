@@ -4,6 +4,50 @@ local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 OlympusTraitData.FastClearDodgeBonusTrait.LootSource = "HermesUpgrade"
 OlympusTraitData.AmmoReloadTrait.LootSource = "HermesUpgrade"
 
+-- Add new Keywords
+local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
+ModUtil.Table.Merge(OlympusKeywordList, { 
+    "LavaSplash", "CentaurHeart", "CentaurSoul", "MiniBoss", 
+    "JealousyCurse", "EnvyCurse", "HeraTrap", "Aura", 
+    "SpecialDiscount", "ApolloBlind", "FlashBomb", "DamageResist",
+    "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon",
+    "ArmorIcon", "ZagreusArmor", "HephSword" })
+ResetKeywords()
+-- WeaponSets
+local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
+OlympusWeaponSets.AllPrimaryWeapons = { "SwordWeapon",
+	"SwordWeapon2", "SwordWeapon3", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
+	"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3",
+	"SpearWeaponDash", "SpearWeaponThrow",  "ShieldWeapon", "ShieldWeaponRush", "ShieldThrow",
+	"ShieldWeaponDash", "BowWeapon", "BowWeaponDash", "ChargeBowWeapon1",
+	"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5",
+	"FistWeaponDash", "GunWeapon",
+	"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
+}
+OlympusWeaponSets.AllSecondaryWeapons = { "SwordParry", "SpearWeaponThrow", "SpearThrowImmolation",
+	"SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldThrow",
+	"ChaosShieldThrow", "ShieldThrowDash", "BowSplitShot", "FistWeaponSpecial",
+	"FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon",
+}
+OlympusWeaponSets.AllJealousyWeapons = { "SwordWeapon",
+	"SwordWeapon2", "SwordWeapon3", "SwordParry", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
+	"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3", "SpearWeaponThrow", "SpearThrowImmolation",
+	"SpearWeaponDash", "SpearWeaponThrow", "SpearWeaponThrowReturn", "SpearWeaponThrowInvisibleReturn", "ShieldWeapon", "ShieldWeaponRush", "ShieldThrow",
+	"ShieldWeaponDash", "ChaosShieldThrow", "ShieldThrow", "ShieldThrowDash", "BowWeapon", "BowSplitShot", "BowWeaponDash", "ChargeBowWeapon1",
+	"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5", "FistWeaponSpecial",
+	"FistWeaponDash", "FistWeaponSpecialDash", "FistWeaponLandAreaAttack", "GunGrenadeToss", "GunBombWeapon", "GunWeapon",
+	"GunWeaponDash", "SniperGunWeapon", "SniperGunWeaponDash"
+}
+OlympusWeaponSets.AssistWeapons = {
+	"NPC_Thanatos_01_Assist",
+	"NPC_FurySister_01_Assist",
+	"NPC_Sisyphus_01_Assist",
+	"NPC_Achilles_01_Assist",
+	"NPC_Patroclus_01_Assist",
+	"DusaFreezeShotSpray",
+	"DusaFreezeShotSpread",
+	"NPC_Goodboy_01_Assist",
+}	
 -- Verification Function
 ModUtil.Path.Wrap("Heal",
     function(baseFunc, victim, triggerArgs)
@@ -109,7 +153,25 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
         end
     end
 )
-
+ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
+		function(baseFunc)
+			baseFunc()
+			for k, traitData in pairs(CurrentRun.Hero.Traits) do
+				if traitData.GodDamageBonus then
+					traitData.AccumulatedGodDamageBonus = 1 + GetHeroSameGodCount(CurrentRun.Hero) * (traitData.GodDamageBonus - 1)
+					--traitData.FromGod = name
+					ExtractValues( CurrentRun.Hero, traitData, traitData )
+				end
+				if traitData.AccumulatedMaxArmor then
+                    if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 then
+                        traitData.AccumulatedMaxArmor = CurrentRun.Hero.Armor.Max
+                    end
+					--traitData.FromGod = name
+					ExtractValues( CurrentRun.Hero, traitData, traitData )
+				end
+			end
+		end
+	)
 ModUtil.Path.Wrap("CalculateDamageMultipliers",
     function(baseFunc, attacker, victim, weaponData, triggerArgs)
         local damageReductionMultipliers = 1
@@ -284,7 +346,14 @@ ModUtil.Path.Wrap("CheckOnHitPowers",
 			end
 		end
 	)
-    
+ModUtil.Path.Wrap("HandleDeath",
+    function(baseFunc, currentRun, killer, killingUnitWeapon)
+        if currentRun.Hero.Armor ~= nil then
+            currentRun.Hero.Armor = nil
+        end
+        baseFunc(currentRun, killer, killingUnitWeapon)
+    end
+)
 ModUtil.Path.Wrap("Kill",
     function(baseFunc, victim, triggerArgs)
         -- Apollo Drop Healing
@@ -314,6 +383,13 @@ ModUtil.Path.Wrap("Kill",
         end
     end
 )
+OnEffectDelayedKnockbackForce{
+	function( triggerArgs )
+		if triggerArgs.EffectName == "SecondDelayedKnockback" then
+			PoseidonLegendaryPresentation( triggerArgs )
+		end
+	end
+}
 function DropHephWeapon(targetId, radius, angle, dropTowardHero)
 	if targetId == nil then
 		targetId = CurrentRun.Hero.ObjectId
@@ -357,6 +433,7 @@ ModUtil.Path.Wrap("CheckLastStand",
         return hasLastStand
     end
 )
+
 ModUtil.Path.Wrap("CheckOnDamagedPowers",
     function(baseFunc, victim, attacker, args)
         baseFunc(victim, attacker, args)
@@ -369,12 +446,109 @@ ModUtil.Path.Wrap("CheckOnDamagedPowers",
                     DestinationId = victim.ObjectId, FireFromTarget = true })
             end
         end
+        if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and HeroHasTrait("HephaestusImproveZeus") and args.FirstInVolley then
+            if Contains({ "ZeusShieldLoadAmmoStrike", "LightningStrikeRetaliate", "ChainLightning", "LightningStrikeX", "LightningDash", "LightningStrikeSecondary", "ZeusAmmoWeapon", "ZeusDionysusCloudStrike", "LightningStrikeImpact", "BlindLightningEffector" }, weaponName ) or ( weaponName == "RangedWeapon" and HeroHasTrait("ZeusRangedTrait")) then
+                FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId, DestinationId = victim.ObjectId, FireFromTarget = true })
+            end
+        end
     end
 )
+ModUtil.Path.Wrap("ChooseRoomReward",
+		function(baseFunc, run, room, rewardStoreName, previouslyChosenRewards, args )
+            if args == nil then
+                args = {}
+            end
+            for k, trait in pairs( CurrentRun.Hero.Traits ) do
+				if trait.ForceRewardName and trait.Uses > 0 then
+					trait.Uses = trait.Uses - 1
+                    room.ForcedReward = trait.ForceRewardName
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceRewardName))
+				end
+			end
+			return baseFunc(run, room, rewardStoreName, previouslyChosenRewards, args )            
+		end
+	)
+--[[ModUtil.Path.Wrap( "SetupRoomReward", 
+	function(baseFunc, currentRun, room, previouslyChosenRewards, args )
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.ChosenRewardType))
+		baseFunc(currentRun, room, previouslyChosenRewards, args)
+	end
+)
+ModUtil.Path.Wrap( "CreateDoorRewardPreview", 
+	function(baseFunc, door )
+        local room = door.Room
+        if room.ChosenRewardType == "Boon" and room.ForceLootName then
+            if LootData[room.ForceLootName].DoorIcon ~= nil then
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(LootData[room.ForceLootName].DoorIcon))
+            else
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(LootData[room.ForceLootName].Icon))
+            end
+        end
+		baseFunc(door)
+	end
+)]]
 -- Rejection / Forgiveness Functions
 ModUtil.Path.Wrap("SpawnRoomReward",
-    function(baseFunc, eventSource, args)
+    function(baseFunc, eventSource, args) 
+        local currentRun = CurrentRun
         local currentRoom = CurrentRun.CurrentRoom
+        local currentEncounter = CurrentRun.CurrentRoom.Encounter
+        if currentRoom.ChangeReward == "HephaestusUpgrade" or currentRoom.ChosenRewardType == "HephaestusUpgrade" then
+            --currentRoom.ChosenRewardType = "HermesUpgrade"
+            local rewardType = "HephaestusUpgrade"
+
+            if rewardType == nil or rewardType == "Story" or currentRoom.DeferReward then
+                if args ~= nil and args.VoiceLines ~= nil then
+                    thread( PlayVoiceLines, args.VoiceLines, true )
+                end
+                return
+            end
+
+            if currentRoom.SpawnRewardGlobalVoiceLines ~= nil then
+                thread( PlayVoiceLines, GlobalVoiceLines[currentRoom.SpawnRewardGlobalVoiceLines], true )
+            end
+
+            local offsetTowardId = SelectRoomRewardSpawnPoint( CurrentRun.CurrentRoom )
+            local lootPointId = currentRoom.SpawnRewardOnId or currentRun.Hero.ObjectId
+            local angle = 0
+            local lootOffset = {X=0, Y=0}
+
+            local reward = nil
+
+            if currentRoom.SpawnRewardOnId == nil then
+                angle = GetAngleBetween({ Id = currentRun.Hero.ObjectId, DestinationId = offsetTowardId })
+                lootOffset = CalcOffset( math.rad(angle), 110 )
+            end
+
+            wait( currentRoom.SpawnRewardDelay, RoomThreadName )
+
+            reward = GiveLoot({ ForceLootName = "HephaestusUpgrade", SpawnPoint = lootPointId, OffsetX = lootOffset.X, OffsetY = lootOffset.Y, SuppressSpawnSounds = currentRoom.SuppressRewardSpawnSounds })
+
+            local rewardOverrides = currentRoom.BoonRaritiesOverride or currentRoom.RewardConsumableOverrides or currentRoom.RewardOverrides or {}
+            local rewardBoostedAnimation = rewardOverrides.RewardBoostedAnimation or currentEncounter.RewardBoostedAnimation or currentRoom.RewardBoostedAnimation
+            if currentRoom.ChangeReward == nil and rewardBoostedAnimation ~= nil then
+                CreateAnimation({ DestinationId = reward.ObjectId, Name = rewardBoostedAnimation })
+            end
+
+            if currentRoom.DisableRewardMagnetisim then
+                SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = reward.ObjectId })
+            end
+
+            if args ~= nil and args.VoiceLines ~= nil then
+                thread( PlayVoiceLines, args.VoiceLines, true )
+            end
+
+            if args ~= nil and args.WaitUntilPickup then
+                if reward.MenuNotify ~= nil then
+                    waitUntil( UIData.BoonMenuId )
+                else
+                    reward.NotifyName = "OnUsed"..reward.ObjectId
+                    waitUntil( reward.NotifyName )
+                end
+            end
+            currentRoom.RewardSkip = true
+
+        end
         if currentRoom.RewardSkip == nil then
             baseFunc(eventSource, args)
         end
@@ -652,7 +826,198 @@ ModUtil.Path.Wrap("HandleLootPickup",
         end
     end
 )
+ModUtil.Path.Wrap( "Damage", 
+	function (baseFunc, victim, triggerArgs )
+		if victim == nil or victim.Health == nil or ( victim.IsDead and not triggerArgs.PureDamage ) then
+			return
+		end
+        if triggerArgs ~= nil and triggerArgs.AttackerTable ~= nil and triggerArgs.SourceWeapon ~= nil then
+            local sourceWeaponData = GetWeaponData( triggerArgs.AttackerTable, triggerArgs.SourceWeapon )
+            if sourceWeaponData ~= nil and sourceWeaponData.PureDamage and not triggerArgs.PureDamage then
+                triggerArgs.PureDamage = true
+            end				
+        end
+        local attacker = triggerArgs.AttackerTable
+		if victim == CurrentRun.Hero and victim.Armor ~= nil and victim.Armor.Amount > 0 and not triggerArgs.SkipArmor then
+            -- Start Damage Calculation     
+            if not triggerArgs.PureDamage then
+                if triggerArgs.IsInvulnerable or (victim.InvulnerableFlags ~= nil and not IsEmpty( victim.InvulnerableFlags )) or (victim.PersistentInvulnerableFlags ~= nil and not IsEmpty( victim.PersistentInvulnerableFlags )) then
+                    if not triggerArgs.Silent then
+                        thread( BlockedDamageInvulnerablePresentation, victim, triggerArgs )
+                    end
+                    return
+                end
+        
+                local attacker = triggerArgs.AttackerTable
+                local sourceProjectileData = nil
+                local sourceEffectData = nil
+                local sourceWeaponData = GetWeaponData( attacker, triggerArgs.SourceWeapon )
+                if triggerArgs.SourceProjectile ~= nil then
+                    sourceProjectileData = ProjectileData[triggerArgs.SourceProjectile]
+                end
+                if triggerArgs.EffectName ~= nil then
+                    sourceEffectData = EffectData[triggerArgs.EffectName]
+                end
+                local baseDamage = triggerArgs.DamageAmount
+                local multipliers = CalculateDamageMultipliers( attacker, victim, sourceWeaponData, triggerArgs )
+                local additive = CalculateDamageAdditions( attacker, victim, triggerArgs )
+                triggerArgs.DamageAmount = round(triggerArgs.DamageAmount * multipliers) + additive
+                CalculateLifestealModifiers( attacker, victim, sourceWeaponData, triggerArgs )
+        
+                if victim.AIEndHealthThreshold ~= nil then
+                    local healthThreshold = victim.MaxHealth * victim.AIEndHealthThreshold
+                    local remainingThresholdHealth = (victim.Health - healthThreshold) + 1
+                    if triggerArgs.DamageAmount > remainingThresholdHealth then
+                        triggerArgs.DamageAmount = remainingThresholdHealth
+                    end
+                end
+        
+                if ConfigOptionCache.EasyMode and victim == CurrentRun.Hero then
+                    triggerArgs.DamageAmount = math.ceil( triggerArgs.DamageAmount * CalcEasyModeMultiplier() )
+                    if CurrentRun.EasyModeLevel == nil then
+                        CurrentRun.EasyModeLevel = GameState.EasyModeLevel
+                    end
+                end
+        
+                if triggerArgs.DamageAmount > 0 and not triggerArgs.Silent and (sourceEffectData == nil or not sourceEffectData.RapidDamageType ) and ( sourceWeaponData == nil or not sourceWeaponData.RapidDamageType ) then
+                    if victim.DamagedAnimation ~= nil then
+                        local damagedAnimBlocked = false
+                        if victim.ActiveEffects ~= nil then
+                            for effectName, v in pairs( victim.ActiveEffects ) do
+                                local effectData = EffectData[effectName]
+                                if effectData ~= nil and effectData.BlockDamageAnimation then
+                                    damagedAnimBlocked = true
+                                end
+                            end
+                        end
+                        if not damagedAnimBlocked then
+                            SetAnimation({ DestinationId = victim.ObjectId, Name = victim.DamagedAnimation })
+                        end
+                    end
+                    thread( GenericDamagePresentation, victim, triggerArgs )
+                end
+            end
+            -- Custom Damage for Armor          
+			victim.Armor.Amount = victim.Armor.Amount - triggerArgs.DamageAmount
+			if victim.Armor.Amount < 0 then
+				victim.Armor.Amount = 0
+			end
+			triggerArgs.DamageAmount = 0
+			DamageHero( victim, triggerArgs )
+			InvalidateCheckpoint()
+			if victim.Armor.Amount <= 0 then
+				ArmorDepletedPresentation()
+			end
+            -- Continue Damage            
+            if BlockHeroDeath and victim == CurrentRun.Hero then
+                victim.CannotDieFromDamage = true
+            end
 
+            if victim.Health <= 0 and not victim.CannotDieFromDamage then
+                if victim.ClearChillOnDeath then
+                    ClearEffect({ Id = victim.ObjectId, Name = "DemeterSlow" })
+                end
+                if victim.Phases ~= nil and victim.CurrentPhase < victim.Phases then
+                    SetUnitInvulnerable( victim )
+                    ClearEffect({ Id = victim.ObjectId, All = true, ExcludeNames = { "BeamRotation" } })
+                    return
+                end
+                triggerArgs.Killed = true
+                if victim.DeathAnimation ~= nil and not victim.ManualDeathAnimation then
+                    SetAnimation({ Name = victim.DeathAnimation, DestinationId = victim.ObjectId })
+                    -- @todo Notify on death animation finish
+                end
+
+                if victim.PreDeathFunctionName ~= nil then
+                    local onDeathFunction = _G[victim.PreDeathFunctionName]
+                    onDeathFunction( victim, victim.PreDeathFunctionArgs )
+                end
+                Kill( victim, triggerArgs )
+            end
+		else
+			baseFunc(victim, triggerArgs)
+			if victim == CurrentRun.Hero and HeroHasTrait("HealthAsObolTrait") then
+				UpdateHealthCostTexts()
+				if CurrentRun.CurrentRoom.Store ~= nil and CurrentRun.CurrentRoom.Store.Buttons then
+					for i, button in pairs(CurrentRun.CurrentRoom.Store.Buttons) do
+						UpdateSacrificeCostButton( button )
+					end
+				end
+			end
+		end
+        if HeroHasTrait("DamageReturnTrait") and victim == CurrentRun.Hero and attacker ~= nil and triggerArgs.DamageAmount > 0 then
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Do damage back "..triggerArgs.DamageAmount))
+            --Damage( attacker, { DamageAmount = triggerArgs.DamageAmount*0.5, Silent = false, PureDamage = false } )
+        end
+        if HeroHasTrait("HephaestusTrapTrait") and (( attacker ~= nil and attacker.DamageType == "Neutral" ) or (attacker == nil and triggerArgs.AttackerName ~= nil and EnemyData[triggerArgs.AttackerName] ~= nil and EnemyData[triggerArgs.AttackerName].DamageType == "Neutral" )) then
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Trap"))
+            FireWeaponFromUnit({
+                Weapon = "IgneousTrapExplosion",
+                Id = CurrentRun.Hero.ObjectId,
+                DestinationId = victim.ObjectId,
+                ClearAllFireRequests = true,
+                FireFromTarget = true
+            })
+        end
+	end
+)
+ModUtil.Path.Override("SpawnStoreItemInWorld",
+		function(itemData, kitId)
+			local spawnedItem = nil
+			if itemData.Name == "StackUpgradeDrop" then
+				spawnedItem = CreateStackLoot({ SpawnPoint = kitId, Cost = GetProcessedValue( ConsumableData.StackUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, } )
+			elseif itemData.Name == "WeaponUpgradeDrop" then
+				spawnedItem = CreateWeaponLoot({ SpawnPoint = kitId, Cost = itemData.Cost or GetProcessedValue( ConsumableData.WeaponUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, } )
+			elseif itemData.Name =="HermesUpgradeDrop" then
+                
+				spawnedItem = CreateHermesLoot({ SpawnPoint = kitId, Cost = itemData.Cost or GetProcessedValue( ConsumableData.HermesUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, BoughtFromShop = true, AddBoostedAnimation = itemData.AddBoostedAnimation, BoonRaritiesOverride = itemData.BoonRaritiesOverride })
+				spawnedItem.CanReceiveGift = false
+				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
+            elseif itemData.Name =="HephaestusUpgradeDrop" then
+				spawnedItem = CreateHephaestusLoot({ SpawnPoint = kitId, Cost = itemData.Cost or GetProcessedValue( ConsumableData.HephaestusUpgradeDrop.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, BoughtFromShop = true, AddBoostedAnimation = itemData.AddBoostedAnimation, BoonRaritiesOverride = itemData.BoonRaritiesOverride })
+				spawnedItem.CanReceiveGift = false
+				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
+			elseif itemData.Name == "StoreTrialUpgradeDrop" then
+				local args  = { BoughtFromShop = true, DoesNotBlockExit = true, Cost = GetProcessedValue( ConsumableData.StoreTrialUpgradeDrop.Cost ) }
+				args.SpawnPoint = kitId
+				args.DoesNotBlockExit = true
+				args.SuppressSpawnSounds = true
+				args.Name = "TrialUpgrade"
+				spawnedItem = GiveLoot( args )
+				spawnedItem.CanReceiveGift = false
+				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
+			elseif itemData.Name == "StackUpgradeDropRare" then
+				spawnedItem = CreateStackLoot({ SpawnPoint = kitId, Cost = GetProcessedValue( ConsumableData.StackUpgradeDropRare.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, StackNum = 2, AddBoostedAnimation = true, })
+			elseif itemData.Type == "Consumable" then
+				local consumablePoint = SpawnObstacle({ Name = itemData.Name, DestinationId = kitId, Group = "Standing" })
+                if ConsumableData[itemData.Name] == nil then
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString(itemData.Name))                    
+                else
+                    local upgradeData =  GetRampedConsumableData( ConsumableData[itemData.Name] )
+                    spawnedItem = CreateConsumableItemFromData( consumablePoint, upgradeData )
+                    ApplyConsumableItemResourceMultiplier( CurrentRun.CurrentRoom, spawnedItem )
+				ExtractValues( CurrentRun.Hero, spawnedItem, spawnedItem )
+                end
+			elseif itemData.Type == "Boon" then
+				itemData.Args.SpawnPoint = kitId
+				itemData.Args.DoesNotBlockExit = true
+				itemData.Args.SuppressSpawnSounds = true
+				itemData.Args.SuppressFlares = true
+				spawnedItem = GiveLoot( itemData.Args )
+				spawnedItem.CanReceiveGift = false
+				SetThingProperty({ Property = "SortBoundsScale", Value = 1.0, DestinationId = spawnedItem.ObjectId })
+			end			
+			if spawnedItem ~= nil then
+				SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = spawnedItem.ObjectId })
+				spawnedItem.SpawnPointId = kitId
+				spawnedItem.UseText = spawnedItem.PurchaseText or "Shop_UseText"
+				table.insert( CurrentRun.CurrentRoom.Store.SpawnedStoreItems, spawnedItem )
+			end						
+			if RefreshStoreItems ~= nil then
+                RefreshStoreItems()
+            end
+		end
+	)
 ModUtil.Path.Wrap("IsGameStateEligible",
     function(baseFunc, currentRun, source, requirements, args)
         local result = baseFunc(currentRun, source, requirements, args)
@@ -668,14 +1033,17 @@ ModUtil.Path.Wrap("IsGameStateEligible",
                 local numUpgrades = 0
                 if currentRun.LootTypeHistory and currentRun.LootTypeHistory.HephaestusUpgrade then
                     if currentRun.LootTypeHistory.HephaestusUpgrade > requirements.RequiredMaxHephaestusUpgrades then
+                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Failed 1"))
                         return false
                     else
                         numUpgrades = currentRun.LootTypeHistory.HephaestusUpgrade
                     end
                 end
                 if currentRun.CurrentRoom ~= nil and currentRun.CurrentRoom.ChosenRewardType == "HephaestusUpgrade" and (numUpgrades + 1) > requirements.RequiredMaxHephaestusUpgrades then
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Failed 2"))
                     return false
                 end
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Success 1"))
             end
         else
             return false
@@ -683,6 +1051,42 @@ ModUtil.Path.Wrap("IsGameStateEligible",
         return true
     end
 )
+OnHit {
+    function(triggerArgs)
+        local attacker = triggerArgs.AttackerTable
+        local attackerWeaponName = triggerArgs.SourceWeapon
+        triggerArgs.AttackerWeaponData = GetWeaponData(attacker, attackerWeaponName)
+		local attackerWeaponData = triggerArgs.AttackerWeaponData
+        local victim = triggerArgs.TriggeredByTable
+        if victim ~= nil then
+            if (victim.CanBeAggroed or victim.Name == "TrainingMelee") and victim ~= CurrentRun.Hero then
+                for i, traitData in pairs(GetHeroTraitValues("OnWeaponHitFunctions")) do
+                    if (traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, attackerWeaponName)) and
+                        traitData.FunctionName and _G[traitData.FunctionName] then
+                        thread(_G[traitData.FunctionName], triggerArgs.AttackerWeaponData, victim.ObjectId, traitData.FunctionArgs)
+                    end
+                end
+            end
+            if victim == CurrentRun.Hero and not triggerArgs.InvulnerableFromCoverage then
+				if HeroHasTrait("HephaestusImproveAthena") and triggerArgs.DealsDamageOrControlEffect and not ( victim == attacker and ( not attackerWeaponData or attackerWeaponData.SelfMultiplier == 0 )) then
+					-- Player hit
+					local tempInvulnerabilityTrait = nil
+					for k, currentTrait in pairs( CurrentRun.Hero.Traits ) do
+						if currentTrait.Name == "HephaestusImproveAthena" and IsOnlyInvulnerableSource("TraitInvulnerability") then
+							tempInvulnerabilityTrait = currentTrait
+						end
+					end
+
+					if tempInvulnerabilityTrait ~= nil and IsTraitActive( tempInvulnerabilityTrait ) then
+						triggerArgs.IsInvulnerable = true
+						PutTraitOnCooldown( tempInvulnerabilityTrait )
+						thread( VulnerableAfterDelay, 1 )
+					end
+				end
+            end
+        end
+    end
+}
 ModUtil.Path.Wrap("AddTraitToHero",
     function(baseFunc, args)
         baseFunc(args)
@@ -710,6 +1114,13 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
 
         --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
         --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
+        --[[ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.ActiveMutators))    
+        if GameState.ActiveMutators ~= nil then
+            for activeMutator in pairs( GameState.ActiveMutators ) do
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(activeMutator))            
+            end
+        end]]
+        --UseLoungeTelescope()
         baseFunc()
     end
 )

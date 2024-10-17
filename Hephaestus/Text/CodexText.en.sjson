@@ -6,17 +6,17 @@
   Texts = [
 	"_append"
     {
-      Id = "CodexData_Hera_0001"
+      Id = "CodexData_Hephaestus_0001"
       Speaker = "Achilles"
       DisplayName = "'...Part 1...'"
     }
     {
-      Id = "CodexData_Hera_0002"
+      Id = "CodexData_Hephaestus_0002"
       Speaker = "Achilles"      
       DisplayName = "'...Part 1, Part 2...'"
     }
     {
-      Id = "CodexData_Hera_0003"
+      Id = "CodexData_Hephaestus_0003"
       Speaker = "Achilles" 
       DisplayName = "'...Part 1, Part 2, Part 3.'"
     }
