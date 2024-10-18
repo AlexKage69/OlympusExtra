@@ -755,6 +755,25 @@ function AuraThread(args)
 end
 ModUtil.Path.Wrap("HandleLootPickup",
     function(baseFunc, currentRun, loot)
+        local times = 0
+		if not (loot.Name == "StackUpgrade") and not (loot.Name == "WeaponUpgrade") and HeroHasTrait("RerollBoonTrait") then
+			CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
+			local count = GetTotalHeroTraitValue("BoonCount")
+			times = math.floor(CurrentRun.RerollBoonTracker / count);
+			if (times > 0) then
+				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
+			end
+		end
+        local hasImproveBoon = false
+        if loot.UpgradeOptions ~= nil then
+            for i, itemData in pairs(loot.UpgradeOptions) do
+                if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsImproveBoon then
+                    hasImproveBoon = true
+                    loot.Skip = true
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Improve found"))
+                end
+            end
+        end
         if loot.Skip then
             local checkingMeterUnlock = GiftData[loot.Name] and
                 not IsGameStateEligible(CurrentRun, GiftData[loot.Name].UnlockGameStateRequirements)
@@ -766,19 +785,13 @@ ModUtil.Path.Wrap("HandleLootPickup",
             CurrentLootData = loot
             SetLightBarColor({ PlayerIndex = 1, Color = loot.LootColor });
 
-            local hasDuoBoon = false
-            if loot.UpgradeOptions ~= nil then
-                for i, itemData in pairs(loot.UpgradeOptions) do
-                    if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsDuoBoon then
-                        hasDuoBoon = true
-                    end
-                end
-            end
-
             PlaySound({ Name = loot.PickupSound or "/SFX/Menu Sounds/GodBoonInteract" })
             thread(PlayVoiceLines, loot.PickupVoiceLines, true)
 
-            -- SKIP TALKING
+            -- SKIP TALKING Unless it's HadImproveConversation
+            if hasImproveBoon and not currentRun.HadImproveConversation then
+                currentRun.HadImproveConversation = PlayRandomRemainingTextLinesOnceThisRun( loot, loot.ImprovePickupTextLineSets )
+            end
 
             AddInputBlock({ Name = "HandleLootPickup" })
 
@@ -823,6 +836,9 @@ ModUtil.Path.Wrap("HandleLootPickup",
             end
         else
             baseFunc(currentRun, loot)
+        end
+        if (times > 0) then
+            AddRerolls(times, "RerollTrait", { Thread = false, Delay = 0.5 })
         end
     end
 )

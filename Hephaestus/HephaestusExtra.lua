@@ -69,16 +69,16 @@ if ModUtil ~= nil then
 		UnlockGameStateRequirements =
 		{
 			RequiredAnyTextLines = { 
-				"HephaestusImproveZeus",
-				"HephaestusImprovePoseidon",
-				"HephaestusImproveAres",
-				"HephaestusImproveDionysus",
-				"HephaestusImproveApollo",
-				"HephaestusImproveHestia",
-				"HephaestusImproveHera",
-				"HephaestusImproveDemeter",
-				"HephaestusImproveArtemis",
-				"HephaestusImproveAthena", 
+				"HephaestusImproveZeus01",
+				"HephaestusImprovePoseidon01",
+				"HephaestusImproveAres01",
+				"HephaestusImproveDionysus01",
+				"HephaestusImproveApollo01",
+				"HephaestusImproveHestia01",
+				"HephaestusImproveHera01",
+				"HephaestusImproveDemeter01",
+				"HephaestusImproveArtemis01",
+				"HephaestusImproveAthena01", 
 			},
 		},
 		CompleteGameStateRequirements =
@@ -314,6 +314,17 @@ if ModUtil ~= nil then
 		"HephaestusMiscPickup15",
 		"HephaestusMiscPickup16",
 		"HephaestusMiscPickup17"
+	}
+	OlympusGameData.HephaestusImproveTraits = {
+		"HephaestusImproveZeus",
+		"HephaestusImproveAthena",
+		"HephaestusImproveAres",
+		"HephaestusImproveAphrodite",
+		"HephaestusImprovePoseidon",
+		"HephaestusImproveFishPoseidon",
+		"HephaestusImproveArtemis",
+		"HephaestusImproveDionysus",
+		"HephaestusImproveDemeter",
 	}
 	
 	GameData.RunClearMessageData.ClearRequiredTraitsHephaestus =
@@ -1312,6 +1323,7 @@ if ModUtil ~= nil then
 		Name = "HephaestusImproveZeus",
 		Icon = "Boon_Zeus_02",
 		ReplaceTrait = "ZeusChargedBoltTrait",
+		IsImproveBoon = true,
 		InheritFrom = { "ShopTier3Trait" },
 		God = "Zeus",
 		PreEquipWeapons = { "ZeusLegendaryWeapon" },
@@ -1354,6 +1366,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		Icon = "Boon_Athena_10",
 		ReplaceTrait = "ShieldHitTrait",
+		IsImproveBoon = true,
 		RequiredFalseTrait = "HephaestusImproveAthena",
 		PreEquipWeapons = { "AthenaDefenseApplicator" },
 		CustomTrayText = "HephaestusImproveAthena_Tray",		
@@ -1386,6 +1399,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		RequiredFalseTrait = "HephaestusImprovePoseidon",
 		ReplaceTrait = "DoubleCollisionTrait",
+		IsImproveBoon = true,
 		Icon = "Boon_Poseidon_07",
 		CustomTrayText = "HephaestusImprovePoseidon_Tray",		
 		PropertyChanges =
@@ -1487,6 +1501,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImproveFishPoseidon",
 		RequiredTextLines = { "PoseidonFishQuest01" },
 		ReplaceTrait = "FishingTrait",
+		IsImproveBoon = true,
 		Icon = "Boon_Poseidon_13",
 		CustomTrayText = "HephaestusImproveFishPoseidon_Tray",
 		FishingPointChanceBonus = 0.35,
@@ -1510,6 +1525,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Artemis_07",
 		RequiredFalseTrait = "HephaestusImproveArtemis",
 		ReplaceTrait = "MoreAmmoTrait",
+		IsImproveBoon = true,
 		CustomTrayText = "HephaestusImproveArtemis_Tray",
 		PropertyChanges =
 		{
@@ -1538,6 +1554,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		CustomTrayText = "HephaestusImproveAphrodite_Tray",
 		ReplaceTrait = "CharmTrait",
+		IsImproveBoon = true,
 		AddOnEffectWeapons =
 		{
 			EffectName = "ReduceDamageOutput",
@@ -1603,6 +1620,7 @@ if ModUtil ~= nil then
 		TextStore = "AresShoutTrait",
 		CustomTrayText = "HephaestusImproveAres_Tray",
 		ReplaceTrait = "AresCursedRiftTrait",
+		IsImproveBoon = true,
 		PropertyChanges =
 		{
 			{
@@ -1663,6 +1681,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Dionysus_08",
 		CustomTrayText = "HephaestusImproveDionysus_Tray",
 		ReplaceTrait = "DionysusComboVulnerability",
+		IsImproveBoon = true,
 		AddOutgoingDamageModifiers =
 		{
 			RequiredEffects = { "DamageOverTime", "WinePuddleVulnerability" },
@@ -1732,6 +1751,7 @@ if ModUtil ~= nil then
 		RequiredFalseTrait = "HephaestusImproveDemeter",
 		CustomTrayText = "HephaestusImproveDemeter_Tray",
 		ReplaceTrait = "InstantChillKill",
+		IsImproveBoon = true,
 		OnDamageEnemyFunction = {
 			FunctionName = "CheckChillKill",
 			Args = {
@@ -1929,15 +1949,15 @@ if ModUtil ~= nil then
 			{ Cue = "/VO/ZagreusField_1925", RequiredPlayed = { "/VO/ZagreusField_1927" } },
 			-- Hello, Hephaestus.
 			{ Cue = "/VO/ZagreusField_1926", RequiredPlayed = { "/VO/ZagreusField_1927" } },
-			-- It's Hephaestus.
+			-- The blacksmith.
 			{ Cue = "/VO/ZagreusField_1927" },
-			-- Time for a boost.
+			-- Time for an upgrade.
 			{ Cue = "/VO/ZagreusField_1928", RequiredPlayed = { "/VO/ZagreusField_1927" } },
-			-- Right on time.
+			-- Smithing time.
 			{ Cue = "/VO/ZagreusField_1929", RequiredPlayed = { "/VO/ZagreusField_1927" } },
 			-- There he is.
 			{ Cue = "/VO/ZagreusField_1930", RequiredPlayed = { "/VO/ZagreusField_1927" } },
-			-- Message for me?
+			-- Upgrade for me?
 			{ Cue = "/VO/ZagreusField_1931", RequiredPlayed = { "/VO/ZagreusField_1927" } },
 			-- He's back.
 			{ Cue = "/VO/ZagreusField_1932", RequiredPlayed = { "/VO/ZagreusField_1927" } },
@@ -1958,202 +1978,198 @@ if ModUtil ~= nil then
 			[2] = GlobalVoiceLines.CheckOlympianReunionVoiceLines,
 			[3] = GlobalVoiceLines.FoundRareBoonVoiceLines,
 		},
-
+		--DuoPickupTextLineSets = {}, -- Don't know why I have to have this...
+		ImprovePickupTextLineSets =
+		{
+			HephaestusImproveZeus01 =
+			{
+				Name = "HephaestusImproveZeus01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveZeus",
+				{ Cue = "/VO/Hephaestus_0044",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I see you got my father's blessing. And {#DialogueItalicFormat}woah {#PreviousFormat}, is it a good one. If I may, let me  see what I can do for you. Sounds good?" },
+			},
+			HephaestusImproveAthena01 =
+			{
+				Name = "HephaestusImproveAthena01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveAthena",
+				{ Cue = "/VO/Hephaestus_0045",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Athena's shields are always fun to tune up. She's kind of picky when it comes to quality, but eh, so am I. Let me tune this shield up for you." },
+			},
+			HephaestusImproveAres01 =
+			{
+				Name = "HephaestusImproveAres01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveAres",
+				{ Cue = "/VO/Hephaestus_0046",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I see you received Ares' blessing. Hanging with ones like Ares, are ya? I am not judging, I am a professional. Let me show you what a real weapon looks like." },
+			},
+			HephaestusImproveAphrodite01 =
+			{
+				Name = "HephaestusImproveAphrodite01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveAphrodite",
+				{ Cue = "/VO/Hephaestus_0047",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Oi, you got to see Aphrodite! All she makes is perfect. I'll try to make it better if it's even possible." },
+			},
+			HephaestusImprovePoseidon01 =
+			{
+				Name = "HephaestusImprovePoseidon01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasAnyTraitNamesInRoom = { "HephaestusImprovePoseidon", "HephaestusImproveFishPoseidon" },
+				{ Cue = "/VO/Hephaestus_0048",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Uncle Poseidon passed through! Did you know he asked me to craft a board that could ride a wave once? What an imagination!" },
+			},
+			HephaestusImproveArtemis01 =
+			{
+				Name = "HephaestusImproveArtemis01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveArtemis",
+				{ Cue = "/VO/Hephaestus_0049",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "You talked to Artemis, {#DialogueItalicFormat}eh {#PreviousFormat}? She always goes straight to the point. No wasted chit-chat. I like that. I would be an honor to improve her blessing." },
+			},
+			HephaestusImproveDionysus01 =
+			{
+				Name = "HephaestusImproveDionysus01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveDionysus",
+				{ Cue = "/VO/Hephaestus_0050",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Of course, you have Dionysus' blessing. He gets muggled with anybody. To let them do the work. I mean look at what he gave you. Let me fix it." },
+			},
+			HephaestusImproveDemeter01 =
+			{
+				Name = "HephaestusImproveDemeter01",
+				PlayOnce = true,
+				Priority = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				HasTraitNameInRoom = "HephaestusImproveDemeter01",
+				{ Cue = "/VO/Hephaestus_0051",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Now. That's a challenge. Demeter's blessings always melt when I try to improve them, but I think I got this time around. Try this out." },
+			},			
+		},
 		SuperPriorityPickupTextLineSets =
 		{
-			HephaestusSecondPickUp =
+			HephaestusMotivationalSpeech01 =
 			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0003",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What's going on, there, Coz? Can I call you Coz? Got something here for you should make your battles to the death end that much quicker!" },
-			},
-
-			-- keepsake responses
-			HephaestusExpectingZeus01 =
-			{
+				Name = "HephaestusMotivationalSpeech01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "ZeusUpgrade",
-				RequiredTrait = "ForceZeusBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0061",
+				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
+				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
+				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
+				{ Cue = "/VO/Hephaestus_0041",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Sorry, boss, my pop had pressing matters to attend to. But I'm here! Relaying you that message, and relaying this." },
+					Text = "I'll be straight with you. I know what failure looks like. How do you think I got there? I had to work hard to get where I am. You must learn to do the same. There's no freepass in life. Earn it." },
 			},
-			HephaestusExpectingPoseidon01 =
+			HephaestusImproveMiscOlympian01 =
 			{
+				Name = "HephaestusImproveMiscOlympian01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "PoseidonUpgrade",
-				RequiredTrait = "ForcePoseidonBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0062",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Here to tell you that Poseidon's on his way, boss. Sometimes he is a little slow. But you'll meet up with him again eventually!" },
+				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
+				{ Cue = "/VO/Hephaestus_0052",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Some say I work too much. Well, let me show them how my work can improve their blessing." },
 			},
-			HephaestusExpectingAthena01 =
+			HephaestusImproveMiscOlympian02 =
 			{
+				Name = "HephaestusImproveMiscOlympian02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "AthenaUpgrade",
-				RequiredTrait = "ForceAthenaBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0060",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Expecting someone else, there, boss? A certain half-sister of mine perchance? Well, tough break, I got here first. Want one of these, or not?" },
+				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
+				{ Cue = "/VO/Hephaestus_0053",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I see I am not the only one to have blessed you. But let me be the last one to improve this then." },
 			},
-			HephaestusExpectingAres01 =
+			HephaestusImproveMiscOlympian03 =
 			{
+				Name = "HephaestusImproveMiscOlympian03",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "AresUpgrade",
-				RequiredTrait = "ForceAresBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0063",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Soon as I heard you were looking to see Ares, boss, I got here as fast as I could! He's never going to beat me. Much less in all that armor." },
+				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
+				{ Cue = "/VO/Hephaestus_0054",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "Is there something wrong with that blessing? Might look it can't be improved. Then again, let me show you how it's done." },
 			},
-			HephaestusExpectingAphrodite01 =
+			HephaestusImproveMiscOlympian04 =
 			{
+				Name = "HephaestusImproveMiscOlympian04",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				RequiredFalseGodLoot = "AphroditeUpgrade",
-				RequiredTrait = "ForceAphroditeBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0064",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Aphrodite said she's running just a little late, Coz, though I'm sure you understand. Besides, I'm here! In spirit anyhow." },
+				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
+				{ Cue = "/VO/Hephaestus_0055",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I believe you are getting used to the best, Zagreus. Well, say no more. Let me tune this up." },
 			},
-			HephaestusExpectingArtemis01 =
+			HephaestusImproveMiscOlympian05 =
 			{
+				Name = "HephaestusImproveMiscOlympian05",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "ArtemisUpgrade",
-				RequiredTrait = "ForceArtemisBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0065",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Wanted to let you know my sister Artemis is out looking for you. You should be running into her in any chamber, now!" },
+				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
+				{ Cue = "/VO/Hephaestus_0056",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "I would like to take another look at this blessing. I believe it wasn't fully improved. If I could just..." },
 			},
-			HephaestusExpectingDionysus01 =
+			HephaestusImproveMiscOlympian06 =
 			{
+				Name = "HephaestusImproveMiscOlympian06",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "DionysusUpgrade",
-				RequiredTrait = "ForceDionysusBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0066",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Afraid that Dionysus couldn't be here for you, boss. Though punctuality has never been one of his stronger suits." },
+				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
+				{ Cue = "/VO/Hephaestus_0057",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+					Text = "You should be used to my improvement by now. Now back to the workshop." },
 			},
-			HephaestusExpectingDemeter01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredFalseGodLoot = "DemeterUpgrade",
-				RequiredTrait = "ForceDemeterBoonTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0160",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "That chill you were expecting in the air, that wasn't Demeter this time, here, boss! No, that was just me whisking to you in a flash. Makes for a little pleasant breeze I think!" },
-			},
-
-			HephaestusBeatCharonQuestComplete =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", "BossCharonHephaestusQuestComplete01" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0200",
-					Emote = "PortraitEmoteCheerful",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You did it, Coz! And by {#DialogueItalicFormat}it {#PreviousFormat}I'm referring to the act of beating down my seemingly invincible boatman associate, who fancies himself pretty tough as Underworld deities go! He wasn't sure you had it in you, and if I may be so bold, neither was I!" },
-			},
-
-			HephaestusAboutPlume02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				-- MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutPlume01" },
-				RequiredAnyTextLines = { "HephaestusGift06", "HephaestusGift06B" },
-				RequiredTrait = "FastClearDodgeBonusTrait",
-				RequiresMaxKeepsake = true,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0115",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey looking like you're getting some good use out of that fancy plume of yours! Keep going like that, maybe someday you'll be half as quick as me!" },
-			},
-
-			HephaestusAboutSkelly01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01", "SkellyBackstory01" },
-				RequiredAnyTextLines = { "HephaestusAboutHourglass01", "HephaestusLootBought01", "HephaestusLootBought01_B" },
-				RequiredTrait = "ReincarnationTrait",
-				RequiresMaxKeepsake = true,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0117",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I got a keen eye, boss, so I happened to notice that you've got a certain tooth you're carrying about. Know you're from the land of the dead and all, but don't you think that comes across as just a little odd?" },
-			},
-
 			-- ending
 			HephaestusAboutPersephoneMeeting01 =
 			{
+				Name = "HephaestusAboutPersephoneMeeting01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", "PersephoneFirstMeeting" },
+				RequiredTextLines = { "HephaestusFirstPickUp", "PersephoneFirstMeeting" },
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				RequiredRoomLastRun = "D_Intro",
 				MinRunsSinceAnyTextLines = { TextLines = { "PersephoneFirstMeeting" }, Count = 5 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 				{ Cue = "/VO/Hephaestus_0162",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Heard that you finally got out of there, Coz! Big congratulations due for that: Congrats! The secret's safe with me, of course! The others here, they think you're still at it. Though, I guess you are!" },
 			},
 			HephaestusPostEnding01 =
 			{
+				Name = "HephaestusPostEnding01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", "Ending01" },
+				RequiredTextLines = { "HephaestusFirstPickUp", "Ending01" },
 				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 4 },
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 				{ Cue = "/VO/Hephaestus_0163",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
@@ -2161,38 +2177,39 @@ if ModUtil ~= nil then
 			},
 			HephaestusAboutOlympianReunionQuest01 =
 			{
+				Name = "HephaestusAboutOlympianReunionQuest01",
 				PlayOnce = true,
 				RequiredTextLines = { "HephaestusFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
 				-- MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 				{ Cue = "/VO/ZagreusField_4343", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 2.7 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I get to be the messenger this time. In the name of Hades! Olympus, this is an official message! Lord Hephaestus? Got here as quickly as I could." },
-				{ Cue = "/VO/Hephaestus_0226",
+					Text = "I am sure you could use some time off, Lord Hephaestus. In the name of Hades! Olympus, this is an official message! I hope you can join the party." },
+				{ Cue = "/VO/Hephaestus_0042",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "Why, that looks like you've got a message just for {#DialogueItalicFormat}me{#PreviousFormat}, this time, how special is that, boss? Some sort of invite from the looks of things. You sure that I'm supposed to have this, seeing as I'm not officially involved?" },
+					Text = "Oi, an invitation for me? Gathering aren't my cup, if you get me. I'll let Hermes the spotlight. If you'll excuse me, I still have a lot of work. " },
 			},
 
 			HephaestusPostEpilogue01 =
 			{
+				Name = "HephaestusPostEpilogue01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "OlympianReunionQuestComplete", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0227",
+				{ Cue = "/VO/Hephaestus_0043",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got to tell you, Coz, that was a real something of a feast back your place! A little awkward, having to pretend we just met, but hey, I'm an Olympian! Means I can posture with the best of them. Good times, Coz! Glad it all worked out." },
+					Text = "Hermes told me you got your little gathering at Hades' place. Now, back to work. How about you come to my workshop? I'll show you a trick or two about smithing." },
 			},
 		},
 
 		PriorityPickupTextLineSets =
 		{
-			HephaestusExpectingMiscOlympian01 =
+			HephaestusAboutHammerWeapon01 =
 			{
+				Name = "HephaestusAboutHammerWeapon01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
@@ -2200,13 +2217,13 @@ if ModUtil ~= nil then
 				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
 				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
 				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0166",
+				{ Cue = "/VO/Hephaestus_0154",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Afraid your regularly scheduled Olympian could not be here right now, because I'm that much faster, boss!" },
+					Text = "You found yourself a fine hammer. I am sure you'll get use to its weight. It's a one of a kind." },
 			},
-			HephaestusExpectingMiscOlympian02 =
+			HephaestusAboutThorAspect01 =
 			{
+				Name = "HephaestusAboutThorAspect01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
@@ -2214,27 +2231,13 @@ if ModUtil ~= nil then
 				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
 				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
 				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0167",
+				{ Cue = "/VO/Hephaestus_0155",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You might have been expecting someone else, here, boss. But I just couldn't help beating them to the punch this time!" },
+					Text = "Got some power there, eh. Zeus might get jealous there." },
 			},
-			HephaestusExpectingMiscOlympian03 =
+			HephaestusAboutThorAspect02 =
 			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0168",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got here just as quickly as I could, Coz. Which turns out to be quite a bit faster than my relatives!" },
-			},
-			HephaestusExpectingMiscOlympian04 =
-			{
+				Name = "HephaestusAboutThorAspect02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
@@ -2242,393 +2245,489 @@ if ModUtil ~= nil then
 				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
 				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
 				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0169",
+				{ Cue = "/VO/Hephaestus_0156",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I'm sure that keepsake that you brought will come in handy soon enough, there, boss!" },
+					Text = "" },
 			},
-			HephaestusExpectingMiscOlympian05 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0170",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My relatives are normally quite quick to heed the call of anybody bearing one of their keepsakes! Huh!" },
-			},
-			HephaestusExpectingMiscOlympian06 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0171",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I may not be the god you're looking for right at the moment, boss, but I will get you on your way to them in no time here!" },
-			},
-
 			-- about other gods
-			HephaestusAboutZeus01 =
+			HephaestusAboutKeepsake01 =
 			{
+				Name = "HephaestusAboutKeepsake01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredGodLoot = "ZeusUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0053",
+				{ Cue = "/VO/Hephaestus_0075",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You heard already from my pop, haven't you, Coz? Wonderful guy. Don't get to spend a lot of time together, though! You know how that is. Well, see you!" },
+					Text = "You really brought a statue of yourself with you? I must say it is a little strange, even for me." },
 			},
-			HephaestusAboutZeus02 =
+			HephaestusAboutFirstPickup01 =
 			{
+				Name = "HephaestusAboutFirstPickup01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusAboutZeus01" },
 				RequiredGodLoot = "ZeusUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0223",
+				{ Cue = "/VO/Hephaestus_0076",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Coz, my pop never gives his lightning blessings to me! He's quite invested in what happens to you, isn't he?" },
+					Text = "Zagreus. If I am being totally honest with you. I meant to come help you sooner, but I was too busy with work. Maybe Aphrodite is right. Maybe I should work a little less. But again, that's why I can give you this." },
 			},
-			HephaestusAboutPoseidon01 =
+			HephaestusAboutHermes01 =
 			{
+				Name = "HephaestusAboutHermes01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredGodLoot = "PoseidonUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0054",
+				{ Cue = "/VO/Hephaestus_0077",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Want to bring you in on something, boss. Reason that Uncle Poseidon got to you before I did is, I let him. He's under the impression he's as spry as ever! {#DialogueItalicFormat}Hah!{#PreviousFormat}" },
+					Text = "Hermes and I don't work on the same schedule. Don't worry, nothing bad happen between us. We are just both so busy, in our own way." },
 			},
-			HephaestusAboutAthena01 =
+			HephaestusAboutHermes02 =
 			{
+				Name = "HephaestusAboutHermes02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredGodLoot = "AthenaUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0055",
+				{ Cue = "/VO/Hephaestus_0078",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "So then Athena's looking out for you, that's good, that's good! She likes to put a lot of thought and stuff in everything, it's all a little much, if you ask me!" },
+					Text = "Hermes keeps bragging me how many request he does in day. I might do less request than him, but look at this. Like I say, quality beats quantity." },
+			},
+			HephaestusAboutDaedalus01 =
+			{
+				Name = "HephaestusAboutDaedalus01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "AresUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0079",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "How clumsy is Daedalus? Even if he keeps fixing your domain, how many hammer does one have? Many. Yes, many." },
+			},
+			HephaestusAboutDaedalus02 =
+			{
+				Name = "HephaestusAboutDaedalus02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "ArtemisUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0080",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You might wonder why I got Daedalus hammer to give to you... Well, Zagreus. I keep my own hammer since you might not be strong enough to handle them. Daedalus is kind enough to share his." },
 			},
 			HephaestusAboutAres01 =
 			{
+				Name = "HephaestusAboutAres01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredGodLoot = "AresUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0056",
+				{ Cue = "/VO/Hephaestus_0081",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know who keeps me awful busy, Coz? Ares. Nothing like a good old war amongst the mortals to create demand for lots and lots of messages to go around!" },
-			},
-			HephaestusAboutArtemis01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				RequiredGodLoot = "ArtemisUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-
-				{ Cue = "/VO/Hephaestus_0057",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Did Artemis manage to locate you already, boss? She's pretty good at that, I have to say. I'm faster! But she's fast, she's pretty fast, all right." },
+					Text = "Can you believe Ares is my brother? I don't think we can ever get along after so many confrontation. There's some things you can't forgive. Even to family member." },
 			},
 			HephaestusAboutAphrodite01 =
 			{
+				Name = "HephaestusAboutAphrodite01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredGodLoot = "AphroditeUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0058",
+				{ Cue = "/VO/Hephaestus_0082",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Aphrodite's really something, don't you think so, Coz? Normally I'd stop for no one here. But when it comes to her, exceptions must be made!" },
+					Text = "As you may know, Aphrodite is my wife. Our relationship is... complicated. But nonetheless, we should be everything for each other. I just wish she would understand it." },
 			},
-			HephaestusAboutDionysus01 =
+			HephaestusAboutAphrodite02 =
 			{
+				Name = "HephaestusAboutAphrodite02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "AphroditeUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0101",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "My wife has not been the most faitful, but even in our worst times, I know we cared for each other. I know I am working too much, but it's no reason to play behind my back, right?" },
+			},
+			HephaestusAboutStygius =
+			{
+				Name = "HephaestusAboutStygius",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredGodLoot = "DionysusUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
 
-				{ Cue = "/VO/Hephaestus_0059",
+				{ Cue = "/VO/Hephaestus_0083",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You ever get the feeling life's been moving all too quickly for you, boss? Well Dionysus doesn't, as you're probably aware. Throws quite a feast, though!" },
+					Text = "" },
 			},
-			HephaestusAboutDemeter01 =
+			HephaestusAboutVaratha =
 			{
+				Name = "HephaestusAboutVaratha",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", "DemeterGift01" },
-				RequiredFalseFlags = { "PersephoneAway" },
-				RequiredGodLoot = "DemeterUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
 
-				{ Cue = "/VO/Hephaestus_0159",
+				{ Cue = "/VO/Hephaestus_0084",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Been downright chilly up here lately, Coz! We've Demeter to thank for that! Me, I try to stay out of her way, she doesn't think I'm of much help to her. Although I'm sure she's warmed to you at least!" },
+					Text = "" },
 			},
-			HephaestusAboutHadesKeepsake01 =
+			HephaestusAboutAegis =
 			{
+				Name = "HephaestusAboutAegis",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", "OlympianReunionQuestComplete" },
-				RequiredTrait = "HadesShoutKeepsake",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
 
-				{ Cue = "/VO/Hephaestus_0235",
-					Emote = "PortraitEmoteSurprise",
+				{ Cue = "/VO/Hephaestus_0085",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Say, isn't that your father's blessing on you, Coz?! I almost can't believe it, but you've done such a good job of things, how could he {#DialogueItalicFormat}not {#PreviousFormat}approve?" },
+					Text = "" },
 			},
+			HephaestusAbouCoronacht =
+			{
+				Name = "HephaestusAbouCoronacht",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
 
+				{ Cue = "/VO/Hephaestus_0086",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutMalphon =
+			{
+				Name = "HephaestusAboutMalphon",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0087",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutExagryph =
+			{
+				Name = "HephaestusAboutExagryph",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0088",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutArthur =
+			{
+				Name = "HephaestusAboutArthur",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0089",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutGuanYu =
+			{
+				Name = "HephaestusAboutGuanYu",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0090",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutBeowulf =
+			{
+				Name = "HephaestusAboutBeowulf",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0091",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAbouRama =
+			{
+				Name = "HephaestusAbouRama",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0092",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutGilgamesh =
+			{
+				Name = "HephaestusAboutGilgamesh",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0093",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
+			HephaestusAboutLucifer =
+			{
+				Name = "HephaestusAboutLucifer",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredGodLoot = "DionysusUpgrade",
+
+				{ Cue = "/VO/Hephaestus_0094",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},
 			HephaestusBackstory01 =
 			{
+				Name = "HephaestusBackstory01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0004",
+				RequiredTextLines = { "ZeusFirstPickUp", "DionysusFirstPickUp", "AthenaFirstPickUp", "HestiaFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0095",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Whoa, what's good, there, Coz? Though, who am I kidding, we can cut the small talk. I don't mind. I interrupt my brothers and my sisters all the time!" },
+					Text = "As a newborn, I wasn't very... able. Hera didn't want a cripple as a son, and threw me off Olympus. I hope Hades wasn't as harsh to you during your childhood." },
 			},
 			HephaestusBackstory02 =
 			{
+				Name = "HephaestusBackstory02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0067",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0096",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Boss, you've probably caught yourself thinking: {#DialogueItalicFormat}Hephaestus sure is quick! So how come it took so long for him to show up in the first place? {#PreviousFormat}Well, I'm afraid that's not for you to know. But! It's not because I was late. Not late for anything." },
+					Text = "You might not know this, but I was raised by nymphs very far from Olympus. It's when I was older that I was able to gain back my right as an olympian. But that's another story. You should keep going up like I did." },
 			},
 			HephaestusBackstory03 =
 			{
+				Name = "HephaestusBackstory03",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusBackstory01", "HephaestusBackstory02" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0068",
+				{ Cue = "/VO/Hephaestus_0097",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, uh, could you do a little favor for me, Coz? My brothers, sisters, family, and whatnot, they're unaware I'm working with you, here. It's no big deal, but let's keep it that way for now. All right?" },
+					Text = "I got my crafting skills from decades of smithing in a volcano. Being a castaway had its pros. I was able to find my true passion. Find your own way, Zagreus." },
 			},
 			HephaestusBackstory04 =
 			{
+				Name = "HephaestusBackstory04",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusLootBought02" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0069",
+				{ Cue = "/VO/Hephaestus_0098",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Happened to be in the area, boss! Seeing as the mortal folk up here keep dying off, and someone's got to bring their souls to your domain, now, don't they." },
+					Text = "I made my mother a golden throne once. I knew she wouldn't refuse it which is why it was actually in fact a trap. How predictable was she then." },
 			},
 			HephaestusBackstory05 =
 			{
+				Name = "HephaestusBackstory05",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusGift05" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0072",
+				{ Cue = "/VO/Hephaestus_0099",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Know that saying {#DialogueItalicFormat}'don't be hasty'{#PreviousFormat}, boss? That comes from me. I swear! A little way to stave off competition, masquerading as the wisdom of a sage. Those stupid mortals will buy anything!" },
+					Text = "Remember when I told you I trapped my mother in a golden throne? Well, Hermes convinced me to let her go. I did, but under two condition. My place in Olympus and be blessed to have Aphrodite as my wife." },
 			},
 			HephaestusBackstory06 =
 			{
+				Name = "HephaestusBackstory06",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusBackstory03", "HephaestusGift02" },
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0193",
+				{ Cue = "/VO/Hephaestus_0100",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Not that I really know {#DialogueItalicFormat}exactly {#PreviousFormat}what you're up to, Coz, but! If I did, I don't think anybody on Olympus is aware of it. Or, if they are, they're keeping their mouths shut. The same as me!" },
+					Text = "Do you remember how I got to where I am right now? Never give up and you might get what you deserve if you work hard enough." },
 			},
-			HephaestusBackstory07 =
+			HephaestusAboutTartarus01 =
 			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusBackstory02", "HephaestusGift04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0214",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You ever wonder how I got this fast, Coz? Lots of practicing, I'll tell you that! And being born unnaturally quick, I guess!" },
-			},
-
-			HephaestusAboutSkinnyLittleChap01 =
-			{
+				Name = "HephaestusAboutTartarus01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				-- these requirements are purely coincidental to the content of this event
 				RequiredAnyTextLines = { "HephaestusAboutSecretService01", "SkellyBackstory03", "SkellyGift09", "HephaestusGift08" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0195",
+				{ Cue = "/VO/Hephaestus_0102",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Once took a skinny little chap down to the Underworld, got the business end of a sharp spear, he did! He had it coming, though, a lot of lying, cheating, and the like. Last that I heard, he's still making his amends down there. {#DialogueItalicFormat}Eh{#PreviousFormat}!" },
+					Text = "Still in Tartarus, mate? While your there, take some time to appreciate Deadalus effort on this maze he made. Must be working if you are still in it. Haha." },
 			},
 
-			HephaestusAboutSkelly02 =
+			HephaestusAboutAsphodel01 =
 			{
+				Name = "HephaestusAboutAsphodel01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredAnyTextLines = { "SkellyAboutSources01", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0118",
+				{ Cue = "/VO/Hephaestus_0103",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Boss, I know you've heard a certain rumor from a very skinny individual who's uninclined to move. You best keep that one to yourself, all right? Or else our jig is up, and your father wouldn't like that, nor would you. So, cheers!" },
+					Text = "The burning flames of Asphodel. I love the burning sensation of molten flame while smithing. I hope you get used to it as well." },
 			},
-			HephaestusAboutSkelly03 =
+			HephaestusAboutElysium01 =
 			{
+				Name = "HephaestusAboutElysium01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusAboutSkelly01", "HephaestusGift05", "SkellyGift09" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0196",
+				{ Cue = "/VO/Hephaestus_0104",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Say, you're in good with what's-his-name, the one who gave you his lucky tooth? So he's an all-right sort, then. Has to be, if you put up with him!" },
+					Text = "The great garden of Elysium. A place for all heroes. I crafted many weapons. Most were used by them. Other killed them. " },
 			},
-			HephaestusAboutSecretService01 =
+			HephaestusAboutStyx01 =
 			{
+				Name = "HephaestusAboutStyx01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredAnyTextLines = { "SkellyAboutSources02" },
 				RequiredFalseTextLinesLastRun = { "SkellyAboutSources02" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0165",
+				{ Cue = "/VO/Hephaestus_0105",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "So, now you've found me out, haven't you, Coz? Heard from the big boat-man himself. Well, good! We're pleased to be of service. And {#DialogueItalicFormat}we've {#PreviousFormat}got a lot of dirt on {#DialogueItalicFormat}you{#PreviousFormat}, so you be sure to keep our secrets, too. All right?" },
+					Text = "I see you are getting close to the surface. I know the Temple of Styx can be tricky to go through. But still take some time to admire the unique architecture it has." },
 			},
-			HephaestusAboutSecretService02 =
+			HephaestusAboutChaos01 =
 			{
+				Name = "HephaestusAboutChaos01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "Ending01", "HephaestusGift08", "CharonGift07" },
 				RequiredAnyTextLines = { "HephaestusLootBought01", "HephaestusLootBought01_B", "HephaestusAboutHourglass01" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0231",
+				{ Cue = "/VO/Hephaestus_0106",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "So my professional associate, the fearsome boatman on the River Styx? You got to know him pretty well in all of this, right, Coz? Hard getting through to him, I know, but his heart's in the right place! It's why I'm working with him, after all this time!" },
+					Text = "Did you get to an unknown location, just now? I would love to see new architecture. You can tell me about it once you visit me in my workshop." },
 			},
-
-			HephaestusAboutMegRelationship01 =
+			HephaestusAboutErebus01 =
 			{
+				Name = "HephaestusAboutErebus01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift03" },
 				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
 				MinRunsSinceAnyTextLines = { TextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, Count = 2 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0194",
+				{ Cue = "/VO/Hephaestus_0107",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Heard you've been seeing the Fury, Megaera, Coz? Got the impression she was quite a handful, though I guess the same can probably be said of you, there, huh? You two have fun!" },
+					Text = "Erebus is not a place you stay very long. I wouldn't go there unless necessary if I was you. Some don't come back from there, mate. I wouldn't want to lose my favorite client." },
 			},
-
-			HephaestusAboutCharonFight01 =
+			HephaestusAboutGaia01 =
 			{
+				Name = "HephaestusAboutGaia01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredAnyTextLines = { "HephaestusLootBought01", "HephaestusLootBought01_B", "HephaestusAboutHourglass01" },
 				RequiredSeenRooms = { "CharonFight01" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0197",
+				{ Cue = "/VO/Hephaestus_0153",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I can't believe you got into a fight with my professional associate, you daft or something, Coz? Just about everybody that I know, they're all at least a little bit afraid of that one and his boat, yet you think you can take him, huh?" },
+					Text = "What a beautiful garden you were in, it felt so peaceful. You can find such beautiful garden here. But still. Impressive to find them down there." },
 			},
-			HephaestusAboutCharonFight02 =
+			HephaestusAboutGreece01 =
 			{
+				Name = "HephaestusAboutGreece01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusAboutCharonFight01", "BossCharonOutro01" },
 				RequiredFalseTextLines = { "HephaestusBeatCharonQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0198",
+				{ Cue = "/VO/Hephaestus_0108",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "So you took on my good professional associate, is that right, Coz? And you beat the big boatman himself! I knew you were pretty tough, but not {#DialogueItalicFormat}that {#PreviousFormat}tough! Impressive work! He's impressed, too. He isn't even mad!" },
+					Text = "One day you might get to the surface on your way to us. If you ever do, be careful with the local wildlife, they can be a bit agressive at times." },
 			},
-
-			HephaestusBeatCharonQuest01 =
+			HephaestusAboutInfernalTrove01 =
 			{
+				Name = "HephaestusAboutInfernalTrove01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusAboutCharonFight01", "HephaestusGift03" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0199",
+				{ Cue = "/VO/Hephaestus_0109",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, uh, so I kind of placed a bet with the old boatman, my associate that is, that you could beat him in a fight, twice in a row! No pressure, or anything, but just in case you prove me right one of these days, I would appreciate it, Coz!" },
+					Text = "There should be an Infernal Trove next to you. Why don't you do some extra work? We both know all efforts are rewarded." },
 			},
 
-			HephaestusMessage01 =
+			HephaestusAboutDaedalusHammer01 =
 			{
+				Name = "HephaestusAboutDaedalusHammer01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusBackstory03", "HephaestusSecondPickUp", },
+				RequiredTextLines = { "HephaestusBackstory03", "HephaestusFirstPickUp", },
 				RequiredFalseTextLinesLastRun = { "HephaestusMessage01", "HephaestusMessage02", "HephaestusMessage03", "HephaestusMessage04", "HephaestusMessage05", "HephaestusMessage06" },
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0073",
+				{ Cue = "/VO/Hephaestus_0110",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Message from Olympus for you, boss! It says, {#DialogueItalicFormat}'It sure is nice up here upon this mountain, not having to escape the Underworld! Come join us soon, won't you?'{#PreviousFormat}" },
+					Text = "You found one of Daedalus Hammer, mate. They sure know what to do with you weapons. If something can get you out, it's them." },
 			},
-			HephaestusMessage02 =
+			HephaestusAboutPoseidon01 =
 			{
+				Name = "HephaestusAboutPoseidon01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusMessage01", },
 				RequiredFalseTextLinesLastRun = { "HephaestusMessage01", "HephaestusMessage02", "HephaestusMessage03", "HephaestusMessage04", "HephaestusMessage05", "HephaestusMessage06" },
 				RequiresLastRunNotCleared = true,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0074",
+				{ Cue = "/VO/Hephaestus_0111",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Message for you, boss. It says, {#DialogueItalicFormat}'You're rather slow. If only somebody could help you out with that.' {#PreviousFormat}Huh, fancy that, what a coincidence!" },
+					Text = "I appreciate my uncle Poseidon. He believed in me when I was young and helped me resolve major conflict with my brother. He's the real mate." },
 			},
 
-			HephaestusMessage03 =
+			HephaestusAboutAnvilOfFates01 =
 			{
+				Name = "HephaestusAboutAnvilOfFates01",
 				Priority = true,
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
@@ -2638,1700 +2737,720 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				RequiredMinCompletedRuns = 20,
 				RequiresLastRunNotCleared = true,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0075",
+				{ Cue = "/VO/Hephaestus_0112",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got you a message, Coz. Says here, {#DialogueItalicFormat}ahem{#PreviousFormat}: {#DialogueItalicFormat}'Hurry up and get out of there already.' {#PreviousFormat}It's from the surface of the earth, says so right here." },
+					Text = "You must have encountered one of the anvil of fates in your countless attempts to escape. They sure are tricky to use. Sometimes it's best to continue your path." },
 			},
-			HephaestusMessage04 =
+			HephaestusAboutDamageLessEncounter01 =
 			{
+				Name = "HephaestusAboutDamageLessEncounter01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusMessage01", },
 				RequiredFalseTextLinesLastRun = { "HephaestusMessage01", "HephaestusMessage02", "HephaestusMessage03", "HephaestusMessage04", "HephaestusMessage05", "HephaestusMessage06" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0158",
+				{ Cue = "/VO/Hephaestus_0113",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another message here! It says, {#DialogueItalicFormat}'One small spoon dried oregano, two spoons extra virgin olive oil, one large onion, minced, a dash of salt to taste,' {#PreviousFormat}wait, this isn't for you. Though you should try it sometime if you ever make it out!" },
+					Text = "Not even a scratch! You are getting really good at predicting your enemies movements. Maybe this can help in case they eventually hit you." },
 			},
 
-			HephaestusMessage05 =
+			HephaestusAboutDamageLessEncounter02 =
 			{
+				Name = "HephaestusAboutDamageLessEncounter02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusMessage01", },
 				RequiredAnyTextLines = { "HephaestusGift07", "HephaestusGift07B" },
 				RequiredFalseTextLinesLastRun = { "HephaestusMessage01", "HephaestusMessage02", "HephaestusMessage03", "HephaestusMessage04", "HephaestusMessage05", "HephaestusMessage06" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0176",
+				{ Cue = "/VO/Hephaestus_0114",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Message for you, Coz, it says, {#DialogueItalicFormat}'On behalf of all Olympus, we would like for you to know that was a right good bottle of Ambrosia that you offered to the god of travel, Hephaestus, who appreciated every drop.' {#PreviousFormat}Sincerely, me!" },
+					Text = "Dodged, and dodged. I couldn't move like you did with my leg, but it was impressive to watch. This is your reward." },
 			},
-			HephaestusMessage06 =
+			HephaestusAboutDamageLessEncounter03 =
 			{
+				Name = "HephaestusAboutDamageLessEncounter03",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusMessage01", },
 				RequiredAnyTextLines = { "HephaestusGift08", "HephaestusGift08B" },
 				RequiredFalseTextLinesLastRun = { "HephaestusMessage01", "HephaestusMessage02", "HephaestusMessage03", "HephaestusMessage04", "HephaestusMessage05", "HephaestusMessage06" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0177",
+				{ Cue = "/VO/Hephaestus_0115",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another message for you, Coz, this one says, {#DialogueItalicFormat}'Hey, mate! If you ever do make it up here up on this mountaintop for whatever reason, we should hang out, all right? I can show you around.' {#PreviousFormat} Your friend, Hephaestus." },
-			},
-			HephaestusMaxRelationship01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredAnyTextLines = { "HephaestusMessage06" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0178",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, boss, just between us? Out of all special delivery recipients I've had over the ages, here, I've got to say, you're the most interesting one!" },
+					Text = "Was that battle rigged? You didn't get hit. If it wasn't, congratulation. You deserve this for your hard work." },
 			},
 
-			HephaestusRunProgress01 =
+			HephaestusAboutDamageLessRun01 =
 			{
+				Name = "HephaestusAboutDamageLessRun01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", "HephaestusLootBought02" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0070",
+				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusLootBought02" },
+				{ Cue = "/VO/Hephaestus_0116",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Coz, all this time that I've been bussing souls across the borders of your father's land, it's good to have the chance to help somebody out the other way!" },
+					Text = "Wait... I was sure you made it to the surface without a single hit... I must be mistaken since your still down there. I should take a break right after this." },
+			},
+			HephaestusPostEnding01 =
+			{
+				Name = "HephaestusPostEnding01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
+				RequiredTextLines = { "Ending01", "HephaestusGift04" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 2 },
+				{ Cue = "/VO/Hephaestus_0117",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
 			},
 
-			HephaestusSquelch01 =
+			HephaestusPostEnding02 =
 			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusBackstory05", "HephaestusMessage01", "HephaestusMessage02" },
-				{ Cue = "/VO/Hephaestus_0078",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, Coz, you're now well accustomed to our little chats, but I want you to level with me here. You're the boss, if you prefer, I would be happy to shut up, no harm no foul. Just give the signal, hey?" },
-				{
-					Text = "Hephaestus_OfferText01",
-					Choices =
-					{
-						{
-							ChoiceText = "Squelch_KeepTalking",
-							{ Cue = "/VO/ZagreusField_1951", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "Perish the thought, Lord Hephaestus. It's been great hearing from you from time to time." },
-							{ Cue = "/VO/Hephaestus_0079",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								Text = "Well, all right, boss. Just making sure that I'm not interrupting anything!" },
-						},
-						{
-							ChoiceText = "Squelch_BeQuietAWhile",
-							{ Cue = "/VO/ZagreusField_1952", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "Now that you mention it, Lord Hephaestus, yes, let's keep our interactions nice and quick." },
-							{ Cue = "/VO/Hephaestus_0080",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								PostLineFunctionName = "SquelchHephaestus",
-								Text = "I hear you, boss, we'll cut straight to the chase next time, all right?" },
-						},
-					},
-				},
-			},
-			HephaestusSquelch02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				Priority = true,
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSquelch01Squelch_BeQuietAWhile" },
-				{ Cue = "/VO/Hephaestus_0081",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Ahem{#PreviousFormat}! Pardon the interruption, boss. You let me know if you prefer that I pipe up again next time, more like I used to!" },
-				{
-					Text = "Hephaestus_OfferText02",
-					Choices =
-					{
-						{
-							ChoiceText = "Squelch_ResumeTalking",
-							{ Cue = "/VO/ZagreusField_1953", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "I miss hearing from you, Hephaestus. Let's carry on like we did before." },
-							{ Cue = "/VO/Hephaestus_0082",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								Text = "{#DialogueItalicFormat}Hah{#PreviousFormat}, sure thing, boss. It's good to have a chat from time to time!" },
-						},
-						{
-							ChoiceText = "Squelch_KeepQuiet",
-							{ Cue = "/VO/ZagreusField_1954", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "Appreciate you checking in, Lord Hephaestus. I think we should keep at it like we have been, nice and quiet." },
-							{ Cue = "/VO/Hephaestus_0083",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								PostLineFunctionName = "SquelchHephaestus",
-								Text = "No problem whatsoever, boss. Just checking in." },
-						},
-					},
-				},
-			},
-			-- if you squelched him variant
-			HephaestusSquelch03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				Priority = true,
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSquelch01Squelch_BeQuietAWhile" },
-				RequiredFalseTextLines = { "HephaestusSquelch03B" },
-				RequiredMinCompletedRuns = 80,
-				{ Cue = "/VO/Hephaestus_0084",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Thought I'd check in again real quick, there, boss. You want my witty conversation next time, or straight to the Boons?" },
-				{
-					Text = "Hephaestus_OfferText03",
-					Choices =
-					{
-						{
-							ChoiceText = "Squelch_ResumeTalking",
-							{ Cue = "/VO/ZagreusField_1955", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "You know, yes, let's go back to having witty conversation from you, Hephaestus. That sounds great." },
-							{ Cue = "/VO/Hephaestus_0085",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								Text = "{#DialogueItalicFormat}Hah{#PreviousFormat}, good! I like these little chats! Take care, now, boss." },
-						},
-						{
-							ChoiceText = "Squelch_KeepQuiet",
-							{ Cue = "/VO/ZagreusField_1956", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "Straight to the Boons, Lord Hephaestus. We both appreciate cutting straight to the chase." },
-							{ Cue = "/VO/Hephaestus_0086",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								PostLineFunctionName = "SquelchHephaestus", PostLineFunctionArgs = { Permanent = true, },
-								Text = "I get it, boss. Words are too slow, aren't they. Won't bother you again word-wise, but I'll be seeing you!" },
-						},
-					},
-				},
-			},
-			-- if you did not squelch him
-			HephaestusSquelch03B =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				Priority = true,
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSquelch01" },
-				RequiredFalseTextLines = { "HephaestusSquelch03" },
-				RequiredMinCompletedRuns = 80,
-				{ Cue = "/VO/Hephaestus_0084",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Thought I'd check in again real quick, there, boss. You want my witty conversation next time, or straight to the Boons?" },
-				{
-					Text = "Hephaestus_OfferText01",
-					Choices =
-					{
-						{
-							ChoiceText = "Squelch_KeepTalking",
-							{ Cue = "/VO/ZagreusField_2711", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "Definitely witty conversation, Lord Hephaestus. Boons are more than welcome after that." },
-							{ Cue = "/VO/Hephaestus_0085",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								Text = "{#DialogueItalicFormat}Hah{#PreviousFormat}! Good, I like these little chats! Take care, now, boss." },
-						},
-						{
-							ChoiceText = "Squelch_BeQuietAWhile",
-							{ Cue = "/VO/ZagreusField_1956", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-								Text = "Straight to the Boons, Lord Hephaestus. We both appreciate cutting straight to the chase." },
-							{ Cue = "/VO/Hephaestus_0086",
-								StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-								PostLineFunctionName = "SquelchHephaestus",
-								Text = "I get it, boss. Words are too slow, aren't they. Won't bother you again word-wise, but I'll be seeing you!" },
-						},
-					},
-				},
-			},
-
-			HephaestusAboutHades01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", "HadesAboutCharon01" },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0071",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Met your father face to face only the one time, Coz. Despite rendering services to him for quite a while. Memorable experience, I'll give it that! Seems like he's not done anything with all the messages my side keeps sending him." },
-			},
-
-			HephaestusAboutThanatos01 =
-			{
+				Name = "HephaestusPostEnding02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", "ThanatosGift06" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0076",
+				{ Cue = "/VO/Hephaestus_0118",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You're pretty close with Thanatos, aren't you, boss? We don't often run in the same lanes, though our duties sometimes intersect a bit. Odd chap. Seems good at what he does, though!" },
+					Text = "" },
 			},
-			HephaestusAboutThanatos02 =
+			HephaestusPostEpilogue01 =
 			{
+				Name = "HephaestusPostEpilogue01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusAboutThanatos01", },
 				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
 				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosAboutRelationship02" }, Count = 2 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0157",
+				{ Cue = "/VO/Hephaestus_0119",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Saw Thanatos again lately, here, boss, and want to tell you, almost looked as though he cracked a smile when he mentioned you! Never seen anything like that with him!" },
+					Text = "Are you done escaping already? Why do I care, as long as I got work to do." },
 			},
 
-			HephaestusAboutOrpheus01 =
+			HephaestusLegendaryPickUp01 =
 			{
+				Name = "HephaestusLegendaryPickUp01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "OrpheusGift02", "HephaestusGift02" },
-				RequiredMinNPCInteractions = { NPC_Orpheus_01 = 10 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0121",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				ValuableUpgradeInRoom = {
+					AllAtLeastRarity = "Rare",
+					HasAtLeastRarity = "Epic",
+				},
+				{ Cue = "/VO/Hephaestus_0120",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I hear you're close with Orpheus down there, you get the chance, you tell him I said hey! He's pretty decent with that lyre of his, last time I checked." },
+					Text = "" },
 			},
 
-			HephaestusAboutEurydice01 =
+			HephaestusArmorPickUp01 =
 			{
+				Name = "HephaestusArmorPickUp01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusGift03", "HephaestusAboutOrpheus01" },
 				RequiredAnyTextLines = { "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0224",
+				{ Cue = "/VO/Hephaestus_0121",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey boss, in all your travels there, you happen to run into a lass by name Eurydice? Hope she's all right! I feel bad because we didn't get a proper send-off last we met." },
+					Text = "If it's defense you need, I reckon I have the best to offer. Armor up." },
 			},
-			HephaestusAboutEurydice02 =
+			HephaestusArmorPickUp02 =
 			{
+				Name = "HephaestusArmorPickUp02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "EurydiceAboutHephaestus01" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0120",
+				{ Cue = "/VO/Hephaestus_0122",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I caught wind you found Eurydice down there, that's great! Long as she's on the up and up, I can eject her from the tiny worry center of my mind." },
+					Text = "With this, nothing can get through ya. Unless, you let them. Then I don't know what to tell you." },
 			},
 
-			HephaestusAboutHourglass01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", },
-				RequiredTrait = "ShopDurationTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0116",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "That's quite a nice Bone Hourglass you got, there, boss! So you're in good with my professional associate, as well. A real gentleman!" },
-			},
-
-			HephaestusAboutPlume01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", },
-				RequiredTrait = "FastClearDodgeBonusTrait",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0114",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Why, look at you, there, boss! I recognize that fancy plume you got! Just an iota of my speediness in there, but still! Much more than most can do." },
-			},
-
-			HephaestusAboutWhippedFrenzy01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMinActiveMetaUpgradeLevel = { Name = "EnemySpeedShrineUpgrade", Count = 2 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0077",
-					Emote = "PortraitEmoteSurprise",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Whoa, what's gotten into all those lifeless wretches that you're always fighting with down there? They're really moving lately! Whatever's made them go all out, it wasn't me!" },
-			},
-			HephaestusAboutEnemySpeedCondition01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", },
-				RequiredActiveMetaUpgrade = "EnemySpeedShrineUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0188",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got all your father's lifeless wretches hot and bothered, going all out all because of that {#DialogueItalicFormat}Forced Overtime {#PreviousFormat}condition of his, isn't that right, Coz? Well, if they're interested in getting things done quickly, I am sure you can oblige them in a bit!" },
-			},
-			HephaestusAboutEnemySpeedCondition02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutWhippedFrenzy01", },
-				RequiredMinActiveMetaUpgradeLevel = { Name = "EnemySpeedShrineUpgrade", Count = 2 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0189",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Looks like those lifeless wretches you're contending with down there are {#DialogueItalicFormat}really {#PreviousFormat}on the move this time around, aren't they, boss? Oh, well, you're faster still, I'm sure!" },
-			},
-
-			HephaestusAboutBiomeSpeedCondition01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutWhippedFrenzy01", },
-				RequiredActiveMetaUpgrade = "BiomeSpeedShrineUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0190",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Somebody's on a tight deadline, I take it, Coz? Courtesy of your father's Pact, well, you believe me, I know how that is, so I won't keep you, just keep moving, right?" },
-			},
-			HephaestusAboutBiomeSpeedCondition02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutWhippedFrenzy03", },
-				RequiredActiveMetaUpgrade = "BiomeSpeedShrineUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0191",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I realize you're on a tight deadline, there, boss, so let's dispense with all unnecessary chit-chat here and get you on your merry way, posthaste!" },
-			},
-			HephaestusAboutBiomeSpeedCondition03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutWhippedFrenzy01", },
-				RequiredActiveMetaUpgrade = "BiomeSpeedShrineUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0192",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You racing against time to keep things interesting, or what, there, boss? Turns out that time goes pretty quick. I like racing against it, too!" },
-			},
-
-			-- speed running
-			HephaestusAboutTimer01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", },
-				RequiredTrueConfigOptions = { "ShowGameplayTimer", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0087",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Hah! {#PreviousFormat}Can't help but notice you've been timing yourself, boss! Good habit that. Keep an eye on the time, you'll get faster and faster! Not as fast as me, mind." },
-			},
-			HephaestusAboutTimer02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutTimer01", },
-				RequiredTrueConfigOptions = { "ShowGameplayTimer", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0088",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Coz, since you're timing yourself, case you haven't noticed, doesn't count against you when we stop to have these chats! Insisted on that little rule myself." },
-			},
-			HephaestusAboutTimer03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutTimer01", },
-				RequiredFalseConfigOptions = { "ShowGameplayTimer", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0089",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, you stopped timing yourself, boss, everything all right? If that's not a cry for help, well, I don't know what is. Um, here!" },
-			},
-			HephaestusAboutTimer04 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutTimer01", "HephaestusAboutTimer03" },
-				RequiredTrueConfigOptions = { "ShowGameplayTimer", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0090",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Good, boss, I can see you're clocking yourself once again. Little term I like to use, means beating yourself up whilst keeping time!" },
-			},
-			HephaestusAboutTimer05 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusAboutTimer04", },
-				RequiredFalseConfigOptions = { "ShowGameplayTimer", },
-				{ Cue = "/VO/Hephaestus_0091",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Look, Coz, if you aren't always going to time yourself, that is a choice of lifestyle I have to respect. And learn to understand." },
-			},
-
-			-- run clears
-			HephaestusFirstRunCleared01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", "PersephoneFirstMeeting" },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0164",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another message from Olympus, boss. This goes, {#DialogueItalicFormat}'Zagreus, take absolutely all the time you need making your way to us; we know the going must be treacherous, and we assure you our support, however long it takes.' {#PreviousFormat}Well, how about that!" },
-			},
-
-			HephaestusRunCleared01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiresLastRunCleared = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0109",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Heard you got through pretty quick last time! Not bad, not bad!" },
-			},
-			HephaestusRunCleared02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiresLastRunCleared = true,
-				RequiredMinRunsCleared = 3,
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0225",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You'd think that once you break free to the surface we could see you from Olympus a bit more than usual, but no! It's like you're shrouded in eternal night up here, hm? Something like that. Odd, right?" },
-			},
-
-			HephaestusRunClearedNewRecord01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstRunCleared01", },
-				RequiresLastRunCleared = true,
-				RequiresBestClearTimeLastRun = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0110",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, you beat your fastest time fighting through all of that! Not that I'm keeping track! I'm keeping track." },
-			},
-			HephaestusRunClearedNewRecord02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusRunClearedNewRecord01" },
-				RequiresLastRunCleared = true,
-				RequiresBestClearTimeLastRun = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0111",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey Coz, that last run-through that you did, I almost can't believe how quick you pulled that off! You're really pretty good!" },
-			},
-			HephaestusRunClearedNewRecord03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusRunClearedNewRecord02" },
-				RequiresLastRunCleared = true,
-				RequiresBestClearTimeLastRun = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0215",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, you got out of there in practically no time at all before! Let's see if you can have another go like that!" },
-			},
-			HephaestusRunClearedNewRecord04 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusRunClearedNewRecord03" },
-				RequiresLastRunCleared = true,
-				RequiresBestClearTimeLastRun = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0216",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You're getting faster, Coz, keep at it, just like that! Can always go a little faster than before is what I always say!" },
-			},
-			HephaestusRunClearedNewRecord05 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusRunClearedNewRecord04" },
-				RequiresLastRunCleared = true,
-				RequiresBestClearTimeLastRun = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0217",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, Coz, looks to me you beat your fastest time climbing up out of there! That's nicely done! Can you go faster still?" },
-			},
-			HephaestusRunClearedNewRecord06 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusRunClearedNewRecord05" },
-				RequiresLastRunCleared = true,
-				RequiresBestClearTimeLastRun = true,
-				RequiredMinRunsCleared = 2,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0218",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What do you know, you beat your personal best time escaping recently! I hope my blessing helped a bit with that!" },
-			},
-
-			HephaestusRunClearStreak01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp", },
-				RequiresLastRunCleared = true,
-				RequiredMinConsecutiveClears = 3,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0112",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Well look at you, Coz! Rushing to victory after successive victory. Caught wind of your accomplishments down there! Well then, let's keep the streak alive!" },
-			},
-			HephaestusRunClearStreakBroken01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusRunClearStreak01", },
-				RequiresLastRunNotCleared = true,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0113",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Heard the news you broke your streak of victories of late, boss. Happens, right? You seem the sort to bounce right back, though. Let me help with that!" },
-			},
-
-			HephaestusPostEnding01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "Ending01", "HephaestusGift04" },
-				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 2 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0232",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "So {#DialogueItalicFormat}you {#PreviousFormat}get to keep breaking out of there, time after time, so that {#DialogueItalicFormat}your father {#PreviousFormat}can keep finding ways to make it even harder to escape? Something like that? Sounds like an interesting assignment, Coz!" },
-			},
-
-			HephaestusPostEpilogue02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "OlympianReunionQuestComplete", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0228",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Everybody on Olympus, they're still going on about Persephone, Queen of the Underworld! They had no idea she was down there all along, none whatsoever, Coz! And as for me, now I can deliver you my blessings more officially, I think!" },
-			},
-			HephaestusPostEpilogue03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "OlympianReunionQuestComplete", "HephaestusGift03" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0229",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Even though everything's out in the open, now, and all my brothers, sisters, and whatnot are going to keep helping you fight your way out of there, I've still been keeping to myself, of late! That way nobody slows me down." },
-			},
-			HephaestusPostEpilogue04 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "OlympianReunionQuestComplete", "HephaestusGift04" },
-				MinRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete" }, Count = 3 },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0230",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Some members of the family up here, I know they haven't helped at all, but just don't take it personal or anything, all right? Think of it this way: You've got more of us getting along and talking properly than I have ever {#DialogueItalicFormat}seen{#PreviousFormat}!" },
-			},
-
-			HephaestusAboutPersephoneVisit01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "OlympianReunionQuestComplete" },
-				RequiredTrueFlags = { "PersephoneAway" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0233",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Your mother got from there just fine, don't worry, Coz! She had me looking after her, and such. Seemed real nice! Told me to tell you hi." },
-			},
-			HephaestusAboutPersephoneVisit02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "OlympianReunionQuestComplete" },
-				RequiredTrueFlags = { "PersephoneAway" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0234",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, I never knew the pomegranate seeds down in the Underworld held such power if not for your mother mentioning it, Coz! And here I thought they were just tasty, that was it!" },
-			},
-
-			HephaestusAboutHearing01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				RequiredTextLines = { "HephaestusGift01" },
-				RequiresLastRunNotCleared = true,
-				RequiredFalseRooms = { "RoomOpening" },
-				{ Cue = "/VO/Hephaestus_0204",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Thought I'd check up on you, there, boss. You doing well, everything good and all? Can't hear you one iota, mind, so then, don't answer that!" },
-			},
-
-			HephaestusAboutHurrying01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				RequiredTextLines = { "HephaestusGift05" },
-				RequiredFalseConfigOptions = { "ShowGameplayTimer", },
-				RequiredInactiveMetaUpgrade = "BiomeSpeedShrineUpgrade",
-
-				{ Cue = "/VO/Hephaestus_0205",
-					Emote = "PortraitEmoteFiredUp",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Come quickly, boss! You need to hurry up and get out of there, you're running out of time!! You're not, really, but it's a bit of motivation, hey?" },
-			},
-
-			-- legendary pickups
-			HephaestusLegendaryPickUp01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				ValuableUpgradeInRoom = {
-					AllAtLeastRarity = "Rare",
-					HasAtLeastRarity = "Epic",
-				},
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0099",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oh, you ready for this, boss? Got you the {#DialogueItalicFormat}Premium Express {#PreviousFormat}this time. Absolute cream of the crop right here! You're going to go real far." },
-			},
-			HephaestusLegendaryPickUp02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				ValuableUpgradeInRoom = {
-					AllAtLeastRarity = "Rare",
-					HasAtLeastRarity = "Epic",
-				},
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0100",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Guess what, Coz? It's the {#DialogueItalicFormat}Premium Express{#PreviousFormat}, delivered straight to you, fresh from the richest mountaintop up here! You're going to like this." },
-			},
-			HephaestusLegendaryPickUp03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				ValuableUpgradeInRoom = {
-					AllAtLeastRarity = "Rare",
-					HasAtLeastRarity = "Epic",
-				},
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0101",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Express-delivered message for you, Coz. It says: {#DialogueItalicFormat}'Congratulations! You're my hundredth customer today.' {#PreviousFormat}And here is what you get!" },
-			},
-
-			-- low health
 			HephaestusLowHealth01 =
 			{
+				Name = "HephaestusLowHealth01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredMaxHealthFraction = 0.25,
 				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0092",
+				{ Cue = "/VO/Hephaestus_0123",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Eugh, I have to tell you, you look awful, Coz. You're barely holding on! Let's see if we can't perk you right back up." },
+					Text = "How is it going for you? I can sense, not so great. Hope this can change the steam for you." },
 			},
 			HephaestusLowHealth02 =
 			{
+				Name = "HephaestusLowHealth02",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredMaxHealthFraction = 0.25,
 				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0093",
+				{ Cue = "/VO/Hephaestus_0124",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Whew{#PreviousFormat}! Looks like times hit you hard since last we had a run-in, Coz. Well, when life is tough, just hurry through the rubbish bits, I say!" },
+					Text = "A good defense is always a great start if you want to escape. I think you could improve there." },
 			},
 			HephaestusLowHealth03 =
 			{
+				Name = "HephaestusLowHealth03",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredMaxHealthFraction = 0.25,
 				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0094",
+				{ Cue = "/VO/Hephaestus_0125",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Whoa you're a hot mess, there, Coz, what happened getting here? Ah well, I hope your travels run a little smoother here on out." },
+					Text = "Life is running out of ya, Zagreus. There's a limit to what I can improve. Improve yourself." },
 			},
 			HephaestusLowHealth04 =
 			{
+				Name = "HephaestusLowHealth04",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredMaxHealthFraction = 0.25,
 				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0219",
+				{ Cue = "/VO/Hephaestus_0126",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There's a fine line between being quick and being hasty, boss. And if you're hurt as bad as I think, I think you might be on the hasty side!" },
+					Text = "Let's build up your defense, you look like you could use some." },
 			},
 			HephaestusLowHealth05 =
 			{
+				Name = "HephaestusLowHealth05",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredMaxHealthFraction = 0.25,
 				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0220",
+				{ Cue = "/VO/Hephaestus_0127",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Well, good news is you got to me, but I can tell you hit a lot of bad news on the way! You stay alive, all right?" },
+					Text = "Life isn't doing great for you, eh? Maybe try a different approach? Start with this." },
 			},
-			HephaestusLowHealth06 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMaxHealthFraction = 0.25,
-				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0221",
-					Emote = "PortraitEmoteSurprise",					
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oof{#PreviousFormat}! What happened getting here, boss? Let me guess, you got whipped, burned, beat up with spectral clubs... something like that?" },
-			},
-			HephaestusLowHealth07 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMaxHealthFraction = 0.25,
-				RequiredMaxLastStands = 1,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0222",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You're looking worse for wear, I hate to tell you, boss. But, we can pick you up and get you going here, I think!" },
-			},
-
 		},
 
 		PickupTextLineSets =
 		{
 			HephaestusFirstPickUp =
 			{
+				Name = "HephaestusFirstPickUp",
 				PlayOnce = true,
 				RequiredTextLines = { "AthenaFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/ZagreusField_1923", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.05 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "This mark, almost like a bat wing. In the name of Hades! Olympus! I accept this message." },
-				{ Cue = "/VO/Hephaestus_0002",
+					Text = "I can't sense Hermes anywhere. This new presence might be for something. Olympus I accept this message." },
+				{ Cue = "/VO/Hephaestus_0001",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "Hey boss, found you, good. Hephaestus, at your service. Pleasure! You are the talk of Olympus! Normally I wouldn't get mixed up, but for you, I will be making an exception. Now, come on, we both got places to be!" },
+					Text = "Oi, Hermes couldn't make it and asked me to tune up your escape plan. Daedalus sure knows how to create a great maze." },
 			},
-
 			HephaestusMiscPickup01 =
 			{
+				Name = "HephaestusMiscPickup01",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0027",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0002",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "All right, Coz, here's the goods, fresh from our mountaintop. Take all the time you need deciding! If you want to be a slowpoke." },
+					Text = "Smithing is my passion... I don't have to think about my worries, but sometimes, I think others take my creation for granted. " },
 			},
 			HephaestusMiscPickup02 =
 			{
+				Name = "HephaestusMiscPickup02",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0028",
+				{ Cue = "/VO/Hephaestus_0003",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Won't need but a moment of your time, here, boss! And you'll more than make up for it right quick, you got my guarantee!" },
+					Text = "My hammer knows no limit. Any mineral can do. And I can forge blessing as well. Let me show you." },
 			},
 			HephaestusMiscPickup03 =
 			{
+				Name = "HephaestusMiscPickup03",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredFalseBiome = "Tartarus",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0029",
+				{ Cue = "/VO/Hephaestus_0004",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "All right, Coz, express delivery to {#DialogueItalicFormat}where{#PreviousFormat}-in-blazes are you at right now? Anyway take one of these, and go about your business!" },
+					Text = "Nothing better than hard work, am I right, Zagreus? You must have a lot to do on your end as well. Maybe this will help you." },
 			},
 			HephaestusMiscPickup04 =
 			{
+				Name = "HephaestusMiscPickup04",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0030",
+				{ Cue = "/VO/Hephaestus_0005",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I know you're kind of in a hurry, boss. But let me show you what a {#DialogueItalicFormat}real {#PreviousFormat}hurry's all about in just a moment here!" },
+					Text = "The bronze and iron are still warm. Freshly bended for your needs. Take it." },
 			},
 			HephaestusMiscPickup05 =
 			{
+				Name = "HephaestusMiscPickup05",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0031",
+				{ Cue = "/VO/Hephaestus_0006",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Package for you, boss! And I think you know what's inside. Well, maybe not exactly, but... just pick something, will you?" },
+					Text = "There's only one thing that will get you out of there, Zagreus. It's hard work, and nothing else. Now, show me what you got." },
 			},
 			HephaestusMiscPickup06 =
 			{
+				Name = "HephaestusMiscPickup06",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0032",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0007",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Come on, Coz, you can do this! And furthermore, I think you can do this rather quick! Now go!" },
+					Text = "Slow and steady wins the race. You might think faster brings you far, but surviving brings you further." },
 			},
 			HephaestusMiscPickup07 =
 			{
+				Name = "HephaestusMiscPickup07",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0033",
+				{ Cue = "/VO/Hephaestus_0008",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "It's you, boss, that's good! But you're standing still! That's bad. Let's get you up and moving about again, all right?" },
+					Text = "Oi, harden yourself. You don't know what's ahead of you. There's always a next challenge." },
 			},
 			HephaestusMiscPickup08 =
 			{
+				Name = "HephaestusMiscPickup08",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0034",
+				{ Cue = "/VO/Hephaestus_0009",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, boss! Not much to report up here. But I've not exactly come this far to bring you news, have I?" },
+					Text = "If all you have is a hammer, everything looks like a nail. Sometime the simplest solution is to bash your way through." },
 			},
 			HephaestusMiscPickup09 =
 			{
+				Name = "HephaestusMiscPickup09",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0035",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0010",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Afraid there's no one faster than myself, here, Coz. But good news is, {#DialogueItalicFormat}you {#PreviousFormat}are about to close the gap a little bit!" },
+					Text = "You have my sword... And my bow... And my axe... Any weapon must I say. Just ask." },
 			},
 			HephaestusMiscPickup10 =
 			{
+				Name = "HephaestusMiscPickup10",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0036",
+				{ Cue = "/VO/Hephaestus_0011",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Slow day so far, there, boss? Well all of that's about to change, you got my guarantee!" },
+					Text = "In this world, you are either an anvil or a hammer, Zagreus. Choose well." },
 			},
 			HephaestusMiscPickup11 =
 			{
+				Name = "HephaestusMiscPickup11",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0037",
+				RequiredTextLines = { "HephaestusFirstPickUp", },
+				{ Cue = "/VO/Hephaestus_0012",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How 'bout we pick the pace up {#DialogueItalicFormat}just {#PreviousFormat}a little, Coz? Or maybe by a lot! Whatever you've the mood and stomach for right now." },
+					Text = "Life is very similar to smithing, Zagreus. It beats you down until you are tempered and sharp enough to slice through any opposition. You are just being sharped here." },
 			},
 			HephaestusMiscPickup12 =
 			{
+				Name = "HephaestusMiscPickup12",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0038",
+				{ Cue = "/VO/Hephaestus_0013",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Last thing I ever want to do is slow you down, boss. So, enough chit-chat. Now pick and go. {#DialogueItalicFormat}Go{#PreviousFormat}!" },
+					Text = "Without patience and the skill of a craftsman even the greatest talen is wasted. Don't waste this hard work on me now, Zagreus." },
 			},
 			HephaestusMiscPickup13 =
 			{
+				Name = "HephaestusMiscPickup13",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0039",
+				{ Cue = "/VO/Hephaestus_0014",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You've got a ways to go yet, boss. Good news is, the slowest part of this particular trip is hereby over... {#DialogueItalicFormat}now{#PreviousFormat}!" },
+					Text = "In order to succeed, you must have a clear objective in mind. Set yourself to join us and you'll be here in no time." },
 			},
 			HephaestusMiscPickup14 =
 			{
+				Name = "HephaestusMiscPickup14",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0040",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0015",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "All's well enough here on the surface, Coz. Though, sooner you can make it out of there, the better it'll be!" },
+					Text = "There will be obstacles. There will be doubters. There will be mistakes. But as long as you continue, there are no limits." },
 			},
 			HephaestusMiscPickup15 =
 			{
+				Name = "HephaestusMiscPickup15",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0041",
+				{ Cue = "/VO/Hephaestus_0016",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another go up to the surface, boss? Might suggest that you be very quick about it. And might give you this!" },
+					Text = "There's no way to measure success. You fail or you succeed. There's no in between." },
 			},
+			-- Relationship improved
 			HephaestusMiscPickup16 =
 			{
+				Name = "HephaestusMiscPickup16",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0042",
+				{ Cue = "/VO/Hephaestus_0017",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Let's hustle, shall we, boss? Honestly, I don't know how the rest of you can stand it, trudging about like you don't have someplace to be!" },
+					Text = "Pain is temporary. Quitting lasts forever. I see you don't quit easily, {#DialogueItalicFormat}eh {#PreviousFormat}? Keep going Zagreus." },
 			},
 			HephaestusMiscPickup17 =
 			{
+				Name = "HephaestusMiscPickup17",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0043",
+				{ Cue = "/VO/Hephaestus_0018",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hiya, boss! I'd ask what's new, but I already know! I have my ways. And you have to get right on out of there." },
+					Text = "I work very hard, all the time, Zagreus. But when it comes to you, I always like to put a little extra, just for you." },
 			},
 			HephaestusMiscPickup18 =
 			{
+				Name = "HephaestusMiscPickup18",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0044",
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				{ Cue = "/VO/Hephaestus_0019",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Wish I could just fly in and haul you out of there, Coz, but there's some rules even I can't break. Though nice to see {#DialogueItalicFormat}you {#PreviousFormat}have a go of it!" },
+					Text = "I am still on a production streak thanks to your gift, Zagreus. You'll see what my work looks like at full efficency." },
 			},
 			HephaestusMiscPickup19 =
 			{
+				Name = "HephaestusMiscPickup19",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusFirstPickUp", },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0045",
+				{ Cue = "/VO/Hephaestus_0020",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I come with urgent tidings, boss! Unfortunately not addressed to you. But someone got you these!" },
+					Text = "I can always think of better ways to work, but it's the reason why I work that makes me work better. When I am working for you, I can't think of a better reason." },
 			},
 			HephaestusMiscPickup20 =
 			{
+				Name = "HephaestusMiscPickup20",
 				Priority = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0046",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Sorry, Coz, no messages this time. Guess that's what happens when your whole existence is kept secret from the world!" },
-			},
-
-			HephaestusMiscPickupExtra01 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredFalseRooms = { "RoomOpening" },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0202",
+				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+				{ Cue = "/VO/Hephaestus_0021",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There's not much new worth mentioning up here, though looks like {#DialogueItalicFormat}you {#PreviousFormat}have got your hands full down there, boss!" },
+					Text = "Where you find quality, you will find a craftsman, mate. And good thing you found me." },
 			},
-			HephaestusMiscPickupExtra02 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0203",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You've got a tough climb up ahead, Coz, so you just pace yourself, all right? Just kidding, go as quickly as you can. It works for me!" },
-			},
-
+			-- Shorter Dialogs
 			HephaestusMiscPickup21 =
 			{
+				Name = "HephaestusMiscPickup21",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0005",
+				{ Cue = "/VO/Hephaestus_0022",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Come on, now, boss, let's get you moving here!" },
+					Text = "Hard work always pays off, whatever you do, mate." },
 			},
 			HephaestusMiscPickup22 =
 			{
+				Name = "HephaestusMiscPickup22",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0006",
+				{ Cue = "/VO/Hephaestus_0023",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got here in practically no time at all, boss. Ready now?" },
+					Text = "You cannot dream yourself into a character; you must hammer and forge yourself one." },
 			},
 			HephaestusMiscPickup23 =
 			{
+				Name = "HephaestusMiscPickup23",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0007",
+				{ Cue = "/VO/Hephaestus_0024",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey Coz, package for you here. Knock yourself out!" },
+					Text = "If at first you don't succeed, get a bigger hammer. Easy enough, mate?" },
 			},
 			HephaestusMiscPickup24 =
 			{
+				Name = "HephaestusMiscPickup24",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0008",
+				{ Cue = "/VO/Hephaestus_0025",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got a customary care package for you, Coz." },
+					Text = "There are no shortcuts to any place worth going, mate. Olympus is one of them." },
 			},
 			HephaestusMiscPickup25 =
 			{
+				Name = "HephaestusMiscPickup25",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0009",
+				{ Cue = "/VO/Hephaestus_0026",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, what's it going to be this time, boss?" },
+					Text = "There are no secrets to sucess, Zagreus. It is the result of preparation, hard work and learning from failure." },
 			},
 			HephaestusMiscPickup26 =
 			{
+				Name = "HephaestusMiscPickup26",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0010",
+				{ Cue = "/VO/Hephaestus_0027",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Come on, Coz, let's pick up the pace a bit!" },
+					Text = "Repeat after me Zagreus. {#DialogueItalicFormat}'No matter how hard it is, or how hard it gets, I'm going to make it'{#PreviousFormat}." },
 			},
 			HephaestusMiscPickup27 =
 			{
+				Name = "HephaestusMiscPickup27",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0011",
+				{ Cue = "/VO/Hephaestus_0028",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Go get yourself out of there in a hurry, Coz." },
+					Text = "There is no magic to achievement, mate. It's really about hard work, choices and persistence." },
 			},
 			HephaestusMiscPickup28 =
 			{
+				Name = "HephaestusMiscPickup28",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredLootChoices = 3,
 				RequiredInactiveMetaUpgrade = "ReducedLootChoicesShrineUpgrade",
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0012",
+				{ Cue = "/VO/Hephaestus_0029",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "No rush, but go on and pick one of these, boss." },
+					Text = "Hard work beats talent when talent doesn't work hard. Lucky enough, you seem to have both, Zagreus." },
 			},
 			HephaestusMiscPickup29 =
 			{
+				Name = "HephaestusMiscPickup29",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0013",
+				{ Cue = "/VO/Hephaestus_0030",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Message for you, Coz: It says {#DialogueItalicFormat}'Take one, it's free, enjoy!'{#PreviousFormat}" },
+					Text = "Perseverance is failling countless times and succeeding once." },
 			},
 			HephaestusMiscPickup30 =
 			{
+				Name = "HephaestusMiscPickup30",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0014",
+				{ Cue = "/VO/Hephaestus_0031",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What's going on, there, boss? Are things all right?" },
+					Text = "Never stop going forward. Action always leads to results." },
 			},
 			HephaestusMiscPickup31 =
 			{
+				Name = "HephaestusMiscPickup31",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0015",
+				{ Cue = "/VO/Hephaestus_0032",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You want the usual, or what, there, boss?" },
+					Text = "Movement is essential to succeed. Inaction leads to failure." },
 			},
 			HephaestusMiscPickup32 =
 			{
+				Name = "HephaestusMiscPickup32",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0016",
+				{ Cue = "/VO/Hephaestus_0033",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Special delivery and all that, boss! Here, take your pick." },
+					Text = "Success is the sum of small efforts. Continuously. You are getting somewhere. Let's hope it's here with us." },
 			},
 			HephaestusMiscPickup33 =
 			{
+				Name = "HephaestusMiscPickup33",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0017",
+				{ Cue = "/VO/Hephaestus_0034",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey boss! You take one of these, and go for it." },
+					Text = "When they bring you down, that's when you get up. Nobody can stop you from what you put your mind into." },
 			},
 			HephaestusMiscPickup34 =
 			{
+				Name = "HephaestusMiscPickup34",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0018",
+				{ Cue = "/VO/Hephaestus_0035",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Just so happened to be in the area, here, boss!" },
+					Text = "Sometimes you think you won't succeed, but the distance to success is always closer than you think." },
 			},
 			HephaestusMiscPickup35 =
 			{
+				Name = "HephaestusMiscPickup35",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0019",
+				{ Cue = "/VO/Hephaestus_0036",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Making sure you got this, Coz. You got this, Coz!" },
+					Text = "Let's tune that. Oh, like this!" },
 			},
 			HephaestusMiscPickup36 =
 			{
+				Name = "HephaestusMiscPickup36",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0020",
+				{ Cue = "/VO/Hephaestus_0037",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Here comes a little boost to get you up and out of there in no time, boss!" },
+					Text = "It's getting hot in here. I am sure you'll like this one." },
 			},
 			HephaestusMiscPickup37 =
 			{
+				Name = "HephaestusMiscPickup37",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0021",
+				{ Cue = "/VO/Hephaestus_0038",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Now, don't just stand there, Coz, pick one of these and {#DialogueItalicFormat}go{#PreviousFormat}!" },
+					Text = "Forge is hot, what's your order?" },
 			},
 			HephaestusMiscPickup38 =
 			{
+				Name = "HephaestusMiscPickup38",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0022",
+				{ Cue = "/VO/Hephaestus_0039",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Your quickness is my number one priority, here, boss." },
+					Text = "Order up. I'll make it worth." },
 			},
 			HephaestusMiscPickup39 =
 			{
+				Name = "HephaestusMiscPickup39",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0023",
+				{ Cue = "/VO/Hephaestus_0040",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "No time to waste and so on, Coz. Now, choose!" },
+					Text = "Next customer please, I don't have all day." },
 			},
-			HephaestusMiscPickup40 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0024",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Caught wind you need my services here, boss?" },
-			},
-			HephaestusMiscPickup41 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0025",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Thought I'd check in, Coz. See how things are going. Slow, right? Not for long." },
-			},
-			HephaestusMiscPickup42 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0026",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Ready to hustle? Good! I'll take that as a yes." },
-			},
-			HephaestusMiscPickup43 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0153",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Let's get you quickly on your way, there, Coz!" },
-			},
-			HephaestusMiscPickup44 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				RequiredLootChoices = 3,
-				RequiredInactiveMetaUpgrade = "ReducedLootChoicesShrineUpgrade",
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0154",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Message for you, boss. It says: {#DialogueItalicFormat}'Here, choose one of these, and go!'{#PreviousFormat}" },
-			},
-			HephaestusMiscPickup45 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0155",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another message for you! This one says: {#DialogueItalicFormat}'Hey boss! Take this!'{#PreviousFormat}" },
-			},
-			HephaestusMiscPickup46 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0156",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Just thought I'd check up on you, boss, and bring you this!" },
-			},
-			HephaestusMiscPickup47 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0201",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hope you enjoyed the life of being slow, because all that's about to change, right here!" },
-			},
-			HephaestusMiscPickup48 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0206",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "All right, boss, here, let's get you on your way!" },
-			},
-			HephaestusMiscPickup49 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0207",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Past time we got you out of there, right, boss?" },
-			},
-			HephaestusMiscPickup50 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0208",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Just thought I'd drop by, give you this, and go!" },
-			},
-			HephaestusMiscPickup51 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0209",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "We'll have you racing out of here in no time, Coz!" },
-			},
-			HephaestusMiscPickup52 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0210",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How goes it underground of late, there, boss?" },
-			},
-			HephaestusMiscPickup53 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0211",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Nice day we're having on the surface! You should see it, boss!" },
-			},
-			HephaestusMiscPickup54 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				RequiredMinRunsCleared = 2,
-				{ Cue = "/VO/Hephaestus_0212",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another day, another race up to the top! You ready, boss?" },
-			},
-			HephaestusMiscPickup55 =
-			{
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0213",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Well, here we go again! Let's go, then, boss!" },
-			},
-
-			HephaestusFirstLootPickup01 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredBiome = "Tartarus",
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0047",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got here as quickly as I could, boss. Now what say we get you promptly the hell out of there!" },
-			},
-			HephaestusFirstLootPickup02 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredBiome = "Tartarus",
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0048",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey Coz, gathered you were just about to make another go of breaking out of there! Thought I'd stop by and give you a boost." },
-			},
-			HephaestusFirstLootPickup03 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredBiome = "Tartarus",
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0049",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You're raring for your next trek out of there, right, boss? Well then I guess I got here just in time." },
-			},
-			HephaestusFirstLootPickup04 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredBiome = "Tartarus",
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0050",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Heard you were heading out again, boss. Changed my schedule around a bit, not a big deal, and figured I'd drop in!" },
-			},
-			HephaestusFirstLootPickup05 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredBiome = "Tartarus",
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0051",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You're off again, are you? All right well then safe travels! Or swift travels, failing that!" },
-			},
-			HephaestusFirstLootPickup06 =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredBiome = "Tartarus",
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0052",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You ready for another go at this, Coz? Well then think I can speed you on your journey there." },
-			},
-
 		},
 
 		BoughtTextLines =
 		{
 			HephaestusLootBought01 =
 			{
+				Name = "HephaestusLootBought01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				RequiredTextLines = { "HephaestusSecondPickUp" },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredFalseTextLines = { "HephaestusLootBought01_B" },
-				{ Cue = "/VO/Hephaestus_0095",
+				{ Cue = "/VO/Hephaestus_0134",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Why, hello, Coz! Odd that we're running into one another here! Among the wares of my professional associate, I mean. Must be some sort of clerical mistake!" },
+					Text = "Is that Charon with you? What a great customer. He keeps it professional. No small talk." },
 			},
-			HephaestusLootBought01_B =
-			{
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				RequiredFalseTextLines = { "HephaestusLootBought01", "HephaestusSecondPickUp" },
-				{ Cue = "/VO/Hephaestus_0161",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Why, hello, boss! Odd that we're running into one another here! Among the wares of my professional associate, I mean. Must be some sort of clerical mistake!" },
-			},
-
 			HephaestusLootBought02 =
 			{
+				Name = "HephaestusLootBought02",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredAnyTextLines = { "HephaestusLootBought01", "HephaestusLootBought01_B", "HephaestusAboutHourglass01" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0096",
+				{ Cue = "/VO/Hephaestus_0135",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You're well familiar with my professional associate, there, with the boat? Souls of the recently departed got to make it over to the Underworld somehow. Part of my job! I bring them in, he takes them down." },
+					Text = "Buying from the Boatman, are you? I reckon it's a way to acquire my blessings. As long as I get what I am owe." },
 			},
 			HephaestusLootBought03 =
 			{
+				Name = "HephaestusLootBought03",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusLootBought02" },
 				RequiredAnyTextLines = { "HephaestusLootBought01", "HephaestusLootBought01_B" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0097",
+				{ Cue = "/VO/Hephaestus_0136",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I guess I'm used to these one-sided chats here, boss, thanks to my work experience with my professional associate down there! You tell him I said hi, all right?" },
+					Text = "I smithen that a while ago. I think you get scammed by Charon there." },
 			},
 			HephaestusLootBought04 =
 			{
+				Name = "HephaestusLootBought04",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusLootBought02", "HephaestusLootBought03" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0098",
+				{ Cue = "/VO/Hephaestus_0137",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "A word of caution, Coz. Don't ask too many questions about me, or my professional associate down there. I hand souls over to him, and that's it, you understand?" },
+					Text = "I am sure you know the Boatman keeps a cut. I could have done that half priced." },
 			},
 			HephaestusLootBought05 =
 			{
+				Name = "HephaestusLootBought05",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0179",
+				{ Cue = "/VO/Hephaestus_0138",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Wouldn't you know it, boss! I was just minding my own business, handing off a few dearly departed souls to my professional associate, and who shows up, but {#DialogueItalicFormat}you{#PreviousFormat}?" },
+					Text = "That's what you use your obols for? I am flattered, but you could have bargain a little bit more." },
 			},
 			HephaestusLootBought06 =
 			{
+				Name = "HephaestusLootBought06",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0180",
+				{ Cue = "/VO/Hephaestus_0139",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My heavy-breathing professional associate was gracious enough to drop me off here with his other stuff, and for quite an affordable price, at that!" },
+					Text = "Is it worth that much? I sold it to Charon for way less." },
 			},
 			HephaestusLootBought07 =
 			{
+				Name = "HephaestusLootBought07",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0181",
+				{ Cue = "/VO/Hephaestus_0140",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "All right, then, let's go make that spend of hard-earned coin well worth your while! What do you think, Coz?" },
+					Text = "I understand the delivery fee, but I think you got overcharged." },
 			},
 			HephaestusLootBought08 =
 			{
+				Name = "HephaestusLootBought08",
 				PlayOnce = true,
 				ChanceToPlay = 0.33,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
 				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0182",
+				{ Cue = "/VO/Hephaestus_0141",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I'd tell you not to ask too many questions of my good professional associate nearby, but then, {#DialogueItalicFormat}who are we kidding{#PreviousFormat}, boss? Not like he'd answer you those questions anyhow!" },
-			},
-			HephaestusLootBought09 =
-			{
-				PlayOnce = true,
-				ChanceToPlay = 0.33,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0183",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Message for you, boss, from my professional associate, who wanted you to know, and I quote, {#DialogueItalicFormat}'Hhhrrrrnnnngggggghhhhhh.'{#PreviousFormat}" },
-			},
-			HephaestusLootBought10 =
-			{
-				PlayOnce = true,
-				ChanceToPlay = 0.33,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0184",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Been working with my good professional associate, the boatman there, since I-don't-know-how-long. Though, let me tell you, Coz, we haven't had a job quite like this yet!" },
-			},
-			HephaestusLootBought11 =
-			{
-				PlayOnce = true,
-				ChanceToPlay = 0.33,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0185",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Among the many ways in which you could parlay your earnings into better chances of survival here, I'm flattered you would think of me this time!" },
-			},
-			HephaestusLootBought12 =
-			{
-				PlayOnce = true,
-				ChanceToPlay = 0.33,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0186",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How strange of a coincidence that you keep running into me along the riverside like this, don't you agree, there, Coz?" },
-			},
-			HephaestusLootBought13 =
-			{
-				PlayOnce = true,
-				ChanceToPlay = 0.33,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				RequiredTextLines = { "HephaestusLootBought04" },
-				EndVoiceLines = GlobalVoiceLines.RushedHephaestusVoiceLines,
-				{ Cue = "/VO/Hephaestus_0187",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Don't normally go selling off my blessings to the highest bidder, boss, but your bid there is good enough for me!" },
+					Text = "My blessing cost the same as Hermes? I can't accept this. I work with quality here." },
 			},
 
 		},
@@ -4341,230 +3460,133 @@ if ModUtil ~= nil then
 			-- gives gift in exchange
 			HephaestusGift01 =
 			{
+				Name = "HephaestusGift01",
 				PlayOnce = true,
-				RequiredFalseTextLines = { "HephaestusGift01B" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1933", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5002", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Lord Hephaestus, please accept this gift as a small token of my appreciation. Thank you for always keeping me on my toes." },
-				{ Cue = "/VO/Hephaestus_0106",
+					Text = "Lord Hephaestus, please accept this gift for all your improvements. I know you deserve this for your hard work." },
+				{ Cue = "/VO/Hephaestus_0142",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}! Mighty keen of you to leave a tip, there, boss. And I've a tip for you: Don't be slow! Maybe this will help with that." },
+					Text = "How kind of you, mate. Is that what you think, hardworker deserves gifts? Well, I made this for you. Does it remind you of someone?" },
 			},
-			HephaestusGift01B =
-			{
-				PlayOnce = true,
-				RequiredFalseTextLines = { "HephaestusGift01" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1933", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Lord Hephaestus, please accept this gift as a small token of my appreciation. Thank you for always keeping me on my toes." },
-			},
-
 			HephaestusGift02 =
 			{
+				Name = "HephaestusGift02",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift01", "HephaestusGift01B" },
-				RequiredFalseTextLines = { "HephaestusGift02B" },
+				RequiredAnyTextLines = { "HephaestusGift01"},
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1934", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5003", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Lord Hephaestus sir, you've asked for nothing in return, and so, please take this humble offering, because... it's nothing, really!" },
-				{ Cue = "/VO/Hephaestus_0102",
+					Text = "I found this nectar and thought you could get a break from your hardwork. At least enough time to drink it." },
+				{ Cue = "/VO/Hephaestus_0143",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Well now, that's awful kind, there, Coz! No need to thank me, though. Not so profusely anyhow!" },
+					Text = "I don't take break. I'll put your nectar to the side for when I am done with my orders. There's always something to do." },
 			},
-			HephaestusGift02B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift01", "HephaestusGift01B" },
-				RequiredFalseTextLines = { "HephaestusGift02" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1934", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Lord Hephaestus sir, you've asked for nothing in return, and so, please take this humble offering, because... it's nothing, really!" },
-			},
-
 			HephaestusGift03 =
 			{
+				Name = "HephaestusGift03",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift02", "HephaestusGift02B" },
-				RequiredFalseTextLines = { "HephaestusGift03B" },
+				RequiredAnyTextLines = { "HephaestusGift02" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1935", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5004", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Hephaestus, my friend? May I call you my friend? I hope this modest offering will lift your spirits but won't slow you down." },
-				{ Cue = "/VO/Hephaestus_0172",
+					Text = "You might not get break, Lord Hephaestus. But if you do, I am sure you could use something like this." },
+				{ Cue = "/VO/Hephaestus_0144",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I look like I got the sort of time to sip Nectar, Coz? Well, guess what, I do! So, cheers!" },
+					Text = "Yes. Sure. I... No... To busy right now, but I'll keep it with the other. Feel free to give them to someone else." },
 			},
-			HephaestusGift03B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift02", "HephaestusGift02B" },
-				RequiredFalseTextLines = { "HephaestusGift03" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1935", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Hephaestus, my friend? May I call you my friend? I hope this modest offering will lift your spirits but won't slow you down." },
-			},
-
 			HephaestusGift04 =
 			{
+				Name = "HephaestusGift04",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift03", "HephaestusGift03B" },
-				RequiredFalseTextLines = { "HephaestusGift04B" },
+				RequiredAnyTextLines = { "HephaestusGift03" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1936", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5005", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Ever since we met, Lord Hephaestus, life here in the Underworld has been much faster-paced, and I am ever grateful. This is for you." },
-				{ Cue = "/VO/Hephaestus_0104",
+					Text = "I am not sure if you found anytime to enjoy my last gift, but I wanted you to have this one." },
+				{ Cue = "/VO/Hephaestus_0145",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hey, boss, I appreciate the tip. But just as a reminder, all my services are paid in full already! No need for special thanks. Though... cheers." },
+					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Gurps{#PreviousFormat}. There happy? Oh that was good. {#DialogueItalicFormat}Gurps{#PreviousFormat}." },
 			},
-			HephaestusGift04B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift03", "HephaestusGift03B" },
-				RequiredFalseTextLines = { "HephaestusGift04" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1936", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Ever since we met, Lord Hephaestus, life here in the Underworld has been much faster-paced, and I am ever grateful. This is for you." },
-			},
-
 			HephaestusGift05 =
 			{
+				Name = "HephaestusGift05",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift04", "HephaestusGift04B" },
-				RequiredFalseTextLines = { "HephaestusGift05B" },
+				RequiredAnyTextLines = { "HephaestusGift04" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1937", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5006", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I never could have come this far this quickly had it not been for your tireless support, Lord Hephaestus, sir. I'm in your debt." },
-				{ Cue = "/VO/Hephaestus_0105",
+					Text = "Since you seemed to have like the last one, I though you could use some more." },
+				{ Cue = "/VO/Hephaestus_0146",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, Coz, I got to say I had a few concerns when we first met, your father being who he is and all. But you're all right!" },
+					Text = "Oi, more? I haven't been this productive since... can't remember. {#DialogueItalicFormat}Gurps{#PreviousFormat}. This goes here and this here." },
 			},
-			HephaestusGift05B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift04", "HephaestusGift04B" },
-				RequiredFalseTextLines = { "HephaestusGift05" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_1937", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "I never could have come this far this quickly had it not been for your tireless support, Lord Hephaestus, sir. I'm in your debt." },
-			},
-
 			HephaestusGift06 =
 			{
+				Name = "HephaestusGift06",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift05", "HephaestusGift05B" },
-				RequiredFalseTextLines = { "HephaestusGift06B" },
+				RequiredAnyTextLines = { "HephaestusGift05" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_3873", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5007", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "This one's for you, swift and sure-footed messenger of the gods! You make what you do look easy. But I know you're going out of your way. Thank you so much, Hephaestus." },
-				{ Cue = "/VO/Hephaestus_0173",
+					Text = "You seemed so pleased by your improved productivity, Lord Hepheastus. I though I could bring you some more." },
+				{ Cue = "/VO/Hephaestus_0147",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My rule is not to let things get too personal as far as work-related matters are concerned, Coz. But you're family! And, well, you're a right decent chap, I think. Offering up a bit of Nectar to me in the middle of all this!" },
+					Text = "Oi... I'll try this one, but... {#DialogueItalicFormat}Gurps{#PreviousFormat} but... eh. can't get anymore. Sorry got to go." },
 			},
-			HephaestusGift06B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift05", "HephaestusGift05B" },
-				RequiredFalseTextLines = { "HephaestusGift06" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_3873", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "This one's for you, swift and sure-footed messenger of the gods! You make what you do look easy. But I know you're going out of your way. Thank you so much, Hephaestus." },
-			},
-
 			HephaestusGift07 =
 			{
+				Name = "HephaestusGift07",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift06", "HephaestusGift06B" },
-				RequiredFalseTextLines = { "HephaestusGift07B" },
+				RequiredAnyTextLines = { "HephaestusGift06" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_3874", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5008", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I salute you, Lord Hephaestus, with this rarest of delicacies! Pretty rare here, anyway. You never show it, but I can only imagine how hard you must be working to back me up. Cheers, mate!" },
-				{ Cue = "/VO/Hephaestus_0174",
+					Text = "I didn't think you could get to much Nectar, Lord Hephaestus. I brought this instead." },
+				{ Cue = "/VO/Hephaestus_0148",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You know, the last time anybody offered me Ambrosia from the Underworld was {#DialogueItalicFormat}never{#PreviousFormat}, before now! That's quite a gesture on your part. You could have just as well taken my services for granted and I'd not have minded in the least! But, thank you, Coz." },
+					Text = "Ambrosia? I suppose this could work. Let's try it out. Oh! That hit the spot. Great choice" },
 			},
-			HephaestusGift07B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift06", "HephaestusGift06B" },
-				RequiredFalseTextLines = { "HephaestusGift07" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_3874", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "I salute you, Lord Hephaestus, with this rarest of delicacies! Pretty rare here, anyway. You never show it, but I can only imagine how hard you must be working to back me up. Cheers, mate!" },
-			},
-
 			HephaestusGift08 =
 			{
+				Name = "HephaestusGift08",
 				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift07", "HephaestusGift07B" },
-				RequiredFalseTextLines = { "HephaestusGift08B" },
+				RequiredAnyTextLines = { "HephaestusGift07" },
 				MinRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_3875", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusField_5009", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Message for you, Lord Hephaestus! It says, {#DialogueItalicFormat}'This offering is dedicated to the incomparable god of swiftness, from whom the news is always good, because he's bringing it. You are a real mate, you know that? I really owe you one.' {#PreviousFormat}Zagreus." },
-				{ Cue = "/VO/Hephaestus_0175",
+					Text = "Since Nectar doesn't fit. Here's Ambrosia like last time, Lord Hephaestus. I hope this makes you feel better." },
+				{ Cue = "/VO/Hephaestus_0149",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 					PostLineFunctionArgs = { Text = "NPC_Hephaestus_01", Icon = "Keepsake_HephaestusSticker_Max" },
-					Text = "Look, Coz, I am going to accept this choice Ambrosia from you one last time, all right? But from this point, I am doubling down on all professional responsibilities, here. Strictly business between us! Although, secretly, you're one of my best mates. Want you to know." },
+					Text = "Again? Let's sort this out once and for all. You are my favorite customer. Here I said it. Now go." },
 			},
-			HephaestusGift08B =
-			{
-				PlayOnce = true,
-				RequiredAnyTextLines = { "HephaestusGift07", "HephaestusGift07B" },
-				RequiredFalseTextLines = { "HephaestusGift08" },
-				MaxRunsSinceSquelchedHephaestus = ConstantsData.SquelchedHephaestusRunCount,
-				{ Cue = "/VO/ZagreusField_3875", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
-					PostLineFunctionArgs = { Text = "NPC_Hephaestus_01", Icon = "Keepsake_HephaestusSticker_Max" },
-					Text = "Message for you, Lord Hephaestus! It says, {#DialogueItalicFormat}This offering is dedicated to the incomparable god of swiftness, from whom the news is always good, because he's bringing it. You are a real mate, you know that? I really owe you one. {#PreviousFormat}Zagreus." },
-			},
-
 		},
 
 		GiftGivenVoiceLines =
@@ -4573,8 +3595,8 @@ if ModUtil ~= nil then
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
 
-			-- Lord Hephaestus, I am in your debt.
-			{ Cue = "/VO/ZagreusField_1950" },
+			-- But, wait... This is me!
+			{ Cue = "/VO/ZagreusField_5010" },
 		},
 
 		ShoutActivationSound = "/SFX/AthenaWrathHolyShield",
@@ -4601,6 +3623,36 @@ if ModUtil ~= nil then
 				-- I strongly disapprove.
 				-- { Cue = "/VO/Athena_0103" },
 			},
+		},
+
+		PickupVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.55,
+			SuccessiveChanceToPlayAll = 0.66,
+			CooldownTime = 6,
+
+			-- Smithing by the gods.
+			{ Cue = "/VO/ZagreusField_5011", },
+			-- That's quality.
+			{ Cue = "/VO/ZagreusField_5012", },
+			-- Couldn't be better.
+			{ Cue = "/VO/ZagreusField_5013", },
+			-- Woah.
+			{ Cue = "/VO/ZagreusField_5014", },
+			-- Tuned up.
+			{ Cue = "/VO/ZagreusField_5015", },
+			-- Bronze and gold.
+			{ Cue = "/VO/ZagreusField_5016", },
+			-- Rock and stones.
+			{ Cue = "/VO/ZagreusField_5017", },
+			-- As I ordered it.
+			{ Cue = "/VO/ZagreusField_5018", },
+			-- Great customer service.
+			{ Cue = "/VO/ZagreusField_5019", },
+			-- Like I wanted.
+			{ Cue = "/VO/ZagreusField_5020", },
 		},
 	}
 
@@ -4632,6 +3684,8 @@ if ModUtil ~= nil then
 			Name = "HephaestusImproveApollo",
 			Icon = "Boon_Apollo_14",
 			RequiredFalseTrait = "HephaestusImproveApollo",
+			ReplaceTrait = "MissChanceTrait",
+			IsImproveBoon = true,
 			God = "Apollo",
 			InheritFrom = { "ShopTier3Trait" },
 			PropertyChanges =
@@ -4703,6 +3757,15 @@ if ModUtil ~= nil then
 				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 			}
 		}
+		OlympusLootData.HephaestusUpgrade.ImprovePickupTextLineSets.HephaestusImproveApollo01 = {
+            Name = "HephaestusImproveApollo01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "HephaestusImproveApollo",
+            { Cue = "/VO/Hephaestus_0150",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "Shiny. Apollo sure knows how to bless someone. But let me improve the lightness of this one. Even he won't see it coming." },
+        }
 	end
 	if HestiaExtra then
 		-- Demeter
@@ -4712,6 +3775,8 @@ if ModUtil ~= nil then
 		{
 			Name = "HephaestusImproveHestia",
 			InheritFrom = { "ShopTier3Trait" },
+			ReplaceTrait = "LavaAutoTrait",
+			IsImproveBoon = true,
 			RequiredFalseTrait = "HephaestusImproveHestia",
 			God = "Hestia",
 			Icon = "Boon_Hestia_15",
@@ -4755,6 +3820,15 @@ if ModUtil ~= nil then
 				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 			}
 		}
+		OlympusLootData.HephaestusUpgrade.ImprovePickupTextLineSets.HephaestusImproveHestia01 = {
+            Name = "HephaestusImproveHestia01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "HephaestusImproveHestia",
+            { Cue = "/VO/Hephaestus_0151",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "How strange. Hestia came by? Eh, an order is an order. I know how to deal with the heat. Check this out." },
+        }
 	end
 	if HeraExtra ~= nil then
 		-- Demeter
@@ -4764,6 +3838,8 @@ if ModUtil ~= nil then
 		{
 			Name = "HephaestusImproveHera",
 			InheritFrom = { "ShopTier3Trait" },
+			ReplaceTrait = "StatusOverTimeTrait",
+			IsImproveBoon = true,
 			RequiredFalseTrait = "HephaestusImproveHera",
 			God = "Hera",
 			Icon = "Boon_Hera_15",
@@ -4853,6 +3929,15 @@ if ModUtil ~= nil then
 				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 			}
 		}
+		OlympusLootData.HephaestusUpgrade.ImprovePickupTextLineSets.HephaestusImproveHera01 = {
+            Name = "HephaestusImproveHera01",
+            PlayOnce = true,
+            PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+            HasTraitNameInRoom = "HephaestusImproveHera",
+            { Cue = "/VO/Hephaestus_0152",
+                StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+                Text = "You convinced Mum to give you something. That's worth more than getting out of there, if you ask me. I didn't have that much chance with her. Let me change her blessing a bit. She won't like it, but what do I care." },
+        }
 	end
 	-- FUNCTIONS
 

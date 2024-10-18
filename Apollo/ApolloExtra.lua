@@ -5312,24 +5312,7 @@ if ModUtil ~= nil then
 		AddRerolls(1, "RerollTrait", { Thread = false, Delay = 0.5 })
 		CurrentRun.RerollBoonTracker = 0
 	end
-
-	ModUtil.Path.Wrap("HandleLootPickup",
-		function(baseFunc, currentRun, loot)
-			local times = 0
-			if not (loot.Name == "StackUpgrade") and not (loot.Name == "WeaponUpgrade") and HeroHasTrait("RerollBoonTrait") then
-				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
-				local count = GetTotalHeroTraitValue("BoonCount")
-				times = math.floor(CurrentRun.RerollBoonTracker / count);
-				if (times > 0) then
-					CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
-				end
-			end
-			baseFunc(currentRun, loot)
-			if (times > 0) then
-				AddRerolls(times, "RerollTrait", { Thread = false, Delay = 0.5 })
-			end
-		end
-	)
+	
 	-- Fountain Coin/Defense Functions
 	function FountainDefensePresentation()
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
