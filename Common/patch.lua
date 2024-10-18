@@ -458,7 +458,7 @@ ModUtil.Path.Wrap("ChooseRoomReward",
             if args == nil then
                 args = {}
             end
-            for k, trait in pairs( CurrentRun.Hero.Traits ) do
+            for k, trait in pairs( CurrentRun.Hero.Traits ) do -- Missing if eligible.
 				if trait.ForceRewardName and trait.Uses > 0 then
 					trait.Uses = trait.Uses - 1
                     room.ForcedReward = trait.ForceRewardName
@@ -1049,18 +1049,25 @@ ModUtil.Path.Wrap("IsGameStateEligible",
                 local numUpgrades = 0
                 if currentRun.LootTypeHistory and currentRun.LootTypeHistory.HephaestusUpgrade then
                     if currentRun.LootTypeHistory.HephaestusUpgrade > requirements.RequiredMaxHephaestusUpgrades then
-                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Failed 1"))
                         return false
                     else
                         numUpgrades = currentRun.LootTypeHistory.HephaestusUpgrade
                     end
                 end
                 if currentRun.CurrentRoom ~= nil and currentRun.CurrentRoom.ChosenRewardType == "HephaestusUpgrade" and (numUpgrades + 1) > requirements.RequiredMaxHephaestusUpgrades then
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Failed 2"))
                     return false
                 end
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Success 1"))
             end
+            if requirements.RequiredNoDamageThisRoom ~= nil then
+                if CurrentRun.CurrentRoom.PerfectEncounterCleared ~= nil and not CurrentRun.CurrentRoom.PerfectEncounterCleared then
+                    return false
+                end
+            end
+            --[[if requirements.RequiredDidNoDamageRun ~= nil then
+                if CurrentRun.CurrentRoom.PerfectEncounterCleared then
+                    return false
+                end
+            end]]
         else
             return false
         end
