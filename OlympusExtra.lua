@@ -132,7 +132,7 @@ ModUtil.LoadOnce(function()
         if ModUtil.Entangled.ModData("HephaestusExtra") ~= nil then
             OlympusCodexMenuData.HephaestusUpgrade = {
                 "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRushTrait", "HephaestusRangedTrait", 
-                "HephaestusShoutTrait",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", 
+                "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", 
                 "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "DamageReturnTrait",
                 "HephaestusTrapTrait", "ArmorLegendaryTrait"
             }

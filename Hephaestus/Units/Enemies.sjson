@@ -2,79 +2,94 @@
   Units = [
     "_append"
     {
-      Name = "HephaestusChariot"
-      InheritFrom = "BaseMedusaHead"
+      Name = "HephaestusChariotSuicide"
+      InheritFrom = "Chariot"
       DefaultAngle = 235.0
       DisplayInEditor = true
       ImmuneToStun = true
-      MoveGraphic = "NPCDusaMove"
-      OnStunAnimation = "NPCDusaStun"
-      Speed = 650.0
-      Life = 
-      {
+      //MoveGraphic = "NPCDusaMove"
+      //OnStunAnimation = "NPCDusaStun"
+      MoveGraphic = "ChariotSuicideMove"
+      OnDeathWeapon = "ChariotRamDeathWeapon"
+      StopGraphic = "ChariotSuicideStop"
+      OnStunAnimation = "ChariotSuicideOnHit"
+      InitiatedCollisionWeapon = "ChariotRamSelfDestruct"
+      RotationSpeed = 520.0
+      Speed = 200.0
+      Life = {
+        DeathGraphic = "ChariotSuicideDeathVFX"
+        Invulnerable = true
+      }
+      /*Life = {
         DeathFx = "ExplosionBone"
         DeathGraphic = "NPCMedusaHiding"
         DeathSound = "/SFX/Enemy Sounds/Bloodless01/EmoteDying"
         Invulnerable = true
-      }
+      }*/
       Thing = 
       {
+        ActivateFx = "EnemySummonRuneMedium"
+        ActivateGraphic = "EnemyActivationFadeInChariotSuicideContainer"
+        EditorOutlineDrawBounds = false
+        Graphic = "ChariotSuicideIdle"
+        Hue = 0.1
+        Saturation = -0.1
+        Scale = 0.5
+      }
+      /*Thing = {
         EditorOutlineDrawBounds = false
         Graphic = "NPCDusaIdle"
         Grip = 8000.0
         SelectionHeight = 250.0
         SelectionWidth = 250.0
         Points = [
-          { X = 0 Y = 54 }
-          { X = 108 Y = 0 }
-          { X = 0 Y = -54 }
-          { X = -108 Y = 0 }
-        ]
-        SubtitleColor = { Red = 0.57 Green = 1.0 Blue = 0.36 }
+          {
+            X = 0
+            Y = 54
+          }
+          {
+            X = 108
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -54
+          }
+          {
+            X = -108
+            Y = 0
+          }]
+        SubtitleColor = 
+        {
+          Red = 0.57
+          Green = 1.0
+          Blue = 0.36
+        }
         Using = [
-          { Name = "NPCDusaPreAttack" }
-          { Name = "NPCDusaAttack" }
-          { Name = "DusaFreezeShotSpray" }
-          { Name = "DusaFreezeShotSpread" }
-        ]
-      }
+          {
+            Name = "NPCDusaPreAttack"
+          }
+          {
+            Name = "NPCDusaAttack"
+          }
+          {
+            Name = "DusaFreezeShotSpray"
+          }
+          {
+            Name = "DusaFreezeShotSpread"
+          }]
+      }*/
     }
     {
-      Name = "HephaestusChariotElite"
-      InheritFrom = "BaseMedusaHead"
-      DefaultAngle = 235.0
+      Name = "HephaestusChariotSuicideElite"
+      InheritFrom = "Chariot"
       DisplayInEditor = true
-      ImmuneToStun = true
-      MoveGraphic = "NPCDusaMove"
-      OnStunAnimation = "NPCDusaStun"
-      Speed = 650.0
-      Life = 
-      {
-        DeathFx = "ExplosionBone"
-        DeathGraphic = "NPCMedusaHiding"
-        DeathSound = "/SFX/Enemy Sounds/Bloodless01/EmoteDying"
-        Invulnerable = true
-      }
+      InitiatedCollisionWeapon = "ChariotRamElite"
+      RotationSpeed = 360.0
+      Speed = 400.0
       Thing = 
       {
         EditorOutlineDrawBounds = false
-        Graphic = "NPCDusaIdle"
-        Grip = 8000.0
-        SelectionHeight = 250.0
-        SelectionWidth = 250.0
-        Points = [
-          { X = 0 Y = 54 }
-          { X = 108 Y = 0 }
-          { X = 0 Y = -54 }
-          { X = -108 Y = 0 }
-        ]
-        SubtitleColor = { Red = 0.57 Green = 1.0 Blue = 0.36 }
-        Using = [
-          { Name = "NPCDusaPreAttack" }
-          { Name = "NPCDusaAttack" }
-          { Name = "DusaFreezeShotSpray" }
-          { Name = "DusaFreezeShotSpread" }
-        ]
       }
     }
   ]

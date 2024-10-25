@@ -962,8 +962,11 @@ ModUtil.Path.Wrap( "Damage",
 			end
 		end
         if HeroHasTrait("DamageReturnTrait") and victim == CurrentRun.Hero and attacker ~= nil and triggerArgs.DamageAmount > 0 then
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Do damage back "..triggerArgs.DamageAmount))
-            --Damage( attacker, { DamageAmount = triggerArgs.DamageAmount*0.5, Silent = false, PureDamage = false } )
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Do damage back "..triggerArgs.DamageAmount))
+            local revengeDamage = GetTotalHeroTraitValue("RevengeDamage")
+            if revengeDamage > 0 then
+                Damage( attacker, { EffectName = "DamageBackEffect", DamageAmount = triggerArgs.DamageAmount*revengeDamage, Silent = false, PureDamage = false } )
+            end           
         end
         if HeroHasTrait("HephaestusTrapTrait") and (( attacker ~= nil and attacker.DamageType == "Neutral" ) or (attacker == nil and triggerArgs.AttackerName ~= nil and EnemyData[triggerArgs.AttackerName] ~= nil and EnemyData[triggerArgs.AttackerName].DamageType == "Neutral" )) then
             ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Trap"))

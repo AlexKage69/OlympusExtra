@@ -16,6 +16,8 @@ To "Game/Animations/GUIAnimations.sjson"
 SJSON "Animations/GUIAnimations.sjson"
 
 :: Obstacles
+To "Game/Units/Enemies.sjson"
+SJSON "Units/Enemies.sjson"
 To "Game/Obstacles/Gameplay.sjson"
 SJSON "Obstacles/Gameplay.sjson"
 To "Game/Projectiles/PlayerProjectiles.sjson"
