@@ -3855,7 +3855,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp", "HeraGift04" },
 				{ Cue = "/VO/Hera_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard you have trouble with your father, Zagreus. Then let me tell you the story of ours. Kronos was my foster father and your father's father. And let's just say that Hades inherit Kronos temper. Let continue this chat once you are here." },
+					Text = "I heard you have trouble with your father, Zagreus. Then let me tell you the story of ours. Kronos was my foster father and your father's father. And let's just say that Hades inherited Kronos temper. Let's continue this chat once you are here." },
 			},
 			HeraBackstory02 =
 			{
@@ -3865,7 +3865,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory01"},
 				{ Cue = "/VO/Hera_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Since you seem lock down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us, like you are right now." },
+					Text = "Since you seem locked down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us, like you are right now." },
 			},
 			HeraBackstory03 =
 			{
@@ -3875,7 +3875,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory02", "HeraGift05" },
 				{ Cue = "/VO/Hera_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember when I told you we were lock by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
+					Text = "Remember when I told you we were locked up by our father Kronos? Well, Zeus was able to escape and gather enough friends along his way to save us and overthrow Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
 			},
 			HeraBackstory04 =
 			{
@@ -3885,7 +3885,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory03" },
 				{ Cue = "/VO/Hera_0095",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "To keep a story short. With Kronos defeated, Olympus needed a new King. Zeus inherited that role, but he decided to share it between twelve seats. Which brings the Olympus you'll see once you get up here. If you ever do." },
+					Text = "With Kronos defeated, Olympus needed a new King. Zeus inherited that role, but decided to share it between twelve seats. And hence the birth of Olympus -- you'll see once you get up here. If you ever do." },
 			},
 			HeraBackstory05 =
 			{
@@ -3895,7 +3895,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory04", "HeraGift06"},
 				{ Cue = "/VO/Hera_0096",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Now that you know your grandfather's story, I hope you show more respect to me and your father from now on. And never dare compare Hades to Kronos." },
+					Text = "Now that you know your grandfather's story, I hope you show more respect to me and your father from now on. And never compare Hades to Kronos." },
 			},			
 		},
 
@@ -3926,7 +3926,7 @@ end]]
 				RequiredGodLoot = "ZeusUpgrade",
 				{ Cue = "/VO/Hera_0064",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Other than the four children we've had together, Zeus has many other children outside our marriage. That is not my idea of an ideal relationship." },
+					Text = "Other than the four children we've had together, Zeus has many other children outside our marriage. Not exactly an ideal relationship." },
 			},
 			HeraAboutPoseidon01 =
 			{
@@ -3950,7 +3950,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp" },
 				{ Cue = "/VO/Hera_0066",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Every day, many come to see me for advice and guidance. Some want my power, others my wisdom, and as their rightful queen, it is my duty to help them. Let me show you what I mean." },
+					Text = "Every day, many seek me for advice and guidance. Some want power, others covet wisdom, and as their rightful queen, it is my duty to help them. Let me show you what I mean." },
 			},
 			HeraAboutQueenDuty02 =
 			{
