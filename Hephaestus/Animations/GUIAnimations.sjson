@@ -128,224 +128,196 @@
     {
       Name = "Boon_Hephaestus_01_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusStrike_large"
+      FilePath = "Hephaestus\MoltenStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_01_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusStrike_large"
+      FilePath = "Hephaestus\MoltenStrike_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_02_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusFlourish_large"
+      FilePath = "Hephaestus\MoltenFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_02_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusFlourish_large"
+      FilePath = "Hephaestus\MoltenFlourish_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_03_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusDash_large"
+      FilePath = "Hephaestus\MegaSprint_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_03_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusDash_large"
+      FilePath = "Hephaestus\MegaSprint_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_04_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusRanged_large"
+      FilePath = "Hephaestus\ExtraAmmunition_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_04_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusRanged_large"
+      FilePath = "Hephaestus\ExtraAmmunition_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_05_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusAid_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_05_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusAid_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_06_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\LoyalRelations_large"
+      FilePath = "Hephaestus\GoldenArmor_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_06_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\LoyalRelations_large"
+      FilePath = "Hephaestus\GoldenArmor_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hephaestus_07_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusFavour_large"
+      FilePath = "Hephaestus\SmithingGold_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_07_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusFavour_large"
+      FilePath = "Hephaestus\SmithingGold_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hephaestus_08_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusStatus_large"
+      FilePath = "Hephaestus\BloodRush_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_08_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusStatus_large"
+      FilePath = "Hephaestus\BloodRush_large"
       EndFrame = 1
       StartFrame = 1
     }
         {
       Name = "Boon_Hephaestus_09_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\RoyalInheritance_large"
+      FilePath = "Hephaestus\ReforgedFate_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_09_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\RoyalInheritance_large"
+      FilePath = "Hephaestus\ReforgedFate_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_10_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusSkull1_large"
+      FilePath = "Hephaestus\PerfectWork_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_10_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusSkull1_large"
+      FilePath = "Hephaestus\PerfectWork_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_11_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\EnvyBoon_large"
+      FilePath = "Hephaestus\LastingPunishment_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_11_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\EnvyBoon_large"
+      FilePath = "Hephaestus\LastingPunishment_large"
       EndFrame = 1
       StartFrame = 1
     }
       {
       Name = "Boon_Hephaestus_12_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\EnvyBoon2_large"
+      FilePath = "Hephaestus\ArsenalProvision_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_12_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\EnvyBoon2_large"
+      FilePath = "Hephaestus\ArsenalProvision_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_13_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusSkull2_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_13_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusSkull2_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\CompanionBoon_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\CompanionBoon_large"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Hephaestus_15_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\HephaestusLegendary_large"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Hephaestus_15_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\HephaestusLegendary_large"
-      EndFrame = 1
-      StartFrame = 1
-    }
-        {
-      Name = "Boon_Hephaestus_16_Small"
-      InheritFrom = "BoonTrayIcon"
-      FilePath = "Hephaestus\QueensGambit_large"
-      EndFrame = 1
-      StartFrame = 1
-    }
-    {
-      Name = "Boon_Hephaestus_16_Large"
-      InheritFrom = "BoonIcon"
-      FilePath = "Hephaestus\QueensGambit_large"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
       EndFrame = 1
       StartFrame = 1
     }
