@@ -101,7 +101,7 @@
 		}
 		{
 			Id = "DropMoneyTrait"
-			DisplayName = "Smithing gold"
+			DisplayName = "Smithing Gold"
 			Description = "After you break enemy's armor, it may drop a bit of wealth. \n {!Icons.Bullet}{#PropertyFormat}Bonus drop chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
@@ -131,7 +131,7 @@
 		}
 		{
 			Id = "SpawnWeaponsTrait"
-			DisplayName = "Arsenal provision"
+			DisplayName = "Arsenal Provision"
 			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
@@ -141,7 +141,7 @@
 		}
 		{
 			Id = "ArmorBossTrait"
-			DisplayName = "Reforging fate"
+			DisplayName = "Reforged Fate"
 			Description = "Upon entering {$Keywords.BossPlural} and {$Keywords.MiniBoss} rooms, {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
@@ -156,7 +156,7 @@
 		}
 		{
 			Id = "ArmorEncounterTrait"
-			DisplayName = "Perfect work"
+			DisplayName = "Perfect Work"
 			Description = "Upon clear an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
@@ -171,7 +171,7 @@
 		}
 		{
 			Id = "ArmorDefianceTrait"
-			DisplayName = "Lasting punishment"
+			DisplayName = "Lasting Punishment"
 			Description = "{$Keywords.ExtraChanceChaos} {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{

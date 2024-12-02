@@ -585,7 +585,7 @@ if ModUtil ~= nil then
 	{
 		Name = "HephaestusWeaponTrait",
 		InheritFrom = { "ShopTier1Trait" },
-		--Icon = "Boon_Hephaestus_06",
+		Icon = "Boon_Hephaestus_01",
 		LootSource = "HephaestusUpgrade",
 		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
 		RarityLevels =
@@ -653,7 +653,7 @@ if ModUtil ~= nil then
 		Name = "HephaestusSecondaryTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
-		--Icon = "Boon_Hephaestus_09",
+		Icon = "Boon_Hephaestus_02",
 		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
 		RarityLevels =
 		{
@@ -730,7 +730,7 @@ if ModUtil ~= nil then
 		Name = "HephaestusRushTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
-		--Icon = "Boon_Hephaestus_03",
+		Icon = "Boon_Hephaestus_03",
 		RarityLevels =
 		{
 			Common =
@@ -785,7 +785,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
 		--Slot = "Ranged",
-		--Icon = "Boon_Hephaestus_04",
+		Icon = "Boon_Hephaestus_04",
 		CustomTrayText = "HephaestusRangedTrait_Tray",
 		PreEquipWeapons = { "IgneousRangedExplosion" },
         --RequiredFalseTrait = "ShieldLoadAmmoTrait",
@@ -843,7 +843,7 @@ if ModUtil ~= nil then
 		RequiredSlottedTrait = "Shout",
 		--CustomTrayText = "HephaestusShoutSummon_Tray",
 		--Slot = "Shout",
-		--Icon = "Boon_Hephaestus_05",
+		Icon = "Boon_Hephaestus_05",
 		RarityLevels =
 		{
 			Common =
@@ -883,7 +883,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.DropMoneyTrait =
 	{
 		Name = "DropMoneyTrait",
-		--Icon = "Boon_Hephaestus_07",
+		Icon = "Boon_Hephaestus_07",
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "DropMoneyTrait",
@@ -922,7 +922,7 @@ if ModUtil ~= nil then
 	OlympusTraitData.RevengeBoostTrait =
 	{
 		Name = "RevengeBoostTrait",
-		--Icon = "Boon_Hephaestus_08",
+		Icon = "Boon_Hephaestus_08",
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "RevengeBoostTrait",
@@ -1006,6 +1006,7 @@ if ModUtil ~= nil then
 		Name = "SpawnWeaponsTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
+		Icon = "Boon_Hephaestus_12",
 		RequiredFalseTrait = "SpawnWeaponsTrait",
 		RarityLevels =
 		{
@@ -1062,7 +1063,7 @@ if ModUtil ~= nil then
 		Name = "ArmorEncounterTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
-		--Icon = "Boon_Hephaestus_10",
+		Icon = "Boon_Hephaestus_10",
 		RequiredFalseTrait = "ArmorEncounterTrait",
 		CustomTrayText = "ArmorEncounterTrait_Tray",
 		RarityLevels =
@@ -1121,7 +1122,7 @@ if ModUtil ~= nil then
 		Name = "ArmorDefianceTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
-		--Icon = "Boon_Hephaestus_11",
+		Icon = "Boon_Hephaestus_11",
 		RequiredFalseTrait = "ArmorDefianceTrait",
 		CustomTrayText = "ArmorDefianceTrait_Tray",
 		RarityLevels =
@@ -1181,7 +1182,7 @@ if ModUtil ~= nil then
 		Name = "ArmorBossTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
-		--Icon = "Boon_Hephaestus_09",
+		Icon = "Boon_Hephaestus_09",
 		RequiredFalseTrait = "ArmorBossTrait",
 		CustomTrayText = "ArmorBossTrait_Tray",
 		RarityLevels =
@@ -1238,6 +1239,7 @@ if ModUtil ~= nil then
 		Name = "HephaestusTrapTrait",
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
+		Icon = "Boon_Hephaestus_13",
 		RequiredFalseTrait = "HephaestusTrapTrait",
 		PreEquipWeapons = { "IgneousTrapExplosion" },
 		RarityLevels =
@@ -1288,7 +1290,7 @@ if ModUtil ~= nil then
 		Name = "DamageReturnTrait",
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
-		--Icon = "Boon_Hephaestus_10",
+		Icon = "Boon_Hephaestus_06",
 		RequiredFalseTrait = "DamageReturnTrait",
 		RarityLevels =
 		{
@@ -1328,7 +1330,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier3Trait" },
 		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "ArmorLegendaryTrait",
-		--Icon = "Boon_Hephaestus_15",		
+		Icon = "Boon_Hephaestus_14",		
 		SetupFunction =
 		{
 			Name = "SetupArmor",
@@ -4270,6 +4272,7 @@ end
 		args = args or {}
 		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
+
 	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)
 			-- if (not CanOpenCodex()) and IsSuperValid() then
@@ -4279,5 +4282,5 @@ end
 			CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
 			baseFunc()
 		end
-	)]]
+	)]] 
 end
