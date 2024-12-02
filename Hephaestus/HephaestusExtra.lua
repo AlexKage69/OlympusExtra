@@ -2654,6 +2654,7 @@ if ModUtil ~= nil then
 				Name = "HephaestusAboutChaos01",
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredLootThisRun = "TrialUpgrade",
 				{ Cue = "/VO/Hephaestus_0106",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
