@@ -221,6 +221,7 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                         if hasAllEffects then
                             if modifierData.DistanceMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.DistanceThreshold * modifierData.DistanceThreshold ) <= triggerArgs.DistanceSquared then
                                 addDamageMultiplier( modifierData, modifierData.DistanceMultiplierWithSelfEffect)
+                                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("distance damage added")) 
                             end
                         end
                     end
@@ -234,6 +235,7 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                         if hasAllEffects then
                             if modifierData.ProximityMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.ProximityThreshold * modifierData.ProximityThreshold ) <= triggerArgs.DistanceSquared then
                                 addDamageMultiplier( modifierData, modifierData.ProximityMultiplierWithSelfEffect)
+                                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("proximity damage added")) 
                             end
                         end
                     end
@@ -467,13 +469,16 @@ ModUtil.Path.Wrap("ChooseRoomReward",
             if args == nil then
                 args = {}
             end
-            for k, trait in pairs( CurrentRun.Hero.Traits ) do -- Missing if eligible.
-				if trait.ForceRewardName and trait.Uses > 0 then
-					trait.Uses = trait.Uses - 1
-                    room.ForcedReward = trait.ForceRewardName
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceRewardName))
-				end
-			end
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.Name))
+            if room.ForcedReward == nil then
+                for k, trait in pairs( CurrentRun.Hero.Traits ) do -- Missing if eligible.
+                    if trait.ForceRewardName and trait.Uses > 0 then
+                        trait.Uses = trait.Uses - 1
+                        room.ForcedReward = trait.ForceRewardName
+                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceRewardName))
+                    end
+                end
+            end
 			return baseFunc(run, room, rewardStoreName, previouslyChosenRewards, args )            
 		end
 	)
