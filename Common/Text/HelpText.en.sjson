@@ -71,17 +71,17 @@
 		}
 		{
       		Id = "ZagreusArmor"
-			DisplayName = "Hephaestus' Armor"
-			Description = "Can't be damage until {!Icons.ArmorIcon} is broken. \n Max {!Icons.ArmorIcon}: {$TooltipData.AccumulatedMaxArmor}"
+			DisplayName = "Hephaestus's Armor"
+			Description = "Can't be damaged until {!Icons.ArmorIcon} is broken. \n Max {!Icons.ArmorIcon}: {$TooltipData.AccumulatedMaxArmor}"
 		}
 		{
       		Id = "HephWeapon"
-			DisplayName = "Hephaestus' Weapons"
+			DisplayName = "Hephaestus's Weapons"
 			Description = "{$Keywords.HephSword}: close damage boost \n Bow: far damage boost. \n Shield: defense boost. \n Spear: movement speed boost."
 		}
 		{
       		Id = "HephSword"
-			DisplayName = "Hephaestus' Sword"
+			DisplayName = "Hephaestus's Sword"
 			Description = "Sword: close damage boost for 5 Sec."
 		}
 		{

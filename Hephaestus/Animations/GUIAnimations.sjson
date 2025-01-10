@@ -184,14 +184,14 @@
     {
       Name = "Boon_Hephaestus_05_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hephaestus\ExplosiveGoons_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_05_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hephaestus\ExplosiveGoons_large"
       EndFrame = 1
       StartFrame = 1
     }
@@ -296,28 +296,28 @@
     {
       Name = "Boon_Hephaestus_13_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hephaestus\CleverMechanism_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_13_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hephaestus\CleverMechanism_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_14_Small"
       InheritFrom = "BoonTrayIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hephaestus\WeaponMaster_large"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Boon_Hephaestus_14_Large"
       InheritFrom = "BoonIcon"
-      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      FilePath = "Hephaestus\WeaponMaster_large"
       EndFrame = 1
       StartFrame = 1
     }
