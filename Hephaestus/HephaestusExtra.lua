@@ -393,22 +393,17 @@ if ModUtil ~= nil then
 		RequiredKill = false,
 		DropItemsOnDeath = false,
 		UseShrineUpgrades = false,
-		DamagedFxStyles =
-		{
-			Default = "HitSparkEnemyDamagedPhysical",
-			Rapid = "HitSparkEnemyDamagedPhysicalRapid",
-		},
+		DamageType = "Neutral",
 		MaxHealth = 1,
 		HealthBarOffsetY = -145,
-		HealthBarType = "MediumLarge",
-		SkipDamageText = false,
+		HealthBarType = "Small",
+		SkipDamageText = true,
 		AnimOffsetZ = 120,
 		UnuseableWhenDead = true,
 		SpeechCooldownTime = 9,
 		SkipModifiers = true,
 		AlwaysTraitor = true,
-		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
-		--InvincibubbleAnim = "Invincibubble_Zag",
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = false,
 
 		Groups = { "FlyingEnemies", "TrainingEnemies" },
 
@@ -418,34 +413,24 @@ if ModUtil ~= nil then
 		{
 			Chance = 0,
 		},
-		-- SuicideChariot
-		HitSparkScale = 1.2,
-
-		--Groups = { "GroundEnemies" },
-
-		RequireEncounterCompleted = "ChariotIntro",
-		RequiredIntroEncounter = "ChariotSuicideIntro",
 
 		ActiveCapWeight = 0.5,
 		LargeUnitCap = 6,
 
-		--MaxHealth = 60,
-		--HealthBarOffsetY = -130,
-		--HealthBarType = "Small",
 		BlockSelfDamageNumbers = true,
 
 		IsAggroedSound = "/SFX/Enemy Sounds/FireChariot/FireChariotAggro",
-		AIAggroRange = 900,
+		AIAggroRange = 5000,
 
 		DefaultAIData =
 		{
 			AIRequireProjectileLineOfSight = false,
-			AIRequireUnitLineOfSight = true,
+			AIRequireUnitLineOfSight = false,
 			SetupDistance = 800,
-			SetupTimeout = 5.0,
-			RamDistance = 10,
+			SetupTimeout = 1.0,
+			RamDistance = 100,
 			RamTimeout = 6.0,
-			RamWeaponName = "ChariotRamSelfDestruct",
+			RamWeaponName = "HephChariotRamSelfDestruct",
 			RamEffectName = "RamBerserk",
 			PreAttackAnimation = "SuicideChariotAttackCharge",
 			PreAttackSound = "/SFX/Enemy Sounds/FireChariot/FireChariotAttackStart",
@@ -453,7 +438,7 @@ if ModUtil ~= nil then
 			PreAttackFlash = 1.0,
 			PreAttackDuration = 0.5,
 			PostAttackAnimation = "ChariotSuicideStop",
-			RamRecoverTime = 2.0,
+			RamRecoverTime = 0.0,
 		},
 
 		GeneratorData =
@@ -507,7 +492,7 @@ if ModUtil ~= nil then
 
 		Groups = { "GroundEnemies" },
 		BlockAttributes = { "ExtraDamage", "HeavyArmor", "DeathSpreadHitShields" },
-
+		
 
 		HealthBuffer = 60,
 		HealthBarOffsetY = -140,
@@ -786,7 +771,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		--Slot = "Ranged",
 		Icon = "Boon_Hephaestus_04",
-		CustomTrayText = "HephaestusRangedTrait_Tray",
+		--CustomTrayText = "HephaestusRangedTrait_Tray",
 		PreEquipWeapons = { "IgneousRangedExplosion" },
         --RequiredFalseTrait = "ShieldLoadAmmoTrait",
 		RarityLevels =
@@ -848,31 +833,44 @@ if ModUtil ~= nil then
 		{
 			Common =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.0,
 			},
 			Rare =
 			{
-				Multiplier = 1.3,
+				Multiplier = 1.1,
 			},
 			Epic =
 			{
-				Multiplier = 1.4,
+				Multiplier = 1.2,
 			},
 			Heroic =
 			{
-				Multiplier = 1.5,
+				Multiplier = 1.3,
 			}
 		},
-		DamageExtract = {
-			BaseValue = 100,
-			SourceIsMultiplier = false,
+		EnemyPropertyChanges =
+		{
+			{
+				WeaponName = "HephChariotRamDeathWeapon",
+				ProjectileName = "HephChariotRamDeathWeapon",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 150,
+				BaseMax = 150,
+				AsInt = true,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				}
+			},
+			{
+				WeaponName = "HephChariotRamDeathWeapon",
+				ProjectileName = "HephChariotRamDeathWeapon",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
 		},
 		ExtractValues =
 		{
-			{
-				Key = "DamageExtract",
-				ExtractAs = "TooltipDamageExtract",
-			},
 			{
 				ExtractAs = "TooltipWrathStocks",
 				Format = "ExistingWrathStocks",
@@ -1008,6 +1006,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		Icon = "Boon_Hephaestus_12",
 		RequiredFalseTrait = "SpawnWeaponsTrait",
+		PreEquipWeapons = {"DamageMeleeBoost","DamageRangedBoost", "DefenseBoost", "SpeedBoost"},
 		RarityLevels =
 		{
 			Common =
@@ -1034,20 +1033,20 @@ if ModUtil ~= nil then
 			ProximityThreshold = 400,
 			ProximityMultiplierWithSelfEffect =
 			{
-				BaseValue = 1.5,
+				Value = 1.25,
 				SourceIsMultiplier = true,
 			},
 			DistanceEffects = { "DamageRangedBoost" },
 			DistanceThreshold = 400,
 			DistanceMultiplierWithSelfEffect =
 			{
-				BaseValue = 1.5,
+				Value = 1.25,
 				SourceIsMultiplier = true,
 			},
 		},
 		SpawnHephWeaponOnDeath =
 		{
-			BaseValue = 1.0,
+			BaseValue = 0.25,
 		},	
 		ExtractValues =
 		{
@@ -1250,15 +1249,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.1,
+				Multiplier = 1.16,
 			},
 			Epic =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.33,
 			},
 			Heroic =
 			{
-				Multiplier = 1.3
+				Multiplier = 1.5
 			}
 		},
 		PropertyChanges =
@@ -1266,8 +1265,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "IgneousTrapExplosion" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 50,
-				BaseMax = 50,
+				BaseMin = 60,
+				BaseMax = 60,
 				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
@@ -4103,7 +4102,6 @@ ModUtil.Path.Wrap( "AddAmmoPresentation",
 	function(baseFunc)
 		baseFunc()
 		if HeroHasTrait("HephaestusRangedTrait") then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Ammo"))
 			FireWeaponFromUnit({
 				Weapon = "IgneousRangedExplosion",
 				Id = CurrentRun.Hero.ObjectId,
@@ -4131,11 +4129,14 @@ ModUtil.Path.Wrap( "FireShoutEffects",
 )
 function HephaestusShout() 
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Shout"))
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 30.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
 end
 function HephaestusMaxShout() 
 	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Max Shout")) 
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicideElite", Duration = 30.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
 end
 function SpawnExplosiveChariot( args )
 	local enemyName = args.Name or "ChariotSuicide"
@@ -4181,7 +4182,7 @@ function SetupIgneousArmor( hero, args )
 			hero.IgneousArmor.DamageTransfer = args.DamageTransfer
 		end
 	end
-	PresentationIgneousArmor(hero.IgneousArmor)
+	--PresentationIgneousArmor(hero.IgneousArmor)
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(hero.IgneousArmor.DamageTransfer)) 
 end
 function PresentationIgneousArmor( igneousArmor )
@@ -4194,10 +4195,10 @@ function PresentationIgneousArmor( igneousArmor )
 end
 function DamageIgneousArmor( weaponData, args)
 	args = args or {}
-	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then --and IsCombatEncounterActive( CurrentRun ) then
 		local igneousArmor = CurrentRun.Hero.IgneousArmor
 		if igneousArmor ~= nil and not igneousArmor.InCooldown then
-			PresentationIgneousArmor(igneousArmor)
+			--PresentationIgneousArmor(igneousArmor)
 			if not igneousArmor.Charging and not igneousArmor.InCooldown then
 				igneousArmor.InCooldown = true
 				igneousArmor.Charging = true
@@ -4209,16 +4210,19 @@ function DamageIgneousArmor( weaponData, args)
 end
 function StartArmorIgneous(igneousArmor)
 	--thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "Armor Start", Duration = 1, LuaKey = "TempTextData", LuaValue = { Amount = igneousArmor.Damage }})
-	CreateAnimation({ Name = "ThanatosDeathsHead_Small", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+	CreateAnimation({ Name = "ChaosShieldBonusFx", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 	wait(igneousArmor.Duration-2.0)
-	CreateAnimation({ Name = "ThanatosDeathsHead_Small", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+	CreateAnimation({ Name = "QuickFlash", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+	PlaySound({ Name = "/SFX/Shout1" })
 	wait(1.0)
-	CreateAnimation({ Name = "ThanatosDeathsHead_Small", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
-	wait(1.0)
-	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
+	CreateAnimation({ Name = "QuickFlash", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+	PlaySound({ Name = "/SFX/Shout1" })
+	wait(1.0) 
+	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then--and IsCombatEncounterActive( CurrentRun ) then
 		igneousArmor.Charging = false
 		--CreateAnimation({ Name = "ThanatosDeathsHead_Small", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
-		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "IgneousArmorDamage", Duration = 1, LuaKey = "TempTextData", LuaValue = { Amount = igneousArmor.Damage }})
+		StopAnimation({ Name = "ChaosShieldBonusFx", DestinationId = CurrentRun.Hero.ObjectId }) -- 1
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "IgneousArmorDamage", Duration = 5, LuaKey = "TempTextData", LuaValue = { Amount = igneousArmor.Damage }})
 		local targetId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId })
 		ApplyWeaponPropertyChanges( CurrentRun.Hero, "IgneousArmorExplosion", {
 			{
@@ -4242,9 +4246,10 @@ function StartArmorIgneous(igneousArmor)
 		igneousArmor.Damage = 0
 	end
 	wait(igneousArmor.Cooldown)
-	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
-		CreateAnimation({ Name = "ThanatosDeathsHead_Small", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
-		--thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "Armor Ready", Duration = 1, LuaKey = "TempTextData", LuaValue = { Amount = igneousArmor.Damage }})
+	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then--and IsCombatEncounterActive( CurrentRun ) then
+		CreateAnimation({ Name = "ImpulseMineLight", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+		thread( PlayVoiceLines, HeroVoiceLines.GunWeaponReloadCompleteVoiceLines, true )
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "IgneousArmorReady", Duration = 1})
 		igneousArmor.InCooldown = false
 	end
 end
@@ -4273,14 +4278,29 @@ end
 		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
 
-	--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)
 			-- if (not CanOpenCodex()) and IsSuperValid() then
 			-- 	BuildSuperMeter(CurrentRun, 50)
 			-- end
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
+			--[[local swordId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 200, OffsetY = 0 })
+			DropHealth("SwordHephWeaponDrop",swordId)
+			local bowId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 300, OffsetY = 0 })
+			DropHealth("BowHephWeaponDrop",bowId)
+			local shieldId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 400, OffsetY = 0 })
+			DropHealth("ShieldHephWeaponDrop",shieldId)
+			local spearId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 500, OffsetY = 0 })
+			DropHealth("SpearHephWeaponDrop",spearId)]]
+			--local swordId = SpawnObstacle({ Name = "BowHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
+			--local bowId = SpawnObstacle({ Name = "BowHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
+			--local shieldId = SpawnObstacle({ Name = "ShieldHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
+			--local spearId = SpawnObstacle({ Name = "SpearHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
+			--ApplyUpwardForce({ Id = swordId, Speed = 300 })
+			--ApplyUpwardForce({ Id = bowId, Speed = 500 })
+			--ApplyUpwardForce({ Id = shieldId, Speed = 700 })
+			--ApplyUpwardForce({ Id = spearId, Speed = 1000 })
 			baseFunc()
 		end
-	)]] 
+	)
 end

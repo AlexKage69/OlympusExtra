@@ -51,7 +51,7 @@
         ExtendDurationOnReapply = true
         BackFx = null
         OnlyAffectName = "_PlayerUnit"
-        FrontFx = "HestiaEncounterStartBuff"
+        FrontFx = "BoostSparkles-Sword"
       }
     }
     {
@@ -68,7 +68,7 @@
         ExtendDurationOnReapply = true
         BackFx = null
         OnlyAffectName = "_PlayerUnit"
-        FrontFx = "HestiaEncounterStartBuff"
+        FrontFx = "BoostSparkles-Bow"
       }
     }
     {
@@ -86,7 +86,7 @@
         ExtendDurationOnReapply = true
         BackFx = null
         OnlyAffectName = "_PlayerUnit"
-        FrontFx = "HestiaEncounterStartBuff"
+        FrontFx = "BoostSparkles-Shield"
       }
     }
     {
@@ -104,7 +104,7 @@
         ExtendDurationOnReapply = true
         BackFx = null
         OnlyAffectName = "_PlayerUnit"
-        FrontFx = "HestiaEncounterStartBuff"
+        FrontFx = "BoostSparkles-Spear"
       }
     }
     {

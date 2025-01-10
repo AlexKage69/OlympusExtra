@@ -5780,19 +5780,6 @@ if ModUtil ~= nil then
 			baseFunc(eventSource, args)
 			ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField", "HestiaFieldDefense", "HestiaSmallFieldDefense" } })
 		end)
-	ModUtil.Path.Wrap("KillEnemy",
-		function(baseFunc, victim, triggerArgs)
-			baseFunc(victim, triggerArgs)
-			local killer = triggerArgs.AttackerTable
-			local killingWeapon = triggerArgs.SourceWeapon
-			if not victim.SkipModifiers and killer ~= nil and killer == CurrentRun.Hero then
-				for i, data in pairs(GetHeroTraitValues("OnEnemyDeathFunctionArgs")) do
-					if data.Name and _G[data.Name] then
-						_G[data.Name](triggerArgs, data.Args)
-					end
-				end
-			end
-		end)
 	function SpawningLavaProjectile(triggerArgs, args)
 		if HeroHasTrait("HestiaRangedTrait") and triggerArgs.name == "HestiaProjectile" then
 			local dropLocation = SpawnObstacle({ Name = "InvisibleTarget", LocationX = triggerArgs.LocationX,

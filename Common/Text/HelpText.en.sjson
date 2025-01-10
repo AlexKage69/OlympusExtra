@@ -61,6 +61,10 @@
 			OverwriteLocalization = true
 		}
 		{
+			Id = "IgneousArmorReady"
+			DisplayName = "Ready"
+		}
+		{
       		Id = "IgneousArmor"
 			DisplayName = "Igneous Armor"
 			Description = "Charge up damage to create a blast after {#BoldFormatGraft}{$TooltipData.TooltipIgneousDuration} Sec{#PreviousFormat}. \n Cooldown {#BoldFormatGraft}{$TooltipData.TooltipIgneousCooldown} Sec{#PreviousFormat}."
