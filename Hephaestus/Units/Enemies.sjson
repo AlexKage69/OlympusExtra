@@ -10,31 +10,45 @@
       //MoveGraphic = "NPCDusaMove"
       //OnStunAnimation = "NPCDusaStun"
       MoveGraphic = "ChariotSuicideMove"
-      OnDeathWeapon = "ChariotRamDeathWeapon"
+      OnDeathWeapon = "HephChariotRamDeathWeapon"
       StopGraphic = "ChariotSuicideStop"
       OnStunAnimation = "ChariotSuicideOnHit"
-      InitiatedCollisionWeapon = "ChariotRamSelfDestruct"
+      InitiatedCollisionWeapon = "HephChariotRamSelfDestruct"
       RotationSpeed = 520.0
       Speed = 200.0
       Life = {
         DeathGraphic = "ChariotSuicideDeathVFX"
-        Invulnerable = true
+        //Invulnerable = true
       }
-      /*Life = {
-        DeathFx = "ExplosionBone"
-        DeathGraphic = "NPCMedusaHiding"
-        DeathSound = "/SFX/Enemy Sounds/Bloodless01/EmoteDying"
-        Invulnerable = true
-      }*/
       Thing = 
       {
         ActivateFx = "EnemySummonRuneMedium"
         ActivateGraphic = "EnemyActivationFadeInChariotSuicideContainer"
         EditorOutlineDrawBounds = false
+        StopsProjectiles = false
+        StopsUnits = true
         Graphic = "ChariotSuicideIdle"
         Hue = 0.1
         Saturation = -0.1
         Scale = 0.5
+        Points = [
+          {
+            X = 0
+            Y = 54
+          }
+          {
+            X = 108
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -54
+          }
+          {
+            X = -108
+            Y = 0
+          }
+        ]
       }
       /*Thing = {
         EditorOutlineDrawBounds = false

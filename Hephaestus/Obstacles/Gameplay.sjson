@@ -15,52 +15,116 @@
       Name = "SwordHephWeaponDrop"
       InheritFrom = "HealDrop1"
       DisplayInEditor = true
-      VelocityAbsorbtionFraction = 0.5
+      Magnetism = 1.0
+      MagnetismWhileBlockedDistance = 9999.0
+      RequiresUsable = false
+      /*Life = 
+      {
+        //DeathFx = "HealthSparkleBurst"
+      }*/
       Thing = 
       {
+        AttachedAnim = "EnemyShadeWeaponShadow"
         EditorOutlineDrawBounds = false
-        Scale = 0.8
+        Graphic = "EnemySwordBoost"
+        Scale = 0.7
         StopsProjectiles = false
         StopsUnits = false
+        Interact = {
+          AutoActivate = true
+          AutoUseFailedAnimation = "ConsumableCannotUse"
+          //DestroyOnUse = true
+          //RequiresMissingHealth = true
+          //UsedFrontFx = "Heal"
+        }
       }
     }
     {
       Name = "BowHephWeaponDrop"
       InheritFrom = "HealDrop1"
       DisplayInEditor = true
-      VelocityAbsorbtionFraction = 0.5
+      Magnetism = 1.0
+      MagnetismWhileBlockedDistance = 9999.0
+      RequiresUsable = false
+      /*Life = 
+      {
+        //DeathFx = "HealthSparkleBurst"
+      }*/
       Thing = 
       {
+        AttachedAnim = "EnemyShadeWeaponShadow"
         EditorOutlineDrawBounds = false
-        Scale = 0.8
+        Graphic = "EnemyBowBoost"
+        Scale = 0.7
         StopsProjectiles = false
         StopsUnits = false
-      }
-    }
-    {
-      Name = "SpearHephWeaponDrop"
-      InheritFrom = "HealDrop1"
-      DisplayInEditor = true
-      VelocityAbsorbtionFraction = 0.5
-      Thing = 
-      {
-        EditorOutlineDrawBounds = false
-        Scale = 0.8
-        StopsProjectiles = false
-        StopsUnits = false
+        Interact = {
+          AutoActivate = true
+          AutoUseFailedAnimation = "ConsumableCannotUse"
+          //DestroyOnUse = true
+          //RequiresMissingHealth = true
+          //UsedFrontFx = "Heal"
+        }
       }
     }
     {
       Name = "ShieldHephWeaponDrop"
       InheritFrom = "HealDrop1"
       DisplayInEditor = true
-      VelocityAbsorbtionFraction = 0.5
+      Magnetism = 1.0
+      MagnetismWhileBlockedDistance = 9999.0
+      RequiresUsable = false
+      /*Life = 
+      {
+        //DeathFx = "HealthSparkleBurst"
+      }*/
       Thing = 
       {
+        AttachedAnim = "EnemyShadeWeaponShadow"
         EditorOutlineDrawBounds = false
-        Scale = 0.8
+        Graphic = "EnemyShieldBoost"
+        Scale = 0.7
         StopsProjectiles = false
         StopsUnits = false
+        Interact = {
+          AutoActivate = true
+          AutoUseFailedAnimation = "ConsumableCannotUse"
+          //DestroyOnUse = true
+          //RequiresMissingHealth = true
+          //UsedFrontFx = "Heal"
+        }
+      }
+    }
+    {
+      Name = "SpearHephWeaponDrop"
+      InheritFrom = "HealDrop1"
+      DisplayInEditor = true
+      Magnetism = 1.0
+      MagnetismWhileBlockedDistance = 9999.0
+      RequiresUsable = false
+      /*Life = 
+      {
+        //DeathFx = "HealthSparkleBurst"
+      }*/
+      Thing = 
+      {
+        AttachedAnim = "EnemyShadeWeaponShadow"
+        EditorOutlineDrawBounds = false
+        Graphic = "EnemySpearBoost" //EnemySpearPickup
+        Scale = 0.7
+        StopsProjectiles = false
+        StopsUnits = false
+        Offset = {
+          X = 0
+          Y = 0
+        }
+        Interact = {
+          AutoActivate = true
+          AutoUseFailedAnimation = "ConsumableCannotUse"
+          //DestroyOnUse = true
+          //RequiresMissingHealth = true
+          //UsedFrontFx = "Heal"
+        }
       }
     }
   ]

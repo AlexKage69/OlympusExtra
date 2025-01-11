@@ -8,17 +8,17 @@
     {
       Id = "CodexData_Hephaestus_0001"
       Speaker = "Achilles"
-      DisplayName = "'...Part 1...'"
+      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is over....'"
     }
     {
       Id = "CodexData_Hephaestus_0002"
       Speaker = "Achilles"      
-      DisplayName = "'...Part 1, Part 2...'"
+      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is over. {#CodexBoldFormat}Always tinkering, I believe he is truly the father of engineering and ingenuity. For the best and the worst of humanity...{#PreviousFormat}'"
     }
     {
       Id = "CodexData_Hephaestus_0003"
       Speaker = "Achilles" 
-      DisplayName = "'...Part 1, Part 2, Part 3.'"
+      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is over. Always tinkering, I believe he is truly the father of engineering and ingenuity. For the best and the worst of humanity. {#CodexBoldFormat}Afterall, Zeus’ lightning bolts are crafted from his molten forge. If there’s a weapon capable of destroying our world, he would be the one crafting it.{#PreviousFormat}'"
     }
   ]
 }

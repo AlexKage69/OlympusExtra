@@ -221,6 +221,7 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                         if hasAllEffects then
                             if modifierData.DistanceMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.DistanceThreshold * modifierData.DistanceThreshold ) <= triggerArgs.DistanceSquared then
                                 addDamageMultiplier( modifierData, modifierData.DistanceMultiplierWithSelfEffect)
+                                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("distance damage added")) 
                             end
                         end
                     end
@@ -234,6 +235,7 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                         if hasAllEffects then
                             if modifierData.ProximityMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.ProximityThreshold * modifierData.ProximityThreshold ) <= triggerArgs.DistanceSquared then
                                 addDamageMultiplier( modifierData, modifierData.ProximityMultiplierWithSelfEffect)
+                                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("proximity damage added")) 
                             end
                         end
                     end
@@ -374,15 +376,27 @@ ModUtil.Path.Wrap("Kill",
             -- No one can be killed after the hero dies, they can only be cleaned up directly
             return
         end
-        -- Hephaestus Drop Weapons
-        if HeroHasTrait("SpawnWeaponsTrait") then
-            local chance = GetTotalHeroTraitValue("SpawnHephWeaponOnDeath")
-            --if RandomChance(chance) then
-                DropHephWeapon(victim, 130, 0, false)
-            --end
-        end
     end
 )
+ModUtil.Path.Wrap("KillEnemy",
+function(baseFunc, victim, triggerArgs)
+    if HeroHasTrait("SpawnWeaponsTrait") and victim ~= nil and victim.DamageType == "Enemy" then
+        local chance = GetTotalHeroTraitValue("SpawnHephWeaponOnDeath")
+        if RandomChance(chance) then
+            DropHephWeapon(victim.ObjectId, 130, 0, false)
+        end
+    end
+    baseFunc(victim, triggerArgs)
+    local killer = triggerArgs.AttackerTable
+    local killingWeapon = triggerArgs.SourceWeapon
+    if not victim.SkipModifiers and killer ~= nil and killer == CurrentRun.Hero then
+        for i, data in pairs(GetHeroTraitValues("OnEnemyDeathFunctionArgs")) do
+            if data.Name and _G[data.Name] then
+                _G[data.Name](triggerArgs, data.Args)
+            end
+        end
+    end
+end)
 OnEffectDelayedKnockbackForce{
 	function( triggerArgs )
 		if triggerArgs.EffectName == "SecondDelayedKnockback" then
@@ -401,22 +415,19 @@ function DropHephWeapon(targetId, radius, angle, dropTowardHero)
         "SpearHephWeaponDrop"
     }
     local objectName = GetRandomValue(HephChoices)
-	local offset = CalcOffset( angle or RandomFloat( 0, 360 ), radius or 5 )
-	local boostDropId = SpawnObstacle({ Name = objectName, DestinationId = targetId, OffsetX = offset.X, OffsetY = offset.Y, Group = "Standing" })
-	local consumableData = ConsumableData[objectName]
-	local consumable = GetRampedConsumableData( consumableData )
-	consumable.ObjectId = boostDropId
-	consumable.Cost = 0
-	AddToGroup({ Id = boostDropId, Name = "ConsumableItems" })
-	AttachLua({ Id = boostDropId, Table = consumable })
-	ApplyUpwardForce({ Id = boostDropId, Speed = RandomFloat( 500, 700 ) })
-	if not dropTowardHero then
+	--local offset = CalcOffset( angle or RandomFloat( 0, 360 ), radius or 5 )
+    --local swordId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = targetId, OffsetX = 200, OffsetY = 0 })
+    DropHealth(objectName,targetId)
+    --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(objectName)) 
+	--ApplyUpwardForce({ Id = boostDropId, Speed = RandomFloat( 500, 700 ) })
+	--[[if not dropTowardHero then
 		ApplyForce({ Id = boostDropId, Speed = RandomFloat( 75, 260 ), Angle = RandomFloat( 0, 360 ) })
 	else
 		local forceAngle = GetAngleBetween({ Id = boostDropId, DestinationId = CurrentRun.Hero.ObjectId })
 		ApplyForce({ Id = boostDropId, Speed = 100, Angle = forceAngle, SelfApplied = true })
-	end
-	PlaySound({ Name = "/Leftovers/Menu Sounds/CoinFlash", Id = boostDropId })
+	end]]
+	PlaySound({ Name = "/Leftovers/Menu Sounds/CoinFlash", Id = targetId })
+    --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call me!")) 
 end
 ModUtil.Path.Wrap("CheckLastStand",
     function(baseFunc, victim, triggerArgs)
@@ -458,13 +469,16 @@ ModUtil.Path.Wrap("ChooseRoomReward",
             if args == nil then
                 args = {}
             end
-            for k, trait in pairs( CurrentRun.Hero.Traits ) do -- Missing if eligible.
-				if trait.ForceRewardName and trait.Uses > 0 then
-					trait.Uses = trait.Uses - 1
-                    room.ForcedReward = trait.ForceRewardName
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceRewardName))
-				end
-			end
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.Name))
+            if room.ForcedReward == nil then
+                for k, trait in pairs( CurrentRun.Hero.Traits ) do -- Missing if eligible.
+                    if trait.ForceRewardName and trait.Uses > 0 then
+                        trait.Uses = trait.Uses - 1
+                        room.ForcedReward = trait.ForceRewardName
+                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceRewardName))
+                    end
+                end
+            end
 			return baseFunc(run, room, rewardStoreName, previouslyChosenRewards, args )            
 		end
 	)

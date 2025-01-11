@@ -994,15 +994,17 @@ ModUtil.Path.Wrap( "SetupRoomReward",
 	function(baseFunc, currentRun, room, previouslyChosenRewards, args )
 		args = args or {}
 		local excludeLootNames = {}
-		for god, exiled in pairs( GameState.CurrentExiledGods ) do
-			if exiled then
-				table.insert( excludeLootNames, god )
+		if GameState.CurrentExiledGods ~= nil then
+			for god, exiled in pairs( GameState.CurrentExiledGods ) do
+				if exiled then
+					table.insert( excludeLootNames, god )
+				end
 			end
-		end
-		if not args.IgnoreForceLootName then
-			for k, trait in pairs( CurrentRun.Hero.Traits ) do
-				if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 and not Contains(excludeLootNames, trait.ForceBoonName) then
-					args.IgnoreForceLootName = true
+			if not args.IgnoreForceLootName then
+				for k, trait in pairs( CurrentRun.Hero.Traits ) do
+					if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 and not Contains(excludeLootNames, trait.ForceBoonName) then
+						args.IgnoreForceLootName = true
+					end
 				end
 			end
 		end
