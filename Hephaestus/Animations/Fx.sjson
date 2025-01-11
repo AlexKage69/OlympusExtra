@@ -2664,7 +2664,7 @@
       StartFrame = 1
       EndFrame = 3
       NumFrames = 3
-      Scale = 0.16
+      Scale = 0.15
     }
     {
       Name = "BoonDissipateA_Hephaestus"

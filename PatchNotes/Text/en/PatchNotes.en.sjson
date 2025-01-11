@@ -9,7 +9,7 @@
 			With Hades 2 in early access, Olympus Extra wants to say they will keep on working on their roadmap.
 			
 			Some voice are still missing for our dear Hera! 
-			@{#AlertHighlightFormat}bessyboo{#PreviousFormat} is still resting and we'll deliver them soon.
+			@{#AlertHighlightFormat}bessyboo {#PreviousFormat} is still resting and we'll deliver them soon.
 
 			Most Mod stayed on ModUtil 2.10.1. It won't be compatible with them until they are upgraded to ModUtil 3.1.1
 			CodexMenu has a version compatible with ModUtil 3.1.1. Make sure you use the right one.
@@ -63,7 +63,7 @@
 			{#AlertH2Format}Highlights{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hestia Voice{#PreviousFormat}: Hestia now is voiced by @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat}
 			+ {#AlertHighlightFormat}Forgiveness Guarantee{#PreviousFormat}: Zagreus is guaranteed forgiveness after 5 times the same encounter with Hestia
-			+ {#AlertHighlightFormat}Original Gods Voice{#PreviousFormat}: Original Gods got new voiceline with Community mimicking them.
+			+ {#AlertHighlightFormat}Original Gods Voice{#PreviousFormat}: Original Gods got new voicelines with Community mimicking them.
       \Column 330 {#AlertHighlightFormat}Voice of Hera, Aphrodite: bessyboo{#PreviousFormat}
       \Column 330 {#AlertHighlightFormat}Voice of Ares, Poseidon, & Theseus: Myles Sands{#PreviousFormat}
       \Column 330 {#AlertHighlightFormat}Voice of Artemis: Honor Wilson{#PreviousFormat}
@@ -151,7 +151,7 @@
 			First release of the first god planned for OlympusExtra. Our Team:
       AlexKage and PhysiX.
 
-      Apollo's Art by @{#AlertHighlightFormat}Reikiix{#PreviousFormat} and Badges by @{#AlertHighlightFormat}Lazy.mano{#PreviousFormat}
+      Apollo's Art by @{#AlertHighlightFormat}Reikiix {#PreviousFormat} and Badges by @{#AlertHighlightFormat}Lazy.mano{#PreviousFormat}
 
 			Olympus Extra is made to be added content to the greatest game of all time.
 
