@@ -419,5 +419,86 @@
       RandomDurationMin = 0.0
       RandomFlipHorizontal = false
     }
+    /* Boon FX */
+    {
+      Name = "BoonDropHephaestus"
+      InheritFrom = "BoonDropGold"
+      ChildAnimation = "BoonDropA-Hephaestus"
+    }
+    {
+      Name = "BoonDropA-Hephaestus"
+      InheritFrom = "BoonDropA"
+      ChildAnimation = "BoonDropB-Hephaestus"
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+    }
+    {
+      Name = "BoonDropB-Hephaestus"
+      InheritFrom = "BoonDropB"
+      ChildAnimation = "BoonDropC-Hephaestus"
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+    }
+    {
+      Name = "BoonDropC-Hephaestus"
+      InheritFrom = "BoonDropC"
+      ChildAnimation = "BoonDropHephaestusIcon"
+    }
+    {
+      Name = "BoonDropHephaestusIcon"
+      InheritFrom = "BoonDropIcon"
+      FilePath = "Hephaestus\HephIconSpin\HephIconSpin"
+      StartFrame = 1
+      EndFrame = 3
+      NumFrames = 3
+      Scale = 0.155
+    }
+    {
+      Name = "BoonDissipateA_Hephaestus"
+      InheritFrom = "BoonDissipateA"
+      Red = 0.3
+      Green = 1
+      Blue = 0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "BoonDissipateB_Hephaestus"
+        }
+        {
+          Name = "BoonDissipateVertical_Hephaestus"
+        }
+        {
+          Name = "BoonDissipateGlow_Hephaestus"
+        }]
+    }
+    {
+      Name = "BoonDissipateB_Hephaestus"
+      InheritFrom = "BoonDissipateB"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "BoonDissipateVertical_Hephaestus"
+      InheritFrom = "BoonDissipateVertical"
+      Hue = 0.4
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+      AddColor = true
+    } 
+    {
+      Name = "BoonDissipateGlow_Hephaestus"
+      InheritFrom = "BoonDissipateGlow"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
   ]
 }

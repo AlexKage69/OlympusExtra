@@ -87,17 +87,17 @@
 		{
 			Id = "HephaestusShoutSummon"
 			DisplayName = "Explosive Goons"
-			Description = "Create a friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
+			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
 		}
 		{
 			Id = "HephaestusShoutSummon_Tray"
 			InheritFrom = "HephaestusShoutSummon"
-			Description = "Create a friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
+			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
 		}
 		{
 			Id = "HephaestusShoutSummon_Initial"
 			InheritFrom = "HephaestusShoutSummon"
-			Description = "Create a friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
+			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
 		}
 		{
 			Id = "DropMoneyTrait"
