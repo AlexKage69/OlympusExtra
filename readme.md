@@ -57,14 +57,14 @@ If you'd like to donate to us, send any PayPal amount to **alexandre69.demers@gm
 
 ### Production
 **Original Concept & Project Director:** [AlexKage](https://github.com/AlexKage69)\
-**Project Manager & Senior Producer:** [physiX](https://twitter.com/physiX_VG)\
+**Project Manager & Senior Producer:** [physiX](https://github.com/phypoh)\
 **Junior Producer:** bessyboo ([Twitter](https://twitter.com/bessyboo) | [YouTube](https://www.youtube.com/channel/UClDXaCDTTlP_rL_wT8Dnamg) | [AO3](https://archiveofourown.org/users/bessyboo))
 
 ### Programming
 AlexKage, physiX
 
 ### Writing
-**Dialogue Writing:** AlexKage\
+**Dialogue Writing:** AlexKage, physiX\
 **Codex Writing:** bessyboo\
 **Editor:** bessyboo
 
@@ -72,7 +72,9 @@ AlexKage, physiX
 **Apollo Portrait:** [Reikiix](https://twitter.com/Reikiix)\
 **Apollo Keepsake Badges:** [Lazy.mano](https://www.reddit.com/user/Lazymanohelp)\
 **Hestia, Hera Portrait:** Relia ([Twitter](https://twitter.com/shazari) | [Tumblr](https://artcrystals.tumblr.com/))\
+**Hephaestus Portrait:** Leo_v ([Artstation](https://www.artstation.com/leo_v))\
 **Hestia Keepsake Badges:** [Starley](https://twitter.com/princestarley/)\
+**Hera Keepsake Badges:** Lazymano\
 **Additional Graphics:** physiX, bessyboo
 
 ### Audio
