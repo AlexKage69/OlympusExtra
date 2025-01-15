@@ -91,7 +91,11 @@
 		}
 		{
 			Id = "RepairText"
-			DisplayName = "{#CombatTextHighlightFormat}Repair!{#PreviousFormat}!"
+			DisplayName = "{#CombatTextHighlightFormat}Repair!{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorUpText"
+			DisplayName = "{#CombatTextHighlightFormat}Armor Up!{#PreviousFormat}"
 		}
 		{
 			Id = "TemporaryAmmo"

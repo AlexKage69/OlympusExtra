@@ -87,12 +87,12 @@
       FilePath = "Hephaestus\Hepheastus1"
       EndFrame = 1
       StartFrame = 1
-      Scale = 0.15
+      Scale = 0.20
     }
     {
       Name = "BoonInfoSymbolHephaestusIcon"
       InheritFrom = "BoonInfoSymbolBase"
-      FilePath = "Hephaestus\Hepheastus1"
+      FilePath = "Hephaestus\HephIconSpin\HephIconSpin0001"
       EndFrame = 1
       StartFrame = 1
       Scale = 0.20
@@ -101,7 +101,7 @@
       Name = "BoonSymbolHephaestusIcon"
       InheritFrom = "BoonSymbolBase"
       FilePath = "Hephaestus\Hepheastus1"
-      Scale = 0.15
+      Scale = 0.20
     }
     {
       Name = "BoonSymbolHephaestusIsometric"

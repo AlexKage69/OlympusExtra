@@ -3887,6 +3887,7 @@ end
 function AddMaxArmor(num)
 	CurrentRun.Hero.Armor.Max = CurrentRun.Hero.Armor.Max + num
 	RepairArmor(num)
+	thread(ArmorUpPresentation)
 end
 function RepairArmor(amount)
 	if CurrentRun.Hero.Armor ~= nil and CurrentRun.Hero.Armor.Max > 0 and CurrentRun.Hero.Armor.Amount < CurrentRun.Hero.Armor.Max then
@@ -3895,12 +3896,8 @@ function RepairArmor(amount)
 			newAmount = CurrentRun.Hero.Armor.Max
 		end
 		CurrentRun.Hero.Armor.Amount = newAmount
-		thread(RepairArmorPresentation)
 		thread( UpdateHealthUI )
 	end
-end
-function GainArmorPresentation( args )
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Some Armor Presentation"))
 end
 
 ModUtil.Path.Wrap( "SacrificeHealth", 
@@ -4048,6 +4045,7 @@ ModUtil.Path.Wrap("StartEncounter",
 					currentRun.CurrentRoom.IsMiniBossRoom then		
 						local armorAmount = GetTotalHeroTraitValue("RepairArmorOnBoss", { IsMultiplier = false })			
 						RepairArmor(armorAmount)
+						thread(RepairArmorPresentation)
 				end
 			end
 			baseFunc(currentRun, currentRoom, currentEncounter)
@@ -4055,8 +4053,14 @@ ModUtil.Path.Wrap("StartEncounter",
 	)
 	function RepairArmorPresentation()
 		wait(0.2)
-		PlaySound({ Name = "/SFX/PlayerHammerExplosions", Id = CurrentRun.Hero.ObjectId })
-		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "RepairText", Duration = 1 })
+		PlaySound({ Name = "/SFX/WeaponUpgradeHammerPickup", Id = CurrentRun.Hero.ObjectId })
+		thread( InCombatTextArgs, { Text = "RepairText", TargetId = CurrentRun.Hero.ObjectId, Duration = 0.85, PreDelay = 0.21, FontScale = 20 } ) --SkipRise = true, OffsetY = -160, SkipShadow = true
+		--thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "RepairText", Duration = 1 })
+	end
+	function ArmorUpPresentation()
+		wait(0.5)
+		PlaySound({ Name = "/SFX/WeaponUpgradeHammerDrop2", Id = CurrentRun.Hero.ObjectId })
+		thread( InCombatTextArgs, { Text = "ArmorUpText", TargetId = CurrentRun.Hero.ObjectId, Duration = 0.85, PreDelay = 0.21, FontScale = 20 } ) --SkipRise = true, OffsetY = -160, SkipShadow = true
 	end
 	
 	function OnDamageBoost(attacker, args)
@@ -4076,6 +4080,7 @@ ModUtil.Path.Wrap( "EndEncounterEffects",
 				if not currentEncounter.PlayerTookDamage and traitData.RepairArmorOnPerfectEncounter then
 					PerfectClearTraitSuccessPresentation( traitData )
 					RepairArmor(traitData.RepairArmorOnPerfectEncounter)
+					thread(RepairArmorPresentation)
 					--CurrentRun.CurrentRoom.PerfectEncounterCleared = true
 					--CheckAchievement( { Name = "AchBuffedButterfly", CurrentValue = traitData.AccumulatedDamageBonus } )
 				end
