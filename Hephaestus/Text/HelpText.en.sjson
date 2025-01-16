@@ -53,13 +53,13 @@
 			Description = "{$Keywords.IgneousArmor} is charged by {$Keywords.Special}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P}"
 		}
 		{
-			Id = "HephaestusRushTrait"
+			Id = "HephaestusLongerDashes"
 			DisplayName = "Mega Sprint"
 			Description = "Your {$Keywords.Dash} are faster and goes further. \n {!Icons.Bullet}{#PropertyFormat}Distance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
-			Id = "HephaestusRushTrait_Initial"
-			InheritFrom = "HephaestusRushTrait"
+			Id = "HephaestusLongerDashes_Initial"
+			InheritFrom = "HephaestusLongerDashes"
 			Description = "Your {$Keywords.Dash} are faster and goes further. \n {!Icons.Bullet}{#PropertyFormat}Distance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{

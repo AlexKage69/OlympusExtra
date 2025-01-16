@@ -98,6 +98,10 @@
 			DisplayName = "{#CombatTextHighlightFormat}Armor Up!{#PreviousFormat}"
 		}
 		{
+			Id = "ArmorDepletedText"
+			DisplayName = "{#CombatTextHighlightFormat}Armor Depleted!{#PreviousFormat}"
+		}
+		{
 			Id = "TemporaryAmmo"
 			DisplayName = "Temporary {!Icons.Ammo} Bloodstone"
 			Description = "Ammunition for your {A1} Cast. Retrieve from slain foes. Can only be used once per room."

@@ -18,7 +18,7 @@ local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 OlympusWeaponSets.AllPrimaryWeapons = { "SwordWeapon",
 	"SwordWeapon2", "SwordWeapon3", "SwordWeaponDash", "SwordWeaponWave", "SpearWeapon", "SpearWeapon2", "SpearWeapon3",
 	"SpearWeaponSpin", "SpearWeaponSpin2", "SpearWeaponSpin3",
-	"SpearWeaponDash", "SpearWeaponThrow",  "ShieldWeapon", "ShieldWeaponRush", "ShieldThrow",
+	"SpearWeaponDash",  "ShieldWeapon", "ShieldWeaponRush",
 	"ShieldWeaponDash", "BowWeapon", "BowWeaponDash", "ChargeBowWeapon1",
 	"MaxChargeBowWeapon", "BowWeapon2", "FistWeapon", "FistWeapon2", "FistWeapon3", "FistWeapon4", "FistWeapon5",
 	"FistWeaponDash", "GunWeapon",
@@ -283,11 +283,10 @@ ModUtil.Path.Wrap("DamageEnemy",
                 FireFromTarget = true
             })
         end
-        if sourceWeaponData ~= nil then            
+        if sourceWeaponData ~= nil and victim ~= nil and victim.DamageType == "Enemy" then            
             if (((HeroHasTrait("HephaestusWeaponTrait") and Contains(WeaponSets.AllPrimaryWeapons, sourceWeaponData.Name)) or (HeroHasTrait("HephaestusSecondaryTrait") and Contains(WeaponSets.AllSecondaryWeapons, sourceWeaponData.Name))) and CurrentRun.Hero.IgneousArmor ~= nil and CurrentRun.Hero.IgneousArmor.Charging and CurrentRun.Hero.IgneousArmor.DamageTransfer ~= nil) then           
                 CurrentRun.Hero.IgneousArmor.Damage = CurrentRun.Hero.IgneousArmor.Damage + math.floor(triggerArgs.DamageAmount * CurrentRun.Hero.IgneousArmor.DamageTransfer)
-                CreateAnimation({ Name = "IgneousHitSparkArmor", DestinationId = victim.ObjectId, Group = "FX_Standing_Top" })
-                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.IgneousArmor.Damage))                
+                CreateAnimation({ Name = "HitSparkArmorFlash", DestinationId = victim.ObjectId, Group = "FX_Standing_Top" })      
             end
         end
     end
@@ -415,19 +414,30 @@ function DropHephWeapon(targetId, radius, angle, dropTowardHero)
         "SpearHephWeaponDrop"
     }
     local objectName = GetRandomValue(HephChoices)
-	--local offset = CalcOffset( angle or RandomFloat( 0, 360 ), radius or 5 )
-    --local swordId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = targetId, OffsetX = 200, OffsetY = 0 })
-    DropHealth(objectName,targetId)
-    --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(objectName)) 
-	--ApplyUpwardForce({ Id = boostDropId, Speed = RandomFloat( 500, 700 ) })
-	--[[if not dropTowardHero then
-		ApplyForce({ Id = boostDropId, Speed = RandomFloat( 75, 260 ), Angle = RandomFloat( 0, 360 ) })
-	else
-		local forceAngle = GetAngleBetween({ Id = boostDropId, DestinationId = CurrentRun.Hero.ObjectId })
-		ApplyForce({ Id = boostDropId, Speed = 100, Angle = forceAngle, SelfApplied = true })
-	end]]
-	PlaySound({ Name = "/Leftovers/Menu Sounds/CoinFlash", Id = targetId })
-    --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Call me!")) 
+    if targetId == nil then
+        targetId = CurrentRun.Hero.ObjectId
+    end
+    if CurrentRun.CurrentRoom.HephWeapons == nil then
+        CurrentRun.CurrentRoom.HephWeapons = {}
+    end
+    local offset = CalcOffset( angle or RandomFloat( 0, 360 ), radius or 5 )
+    local healDropId = SpawnObstacle({ Name = objectName, DestinationId = targetId, OffsetX = offset.X, OffsetY = offset.Y, Group = "Standing" })
+    local consumableData = ConsumableData[objectName]
+    local consumable = GetRampedConsumableData( consumableData )
+    consumable.ObjectId = healDropId
+    table.insert(CurrentRun.CurrentRoom.HephWeapons, consumable)
+    consumable.Cost = 0
+    AddToGroup({ Id = healDropId, Name = "ConsumableItems" })
+    AttachLua({ Id = healDropId, Table = consumable })
+    ApplyUpwardForce({ Id = healDropId, Speed = RandomFloat( 500, 700 ) })
+    if not dropTowardHero then
+        ApplyForce({ Id = healDropId, Speed = RandomFloat( 75, 260 ), Angle = RandomFloat( 0, 360 ) })
+    else
+        local forceAngle = GetAngleBetween({ Id = healDropId, DestinationId = CurrentRun.Hero.ObjectId })
+        ApplyForce({ Id = healDropId, Speed = 100, Angle = forceAngle, SelfApplied = true })
+    end
+    --PlaySound({ Name = "/Leftovers/Menu Sounds/CoinFlash", Id = healDropId })
+	--PlaySound({ Name = "/Leftovers/Menu Sounds/CoinFlash", Id = targetId })
 end
 ModUtil.Path.Wrap("CheckLastStand",
     function(baseFunc, victim, triggerArgs)
@@ -470,38 +480,17 @@ ModUtil.Path.Wrap("ChooseRoomReward",
             if args == nil then
                 args = {}
             end
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.Name))
             if room.ForcedReward == nil then
                 for k, trait in pairs( CurrentRun.Hero.Traits ) do -- Missing if eligible.
                     if trait.ForceRewardName and trait.Uses > 0 then
                         trait.Uses = trait.Uses - 1
                         room.ForcedReward = trait.ForceRewardName
-                        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceRewardName))
                     end
                 end
             end
 			return baseFunc(run, room, rewardStoreName, previouslyChosenRewards, args )            
 		end
 	)
---[[ModUtil.Path.Wrap( "SetupRoomReward", 
-	function(baseFunc, currentRun, room, previouslyChosenRewards, args )
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.ChosenRewardType))
-		baseFunc(currentRun, room, previouslyChosenRewards, args)
-	end
-)
-ModUtil.Path.Wrap( "CreateDoorRewardPreview", 
-	function(baseFunc, door )
-        local room = door.Room
-        if room.ChosenRewardType == "Boon" and room.ForceLootName then
-            if LootData[room.ForceLootName].DoorIcon ~= nil then
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(LootData[room.ForceLootName].DoorIcon))
-            else
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(LootData[room.ForceLootName].Icon))
-            end
-        end
-		baseFunc(door)
-	end
-)]]
 -- Rejection / Forgiveness Functions
 ModUtil.Path.Wrap("SpawnRoomReward",
     function(baseFunc, eventSource, args) 
@@ -869,7 +858,7 @@ ModUtil.Path.Wrap( "Damage",
             end				
         end
         local attacker = triggerArgs.AttackerTable
-		if victim == CurrentRun.Hero and victim.Armor ~= nil and victim.Armor.Amount > 0 and not triggerArgs.SkipArmor then
+		if victim == CurrentRun.Hero and victim.Armor ~= nil and victim.Armor.Amount > 0 and not triggerArgs.SkipArmor and not triggerArgs.PureDamage then
             -- Start Damage Calculation     
             if not triggerArgs.PureDamage then
                 if triggerArgs.IsInvulnerable or (victim.InvulnerableFlags ~= nil and not IsEmpty( victim.InvulnerableFlags )) or (victim.PersistentInvulnerableFlags ~= nil and not IsEmpty( victim.PersistentInvulnerableFlags )) then
@@ -925,7 +914,9 @@ ModUtil.Path.Wrap( "Damage",
                             SetAnimation({ DestinationId = victim.ObjectId, Name = victim.DamagedAnimation })
                         end
                     end
-                    thread( GenericDamagePresentation, victim, triggerArgs )
+                    --thread( GenericDamagePresentation, victim, triggerArgs )
+                    CreateAnimation({ DestinationId = victim.ObjectId, Name = "IgneousHitSparkArmorA", OffsetZ = triggerArgs.ImpactLocationZ })
+                
                 end
             end
             -- Custom Damage for Armor          
@@ -977,14 +968,12 @@ ModUtil.Path.Wrap( "Damage",
 			end
 		end
         if HeroHasTrait("DamageReturnTrait") and victim == CurrentRun.Hero and attacker ~= nil and triggerArgs.DamageAmount > 0 then
-            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Do damage back "..triggerArgs.DamageAmount))
             local revengeDamage = GetTotalHeroTraitValue("RevengeDamage")
             if revengeDamage > 0 then
                 Damage( attacker, { EffectName = "DamageBackEffect", DamageAmount = triggerArgs.DamageAmount*revengeDamage, Silent = false, PureDamage = false } )
             end           
         end
         if HeroHasTrait("HephaestusTrapTrait") and (( attacker ~= nil and attacker.DamageType == "Neutral" ) or (attacker == nil and triggerArgs.AttackerName ~= nil and EnemyData[triggerArgs.AttackerName] ~= nil and EnemyData[triggerArgs.AttackerName].DamageType == "Neutral" )) then
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Trap"))
             FireWeaponFromUnit({
                 Weapon = "IgneousTrapExplosion",
                 Id = CurrentRun.Hero.ObjectId,
@@ -1024,13 +1013,11 @@ ModUtil.Path.Override("SpawnStoreItemInWorld",
 				spawnedItem = CreateStackLoot({ SpawnPoint = kitId, Cost = GetProcessedValue( ConsumableData.StackUpgradeDropRare.Cost ), DoesNotBlockExit = true, SuppressSpawnSounds = true, StackNum = 2, AddBoostedAnimation = true, })
 			elseif itemData.Type == "Consumable" then
 				local consumablePoint = SpawnObstacle({ Name = itemData.Name, DestinationId = kitId, Group = "Standing" })
-                if ConsumableData[itemData.Name] == nil then
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString(itemData.Name))                    
-                else
+                if ConsumableData[itemData.Name] ~= nil then
                     local upgradeData =  GetRampedConsumableData( ConsumableData[itemData.Name] )
                     spawnedItem = CreateConsumableItemFromData( consumablePoint, upgradeData )
                     ApplyConsumableItemResourceMultiplier( CurrentRun.CurrentRoom, spawnedItem )
-				ExtractValues( CurrentRun.Hero, spawnedItem, spawnedItem )
+				    ExtractValues( CurrentRun.Hero, spawnedItem, spawnedItem )
                 end
 			elseif itemData.Type == "Boon" then
 				itemData.Args.SpawnPoint = kitId
@@ -1166,81 +1153,6 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
         baseFunc()
     end
 )
-function RunAudio01()
-    wait(2.0)
-    PlaySound({ Name = "/Leftovers/SFX/ImpRef01_GoDown" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/Enemy Sounds/Exalted/EnemyShieldBlock" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/Enemy Sounds/Exalted/EmoteAlertedShield" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/Enemy Sounds/Exalted/EmoteAttackingShield" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/ChaosShieldSFX" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/ShieldAlliesSFX" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/EnergyShieldOnHit" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/Player Sounds/ShieldObstacleHit" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/Player Sounds/ShieldGroundPound" })
-    PlaySound({ Name = "/SFX/ArmorIdleSFX" })
-    wait(5.0)
-    PlaySound({ Name = "/SFX/ArmorIdleSFX2" })
-    wait(5.0)
-end
-
-function RunAudio02()
-    wait(2.0)
-    PlaySound({ Name = "/Leftovers/Vocalizations/Demon_M_02/EmoteKilling" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/FruitPick" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/CandleBlow" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/TarotCardSpecialInteract" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/World Sounds/MiscMetalSqueakLoud" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/World Sounds/StatueInteract" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing2" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing3" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing4" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing6" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing7" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AuraOn" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AuraOnLoud" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AuraPerfectThrow" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AuraOff" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AuraCharge" })
-    wait(5.0)
-    PlaySound({ Name = "/Leftovers/SFX/AuraAmbientLoop" })
-end
-function RunAudio03()
-    wait(2.0)
-    PlaySound({ Name = "/VO/Tisiphone_0075" })
-    wait(5.0)
-    PlaySound({ Name = "/VO/Tisiphone_0092" })
-    wait(5.0)
-    PlaySound({ Name = "/VO/Tisiphone_0093" })
-    wait(5.0)
-    PlaySound({ Name = "/VO/Tisiphone_0094" })
-    wait(5.0)
-    PlaySound({ Name = "/VO/Tisiphone_0095" })
-    wait(5.0)
-    PlaySound({ Name = "/VO/Tisiphone_0096" })
-end
 function ForceNextRoomFunc(value)
 
     -- Stomp any rooms already assigned to doors

@@ -16,6 +16,13 @@
       NumFrames = 13
       RandomPlaySpeedMin = 50
       RandomPlaySpeedMax = 60
+      AddColor = true
+      StartRed = 0.5
+      StartGreen = 0.6
+      StartBlue = 0.01
+      EndRed = 0.51
+      EndGreen = 0.1
+      EndBlue = 0
       StartFrame = 1
       RandomFlipHorizontal = true
       LocationFromOwner = "Maintain"
@@ -26,7 +33,7 @@
       Ambient = 0.0
       ScaleX = 0.85
       UseAttachedFlasher = false
-      ChildAnimation = "HitSparkArmorFlash"
+      //ChildAnimation = "HitSparkArmorFlash"
       Hue = 0.070
       //Alpha = 0.01
       UseAttachedShake = false
@@ -65,6 +72,20 @@
         {
           Name = "IgneousHitSparkArmorC"
         }]
+    }
+    {
+      Name = "ArmorBreakPop"
+      //CreateAnimation = "QuickFlashBlue"
+      FilePath = "Fx\ArmorBreak\ArmorBreak"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      EndFrame = 25
+      NumFrames = 25
+      PlaySpeed = 80.0
+      StartFrame = 1
+      OffsetZ = 60.0
+      SortMode = "FromParent"
+      UseAttachedAddColor = false
     }
     {
       Name = "IgneousExplosion"
@@ -189,6 +210,100 @@
       ScaleRadius = 300.0
       StartScale = 0.9
       Ambient = 0.0
+    }
+    // Igneous Stuff
+    {
+      Name = "BlinkTrailVerticalB-Heph"
+      InheritFrom = "BlinkTrailVerticalB"
+      ChildAnimation = "null"
+      //Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      StopSoundOnFinishFade = 0.2
+      CreateAnimations = [
+        {
+          Name = "HephRushTrail"
+        }
+        /*{
+          Name = "QuickFlashBrown"
+        }*/
+      ]
+      /*Color = 
+      {
+        Red = 0.0
+        Green = 1.0
+        Blue = 0.2
+      }*/
+    }
+    {
+      Name = "HephRushTrail"
+      FilePath = "Fx\WeaponSwipePointed\WeaponSwipePointed"
+      GroupName = "FX_Terrain_Add"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      //PostRotateScaleY = 0.5
+      //Angle = 90.0
+      AddColor = true
+      EndBlue = 0.001
+      EndRed = 0.999
+      StartGreen = 0.5
+      StartRed = 1.0
+      EndFrame = 13
+      NumFrames = 13
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetY = -200.0
+      RandomOffsetX = 5.0
+      Velocity = 400.0
+      ScaleY = 0.25
+      Ambient = 0.0
+    }    
+    {
+      Name = "HephRepair"
+      ChainTo = "HephRepairFade"
+      //ChildAnimation = "HephHammerExplosionSpawner"
+      FilePath = "Fx\HephHammer\HephHammerDownLanded"
+      GroupName = "Standing"
+      StartAlpha = 1.0
+      EndAlpha = 1.0
+      Type = "Constant"
+      //VisualFx = "QuickFlashRedLarge"
+      AngleFromOwner = "Ignore"
+      LocationFromOwner = "Maintain"
+      StartAngle = 150
+      EndAngle = 70
+      Scale = 0.25
+      Duration = 0.3
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      OffsetY = -200
+      OffsetX = 0
+    }
+    {
+      Name = "HephRepairFade"
+      InheritFrom = "HephRepair"
+      ChainTo = "null"
+      ChildAnimation = "null"
+      StartAngle = 0
+      EndAngle = 1
+      Angle = 70
+      Sound = "/SFX/WeaponUpgradeHammerPickup"
+      VisualFx = "QuickFlash"
+      AddColor = false
+      Duration = 0.3
+      StartAlpha = 1.0
+      EndAlpha = 0.0
+    }
+    {
+      Name = "HephArmorUp"
+      InheritFrom = "HephRepair"
+      ChainTo = "HephArmorUpFade"
+    }
+    {
+      Name = "HephArmorUpFade"
+      InheritFrom = "HephRepairFade"
+      Sound = "/SFX/WeaponUpgradeHammerDrop2"
     }
     // Boost Fx
     {
