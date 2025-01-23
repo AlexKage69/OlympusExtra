@@ -948,6 +948,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "RevengeBoostTrait",
+		PreEquipWeapons = { "RevengeBoostApplicator" },
 		RarityLevels =
 		{
 			Common =
@@ -1006,8 +1007,6 @@ if ModUtil ~= nil then
 				}
 			},
 		},
-		AddOnHitWeapons = { "RevengeBoostApplicator" },
-		OnHitWeaponProperties = { IgnoreAutomatic = true, AllowInvulnerable = true, FunctionName = "OnDamageBoost" },
 		ExtractValues =
 		{
 			{
@@ -4116,13 +4115,6 @@ ModUtil.Path.Wrap("StartEncounter",
 		wait(0.5)
 		CreateAnimation({ Name = "HephArmorUp", DestinationId = CurrentRun.Hero.ObjectId })		
 		--thread( InCombatTextArgs, { Text = "ArmorUpText", TargetId = CurrentRun.Hero.ObjectId, Duration = 0.85, PreDelay = 0.21, FontScale = 20, SkipShadow = true } ) --SkipRise = true, OffsetY = -160, SkipShadow = true
-	end
-	
-	function OnDamageBoost(attacker, args)
-		ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-							WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
-		ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-							WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostDamage" })
 	end
 ModUtil.Path.Wrap( "EndEncounterEffects", 
 	function(baseFunc, currentRun, currentRoom, currentEncounter)
