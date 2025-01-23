@@ -310,7 +310,15 @@ if ModUtil ~= nil then
 		DamageTextStartColor = OlympusColor.HephaestusDamageLight,
 		DamageTextColor = OlympusColor.HephaestusDamage
 	}
-	
+	OlympusProjectileData.IgneousArmorExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
+	OlympusProjectileData.IgneousRangedExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
+	OlympusProjectileData.IgneousTrapExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 	OlympusGameData.HephaestusBasicPickUpTextLines = {

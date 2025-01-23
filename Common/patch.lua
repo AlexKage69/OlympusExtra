@@ -14,6 +14,14 @@ ModUtil.Table.Merge(OlympusKeywordList, {
     "ArmorIcon", "ZagreusArmor", "HephSword", "HephBow",
     "HephShield", "HephSpear" })
 ResetKeywords()
+
+local OlympusEnemySets = ModUtil.Entangled.ModData(EnemySets)
+OlympusEnemySets.FriendlyEnemies = {
+    "DefaultHero",
+    "HeraMine",
+    "HephaestusChariotSuicide",
+    "HephaestusChariotSuicideElite"
+}
 --UIData
 local OlympusTextFormats = ModUtil.Entangled.ModData(TextFormats)
 OlympusTextFormats.HiddenFormat =
@@ -369,7 +377,8 @@ ModUtil.Path.Wrap("CheckOnHitPowers",
 				--args.IsInvulnerable = true
 			else
                 -- Hephaestus RevengeBoostTrait
-                if attacker ~= CurrentRun.Hero and victim == CurrentRun.Hero and HeroHasTrait("RevengeBoostTrait") then
+                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(attacker.Name))
+                if Contains(OlympusEnemySets.FriendlyEnemies, attacker.Name) and victim == CurrentRun.Hero and HeroHasTrait("RevengeBoostTrait") then
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
 						WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
@@ -806,7 +815,6 @@ ModUtil.Path.Wrap("HandleLootPickup",
                 if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsImproveBoon then
                     hasImproveBoon = true
                     loot.Skip = true
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Improve found"))
                 end
             end
         end
