@@ -259,6 +259,30 @@
       Ambient = 0.0
     }    
     {
+      Name = "HephExplosion"
+      FilePath = "Fx\SkyProjectileExplosion\SkyProjectileExplosion"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      VisualFx = "HephHammerExplosionNova"
+      AddColor = true
+      AngleFromOwner = "Ignore"
+      EndRed = 1.0
+      StartBlue = 0.5
+      StartGreen = 1.0
+      StartRed = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 46
+      NumFrames = 46
+      PlaySpeed = 60.0
+      StartFrame = 1
+      Scale = 1.25
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }
+    {
       Name = "HephRepair"
       ChainTo = "HephRepairFade"
       //ChildAnimation = "HephHammerExplosionSpawner"

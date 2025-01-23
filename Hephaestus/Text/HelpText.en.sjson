@@ -132,12 +132,12 @@
 		{
 			Id = "SpawnWeaponsTrait"
 			DisplayName = "Arsenal Provision"
-			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}{#HiddenFormat}{$Keywords.HephSword}{$Keywords.HephBow}{$Keywords.HephShield}{$Keywords.HephSpear}{#PreviousFormat}"
 		}
 		{
 			Id = "SpawnWeaponsTrait_Initial"
 			InheritFrom = "SpawnWeaponsTrait"
-			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "When foes are slain, they may leave {$Keywords.HephWeapon} behind. \n {!Icons.Bullet}{#PropertyFormat}Spawn Chance: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}{#HiddenFormat}{$Keywords.HephSword}{$Keywords.HephBow}{$Keywords.HephShield}{$Keywords.HephSpear}{#PreviousFormat}"
 		}
 		{
 			Id = "ArmorBossTrait"
