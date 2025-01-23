@@ -377,7 +377,6 @@ ModUtil.Path.Wrap("CheckOnHitPowers",
 				--args.IsInvulnerable = true
 			else
                 -- Hephaestus RevengeBoostTrait
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(attacker.Name))
                 if Contains(OlympusEnemySets.FriendlyEnemies, attacker.Name) and victim == CurrentRun.Hero and HeroHasTrait("RevengeBoostTrait") then
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
 						WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
@@ -1171,10 +1170,10 @@ ModUtil.Path.Wrap("AddTraitToHero",
     end
 )
 -- Test / Utility
-ModUtil.Path.Wrap("BeginOpeningCodex",
+--[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)
         --PresentationNewSameGodIncrease()
-        if (not CanOpenCodex()) and IsSuperValid() then
+        --[[if (not CanOpenCodex()) and IsSuperValid() then
             BuildSuperMeter(CurrentRun, 50)
         end
         --thread(RunAudio01)
@@ -1191,11 +1190,11 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
             for activeMutator in pairs( GameState.ActiveMutators ) do
                 ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(activeMutator))            
             end
-        end]]
+        end
         --UseLoungeTelescope()
         baseFunc()
     end
-)
+)]]
 function ForceNextRoomFunc(value)
 
     -- Stomp any rooms already assigned to doors

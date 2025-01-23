@@ -4340,30 +4340,4 @@ end
 		args = args or {}
 		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
-
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)
-			-- if (not CanOpenCodex()) and IsSuperValid() then
-			-- 	BuildSuperMeter(CurrentRun, 50)
-			-- end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			--[[local swordId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 200, OffsetY = 0 })
-			DropHealth("SwordHephWeaponDrop",swordId)
-			local bowId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 300, OffsetY = 0 })
-			DropHealth("BowHephWeaponDrop",bowId)
-			local shieldId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 400, OffsetY = 0 })
-			DropHealth("ShieldHephWeaponDrop",shieldId)
-			local spearId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 500, OffsetY = 0 })
-			DropHealth("SpearHephWeaponDrop",spearId)]]
-			--local swordId = SpawnObstacle({ Name = "BowHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--local bowId = SpawnObstacle({ Name = "BowHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--local shieldId = SpawnObstacle({ Name = "ShieldHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--local spearId = SpawnObstacle({ Name = "SpearHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--ApplyUpwardForce({ Id = swordId, Speed = 300 })
-			--ApplyUpwardForce({ Id = bowId, Speed = 500 })
-			--ApplyUpwardForce({ Id = shieldId, Speed = 700 })
-			--ApplyUpwardForce({ Id = spearId, Speed = 1000 })
-			baseFunc()
-		end
-	)
 end
