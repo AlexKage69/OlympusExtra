@@ -115,7 +115,7 @@ if ModUtil ~= nil then
 	AddIcon("ArmorIcon","GUI\\Icons\\HealthArmored",false)
 
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
-	table.insert(OlympusQuestOrderData, 30, "HephaestusUpgrades")
+	table.insert(OlympusQuestOrderData, 28, "HephaestusUpgrades")
 	table.insert(OlympusQuestOrderData, 31, "HephaestusLegendaryUpgrades")
 	--Loot
 	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
