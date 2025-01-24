@@ -4,7 +4,7 @@
       {
       Name = "IgneousArmorExplosion"
       InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "HephExplosion"
+      DetonateGraphic = "HephExplosionSmall"
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false
@@ -12,8 +12,10 @@
       CheckUnitImpact = false
       CheckObstacleImpact = false
       Fuse = 0.01
-      Range = 170
-      DamageRadius = 350
+      Range = 0
+      DamageRadius = 420.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
       DamageLow = 50
       DamageHigh = 50
       ImpactVelocity = 0
@@ -37,8 +39,10 @@
       CheckUnitImpact = false
       CheckObstacleImpact = false
       Fuse = 0.01
-      Range = 170
-      DamageRadius = 350
+      Range = 0
+      DamageRadius = 520.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
       DamageLow = 50
       DamageHigh = 50
       ImpactVelocity = 0
@@ -62,8 +66,10 @@
       CheckUnitImpact = false
       CheckObstacleImpact = false
       Fuse = 0.01
-      Range = 170
-      DamageRadius = 350
+      Range = 0
+      DamageRadius = 520.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
       DamageLow = 50
       DamageHigh = 50
       ImpactVelocity = 0

@@ -35,22 +35,22 @@
 		{
 			Id = "HephaestusWeaponTrait"
 			DisplayName = "Molten Strike"
-			Description = "{$Keywords.IgneousArmor} is charged by {$Keywords.Attack}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P}"
+			Description = "{$Keywords.Attack} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusWeaponTrait_Initial"
 			InheritFrom = "HephaestusWeaponTrait"
-			Description = "{$Keywords.IgneousArmor} is charged by {$Keywords.Attack}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P}"
+			Description = "{$Keywords.Attack} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusSecondaryTrait"
 			DisplayName = "Molten Flourish"
-			Description = "{$Keywords.IgneousArmor} is charged by {$Keywords.Special}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P}"
+			Description = "{$Keywords.Special} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusSecondaryTrait_Initial"
 			InheritFrom = "HephaestusSecondaryTrait"
-			Description = "{$Keywords.IgneousArmor} is charged by {$Keywords.Special}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P}"
+			Description = "{$Keywords.Special} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusLongerDashes"

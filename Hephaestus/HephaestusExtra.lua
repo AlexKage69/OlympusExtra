@@ -14,10 +14,10 @@ if ModUtil ~= nil then
 	--Color
 	local OlympusColor = ModUtil.Entangled.ModData(Color)
 	OlympusColor.HephaestusVoice = { 98,35,28,255 }
-	OlympusColor.HephaestusDamageLight = { 98,35,28,255 }
+	OlympusColor.HephaestusDamageLight = { 171,112,53,255 }
+	OlympusColor.HephaestusDamage = { 144,75,7,255  }
 	OlympusColor.DamageBackDamageStart = { 229,184,11,255 }
 	OlympusColor.DamageBackDamageEnd = { 255,215,0,255 }
-	OlympusColor.HephaestusDamage = { 73,18,15,255  }
 	--QuestData
 	local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
 	OlympusQuestData.HephaestusUpgrades =
@@ -813,15 +813,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.1,
+				Multiplier = 1.16,
 			},
 			Epic =
 			{
-				Multiplier = 1.2,
+				Multiplier = 1.33,
 			},
 			Heroic =
 			{
-				Multiplier = 1.3,
+				Multiplier = 1.5,
 			}
 		},
 		PropertyChanges =
@@ -829,8 +829,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "IgneousRangedExplosion" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 50,
-				BaseMax = 50,
+				BaseMin = 60,
+				BaseMax = 60,
 				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
@@ -1314,15 +1314,15 @@ if ModUtil ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.16,
+				Multiplier = 1.14,
 			},
 			Epic =
 			{
-				Multiplier = 1.33,
+				Multiplier = 1.28,
 			},
 			Heroic =
 			{
-				Multiplier = 1.5
+				Multiplier = 1.43
 			}
 		},
 		PropertyChanges =
@@ -1330,8 +1330,8 @@ if ModUtil ~= nil then
 			{
 				WeaponNames = { "IgneousTrapExplosion" },
 				ProjectileProperty = "DamageLow",
-				BaseMin = 60,
-				BaseMax = 60,
+				BaseMin = 70,
+				BaseMax = 70,
 				AsInt = true,
 				DepthMult = DepthDamageMultiplier,
 				IdenticalMultiplier =
@@ -2277,33 +2277,7 @@ if ModUtil ~= nil then
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I'll be straight with you. I know what failure looks like. How do you think I got there? I had to work hard to get where I am. You must learn to do the same. There's no freepass in life. Earn it." },
 			},
-			-- ending		
-			HephaestusPostEnding01 =
-			{
-				Name = "HephaestusPostEnding01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp", "Ending01" },
-				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 4 },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				{ Cue = "/VO/Hephaestus_0117",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
-					Text = "" },
-			},
-			HephaestusPostEnding02 =
-			{
-				Name = "HephaestusPostEnding01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp", "Ending01" },
-				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 4 },
-				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-				{ Cue = "/VO/Hephaestus_0118",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
-					Text = "" },
-			},
+			-- ending	
 			HephaestusAboutOlympianReunionQuest01 =
 			{
 				Name = "HephaestusAboutOlympianReunionQuest01",
@@ -2323,41 +2297,6 @@ if ModUtil ~= nil then
 
 		PriorityPickupTextLineSets =
 		{
-			--[[HephaestusAboutHammerWeapon01 =
-			{
-				Name = "HephaestusAboutHammerWeapon01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredWeapon = "HammerWeapon"
-				{ Cue = "/VO/Hephaestus_0154",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You found yourself a fine hammer. I am sure you'll get use to its weight. It's a one of a kind." },
-			},
-			HephaestusAboutThorAspect01 =
-			{
-				Name = "HephaestusAboutThorAspect01",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredWeapon = "HammerWeapon"
-				{ Cue = "/VO/Hephaestus_0155",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got some power there, eh. Zeus might get jealous there." },
-			},
-			HephaestusAboutThorAspect02 =
-			{
-				Name = "HephaestusAboutThorAspect02",
-				PlayOnce = true,
-				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
-				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
-				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
-				{ Cue = "/VO/Hephaestus_0156",
-					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
-			},]]
 			HephaestusAboutKeepsake01 =
 			{
 				Name = "HephaestusAboutKeepsake01",
@@ -2608,7 +2547,41 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "" },
+			},--[[HephaestusAboutHammerWeapon01 =
+			{
+				Name = "HephaestusAboutHammerWeapon01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredWeapon = "HammerWeapon"
+				{ Cue = "/VO/Hephaestus_0154",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "You found yourself a fine hammer. I am sure you'll get use to its weight. It's a one of a kind." },
 			},
+			HephaestusAboutThorAspect01 =
+			{
+				Name = "HephaestusAboutThorAspect01",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredWeapon = "HammerWeapon"
+				{ Cue = "/VO/Hephaestus_0155",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "Got some power there, eh. Zeus might get jealous there." },
+			},
+			HephaestusAboutThorAspect02 =
+			{
+				Name = "HephaestusAboutThorAspect02",
+				PlayOnce = true,
+				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
+				RequiredMinAnyTextLines = { TextLines = { "HephaestusExpectingZeus01", "HephaestusExpectingPoseidon01", "HephaestusExpectingAthena01", "HephaestusExpectingAphrodite01", "HephaestusExpectingAres01", "HephaestusExpectingArtemis01", "HephaestusExpectingDionysus01", "HephaestusExpectingDemeter01", }, Count = 2 },
+				RequiredFalseGodLoots = { "ZeusUpgrade", "PoseidonUpgrade", "AthenaUpgrade", "AphroditeUpgrade", "AresUpgrade", "ArtemisUpgrade", "DionysusUpgrade", "DemeterUpgrade" },
+				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
+				{ Cue = "/VO/Hephaestus_0156",
+					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
+					Text = "" },
+			},]]
 			HephaestusBackstory01 =
 			{
 				Name = "HephaestusBackstory01",
@@ -4232,6 +4205,7 @@ end
 -- IgneousArmor
 function SetupIgneousArmor( hero, args )
 	args = args or {}
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Setup"))
 	if hero.IgneousArmor == nil then
 		hero.IgneousArmor = {
 			Charging = false,
@@ -4270,10 +4244,12 @@ function DamageIgneousArmor( weaponData, args)
 	end
 end
 function StartArmorIgneous(igneousArmor)
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Start"))
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "Shielded", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 	end
 	wait(igneousArmor.Duration-1.4)
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Tick"))
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "QuickFlash", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 		PlaySound({ Name = "/SFX/WrathEndingWarning" })
@@ -4309,8 +4285,10 @@ function StartArmorIgneous(igneousArmor)
 		})
 		igneousArmor.Damage = 0
 	end
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Cooldown"))
 	wait(igneousArmor.Cooldown)
 	igneousArmor.InCooldown = false
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Ready"))
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		thread( PlayVoiceLines, HeroVoiceLines.GunWeaponReloadCompleteVoiceLines, true )
 		thread( InCombatText, CurrentRun.Hero.ObjectId, "IgneousArmorReady", 0.4, {SkipShadow = true} )

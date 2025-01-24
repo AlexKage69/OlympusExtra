@@ -67,7 +67,7 @@
 		{
       		Id = "IgneousArmor"
 			DisplayName = "Igneous Armor"
-			Description = "Charge up damage to create a blast after {#BoldFormatGraft}{$TooltipData.TooltipIgneousDuration} Sec{#PreviousFormat}. \n Cooldown {#BoldFormatGraft}{$TooltipData.TooltipIgneousCooldown} Sec{#PreviousFormat}."
+			Description = "While Igneous Armor is enabled, {#BoldFormatGraft}Attack {#PreviousFormat}and {#BoldFormatGraft}Special {#PreviousFormat}charge up damage to create a blast after {#BoldFormatGraft}{$TooltipData.TooltipIgneousDuration} Sec{#PreviousFormat}."
 		}
 		{
       		Id = "ZagreusArmor"

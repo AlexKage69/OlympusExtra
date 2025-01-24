@@ -263,7 +263,7 @@
       FilePath = "Fx\SkyProjectileExplosion\SkyProjectileExplosion"
       GroupName = "FX_Standing_Add"
       Type = "Book"
-      VisualFx = "HephHammerExplosionNova"
+      VisualFx = "HephExplosionNova"
       AddColor = true
       AngleFromOwner = "Ignore"
       EndRed = 1.0
@@ -275,6 +275,7 @@
       EndFrame = 46
       NumFrames = 46
       PlaySpeed = 60.0
+      ScaleRadius = 350.0
       StartFrame = 1
       Scale = 1.25
       Ambient = 0.0
@@ -282,6 +283,81 @@
       VisualFxIntervalMax = 0.002
       VisualFxIntervalMin = 0.001
     }
+    {
+      Name = "HephExplosionNova"
+      FilePath = "Fx\RadialNova\RadialNova"
+      GroupName = "FX_Terrain_Add"
+      Light = "WeaponFxLightA"
+      Type = "Book"
+      VisualFx = "HephHammerSparks"
+      AddColor = true
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.5
+      StartRed = 1.0
+      EndFrame = 44
+      NumFrames = 44
+      PlaySpeed = 90.0
+      StartFrame = 1
+      ScaleRadius = 350.0
+      RandomRotation = true
+      PostRotateScaleY = 0.5
+      Scale = 0.5
+      Ambient = 0.0
+      VisualFxCap = 12
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }    
+    {
+      Name = "HephExplosionSmall"
+      FilePath = "Fx\SkyProjectileExplosion\SkyProjectileExplosion"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      VisualFx = "HephExplosionNovaSmall"
+      AddColor = true
+      AngleFromOwner = "Ignore"
+      EndRed = 1.0
+      StartBlue = 0.5
+      StartGreen = 1.0
+      StartRed = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 46
+      NumFrames = 46
+      PlaySpeed = 60.0
+      ScaleRadius = 330.0
+      StartFrame = 1
+      Scale = 1.25
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }
+    {
+      Name = "HephExplosionNovaSmall"
+      FilePath = "Fx\RadialNova\RadialNova"
+      GroupName = "FX_Terrain_Add"
+      Light = "WeaponFxLightA"
+      Type = "Book"
+      VisualFx = "HephHammerSparks"
+      AddColor = true
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.5
+      StartRed = 1.0
+      EndFrame = 44
+      NumFrames = 44
+      PlaySpeed = 90.0
+      StartFrame = 1
+      ScaleRadius = 330.0
+      RandomRotation = true
+      PostRotateScaleY = 0.5
+      Scale = 0.5
+      Ambient = 0.0
+      VisualFxCap = 12
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }    
     {
       Name = "HephRepair"
       ChainTo = "HephRepairFade"
