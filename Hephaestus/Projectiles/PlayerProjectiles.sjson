@@ -4,7 +4,7 @@
       {
       Name = "IgneousArmorExplosion"
       InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "HephHammerExplosion"
+      DetonateGraphic = "HephExplosion"
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false
@@ -29,7 +29,7 @@
     {
       Name = "IgneousRangedExplosion"
       InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "HephHammerExplosion"
+      DetonateGraphic = "HephExplosion"
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false
@@ -54,7 +54,7 @@
     {
       Name = "IgneousTrapExplosion"
       InheritFrom = "1_BaseMagicProjectile"
-      DetonateGraphic = "HephHammerExplosion"
+      DetonateGraphic = "HephExplosion"
       Type = "STRAIGHT"
       AffectsEnemies = true
       AffectsFriends = false

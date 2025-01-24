@@ -71,18 +71,33 @@
 		}
 		{
       		Id = "ZagreusArmor"
-			DisplayName = "Hephaestus's Armor"
+			DisplayName = "Hephaestus' Armor"
 			Description = "Can't be damaged until {!Icons.ArmorIcon} is broken. \n Max {!Icons.ArmorIcon}: {$TooltipData.AccumulatedMaxArmor}"
 		}
 		{
       		Id = "HephWeapon"
-			DisplayName = "Hephaestus's Weapons"
-			Description = "{$Keywords.HephSword}: close damage boost \n Bow: far damage boost. \n Shield: defense boost. \n Spear: movement speed boost."
+			DisplayName = "Hephaestus' Weapons"
+			Description = "Gain various boost depending on the weapon picked."
 		}
 		{
       		Id = "HephSword"
-			DisplayName = "Hephaestus's Sword"
-			Description = "Sword: close damage boost for 5 Sec."
+			DisplayName = "Hephaestus' Sword"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you deal {#UpgradeFormat}{$TooltipData.TooltipSwordPercent:P} {#PreviousFormat}more damage to nearby foes."
+		}
+		{
+      		Id = "HephBow"
+			DisplayName = "Hephaestus' Bow"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you deal {#UpgradeFormat}{$TooltipData.TooltipBowPercent:P} {#PreviousFormat}more damage to far away foes."
+		}
+		{
+      		Id = "HephShield"
+			DisplayName = "Hephaestus' Shield"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you take {#UpgradeFormat}{$TooltipData.TooltipShieldPercent:P} {#PreviousFormat}less damage."
+		}
+		{
+      		Id = "HephSpear"
+			DisplayName = "Hephaestus' Spear"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you move {#UpgradeFormat}{$TooltipData.TooltipSpearPercent:P} {#PreviousFormat}faster."
 		}
 		{
       		Id = "Repair"

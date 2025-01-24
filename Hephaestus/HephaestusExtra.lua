@@ -34,7 +34,6 @@ if ModUtil ~= nil then
 			RequiredTraitsTaken =
 			{
 				"HephaestusWeaponTrait",
-				"HephaestusLongerDashes",
 				"HephaestusRangedTrait",
 				"HephaestusSecondaryTrait",
 				"HephaestusShoutSummon",
@@ -116,7 +115,7 @@ if ModUtil ~= nil then
 	AddIcon("ArmorIcon","GUI\\Icons\\HealthArmored",false)
 
 	local OlympusQuestOrderData = ModUtil.Entangled.ModData(QuestOrderData)
-	table.insert(OlympusQuestOrderData, 30, "HephaestusUpgrades")
+	table.insert(OlympusQuestOrderData, 28, "HephaestusUpgrades")
 	table.insert(OlympusQuestOrderData, 31, "HephaestusLegendaryUpgrades")
 	--Loot
 	local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
@@ -219,6 +218,18 @@ if ModUtil ~= nil then
 	--OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredMinDepth = 2
 	--WeaponData
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
+	OlympusWeaponData.HephChariotRamSelfDestruct =
+	{
+		StartingWeapon = false,
+		IgnoreHealthBuffer = true,
+		OnFiredFunctionName = "SelfDestruct",
+		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.12, FalloffSpeed = 3000 },
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.02, Fraction = 0.1, LerpTime = 0 },
+			{ ScreenPreWait = 0.06, Fraction = 1.0, LerpTime = 0 },
+		},
+	}
 	local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 	OlympusEffectData.DamageBackEffect =
 	{
@@ -299,7 +310,15 @@ if ModUtil ~= nil then
 		DamageTextStartColor = OlympusColor.HephaestusDamageLight,
 		DamageTextColor = OlympusColor.HephaestusDamage
 	}
-	
+	OlympusProjectileData.IgneousArmorExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
+	OlympusProjectileData.IgneousRangedExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
+	OlympusProjectileData.IgneousTrapExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
 	-- GameData
 	local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 	OlympusGameData.HephaestusBasicPickUpTextLines = {
@@ -343,12 +362,31 @@ if ModUtil ~= nil then
 			RequiredCountOfTraits =
 			{
 				"HephaestusWeaponTrait",
-				"HephaestusLongerDashes",
 				"HephaestusRangedTrait",
 				"HephaestusSecondaryTrait",
 				"HephaestusShoutSummon",
+				"DamageReturnTrait",
+				"DropMoneyTrait",
+				"RevengeBoostTrait",
+				"ArmorBossTrait",
+				"ArmorEncounterTrait",
+				"ArmorDefianceTrait",
+				"SpawnWeaponsTrait",
+				"HephaestusTrapTrait",
 			},
-			RequiredOneOfTraits = { "ArmorLegendaryTrait" },
+			RequiredOneOfTraits = { 
+				"ArmorLegendaryTrait",
+				"HephaestusImproveZeus",
+				"HephaestusImprovePoseidon",
+				"HephaestusImproveAres",
+				"HephaestusImproveDionysus",
+				"HephaestusImproveApollo",
+				"HephaestusImproveHestia",
+				"HephaestusImproveHera",
+				"HephaestusImproveDemeter",
+				"HephaestusImproveArtemis",
+				"HephaestusImproveAthena", 
+			},
 		},
 	}
 	table.insert(OlympusGameData.ConversationOrder, "HephaestusUpgrade")
@@ -393,7 +431,7 @@ if ModUtil ~= nil then
 		RequiredKill = false,
 		DropItemsOnDeath = false,
 		UseShrineUpgrades = false,
-		DamageType = "Neutral",
+		DamageType = "Ally",
 		MaxHealth = 1,
 		HealthBarOffsetY = -145,
 		HealthBarType = "Small",
@@ -417,7 +455,7 @@ if ModUtil ~= nil then
 		ActiveCapWeight = 0.5,
 		LargeUnitCap = 6,
 
-		BlockSelfDamageNumbers = true,
+		BlockSelfDamageNumbers = false, --true
 
 		IsAggroedSound = "/SFX/Enemy Sounds/FireChariot/FireChariotAggro",
 		AIAggroRange = 5000,
@@ -439,12 +477,6 @@ if ModUtil ~= nil then
 			PreAttackDuration = 0.5,
 			PostAttackAnimation = "ChariotSuicideStop",
 			RamRecoverTime = 0.0,
-		},
-
-		GeneratorData =
-		{
-			DifficultyRating = 15,
-			BlockEnemyTypes = { "ChariotSuicideElite" },
 		},
 
 		EnemyFirstEncounterVoiceLines =
@@ -573,6 +605,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Hephaestus_01",
 		LootSource = "HephaestusUpgrade",
 		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+        RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
 		RarityLevels =
 		{
 			Common =
@@ -639,6 +672,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
 		Icon = "Boon_Hephaestus_02",
+        RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
 		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
 		RarityLevels =
 		{
@@ -706,6 +740,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		LootSource = "HephaestusUpgrade",
 		Icon = "Boon_Hephaestus_03",
+        RequiredFalseTrait = "HephaestusLongerDashes",
 		RarityLevels =
 		{
 			Common =
@@ -769,7 +804,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Hephaestus_04",
 		--CustomTrayText = "HephaestusRangedTrait_Tray",
 		PreEquipWeapons = { "IgneousRangedExplosion" },
-        --RequiredFalseTrait = "ShieldLoadAmmoTrait",
+        RequiredFalseTrait = "HephaestusRangedTrait",
 		RarityLevels =
 		{
 			Common =
@@ -825,6 +860,7 @@ if ModUtil ~= nil then
 		--CustomTrayText = "HephaestusShoutSummon_Tray",
 		--Slot = "Shout",
 		Icon = "Boon_Hephaestus_05",
+        RequiredFalseTrait = "HephaestusShoutSummon",
 		RarityLevels =
 		{
 			Common =
@@ -847,8 +883,8 @@ if ModUtil ~= nil then
 		EnemyPropertyChanges =
 		{
 			{
-				WeaponName = "HephChariotRamDeathWeapon",
-				ProjectileName = "HephChariotRamDeathWeapon",
+				WeaponName = "HephChariotRamSelfDestruct",
+				ProjectileName = "HephChariotRamSelfDestruct",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 150,
 				BaseMax = 150,
@@ -859,8 +895,8 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponName = "HephChariotRamDeathWeapon",
-				ProjectileName = "HephChariotRamDeathWeapon",
+				WeaponName = "HephChariotRamSelfDestruct",
+				ProjectileName = "HephChariotRamSelfDestruct",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
@@ -920,6 +956,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier2Trait" },
 		LootSource = "HephaestusUpgrade",
 		RequiredFalseTrait = "RevengeBoostTrait",
+		PreEquipWeapons = { "RevengeBoostApplicator" },
 		RarityLevels =
 		{
 			Common =
@@ -978,8 +1015,6 @@ if ModUtil ~= nil then
 				}
 			},
 		},
-		AddOnHitWeapons = { "RevengeBoostApplicator" },
-		OnHitWeaponProperties = { IgnoreAutomatic = true, AllowInvulnerable = true, FunctionName = "OnDamageBoost" },
 		ExtractValues =
 		{
 			{
@@ -1027,17 +1062,22 @@ if ModUtil ~= nil then
 		{
 			ProximityEffects = { "DamageMeleeBoost" },
 			ProximityThreshold = 400,
-			ProximityMultiplierWithSelfEffect =
-			{
-				Value = 1.25,
-				SourceIsMultiplier = true,
-			},
+			ProximityMultiplierWithSelfEffect = 1.25,
 			DistanceEffects = { "DamageRangedBoost" },
 			DistanceThreshold = 400,
-			DistanceMultiplierWithSelfEffect =
+			DistanceMultiplierWithSelfEffect = 1.25,
+			ExtractValues =
 			{
-				Value = 1.25,
-				SourceIsMultiplier = true,
+				{
+					Key = "ProximityMultiplierWithSelfEffect",
+					ExtractAs = "TooltipSwordPercent",
+					Format = "PercentDelta",
+				},
+				{
+					Key = "DistanceMultiplierWithSelfEffect",
+					ExtractAs = "TooltipBowPercent",
+					Format = "PercentDelta",
+				},
 			},
 		},
 		SpawnHephWeaponOnDeath =
@@ -1050,6 +1090,35 @@ if ModUtil ~= nil then
 				Key = "SpawnHephWeaponOnDeath",
 				ExtractAs = "TooltipChance",
 				Format = "Percent",
+			},
+			{
+				ExtractAs = "TooltipShieldPercent",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "DefenseBoost",
+				BaseName = "DefenseBoost",
+				BaseProperty = "Modifier",
+				Format = "NegativePercentDelta"
+			},
+			{
+				ExtractAs = "TooltipSpearPercent",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SpeedBoost",
+				BaseName = "SpeedBoost",
+				BaseProperty = "Modifier",
+				Format = "PercentDelta"
+			},
+			{
+				ExtractAs = "TooltipHephWeaponDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SpeedBoost",
+				BaseName = "SpeedBoost",
+				BaseProperty = "Duration",
 			},
 		}
 	}
@@ -1911,7 +1980,7 @@ if ModUtil ~= nil then
 
 		PriorityUpgrades = {},
 		WeaponUpgrades = {},
-		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "DamageReturnTrait", "HephaestusTrapTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
+		Traits = { "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "DamageReturnTrait", "HephaestusTrapTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
 		Consumables = {  },
 		LinkedUpgrades =
 		{
@@ -1924,63 +1993,63 @@ if ModUtil ~= nil then
 				OneFromEachSet =
 				{
 					{ "ZeusChargedBoltTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveAthena = {
 				OneFromEachSet =
 				{
 					{ "ShieldHitTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImprovePoseidon = {
 				OneFromEachSet =
 				{
 					{ "DoubleCollisionTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveFishPoseidon = {
 				OneFromEachSet =
 				{
 					{ "FishingTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveArtemis = {
 				OneFromEachSet =
 				{
 					{ "MoreAmmoTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveAphrodite = {
 				OneFromEachSet =
 				{
 					{ "CharmTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveAres = {
 				OneFromEachSet =
 				{
 					{ "AresCursedRiftTrait" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveDionysus = {
 				OneFromEachSet =
 				{
 					{ "DionysusComboVulnerability" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 			HephaestusImproveDemeter = {
 				OneFromEachSet =
 				{
 					{ "InstantChillKill" },
-					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+					{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 				}
 			},
 		},
@@ -2696,7 +2765,7 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
-				RequiredMinRoomsSinceChallengeSwitch = 5,
+				RequiredChallengeSwitchInRoom = true,
 				{ Cue = "/VO/Hephaestus_0109",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "There should be an Infernal Trove next to you. Why don't you do some extra work? We both know all efforts are rewarded." },
@@ -3653,7 +3722,7 @@ if ModUtil ~= nil then
 			OneFromEachSet =
 			{
 				{ "MissChanceTrait" },
-				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 			}
 		}
 		OlympusLootData.HephaestusUpgrade.ImprovePickupTextLineSets.HephaestusImproveApollo01 = {
@@ -3716,7 +3785,7 @@ if ModUtil ~= nil then
 			OneFromEachSet =
 			{
 				{ "LavaAutoTrait" },
-				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 			}
 		}
 		OlympusLootData.HephaestusUpgrade.ImprovePickupTextLineSets.HephaestusImproveHestia01 = {
@@ -3825,7 +3894,7 @@ if ModUtil ~= nil then
 			OneFromEachSet =
 			{
 				{ "StatusOverTimeTrait" },
-				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusLongerDashes", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
+				{ "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "ForceWeaponUpgradeTrait" },
 			}
 		}
 		OlympusLootData.HephaestusUpgrade.ImprovePickupTextLineSets.HephaestusImproveHera01 = {
@@ -4055,13 +4124,6 @@ ModUtil.Path.Wrap("StartEncounter",
 		CreateAnimation({ Name = "HephArmorUp", DestinationId = CurrentRun.Hero.ObjectId })		
 		--thread( InCombatTextArgs, { Text = "ArmorUpText", TargetId = CurrentRun.Hero.ObjectId, Duration = 0.85, PreDelay = 0.21, FontScale = 20, SkipShadow = true } ) --SkipRise = true, OffsetY = -160, SkipShadow = true
 	end
-	
-	function OnDamageBoost(attacker, args)
-		ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-							WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
-		ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-							WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostDamage" })
-	end
 ModUtil.Path.Wrap( "EndEncounterEffects", 
 	function(baseFunc, currentRun, currentRoom, currentEncounter)
 		baseFunc(currentRun, currentRoom, currentEncounter)
@@ -4200,36 +4262,31 @@ function DamageIgneousArmor( weaponData, args)
 	-- HephHammerExplosionSpawner, HephHammerExplosionNova
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		local igneousArmor = CurrentRun.Hero.IgneousArmor
-		if igneousArmor ~= nil and not igneousArmor.InCooldown then
-			--PresentationIgneousArmor(igneousArmor)
-			if not igneousArmor.Charging and not igneousArmor.InCooldown then
-				igneousArmor.InCooldown = true
-				igneousArmor.Charging = true
-				thread(StartArmorIgneous, igneousArmor)
-			end
+		if igneousArmor ~= nil and not igneousArmor.InCooldown and not igneousArmor.Charging then
+			igneousArmor.InCooldown = true
+			igneousArmor.Charging = true
+			thread(StartArmorIgneous, igneousArmor)
 		end
 	end
 end
 function StartArmorIgneous(igneousArmor)
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "Shielded", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
-		wait(igneousArmor.Duration-1.4)
 	end
+	wait(igneousArmor.Duration-1.4)
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "QuickFlash", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 		PlaySound({ Name = "/SFX/WrathEndingWarning" })
-		wait(0.7)
 	end
+	wait(0.7)
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "QuickFlash", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 		PlaySound({ Name = "/SFX/WrathEndingWarning" })
-		wait(0.7) 
 	end
+	wait(0.7) 
 	StopAnimation({ Name = "Shielded", DestinationId = CurrentRun.Hero.ObjectId })
 	igneousArmor.Charging = false
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
-		 -- 1
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(igneousArmor.Damage))
 		local targetId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId })
 		ApplyWeaponPropertyChanges( CurrentRun.Hero, "IgneousArmorExplosion", {
 			{
@@ -4251,8 +4308,8 @@ function StartArmorIgneous(igneousArmor)
 			FireFromTarget = true
 		})
 		igneousArmor.Damage = 0
-		wait(igneousArmor.Cooldown)
 	end
+	wait(igneousArmor.Cooldown)
 	igneousArmor.InCooldown = false
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		thread( PlayVoiceLines, HeroVoiceLines.GunWeaponReloadCompleteVoiceLines, true )
@@ -4283,30 +4340,4 @@ end
 		args = args or {}
 		return CreateLoot( MergeTables( args, { Name = "HephaestusUpgrade" } ) )
 	end
-
-	ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)
-			-- if (not CanOpenCodex()) and IsSuperValid() then
-			-- 	BuildSuperMeter(CurrentRun, 50)
-			-- end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			--[[local swordId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 200, OffsetY = 0 })
-			DropHealth("SwordHephWeaponDrop",swordId)
-			local bowId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 300, OffsetY = 0 })
-			DropHealth("BowHephWeaponDrop",bowId)
-			local shieldId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 400, OffsetY = 0 })
-			DropHealth("ShieldHephWeaponDrop",shieldId)
-			local spearId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = 500, OffsetY = 0 })
-			DropHealth("SpearHephWeaponDrop",spearId)]]
-			--local swordId = SpawnObstacle({ Name = "BowHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--local bowId = SpawnObstacle({ Name = "BowHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--local shieldId = SpawnObstacle({ Name = "ShieldHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--local spearId = SpawnObstacle({ Name = "SpearHephWeaponDrop", DestinationId = CurrentRun.Hero.ObjectId, Group = "Standing" })
-			--ApplyUpwardForce({ Id = swordId, Speed = 300 })
-			--ApplyUpwardForce({ Id = bowId, Speed = 500 })
-			--ApplyUpwardForce({ Id = shieldId, Speed = 700 })
-			--ApplyUpwardForce({ Id = spearId, Speed = 1000 })
-			baseFunc()
-		end
-	)
 end

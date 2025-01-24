@@ -12,17 +12,18 @@
       AttachToOwner = true
       Fuse = 0.0
       StartDelay = 0.0
-      AffectsEnemies = true
-      AffectsFriends = false
+      AffectsEnemies = false
+      AffectsFriends = true
       AffectsSelf = true
       ImpactVelocity = 0
       NumPenetrations = 9999
       CheckUnitImpact = true
       CheckObstacleImpact = true
       UnlimitedUnitPenetration = true
+      IgnoreOwnerAllegiance = true
       CanBeProjectileDefenseDestroyed = false
-      DamageLow = 1
-      DamageHigh = 1
+      DamageLow = 150
+      DamageHigh = 150
       UseVulnerability = false
       Thing = 
       {
@@ -61,7 +62,7 @@
     }
     {
       Name = "HephChariotRamDeathWeapon"
-      InheritFrom = "ChariotRamSelfDestruct"
+      InheritFrom = "HephChariotRamSelfDestruct"
       StartDelay = 0.02
       DamageRadius = 220
       DamageRadiusScaleX = 0.9
@@ -69,10 +70,8 @@
       DetonateGraphic = "MineExplosionFadeDecal"
       DetonateSound = "/SFX/Enemy Sounds/FireChariot/FireChariotImpact"
       ImpactVelocity = 1200
-      DamageLow = 15
-      DamageHigh = 15
-      AffectsEnemies = true
-      AffectsFriends = false
+      AffectsEnemies = false
+      AffectsFriends = true
       AffectsSelf = true
       Thing = 
       {

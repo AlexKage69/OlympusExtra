@@ -11,8 +11,28 @@ ModUtil.Table.Merge(OlympusKeywordList, {
     "JealousyCurse", "EnvyCurse", "HeraTrap", "Aura", 
     "SpecialDiscount", "ApolloBlind", "FlashBomb", "DamageResist",
     "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon",
-    "ArmorIcon", "ZagreusArmor", "HephSword" })
+    "ArmorIcon", "ZagreusArmor", "HephSword", "HephBow",
+    "HephShield", "HephSpear" })
 ResetKeywords()
+
+local OlympusEnemySets = ModUtil.Entangled.ModData(EnemySets)
+OlympusEnemySets.FriendlyEnemies = {
+    "DefaultHero",
+    "HeraMine",
+    "HephaestusChariotSuicide",
+    "HephaestusChariotSuicideElite"
+}
+--UIData
+local OlympusTextFormats = ModUtil.Entangled.ModData(TextFormats)
+OlympusTextFormats.HiddenFormat =
+{
+    Font = "AlegreyaSansExtraBold",
+    FontSize = 0,
+    Color = { 0, 0, 0, 0 },
+    VerticalJustification = "Top",
+    TextSymbolScale = 0.85,
+    Graft = true,
+}
 -- WeaponSets
 local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
 OlympusWeaponSets.AllPrimaryWeapons = { "SwordWeapon",
@@ -191,6 +211,7 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                 end
             end
         end
+        -- This is for IgnoreOutgoingDamageModifiers to be boosted
         if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and (weaponData ~= nil and weaponData.IgnoreOutgoingDamageModifiers) then
             local appliedEffectTable = {}
             for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
@@ -211,6 +232,27 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                     if modifierData.ValidWeaponMultiplier then
                         addDamageMultiplier(modifierData, modifierData.ValidWeaponMultiplier)
                     end
+                end
+            end
+        end
+        -- This is for additionnal damage modifier to be applied
+        if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and ( not weaponData or not weaponData.IgnoreOutgoingDamageModifiers ) then
+            local appliedEffectTable = {}
+            for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
+                local validEffect = modifierData.ValidEffects == nil or
+                    (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
+                local validWeapon = modifierData.ValidWeaponsLookup == nil or
+                    (modifierData.ValidWeaponsLookup[triggerArgs.SourceWeapon] ~= nil and triggerArgs.EffectName == nil)
+                local validTrait = modifierData.RequiredTrait == nil or
+                    (attacker == CurrentRun.Hero and HeroHasTrait(modifierData.RequiredTrait))
+                local validUniqueness = modifierData.Unique == nil or not modifierData.Name or
+                    not appliedEffectTable[modifierData.Name]
+                local validEnchantment = true
+
+                if validUniqueness and validWeapon and validEffect and validTrait and validEnchantment then
+                    if modifierData.Name then
+                        appliedEffectTable[modifierData.Name] = true
+                    end
                     if modifierData.DistanceMultiplierWithSelfEffect and not IsEmpty(attacker.ActiveEffects) then
                         local hasAllEffects = true
                         for _, effectName in pairs( modifierData.DistanceEffects ) do
@@ -221,7 +263,6 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                         if hasAllEffects then
                             if modifierData.DistanceMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.DistanceThreshold * modifierData.DistanceThreshold ) <= triggerArgs.DistanceSquared then
                                 addDamageMultiplier( modifierData, modifierData.DistanceMultiplierWithSelfEffect)
-                                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("distance damage added")) 
                             end
                         end
                     end
@@ -233,9 +274,8 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                             end
                         end
                         if hasAllEffects then
-                            if modifierData.ProximityMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.ProximityThreshold * modifierData.ProximityThreshold ) <= triggerArgs.DistanceSquared then
+                            if modifierData.ProximityMultiplierWithSelfEffect and triggerArgs.DistanceSquared ~= nil and triggerArgs.DistanceSquared ~= -1 and ( modifierData.ProximityThreshold * modifierData.ProximityThreshold ) >= triggerArgs.DistanceSquared then
                                 addDamageMultiplier( modifierData, modifierData.ProximityMultiplierWithSelfEffect)
-                                ModUtil.Hades.PrintStackChunks(ModUtil.ToString("proximity damage added")) 
                             end
                         end
                     end
@@ -337,7 +377,7 @@ ModUtil.Path.Wrap("CheckOnHitPowers",
 				--args.IsInvulnerable = true
 			else
                 -- Hephaestus RevengeBoostTrait
-                if victim == CurrentRun.Hero and HeroHasTrait("RevengeBoostTrait") then
+                if attacker ~= nil and not Contains(OlympusEnemySets.FriendlyEnemies, attacker.Name) and victim == CurrentRun.Hero and HeroHasTrait("RevengeBoostTrait") then
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
 						WeaponName = "RevengeBoostApplicator", EffectName = "RevengeBoostSpeed" })
                     ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
@@ -774,7 +814,6 @@ ModUtil.Path.Wrap("HandleLootPickup",
                 if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsImproveBoon then
                     hasImproveBoon = true
                     loot.Skip = true
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Improve found"))
                 end
             end
         end
@@ -1068,6 +1107,9 @@ ModUtil.Path.Wrap("IsGameStateEligible",
                     return false
                 end
             end
+            if requirements.RequiredChallengeSwitchInRoom ~= nil and CurrentRun.CurrentRoom.ChallengeSwitch == nil then
+                return false
+            end
             --[[if requirements.RequiredDidNoDamageRun ~= nil then
                 if CurrentRun.CurrentRoom.PerfectEncounterCleared then
                     return false
@@ -1128,10 +1170,10 @@ ModUtil.Path.Wrap("AddTraitToHero",
     end
 )
 -- Test / Utility
-ModUtil.Path.Wrap("BeginOpeningCodex",
+--[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)
         --PresentationNewSameGodIncrease()
-        if (not CanOpenCodex()) and IsSuperValid() then
+        --[[if (not CanOpenCodex()) and IsSuperValid() then
             BuildSuperMeter(CurrentRun, 50)
         end
         --thread(RunAudio01)
@@ -1148,11 +1190,11 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
             for activeMutator in pairs( GameState.ActiveMutators ) do
                 ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(activeMutator))            
             end
-        end]]
+        end
         --UseLoungeTelescope()
         baseFunc()
     end
-)
+)]]
 function ForceNextRoomFunc(value)
 
     -- Stomp any rooms already assigned to doors
