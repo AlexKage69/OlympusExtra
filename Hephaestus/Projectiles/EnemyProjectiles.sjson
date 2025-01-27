@@ -12,8 +12,8 @@
       AttachToOwner = true
       Fuse = 0.0
       StartDelay = 0.0
-      AffectsEnemies = false
-      AffectsFriends = true
+      AffectsEnemies = true
+      AffectsFriends = false
       AffectsSelf = true
       ImpactVelocity = 0
       NumPenetrations = 9999
@@ -22,8 +22,8 @@
       UnlimitedUnitPenetration = true
       IgnoreOwnerAllegiance = true
       CanBeProjectileDefenseDestroyed = false
-      DamageLow = 150
-      DamageHigh = 150
+      DamageLow = 1
+      DamageHigh = 1
       UseVulnerability = false
       Thing = 
       {
@@ -73,6 +73,8 @@
       AffectsEnemies = false
       AffectsFriends = true
       AffectsSelf = true
+      DamageLow = 100
+      DamageHigh = 100
       Thing = 
       {
         Graphic = "null"

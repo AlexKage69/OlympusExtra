@@ -87,12 +87,12 @@
 		{
 			Id = "HephaestusShoutSummon"
 			DisplayName = "Explosive Goons"
-			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
+			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.SummonExplosionDamage} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
 		}
 		{
 			Id = "HephaestusShoutSummon_Tray"
 			InheritFrom = "HephaestusShoutSummon"
-			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
+			Description = "Create friendly Flame Wheels when using {$Keywords.WrathDerivedStocks}.  \n {!Icons.Bullet}{#PropertyFormat}Explosion Damage: \Column 380 {#UpgradeFormat}{$TooltipData.SummonExplosionDamage} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}Summon 4 Flame Wheels"
 		}
 		{
 			Id = "HephaestusShoutSummon_Initial"

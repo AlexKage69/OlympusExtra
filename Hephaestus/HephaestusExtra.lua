@@ -18,6 +18,8 @@ if ModUtil ~= nil then
 	OlympusColor.HephaestusDamage = { 144,75,7,255  }
 	OlympusColor.DamageBackDamageStart = { 229,184,11,255 }
 	OlympusColor.DamageBackDamageEnd = { 255,215,0,255 }
+	OlympusColor.HephaestusHiddenColor = { 255,255,255,0 }
+	
 	--QuestData
 	local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
 	OlympusQuestData.HephaestusUpgrades =
@@ -208,13 +210,15 @@ if ModUtil ~= nil then
 			RequiredFalseTrait = "FastClearDodgeBonusTrait",
 			RequiredMaxHephaestusUpgrades = 1,
 			--RequiredFalseLootPickup = "HermesUpgrade",
-			RequiredNotInStore = "HephaestusUpgradeDrop",
+			RequiredNotInStoreNames = {"HephaestusUpgradeDrop", "HermesUpgradeDrop"},
 			RequiredMinCompletedRuns = 3,
 			RequiredMinDepth = 13,
 		}
 	})
 	OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredFalseTraits = {"ForceWeaponUpgradeTrait"}
 	OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredFalseGodLoot = "HephaestusUpgrade"
+	OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredNotInStoreNames = {"HephaestusUpgradeDrop", "HermesUpgradeDrop"}
+	OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredNotInStore = nil
 	--OlympusRewardStoreData.RunProgress[12].GameStateRequirements.RequiredMinDepth = 2
 	--WeaponData
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
@@ -222,7 +226,7 @@ if ModUtil ~= nil then
 	{
 		StartingWeapon = false,
 		IgnoreHealthBuffer = true,
-		OnFiredFunctionName = "SelfDestruct",
+		OnHitFunctionNames = {"HephHitSelfDestruct"},
 		HitScreenshake = { Distance = 3, Speed = 1000, Duration = 0.12, FalloffSpeed = 3000 },
 		HitSimSlowParameters =
 		{
@@ -317,6 +321,13 @@ if ModUtil ~= nil then
 		InheritFrom = { "HephaestusColorProjectile" },
 	}
 	OlympusProjectileData.IgneousTrapExplosion = {
+		InheritFrom = { "HephaestusColorProjectile" },
+	}
+	OlympusProjectileData.HephChariotRamSelfDestruct ={
+		DamageTextStartColor = OlympusColor.HephaestusHiddenColor,
+		DamageTextColor = OlympusColor.HephaestusHiddenColor
+	}
+	OlympusProjectileData.HephChariotRamDeathWeapon ={
 		InheritFrom = { "HephaestusColorProjectile" },
 	}
 	-- GameData
@@ -424,6 +435,7 @@ if ModUtil ~= nil then
 	local OlympusHeroData = ModUtil.Entangled.ModData(HeroData)
 	OlympusHeroData.DefaultHero.HeroAlliedUnits.HephaestusChariotSuicide = true
 	OlympusHeroData.DefaultHero.HeroAlliedUnits.HephaestusChariotSuicideElite = true
+
 	local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
 	OlympusEnemyData.HephaestusChariotSuicide =
 	{
@@ -441,6 +453,7 @@ if ModUtil ~= nil then
 		SpeechCooldownTime = 9,
 		SkipModifiers = true,
 		AlwaysTraitor = true,
+		AdditionalEnemySetupFunctionName = "SetupExplosiveChariot",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = false,
 
 		Groups = { "FlyingEnemies", "TrainingEnemies" },
@@ -858,6 +871,7 @@ if ModUtil ~= nil then
 		--RequiredTextLines = { "PoseidonWrathIntro01" },
 		RequiredSlottedTrait = "Shout",
 		--CustomTrayText = "HephaestusShoutSummon_Tray",
+		--PreEquipWeapons = {"HephChariotRamDeathWeapon"},
 		--Slot = "Shout",
 		Icon = "Boon_Hephaestus_05",
         RequiredFalseTrait = "HephaestusShoutSummon",
@@ -877,14 +891,17 @@ if ModUtil ~= nil then
 			},
 			Heroic =
 			{
-				Multiplier = 1.3,
+				Multiplier = 1.33,
 			}
 		},
-		EnemyPropertyChanges =
+		SummonExplosionDamage = {
+			BaseValue = 150,
+		},
+		--[[EnemyPropertyChanges =
 		{
 			{
-				WeaponName = "HephChariotRamSelfDestruct",
-				ProjectileName = "HephChariotRamSelfDestruct",
+				WeaponName = "HephChariotRamDeathWeapon",
+				ProjectileName = "HephChariotRamDeathWeapon",
 				ProjectileProperty = "DamageLow",
 				BaseMin = 150,
 				BaseMax = 150,
@@ -895,18 +912,22 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponName = "HephChariotRamSelfDestruct",
-				ProjectileName = "HephChariotRamSelfDestruct",
+				WeaponName = "HephChariotRamDeathWeapon",
+				ProjectileName = "HephChariotRamDeathWeapon",
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
-		},
+		},]]
 		ExtractValues =
 		{
 			{
 				ExtractAs = "TooltipWrathStocks",
 				Format = "ExistingWrathStocks",
 				SkipAutoExtract = true
+			},
+			{
+				Key = "SummonExplosionDamage",
+				ExtractAs = "SummonExplosionDamage",
 			},
 		}
 	}
@@ -4167,15 +4188,38 @@ ModUtil.Path.Wrap( "FireShoutEffects",
 	end
 )
 function HephaestusShout() 
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Shout"))
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Shout"))
 	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
 end
 function HephaestusMaxShout() 
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Max Shout")) 
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Max Shout")) 
 	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
 	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
 	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
 	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+end
+function SetupExplosiveChariot(enemy, currentRun)
+	local damage = GetTotalHeroTraitValue("SummonExplosionDamage")
+	ApplyWeaponPropertyChanges( enemy, "HephChariotRamDeathWeapon", {
+		{
+			ProjectileProperty = "DamageLow",
+			ChangeValue = damage,
+			ChangeType = "Absolute",
+		},
+		{
+			ProjectileProperty = "DamageHigh",
+			ChangeValue = damage,
+			ChangeType = "Absolute",
+		},
+	})
+end
+function HephHitSelfDestruct( victim, victimId, triggerArgs )
+	--
+	if victim ~= nil and victim.DamageType == "Enemy" then
+		thread( Kill, triggerArgs.AttackerTable )		
+	end
 end
 function SpawnExplosiveChariot( args )
 	local enemyName = args.Name or "ChariotSuicide"
