@@ -445,18 +445,18 @@ if ModUtil ~= nil then
 		UseShrineUpgrades = false,
 		DamageType = "Ally",
 		MaxHealth = 1,
-		HealthBarOffsetY = -145,
-		HealthBarType = "Small",
+		--HealthBarOffsetY = -145,
+		--HealthBarType = "Small",
 		SkipDamageText = true,
-		AnimOffsetZ = 120,
+		AnimOffsetZ = -120,
 		UnuseableWhenDead = true,
 		SpeechCooldownTime = 9,
 		SkipModifiers = true,
 		AlwaysTraitor = true,
-		AdditionalEnemySetupFunctionName = "SetupExplosiveChariot",
+		--AdditionalEnemySetupFunctionName = "SetupExplosiveChariot",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = false,
 
-		Groups = { "FlyingEnemies", "TrainingEnemies" },
+		Groups = { "GroundEnemies", "TrainingEnemies" },
 
 		MeterMultiplier = 0,
 
@@ -465,20 +465,20 @@ if ModUtil ~= nil then
 			Chance = 0,
 		},
 
-		ActiveCapWeight = 0.5,
-		LargeUnitCap = 6,
+		--ActiveCapWeight = 0.5,
+		--LargeUnitCap = 6,
 
-		BlockSelfDamageNumbers = false, --true
+		BlockSelfDamageNumbers = true, --true
 
 		IsAggroedSound = "/SFX/Enemy Sounds/FireChariot/FireChariotAggro",
-		AIAggroRange = 5000,
+		--AIAggroRange = 5000,
 
 		DefaultAIData =
 		{
 			AIRequireProjectileLineOfSight = false,
 			AIRequireUnitLineOfSight = false,
-			SetupDistance = 800,
-			SetupTimeout = 1.0,
+			SetupDistance = 5000,
+			SetupTimeout = 0.5,
 			RamDistance = 100,
 			RamTimeout = 6.0,
 			RamWeaponName = "HephChariotRamSelfDestruct",
@@ -4118,32 +4118,6 @@ ModUtil.Path.Wrap("StartEncounter",
 		CreateAnimation({ Name = "HephArmorUp", DestinationId = CurrentRun.Hero.ObjectId })		
 		--thread( InCombatTextArgs, { Text = "ArmorUpText", TargetId = CurrentRun.Hero.ObjectId, Duration = 0.85, PreDelay = 0.21, FontScale = 20, SkipShadow = true } ) --SkipRise = true, OffsetY = -160, SkipShadow = true
 	end
-ModUtil.Path.Wrap( "EndEncounterEffects", 
-	function(baseFunc, currentRun, currentRoom, currentEncounter)
-		baseFunc(currentRun, currentRoom, currentEncounter)
-		if currentEncounter == nil or currentEncounter.EncounterType == "NonCombat" then
-			return
-		end
-		if HeroHasTrait("SpawnWeaponsTrait") and CurrentRun.CurrentRoom.HephWeapons ~= nil then
-			for index, obstacle in ipairs( CurrentRun.CurrentRoom.HephWeapons ) do
-				if obstacle ~= nil then
-					Destroy({ Id = obstacle.ObjectId })				
-				end
-			end
-		end
-		if currentEncounter == currentRoom.Encounter and not currentRoom.BlockClearRewards then
-			for k, traitData in pairs(currentRun.Hero.Traits) do
-				if not currentEncounter.PlayerTookDamage and traitData.RepairArmorOnPerfectEncounter then
-					--PerfectClearTraitSuccessPresentation( traitData )
-					RepairArmor(traitData.RepairArmorOnPerfectEncounter)
-					thread(RepairArmorPresentation)
-					--CurrentRun.CurrentRoom.PerfectEncounterCleared = true
-					--CheckAchievement( { Name = "AchBuffedButterfly", CurrentValue = traitData.AccumulatedDamageBonus } )
-				end
-			end
-		end
-	end
-)
 ModUtil.Path.Wrap( "ReloadAmmoPresentation", 
 	function(baseFunc)
 		baseFunc()
@@ -4175,34 +4149,42 @@ ModUtil.Path.Wrap( "AddAmmoPresentation",
 ModUtil.Path.Wrap( "FireShoutEffects", 
 	function(baseFunc, superName)
 		baseFunc(superName)
-		if superName ~= nil then
-			if HeroHasTrait("HephaestusShoutSummon")then
-				local isMax = string.find(superName, "Max")
-				if isMax then
-					thread( HephaestusMaxShout )
-				else
-					thread( HephaestusShout )
-				end
-			end
-		end		
+		if HeroHasTrait("HephaestusShoutSummon")then
+			local isSuper = CurrentRun.Hero.SuperMeter == CurrentRun.Hero.SuperMeterLimit
+			thread( HephaestusShout, isSuper )
+		end	
 	end
 )
-function HephaestusShout() 
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Shout"))
+function HephaestusShout(isSuper)
 	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+	if isSuper then
+		SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0, OffsetX = 15, OffsetY = 10})
+		SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0, OffsetX = 15, OffsetY = -10})
+		SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0, OffsetY = -15,})
+		SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0, OffsetX = -15, OffsetY = 10})
+		SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0, OffsetX = -15, OffsetY = -10})		
+	end
 end
-function HephaestusMaxShout() 
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Heph Max Shout")) 
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
-	SpawnExplosiveChariot({Name = "HephaestusChariotSuicide", Duration = 10.0})
+function HephHitSelfDestruct( victim, victimId, triggerArgs )
+	if victim ~= nil and victim.DamageType == "Enemy" then
+		thread( Kill, triggerArgs.AttackerTable )
+	end
 end
-function SetupExplosiveChariot(enemy, currentRun)
+function SpawnExplosiveChariot( args )
+	local enemyName = args.Name or "ChariotSuicide"	
+	local newEnemy = DeepCopyTable( EnemyData[enemyName] )
+	newEnemy.BlocksLootInteraction = false
+
+	local invaderSpawnPoint = CurrentRun.Hero.ObjectId
+	newEnemy.ObjectId = SpawnUnit({
+			Name = newEnemy.Name,
+			Group = "Standing",
+			DestinationId = invaderSpawnPoint, OffsetX = args.OffsetX or 0, OffsetY = args.OffsetY or 15,
+			DoActivatePresentation = false })
+
+	SetupEnemyObject( newEnemy, CurrentRun )
 	local damage = GetTotalHeroTraitValue("SummonExplosionDamage")
-	ApplyWeaponPropertyChanges( enemy, "HephChariotRamDeathWeapon", {
+	ApplyWeaponPropertyChanges( newEnemy, "HephChariotRamDeathWeapon", {
 		{
 			ProjectileProperty = "DamageLow",
 			ChangeValue = damage,
@@ -4214,29 +4196,6 @@ function SetupExplosiveChariot(enemy, currentRun)
 			ChangeType = "Absolute",
 		},
 	})
-end
-function HephHitSelfDestruct( victim, victimId, triggerArgs )
-	--
-	if victim ~= nil and victim.DamageType == "Enemy" then
-		thread( Kill, triggerArgs.AttackerTable )		
-	end
-end
-function SpawnExplosiveChariot( args )
-	local enemyName = args.Name or "ChariotSuicide"
-	local enemyData = EnemyData[enemyName]
-	local newEnemy = DeepCopyTable( enemyData )
-	newEnemy.BlocksLootInteraction = false
-
-	local invaderSpawnPoint = CurrentRun.Hero.ObjectId
-	newEnemy.ObjectId = SpawnUnit({
-			Name = enemyData.Name,
-			--Group = "Standing",
-			DestinationId = invaderSpawnPoint, OffsetX = 0, OffsetY = 15,
-			DoActivatePresentation = false })
-
-	SetupEnemyObject( newEnemy, CurrentRun )
-	--CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
-	--CurrentRun.CurrentRoom.DestroyAssistProjectilesOnEncounterEnd = "DusaFreezeShotNonHoming"
 	thread(EndExplosiveChariot, newEnemy, args )
 end
 

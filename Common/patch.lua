@@ -1121,6 +1121,36 @@ ModUtil.Path.Wrap("IsGameStateEligible",
         return true
     end
 )
+ModUtil.Path.Wrap( "EndEncounterEffects", 
+	function(baseFunc, currentRun, currentRoom, currentEncounter)
+		baseFunc(currentRun, currentRoom, currentEncounter)
+		if currentEncounter == nil or currentEncounter.EncounterType == "NonCombat" then
+			return
+		end
+		if HeroHasTrait("SpawnWeaponsTrait") and CurrentRun.CurrentRoom.HephWeapons ~= nil then
+			for index, obstacle in ipairs( CurrentRun.CurrentRoom.HephWeapons ) do
+				if obstacle ~= nil then
+					Destroy({ Id = obstacle.ObjectId })				
+				end
+			end
+		end
+		if HeroHasTrait("HephaestusShoutSummon") then
+			for index, enemy in ipairs( ActiveEnemies ) do                
+				if enemy ~= nil and enemy.Name == "HephaestusChariotSuicide" then
+                    Kill( enemy )		
+				end
+			end
+		end
+		if currentEncounter == currentRoom.Encounter and not currentRoom.BlockClearRewards then
+			for k, traitData in pairs(currentRun.Hero.Traits) do
+				if not currentEncounter.PlayerTookDamage and traitData.RepairArmorOnPerfectEncounter then
+					RepairArmor(traitData.RepairArmorOnPerfectEncounter)
+					thread(RepairArmorPresentation)
+				end
+			end
+		end
+	end
+)
 OnHit {
     function(triggerArgs)
         local attacker = triggerArgs.AttackerTable
@@ -1170,10 +1200,10 @@ ModUtil.Path.Wrap("AddTraitToHero",
     end
 )
 -- Test / Utility
---[[ModUtil.Path.Wrap("BeginOpeningCodex",
+ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)
         --PresentationNewSameGodIncrease()
-        --[[if (not CanOpenCodex()) and IsSuperValid() then
+        if (not CanOpenCodex()) and IsSuperValid() then
             BuildSuperMeter(CurrentRun, 50)
         end
         --thread(RunAudio01)
@@ -1190,11 +1220,11 @@ ModUtil.Path.Wrap("AddTraitToHero",
             for activeMutator in pairs( GameState.ActiveMutators ) do
                 ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(activeMutator))            
             end
-        end
+        end]]
         --UseLoungeTelescope()
         baseFunc()
     end
-)]]
+)
 function ForceNextRoomFunc(value)
 
     -- Stomp any rooms already assigned to doors

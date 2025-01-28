@@ -2288,6 +2288,16 @@ if ModUtil ~= nil then
 				BaseProperty = "Duration",
 			},
 			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			},
+			{
 				Key = "ApolloHealDropChance",
 				ExtractAs = "TooltipDropChance",
 				Format = "Percent"
