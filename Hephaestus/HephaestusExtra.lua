@@ -2978,12 +2978,12 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/ZagreusField_5000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.05 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "{#DialogueItalicFormat}Hm{#PreviousFormat}, I could've sworned I sensed Hermes earlier, but this prescence is different. Olympus, I accept this message!" },
+					Text = "{#DialogueItalicFormat}Hm{#PreviousFormat}, I could've sworn I sensed Hermes earlier, but this prescence is different. Olympus, I accept this message!" },
 				{ Cue = "/VO/Hephaestus_0001",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and asked me to help finetune your escape plan instead. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and asked me to help finetune your escape plan. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusMiscPickup01 =
 			{
@@ -2992,7 +2992,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0002",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Smithing is my passion. At the forge, all my worries melt away like metal. But sometimes, I think others take my creation for granted." },
+					Text = "Smithing is my passion. At the forge, all my worries melt away as if they were the metal I forge. But at times, I feel that others take my creation for granted." },
 			},
 			HephaestusMiscPickup02 =
 			{
