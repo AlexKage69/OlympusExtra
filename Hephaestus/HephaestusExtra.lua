@@ -191,7 +191,7 @@ if ModUtil ~= nil then
 				WeaponName = "SpeedBoost",			
 			},
 		},
-	}
+	}	
 	local OlympusStoreData = ModUtil.Entangled.ModData(StoreData)
 	--Hermes Shop
 	OlympusStoreData.WorldShop.GroupsOf[3].OptionsData[2].ReplaceRequirements = { RequiredMaxHermesUpgrades = 0, RequiredTextLines = {  "HermesFirstPickUp" }, RequiredFalseTrait = "ForceWeaponUpgradeTrait", RequiredFalseGodLoot = "HephaestusUpgrade"}
@@ -241,68 +241,33 @@ if ModUtil ~= nil then
 		DamageTextStartColor = Color.DamageBackDamageStart,
 		DamageTextColor = Color.DamageBackDamageEnd,
 	}
-	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
 	local OlympusHeroVoiceLines = ModUtil.Entangled.ModData(HeroVoiceLines)
-	table.insert(OlympusGlobalVoiceLines.BoonUsedVoiceLines, {
-		BreakIfPlayed = true,
-		RandomRemaining = true,
-		PreLineWait = 0.5,
-		RequiredLastGodLoot = "HephaestusUpgrade",
-		RequiredEncounters = { "DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium", },
-		RequireCurrentEncounterNotComplete = true,
-		Source = { SubtitleColor = Color.HephaestusVoice },
-
-		-- A fine performance.
-		{ Cue = "/VO/Hephaestus_0162" },
-		-- You can do better.
-		{ Cue = "/VO/Hephaestus_0163" },
-		-- Do it for your queen.
-		{ Cue = "/VO/Hephaestus_0164" },
-		-- Lasted longer than I expected.
-		{ Cue = "/VO/Hephaestus_0165" },
-		-- Barely made it, I assume.
-		{ Cue = "/VO/Hephaestus_0166" },
-		-- With this, you'd better not lose.
-		{ Cue = "/VO/Hephaestus_0167" },
-		-- There's nothing better than my blessings.
-		{ Cue = "/VO/Hephaestus_0168" },
-		-- You never give up, do you?
-		{ Cue = "/VO/Hephaestus_0169" },
-		-- That's right, bow to your queen.
-		{ Cue = "/VO/Hephaestus_0170" },
-		-- Likely to fail, but I am still helping you.
-		{ Cue = "/VO/Hephaestus_0171" },
-		-- I can be generous.
-		{ Cue = "/VO/Hephaestus_0172" },
-		-- The best of all Olympus.
-		{ Cue = "/VO/Hephaestus_0173" },
-	})
 	table.insert(OlympusHeroVoiceLines.UpgradePickedVoiceLines, {
 		RandomRemaining = true,
 		BreakIfPlayed = true,
 		SuccessiveChanceToPlay = 0.5,
 		PreLineWait = 0.75,
 		RequiredLastGodLoot = "HephaestusUpgrade",
-		-- Glorious!
-		{ Cue = "/VO/ZagreusField_4973" },
-		-- From royalty.
-		{ Cue = "/VO/ZagreusField_4974" },
-		-- Bond to be good.
-		{ Cue = "/VO/ZagreusField_4975" },
-		-- Queen of Olympus.
-		{ Cue = "/VO/ZagreusField_4976" },
-		-- For your reign.
-		{ Cue = "/VO/ZagreusField_4977" },
-		-- I'll be loyal to you.
-		{ Cue = "/VO/ZagreusField_4978" },
-		-- I won't cheat.
-		{ Cue = "/VO/ZagreusField_4979" },
-		-- In all its glory.
-		{ Cue = "/VO/ZagreusField_4980" },
-		-- Justice!
-		{ Cue = "/VO/ZagreusField_4981" },
-		-- Fairest of them all.
-		{ Cue = "/VO/ZagreusField_4982" },
+		-- Smithing by the gods.
+		{ Cue = "/VO/ZagreusField_5011" },
+		-- That's quality work.
+		{ Cue = "/VO/ZagreusField_5012" },
+		-- Couldn't be better.
+		{ Cue = "/VO/ZagreusField_5013" },
+		-- Woah.
+		{ Cue = "/VO/ZagreusField_5014" },
+		-- Tuned up.
+		{ Cue = "/VO/ZagreusField_5015" },
+		-- Bronze and gold.
+		{ Cue = "/VO/ZagreusField_5016" },
+		-- Rock and stones.
+		{ Cue = "/VO/ZagreusField_5017" },
+		-- As I ordered it.
+		{ Cue = "/VO/ZagreusField_5018" },
+		-- Great customer service.
+		{ Cue = "/VO/ZagreusField_5019" },
+		-- Like I wanted.
+		{ Cue = "/VO/ZagreusField_5020" },
 	})
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
@@ -407,7 +372,52 @@ if ModUtil ~= nil then
 		"HephaestusAboutZeus01"
 	}
 	)
+	-- Voicelines
+	local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
+	table.insert(OlympusGlobalVoiceLines.FoundRareBoonVoiceLines, {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		SuccessiveChanceToPlay = 0.75,
+		PreLineWait = 1.05,
+		RequiredInactiveMetaUpgrade = "ReducedLootChoicesShrineUpgrade",
+		HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
 
+		-- Perfect!
+		{ Cue = "/VO/Hephaestus_0058", },
+		-- Couldn't have made it better!
+		{ Cue = "/VO/Hephaestus_0059", },
+		-- A job well done.
+		{ Cue = "/VO/Hephaestus_0060", },
+		-- A banging job, hey?
+		{ Cue = "/VO/Hephaestus_0061", },
+		-- Worthy of heroes.
+		{ Cue = "/VO/Hephaestus_0062", },
+		-- Hope this works out.
+		{ Cue = "/VO/Hephaestus_0063", },
+		-- Worth the effort.
+		{ Cue = "/VO/Hephaestus_0064", },
+		-- Done smithing.
+		{ Cue = "/VO/Hephaestus_0065", },
+		-- Hmph, worked out well.
+		{ Cue = "/VO/Hephaestus_0066", },
+		-- Just how I imagined it!
+		{ Cue = "/VO/Hephaestus_0067", },
+		-- Tuned up
+		{ Cue = "/VO/Hephaestus_0068", },
+		-- Oi oi
+		{ Cue = "/VO/Hephaestus_0069", },
+		-- Look at this.
+		{ Cue = "/VO/Hephaestus_0070", },
+		-- Couldn't be better
+		{ Cue = "/VO/Hephaestus_0071", },
+		-- Legendary
+		{ Cue = "/VO/Hephaestus_0072", },
+		-- Good enough
+		{ Cue = "/VO/Hephaestus_0073", },
+		-- Complete
+		{ Cue = "/VO/Hephaestus_0074", },
+	}
+	)
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
@@ -2099,21 +2109,21 @@ if ModUtil ~= nil then
 			CooldownTime = 40,
 
 			-- Lord Hephaestus.
-			{ Cue = "/VO/ZagreusField_1925", RequiredPlayed = { "/VO/ZagreusField_1927" } },
+			{ Cue = "/VO/ZagreusField_5021" },
 			-- Hello, Hephaestus.
-			{ Cue = "/VO/ZagreusField_1926", RequiredPlayed = { "/VO/ZagreusField_1927" } },
-			-- The blacksmith.
-			{ Cue = "/VO/ZagreusField_1927" },
+			{ Cue = "/VO/ZagreusField_5022", RequiredPlayed = { "/VO/ZagreusField_5021" } },
+			-- The blacksmith god.
+			{ Cue = "/VO/ZagreusField_5023", RequiredPlayed = { "/VO/ZagreusField_5021" } },
 			-- Time for an upgrade.
-			{ Cue = "/VO/ZagreusField_1928", RequiredPlayed = { "/VO/ZagreusField_1927" } },
-			-- Smithing time.
-			{ Cue = "/VO/ZagreusField_1929", RequiredPlayed = { "/VO/ZagreusField_1927" } },
+			{ Cue = "/VO/ZagreusField_5024", RequiredPlayed = { "/VO/ZagreusField_5021" } },
+			-- It's smithing time.
+			{ Cue = "/VO/ZagreusField_5025", RequiredPlayed = { "/VO/ZagreusField_5021" } },
 			-- There he is.
-			{ Cue = "/VO/ZagreusField_1930", RequiredPlayed = { "/VO/ZagreusField_1927" } },
-			-- Upgrade for me?
-			{ Cue = "/VO/ZagreusField_1931", RequiredPlayed = { "/VO/ZagreusField_1927" } },
+			{ Cue = "/VO/ZagreusField_1929", RequiredPlayed = { "/VO/ZagreusField_5021" } },
+			-- An upgrade for me?
+			{ Cue = "/VO/ZagreusField_5026", RequiredPlayed = { "/VO/ZagreusField_5021" } },
 			-- He's back.
-			{ Cue = "/VO/ZagreusField_1932", RequiredPlayed = { "/VO/ZagreusField_1927" } },
+			{ Cue = "/VO/ZagreusField_1932", RequiredPlayed = { "/VO/ZagreusField_5021" } },
 		},
 
 		UpgradeMenuOpenVoiceLines =
@@ -2143,7 +2153,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveZeus",
 				{ Cue = "/VO/Hephaestus_0044",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I see you got my father's blessing. And {#DialogueItalicFormat}woah {#PreviousFormat}, is it a good one. If I may, let me  see what I can do for you. Sounds good?" },
+					Text = "I see you got my father's blessing. And {#DialogueItalicFormat}whoa{#PreviousFormat}, is it a good one. If I may, let me see what I can do for you, eh?" },
 			},
 			HephaestusImproveAthena01 =
 			{
@@ -2154,7 +2164,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveAthena",
 				{ Cue = "/VO/Hephaestus_0045",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Athena's shields are always fun to tune up. She's kind of picky when it comes to quality, but eh, so am I. Let me tune this shield up for you." },
+					Text = "Athena's shields are always fun to tune up. She's kind of picky when it comes to quality, but {#DialogueItalicFormat}eh{#PreviousFormat}, so am I." },
 			},
 			HephaestusImproveAres01 =
 			{
@@ -2165,7 +2175,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveAres",
 				{ Cue = "/VO/Hephaestus_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I see you received Ares' blessing. Hanging with ones like Ares, are ya? I am not judging, I am a professional. Let me show you what a real weapon looks like." },
+					Text = "I see you received Ares' blessing. Hanging with warriors like Ares, are ya? I am not judging, I am a professional. Let me show you what a real weapon looks like." },
 			},
 			HephaestusImproveAphrodite01 =
 			{
@@ -2176,7 +2186,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveAphrodite",
 				{ Cue = "/VO/Hephaestus_0047",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Oi, you got to see Aphrodite! All she makes is perfect. I'll try to make it better if it's even possible." },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, you got to see Aphrodite! All she makes is perfect. I'll try to make it better if it's even possible." },
 			},
 			HephaestusImprovePoseidon01 =
 			{
@@ -2187,7 +2197,7 @@ if ModUtil ~= nil then
 				HasAnyTraitNamesInRoom = { "HephaestusImprovePoseidon", "HephaestusImproveFishPoseidon" },
 				{ Cue = "/VO/Hephaestus_0048",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Uncle Poseidon passed through! Did you know he asked me to craft a board that could ride a wave once? What an imagination!" },
+					Text = "Uncle Poseidon passed by! Did you know he asked me to craft a board that could ride a wave once? What an imagination!" },
 			},
 			HephaestusImproveArtemis01 =
 			{
@@ -2198,7 +2208,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveArtemis",
 				{ Cue = "/VO/Hephaestus_0049",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "You talked to Artemis, {#DialogueItalicFormat}eh {#PreviousFormat}? She always goes straight to the point. No wasted chit-chat. I like that. I would be an honor to improve her blessing." },
+					Text = "You talked to Artemis, {#DialogueItalicFormat}eh{#PreviousFormat}? She always goes straight to the point. No wasted chit-chat. I like that. It would be an honor to improve her blessing." },
 			},
 			HephaestusImproveDionysus01 =
 			{
@@ -2209,7 +2219,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveDionysus",
 				{ Cue = "/VO/Hephaestus_0050",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Of course, you have Dionysus' blessing. He gets muggled with anybody. To let them do the work. I mean look at what he gave you. Let me fix it." },
+					Text = "Of course, you have Dionysus' blessing. He gets in with anybody he can, and their bed, and their loins. {#DialogueItalicFormat}Urgh{#PreviousFormat}, let me fix that sloppy blessing for you. " },
 			},
 			HephaestusImproveDemeter01 =
 			{
@@ -2220,7 +2230,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveDemeter01",
 				{ Cue = "/VO/Hephaestus_0051",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Now. That's a challenge. Demeter's blessings always melt when I try to improve them, but I think I got this time around. Try this out." },
+					Text = "Now, that's a challenge. Demeter's blessings always melt when I try to improve them, but I think I got it this time around. Try this out." },
 			},		
 			HephaestusImproveMiscOlympian01 =
 			{
@@ -2230,7 +2240,7 @@ if ModUtil ~= nil then
 				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
 				{ Cue = "/VO/Hephaestus_0052",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Some say I work too much. Well, let me show them how my work can improve their blessing." },
+					Text = "Some say I work too much. Well, let me show you their blessings would've looked like it {#DialogueItalicFormat}they{#PreviousFormat} worked harder." },
 			},
 			HephaestusImproveMiscOlympian02 =
 			{
@@ -2240,7 +2250,7 @@ if ModUtil ~= nil then
 				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
 				{ Cue = "/VO/Hephaestus_0053",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I see I am not the only one to have blessed you. But let me be the last one to improve this then." },
+					Text = "I see I am not the only one to have blessed you. But I'm confident the blessings I give you are the best!" },
 			},
 			HephaestusImproveMiscOlympian03 =
 			{
@@ -2250,7 +2260,7 @@ if ModUtil ~= nil then
 				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
 				{ Cue = "/VO/Hephaestus_0054",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Is there something wrong with that blessing? Might look it can't be improved. Then again, let me show you how it's done." },
+					Text = "Is there something wrong with that blessing? Let me show you how it's done." },
 			},
 			HephaestusImproveMiscOlympian04 =
 			{
@@ -2280,7 +2290,7 @@ if ModUtil ~= nil then
 				HasAnyTraitNamesInRoom = GameData.HephaestusImproveTraits,
 				{ Cue = "/VO/Hephaestus_0057",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "You should be used to my improvement by now. Now back to the workshop." },
+					Text = "You should be used to my improvements by now. Well, back to the workshop." },
 			},
 		},
 		SuperPriorityPickupTextLineSets =
@@ -2296,7 +2306,7 @@ if ModUtil ~= nil then
 				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
 				{ Cue = "/VO/Hephaestus_0041",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I'll be straight with you. I know what failure looks like. How do you think I got there? I had to work hard to get where I am. You must learn to do the same. There's no freepass in life. Earn it." },
+					Text = "I'll be straight with you. I know what failure looks like. How do you think I got there? I had to work hard to get where I am. You must learn to do the same. There's no free pass in life. Earn it." },
 			},
 			-- ending	
 			HephaestusAboutOlympianReunionQuest01 =
@@ -2312,7 +2322,7 @@ if ModUtil ~= nil then
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "Oi, an invitation for me? Gathering aren't my cup, if you get me. I'll let Hermes the spotlight. If you'll excuse me, I still have a lot of work. " },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, an invitation for me? Gathering aren't my cup of tea, if you get me. I'll let Hermes the spotlight. If you'll excuse me, I still have a lot of work. " },
 			},
 		},
 
@@ -2339,7 +2349,7 @@ if ModUtil ~= nil then
 				MinRunsSinceAnyTextLines = { TextLines = { "HephaestusFirstPickUp" }, Count = 5 },
 				{ Cue = "/VO/Hephaestus_0076",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Zagreus. If I am being totally honest with you. I meant to come help you sooner, but I was too busy with work. Maybe Aphrodite is right. Maybe I should work a little less. But again, that's why I can give you this." },
+					Text = "Zagreus. If I am being totally honest, I meant to come help you sooner, but I got distracted some shiny toys Daedalus just made. Let me give this to you in recompense." },
 			},
 			HephaestusAboutHermes01 =
 			{
@@ -2351,7 +2361,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0077",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hermes and I don't work on the same schedule. Don't worry, nothing bad happen between us. We are just both so busy, in our own way." },
+					Text = "Hermes and I don't work on the same schedule. Don't worry, there's no bad blood between us. We are just both so busy, in our own way." },
 			},
 			HephaestusAboutHermes02 =
 			{
@@ -2363,7 +2373,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0078",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hermes keeps bragging me how many request he does in day. I might do less request than him, but look at this. Like I say, quality beats quantity." },
+					Text = "Hermes keeps bragging me how many requests he does in a day. But hey, quality over quantity, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusAboutDaedalus01 =
 			{
@@ -2375,7 +2385,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0079",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How clumsy is Daedalus? Even if he keeps fixing your domain, how many hammer does one have? Many. Yes, many." },
+					Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, Daedalus... A fellow smith of great talent, but I must admit, his obsession with invention sometimes leaves him too focused on the mechanics, neglecting the artistry." },
 			},
 			HephaestusAboutDaedalus02 =
 			{
@@ -2387,7 +2397,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0080",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You might wonder why I got Daedalus to give you his hammer... Well, Zagreus. I keep my own hammer since you might not be strong enough to handle them. Daedalus is kind enough to share his." },
+					Text = "Daedalus's hammers... they have a raw, destructive beauty to them. Efficient, precise—yet lacking the soul that true craftsmanship should carry. Still, I can respect the cleverness of his designs. Maybe his son, Icarus, can do better one day." },
 			},
 			HephaestusAboutAres01 =
 			{
@@ -2399,7 +2409,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0081",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Can you believe Ares is my brother? I don't think we can ever get along after so many confrontation. There's some things you can't forgive. Even to family member." },
+					Text = "Can you believe that Ares is my brother? I don't think we can ever get along after... well... There's some things you can't forgive." },
 			},
 			HephaestusAboutAphrodite01 =
 			{
@@ -2411,7 +2421,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0082",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "As you may know, Aphrodite is my wife. Our relationship is... complicated. But nonetheless, we should be everything for each other. I just wish she would understand it." },
+					Text = "My wife... beauty incarnate... She captivates hearts, yes, but her own heart? It's as elusive as the wind. I forged many things for her, gifts of gold and precious stones, but they were never enough. She was always drawn to... someone else." },
 			},
 			HephaestusAboutAphrodite02 =
 			{
@@ -2423,7 +2433,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0101",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My wife has not been the most faitful, but even in our worst times, I know we cared for each other. I know I am working too much, but it's no reason to play behind my back, right?" },
+					Text = "My wife has not been the most faithful, but even in our worst times, I know we cared for each other. I know I work too much, but it's no reason to play behind my back, right?" },
 			},
 			HephaestusAboutStygius =
 			{
@@ -2435,7 +2445,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0083",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "Stygius... the blade forged in the depths, bound by dark magic. I can see the design, sharp and precise, but there's an edge of sorrow in it. This weapon has more than just steel—it’s imbued with the essence of loss." },
 			},
 			HephaestusAboutVaratha =
 			{
@@ -2447,7 +2457,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0084",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "The Eternal Spear! Your father wielded it against the Titans, back in the day. It's a good piece of work. Not as fancy as other weapons, but it’s sharp and versatile. Everything that a weapon needs to be." },
 			},
 			HephaestusAboutAegis =
 			{
@@ -2459,7 +2469,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0085",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, Aegis! Your cousin Athena favored this weapon because of its potential for both offense and defense. It's a sturdy companion in the battlefield, although not the most... uh... artistic." },
 			},
 			HephaestusAbouCoronacht =
 			{
@@ -2471,7 +2481,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0086",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, my mother's old weapon. I've always wanted to tinker with the so-called Heart-Seeker. But forget it, it's not worth encountering the wrath of you-know-who.. " },
 			},
 			HephaestusAboutMalphon =
 			{
@@ -2483,7 +2493,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0087",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "The cyclops did a great job on this one. Did you know Malphon was offered to many before falling into the hands of Demeter? And now it ends up in yours. What a suprise. You never know how it's going to end, right?" },
 			},
 			HephaestusAboutExagryph =
 			{
@@ -2495,7 +2505,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0088",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "Such beauty... I wonder how you got hold of Exagryph yourself. {#DialogueItalicFormat}Hmph{#PreviousFormat}. Eris must be turning the underworld upside down looking for it. But don't worry your secret is safe with me." },
 			},
 			HephaestusAboutArthur =
 			{
@@ -2507,7 +2517,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0089",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "That's a mighty unique sword you got there. I thought only a king could wield the thing. Hmph, who would know Prince of the Underworld qualified as 'worthy'. " },
 			},
 			HephaestusAboutGuanYu =
 			{
@@ -2519,7 +2529,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0090",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "The ferocity of a {#DialogueItalicFormat}Guandao{#PreviousFormat}. We don't see these very often 'round these parts. Did you get a special delivery or something?" },
 			},
 			HephaestusAboutBeowulf =
 			{
@@ -2531,7 +2541,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0091",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "Who needs a weapon, when you can just use a shield like that? Legends says you can withstand the blows of many foes with the shield of the stalwart warrior-king. Even dragons!" },
 			},
 			HephaestusAbouRama =
 			{
@@ -2543,7 +2553,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "Stringing that bow is no easy task. If you want to defeat your worst demons, you better learn how to use it properly. Many failed before you." },
 			},
 			HephaestusAboutGilgamesh =
 			{
@@ -2555,7 +2565,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "I don't believe you can achieve more feats of strength than with these gauntlets. I've seen many weapons and this pair handles smoothly like oil on metal. " },
 			},
 			HephaestusAboutLucifer =
 			{
@@ -2567,7 +2577,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "That weapon... What a rebellious aura... Such fire suits you well. Blow that place up for me, eh?" },
 			},--[[HephaestusAboutHammerWeapon01 =
 			{
 				Name = "HephaestusAboutHammerWeapon01",
@@ -2577,7 +2587,7 @@ if ModUtil ~= nil then
 				RequiredWeapon = "HammerWeapon"
 				{ Cue = "/VO/Hephaestus_0154",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You found yourself a fine hammer. I am sure you'll get use to its weight. It's a one of a kind." },
+					Text = "You found yourself a fine hammer. I am sure you'll get used to its weight. It's a one of a kind." },
 			},
 			HephaestusAboutThorAspect01 =
 			{
@@ -2601,7 +2611,7 @@ if ModUtil ~= nil then
 				RequiredOneOfTraits = { "ForceZeusBoonTrait", "ForcePoseidonBoonTrait", "ForceAthenaBoonTrait", "ForceAresBoonTrait", "ForceAphroditeBoonTrait", "ForceArtemisBoonTrait", "ForceDionysusBoonTrait", "ForceDemeterBoonTrait" },
 				{ Cue = "/VO/Hephaestus_0156",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "" },
+					Text = "Mjölnir's compactness belies its destructive power, and the enchantment that binds it to Thor alone? A clever touch, indeed." },
 			},]]
 			HephaestusBackstory01 =
 			{
@@ -2621,7 +2631,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusBackstory01" },
 				{ Cue = "/VO/Hephaestus_0096",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You might not know this, but I was raised by nymphs very far from Olympus. It's when I was older that I was able to gain back my right as an olympian. But that's another story. You should keep going up like I did." },
+					Text = "You might not know this, but I was raised by nymphs very far from Olympus. I only managed to seize my right as an Olympian after I grew up. But that's another story. " },
 			},
 			HephaestusBackstory03 =
 			{
@@ -2631,7 +2641,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusBackstory01" },
 				{ Cue = "/VO/Hephaestus_0097",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I got my crafting skills from decades of smithing in a volcano. Being a castaway had its pros. I was able to find my true passion. Find your own way, Zagreus." },
+					Text = "I got my crafting skills from decades of smithing in a volcano. Being a castaway had its advantages. Just like I found my true passion, you can find your own way, Zagreus." },
 			},
 			HephaestusBackstory04 =
 			{
@@ -2641,7 +2651,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusBackstory02","HephaestusBackstory03", "HephaestusGift02" },
 				{ Cue = "/VO/Hephaestus_0098",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I made my mother a golden throne once. I knew she wouldn't refuse it which is why it was actually in fact a trap. How predictable was she then." },
+					Text = "I made my mother a golden throne once. I knew she couldn’t resist it—after all, who would refuse such a magnificent gift? In the end, it was her own arrogance that played right into my hands." },
 			},
 			HephaestusBackstory05 =
 			{
@@ -2651,7 +2661,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusBackstory04" },
 				{ Cue = "/VO/Hephaestus_0099",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember when I told you I trapped my mother in a golden throne? Well, Hermes convinced me to let her go. I did, but under two condition. My place in Olympus and be blessed to have Aphrodite as my wife." },
+					Text = "Remember how I trapped my mother in a golden throne? Well, Hermes convinced me to let her go. I did, but in exchange for two requests: my rightful place in Olympus and her blessing for Aphrodite as my wife." },
 			},
 			HephaestusBackstory06 =
 			{
@@ -2662,7 +2672,7 @@ if ModUtil ~= nil then
 				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
 				{ Cue = "/VO/Hephaestus_0100",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Do you remember how I got to where I am right now? Never give up and you might get what you deserve if you work hard enough." },
+					Text = "It took me centuries of planning and work to earn my way back into Olympus. Never give up on your dreams, and with enough effort you will what you deserve." },
 			},
 			HephaestusAboutTartarus01 =
 			{
@@ -2673,7 +2683,7 @@ if ModUtil ~= nil then
 				RequiredBiome = "Tartarus",
 				{ Cue = "/VO/Hephaestus_0102",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Still in Tartarus, mate? While your there, take some time to appreciate Deadalus effort on this maze he made. Must be working if you are still in it. Haha." },
+					Text = "Still in Tartarus, {#DialogueItalicFormat}eh{#PreviousFormat}? While you're there, take some time to appreciate Deadalus's designs with this maze. Works as intended, if you are still stuck here. {#DialogueItalicFormat}Heh{#PreviousFormat}." },
 			},
 
 			HephaestusAboutAsphodel01 =
@@ -2685,7 +2695,7 @@ if ModUtil ~= nil then
 				RequiredBiome = "Asphodel",
 				{ Cue = "/VO/Hephaestus_0103",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The burning flames of Asphodel. I love the burning sensation of molten flame while smithing. I hope you get used to it as well." },
+					Text = "The burning flames of Asphodel. I love the warm sensation of molten flame in the forge. I hope you get used to it as well." },
 			},
 			HephaestusAboutElysium01 =
 			{
@@ -2696,7 +2706,7 @@ if ModUtil ~= nil then
 				RequiredBiome = "Elysium",
 				{ Cue = "/VO/Hephaestus_0104",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The great garden of Elysium. A place for all heroes. I crafted many weapons. Most were used by them. Other killed them. " },
+					Text = "The great garden of Elysium. A place for all heroes. I crafted many of the weapons they carried. Some were used to protect, to conquer, to carve their names into history. Others, though... those weapons became their undoing." },
 			},
 			HephaestusAboutStyx01 =
 			{
@@ -2707,7 +2717,7 @@ if ModUtil ~= nil then
 				RequiredBiome = "Styx",
 				{ Cue = "/VO/Hephaestus_0105",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I see you are getting close to the surface. I know the Temple of Styx can be tricky to go through. But still take some time to admire the unique architecture it has." },
+					Text = "I see you are getting close to the surface. Know that the Temple of Styx can be tricky to go through. But still, take some time to admire the unique architecture while you pass by." },
 			},
 			HephaestusAboutChaos01 =
 			{
@@ -2718,7 +2728,7 @@ if ModUtil ~= nil then
 				RequiredLootThisRun = "TrialUpgrade",
 				{ Cue = "/VO/Hephaestus_0106",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Did you get to an unknown location, just now? I would love to see new architecture. You can tell me about it once you visit me in my workshop." },
+					Text = "Hold up, what is this unfamiliar place you're in? Fascinating architecture! Tell me about it once you visit me in my workshop." },
 			},
 			HephaestusAboutErebus01 =
 			{
@@ -2729,7 +2739,7 @@ if ModUtil ~= nil then
 				RequiredMinRoomsSinceShrinePointDoor = 5,
 				{ Cue = "/VO/Hephaestus_0107",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Erebus is not a place you stay very long. I wouldn't go there unless necessary if I was you. Some don't come back from there, mate. I wouldn't want to lose my favorite client." },
+					Text = "Erebus... It’s not a place for casual visits, even for gods. Don’t go getting yourself lost in there, mate. Wouldn't want to lose my favorite client, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			--[[HephaestusAboutGaia01 =
 			{
@@ -2740,7 +2750,7 @@ if ModUtil ~= nil then
 				RequiredLootThisRun = "QuestUpgrade",
 				{ Cue = "/VO/Hephaestus_0153",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "What a beautiful garden you were in, it felt so peaceful. You can find such beautiful garden here. But still. Impressive to find them down there." },
+					Text = "Gaia's garden... it feels so peaceful. I've forgotten such beauty existed down there." },
 			},]]
 			HephaestusAboutGreece01 =
 			{
@@ -2751,7 +2761,7 @@ if ModUtil ~= nil then
 				RequiresLastRunCleared = true,
 				{ Cue = "/VO/Hephaestus_0108",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "One day you might get to the surface on your way to us. If you ever do, be careful with the local wildlife, they can be a bit agressive at times." },
+					Text = "If you ever make it to the surface, do watch the local wildlife, they tend to be a tad aggressive at times." },
 			},
 			HephaestusAboutInfernalTrove01 =
 			{
@@ -2762,7 +2772,7 @@ if ModUtil ~= nil then
 				RequiredChallengeSwitchInRoom = true,
 				{ Cue = "/VO/Hephaestus_0109",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There should be an Infernal Trove next to you. Why don't you do some extra work? We both know all efforts are rewarded." },
+					Text = "I sense an Infernal Trove near you. Why not you open it? There's always something to be gained from a little extra effort—every forge fire has its reward, after all." },
 			},
 
 			HephaestusAboutDaedalusHammer01 =
@@ -2774,7 +2784,7 @@ if ModUtil ~= nil then
 				RequiredMinWeaponUpgrades = 1,
 				{ Cue = "/VO/Hephaestus_0110",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You found one of Daedalus' Hammer, mate. They sure know what to do with your weapons. If something can get you out, it's them." },
+					Text = "You found one of Daedalus's Hammers, {#DialogueItalicFormat}eh{#PreviousFormat}? His creations might not have the same polish as mine, but they sure get the job done, and sometimes that’s what matters most." },
 			},
 			HephaestusAboutPoseidon01 =
 			{
@@ -2785,7 +2795,7 @@ if ModUtil ~= nil then
 				RequiredGodLoot = "PoseidonUpgrade",
 				{ Cue = "/VO/Hephaestus_0111",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I appreciate my uncle Poseidon. He believed in me when I was young and helped me resolve major conflict with my brother. He's the real mate." },
+					Text = "I appreciate my uncle Poseidon. When I was young and struggling, he was one of the few who saw something in me. I'll never forget that." },
 			},
 
 			HephaestusAboutAnvilOfFates01 =
@@ -2798,7 +2808,7 @@ if ModUtil ~= nil then
 				RequiredMinWeaponUpgrades = 2,
 				{ Cue = "/VO/Hephaestus_0112",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You must have encountered one of the anvil of fates in your countless attempts to escape. They sure are tricky to use. Sometimes it's best to continue your path." },
+					Text = "The anvil of fates is a tricky tool to wield. It tempts you with the promise of altering your path, but such power always comes with its cost. It’s a fine line between using it to your advantage and letting it lead you astray." },
 			},
 			HephaestusAboutDamageLessEncounter01 =
 			{
@@ -2810,7 +2820,7 @@ if ModUtil ~= nil then
 				RequiredMaxHealthFraction = 1.0,
 				{ Cue = "/VO/Hephaestus_0113",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Not even a scratch! You are getting really good at predicting your enemies movements. Maybe this can help in case they eventually hit you." },
+					Text = "Not a single scratch! You are getting really good at predicting your enemies' movements. But you can't go wrong with some extra armor, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 
 			HephaestusAboutDamageLessEncounter02 =
@@ -2822,7 +2832,7 @@ if ModUtil ~= nil then
 				RequiredNoDamageThisRoom = true,
 				{ Cue = "/VO/Hephaestus_0114",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Dodged, and dodged. I couldn't move like you did with my leg, but it was impressive to watch. This is your reward." },
+					Text = "Dodged, and dodged. I couldn't move like you did with my leg, but it was impressive to watch. Here's your reward." },
 			},
 			HephaestusAboutDamageLessEncounter03 =
 			{
@@ -2833,10 +2843,10 @@ if ModUtil ~= nil then
 				RequiredNoDamageThisRoom = true,
 				{ Cue = "/VO/Hephaestus_0115",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Was that battle rigged? You didn't get hit. If it wasn't, congratulation. You deserve this for your hard work." },
+					Text = "Was that battle rigged? You didn't get hit! Here's to your hard work." },
 			},
 
-			HephaestusAboutDamageLessRun01 =
+			--[[HephaestusAboutDamageLessRun01 =
 			{
 				Name = "HephaestusAboutDamageLessRun01",
 				PlayOnce = true,
@@ -2845,8 +2855,8 @@ if ModUtil ~= nil then
 				RequiredNoDamageThisRoom = true,
 				{ Cue = "/VO/Hephaestus_0116",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Wait... I was sure you made it to the surface without a single hit... I must be mistaken since your still down there. I should take a break right after this." },
-			},
+					Text = "Wait... I could've sworn that you made it to the surface... and without a single scratch! Maybe the heat from the forge fires must be getting to me..." },
+			},]]
 			HephaestusPostEpilogue01 =
 			{
 				Name = "HephaestusPostEpilogue01",
@@ -2855,10 +2865,10 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "OlympianReunionQuestComplete" },
 				{ Cue = "/VO/Hephaestus_0119",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Are you done escaping already? Why do I care, as long as I got work to do." },
+					Text = "What, your escaping days are over already? Why do I care, so long as I got work to do." },
 			},
 
-			HephaestusLegendaryPickUp01 =
+			--[[HephaestusLegendaryPickUp01 =
 			{
 				Name = "HephaestusLegendaryPickUp01",
 				PlayOnce = true,
@@ -2871,7 +2881,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0120",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "" },
-			},
+			},]]
 
 			HephaestusArmorPickUp01 =
 			{
@@ -2882,7 +2892,7 @@ if ModUtil ~= nil then
 				RequiredOneOfTraits = { "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
 				{ Cue = "/VO/Hephaestus_0121",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If it's defense you need, I reckon I have the best to offer. Armor up." },
+					Text = "If it's defense you need, I reckon I have the best to offer. Armor up!" },
 			},
 			HephaestusArmorPickUp02 =
 			{
@@ -2893,7 +2903,7 @@ if ModUtil ~= nil then
 				RequiredOneOfTraits = { "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait" },
 				{ Cue = "/VO/Hephaestus_0122",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "With this, nothing can get through ya. Unless, you let them. Then I don't know what to tell you." },
+					Text = "With this, nothing can get through ya. Unless you let them. Then I don't know what to tell you." },
 			},
 
 			HephaestusLowHealth01 =
@@ -2906,7 +2916,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0123",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How is it going for you? I can sense, not so great. Hope this can change the steam for you." },
+					Text = "Your armor's looking a little dinged up there. I hope this will help turn the tables." },
 			},
 			HephaestusLowHealth02 =
 			{
@@ -2918,7 +2928,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0124",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "A good defense is always a great start if you want to escape. I think you could improve there." },
+					Text = "Mate, I know that your armor is great and all, but maybe you might want to learn from Hermes every now and then." },
 			},
 			HephaestusLowHealth03 =
 			{
@@ -2930,7 +2940,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0125",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Life is running out of ya, Zagreus. There's a limit to what I can improve. Improve yourself." },
+					Text = "Your life is running out of ya, Zagreus. There's a limit to what I can improve. Improve yourself." },
 			},
 			HephaestusLowHealth04 =
 			{
@@ -2942,7 +2952,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0126",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Let's build up your defense, you look like you could use some." },
+					Text = "Let's build up your defense, {#DialogueItalicFormat}eh{#PreviousFormat}? You look like you could use some." },
 			},
 			HephaestusLowHealth05 =
 			{
@@ -2954,7 +2964,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0127",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Life isn't doing great for you, eh? Maybe try a different approach? Start with this." },
+					Text = "Life isn't doing great for you, {#DialogueItalicFormat}eh{#PreviousFormat}? Maybe try a different approach? Start with this." },
 			},
 		},
 
@@ -2968,12 +2978,12 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/ZagreusField_5000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.05 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I can't sense Hermes anywhere. This new presence might be for something. Olympus I accept this message." },
+					Text = "{#DialogueItalicFormat}Hm{#PreviousFormat}, I could've sworned I sensed Hermes earlier, but this prescence is different. Olympus, I accept this message!" },
 				{ Cue = "/VO/Hephaestus_0001",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "Oi, Hermes couldn't make it and asked me to tune up your escape plan. Daedalus sure knows how to create a great maze." },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and asked me to help finetune your escape plan instead. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusMiscPickup01 =
 			{
@@ -2982,7 +2992,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0002",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Smithing is my passion... I don't have to think about my worries, but sometimes, I think others take my creation for granted. " },
+					Text = "Smithing is my passion. At the forge, all my worries melt away like metal. But sometimes, I think others take my creation for granted." },
 			},
 			HephaestusMiscPickup02 =
 			{
@@ -2991,7 +3001,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0003",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My hammer knows no limit. Any mineral can do. And I can forge blessing as well. Let me show you." },
+					Text = "My hammer knows no limit. I can forge your blessings with any mineral or material. Let me show you." },
 			},
 			HephaestusMiscPickup03 =
 			{
@@ -3000,7 +3010,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0004",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Nothing better than hard work, am I right, Zagreus? You must have a lot to do on your end as well. Maybe this will help you." },
+					Text = "Nothing beats hard work, am I right, Zagreus? You must have a lot to do on your end, maybe this will help you." },
 			},
 			HephaestusMiscPickup04 =
 			{
@@ -3009,7 +3019,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0005",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The bronze and iron are still warm. Freshly bended for your needs. Take it." },
+					Text = "The bronze and iron are still warm. Freshly molded for your needs. Take it." },
 			},
 			HephaestusMiscPickup05 =
 			{
@@ -3018,7 +3028,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0006",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There's only one thing that will get you out of there, Zagreus. It's hard work, and nothing else. Now, show me what you got." },
+					Text = "There's only one thing that will get you out of there, Zagreus—and that's hard work. Nothing else. Now, show me what you got." },
 			},
 			HephaestusMiscPickup06 =
 			{
@@ -3027,7 +3037,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0007",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Slow and steady wins the race. You might think faster brings you far, but surviving brings you further." },
+					Text = "Slow and steady wins the race. Hermes likes to boast about gifts of speed but... you might find that surviving brings you further." },
 			},
 			HephaestusMiscPickup07 =
 			{
@@ -3036,7 +3046,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0008",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oi, harden yourself. You don't know what's ahead of you. There's always a next challenge." },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, steel yourself. Just because you have a break now doesn't mean that you're safe. There's always a next challenge." },
 			},
 			HephaestusMiscPickup08 =
 			{
@@ -3045,7 +3055,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0009",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If all you have is a hammer, everything looks like a nail. Sometime the simplest solution is to bash your way through." },
+					Text = "If all you have is a hammer, everything looks like a nail. Sometimes, the simplest solution is to bash your way through." },
 			},
 			HephaestusMiscPickup09 =
 			{
@@ -3054,7 +3064,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0010",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You have my sword... And my bow... And my axe... Any weapon must I say. Just ask." },
+					Text = "You have my sword... And my bow... And my axe... And any other weapon of mine you can ask for." },
 			},
 			HephaestusMiscPickup10 =
 			{
@@ -3072,7 +3082,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0012",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Life is very similar to smithing, Zagreus. It beats you down until you are tempered and sharp enough to slice through any opposition. You are just being sharped here." },
+					Text = "Life is like smithing, Zagreus. It beats you down until you are tempered and sharp enough to slice through any opposition. You are just being sharpened here." },
 			},
 			HephaestusMiscPickup12 =
 			{
@@ -3081,7 +3091,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0013",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Without patience and the skill of a craftsman even the greatest talen is wasted. Don't waste this hard work on me now, Zagreus." },
+					Text = "Without patience and practice, even the greatest talent of the most skilled craftsman is wasted. Don't waste this hard work on me now, Zagreus." },
 			},
 			HephaestusMiscPickup13 =
 			{
@@ -3090,7 +3100,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0014",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "In order to succeed, you must have a clear objective in mind. Set yourself to join us and you'll be here in no time." },
+					Text = "To succeed, you need a clear goal. Commit to reaching Olympus, and you'll reach it in no time." },
 			},
 			HephaestusMiscPickup14 =
 			{
@@ -3108,7 +3118,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0016",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There's no way to measure success. You fail or you succeed. There's no in between." },
+					Text = "Success isn’t something you can measure along a scale. You fail or you succeed. There's no in between." },
 			},
 			-- Relationship improved
 			HephaestusMiscPickup16 =
@@ -3118,7 +3128,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01" },
 				{ Cue = "/VO/Hephaestus_0017",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Pain is temporary. Quitting lasts forever. I see you don't quit easily, {#DialogueItalicFormat}eh {#PreviousFormat}? Keep going Zagreus." },
+					Text = "Pain is temporary. Quitting lasts forever. But I see you don't quit easily, {#DialogueItalicFormat}eh{#PreviousFormat}? Keep going, Zagreus." },
 			},
 			HephaestusMiscPickup17 =
 			{
@@ -3136,7 +3146,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01" },
 				{ Cue = "/VO/Hephaestus_0019",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am still on a production streak thanks to your gift, Zagreus. You'll see what my work looks like at full efficency." },
+					Text = "I'm still on a productive streak thanks to your gift, Zagreus. You'll see what my work looks like at full efficency." },
 			},
 			HephaestusMiscPickup19 =
 			{
@@ -3145,7 +3155,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01" },
 				{ Cue = "/VO/Hephaestus_0020",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I can always think of better ways to work, but it's the reason why I work that makes me work better. When I am working for you, I can't think of a better reason." },
+					Text = "The best work comes not just from skill, but from intent and purpose. And you, my friend, make the effort feel worthwhile. " },
 			},
 			HephaestusMiscPickup20 =
 			{
@@ -3155,7 +3165,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01" },
 				{ Cue = "/VO/Hephaestus_0021",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Where you find quality, you will find a craftsman, mate. And good thing you found me." },
+					Text = "Where you find quality, you will find a craftsman. And it's a good thing you found me, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			-- Shorter Dialogs
 			HephaestusMiscPickup21 =
@@ -3165,7 +3175,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0022",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hard work always pays off, whatever you do, mate." },
+					Text = "Hard work always pays off. Well, that and the fact that you have a millenia to reap the fruits of your labor. " },
 			},
 			HephaestusMiscPickup22 =
 			{
@@ -3183,7 +3193,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0024",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If at first you don't succeed, get a bigger hammer. Easy enough, mate?" },
+					Text = "There's nothing that can't be fixed with a big hammer, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusMiscPickup24 =
 			{
@@ -3192,7 +3202,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0025",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There are no shortcuts to any place worth going, mate. Olympus is one of them." },
+					Text = "I’ve learned it the hard way—nothing worth having comes without effort, and that’s true whether you’re forging weapons, building something new, or escaping from the depths of your father's domain." },
 			},
 			HephaestusMiscPickup25 =
 			{
@@ -3201,7 +3211,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0026",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There are no secrets to sucess, Zagreus. It is the result of preparation, hard work and learning from failure." },
+					Text = "There are no secrets to sucess, Zagreus. Pandora told me once, all you need is {#DialogueItalicFormat}hard work and determination{#PreviousFormat}." },
 			},
 			HephaestusMiscPickup26 =
 			{
@@ -3210,7 +3220,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0027",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Repeat after me Zagreus. {#DialogueItalicFormat}'No matter how hard it is, or how hard it gets, I'm going to make it'{#PreviousFormat}." },
+					Text = "Repeat after me Zagreus. {#DialogueItalicFormat}No matter how hard it is, or how hard it gets, I'm going to make it{#PreviousFormat}." },
 			},
 			HephaestusMiscPickup27 =
 			{
@@ -3219,7 +3229,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0028",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There is no magic to achievement, mate. It's really about hard work, choices and persistence." },
+					Text = "There is no magic to achievement, mate. It's really about effort and persistence." },
 			},
 			HephaestusMiscPickup28 =
 			{
@@ -3230,7 +3240,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0029",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hard work beats talent when talent doesn't work hard. Lucky enough, you seem to have both, Zagreus." },
+					Text = "Hard work beats talent when talent doesn't work hard. Luckily enough, you seem to have both, Zagreus." },
 			},
 			HephaestusMiscPickup29 =
 			{
@@ -3266,7 +3276,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0033",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Success is the sum of small efforts. Continuously. You are getting somewhere. Let's hope it's here with us." },
+					Text = "Success is the sum of continuous small efforts. You are getting somewhere. Let's hope the journey ends with reaching us." },
 			},
 			HephaestusMiscPickup33 =
 			{
@@ -3275,7 +3285,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0034",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "When they bring you down, that's when you get up. Nobody can stop you from what you put your mind into." },
+					Text = "When they bring you down, that's when you get up. Nobody can stop you from what you put your mind to achieve." },
 			},
 			HephaestusMiscPickup34 =
 			{
@@ -3284,7 +3294,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0035",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Sometimes you think you won't succeed, but the distance to success is always closer than you think." },
+					Text = "Sometimes you think you won't succeed, but the distance to the surface is always closer than you think." },
 			},
 			HephaestusMiscPickup35 =
 			{
@@ -3293,7 +3303,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0036",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Let's tune that. Oh, like this!" },
+					Text = "Let's finetune that. {#DialogueItalicFormat}Oh{#PreviousFormat}, like this!" },
 			},
 			HephaestusMiscPickup36 =
 			{
@@ -3311,7 +3321,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0038",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Forge is hot, what's your order?" },
+					Text = "While forge is hot—what's your order?" },
 			},
 			HephaestusMiscPickup38 =
 			{
@@ -3320,7 +3330,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0039",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Order up. I'll make it worth." },
+					Text = "Order up! I'll make it worth." },
 			},
 			HephaestusMiscPickup39 =
 			{
@@ -3343,7 +3353,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0134",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Is that Charon with you? What a great customer. He keeps it professional. No small talk." },
+					Text = "Is that Charon with you? What a great customer. He keeps matters professional. No small talk." },
 			},
 			HephaestusLootBought02 =
 			{
@@ -3354,7 +3364,7 @@ if ModUtil ~= nil then
 				RequiredAnyTextLines = { "HephaestusLootBought01" },
 				{ Cue = "/VO/Hephaestus_0135",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Buying from the Boatman, are you? I reckon it's a way to acquire my blessings. As long as I get what I am owe." },
+					Text = "Buying from the Boatman, are you? I reckon it's a way to acquire my blessings. As long as I get my due." },
 			},
 			HephaestusLootBought03 =
 			{
@@ -3365,7 +3375,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusLootBought02" },
 				{ Cue = "/VO/Hephaestus_0136",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I smithen that a while ago. I think you get scammed by Charon there." },
+					Text = "I smithed that quite a while ago. I think Charon got the better end of the deal here." },
 			},
 			HephaestusLootBought04 =
 			{
@@ -3376,7 +3386,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusLootBought02" },
 				{ Cue = "/VO/Hephaestus_0137",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I am sure you know the Boatman keeps a cut. I could have done that half priced." },
+					Text = "As I'm sure you know, the Boatman keeps a cut. That was actually worth half price." },
 			},
 			HephaestusLootBought05 =
 			{
@@ -3387,7 +3397,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusLootBought02", "HephaestusLootBought03" },
 				{ Cue = "/VO/Hephaestus_0138",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "That's what you use your obols for? I am flattered, but you could have bargain a little bit more." },
+					Text = "That's what you use your obols for? I am flattered, but you could have bargained a little bit further." },
 			},
 			HephaestusLootBought06 =
 			{
@@ -3420,7 +3430,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusLootBought07" },
 				{ Cue = "/VO/Hephaestus_0141",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My blessing cost the same as Hermes? I can't accept this. I work with quality here." },
+					Text = "My blessing cost the same as Hermes? Preposterous! This is quality work here." },
 			},
 
 		},
@@ -3436,11 +3446,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Lord Hephaestus, please accept this gift for all your improvements. I know you deserve this for your hard work." },
+					Text = "Lord Hephaestus, please accept this gift as thanks for all your help. Please take this as a gift for all your hard work." },
 				{ Cue = "/VO/Hephaestus_0142",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "How kind of you, mate. Is that what you think, hardworker deserves gifts? Well, I made this for you. Does it remind you of someone?" },
+					Text = "How kind of you, mate. Well, I can't leave you empty handed after receiving this, can I? Let me grab some scrap metal from my workshop... and... here you go! Does it remind you of someone?" },
 			},
 			HephaestusGift02 =
 			{
@@ -3451,11 +3461,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I found this nectar and thought you could get a break from your hardwork. At least enough time to drink it." },
+					Text = "I found this nectar and thought you could use a break from your work at the forge. A reward for a good work done. " },
 				{ Cue = "/VO/Hephaestus_0143",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't take break. I'll put your nectar to the side for when I am done with my orders. There's always something to do." },
+					Text = "{#DialogueItalicFormat}Ha{#PreviousFormat}, the reward for good work done is always more work. Orders for my handiwork for a list longer than your father's ledger of the dead. But I'll accept the token of your appreciation. " },
 			},
 			HephaestusGift03 =
 			{
@@ -3466,11 +3476,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "You might not get break, Lord Hephaestus. But if you do, I am sure you could use something like this." },
+					Text = "I know you never take a break, Lord Hephaestus. But if you do, I am sure you would appreciate this." },
 				{ Cue = "/VO/Hephaestus_0144",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Yes. Sure. I... No... To busy right now, but I'll keep it with the other. Feel free to give them to someone else." },
+					Text = "No, yes... I mean, sure... {#DialogueItalicFormat}Uh{#PreviousFormat}, {#DialogueItalicFormat}hm{#PreviousFormat}? What were you saying? I was distracted by something. {#DialogueItalicFormat}Ah{#PreviousFormat}, nectar. Cheers, mate. I'll keep it stored with the rest." },
 			},
 			HephaestusGift04 =
 			{
@@ -3481,11 +3491,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "I am not sure if you found anytime to enjoy my last gift, but I wanted you to have this one." },
+					Text = "Lord Hephaestus, have you not... tasted the nectar I've gifted? Surely you would live to give them a taste?" },
 				{ Cue = "/VO/Hephaestus_0145",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Gurps{#PreviousFormat}. There happy? Oh that was good. {#DialogueItalicFormat}Gurps{#PreviousFormat}." },
+					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Glups{#PreviousFormat}. There, happy? Oh, that was proper good. {#DialogueItalicFormat}Glups{#PreviousFormat}." },
 			},
 			HephaestusGift05 =
 			{
@@ -3496,11 +3506,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "Since you seemed to have like the last one, I though you could use some more." },
+					Text = "Since you seemed to have like the last one, I thought you could use some more." },
 				{ Cue = "/VO/Hephaestus_0146",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oi, more? I haven't been this productive since... can't remember. {#DialogueItalicFormat}Gurps{#PreviousFormat}. This goes here and this here." },
+					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, more? I haven't been this productive since... can't remember. {#DialogueItalicFormat}Glups{#PreviousFormat}. This goes here and this here." },
 			},
 			HephaestusGift06 =
 			{
@@ -3511,11 +3521,11 @@ if ModUtil ~= nil then
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					PostLineFunctionName = "BoonInteractPresentation",
-					Text = "You seemed so pleased by your improved productivity, Lord Hepheastus. I though I could bring you some more." },
+					Text = "You seemed so pleased by your improved productivity, Lord Hepheastus. I thought I could bring you some more." },
 				{ Cue = "/VO/Hephaestus_0147",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Oi... I'll try this one, but... {#DialogueItalicFormat}Gurps{#PreviousFormat} but... eh. can't get anymore. Sorry got to go." },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}... I'll try this one, but... {#DialogueItalicFormat}Glups{#PreviousFormat} but... eh. can't get anymore. Sorry got to go." },
 			},
 			HephaestusGift07 =
 			{
@@ -3530,7 +3540,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0148",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Ambrosia? I suppose this could work. Let's try it out. Oh! That hit the spot. Great choice" },
+					Text = "Ambrosia? I suppose this could work. Let's try it out. {#DialogueItalicFormat}Oh{#PreviousFormat}! That hit the spot. Great choice!" },
 			},
 			HephaestusGift08 =
 			{
@@ -3547,7 +3557,7 @@ if ModUtil ~= nil then
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
 					PostLineFunctionArgs = { Text = "NPC_Hephaestus_01", Icon = "Keepsake_HephaestusSticker_Max" },
-					Text = "Again? Let's sort this out once and for all. You are my favorite customer. Here I said it. Now go." },
+					Text = "Again? Let's sort this out once and for all. You are my favorite customer. Here, I said it. Now go." },
 			},
 		},
 
@@ -3557,7 +3567,7 @@ if ModUtil ~= nil then
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
 
-			-- But, wait... This is me!
+			-- But, wait... That's me!
 			{ Cue = "/VO/ZagreusField_5010" },
 		},
 
@@ -3585,36 +3595,6 @@ if ModUtil ~= nil then
 				-- I strongly disapprove.
 				-- { Cue = "/VO/Athena_0103" },
 			},
-		},
-
-		PickupVoiceLines =
-		{
-			RandomRemaining = true,
-			BreakIfPlayed = true,
-			PreLineWait = 0.55,
-			SuccessiveChanceToPlayAll = 0.66,
-			CooldownTime = 6,
-
-			-- Smithing by the gods.
-			{ Cue = "/VO/ZagreusField_5011", },
-			-- That's quality.
-			{ Cue = "/VO/ZagreusField_5012", },
-			-- Couldn't be better.
-			{ Cue = "/VO/ZagreusField_5013", },
-			-- Woah.
-			{ Cue = "/VO/ZagreusField_5014", },
-			-- Tuned up.
-			{ Cue = "/VO/ZagreusField_5015", },
-			-- Bronze and gold.
-			{ Cue = "/VO/ZagreusField_5016", },
-			-- Rock and stones.
-			{ Cue = "/VO/ZagreusField_5017", },
-			-- As I ordered it.
-			{ Cue = "/VO/ZagreusField_5018", },
-			-- Great customer service.
-			{ Cue = "/VO/ZagreusField_5019", },
-			-- Like I wanted.
-			{ Cue = "/VO/ZagreusField_5020", },
 		},
 	}
 
@@ -3726,7 +3706,7 @@ if ModUtil ~= nil then
             HasTraitNameInRoom = "HephaestusImproveApollo",
             { Cue = "/VO/Hephaestus_0150",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "Shiny. Apollo sure knows how to bless someone. But let me improve the lightness of this one. Even he won't see it coming." },
+                Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, shiny. Apollo sure knows how to bless someone. But let me tune up the brightness—even he won't see it coming." },
         }
 	end
 	if HestiaExtra then
@@ -3789,7 +3769,7 @@ if ModUtil ~= nil then
             HasTraitNameInRoom = "HephaestusImproveHestia",
             { Cue = "/VO/Hephaestus_0151",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "How strange. Hestia came by? Eh, an order is an order. I know how to deal with the heat. Check this out." },
+                Text = "How strange. Hestia swung by? {#DialogueItalicFormat}Eh{#PreviousFormat}, an order is an order. I know how to deal with the heat. Check this out." },
         }
 	end
 	if HeraExtra ~= nil then
@@ -3898,7 +3878,7 @@ if ModUtil ~= nil then
             HasTraitNameInRoom = "HephaestusImproveHera",
             { Cue = "/VO/Hephaestus_0152",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "You convinced Mum to give you something. That's worth more than getting out of there, if you ask me. I didn't have that much chance with her. Let me change her blessing a bit. She won't like it, but what do I care." },
+                Text = "You convinced Mum to give you something, {#DialogueItalicFormat}eh{#PreviousFormat}? That's worth more than getting out of the underworld, if you ask me. She won't me messing with the blessing, but {#DialogueItalicFormat}eh{#PreviousFormat}, what do I care?" },
         }
 	end
 	-- FUNCTIONS
