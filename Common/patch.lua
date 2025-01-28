@@ -1200,7 +1200,7 @@ ModUtil.Path.Wrap("AddTraitToHero",
     end
 )
 -- Test / Utility
-ModUtil.Path.Wrap("BeginOpeningCodex",
+--[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)
         --PresentationNewSameGodIncrease()
         if (not CanOpenCodex()) and IsSuperValid() then
@@ -1215,12 +1215,12 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
 
         --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
         --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
-        --[[ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.ActiveMutators))    
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.ActiveMutators))    
         if GameState.ActiveMutators ~= nil then
             for activeMutator in pairs( GameState.ActiveMutators ) do
                 ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(activeMutator))            
             end
-        end]]
+        end
         --UseLoungeTelescope()
         baseFunc()
     end
@@ -1240,7 +1240,7 @@ function ForceNextRoomFunc(value)
     end
 end
 
---[[function GetLootSourceNameFromGod(traitName)
+function GetLootSourceNameFromGod(traitName)
     for lootName, god in pairs(LootData) do
         if god == nil then
             --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(lootName))

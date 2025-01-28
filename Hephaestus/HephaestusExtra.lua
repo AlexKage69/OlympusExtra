@@ -4208,7 +4208,6 @@ end
 -- IgneousArmor
 function SetupIgneousArmor( hero, args )
 	args = args or {}
-	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Setup"))
 	if hero.IgneousArmor == nil then
 		hero.IgneousArmor = {
 			Charging = false,
@@ -4247,12 +4246,10 @@ function DamageIgneousArmor( weaponData, args)
 	end
 end
 function StartArmorIgneous(igneousArmor)
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Start"))
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "Shielded", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 	end
 	wait(igneousArmor.Duration-1.4)
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Tick"))
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		CreateAnimation({ Name = "QuickFlash", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
 		PlaySound({ Name = "/SFX/WrathEndingWarning" })
@@ -4288,10 +4285,8 @@ function StartArmorIgneous(igneousArmor)
 		})
 		igneousArmor.Damage = 0
 	end
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Cooldown"))
 	wait(igneousArmor.Cooldown)
 	igneousArmor.InCooldown = false
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("InCooldown Ready"))
 	if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then
 		thread( PlayVoiceLines, HeroVoiceLines.GunWeaponReloadCompleteVoiceLines, true )
 		thread( InCombatText, CurrentRun.Hero.ObjectId, "IgneousArmorReady", 0.4, {SkipShadow = true} )
