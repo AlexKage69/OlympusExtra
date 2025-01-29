@@ -2978,12 +2978,12 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/ZagreusField_5000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.05 },
 					PostLineAnim = "ZagreusInteractEquip", PostLineAnimTarget = "Hero", PostLineFunctionName = "BoonInteractPresentation",
-					Text = "{#DialogueItalicFormat}Hm{#PreviousFormat}, I could've sworned I sensed Hermes earlier, but this prescence is different. Olympus, I accept this message!" },
+					Text = "{#DialogueItalicFormat}Hm{#PreviousFormat}, I could've sworn I sensed Hermes earlier, but this prescence is different. Olympus, I accept this message!" },
 				{ Cue = "/VO/Hephaestus_0001",
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and asked me to help finetune your escape plan instead. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and asked me to help finetune your escape plan. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusMiscPickup01 =
 			{
@@ -2992,7 +2992,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0002",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Smithing is my passion. At the forge, all my worries melt away like metal. But sometimes, I think others take my creation for granted." },
+					Text = "Smithing is my passion. At the forge, all my worries melt away as if they were the metal I forge. But at times, I feel that others take my creation for granted." },
 			},
 			HephaestusMiscPickup02 =
 			{
@@ -3010,7 +3010,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0004",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Nothing beats hard work, am I right, Zagreus? You must have a lot to do on your end, maybe this will help you." },
+					Text = "Nothing beats hard work, am I right, Zagreus? You must have a lot to do on your end. Maybe this will help you." },
 			},
 			HephaestusMiscPickup04 =
 			{
@@ -3037,7 +3037,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0007",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Slow and steady wins the race. Hermes likes to boast about gifts of speed but... you might find that surviving brings you further." },
+					Text = "Slow and steady wins the race. Hermes likes to boast about gifts of speed, but... you might find that surviving brings you further." },
 			},
 			HephaestusMiscPickup07 =
 			{
@@ -3046,7 +3046,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0008",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, steel yourself. Just because you have a break now doesn't mean that you're safe. There's always a next challenge." },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, steel yourself. Just because you get a break doesn't mean you're safe. There's always the next challenge." },
 			},
 			HephaestusMiscPickup08 =
 			{
@@ -3091,7 +3091,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0013",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Without patience and practice, even the greatest talent of the most skilled craftsman is wasted. Don't waste this hard work on me now, Zagreus." },
+					Text = "Without patience and practice, even the greatest talent of the most skilled craftsman is wasted. Don't waste the hard work I've poured into you, alright?" },
 			},
 			HephaestusMiscPickup13 =
 			{
@@ -3109,7 +3109,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0015",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "There will be obstacles. There will be doubters. There will be mistakes. But as long as you continue, there are no limits." },
+					Text = "There will be obstacles. There will be those who doubt you. There will be mistakes. But as long as you continue, nothing can ever hold you back." },
 			},
 			HephaestusMiscPickup15 =
 			{
@@ -3118,7 +3118,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0016",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Success isn’t something you can measure along a scale. You fail or you succeed. There's no in between." },
+					Text = "Success isn’t something you can measure. Either you fail or you succeed -- there's no in between." },
 			},
 			-- Relationship improved
 			HephaestusMiscPickup16 =
@@ -3128,7 +3128,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01" },
 				{ Cue = "/VO/Hephaestus_0017",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Pain is temporary. Quitting lasts forever. But I see you don't quit easily, {#DialogueItalicFormat}eh{#PreviousFormat}? Keep going, Zagreus." },
+					Text = "Pain is temporary. Quitting is forever. But I see you don't quit easily, {#DialogueItalicFormat}eh{#PreviousFormat}? Keep going, Zagreus." },
 			},
 			HephaestusMiscPickup17 =
 			{
@@ -3137,7 +3137,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", "HephaestusGift01" },
 				{ Cue = "/VO/Hephaestus_0018",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I work very hard, all the time, Zagreus. But when it comes to you, I always like to put a little extra, just for you." },
+					Text = "I work very hard all the time. But when it comes to you, Zagreus, I always like to put a little extra." },
 			},
 			HephaestusMiscPickup18 =
 			{
@@ -3184,7 +3184,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0023",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "You cannot dream yourself into a character; you must hammer and forge yourself one." },
+					Text = "You cannot dream yourself into a character; you must solder the mold and strike yourself into shape. Preferably with a very big hammer." },
 			},
 			HephaestusMiscPickup23 =
 			{
@@ -3202,7 +3202,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = GameData.HephaestusBasicPickUpTextLines,
 				{ Cue = "/VO/Hephaestus_0025",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I’ve learned it the hard way—nothing worth having comes without effort, and that’s true whether you’re forging weapons, building something new, or escaping from the depths of your father's domain." },
+					Text = "I’ve learned the hard way —- nothing worth having comes without effort, and that’s true whether you’re forging weapons, building something new, or escaping from the depths of your father's domain." },
 			},
 			HephaestusMiscPickup25 =
 			{
