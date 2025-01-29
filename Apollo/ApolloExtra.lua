@@ -2768,6 +2768,11 @@ if ModUtil ~= nil then
 			}
 		}
 	}
+	OlympusTraitData.InstantChillKill.RequiredFalseTrait = nil
+	OlympusTraitData.InstantChillKill.RequiredFalseTraits = {"InstantChillKill","HyacinthTrait"}
+	OlympusTraitData.CharmTrait.RequiredFalseTrait = nil
+	OlympusTraitData.CharmTrait.RequiredFalseTraits = {"CharmTrait","HyacinthTrait"}
+	
 	OlympusTraitData.SeaChanteyTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
