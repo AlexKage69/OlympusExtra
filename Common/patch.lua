@@ -324,7 +324,7 @@ ModUtil.Path.Wrap("DamageEnemy",
             })
         end
         if sourceWeaponData ~= nil and victim ~= nil and victim.DamageType == "Enemy" then            
-            if ((HeroHasTrait("HephaestusWeaponTrait") or HeroHasTrait("HephaestusSecondaryTrait")) and (Contains(WeaponSets.AllPrimaryWeapons, sourceWeaponData.Name) and Contains(WeaponSets.AllSecondaryWeapons, sourceWeaponData.Name)) and CurrentRun.Hero.IgneousArmor ~= nil and CurrentRun.Hero.IgneousArmor.Charging and CurrentRun.Hero.IgneousArmor.DamageTransfer ~= nil) then           
+            if ((HeroHasTrait("HephaestusWeaponTrait") or HeroHasTrait("HephaestusSecondaryTrait")) and (Contains(WeaponSets.AllPrimaryWeapons, sourceWeaponData.Name) or Contains(WeaponSets.AllSecondaryWeapons, sourceWeaponData.Name)) and CurrentRun.Hero.IgneousArmor ~= nil and CurrentRun.Hero.IgneousArmor.Charging and CurrentRun.Hero.IgneousArmor.DamageTransfer ~= nil) then           
                 CurrentRun.Hero.IgneousArmor.Damage = CurrentRun.Hero.IgneousArmor.Damage + math.floor(triggerArgs.DamageAmount * CurrentRun.Hero.IgneousArmor.DamageTransfer)
                 CreateAnimation({ Name = "HitSparkArmorFlash", DestinationId = victim.ObjectId, Group = "FX_Standing_Top" })      
             end
