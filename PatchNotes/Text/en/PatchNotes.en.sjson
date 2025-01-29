@@ -7,7 +7,7 @@
       Description = """
 		{#AlertHeaderFormat}1.4.0 - Hephaestus Release! - Jan 2025
 			Happy New Rotation-Of-Apollo-Around-Gaia, everyone! Welcome to the Hephaestus update!  
-			Mind you, Hephaestus is still tinkering away at his workshops -- there's still some kinks for us to straighten out, but we wanted to get the content out to you to play while it's in beta.
+			Mind you, Hephaestus is still tinkering away at his workshops -- there's still some kinks for us to straighten out, but we wanted to get the content out to you to play while it's still in beta.
 
 			{#AlertH2Format}Highlights{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hephaestus Release{#PreviousFormat}: The introverted God of the Forge may sometimes appear instead of Hermes during your run! While Hermes is more about swiftness and dodging, Hephaestus's boons focus on armor and improving weapons. 
@@ -24,6 +24,7 @@
 			Some voicelines are still missing for our dear Hera! @{#AlertHighlightFormat}bessyboo {#PreviousFormat} has dropped out of contact, due to health issues, before being able to finish her Hera lines. If you're out there, bessy, we hope you're doing fine!
 
  			Hephaestus's Art by @{#AlertHighlightFormat}Leo_v{#PreviousFormat}. 
+			Special thanks to @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat}, voice of Hestia, for helping with dialogue proofreading!
 
  			\Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
 
