@@ -39,6 +39,9 @@ To create a backup of your save files, copy everything inside the `Documents\Sav
 4. Run the `Hades\Content\modimporter.exe` executable.
 5. Open *Hades* and start playing!
 
+### Mac users
+The mod requires a folder in Hades/Content that is titled Win on Windows version; when it doesn't find it, it creates one. Just move the contents of the folder called "Win" into the folder titled "macOS". There'll be 2 folders in "Win", maps and packages, just move the contents of these into the respective same titled ones on "macOS" and it should be running smoothly. [by Enyu69]
+
 ## Common Mistakes
 - When installing the mod, make sure the name of the folder it's in is `OlympusExtra`, inside the `Mods` folder.
 - Always make sure you have the latest version of *OlympusExtra*, *ModUtil* and *modimporter*. We work very closely, and try to always make sure all three of our respective releases are compatible with the most recent versions of the other two.
@@ -57,14 +60,14 @@ If you'd like to donate to us, send any PayPal amount to **alexandre69.demers@gm
 
 ### Production
 **Original Concept & Project Director:** [AlexKage](https://github.com/AlexKage69)\
-**Project Manager & Senior Producer:** [physiX](https://twitter.com/physiX_VG)\
+**Project Manager & Senior Producer:** [physiX](https://github.com/phypoh)\
 **Junior Producer:** bessyboo ([Twitter](https://twitter.com/bessyboo) | [YouTube](https://www.youtube.com/channel/UClDXaCDTTlP_rL_wT8Dnamg) | [AO3](https://archiveofourown.org/users/bessyboo))
 
 ### Programming
 AlexKage, physiX
 
 ### Writing
-**Dialogue Writing:** AlexKage\
+**Dialogue Writing:** AlexKage, physiX\
 **Codex Writing:** bessyboo\
 **Editor:** bessyboo
 
@@ -72,7 +75,9 @@ AlexKage, physiX
 **Apollo Portrait:** [Reikiix](https://twitter.com/Reikiix)\
 **Apollo Keepsake Badges:** [Lazy.mano](https://www.reddit.com/user/Lazymanohelp)\
 **Hestia, Hera Portrait:** Relia ([Twitter](https://twitter.com/shazari) | [Tumblr](https://artcrystals.tumblr.com/))\
+**Hephaestus Portrait:** Leo_v ([Artstation](https://www.artstation.com/leo_v))\
 **Hestia Keepsake Badges:** [Starley](https://twitter.com/princestarley/)\
+**Hera Keepsake Badges:** Lazymano\
 **Additional Graphics:** physiX, bessyboo
 
 ### Audio

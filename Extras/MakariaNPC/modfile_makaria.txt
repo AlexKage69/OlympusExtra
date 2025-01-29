@@ -1,0 +1,7 @@
+
+Import "MakariaNPC.lua"
+
+To "Game/Animations/CharacterAnimationsNPcs.sjson"
+SJSON "Animations/CharacterAnimationsNPcs.sjson"
+To "Game/Units/NPCs.sjson"
+SJSON "Animations/NPCs.sjson"

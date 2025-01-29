@@ -1,0 +1,9 @@
+{
+  Texts = [
+    "_append"
+    {
+      Id = "UpgradeChoiceMenu_Title_HephaestusUpgrade"
+      DisplayName = "Boons of Hephaestus"
+    }
+  ]
+}

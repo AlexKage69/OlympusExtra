@@ -551,10 +551,6 @@ if ModUtil ~= nil then
 		"ApolloAboutHarpQuest02", "ApolloAboutOrpheus01", "ApolloAboutOrpheus02"
 	}
 	)
-	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "ApolloBlind", "FlashBomb", "DamageResist" })
-	ResetKeywords()
 
 	-- Codex Section
 	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
@@ -2292,6 +2288,16 @@ if ModUtil ~= nil then
 				BaseProperty = "Duration",
 			},
 			{
+				ExtractAs = "TooltipBlindPower",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "Effect",
+				WeaponName = "SwordWeapon",
+				BaseName = "ApolloBlind",
+				BaseProperty = "Amount",
+				Format = "Percent"
+			},
+			{
 				Key = "ApolloHealDropChance",
 				ExtractAs = "TooltipDropChance",
 				Format = "Percent"
@@ -2387,35 +2393,35 @@ if ModUtil ~= nil then
 				WeaponName = WeaponSets.HeroPhysicalWeapons,
 				EffectName = "ApolloBlind",
 				EffectProperty = "Amount",
-				ChangeValue = 0.75,
+				ChangeValue = 0.60,
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponName = WeaponSets.HeroSecondaryWeapons,
 				EffectName = "ApolloBlind",
 				EffectProperty = "Amount",
-				ChangeValue = 0.75,
+				ChangeValue = 0.60,
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponName = WeaponSets.HeroRushWeapons,
 				EffectName = "ApolloBlind",
 				EffectProperty = "Amount",
-				ChangeValue = 0.75,
+				ChangeValue = 0.60,
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponName = WeaponSets.HeroNonPhysicalWeapons,
 				EffectName = "ApolloBlind",
 				EffectProperty = "Amount",
-				ChangeValue = 0.75,
+				ChangeValue = 0.60,
 				ChangeType = "Absolute",
 			},
 			{
 				WeaponNames = { "AreaWeakenApollo" },
 				EffectName = "ApolloBlind",
 				EffectProperty = "Amount",
-				ChangeValue = 0.75,
+				ChangeValue = 0.60,
 				ChangeType = "Absolute",
 			},
 		},
@@ -2762,6 +2768,11 @@ if ModUtil ~= nil then
 			}
 		}
 	}
+	OlympusTraitData.InstantChillKill.RequiredFalseTrait = nil
+	OlympusTraitData.InstantChillKill.RequiredFalseTraits = {"InstantChillKill","HyacinthTrait"}
+	OlympusTraitData.CharmTrait.RequiredFalseTrait = nil
+	OlympusTraitData.CharmTrait.RequiredFalseTraits = {"CharmTrait","HyacinthTrait"}
+	
 	OlympusTraitData.SeaChanteyTrait =
 	{
 		InheritFrom = { "SynergyTrait" },
@@ -5264,42 +5275,6 @@ if ModUtil ~= nil then
 	
 	-- Blind Functions
 	-- Bug: still need to remove Effects on Hit like ZagreusOnHitStun...
-	ModUtil.Path.Wrap("CheckOnHitPowers",
-		function(baseFunc, victim, attacker, args)
-			local missRate = 0.4
-			if HeroHasTrait("MissChanceTrait") then
-				missRate = 0.6
-			end
-			-- Enemies misses
-			if args and args.EffectName ~= "StyxPoison" and attacker and
-				HasEffect({ Id = attacker.ObjectId, EffectName = "ApolloBlind" }) and victim.ObjectId == CurrentRun.Hero.ObjectId and
-				attacker.ObjectId ~= CurrentRun.Hero.ObjectId and RandomFloat(0, 1) <= missRate then
-				thread(InCombatText, CurrentRun.Hero.ObjectId, "Combat_Miss", 0.4, { SkipShadow = true })
-				PlaySound({ Name = "/SFX/Player Sounds/HermesWhooshDodgeSFX", Id = CurrentRun.Hero.ObjectId })
-				PlaySound({ Name = "/VO/ZagreusEmotes/EmoteDodgingAlt", Id = CurrentRun.Hero.ObjectId, Delay = 0.2 })
-				if not HeroHasTrait("BlindDurationTrait") then
-					ClearEffect({ Id = attacker.ObjectId, Name = "ApolloBlind" })
-					BlockEffect({ Id = attacker.ObjectId, Name = "ApolloBlind", Duration = 4.0 })
-					if HeroHasTrait("MasterBoltTrait") then
-						ClearEffect({ Id = attacker.ObjectId, Name = "BlindLightning" })
-					end
-				end
-
-				args.DamageAmount = nil
-				args.AttackerWeaponData = nil
-				args.IsInvulnerable = true
-				-- Zagreus misses
-			elseif attacker and HasEffect({ Id = attacker.ObjectId, EffectName = "ZagreusApolloBlind" }) and
-				attacker.ObjectId == CurrentRun.Hero.ObjectId then
-				thread(InCombatText, CurrentRun.Hero.ObjectId, "Combat_Blinded", 1.0, { SkipShadow = true, Cooldown = 0.7 })
-				args.DamageAmount = nil
-				args.AttackerWeaponData = nil
-				--args.IsInvulnerable = true
-			else
-				baseFunc(victim, attacker, args)
-			end
-		end
-	)
 	function ApolloBlindApply(triggerArgs)
 		if HeroHasTrait("MasterBoltTrait") then
 			ApplyEffectFromWeapon({ Id = CurrentRun.Hero.ObjectId, DestinationId = triggerArgs.TriggeredByTable.ObjectId,
@@ -5352,24 +5327,7 @@ if ModUtil ~= nil then
 		AddRerolls(1, "RerollTrait", { Thread = false, Delay = 0.5 })
 		CurrentRun.RerollBoonTracker = 0
 	end
-
-	ModUtil.Path.Wrap("HandleLootPickup",
-		function(baseFunc, currentRun, loot)
-			local times = 0
-			if not (loot.Name == "StackUpgrade") and not (loot.Name == "WeaponUpgrade") and HeroHasTrait("RerollBoonTrait") then
-				CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker + 1
-				local count = GetTotalHeroTraitValue("BoonCount")
-				times = math.floor(CurrentRun.RerollBoonTracker / count);
-				if (times > 0) then
-					CurrentRun.RerollBoonTracker = CurrentRun.RerollBoonTracker - (times * count)
-				end
-			end
-			baseFunc(currentRun, loot)
-			if (times > 0) then
-				AddRerolls(times, "RerollTrait", { Thread = false, Delay = 0.5 })
-			end
-		end
-	)
+	
 	-- Fountain Coin/Defense Functions
 	function FountainDefensePresentation()
 		PlaySound({ Name = "/SFX/Player Sounds/DionysusBlightWineDash", Id = CurrentRun.Hero.ObjectId })
@@ -5436,19 +5394,6 @@ if ModUtil ~= nil then
 	)
 
 	-- Sea Chantey functions
-	ModUtil.Path.Wrap("Kill",
-		function(baseFunc, victim, triggerArgs)
-			if HeroHasTrait("ApolloHealTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
-				victim.HealDropOnDeath = {
-					Name = "HealDropMinor",
-					Radius = 50,
-					Chance = GetTotalHeroTraitValue("ApolloHealDropChance")
-				}
-			end
-			baseFunc(victim, triggerArgs)
-		end
-	)
-
 	function SpawnMusicNotes(args, attacker, victim)
 		if victim.IsBoss then
 			CreateAnimation({ DestinationId = victim.ObjectId, Name = "PoseidonMusicNotes" })
@@ -5484,19 +5429,7 @@ if ModUtil ~= nil then
 		end
 	end
 
-	--Zeus Duo extra function
-	ModUtil.Path.Wrap("CheckOnDamagedPowers",
-		function(baseFunc, victim, attacker, args)
-			baseFunc(victim, attacker, args)
-			local weaponName = args.SourceWeapon
-			if args ~= nil and attacker ~= nil and attacker.ObjectId == CurrentRun.Hero.ObjectId and
-				HeroHasTrait("ZeusChargedBoltTrait") and args.FirstInVolley then
-				if Contains({ "BlindLightningEffector" }, weaponName) then
-					FireWeaponFromUnit({ Weapon = "ZeusLegendaryWeapon", AutoEquip = true, Id = attacker.ObjectId,
-						DestinationId = victim.ObjectId, FireFromTarget = true })
-				end
-			end
-		end)
+	
 	-- Dionysus Duo Lobs
 	local countToTwo = false;
 	function SpawnAdditionalLob(triggerArgs, traitDataArgs)

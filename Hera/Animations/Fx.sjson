@@ -3732,7 +3732,7 @@
       InheritFrom = "DeathMarkedCurseOut"
       ChainTo = "DeathMarkedCurseLoop"
       FilePath = "Hera\Fx\HeraScytheIn\HeraScytheIn"
-      Sound = "/SFX/ThanatosAttackBell"
+      //Sound = "/SFX/ThanatosAttackBell"
       EndFrame = 9
       NumFrames = 9
       PlaySpeed = 30.0

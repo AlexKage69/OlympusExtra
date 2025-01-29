@@ -469,10 +469,6 @@ if ModUtil ~= nil then
 		"HestiaAboutZeus01"
 	}
 	)
-	--Keywords
-	local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
-	ModUtil.Table.Merge(OlympusKeywordList, { "LavaSplash", "CentaurHeart", "CentaurSoul", "MiniBoss" })
-	ResetKeywords()
 
 	-- This is not working since the Icons are too big or small to be used and there's no Scale.
 	--[[local OlympusIconData = ModUtil.Entangled.ModData(IconData)
@@ -522,11 +518,11 @@ if ModUtil ~= nil then
 		{
 			{
 				UnlockThreshold = 1,
-				Text = "CodexData_Hestia_0004",
+				Text = "CodexData_EmptyHealth_0001",
 			},
 			{
 				UnlockThreshold = 10,
-				Text = "CodexData_Hestia_0005",
+				Text = "CodexData_EmptyHealth_0002",
 			},
 		},
 		Image = "Codex_Portrait_CentaurSoul",
@@ -2216,7 +2212,6 @@ if ModUtil ~= nil then
 				{
 					ExtractAs = "TooltipProjectiles",
 				}]]
-
 			},
 			{
 				TraitName = "RegeneratingCappedSuperTrait",
@@ -3052,7 +3047,7 @@ if ModUtil ~= nil then
 				}
 			},
 			{
-				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponNames = { "ArtemisHestiaExplosion" },
 				ProjectileProperty = "DamageHigh",
 				DeriveValueFrom = "DamageLow"
 			},
@@ -3636,7 +3631,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "ChillFireTrait",
 				{ Cue = "/VO/Hestia_0048",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your love, for once? If not for me, do it for Zagreus." },
+					Text = "Oh, it's getting rather cold here. Demeter, why can't you let some warmth into your life, for once? If not for me, do it for Zagreus." },
 				{ Cue = "/VO/Demeter_0380",
 					PortraitExitWait = 0.35,
 					StartSound = "/SFX/DemeterBoonFrost",
@@ -5491,7 +5486,7 @@ if ModUtil ~= nil then
 	}
 
 	-- Multi Gods compatibility
-	if ModUtil.Mods.Data["HestiaExtra"] ~= nil and ModUtil.Mods.Data["ApolloExtra"] ~= nil then
+	if ApolloExtra ~= nil then
         OlympusLootData.HestiaUpgrade.LinkedUpgrades.ShoutMoreHealTrait =
         {
             OneFromEachSet =
@@ -5663,22 +5658,6 @@ if ModUtil ~= nil then
 			end
 		end
 	}
-	OnHit {
-		function(triggerArgs)
-			local attacker = triggerArgs.AttackerTable
-			local attackerWeaponName = triggerArgs.SourceWeapon
-			triggerArgs.AttackerWeaponData = GetWeaponData(attacker, attackerWeaponName)
-			local victim = triggerArgs.TriggeredByTable
-			if victim ~= nil and (victim.CanBeAggroed or victim.Name == "TrainingMelee") and victim ~= CurrentRun.Hero then
-				for i, traitData in pairs(GetHeroTraitValues("OnWeaponHitFunctions")) do
-					if (traitData.ValidWeapons == nil or Contains(traitData.ValidWeapons, attackerWeaponName)) and
-						traitData.FunctionName and _G[traitData.FunctionName] then
-						thread(_G[traitData.FunctionName], triggerArgs.AttackerWeaponData, victim.ObjectId, traitData.FunctionArgs)
-					end
-				end
-			end
-		end
-	}
 	-- Shout functions
 	function HestiaShout()
 		FireWeaponFromUnit({ Weapon = "HestiaSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
@@ -5693,18 +5672,6 @@ if ModUtil ~= nil then
 	function EndHestia()
 		ExpireProjectiles({ Names = { "HestiaSuper", "HestiaMaxSuper" } })
 	end
-
-	-- LastStand Hestia functions
-	ModUtil.Path.Wrap("CheckLastStand",
-		function(baseFunc, victim, triggerArgs)
-			local hasLastStand = baseFunc(victim, triggerArgs)
-			if HeroHasTrait("HealthDefianceTrait") and hasLastStand then
-				AddMaxHealth(GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait",
-					{ Delay = 0.01, NoHealing = true, Thread = true })
-			end
-			return hasLastStand
-		end
-	)
 
 	-- Hestia FreeHealthTrait
 	ModUtil.Path.Wrap("SpawnRoomReward",
@@ -5812,19 +5779,6 @@ if ModUtil ~= nil then
 		function(baseFunc, eventSource, args)
 			baseFunc(eventSource, args)
 			ExpireProjectiles({ Names = { "HestiaField", "HestiaSmallField", "HestiaFieldDefense", "HestiaSmallFieldDefense" } })
-		end)
-	ModUtil.Path.Wrap("KillEnemy",
-		function(baseFunc, victim, triggerArgs)
-			baseFunc(victim, triggerArgs)
-			local killer = triggerArgs.AttackerTable
-			local killingWeapon = triggerArgs.SourceWeapon
-			if not victim.SkipModifiers and killer ~= nil and killer == CurrentRun.Hero then
-				for i, data in pairs(GetHeroTraitValues("OnEnemyDeathFunctionArgs")) do
-					if data.Name and _G[data.Name] then
-						_G[data.Name](triggerArgs, data.Args)
-					end
-				end
-			end
 		end)
 	function SpawningLavaProjectile(triggerArgs, args)
 		if HeroHasTrait("HestiaRangedTrait") and triggerArgs.name == "HestiaProjectile" then

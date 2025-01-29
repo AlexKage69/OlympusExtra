@@ -1,0 +1,115 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "CerberusAssist"
+      FilePath = "Animations\Cerberus\HadesAssistJumpIn\CerberusHadesAssistJumpIn"
+      Type = "Slide"
+      AngleFromOwner = "Ignore"
+      //Angle = 45.0
+      ChainTo = "CerberusAssistOut"
+      VideoTexture = "Cerberus_HadesAssistJumpIn_Bink"
+      Velocity = 300
+      Sound = "null"
+      //RadialOffsetMin = 1000
+      //RadialOffsetMax = 1010
+      //RadialOffsetScaleRadius = 1000
+      //RadialOffsetScaleY = 0.5
+      EndFrame = 13
+      NumAngles = 1
+      NumFrames = 13
+      StartFrame = 1
+      //OffsetY = -114.0
+      StartAlpha = 0
+      EndAlpha = 1
+      //Loop = true
+      Slides = [
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }]
+      Material = 
+      {
+        Ambient = 0.0
+        Diffuse = 0.0
+        Directionality = 0.0
+      }
+    }
+    {
+      Name = "CerberusAssistOut"
+      FilePath = "Animations\Cerberus\HadesAssistRun\CerberusHadesAssistRun"
+      Type = "Book"
+      ChainTo = "Cerberus_HadesAssistJump_FromRun"
+      VideoTexture = "Cerberus_HadesAssistRun_Bink"
+      AngleFromOwner = "Ignore"
+      Angle = 0.0
+      //Velocity = 25
+      //OffsetZ = 400.0
+      EndFrame = 16
+      Loop = true
+      //DieWithOwner = true
+      NumFrames = 16
+      PlaySpeed = 30.0
+      StartFrame = 1
+      //OffsetY = -64.0
+      Ambient = 0.0
+      TransferDrawLayer = true
+      Slides = [
+        {
+          Frame = 3
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          Frame = 4
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          Frame = 8
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          Frame = 9
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }]
+    }
+  ]
+}
