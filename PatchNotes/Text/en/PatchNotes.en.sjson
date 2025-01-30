@@ -5,10 +5,19 @@
       Id = "MainMenuScreen_PatchNotes_0056"
       OverwriteLocalization = true
       Description = """
-      	{#AlertHeaderFormat}1.3.4 - Hera Voice Added - Mar 2024
-			Many minor bug fixes... Oh! And Hera's voice! (Partly, duo voicelines are coming later).
+	  	{#AlertHeaderFormat}1.3.5 - ModUtil 3.1.1 - Compatibility - May 2024
+			With Hades 2 in early access, the OlympusExtra developer team wants to say we will keep on working on this mod, according to our roadmap.
+			
+			Some voices are still missing for our dear Hera! 
+			@{#AlertHighlightFormat}bessyboo {#PreviousFormat} is still resting and we'll deliver them soon.
+
+			Most mods stayed on ModUtil 2.10.1. Note that OlympusExtra won't be compatible with them until they are upgraded to ModUtil 3.1.1 and above
+			CodexMenu has a version compatible with ModUtil 3.1.1 and above. Make sure you use the right one.
 
 			 \Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
+
+      	{#AlertHeaderFormat}1.3.4 - Hera Voice Added - Mar 2024
+			Many minor bug fixes... Oh! And Hera's voice! (Partly, duo voicelines are coming later).
 
 			{#AlertH2Format}Highlights{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hera Voice{#PreviousFormat}: Hera now is voiced by @{#AlertHighlightFormat}bessyboo{#PreviousFormat}

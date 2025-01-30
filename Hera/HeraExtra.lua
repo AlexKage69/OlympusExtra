@@ -3918,7 +3918,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory01"},
 				{ Cue = "/VO/Hera_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Since you seem lock down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us, like you are right now." },
+					Text = "Since you seem locked down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us away, like you are right now." },
 			},
 			HeraBackstory03 =
 			{
@@ -3928,7 +3928,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory02", "HeraGift05" },
 				{ Cue = "/VO/Hera_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember when I told you we were lock by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
+					Text = "Remember when I told you we were locked by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
 			},
 			HeraBackstory04 =
 			{
@@ -7322,7 +7322,6 @@ end]]
 					if otherTrait.EndShout ~= nil then
 						traitData.EndShout = otherTrait.EndShout
 					end
-					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(traitData.Rarity))
 				end
 			end
 			baseFunc()
@@ -7478,7 +7477,6 @@ end]]
 			if store.StoreOptions ~= nil and HeroHasTrait("DiscountHeraTrait") then
 				local itemIndex = RandomNumber(TableLength(store.StoreOptions))
 				store.StoreOptions[itemIndex].HasDiscount = true
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Discount on: " .. itemIndex))
 				CurrentRun.CurrentRoom.Store.
 			end
 			return store
@@ -8326,7 +8324,6 @@ end]]
 				local damage = GetTotalHeroTraitValue("HeraMineBlast")
 				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = newUnit.ObjectId, Property = "DamageLow", Value = damage })
 				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = newUnit.ObjectId, Property = "DamageHigh", Value = damage })
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.DamageType))
 				SetupEnemyObject( newUnit, CurrentRun)
 				newUnit.OnDeathWeapons = {}
 				--table.insert( CurrentRun.Hero.AllTraps, newUnit )
@@ -8363,9 +8360,7 @@ end]]
 	end
 	--[[ModUtil.Path.Wrap("CheckOnDeathPowers",
 		function(baseFunc, victim, attacker, weaponName)
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(weaponName))
 			if victim ~= nil and weaponName == "HeraMineBlast" then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(victim.ObjectId))
 				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = victim.ObjectId, Property = "DamageLow", Value = 150 })
 				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = victim.ObjectId, Property = "DamageHigh", Value = 150 })
 			end
