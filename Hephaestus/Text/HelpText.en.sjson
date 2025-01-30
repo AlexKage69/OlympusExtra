@@ -322,12 +322,12 @@
 		{
 			Id = "ForceWeaponUpgradeTrait"
 			DisplayName = "Bronze Replica"
-			Description = "Next chamber reward is a {#BoldFormat}Daedalus Hammer{#PreviousFormat}. {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll {#BoldFormat}Daedalus Hammer{#PreviousFormat}."
+			Description = "The next chamber reward you find will be a {#BoldFormat}Daedalus Hammer{#PreviousFormat}. {#BoldFormatGraft}{$Keywords.GodBoon}s {#PreviousFormat} have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll {#BoldFormat}Daedalus Hammer{#PreviousFormat}."
 		}
 		{
 			Id = "ForceWeaponUpgradeTrait_Rack"
 			InheritFrom = "ForceWeaponUpgradeTrait"
-			Description = "Next chamber reward is a {#BoldFormat}Daedalus Hammer{#PreviousFormat}. {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll {#BoldFormat}Daedalus Hammer{#PreviousFormat}. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+			Description = "Next chamber reward is a {#BoldFormat}Daedalus Hammer{#PreviousFormat}. {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat} have a {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}. You may reroll on {#BoldFormat}Daedalus Hammer{#PreviousFormat}. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "ForceWeaponUpgradeTrait_Inactive"
