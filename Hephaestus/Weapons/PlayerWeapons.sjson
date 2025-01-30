@@ -1,0 +1,147 @@
+{
+  Weapons = [
+    "_append" 
+     {
+      Name = "RevengeBoostApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "null"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Effects = [
+        {
+          Name = "RevengeBoostSpeed"
+          Type = "SPEED"
+          OnlyAffectName = "_PlayerUnit"
+          //DurationFrames = 15
+          Duration = 1.2
+          Modifier = 1.0
+          CanAffectInvulnerable = true
+          FlashFrontFxWhenExpiring = true
+          Active = false
+          HaltOnEnd = true
+          BackFx = "HermesRushSpeedTrail"
+          FrontFx = "RuthlessDashFx"
+        },
+        {
+          Name = "RevengeBoostDamage"
+          Type = "DAMAGE_OUTPUT"
+          Duration = 1.25
+          Modifier = 1.0
+          CanAffectInvulnerable = true
+          OnlyAffectName = "_PlayerUnit"
+          ExtendDurationOnReapply = true
+          Active = false
+        }
+      ]
+    }
+    {
+      Name = "DamageMeleeBoost"
+      InheritFrom = "MagicShield"
+      Projectile = "DamageMeleeBoost"
+      Effect = 
+      {
+        Name = "DamageMeleeBoost"
+        Modifier = 1.0
+        Duration = 5.0
+        Active = true
+        CanAffectInvulnerable = true
+        ExtendDurationOnReapply = true
+        BackFx = null
+        OnlyAffectName = "_PlayerUnit"
+        FrontFx = "BoostSparkles-Sword"
+      }
+    }
+    {
+      Name = "DamageRangedBoost"
+      InheritFrom = "MagicShield"
+      Projectile = "DamageRangedBoost"
+      Effect = 
+      {
+        Name = "DamageRangedBoost"
+        Modifier = 1.0
+        Duration = 5.0
+        Active = true
+        CanAffectInvulnerable = true
+        ExtendDurationOnReapply = true
+        BackFx = null
+        OnlyAffectName = "_PlayerUnit"
+        FrontFx = "BoostSparkles-Bow"
+      }
+    }
+    {
+      Name = "DefenseBoost"
+      InheritFrom = "MagicShield"
+      Projectile = "DefenseBoost"
+      Effect = 
+      {
+        Name = "DefenseBoost"
+        Type = "DAMAGE_TAKEN"
+        Modifier = 0.75
+        Duration = 5.0
+        Active = true
+        CanAffectInvulnerable = true
+        ExtendDurationOnReapply = true
+        BackFx = null
+        OnlyAffectName = "_PlayerUnit"
+        FrontFx = "BoostSparkles-Shield"
+      }
+    }
+    {
+      Name = "SpeedBoost"
+      InheritFrom = "MagicShield"
+      Projectile = "SpeedBoost"
+      Effect = 
+      {
+        Name = "SpeedBoost"
+        Type = "SPEED"
+        Modifier = 1.5
+        Duration = 5.0
+        Active = true
+        CanAffectInvulnerable = true
+        ExtendDurationOnReapply = true
+        BackFx = null
+        OnlyAffectName = "_PlayerUnit"
+        FrontFx = "BoostSparkles-Spear"
+      }
+    }
+    {
+      Name = "IgneousArmorExplosion"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "IgneousArmorExplosion"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "IgneousRangedExplosion"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "IgneousRangedExplosion"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "IgneousTrapExplosion"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "IgneousTrapExplosion"
+      FireSound = "/SFX/BurnDamageSizzle"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+  ]
+}

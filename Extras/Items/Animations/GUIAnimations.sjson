@@ -1,0 +1,430 @@
+{
+  Animations = [
+	"_append"
+    {
+      Name = "Keepsake_Lyre_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 0.65
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Lyre"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Lyre_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Lyre_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "BoonSymbolGlow_Apollo"
+      InheritFrom = "BoonSymbolGlow"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.57
+        Blue = 0.31
+
+      }
+    }
+    {
+      Name = "BoonSymbolFlare_Apollo"
+      InheritFrom = "BoonSymbolFlare"
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.925
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonSymbolApollo2"
+      InheritFrom = "BoonBackingA"
+      ChildAnimation = "BoonBackingB_Apollo"
+      Scale = 0.5
+      CreateAnimations = [
+        {
+          Name = "BoonSymbolGlow_Apollo"
+        }
+        {
+          Name = "BoonSymbolFlare_Apollo"
+        }]
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.57
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonBackingB_Apollo"
+      InheritFrom = "BoonBackingB"
+      ChildAnimation = "BoonBackingC_Apollo"
+      Scale = 0.5
+      Color = 
+      {
+        Red = 1.0
+        Green = 0.925
+        Blue = 0.31
+      }
+    }
+    {
+      Name = "BoonBackingC_Apollo"
+      InheritFrom = "BoonBackingC"
+      ChildAnimation = "BoonSymbolApolloIcon"
+    }
+    {
+      Name = "BoonInfoSymbolApolloIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "GUI\Screens\BoonSelectSymbols\Apollo"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "BoonSymbolApolloIcon"
+      InheritFrom = "BoonSymbolBase"
+      FilePath = "Apollo\Apollo3"
+    }
+    {
+      Name = "Boon_Apollo_00_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_00_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\BlindingStrike_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\BlindingStrike_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_02_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\BlindingFlourish_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_02_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\BlindingFlourish_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_03_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\RadiantDash_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_03_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\RadiantDash_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_04_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\BlindingBomb_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_04_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\BlindingBomb_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_05_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\BlindingBomb_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_05_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\BlindingBomb_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_06_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloAid_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_06_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloAid_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Apollo_07_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloHeal_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_07_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloHeal_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Apollo_08_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloDamage_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_08_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloDamage_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Apollo_09_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloRetaliate_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_09_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloRetaliate_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_10_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloEye_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_10_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloEye_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_11_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloCoin_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_11_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloCoin_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+      {
+      Name = "Boon_Apollo_12_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloFleece_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_12_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloFleece_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_13_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloElixir_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_13_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloElixir_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_14_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\ApolloLegendary_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Apollo_14_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\ApolloLegendary_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Aphrodite_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Aphrodite_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Ares_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Ares_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Artemis_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Artemis_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Athena_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Athena_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Demeter_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloDemeter_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Demeter_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloDemeter_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Dionysus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Dionysus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Poseidon_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Poseidon_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    } 
+    {
+      Name = "Apollo_Zeus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Apollo\Duos\ApolloZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Apollo_Zeus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Apollo\Duos\ApolloZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }     
+    {
+      Name = "Keepsake_Apollo_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Apollo\ApolloBadge"
+      Scale = 0.15
+    }
+    {
+      Name = "Keepsake_ApolloSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Apollo\ApolloBadge_max"
+    }
+  ]
+}

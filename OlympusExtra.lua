@@ -6,6 +6,7 @@ if ModUtil ~= nil then
         LoadPackages({Name = "OEHestia"})
         LoadPackages({Name = "OEApollo"})
         LoadPackages({Name = "OEMinor"})
+        LoadPackages({Name = "OEHeph"})
         return baseFunc()
     end)
     ModUtil.Mod.Register("OlympusExtra")
@@ -20,7 +21,7 @@ ModUtil.LoadOnce(function()
         local OlympusCodexBoonTable = CodexMenu.BoonTable
         local OlympusConsumableTable = CodexMenu.ConsumableTable
         local OlympusCodexBossTable = CodexMenu.BossTable
-        OlympusCodexBossTable.Tartarus = RoomSetData.Tartarus.A_Reprieve01
+        OlympusCodexBossTable.Tartarus = RoomSetData.Tartarus.A_Combat01
         OlympusCodexBossTable.Asphodel = RoomSetData.Asphodel.B_Story01
         OlympusCodexBossTable.Elysium = RoomSetData.Elysium.C_Story01
         OlympusCodexBossTable.Styx = RoomSetData.Styx.D_Reprieve01
@@ -126,7 +127,19 @@ ModUtil.LoadOnce(function()
             --OlympusCodexMenuReloadShouldSkip.RerollObolTrait = true     
             table.insert(OlympusCodexBoonTable, "HeraUpgrade")
             table.insert(OlympusRealGodNames, "Hera")
-        end     
+        end   
+        --Apollo
+        if ModUtil.Entangled.ModData("HephaestusExtra") ~= nil then
+            OlympusCodexMenuData.HephaestusUpgrade = {
+                "HephaestusWeaponTrait", "HephaestusSecondaryTrait", "HephaestusRangedTrait", 
+                "HephaestusShoutSummon",  "DropMoneyTrait", "SpawnWeaponsTrait", "RevengeBoostTrait", 
+                "ArmorBossTrait", "ArmorEncounterTrait","ArmorDefianceTrait", "DamageReturnTrait",
+                "HephaestusTrapTrait", "ArmorLegendaryTrait"
+            }
+            table.insert(OlympusCodexMenuData.Legendaries, "ArmorLegendaryTrait")
+            table.insert(OlympusCodexBoonTable, "HephaestusUpgrade")
+            table.insert(OlympusRealGodNames, "Hephaestus")
+        end  
         --[[if ModUtil.Mods.Data["CerberusAssist"] ~= nil then
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")            
         end]]

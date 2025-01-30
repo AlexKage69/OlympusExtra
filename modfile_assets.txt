@@ -4,16 +4,6 @@
 :-
 
 :: Assets
-To "Win/Packages/OEHera.pkg"
-Replace "Packages/OEHera.pkg"
-To "Win/Packages/720p/OEHera.pkg"
-Replace "Packages/OEHera.pkg"
-To "Win/Packages/OEHera.pkg_manifest"
-Replace "Packages/OEHera.pkg_manifest"
-To "Win/Packages/720p/OEHera.pkg_manifest"
-Replace "Packages/OEHera.pkg_manifest"
-
-
 To "Win/Packages/OEHestia.pkg"
 Replace "Packages/OEHestia.pkg"
 To "Win/Packages/720p/OEHestia.pkg"
@@ -32,15 +22,6 @@ Replace "Packages/OEApollo.pkg_manifest"
 To "Win/Packages/720p/OEApollo.pkg_manifest"
 Replace "Packages/OEApollo.pkg_manifest"
 
-To "Win/Packages/OEMinor.pkg"
-Replace "Packages/OEMinor.pkg"
-To "Win/Packages/720p/OEMinor.pkg"
-Replace "Packages/OEMinor.pkg"
-To "Win/Packages/OEMinor.pkg_manifest"
-Replace "Packages/OEMinor.pkg_manifest"
-To "Win/Packages/720p/OEMinor.pkg_manifest"
-Replace "Packages/OEMinor.pkg_manifest"
-
 To "Win/Packages/OEHera.pkg"
 Replace "Packages/OEHera.pkg"
 To "Win/Packages/720p/OEHera.pkg"
@@ -50,16 +31,33 @@ Replace "Packages/OEHera.pkg_manifest"
 To "Win/Packages/720p/OEHera.pkg_manifest"
 Replace "Packages/OEHera.pkg_manifest"
 
+To "Win/Packages/OEHeph.pkg"
+Replace "Packages/OEHeph.pkg"
+To "Win/Packages/720p/OEHeph.pkg"
+Replace "Packages/OEHeph.pkg"
+To "Win/Packages/OEHeph.pkg_manifest"
+Replace "Packages/OEHeph.pkg_manifest"
+To "Win/Packages/720p/OEHeph.pkg_manifest"
+Replace "Packages/OEHeph.pkg_manifest"
+
+To "Win/Packages/OEMinor.pkg"
+Replace "Packages/OEMinor.pkg"
+To "Win/Packages/720p/OEMinor.pkg"
+Replace "Packages/OEMinor.pkg"
+To "Win/Packages/OEMinor.pkg_manifest"
+Replace "Packages/OEMinor.pkg_manifest"
+To "Win/Packages/720p/OEMinor.pkg_manifest"
+Replace "Packages/OEMinor.pkg_manifest"
+
 :: Maps
-To "Win/Maps/RoomPreRun.thing_bin"
-Replace "Packages/Maps/RoomPreRun.thing_bin"
 To "Win/Maps/A_Reprieve01.thing_bin"
 Replace "Packages/Maps/A_Reprieve01.thing_bin"
 To "Win/Maps/DeathArea.thing_bin"
 Replace "Packages/Maps/DeathArea.thing_bin"
+To "Win/Maps/RoomPreRun.thing_bin"
+Replace "Packages/Maps/RoomPreRun.thing_bin"
 To "Win/Maps/A_Makaria01.thing_bin"
 Replace "Packages/Maps/A_Makaria01.thing_bin"
-
 To "Maps/A_Makaria01.map_text"
 Replace "Packages/Maps/A_Makaria01.map_text"
 

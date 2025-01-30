@@ -1,0 +1,13 @@
+{
+  Texts = [
+    "_append"
+    {
+      Id = "UpgradeChoiceMenu_Title_ApolloUpgrade"
+      DisplayName = "Boons of Apollo"
+    }
+    {
+      Id = "Player_GodDispleased_ApolloUpgrade"
+      DisplayName = "Apollo Grew Displeased!"
+    }
+  ]
+}

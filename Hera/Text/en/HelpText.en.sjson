@@ -33,31 +33,6 @@
 			DisplayName = "justice has many forms; judge, jury and executioner."
 		}	
 		{
-      		Id = "JealousyCurse"
-			DisplayName = "Jealousy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., {$Keywords.Attack} and {$Keywords.Special} deal more damage by {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} for each {$Keywords.Status} applied on victim."
-		}
-		{
-      		Id = "EnvyCurse"
-			DisplayName = "Envy"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying {$Keywords.Status} removes {$Keywords.EnvyCurse} to deal damage. If the {$Keywords.Status} is not Envy, double it."
-		}
-		{
-      		Id = "HeraTrap"
-			DisplayName = "Trap Jar"
-			Description = "An inanimate object dealing damage to foes upon broken."
-		}
-		{
-      		Id = "Aura"
-			DisplayName = "Aura"
-			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Nearby foes are affected by a special effect."
-		}
-		{
-      		Id = "SpecialDiscount"
-			DisplayName = "Special Sale"
-			Description = "One of the items from the Well of Charon is cheaper than the others."
-		}
-		{
 			Id = "HeraWeaponTrait"
 			DisplayName = "Spiteful Strike"
 			Description = "Your {$Keywords.Attack} inflicts {$Keywords.EnvyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Envy Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
@@ -80,7 +55,7 @@
 		{
 			Id = "HeraRushTrait"
 			DisplayName = "Trap Dash"
-			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 {#UpgradeFormat}4 sec."
+			Description = "Your {$Keywords.Dash} leaves a {$Keywords.HeraTrap} behind that inclicts {$Keywords.JealousyCurse}. \n {!Icons.Bullet}{#PropertyFormat}Trap Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.HeraTrap} Cooldown: \Column 380 4 sec."
 		} 
 		{
 			Id = "HeraRushTrait_Initial"
@@ -299,10 +274,6 @@
       Id = "Shop_UseHealDrop_HealthAsObolText"
       DisplayName = "{I} Buy {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
     }
-		{
-			Id = "Shop_UseGemDrop_HealthAsObolText_Health"
-			DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat}\n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
-		}
 		{
 			Id = "Shop_ItemSacrifice"
 			DisplayName = "{$TempTextData.SacrificeCost} {!Icons.Health_Small}"

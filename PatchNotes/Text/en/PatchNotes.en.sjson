@@ -5,10 +5,33 @@
       Id = "MainMenuScreen_PatchNotes_0056"
       OverwriteLocalization = true
       Description = """
-	  	{#AlertHeaderFormat}1.3.5 - ModUtil 3.1.1 - Compatibility - May 2024
-			With Hades 2 in early access, the OlympusExtra developer team wants to say we will keep on working on this mod, according to our roadmap.
+		{#AlertHeaderFormat}1.4.0 - Hephaestus Release! - Jan 2025
+			Happy New Rotation-Of-Apollo-Around-Gaia, everyone! Welcome to the Hephaestus update!  
+			Mind you, Hephaestus is still tinkering away at his workshops -- there's still some kinks for us to straighten out, but we wanted to get the content out to you to play while it's still in beta.
+
+			{#AlertH2Format}Highlights{#PreviousFormat}
+			+ {#AlertHighlightFormat}Hephaestus Release{#PreviousFormat}: The introverted God of the Forge may sometimes appear instead of Hermes during your run! While Hermes is more about swiftness and dodging, Hephaestus's boons focus on armor and improving weapons. 
+
+			{#AlertH2Format}Looking for Help!{#PreviousFormat}
+				+ {#AlertHighlightFormat}Calling for Voice Actors!{#PreviousFormat}: We're looking for a voice actor for Hephaestus, as well as one for Hera to finish the rest of her lines! 
+				+ {#AlertHighlightFormat}Hephaestus Badge{#PreviousFormat}: We're looking for some snazzy new badge art to fit the new Hephaestus portrait. 
+				+ If interested, contact phypoh or alexkage, on the Hades Modding Discord!
+
+			{#AlertH2Format}Bug Fixes{#PreviousFormat}
+			+ {#AlertHighlightFormat}Hera Dialogue Typos {#PreviousFormat}: Thanks to everyone for reporting to us about those pesky typos! 
+			+ {#AlertHighlightFormat}Melodic Concert vs Ambrosia Delight {#PreviousFormat}: Taking Ambrosia Delight from Eurydice should no longer reset the damage resistance to 0%.
+
+			Some voicelines are still missing for our dear Hera! @{#AlertHighlightFormat}bessyboo {#PreviousFormat} has dropped out of contact, due to health issues, before being able to finish her Hera lines. If you're out there, bessy, we hope you're doing fine!
+
+ 			Hephaestus's Art by @{#AlertHighlightFormat}Leo_v{#PreviousFormat}. 
+			Special thanks to @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat}, voice of Hestia, for helping with dialogue proofreading!
+
+ 			\Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
+
+	  	{#AlertHeaderFormat}1.3.5 - ModUtil 3.1.1 - Compatibility - June 2024
+			With Hades 2 in early access, Olympus Extra wants to say they will keep on working on their roadmap.
 			
-			Some voices are still missing for our dear Hera! 
+			Some voicelines are still missing for our dear Hera! 
 			@{#AlertHighlightFormat}bessyboo {#PreviousFormat} is still resting and we'll deliver them soon.
 
 			Most mods stayed on ModUtil 2.10.1. Note that OlympusExtra won't be compatible with them until they are upgraded to ModUtil 3.1.1 and above
@@ -63,7 +86,7 @@
 			{#AlertH2Format}Highlights{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hestia Voice{#PreviousFormat}: Hestia now is voiced by @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat}
 			+ {#AlertHighlightFormat}Forgiveness Guarantee{#PreviousFormat}: Zagreus is guaranteed forgiveness after 5 times the same encounter with Hestia
-			+ {#AlertHighlightFormat}Original Gods Voice{#PreviousFormat}: Original Gods got new voiceline with Community mimicking them.
+			+ {#AlertHighlightFormat}Original Gods Voice{#PreviousFormat}: Original Gods got new voicelines with Community mimicking them.
       \Column 330 {#AlertHighlightFormat}Voice of Hera, Aphrodite: bessyboo{#PreviousFormat}
       \Column 330 {#AlertHighlightFormat}Voice of Ares, Poseidon, & Theseus: Myles Sands{#PreviousFormat}
       \Column 330 {#AlertHighlightFormat}Voice of Artemis: Honor Wilson{#PreviousFormat}
@@ -151,7 +174,7 @@
 			First release of the first god planned for OlympusExtra. Our Team:
       AlexKage and PhysiX.
 
-      Apollo's Art by @{#AlertHighlightFormat}Reikiix{#PreviousFormat} and Badges by @{#AlertHighlightFormat}Lazy.mano{#PreviousFormat}
+      Apollo's Art by @{#AlertHighlightFormat}Reikiix {#PreviousFormat} and Badges by @{#AlertHighlightFormat}Lazy.mano{#PreviousFormat}
 
 			Olympus Extra is made to be added content to the greatest game of all time.
 

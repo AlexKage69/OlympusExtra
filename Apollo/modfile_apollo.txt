@@ -35,8 +35,8 @@ SJSON "Weapons/EnemyWeapons.sjson"
 
 :: Language Text
 To "Game/Text/en/HelpText.en.sjson"
-SJSON "Text/en/HelpText.en.sjson"
+SJSON "Text/HelpText.en.sjson"
 To "Game/Text/en/CodexText.en.sjson"
-SJSON "Text/en/CodexText.en.sjson"
+SJSON "Text/CodexText.en.sjson"
 To "Game/Text/en/MacroText.sjson"
-SJSON "Text/en/MacroText.en.sjson"
+SJSON "Text/MacroText.en.sjson"
