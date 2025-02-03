@@ -1,0 +1,355 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "NPC_Apollo_01"
+			DisplayName = "Apollo"
+			Description = "God of Light"
+		}		
+		{
+			Id = "ApolloFirstPickUp"
+			DisplayName = "Met Apollo"
+		}
+		{
+			Id = "ApolloUpgrade"
+			DisplayName = "Apollo"
+			Description = "God of Light"
+		}
+		{
+			Id = "ApolloUpgrades"
+			DisplayName = "God of Light"
+			Description = "The son of the god of the dead shall someday earn various Boons of Apollo."
+		}
+		{
+			Id = "CosmeticsMusic"
+			DisplayName = "Sheet Collector"
+			Description = "The son of the god of the dead shall someday earn all Sheet Music offered by the Court Music Stand"
+		}
+		{
+			Id = "ApolloUpgrade_FlavorText01"
+			DisplayName = "his music is a gateway to the mind, listen up and see what you find."
+		}
+		{
+			Id = "ApolloUpgrade_FlavorText02"
+			DisplayName = "only the purest entities may see beyond his power."
+		}
+		{
+			Id = "ApolloUpgrade_FlavorText03"
+			DisplayName = "he shines so brightly, he can ward off evil."
+		}		
+		{
+			Id = "ApolloWeaponTrait"
+			DisplayName = "Blinding Strike"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}" 
+		} 		
+		{
+			Id = "ApolloWeaponTrait_Initial"
+			InheritFrom = "ApolloWeaponTrait"
+			Description = "Your {$Keywords.Attack} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Attack Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloSecondaryTrait"
+			DisplayName = "Blinding Flourish"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 	
+		{
+			Id = "ApolloSecondaryTrait_Initial"
+			InheritFrom = "ApolloSecondaryTrait"
+			Description = "Your {$Keywords.Special} deals more damage and inflicts {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Special Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}		
+		{
+			Id = "ApolloDashTrait"
+			DisplayName = "Radiant Dash"
+			Description = "Your {$Keywords.Dash} summons light where you started, dealing damage and inflicting {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Light Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		} 
+		{
+			Id = "ApolloDashTrait_Initial"
+			InheritFrom = "ApolloDashTrait"
+			Description = "Your {$Keywords.Dash} summons light where you started, dealing damage and inflicting {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Light Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloSignoff"
+			DisplayName = "From Apollo"
+		}
+		{
+			Id = "ApolloSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Apollo{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Harmonious Bond
+
+				{#AwardDarkFlavorFormat}Sometimes it takes a prophet to foresee a great friendship.
+			"""
+		}
+		{
+      		Id = "FlashBomb"
+			DisplayName = "Flash Bomb"
+			Description = "Detonates after a brief moment, inflicting {$Keywords.ApolloBlind} on foes in the area for {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}."
+		}
+		{
+			Id = "Combat_Miss"
+			DisplayName = "Miss"
+		}
+		{
+			Id = "Combat_Blinded"
+			DisplayName = "Blind"
+		}
+		{
+			Id = "ApolloShoutTrait"
+			DisplayName = "Apollo's Aid"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
+		}		
+		{
+			Id = "ApolloShoutTrait_Tray"
+			InheritFrom = "ApolloShoutTrait"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.DisplayDelta1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#OldFormat}1.5x Beam Damage"
+		}	
+		{
+			Id = "ApolloShoutTrait_Initial"
+			InheritFrom = "ApolloShoutTrait"
+			Description = "Your {$Keywords.Wrath} makes you {$Keywords.Invulnerable} and fires a beam of light for {#BoldFormat}{$TooltipData.AddShout.SuperDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Beam Damage: \Column 380 {$TooltipData.NewTotal1} {#ItalicFormat}(every {$TooltipData.TooltipInterval} Sec.){#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath}: \Column 380 {#UpgradeFormat}1.5x Beam Damage"
+		} 
+		{
+			Id = "ApolloRangedTrait"
+			DisplayName = "Blinding Bomb"
+			Description = "Your {$Keywords.Cast} lobs a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloRangedTrait_Initial"
+			InheritFrom = "ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} lobs a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloRangedTrait_Tray"
+			InheritFrom = "ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} lobs a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_ApolloRangedTrait"
+			DisplayName = "Brilliant Flare"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_ApolloRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ShieldLoadAmmo_ApolloRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
+			Description = "Your {$Keywords.Cast} damages foes around you, leaving behind a {$Keywords.FlashBomb}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "BowLoadAmmo_ApolloRangedTrait"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait"
+		}
+		{
+			Id = "BowLoadAmmo_ApolloRangedTrait_Tray"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait_Tray"
+		}
+		{
+			Id = "BowLoadAmmo_ApolloRangedTrait_Initial"
+			InheritFrom = "ShieldLoadAmmo_ApolloRangedTrait_Initial"
+		}
+		{
+			Id = "FountainDefenseTrait",
+			DisplayName = "Melodic Concert"
+			Description = "Using a {$Keywords.Fountain} grants you damage resistance from distant foes. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance per {$Keywords.Fountain}: \Column 380 {$TooltipData.DisplayDelta1}"
+    	}
+		{
+			Id = "FountainDefenseText",
+			DisplayName = "{#CombatTextHighlightFormat}Melodic Concert!{#PreviousFormat}!"
+    	}
+		{
+    		Id = "FountainDefenseText_Alt"
+      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount:P} Resist!"     
+    	}
+		{
+			Id = "FountainDefenseTrait_Initial",
+			InheritFrom = "FountainDefenseTrait"
+			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Damage Resistance per {$Keywords.Fountain}: \Column 380 {$TooltipData.NewTotal1}"
+    	}
+		{
+			Id = "FountainDefenseTrait_Tray",
+			InheritFrom = "FountainDefenseTrait"
+			Description = "Using a {$Keywords.Fountain} grants you permanent {$Keywords.DamageResist}. \n {!Icons.Bullet}{#PropertyFormat}Total Bonus Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipTotalDefense:P}"
+    	}
+		{
+			Id = "ApolloBlindedTrait"
+			DisplayName = "Divine Law"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloBlindedTrait_Initial"
+			InheritFrom = "ApolloBlindedTrait"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also more susceptible to damage. \n {!Icons.Bullet}{#PropertyFormat}Damage vs. {$Keywords.ApolloBlind}: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "RerollObolTrait"
+			DisplayName = "Golden Fleece"
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}."
+		}
+		{
+			Id = "RerollObolTrait_Initial"
+			InheritFrom = "RerollObolTrait"
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+		}
+		{
+			Id = "RerollObolDrop"
+			InheritFrom = "RerollObolTrait"
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipObolCount}{!Icons.Currency_Small}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+		}
+		{
+			Id = "RerollBoonTrait"
+			DisplayName = "Future Sight"
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}."
+		}
+		{
+			Id = "RerollBoonTrait_Initial"
+			InheritFrom = "RerollBoonTrait"
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+		}	
+		{
+			Id = "RerollBoonDrop"
+			InheritFrom = "RerollBoonTrait"
+			Description = "Gain {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} for every {$TooltipData.TooltipBoonCount} {$Keywords.GodBoon}. Receive {#TooltipUpgradeFormat}1 {#PreviousFormat}{!Icons.ReRoll_Small} now."
+		}	
+		{
+			Id = "ApolloRetaliateTrait"
+			DisplayName = "Icarus Wings"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloRetaliateTrait_Initial"
+			InheritFrom = "ApolloRetaliateTrait"
+			Description = "After you take damage, damage foes around you and inflict {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "FountainCoinTrait",
+			DisplayName = "Wishing Well"
+			Description = "Using a {$Keywords.Fountain} gives you bonus {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+    	}
+		{
+			Id = "FountainCoinText",
+			DisplayName = "{#CombatTextHighlightFormat}Wishing Well!{#PreviousFormat}!"
+    	}
+		{
+    		Id = "FountainCoinText_Alt"
+      		DisplayName = "{#CombatTextHighlightFormat}{$TempTextData.TraitName}{#PreviousFormat}: {$TempTextData.Amount} {!Icons.Currency_Small}"     
+    	}
+		{
+			Id = "FountainCoinTrait_Initial",
+			InheritFrom = "FountainCoinTrait"
+			Description = "Using a {$Keywords.Fountain} gives you bonus {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+    	}
+		{
+			Id = "FountainCoinTrait_Tray",
+			InheritFrom = "FountainCoinTrait"
+			Description = "Using a {$Keywords.Fountain} gives you bonus {!Icons.Currency_Small}. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency_Small} per {$Keywords.Fountain}: \Column 380 {#UpgradeFormat}+{$TooltipData.FountainCoinBonus} {!Icons.Currency_Small}"
+    	}
+		{
+			Id = "ApolloHealTrait"
+			DisplayName = "Panacea's Elixir"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} items when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+		}
+		{
+			Id = "ApolloHealTrait_Initial"
+			InheritFrom = "ApolloHealTrait"
+			Description = "{$Keywords.ApolloBlind}-afflicted foes have a chance to drop {!Icons.HealthRestore_Small} items when slain. \n {!Icons.Bullet} {#PropertyFormat}Drop Chance:  \Column 380{#UpgradeFormat}{$TooltipData.TooltipDropChance:P} {#PreviousFormat}"
+		}
+		{
+			Id = "MissChanceTrait"
+			DisplayName = "Purest Light"
+			Description = "Your {$Keywords.ApolloBlind} effects are more potent. \n {!Icons.Bullet}{#PropertyFormat}Miss Chance: \Column 380 {#PreviousFormat}{#UpgradeFormat}60%"
+		}
+		{
+			Id = "ForceApolloBoonTrait"
+			DisplayName = "Shining Lyre"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Apollo{#PreviousFormat}. His blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+		}
+		{
+			Id = "ForceApolloBoonTrait_Rack"
+			InheritFrom = "ForceApolloBoonTrait"
+			Description = "The next {$Keywords.GodBoon} you find will be from {#BoldFormat}Apollo{#PreviousFormat}. His blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "ForceApolloBoonTrait_Inactive"
+			DisplayName = "Shining Lyre"
+			Description = "Apollo's blessings have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+		}
+		{
+			Id = "FamedDuetTrait"
+			DisplayName = "Famed Duet"
+			Description = "Your {$Keywords.Wrath} fires twelve beams in a circle around you instead of one."
+		}
+		{
+			Id = "WarSongTrait"
+			DisplayName = "War Song"
+			Description = "Your {$Keywords.FlashBomb} inflicts {$Keywords.Curse} as well as {$Keywords.ApolloBlind}. \n {!Icons.Bullet}{#PropertyFormat}Doom Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipCurseDamage}"
+		}
+		{
+			Id = "HyacinthTrait"
+			DisplayName = "Hyacinth"
+			Description = "Foes afflicted with both {$Keywords.ApolloBlind} and {$Keywords.Weak} shatter at {#BoldFormatGraft}{$TooltipData.TooltipDeathThreshold}%{#PreviousFormat}{!Icons.KEnemyHealth_Small}. (Does not apply to {$Keywords.BossPlural}.)"
+    	}
+		{
+			Id = "SeaChanteyTrait"
+			DisplayName = "Sea Shanty"
+			Description = "When fighting {$Keywords.BossPlural}, you deal {#AltUpgradeFormat}{$TooltipData.OutgoingMultiplier:P} {#PreviousFormat}damage, but take {#AltPenaltyFormat}{$TooltipData.IncomingMultiplier:P} {#PreviousFormat}damage."
+		}	
+		{
+			Id = "SeaChanteyText",
+			DisplayName = "{#CombatTextHighlightFormat}Sea Shanty!{#PreviousFormat}!"
+    	}
+		{
+			Id = "BlindDurationTrait"
+			DisplayName = "Chilling Melody"
+			Description = "Your {$Keywords.ApolloBlind} effects do not expire when foes miss. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.ApolloBlind} Duration: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1} Sec. Duration"
+		}
+		{
+			Id = "DamageReduceDistanceTrait"
+			DisplayName = "Archery Lessons"
+			Description = "After using {$Keywords.Deflect}, gain {$Keywords.DamageResist} for {#BoldFormat}{$TooltipData.TooltipDamageResistDuration} Sec{#PreviousFormat}. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage Resistance: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageResistModifier}%"
+		}	
+		{
+			Id = "MasterBoltTrait"
+			DisplayName = "Master Bolt" 
+			Description = "{$Keywords.ApolloBlind}-afflicted foes are also struck by lightning once per second. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {#UpgradeFormat}{$TooltipData.MasterBoltDamage}"
+		}
+		{
+			Id = "MasterLobApolloTrait"
+			DisplayName = "Blinding Fog" 
+			Description = "Your {$Keywords.FlashBomb} also summons a {$Keywords.Cloud}.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "MasterLobDionysusTrait"
+			DisplayName = "Festive Bomb" 
+			Description = "Your {$Keywords.Cloud} also summons a {$Keywords.FlashBomb}.\n {!Icons.Bullet}{#PropertyFormat} Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage}"
+		}
+		{
+			Id = "ApolloLightningCloudTrait"
+			DisplayName = "Scintillating Feast"
+			Description = "Your {$Keywords.Cloud} effects also deal lightning damage periodically. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "ApolloLightningCloudTrait_Initial"
+			InheritFrom = "LightningCloudTrait"
+			Description = "Your {$Keywords.Cloud} effects also deal lightning damage periodically. \n {!Icons.Bullet}{#PropertyFormat} Lightning Damage: \Column 380 {$TooltipData.NewTotal1}"
+		}
+		{
+			Id = "ApolloIceStrikeArrayTrait"
+			DisplayName = "Ice Wine"
+			Description = "Your {$Keywords.Cast} blasts an area with freezing {$Keywords.Cloud} that inflicts {$Keywords.Chill}. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamage:P}"
+		}
+		{
+			Id = "LtUpgrade_Apollo"
+			DisplayName = "Blessed foes now blind you."
+		}	
+		{
+			Id = "ClearRequiredTraitsApollo"
+			DisplayName = "{!Icons.RunClearStar}Disciple of Apollo{!Icons.RunClearStar}"
+		}
+		{
+			Id = "MusicMusicPlayerMainThemeMusicPlayer"
+			DisplayName = "Met Tisiphonesssss"
+		}
+	]
+}

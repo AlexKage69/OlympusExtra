@@ -1,0 +1,9 @@
+:: PatchNotes
+To "Game/GUI/MainMenuScreen.sjson"
+SJSON "AddPatch.sjson"
+
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/en/HelpText.en.sjson"
+
+To "Game/Text/en/PatchNotes.en.sjson"
+SJSON "Text/en/PatchNotes.en.sjson"

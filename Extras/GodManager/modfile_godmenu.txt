@@ -1,0 +1,19 @@
+-: Mod Name: Goddess Codex
+    Author - AlexKage
+    Author - physiX
+:-
+
+Import "GodMenuScripts.lua"
+
+:: Animations
+To "Game/Animations/Fx.sjson"
+SJSON "Animations/Fx.sjson"
+
+:: Obstacles
+To "Game/Obstacles/Gameplay.sjson"
+SJSON "Obstacles/Gameplay.sjson"
+
+
+:: Language Text
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/HelpText.en.sjson"

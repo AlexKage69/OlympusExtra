@@ -1,0 +1,9 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "MainMenuScreen_PatchNotes"
+			DisplayName = "Patch Notes"
+		}		
+    ]
+}

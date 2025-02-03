@@ -2,9 +2,17 @@
 	Texts = [
 		"_append"
 		{
+			Id = "Codex_OlympianGoddessChapter"
+			DisplayName = "Olympian Goddesses"
+		}	
+		{
       		Id = "ApolloBlind"
 			DisplayName = "Blind"
 			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim have a {#UpgradeFormat}{$TooltipData.TooltipBlindPower:P} {#PreviousFormat}chance to miss their next attack."
+		}
+		{
+			Id = "TraitLevel_Current_Initial"
+			DisplayName = "{$TooltipData.Title} {#LevelFormat}lv.{$TooltipData.OldLevel}"
 		}
 		{
       		Id = "DamageResist"

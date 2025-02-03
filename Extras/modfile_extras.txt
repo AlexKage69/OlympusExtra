@@ -1,6 +1,5 @@
 :: Include "Items/modfile_items.txt"
 Include "CerberusAssist/modfile_cerberus.txt"
-:: Include "MakariaNPC/modfile_makaria.txt"
 
 To "Game/Text/en/HelpText.en.sjson"
-SJSON "Text/en/HelpText.en.sjson"
+SJSON "Text/HelpText.en.sjson"
