@@ -1220,6 +1220,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Hephaestus_11",
 		RequiredFalseTrait = "ArmorDefianceTrait",
 		CustomTrayText = "ArmorDefianceTrait_Tray",
+		RequiredMinMaximumLastStands = 1,
 		RarityLevels =
 		{
 			Common =

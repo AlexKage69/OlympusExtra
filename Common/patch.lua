@@ -137,7 +137,7 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
 		local itemLocationX = ScreenCenterX - 355
 		for itemIndex, itemData in ipairs( upgradeOptions ) do
 			local purchaseButtonKey = "PurchaseButton"..itemIndex -- Doesnt work because eligible is not there yet...
-            if  IsGameStateEligible(CurrentRun, TraitData[itemData.ItemName]) and IsGodTrait(itemData.ItemName) then           
+            if  IsGameStateEligible(CurrentRun, TraitData[itemData.ItemName]) and CanReceivePomFirstTrait(CurrentRun.Hero, itemData.ItemName) then           
                 CreateTextBox({ Id = components[purchaseButtonKey].Id,
                     Text = "UI_TraitLevel",
                     FontSize = 27,
@@ -1253,7 +1253,7 @@ ModUtil.Path.Wrap("AddTraitToHero",
         if traitData == nil then
             traitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
         end
-        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 and GetTraitIsFirst(CurrentRun.Hero, traitData.Name) and IsGameStateEligible(CurrentRun, TraitData[traitData.Name]) and IsGodTrait(traitData.Name) then            
+        if CanReceivePomFirstTrait(CurrentRun.Hero, traitData.Name) and IsGameStateEligible(CurrentRun, TraitData[traitData.Name]) then            
             --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Got here"))
             baseFunc(args)
         end
@@ -1266,7 +1266,10 @@ ModUtil.Path.Wrap("AddTraitToHero",
     end
 )
 
-function GetTraitIsFirst( unit, traitName )
+function CanReceivePomFirstTrait( unit, traitName )
+    if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") <= 0 or not IsGodTrait(traitName) then
+        return false
+    end
 	if unit == nil or unit.Traits == nil then
 		return false
 	end
