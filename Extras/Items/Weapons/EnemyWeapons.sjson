@@ -1,0 +1,30 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "DevotionApollo"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "DevotionApollo"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "TheseusApolloUpgradeWrath"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "TheseusApolloBolt"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "TheseusApolloUpgradePassive"
+      InheritFrom = "TheseusApolloUpgradeWrath"
+      Projectile = "TheseusApolloBoltPassive"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  Units = [
+    "_append"
+    {
+      Name = "NPC_Makaria_01"
+      InheritFrom = "BaseNPC"
+      DisplayInEditor = true
+      Thing = 
+      {
+        AttachedAnim = "NPCShadow"
+        EditorOutlineDrawBounds = false
+        Graphic = "MakariaIdle"
+        OffsetZ = 50.0
+        Tallness = 225.0
+        Interact = 
+        {
+          OffsetX = -50.0
+          OffsetY = -40.0
+        }
+        Points = [
+          { X = -87 Y = -54 }
+          { X = -17 Y = 14 }
+          { X = 55 Y = -2 }
+          { X = 93 Y = -59 }
+          { X = 66 Y = -126 }
+          { X = -34 Y = -129 }
+        ]
+        SubtitleColor = { Red = 0.38 Green = 0.24 Blue = 0.85 }
+      }
+    }    
+  ]
+}

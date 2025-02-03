@@ -1,0 +1,595 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "HestiaProjectile"
+      InheritFrom = "1_BaseNonPhysicalProjectile"
+      Type = "HOMING"
+      HomingAllegiance = "ENEMIES"
+      AffectsEnemies = true
+      MaxAdjustRate = 200
+      Speed = 400
+      Acceleration = 0
+      Range = 1000.0
+      DamageLow = 200
+      DamageHigh = 200
+      DetonateGraphic = "null"
+      MultipleUnitCollisions = false
+      MultipleObstacleCollisions = false
+      CheckObstacleImpact = true
+      CheckUnitImpact = true
+      UnlimitedUnitPenetration = false
+      DetonateAtVictimLocation = true
+      UseVulnerability = false
+      GroupName = "FX_Standing_Add"
+      IgnoreCoverageAngles = true
+      Thing = 
+      {
+        Graphic = "HestiaLavaSplashProjectileHead"//"HestiaSlowLavaSplash"
+        OffsetZ = 112
+        Grip = 999999
+        Points = [
+          {
+            X = 76
+            Y = 16
+          }
+          {
+            X = 76
+            Y = -16
+          }
+          {
+            X = -32
+            Y = -16
+          }
+          {
+            X = -32
+            Y = 16
+          }]
+      }
+      Effects = [
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    {
+      Name = "LavaSplashLob"
+      InheritFrom = "1_BasePlayerLargeProjectile"
+      DetonateGraphic = "null"
+      //DetonateSound = "/SFX/HellFireImpactQuiet"
+      //ReticleGraphic = "LobWarningDecal"
+      Type = "Lob"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 200.0
+      DamageRadiusScaleY = 0.75
+      AutoAdjustForTarget = true
+      //LaunchAngle = 50
+      SpinRate = 200
+      MinRange = 500.0
+      LaunchAngle = 200
+      Speed = 550
+      SpeedVariance = 150
+      ImpactVelocity = 0.0
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      //SpawnOnDetonate = "HestiaSmallField"
+      CanBeReflected = false
+      //SpawnType = "PROJECTILE"
+      //CanCrit = false
+      IgnoreCoverageAngles = false
+      UseVulnerability = false
+      SkipSpawnsIfBlocked = true
+      DangerDistance = 0
+      Thing = 
+      {
+        Graphic = "HestiaLavaSplashProjectileHead"
+        //Scale = 1.0
+        OffsetZ = 101
+        //AttachedAnim = "GrenadierShadow"
+        Points = [
+          {
+            X = 0
+            Y = 24
+          }
+          {
+            X = 24
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -24
+          }
+          {
+            X = -24
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "HestiaField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 1
+      DamageHigh = 1
+      VacuumStrength = 0
+      VacuumDistance = 0
+      DissipateGraphic = "HestiaLavaPuddleOutLarge"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.2
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.2
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 175
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      CanCrit = false
+      Thing = {
+        Graphic = "HestiaLavaPuddleLarge"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }     
+    }
+    {
+      Name = "HestiaFieldDefense"
+      AutoAdjustForTarget = false
+      AffectsEnemies = false
+      AffectsFriends = true
+      AffectsSelf = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DissipateGraphic = "DefenseSmokeFadeOut"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.2
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 175
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      CanCrit = false
+      Thing = {
+        Graphic = "DefenseSmokeFadeIn"
+        //DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }     
+      Effects = [
+        {
+          Name = "LavaPuddleDefense"
+          OnlyAffectName = "_PlayerUnit"
+          FrontFx = "HestiaDefenseLoop"
+          Duration = 0.7
+          Type = "DAMAGE_TAKEN"
+          Modifier = 1
+          Active = false
+        }
+      ]
+    }
+    {
+      Name = "HestiaSmallFieldDefense"
+      AutoAdjustForTarget = false
+      AffectsEnemies = false
+      AffectsFriends = true
+      AffectsSelf = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DissipateGraphic = "DefenseSmokeFadeOut"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.2
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.75
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 175
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      CanCrit = false
+      Thing = {
+        Graphic = "DefenseSmokeFadeIn"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }     
+      Effects = [
+        {
+          Name = "LavaPuddleDefense"
+          OnlyAffectName = "_PlayerUnit"
+          FrontFx = "HestiaDefenseLoop"
+          Duration = 0.7
+          Type = "DAMAGE_TAKEN"
+          Modifier = 1
+          Active = false
+        }
+      ]
+    }
+    {
+      Name = "HestiaSmallField"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      DamageLow = 7
+      DamageHigh = 7
+      VacuumStrength = 0
+      VacuumDistance = 0
+      DissipateGraphic = "HestiaLavaPuddleOutSmallest"
+      //SpawnOnDetonate = "HestiaDefenseField"
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5
+      Fuse = 0.2
+      Range = 0
+      UseVulnerability = false
+      ConsecutiveHitWindow = 0.8
+      ImmunityDuration = 0.2
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain"
+      VacuumStrength = 0
+      VacuumDistance = 0
+      IgnoreDodge = true
+      DamageRadius = 90
+      DamageRadiusScaleX = 1.0
+      DamageRadiusScaleY = 0.6
+      DangerDistance = 0
+      ProjectileNumOpacityMultiplier = 0.3
+      CanCrit = false
+      Thing = {
+        Graphic = "HestiaLavaPuddleSmallest"
+        DrawEmbeddedBehind = true
+        Points = [
+          {
+            X = 4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -2
+          }
+          {
+            X = -4
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 2
+          }]
+      }      
+    }
+    {
+      Name = "HestiaFireDashField"
+      InheritFrom = "DefaultRushProjectile"
+      Type = "HOMING"
+      HomingAllegiance = "ENEMIES"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      AdjustRateAcceleration = -260
+      UnlimitedUnitPenetration = true
+      Range = 290
+      Speed = 1500     
+      DamageRadius = 100.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
+      DamageLow = 0
+      DamageHigh = 0
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 5.0
+      Fuse = 0.055
+      ImpactFx = null
+      DetonateGraphic = null
+      //DissipateGraphic = "HestiaRushProjectileImpact"
+      UseVulnerability = false
+      IgnoreCoverageAngles = true
+      SilentImpactOnInvulnerable = true
+      SpawnOnDetonate = "HestiaFire"
+      SpawnType = "PROJECTILE"
+      GroupName = "Standing"
+      Thing = 
+      {
+        Graphic = "null"
+        Graphic = "HestiaRushProjectileHead"
+        OffsetZ = 0
+        Grip = 999999
+        AttachedAnim = "null"
+        UseBoundsForSortDrawArea = true
+        Points = [
+          {
+            X = 90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -45
+          }
+          {
+            X = -90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 45
+          }]
+      }
+    }
+    {
+      Name = "HestiaFire"
+      AutoAdjustForTarget = false
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      GaussianSpawnDistribution = true
+      Type = "INSTANT"
+      SpawnRadius = 0      
+      DamageRadius = 90.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.0
+      DamageLow = 0
+      DamageHigh = 0
+      ImpactVelocity = 0
+      MultiDetonate = true
+      TotalFuse = 4.5
+      Fuse = 0.1
+      Range = 0
+      UseVulnerability = false
+      ImmunityDuration = 0.2
+      SilentImpactOnInvulnerable = true
+      GroupName = "FX_Terrain_Top"
+      IgnoreCoverageAngles = true
+      ClearOnAttackEffects = false      
+      CanCrit = false
+      Thing = {
+        Graphic = "HestiaSpinIn"
+        OffsetZ = 0
+        Grip = 999999
+        Points = [
+          {
+            X = 90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -45
+          }
+          {
+            X = -90
+            Y = 0
+          }
+          {
+            X = 0
+            Y = 45
+          }]
+      }
+      Effects = [
+          {
+            Name = "DemeterSlow"
+            IgnoreName = "_PlayerUnit"
+            Duration = 8.0
+            Stacks = true
+            ExtendDurationOnReapply = true
+            IsVulnerabilityEffect = true
+            MaxStacks = 10
+            Active = false
+            StartFx = "DemeterSlowImpact"
+            ReapplyFx = "DemeterSlowImpactReapply"
+            Sound = "/SFX/Player Sounds/DemeterFrozenDebuffSFX"
+            StopSoundOnFinishFade = 0.5
+            FrontFx = "DemeterSlowFront"
+            BackFx = "DemeterSlowBack"
+            FlashFrontFxWhenExpiring = true
+            FlashBackFxWhenExpiring = true
+            TimeModifierFraction = 0
+            ExpiringRapidFlashThreshold = 0.3
+            ElapsedTimeMultiplier = 0.96
+          }]
+    }
+    {
+      Name = "ArtemisHestiaExplosion"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "ArtemisExplosion"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      Fuse = 0.01
+      Range = 50
+      DamageRadius = 250
+      DamageLow = 50
+      DamageHigh = 50
+      ImpactVelocity = 0
+      ImpactVelocityCap = 0
+      ImpactVelocityFalloff = 0.1
+	    ClearOnAttackEffects = false
+      CanCrit = false
+      Thing = {
+        Graphic = "null"
+      }
+    }
+    {
+      Name = "HestiaSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HestiaCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      //AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 1600
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 20
+      DamageHigh = 20
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HestiaRing"
+        Grip = 999999
+      }      
+    }
+    {
+      Name = "HestiaMaxSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HestiaCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      //AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 2200
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 50
+      DamageHigh = 50
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HestiaRing"
+        Grip = 999999
+      }
+    }
+  ]
+}

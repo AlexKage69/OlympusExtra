@@ -1,0 +1,177 @@
+{
+  Weapons = [
+    "_append"
+      {
+        Name = "ApolloBeamAim"
+        Control = "Attack2"
+        FullyAutomatic = true
+        Enabled = false
+        IgnoreOwnerAttackDisabled = true
+        //DisableAttack = false
+      }
+      {
+      Name = "ApolloShoutWeapon"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloShoutProjectile"
+      FullyAutomatic = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      CancelMovement = true
+      ChargeCancelMovement = true
+      BarrelLength = 32
+      AutoLock = true
+      AutoLockRange = 1000
+      AutoLockArcDistance = 75
+      AutoLockWithMouse = false
+      ShowFreeAimLine = true
+      AimLineAnimation = "AuraAimLineNoMovement"
+      ChargeStartAnimation = "ZagreusRangedWeapon_Charge"
+      FireGraphic = "ZagreusRangedWeapon_Fire"
+      LockTriggerForCharge = true
+      NumProjectiles = 1
+      ProjectileSpacing = 30
+      ProjectileAngleOffset = 30
+      ProjectileOffsetStart = "LEFT"
+      ProjectileInterval = 0.03
+    }
+    {
+      Name = "ApolloSurgeWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "RAM"
+      SelfVelocity = 0
+      SelfVelocityCap = 0
+      RamTotalDistance = 0
+      RamDistanceInterval = 0
+      RamReappliesVelocity = false
+      FireEndGraphic = "ZagreusDash"
+      FireGraphic = "ZagreusDash"
+      FireFx = "null"
+      ChargeTime = 0
+      //Projectile = "AresInvisibleAoE"
+      //ProjectileInterval = 0.1
+      WeaponRange = 300
+      BlinkMaxRange = 400
+      ChargeFx = "null"
+      ArsenalCooldown = 0.0
+      CancelMovement = false
+      FullyAutomatic = true
+      AutoLock = true
+      IgnoreOwnerAttackDisabled = true
+      UseTargetAngle = false
+      BlockMoveInput = true
+      IgnoreForceCooldown = true
+      CanCancelDisables = true
+      CanCancelOwnDisables = true
+      BlinkDetonateAtEndpoint = true
+      BlinkNumGhosts = 3
+      BlinkGhostAnimation = "null"
+      CheckMovementReactionDistance = 150
+      Effects = [
+        {
+          Trigger = "Fire"
+          Name = "ApolloStun"
+          Duration = 100
+          DisableMove = true
+          DisableRotate = false
+          DisableAttack = true
+          StartAnimation = "ZagreusShootLazer"
+          Cancelable = false
+        }
+        {
+          Trigger = "Fire"
+          Name = "ApolloBubble"
+          Type = "INVULNERABLE"
+          Duration = 100
+          Modifier = 1.0
+          CanAffectInvulnerable = true
+          FrontFx = "Invincibubble_Apollo_Loop"
+          Active = true
+        }
+        {
+          Trigger = "Fire"
+          Name = "ApolloForce"
+          ImmuneToForce = true
+          Duration = 100
+          CanAffectInvulnerable = true
+          Active = true
+        }]
+    }
+    {
+      Name = "DistanceResistWeapon"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Projectile = "DistanceResistProjectile"
+    }    
+    {
+      Name = "AreaWeakenApollo"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "AreaWeakenApollo"
+	    ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Cooldown = 0.4
+    }
+    {
+      Name = "ShoutEndApollo"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ShoutEndApollo"
+	    ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      Cooldown = 0.4
+    }
+    {
+      Name = "ApolloChillKill"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloChillKill"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "ApolloLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "ApolloLobProjectileAdditional"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "DionysusLobWeaponAdditional"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "DionysusLobProjectileAdditional"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
+    {
+      Name = "BlindLightningEffector"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "BlindLightningEffector"
+      ClearFireRequestOnChargeCancel = false
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      SetCompleteAngleOnFire = true
+    }
+  ]
+}

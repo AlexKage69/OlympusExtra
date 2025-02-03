@@ -1,0 +1,114 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "HephChariotRamSelfDestruct"
+      Type = "STRAIGHT"
+      DamageRadius = 310
+      DamageRadiusScaleX = 0.9
+      DamageRadiusScaleY = 0.5
+      DetonateGraphic = "null"
+      DetonateSound = "null"
+      AttachToOwner = true
+      Fuse = 0.0
+      StartDelay = 0.0
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = true
+      ImpactVelocity = 0
+      NumPenetrations = 9999
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = true
+      IgnoreOwnerAllegiance = true
+      CanBeProjectileDefenseDestroyed = false
+      DamageLow = 1
+      DamageHigh = 1
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "null"
+        RotateGeometry = true
+        Grip = 999999
+        Points = [
+          {
+            X = 160
+            Y = 80
+          }
+          {
+            X = 160
+            Y = -80
+          }
+          {
+            X = 20
+            Y = -80
+          }
+          {
+            X = 20
+            Y = 80
+          }]
+      }
+      /*Effect = 
+      {
+        Name = "ZagreusOnHitStun"
+        Duration = 0.2
+        DisableMove = true
+        DisableRotate = true
+        DisableAttack = false
+        Active = true
+        CanAffectInvulnerable = false
+        Cancelable = true
+      }*/
+    }
+    {
+      Name = "HephChariotRamDeathWeapon"
+      InheritFrom = "HephChariotRamSelfDestruct"
+      StartDelay = 0.02
+      DamageRadius = 220
+      DamageRadiusScaleX = 0.9
+      DamageRadiusScaleY = 0.5
+      DetonateGraphic = "MineExplosionFadeDecal"
+      DetonateSound = "/SFX/Enemy Sounds/FireChariot/FireChariotImpact"
+      ImpactVelocity = 1200
+      AffectsEnemies = false
+      AffectsFriends = true
+      AffectsSelf = true
+      DamageLow = 100
+      DamageHigh = 100
+      Thing = 
+      {
+        Graphic = "null"
+        RotateGeometry = true
+        Grip = 999999
+        Points = [
+          {
+            X = 160
+            Y = 80
+          }
+          {
+            X = 160
+            Y = -80
+          }
+          {
+            X = 20
+            Y = -80
+          }
+          {
+            X = 20
+            Y = 80
+          }]
+      }
+      /*Effect = 
+      {
+        Name = "ZagreusOnHitStun"
+        Duration = 0.2
+        DisableMove = true
+        DisableRotate = true
+        DisableAttack = false
+        Active = true
+        CanAffectInvulnerable = false
+        Cancelable = true
+      }*/
+    }
+  ]
+}

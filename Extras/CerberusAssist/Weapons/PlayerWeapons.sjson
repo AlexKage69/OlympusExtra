@@ -1,0 +1,18 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "NPC_Goodboy_01_Assist"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "NPC_Cerberus_01_Assist"
+      //ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging"
+      NumProjectiles = 85
+      ProjectileInterval = 0.03
+      ProjectileSpacing = 70
+      ProjectileOffsetStart = "LEFT"
+      ProjectileAngleOffset = 100
+      ProjectileAngleOffsetScaleY = 0.7
+    }
+  ]
+}

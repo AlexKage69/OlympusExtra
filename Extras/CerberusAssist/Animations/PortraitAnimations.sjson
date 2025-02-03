@@ -1,0 +1,35 @@
+{
+  Animations = [
+    "_append"
+     {
+      Name = "Codex_Portrait_GoodBoyAssistTrait"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Minor\CodexPortrait_CerberusAssistTrait1"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Cerberus_Plush_Menu"
+      InheritFrom = "LegendaryKeepsakeMenuIcon"
+      Scale = 0.6
+      FilePath = "Minor\Cerberus_01"
+    }
+    {
+      Name = "Keepsake_Cerberus_Plush_Small"
+      InheritFrom = "LegendaryKeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Cerberus_Plush_Child"
+    }
+    {
+      Name = "Keepsake_Cerberus_Plush_Child"
+      InheritFrom = "LegendaryKeepsakeTrayIcon"
+      Scale = 0.2
+      FilePath = "Minor\Cerberus_01"
+    }    
+    {
+      Name = "Keepsake_Cerberus_Plush"
+      InheritFrom = "LegendaryKeepsakeIcon"
+      Scale = 0.4
+      FilePath = "Minor\Cerberus_01"
+    }
+  ]
+}

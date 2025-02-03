@@ -1,0 +1,30 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "DevotionHera"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "DevotionHera"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }    
+    {
+      Name = "TheseusHeraUpgradeWrath"
+      InheritFrom = "1_BasePlayerSlowWeapon"
+      Type = "GUN"
+      Projectile = "TheseusHeraBolt"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+    }
+    {
+      Name = "TheseusHeraUpgradePassive"
+      InheritFrom = "TheseusHeraUpgradeWrath"
+      Projectile = "TheseusHeraBoltPassive"
+    }
+  ]
+}

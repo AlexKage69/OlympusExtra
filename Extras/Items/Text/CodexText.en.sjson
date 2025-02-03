@@ -1,0 +1,24 @@
+{
+  /*
+  Made by AlexKage and physiX
+  Additional writing by bessyboo
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_Apollo_0001"
+      Speaker = "Achilles"
+      DisplayName = "'...Much like his twin sister Artemis, Apollo is the god of archery and loves a good hunt. However, he is also the god of poetry, music and dance, truth and prophecy, even healing and diseases. But most notably of all, he is the god of light, as closely tied to the sun as his sister is the moon..."
+    }
+    {
+      Id = "CodexData_Apollo_0002"
+      Speaker = "Achilles"
+      DisplayName = "'...Much like his twin sister Artemis, Apollo is the god of archery and loves a good hunt. However, he is also the god of poetry, music and dance, truth and prophecy, even healing and diseases. But most notably of all, he is the god of light, as closely tied to the sun as his sister is the moon. {#CodexBoldFormat}Unlike his sister, he is friendly and outgoing, and the two of them frequently seem to be in conflict with one another. I suppose this is similar to many mortal sibling relationships; as masters of the sun and the moon, it seems inevitable that they are two sides of the same coin...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_Apollo_0003"
+      Speaker = "Achilles"
+      DisplayName = "'...Much like his twin sister Artemis, Apollo is the god of archery and loves a good hunt. However, he is also the god of poetry, music and dance, truth and prophecy, even healing and diseases. But most notably of all, he is the god of light, as closely tied to the sun as his sister is the moon. Unlike his sister, he is friendly and outgoing, and the two of them frequently seem to be in conflict with one another. I suppose this is similar to many mortal sibling relationships; as masters of the sun and the moon, it seems inevitable that they are two sides of the same coin. {#CodexBoldFormat}Much like Dionysus, Apollo is beloved by much of mortal-kind for the joy his music and healing brings to them. I have heard that when he directs the Muses in chorus, it is enough to move even Zeus himself to tears.'{#PreviousFormat}'"
+    }
+  ]
+}

@@ -1,0 +1,4280 @@
+{
+  Animations = [
+    "_append"
+    /* Hestia - Sword - WeaponTrait */
+    {
+      Name = "SwordSwipeAFlipped-Hestia"
+      InheritFrom = "SwordSwipeAFlipped"
+      GroupName = "Standing"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      Slides = [
+        {
+          DurationFrames = 1
+          VisualFx = "SwordSwipeA-Hestia"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+          VisualFx = "QuickFlashDarkPurple"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }]
+    }
+    {
+      Name = "SwordSwipeA-Hestia"
+      InheritFrom = "SwordSwipeAFlipped"
+      ClearCreateAnimations = true
+      FilePath = "Hestia\Fx\SwordSwipeA-Hestia\SwordSwipeA-hestia"
+      GroupName = "Standing"
+      Type = "Book"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      //AddColor = false
+      //EndBlue = 0.10
+      //EndGreen = 0.02
+      //EndRed = 0.50
+      //StartBlue = 0.18
+      //StartGreen = 0.08
+      //StartRed = 0.41
+      EndFrame = 29
+      NumFrames = 29
+      ClearSlides = true
+      StartFrame = 1
+    }
+    {
+      Name = "SwordSwipeA-Hestia-Arthur"
+      InheritFrom = "SwordSwipeA-Hestia"
+      Scale = 2.0
+      FlipVertical = false
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeAChroma"
+        }
+        {
+          Name = "SwordSwipeADark-Arthur"
+        }
+        {
+          Name = "SwordSwipeADisplace"
+        }]
+    }
+    {
+      Name = "SwordSwipeAFlipped-Hestia-Arthur"
+      InheritFrom = "SwordSwipeAFlipped-Hestia"
+      Scale = 2.0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeAChromaFlipped"
+        }
+        {
+          Name = "SwordSwipeAFlippedDark-Arthur"
+        }
+        {
+          Name = "SwordSwipeAFlippedDisplace"
+        }]
+    }
+    {
+      Name = "SwordSwipeB-Hestia"
+      InheritFrom = "SwordSwipeB"
+      ChildAnimation = "QuickFlashDarkPurple"
+      GroupName = "Standing"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      Slides = [
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+          VisualFx = "SwordSwipeB-Displace"
+        }
+        {
+          DurationFrames = 2
+          VisualFx = "SwordSwipeBImpact-Hestia"
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    {
+      Name = "SwordSwipeBImpact-Hestia"
+      InheritFrom = "SwordSwipeBImpact"
+      CreateAnimation = "HestiaProjectileSplash2-SwordSwipeImpact"
+      VisualFx = "null"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ScaleFromOwner = "Ignore"
+      VisualFxCap = 1
+    }    
+    {
+      Name = "HestiaProjectileSplash2-SwordSwipeImpact"
+      InheritFrom = "HestiaMeleeSplash"
+      ChildAnimation = "QuickFlashDarkPurpleSwordSwipeBImpact"
+      VisualFx = "HestiaProjectileSplash4"
+      Angle = 90.0
+      PlaySpeed = 60.0
+      OffsetY = 100.0
+      UseAttachedMarkerLocation = "weapon_2_TRACKING"
+      IsometricSkew = "X"
+    }    
+    {
+      Name = "QuickFlashDarkPurpleSwordSwipeBImpact"
+      InheritFrom = "QuickFlashDarkPurple"
+      AngleFromOwner = "Take"
+      AngleMax = 1.0
+      Duration = 0.06
+      RadialOffsetMax = 101.0
+      RadialOffsetMin = 102.0
+      LocationFromOwner = "Take"
+    }
+    {
+      Name = "HestiaProjectileSplash4"
+      InheritFrom = "HestiaProjectileSplash2"
+      ChildAnimation = "QuickFlashDarkPurple"
+      Angle = 180.0
+      StartAlpha = 1.0
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      PlaySpeed = 60.0
+      UseAttachedMarkerLocation = "weapon_2_TRACKING"
+      IsometricSkew = "X"
+    }
+    {
+      Name = "HestiaProjectileSplash2"
+      FilePath = "Hestia\Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      GroupName = "Standing"
+      Type = "Book"
+      Angle = -90.0
+      ColorFromOwner = "Ignore"
+      EndFrame = 35
+      NumFrames = 35
+      StartFrame = 1
+      OriginX = 11.0
+      OriginY = 158.0
+      LocationFromOwner = "Ignore"
+      SortMode = "FromParent"
+      IsometricSkew = "Y"
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      TimeModifierFraction = 0.75
+    }
+    {
+      Name = "HestiaMeleeSplash"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
+      GroupName = "Standing"
+      Type = "Book"
+      Angle = -90.0
+      AngleMax = -80.0
+      AngleMin = -100.0
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      Sound = "/EmptyCue"
+      ColorFromOwner = "Ignore"
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      OriginX = 120.0
+      OriginY = 400.0
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Take"
+      UseAttachedMarkerLocation = "weapon_1_TRACKING"
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.8
+      Ambient = 0.0
+    }
+    {
+      Name = "SwordSwipeC-Hestia"
+      InheritFrom = "SwordSwipeC-ArthurBase"
+      ChildAnimation = "RailgunLineSword3-Hestia"
+      //VisualFx = "PoseidonMeleeSplash_SwordSwipeC"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+    }
+    {
+      Name = "RailgunLineSword3-Hestia"
+      InheritFrom = "RailgunLineSword3"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SwordSwipeC-Hestia-Arthur"
+      InheritFrom = "SwordSwipeC-Hestia"
+      OffsetZ = 52
+      ClearCreateAnimations = true
+      ChildAnimation = null
+      VisualFx = null
+      CreateAnimation = "SwordSwipeC-Displace-Arthur"
+      CreateAnimations = [
+        {
+          Name = "SwordSwipeC-Arthur-Chroma"
+        }
+        {
+          Name = "HestiaMeleeSplashDetached"
+        }]
+    }
+    {
+      Name = "ChargeAttack-Hestia"
+      InheritFrom = "ChargeAttack"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    /* Hestia - Sword - SecondaryTrait */
+    {
+      Name = "SwordParryParticles-Hestia"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleChangeSpeedMax = 1.0
+      AngleFromOwner = "Ignore"
+      AngleMax = 360.0
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EndFrame = 54
+      NumFrames = 54
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      OriginY = 180.0
+      RadialOffsetMax = 301.0
+      RadialOffsetMin = 300.0
+      RadialOffsetScaleRadius = 5000.0
+      RadialOffsetScaleY = 0.5
+      Acceleration = -1500.0
+      VelocityMax = 500.0
+      VelocityMin = 480.0
+      IsometricSkew = "Y"
+      PostRotateScaleY = 0.5
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.8
+      ScaleX = 1.25
+      Ambient = 0.0
+    }
+    {
+      Name = "RadialNovaSwordParry-Hestia"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      //VisualFx = "ArtemisSwordParryLeavesRandom"
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41    
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 16
+      VisualFxIntervalMax = 0.03
+      VisualFxIntervalMin = 0.01
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        { Name = "RadialNovaSwordParryDark" }
+        { Name = "DoorCloseDust" }
+        { Name = "SwordParryGroundCrack" }
+        { Name = "DisplaceShockwaveSwordParry" }
+        //{ Name = "SwordParrySpikeArtemis" }
+        { Name = "QuickFlashDarkPurple" }
+      ]
+    }
+    /* Hestia - Spear - WeaponTrait */
+    {
+      Name = "SpearThrustProjectile-Hestia"
+      InheritFrom = "SpearThrustProjectile"
+      ChainTo = "SpearThrustDissipate-Hestia"
+      ChildAnimation = "SpearThrustTrail-Hestia"
+      CreateAnimation = "QuickFlashDarkPurple"
+      Sound = "/EmptyCue"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      CreateAnimations = [
+        {
+          Name = "HestiaMeleeSplash"
+        }]
+      Slides = [
+        {
+          DurationFrames = 1
+          Frame = 1
+          VisualFx = "SpearThrustProjectileDark"
+        }
+        {
+          DurationFrames = 1
+          Frame = 2
+          VisualFx = "SpearThrustProjectileDark"
+        }
+        {
+          DurationFrames = 1
+          Frame = 3
+          VisualFx = "SpearDistortion"
+        }
+        {
+          DurationFrames = 1
+          Frame = 4
+          VisualFx = "SpearDistortion"
+        }]
+    }
+    {
+      Name = "SpearThrustDissipate-Hestia"
+      InheritFrom = "SpearThrustDissipate"
+      ChildAnimation = "SpearThrustTrail-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearThrustTrail-Hestia"
+      InheritFrom = "SpearThrustTrail"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      Slides = [
+        {
+          DurationFrames = 2
+          VisualFx = "SpearThrustParticles-Hestia"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }]
+    }
+    {
+      Name = "SpearThrustParticles-Hestia"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      Type = "Book"
+      Angle = 180.0
+      AngleFromOwner = "Take"
+      EndFrame = 35
+      NumFrames = 35
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      OffsetZ = 60.0
+      OriginX = 20.0
+      OriginY = 160.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Ambient = 0.0
+    }
+    {
+      Name = "SpearDashSwipe-Hestia"
+      InheritFrom = "SpearDashSwipe"
+      CreateAnimation = "SpearDashSwipeFx-Hestia"
+    }
+    {
+      Name = "SpearDashSwipeFx-Hestia"
+      InheritFrom = "SpearDashSwipeFx"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      CreateAnimation = "HestiaMeleeSplash"
+      ChildAnimation = "SpearDashSwipeFxB-Hestia"
+      VisualFx = "SpearSwipeDashBaseParticles-Hestia"
+    }
+    {
+      Name = "SpearDashSwipeFxB-Hestia"
+      InheritFrom = "SpearDashSwipeFxB"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearSwipeDashBaseParticles-Hestia"
+      InheritFrom = "SpearSwipeDashBaseParticles"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearSwipe360-Hestia"
+      InheritFrom = "SpearSwipe360"
+      ChildAnimation = "SpearSwipe360B-Hestia"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterImpactDetonate"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearSlides = true
+      Slides = [
+        {
+          DurationFrames = 1
+          Frame = 4
+        }]
+    }
+    {
+      Name = "SpearSwipe360B-Hestia"
+      InheritFrom = "SpearSwipe360B"
+      ChildAnimation = "SpearSwipeGlow-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearSwipeGlow-Hestia"
+      InheritFrom = "SpearSwipeGlow"
+      ChildAnimation = "SpearSwipe360-Hestia-Emitter"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearSwipe360-Hestia-Emitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      //VisualFx = "SpearSwipe360-Poseidon-Splashes"
+      Duration = 0.2
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.011
+      VisualFxIntervalMin = 0.01
+    }
+    /* Hestia - Spear - SecondaryTrait */
+    {
+      Name = "SpearThrowProjectile-Hestia"
+      InheritFrom = "SpearThrowProjectile"
+      ChildAnimation = null
+      CreateAnimation = "SpearThrowProjectileGlow-Hestia"
+      VisualFx = "SpearThrowParticles-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearThrowProjectileGlow-Hestia"
+      InheritFrom = "SpearThrowProjectileGlow"
+      ChildAnimation = "QuickFlashDarkPurple"
+      CreateAnimation = "SpearThrowProjectile-Hestia-Emitter"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearThrowParticles-Hestia"
+      InheritFrom = "SpearThrowParticles"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "SpearThrowParticles_Rush-Hestia"
+      InheritFrom = "SpearThrustParticles"
+      AngleFromOwner = "Take"
+      RandomDurationMax = 0.8
+      RandomDurationMin = 0.5
+      OffsetZ = 60.0
+      RandomOffsetY = 60
+      RadialOffsetMax = 150.0
+      VelocityMin = 1.0
+      StartScaleX = 32.0
+      ScaleMin = 0.2
+      ScaleMax = 1.0
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      OriginX = 64
+      OriginY = 32
+      ScaleY = 0.5
+      EaseIn = 0.999
+      EaseOut = 1.0
+    }
+    {
+      Name = "HestiaMeleeSplashDetached"
+      InheritFrom = "HestiaMeleeSplash"
+      UseAttachedMarkerLocation = null
+      OffsetZ = 52
+    }
+    {
+      Name = "HestiaMeleeSplash_SwordSwipeC"
+      InheritFrom = "HestiaMeleeSplash"
+      OffsetZ = -90.0
+      OriginY = 500.0
+      LocationZFromOwner = "Ignore"
+      Hue = -0.1
+    }
+    {
+      Name = "HestiaSplashNova"
+      CreateAnimation = "HestiaMeleeSplash"
+      FilePath = "Fx\HitSparkC\HitSparkC"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      AddColor = true
+      ColorFromOwner = "Ignore"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EndFrame = 23
+      NumFrames = 23
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetZ = 50.0
+      OriginX = 90.0
+      OriginY = 160.0
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleX = 1.5
+      ScaleY = 0.5
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      TimeModifierFraction = 0.75
+    }
+    {
+      Name = "HestiaSplashNovaShout"
+      InheritFrom = "HestiaSplashNova"
+      Sound = "/EmptyCue"
+    }
+    {
+      Name = "HestiaSplashNovaSpearThrow"
+      InheritFrom = "HestiaSplashNova"
+      OffsetZ = 0.0
+      LocationFromOwner = "Take"
+      ScaleX = 1.0
+    }
+    {
+      Name = "SpearRushTrailFx-Hestia"
+      InheritFrom = "SpearRushTrailFx"
+      VisualFx = "SpearRushTrail-Hestia"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "SpearRushTrailFxDark"
+        }
+        {
+          Name = "SpearRushDashPuff"
+        }
+        {
+          Name = "QuickFlashDarkPurpleSmall"
+        }
+      ]
+    }
+    /* Hestia - Bow - WeaponTrait */
+    {
+      Name = "BowWeaponArrow-Hestia"
+      InheritFrom = "BowWeaponArrow"
+      //ChildAnimation = "HestiaArrowFront"
+      VisualFx = "BowTrail-Hestia"
+      CreateAnimation = null
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EaseIn = 0.9
+      EaseOut = 1.0
+    }
+    {
+      Name = "BowWeaponArrow-Hestia-SplitShot"
+      InheritFrom = "BowWeaponArrow-Hestia"
+      ChildAnimation = "null"
+    }
+    {
+      Name = "HestiaArrowFront"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      ChildAnimation = "HestiaProjectileHeadDripFlare"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      ColorFromOwner = "Ignore"
+      EndFrame = 35
+      NumFrames = 35
+      PlaySpeed = 120.0
+      StartFrame = 1
+      FlipHorizontal = true
+      EndScaleY = 2.0
+      ScaleFromOwner = "Ignore"
+      StartScaleY = 0.0
+      Ambient = 0.0
+    }
+    {
+      Name = "HestiaProjectileHeadDripFlare"
+      FilePath = "Hestia\Flare_Hestia"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndAlpha = 0.2
+      StartAlpha = 1.0
+      StartRed = 1.0
+      Duration = 0.5
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      HoldLastFrame = false
+      DieWithOwner = true
+      SortMode = "FromParent"
+      EndScale = 0.5
+      ScaleX = 2.0
+      Ambient = 0.0
+      ChainTo = "HestiaProjectileHeadDripFlareLoop"
+    }
+    {
+      Name = "HestiaProjectileHeadDripFlareLoop"
+      InheritFrom = "HestiaProjectileHeadDripFlare"
+      StartAlpha = 0.2
+      EndAlpha = 0.25
+      PingPongColor = true
+      ChainTo = null
+      StartScale = 0.501
+      EndScale = 0.54
+      PingPongScale = true
+      Loop = true
+      EaseIn = 0
+      DieWithOwner = true
+    }
+    {
+      Name = "BowTrail-Hestia"
+      FilePath = "Animations\BowTrail-Poseidon\BowTrail-Poseidon"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "BowTrailA-Hestia"
+        }
+        {
+          Name = "BowTrailB-Hestia"
+        }]
+    }
+    {
+      Name = "BowTrail-Hestia-SplitShot"
+      FilePath = "Animations\BowTrail-Poseidon\BowTrail-Poseidon"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "BowTrailA-Hestia-SplitShot"
+        }
+        {
+          Name = "BowTrailB-Hestia-SplitShot"
+        }]
+    }
+    {
+      Name = "BowTrailA-Hestia"
+      InheritFrom = "BowTrailA"
+      CreateAnimation = "BowTrailA-Hestia-Particles"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EaseIn = 0.9
+      EaseOut = 1.0
+    }
+    {
+      Name = "BowTrailA-Hestia-SplitShot"
+      InheritFrom = "BowTrailA-Poseidon"
+    }
+    {
+      Name = "BowTrailA-Hestia-Particles"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
+      GroupName = "Standing"
+      Type = "Book"
+      Angle = 90.0
+      AngleFromOwner = "Take"
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 60.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      SortMode = "FromParent"
+      ScaleMax = 0.6
+      ScaleMin = 0.3
+      Ambient = 0.0
+    }
+    {
+      Name = "BowTrailA-Hestia-ParticlesDark"
+      InheritFrom = "BowTrailA-Hestia-Particles"
+      GroupName = "FX_Dark"
+      ColorFromOwner = "Ignore"
+      RandomPlaySpeedMax = 50.0
+      RandomPlaySpeedMin = 40.0
+      Color = 
+      {
+        Red = 0.0
+        Green = 0.0
+        Blue = 0.0
+      }
+    }
+    {
+      Name = "BowTrailB-Hestia"
+      InheritFrom = "BowTrailA-Hestia"
+      CreateAnimation = "BowTrailB_Dark"
+      FilePath = "Fx\BowTrailB\BowTrailB"
+      EndFrame = 60
+      NumFrames = 60
+      StartFrame = 1
+    }
+    {
+      Name = "BowTrailB-Hestia-SplitShot"
+      InheritFrom = "BowTrailB-Hestia"
+    }
+    {
+      Name = "BowCharge-Hestia"
+      InheritFrom = "BowCharge"
+      ChainTo = "BowChargedLoop-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "BowChargedLoop-Hestia"
+      InheritFrom = "BowChargedLoop"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "BowChargeFast-Hestia"
+      InheritFrom = "BowCharge-Hestia"
+      ChainTo = "BowChargedFastLoop-Hestia"
+      PlaySpeed = 200.0
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargedFastLoop-Hestia"
+      InheritFrom = "BowChargedLoop-Hestia"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargeRama-Hestia"
+      InheritFrom = "BowChargeRama"
+      ChildAnimation = "BowChargeRamaGlow-Hestia"
+      StartRed = 0.0
+      StartGreen = 0.6
+      StartBlue = 1.0
+      EndRed = 0.01
+      EndGreen = 1.0
+      EndBlue = 0.5
+      ChainTo = "BowChargedLoopRama-Hestia"
+    }
+    {
+      Name = "BowChargeRamaDash-Hestia"
+      InheritFrom = "BowChargeRama-Hestia"
+      ChainTo = "BowChargedLoopRamaDash-Hestia"
+      ChildAnimation = "BowChargeRamaGlowCharged-Hestia"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "BowChargeRamaGlow-Hestia"
+      InheritFrom = "BowChargeRamaGlow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+    }
+    {
+      Name = "BowChargeRamaGlowCharged-Hestia"
+      InheritFrom = "BowChargeRamaGlowCharged"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+    }
+    {
+      Name = "BowChargedLoopRama-Hestia"
+      InheritFrom = "BowChargedLoopRama"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      ChildAnimation = "BowChargeRamaGlowCharged-Hestia"
+    }
+    {
+      Name = "BowChargedLoopRamaDash-Hestia"
+      InheritFrom = "BowChargedLoopRama-Hestia"
+      DieWithoutWeaponCharge = "BowWeaponDash"
+    }
+    {
+      Name = "RamaWideShot-Hestia"
+      InheritFrom = "RamaWideShot"
+      VisualFx = "RamaWideShotTrail-Hestia"
+      ClearCreateAnimations = true
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      CreateAnimations = [
+        {
+          Name = "RamaWideShotDark-Hestia"
+        }
+        {
+          Name = "RamaWideShotGlow-Hestia"
+        }]
+    }
+    {
+      Name = "RamaWideShotDark-Hestia"
+      InheritFrom = "RamaWideShotDark"
+      StartRed = 0.0
+      StartGreen = 0.6
+      StartBlue = 1.0
+      EndRed = 0.01
+      EndGreen = 1.0
+      EndBlue = 0.5
+    }
+    {
+      Name = "RamaWideShotTrail-Hestia"
+      InheritFrom = "RamaWideShotTrail"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+    }
+    {
+      Name = "RamaWideShotGlow-Hestia"
+      InheritFrom = "RamaWideShotGlow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+    }
+    /* Hestia - Bow - SecondaryTrait */
+    /* Hestia - Shield - WeaponTrail */
+{
+      Name = "ShieldSwipe-Hestia"
+      InheritFrom = "ShieldSwipe"
+      ClearCreateAnimations = true
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFxIntervalMax = 0.06
+      VisualFxIntervalMin = 0.05
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "ShieldSwipeADisplace"
+        }
+        {
+          Name = "ShieldSwipeADark"
+        }
+        {
+          Name = "HestiaSplashNova"
+        }]
+    }
+    {
+      Name = "HestiaSplashNova"
+      CreateAnimation = "HestiaMeleeSplash"
+      FilePath = "Fx\HitSparkC\HitSparkC"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterArrowFire"
+      AddColor = true
+      ColorFromOwner = "Ignore"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EndFrame = 23
+      NumFrames = 23
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetZ = 50.0
+      OriginX = 90.0
+      OriginY = 160.0
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleX = 1.5
+      ScaleY = 0.5
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      TimeModifierFraction = 0.75
+    }
+    {
+      Name = "ShieldSwipeDash-Hestia"
+      InheritFrom = "ShieldSwipe-Hestia"
+      FlipVertical = true
+      ClearCreateAnimations = true
+      Scale = 1.4
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "ShieldSwipeADisplace_Dash"
+        }
+        {
+          Name = "ShieldSwipeADark_Dash"
+        }
+        {
+          Name = "HestiaSplashNova"
+        }]
+    }
+    {
+      Name = "ShieldCharge-Hestia"
+      InheritFrom = "ShieldCharge"
+      ChainTo = "ShieldChargedLoop-Hestia"
+      ChildAnimation = "ShieldChargeB-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ShieldChargeB-Hestia"
+      InheritFrom = "ShieldCharge-Hestia"
+      ChainTo = "ShieldChargedLoopB-Hestia"
+      ChildAnimation = "null"
+      PostRotateScaleY = 1.0
+    }
+    {
+      Name = "ShieldRush3D-Hestia"
+      InheritFrom = "ShieldRush3D"
+      CreateAnimation = "QuickFlashDarkPurple"
+      VisualFx = "ShieldRush3D-Hestia-Particles"
+      //Sound = "/SFX/Player Sounds/PoseidonWaterDashUpgrade"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ShieldRush3D-Hestia-Particles"
+      //CreateAnimation = "HestiaWaveDashSprite"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      GroupName = "Standing"
+      Type = "Book"
+      //AddColor = true
+      Angle = 180.0
+      EndFrame = 35
+      NumFrames = 35
+      Red = 0.50
+      Green = 0.50
+      Blue = 0.50
+      RandomPlaySpeedMax = 120.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      OffsetZ = 60.0
+      OriginX = 20.0
+      OriginY = 160.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.4
+      Ambient = 0.0
+    }    
+    {
+      Name = "ShieldRush3D-Out-Hestia"
+      InheritFrom = "ShieldRush3D-Hestia"
+      VisualFx = "null"
+      Sound = "/EmptyCue"
+      HoldLastFrame = false
+      EndScale = 0.0
+      StartScale = 1.25
+    }
+    {
+      Name = "ShieldRushTrail-Hestia"
+      InheritFrom = "ShieldRushTrail"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ShieldChargedLoop-Hestia"
+      InheritFrom = "ShieldChargedLoop"
+      ChildAnimation = "ShieldChargedLoopB-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ShieldChargedLoopB-Hestia"
+      InheritFrom = "ShieldChargedLoopB"
+      Color = 
+      {
+        Red = 0.41
+        Green = 0.08
+        Blue = 0.18
+      }
+    }
+    {
+      Name = "ShieldRush3DBeowulf-Hestia"
+      InheritFrom = "ShieldRush3D-Hestia"
+      NumAngles = 64
+      FilePath = "Fx\BeowulfShieldRush3D\BeowulfShieldRush3D"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.4
+      StartAlpha = 1
+      EndAlpha = 0.4
+      CreateAnimation = "ShieldRush3DBeowulfDark"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashPurple"
+        }]
+    }
+    {
+      Name = "ShieldRush3DBeowulfMax-Hestia"
+      InheritFrom = "ShieldRush3DBeowulfMax"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.3
+      StartAlpha = 1
+      EndAlpha = 0.4
+    }
+    {
+      Name = "ShieldRush3DBeowulf-Out-Hestia"
+      InheritFrom = "ShieldRush3DBeowulf-Out"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "BeowulfShieldSlam-Hestia"
+      InheritFrom = "BeowulfShieldSlam"
+      VisualFx = "BeowulfShieldSlamParticles-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "BeowulfShieldSlamDark"
+        }
+        {
+          Name = "SwordParryGroundCrack-Beowulf"
+        }
+        {
+          Name = "BeowulfShieldSlamWave-Hestia"
+        }
+        {
+          Name = "BeowulfShieldSlamWaveDark"
+        }
+        {
+          Name = "HestiaProjectileSplash2-SwordSwipeImpact"
+        }]
+    }
+    {
+      Name = "BeowulfShieldSlamParticles-Hestia"
+      InheritFrom = "BeowulfShieldSlamParticles"
+      Red = 0.41
+      Green = 0.08
+      Blue = 0.18
+    }
+     {
+      Name = "BeowulfShieldSlamWave-Hestia"
+      InheritFrom = "BeowulfShieldSlamWave"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    /* Hestia - Shield - SecondaryTrait  */
+    {
+      Name = "ProjectileShield-Hestia"
+      InheritFrom = "ProjectileShield"
+      CreateAnimation = "ProjectileShieldFlare-Hestia"
+      VisualFx = "ShieldThrowTrail-Hestia"
+    }
+    {
+      Name = "ProjectileShieldAlt01-Hestia"
+      InheritFrom = "ProjectileShieldAlt01"
+      CreateAnimation = "ProjectileShieldFlare-Hestia"
+      VisualFx = "ShieldThrowTrail-Hestia"
+    }
+    {
+      Name = "ProjectileShieldAlt03-Hestia"
+      InheritFrom = "ProjectileShieldAlt03"
+      CreateAnimation = "ProjectileShieldFlare-Hestia"
+      VisualFx = "ShieldThrowTrailBeowulf-Hestia"
+    }
+    {
+      Name = "ProjectileShieldAlt02-Hestia"
+      InheritFrom = "ProjectileShieldMirage"
+      CreateAnimation = "ProjectileShieldMirageLight-Hestia"
+      VisualFx = null
+    }
+    {
+      Name = "ShieldThrowTrail-Hestia"
+      InheritFrom = "ShieldThrowTrail"
+      VisualFx = "ShieldThrowTrailParticle-Hestia"
+      ColorFromOwner = "Take"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFxIntervalMax = 0.02
+      VisualFxIntervalMin = 0.01
+      CreateAnimations = [
+        {
+          Name = "ShieldThrowTrailDark"
+        }
+        {
+          Name = "ShieldThrowTrail-HestiaFx"
+        }]
+    }
+    {
+      Name = "ShieldThrowTrailBeowulf-Hestia"
+      InheritFrom = "ShieldThrowTrail-Hestia"
+      CreateAnimation = "null"
+      RotationSpeed = 0
+      Scale = 2
+      FilePath = "Fx\BeowulfShieldSpin\BeowulfShieldSpin"
+      NumFrames = 8
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 60
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ShieldThrowTrailBeowulfDark"
+        }]
+    }
+    {
+      Name = "ShieldThrowTrail-HestiaFx"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      ColorFromOwner = "Take"
+      Type = "Book"
+      Angle = 180.0
+      AngleFromOwner = "Take"
+      EndFrame = 35
+      NumFrames = 35      
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 80.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      OffsetZ = 60.0
+      OriginX = 20.0
+      OriginY = 160.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      ScaleMax = 0.8
+      ScaleMin = 0.6
+      ScaleX = 0.7
+      StartScaleY = 0.5
+      Ambient = 0.0
+    }
+    {
+      Name = "ProjectileShieldFlare-Hestia"
+      InheritFrom = "ProjectileShieldFlare-Hestia"
+      VisualFxIntervalMax = 0.06
+      VisualFxIntervalMin = 0.05
+      Color = 
+      {
+        Red = 0.41
+        Green = 0.08
+        Blue = 0.18
+      }
+    }
+    {
+      Name = "ShieldThrowTrailMirage-Hestia"
+      InheritFrom = "ShieldThrowTrailMirage"
+      VisualFx = "ShieldThrowTrailMirageB-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ShieldThrowTrailMirageDark"
+        }
+        {
+          Name = "QuickFlashDarkPurpleSmall"
+        }
+        {
+          Name = "RadialNovaShieldThrow-Hestia"
+        }
+        {
+          Name = "ShieldThrowTrailMirage-Hestia-Emitter"
+        }]
+    }
+    {
+      Name = "ShieldThrowTrailMirage-Hestia-Emitter"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "HestiaShieldThrowMiragePiece"
+      Duration = 0.15
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.011
+      VisualFxIntervalMin = 0.01
+    }
+    {
+      Name = "HestiaShieldThrowMiragePiece"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
+      GroupName = "FX_Terrain"
+      Type = "Book"
+      AngleMax = 360.0
+      ColorFromOwner = "Ignore"
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      EndFrame = 54
+      NumFrames = 54
+      RandomPlaySpeedMax = 120.0
+      RandomPlaySpeedMin = 90.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      RadialOffsetMax = 160.0
+      RadialOffsetMin = 150.0
+      RadialOffsetScaleY = 0.5
+      AngleFromOwner = "Ignore"
+      LocationFromOwner = "Maintain"
+      SortMode = "FromParent"
+      Acceleration = -700.0
+      VelocityMax = 500.0
+      VelocityMin = 400.0
+      PostRotateScaleY = 0.5
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 1.0
+      ScaleMin = 0.5
+      Ambient = 0.0
+      StartScaleX = 0.75
+      StartScaleY = 1.25
+      EndScaleX = 2
+      EndScaleY = 0.75
+      LocationZFromOwner = "Take"
+      DrawBehindOwner = true
+      AngleChangeSpeedMax = -240
+      AngleChangeSpeedMin = -280
+      AngleChangeAcceleration = 1440
+      StartAlpha = 1
+      EndAlpha = 0.6
+      OffsetZ = 60
+      CreateAnimation = null
+    }
+    {
+      Name = "HestiaShieldThrowMiragePieceIso"
+      InheritFrom = "HestiaShieldThrowMiragePiece"
+      IsometricSkew = "X"
+      PostRotateScaleY = 1.0
+      CreateAnimation = null
+      AngleChangeSpeedMin = 0
+      AngleChangeSpeedMax = 0
+      AngleChangeAcceleration = 0
+      StartScaleX = 1
+      StartScaleY = 0.2
+      EndScaleX = 0.8
+      EndScaleY = 1
+      StartAlpha = 0.5
+      EndAlpha = 0
+    }
+    {
+      Name = "ShieldThrowTrailMirageB-Hestia"
+      InheritFrom = "ShieldThrowTrailMirageB"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "RadialNovaShieldThrow-Hestia"
+      InheritFrom = "RadialNovaShieldThrow"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    /* Hestia - Gun - WeaponTrait */
+{
+      Name = "GunWeaponProjectile-Hestia"
+      InheritFrom = "GunWeaponProjectile"
+      CreateAnimation = "GunWeaponMuzzleFlash-Hestia"
+      VisualFx = "GunTrail-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "GunWeaponMuzzleFlash-Hestia"
+      InheritFrom = "GunWeaponMuzzleFlash"
+      CreateAnimation = "QuickFlashDarkPurple"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "GunTrail-Hestia"
+      FilePath = "Animations\GunTrail-Poseidon\GunTrail-Poseidon"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunTrailA-Hestia"
+        }
+        {
+          Name = "GunTrailB-Hestia"
+        }]
+    }
+    {
+      Name = "GunTrailA-Hestia"
+      InheritFrom = "GunTrailA"
+      ClearCreateAnimations = true
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      EaseIn = 0.5
+      EaseOut = 1.0
+      CreateAnimations = [
+        {
+          Name = "GunTrailA-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Hestia"
+        }
+        {
+          Name = "GunTrailA-Hestia-Particles"
+        }]
+    }
+    {
+      Name = "GunTrailA-Hestia-Particles"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      Angle = 0
+      AngleFromOwner = "Take"
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 90.0
+      RandomPlaySpeedMin = 60.0
+      RadialOffsetMin = 0
+      RadialOffsetMax = 40
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      UseVelocityAngleFromOwner = true
+      SortMode = "Isometric"
+      ScaleMax = 0.6
+      ScaleMin = 0.3
+      Ambient = 0.0
+      ScaleX = 2
+      StartScaleY = 1
+      EndScaleY = 2
+      EaseIn = 0.9
+      EaseOut = 1.0
+      Gravity = 200
+      //AlphaMin = 0.3
+      Alpha = 1.0
+    }
+    {
+      Name = "GunTrailFloorGlow-Hestia"
+      InheritFrom = "GunTrailFloorGlow"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "GunTrailB-Hestia"
+      InheritFrom = "GunTrailA-Hestia"
+      ClearCreateAnimations = true
+      FilePath = "Fx\GunTrailB\GunTrailB"
+      EndFrame = 42
+      NumFrames = 42
+      StartFrame = 1
+      CreateAnimations = [
+        {
+          Name = "GunTrailB-Dark"
+        }
+        {
+          Name = "GunTrailDisplacement"
+        }
+        {
+          Name = "GunTrailFloorGlow-Hestia"
+        }
+        {
+          Name = "GunTrailA-Hestia-Particles"
+        }]
+    }
+    {
+      Name = "GunFire-Hestia"
+      FilePath = "Animations\GunFire-Poseidon\GunFire-Poseidon"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "GunFireA-Hestia"
+        }
+        {
+          Name = "GunFireB-Hestia"
+        }]
+    }
+    {
+      Name = "GunFireA-Hestia"
+      InheritFrom = "GunFireA"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "GunFireB-Hestia"
+      InheritFrom = "GunFireA-Hestia"
+      CreateAnimation = "GunFireB-Dark"
+      FilePath = "Fx\GunFireB\GunFireB"
+      EndFrame = 33
+      NumFrames = 33
+      StartFrame = 1
+    }
+    {
+      Name = "GunWeaponImpact-Hestia"
+      InheritFrom = "GunWeaponImpact"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "BowWeaponArrow-Hestia-Alt01"
+      InheritFrom = "BowWeaponArrow-Hestia"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Hestia-Alt02"
+      InheritFrom = "BowWeaponArrow-Hestia"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
+    }
+    {
+      Name = "GunLaser-Hestia"
+      InheritFrom = "GunLaser"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFx = "GunLaserFeathers-Hestia"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "GunLaserDark"
+        }
+        {
+          Name = "GunLaserGlow-Hestia"
+        }
+        {
+          Name = "GunLaserHalo-Hestia"
+        }]
+    }
+    {
+      Name = "GunLaserGlow-Hestia"
+      InheritFrom = "GunLaserGlow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+    }
+    {
+      Name = "GunLaserHalo-Hestia"
+      InheritFrom = "GunLaserHalo"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      //VisualFx = "HestiaLaserParticles"
+      VisualFxIntervalMin = 0.1
+      VisualFxIntervalMax = 0.11
+    }
+    {
+      Name = "HestiaLaserParticles"
+      Type = "Book"
+      FilePath = "Hestia\Fx\HestiaWallSplash\HestiaWallSplash"
+      NumFrames = 35
+      Material = "Unlit"
+      LocationZFromOwner = "Take"
+      AngleFromOwner = "Take"
+      LocationFromOwner = "Ignore"
+      OriginX = 0
+      OriginY = 160
+      ScaleLength = 320
+      GroupName = "Standing"
+      RandomFlipVertical = true
+      ScaleY = 0.75
+      ScaleMin = 0.6
+      ScaleMax = 1.25
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 120
+    }
+    {
+      Name = "GunLaserFeathers-Hestia"
+      Type = "Random"
+      Random = [
+        {
+          Name = "GunLaserFeatherA-Hestia"
+        }
+        {
+          Name = "GunLaserFeatherB-Hestia"
+        }]
+    }
+    {
+      Name = "GunLaserFeatherA-Hestia"
+      InheritFrom = "GunLaserFeatherA"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "GunLaserFeatherB-Hestia"
+      InheritFrom = "GunLaserFeatherA-Hestia"
+    }
+    {
+      Name = "GunLaserOriginFlare-Hestia"
+      InheritFrom = "GunLaserOriginFlare"
+      VisualFx = "GunLaserFeathers-Hestia"
+      Color = 
+      {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
+      }
+    }
+    {
+      Name = "GunLaserTipFlare-Hestia"
+      InheritFrom = "GunLaserTipFlare"
+      Color = 
+      {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
+      }
+    }
+    {
+      Name = "GunCharge-Hestia"
+      InheritFrom = "BowCharge-Hestia"
+      ChainTo = "null"
+      DieWithoutWeaponCharge = "GunWeapon"
+      UseAttachedMarkerLocation = "weapon_2_TRACKING"
+    }
+    {
+      Name = "GunLaserEnd-Hestia"
+      InheritFrom = "GunLaser-Hestia"
+      TransferCopyBody = true
+      TransferAngle = true
+      ClearCreateAnimations = true
+      Loop = false
+      Duration = 0.09
+      StartScaleY = 1
+      EndScaleY = 0
+      GroupName = "Standing"
+      CreateAnimation = "null"
+    }
+    /* Hestia - Gun - SecondaryTrait */
+    {
+      Name = "ZagGrenadeExplosionHestia"
+      InheritFrom = "ZagGrenadeExplosionBase"
+      ClearCreateAnimations = true
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "GrenadeExplosionLightingHestia"
+        }
+        {
+          Name = "DisplaceShockwaveHemiGrenade"
+        }
+        {
+          Name = "ExplosionScorchDecalFade"
+        }
+        {
+          Name = "ZagGrenadeExplosionHestiaB"
+        }
+        {
+          Name = "ZagGrenadeExplosionHestiaSplash"
+        }]
+    }
+    {
+      Name = "ZagGrenadeExplosionHestiaB"
+      InheritFrom = "ZagGrenadeExplosionBaseB"
+      GroupName = "Standing"
+      DrawBehindOwner = true
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "ZagGrenadeExplosionHestiaSplash"
+      InheritFrom = "RadialNovaSwordParry-Hestia"
+      VisualFxCap = 6
+    }
+    {
+      Name = "GunGrenadeLuciferOrb-Hestia"
+      InheritFrom = "GunGrenadeLuciferOrb"
+      ChildAnimation = "GunGrenadeLuciferOrbGlow-Hestia"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      VisualFx = "GunGrenadeTrailContainer-LuciferOrb-Hestia"
+    }
+    {
+      Name = "GunGrenadeLuciferOrbGlow-Hestia"
+      InheritFrom = "GunGrenadeLuciferOrbGlow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      VisualFx = "GunGrenadeLuciferOrbFlare-Hestia"
+    }
+    {
+      Name = "GunGrenadeLuciferOrbFlare-Hestia"
+      InheritFrom = "GunGrenadeLuciferOrbFlare"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+    }
+    {
+      Name = "GunGrenadeTrailContainer-LuciferOrb-Hestia"
+      InheritFrom = "GunGrenadeTrailContainer-LuciferOrb"
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "GunGrenadeTrail-LuciferOrb"
+        }
+        {
+          Name = "GunGrenadeParticles-LuciferOrb-Hestia"
+        }]
+    }
+    {
+      Name = "GunGrenadeParticles-LuciferOrb-Hestia"
+      InheritFrom = "GunGrenadeParticles-LuciferOrb"
+      FilePath = "Hestia\Fx\HestiaProjectileSplash\HestiaProjectileSplash"
+      Type = "Book"
+      NumFrames = 41
+      Red = 1.0
+      Green = 1.0
+      Blue = 1.0
+      Hue = -0.05
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 90
+      StartAlpha = 1.0
+      EndAlpha = 0.99
+      ScaleY = 0.5
+      Scale = 0.5
+      ScaleMin = 0.2
+      ScaleMax = 1.0
+      UseOwnAngle = false
+      RandomRotation = true
+      EndScale = 0.99
+      AlphaMin = 0.99
+      GroupName = "Standing"
+    }
+    {
+      Name = "LuciferOrbAoE-Hestia"
+      InheritFrom = "LuciferOrbAoE"
+      CreateAnimation = "LuciferOrbAoEDissipate-Hestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "LuciferOrbAoEDissipate-Hestia"
+      InheritFrom = "LuciferOrbAoEDissipate"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "BowWeaponArrow-Hestia-SplitShot-Alt01"
+      InheritFrom = "BowWeaponArrow-Hestia-SplitShot"
+      FilePath = "Fx\Arrow\Arrow_Alt01"
+    }
+    {
+      Name = "BowWeaponArrow-Hestia-SplitShot-Alt02"
+      InheritFrom = "BowWeaponArrow-Hestia-SplitShot"
+      FilePath = "Fx\Arrow\Arrow_Alt02"
+    }
+    {
+      Name = "LuciferBomb-Hestia"
+      InheritFrom = "LuciferBomb"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "LuciferBombDark"
+        }
+        {
+          Name = "LuciferBombGlow-Hestia"
+        }
+        {
+          Name = "LuciferBombDropDisplace"
+        }
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+    }
+    /* Hestia - Fist - WeaponTrait */
+{
+      Name = "FistFxHestia"
+      InheritFrom = "FistFxBase"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ChildAnimation = "FistGlowHestia"
+      CreateAnimation = "HestiaMeleeSplash_Fist"
+    }
+    {
+      Name = "FistFxHestia_Reach"
+      InheritFrom = "FistFxHestia"
+      StartScaleX = 1.8
+      EndScaleX = 1
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "HestiaMeleeSplash_Fist"
+        }
+        {
+          Name = "FistFxDark_Reach"
+        }
+        {
+          Name = "FistFxDisplacement_Reach"
+        }]
+    }
+    {
+      Name = "HestiaMeleeSplash_Fist"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
+      Type = "Book"
+      AngleFromOwner = "Maintain"
+      Sound = "/EmptyCue"
+      ColorFromOwner = "Ignore"
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      EndFrame = 30
+      NumFrames = 30
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      OriginX = 120.0
+      OriginY = 375.0
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Take"
+      UseAttachedMarkerLocation = "weapon_1_TRACKING"
+      ScaleFromOwner = "Ignore"
+      GroupName = "FX_Dark"
+      ScaleMax = 0.9
+      ScaleMin = 0.7
+      Ambient = 0.0
+      Hue = 0
+      Angle = -90
+    }
+    {
+      Name = "FistGlowHestia"
+      InheritFrom = "FistGlow"
+      StartAlpha = 0.75
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    {
+      Name = "FistFxSwipeHestia"
+      InheritFrom = "FistFxSwipe"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ChildAnimation = "FistGlowHestia"
+      DieWithOwner = true
+      CreateAnimations = [
+        {
+          Name = "FistFxSwipeHestiaEmitter"
+        }
+        {
+          Name = "FistFxSwipeHestiaSplash"
+        }
+        {
+          Name = "FistFxSwipeHestiaSplashB"
+        }]
+    }
+    {
+      Name = "FistFxSwipeHestiaSplash"
+      Type = "Book"
+      FilePath = "Hestia\Fx\HestiaProjectileImpactPiece\HestiaProjectileImpactPiece"
+      NumFrames = 48
+      StartFrame = 1
+      PlaySpeed = 140
+      Material = "Unlit"
+      PostRotateScaleY = 1.0
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      OffsetZ = 60
+      ScaleX = 0.8
+      ScaleY = 1.0
+      Angle = 22
+      AngleChangeSpeedMin = 22
+      AngleChangeSpeedMax = 90
+      OriginX = 120
+      OriginY = 120
+      RadialOffsetMin = 100
+      RadialOffsetMax = 110
+      Velocity = 300
+      StartScaleX = 1
+      EndScaleX = 1.5
+      EaseIn = 0.8
+      EaseOut = 1.0
+      IsometricSkew = "X"
+      Acceleration = -400
+      LocationFromOwner = "Take"
+      AngleFromOwner = "Take"
+      RandomFlipVertical = true
+      GroupName = "FX_Standing_Add"
+      Hue = -0.05
+    }
+    {
+      Name = "FistFxSwipeHestiaSplashB"
+      InheritFrom = "FistFxSwipeHestiaSplash"
+      IsometricSkew = "None"
+      PostRotateScaleY = 0.5
+      StartFrame = 1
+      NumFrames = 49
+      PlaySpeed = 180
+      Acceleration = -400
+    }
+    {
+      Name = "FistFxSwipeHestiaEmitter"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      Scale = 0.25
+      Material = "Unlit"
+      UseAttachedTipLocation = true
+      VisualFxUse3DAngle = true
+      VisualFxDistanceMax = 5.0
+      VisualFxDistanceMin = 4.0
+      VisualFxRadialInterpolationLength = 3.0
+      AttachedTipLocationScaleY = 0.5
+      VisualFx = "HestiaFistSwipeParticles"
+      VisualFxCap = 10
+      Duration = 0.08
+      LocationFromOwner = "Maintain"
+    }
+    {
+      Name = "HestiaFistSwipeParticles"
+      FilePath = "Particles\particle_water_droplet"
+      GroupName = "Standing"
+      Type = "Constant"
+      AngleMin = 40
+      AngleMax = 60
+      AngleChangeSpeedMin = 45
+      AngleChangeSpeedMax = 180
+      AngleFromOwner = "Ignore"
+      //AddColor = true
+      ColorFromOwner = "Ignore"
+      //StartBlue = 1.0
+      //StartGreen = 1.0
+      //StartRed = 1.0
+      EndRed = 0
+      EndGreen = 1
+      EndBlue = 0.5
+      EaseIn = 0.7
+      EaseOut = 1.0
+      RandomDurationMax = 0.9
+      RandomDurationMin = 0.2
+      StartFrame = 1
+      LocationFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Acceleration = -600.0
+      VelocityMax = 500.0
+      VelocityMin = 400.0
+      EndScale = 0.0
+      Scale = 0.3
+      ScaleMax = 0.8
+      ScaleMin = 0.2
+      StartScale = 2.0
+      Ambient = 0.0
+      ScaleFromOwner = "Ignore"
+      Hue = -0.2
+    }
+    {
+      Name = "FistFxUppercutHestia"
+      InheritFrom = "FistFxUppercut"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "RadialNovaFistUppercut-Hestia"
+        }
+        {
+          Name = "FistFxUppercutDark"
+        }
+        {
+          Name = "FistUppercutSmoke"
+        }]
+    }
+    {
+      Name = "RadialNovaFistUppercut-Hestia"
+      InheritFrom = "RadialNovaSwordParry-Hestia"
+      ClearCreateAnimations = true
+      VisualFx = "HestiaProjectileImpactPieceIso_ScaleRadius"
+      VisualFxCap = 8
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "DoorCloseDust"
+        }
+        {
+          Name = "DisplaceShockwaveSwordParry"
+        }
+        {
+          Name = "SwordParrySpike"
+        }
+        {
+          Name = "SwordParrySpikeHestia"
+        }
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+    }
+    {
+      Name = "SwordParrySpikeHestia"
+      InheritFrom = "SwordParrySpike"
+      Color = 
+      {
+        Red = 0.80
+        Green = 0.20
+        Blue = 0.20
+      }
+    }
+    {
+      Name = "ClawSwipe-Hestia"
+      InheritFrom = "ClawSwipe"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      VisualFx = "HestiaClawSwipeFx"
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.02
+      VisualFxCap = 6
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "ClawSwipe-HestiaFx"
+        }]
+    }
+    {
+      Name = "HestiaClawSwipeFx"
+      Type = "Book"
+      FilePath = "Hestia\Fx\HestiaProjectileSplash\HestiaProjectileSplash"
+      NumFrames = 41
+      StartFrame = 1
+      PostRotateScaleY = 0.5
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      Material = "Unlit"
+      LocationFromOwner = "Ignore"
+      AngleFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      AngleMin = -45
+      AngleMax = 45
+      UseOwnAngle = true
+      RadialOffsetMin = 100
+      RadialOffsetMax = 150
+      IsometricSkew = "X"
+      RandomFlipVertical = true
+      RandomFlipHorizontal = true
+      ScaleMin = 0.2
+      ScaleMax = 0.8
+      RandomPlaySpeedMin = 90
+      RandomPlaySpeedMax = 120
+      VelocityMin = 100
+      VelocityMax = 150
+      Acceleration = -100
+      Hue = -0.05
+      AlphaMin = 0.25
+      AlphaMax = 1.0
+    }
+    {
+      Name = "ClawSwipe-HestiaFx"
+      Type = "Book"
+      FilePath = "Fx\SwordSwipeA-Poseidon\SwordSwipeA-Poseidon"
+      NumFrames = 29
+      Material = "Unlit"
+      PostRotateScaleY = 0.66
+      AngleFromOwner = "Take"
+      ScaleFromOwner = "Ignore"
+      Scale = 1.33
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 90
+      GroupName = "FX_Dark"
+      ColorFromOwner = "Ignore"
+      LocationFromOwner = "Take"
+    }
+    {
+      Name = "ClawSwipeFlipped-HestiaFx"
+      InheritFrom = "ClawSwipe-HestiaFx"
+      FlipVertical = true
+    }
+    {
+      Name = "ClawSwipeDash-HestiaFx"
+      InheritFrom = "ClawSwipe-HestiaFx"
+      FlipVertical = true
+      RadialOffsetMin = 50
+      RadialOffsetMax = 51
+    }
+    {
+      Name = "ClawSwipeFlipped-Hestia"
+      InheritFrom = "ClawSwipe-Hestia"
+      CreateAnimation = "ClawSwipeDarkFlipped"
+      FlipVertical = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "ClawSwipeFlipped-HestiaFx"
+        }]
+    }
+    {
+      Name = "ClawSwipeFlippedDash-Hestia"
+      InheritFrom = "ClawSwipeFlipped-Hestia"
+      CreateAnimation = "ClawSwipeDarkFlippedDash"
+      FlipVertical = true
+      RadialOffsetMin = 50
+      RadialOffsetMax = 51
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPuple"
+        }
+        {
+          Name = "ClawSwipeDash-HestiaFx"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercut-Hestia"
+      InheritFrom = "FistFxUppercutDirectionalHestia"
+      OverlayVfx = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ClawSwipeUppercutCone-Hestia"
+        }
+        {
+          Name = "ClawSwipeUppercutDark"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercutSpecial-Hestia"
+      InheritFrom = "ClawSwipeUppercutSpecial"
+      Red = 1
+      Green = 1
+      Blue = 1
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      OverlayVfx = true
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "ClawSwipeUppercutCone-Hestia"
+        }
+        {
+          Name = "ClawSwipeUppercutDark"
+        }]
+    }
+    {
+      Name = "ClawSwipeUppercutCone-Hestia"
+      InheritFrom = "ClawSwipeUppercutCone"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ChildAnimation = "FistGlowUppercutConeHestia"
+      ClearCreateAnimations = true
+      VisualFx = "null"
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }
+        {
+          Name = "HestiaSplashUppercut"
+        }
+        {
+          Name = "HestiaSplashUppercut2"
+        }]
+    }    
+    {
+      Name = "FistGlowUppercutConeHestia"
+      InheritFrom = "FistGlowUppercutCone"
+      StartAlpha = 0.75
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+    }
+    /* Hestia - Fist - SecondaryTrait */
+    {
+      Name = "FistFxUppercutDirectionalHestia"
+      InheritFrom = "FistFxUppercut"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "FistUppercutConeHestia"
+        }
+        {
+          Name = "FistFxUppercutDark"
+        }]
+    }
+    {
+      Name = "FistUppercutConeHestia"
+      InheritFrom = "FistUppercutCone"
+      ChildAnimation = "FistGlowUppercutConeHestia"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      CreateAnimations = [
+        {
+          Name = "HestiaSplashUppercut"
+        }
+        {
+          Name = "HestiaSplashUppercut2"
+        }]
+    }
+    {
+      Name = "HestiaSplashUppercut"
+      Type = "Book"
+      FilePath = "Hestia\Fx\HestiaMeleeSplash\HestiaMeleeSplash"
+      NumFrames = 30
+      PlaySpeed = 50
+      Scale = 1.5
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      Material = "Unlit"
+      UseOwnAngle = false
+      AngleFromOwner = "Take"
+      RadialOffsetMin = 250
+      RadialOffsetMax = 250
+      Hue = -0.05
+      OffsetZ = 60
+      Gravity = 200
+      LocationFromOwner = "Take"
+    }
+    {
+      Name = "HestiaSplashUppercut2"
+      InheritFrom = "HestiaSplashUppercut"
+      FilePath = "Hestia\Fx\HestiaProjectileSplash\HestiaProjectileSplash"
+      NumFrames = 40
+      PlaySpeed = 60
+      Scale = 1.25
+      Red = 0.80
+      Green = 0.20
+      Blue = 0.20
+      UseOwnAngle = true
+      RadialOffsetMin = 200
+      RadialOffsetMax = 200
+      Hue = -0.1
+      OffsetZ = 120
+    }
+    {
+      Name = "FistFxUppercutDirectionalHestia_FlashKick"
+      InheritFrom = "FistFxUppercutDirectionalHestia"
+      FilePath = "Fx\SpearDashSwipe\SpearDashSwipe"
+      Type = "Slide"
+      StartFrame = 1
+      NumFrames = 9
+      OffsetZ = 0
+      UseOwnAngle = true
+      OriginX = 480
+      OriginY = 480
+      IsometricSkew = "X"
+      AngleFromOwner = "Take"
+      Scale = 0.75
+      Slides = [
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    /* Hestia - Shout - Hellring */
+    {
+      Name = "HestiaRing"
+      FilePath = "Dev\blank_invisible"
+      GroupName = "FX_Terrain"
+      Type = "Constant"
+      AddColor = true
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      DieWithOwner = true
+      RandomRotation = false
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 960.0
+      Ambient = 0.0
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      VisualFx = "HestiaAmmoPushRingCirclesBright"
+      VisualFxIntervalMin = 0.15
+      VisualFxIntervalMax = 0.2
+      IgnoreFrameCap = true
+      CreateAnimation = "HestiaAmmoPushRingDisplacement"
+      Color = 
+      {
+        Red = 1.0
+        Green = 1.0
+        Blue = 1.0
+      }
+      Sound = "/Leftovers/Menu Sounds/TextReveal2"
+    }
+    {
+      Name = "HestiaAmmoPushRingDisplacement"
+      Type = "Constant"
+      FilePath = "Fx\HadesAmmoWeapon\HadesAmmoWeaponDisplacement"
+      Material = "Unlit"
+      ScaleRadius = 400
+      GroupName = "FX_Displacement"
+      DieWithOwner = true
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      UseAttachedAddColor = false
+      StartAlpha = 1
+      EndAlpha = 0
+      Duration = 2
+      SortMode = "FromParent"
+      VisualFx = "HestiaAmmoPushRingEdgeFx"
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.011
+      IgnoreFrameCap = true
+    }
+    {
+      Name = "HestiaAmmoPushRingCirclesBright"
+      Type = "Book"
+      FilePath = "Hestia\Fx\HadesAmmoWeaponCirclesBright\HadesAmmoWeaponCirclesBright"
+      NumFrames = 6
+      Material = "Unlit"
+      ScaleRadius = 920
+      ScaleMin = 0.98
+      ScaleMax = 1.03
+      StartScale = 0.95
+      EndScale = 1.05
+      EaseIn = 0.5
+      EaseOut = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      RandomDurationMin = 0.45
+      RandomDurationMax = 0.7
+      GroupName = "FX_Terrain_Add"
+      StartAlpha = 0
+      EndAlpha = 1
+      PingPongColor = true
+      Loop = false
+      DieWithOwner = false
+      AngleFromOwner = "Ignore"
+      PlaySpeed = 1e-13
+      RandomStartFrame = true
+      CreateAnimation = "HestiaAmmoPushRingCirclesDark"
+      IgnoreFrameCap = true
+      Scale = 1
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      UseAttachedAddColor = false
+      //Color
+    }
+    {
+      Name = "HestiaAmmoPushRingCirclesDark"
+      InheritFrom = "HestiaAmmoPushRingCirclesBright"
+      FilePath = "Fx\HadesAmmoWeaponCirclesDark\HadesAmmoWeaponCirclesDark"
+      NumFrames = 3
+      GroupName = "FX_Terrain"
+      CreateAnimation = null
+    }
+    {
+      Name = "HestiaAmmoPushRingEdgeFx"
+      Type = "Constant"
+      FilePath = "Particles\particle_snowDust_01"
+      NumFrames = 1
+      Material = "Unlit"
+      AngleMin = 0
+      AngleMax = 360
+      UseOwnAngle = false
+      RadialOffsetMin = 100
+      RadialOffsetMax = 101
+      RadialOffsetScaleRadius = 100
+      RadialOffsetScaleY = 0.5
+      VelocityMin = 100
+      VelocityMax = 200
+      UpwardVelocityMin = 100
+      UpwardVelocityMax = 200
+      StartScale = 0.4
+      EndScale = 0.75
+      Scale = 1.9
+      ScaleMin = 0.8
+      ScaleMax = 1.0
+      StartAlpha = 1
+      EndAlpha = 0
+      Gravity = 120
+      RandomDurationMin = 0.45
+      RandomDurationMax = 0.5
+      Acceleration = -900
+      LocationFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      GroupName = "Standing"
+      SortMode = "FromParent"
+    }
+    {
+      Name = "HestiaCastNovaHit"
+      FilePath = "Fx\ShadeNova\ShadeNova"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      EndFrame = 28
+      NumFrames = 28
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      RandomFlipVertical = true
+      Ambient = 0.0
+      Hue = 0.3
+      Scale = 1
+      ScaleY = 1.0
+      PlaySpeed = 80
+      OffsetZ = 30
+      Red = 1.0
+      Green = 0
+      Blue = 0.81
+    }
+    /* Hestia - Duos */
+    /* Theseus - Wrath */
+    /* Boon FX */
+    {
+      Name = "BoonDropHestia"
+      InheritFrom = "BoonDropGold"
+      ChildAnimation = "BoonDropA-Hestia"
+    }
+    {
+      Name = "BoonDropA-Hestia"
+      InheritFrom = "BoonDropA"
+      ChildAnimation = "BoonDropB-Hestia"
+      Color = {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BoonDropB-Hestia"
+      InheritFrom = "BoonDropB"
+      ChildAnimation = "BoonDropC-Hestia"
+      Color = {
+        Red = 0.92
+        Green = 0.5
+        Blue =  0.79
+      }
+    }
+    {
+      Name = "BoonDropC-Hestia"
+      InheritFrom = "BoonDropC"
+      ChildAnimation = "BoonDropHestiaIcon"
+    }
+    {
+      Name = "BoonDropHestiaIcon"
+      InheritFrom = "BoonDropIcon"
+      FilePath = "Hestia\HestiaIconSpin\HestiaIconSpin"
+      StartFrame = 1
+      EndFrame = 3
+      NumFrames = 3
+      Scale = 0.16
+    }
+    {
+      Name = "BoonDissipateA_Hestia"
+      InheritFrom = "BoonDissipateA"
+      Red = 0.3
+      Green = 1
+      Blue = 0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "BoonDissipateB_Hestia"
+        }
+        {
+          Name = "BoonDissipateVertical_Hestia"
+        }
+        {
+          Name = "BoonDissipateGlow_Hestia"
+        }]
+    }
+    {
+      Name = "BoonDissipateB_Hestia"
+      InheritFrom = "BoonDissipateB"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "BoonDissipateVertical_Hestia"
+      InheritFrom = "BoonDissipateVertical"
+      Hue = 0.4
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+      AddColor = true
+    } 
+    {
+      Name = "BoonDissipateGlow_Hestia"
+      InheritFrom = "BoonDissipateGlow"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "QuickFlashDarkPurple"
+      InheritFrom = "QuickFlashRed"
+      EndBlue = 0.16
+      EndGreen = 0.05
+      EndRed = 0.32
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      Duration = 0.3
+      EaseIn = 0.99
+      EaseOut = 1.0
+      Scale = 0.7
+    }
+    {
+      Name = "QuickFlashDarkPurpleSmall"
+      InheritFrom = "QuickFlashDarkPurple"
+      Scale = 0.5
+      OffsetZ = 90
+    }
+    /* Dash */
+    {
+      Name = "BlinkTrailVerticalB-Hestia"
+      //InheritFrom = "BlinkTrailVerticalB"
+      ChildAnimation = "null"
+      //Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      StopSoundOnFinishFade = 0.2
+      CreateAnimations = [
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+      Color = 
+      {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
+      }
+    }
+    {
+      Name = "HestiaRushProjectileHead"
+      Type = "Book"
+      //FilePath = "Fx\DemeterSmokeDirectional\DemeterSmokeDirectional"
+      NumFrames = 43
+      PlaySpeed = 60
+      Material = "Unlit"
+      Scale = 1.5
+      AngleFromOwner = "Maintain"
+      UseOwnAngle = true
+      SortMode = "FromParent"
+      //Sound = "/SFX/Player Sounds/DemeterColdNovaRush"
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      AddColor = false
+      EaseIn = 0.9
+      EaseOut = 1.0
+      VisualFxDistanceMin = 30
+      VisualFxDistanceMax = 40
+      VisualFxCap = 16
+      VisualFx = "HestiaRushProjectileTrail"
+    }
+    {
+      Name = "HestiaSpinLoop"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      RandomStartFrame = true
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
+      Ambient = 0.0
+      ChainTo = "HestiaSpinLoopOut"    
+      ColorFromOwner = "Ignore"
+      SortMode = "Secondary"
+      OverlayVfx = false
+      TransferFrameFromThis = true
+      Material = "Unlit"
+      ScaleX = 3
+      ScaleY = 4
+      CreateAnimations = [
+        { Name = "LavaEmber" }
+      ]
+    }
+    {
+      Name = "HestiaDemeterSpinLoop"
+      FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      StopSoundOnFinishFade = 0.2
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      RandomPlaySpeedMax = 34.0
+      RandomPlaySpeedMin = 28.0
+      RandomStartFrame = true
+      ReRandomizeOnLoop = false
+      StartFrame = 1
+      LocationZFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ScaleRadius = 100.0
+      //OriginX = 45.0
+      //OriginY = 30.0
+      Ambient = 0.0
+      ChainTo = "HestiaDemeterSpinLoopOut"    
+      ColorFromOwner = "Ignore"
+      SortMode = "Secondary"
+      OverlayVfx = false
+      TransferFrameFromThis = true
+      Material = "Unlit"
+      ScaleX = 3
+      ScaleY = 4
+      CreateAnimations = [
+        { Name = "LavaEmber" }
+      ]
+    }
+    {
+      Name = "HestiaDemeterSpinIn"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      TransferFrameFromThis = false
+      ChainTo = "HestiaDemeterSpinLoop"
+      FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
+      Sound = "/null"
+      EndFrame = 5
+      Loop = false
+      NumFrames = 5
+      StartFrame = 1
+      StartAlpha = 0
+      EndAlpha = 1
+    }
+    {
+      Name = "HestiaDemeterSpinOut"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      TransferFrameFromThis = false
+      TransferFrameToThis = false
+      ChainTo = "null"
+      FilePath = "Hestia\Fx\LavaFireDemeter\LavaFireDemeter"
+      Sound = "/EmptyCue"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 35
+      VisualFx = null
+      EndFrame = 15
+      Loop = false
+      NumFrames = 15
+      StartFrame = 1
+      EndAlpha = 0
+      ChildAnimation = "HestiaDemeterSpinOut2"
+    }
+    {
+      Name = "HestiaDemeterSpinOut2"
+      InheritFrom = "HestiaDemeterSpinOut"
+      ChildAnimation = null
+    }
+    {
+      Name = "HestiaSpinLight"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow"
+      Blue = 0.18
+      Green = 0.08
+      Red = 0.41
+      GroupName = "FX_Terrain_Add"
+      StartAlpha = 0
+      EndAlpha = 0.3
+      PingPongColor = false
+      Duration = 0.25
+      DieWithOwner = true
+      Scale = 2
+      ScaleY = 0.5
+      HoldLastFrame = true
+      ChainTo = "HestiaSpinLightOut"
+    }
+    {
+      Name = "HestiaSpinLightOut"
+      InheritFrom = "HestiaSpinLight"
+      StartAlpha = 0.3
+      EndAlpha = 0
+      HoldLastFrame = false
+      ChainTo = null
+    }
+    {
+      Name = "HestiaDemeterSpinLoopOut"
+      InheritFrom = "HestiaDemeterSpinLoop"
+      ChainTo = "HestiaDemeterSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
+    }
+    {
+      Name = "HestiaSpinLoopOut"
+      InheritFrom = "HestiaSpinLoop"
+      ChainTo = "HestiaSpinOut"
+      Loop = false
+      TransferFrameToThis = true
+      TransferFrameFromThis = false
+      EndFrame = 35
+      NumFrames = 35
+      Alpha = 1
+      StartAlpha = 1
+      EndAlpha = 0.999
+    }
+    {
+      Name = "HestiaDefenseLoop"
+      FilePath = "Fx\Immolation\Immolation"
+      Type = "Book"
+      AngleMax = 10.0
+      AngleMin = -10.0
+      EndFrame = 43
+      Loop = true
+      NumFrames = 43
+      Alpha = 0.9
+      Color = {
+        Blue = 0.10
+        Green = 0.08
+        Red = 0.38
+      }
+      //RandomPlaySpeedMax = 80.0
+      //RandomPlaySpeedMin = 50.0      
+      TransferFrameFromThis = true
+      OriginX = 128.0
+      OriginY = 150.0
+      RandomOffsetX = 20.0
+      RandomOffsetY = 6.0
+      Material = "Unlit"
+      GroupName = "FX_Standing_Add"
+      SortMode = "FromParent"
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      OffsetZ = 80
+      ScaleMax = 0.9
+      ScaleMin = 0.6
+    }   
+    {
+      Name = "DefenseSmoke"
+      Type = "Book"
+      FilePath = "Fx\GroundFogIso\GroundFogIso"
+      NumFrames = 138
+      //Loop = true
+      Material = "Unlit"
+      Alpha = 1.0
+      ScaleFromOwner = "Ignore"
+      Scale = 1.25
+      ChainTo = "DefenseSmokeFadeOut"
+      AngleFromOwner = "Ignore"
+      GroupName = "Standing"
+      //RandomStartFrame = true
+      PlaySpeed = 20
+      OffsetY = 0
+      OffsetZ = 100
+      //RandomFlipHorizontal = true
+      DieWithOwner = true
+      TransferFrameToThis = true
+    }
+    {
+      Name = "DefenseSmokeFadeIn"
+      InheritFrom = "DefenseSmoke"
+      Loop = false
+      StartAlpha = 0
+      EndAlpha = 0.4
+      LoopFramesOnly = true
+      Duration = 0.2
+      ChainTo = "DefenseSmoke"
+      DieWithOwner = true
+      TransferFrameFromThis = true
+      TransferFrameToThis = false
+    }
+    {
+      Name = "DefenseSmokeFadeOut"
+      InheritFrom = "DefenseSmoke"
+      Loop = false
+      StartAlpha = 0.4
+      EndAlpha = 0
+      ChainTo = null
+      DieWithOwner = true
+      SortMode = "Isometric"
+    }
+    {
+      Name = "HestiaSpinIn"
+      InheritFrom = "HestiaSpinLoop"
+      TransferFrameFromThis = false
+      ChainTo = "HestiaSpinLoop"
+      //CreateAnimation = "QuickFlashIce"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
+      Sound = "/null"
+      EndFrame = 5
+      Loop = false
+      NumFrames = 5
+      StartFrame = 1
+      StartAlpha = 0
+      EndAlpha = 1
+    }
+    {
+      Name = "HestiaSpinOut"
+      InheritFrom = "HestiaSpinLoop"
+      TransferFrameFromThis = false
+      TransferFrameToThis = false
+      ChainTo = "null"
+      FilePath = "Hestia\Fx\LavaFire\LavaFire"
+      Sound = "/EmptyCue"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      RandomPlaySpeedMin = 30
+      RandomPlaySpeedMax = 35
+      VisualFx = null
+      EndFrame = 15
+      Loop = false
+      NumFrames = 15
+      StartFrame = 1
+      EndAlpha = 0
+      ChildAnimation = "HestiaSpinOut2"
+    }
+    {
+      Name = "HestiaSpinOut2"
+      InheritFrom = "HestiaSpinOut"
+      ChildAnimation = null
+    }
+    {
+      Name = "HestiaRushProjectileTrail"
+      Type = "Book"
+      FilePath = "Fx\KnockbackLines\KnockbackLines"
+      AddColor = false
+      StartBlue = 0.18
+      StartGreen = 0.08
+      StartRed = 0.41
+      NumFrames = 21
+      LocationFromOwner = "Ignore"
+      RandomFlipVertical = true
+      RandomPlaySpeedMin = 60
+      RandomPlaySpeedMax = 90
+      StartAlpha = 0.8
+      EndAlpha = 0
+      PostRotateScaleY = 1.0
+      Scale = 0.5
+      StartScaleX = 2
+      EndScaleX = 1
+      ScaleY = 0.5
+      OriginX = -50
+      OriginY = 135
+      OffsetZ = -30
+      GroupName = "FX_Terrain"
+    }
+    {
+      Name = "HestiaRushProjectileImpact"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      CreateAnimation = "HestiaRushProjectileImpactFx"
+      Duration = 0.1
+    }
+    {
+      Name = "HestiaRushProjectileImpactFx"
+      Type = "Slide"
+      FilePath = "Fx\DemeterSmokeA\DemeterSmokeA"
+      NumFrames = 47
+      Material = "Unlit"
+      StartScale = 0.7
+      EndScale = 0.69
+      DieWithOwner = false
+      ColorFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      AngleFromOwner = "Ignore"
+      UseAttachedFlasher = false
+      OverlayVfx = true
+      UseOwnAngle = false
+      //Sound = "/SFX/Player Sounds/DemeterRushImpactPoof"
+      CreateAnimation = "QuickFlashDarkPurple"
+      Slides = [
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 0
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }
+        {
+          DurationFrames = 1
+        }]
+    }
+    {
+      Name = "HestiaEncounterStartBuff"
+      Type = "Constant"
+      FilePath = "Dev\blank_invisible"
+      VisualFxIntervalMin = 0.7
+      VisualFxIntervalMax = 0.71
+      VisualFx = "HestiaEncounterStartBuffFront"
+      Sound = "/SFX/AresWrathBattle"
+      StopSoundOnFinishFade = 0.2
+    }
+    {
+      Name = "HestiaEncounterStartBuffFront"
+      Type = "Book"
+      FilePath = "Fx\PowerUpFront\PowerUpFront"
+      NumFrames = 28
+      PlaySpeed = 45
+      GroupName = "FX_Standing_Add"
+      AddColor = true
+      Blue = 0.17
+      Green = 0.08
+      Red = 0.39
+      AngleFromOwner = "Ignore"
+      ScaleFromOwner = "Ignore"
+      Scale = 0.66
+      CreateAnimations = [
+        {
+          Name = "HestiaEncounterStartBuffBack"
+        }
+        {
+          Name = "HestiaEncounterStartBuffGlow"
+        }
+        {
+          Name = "HestiaEncounterStartBuffFx"
+        }]
+    }
+    {
+      Name = "HestiaEncounterStartBuffBack"
+      InheritFrom = "HestiaEncounterStartBuffFront"
+      FilePath = "Fx\PowerUpBack\PowerUpBack"
+      CreateAnimation = null
+      ClearCreateAnimations = true
+      GroupName = "FX_Terrain_Add"
+    }
+    {
+      Name = "HestiaEncounterStartBuffFx"
+      Type = "Book"
+      FilePath = "Fx\AresKillDamageBuff\AresKillDamageBuff"
+      NumFrames = 30
+      AngleMin = 0
+      AngleMax = 1
+      AddColor = false
+      GroupName = "FX_Standing_Add"
+      AngleFromOwner = "Ignore"
+      RandomFlipVertical = false
+      RandomFlipHorizontal = true
+      PostRotateScaleY = 1.0
+      StartScale = 0.8
+      EndScale = 1.2
+      EaseIn = 0.9
+      EaseOut = 1.0
+      StartAlpha = 0
+      EndAlpha = 1
+      PingPongColor = true
+      PlaySpeed = 30
+      SortMode = "FromParent"
+      Loop = false
+      OffsetZ = 80
+      Scale = 2
+      Hue = 0.916
+      DieWithOwner = true
+    }
+    {
+      Name = "HestiaEncounterStartBuffGlow"
+      Type = "Constant"
+      FilePath = "Particles\particle_glow_egg"
+      Blue = 0.17
+      Green = 0.08
+      Red = 0.39
+      StartAlpha = 0.5
+      EndAlpha = 0
+      PingPongColor = false
+      Loop = false
+      Duration = 1.0
+      ScaleFromOwner = "Ignore"
+      OffsetZ = 60
+      StartScale = 1
+      EndScale = 1.75
+      EaseIn = 0.9
+      EaseOut = 1.0
+      GroupName = "FX_Standing_Add"
+      DieWithOwner = true
+    }
+    {
+      Name = "HestiaEncounterStartBuffFloor"
+      Type = "Book"
+      FilePath = "Fx\BloodstoneHelixTrail\BloodstoneHelixTrail"
+      NumFrames = 50
+      PlaySpeed = 30
+      PostRotateScaleY = 0.5
+      AngleFromOwner = "Ignore"
+      UseOwnAngle = false
+      AddColor = true
+      GroupName = "FX_Terrain_Add"
+      StartBlue = 0.17
+      StartGreen = 0.08
+      StartRed = 0.39
+      Loop = true
+      OffsetZ = -10
+      StartAlpha = 1
+      EndAlpha = 0
+      DieWithOwner = true
+    }
+    {
+      Name = "BlinkTrailFlat-Hestia"
+      InheritFrom = "BlinkTrailFlat"
+      ChildAnimation = "null"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "BlinkTrailVerticalA-Hestia"
+      InheritFrom = "BlinkTrailVerticalA"
+      ChildAnimation = "BlinkTrailFlash-Hestia"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue =  0.21
+      }
+    }
+    {
+      Name = "ZagreusDashNoCollide_Hestia"
+      InheritFrom = "ZagreusDashNoCollide"
+      ChainTo = "ZagreusDashCollide_Hestia"
+      ChildAnimation = "ZagreusDashNoCollideVFX_Hestia"
+      EndFrame = 60
+      StartFrame = 1
+    }
+    {
+      Name = "ZagreusDashCollide_Hestia"
+      InheritFrom = "ZagreusDashCollide"
+      ChildAnimation = "ZagreusDashCollideVFX_Hestia"
+      EndFrame = 60
+      StartFrame = 1
+    }
+
+    {
+      Name = "ZagreusDashNoCollideVFX_Hestia"
+      InheritFrom = "ZagreusDashNoCollideVFX"
+      EndFrame = 60
+      StartFrame = 1
+      Hue = 0.916
+    }
+
+    {
+      Name = "ZagreusDashCollideVFX_Hestia"
+      InheritFrom = "ZagreusDashCollideVFX"
+      EndFrame = 60
+      StartFrame = 1
+      Hue = 0.916
+    }
+    {
+      Name = "StunnedFrontHestia"
+      InheritFrom = "StunnedFront"
+      Color = {
+        Blue = 0.18
+        Green = 0.08
+        Red = 0.41
+      }
+    }
+    {
+      Name = "StunnedBackHestia"
+      InheritFrom = "StunnedBack"
+      Color = {
+        Blue = 0.17
+        Green = 0.08
+        Red = 0.39
+      }
+    }
+    /* Attraction Fx */
+    {
+      Name = "HestiaFistVacuumFx"
+      Type = "Book"
+      FilePath = "Fx\FistVacuumFx\FistVacuumFx"
+      NumFrames = 14
+      AddColor = true
+      StartRed = 0.6
+      StartGreen = 0
+      StartBlue = 1
+      EndRed = 0.4
+      EndBlue = 0.999
+      EndGreen = 0.001
+      GroupName = "FX_Standing_Add"
+      OriginX = 25
+      OriginY = 100
+      OffsetZ = 60
+      StartAlpha = 1.0
+      EndAlpha = 0.9
+      ScaleY = 1.5
+      SortMode = "FromParent"
+      ScaleFromOwner = "Ignore"
+      LocationFromOwner = "Ignore"
+      AngleFromOwner = "Take"
+      LocationZFromOwner = "Ignore"
+      RandomFlipVertical = true
+      ScaleLength = 485
+      //VisualFx = "FistVacuumParticles"
+      VisualFxCap = 16
+      VisualFxIntervalMin = 0.01
+      VisualFxIntervalMax = 0.03
+      CreateAnimations = [
+        /*{
+          Name = "FistVacuumFxDark"
+        }
+        {
+          Name = "FistVacuumFxDisplacement"
+        }*/]
+    }
+    /* Cast */
+    {
+      Name = "HestiaLavaSplashProjectileHead"
+      FilePath = "Hestia\Fx\LavaSplashProjectileHead\LavaSplashProjectileHead"
+      Type = "Book"
+      VisualFx = "HestiaLavaSplashProjectileTrail"
+      Color ={       
+       Red = 1.0
+       Blue = 1.0
+       Green = 1.0 
+      }
+      EndFrame = 40
+      Loop = true
+      NumFrames = 40
+      PlaySpeed = 6.0
+      StartFrame = 1
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrail"
+      FilePath = "Animations\LavaSplashProjectileTrail\LavaSplashProjectileTrail"
+      Type = "Random"
+      EndFrame = 1.0
+      NumFrames = 1.0
+      StartFrame = 1.0
+      Random = [
+        {
+          Name = "HestiaLavaSplashProjectileTrailA"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailB"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailC"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailD"
+        }]
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      Color ={
+        Red = 1.0
+        Blue = 1.0
+        Green = 1.0
+      }
+      AddColor = false
+      AngleMax = 5.0
+      AngleMin = -5.0
+      EndFrame = 50
+      NumFrames = 50
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      StartFrame = 1
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Take"
+      ScaleMax = 1.2
+      ScaleMin = 0.8
+      Ambient = 0.0
+      CancelOverCap = true
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailB"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailC"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailD"
+      InheritFrom = "LavaSplashProjectileTrailA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+    }
+    {
+      Name = "HestiaLavaPuddle"
+      CreateAnimation = "LavaHeatWavesPuddle"
+      FilePath = "Hestia\Fx\LavaPuddleIn\LavaPuddleIn"
+      GroupName = "FX_Terrain"
+      DrawBehindOwner = true
+      Type = "Book"
+      VisualFx = "HestiaLavaPuddleParticles"
+      //VisualFxManagerCap = 300
+      //ScaleRadius = 110
+      Color ={
+        Red = 0.9
+        Blue = 0.9
+        Green = 0.9
+      }
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 17
+      HoldLastFrame = true
+      NumFrames = 17
+      PlaySpeed = 30.0
+      StartFrame = 1
+      //OriginX = 25.0
+      OffsetZ = 50.0
+      //Scale = 1.0
+      ScaleFromOwner = "Ignore"
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.2
+      VisualFxIntervalMin = 0.1
+    }
+    {
+      Name = "ConsecrationAoEE"
+      Type = "Constant"
+      FilePath = "Fx\Arthur\ConsecrationAoE_1"
+      GroupName = "FX_Terrain"
+      PostRotateScaleY = 0.5
+      RotationSpeed = 2
+      Material = "Unlit"
+      VisualFx = "ConsecrationAoE3_VFX"
+      VisualFxIntervalMin = 0.5
+      VisualFxIntervalMax = 0.51
+      StartRed = 0.2
+      StartGreen = 0.5
+      StartBlue = 1
+      EndRed = 0
+      EndGreen = 0
+      EndBlue = 0
+      AddColor = true
+      EndAlpha = 0.75
+      Duration = 0.3
+      EaseIn = 0.8
+      EaseOut = 1.0
+      StartScale = 0.8
+      EndScale = 1.0
+      HoldLastFrame = true
+      Sound = "/Leftovers/SFX/ConsecrationLoopSFX"
+      StopSoundOnFinishFade = 0.2
+      AngleFromOwner = "Ignore"
+      ScaleRadius = 500
+      CreateAnimations = [
+        {
+          Name = "ConsecrationAoE2"
+        }
+        {
+          Name = "ConsecrationAoE2A"
+        }
+        {
+          Name = "ConsecrationAoE3"
+        }
+        {
+          Name = "ConsecrationStartGlow"
+        }
+        {
+          Name = "ConsecrationStartSpike"
+        }]
+    }
+    {
+      Name = "HestiaLavaPuddleOutLarge"
+      InheritFrom = "HestiaLavaPuddle"
+      GroupName = "FX_Terrain"
+      CreateAnimation = "null"
+      FilePath = "Hestia\Fx\LavaPuddleOut\LavaPuddleOut"
+      //UseOwnAngle = false
+      EndFrame = 20
+      HoldLastFrame = false
+      OffsetX = 8
+      OffsetY = 54
+      NumFrames = 20
+      StartFrame = 1
+      Scale = 1.0
+    }
+    {
+      Name = "HestiaLavaPuddleOutSmallest"
+      InheritFrom = "HestiaLavaPuddleOutLarge"      
+      OffsetX = 5
+      OffsetY = 54
+    }
+    {
+      Name = "HestiaLavaPuddleOutSmall"
+      InheritFrom = "HestiaLavaPuddleOutLarge"      
+      OffsetX = 6
+      OffsetY = 56
+    }
+    {
+      Name = "HestiaLavaPuddleOutLargest"
+      InheritFrom = "HestiaLavaPuddleOutLarge"      
+      OffsetX = 12
+      OffsetY = 64
+    }
+    {
+      Name = "HestiaLavaPuddleSmallest"
+      InheritFrom = "HestiaLavaPuddle"
+      GroupName = "FX_Terrain"
+      //Sound = "/SFX/LavaPuddleAmbientLoop"
+      //StopSoundOnFinishFade = 0.2
+      Scale = 0.5
+      //OffsetX = 5
+      OffsetY = 25
+    }
+    {
+      Name = "HestiaLavaPuddleSmall"
+      InheritFrom = "HestiaLavaPuddleSmallest"
+      Scale = 0.7
+    }
+    {
+      Name = "HestiaLavaPuddleLarge"
+      InheritFrom = "HestiaLavaPuddle"
+      GroupName = "FX_Terrain"
+      Sound = "/SFX/LavaPuddleAmbientLoop"
+      StopSoundOnFinishFade = 0.2
+      Scale = 0.9
+    }
+    {
+      Name = "HestiaLavaPuddleLargest"
+      InheritFrom = "HestiaLavaPuddleLarge"
+      Scale = 1.2
+    }
+    {
+      Name = "HestiaLavaPuddleParticles"
+      FilePath = "Animations\LavaPuddleParticles\LavaPuddleParticles"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleA"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleB"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleC"
+        }
+        {
+          Name = "HestiaLavaSplashProjectileTrailPuddleD"
+        }]
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailA\LavaSplashProjectileTrailA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      AngleMax = 295.0
+      AngleMin = 245.0
+      EndFrame = 50
+      NumFrames = 50
+      RandomPlaySpeedMax = 45.0
+      RandomPlaySpeedMin = 30.0
+      //AddColor = true
+      Color ={
+        Red = 0.8
+        Blue = 0.8
+        Green = 0.8
+      }
+      StartFrame = 1
+      RandomOffsetX = 120.0
+      RandomOffsetY = 20.0
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      ScaleMax = 1.2
+      ScaleMin = 0.8
+      Ambient = 0.0
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleB"
+      InheritFrom = "HestiaLavaSplashProjectileTrailPuddleA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailB\LavaSplashProjectileTrailB"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleC"
+      InheritFrom = "LavaSplashProjectileTrailPuddleA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailC\LavaSplashProjectileTrailC"
+    }
+    {
+      Name = "HestiaLavaSplashProjectileTrailPuddleD"
+      InheritFrom = "LavaSplashProjectileTrailPuddleA"
+      FilePath = "Hestia\Fx\LavaSplashProjectileTrailD\LavaSplashProjectileTrailD"
+    }
+    
+     {
+      Name = "ProjectileFireRing-Hestia"
+      InheritFrom = "ProjectileFireRing"
+      CreateAnimation = "QuickFlashDarkPurple"
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      OffsetZ = 110.0
+    }
+    {
+      Name = "HestiaRangedTrail"
+      FilePath = "Fx\ArtemisRangedTrail\ArtemisRangedTrail"
+      GroupName = "Standing"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 91.0
+      RandomPlaySpeedMin = 60.0
+      StartFrame = 1
+      RandomFlipVertical = true
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      SortMode = "FromParent"
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      Scale = 0.4
+      ScaleY = 0.75
+      Ambient = 0.0
+      /*CreateAnimations = [
+        { Name = "ArtemisRangedTrailDark" }
+        { Name = "ArtemisRangedTrailHelixRandom" }
+        { Name = "ArtemisRangedTrailLeavesRandom" }
+      ]*/
+    }
+    {
+      Name = "HestiaHitFx"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Standing_Top"
+      Light = "null"
+      AngleFromOwner = "Ignore"
+      Sound = "/SFX/Player Sounds/ArtemisLeavesImpactDetonate"
+      PlaySpeed = 120.0
+      StartRed = 0.82
+      StartGreen = 0.20
+      StartBlue = 0.50
+      LocationFromOwner = "Ignore"
+      IsometricSkew = "X"
+      PostRotateScaleY = 1.0
+      Scale = 0.25
+      ScaleFromOwner = "Ignore"
+      CreateAnimations = [
+        { Name = "QuickFlashGreen" }
+        { Name = "ArtemisHitTwinkle-IgnoreLocation" }
+      ]
+      Color = { Red = 0.50 Green = 1.0 Blue = 0.0 }
+    }
+    /* Character Fx */
+    {
+      Name = "ArtemisExplosion"
+      FilePath = "Hestia\Fx\ArtemisExplosion\ArtemisExplosion"
+      GroupName = "Standing"
+      Type = "Book"
+      VisualFx = "MineExplosionSparks"
+      VisualFxManagerCap = 400
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 53
+      NumFrames = 53
+      RandomPlaySpeedMax = 70.0
+      RandomPlaySpeedMin = 50.0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      SortFromOwner = "Take"
+      SortMode = "FromParent"
+      ScaleRadius = 240.0
+      Ambient = 0.0
+      VisualFxCap = 24
+      VisualFxIntervalMax = 0.0011
+      VisualFxIntervalMin = 0.001
+      UseBoundsForSortArea = true
+      CreateAnimations = [
+        {
+          Name = "QuickFlashGreen"
+        }
+        {
+          Name = "MineExplosionLighting"
+        }
+        {
+          Name = "DisplaceShockwaveHemi"
+        }
+        {
+          Name = "ExplosionScorchDecalFade"
+        }]
+    }
+    {
+      Name = "TheseusGodPowerPreviewDecal_Hestia"
+      InheritFrom = "TheseusGodPowerPreviewDecalDark"
+      Color = 
+      {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
+    }
+    {
+      Name = "RadialNovaTheseusWrath-Hestia"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      EndRed = 0.999
+      StartBlue = 0.50
+      StartGreen = 0.20
+      StartRed = 0.82
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        {
+          Name = "TheseusWrathSpikeHestia"
+        }
+        /*{
+          Name = "AresSwordHoverDropParry"
+        }*/
+        /*{
+          Name = "AresBladeSpinOutParry"
+        }*/
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+    }
+    {
+      Name = "RadialNovaDevotion-Hestia"
+      InheritFrom = "RadialNova"
+      GroupName = "FX_Terrain_Add"
+      EndRed = 0.999
+      StartBlue = 0.50
+      StartGreen = 0.20
+      StartRed = 0.82
+      PlaySpeed = 75.0
+      ScaleRadius = 350.0
+      VisualFxCap = 3
+      VisualFxIntervalMax = 0.00011
+      VisualFxIntervalMin = 0.0001
+      TimeModifierFraction = 0.0
+      CreateAnimations = [
+        {
+          Name = "RadialNovaSwordParryDark"
+        }
+        /*{
+          Name = "AresSwordHoverDropParry"
+        }
+        {
+          Name = "AresBladeSpinOutParry"
+        }*/
+        {
+          Name = "QuickFlashDarkPurple"
+        }]
+    }
+    {
+      Name = "TheseusWrathSpikeHestia"
+      InheritFrom = "TheseusWrathSpike"
+      Color = 
+      {
+        Red = 0.82
+        Green = 0.20
+        Blue = 0.50
+      }
+    }
+    /* Centaur Soul */
+    {
+      Name = "RoomRewardEmptyHealthDrop"
+      CreateAnimation = "PickupFlare"
+      FilePath = "Hestia\Fx\CentaurSoul\CentaurSoul"
+      Type = "Book"
+      VisualFx = "RoomRewardEmptyHealthDropParticles"
+      EaseOut = 1.0
+      EndFrame = 24
+      Loop = true
+      NumFrames = 24
+      PlaySpeed = 24.0
+      StartFrame = 1
+      EndOffsetY = 10.0
+      Scale = 0.66
+      Ambient = 0.0
+      VisualFxIntervalMax = 0.3
+      VisualFxIntervalMin = 0.2
+      PingPongShiftOverDuration = true
+      Slides = [
+        {
+          DurationFrames = 1
+          Sound = "/SFX/HeartPulsate1"
+          Frame = 5
+        }
+        {
+          DurationFrames = 1
+          Sound = "/SFX/HeartPulsate2"
+          Frame = 12
+        }]
+    }
+    {
+      Name = "RoomRewardEmptyHealthDropParticles"
+      FilePath = "Particles\particle_ascension_01"
+      GroupName = "FX_Standing_Top"
+      Type = "Constant"
+      AngleMax = 360.0
+      UseOwnAngle = false
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.03
+      StartRed = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      RandomDurationMax = 1.5
+      RandomDurationMin = 0.5
+      StartFrame = 1
+      RadialOffsetMax = 30.0
+      RadialOffsetMin = 25.0
+      LocationFromOwner = "Take"
+      VelocityMax = 100.0
+      VelocityMin = 50.0
+      PingPongScale = true
+      ScaleFromOwner = "Ignore"
+      ScaleMax = 0.5
+      ScaleMin = 0.25
+      StartScale = 0.0
+      Ambient = 0.0
+      RandomAccelerationMax = -50.0
+      RandomAccelerationMin = -60.0
+    }
+    {
+      Name = "RoomRewardEmptyHealthDropPickupFx"
+      FilePath = "Fx\MaxHealthUpPickup\MaxHealthUpPickup"
+      Type = "Book"
+      EndFrame = 42
+      NumFrames = 42
+      PlaySpeed = 30.0
+      StartFrame = 1
+      Ambient = 0.0
+      SortMode = "FromParent"
+      LocationZFromOwner = "Ignore"
+    }
+    // Cerberus Assist Fx
+    {
+      Name = "Cerberus_ZagreusAssistJump_ToRun"
+      FilePath = "Animations\Cerberus\HadesAssistJumpIn\CerberusHadesAssistJumpIn"
+      Type = "Slide"
+      AngleFromOwner = "Ignore"
+      ChainTo = "Cerberus_HadesAssistRun"
+      VideoTexture = "Cerberus_HadesAssistJumpIn_Bink"
+      Velocity = 300
+      Sound = "null"
+      EndFrame = 13
+      NumAngles = 1
+      NumFrames = 13
+      StartFrame = 1
+      OffsetY = -114.0
+      StartAlpha = 0
+      EndAlpha = 1
+      Slides = [
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }
+        {
+          DurationFrames = 2
+          Sound = "/SFX/Enemy Sounds/Minotaur/MinotaurFootstepsHugeRUSH"
+        }]
+      Material = 
+      {
+        Ambient = 0.0
+        Diffuse = 0.0
+        Directionality = 0.0
+      }
+    }
+  ]
+}

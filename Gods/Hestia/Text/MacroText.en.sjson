@@ -1,0 +1,13 @@
+{
+  Texts = [
+    "_append"
+    {
+      Id = "UpgradeChoiceMenu_Title_HestiaUpgrade"
+      DisplayName = "Boons of Hestia"
+    }
+    {
+      Id = "Player_GodDispleased_HestiaUpgrade"
+      DisplayName = "Hestia Grew Displeased!"
+    }
+  ]
+}
