@@ -827,6 +827,71 @@ function AuraThread(args)
         end
     end
 end
+-- HealthAsObolTrait Mechanic
+OnControlPressed{ "Gift",
+function( triggerArgs )
+    local target = triggerArgs.UseTarget
+    if target == nil then
+        return
+    end
+    if target.SacrificeCost then
+        if target.Rarity then
+            local interactionBlocked = false
+            if not CurrentRun.CurrentRoom.AlwaysAllowLootInteraction then
+                for enemyId, enemy in pairs( ActiveEnemies ) do
+                    if enemy.BlocksLootInteraction then
+                        interactionBlocked = true
+                        break
+                        --DebugPrint({ Text = "blockedByEnemy = "..GetTableString( nil, enemy ) })
+                    end
+                end
+            end
+
+            if interactionBlocked then
+                local userTable = triggerArgs.TriggeredByTable
+                thread( CannotUseLootPresentation, triggerArgs.triggeredById, userTable )
+                CreateAnimation({ Name = "ShoutFlare", DestinationId = triggerArgs.triggeredById })
+            elseif not AreScreensActive() then		
+                if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
+                    CantAffordPresentation( target )
+                    return
+                end
+                if target.SacrificeCost ~= nil and target.SacrificeCost > 0 then
+                    target.Purchased = true
+                    SacrificeHealth({ SacrificeHealth = target.SacrificeCost, MinHealth = 1 })
+                    RemoveStoreItem({Name = target.Name, IsBoon = true, BoonRaritiesOverride = target.BoonRaritiesOverride, StackNum = target.StackNum })
+                    PlaySound({ Name = "/Leftovers/Menu Sounds/StoreBuyingItem" })
+                    thread( PlayVoiceLines, GlobalVoiceLines.PurchasedConsumableVoiceLines, true )
+                end
+
+                if target.RarityBoosted then
+                    UseHeroTraitsWithValue("RarityBonus", true )
+                end
+                
+                SetPlayerInvulnerable( "HandleLootPickupAnimation" )
+                PlayInteractAnimation( triggerArgs.triggeredById )
+                HandleLootPickup( CurrentRun, target )
+                SetPlayerVulnerable( "HandleLootPickupAnimation" )
+            end
+        else
+            if CurrentRun.Hero.HandlingDeath then
+                return
+            end
+    
+            if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < (target.SacrificeCost+1) then
+                CantAffordPresentation( target )
+                return
+            end
+            if target.SacrificeCost ~= nil and target.SacrificeCost > 0 and target.PurchaseRequirements ~= nil and not IsGameStateEligible( CurrentRun, target.PurchaseRequirements ) then
+                CantPurchaseWorldItemPresentation( target )
+                return
+            end
+            target.UseSacrifice = true
+            PurchaseConsumableItem( CurrentRun, target, triggerArgs )
+        end
+    end
+end
+}
 ModUtil.Path.Wrap("HandleLootPickup",
     function(baseFunc, currentRun, loot)
         local times = 0
@@ -917,6 +982,9 @@ ModUtil.Path.Wrap("HandleLootPickup",
                 thread(GiftTrackUnlockedPresentation, loot.Name)
             end
         else
+            if loot.SacrificeId then
+				Destroy({ Id = loot.SacrificeId })
+			end
             baseFunc(currentRun, loot)
         end
         if (times > 0) then

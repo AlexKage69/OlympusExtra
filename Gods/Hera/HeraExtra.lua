@@ -8282,15 +8282,6 @@ end]]
 		thread( RevulnerablePlayerAfterShout )
 	end
 	-- HealthAsObolTrait Mechanic
-	
-	ModUtil.Path.Wrap("HandleLootPickup",
-		function(baseFunc, currentRun, loot)
-			if loot.SacrificeId then
-				Destroy({ Id = loot.SacrificeId })
-			end
-			baseFunc(currentRun, loot)
-		end
-	)
 	ModUtil.Path.Wrap("PurchaseConsumableItem",
 		function(baseFunc, currentRun, consumableItem, args)
 			if consumableItem.SacrificeCost and consumableItem.UseSacrifice then
