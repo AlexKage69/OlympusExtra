@@ -253,8 +253,8 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		Color = { 255, 255, 255, 255 },
 		ShortTotal = "EpicBonusMetaUpgrade_ShortTotal",
 		ShortTotalNoIcon = "EpicBonusMetaUpgrade_ShortTotalNoIcon",
-		--InRunTooltip = "EpicBonus_InRun",
-		--InRunValueFunctionName = "GetTotalEpicBonus",
+		InRunTooltip = "EpicBonusMetaUpgrade_InRun",
+		InRunValueFunctionName = "GetTotalEpicBonus",
 		ChangeValue = 1.01,
 		--DecimalPlaces = 1,
 		AddOutgoingDamageModifiers =
@@ -551,14 +551,16 @@ function AddDashlessBuff(duration)
 	end
 end
 function GetTotalEpicBonus()
-	local perGodMultiplier = GetTotalStatChange( MetaUpgradeData.GodEnhancementMetaUpgrade )
+	local perGodMultiplier = GetTotalStatChange( MetaUpgradeData.EpicBonusMetaUpgrade )
 	local godDictionary = {}
-	for traitName in pairs( CurrentRun.Hero.TraitDictionary ) do
-		if GetLootSourceName( traitName ) then
-			godDictionary[GetLootSourceName( traitName )] = true
+	local count = 0
+	for k, traitData in pairs(CurrentRun.Hero.Traits) do
+		if GetRarityValue( traitData.Rarity ) >= 3 then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(traitData.Name..GetRarityValue( traitData.Rarity )))	
+			count = count + 1
 		end
 	end
-	return 2
+	return count * perGodMultiplier
 end
 
 function EnableOEMirrorSwap()

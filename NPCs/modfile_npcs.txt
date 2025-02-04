@@ -5,7 +5,7 @@
 
 :: New NPCs
 :: Include "MakariaNPC/modfile_makaria.txt"
-:: Include "MorosNPC/modfile_moros.txt"
+Include "MorosNPC/modfile_moros.txt"
 
 To "Game/Text/en/HelpText.en.sjson"
 SJSON "Text/HelpText.en.sjson"
