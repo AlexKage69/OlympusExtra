@@ -1,0 +1,369 @@
+{
+  /*
+  Made by AlexKage and physiX
+  Additional writing by bessyboo
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_SeedVegetableTartarusCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedVegetableTartarusCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_VegetableTartarusCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_VegetableTartarusCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedVegetableStyxCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedVegetableStyxCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_VegetableStyxCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_VegetableStyxCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedVegetableErebusCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedVegetableErebusCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_VegetableErebusCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_VegetableErebusCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedVegetableAsphodelRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedVegetableAsphodelRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_VegetableAsphodelRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_VegetableAsphodelRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedVegetableChaosRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedVegetableChaosRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_VegetableChaosRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_VegetableChaosRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedVegetableChaosLegendary01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedVegetableChaosLegendary01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_VegetableChaosLegendary01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_VegetableChaosLegendary01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedFruitElysiumCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedFruitElysiumCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_FruitElysiumCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_FruitElysiumCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedFruitSurfaceCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedFruitSurfaceCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_FruitSurfaceCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_FruitSurfaceCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedFruitHomeCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedFruitHomeCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_FruitHomeCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_FruitHomeCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedFruitGaiaRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedFruitGaiaRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_FruitGaiaRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_FruitGaiaRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedFruitTartarusRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedFruitTartarusRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_FruitTartarusRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_FruitTartarusRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedFruitGaiaLegendary01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedFruitGaiaLegendary01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_FruitGaiaLegendary01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_FruitGaiaLegendary01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedHerbAsphodelCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedHerbAsphodelCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_HerbAsphodelCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_HerbAsphodelCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedHerbChaosCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedHerbChaosCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_HerbChaosCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_HerbChaosCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedHerbGaiaCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedHerbGaiaCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_HerbGaiaCommon01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_HerbGaiaCommon01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedHerbElysiumRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedHerbElysiumRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_HerbElysiumRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_HerbElysiumRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedHerbStyxRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedHerbStyxRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_HerbStyxRare01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_HerbStyxRare01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_SeedHerbSurfaceLegendary01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_SeedHerbSurfaceLegendary01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_HerbSurfaceLegendary01_01"
+      Speaker = "Achilles"
+      DisplayName = "'...'"
+    }
+    {
+      Id = "CodexData_HerbSurfaceLegendary01_02"
+      Speaker = "Achilles"
+      DisplayName = "'... {#CodexBoldFormat}...{#PreviousFormat}'"
+    }
+  ]
+}

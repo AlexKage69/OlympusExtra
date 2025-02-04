@@ -1,0 +1,22 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "MakariaIdle"
+      //ChainTo = "NyxIdleGreeting_Start"
+      //FilePath = "Animations\NPCNyx\Idle\NyxIdle"
+      Type = "Book"
+      VideoTexture = "NPC_AchillesIdle_Bink"
+      EndFrame = 73
+      Loop = true
+      NumAngles = 16
+      NumFrames = 73
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetY = -50.0
+      Ambient = 0.0
+      CancelOnOwnerMove = true
+      OnlyWhenVisible = true
+    }
+  ]
+}

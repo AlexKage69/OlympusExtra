@@ -1,0 +1,11 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "ApolloOverlay"
+      InheritFrom = "HadesOverlay"
+      FilePath = "Apollo\Portraits_Apollo_01"
+      Scale = 0.3
+    }
+  ]
+}

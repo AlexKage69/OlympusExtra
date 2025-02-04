@@ -1,0 +1,719 @@
+{
+  Animations = [
+    "_append"
+    // HitSparkArmorA for armor hit animation.
+    // EnemyDeathFxBack (Fx\DeathFxBack\DeathFxBack) is for explosion of armor.
+    /* Hephaestus - Attack/Special */
+    {
+      Name = "IgneousHitSparkArmorA"
+      FilePath = "Fx\HitSparkArmorA\HitSparkArmorA"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      UseOwnAngle = false
+      EndFrame = 13
+      NumFrames = 13
+      RandomPlaySpeedMin = 50
+      RandomPlaySpeedMax = 60
+      AddColor = true
+      StartRed = 0.5
+      StartGreen = 0.6
+      StartBlue = 0.01
+      EndRed = 0.51
+      EndGreen = 0.1
+      EndBlue = 0
+      StartFrame = 1
+      RandomFlipHorizontal = true
+      LocationFromOwner = "Maintain"
+      LocationZFromOwner = "Take"
+      ScaleFromOwner = "Ignore"
+      SortMode = "FromParent"
+      Scale = 2.0
+      Ambient = 0.0
+      ScaleX = 0.85
+      UseAttachedFlasher = false
+      //ChildAnimation = "HitSparkArmorFlash"
+      Hue = 0.070
+      //Alpha = 0.01
+      UseAttachedShake = false
+      VisualFxManagerCap = 400
+      CreateAnimations = [
+        {
+          //Name = "QuickFlashArmorHit"
+        }]
+    }
+    {
+      Name = "IgneousHitSparkArmorB"
+      InheritFrom = "IgneousHitSparkArmorA"
+      FilePath = "Fx\HitSparkArmorB\HitSparkArmorB"
+      NumFrames = 14
+      EndFrame = 14
+    }
+    {
+      Name = "IgneousHitSparkArmorC"
+      InheritFrom = "IgneousHitSparkArmorA"
+      FilePath = "Fx\HitSparkArmorC\HitSparkArmorC"
+    }
+    {
+      Name = "IgneousHitSparkArmor"
+      FilePath = "Animations\HitSparkArmor\HitSparkArmor"
+      Type = "Random"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Random = [
+        {
+          Name = "IgneousHitSparkArmorA"
+        }
+        {
+          Name = "IgneousHitSparkArmorB"
+        }
+        {
+          Name = "IgneousHitSparkArmorC"
+        }]
+    }
+    {
+      Name = "ArmorBreakPop"
+      //CreateAnimation = "QuickFlashBlue"
+      FilePath = "Fx\ArmorBreak\ArmorBreak"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      EndFrame = 25
+      NumFrames = 25
+      PlaySpeed = 80.0
+      StartFrame = 1
+      OffsetZ = 60.0
+      SortMode = "FromParent"
+      UseAttachedAddColor = false
+    }
+    {
+      Name = "IgneousExplosion"
+      FilePath = "Fx\ShielderNova\ShielderNova"
+      GroupName = "Standing"
+      Type = "Book"
+      EndFrame = 22
+      NumFrames = 22
+      PlaySpeed = 60.0
+      StartFrame = 1
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
+      RandomFlipHorizontal = true
+      ScaleRadius = 485.0
+      Ambient = 0.0
+      AngleFromOwner = "Ignore"
+      CreateAnimations = [
+        {
+          Name = "IgneousExplosionLighting"
+        }
+        {
+          Name = "IgneousExplosionFlare"
+        }
+        {
+          Name = "IgneousExplosionDissipate"
+        }
+        {
+          Name = "IgneousExplosionShadow"
+        }]
+    }
+    {
+      Name = "IgneousExplosionLighting"
+      FilePath = "Fx\BasicGlow\BasicGlow"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      EndBlue = 0.999
+      EndGreen = 0.5
+      StartAlpha = 0.5
+      StartBlue = 1.0
+      StartGreen = 1.0
+      StartRed = 0.2
+      Duration = 0.25
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Scale = 1.5
+      Ambient = 0.0
+    }
+    {
+      Name = "IgneousExplosionFlare"
+      FilePath = "Tilesets\Lensflare\Flare_poseidon"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      Duration = 0.2
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
+      EaseIn = 0.8
+      EaseOut = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      EndScale = 0.0
+      ScaleFromOwner = "Ignore"
+      StartScale = 4.0
+    }
+    {
+      Name = "IgneousExplosionShadow"
+      FilePath = "Particles\AuraBasicFillCircle"
+      GroupName = "FX_Terrain"
+      Type = "Constant"
+      StartAlpha = 1.0
+      Duration = 1.0
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      EndScale = 1.15
+      PostRotateScaleY = 0.5
+      ScaleRadius = 128.0
+      StartScale = 0.9
+      Ambient = 0.0
+    }
+    {
+      Name = "IgneousExplosionDissipate"
+      FilePath = "Fx\ShielderNova\ShielderNovaDissipate"
+      GroupName = "FX_Standing_Add"
+      Type = "Constant"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      StartAlpha = 1.0
+      AddColor = true
+      Color = {
+        Blue = 0.0
+        Green = 0.45
+        Red = 0.8
+      }
+      Duration = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      EndScale = 1.15
+      ScaleRadius = 300.0
+      StartScale = 0.9
+      Ambient = 0.0
+    }
+    // Igneous Stuff
+    {
+      Name = "BlinkTrailVerticalB-Heph"
+      InheritFrom = "BlinkTrailVerticalB"
+      ChildAnimation = "null"
+      //Sound = "/SFX/Player Sounds/ArtemisLeavesDashUpgrade"
+      StopSoundOnFinishFade = 0.2
+      CreateAnimations = [
+        {
+          Name = "HephRushTrail"
+        }
+        /*{
+          Name = "QuickFlashBrown"
+        }*/
+      ]
+      /*Color = 
+      {
+        Red = 0.0
+        Green = 1.0
+        Blue = 0.2
+      }*/
+    }
+    {
+      Name = "HephRushTrail"
+      FilePath = "Fx\WeaponSwipePointed\WeaponSwipePointed"
+      GroupName = "FX_Terrain_Add"
+      Type = "Book"
+      AngleFromOwner = "Take"
+      LocationFromOwner = "Ignore"
+      LocationZFromOwner = "Ignore"
+      //PostRotateScaleY = 0.5
+      //Angle = 90.0
+      AddColor = true
+      EndBlue = 0.001
+      EndRed = 0.999
+      StartGreen = 0.5
+      StartRed = 1.0
+      EndFrame = 13
+      NumFrames = 13
+      PlaySpeed = 60.0
+      StartFrame = 1
+      OffsetY = -200.0
+      RandomOffsetX = 5.0
+      Velocity = 400.0
+      ScaleY = 0.25
+      Ambient = 0.0
+    }    
+    {
+      Name = "HephExplosion"
+      FilePath = "Fx\SkyProjectileExplosion\SkyProjectileExplosion"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      VisualFx = "HephExplosionNova"
+      AddColor = true
+      AngleFromOwner = "Ignore"
+      EndRed = 1.0
+      StartBlue = 0.5
+      StartGreen = 1.0
+      StartRed = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 46
+      NumFrames = 46
+      PlaySpeed = 60.0
+      ScaleRadius = 350.0
+      StartFrame = 1
+      Scale = 1.25
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }
+    {
+      Name = "HephExplosionNova"
+      FilePath = "Fx\RadialNova\RadialNova"
+      GroupName = "FX_Terrain_Add"
+      Light = "WeaponFxLightA"
+      Type = "Book"
+      VisualFx = "HephHammerSparks"
+      AddColor = true
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.5
+      StartRed = 1.0
+      EndFrame = 44
+      NumFrames = 44
+      PlaySpeed = 90.0
+      StartFrame = 1
+      ScaleRadius = 350.0
+      RandomRotation = true
+      PostRotateScaleY = 0.5
+      Scale = 0.5
+      Ambient = 0.0
+      VisualFxCap = 12
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }    
+    {
+      Name = "HephExplosionSmall"
+      FilePath = "Fx\SkyProjectileExplosion\SkyProjectileExplosion"
+      GroupName = "FX_Standing_Add"
+      Type = "Book"
+      VisualFx = "HephExplosionNovaSmall"
+      AddColor = true
+      AngleFromOwner = "Ignore"
+      EndRed = 1.0
+      StartBlue = 0.5
+      StartGreen = 1.0
+      StartRed = 1.0
+      EaseIn = 0.9
+      EaseOut = 1.0
+      EndFrame = 46
+      NumFrames = 46
+      PlaySpeed = 60.0
+      ScaleRadius = 330.0
+      StartFrame = 1
+      Scale = 1.25
+      Ambient = 0.0
+      VisualFxCap = 1
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }
+    {
+      Name = "HephExplosionNovaSmall"
+      FilePath = "Fx\RadialNova\RadialNova"
+      GroupName = "FX_Terrain_Add"
+      Light = "WeaponFxLightA"
+      Type = "Book"
+      VisualFx = "HephHammerSparks"
+      AddColor = true
+      EndRed = 0.999
+      StartBlue = 0.1
+      StartGreen = 0.5
+      StartRed = 1.0
+      EndFrame = 44
+      NumFrames = 44
+      PlaySpeed = 90.0
+      StartFrame = 1
+      ScaleRadius = 330.0
+      RandomRotation = true
+      PostRotateScaleY = 0.5
+      Scale = 0.5
+      Ambient = 0.0
+      VisualFxCap = 12
+      VisualFxIntervalMax = 0.002
+      VisualFxIntervalMin = 0.001
+    }    
+    {
+      Name = "HephRepair"
+      ChainTo = "HephRepairFade"
+      //ChildAnimation = "HephHammerExplosionSpawner"
+      FilePath = "Fx\HephHammer\HephHammerDownLanded"
+      GroupName = "Standing"
+      StartAlpha = 1.0
+      EndAlpha = 1.0
+      Type = "Constant"
+      //VisualFx = "QuickFlashRedLarge"
+      AngleFromOwner = "Ignore"
+      LocationFromOwner = "Maintain"
+      StartAngle = 150
+      EndAngle = 70
+      Scale = 0.25
+      Duration = 0.3
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      OffsetY = -200
+      OffsetX = 0
+    }
+    {
+      Name = "HephRepairFade"
+      InheritFrom = "HephRepair"
+      ChainTo = "null"
+      ChildAnimation = "null"
+      StartAngle = 0
+      EndAngle = 1
+      Angle = 70
+      Sound = "/SFX/WeaponUpgradeHammerPickup"
+      VisualFx = "QuickFlash"
+      AddColor = false
+      Duration = 0.3
+      StartAlpha = 1.0
+      EndAlpha = 0.0
+    }
+    {
+      Name = "HephArmorUp"
+      InheritFrom = "HephRepair"
+      ChainTo = "HephArmorUpFade"
+    }
+    {
+      Name = "HephArmorUpFade"
+      InheritFrom = "HephRepairFade"
+      Sound = "/SFX/WeaponUpgradeHammerDrop2"
+    }
+    // Boost Fx
+    {
+      Name = "BoostSparkles-Sword"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BoostSparkles-SwordFx"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.45
+      VisualFxIntervalMin = 0.3
+    }
+    {
+      Name = "BoostSparkles-SwordFx"
+      InheritFrom = "ArtemisCritSparkles"
+      UseOwnAngle = true
+      AngleMin = 0
+      AngleMax = 90
+      Hue = 0.71
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      Duration = 0.5
+      ScaleMin = 0.5
+      ScaleMax = 1.2
+      Loop = false
+      DieWithOwner = true
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = "BoostSparkles-SwordFx2"
+    }
+    {
+      Name = "BoostSparkles-SwordFx2"
+      InheritFrom = "BoostSparkles-SwordFx"
+      AngleMin = 90
+      AngleMax = 180
+      Hue = 0.71
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = null
+    }
+    {
+      Name = "BoostSparkles-Bow"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BoostSparkles-BowFx"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.45
+      VisualFxIntervalMin = 0.3
+    }
+    {
+      Name = "BoostSparkles-BowFx"
+      InheritFrom = "ArtemisCritSparkles"
+      UseOwnAngle = true
+      AngleMin = 0
+      AngleMax = 90
+      Hue = 0.02
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      Duration = 0.5
+      ScaleMin = 0.5
+      ScaleMax = 1.2
+      Loop = false
+      DieWithOwner = true
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = "BoostSparkles-BowFx2"
+    }
+    {
+      Name = "BoostSparkles-BowFx2"
+      InheritFrom = "BoostSparkles-BowFx"
+      AngleMin = 90
+      AngleMax = 180
+      Hue = 0.02
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = null
+    }
+    {
+      Name = "BoostSparkles-Shield"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BoostSparkles-ShieldFx"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.45
+      VisualFxIntervalMin = 0.3
+    }
+    {
+      Name = "BoostSparkles-ShieldFx"
+      InheritFrom = "ArtemisCritSparkles"
+      UseOwnAngle = true
+      AngleMin = 0
+      AngleMax = 90
+      Hue = 0.14
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      Duration = 0.5
+      ScaleMin = 0.5
+      ScaleMax = 1.2
+      Loop = false
+      DieWithOwner = true
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = "BoostSparkles-ShieldFx2"
+    }
+    {
+      Name = "BoostSparkles-ShieldFx2"
+      InheritFrom = "BoostSparkles-ShieldFx"
+      AngleMin = 90
+      AngleMax = 180
+      Hue = 0.14
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = null
+    }
+    {
+      Name = "BoostSparkles-Spear"
+      FilePath = "Dev\blank_invisible"
+      Type = "Constant"
+      VisualFx = "BoostSparkles-SpearFx"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      VisualFxIntervalMax = 0.45
+      VisualFxIntervalMin = 0.3
+    }
+    {
+      Name = "BoostSparkles-SpearFx"
+      InheritFrom = "ArtemisCritSparkles"
+      UseOwnAngle = true
+      AngleMin = 0
+      AngleMax = 90
+      Hue = 0.81
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      Duration = 0.5
+      ScaleMin = 0.5
+      ScaleMax = 1.2
+      Loop = false
+      DieWithOwner = true
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = "BoostSparkles-SpearFx2"
+    }
+    {
+      Name = "BoostSparkles-SpearFx2"
+      InheritFrom = "BoostSparkles-SpearFx"
+      AngleMin = 90
+      AngleMax = 180
+      Hue = 0.81
+      StartRed = 1
+      StartGreen = 1
+      StartBlue = 1
+      EndRed = 0.9
+      EndGreen = 0.9
+      EndBlue = 0.9
+      AlphaMin = 0.5
+      AlphaMax = 1.0
+      CreateAnimation = null
+    }
+    {
+      Name = "EnemySwordBoost"
+      InheritFrom = "EnemySwordPickup"
+      EndFrame = 39
+      RandomDurationMax = 0.0
+      RandomDurationMin = 0.0
+      RandomFlipHorizontal = false
+    }    
+    {
+      Name = "EnemyBowBoost"
+      InheritFrom = "EnemyBowPickup"
+      EndFrame = 39
+      RandomDurationMax = 0.0
+      RandomDurationMin = 0.0
+      RandomFlipHorizontal = false
+    }
+    {
+      Name = "EnemyShieldBoost"
+      InheritFrom = "EnemyShieldPickup"
+      EndFrame = 39
+      RandomDurationMax = 0.0
+      RandomDurationMin = 0.0
+      RandomFlipHorizontal = false
+    }
+    {
+      Name = "EnemySpearBoost"
+      InheritFrom = "EnemySpearPickup"
+      EndFrame = 39
+      RandomDurationMax = 0.0
+      RandomDurationMin = 0.0
+      RandomFlipHorizontal = false
+    }
+    /* Boon FX */
+    {
+      Name = "BoonDropHephaestus"
+      InheritFrom = "BoonDropGold"
+      ChildAnimation = "BoonDropA-Hephaestus"
+    }
+    {
+      Name = "BoonDropA-Hephaestus"
+      InheritFrom = "BoonDropA"
+      ChildAnimation = "BoonDropB-Hephaestus"
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+    }
+    {
+      Name = "BoonDropB-Hephaestus"
+      InheritFrom = "BoonDropB"
+      ChildAnimation = "BoonDropC-Hephaestus"
+      Color = {
+        Red = 0.28
+        Green = 0.07
+        Blue =  0.06
+      }
+    }
+    {
+      Name = "BoonDropC-Hephaestus"
+      InheritFrom = "BoonDropC"
+      ChildAnimation = "BoonDropHephaestusIcon"
+    }
+    {
+      Name = "BoonDropHephaestusIcon"
+      InheritFrom = "BoonDropIcon"
+      FilePath = "Hephaestus\HephIconSpin\HephIconSpin"
+      StartFrame = 1
+      EndFrame = 3
+      NumFrames = 3
+      Scale = 0.155
+    }
+    {
+      Name = "BoonDissipateA_Hephaestus"
+      InheritFrom = "BoonDissipateA"
+      Red = 0.3
+      Green = 1
+      Blue = 0
+      ClearCreateAnimations = true
+      CreateAnimations = [
+        {
+          Name = "BoonDissipateB_Hephaestus"
+        }
+        {
+          Name = "BoonDissipateVertical_Hephaestus"
+        }
+        {
+          Name = "BoonDissipateGlow_Hephaestus"
+        }]
+    }
+    {
+      Name = "BoonDissipateB_Hephaestus"
+      InheritFrom = "BoonDissipateB"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+    {
+      Name = "BoonDissipateVertical_Hephaestus"
+      InheritFrom = "BoonDissipateVertical"
+      Hue = 0.4
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+      AddColor = true
+    } 
+    {
+      Name = "BoonDissipateGlow_Hephaestus"
+      InheritFrom = "BoonDissipateGlow"
+      Red = 1.0
+      Green = 0.64
+      Blue = 0.41
+    }
+  ]
+}

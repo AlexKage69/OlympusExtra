@@ -1,0 +1,39 @@
+{
+    MainMenuScreen = {
+        AnnouncementButton = {
+            Justification = "Center"
+            VerticalJustification = "Center"
+            X = 120
+            Y = 350
+            Graphic = "GUI\\Shell\\MainMenu_MailingList"
+            MouseGraphicHover = "GUI\\Shell\\MainMenu_MailingList_Highlight"
+            HelpTextId = "MainMenuScreen_PatchNotes"
+            Font = "AlegreyaSansSCBold"
+            FontSize = 16
+            TextJustification = "Center"
+            TextRed = 1
+            TextGreen = 1
+            TextBlue = 1
+            TextAlpha = 0.0
+            TextOffsetY = 50
+            SelectedTextRed = 1
+            SelectedTextGreen = 1
+            SelectedTextBlue = 1
+            SelectedTextAlpha = 1.0
+            SelectedTextScale = 1.0
+            SelectOnMouseOver = true
+            DeselectOnMouseOff = true
+            PressSound = "/SFX/Menu Sounds/GodBoonMenuClose"
+            FadeOpacity = 0.0
+            FadeTarget = 1.0
+            FadeDelayMin = 1.5
+            FadeDelayMax = 1.6
+            FadeSpeed = 4.0
+            TextOutlineRed = 0
+            TextOutlineGreen = 0
+            TextOutlineBlue = 0
+            OutlineThickness = 0
+            Scale = 0.5
+        }
+    } 
+}

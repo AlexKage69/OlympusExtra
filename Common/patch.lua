@@ -125,6 +125,32 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
         end
         baseFunc(lootData, reroll)
 		local components = ScreenAnchors.ChoiceScreen.Components
+        local upgradeOptions = lootData.UpgradeOptions
+		if upgradeOptions == nil then
+			SetTraitsOnLoot( lootData )
+			upgradeOptions = lootData.UpgradeOptions
+		end
+        if IsEmpty( upgradeOptions ) then
+			table.insert(upgradeOptions, { ItemName = "FallbackMoneyDrop", Type = "Consumable", Rarity = "Common" })
+		end
+        local itemLocationY = 370
+		local itemLocationX = ScreenCenterX - 355
+		for itemIndex, itemData in ipairs( upgradeOptions ) do
+			local purchaseButtonKey = "PurchaseButton"..itemIndex -- Doesnt work because eligible is not there yet...
+            if  IsGameStateEligible(CurrentRun, TraitData[itemData.ItemName]) and IsGodTrait(itemData.ItemName) then           
+                CreateTextBox({ Id = components[purchaseButtonKey].Id,
+                    Text = "UI_TraitLevel",
+                    FontSize = 27,
+                    OffsetX = 260, OffsetY = -55,
+                    Color = Color.UpgradeGreen,
+                    Font = "AlegreyaSansSCBold",
+                    ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+                    Justification = "Left",
+                    LuaKey = "TempTextData", LuaValue = { Amount = 2 }
+                })
+            end
+            itemLocationY = itemLocationY + 220
+        end
         if IsMetaUpgradeSelected( "RerollMetaUpgrade" ) and HeroHasTrait("ForceWeaponUpgradeTrait") and lootData.Name == "WeaponUpgrade" then
             local cost = -1
             if lootData.BlockReroll then
@@ -215,6 +241,10 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and (weaponData ~= nil and weaponData.IgnoreOutgoingDamageModifiers) then
             local appliedEffectTable = {}
             for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
+                if modifierData.GlobalMultiplier ~= nil then
+                    addDamageMultiplier(modifierData, modifierData.GlobalMultiplier)
+                end
+
                 local validEffect = modifierData.ValidEffects == nil or
                     (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
                 local validWeapon = modifierData.ValidWeaponsLookup == nil or
@@ -828,6 +858,15 @@ ModUtil.Path.Wrap("HandleLootPickup",
             CurrentLootData = loot
             SetLightBarColor({ PlayerIndex = 1, Color = loot.LootColor });
 
+            local hasDuoBoon = false
+            if loot.UpgradeOptions ~= nil then
+                for i, itemData in pairs(loot.UpgradeOptions) do
+                    if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsDuoBoon then
+                        hasDuoBoon = true
+                    end
+                end
+            end
+
             PlaySound({ Name = loot.PickupSound or "/SFX/Menu Sounds/GodBoonInteract" })
             thread(PlayVoiceLines, loot.PickupVoiceLines, true)
 
@@ -1187,18 +1226,60 @@ OnHit {
         end
     end
 }
+--[[ModUtil.Path.Wrap("StartNewRunPresentation",
+    function(baseFunc, currentRun)
+        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 then            
+            currentRun.Hero.PomFirstList = {
+                "ZeusUpgrade",
+                "PoseidonUpgrade",
+                "AresUpgrade",
+                "DionysusUpgrade",
+                "ArtemisUpgrade",
+                "AthenaUpgrade",
+                "AphroditeUpgrade",
+                "DemeterUpgrade",
+                "ApolloUpgrade",
+                "HestiaUpgrade",
+                "HeraUpgrade"
+            }
+        end
+        baseFunc(currentRun)
+    end
+)]]
 ModUtil.Path.Wrap("AddTraitToHero",
-    function(baseFunc, args)
+    function(baseFunc, args)     
         baseFunc(args)
-        local traitData = args.TraitData
+        local traitData = args.TraitData        
         if traitData == nil then
             traitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
+        end
+        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 and GetTraitIsFirst(CurrentRun.Hero, traitData.Name) and IsGameStateEligible(CurrentRun, TraitData[traitData.Name]) and IsGodTrait(traitData.Name) then            
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Got here"))
+            baseFunc(args)
+        end
+        if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
+            RemoveTrait(CurrentRun.Hero, traitData.ReplaceTrait)
         end
         if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
             RemoveTrait(CurrentRun.Hero, traitData.ReplaceTrait)
         end
     end
 )
+
+function GetTraitIsFirst( unit, traitName )
+	if unit == nil or unit.Traits == nil then
+		return false
+	end
+    local sourceName = GetLootSourceName(traitName) 
+	local num = 0
+	for k, currentTrait in pairs( unit.Traits ) do
+		if IsGameStateEligible(CurrentRun, TraitData[currentTrait.Name]) and GetLootSourceName(currentTrait.Name) == sourceName then
+			num = num + 1
+		end
+	end
+	return num <= 1
+end
+
 -- Test / Utility
 --[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)

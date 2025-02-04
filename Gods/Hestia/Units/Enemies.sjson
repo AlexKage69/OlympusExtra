@@ -1,0 +1,13 @@
+{
+  Units = [
+    "_append"
+    {
+      Name = "HestiaUpgradeRoomWeapon"
+      InheritFrom = "PassiveRoomWeapon"
+      DisplayInEditor = true
+      Thing = {
+        EditorOutlineDrawBounds = false
+      }
+    }
+  ]
+}

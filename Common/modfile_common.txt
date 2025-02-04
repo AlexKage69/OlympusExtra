@@ -2,6 +2,8 @@
     Author - AlexKage
     Author - physiX
 :-
+Include "modfile_assets.txt"
+Include "PatchNotes/modfile_patchnotes.txt"
 
 Import "SeparateGoddess.lua"
 Import "patch.lua"
