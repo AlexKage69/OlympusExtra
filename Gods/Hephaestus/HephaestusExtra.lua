@@ -3917,7 +3917,7 @@ function SetupArmor(hero, args)
 			if CurrentRun.LootTypeHistory.WeaponUpgrade == nil then
                 CurrentRun.LootTypeHistory.WeaponUpgrade = 0
             end
-            currentRun.LootTypeHistory.WeaponUpgrade = currentRun.LootTypeHistory.WeaponUpgrade + 1
+            CurrentRun.LootTypeHistory.WeaponUpgrade = CurrentRun.LootTypeHistory.WeaponUpgrade + 1
 		end
 	end
 end
