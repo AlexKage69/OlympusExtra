@@ -8,17 +8,17 @@
     {
       Id = "CodexData_Hephaestus_0001"
       Speaker = "Achilles"
-      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is over....'"
+      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is done...'"
     }
     {
       Id = "CodexData_Hephaestus_0002"
       Speaker = "Achilles"      
-      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is over. {#CodexBoldFormat}Always tinkering, I believe he is truly the father of engineering and ingenuity. For the best and the worst of humanity...{#PreviousFormat}'"
+      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is done. {#CodexBoldFormat}Always tinkering, I believe he is truly the father of Engineering... and ingenuity. For the best and the worst of humanity...{#PreviousFormat}'"
     }
     {
       Id = "CodexData_Hephaestus_0003"
       Speaker = "Achilles" 
-      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is over. Always tinkering, I believe he is truly the father of engineering and ingenuity. For the best and the worst of humanity. {#CodexBoldFormat}Afterall, Zeus’ lightning bolts are crafted from his molten forge. If there’s a weapon capable of destroying our world, he would be the one crafting it.{#PreviousFormat}'"
+      DisplayName = "'...The craftsman himself is always working on something either revolutionary or destructive, or both. Bringing the most innovative of inventions to life, the blacksmith of the gods won’t know rest until is work is done. Always tinkering, I believe he is truly the father of Engineering... and ingenuity. For the best and the worst of humanity. {#CodexBoldFormat}After all, Zeus’ lightning bolts are crafted from his molten forge. If there’s a weapon capable of destroying our world, he would be the one to craft it.{#PreviousFormat}'"
     }
   ]
 }

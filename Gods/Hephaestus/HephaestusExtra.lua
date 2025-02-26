@@ -595,7 +595,7 @@ if ModUtil ~= nil then
 			},
 			Epic =
 			{
-				Multiplier = 3.0,
+				Multiplier = 3.33,
 			}
 		},
 		RarityBonus =

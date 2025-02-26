@@ -1130,6 +1130,153 @@ ModUtil.Path.Wrap( "Damage",
         end
 	end
 )
+
+ModUtil.Path.Override("HarvestBoons",
+	function(args)
+        numTraits = args.NumTraits
+        local traitRarity = "Common"
+        local traitDictionary = {}
+        local upgradableTraits = {}
+        local upgradedTraits = {}
+        for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+            if not traitDictionary[traitData.Name] and IsGodTrait(traitData.Name) and TraitData[traitData.Name] and traitData.Rarity ~= nil and GetUpgradedRarity(traitData.Rarity) ~= nil and traitData.RarityLevels[GetUpgradedRarity(traitData.Rarity)] ~= nil then
+                table.insert(upgradableTraits, traitData )
+                traitDictionary[traitData.Name] = true
+            end
+        end
+        
+        local harvestTraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = "HarvestBoonTrait", Rarity = traitRarity })
+
+        harvestTraitData.HarvestBoons = {}
+
+        while numTraits > 0 and not IsEmpty( upgradableTraits ) do
+            local traitData = RemoveRandomValue( upgradableTraits )
+            local persistentKeys = { "AccumulatedFountainDamageBonus", "AccumulatedFountainDefenseBonus", "AccumulatedHealthDamageBonus" }
+            local persistentValues = {}
+            for i, key in pairs( persistentKeys ) do
+                persistentValues[key] = traitData[key]
+            end
+
+            upgradedTraits[traitData.Name] = true
+            table.insert( harvestTraitData.HarvestBoons, traitData.Name )
+            local numOldTrait = GetTraitNameCount( CurrentRun.Hero, traitData.Name )
+            RemoveWeaponTrait( traitData.Name )
+
+            local processedData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = traitData.Name, Rarity = "Common" }) 
+            for i, key in pairs( persistentKeys ) do
+                processedData[key] = persistentValues[key]
+            end
+            AddTraitToHero({ TraitData = processedData })
+
+            for i=1, numOldTrait-1 do
+                AddTraitToHero({ TraitName = traitData.Name })
+            end
+            numTraits = numTraits - 1
+        end
+
+        
+        harvestTraitData.TraitListTextString = "HarvestBoonTraitList"..tostring(TableLength(harvestTraitData.HarvestBoons))
+        thread( HarvestBoonTraitPresentation, upgradedTraits, 2.0 )
+        AddTraitToHero({TraitData = harvestTraitData })
+    end
+)
+ModUtil.Path.Override("UpgradeHarvestBoon",
+	function()
+        local upgradableTraitNames = {}
+        local upgradableTraits = {}
+        local upgradedTraits = {}
+        for i, trait in pairs( CurrentRun.Hero.Traits ) do
+            if trait.HarvestBoons then
+                if trait.CurrentRoom then
+                    trait.CurrentRoom = trait.CurrentRoom + 1
+                end
+                if trait.RoomsPerUpgrade and trait.CurrentRoom < trait.RoomsPerUpgrade then
+                    return
+                else
+                    trait.CurrentRoom = 0
+                end
+            end
+        end
+
+        for i, value in pairs(GetHeroTraitValues("HarvestBoons")) do
+            for s, boonName in pairs(value) do
+                upgradableTraitNames[boonName] = true
+            end
+        end
+        
+        for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+            if upgradableTraitNames[traitData.Name] and TraitData[traitData.Name] and traitData.Rarity ~= nil and GetUpgradedRarity(traitData.Rarity) ~= nil and traitData.RarityLevels[GetUpgradedRarity(traitData.Rarity)] ~= nil then
+                table.insert(upgradableTraits, traitData )
+            end
+        end
+        if not IsEmpty(upgradableTraits) then
+            while not IsEmpty( upgradableTraits ) do
+                local traitData = RemoveRandomValue( upgradableTraits )
+                local persistentKeys = { "AccumulatedFountainDamageBonus", "AccumulatedFountainDefenseBonus", "AccumulatedHealthDamageBonus" }
+                local persistentValues = {}
+                for i, key in pairs( persistentKeys ) do
+                    persistentValues[key] = traitData[key]
+                end
+
+                upgradedTraits[GetTraitTooltipTitle(traitData)] = true
+                local numOldTrait = GetTraitNameCount( CurrentRun.Hero, traitData.Name )
+                RemoveWeaponTrait( traitData.Name )
+                
+                local processedData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = traitData.Name, Rarity = GetUpgradedRarity(traitData.Rarity) }) 
+                for i, key in pairs( persistentKeys ) do
+                    processedData[key] = persistentValues[key]
+                end
+                AddTraitToHero({ TraitData = processedData })
+
+                for i=1, numOldTrait-1 do
+                    AddTraitToHero({ TraitName = traitData.Name })
+                end
+            end
+
+            thread( IncreasedTraitRarityPresentation, upgradedTraits, 2.0 )
+        end
+        
+        for itemId, item in pairs( LootObjects ) do
+            item.UpgradeOptions = nil
+        end
+    end
+)
+ModUtil.Path.Override("AddRarityToTraits",
+	function(source, args)
+        local numTraits = args.NumTraits
+        local upgradableTraits = {}
+        local upgradedTraits = {}
+        for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+            if IsGodTrait(traitData.Name, { ForShop = true }) and TraitData[traitData.Name] and traitData.Rarity ~= nil and GetUpgradedRarity(traitData.Rarity) ~= nil and traitData.RarityLevels[GetUpgradedRarity(traitData.Rarity)] ~= nil then
+                table.insert(upgradableTraits, traitData )
+            end
+        end
+
+        while numTraits > 0 and not IsEmpty( upgradableTraits ) do
+            local traitData = RemoveRandomValue( upgradableTraits )
+            local persistentKeys = { "AccumulatedFountainDamageBonus", "AccumulatedFountainDefenseBonus", "AccumulatedHealthDamageBonus" }
+            local persistentValues = {}
+            for i, key in pairs( persistentKeys ) do
+                persistentValues[key] = traitData[key]
+            end
+
+            upgradedTraits[GetTraitTooltipTitle(traitData)] = true
+            local numOldTrait = GetTraitNameCount( CurrentRun.Hero, traitData.Name )
+            RemoveWeaponTrait( traitData.Name )
+            local processedData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = traitData.Name, Rarity = GetUpgradedRarity(traitData.Rarity) }) 
+            for i, key in pairs( persistentKeys ) do
+                processedData[key] = persistentValues[key]
+            end
+            AddTraitToHero({ TraitData = processedData })
+            for i=1, numOldTrait-1 do
+                AddTraitToHero({ TraitName = traitData.Name })
+            end
+            numTraits = numTraits - 1
+        end
+
+        thread( IncreasedTraitRarityPresentation, upgradedTraits )
+    end
+)
 ModUtil.Path.Override("SpawnStoreItemInWorld",
 		function(itemData, kitId)
 			local spawnedItem = nil
