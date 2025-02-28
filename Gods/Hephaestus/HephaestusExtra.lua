@@ -905,7 +905,7 @@ if ModUtil ~= nil then
 			}
 		},
 		SummonExplosionDamage = {
-			BaseValue = 150,
+			BaseValue = 250,
 		},
 		--[[EnemyPropertyChanges =
 		{
