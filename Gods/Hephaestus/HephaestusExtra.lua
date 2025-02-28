@@ -627,7 +627,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		Icon = "Boon_Hephaestus_01",
 		LootSource = "HephaestusUpgrade",
-		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+		PreEquipWeapons = { "IgneousArmorExplosion" },
         RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
 		RarityLevels =
 		{
@@ -696,7 +696,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		Icon = "Boon_Hephaestus_02",
         RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
-		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+		PreEquipWeapons = { "IgneousArmorExplosion" },
 		RarityLevels =
 		{
 			Common =
