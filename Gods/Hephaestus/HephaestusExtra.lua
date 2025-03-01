@@ -4074,21 +4074,6 @@ ModUtil.Path.Wrap( "DestroyHealthUI",
 		ScreenAnchors.ArmorFlash = nil
 	end
 )
-ModUtil.Path.Wrap("StartEncounter",
-		function(baseFunc, currentRun, currentRoom, currentEncounter)
-			if HeroHasTrait("ArmorBossTrait") then
-				if ((currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
-					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
-					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil) or
-					currentRun.CurrentRoom.IsMiniBossRoom then		
-						local armorAmount = GetTotalHeroTraitValue("RepairArmorOnBoss", { IsMultiplier = false })			
-						RepairArmor(armorAmount)
-						thread(RepairArmorPresentation)
-				end
-			end
-			baseFunc(currentRun, currentRoom, currentEncounter)
-		end
-	)
 	function RepairArmorPresentation()
 		wait(0.2)
 		CreateAnimation({ Name = "HephRepair", DestinationId = CurrentRun.Hero.ObjectId })

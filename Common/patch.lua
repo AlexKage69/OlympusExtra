@@ -1375,6 +1375,51 @@ ModUtil.Path.Wrap("IsGameStateEligible",
         return true
     end
 )
+ModUtil.Path.Wrap("StartEncounter",
+		function(baseFunc, currentRun, currentRoom, currentEncounter)
+            -- Apollo/Poseidon Duo
+			if HeroHasTrait("SeaChanteyTrait") and currentRun.CurrentRoom.Encounter.EncounterType == "Boss" then
+				thread(SeaChanteyAnnouncement)
+			end
+            -- Hestia/Dionysus Duo
+            if HeroHasTrait("FullHealBossTrait") then
+                local healAmount = round(CurrentRun.Hero.MaxHealth * CalculateHealingMultiplier())
+                if healAmount < 0.05 then
+                    healAmount = round(CurrentRun.Hero.MaxHealth * 0.05)
+                end
+                if (currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+                    currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
+                    currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil then
+                    thread(FullHealBossAnnouncement)
+                    Heal(CurrentRun.Hero, { HealAmount = healAmount, SourceName = "FullHealBossTrait" })
+                elseif currentRun.CurrentRoom.IsMiniBossRoom then
+                    thread(FullHealBossAnnouncement)
+                    Heal(CurrentRun.Hero, { HealAmount = (healAmount / 2), SourceName = "FullHealBossTrait" })
+                end
+            end
+            -- Hephaestus Armor Boss
+            if HeroHasTrait("ArmorBossTrait") then
+                if ((currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
+                    currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
+                    currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil) or
+                    currentRun.CurrentRoom.IsMiniBossRoom then		
+                        local armorAmount = GetTotalHeroTraitValue("RepairArmorOnBoss", { IsMultiplier = false })			
+                        RepairArmor(armorAmount)
+                        thread(RepairArmorPresentation)
+                end
+            end
+            -- Mirror Dashless Shield
+            if GetNumMetaUpgrades("DashlessMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero then
+                if CurrentRun.Hero.DashlessCooldown == nil then
+                    CurrentRun.Hero.DashlessCooldown = 1
+                else
+                    CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown + 1		
+                end
+                thread( AddDashlessBuff, 4 )
+            end
+			baseFunc(currentRun, currentRoom, currentEncounter)
+		end
+	)
 ModUtil.Path.Wrap( "EndEncounterEffects", 
 	function(baseFunc, currentRun, currentRoom, currentEncounter)
 		baseFunc(currentRun, currentRoom, currentEncounter)

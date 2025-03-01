@@ -460,6 +460,9 @@ ModUtil.Path.Wrap("InitHeroLastStands",
 			return usetext
 		end
 	)
+	function HeroHasPossibleStackTrait()
+		return true;
+	end
 ModUtil.Path.Wrap("StartRoom",
 	function(baseFunc, currentRun, currentRoom)
 		--local biomeDepth = currentRun.BiomeDepthCache or GetBiomeDepth( currentRun )
@@ -484,7 +487,7 @@ ModUtil.Path.Wrap("StartRoom",
 			end
 			CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
 		end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
 		if GetNumMetaUpgrades("RegenerationMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
 			thread( RegenerationMetaUpgrade, CurrentRun.Hero, {Interval = 7.2 - 1.8*GetNumMetaUpgrades("RegenerationMetaUpgrade"), Amount = 1.0} )
 		end
@@ -498,7 +501,6 @@ OnWeaponFired{ "RushWeapon",
 				CurrentRun.Hero.DashlessCooldown = 0
 			end
 			if CurrentRun.Hero.DashlessCooldown == 0 then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Buff Removed"))	
 				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffAttackApplicator" })
 				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffDefenseApplicator" })
 			end

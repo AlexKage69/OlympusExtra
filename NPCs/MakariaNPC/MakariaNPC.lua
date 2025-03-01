@@ -249,7 +249,7 @@ OlympusEncounterSets.EncounterEventsMakariaPool =
 function StartCinematicMakariaPool()
 end
 -- New rooms section
-OlympusRoomSetData.Tartarus.A_Makaria01 =
+--[[OlympusRoomSetData.Tartarus.A_Makaria01 =
 	{
 		Name = "A_Makaria01",
 		InheritFrom = { "BaseTartarus" },
@@ -264,7 +264,7 @@ OlympusRoomSetData.Tartarus.A_Makaria01 =
 		EntranceDirection = "Right",
 		NumExits = 0,
 		ZoomFraction = 0.95,
-	}
+	}]]
 -- Gift Section
 --[[local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
