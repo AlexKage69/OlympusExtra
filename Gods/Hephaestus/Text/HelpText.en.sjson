@@ -65,12 +65,12 @@
 		{
 			Id = "HephaestusRangedTrait"
 			DisplayName = "Blasting Ammunition"
-			Description = "Upon {$Keywords.Ammo} regeneration or return, create a blast. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
+			Description = "Upon {!Icons.Ammo} regeneration or return, create a blast. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "HephaestusRangedTrait_Initial"
 			InheritFrom = "HephaestusRangedTrait"
-			Description = "Upon {$Keywords.Ammo} regeneration or return, create a blast. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
+			Description = "Upon {!Icons.Ammo} regeneration or return, create a blast. \n {!Icons.Bullet}{#PropertyFormat}Blast Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "HephaestusSignoff"

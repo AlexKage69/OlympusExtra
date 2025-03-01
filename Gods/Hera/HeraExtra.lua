@@ -1478,7 +1478,7 @@ end]]
 			FunctionArgs =
 			{
 				Range = 700,
-				Cooldown = 4,
+				Cooldown = 3,
 				ExtractValues =
 				{
 					{
@@ -2125,6 +2125,86 @@ end]]
 				WeaponNames = { "DemeterSuper", "DemeterMaxSuper", },
 				ProjectileProperty = "Fuse",
 				ChangeValue = 0.25
+			},
+			-- Apollo
+			{
+				WeaponName = "ApolloShoutWeapon",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 35,
+				BaseMax = 35,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			{
+				WeaponName = "ApolloShoutWeapon",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow"
+			},
+			{
+				WeaponName = "ApolloShoutWeapon",
+				ProjectileProperty = "MaxAdjustRate",
+				ChangeValue = math.rad(180)
+			},
+			{
+				WeaponName = "ApolloShoutWeapon",
+				ProjectileProperty = "Fuse",
+				ChangeValue = 0.1,
+			},
+			--Hestia
+			{
+				WeaponNames = { "HestiaSuper" },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 150,
+				BaseMax = 150,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			{
+				WeaponNames = { "HestiaSuper", },
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DamageLow",
+			},
+			{
+				WeaponNames = { "HestiaMaxSuper" },
+				ProjectileProperty = "DamageLow",
+				BaseMin = 200,
+				BaseMax = 200,
+				DepthMult = DepthDamageMultiplier,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			{
+				WeaponNames = { "HestiaMaxSuper" },
+				ProjectileProperty = "DamageHigh",
+				BaseMin = 200,
+				BaseMax = 200,
+				DepthMult = DepthDamageMultiplier,
+				ExcludeLinked = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			{
+				WeaponNames = { "HestiaMaxSuper", },
+				WeaponProperty = "NumProjectiles",
+				ChangeValue = 3,
+				ChangeType = "Absolute",
+
+			},
+			{
+				TraitName = "RegeneratingCappedSuperTrait",
+				LuaProperty = "SuperMeterCap",
+				BaseValue = 33.34,
+				ChangeType = "Absolute",
 			},
 		},
 		FakeCost = 25,
@@ -7907,7 +7987,7 @@ end]]
 			if not victim or ( victim.IsDead and victim ~= CurrentRun.Hero ) then
 				return
 			end
-			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect and triggerArgs.Duration >= 1.0 then
 				local isLow = true
 				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount
@@ -8202,15 +8282,6 @@ end]]
 		thread( RevulnerablePlayerAfterShout )
 	end
 	-- HealthAsObolTrait Mechanic
-	
-	ModUtil.Path.Wrap("HandleLootPickup",
-		function(baseFunc, currentRun, loot)
-			if loot.SacrificeId then
-				Destroy({ Id = loot.SacrificeId })
-			end
-			baseFunc(currentRun, loot)
-		end
-	)
 	ModUtil.Path.Wrap("PurchaseConsumableItem",
 		function(baseFunc, currentRun, consumableItem, args)
 			if consumableItem.SacrificeCost and consumableItem.UseSacrifice then

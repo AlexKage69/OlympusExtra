@@ -595,7 +595,7 @@ if ModUtil ~= nil then
 			},
 			Epic =
 			{
-				Multiplier = 3.0,
+				Multiplier = 3.33,
 			}
 		},
 		RarityBonus =
@@ -627,7 +627,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		Icon = "Boon_Hephaestus_01",
 		LootSource = "HephaestusUpgrade",
-		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+		PreEquipWeapons = { "IgneousArmorExplosion" },
         RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
 		RarityLevels =
 		{
@@ -696,7 +696,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		Icon = "Boon_Hephaestus_02",
         RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
-		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+		PreEquipWeapons = { "IgneousArmorExplosion" },
 		RarityLevels =
 		{
 			Common =
@@ -1220,6 +1220,7 @@ if ModUtil ~= nil then
 		Icon = "Boon_Hephaestus_11",
 		RequiredFalseTrait = "ArmorDefianceTrait",
 		CustomTrayText = "ArmorDefianceTrait_Tray",
+		RequiredMinMaximumLastStands = 1,
 		RarityLevels =
 		{
 			Common =
@@ -3916,7 +3917,7 @@ function SetupArmor(hero, args)
 			if CurrentRun.LootTypeHistory.WeaponUpgrade == nil then
                 CurrentRun.LootTypeHistory.WeaponUpgrade = 0
             end
-            currentRun.LootTypeHistory.WeaponUpgrade = currentRun.LootTypeHistory.WeaponUpgrade + 1
+            CurrentRun.LootTypeHistory.WeaponUpgrade = CurrentRun.LootTypeHistory.WeaponUpgrade + 1
 		end
 	end
 end

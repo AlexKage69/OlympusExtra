@@ -73,7 +73,7 @@ AlexKage, physiX
 
 ### Art
 **Apollo Portrait:** [Reikiix](https://twitter.com/Reikiix)\
-**Apollo Keepsake Badges:** [Lazy.mano](https://www.reddit.com/user/Lazymanohelp)\
+**Apollo, Hera Keepsake Badges:** [Lazy.mano](https://www.reddit.com/user/Lazymanohelp)\
 **Hestia, Hera Portrait:** Relia ([Twitter](https://twitter.com/shazari) | [Tumblr](https://artcrystals.tumblr.com/))\
 **Hephaestus Portrait:** Leo_v ([Artstation](https://www.artstation.com/leo_v))\
 **Hestia Keepsake Badges:** [Starley](https://twitter.com/princestarley/)\
