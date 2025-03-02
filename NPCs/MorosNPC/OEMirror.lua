@@ -301,6 +301,9 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		ChangeValue = 1,
 	}
 	OlympusObstacleData.HealthFountain.RerollFunctionName = "RerollPom"
+	OlympusObstacleData.HealthFountain.Cost = 1
+	OlympusObstacleData.HealthFountain.FountainReroll = true
+	
 	ModUtil.Table.Merge(OlympusKeywordList, { 
 		"LowHealthDamage", "GemHeal", "ExtraChanceFloor", "DashlessBonus",
 		"CountAmmoBonus", "AmmoBounce", "BonusMoneyMirror", "CombatRegeneration",
@@ -509,6 +512,14 @@ OnWeaponFired{ "RushWeapon",
 		end
 	end
 }
+function AddDashlessBuff(duration)
+	wait(duration, RoomThreadName)
+	CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown - 1
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.DashlessCooldown))	
+	if CurrentRun.Hero.DashlessCooldown == 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then 
+		FireWeaponFromUnit({ Weapon = "DashlessBuffApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+	end
+end
 ModUtil.Path.Wrap("HandleDeath",
     function(baseFunc, currentRun, killer, killingUnitWeapon)
         baseFunc(currentRun, killer, killingUnitWeapon)
@@ -524,10 +535,14 @@ ModUtil.Path.Wrap("HandleMetaUpgradeInput",
 		end
 	end
 )
-function RerollPom( run, fountain)
-	UseStoreRewardRandomStack({ Thread = true, NumTraits = 1, NumStacks = 1, Delay = 0.25 })
-end
 
+ModUtil.Path.Wrap("StartNewRun",
+	function(baseFunc, prevRun, args )
+	local CurrentRun = baseFunc(prevRun, args)
+	CurrentRun.NumRerolls = GetNumMetaUpgrades( "RerollMetaUpgrade" ) + GetNumMetaUpgrades("RerollPanelMetaUpgrade") + GetNumMetaUpgrades("RerollPomMetaUpgrade")
+	return CurrentRun
+end
+)
 ModUtil.Path.Wrap("GetTotalHeroTraitValue",
 	function(baseFunc, propertyName, args)
 		local value = baseFunc(propertyName, args)
@@ -545,13 +560,6 @@ ModUtil.Path.Wrap("EndEncounterEffects",
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffDefenseApplicator" })
 	end
 )
-function AddDashlessBuff(duration)
-	wait(duration, RoomThreadName)
-	CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown - 1
-	if CurrentRun.Hero.DashlessCooldown == 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then 
-		FireWeaponFromUnit({ Weapon = "DashlessBuffApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
-	end
-end
 function GetTotalEpicBonus()
 	local perGodMultiplier = GetTotalStatChange( MetaUpgradeData.GodEnhancementMetaUpgrade )
 	local godDictionary = {}
@@ -587,6 +595,34 @@ function GetGemsMaxHealthAdded(amount)
 	local healthMultiplier = GetTotalHeroTraitValue("GemHealMultiplier") + ( GetTotalMetaUpgradeChangeValue("GemHealMetaUpgrade") - 1 )
 	healthMultiplier = healthMultiplier * GetTotalHeroTraitValue("MaxHealthMultiplier", { IsMultiplier = true })
 	return round( healthMultiplier * amount )
+end
+
+function RerollPom( run, fountain)
+	UseStoreRewardRandomStack({ Thread = true, NumTraits = 1, NumStacks = 1, Delay = 0.25 })
+end
+function AttemptPomReroll( run, fountain )
+	local cost = fountain.Cost
+	if run.NumRerolls < cost or cost < 0 then
+		CannotRerollPresentation( run, fountain )
+		return
+	end
+
+	AddInputBlock({ Name = "AttemptPomReroll" })
+	--HideTopMenuScreenTooltips({ Id = fountain.Id })
+	CurrentRun.NumRerolls = CurrentRun.NumRerolls - cost
+	CurrentRun.CurrentRoom.SpentRerolls = CurrentRun.CurrentRoom.SpentRerolls or {}
+	--IncrementTableValue( CurrentRun.CurrentRoom.SpentRerolls, fountain.Id, RerollCosts.ReuseIncrement )
+	UpdateRerollUI( CurrentRun.NumRerolls )
+
+	--RandomSynchronize( CurrentRun.NumRerolls )
+	--InvalidateCheckpoint()
+	RefreshUseButton( fountain.ObjectId, fountain )
+	if fountain.RerollFunctionName and _G[fountain.RerollFunctionName] then
+		--RerollPanelPresentation( screen, button )
+		_G[fountain.RerollFunctionName](  )
+		fountain.Cost = fountain.Cost + 1
+	end
+	RemoveInputBlock({ Name = "AttemptPomReroll" })
 end
 
 function RegenerationMetaUpgrade( unit, args )

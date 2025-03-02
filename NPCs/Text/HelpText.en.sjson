@@ -50,6 +50,14 @@
 			Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage on foes under {#TooltipUpgradeFormat}25%{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
     	}
 		{
+			Id = "FinisherHit"
+			DisplayName = "Finisher!"
+		}
+		{
+			Id = "FinisherHit_Blank"
+			DisplayName = ""
+		}
+		{
 			Id = "GemHeal"
 			DisplayName = "Bright Rejuvenation"
 			Description = "Gain {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} when you collect {!Icons.GemSmall}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat} of the collected amount per rank. Limit of 15 {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} from {!Icons.GemSmall}"

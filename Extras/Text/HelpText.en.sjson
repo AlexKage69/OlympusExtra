@@ -353,7 +353,7 @@
 		}
 		{
 			Id = "UseFountainHeal_Reroll"
-			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Power-Up {#UseGiftPointFormat}(-1{!Icons.ReRoll_Small})"
+			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Power-Up {#UseGiftPointFormat}(-{$TempTextData.Cost}{!Icons.ReRoll_Small})"
 		}
 		{
 			Id = "UseFountainHeal_CannotReroll"

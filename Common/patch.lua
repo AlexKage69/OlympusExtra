@@ -115,6 +115,21 @@ ModUtil.Path.Wrap("GetLootSourceName",
     end
 )
 
+ModUtil.Path.Wrap("SpecialHitPresentation",
+    function(baseFunc, triggerArgs)
+        --local attacker = triggerArgs.AttackerTable
+        local unitId = triggerArgs.triggeredById
+        local unit = triggerArgs.TriggeredByTable
+        local offsetY = unit.HealthBarOffsetY or -155
+        baseFunc(triggerArgs)
+            local hasFinisherVulnerability = GetNumMetaUpgrades("LowHealthDamageMetaUpgrade") > 0
+            if hasFinisherVulnerability and unit.Health/unit.MaxHealth < 0.25 then
+                if CheckCooldown( "FinisherMessagePlayed", 0.1 ) then
+                    thread( InCombatText, unitId, "FinisherHit", 0.3, {OffsetY = offsetY + 36, FontSize = 17, SkipFlash = true, SkipRise = true, SkipShadow = true, FadeDuration = 0.1 })
+                end
+            end
+    end
+)
 -- Common Function for OE
 ModUtil.Path.Wrap("CreateBoonLootButtons",
     function(baseFunc, lootData, reroll)
@@ -834,6 +849,10 @@ function( triggerArgs )
     if target == nil then
         return
     end
+    if target.FountainReroll and IsMetaUpgradeSelected( "RerollPomMetaUpgrade" ) then
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("FountainReroll"))
+        AttemptPomReroll( CurrentRun, target )
+    end
     if target.SacrificeCost then
         if target.Rarity then
             local interactionBlocked = false
@@ -1410,12 +1429,8 @@ ModUtil.Path.Wrap("StartEncounter",
             end
             -- Mirror Dashless Shield
             if GetNumMetaUpgrades("DashlessMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero then
-                if CurrentRun.Hero.DashlessCooldown == nil then
-                    CurrentRun.Hero.DashlessCooldown = 1
-                else
-                    CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown + 1		
-                end
-                thread( AddDashlessBuff, 4 )
+                CurrentRun.Hero.DashlessCooldown = 1			
+			    thread( AddDashlessBuff, 4 )
             end
 			baseFunc(currentRun, currentRoom, currentEncounter)
 		end
