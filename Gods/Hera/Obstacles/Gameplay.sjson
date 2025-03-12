@@ -1,0 +1,125 @@
+{
+  Obstacles = [
+      "_append"
+    {
+      Name = "HeraUpgrade"
+      InheritFrom = "BaseBoon"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "BoonDropHera"
+      }
+    }
+    {
+      Name = "HeraShoutAresIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Ares3"
+      }
+    }
+    {
+      Name = "HeraShoutAphroditeIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Aphrodite3"
+      }
+    }
+    {
+      Name = "HeraShoutArtemisIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Artemis3"
+      }
+    }
+    {
+      Name = "HeraShoutAthenaIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Athena3"
+      }
+    }
+    {
+      Name = "HeraShoutDemeterIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Demeter3"
+      }
+    }
+    {
+      Name = "HeraShoutDionysusIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Dionysus3"
+      }
+    }
+    {
+      Name = "HeraShoutZeusIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Zeus3"
+      }
+    }
+    {
+      Name = "HeraShoutPoseidonIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Poseidon3"
+      }
+    }
+    {
+      Name = "HeraShoutHestiaIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Hestia3"
+      }
+    }
+    {
+      Name = "HeraShoutApolloIcon"
+      InheritFrom = "1_BaseGUIObstacle"
+      DisplayInEditor = false
+      Thing =
+      {
+        Scale = 0.08
+        EditorOutlineDrawBounds = false
+        Graphic = "Hera\ShoutIcons\Apollo3"
+      }
+    }
+  ]
+}

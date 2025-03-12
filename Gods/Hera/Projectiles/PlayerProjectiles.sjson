@@ -1,0 +1,361 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "HeraProjectile"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      //DissipateGraphic = "EnemyProjectileImpact"
+      AffectsSelf = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = true
+      MultipleUnitCollisions = false
+      MultipleObstacleCollisions = false
+      Range = 600
+      Fuse = 5
+      Speed = 570
+      DamageLow = 0
+      DamageHigh = 0
+      UnpauseResetLocation = true
+      FlashBeforeExpireDuration = 0.5
+      SpawnOnDeath = "HeraProjectileSmall"
+      SpawnType = "PROJECTILE"
+      SpawnCount = 10
+      SpawnsEvenlySpaced = true
+      SpawnsSpeedModifierScaleY = 0.65
+      Thing = {
+        Graphic = "HeraRangedProjectile"
+        OffsetZ = 50
+        Tallness = 60
+        //AttachedAnim = "EnemyProjectileLight"
+        Grip = 999999
+        UseBoundsForSortDrawArea = true
+        RotateGeometry = true
+        Points = [
+          {
+            X = -24
+            Y = 0
+          }
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }]
+      }
+      Effects = 
+        [{
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          //FrontFx = "CharonGhostChargeProjectile"
+          FrontFx = "JealousyHeraLoop"
+          BackFx = "null"
+          Duration = 6
+          Modifier = 0.25
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    {
+      Name = "HeraProjectileSmall"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      DissipateGraphic = "HeraProjectileImpact"
+      AffectsSelf = true
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      UnlimitedUnitPenetration = false
+      Range = 600
+      Speed = 570
+      DamageLow = 1
+      DamageHigh = 1
+      StartDelay = 0.2
+      InvulnerableToProjectileDefenseBeforeStart = true
+      ImpactFx = "HeraProjectileImpactSmall"
+      Thing = {
+        Graphic = "HeraRangedProjectile"
+        OffsetZ = 50
+        Tallness = 60
+        AttachedAnim = "HeraProjectileLight"
+        Grip = 999999
+        UseBoundsForSortDrawArea = true
+        RotateGeometry = true
+        Points = [
+          {
+            X = -24
+            Y = 0
+          }
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }]
+      }
+      Effects = 
+      [{
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          //FrontFx = "CharonGhostChargeProjectile"
+          FrontFx = "JealousyHeraLoop"
+          BackFx = "null"
+          Duration = 6
+          Modifier = 0.25
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+        {
+          Name = "OnHitStun"
+          Duration = 0.7
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = true
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }
+        {
+          Name = "RushGrip"
+          Type = "GRIP"
+          Duration = 0.15
+          Modifier = 0.8
+          HaltOnEnd = true
+          Active = false
+        }]
+    }
+    {
+      Name = "HeraDashProjectile"
+      InheritFrom = "DefaultRushProjectile"
+      //DetonateGraphic = "RadialNovaHera"
+      Type = "INSTANT"
+      FuseMin = 0.75
+      FuseMax = 0.75
+      MultiDetonate = false
+      TotalFuse = 0.75
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 180.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
+      AutoAdjustForTarget = false
+      UseVulnerability = false
+      NumPenetrations = 999
+      //SpawnOnDetonate = "BloodMine"
+      //SpawnsInheritGroups = false
+      //SkipSpawnsIfBlocked = true
+      //SpawnGroup = "FX_Terrain"
+      //SpawnType = "UNIT"
+      UseStartLocation = true
+      CanHitWithoutDamage = true
+      SilentImpactOnInvulnerable = true
+      Thing = 
+      {
+        Graphic = "null"
+        OffsetZ = 70
+        AttachedAnim = "null"
+        RotateGeometry = true
+        Grip = 999999
+        Points = [
+          {
+            X = 48
+            Y = 48
+          }
+          {
+            X = 48
+            Y = -48
+          }
+          {
+            X = -48
+            Y = -48
+          }
+          {
+            X = -48
+            Y = 48
+          }]
+      }
+      Effects = [
+
+      ]
+    }
+    {
+      Name = "HeraMineProjectile"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      Type = "INSTANT"
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 100.0
+      DamageRadiusScaleY = 0.6
+      ImpactVelocity = 1000
+      Fuse = 0.1
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      CanCrit = false
+      MaxVictimZ = 9999
+      SpawnRadius = 0
+      GroupName = "Standing"
+      SpawnOnDetonate = "HeraMine"
+      SpawnsInheritGroups = false
+      SpawnGroup = "Standing"
+      SpawnType = "UNIT"
+      SkipSpawnsIfBlocked = true
+      SpawnCap = 12
+      FizzleOldSpawnsOnDetonate = true
+      DangerDistance = 0
+    }
+    {
+      Name = "HeraMineBlast"
+      InheritFrom = "1_BaseEnemyMagicProjectile"
+      DetonateGraphic = "null"
+      DetonateSound = "/SFX/Enemy Sounds/Hades/HadesLostSoulHandsShort"
+      Type = "INSTANT"
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      DamageLow = 50
+      DamageHigh = 50
+      DamageRadius = 380.0
+      BlastSpeed = 800
+      DamageRadiusScaleY = 0.55
+      Fuse = 0.3
+      MultiDetonate = false
+      BlastDuration = 1.0
+      AffectsFriends = false
+      AffectsSelf = false
+      AffectsEnemies = true
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      AttachToOwner = true
+      CanCrit = false
+      MaxVictimZ = 9999
+      DangerDistance = 0
+      Effects = [
+        {
+          Name = "JealousyCurse"
+          IgnoreName = "_PlayerUnit"
+          //FrontFx = "CharonGhostChargeProjectile"
+          FrontFx = "JealousyHeraLoop"
+          BackFx = "null"
+          Duration = 6
+          Modifier = 0.25
+          Active = true
+          ExtendDurationOnReapply = true
+          IsVulnerabilityEffect = true
+          TimeModifierFraction = 0
+        }
+      ]
+      Thing = 
+      {
+        Graphic = "HeraTrapGraspingHandsFx"
+        RotateGeometry = false
+        Scale = 1.0
+        Color = 
+        {
+          Opacity = 1.0
+          Red = 1.0
+          Green = 1.0
+          Blue = 1.0
+        }
+        Points = [
+          {
+            X = 0
+            Y = 8
+          }
+          {
+            X = 32
+            Y = 0
+          }
+          {
+            X = 0
+            Y = -8
+          }
+          {
+            X = -32
+            Y = 0
+          }]
+      }
+    }
+    {
+      Name = "LowBurstEnvyProjectile"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "RadialBurstNovaHera"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      Fuse = 0.01
+      Range = 50
+      DamageRadius = 350
+      DamageLow = 0
+      DamageHigh = 0
+      ImpactVelocity = 0
+      ImpactVelocityCap = 0
+      ClearOnAttackEffects = false
+      Thing = 
+      {
+        Graphic = "null"
+        OffsetZ = 70
+        Grip = 999999
+      }
+    }
+     {
+      Name = "HighBurstEnvyProjectile"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "RadialBurstNovaHera"
+      Type = "STRAIGHT"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = false
+      CheckObstacleImpact = false
+      Fuse = 0.01
+      Range = 50
+      DamageRadius = 450
+      DamageLow = 0
+      DamageHigh = 0
+      ImpactVelocity = 0
+      ImpactVelocityCap = 0
+      ClearOnAttackEffects = false
+      Thing = 
+      {
+        Graphic = "null"
+        OffsetZ = 70
+        Grip = 999999
+      }
+    }
+  ]
+}

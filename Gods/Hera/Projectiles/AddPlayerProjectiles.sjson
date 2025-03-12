@@ -1,0 +1,48 @@
+
+Projectiles = { 
+  "_sequence" = true 
+  0 = { 
+    Effects = [
+      "_append" 
+      /*{
+        Name = "EnvyCurseAttack"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "StatusIconEnvy"
+        BackFx = "null"
+        Duration = 3.0
+        Modifier = 0
+        Active = false
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+      }*/
+      {
+        Name = "EnvyCurseSecondary"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "HeraEnvyHoverLoop"
+        BackFx = "null"
+        Duration = 3.0
+        Modifier = 0
+        Active = false
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+      }
+      {
+        Name = "EnvyCurseAttack"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "HeraEnvyHoverLoop"
+        BackFx = "null"
+        Duration = 3.0
+        Modifier = 0
+        Active = false
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+
+        //ExpiringTimeThreshold = 0.26
+        //ExpiringFrontFx = "HeraEnvyHoverDrop"
+      }
+    ] 
+  }
+}

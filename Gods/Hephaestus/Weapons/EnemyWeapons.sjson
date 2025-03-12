@@ -1,0 +1,26 @@
+{
+  Weapons = [
+    "_append"
+    {
+      Name = "HephChariotRamSelfDestruct"
+      InheritFrom = "ChariotRam"
+      Projectile = "HephChariotRamSelfDestruct"
+      Effect = {
+        Name = "RamBerserk"
+        Type = "SPEED"
+        ChangeType = "ADD"
+        Duration = 99.0
+        ExpiringTimeThreshold = 0.5
+        ExpiringModifierFalloff = 1200
+        Modifier = 450
+        Active = false
+      }
+    }
+    {
+      Name = "HephChariotRamDeathWeapon"
+      InheritFrom = "ChariotRam"
+      Projectile = "HephChariotRamDeathWeapon"
+      Effects = []
+    }
+  ]
+}

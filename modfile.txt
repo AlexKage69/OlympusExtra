@@ -3,21 +3,20 @@
     Author - physiX
 :-
 
-Include "modfile_assets.txt"
-
+:: Common code
 Include "Common/modfile_common.txt"
 
+:: New Weapons
 :: Include "Weapons/modfile_weapons.txt"
 
-Include "Apollo/modfile_apollo.txt"
-Include "Hestia/modfile_hestia.txt"
-Include "Hera/modfile_hera.txt"
-Include "Hephaestus/modfile_hephaestus.txt"
+:: New NPCs
+:: Include "NPCs/modfile_npcs.txt"
 
-Include "PatchNotes/modfile_patchnotes.txt"
-:: Include "GodManager/modfile_godmenu.txt"
+:: New Gods
+Include "Gods/modfile_gods.txt"
+
+:: New Extras
+Include "Extras/modfile_extras.txt"
 
 :: Merge all together
 Import "OlympusExtra.lua"
-
-Include "Extras/modfile_extras.txt"

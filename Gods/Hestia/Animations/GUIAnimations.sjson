@@ -1,0 +1,506 @@
+{
+  Animations = [
+	"_append"
+    {
+      Name = "Keepsake_Ember_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Hestia\Keepsake_Cauldron"
+      Scale = 0.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Ember"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Hestia\Keepsake_Cauldron"
+      Scale = 1.2
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Ember_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Ember_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "BoonSymbolGlow_Hestia"
+      InheritFrom = "BoonSymbolGlow"
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue = 0.21
+      }
+    }
+    {
+      Name = "BoonSymbolFlare_Hestia"
+      InheritFrom = "BoonSymbolFlare"
+      Color = 
+      {
+        Red = 0.92
+        Green = 0.49
+        Blue = 0.77
+      }
+    }
+    {
+      Name = "BoonSymbolHestia"
+      InheritFrom = "BoonBackingA"
+      ChildAnimation = "BoonBackingB_Hestia"
+      Scale = 0.5
+      CreateAnimations = [
+        {
+          Name = "BoonSymbolGlow_Hestia"
+        }
+        {
+          Name = "BoonSymbolFlare_Hestia"
+        }]
+      Color = 
+      {
+        Red = 0.48
+        Green = 0.09
+        Blue = 0.21
+      }
+    }
+    {
+      Name = "BoonBackingB_Hestia"
+      InheritFrom = "BoonBackingB"
+      ChildAnimation = "BoonBackingC_Hestia"
+      Scale = 0.5
+      Color = 
+      {
+        Red = 0.92
+        Green = 0.49
+        Blue = 0.77
+      }
+    }
+    {
+      Name = "BoonBackingC_Hestia"
+      InheritFrom = "BoonBackingC"
+      ChildAnimation = "BoonSymbolHestiaIcon"
+    }
+    {
+      Name = "BoonInfoSymbolHestiaIcon"
+      InheritFrom = "BoonInfoSymbolBase"
+      FilePath = "Hestia\Hestia2"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.40
+    }
+    {
+      Name = "BoonSymbolHestiaIcon"
+      InheritFrom = "BoonSymbolBase"
+      FilePath = "Hestia\Hestia3"
+      Scale = 0.30
+    }
+    {
+      Name = "BoonSymbolHestiaIsometric"
+      InheritFrom = "BoonSymbolBaseIsometric"
+      FilePath = "Hestia\HestiaDoorIcon"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.20
+    }
+    {
+      Name = "Boon_Hestia_00_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_00_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\BoonIcons\bouldy_blessing"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaStrike_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaStrike_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_02_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaFlourish_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_02_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaFlourish_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_03_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaDash_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_03_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaDash_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_04_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_04_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_05_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_05_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaRanged_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_06_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaAid_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_06_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaAid_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hestia_07_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\OpenArms_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_07_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\OpenArms_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hestia_08_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Vengence_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_08_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Vengence_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+        {
+      Name = "Boon_Hestia_09_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Homecoming_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_09_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Homecoming_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_10_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\MeltingHeart_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_10_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\MeltingHeart_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_11_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\MoltenCore_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_11_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\MoltenCore_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+      {
+      Name = "Boon_Hestia_12_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HomeTurf_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_12_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HomeTurf_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_13_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\EternalFlame_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_13_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\EternalFlame_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_14_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Temperance_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_14_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Temperance_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_15_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\HestiaAttract_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Boon_Hestia_15_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\HestiaAttract_large"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Aphrodite_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Aphrodite_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaAphrodite_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Ares_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Ares_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaAres_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Artemis_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Artemis_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaArtemis_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Athena_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Athena_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaAthena_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Demeter_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaDemeter_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Demeter_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaDemeter_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Dionysus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Dionysus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaDionysus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Poseidon_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Poseidon_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaPoseidon_01"
+      EndFrame = 1
+      StartFrame = 1
+    } 
+    {
+      Name = "Hestia_Zeus_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Zeus_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaZeus_01"
+      EndFrame = 1
+      StartFrame = 1
+    }     
+    {
+      Name = "Hestia_Apollo_01_Small"
+      InheritFrom = "BoonTrayIcon"
+      FilePath = "Hestia\Duos\HestiaApollo_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Hestia_Apollo_01_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "Hestia\Duos\HestiaApollo_01"
+      EndFrame = 1
+      StartFrame = 1
+    }   
+    {
+      Name = "Keepsake_Hestia_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hestia\HestiaBadge"
+    }
+    {
+      Name = "Keepsake_HestiaSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hestia\HestiaBadge_max"
+    }    
+    {
+      Name = "CentaurHeartIcon"
+      FilePath = "GUI\Icons\RoomReward\MaxHealthUp_01"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
+    }
+    {
+      Name = "CentaurSoulIcon"
+      FilePath = "GUI\Screens\ShopIcons\soul_16"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      HoldLastFrame = true
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
+    }
+    {
+      Name = "ExtraLifeHestia"
+      FilePath = "Hestia\HestiaDDIcon"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Scale = 0.6
+      Material = "Unlit"
+    }
+    {
+      Name = "Keepsake_Hestia_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hestia\HestiaBadge"
+    }
+    {
+      Name = "Keepsake_HestiaSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hestia\HestiaBadge_max"
+    }
+  ]
+}

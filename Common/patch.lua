@@ -125,6 +125,32 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
         end
         baseFunc(lootData, reroll)
 		local components = ScreenAnchors.ChoiceScreen.Components
+        local upgradeOptions = lootData.UpgradeOptions
+		if upgradeOptions == nil then
+			SetTraitsOnLoot( lootData )
+			upgradeOptions = lootData.UpgradeOptions
+		end
+        if IsEmpty( upgradeOptions ) then
+			table.insert(upgradeOptions, { ItemName = "FallbackMoneyDrop", Type = "Consumable", Rarity = "Common" })
+		end
+        local itemLocationY = 370
+		local itemLocationX = ScreenCenterX - 355
+		for itemIndex, itemData in ipairs( upgradeOptions ) do
+			local purchaseButtonKey = "PurchaseButton"..itemIndex -- Doesnt work because eligible is not there yet...
+            if  IsGameStateEligible(CurrentRun, TraitData[itemData.ItemName]) and CanReceivePomFirstTrait(CurrentRun.Hero, itemData.ItemName) then           
+                CreateTextBox({ Id = components[purchaseButtonKey].Id,
+                    Text = "UI_TraitLevel",
+                    FontSize = 27,
+                    OffsetX = 260, OffsetY = -55,
+                    Color = Color.UpgradeGreen,
+                    Font = "AlegreyaSansSCBold",
+                    ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+                    Justification = "Left",
+                    LuaKey = "TempTextData", LuaValue = { Amount = 2 }
+                })
+            end
+            itemLocationY = itemLocationY + 220
+        end
         if IsMetaUpgradeSelected( "RerollMetaUpgrade" ) and HeroHasTrait("ForceWeaponUpgradeTrait") and lootData.Name == "WeaponUpgrade" then
             local cost = -1
             if lootData.BlockReroll then
@@ -215,6 +241,10 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
         if attacker ~= nil and attacker.OutgoingDamageModifiers ~= nil and (weaponData ~= nil and weaponData.IgnoreOutgoingDamageModifiers) then
             local appliedEffectTable = {}
             for i, modifierData in pairs(attacker.OutgoingDamageModifiers) do
+                if modifierData.GlobalMultiplier ~= nil then
+                    addDamageMultiplier(modifierData, modifierData.GlobalMultiplier)
+                end
+
                 local validEffect = modifierData.ValidEffects == nil or
                     (triggerArgs.EffectName ~= nil and Contains(modifierData.ValidEffects, triggerArgs.EffectName))
                 local validWeapon = modifierData.ValidWeaponsLookup == nil or
@@ -760,7 +790,7 @@ function AuraThread(args)
         StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })
         CreateAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
     end
-    if HeroHasTrait("StatusOverTimeTrait") then
+    if HeroHasTrait("StatusOverTimeTrait") or HeroHasTrait("HephaestusImproveHera") then
         StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })
         CreateAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
     end
@@ -784,7 +814,7 @@ function AuraThread(args)
                 if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
                     ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
-                if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
+                if distanceSquared <= 300 and (HeroHasTrait("StatusOverTimeTrait") or HeroHasTrait("HephaestusImproveHera")) and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
                     ApplyEffectFromWeapon({ WeaponName = "DecayCurseApplicator", EffectName = "HeraDecay", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
                 if distanceSquared <= 400 and HeroHasTrait("AuraExposedTrait") then
@@ -797,6 +827,71 @@ function AuraThread(args)
         end
     end
 end
+-- HealthAsObolTrait Mechanic
+OnControlPressed{ "Gift",
+function( triggerArgs )
+    local target = triggerArgs.UseTarget
+    if target == nil then
+        return
+    end
+    if target.SacrificeCost then
+        if target.Rarity then
+            local interactionBlocked = false
+            if not CurrentRun.CurrentRoom.AlwaysAllowLootInteraction then
+                for enemyId, enemy in pairs( ActiveEnemies ) do
+                    if enemy.BlocksLootInteraction then
+                        interactionBlocked = true
+                        break
+                        --DebugPrint({ Text = "blockedByEnemy = "..GetTableString( nil, enemy ) })
+                    end
+                end
+            end
+
+            if interactionBlocked then
+                local userTable = triggerArgs.TriggeredByTable
+                thread( CannotUseLootPresentation, triggerArgs.triggeredById, userTable )
+                CreateAnimation({ Name = "ShoutFlare", DestinationId = triggerArgs.triggeredById })
+            elseif not AreScreensActive() then		
+                if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < target.SacrificeCost then
+                    CantAffordPresentation( target )
+                    return
+                end
+                if target.SacrificeCost ~= nil and target.SacrificeCost > 0 then
+                    target.Purchased = true
+                    SacrificeHealth({ SacrificeHealth = target.SacrificeCost, MinHealth = 1 })
+                    RemoveStoreItem({Name = target.Name, IsBoon = true, BoonRaritiesOverride = target.BoonRaritiesOverride, StackNum = target.StackNum })
+                    PlaySound({ Name = "/Leftovers/Menu Sounds/StoreBuyingItem" })
+                    thread( PlayVoiceLines, GlobalVoiceLines.PurchasedConsumableVoiceLines, true )
+                end
+
+                if target.RarityBoosted then
+                    UseHeroTraitsWithValue("RarityBonus", true )
+                end
+                
+                SetPlayerInvulnerable( "HandleLootPickupAnimation" )
+                PlayInteractAnimation( triggerArgs.triggeredById )
+                HandleLootPickup( CurrentRun, target )
+                SetPlayerVulnerable( "HandleLootPickupAnimation" )
+            end
+        else
+            if CurrentRun.Hero.HandlingDeath then
+                return
+            end
+    
+            if target.SacrificeCost ~= nil and CurrentRun.Hero.Health < (target.SacrificeCost+1) then
+                CantAffordPresentation( target )
+                return
+            end
+            if target.SacrificeCost ~= nil and target.SacrificeCost > 0 and target.PurchaseRequirements ~= nil and not IsGameStateEligible( CurrentRun, target.PurchaseRequirements ) then
+                CantPurchaseWorldItemPresentation( target )
+                return
+            end
+            target.UseSacrifice = true
+            PurchaseConsumableItem( CurrentRun, target, triggerArgs )
+        end
+    end
+end
+}
 ModUtil.Path.Wrap("HandleLootPickup",
     function(baseFunc, currentRun, loot)
         local times = 0
@@ -827,6 +922,15 @@ ModUtil.Path.Wrap("HandleLootPickup",
 
             CurrentLootData = loot
             SetLightBarColor({ PlayerIndex = 1, Color = loot.LootColor });
+
+            local hasDuoBoon = false
+            if loot.UpgradeOptions ~= nil then
+                for i, itemData in pairs(loot.UpgradeOptions) do
+                    if itemData.Type == "Trait" and TraitData[itemData.ItemName] and TraitData[itemData.ItemName].IsDuoBoon then
+                        hasDuoBoon = true
+                    end
+                end
+            end
 
             PlaySound({ Name = loot.PickupSound or "/SFX/Menu Sounds/GodBoonInteract" })
             thread(PlayVoiceLines, loot.PickupVoiceLines, true)
@@ -878,6 +982,9 @@ ModUtil.Path.Wrap("HandleLootPickup",
                 thread(GiftTrackUnlockedPresentation, loot.Name)
             end
         else
+            if loot.SacrificeId then
+				Destroy({ Id = loot.SacrificeId })
+			end
             baseFunc(currentRun, loot)
         end
         if (times > 0) then
@@ -1022,6 +1129,153 @@ ModUtil.Path.Wrap( "Damage",
             })
         end
 	end
+)
+
+ModUtil.Path.Override("HarvestBoons",
+	function(args)
+        numTraits = args.NumTraits
+        local traitRarity = "Common"
+        local traitDictionary = {}
+        local upgradableTraits = {}
+        local upgradedTraits = {}
+        for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+            if not traitDictionary[traitData.Name] and IsGodTrait(traitData.Name) and TraitData[traitData.Name] and traitData.Rarity ~= nil and GetUpgradedRarity(traitData.Rarity) ~= nil and traitData.RarityLevels[GetUpgradedRarity(traitData.Rarity)] ~= nil then
+                table.insert(upgradableTraits, traitData )
+                traitDictionary[traitData.Name] = true
+            end
+        end
+        
+        local harvestTraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = "HarvestBoonTrait", Rarity = traitRarity })
+
+        harvestTraitData.HarvestBoons = {}
+
+        while numTraits > 0 and not IsEmpty( upgradableTraits ) do
+            local traitData = RemoveRandomValue( upgradableTraits )
+            local persistentKeys = { "AccumulatedFountainDamageBonus", "AccumulatedFountainDefenseBonus", "AccumulatedHealthDamageBonus" }
+            local persistentValues = {}
+            for i, key in pairs( persistentKeys ) do
+                persistentValues[key] = traitData[key]
+            end
+
+            upgradedTraits[traitData.Name] = true
+            table.insert( harvestTraitData.HarvestBoons, traitData.Name )
+            local numOldTrait = GetTraitNameCount( CurrentRun.Hero, traitData.Name )
+            RemoveWeaponTrait( traitData.Name )
+
+            local processedData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = traitData.Name, Rarity = "Common" }) 
+            for i, key in pairs( persistentKeys ) do
+                processedData[key] = persistentValues[key]
+            end
+            AddTraitToHero({ TraitData = processedData })
+
+            for i=1, numOldTrait-1 do
+                AddTraitToHero({ TraitName = traitData.Name })
+            end
+            numTraits = numTraits - 1
+        end
+
+        
+        harvestTraitData.TraitListTextString = "HarvestBoonTraitList"..tostring(TableLength(harvestTraitData.HarvestBoons))
+        thread( HarvestBoonTraitPresentation, upgradedTraits, 2.0 )
+        AddTraitToHero({TraitData = harvestTraitData })
+    end
+)
+ModUtil.Path.Override("UpgradeHarvestBoon",
+	function()
+        local upgradableTraitNames = {}
+        local upgradableTraits = {}
+        local upgradedTraits = {}
+        for i, trait in pairs( CurrentRun.Hero.Traits ) do
+            if trait.HarvestBoons then
+                if trait.CurrentRoom then
+                    trait.CurrentRoom = trait.CurrentRoom + 1
+                end
+                if trait.RoomsPerUpgrade and trait.CurrentRoom < trait.RoomsPerUpgrade then
+                    return
+                else
+                    trait.CurrentRoom = 0
+                end
+            end
+        end
+
+        for i, value in pairs(GetHeroTraitValues("HarvestBoons")) do
+            for s, boonName in pairs(value) do
+                upgradableTraitNames[boonName] = true
+            end
+        end
+        
+        for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+            if upgradableTraitNames[traitData.Name] and TraitData[traitData.Name] and traitData.Rarity ~= nil and GetUpgradedRarity(traitData.Rarity) ~= nil and traitData.RarityLevels[GetUpgradedRarity(traitData.Rarity)] ~= nil then
+                table.insert(upgradableTraits, traitData )
+            end
+        end
+        if not IsEmpty(upgradableTraits) then
+            while not IsEmpty( upgradableTraits ) do
+                local traitData = RemoveRandomValue( upgradableTraits )
+                local persistentKeys = { "AccumulatedFountainDamageBonus", "AccumulatedFountainDefenseBonus", "AccumulatedHealthDamageBonus" }
+                local persistentValues = {}
+                for i, key in pairs( persistentKeys ) do
+                    persistentValues[key] = traitData[key]
+                end
+
+                upgradedTraits[GetTraitTooltipTitle(traitData)] = true
+                local numOldTrait = GetTraitNameCount( CurrentRun.Hero, traitData.Name )
+                RemoveWeaponTrait( traitData.Name )
+                
+                local processedData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = traitData.Name, Rarity = GetUpgradedRarity(traitData.Rarity) }) 
+                for i, key in pairs( persistentKeys ) do
+                    processedData[key] = persistentValues[key]
+                end
+                AddTraitToHero({ TraitData = processedData })
+
+                for i=1, numOldTrait-1 do
+                    AddTraitToHero({ TraitName = traitData.Name })
+                end
+            end
+
+            thread( IncreasedTraitRarityPresentation, upgradedTraits, 2.0 )
+        end
+        
+        for itemId, item in pairs( LootObjects ) do
+            item.UpgradeOptions = nil
+        end
+    end
+)
+ModUtil.Path.Override("AddRarityToTraits",
+	function(source, args)
+        local numTraits = args.NumTraits
+        local upgradableTraits = {}
+        local upgradedTraits = {}
+        for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+            if IsGodTrait(traitData.Name, { ForShop = true }) and TraitData[traitData.Name] and traitData.Rarity ~= nil and GetUpgradedRarity(traitData.Rarity) ~= nil and traitData.RarityLevels[GetUpgradedRarity(traitData.Rarity)] ~= nil then
+                table.insert(upgradableTraits, traitData )
+            end
+        end
+
+        while numTraits > 0 and not IsEmpty( upgradableTraits ) do
+            local traitData = RemoveRandomValue( upgradableTraits )
+            local persistentKeys = { "AccumulatedFountainDamageBonus", "AccumulatedFountainDefenseBonus", "AccumulatedHealthDamageBonus" }
+            local persistentValues = {}
+            for i, key in pairs( persistentKeys ) do
+                persistentValues[key] = traitData[key]
+            end
+
+            upgradedTraits[GetTraitTooltipTitle(traitData)] = true
+            local numOldTrait = GetTraitNameCount( CurrentRun.Hero, traitData.Name )
+            RemoveWeaponTrait( traitData.Name )
+            local processedData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = traitData.Name, Rarity = GetUpgradedRarity(traitData.Rarity) }) 
+            for i, key in pairs( persistentKeys ) do
+                processedData[key] = persistentValues[key]
+            end
+            AddTraitToHero({ TraitData = processedData })
+            for i=1, numOldTrait-1 do
+                AddTraitToHero({ TraitName = traitData.Name })
+            end
+            numTraits = numTraits - 1
+        end
+
+        thread( IncreasedTraitRarityPresentation, upgradedTraits )
+    end
 )
 ModUtil.Path.Override("SpawnStoreItemInWorld",
 		function(itemData, kitId)
@@ -1187,18 +1441,63 @@ OnHit {
         end
     end
 }
+--[[ModUtil.Path.Wrap("StartNewRunPresentation",
+    function(baseFunc, currentRun)
+        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 then            
+            currentRun.Hero.PomFirstList = {
+                "ZeusUpgrade",
+                "PoseidonUpgrade",
+                "AresUpgrade",
+                "DionysusUpgrade",
+                "ArtemisUpgrade",
+                "AthenaUpgrade",
+                "AphroditeUpgrade",
+                "DemeterUpgrade",
+                "ApolloUpgrade",
+                "HestiaUpgrade",
+                "HeraUpgrade"
+            }
+        end
+        baseFunc(currentRun)
+    end
+)]]
 ModUtil.Path.Wrap("AddTraitToHero",
-    function(baseFunc, args)
+    function(baseFunc, args)     
         baseFunc(args)
-        local traitData = args.TraitData
+        local traitData = args.TraitData        
         if traitData == nil then
             traitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
+        end
+        if CanReceivePomFirstTrait(CurrentRun.Hero, traitData.Name) and IsGameStateEligible(CurrentRun, TraitData[traitData.Name]) then            
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Got here"))
+            baseFunc(args)
+        end
+        if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
+            RemoveTrait(CurrentRun.Hero, traitData.ReplaceTrait)
         end
         if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
             RemoveTrait(CurrentRun.Hero, traitData.ReplaceTrait)
         end
     end
 )
+
+function CanReceivePomFirstTrait( unit, traitName )
+    if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") <= 0 or not IsGodTrait(traitName) then
+        return false
+    end
+	if unit == nil or unit.Traits == nil then
+		return false
+	end
+    local sourceName = GetLootSourceName(traitName) 
+	local num = 0
+	for k, currentTrait in pairs( unit.Traits ) do
+		if IsGameStateEligible(CurrentRun, TraitData[currentTrait.Name]) and GetLootSourceName(currentTrait.Name) == sourceName then
+			num = num + 1
+		end
+	end
+	return num <= 1
+end
+
 -- Test / Utility
 --[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)

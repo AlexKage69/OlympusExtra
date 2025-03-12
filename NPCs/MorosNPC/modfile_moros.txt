@@ -1,0 +1,12 @@
+
+Import "MorosNPC.lua"
+Import "OEMirror.lua"
+
+To "Game/Animations/CharacterAnimationsNPcs.sjson"
+SJSON "Animations/CharacterAnimationsNPcs.sjson"
+To "Game/Animations/Fx.sjson"
+SJSON "Animations/Fx.sjson"
+To "Game/Animations/GUIAnimations.sjson"
+SJSON "Animations/GUIAnimations.sjson"
+To "Game/Weapons/PlayerWeapons.sjson"
+SJSON "Weapons/PlayerWeapons.sjson"
