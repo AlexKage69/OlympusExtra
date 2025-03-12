@@ -500,6 +500,26 @@
       FilePath = "Hera\HeraBadge_max"
     }
     {
+      Name = "Keepsake_Hephaestus_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hephaestus\HephBadge"
+    }
+    {
+      Name = "Keepsake_HephaestusSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hephaestus\HephBadge_max"
+    }    
+    {
+      Name = "Keepsake_Hephaestus_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Hephaestus\HephBadge"
+    }
+    {
+      Name = "Keepsake_HephaestusSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Hephaestus\HephBadge_max"
+    }
+    {
       Name = "BoonHeraShoutAresIcon"
       InheritFrom = "BoonInfoSymbolBase"
       FilePath = "Hera\ShoutIcons\Ares3"
