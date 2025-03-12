@@ -1526,12 +1526,11 @@ OnHit {
 )]]
 ModUtil.Path.Wrap("DropStoredAmmo",
     function(baseFunc, enemy, weaponData, id )   
-        if IsMetaUpgradeActive("StoredAmmoDOTMetaUpgrade") and enemy then
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Got here"))
+        if IsMetaUpgradeActive("CastDamageOverTimeMetaUpgrade") and enemy then
             FireWeaponFromUnit({ Weapon = "StoredAmmoDOTApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId, FireFromTarget = true })
         end
         baseFunc(enemy, weaponData, id)
-        if IsEmpty( ammoAnchors ) and enemy then
+        if IsEmpty( EnemyHealthDisplayAnchors[enemy.ObjectId.."storedAmmo"] ) and enemy then
             ClearEffect({ Id = enemy.ObjectId, Name = "CastDamageOverTime" })
         end
     end

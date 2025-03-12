@@ -7,10 +7,16 @@ local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
-
-
+local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
+OlympusColor.CastDOTDamage = { 145,17,55, 255 }
+
+OlympusEffectData.CastDamageOverTime = {
+	DamageTextStartColor = OlympusColor.CastDOTDamage,
+	DamageTextColor = OlympusColor.CastDOTDamage,
+	RapidDamageType = true
+}
 
 	OlympusMetaUpgradeData.LowHealthDamageMetaUpgrade =
 	{
@@ -102,8 +108,8 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		CostTable = { 100, 250, 500 },
 		Color = { 255, 255, 255, 255 },
 		ShortTotal = "CastDamageOverTimeMetaUpgrade_ShortTotal",
-		BaseValue = 0.8,
-		ChangeValue = -0.2,
+		BaseValue = 0,
+		ChangeValue = 100,
 		PreEquipWeapon = "StoredAmmoDOTApplicator",
 		--ChangeValue = 1.06, -- display variable, change below value to affect gameplay
 		PropertyChanges =
@@ -112,7 +118,7 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 				WeaponName = "StoredAmmoDOTApplicator",
 				EffectName = "CastDamageOverTime",
 				EffectProperty = "Cooldown",
-				ChangeValue = -0.02,
+				ChangeValue = -0.03,
 				ChangeType = "Add",
 			},
 		},

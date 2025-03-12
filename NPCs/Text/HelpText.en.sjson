@@ -81,7 +81,7 @@
 		{
 			Id = "CountAmmoBonus"
 			DisplayName = "Hellish Blood"
-			Description = "Deal bonus {#BoldFormatGraft}Ranged {#PreviousFormat}damage for each {!Icons.Ammo} you have, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+			Description = "Foes with{!Icons.Ammo}in them receive damage over time. {#TooltipUpgradeFormat}{$TempTextData.BaseValue} {#PreviousFormat}per rank."
     	}
 		{
 			Id = "AmmoBounce"
