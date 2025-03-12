@@ -14,9 +14,11 @@
 			Fixes for a few bugs including a major one with Hephaestus Legendary.
 
 			{#AlertH2Format}Bug Fixes{#PreviousFormat}
-			+ {#AlertHighlightFormat}Hephaestus Legendary{#PreviousFormat}: Hephaestus Legendary is now working and no longer crash the game.
-			+ {#AlertHighlightFormat}Hera Aura's and Envy{#PreviousFormat}: Aura's no longer trigger Envy. 
-			+ {#AlertHighlightFormat}Melodic Concert vs Ambrosia Delight - Part 2 {#PreviousFormat}: Taking Ambrosia Delight from Eurydice should no longer reset the damage resistance to 0%. Includes Rare Crops.
+			+ {#AlertHighlightFormat}Hephaestus Legendary{#PreviousFormat}: Hephaestus Legendary is now working and should no longer crash the game. (Fingers crossed!)
+			+ {#AlertHighlightFormat}Hera Auras and Envy{#PreviousFormat}: Auras no longer trigger Envy. 
+			+ {#AlertHighlightFormat}Melodic Concert vs Ambrosia Delight - Part 2 {#PreviousFormat}: Taking Ambrosia Delight from Eurydice should no longer reset the damage resistance to 0%. Includes Rare Crop.
+
+ 			\Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
 
 		{#AlertHeaderFormat}1.4.0 - Hephaestus Release! - Jan 2025
 			Happy New Rotation-Of-Apollo-Around-Gaia, everyone! Welcome to the Hephaestus update!  
