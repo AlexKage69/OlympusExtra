@@ -109,9 +109,14 @@
 			Description = "Deal bonus damage for each {#EpicFormat}{$Keywords.Epic} {#PreviousFormat} or higher you've been blessed, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank. \n {#ItalicFormat}Current Damage Bonus: {#PreviousFormat}{#TooltipUpgradeFormat}+{$TempTextData.CurrentValue}%{#PreviousFormat}"
 		}
 		{
+			Id = "EpicBonusMetaUpgrade_InRun"
+			DisplayName = "{$Keywords.EpicBonus_InRun}"
+			OverwriteLocalization = true
+		}
+		{
 			Id = "NPCEncounterBonus"
 			DisplayName = "Rare Acquaintance"
-			Description = "Raise your chance to encounter {#BoldFormatGraft}Special {$Keywords.EncounterAlt} {#PreviousFormat} and {$Keywords.FountainPlural}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+			Description = "Raise your chance to encounter {#BoldFormatGraft}Special {$Keywords.EncounterAlt} {#PreviousFormat} and {#BoldFormatGraft}{$Keywords.FountainPlural}{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
     	}
 		{
 			Id = "PomFirstGod"
@@ -197,17 +202,17 @@
 			OverwriteLocalization = true
 		}
 		{
-			Id = "CountAmmoMetaUpgrade"
+			Id = "CastDamageOverTimeMetaUpgrade"
 			DisplayName = "{$Keywords.CountAmmoBonus}"
 			OverwriteLocalization = true
 		}
 		{
-			Id = "CountAmmoMetaUpgrade_ShortTotal"
+			Id = "CastDamageOverTimeMetaUpgrade_ShortTotal"
 			DisplayName = "{$TempTextData.Amount:P}"
 			OverwriteLocalization = true
 		}
 		{
-			Id = "CountAmmoMetaUpgrade_ShortTotalNoIcon"
+			Id = "CastDamageOverTimeMetaUpgrade_ShortTotalNoIcon"
 			DisplayName = "{$TempTextData.Amount:P}"
 			OverwriteLocalization = true
 		}

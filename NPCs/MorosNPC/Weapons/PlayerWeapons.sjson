@@ -33,6 +33,12 @@
         }]
     }
     {
+      Name = "StoredAmmoDOTApplicator"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "StoredAmmoDOTApplicator"
+    }
+    {
       Name = "RangedWeaponBounce"
       InheritFrom = "1_BaseDamagingWeapon"
       //Control = "Attack1"

@@ -12,7 +12,7 @@ ModUtil.Table.Merge(OlympusKeywordList, {
     "SpecialDiscount", "ApolloBlind", "FlashBomb", "DamageResist",
     "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon",
     "ArmorIcon", "ZagreusArmor", "HephSword", "HephBow",
-    "HephShield", "HephSpear" })
+    "HephShield", "HephSpear", "EpicBonus_InRun" })
 ResetKeywords()
 
 local OlympusEnemySets = ModUtil.Entangled.ModData(EnemySets)
@@ -297,6 +297,9 @@ ModUtil.Path.Wrap("CalculateDamageMultipliers",
                 if validUniqueness and validWeapon and validEffect and validTrait and validEnchantment then
                     if modifierData.Name then
                         appliedEffectTable[modifierData.Name] = true
+                    end
+                    if modifierData.PerUniqueEpicMultiplier and attacker == CurrentRun.Hero then
+                        addDamageMultiplier( modifierData, 1 + ( modifierData.PerUniqueEpicMultiplier - 1 ) * GetHeroEpicTraitCount( attacker ))
                     end
                     if modifierData.DistanceMultiplierWithSelfEffect and not IsEmpty(attacker.ActiveEffects) then
                         local hasAllEffects = true
@@ -1521,6 +1524,18 @@ OnHit {
         baseFunc(currentRun)
     end
 )]]
+ModUtil.Path.Wrap("DropStoredAmmo",
+    function(baseFunc, enemy, weaponData, id )   
+        if IsMetaUpgradeActive("StoredAmmoDOTMetaUpgrade") and enemy then
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Got here"))
+            FireWeaponFromUnit({ Weapon = "StoredAmmoDOTApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId, FireFromTarget = true })
+        end
+        baseFunc(enemy, weaponData, id)
+        if IsEmpty( ammoAnchors ) and enemy then
+            ClearEffect({ Id = enemy.ObjectId, Name = "CastDamageOverTime" })
+        end
+    end
+)
 ModUtil.Path.Wrap("AddTraitToHero",
     function(baseFunc, args)     
         baseFunc(args)

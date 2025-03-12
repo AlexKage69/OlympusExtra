@@ -1,0 +1,41 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "StoredAmmoDOTApplicator"
+      InheritFrom = "1_BaseMagicProjectile"
+      DetonateGraphic = "null"
+      Type = "INSTANT"
+      FuseMin = 0
+      FuseMax = 0
+      Range = 0
+      DamageLow = 0
+      DamageHigh = 0
+      DamageRadius = 1.0
+      DamageRadiusScaleY = 0.6
+      DamageRadiusScaleX = 1.1
+      AutoAdjustForTarget = false
+      UseVulnerability = false
+      NumPenetrations = 999
+      SpawnRadius = 0
+      UseStartLocation = true
+      SilentImpactOnInvulnerable = true
+      Thing = 
+      {
+        Graphic = "null"
+      }
+      Effects = [
+        {
+          Name = "CastDamageOverTime"
+          Type = "DAMAGE_OVER_TIME"
+          Amount = 1
+          Cooldown = 0.6
+          Duration = 100.0
+          Active = true
+          CanAffectInvulnerable = false
+          TimeModifierFraction = 0
+        }
+        ]
+    }
+  ]
+}
