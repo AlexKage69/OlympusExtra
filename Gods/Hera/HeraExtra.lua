@@ -8691,52 +8691,6 @@ end]]
 			CurrentRun.Hero.HeroicBoonsTraitFlag = true
 		end
 	end
-	function SetupAura(args)
-		thread( AuraThread, args )
-	end
-	function AuraThread(args)
-		--local PreviousCloseEnemiesList = {}
-		if HeroHasTrait("AuraRuptureTrait") then
-			StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })
-			CreateAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
-		end
-		if HeroHasTrait("StatusOverTimeTrait") then
-			StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })
-			CreateAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
-		end
-		if HeroHasTrait("AuraExposedTrait") then
-			StopAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })
-			CreateAnimation({ Name = "AuraFx-Exposed", DestinationId = CurrentRun.Hero.ObjectId })			
-		end
-		if HeroHasTrait("AuraBlindTrait") then
-			StopAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })
-			CreateAnimation({ Name = "AuraFx-Blind", DestinationId = CurrentRun.Hero.ObjectId })			
-		end
-		while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
-			wait(0.2, "RoomThread") -- 0.2
-			if CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) and not IsEmpty( RequiredKillEnemies ) then
-				local enemyLocation = { 0, 0 }
-				local heroLocation = GetLocation({ Id = CurrentRun.Hero.ObjectId })
-				for enemyId, enemy in pairs(RequiredKillEnemies) do
-					enemyLocation = GetLocation({ Id = enemy.ObjectId })
-					local distanceSquared = math.sqrt((enemyLocation.X - heroLocation.X) ^ 2 +
-						(enemyLocation.Y - heroLocation.Y) ^ 2)
-					if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
-						ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
-					end
-					if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
-						ApplyEffectFromWeapon({ WeaponName = "DecayCurseApplicator", EffectName = "HeraDecay", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
-					end
-					if distanceSquared <= 400 and HeroHasTrait("AuraExposedTrait") then
-						ApplyEffectFromWeapon({ WeaponName = "ExposedCurseApplicator", EffectName = "AthenaBackstabVulnerability", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
-					end
-					if distanceSquared <= 500 and HeroHasTrait("AuraBlindTrait") then
-						ApplyEffectFromWeapon({ WeaponName = "BlindCurseApplicator", EffectName = "ApolloBlind", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
-					end
-				end	
-			end
-		end
-	end
 	function SetupDeathMarked(args)
 		thread( DeathMarkedThread, args )
 	end

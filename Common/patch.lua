@@ -354,7 +354,7 @@ ModUtil.Path.Wrap("DamageEnemy",
             })
         end
         if sourceWeaponData ~= nil and victim ~= nil and victim.DamageType == "Enemy" then            
-            if ((HeroHasTrait("HephaestusWeaponTrait") or HeroHasTrait("HephaestusSecondaryTrait")) and (Contains(WeaponSets.AllPrimaryWeapons, sourceWeaponData.Name) and Contains(WeaponSets.AllSecondaryWeapons, sourceWeaponData.Name)) and CurrentRun.Hero.IgneousArmor ~= nil and CurrentRun.Hero.IgneousArmor.Charging and CurrentRun.Hero.IgneousArmor.DamageTransfer ~= nil) then           
+            if ((HeroHasTrait("HephaestusWeaponTrait") or HeroHasTrait("HephaestusSecondaryTrait")) and (Contains(WeaponSets.AllPrimaryWeapons, sourceWeaponData.Name) or Contains(WeaponSets.AllSecondaryWeapons, sourceWeaponData.Name)) and CurrentRun.Hero.IgneousArmor ~= nil and CurrentRun.Hero.IgneousArmor.Charging and CurrentRun.Hero.IgneousArmor.DamageTransfer ~= nil) then           
                 CurrentRun.Hero.IgneousArmor.Damage = CurrentRun.Hero.IgneousArmor.Damage + math.floor(triggerArgs.DamageAmount * CurrentRun.Hero.IgneousArmor.DamageTransfer)
                 CreateAnimation({ Name = "HitSparkArmorFlash", DestinationId = victim.ObjectId, Group = "FX_Standing_Top" })      
             end
@@ -790,7 +790,7 @@ function AuraThread(args)
         StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })
         CreateAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
     end
-    if HeroHasTrait("StatusOverTimeTrait") then
+    if HeroHasTrait("StatusOverTimeTrait") or HeroHasTrait("HephaestusImproveHera") then
         StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })
         CreateAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
     end
@@ -814,7 +814,7 @@ function AuraThread(args)
                 if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
                     ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
-                if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
+                if distanceSquared <= 300 and (HeroHasTrait("StatusOverTimeTrait") or HeroHasTrait("HephaestusImproveHera")) and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
                     ApplyEffectFromWeapon({ WeaponName = "DecayCurseApplicator", EffectName = "HeraDecay", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
                 if distanceSquared <= 400 and HeroHasTrait("AuraExposedTrait") then
