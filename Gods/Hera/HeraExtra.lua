@@ -7987,7 +7987,7 @@ end]]
 			if not victim or ( victim.IsDead and victim ~= CurrentRun.Hero ) then
 				return
 			end
-			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect then
+			if victim.EnvyNextDamage ~= nil and triggerArgs.IsVulnerabilityEffect and triggerArgs.Duration >= 1.0 then
 				local isLow = true
 				if triggerArgs.EffectName ~= "EnvyCurseAttack" and triggerArgs.EffectName ~= "EnvyCurseSecondary" then
 					victim.EnvyNextDamage.Amount = victim.EnvyNextDamage.Amount + victim.EnvyNextDamage.Amount

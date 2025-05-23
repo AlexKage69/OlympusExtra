@@ -5,17 +5,25 @@
       Id = "MainMenuScreen_PatchNotes_0056"
       OverwriteLocalization = true
       Description = """
+	  	{#AlertH2Format}Looking for Help!{#PreviousFormat}
+				+ {#AlertHighlightFormat}Calling for Voice Actors!{#PreviousFormat}: We're looking for a voice actor for Hephaestus, as well as one for Hera to finish the rest of her lines! 
+				+ {#AlertHighlightFormat}Hephaestus Badge{#PreviousFormat}: We're looking for some snazzy new badge art to fit the new Hephaestus portrait. 
+				+ If interested, contact phypoh or alexkage, on the Hades Modding Discord!
+		
+		{#AlertHeaderFormat}1.4.1 - Hephaestus Bug Fixes - Feb 2025
+			Fixes for a few bugs including a major one with Hephaestus Legendary.
+
+			{#AlertH2Format}Bug Fixes{#PreviousFormat}
+			+ {#AlertHighlightFormat}Hephaestus Legendary{#PreviousFormat}: Hephaestus Legendary is now working and no longer crash the game.
+			+ {#AlertHighlightFormat}Hera Aura's and Envy{#PreviousFormat}: Aura's no longer trigger Envy. 
+			+ {#AlertHighlightFormat}Melodic Concert vs Ambrosia Delight - Part 2 {#PreviousFormat}: Taking Ambrosia Delight from Eurydice should no longer reset the damage resistance to 0%. Includes Rare Crops.
+
 		{#AlertHeaderFormat}1.4.0 - Hephaestus Release! - Jan 2025
 			Happy New Rotation-Of-Apollo-Around-Gaia, everyone! Welcome to the Hephaestus update!  
 			Mind you, Hephaestus is still tinkering away at his workshops -- there's still some kinks for us to straighten out, but we wanted to get the content out to you to play while it's still in beta.
 
 			{#AlertH2Format}Highlights{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hephaestus Release{#PreviousFormat}: The introverted God of the Forge may sometimes appear instead of Hermes during your run! While Hermes is more about swiftness and dodging, Hephaestus's boons focus on armor and improving weapons. 
-
-			{#AlertH2Format}Looking for Help!{#PreviousFormat}
-				+ {#AlertHighlightFormat}Calling for Voice Actors!{#PreviousFormat}: We're looking for a voice actor for Hephaestus, as well as one for Hera to finish the rest of her lines! 
-				+ {#AlertHighlightFormat}Hephaestus Badge{#PreviousFormat}: We're looking for some snazzy new badge art to fit the new Hephaestus portrait. 
-				+ If interested, contact phypoh or alexkage, on the Hades Modding Discord!
 
 			{#AlertH2Format}Bug Fixes{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hera Dialogue Typos {#PreviousFormat}: Thanks to everyone for reporting to us about those pesky typos! 

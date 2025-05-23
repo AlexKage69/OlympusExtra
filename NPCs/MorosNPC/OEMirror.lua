@@ -6,10 +6,20 @@ local OlympusResourceData = ModUtil.Entangled.ModData(ResourceData)
 local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
-
-
+local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 
 OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
+OlympusColor.CastDOTDamage = { 145,17,55, 255 }
+OlympusWeaponData.StoredAmmoDOTApplicator = {	
+}
+OlympusEffectData.CastDamageOverTime = {
+	DamageTextStartColor = OlympusColor.CastDOTDamage,
+	DamageTextColor = OlympusColor.CastDOTDamage,
+	RapidDamageType = true,
+	IgnoreOnHitEffects = true,
+	IgnoreInvulnerabilityFrameTrigger = true,
+}
 
 	OlympusMetaUpgradeData.LowHealthDamageMetaUpgrade =
 	{
@@ -93,21 +103,28 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 			},
 		},
 	}
-	OlympusMetaUpgradeData.CountAmmoMetaUpgrade =
+	OlympusMetaUpgradeData.CastDamageOverTimeMetaUpgrade =
 	{
 		InheritFrom = { "BaseMetaUpgrade", },
 		Icon = "MirrorIcon_CountAmmoBonus",
 		Starting = true,
-		CostTable = { 20, 40, 60, 80, 100 },
+		CostTable = { 100, 250, 500 },
 		Color = { 255, 255, 255, 255 },
-		ShortTotal = "CountAmmoMetaUpgrade_ShortTotal",
-		ChangeValue = 1.02,
-		FormatAsPercent = true,		
-		AddOutgoingDamageModifiers =
+		ShortTotal = "CastDamageOverTimeMetaUpgrade_ShortTotal",
+		BaseValue = 0,
+		ChangeValue = 100,
+		PreEquipWeapon = "StoredAmmoDOTApplicator",
+		--ChangeValue = 1.06, -- display variable, change below value to affect gameplay
+		PropertyChanges =
 		{
-			PerCastActiveMultiplier = 1.02,
-			ValidWeapons = WeaponSets.HeroRangedWeapons,
-		}
+			{
+				WeaponName = "StoredAmmoDOTApplicator",
+				EffectName = "CastDamageOverTime",
+				EffectProperty = "Cooldown",
+				ChangeValue = -0.04,
+				ChangeType = "Add",
+			},
+		},
 	}
 	OlympusMetaUpgradeData.BounceAmmoMetaUpgrade =
 	{
@@ -235,21 +252,13 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		BaseValue = 8,
 		ChangeValue = -2.0,
 		HealthThreshold = 0.3,
-		--[[PropertyChanges =
-		{
-			{
-				LuaProperty = "MaxHealth",
-				ChangeValue = 5,
-				ChangeType = "Add",
-			},
-		}]]
 	}
 	OlympusMetaUpgradeData.EpicBonusMetaUpgrade =
 	{
 		InheritFrom = { "BaseMetaUpgrade", },
 		Icon = "MirrorIcon_EpicBonus",
 		Starting = true,
-		CostTable = { 50, 1000 },
+		CostTable = { 50, 1000, 2000 },
 		Color = { 255, 255, 255, 255 },
 		ShortTotal = "EpicBonusMetaUpgrade_ShortTotal",
 		ShortTotalNoIcon = "EpicBonusMetaUpgrade_ShortTotalNoIcon",
@@ -269,7 +278,6 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		RequiredAccumulatedMetaPoints = 500,
 		Starting = true,
 		CostTable = { 100, 200, 300, 400, 500 },
-		--MaxInvestment = 40,
 		ShortTotal = "RareNPCMetaUpgrade_ShortTotal",
 		ChangeValue = 1.02,
 	}
@@ -280,7 +288,6 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		RequiredAccumulatedMetaPoints = 1000,
 		Starting = true,
 		CostTable = { 900 },
-		--MaxInvestment = 20,
 		ShortTotal = "PomFirstGodMetaUpgrade_ShortTotal",
 		ChangeValue = 1.00,
 		HelpTextTable =
@@ -301,6 +308,9 @@ OlympusColor.OEMirrorAttribute = { 145,17,55, 255 }
 		ChangeValue = 1,
 	}
 	OlympusObstacleData.HealthFountain.RerollFunctionName = "RerollPom"
+	OlympusObstacleData.HealthFountain.Cost = 1
+	OlympusObstacleData.HealthFountain.FountainReroll = true
+	
 	ModUtil.Table.Merge(OlympusKeywordList, { 
 		"LowHealthDamage", "GemHeal", "ExtraChanceFloor", "DashlessBonus",
 		"CountAmmoBonus", "AmmoBounce", "BonusMoneyMirror", "CombatRegeneration",
@@ -311,7 +321,7 @@ table.insert(OlympusMetaUpgradeOrder[1], 3, "LowHealthDamageMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[2], 3, "GemHealMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[3], 3, "ExtraChanceFloorMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[4], 3, "DashlessMetaUpgrade")
-table.insert(OlympusMetaUpgradeOrder[5], 3, "CountAmmoMetaUpgrade")
+table.insert(OlympusMetaUpgradeOrder[5], 3, "CastDamageOverTimeMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[6], 3, "BounceAmmoMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[7], 3, "BonusMoneyMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[8], 3, "RegenerationMetaUpgrade")
@@ -460,6 +470,9 @@ ModUtil.Path.Wrap("InitHeroLastStands",
 			return usetext
 		end
 	)
+	function HeroHasPossibleStackTrait()
+		return true;
+	end
 ModUtil.Path.Wrap("StartRoom",
 	function(baseFunc, currentRun, currentRoom)
 		--local biomeDepth = currentRun.BiomeDepthCache or GetBiomeDepth( currentRun )
@@ -484,7 +497,7 @@ ModUtil.Path.Wrap("StartRoom",
 			end
 			CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
 		end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
 		if GetNumMetaUpgrades("RegenerationMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
 			thread( RegenerationMetaUpgrade, CurrentRun.Hero, {Interval = 7.2 - 1.8*GetNumMetaUpgrades("RegenerationMetaUpgrade"), Amount = 1.0} )
 		end
@@ -498,7 +511,6 @@ OnWeaponFired{ "RushWeapon",
 				CurrentRun.Hero.DashlessCooldown = 0
 			end
 			if CurrentRun.Hero.DashlessCooldown == 0 then
-				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Buff Removed"))	
 				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffAttackApplicator" })
 				ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffDefenseApplicator" })
 			end
@@ -507,6 +519,14 @@ OnWeaponFired{ "RushWeapon",
 		end
 	end
 }
+function AddDashlessBuff(duration)
+	wait(duration, RoomThreadName)
+	CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown - 1
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.DashlessCooldown))	
+	if CurrentRun.Hero.DashlessCooldown == 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then 
+		FireWeaponFromUnit({ Weapon = "DashlessBuffApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+	end
+end
 ModUtil.Path.Wrap("HandleDeath",
     function(baseFunc, currentRun, killer, killingUnitWeapon)
         baseFunc(currentRun, killer, killingUnitWeapon)
@@ -522,10 +542,25 @@ ModUtil.Path.Wrap("HandleMetaUpgradeInput",
 		end
 	end
 )
-function RerollPom( run, fountain)
-	UseStoreRewardRandomStack({ Thread = true, NumTraits = 1, NumStacks = 1, Delay = 0.25 })
-end
 
+ModUtil.Path.Wrap("StartNewRun",
+	function(baseFunc, prevRun, args )
+	local CurrentRun = baseFunc(prevRun, args)
+	CurrentRun.NumRerolls = GetNumMetaUpgrades( "RerollMetaUpgrade" ) + GetNumMetaUpgrades("RerollPanelMetaUpgrade") + GetNumMetaUpgrades("RerollPomMetaUpgrade")
+	if GetNumMetaUpgrades( "RareNPCMetaUpgrade" ) > 0 then
+		local additionnalChance = GetNumMetaUpgrades( "RareNPCMetaUpgrade" ) * 0.02
+		RoomData.A_Story01.ChanceToForce = additionnalChance
+		RoomData.B_Story01.ChanceToForce = additionnalChance
+		RoomData.C_Story01.ChanceToForce = additionnalChance
+		RoomData.A_Reprieve01.ChanceToForce = additionnalChance
+		RoomData.B_Reprieve01.ChanceToForce = additionnalChance
+		RoomData.C_Reprieve01.ChanceToForce = additionnalChance
+		
+	end
+	
+	return CurrentRun
+end
+)
 ModUtil.Path.Wrap("GetTotalHeroTraitValue",
 	function(baseFunc, propertyName, args)
 		local value = baseFunc(propertyName, args)
@@ -543,24 +578,30 @@ ModUtil.Path.Wrap("EndEncounterEffects",
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "DashlessBuffDefenseApplicator" })
 	end
 )
-function AddDashlessBuff(duration)
-	wait(duration, RoomThreadName)
-	CurrentRun.Hero.DashlessCooldown = CurrentRun.Hero.DashlessCooldown - 1
-	if CurrentRun.Hero.DashlessCooldown == 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead and IsCombatEncounterActive( CurrentRun ) then 
-		FireWeaponFromUnit({ Weapon = "DashlessBuffApplicator", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
-	end
-end
 function GetTotalEpicBonus()
-	local perGodMultiplier = GetTotalStatChange( MetaUpgradeData.EpicBonusMetaUpgrade )
+	local perEpicMultiplier = GetTotalStatChange( MetaUpgradeData.EpicBonusMetaUpgrade )
 	local godDictionary = {}
-	local count = 0
-	for k, traitData in pairs(CurrentRun.Hero.Traits) do
-		if GetRarityValue( traitData.Rarity ) >= 3 then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(traitData.Name..GetRarityValue( traitData.Rarity )))	
-			count = count + 1
+	for i, traitData in pairs(CurrentRun.Hero.Traits) do
+		if traitData.Rarity ~= nil and GetRarityValue( traitData.Rarity ) >= 3 then
+			godDictionary[traitData.Name] = true
 		end
 	end
-	return count * perGodMultiplier
+	return TableLength( godDictionary ) * perEpicMultiplier
+end
+function GetHeroEpicTraitCount( hero )
+	if not hero then
+		return 0
+	end
+
+	local godDictionary = {}
+	for i, traitData in pairs(hero.Traits) do
+		if traitData.Rarity ~= nil and GetRarityValue( traitData.Rarity ) > 1 then
+			godDictionary[traitData.Name] = true
+		end
+	end
+	
+	hero.EpicTraitCount = TableLength( godDictionary )
+	return hero.EpicTraitCount
 end
 
 function EnableOEMirrorSwap()
@@ -589,6 +630,33 @@ function GetGemsMaxHealthAdded(amount)
 	return round( healthMultiplier * amount )
 end
 
+function RerollPom( run, fountain)
+	UseStoreRewardRandomStack({ Thread = true, NumTraits = 1, NumStacks = 1, Delay = 0.25 })
+end
+function AttemptPomReroll( run, fountain )
+	local cost = fountain.Cost
+	if run.NumRerolls < cost or cost < 0 then
+		CannotRerollPresentation( run, fountain )
+		return
+	end
+
+	AddInputBlock({ Name = "AttemptPomReroll" })
+	--HideTopMenuScreenTooltips({ Id = fountain.Id })
+	CurrentRun.NumRerolls = CurrentRun.NumRerolls - cost
+	CurrentRun.CurrentRoom.SpentRerolls = CurrentRun.CurrentRoom.SpentRerolls or {}
+	--IncrementTableValue( CurrentRun.CurrentRoom.SpentRerolls, fountain.Id, RerollCosts.ReuseIncrement )
+	UpdateRerollUI( CurrentRun.NumRerolls )
+
+	--RandomSynchronize( CurrentRun.NumRerolls )
+    InvalidateCheckpoint()
+	RefreshUseButton( fountain.ObjectId, fountain )
+	if fountain.RerollFunctionName and _G[fountain.RerollFunctionName] then
+		--RerollPanelPresentation( screen, button )
+		_G[fountain.RerollFunctionName](  )
+		fountain.Cost = fountain.Cost + 1
+	end
+	RemoveInputBlock({ Name = "AttemptPomReroll" })
+end
 function RegenerationMetaUpgrade( unit, args )
 	while CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead do
 		wait( args.Interval, RoomThreadName)
@@ -600,7 +668,17 @@ function RegenerationMetaUpgrade( unit, args )
 	end
 end
 
-
+ModUtil.Path.Wrap("IsRoomForced",
+    function(baseFunc, currentRun, currentRoom, nextRoomData, args )
+		if baseFunc(currentRun, currentRoom, nextRoomData, args) then
+			return true
+		end
+		if nextRoomData.ChanceToForce ~= nil and RandomChance( nextRoomData.ChanceToForce ) then
+			return true
+		end
+		return false
+	end
+)
 ModUtil.Path.Wrap("CheckAmmoDrop",
     function(baseFunc, currentRun, targetId, ammoDropData, numDrops)
 		local skip = BounceAmmo(ammoDropData, targetId)
@@ -613,7 +691,7 @@ ModUtil.Path.Wrap("CheckAmmoDrop",
 function BounceAmmo(storedAmmo, victimId)
 	--CurrentRun.Hero.BounceAmmo = {}
 	if IsMetaUpgradeActive("BounceAmmoMetaUpgrade") then
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Bounce"))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Bounce"))
 		if CurrentRun.Hero.Bounce then
 			CurrentRun.Hero.Bounce = CurrentRun.Hero.Bounce + 1
 		else
@@ -642,3 +720,4 @@ function BounceAmmo(storedAmmo, victimId)
 	end
 	
 end
+OverwriteTableKeys( RoomData, OlympusRoomSetData.Tartarus)

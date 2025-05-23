@@ -342,7 +342,7 @@ ModUtil.Path.Wrap( "AttemptGift",
 		baseFunc(CurrentRun, target)
 		if target ~= nil then
 			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetGenusName( target ))) 		
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CanReceiveGift( target ))) 		
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CanReceiveGift( target )))
 			
 		end
 	end

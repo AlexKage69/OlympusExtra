@@ -595,7 +595,7 @@ if ModUtil ~= nil then
 			},
 			Epic =
 			{
-				Multiplier = 3.0,
+				Multiplier = 3.33,
 			}
 		},
 		RarityBonus =
@@ -627,7 +627,7 @@ if ModUtil ~= nil then
 		InheritFrom = { "ShopTier1Trait" },
 		Icon = "Boon_Hephaestus_01",
 		LootSource = "HephaestusUpgrade",
-		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+		PreEquipWeapons = { "IgneousArmorExplosion" },
         RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
 		RarityLevels =
 		{
@@ -696,7 +696,7 @@ if ModUtil ~= nil then
 		LootSource = "HephaestusUpgrade",
 		Icon = "Boon_Hephaestus_02",
         RequiredFalseTraits = {"HephaestusWeaponTrait", "HephaestusSecondaryTrait"},
-		PreEquipWeapons = { "IgneousArmorExplosion", "ArtemisHestiaExplosion" },
+		PreEquipWeapons = { "IgneousArmorExplosion" },
 		RarityLevels =
 		{
 			Common =
@@ -905,7 +905,7 @@ if ModUtil ~= nil then
 			}
 		},
 		SummonExplosionDamage = {
-			BaseValue = 150,
+			BaseValue = 250,
 		},
 		--[[EnemyPropertyChanges =
 		{
@@ -3917,7 +3917,7 @@ function SetupArmor(hero, args)
 			if CurrentRun.LootTypeHistory.WeaponUpgrade == nil then
                 CurrentRun.LootTypeHistory.WeaponUpgrade = 0
             end
-            currentRun.LootTypeHistory.WeaponUpgrade = currentRun.LootTypeHistory.WeaponUpgrade + 1
+            CurrentRun.LootTypeHistory.WeaponUpgrade = CurrentRun.LootTypeHistory.WeaponUpgrade + 1
 		end
 	end
 end
@@ -4074,21 +4074,6 @@ ModUtil.Path.Wrap( "DestroyHealthUI",
 		ScreenAnchors.ArmorFlash = nil
 	end
 )
-ModUtil.Path.Wrap("StartEncounter",
-		function(baseFunc, currentRun, currentRoom, currentEncounter)
-			if HeroHasTrait("ArmorBossTrait") then
-				if ((currentRun.CurrentRoom.Encounter.EncounterType == "Boss" or
-					currentRun.CurrentRoom.Encounter.EncounterType == "OptionalBoss") and
-					currentRun.CurrentRoom.Encounter.CurrentWaveNum == nil) or
-					currentRun.CurrentRoom.IsMiniBossRoom then		
-						local armorAmount = GetTotalHeroTraitValue("RepairArmorOnBoss", { IsMultiplier = false })			
-						RepairArmor(armorAmount)
-						thread(RepairArmorPresentation)
-				end
-			end
-			baseFunc(currentRun, currentRoom, currentEncounter)
-		end
-	)
 	function RepairArmorPresentation()
 		wait(0.2)
 		CreateAnimation({ Name = "HephRepair", DestinationId = CurrentRun.Hero.ObjectId })

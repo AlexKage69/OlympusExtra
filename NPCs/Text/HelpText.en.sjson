@@ -50,6 +50,14 @@
 			Description = "Deal bonus {#BoldFormatGraft}Attack {#PreviousFormat}& {#BoldFormatGraft}Special {#PreviousFormat}damage on foes under {#TooltipUpgradeFormat}25%{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
     	}
 		{
+			Id = "FinisherHit"
+			DisplayName = "Finisher!"
+		}
+		{
+			Id = "FinisherHit_Blank"
+			DisplayName = ""
+		}
+		{
 			Id = "GemHeal"
 			DisplayName = "Bright Rejuvenation"
 			Description = "Gain {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} when you collect {!Icons.GemSmall}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat} of the collected amount per rank. Limit of 15 {#AltUpgradeFormat}{!Icons.HealthUp_Small}{#PreviousFormat} from {!Icons.GemSmall}"
@@ -73,7 +81,7 @@
 		{
 			Id = "CountAmmoBonus"
 			DisplayName = "Hellish Blood"
-			Description = "Deal bonus {#BoldFormatGraft}Ranged {#PreviousFormat}damage for each {!Icons.Ammo} you have, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+			Description = "Foes with{!Icons.Ammo}in them receive damage over time. {#TooltipUpgradeFormat}{$TempTextData.BaseValue}% {#PreviousFormat}per rank."
     	}
 		{
 			Id = "AmmoBounce"
@@ -108,7 +116,7 @@
 		{
 			Id = "NPCEncounterBonus"
 			DisplayName = "Rare Acquaintance"
-			Description = "Raise your chance to encounter {#BoldFormatGraft}Special {$Keywords.EncounterAlt} {#PreviousFormat} and {$Keywords.FountainPlural}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+			Description = "Raise your chance to encounter {#BoldFormatGraft}Special {$Keywords.EncounterAlt} {#PreviousFormat} and {#BoldFormatGraft}{$Keywords.FountainPlural}{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
     	}
 		{
 			Id = "PomFirstGod"
@@ -194,17 +202,17 @@
 			OverwriteLocalization = true
 		}
 		{
-			Id = "CountAmmoMetaUpgrade"
+			Id = "CastDamageOverTimeMetaUpgrade"
 			DisplayName = "{$Keywords.CountAmmoBonus}"
 			OverwriteLocalization = true
 		}
 		{
-			Id = "CountAmmoMetaUpgrade_ShortTotal"
+			Id = "CastDamageOverTimeMetaUpgrade_ShortTotal"
 			DisplayName = "{$TempTextData.Amount:P}"
 			OverwriteLocalization = true
 		}
 		{
-			Id = "CountAmmoMetaUpgrade_ShortTotalNoIcon"
+			Id = "CastDamageOverTimeMetaUpgrade_ShortTotalNoIcon"
 			DisplayName = "{$TempTextData.Amount:P}"
 			OverwriteLocalization = true
 		}
