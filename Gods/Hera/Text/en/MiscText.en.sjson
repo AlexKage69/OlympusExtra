@@ -1,0 +1,42 @@
+{
+  Texts = [
+    "_append"
+     {
+      Id = "Sisyphus_EnhancedOfferText01"
+      DisplayName = "{#DialogueItalicFormat}Sisyphus confidently gives all his benefits."
+    }
+    {
+      Id = "Eurydice_EnhancedOfferText01"
+      DisplayName = "{#DialogueItalicFormat}Eurydice shares in totality her delectable treats."
+    }
+    {
+      Id = "Patroclus_EnhancedOfferText01"
+      DisplayName = "{#DialogueItalicFormat}Patroclus gives away all his premium goods."
+    }
+    {
+      Id = "Hera_OfferText01"
+      DisplayName = "{#DialogueItalicFormat}Hera offers a choice of benefits on behalf of Sisyphus."
+    }
+    {
+      Id = "Hera_OfferText02"
+      DisplayName = "{#DialogueItalicFormat}Hera offers one of Eurydice's deltectable treats."
+    }
+    {
+      Id = "Hera_OfferText03"
+      DisplayName = "{#DialogueItalicFormat}Hera offers a choice of premium goods from Patroclus."
+    }
+    {
+      Id = "Hestia_OfferText01"
+      DisplayName = "{#DialogueItalicFormat}Hestia offers a choice of benefits on behalf of Sisyphus."
+    }
+    {
+      Id = "Hestia_OfferText02"
+      DisplayName = "{#DialogueItalicFormat}Hestia offers one of Eurydice's deltectable treats."
+    }
+    {
+      Id = "Hestia_OfferText03"
+      DisplayName = "{#DialogueItalicFormat}Hestia offers a choice of premium goods from Patroclus."
+    }
+    
+  ]
+}

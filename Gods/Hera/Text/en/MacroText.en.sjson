@@ -1,0 +1,13 @@
+{
+  Texts = [
+    "_append"
+    {
+      Id = "UpgradeChoiceMenu_Title_HeraUpgrade"
+      DisplayName = "Boons of Hera"
+    }
+    {
+      Id = "Player_GodDispleased_HeraUpgrade"
+      DisplayName = "Hera Grew Displeased!"
+    }
+  ]
+}

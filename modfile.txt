@@ -1,23 +1,22 @@
 -: Mod Name: Goddess Codex
     Author - AlexKage
-    Author - Phypoh
+    Author - physiX
 :-
 
-Include "modfile_assets.txt"
+:: Common code
+Include "Common/modfile_common.txt"
 
-Import "SeparateGoddess.lua"
-
+:: New Weapons
 :: Include "Weapons/modfile_weapons.txt"
 
-Import "Apollo/ApolloExtra.lua"
-Import "Hestia/HestiaExtra.lua"
+:: New NPCs
+:: Include "NPCs/modfile_npcs.txt"
+
+:: New Gods
+Include "Gods/modfile_gods.txt"
+
+:: New Extras
+Include "Extras/modfile_extras.txt"
 
 :: Merge all together
 Import "OlympusExtra.lua"
-
-Include "Apollo/modfile_apollo.txt"
-Include "Hestia/modfile_hestia.txt"
-
--: Include "modfile_fr.txt" :-
-
-Include "Olympus/modfile_olympus.txt"

@@ -1,0 +1,22 @@
+
+Projectiles = { 
+  "_sequence" = true 
+  0 = { 
+    Effects = [
+      "_append" 
+      {
+        Name = "ApolloBlind"
+        IgnoreName = "_PlayerUnit"
+        FrontFx = "ApolloHoverLoop"
+        BackFx = "null"
+        Duration = 5
+        Modifier = 1
+        Amount = 0.4
+        Active = false
+        ExtendDurationOnReapply = true
+        IsVulnerabilityEffect = true
+        TimeModifierFraction = 0
+      }
+    ] 
+  }
+}

@@ -1,0 +1,32 @@
+
+Weapons = { 
+  "_sequence" = true 
+  158 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "LastStandDamageReduce"
+          Type = "DAMAGE_TAKEN"
+          Duration = 3600
+          Modifier = 1
+          Active = false
+          FrontFx = "StunnedFrontHestia"
+          BackFx = "StunnedBackHestia"
+      }
+    ] 
+  }
+  160 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "LastStandDamageReduce"
+          Type = "DAMAGE_TAKEN"
+          Duration = 3600
+          Modifier = 1
+          Active = false
+          FrontFx = "StunnedFrontHestia"
+          BackFx = "StunnedBackHestia"
+      }
+    ] 
+  }
+}

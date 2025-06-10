@@ -1,0 +1,94 @@
+
+Projectiles = { 
+  "_sequence" = true 
+  0 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "SecondDelayedKnockback"
+          IgnoreName = "_PlayerUnit"
+          Type = "DELAYED_KNOCKBACK"
+          Cooldown = 0.3
+          Duration = 0.7
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+      }
+    ] 
+  }
+  8 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "SecondDelayedKnockback"
+          IgnoreName = "_PlayerUnit"
+          Type = "DELAYED_KNOCKBACK"
+          Cooldown = 0.3
+          Duration = 0.7
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+      }
+    ] 
+  }
+  54 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "SecondDelayedKnockback"
+          IgnoreName = "_PlayerUnit"
+          Type = "DELAYED_KNOCKBACK"
+          Cooldown = 0.3
+          Duration = 0.7
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+      }
+    ] 
+  }
+  82 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "SecondDelayedKnockback"
+          IgnoreName = "_PlayerUnit"
+          Type = "DELAYED_KNOCKBACK"
+          Cooldown = 0.3
+          Duration = 0.7
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+      }
+    ] 
+  }
+  121 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "SecondDelayedKnockback"
+          IgnoreName = "_PlayerUnit"
+          Type = "DELAYED_KNOCKBACK"
+          Cooldown = 0.3
+          Duration = 0.7
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+      }
+    ] 
+  }
+  128 = { 
+    Effects = [
+      "_append" 
+      {
+          Name = "SecondDelayedKnockback"
+          IgnoreName = "_PlayerUnit"
+          Type = "DELAYED_KNOCKBACK"
+          Cooldown = 0.3
+          Duration = 0.7
+          Modifier = 1
+          Active = false
+          TimeModifierFraction = 0
+      }
+    ] 
+  }
+}

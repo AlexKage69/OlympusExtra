@@ -1,0 +1,24 @@
+{
+  /*
+  Made by AlexKage and physiX
+  Additional writing by bessyboo
+  */
+  Texts = [
+	"_append"
+    {
+      Id = "CodexData_Hera_0001"
+      Speaker = "Achilles"
+      DisplayName = "'...The Mistress of the Heavens, a queen above all other queens. She stands side by side with the great Lord Zeus, ruling over Olympus together. A prideful and benevolent Goddess who presides over all mortal unions and offers protection to women bringing new life to the world. This is what I knew of Queen Hera as a mortal, and only in death did I learn the truth was not as I, and most mortals, imagined...'"
+    }
+    {
+      Id = "CodexData_Hera_0002"
+      Speaker = "Achilles"      
+      DisplayName = "'... The Mistress of the Heavens, a queen above all other queens. She stands side by side with the great Lord Zeus, ruling over Olympus together. A prideful and benevolent Goddess who presides over all mortal unions and offers protection to women bringing new life to the world. This is what I knew of Queen Hera as a mortal, and only in death did I learn the truth was not as I, and most mortals, imagined. {#CodexBoldFormat}While Queen Hera is a benevolent Goddess to most mortals, her benevolence hides a terribly vengeful nature. The many illegitimate lovers and offsprings of Lord Zeus who continuously arrive at the Master's House, telling of their miserable ends by her hand, have made it clear...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_Hera_0003"
+      Speaker = "Achilles" 
+      DisplayName = "'... The Mistress of the Heavens, a queen above all other queens. She stands side by side with the great Lord Zeus, ruling over Olympus together. A prideful and benevolent Goddess who presides over all mortal unions and offers protection to women bringing new life to the world. This is what I knew of Queen Hera as a mortal, and only in death did I learn the truth was not as I, and most mortals, imagined.  While Queen Hera is a benevolent Goddess to most mortals, her benevolence hides a terribly vengeful nature. The many illegitimate lovers and offsprings of Lord Zeus who continuously arrive at the Master's House, telling of their miserable ends by her hand, have made it clear. {#CodexBoldFormat}I do not know if Queen Hera has always been this way, or if envy or jealousy, perhaps even both, have made her so. What I do know however, is that any foolish enough to cross the Queen Hera has never died peacefully, and none ever will.{#PreviousFormat}'"
+    }
+  ]
+}

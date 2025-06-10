@@ -1,0 +1,15 @@
+{
+  Obstacles = [
+      "_append"
+    {
+      Name = "GardenUpgrade"
+      InheritFrom = "BaseBoon"
+      DisplayInEditor = true
+      Thing = 
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "BoonDropChaos"
+      }
+    }
+  ]
+}

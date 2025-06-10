@@ -1,0 +1,143 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "Codex_OlympianGoddessChapter"
+			DisplayName = "Olympian Goddesses"
+		}	
+		{
+      		Id = "ApolloBlind"
+			DisplayName = "Blind"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipBlindDuration} Sec{#PreviousFormat}., victim have a {#UpgradeFormat}{$TooltipData.TooltipBlindPower:P} {#PreviousFormat}chance to miss their next attack."
+		}
+		{
+			Id = "TraitLevel_Current_Initial"
+			DisplayName = "{$TooltipData.Title} {#LevelFormat}lv.{$TooltipData.OldLevel}"
+		}
+		{
+      		Id = "DamageResist"
+			DisplayName = "Protection"
+			Description = "Damage from distant foes is less effective."
+		}
+		{
+			Id = "CentaurHeart"
+			DisplayName = "Centaur Heart"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small}. {#PreviousFormat}"
+		}
+		{
+			Id = "CentaurSoul"
+			DisplayName = "Centaur Soul"
+			Description = "Upon pickup, gain {#UseTextHealingFormat}+{$TooltipData.TooltipMaxHealth}{!Icons.HealthUp_Small}. \n{#PreviousFormat}{#ItalicFormat}(without restoring {!Icons.Health_Small}){#PreviousFormat}"
+		}
+		{
+			Id = "RoomRewardEmptyHealthDrop"
+			DisplayName = "Centaur Soul"
+		}
+		{
+			Id = "MiniBoss"
+			DisplayName = "Mini-Bosses"
+			Description = "Stronger than most foes, usually associated with {!Icons.MiniBoss}."
+		}
+		{
+      		Id = "JealousyCurse"
+			DisplayName = "Jealousy"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipJealousyDuration} Sec{#PreviousFormat}., {$Keywords.Attack} and {$Keywords.Special} deal more damage by {#UpgradeFormat}{$TooltipData.TooltipJealousyPower:P}{#PreviousFormat} for each {$Keywords.Status} applied on victim."
+		}
+		{
+      		Id = "EnvyCurse"
+			DisplayName = "Envy"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: For {#BoldFormatGraft}{$TooltipData.TooltipEnvyDuration} Sec{#PreviousFormat}., applying {$Keywords.Status} removes {$Keywords.EnvyCurse} to deal damage. If the {$Keywords.Status} is not Envy, double it."
+		}
+		{
+      		Id = "HeraTrap"
+			DisplayName = "Trap Jar"
+			Description = "An inanimate object dealing damage to foes upon broken."
+		}
+		{
+      		Id = "Aura"
+			DisplayName = "Aura"
+			Description = "{#ItalicFormat}{$Keywords.Status}{#PreviousFormat}: Nearby foes are affected by a special effect."
+		}
+		{
+      		Id = "SpecialDiscount"
+			DisplayName = "Special Sale"
+			Description = "One of the items from the Well of Charon is cheaper than the others."
+		}
+		{
+			Id = "IgneousArmorDamage"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "IgneousArmorReady"
+			DisplayName = "Ready"
+		}
+		{
+      		Id = "IgneousArmor"
+			DisplayName = "Igneous Armor"
+			Description = "While Igneous Armor is enabled, {#BoldFormatGraft}Attack {#PreviousFormat}and {#BoldFormatGraft}Special {#PreviousFormat}charge up damage to create a blast after {#BoldFormatGraft}{$TooltipData.TooltipIgneousDuration} Sec{#PreviousFormat}."
+		}
+		{
+      		Id = "ZagreusArmor"
+			DisplayName = "Hephaestus' Armor"
+			Description = "Can't be damaged until {!Icons.ArmorIcon} is broken. \n Max {!Icons.ArmorIcon}: {$TooltipData.AccumulatedMaxArmor}"
+		}
+		{
+      		Id = "HephWeapon"
+			DisplayName = "Hephaestus' Weapons"
+			Description = "Gain various boost depending on the weapon picked."
+		}
+		{
+      		Id = "HephSword"
+			DisplayName = "Hephaestus' Sword"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you deal {#UpgradeFormat}{$TooltipData.TooltipSwordPercent:P} {#PreviousFormat}more damage to nearby foes."
+		}
+		{
+      		Id = "HephBow"
+			DisplayName = "Hephaestus' Bow"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you deal {#UpgradeFormat}{$TooltipData.TooltipBowPercent:P} {#PreviousFormat}more damage to far away foes."
+		}
+		{
+      		Id = "HephShield"
+			DisplayName = "Hephaestus' Shield"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you take {#UpgradeFormat}{$TooltipData.TooltipShieldPercent:P} {#PreviousFormat}less damage."
+		}
+		{
+      		Id = "HephSpear"
+			DisplayName = "Hephaestus' Spear"
+			Description = "For {#BoldFormatGraft}{$TooltipData.TooltipHephWeaponDuration} Sec{#PreviousFormat}., you move {#UpgradeFormat}{$TooltipData.TooltipSpearPercent:P} {#PreviousFormat}faster."
+		}
+		{
+      		Id = "Repair"
+			DisplayName = "Repair"
+			Description = "Gain {!Icons.ArmorIcon}. Can't exceed the Max {!Icons.ArmorIcon} limit."
+		}
+		{
+			Id = "RepairText"
+			DisplayName = "{#CombatTextHighlightFormat}Repair!{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorUpText"
+			DisplayName = "{#CombatTextHighlightFormat}Armor Up!{#PreviousFormat}"
+		}
+		{
+			Id = "ArmorDepletedText"
+			DisplayName = "{#CombatTextHighlightFormat}Armor Depleted!{#PreviousFormat}"
+		}
+		{
+			Id = "TemporaryAmmo"
+			DisplayName = "Temporary {!Icons.Ammo} Bloodstone"
+			Description = "Ammunition for your {A1} Cast. Retrieve from slain foes. Can only be used once per room."
+		}
+		{
+			Id = "UI_PlayerArmor"
+			DisplayName = "{$TempTextData.Current} {!Icons.ArmorIcon}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ArmorIcon"
+			DisplayName = "{!Icons.ArmorIcon}"
+			//Description = "Your Life Total. Lose it all for an express trip back to the House of Hades."
+		}
+	]
+}
