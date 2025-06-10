@@ -86,7 +86,7 @@
 		{
 			Id = "AmmoBounce"
 			DisplayName = "Sentient Soul"
-			Description = "Your {!Icons.Ammo} bounce to another foe before it drops. {#TooltipUpgradeFormat}+{$TempTextData.BaseValue} {#PreviousFormat}bounce per rank."
+			Description = "Your {$Keywords.Cast} bounces off for each{!Icons.Ammo}{#PreviousFormat}{#ItalicFormat}(pick it up instantly){#PreviousFormat} {#TooltipUpgradeFormat}+{$TempTextData.BaseValue} {#PreviousFormat} per rank."
     	}
 		{
 			Id = "BonusMoneyMirror"
@@ -223,7 +223,7 @@
 		}
 		{
 			Id = "BounceAmmoMetaUpgrade_ShortTotal"
-			DisplayName = "+{$TempTextData.Amount}"
+			DisplayName = "+{$TempTextData.Amount}{!Icons.Ammo_Small}"
 			OverwriteLocalization = true
 		}
 		{

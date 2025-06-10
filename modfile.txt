@@ -13,7 +13,7 @@ Include "Common/modfile_common.txt"
 Include "NPCs/modfile_npcs.txt"
 
 :: New Gods
-:: Include "Gods/modfile_gods.txt"
+Include "Gods/modfile_gods.txt"
 
 :: New Extras
 Include "Extras/modfile_extras.txt"
