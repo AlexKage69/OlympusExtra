@@ -1,0 +1,361 @@
+{
+  Weapons = [
+    "_append"
+      {
+      Name = "StaffWeapon"
+      InheritFrom = "1_BaseDamagingWeapon"
+      Control = "Attack2"
+      Type = "GUN"
+      Projectile = "StaffWeapon"
+      ClipSize = 1
+      RootOwnerWhileFiring = false
+      BlockMoveInput = false
+      CancelMovement = false
+      ChargeCancelMovement = false
+      FullyAutomatic = false
+      AutoLock = true
+      AutoLockRange = 100
+      AutoLockArcDistance = 90
+      ChargeStartAnimation = "ZagreusSwordCharge1"
+      FireGraphic = "ZagreusSwordAttack1"
+      FireFx = "SwordSwipeAFlipped"
+      LockTrigger = true
+      CancelChargeOnRelease = false
+      SwapOnFire = "StaffWeapon2"
+      ForceReleaseOnSwap = true
+      NumProjectiles = 1
+      ChargeTimeFrames = 4
+      FireOnRelease = false
+      ChargeFx = "null"
+      SelfVelocity = 0
+      BarrelLength = 0
+      CanCancelDisables = false
+      CanCancelRotateDisables = true
+      TriggersStoredAmmoVulnerability = true
+      Effects = [
+        {
+          Name = "SwordDisable"
+          DurationFrames = 5
+          DisableMove = false
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+        }
+        {
+          Name = "SwordDisableCancelableAndLockTrigger"
+          DurationFrames = 11
+          DisableMove = false
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Cancelable = true
+        }
+        {
+          Name = "SwordDisableHeavy"
+          DurationFrames = 14
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = false
+          Cancelable = true
+        }
+        {
+          Trigger = "Charging"
+          Name = "SwordSelfSlowCharge"
+          Type = "SPEED"
+          DurationFrames = 15
+          Modifier = 0.35
+          Active = true
+          CanAffectInvulnerable = true
+        }
+        {
+          Trigger = "Fire"
+          Name = "SwordSelfSlowFire"
+          Type = "SPEED"
+          DurationFrames = 12
+          Modifier = 0.35
+          Active = true
+          CanAffectInvulnerable = true
+        }
+        {
+          Name = "SwordWeaponSpinExplosiveChargeWeapon"
+          Type = "WEAPON_FIRE"
+          Trigger = "Charging"
+          Duration = 1.0
+          Active = false
+        }
+        {
+          Trigger = "Charging"
+          ClearOnAttack = true
+          Name = "DefensiveThrustEffect"
+          Type = "DAMAGE_TAKEN"
+          Duration = 9999
+          Modifier = 0.1
+          FrontFx = "AthenaProtectionFront"
+          BackFx = "AthenaProtectionBack"
+          Active = false
+          ImmuneToForce = true
+        }
+        {
+          Name = "DefensivePostFireEffect"
+          Type = "DAMAGE_TAKEN"
+          DurationFrames = 16
+          Modifier = 0.1
+          FrontFx = "Invincibubble_Zag_Loop"
+          Active = false
+          ImmuneToForce = true
+        }
+        {
+          Name = "SwordDisableArthur"
+          DurationFrames = 16
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Active = false
+        }
+        {
+          Name = "SwordDisableArthurCancellable"
+          DurationFrames = 18
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = false
+          RequestTriggerLock = true
+          Active = false
+        }]
+    }
+    {
+      Name = "StaffWeapon2"
+      InheritFrom = "1_BaseDamagingWeapon"
+      Type = "GUN"
+      Control = "Attack2"
+      Projectile = "StaffWeapon2"
+      ClipSize = 1
+      RootOwnerWhileFiring = false
+      BlockMoveInput = false
+      ForceReleaseOnSwap = true
+      CancelMovement = false
+      ChargeCancelMovement = false
+      FullyAutomatic = false
+      AutoLock = true
+      AutoLockRange = 100
+      AutoLockArcDistance = 90
+      ChargeStartAnimation = "ZagreusSwordCharge2"
+      FireGraphic = "ZagreusSwordAttack2"
+      LockTriggerForCharge = true
+      CancelChargeOnRelease = true
+      SwapOnFire = "StaffWeapon3"
+      ControlWindow = 0.425
+      NumProjectiles = 1
+      ChargeTimeFrames = 10
+      ChargeFx = "null"
+      FireFx = "SwordSwipeB"
+      SelfVelocity = 0
+      SelfVelocityCap = 0
+      FireOnRelease = false
+      BarrelLength = 170
+      TriggersStoredAmmoVulnerability = true
+      CancelChargeOnControlRemoved = true
+      Effects = [
+        {
+          Trigger = "Charging"
+          ClearOnAttack = true
+          Name = "DefensiveThrustEffect"
+          Type = "DAMAGE_TAKEN"
+          Duration = 9999
+          Modifier = 0.1
+          FrontFx = "AthenaProtectionFront"
+          BackFx = "AthenaProtectionBack"
+          Active = false
+          ImmuneToForce = true
+        }
+        {
+          Name = "DefensivePostFireEffect"
+          Type = "DAMAGE_TAKEN"
+          DurationFrames = 115
+          Modifier = 0.1
+          FrontFx = "Invincibubble_Zag_Loop"
+          Active = false
+          ImmuneToForce = true
+        }
+        {
+          Name = "SwordDisable2"
+          DurationFrames = 3
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+        }
+        {
+          Name = "SwordDisableCancelableAndLockTrigger2"
+          DurationFrames = 14
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Cancelable = true
+        }
+        {
+          Trigger = "Charging"
+          Name = "SwordHalt2"
+          Type = "GRIP"
+          Duration = 0.12
+          Modifier = 1.0
+          HaltOnEnd = true
+          Active = true
+          CanAffectInvulnerable = true
+        }
+        {
+          Name = "SwordDisableCancelableAndLockTriggerChargeAttack"
+          DurationFrames = 14
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Cancelable = false
+          Active = false
+        }
+        {
+          Name = "SwordWeaponSpinExplosiveChargeWeapon"
+          Type = "WEAPON_FIRE"
+          Trigger = "Charging"
+          Duration = 1.0
+          Active = false
+        }
+        {
+          Name = "SwordDisableArthur2"
+          DurationFrames = 15
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Active = false
+        }
+        {
+          Name = "SwordDisableArthurCancellable2"
+          DurationFrames = 28
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Cancelable = true
+          Active = false
+        }]
+    }
+    {
+      Name = "StaffWeapon3"
+      InheritFrom = "1_BaseDamagingWeapon"
+      Control = "Attack2"
+      Type = "GUN"
+      Projectile = "StaffWeapon3"
+      TreatProjectilesAsUniqueVolleys = true
+      ClipSize = 1
+      ChargeSoundFadeTime = 0.25
+      RootOwnerWhileFiring = true
+      BlockMoveInput = true
+      ForceReleaseOnSwap = true
+      CancelMovement = true
+      ChargeCancelMovement = true
+      FullyAutomatic = false
+      AutoLock = true
+      AutoLockRange = 400
+      AutoLockArcDistance = 135
+      FireFx = "SwordSwipeC"
+      ChargeStartAnimation = "ZagreusSwordCharge3"
+      ChargeFx = "ChargeAttack"
+      FireGraphic = "ZagreusSwordAttack3"
+      FireOnRelease = false
+      LockTriggerForCharge = true
+      CancelChargeOnRelease = true
+      ChargeTime = 0.3
+      SelfVelocity = 600.0
+      SelfVelocityCap = 600
+      ControlWindow = 0.35
+      BarrelLength = 120
+      TriggersStoredAmmoVulnerability = true
+      CancelChargeOnControlRemoved = true
+      Effects = [
+        {
+          Name = "SwordWeaponHalt"
+          Type = "GRIP"
+          Duration = 0.4
+          Modifier = 1.0
+          HaltOnEnd = true
+          Active = false
+        }
+        {
+          Name = "SwordDisable3"
+          DurationFrames = 12
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+        }
+        {
+          Name = "SwordDisableAttackCancelable3"
+          DurationFrames = 25
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Cancelable = true
+          RequestTriggerLock = true
+        }
+        {
+          Trigger = "Charging"
+          ClearOnAttack = true
+          Name = "DefensiveThrustEffect"
+          Type = "DAMAGE_TAKEN"
+          Duration = 9999
+          Modifier = 0.1
+          FrontFx = "AthenaProtectionFront"
+          BackFx = "AthenaProtectionBack"
+          Active = false
+          ImmuneToForce = true
+        }
+        {
+          Name = "DefensivePostFireEffect"
+          Type = "DAMAGE_TAKEN"
+          DurationFrames = 18
+          Modifier = 0.1
+          FrontFx = "Invincibubble_Zag_Loop"
+          Active = false
+          ImmuneToForce = true
+        }
+        {
+          Name = "SwordDisableCancelable3"
+          DurationFrames = 33
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = false
+          Cancelable = true
+          RequestTriggerLock = true
+        }
+        {
+          Name = "ArthurSwordDisable3"
+          DurationFrames = 18
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          RequestTriggerLock = true
+          Active = false
+        }
+        {
+          Name = "ArthurSwordDisableCancelable3"
+          DurationFrames = 26
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = false
+          Cancelable = true
+          RequestTriggerLock = true
+          Active = false
+        }
+        {
+          Name = "SwordWeaponSpinExplosiveChargeWeapon"
+          Type = "WEAPON_FIRE"
+          Trigger = "Charging"
+          Duration = 1.0
+          Active = false
+        }]
+    }
+  ]
+}

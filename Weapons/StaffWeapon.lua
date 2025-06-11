@@ -1,37 +1,11 @@
 
-	local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
-	local OlympusCodex = ModUtil.Entangled.ModData(Codex)
-	table.insert(OlympusCodexOrdering.Weapons.Order, "StaffWeapon")
-    OlympusCodex.Weapons.Entries["StaffWeapon"] = {
-        Entries =
-        {
-            {
-                UnlockThreshold = 1,
-                Text = "CodexData_SwordWeapon_01",
-            },
-            {
-                UnlockThreshold = 100,
-                Text = "CodexData_SwordWeapon_02",
-            },
-            {
-                UnlockThreshold = 250,
-                Text = "CodexData_SwordWeapon_03",
-            },
-            {
-                UnlockThreshold = 500,
-                Text = "CodexData_SwordWeapon_04",
-            },
-        },
-        Image = "Codex_Portrait_Sword",
-    }
-
+if ModUtil ~= nil then
+	
 	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
-    table.insert(OlympusWeaponSets.HeroMeleeWeapons, 7, "StaffWeapon")
+    table.insert(OlympusWeaponSets.HeroMeleeWeapons, "StaffWeapon")
 
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
-    
-
-    OlympusWeaponData.StaffWeapon =
+	OlympusWeaponData.StaffWeapon =
 	{
 		InheritFrom = { "BaseUnlockableWeapon", },
 		EquippedKitAnimation = "WeaponStaffFloatingIdleOff",
@@ -43,20 +17,20 @@
 		UseText = "UseWeaponKit",
 		UpgradeChoiceText = "UpgradeChoiceMenu_Melee",
 		ShortName = "StaffWeapon_Short",
-		DashWeapon = "SwordWeaponDash",
-		ExpireDashWeaponOnDash = true,
-		SecondaryWeapon = "StaffSwirl",
+		--DashWeapon = "SwordWeaponDash",
+		--ExpireDashWeaponOnDash = true,
+		--SecondaryWeapon = "SwordParry",
 		PostWeaponUpgradeScreenAnimation = "ZagreusSwordAttack2_ReturnToIdle_Loop",
 
-		CompleteObjectivesOnFire = { "StaffWeapon", "StaffWeaponThor" },
+		CompleteObjectivesOnFire = { "SwordWeapon", "SwordWeaponArthur" },
 
-		--[[KitInteractFunctionName = "WeaponKitSpecialInteractPresentation",
+		KitInteractFunctionName = "WeaponKitSpecialInteractPresentation",
 		KitInteractSpecialUnlockSound = "/Leftovers/Menu Sounds/EmoteAscendedArthurChoir",
 		KitInteractGameStateRequirements =
 		{
 			RequiredTextLines = { "NyxRevealsArthurAspect01" },
 			RequiredFalsePlayed = { "/VO/ZagreusHome_2047", },
-		},]]
+		},
 
 		SkipAttackNotReadySounds = true,
 
@@ -92,7 +66,7 @@
 						-- None
 					},
 
-					-- Malleus, Staff of the Underworld; I need your strength.
+					-- Stygius, Blade of the Underworld; I need your strength.
 					{ Cue = "/VO/ZagreusField_0151", GameStateRequirements = { RequiredMinCompletedRuns = 1, }, PlayOnce = true },
 				},
 				{
@@ -107,11 +81,11 @@
 						-- None
 					},
 
-					-- Staff time...
+					-- My blade...
 					{ Cue = "/VO/ZagreusField_1262" },
-					-- Come, Malleus.
+					-- Come, Stygius.
 					{ Cue = "/VO/ZagreusField_1263" },
-					-- Malleus smash.
+					-- Stygius hungers.
 					{ Cue = "/VO/ZagreusField_1154", GameStateRequirements = { RequiredOneOfTraits = { "UnusedWeaponBonusTrait", "UnusedWeaponBonusTraitAddGems" }, }, },
 				},
 				[3] = GlobalVoiceLines.MiscWeaponEquipVoiceLines,
@@ -151,93 +125,145 @@
 			"ZagreusSwordParry_Bink",
 		},
 	}
-    OlympusWeaponData.StaffSwirl =
+
+	OlympusWeaponData.StaffWeapon2 =
 	{
 		StartingWeapon = false,
-		CodexWeaponName = "StaffWeapon",
-
 		CauseImpactReaction = true,
-		ImpactReactionHitsOverride = 2,
+		CodexWeaponName = "SwordWeapon",
+		--FireScreenshake = { Distance = 2, Speed = 300, FalloffSpeed = 0, Duration = 0.1, Angle = 90 },
+		HitScreenshake = { Distance = 6, Speed = 300, FalloffSpeed = 0, Duration = 0.1, Angle = 90 },
 
-		SkipAttackNotReadySounds = true,
-
-		FireScreenshake = { Distance = 4, Speed = 300, FalloffSpeed = 4000, Duration = 0.25, Angle = 0 },
-		ChargeCameraMotion = { ZoomType = "Ease", Fraction = 1.05, Duration = 0.04, HoldDuration = 0.4, RestoreDefaultDuration = 0.8 },
-
-		FireSimSlowParameters =
+		HitSimSlowParameters =
 		{
-			--{ ScreenPreWait = 0.0, Fraction = 0.01, LerpTime = 0 },
-			--{ ScreenPreWait = 0.04, Fraction = 0.1, LerpTime = 0.07 },
-			--{ ScreenPreWait = 0.14, Fraction = 1.0, LerpTime = 0.1 },
+			{ ScreenPreWait = 0.02, Fraction = 0.1, LerpTime = 0 },
+			{ ScreenPreWait = 0.02, Fraction = 1.0, LerpTime = 0.07 },
 		},
 
-		FireRumbleParameters =
+		HitRumbleParameters =
 		{
-			{ ScreenPreWait = 0.08, Fraction = 0.2, Duration = 0.22 },
+			{ ScreenPreWait = 0.02, RightFraction = 0.2, Duration = 0.15 },
 		},
 
 		Sounds =
 		{
-			ChargeSounds =
-			{
-				{ Name = "/VO/ZagreusEmotes/EmoteCharging_Bow" },
-				{ Name = "/SFX/Player Sounds/ZagreusSwordSwipe" },
-			},
 			FireSounds =
 			{
-				{ Name = "/VO/ZagreusEmotes/EmoteParry_Sword" },
+				{ Name = "/VO/ZagreusEmotes/EmoteAttacking" },
+				{ Name = "/SFX/Player Sounds/ZagreusSwordOverhead" },
 			},
 			ImpactSounds =
 			{
+				Invulnerable = "/SFX/SwordWallHitClank",
 				Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
-				Bone = "/SFX/ArrowMetalBoneSmash",
-				Brick = "/SFX/ArrowMetalStoneClang",
-				Stone = "/SFX/ArrowMetalStoneClang",
-				Organic = "/SFX/ArrowImpactSplatter",
-				StoneObstacle = "/SFX/SwordWallHitClankSmall",
-				BrickObstacle = "/SFX/SwordWallHitClankSmall",
-				MetalObstacle = "/SFX/SwordWallHitClankSmall",
+				Bone = "/SFX/MetalBoneSmash",
+				Brick = "/SFX/MetalStoneClang",
+				Stone = "/SFX/MetalStoneClang",
+				Organic = "/SFX/StabSplatterSmall",
+				StoneObstacle = "/SFX/SwordWallHitClank",
+				BrickObstacle = "/SFX/SwordWallHitClank",
+				MetalObstacle = "/SFX/SwordWallHitClank",
 				BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
 			},
-		},
-
-		Binks =
-		{
-			"ZagreusSwordParry_Bink",
 		},
 
 		Upgrades = { },
 	}
 
+	OlympusWeaponData.StaffWeapon3 =
+	{
+		StartingWeapon = false,
+		CauseImpactReaction = true,
+		CodexWeaponName = "SwordWeapon",
+
+		--ChargeCameraMotion = { ZoomType = "Overshoot", Fraction = 0.96, Duration = 0.3 },
+		--FireCameraMotion = { ZoomType = "Ease", Fraction = 1.0, Duration = 0.2 },
+		--HitScreenshake = { Distance = 3, Speed = 10000, Duration = 0.08, FalloffSpeed = 30000 },
+
+		--[[FireSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.04, Fraction = 0.01, LerpTime = 0 },
+			{ ScreenPreWait = 0.02, Fraction = 0.1, LerpTime = 0 },
+			{ ScreenPreWait = 0.2, Fraction = 1.0, LerpTime = 0.1 },
+		},
+		]]
+
+		HitSimSlowCooldown = 0.03,
+		HitSimSlowParameters =
+		{
+			{ ScreenPreWait = 0.06, Fraction = 0.1, LerpTime = 0.0 },
+			{ ScreenPreWait = 0.05, Fraction = 1.0, LerpTime = 0.07 },
+
+			--{ ScreenPreWait = 0.01, Fraction = 0.01, LerpTime = 0 },
+			--{ ScreenPreWait = 0.06, Fraction = 0.3, LerpTime = 0.07 },
+			--{ ScreenPreWait = 0.08, Fraction = 1.0, LerpTime = 0.07 },
+		},
+
+		HitRumbleParameters =
+		{
+			{ ScreenPreWait = 0.02, LeftFraction = 0.25, Duration = 0.2 },
+		},
+
+		Sounds =
+		{
+			FireSounds =
+			{
+				{ Name = "/VO/ZagreusEmotes/EmotePowerAttacking_Sword" },
+			},
+			ChargeSounds =
+			{
+				{
+					Name = "/Leftovers/SFX/AuraCharge" ,
+					StoppedBy = { "TriggerRelease" }
+				},
+			},
+			ImpactSounds =
+			{
+				Invulnerable = "/SFX/SwordWallHitClank",
+				Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+				Bone = "/SFX/MetalBoneSmash",
+				Brick = "/SFX/MetalStoneClang",
+				Stone = "/SFX/MetalStoneClang",
+				Organic = "/SFX/StabSplatterSmall",
+				StoneObstacle = "/SFX/SwordWallHitClank",
+				BrickObstacle = "/SFX/SwordWallHitClank",
+				MetalObstacle = "/SFX/SwordWallHitClank",
+				BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+			},
+		},
+
+		Upgrades = { },
+	}
 	local OlympusWeaponUpgradeData = ModUtil.Entangled.ModData(WeaponUpgradeData)
-	OlympusWeaponUpgradeData.StaffWeapon = {
+	OlympusWeaponUpgradeData.StaffWeapon =
+	{
 		{
 			Costs = { 1, 1, 1, 1, 1, },
 			MaxUpgradeLevel = 5,
 			UpgradeUnequippedId = "StaffWeapon_Unequipped",
-			StartsUnlocked = false,
+			StartsUnlocked = true,
 			RequiredInvestmentTraitName = "StaffBaseUpgradeTrait",
 			Image = "Codex_Portrait_Sword"
 		},
 		{
 			Costs = { 1, 2, 3, 4, 5 },
 			MaxUpgradeLevel = 5,
-			TraitName = "SwordAmmoWaveTrait",
-			--TraitName = "SwordCriticalParryTrait",
-			EquippedKitAnimation = "WeaponStaffAlt01FloatingIdleOff",
-			UnequippedKitAnimation = "WeaponStaffAlt01FloatingIdle",
-			BonusUnequippedKitAnimation = "WeaponStaffAlt01FloatingIdleBonus",
-			BonusEquippedKitAnimation = "WeaponStaffAlt01FloatingIdleOffBonus",
+			--TraitName = "SwordAmmoWaveTrait"
+			TraitName = "SwordCriticalParryTrait",
+			EquippedKitAnimation = "WeaponSwordAlt01FloatingIdleOff",
+			UnequippedKitAnimation = "WeaponSwordAlt01FloatingIdle",
+			BonusUnequippedKitAnimation = "WeaponSwordAlt01FloatingIdleBonus",
+			BonusEquippedKitAnimation = "WeaponSwordAlt01FloatingIdleOffBonus",
 			Image = "Codex_Portrait_SwordAlt01"
 		},
 		{
 			Costs = { 2, 2, 3, 4, 5 },
 			MaxUpgradeLevel = 5,
-			TraitName = "StaffHealKillTrait",
-			EquippedKitAnimation = "WeaponStaffAlt02FloatingIdleOff",
-			UnequippedKitAnimation = "WeaponStaffAlt02FloatingIdle",
-			BonusUnequippedKitAnimation = "WeaponStaffAlt02FloatingIdleBonus",
-			BonusEquippedKitAnimation = "WeaponStaffAlt02FloatingIdleOffBonus",
+			TraitName = "DislodgeAmmoTrait",
+			EquippedKitAnimation = "WeaponSwordAlt02FloatingIdleOff",
+			UnequippedKitAnimation = "WeaponSwordAlt02FloatingIdle",
+			BonusUnequippedKitAnimation = "WeaponSwordAlt02FloatingIdleBonus",
+			BonusEquippedKitAnimation = "WeaponSwordAlt02FloatingIdleOffBonus",
 			Image = "Codex_Portrait_SwordAlt02"
 		},
 		{
@@ -245,13 +271,13 @@
 			MaxUpgradeLevel = 5,
 			GameStateRequirements =
 			{
-				RequiredTextLines = { "ApolloFirstPickUp" },
+				RequiredTextLines = { "NyxRevealsArthurAspect01" },
 			},
-			TraitName = "StaffLaserTrait",
-			EquippedKitAnimation = "WeaponStaffAlt03FloatingIdleOff",
-			UnequippedKitAnimation = "WeaponStaffAlt03FloatingIdle",
-			BonusUnequippedKitAnimation = "WeaponStaffAlt03FloatingIdleBonus",
-			BonusEquippedKitAnimation = "WeaponStaffAlt03FloatingIdleOffBonus",
+			TraitName = "SwordConsecrationTrait",
+			EquippedKitAnimation = "WeaponSwordAlt03FloatingIdleOff",
+			UnequippedKitAnimation = "WeaponSwordAlt03FloatingIdle",
+			BonusUnequippedKitAnimation = "WeaponSwordAlt03FloatingIdleBonus",
+			BonusEquippedKitAnimation = "WeaponSwordAlt03FloatingIdleOffBonus",
 			Image = "Codex_Portrait_SwordAlt03"
 		},
 	}
@@ -291,7 +317,66 @@
 		},
 		PropertyChanges =
 		{
-			
+			{
+				WeaponNames = { "SwordWeapon", "SwordWeapon2", "SwordWeapon3" },
+				WeaponProperty = "ChargeTime",
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon" },
+				EffectName = "SwordDisableHeavy",
+				EffectProperty = "Duration",
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+
+			{
+				WeaponNames = { "SwordWeapon" },
+				EffectName = "SwordDisableCancelableAndLockTrigger",
+				EffectProperty = "Duration",
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon2" },
+				EffectName = "SwordDisableCancelableAndLockTrigger2",
+				EffectProperty = "Duration",
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon3" },
+				EffectName = "SwordDisable3",
+				EffectProperty = "Duration",
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponNames = { "SwordWeapon3" },
+				EffectName = "SwordDisableAttackCancelable3",
+				EffectProperty = "Duration",
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				ChangeType = "Multiply",
+				ExcludeLinked = true,
+			},
+			{
+				UnitProperty = "Speed",
+				BaseValue = 1.03,
+				ChangeType = "Multiply",
+				SourceIsMultiplier = true,
+			},
 		},
 		ExtractEntry =
 		{
@@ -300,206 +385,12 @@
 		},
 		ExtractValues =
 		{
+			{
+				Key = "ExtractEntry",
+				DecimalPlaces = 2,
+				Format = "NegativePercentDelta",
+				ExtractAs = "TooltipSpeed",
+			},
 		}
 	}
-	OlympusTraitData.StaffExplodingBallTrait =
-	{
-		InheritFrom = { "WeaponEnchantmentTrait" },
-		CustomTrayText = "StaffSweepBuffTrait_Tray",
-		Icon = "WeaponEnchantment_Staff03",
-		RequiredWeapon = "StaffWeapon",
-		PostWeaponUpgradeScreenAnimation = "ZagreusStaffAlt01Attack2_ReturnToIdle_Loop",
-		RarityLevels =
-		{
-			Common =
-			{
-				MinMultiplier = 1.00,
-				MaxMultiplier = 1.00,
-			},
-			Rare =
-			{
-				MinMultiplier = 1.25,
-				MaxMultiplier = 1.25,
-			},
-			Epic =
-			{
-				MinMultiplier = 1.50,
-				MaxMultiplier = 1.50,
-			},
-			Heroic =
-			{
-				MinMultiplier = 1.75,
-				MaxMultiplier = 1.75,
-			},
-			Legendary =
-			{
-				MinMultiplier = 2.00,
-				MaxMultiplier = 2.00,
-			},
-		},
-		PropertyChanges =
-		{
-			
-		},
-		WeaponBinks =
-		{
-			"ZagreusSword01_Bink",
-			"ZagreusSword01ReturnToIdle_Bink",
-			"ZagreusSword01DashAttack_Bink",
-			"ZagreusSword01Run_Bink",
-			"ZagreusSword01RunStop_Bink",
-			"ZagreusSword01Parry_Bink"
-		},
-		WeaponDataOverride =
-		{
-			HammerWeapon =
-			{
-				WeaponBinks =
-				{
-					"ZagreusSword01_Bink",
-					"ZagreusSword01ReturnToIdle_Bink",
-					"ZagreusSword01DashAttack_Bink",
-					"ZagreusSword01Run_Bink",
-					"ZagreusSword01RunStop_Bink",
-					"ZagreusSword01Parry_Bink"
-				},
-			}
-		},
-		ExtractValues =
-		{
-		}
-	}
-	OlympusTraitData.StaffHealKillTrait =
-	{
-		InheritFrom = { "WeaponEnchantmentTrait" },
-		CustomTrayText = "StaffSweepBuffTrait_Tray",
-		Icon = "WeaponEnchantment_Staff03",
-		RequiredWeapon = "StaffWeapon",
-		PostWeaponUpgradeScreenAnimation = "ZagreusStaffAlt01Attack2_ReturnToIdle_Loop",
-		RarityLevels =
-		{
-			Common =
-			{
-				MinMultiplier = 1.00,
-				MaxMultiplier = 1.00,
-			},
-			Rare =
-			{
-				MinMultiplier = 1.25,
-				MaxMultiplier = 1.25,
-			},
-			Epic =
-			{
-				MinMultiplier = 1.50,
-				MaxMultiplier = 1.50,
-			},
-			Heroic =
-			{
-				MinMultiplier = 1.75,
-				MaxMultiplier = 1.75,
-			},
-			Legendary =
-			{
-				MinMultiplier = 2.00,
-				MaxMultiplier = 2.00,
-			},
-		},
-		PropertyChanges =
-		{
-			
-		},
-		WeaponBinks =
-		{
-			"ZagreusSword01_Bink",
-			"ZagreusSword01ReturnToIdle_Bink",
-			"ZagreusSword01DashAttack_Bink",
-			"ZagreusSword01Run_Bink",
-			"ZagreusSword01RunStop_Bink",
-			"ZagreusSword01Parry_Bink"
-		},
-		WeaponDataOverride =
-		{
-			HammerWeapon =
-			{
-				WeaponBinks =
-				{
-					"ZagreusSword01_Bink",
-					"ZagreusSword01ReturnToIdle_Bink",
-					"ZagreusSword01DashAttack_Bink",
-					"ZagreusSword01Run_Bink",
-					"ZagreusSword01RunStop_Bink",
-					"ZagreusSword01Parry_Bink"
-				},
-			}
-		},
-		ExtractValues =
-		{
-		}
-	}
-	OlympusTraitData.StaffLaserTrait =
-	{
-		InheritFrom = { "WeaponEnchantmentTrait" },
-		CustomTrayText = "StaffSweepBuffTrait_Tray",
-		Icon = "WeaponEnchantment_Staff03",
-		RequiredWeapon = "StaffWeapon",
-		PostWeaponUpgradeScreenAnimation = "ZagreusStaffAlt01Attack2_ReturnToIdle_Loop",
-		RarityLevels =
-		{
-			Common =
-			{
-				MinMultiplier = 1.00,
-				MaxMultiplier = 1.00,
-			},
-			Rare =
-			{
-				MinMultiplier = 1.25,
-				MaxMultiplier = 1.25,
-			},
-			Epic =
-			{
-				MinMultiplier = 1.50,
-				MaxMultiplier = 1.50,
-			},
-			Heroic =
-			{
-				MinMultiplier = 1.75,
-				MaxMultiplier = 1.75,
-			},
-			Legendary =
-			{
-				MinMultiplier = 2.00,
-				MaxMultiplier = 2.00,
-			},
-		},
-		PropertyChanges =
-		{
-			
-		},
-		WeaponBinks =
-		{
-			"ZagreusSword01_Bink",
-			"ZagreusSword01ReturnToIdle_Bink",
-			"ZagreusSword01DashAttack_Bink",
-			"ZagreusSword01Run_Bink",
-			"ZagreusSword01RunStop_Bink",
-			"ZagreusSword01Parry_Bink"
-		},
-		WeaponDataOverride =
-		{
-			StaffWeapon =
-			{
-				WeaponBinks =
-				{
-					"ZagreusSword01_Bink",
-					"ZagreusSword01ReturnToIdle_Bink",
-					"ZagreusSword01DashAttack_Bink",
-					"ZagreusSword01Run_Bink",
-					"ZagreusSword01RunStop_Bink",
-					"ZagreusSword01Parry_Bink"
-				},
-			}
-		},
-		ExtractValues =
-		{
-		}
-	}
+end

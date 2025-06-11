@@ -1,0 +1,84 @@
+{
+	Texts = [
+		"_append"
+		// Staff
+		{
+			Id = "StaffWeapon"
+			DisplayName = "Caduceus Staff"
+			Description = "Caduceus, Staff of the Messenger"
+		}
+		{
+			Id = "StaffWeapon_Full"
+			DisplayName = "Caduceus"
+			Description = "Aspects of the Staff of the Messenger"
+		}
+		{
+			Id = "StaffWeapon_Short"
+			DisplayName = "staff"
+		}
+		{
+      Id = "StaffWeapon_Unequipped"
+      DisplayName = "Aspect of Zagreus"
+      Description = "The form in which the blade of the underworld first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#OldFormat}+0% \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+    }
+    {
+      Id = "StaffBaseUpgradeTrait"
+      DisplayName = "Aspect of Zagreus"
+      Description = "The form in which the blade of the underworld first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeed:P} \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+    }
+    {
+      Id = "StaffBaseUpgradeTrait_Delta"
+      InheritFrom = "StaffBaseUpgradeTrait"
+      Description = "The form in which the blade of the underworld first revealed itself.\n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}A blade such as this seeks not to remain idle for more than an aeon or two."
+    }
+    {
+      Id = "StaffBaseUpgradeTrait_Tray"
+      InheritFrom = "StaffBaseUpgradeTrait"
+      Description = "The form in which the blade of the underworld first revealed itself. \n {!Icons.Bullet}{#PropertyFormat}Bonus Attack Speed & Move Speed: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipSpeed:P}"
+    }
+    {
+      Id = "StaffCriticalParryTrait"
+      DisplayName = "Aspect of Nemesis"
+      Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipPercentChance:P} \n\n {#ItalicFormatDark}One of Nyx's daughters once brandished the blade against the arrogant."
+    }
+    {
+      Id = "StaffCriticalParryTrait_Delta"
+      InheritFrom = "StaffCriticalParryTrait"
+      Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}One of Nyx's daughters once brandished the blade against the arrogant."
+    }
+    {
+      Id = "StaffCriticalParryTrait_Tray"
+      InheritFrom = "StaffCriticalParryTrait"
+      Description = "For {#BoldFormat}{$TooltipData.TooltipDuration} {#PreviousFormat}Sec. after your {$Keywords.Special}, your {$Keywords.Attack} may deal {$Keywords.Crit} damage. \n {!Icons.Bullet}{#PropertyFormat}Bonus {$Keywords.Crit} Chance: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipPercentChance:P}"
+    }
+    {
+      Id = "DislodgeAmmoTrait"
+      DisplayName = "Aspect of Poseidon"
+      Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamage:P} \n\n {#ItalicFormatDark}Even before he ruled the seas, the blade's first bearer liked making a splash."
+    }
+    {
+      Id = "DislodgeAmmoTrait_Delta"
+      InheritFrom = "DislodgeAmmoTrait"
+      Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}Even before he ruled the seas, the blade's first bearer liked making a splash."
+    }
+    {
+      Id = "DislodgeAmmoTrait_Tray"
+      InheritFrom = "DislodgeAmmoTrait"
+      Description = "Your {$Keywords.Special} dislodges {!Icons.Ammo} from foes. \n {!Icons.Bullet}{#PropertyFormat}Cast Damage: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamage:P}"
+    }
+    {
+      Id = "StaffConsecrationTrait"
+      DisplayName = "Aspect of Arthur"
+      Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamageReduction:P} \n\n {#ItalicFormatDark}Peace and destruction await a kingdom governed by the rule of might."
+    }
+    {
+      Id = "StaffConsecrationTrait_Delta"
+      InheritFrom = "StaffConsecrationTrait"
+      Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1} \n\n {#ItalicFormatDark}Peace and destruction await a kingdom governed by the rule of might."
+    }
+    {
+      Id = "StaffConsecrationTrait_Tray"
+      InheritFrom = "StaffConsecrationTrait"
+      Description = "You have {$Keywords.ArthurAspect}, and {#BoldFormatGraft}+{$TooltipData.TooltipHealth}{#PreviousFormat}{!Icons.HealthUp_Small} to your Life Total. \n {!Icons.Bullet}{#PropertyFormat}Aura Damage Reduction: \Column 380 {#UpgradeFormat}{#AltUpgradeFormat}{$TooltipData.TooltipDamageReduction:P}"
+    }
+}

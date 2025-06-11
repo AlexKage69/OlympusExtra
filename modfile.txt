@@ -7,16 +7,16 @@
 Include "Common/modfile_common.txt"
 
 :: New Weapons
-:: Include "Weapons/modfile_weapons.txt"
+Include "Weapons/modfile_weapons.txt"
 
 :: New NPCs
 :: Include "NPCs/modfile_npcs.txt"
 
 :: New Gods
-Include "Gods/modfile_gods.txt"
+:: Include "Gods/modfile_gods.txt"
 
 :: New Extras
-Include "Extras/modfile_extras.txt"
+:: Include "Extras/modfile_extras.txt"
 
 :: Merge all together
 Import "OlympusExtra.lua"

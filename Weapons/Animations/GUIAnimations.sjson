@@ -1,0 +1,15 @@
+{
+  Animations = [
+	"_append"
+    {
+      Name = "WeaponEnchantment_Staff01_Large"
+      InheritFrom = "WeaponEnchantment"
+      FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_base_icon"
+    }
+    {
+      Name = "WeaponEnchantment_Staff01_Small"
+      InheritFrom = "WeaponEnchantmentTray"
+      FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_base_icon"
+    }
+  ]
+}
