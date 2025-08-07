@@ -11,5 +11,6 @@ SJSON "Projectiles/PlayerProjectiles.sjson"
 To "Game/Weapons/PlayerWeapons.sjson"
 SJSON "Weapons/PlayerWeapons.sjson"
 
+:: Language Text
 To "Game/Text/en/HelpText.en.sjson"
 SJSON "Text/HelpText.en.sjson"

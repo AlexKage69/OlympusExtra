@@ -246,5 +246,100 @@
           IsVulnerabilityEffect = true
         }]
     }
+    {
+      Name = "StaffSecondaryLaserWeapon"
+      InheritFrom = "1_BaseDamagingProjectile"
+      DetonateGraphic = "null"
+      DissipateGraphic = "null"
+      ImpactFx = "GunWeaponImpact"
+      Type = "BEAM"
+      StartAtMarker = "weapon_2_TRACKING"
+      AffectsEnemies = true
+      AffectsFriends = false
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = true
+      SkipFireCancelIfFiring = true
+      AutoAdjustForTarget = false
+      AttachToOwner = true
+      NumPenetrations = 0
+      MaxAdjustRate = 0
+      Range = 710.0
+      ArcSize = 100
+      Speed = 0.0
+      Fuse = 0.13
+      MultiDetonate = true
+      DrawAsBeam = true
+      ImmunityDuration = 0.05
+      TotalFuse = 0.2
+      ConsecutiveHitWindow = 0.6
+      DamagePerConsecutiveHit = 0.75
+      DamageRadius = 0
+      DamageLow = 10
+      DamageHigh = 10
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      BeamStartAnimSkipsImpact = false
+      UseArmor = true
+      UseVulnerability = true
+      ProjectileDefenseRadius = 40
+      GroupName = "FX_Standing_Add"
+      UseRadialImpact = false
+      Thing = 
+      {
+        Graphic = "GunLaser"
+        OffsetZ = 70
+        AttachedAnim = "GunLaserOriginFlare"
+        Grip = 999999
+        RotateGeometry = true
+        UseBoundsForSortDrawArea = true
+        SortBoundsScale = 0.33
+        Tallness = 50
+        Points = [
+          {
+            X = 24
+            Y = 24
+          }
+          {
+            X = 24
+            Y = -24
+          }
+          {
+            X = -24
+            Y = -24
+          }
+          {
+            X = -24
+            Y = 24
+          }]
+      }
+      Effects = [
+        {
+          Name = "BashCombo"
+          Type = "TAG"
+          Duration = 2.0
+          Active = true
+        }
+        {
+          Name = "OnHitSlow"
+          Type = "Speed"
+          Modifier = 0.6
+          Duration = 0.1
+          CanAffectInvulnerable = true
+          FrontFx = "null"
+          Active = false
+        }
+        {
+          Name = "OnHitStun"
+          IgnoreName = "_PlayerUnit"
+          Duration = 0.5
+          DisableMove = true
+          DisableRotate = true
+          DisableAttack = true
+          Active = false
+          CanAffectInvulnerable = false
+          FrontFx = "null"
+        }]
+    }
   ]
 }

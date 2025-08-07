@@ -1,8 +1,6 @@
-
 if ModUtil ~= nil then
-	
 	local OlympusWeaponSets = ModUtil.Entangled.ModData(WeaponSets)
-    table.insert(OlympusWeaponSets.HeroMeleeWeapons, "StaffWeapon")
+	table.insert(OlympusWeaponSets.HeroMeleeWeapons, "StaffWeapon")
 
 	local OlympusWeaponData = ModUtil.Entangled.ModData(WeaponData)
 	OlympusWeaponData.StaffWeapon =
@@ -19,7 +17,7 @@ if ModUtil ~= nil then
 		ShortName = "StaffWeapon_Short",
 		--DashWeapon = "SwordWeaponDash",
 		--ExpireDashWeaponOnDash = true,
-		--SecondaryWeapon = "SwordParry",
+		SecondaryWeapon = "StaffSecondaryLaserWeapon",
 		PostWeaponUpgradeScreenAnimation = "ZagreusSwordAttack2_ReturnToIdle_Loop",
 
 		CompleteObjectivesOnFire = { "SwordWeapon", "SwordWeaponArthur" },
@@ -122,7 +120,12 @@ if ModUtil ~= nil then
 			"ZagreusSwordDashAttack_Bink",
 			"ZagreusSwordRun_Bink",
 			"ZagreusSwordRunStop_Bink",
-			"ZagreusSwordParry_Bink",
+			"ZagreusSwordParry_Bink",			
+			"ZagreusGun_Bink",
+			"ZagreusGunGrenadeToss_Bink",
+			"ZagreusGunFireEmpty_Bink",
+			"ZagreusGunRun_Bink",
+			"ZagreusGunStop_Bink",
 		},
 	}
 
@@ -167,7 +170,7 @@ if ModUtil ~= nil then
 			},
 		},
 
-		Upgrades = { },
+		Upgrades = {},
 	}
 
 	OlympusWeaponData.StaffWeapon3 =
@@ -213,7 +216,7 @@ if ModUtil ~= nil then
 			ChargeSounds =
 			{
 				{
-					Name = "/Leftovers/SFX/AuraCharge" ,
+					Name = "/Leftovers/SFX/AuraCharge",
 					StoppedBy = { "TriggerRelease" }
 				},
 			},
@@ -232,7 +235,7 @@ if ModUtil ~= nil then
 			},
 		},
 
-		Upgrades = { },
+		Upgrades = {},
 	}
 	local OlympusWeaponUpgradeData = ModUtil.Entangled.ModData(WeaponUpgradeData)
 	OlympusWeaponUpgradeData.StaffWeapon =
@@ -243,28 +246,28 @@ if ModUtil ~= nil then
 			UpgradeUnequippedId = "StaffWeapon_Unequipped",
 			StartsUnlocked = true,
 			RequiredInvestmentTraitName = "StaffBaseUpgradeTrait",
-			Image = "Codex_Portrait_Sword"
+			Image = "Codex_Portrait_Staff"
 		},
 		{
 			Costs = { 1, 2, 3, 4, 5 },
 			MaxUpgradeLevel = 5,
 			--TraitName = "SwordAmmoWaveTrait"
-			TraitName = "SwordCriticalParryTrait",
+			TraitName = "ExplodingOrbTrait",
 			EquippedKitAnimation = "WeaponSwordAlt01FloatingIdleOff",
 			UnequippedKitAnimation = "WeaponSwordAlt01FloatingIdle",
 			BonusUnequippedKitAnimation = "WeaponSwordAlt01FloatingIdleBonus",
 			BonusEquippedKitAnimation = "WeaponSwordAlt01FloatingIdleOffBonus",
-			Image = "Codex_Portrait_SwordAlt01"
+			Image = "Codex_Portrait_StaffAlt01"
 		},
 		{
 			Costs = { 2, 2, 3, 4, 5 },
 			MaxUpgradeLevel = 5,
-			TraitName = "DislodgeAmmoTrait",
+			TraitName = "StaffHealingTrait",
 			EquippedKitAnimation = "WeaponSwordAlt02FloatingIdleOff",
 			UnequippedKitAnimation = "WeaponSwordAlt02FloatingIdle",
 			BonusUnequippedKitAnimation = "WeaponSwordAlt02FloatingIdleBonus",
 			BonusEquippedKitAnimation = "WeaponSwordAlt02FloatingIdleOffBonus",
-			Image = "Codex_Portrait_SwordAlt02"
+			Image = "Codex_Portrait_StaffAlt02"
 		},
 		{
 			Costs = { 3, 3, 3, 3, 3 },
@@ -273,12 +276,12 @@ if ModUtil ~= nil then
 			{
 				RequiredTextLines = { "NyxRevealsArthurAspect01" },
 			},
-			TraitName = "SwordConsecrationTrait",
+			TraitName = "StaffLaserTrait",
 			EquippedKitAnimation = "WeaponSwordAlt03FloatingIdleOff",
 			UnequippedKitAnimation = "WeaponSwordAlt03FloatingIdle",
 			BonusUnequippedKitAnimation = "WeaponSwordAlt03FloatingIdleBonus",
 			BonusEquippedKitAnimation = "WeaponSwordAlt03FloatingIdleOffBonus",
-			Image = "Codex_Portrait_SwordAlt03"
+			Image = "Codex_Portrait_StaffAlt03"
 		},
 	}
 	local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
@@ -315,82 +318,459 @@ if ModUtil ~= nil then
 				MaxMultiplier = 5.0,
 			},
 		},
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeapons = { "StaffWeapon", "StaffWeapon2", "StaffWeapon3" },
+			ExcludeLinked = true,
+			DistanceThreshold = 400,
+			DistanceMultiplier =
+			{
+				BaseValue = 1.5,
+				SourceIsMultiplier = true,
+			},
+			ExtractValues =
+			{
+				{
+					Key = "DistanceMultiplier",
+					ExtractAs = "TooltipDistanceMultiplier",
+					Format = "PercentDelta",
+				},
+			}
+		}
+	}
+	OlympusTraitData.ExplodingOrbTrait =
+	{
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		Name = "ExplodingOrbTrait",
+		CustomTrayText = "ExplodingOrbTrait_Tray",
+		Icon = "WeaponEnchantment_Staff01",
+		RequiredWeapon = "StaffWeapon",
+		PostWeaponUpgradeScreenAnimation = "ZagreusSwordAlt01Attack2_ReturnToIdle_Loop",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1.00,
+				MaxMultiplier = 1.00,
+			},
+			Rare =
+			{
+				MinMultiplier = 1.25,
+				MaxMultiplier = 1.25,
+			},
+			Epic =
+			{
+				MinMultiplier = 1.50,
+				MaxMultiplier = 1.50,
+			},
+			Heroic =
+			{
+				MinMultiplier = 1.75,
+				MaxMultiplier = 1.75,
+			},
+			Legendary =
+			{
+				MinMultiplier = 2.00,
+				MaxMultiplier = 2.00,
+			},
+		},
 		PropertyChanges =
 		{
 			{
-				WeaponNames = { "SwordWeapon", "SwordWeapon2", "SwordWeapon3" },
-				WeaponProperty = "ChargeTime",
-				BaseValue = 0.97,
-				SourceIsMultiplier = true,
-				ChangeType = "Multiply",
-				ExcludeLinked = true,
+				WeaponNames = { "SwordParry" },
+				EffectName = "SwordPostParryCritical",
+				EffectProperty = "Active",
+				ChangeValue = true,
 			},
 			{
-				WeaponNames = { "SwordWeapon" },
-				EffectName = "SwordDisableHeavy",
+				WeaponNames = { "SwordParry" },
+				EffectName = "SwordPostParryCritical",
 				EffectProperty = "Duration",
-				BaseValue = 0.97,
-				SourceIsMultiplier = true,
-				ChangeType = "Multiply",
-				ExcludeLinked = true,
+				ChangeValue = 3.0,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+					DecimalPlaces = 1,
+				}
 			},
-
+			-- animation changes
 			{
-				WeaponNames = { "SwordWeapon" },
-				EffectName = "SwordDisableCancelableAndLockTrigger",
-				EffectProperty = "Duration",
-				BaseValue = 0.97,
-				SourceIsMultiplier = true,
-				ChangeType = "Multiply",
-				ExcludeLinked = true,
-			},
-			{
-				WeaponNames = { "SwordWeapon2" },
-				EffectName = "SwordDisableCancelableAndLockTrigger2",
-				EffectProperty = "Duration",
-				BaseValue = 0.97,
-				SourceIsMultiplier = true,
-				ChangeType = "Multiply",
+				WeaponName = "SwordWeapon",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge1",
+				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 			{
-				WeaponNames = { "SwordWeapon3" },
-				EffectName = "SwordDisable3",
-				EffectProperty = "Duration",
-				BaseValue = 0.97,
-				SourceIsMultiplier = true,
-				ChangeType = "Multiply",
+				WeaponName = "SwordWeapon",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack1",
+				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 			{
-				WeaponNames = { "SwordWeapon3" },
-				EffectName = "SwordDisableAttackCancelable3",
-				EffectProperty = "Duration",
-				BaseValue = 0.97,
-				SourceIsMultiplier = true,
-				ChangeType = "Multiply",
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge2",
+				ChangeType = "Absolute",
 				ExcludeLinked = true,
 			},
 			{
-				UnitProperty = "Speed",
-				BaseValue = 1.03,
-				ChangeType = "Multiply",
-				SourceIsMultiplier = true,
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack2",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge3",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack3",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01ParryFire",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01ParryCharge",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeaponDash",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01DashAttack",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
 			},
 		},
-		ExtractEntry =
+		WeaponBinks =
 		{
-			BaseValue = 0.97,
-			SourceIsMultiplier = true,
+			"ZagreusSword01_Bink",
+			"ZagreusSword01ReturnToIdle_Bink",
+			"ZagreusSword01DashAttack_Bink",
+			"ZagreusSword01Run_Bink",
+			"ZagreusSword01RunStop_Bink",
+			"ZagreusSword01Parry_Bink"
 		},
-		ExtractValues =
+		WeaponDataOverride =
+		{
+			SwordWeapon =
+			{
+				WeaponBinks =
+				{
+					"ZagreusSword01_Bink",
+					"ZagreusSword01ReturnToIdle_Bink",
+					"ZagreusSword01DashAttack_Bink",
+					"ZagreusSword01Run_Bink",
+					"ZagreusSword01RunStop_Bink",
+					"ZagreusSword01Parry_Bink"
+				},
+			}
+		}
+	}
+	OlympusTraitData.StaffHealingTrait =
+	{
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		Name = "StaffHealingTrait",
+		CustomTrayText = "ExplodingOrbTrait_Tray",
+		Icon = "WeaponEnchantment_Staff02",
+		RequiredWeapon = "StaffWeapon",
+		PostWeaponUpgradeScreenAnimation = "ZagreusSwordAlt01Attack2_ReturnToIdle_Loop",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1.00,
+				MaxMultiplier = 1.00,
+			},
+			Rare =
+			{
+				MinMultiplier = 1.25,
+				MaxMultiplier = 1.25,
+			},
+			Epic =
+			{
+				MinMultiplier = 1.50,
+				MaxMultiplier = 1.50,
+			},
+			Heroic =
+			{
+				MinMultiplier = 1.75,
+				MaxMultiplier = 1.75,
+			},
+			Legendary =
+			{
+				MinMultiplier = 2.00,
+				MaxMultiplier = 2.00,
+			},
+		},
+		PropertyChanges =
 		{
 			{
-				Key = "ExtractEntry",
-				DecimalPlaces = 2,
-				Format = "NegativePercentDelta",
-				ExtractAs = "TooltipSpeed",
+				WeaponNames = { "SwordParry" },
+				EffectName = "SwordPostParryCritical",
+				EffectProperty = "Active",
+				ChangeValue = true,
 			},
+			{
+				WeaponNames = { "SwordParry" },
+				EffectName = "SwordPostParryCritical",
+				EffectProperty = "Duration",
+				ChangeValue = 3.0,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+					DecimalPlaces = 1,
+				}
+			},
+			-- animation changes
+			{
+				WeaponName = "SwordWeapon",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge1",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack1",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge2",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack2",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge3",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack3",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01ParryFire",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01ParryCharge",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeaponDash",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01DashAttack",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+		},
+		WeaponBinks =
+		{
+			"ZagreusSword02_Bink",
+			"ZagreusSword02ReturnToIdle_Bink",
+			"ZagreusSword02DashAttack_Bink",
+			"ZagreusSword02Run_Bink",
+			"ZagreusSword02RunStop_Bink",
+			"ZagreusSword02Parry_Bink"
+		},
+		WeaponDataOverride =
+		{
+			StaffWeapon =
+			{
+				WeaponBinks =
+				{
+					"ZagreusSword02_Bink",
+					"ZagreusSword02ReturnToIdle_Bink",
+					"ZagreusSword02DashAttack_Bink",
+					"ZagreusSword02Run_Bink",
+					"ZagreusSword02RunStop_Bink",
+					"ZagreusSword02Parry_Bink"
+				},
+			}
+		}
+	}
+	OlympusTraitData.StaffLaserTrait =
+	{
+		InheritFrom = { "WeaponEnchantmentTrait" },
+		Name = "StaffLaserTrait",
+		CustomTrayText = "ExplodingOrbTrait_Tray",
+		Icon = "WeaponEnchantment_Staff03",
+		RequiredWeapon = "StaffWeapon",
+		PostWeaponUpgradeScreenAnimation = "ZagreusSwordAlt01Attack2_ReturnToIdle_Loop",
+		RarityLevels =
+		{
+			Common =
+			{
+				MinMultiplier = 1.00,
+				MaxMultiplier = 1.00,
+			},
+			Rare =
+			{
+				MinMultiplier = 1.25,
+				MaxMultiplier = 1.25,
+			},
+			Epic =
+			{
+				MinMultiplier = 1.50,
+				MaxMultiplier = 1.50,
+			},
+			Heroic =
+			{
+				MinMultiplier = 1.75,
+				MaxMultiplier = 1.75,
+			},
+			Legendary =
+			{
+				MinMultiplier = 2.00,
+				MaxMultiplier = 2.00,
+			},
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = { "SwordParry" },
+				EffectName = "SwordPostParryCritical",
+				EffectProperty = "Active",
+				ChangeValue = true,
+			},
+			{
+				WeaponNames = { "SwordParry" },
+				EffectName = "SwordPostParryCritical",
+				EffectProperty = "Duration",
+				ChangeValue = 3.0,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDuration",
+					DecimalPlaces = 1,
+				}
+			},
+			-- animation changes
+			{
+				WeaponName = "SwordWeapon",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge1",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack1",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge2",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon2",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack2",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01Charge3",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeapon3",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01Attack3",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01ParryFire",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordParry",
+				WeaponProperty = "ChargeStartAnimation",
+				ChangeValue = "ZagreusSwordAlt01ParryCharge",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+			{
+				WeaponName = "SwordWeaponDash",
+				WeaponProperty = "FireGraphic",
+				ChangeValue = "ZagreusSwordAlt01DashAttack",
+				ChangeType = "Absolute",
+				ExcludeLinked = true,
+			},
+		},
+		WeaponBinks =
+		{
+			"ZagreusSword03_Bink",
+			"ZagreusSword03ReturnToIdle_Bink",
+			"ZagreusSword03DashAttack_Bink",
+			"ZagreusSword03Run_Bink",
+			"ZagreusSword03RunStop_Bink",
+			"ZagreusSword03Parry_Bink"
+		},
+		WeaponDataOverride =
+		{
+			StaffWeapon =
+			{
+				WeaponBinks =
+				{
+					"ZagreusSword03_Bink",
+					"ZagreusSword03ReturnToIdle_Bink",
+					"ZagreusSword03DashAttack_Bink",
+					"ZagreusSword03Run_Bink",
+					"ZagreusSword03RunStop_Bink",
+					"ZagreusSword03Parry_Bink"
+				},
+			}
 		}
 	}
 end

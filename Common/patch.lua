@@ -12,7 +12,7 @@ ModUtil.Table.Merge(OlympusKeywordList, {
     "SpecialDiscount", "ApolloBlind", "FlashBomb", "DamageResist",
     "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon",
     "ArmorIcon", "ZagreusArmor", "HephSword", "HephBow",
-    "HephShield", "HephSpear" })
+    "HephShield", "HephSpear", "RaAspect" })
 ResetKeywords()
 
 local OlympusEnemySets = ModUtil.Entangled.ModData(EnemySets)

@@ -1,6 +1,33 @@
 {
   Animations = [
     "_append"
-    
+    {
+      Name = "Codex_Portrait_Staff"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_Sword"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_StaffAlt01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_SwordAlt01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_StaffAlt02"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_SwordAlt02"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_StaffAlt03"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_SwordAlt03"
+      EndFrame = 1
+      StartFrame = 1
+    }
   ]
 }

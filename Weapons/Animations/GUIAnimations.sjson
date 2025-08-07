@@ -2,14 +2,44 @@
   Animations = [
 	"_append"
     {
-      Name = "WeaponEnchantment_Staff01_Large"
-      InheritFrom = "WeaponEnchantment"
-      FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_base_icon"
-    }
-    {
       Name = "WeaponEnchantment_Staff01_Small"
       InheritFrom = "WeaponEnchantmentTray"
-      FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_base_icon"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_base_icon"
+    }
+    {
+      Name = "WeaponEnchantment_Staff02_Small"
+      InheritFrom = "WeaponEnchantmentTray"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_enchantment_1"
+    }
+    {
+      Name = "WeaponEnchantment_Staff03_Small"
+      InheritFrom = "WeaponEnchantmentTray"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_enchantment_2"
+    }
+    {
+      Name = "WeaponEnchantment_Staff04_Small"
+      InheritFrom = "WeaponEnchantmentTray"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_enchantment_3"
+    }
+    {
+      Name = "WeaponEnchantment_Staff01_Large"
+      InheritFrom = "WeaponEnchantment"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_base_icon"
+    }
+    {
+      Name = "WeaponEnchantment_Staff02_Large"
+      InheritFrom = "WeaponEnchantment"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_enchantment_1"
+    }
+    {
+      Name = "WeaponEnchantment_Staff03_Large"
+      InheritFrom = "WeaponEnchantment"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_enchantment_2"
+    }
+    {
+      Name = "WeaponEnchantment_Staff04_Large"
+      InheritFrom = "WeaponEnchantment"
+        FilePath = "GUI\Screens\WeaponEnchantmentIcons\sword_enchantment_3"
     }
   ]
 }
