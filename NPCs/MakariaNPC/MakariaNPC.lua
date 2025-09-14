@@ -403,9 +403,5 @@ OlympusObstacleData.DivinationGods =
 	end
 )]]
 
-OnUsed{ "NPCs",
-	function( triggerArgs )
-	end
-}
 OverwriteTableKeys( EnemyData, UnitSetData.NPCs )
 OverwriteTableKeys( RoomData, OlympusRoomSetData.Tartarus)

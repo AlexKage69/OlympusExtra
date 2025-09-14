@@ -5,6 +5,7 @@ local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
+local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 table.insert(OlympusGameData.ConversationOrder,1,"NPC_Moros_01")
 local OlympusColor = ModUtil.Entangled.ModData(Color)
 OlympusColor.MorosVoice = { 93,19,52,255 }
@@ -15,6 +16,7 @@ OlympusEnemyData.NPC_Moros_01 =
 {
 	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 	CanReceiveGift = true,
+	SkipInitialGiftRequirement = true,
 	Name = "NPC_Moros_01",
 	UseText = "UseTalkToChildGhost",
 	Portrait = "Portrait_Moros_Default_01",
@@ -195,23 +197,13 @@ OlympusEnemyData.NPC_Moros_01 =
 	},
 }
 -- Moros activation requirements
-table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, 3, {
-				FunctionName = "ActivateRotatingNPCs",
-				GameStateRequirements =
-				{
-					RequiredFalseFlags = { "InFlashback", },
-				},
-				Args =
-				{
-					Types =
-					{
-						"NPC_Moros_01",
-					},
-					ActivationCapMin = 1,
-					ActivationCapMax = 1,
-					SkipPresentation = true,
-				},
-			})
+table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.Types, "NPC_Moros_01")
+OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.ActivationCapMin = 6
+OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.ActivationCapMax = 6
+function OENPCSpawner(eventSource, args)
+	local npc = ActiveEnemies[args.Id]	
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(npc))
+end
 OlympusDeathLoopData.DeathArea.ObstacleData[370026] = {
 	Name = "NPC_Moros_01",
 	DistanceTriggers =
@@ -263,6 +255,7 @@ OlympusCodex.ChthonicGods.Entries["NPC_Moros_01"] =
 }
 OlympusGiftData.NPC_Moros_01 =
 	{
+		Gift = true,
 		InheritFrom = {"DefaultGiftData"},
 		Name = "NPC_Moros_01",
 		MaxedIcon = "Keepsake_Achilles_Max",
@@ -274,6 +267,8 @@ OlympusGiftData.NPC_Moros_01 =
 		[4] = { RequiredResource = "SuperGiftPoints" },
 		UnlockGameStateRequirements = { RequiredTextLines = { "Test1" } }
 	}
+	
+table.insert(OlympusGiftOrdering, 1, "ForceZeusBoonTrait")
 --[[ModUtil.Path.Wrap( "ActivateRotatingNPCs", 
 	function(baseFunc, eventSource, args)		
 		if args.Ids then
@@ -359,4 +354,34 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		baseFunc()
 	end
 )
---OverwriteTableKeys( EnemyData, OlympusUnitSetData.NPCs )
+--OverwriteTableKeys( EnemyData, OlympusUnitSetData.NPCs )(  )
+--[[ModUtil.Path.Wrap( "GetGenusName", 
+	function(baseFunc, npc)		
+		--ForceNextRoomFunc("A_Makaria01")
+		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
+		--GameState.Gift["NPC_Moros_01"] = nil
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.Gift["NPC_Moros_01"])) 
+		local npcName =  baseFunc(npc)
+		if npcName == "NPC_Moros_01" then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(npc)..":"..ModUtil.ToString(npcName))
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GiftData[npcName])..":"..ModUtil.ToString(not IsGameStateEligible(CurrentRun, GiftData[npcName].UnlockGameStateRequirements )))
+			
+		end
+		return npcName
+	end
+)]]
+
+--[[OnUsed{ "NPCs",
+	function( triggerArgs )
+		if not CurrentRun.Hero.IsDead and triggerArgs.TriggeredByTable ~= nil and triggerArgs.TriggeredByTable.RequiresRoomCleared and not CheckRoomExitsReady( CurrentRun.CurrentRoom ) then
+			thread( CannotUseLootPresentation, triggerArgs.triggeredById, triggerArgs.TriggeredByTable )
+			return
+		end
+		local npc = triggerArgs.AttachedTable
+		if npc ~= nil then
+			--ActivateRotatingNPCs({},{Types={"NPC_Moros_01"}})
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(npc))
+		end
+	end
+}]]
+--Ov
