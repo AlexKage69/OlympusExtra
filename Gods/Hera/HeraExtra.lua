@@ -4154,7 +4154,7 @@ end]]
 				RequiredTextLines = { "HeraAboutPersephoneQueen01", "PersephoneHomeMeeting04" },
 				{ Cue = "/VO/Hera_0075",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Even if you disagree with your father, you must continue to show him respect. He's been through so much, even I couldn't know where to start. Maybe start by listening to him." },
+					Text = "I've heard that some of my subjects are beginning to praise the new false queen you have down there. Everyone knows there can only be one queen! But of course, I'm sure you agree with me, am I right or am I right, Zagreus, {#DialogueItalicFormat}hm{#PreviousFormat}?" },
 			},
 			HeraOlympusSecurity01 =
 			{

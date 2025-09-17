@@ -115,6 +115,126 @@ ModUtil.Path.Wrap("GetLootSourceName",
     end
 )
 
+
+ModUtil.Path.Wrap("CreateTraitRequirements",
+    function(baseFunc, traitName)
+        ScreenAnchors.BoonInfoScreen.LastBoonSelected = traitName
+        return baseFunc(traitName)
+    end
+)
+
+ModUtil.Path.Wrap("CreateTraitRequirementList",
+    function(baseFunc, screen, headerTextArgs, traitList, startY, metRequirement)
+        if screen.LastBoonSelected ~= nil and screen.LastBoonSelected == "AutoRetaliateTrait" then
+            return CreateTraitRequirementListEdited(screen, headerTextArgs, traitList, startY, metRequirement)
+        else
+            return baseFunc(screen, headerTextArgs, traitList, startY, metRequirement)
+        end
+    end
+)
+function CreateTraitRequirementListEdited(screen, headerTextArgs, traitList, startY, metRequirement)
+    local startX = 0
+	local originalY = startY
+	local requirementsText = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+	local headerText = headerTextArgs.Text
+	if TableLength(traitList) == 1 and headerTextArgs.TextSingular then
+		headerText = headerTextArgs.TextSingular
+	end
+	table.insert(screen.TraitRequirements, requirementsText.Id )
+	Attach({ Id = requirementsText.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX , OffsetY = -405 })
+	
+	local removeIndexes = {}
+	for traitName in pairs (screen.HiddenTraits) do
+		for i, requirementTraitName in pairs( traitList ) do
+
+			if TraitData[requirementTraitName].RequiredTrait == traitName then
+				table.insert(removeIndexes, i)
+			end
+		end
+	end
+
+	for _, index in pairs(removeIndexes) do
+		traitList[index] = nil
+	end
+
+	traitList = CollapseTable(traitList)
+	
+	if metRequirement == nil then
+		for i, traitName in pairs( traitList ) do
+			if HeroHasTrait( traitName ) then
+				metRequirement = true
+			end
+		end
+	end
+
+	local color = Color.White
+	if metRequirement then
+		color = Color.BoonInfoAcquired
+	end
+
+	CreateTextBox({
+	Id = requirementsText.Id,
+	Text = headerText,
+	FontSize = 24,
+	OffsetX = 205,
+	OffsetY =  startY,
+	Color = color,
+	Font = "AlegreyaSansSCRegular",
+	ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+	Justification = "Left"})
+	startY = startY + 35
+	local sharedGod = nil
+	local allSame = true
+	for i, traitName in ipairs(traitList) do
+		if not sharedGod then
+			sharedGod = GetLootSourceName( traitName )
+		elseif sharedGod ~= GetLootSourceName(traitName) then
+			allSame = false
+		end
+		local displayedTraitName = traitName
+		if TraitData[traitName].BoonInfoRequirementText then
+			displayedTraitName = TraitData[traitName].BoonInfoRequirementText 
+		end
+		local traitNamePlate = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+		table.insert(screen.TraitRequirements, traitNamePlate.Id )
+		Attach({ Id = traitNamePlate.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX , OffsetY = -405 })
+		
+		local color = Color.BoonInfoUnacquired
+		if HeroHasTrait(traitName) then
+			color = Color.BoonInfoAcquired
+		end
+
+		CreateTextBox({
+		Id = traitNamePlate.Id,
+		Text = "BoonInfo_BulletPoint",
+		FontSize = 17,
+		OffsetX = 220,
+		OffsetY =  startY,
+		Color = color,
+		Font = "AlegreyaSansSCMedium",
+		ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+		Justification = "Left",
+		LuaKey = "TempTextData",
+		LuaValue = { TraitName = displayedTraitName }})
+		startY = startY + 27
+	end
+	if allSame and sharedGod and LootData[sharedGod].BoonInfoIcon then
+		local godPlate = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+		SetAnimation({ Name = LootData[sharedGod].BoonInfoIcon, DestinationId = godPlate.Id })
+		SetScale({ Id = godPlate.Id, Fraction = 0.33 })
+		table.insert(screen.TraitRequirements, godPlate.Id )
+		Attach({ Id = godPlate.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX + 185, OffsetY = originalY - 405 })
+		if (startY - originalY ) < 100 then
+			startY = originalY + 100
+		end
+
+		Move({ Id = requirementsText.Id, OffsetX = 100, Duration = 0 })
+
+	end
+
+	startY = startY + 35
+	return startY
+end
 -- Common Function for OE
 ModUtil.Path.Wrap("CreateBoonLootButtons",
     function(baseFunc, lootData, reroll)
