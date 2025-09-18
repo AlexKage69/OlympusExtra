@@ -269,6 +269,23 @@ OlympusGiftData.NPC_Moros_01 =
 	}
 	
 table.insert(OlympusGiftOrdering, 1, "ForceZeusBoonTrait")
+table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
+	FunctionName = "ActivateRotatingNPCs",
+	GameStateRequirements =
+	{
+		RequiredFalseFlags = { "InFlashback" },
+	},
+	Args =
+	{
+		Types =
+		{
+			"NPC_Moros_01",
+		},
+		ActivationCapMin = 1,
+		ActivationCapMax = 1,
+		SkipPresentation = true,
+	},
+})
 --[[ModUtil.Path.Wrap( "ActivateRotatingNPCs", 
 	function(baseFunc, eventSource, args)		
 		if args.Ids then
@@ -332,21 +349,12 @@ function(baseFunc, npcData)
 	return baseFunc(npcData)
 end
 )
-ModUtil.Path.Wrap( "AttemptGift", 
-	function(baseFunc, CurrentRun, target)		
-		baseFunc(CurrentRun, target)
-		if target ~= nil then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetGenusName( target ))) 		
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CanReceiveGift( target )))
-			
-		end
-	end
-)
 ModUtil.Path.Wrap( "BeginOpeningCodex", 
 	function(baseFunc)		
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
 		end
+		ActivateRotatingNPCs({},{Types={"NPC_Moros_01"}})
 		--ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
 		--GameState.Gift["NPC_Moros_01"] = nil
