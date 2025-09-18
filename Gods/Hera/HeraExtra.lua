@@ -4144,7 +4144,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp", "PersephoneHomeMeeting03" },
 				{ Cue = "/VO/Hera_0074",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Pomegranates are often given to me as offerings, and they symbolize my rightful role as queen. However, I recently heard that lately, someone else is getting pomegranates instead of me. I cannot let this slight stand, and if I catch this false queen... Oooh." },
+					Text = "I'm often given pomegranates as offerings, which I always enjoy. However, I've heard that lately, someone else is getting pomegranates instead of me. I cannot let this slight stand, and if I catch this false queen... {#DialogueItalicFormat}Oooh{#PreviousFormat}." },
 			},
 			HeraAboutPersephoneQueen02 =
 			{
