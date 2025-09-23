@@ -51,15 +51,17 @@ Replace "Packages/OEMinor.pkg_manifest"
 
 :: Maps
 To "Win/Maps/A_Reprieve01.thing_bin"
-Replace "Packages/Maps/A_Reprieve01.thing_bin"
+Replace "Maps/A_Reprieve01.thing_bin"
+To "Win/Maps/DeathAreaOffice.thing_bin"
+Replace "Maps/DeathAreaOffice.thing_bin"
 To "Win/Maps/DeathArea.thing_bin"
-Replace "Packages/Maps/DeathArea.thing_bin"
+Replace "Maps/DeathArea.thing_bin"
 To "Win/Maps/RoomPreRun.thing_bin"
-Replace "Packages/Maps/RoomPreRun.thing_bin"
+Replace "Maps/RoomPreRun.thing_bin"
 To "Win/Maps/A_Makaria01.thing_bin"
-Replace "Packages/Maps/A_Makaria01.thing_bin"
+Replace "Maps/A_Makaria01.thing_bin"
 To "Maps/A_Makaria01.map_text"
-Replace "Packages/Maps/A_Makaria01.map_text"
+Replace "Maps/A_Makaria01.map_text"
 
 :: Audio
 To "Audio/FMOD/Build/Desktop/VO.h"
