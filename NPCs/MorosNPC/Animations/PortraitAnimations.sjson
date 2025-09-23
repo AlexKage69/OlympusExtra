@@ -4,21 +4,65 @@
     {
       Name = "Portrait_Moros_Default_01"
       InheritFrom = "Portrait_Base_01"
-      FilePath = "Hestia\Portraits_Hestia_01"
+      FilePath = "Moros\Portraits_Moros_01"
       EndFrame = 1
       StartFrame = 1
+      OffsetY = -90
     }
     {
       Name = "Portrait_Moros_Default_01_Exit"
       InheritFrom = "Portrait_Base_01_Exit"
-      FilePath = "Hestia\Portraits_Hestia_01"
+      FilePath = "Moros\Portraits_Moros_01"
+      EndFrame = 1
+      StartFrame = 1
+      OffsetY = -90
+    }
+    {
+      Name = "Portrait_Moros_Left_02"
+      InheritFrom = "Portrait_Moros_Default_01"
+      FilePath = "Moros\Portraits_Moros_02"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Moros_Left_02_Exit"
+      InheritFrom = "Portrait_Moros_Default_01_Exit"
+      FilePath = "Moros\Portraits_Moros_02"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Moros_Smiling_03"
+      InheritFrom = "Portrait_Moros_Default_01"
+      FilePath = "Moros\Portraits_Moros_03"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Moros_Smiling_03_Exit"
+      InheritFrom = "Portrait_Moros_Default_01_Exit"
+      FilePath = "Moros\Portraits_Moros_03"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Moros_Right_04"
+      InheritFrom = "Portrait_Moros_Default_01"
+      FilePath = "Moros\Portraits_Moros_04"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Moros_Right_04_Exit"
+      InheritFrom = "Portrait_Moros_Default_01_Exit"
+      FilePath = "Moros\Portraits_Moros_04"
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Codex_Portrait_Moros"
       InheritFrom = "Codex_Portrait_Base_01"
-      FilePath = "Hestia\CodexPortrait_Hestia"
+      FilePath = "Moros\CodexPortrait_Motos"
       Scale = 0.29
       EndFrame = 1
       StartFrame = 1

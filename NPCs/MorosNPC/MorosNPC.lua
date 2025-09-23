@@ -6,7 +6,6 @@ local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
-table.insert(OlympusGameData.ConversationOrder,1,"NPC_Moros_01")
 local OlympusColor = ModUtil.Entangled.ModData(Color)
 OlympusColor.MorosVoice = { 93,19,52,255 }
 -- Makaria, Id = 370025, 370024, 370002
@@ -15,14 +14,12 @@ local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
 OlympusEnemyData.NPC_Moros_01 =
 {
 	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
-	CanReceiveGift = true,
-	SkipInitialGiftRequirement = true,
 	Name = "NPC_Moros_01",
-	UseText = "UseTalkToChildGhost",
+	UseText = "UseTalkToMaleGhost",
 	Portrait = "Portrait_Moros_Default_01",
-	AnimOffsetZ = 220,
-	EmoteOffsetX = -20,
-	EmoteOffsetY = -160,
+	AnimOffsetZ = 205,
+	EmoteOffsetX = 50,
+	EmoteOffsetY = -200,
 
 	Groups = { "NPCs" },
 	SubtitleColor = Color.MorosVoice,
@@ -34,11 +31,11 @@ OlympusEnemyData.NPC_Moros_01 =
 
 	ActivateRequirements =
 	{
-		RequiredFalseCompletedRuns = 5,
+		--RequiredCompletedRuns = 5,
 		RequiredTextLines = { "AthenaFirstPickUp" },
 		--RequiredFalseTextLinesLastRun = {  },
 		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,
-		RequiredFalseFlags = { "InFlashback" },
+		--RequiredFalseFlags = { "InFlashback" },
 	},
 
 	InteractTextLineSets =
@@ -57,25 +54,20 @@ OlympusEnemyData.NPC_Moros_01 =
 					PreLineWait = 0.35,
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
-					-- Yes. We are.
+					-- Not funny.
 					{ Cue = "/VO/ZagreusHome_3389" },
 				},
-				{
-					PreLineWait = 0.5,
-					ObjectType = "NPC_Nyx_01",
-					PreLineAnim = "NyxIdleGreeting",
-					-- Then, go.
-					{ Cue = "/VO/Nyx_0384" },
-				},
 			},
-			{ Cue = "/VO/Nyx_0382",
-				Text = "Do not despair, child. Such setbacks are inevitable, and may be overcome with effort, and with time. You made contact with the goddess Athena. She shall be true to her word." },
-			{ Cue = "/VO/ZagreusHome_3388", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "I believe it, Nyx. I'm grateful that you put us into contact. I know you took a considerable risk in reaching out." },
-			{ Cue = "/VO/Nyx_0383",
-				Text = "The risk is not to me. I expected the Olympians would involve themselves in this, eventually. Reveal to them no more than they already know. Are we understood?" },
+				Text = "Moros? How long has it been? Is my father making you work too much again? I haven't seen you of late." },
+			{ Cue = "/VO/Moros_0001",
+				Text = "Prince! Your father does nothing of the sort. Archive needs to be manage. Therefort here I am. " },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Still seems like a lot of effort to be working in the archive all the time. You could say you were send to your doom" },
 		},
 	},
 
@@ -92,45 +84,45 @@ OlympusEnemyData.NPC_Moros_01 =
 
 	GiftTextLineSets =
 	{
-		NyxGift01 =
+		MorosGift01 =
 			{
-				Name = "NyxGift01",
+				Name = "MorosGift01",
 				PlayOnce = true,
 				{ Cue = "/VO/ZagreusHome_0118", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "{#DialogueItalicFormat}Erm{#PreviousFormat}, Nyx? You've done so much for me, I.. thought you might like this." },
-				{ Cue = "/VO/Nyx_0445",
+					Text = "{#DialogueItalicFormat}Erm{#PreviousFormat}, Moros? You've done so much for me, I.. thought you might like this." },
+				{ Cue = "/VO/Moros_0445",
 					PreLineAnim = "NyxIdleGreeting",
 					Text = "You know your father does not like it when Nectar is doled out on the premises, dear child. However, I am not he... and I wished, regardless, to provide to you a token of my affection." },
 			},
-			NyxGift02 =
+			MorosGift02 =
 			{
-				Name = "NyxGift02",
+				Name = "MorosGift02",
 				PlayOnce = true,
-				RequiredTextLines = { "NyxGift01" },
+				RequiredTextLines = { "MorosGift01" },
 				{ Cue = "/VO/Nyx_0045",
 					PreLineAnim = "NyxIdleGreeting",
 					Text = "How can I possibly accept such generosity, my child? Surely others whom you know are more deserving of such offerings." },
 				{ Cue = "/VO/ZagreusHome_0196", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					Text = "Nonsense, Nyx. I want you to have it. You've always cared for me. I can't ever repay you for that." },
 			},
-			NyxGift03 =
+			MorosGift03 =
 			{
-				Name = "NyxGift03",
+				Name = "MorosGift03",
 				PlayOnce = true,
-				RequiredTextLines = { "NyxGift02" },
+				RequiredTextLines = { "MorosGift02" },
 				{ Cue = "/VO/Nyx_0046", Portrait = "Portrait_Nyx_Averted_01",
 					PreLineAnim = "NyxIdleGreeting",
 					Text = "Your kindness toward me is unnecessary, child. You know I have no expectation of such gifts, from you or anyone." },
 				{ Cue = "/VO/ZagreusHome_0197", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					Text = "I think of you always, Nyx. You raised me as your own, and I am grateful for it." },
 			},
-			NyxGift04 =
+			MorosGift04 =
 			{
-				Name = "NyxGift04",
+				Name = "MorosGift04",
 				PlayOnce = true,
-				RequiredTextLines = { "NyxGift03" },
+				RequiredTextLines = { "MorosGift03" },
 				{ Cue = "/VO/Nyx_0047",
 					PreLineAnim = "NyxIdleGreeting",
 					Text = "You honor me, my child; although I dread that I am not deserving of such generosity. There is no need to flatter me like this." },
@@ -139,18 +131,11 @@ OlympusEnemyData.NPC_Moros_01 =
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					Text = "Be that as it may, Nyx! I would still like for you to have it, with my compliments." },
 			},
-			NyxGift05 =
+			MorosGift05 =
 			{
-				Name = "NyxGift05",
+				Name = "MorosGift05",
 				PlayOnce = true,
-				RequiredTextLines = { "NyxGift04" },
-				EndVoiceLines =
-				{
-					PreLineWait = 0.35,
-					ObjectType = "NPC_Nyx_01",
-					-- I am grateful.
-					{ Cue = "/VO/Nyx_0238" },
-				},
+				RequiredTextLines = { "MorosGift04" },
 				{ Cue = "/VO/Nyx_0048",
 					PreLineAnim = "NyxIdleGreeting",
 					Text = "No gift which you could bring me can exceed the value of our kinship, child. Though, it moves me to receive this offering." },
@@ -197,13 +182,14 @@ OlympusEnemyData.NPC_Moros_01 =
 	},
 }
 -- Moros activation requirements
-table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.Types, "NPC_Moros_01")
-OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.ActivationCapMin = 6
-OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.ActivationCapMax = 6
+--table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.Types, "NPC_Moros_01")
+--OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.ActivationCapMin = 6
+--OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.ActivationCapMax = 6
 function OENPCSpawner(eventSource, args)
 	local npc = ActiveEnemies[args.Id]	
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(npc))
 end
+table.insert(OlympusGameData.ConversationOrder,"NPC_Moros_01")
 OlympusDeathLoopData.DeathArea.ObstacleData[370026] = {
 	Name = "NPC_Moros_01",
 	DistanceTriggers =
@@ -269,23 +255,35 @@ OlympusGiftData.NPC_Moros_01 =
 	}
 	
 table.insert(OlympusGiftOrdering, 1, "ForceZeusBoonTrait")
-table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
-	FunctionName = "ActivateRotatingNPCs",
+--[[table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
+	FunctionName = "HandleMorosSpawn",
 	GameStateRequirements =
 	{
 		RequiredFalseFlags = { "InFlashback" },
 	},
-	Args =
-	{
-		Types =
-		{
-			"NPC_Moros_01",
-		},
-		ActivationCapMin = 1,
-		ActivationCapMax = 1,
-		SkipPresentation = true,
-	},
-})
+})]]
+
+function HandleMorosSpawn( eventSource )
+	local currentRun = CurrentRun
+	local currentRoom = CurrentRun.CurrentRoom
+	local newUnit = DeepCopyTable( EnemyData.NPC_Nyx_01 )
+	local spawnPointId = 370026
+	newUnit.ObjectId = SpawnUnit({ Name = "NPC_Nyx_01", Group = "Standing", DestinationId = spawnPointId })
+	
+	--newUnit.ObjectId = SpawnUnit({ Name = "NPC_Nyx_01", Group = "Standing", DestinationId = spawnPointId })
+	newUnit.OeId = newUnit.ObjectId
+	--currentRun.TheseusId = newUnit.TheseusId
+	SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
+	UseableOn({ Ids = newUnit.ObjectId })
+	--SetupAI( CurrentRun, newUnit )
+
+	local enemyData = DeepCopyTable( EnemyData.NPC_Nyx_01 )
+	if IsActivationEligible( newUnit.ObjectId, enemyData ) then
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.Name)) 		
+		Activate({ Ids = newUnit.ObjectId })
+	end
+	newUnit.CanReceiveGift = true
+end
 --[[ModUtil.Path.Wrap( "ActivateRotatingNPCs", 
 	function(baseFunc, eventSource, args)		
 		if args.Ids then
@@ -326,6 +324,111 @@ OlympusObstacleData.DivinationGods =
 		},
 	},
 }]]
+OnAnyLoad{"RoomOpening", function()
+	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 410716}) -- 370026
+end
+}
+OnAnyLoad{"DeathAreaBedroom", function()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Calling"))
+	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 426209}) -- 370026
+end
+}
+OnAnyLoad{"DeathArea", function()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Calling"))
+	SpawnExtraNPCs({Name = "NPC_Moros_01", LocationX = 2153.402832, LocationY = 3660.359375}) -- 370026
+	--SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = CurrentRun.Hero.ObjectId}) -- 370026
+end
+}
+OnAnyLoad{"DeathAreaOffice", function()
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Calling"))
+	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 487882}) -- 370026
+end
+}
+function SpawnExtraNPCs(args)
+	local obstacleId = GetFirstValue(GetInactiveIdsByType({ Name = args.Name }))
+	if args.Name == nil or obstacleId == nil then
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character")) 				
+		return
+	end
+	if args.SpawnPointId == nil then
+		if args.LocationX ~= nil and args.LocationY ~= nil then
+			args.SpawnPointId = SpawnObstacle({ Name = "InvisibleTarget", LocationX = args.LocationX, LocationY = args.LocationY })
+		else
+			args.SpawnPointId = CurrentRun.Hero.ObjectId
+		end
+	end
+
+	local newUnit = DeepCopyTable( EnemyData[args.Name] )
+	
+	ModUtil.Hades.PrintStackChunks(ModUtil.ToString(IsActivationEligible( obstacleId, newUnit ))) 		
+	if IsActivationEligible( obstacleId, newUnit ) then
+		newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.SpawnPointId })
+
+		SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
+		UseableOn({ Ids = newUnit.ObjectId })
+		SetupAI( CurrentRun, newUnit )		
+		if GameState.Gift[args.Name] == nil then
+			GameState.Gift[args.Name] = {
+				Value =  0,
+				--NewTraits = GameState.BefriendPersistentVals["TheseusGiftNewTraits"],
+			}
+		end
+
+		local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
+		if IsActivationEligible( newUnit.ObjectId, enemyData ) then
+			Activate({ Ids = newUnit.ObjectId })
+		end
+		CheckConversations()	
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Name.." Spawned:"..newUnit.ObjectId)) 		
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.Gift[args.Name])) 	
+	end
+	--[[if IsActivationEligible( id, unitData ) then
+			if ShouldRotatorActivate( id, unitData, numActivations, activationCap ) then
+
+				if unitData.Binks ~= nil then
+					PreLoadBinks({ Names = unitData.Binks })
+				end
+				Activate({ Ids = id, DoPresentation = doPresentation })
+
+				local newUnit = DeepCopyTable( unitData )
+				newUnit.ObjectId = id
+				SetupEnemyObject( newUnit, CurrentRun, args )
+				if CurrentRun.AnimationState[newUnit.ObjectId] ~= nil then
+					SetAnimation({ DestinationId = newUnit.ObjectId, Name = CurrentRun.AnimationState[newUnit.ObjectId] })
+				end
+				if CurrentRun.EventState ~= nil then
+					local eventState = CurrentRun.EventState[newUnit.ObjectId]
+					if eventState ~= nil then
+						local eventFunction = _G[eventState.FunctionName]
+						if eventFunction ~= nil then
+							thread( eventFunction, newUnit, eventState.Args )
+						end
+					end
+				end
+
+				CurrentRun.ActivationRecord[id] = true
+				numActivations = numActivations + 1
+			else
+				if unitData.MissingDistanceTrigger ~= nil then
+					local missingUnit = {}
+					missingUnit.Name = name
+					missingUnit.ObjectId = SpawnObstacle({ Name = "BlankObstacle" })
+					local location = GetLocation({ Id = id, CheckInactive = true })
+					Teleport({ Id = missingUnit.ObjectId, OffsetX = location.X, OffsetY = location.Y })
+					thread( CheckDistanceTrigger, unitData.MissingDistanceTrigger, missingUnit )
+				end
+			end
+		else
+			if unitData.ActivationFailedDistanceTrigger ~= nil then
+				local missingUnit = {}
+				missingUnit.Name = name
+				missingUnit.ObjectId = SpawnObstacle({ Name = "BlankObstacle" })
+				local location = GetLocation({ Id = id, CheckInactive = true })
+				Teleport({ Id = missingUnit.ObjectId, OffsetX = location.X, OffsetY = location.Y })
+				thread( CheckDistanceTrigger, unitData.ActivationFailedDistanceTrigger, missingUnit )
+			end
+		end]]
+end
 ModUtil.Path.Wrap( "CanReceiveGift", 
 function(baseFunc, npcData)		
 	if npcData ~= nil then
@@ -354,7 +457,7 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
 		end
-		ActivateRotatingNPCs({},{Types={"NPC_Moros_01"}})
+		--ActivateRotatingNPCs({},{Types={"NPC_Moros_01"}})
 		--ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
 		--GameState.Gift["NPC_Moros_01"] = nil
