@@ -5,7 +5,7 @@
 
 :: New NPCs
 Import "NPCExtra.lua"
-:: Include "MakariaNPC/modfile_makaria.txt"
+Include "MakariaNPC/modfile_makaria.txt"
 Include "MorosNPC/modfile_moros.txt"
 
 To "Game/Text/en/HelpText.en.sjson"
@@ -13,3 +13,13 @@ SJSON "Text/HelpText.en.sjson"
 
 To "Game/Units/NPCs.sjson"
 SJSON "NPCs.sjson"
+
+:: Animations
+To "Game/Animations/CharacterAnimationsNPCs.sjson"
+SJSON "Animations/CharacterAnimationsNPCs.sjson"
+To "Game/Animations/Fx.sjson"
+SJSON "Animations/Fx.sjson"
+To "Game/Animations/GUIAnimations.sjson"
+SJSON "Animations/GUIAnimations.sjson"
+To "Game/Animations/PortraitAnimations.sjson"
+SJSON "Animations/PortraitAnimations.sjson"

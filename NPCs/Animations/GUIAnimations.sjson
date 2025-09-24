@@ -1,0 +1,114 @@
+{
+  Animations = [
+	"_append"
+    // Moros
+    {
+      Name = "Keepsake_Ouroboros_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 0.65
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Ouroboros"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Ouroboros_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Ouroboros_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    // Mirror
+    {
+      Name = "MirrorIcon_LowHealthDamage"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Crushing_Presence"
+    }
+    {
+      Name = "MirrorIcon_GemHeal"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Bright_Rejuvenation"
+    }
+    {
+      Name = "MirrorIcon_ExtraChanceFloor"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Infernal_Defiance"
+    }
+    {
+      Name = "MirrorIcon_DashlessBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Steady_Reflex"
+    }
+    {
+      Name = "MirrorIcon_CountAmmoBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Hellish_Blood"
+    }
+    {
+      Name = "MirrorIcon_AmmoBounce"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Sentient_Soul"
+    }
+    {
+      Name = "MirrorIcon_BonusMoneyMirror"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Richful_Contract"
+    }
+    {
+      Name = "MirrorIcon_CombatRegeneration"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Shedding_Skins"
+    }
+    {
+      Name = "MirrorIcon_EpicBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Eridium_Quality"
+    }
+    {
+      Name = "MirrorIcon_NPCEncounterBonus"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Rare_Acquaintance"
+    }
+    {
+      Name = "MirrorIcon_PomFirstGod"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Gods_Purity"
+    }
+    {
+      Name = "MirrorIcon_RerollPom"
+      InheritFrom = "BaseMetaupgradeIcon"
+      FilePath = "Moros\MirrorCIcons\Fated_Reach"
+    }
+    // Makaria
+    {
+      Name = "Keepsake_Candle_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Macaria\\Keepsake_Candle"
+      Scale = 0.65
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Candle"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Macaria\\Keepsake_Candle"
+      Scale = 1.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Candle_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Candle_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }    
+  ]
+}

@@ -1,5 +1,2 @@
 
 Import "MakariaNPC.lua"
-
-To "Game/Animations/CharacterAnimationsNPcs.sjson"
-SJSON "Animations/CharacterAnimationsNPcs.sjson"

@@ -1,210 +1,164 @@
-local OlympusUnitSetData = ModUtil.Entangled.ModData(UnitSetData)
-local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusDeathLoopData = ModUtil.Entangled.ModData(DeathLoopData)
-local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
-local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
--- Makaria, Id = 370025, 370024, 370002
-
-OlympusUnitSetData.NPCs.NPC_Makaria_01 =
+local OlympusGameData = ModUtil.Entangled.ModData(GameData)
+local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
+local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
+local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+local OlympusColor = ModUtil.Entangled.ModData(Color)
+--Variables
+local DepthDamageMultiplier = 0.0
+local DuplicateMultiplier = -0.60
+local DuplicateStrongMultiplier = -0.40
+local DuplicateVeryStrongMultiplier = -0.20
+OlympusColor.MakariaVoice = { 93,19,52,255 }
+-- 3DGhostAltIdle for the Hypnos discussion
+local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
+OlympusEnemyData.NPC_Makaria_01 =
 {
 	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 	Name = "NPC_Makaria_01",
-	UseText = "UseTalkToChildGhost",
-	Portrait = "Portrait_ChildGhost_Default_01",
-	AnimOffsetZ = 220,
-	EmoteOffsetX = -20,
-	EmoteOffsetY = -160,
+	UseText = "UseTalkToFemaleGhost",
+	Portrait = "Portrait_Makaria_Default_01",
+	AnimOffsetZ = 205,
+	EmoteOffsetX = 50,
+	EmoteOffsetY = -200,
 
 	Groups = { "NPCs" },
-	SubtitleColor = Color.HypnosVoice,
+	SubtitleColor = Color.MakariaVoice,
 
 	Binks =
 	{
-		"HypnosIdleSitting_Bink",
-		"HypnosSleepWakingSurprise_Bink",
-		"HypnosSittingToSleep_Bink",
-		"HypnosIdleSleeping_Bink",
-		"HypnosIdleGreeting_Bink",
+		"CthonicIdle_Bink",
 	},
 
 	ActivateRequirements =
 	{
-		RequiredFalseFlags = { "InFlashback" },
+		--RequiredCompletedRuns = 5,
+		RequiredTextLines = { "AthenaFirstPickUp" },
+		--RequiredFalseTextLinesLastRun = {  },
+		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,
+		--RequiredFalseFlags = { "InFlashback" },
 	},
-
+	LocationsById = {
+		[370136] = { -- DeathAreaOffice
+            LocationX = 4488.060547,
+            LocationY = 4552.947266,
+		},
+		[370036] = { -- DeathArea/ Near Office
+			LocationX = 3472.402832,
+			LocationY = 2483.359375,
+		},
+	},
 	InteractTextLineSets =
 	{
 		MakariaFirstMeeting =
+		{
+			Name = "MakariaFirstMeeting",
+			PlayOnce = false,
+			UseableOffSource = true,
+			RequiredFalseFlags = { "InFlashback", },
+			--InOffice = true,
+			EndVoiceLines =
 			{
-				Priority = true,
-				PlayOnce = true,
-				UseableOffSource = true,
-				InitialGiftableOffSource = true,
-				GiftableOffSource = true,
-				{ Cue = "/VO/Sisyphus_0129",
-					PreLineAnim = "SisyphusExplaining",
-					Text = "Hey, Prince Z. Must look like I'm slacking off with the old boulder, here, but... I was just getting back on my feet. The Fury Sisters don't often leave me be. Where'd they go, anyway? And... what are you doing here?" },
-				{ Cue = "/VO/ZagreusField_0522", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "Oh, you know, just out on a little stroll is all. Do me a favor, though, you see the Fury Sisters, let them know I was headed down the way I came from, will you...?" },
-				{ Cue = "/VO/Sisyphus_0130",
-					Text = "Oh I'll let them know, all right, I hear you loud and clear, Your Highness. I'll just go about my business now, and you take care." },
 				{
-					Text = "Sisyphus_OfferText01",
-					Choices = PresetEventArgs.SisyphusBenefitChoices,
-					PreLineFunctionName = "ShowUIForDecision",
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Not funny.
+					{ Cue = "/VO/ZagreusHome_3389" },
 				},
 			},
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Hey Makaria" },
+			{ Cue = "/VO/Makaria_0001",
+				Text = "Default Makaria " },
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Sad_02",
+				Text = "Sad Makaria" },
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Smiling_03",
+				Text = "Smiling Makaria" },
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Sorrow_04",
+				Text = "Sorrow Makaria" },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Still seems like a lot of effort to be working in the archive all the time. You could say you were send to your doom" },
+		},
 	},
 
 	RepeatableTextLineSets =
 	{
-		MakariaRepeat01 =
+		MakariaChat01 =
 		{
 			UseableOffSource = true,
-			InitialGiftableOffSource = true,
-			GiftableOffSource = true,
-			{ Cue = "/VO/Nyx_0367",
-				Text = "Chaos and I have much catching up to do." },
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Nyx",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
 		},
 	},
 
 	GiftTextLineSets =
 	{
-		-- grants a gift
 		MakariaGift01 =
-		{
-			PlayOnce = true,
-			{ Cue = "/VO/ZagreusHome_0114", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-				Text = "Surprise, Hypnos! I got you this." },
-			{ Cue = "/VO/Hypnos_0067",
-				Emote = "PortraitEmoteSurprise",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Whoa whoa {#DialogueItalicFormat}whoa {#PreviousFormat}you can't bring that in here! Hah, just kidding, thanks! But wait, I'll trade you, look!" },
-		},
-		HypnosGift02 =
-		{
-			PlayOnce = true,
-			RequiredTextLines = { "HypnosGift01", },
-			{ Cue = "/VO/Hypnos_0062",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Oh! Wow! Thanks! This is real nice of you, hah! I sure am glad you died out there just now!" },
-			{ Cue = "/VO/ZagreusHome_0234", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-				Text = "I'm glad I died, as well, Hypnos! I'm glad I died, as well." },
-		},
-		HypnosGift03 =
-		{
-			PlayOnce = true,
-			RequiredTextLines = { "HypnosGift02", },
-			{ Cue = "/VO/Hypnos_0063",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Ah, neat! {#DialogueItalicFormat}Huh{#PreviousFormat}, thanks!! It's not so bad that you keep coming back like this, is it? At least for me it isn't!" },
-			{ Cue = "/VO/ZagreusHome_0235", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-				Text = "I'm getting used to it. Though I don't think I'd feel particularly welcome anymore if not for you, Hypnos." },
-		},
-		HypnosGift04 =
-		{
-			PlayOnce = true,
-			RequiredTextLines = { "HypnosGift03", },
-			{ Cue = "/VO/Hypnos_0064",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "{#DialogueItalicFormat}Whoaaa {#PreviousFormat}you must've really gotten pretty far out there if you could get me one of these, so, wow! And thanks for stopping by!" },
-			{ Cue = "/VO/ZagreusHome_0517", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-				Text = "You lighten up my numerous untimely deaths, Hypnos." },
-		},
-		HypnosGift05 =
-		{
-			PlayOnce = true,
-			RequiredTextLines = { "HypnosGift04", },
-			{ Cue = "/VO/Hypnos_0065",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Hah, well this is like a dream come true! I mean, how come you're always being so darn nice to me? But anyway, {#DialogueItalicFormat}um{#PreviousFormat}, thanks!" },
-			{ Cue = "/VO/ZagreusHome_0518", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				Text = "Sure thing, Hypnos! Knock yourself out." },
-		},
-		HypnosGift06 =
-		{
-			RequiredTextLines = { "HypnosGift05", },
-			PlayOnce = true,
-			GiftableOffSource = true,
-			{ Cue = "/VO/Hypnos_0066",
-				Emote = "PortraitEmoteCheerful",
-				PreLineAnim = "HypnosIdleGreeting",
-				Text = "Oh you are just the best, I bet you died on purpose just to get this back to me, didn't you! Didn't you?" },
-			{ Cue = "/VO/ZagreusHome_0519", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "I have a secret, Hypnos. I've died on purpose every single time, just to see you." },
-		},
-		HypnosGift07 =
-		{
-			RequiredTextLines = { "HypnosGift06" },
-			PlayOnce = true,
-			GiftableOffSource = true,
-			EndVoiceLines =
 			{
-				PreLineWait = 0.4,
-				ObjectType = "NPC_Hypnos_01",
-				-- Oh you bet!
-				{ Cue = "/VO/Hypnos_0211" },
+				Name = "MakariaGift01",
+				PlayOnce = true,
+				{ Cue = "/VO/ZagreusHome_0118", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+					Text = "{#DialogueItalicFormat}Erm{#PreviousFormat}, Makaria? You've done so much for me, I.. thought you might like this." },
+				{ Cue = "/VO/Makaria_0445",
+					PreLineAnim = "NyxIdleGreeting",
+					Text = "You know your father does not like it when Nectar is doled out on the premises, dear child. However, I am not he... and I wished, regardless, to provide to you a token of my affection." },
 			},
-			{ Cue = "/VO/ZagreusHome_2792", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-				Text = "Hypnos, wanted to say you have really helped the thought of my coming back here time after time, painful death by death, not be inherently abhorrent. Your greetings really help! So I wanted you to have this." },
-			{ Cue = "/VO/Hypnos_0210",
-				PreLineAnim = "HypnosIdleGreeting",
-				PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
-				PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteAffection", WaitTime = 3.0 },
-				Text = "But, but, but, wait, this, it's {#DialogueItalicFormat}Ambrosia{#PreviousFormat}! You are not supposed to have this here! We could both get in a lot of trouble, and I mean a {#DialogueItalicFormat}lot{#PreviousFormat}, if they catch us in the middle of this totally forbidden exchange!" },
-			{ Cue = "/VO/ZagreusHome_2793", Portrait = "Portrait_Zag_Defiant_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "I notice that you haven't yet returned the bottle to me, which I'm going to take as an indication that you're going to hang onto it." },
-		},
-		HypnosGift08 =
-		{
-			RequiredTextLines = { "HypnosGift07" },
-			PlayOnce = true,
-			GiftableOffSource = true,
-			EndVoiceLines =
+			MakariaGift02 =
 			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				-- I'll have to give that a shot.
-				{ Cue = "/VO/ZagreusHome_2796" },
+				Name = "MakariaGift02",
+				PlayOnce = true,
+				RequiredTextLines = { "MakariaGift01" },
+				{ Cue = "/VO/Nyx_0045",
+					PreLineAnim = "NyxIdleGreeting",
+					Text = "How can I possibly accept such generosity, my child? Surely others whom you know are more deserving of such offerings." },
+				{ Cue = "/VO/ZagreusHome_0196", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "Nonsense, Nyx. I want you to have it. You've always cared for me. I can't ever repay you for that." },
 			},
-			{ Cue = "/VO/ZagreusHome_2794", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-				PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-				PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-				Text = "One more forbidden exchange, Hypnos. Sometimes when I'm out there and about to die, I catch myself thinking... well, at least Hypnos will share one of his deep insights about why it is I utterly failed. So here! For all your generous advice." },
-			{ Cue = "/VO/Hypnos_0212",
-				PreLineAnim = "HypnosIdleGreeting",
-				Emote = "PortraitEmoteCheerful",
-				Text = "Aww, I... feel like I am going to cry, I mean, all my advice is free! You really didn't have to do this. But I sure am glad you did! Even if it is highly illegal! I... I... I...!" },
-			{ Cue = "/VO/ZagreusHome_2795", Portrait = "Portrait_Zag_Defiant_01", Speaker = "CharProtag",
-				Text = "You what, Hypnos? You what?" },
-			{ Cue = "/VO/Hypnos_0213", PreLineWait = 0.35,
-				PreLineAnim = "HypnosIdleGreeting",
-				Emote = "PortraitEmoteAffection",
-				PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
-				PostLineFunctionArgs = { Text = "NPC_Hypnos_01", Icon = "Keepsake_HypnosSticker_Max" },
-				Text = "...I think you could be my best friend! Have you... tried being my best friend?" },
-		},
-
+			MakariaGift03 =
+			{
+				Name = "MakariaGift03",
+				PlayOnce = true,
+				RequiredTextLines = { "MakariaGift02" },
+				{ Cue = "/VO/Nyx_0046", Portrait = "Portrait_Nyx_Averted_01",
+					PreLineAnim = "NyxIdleGreeting",
+					Text = "Your kindness toward me is unnecessary, child. You know I have no expectation of such gifts, from you or anyone." },
+				{ Cue = "/VO/ZagreusHome_0197", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "I think of you always, Nyx. You raised me as your own, and I am grateful for it." },
+			},
+			MakariaGift04 =
+			{
+				Name = "MakariaGift04",
+				PlayOnce = true,
+				RequiredTextLines = { "MakariaGift03" },
+				{ Cue = "/VO/Nyx_0047",
+					PreLineAnim = "NyxIdleGreeting",
+					Text = "You honor me, my child; although I dread that I am not deserving of such generosity. There is no need to flatter me like this." },
+				{ Cue = "/VO/ZagreusHome_0198", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
+					Text = "Be that as it may, Nyx! I would still like for you to have it, with my compliments." },
+			},
+			MakariaGift05 =
+			{
+				Name = "MakariaGift05",
+				PlayOnce = true,
+				RequiredTextLines = { "MakariaGift04" },
+				{ Cue = "/VO/Nyx_0048",
+					PreLineAnim = "NyxIdleGreeting",
+					Text = "No gift which you could bring me can exceed the value of our kinship, child. Though, it moves me to receive this offering." },
+				{ Cue = "/VO/ZagreusHome_3509", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+					Text = "It's nothing, Nyx, really. I know you've always believed in me, and it's not something I ever take for granted." },
+			},
 	},
 
 	MissingDistanceTrigger =
@@ -242,63 +196,48 @@ OlympusUnitSetData.NPCs.NPC_Makaria_01 =
 		{ Cue = "/VO/ZagreusHome_0310" },
 	},
 }
-OlympusEncounterSets.EncounterEventsMakariaPool =
-{
-	{ FunctionName = "StartCinematicMakariaPool" },
-}
-function StartCinematicMakariaPool()
-end
--- New rooms section
---[[OlympusRoomSetData.Tartarus.A_Makaria01 =
+table.insert(OlympusGameData.ConversationOrder,"NPC_Makaria_01")
+OlympusDeathLoopData.DeathArea.ObstacleData[370036] = {
+	Name = "NPC_Makaria_01",
+	DistanceTriggers =
 	{
-		Name = "A_Makaria01",
-		InheritFrom = { "BaseTartarus" },
-		LegalEncounters = { "Empty" },
-		UnthreadedEvents = EncounterSets.EncounterEventsNonCombat,
-		TimerBlock = "StoryRoom",
-		GameStateRequirements =
 		{
-			RequiredMaxBiomeDepth = 12,
+			WithinDistance = 600,
+			VoiceLines =
+			{
+				{
+					PlayOnceFromTableThisRun = true,
+					RandomRemaining = true,
+					UsePlayerSource = true,
+					RequiredTextLines = { "Ending01" },
+					Cooldowns =
+					{
+						{ Name = "ZagreusGardenSpeech", Time = 20 },
+					},
+					-- The garden's always open now...
+					{ Cue = "/VO/ZagreusHome_3700", PlayOnce = true, },
+					-- Should check the garden.
+					{ Cue = "/VO/ZagreusHome_3700", RequiredAnyQueuedTextLines = GameData.GardenTextLines, ChanceToPlayAgain = 0.66 },
+				},
+			},
 		},
-		NoReward = true,
-		EntranceDirection = "Right",
-		NumExits = 0,
-		ZoomFraction = 0.95,
-	}]]
--- Gift Section
---[[local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
-local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
-table.insert(OlympusGiftOrdering, 29, "NewRoomsTrait")
-
-OlympusGiftData.NPC_Makaria_01 =
-{
-	InheritFrom = { "DefaultGiftData" },
-	MaxedIcon = "Keepsake_Hypnos_Max",
-	MaxedSticker = "Keepsake_HypnosSticker_Max",
-	MaxedRequirement = { RequiredTextLines = { "MakariaGift08" }, },
-	Locked = 7,
-	Maximum = 8,
-	[1] = { Gift = "NewRoomsTrait" },
-	[7] = { RequiredResource = "SuperGiftPoints" },
-	[8] = { RequiredResource = "SuperGiftPoints" },
-	UnlockGameStateRequirements = { RequiredTextLines = { "HypnosAboutThanatos04" } }
+	}
 }
 -- Keepsake
-local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
-OlympusTraitData.NewRoomsTrait =
-	{
-		Icon = "Keepsake_Purse",
-		EquipSound = "/SFX/Menu Sounds/KeepsakeHypnosCoinPurse",
+OlympusTraitData.TroveUpgradeBoonTrait = {
+		Name = "TroveUpgradeBoonTrait",
 		InheritFrom = { "GiftTrait" },
-		InRackTitle = "BonusMoneyTrait_Rack",
-		CustomTrayText = "BonusMoneyTrait_Tray",
-		UnequippedKeepsakeTitle = "BonusMoneyTrait_Dead",
-		CustomTrayNameWhileDead = "BonusMoneyTrait_Tray",
+		--Inherit
+		Frame = "Gift",
+		Slot = "Keepsake",
+		RecordCacheOnEquip = true,
+		ChamberThresholds = { 25, 50 },
+
 		RarityLevels =
 		{
 			Common =
 			{
-				Multiplier = 1.00,
+				Multiplier = 1.0,
 			},
 			Rare =
 			{
@@ -306,38 +245,24 @@ OlympusTraitData.NewRoomsTrait =
 			},
 			Epic =
 			{
-				Multiplier = 1.50,
+				Multiplier = 1.5,
 			}
 		},
+		--New Data
+		InRackTitle = "TroveUpgradeBoonTrait_Rack",
+		Icon = "Keepsake_Candle",
+		EquipSound = "/SFX/Enemy Sounds/HydraHead/HydraMiscBoneRattle1",
 		SignOffData =
 		{
-		  {
-			Text = "MakariaSignoff",
-		  },
-		  {
-			RequiredTextLines = { "MakariaGift08" },
-			Text = "MakariaSignoff_Max"
-		  }
+			{
+				Text = "MakariaSignoff",
+			},
+			{
+				RequiredTextLines = { "MakariaGift07" },
+				Text = "MakariaSignoff_Max"
+			}
 		},
-	}]]
--- Makaria activation requirements
-table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, {
-	FunctionName = "ActivateRotatingNPCs",
-	GameStateRequirements =
-	{
-		RequiredFalseFlags = { "InFlashback" },
-	},
-	Args =
-	{
-		Types =
-		{
-			"NPC_Makaria_01",
-		},
-		ActivationCapMin = 3,
-		ActivationCapMax = 3,
-		SkipPresentation = true,
-	},
-})
+	}
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 local OlympusCodex = ModUtil.Entangled.ModData(Codex)
@@ -348,60 +273,44 @@ OlympusCodex.ChthonicGods.Entries["NPC_Makaria_01"] =
 	{
 		{
 			UnlockThreshold = 1,
-			Text = "CodexData_Hestia_0001"
+			Text = "CodexData_Makaria_01"
 		},
 		{
 			UnlockThreshold = 5,
-			Text = "CodexData_Hestia_0002"
+			Text = "CodexData_Makaria_02"
 		},
 		{
 			UnlockThreshold = 15,
-			Text = "CodexData_Hestia_0003"
+			Text = "CodexData_Makaria_03"
 		}
 	},
-	Image = "Codex_Portrait_Hestia",
+	Image = "Codex_Portrait_Makaria",
 }
--- Fountain Divination
-OlympusDeathLoopData.RoomPreRun.Binks = {
-	"CharonIdleShop_Bink",
-	"CharonIdleGreeting_Bink",
-}
-OlympusDeathLoopData.RoomPreRun.ObstacleData[557483] =
-{
-	Template = "HealthFountain",
-	Activate = true,
-	ActivateIds = { 557483, },
-	SetupGameStateRequirements = { },
-}
-OlympusObstacleData.DivinationGods =
-{
-	UseText = "UseWell_Locked",
-	AvailableUseText = "UseWell_Unlocked",
-	ChallengeSwitchUseFunctionName = "UseWellShop",
-	CannotUseText = "WellShopBlockedByEncounter",
-	BlockDuringChallenge = true,
-
-	UsePromptOffsetX = 40,
-
-	SpawnPropertyChanges =
+OlympusGiftData.NPC_Makaria_01 =
 	{
-		{
-			ThingProperty = "Tallness",
-			ChangeValue = 225,
-		},
+		Gift = true,
+		InheritFrom = {"DefaultGiftData"},
+		Name = "NPC_Makaria_01",
+		MaxedIcon = "Keepsake_Achilles_Max",
+		MaxedSticker = "Keepsake_AchillesSticker_Max",
+		MaxedRequirement = { RequiredTextLines = { "Test2" }, },
+		Locked = 4,
+		Maximum = 5,
+		[1] = { Gift = "TroveUpgradeBoonTrait" },
+		[4] = { RequiredResource = "SuperGiftPoints" },
+		UnlockGameStateRequirements = { RequiredTextLines = { "Test1" } }
+	}
+	
+table.insert(OlympusGiftOrdering, 8, "TroveUpgradeBoonTrait")
+table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
+	FunctionName = "SpawnExtraNPCs",
+	GameStateRequirements =
+	{
+		RequiredFalseFlags = { "InFlashback" },
 	},
-}
-
---[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if (not CanOpenCodex()) and IsSuperValid() then
-			BuildSuperMeter(CurrentRun, 50)
-		end
-		ForceNextRoomFunc("A_Makaria01")
-		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
-		baseFunc()
-	end
-)]]
-
-OverwriteTableKeys( EnemyData, UnitSetData.NPCs )
-OverwriteTableKeys( RoomData, OlympusRoomSetData.Tartarus)
+	Args =
+	{
+		Name = "NPC_Makaria_01", 
+		SpawnPointId = 370036
+	},
+})

@@ -1,14 +1,15 @@
-local OlympusUnitSetData = ModUtil.Entangled.ModData(UnitSetData)
-local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusDeathLoopData = ModUtil.Entangled.ModData(DeathLoopData)
-local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
-local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
+local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 local OlympusColor = ModUtil.Entangled.ModData(Color)
+--Variables
+local DepthDamageMultiplier = 0.0
+local DuplicateMultiplier = -0.60
+local DuplicateStrongMultiplier = -0.40
+local DuplicateVeryStrongMultiplier = -0.20
 OlympusColor.MorosVoice = { 93,19,52,255 }
--- Makaria, Id = 370025, 370024, 370002
 -- 3DGhostAltIdle for the Hypnos discussion
 local OlympusEnemyData = ModUtil.Entangled.ModData(EnemyData)
 OlympusEnemyData.NPC_Moros_01 =
@@ -224,6 +225,81 @@ OlympusDeathLoopData.DeathArea.ObstacleData[370026] = {
 		},
 	}
 }
+-- Keepsake
+OlympusTraitData.BonusRangedBoonTrait = {
+		Name = "BonusRangedBoonTrait",
+		InheritFrom = { "GiftTrait" },
+		--Inherit
+		Frame = "Gift",
+		Slot = "Keepsake",
+		RecordCacheOnEquip = true,
+		ChamberThresholds = { 25, 50 },
+
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.0,
+			},
+			Rare =
+			{
+				Multiplier = 1.25,
+			},
+			Epic =
+			{
+				Multiplier = 1.5,
+			}
+		},
+		--New Data
+		InRackTitle = "BonusRangedBoonTrait_Rack",
+		Icon = "Keepsake_Ouroboros",
+		EquipSound = "/SFX/Enemy Sounds/HydraHead/HydraMiscBoneRattle1",
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseValue = 1.33,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ValidWeapons = WeaponSets.HeroNonPhysicalWeapons,
+			ExtractValues =
+			{
+				{
+					Key = "ValidWeaponMultiplier",
+					ExtractAs = "TooltipDamageBonus",
+					Format = "PercentDelta",
+				},
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponNames = WeaponSets.HeroNonPhysicalWeapons,
+				WeaponProperty = "MaxAmmo",
+				ChangeValue = 1.0,
+				ChangeType = "Add",
+				MinMultiplier = 1,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipCapacity",
+				}
+			},
+		},
+		SignOffData =
+		{
+			{
+				Text = "MorosSignoff",
+			},
+			{
+				RequiredTextLines = { "MorosGift07" },
+				Text = "MorosSignoff_Max"
+			}
+		},
+	}
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 local OlympusCodex = ModUtil.Entangled.ModData(Codex)
@@ -257,12 +333,12 @@ OlympusGiftData.NPC_Moros_01 =
 		MaxedRequirement = { RequiredTextLines = { "Test2" }, },
 		Locked = 4,
 		Maximum = 5,
-		[1] = { },
+		[1] = { Gift = "BonusRangedBoonTrait" },
 		[4] = { RequiredResource = "SuperGiftPoints" },
 		UnlockGameStateRequirements = { RequiredTextLines = { "Test1" } }
 	}
 	
-table.insert(OlympusGiftOrdering, 1, "ForceZeusBoonTrait")
+table.insert(OlympusGiftOrdering, 7, "BonusRangedBoonTrait")
 table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 	FunctionName = "SpawnExtraNPCs",
 	GameStateRequirements =
@@ -275,80 +351,3 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 		SpawnPointId = 370026
 	},
 })
-
---[[function HandleMorosSpawn( eventSource )
-	local currentRun = CurrentRun
-	local currentRoom = CurrentRun.CurrentRoom
-	local newUnit = DeepCopyTable( EnemyData.NPC_Nyx_01 )
-	local spawnPointId = 370026
-	newUnit.ObjectId = SpawnUnit({ Name = "NPC_Nyx_01", Group = "Standing", DestinationId = spawnPointId })
-	
-	--newUnit.ObjectId = SpawnUnit({ Name = "NPC_Nyx_01", Group = "Standing", DestinationId = spawnPointId })
-	newUnit.OeId = newUnit.ObjectId
-	--currentRun.TheseusId = newUnit.TheseusId
-	SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
-	UseableOn({ Ids = newUnit.ObjectId })
-	--SetupAI( CurrentRun, newUnit )
-
-	local enemyData = DeepCopyTable( EnemyData.NPC_Nyx_01 )
-	if IsActivationEligible( newUnit.ObjectId, enemyData ) then
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.Name)) 		
-		Activate({ Ids = newUnit.ObjectId })
-	end
-	newUnit.CanReceiveGift = true
-end]]
--- Fountain Divination
---[[OlympusDeathLoopData.RoomPreRun.Binks = {
-	"CharonIdleShop_Bink",
-	"CharonIdleGreeting_Bink",
-}
-OlympusDeathLoopData.RoomPreRun.ObstacleData[557483] =
-{
-	Template = "HealthFountain",
-	Activate = true,
-	ActivateIds = { 557483, },
-	SetupGameStateRequirements = { },
-}
-OlympusObstacleData.DivinationGods =
-{
-	UseText = "UseWell_Locked",
-	AvailableUseText = "UseWell_Unlocked",
-	ChallengeSwitchUseFunctionName = "UseWellShop",
-	CannotUseText = "WellShopBlockedByEncounter",
-	BlockDuringChallenge = true,
-
-	UsePromptOffsetX = 40,
-
-	SpawnPropertyChanges =
-	{
-		{
-			ThingProperty = "Tallness",
-			ChangeValue = 225,
-		},
-	},
-}]]
---[[OnAnyLoad{"RoomOpening", function()
-	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 410716}) -- 370026
-end
-}
-OnAnyLoad{"DeathAreaBedroom", function()
-	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 426209}) -- 370026
-end
-}]]
---[[OnAnyLoad{"DeathAreaOffice", function()
-	if CurrentRun.NPCExtra ~= nil and CurrentRun.NPCExtra.MorosInOffice then
-		SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 370126})
-	end
-	-- -- 370026
-	--SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = CurrentRun.Hero.ObjectId}) -- 370026
-end
-}]]
---[[OnAnyLoad{"DeathArea", function()
-	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 370026}) -- 370026
-	--SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = CurrentRun.Hero.ObjectId}) -- 370026
-end
-}]]
---[[OnAnyLoad{"DeathAreaOffice", function()
-	SpawnExtraNPCs({Name = "NPC_Moros_01", SpawnPointId = 487882}) -- 370026
-end
-}]]

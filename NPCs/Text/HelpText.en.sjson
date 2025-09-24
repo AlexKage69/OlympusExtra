@@ -16,18 +16,6 @@
 			DisplayName = "Met Moros"
 		}
 		{
-			Id = "MorosSignoff"
-			DisplayName = "From Moros"
-		}
-		{
-			Id = "MorosSignoff_Max"
-			DisplayName = """
-				From {#AwardMaxFlavorFormat}Moros{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Lasting Bond
-
-				{#AwardDarkFlavorFormat}Cheers.
-			"""
-		}
-		{
 			Id = "CodexData_Moros_01"
 			DisplayName = "'...Moros Codex 1...'"
 		}
@@ -42,6 +30,33 @@
 		{
 			Id = "UseTalkToMoros"
 			DisplayName = "{I} Talk"
+		}
+		{
+			Id = "BonusRangedBoonTrait"
+			DisplayName = "Ouroboros Bracelet"
+			Description = "Gain extra {!Icons.Ammo} for your {$Keywords.Cast}. Your {$Keywords.Cast} deals {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+		}
+		{
+			Id = "BonusRangedBoonTrait_Rack"
+			InheritFrom = "BonusRangedBoonTrait"
+			Description = "Gain extra {!Icons.Ammo} for your {$Keywords.Cast}. Your {$Keywords.Cast} deals {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "BonusRangedBoonTrait_Inactive"
+			DisplayName = "Ouroboros Bracelet"
+			Description = "Gain extra {!Icons.Ammo} for your {$Keywords.Cast}. Your {$Keywords.Cast} deals {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
+		}
+		{
+			Id = "MorosSignoff"
+			DisplayName = "From Moros"
+		}
+		{
+			Id = "MorosSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Moros{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Destined Bond
+
+				{#AwardDarkFlavorFormat}Some things are meant to be; such as a great relationship.
+			"""
 		}
 		//Moros Mirror
 		{
@@ -339,6 +354,63 @@
 		{
 			Id = "UseFountainHeal_CannotReroll"
 			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {#UseTextDisabledFormat}Unusable"
+		}
+		// Makaria
+		{
+			Id = "NPC_Makaria_01"
+			DisplayName = "Makaria"
+			Description = "Goddess of Blessed Death"
+		}
+		{
+			Id = "MakariaFirstMeeting"
+			DisplayName = "Met Makaria"
+		}
+		{
+			Id = "MetMakaria"
+			DisplayName = "Met Makaria"
+		}
+		{
+			Id = "CodexData_Makaria_01"
+			DisplayName = "'...Makaria Codex 1...'"
+		}
+		{
+			Id = "CodexData_Makaria_02"
+			DisplayName = "'...Makaria Codex 1, Makaria Codex 2...{#PreviousFormat}'"
+		}
+		{
+			Id = "CodexData_Makaria_03"
+			DisplayName = "'...Makaria Codex 1, Makaria Codex 2, Makaria Codex 3...{#PreviousFormat}'"
+		}
+		{
+			Id = "UseTalkToMakaria"
+			DisplayName = "{I} Talk"
+		}
+		{
+			Id = "TroveUpgradeBoonTrait"
+			DisplayName = "Blessed Candle"
+			Description = "Improve Treasure Trove and help find our way."
+		}
+		{
+			Id = "TroveUpgradeBoonTrait_Rack"
+			InheritFrom = "TroveUpgradeBoonTrait"
+			Description = "Improve Treasure Trove and help find our way. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "TroveUpgradeBoonTrait_Inactive"
+			DisplayName = "Blessed Candle"
+			Description = "Improve Treasure Trove and help find our way."
+		}
+		{
+			Id = "MakariaSignoff"
+			DisplayName = "From Makaria"
+		}
+		{
+			Id = "MakariaSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Makaria{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Unrevealed Bond
+
+				{#AwardDarkFlavorFormat}You have been blessed by a strange, yet familiar link.
+			"""
 		}
     ]
 }

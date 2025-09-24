@@ -1,0 +1,43 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "MorosIdle"
+      FilePath = "Animations\NPCCthonic\Idle\CthonicIdle"
+      Type = "Book"
+      VideoTexture = "CthonicIdle_Bink"
+      EndFrame = 60
+      Loop = true
+      NumAngles = 16
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetY = -50.0
+      Ambient = 0.0
+      CancelOnOwnerMove = true
+      OnlyWhenVisible = true
+      Hue = 0.0
+      Saturation = 0.2
+      //Value = -0.5
+    }
+    {
+      Name = "MakariaIdle"
+      FilePath = "Animations\NPCCthonic\Idle\CthonicIdle"
+      Type = "Book"
+      VideoTexture = "CthonicIdle_Bink"
+      EndFrame = 60
+      Loop = true
+      NumAngles = 16
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetY = -50.0
+      Ambient = 0.0
+      CancelOnOwnerMove = true
+      OnlyWhenVisible = true
+      Hue = 0.7
+      Saturation = 0.2
+      //Value = -0.5
+    }
+  ]
+}

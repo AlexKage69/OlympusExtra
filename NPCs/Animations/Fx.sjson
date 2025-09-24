@@ -1,0 +1,89 @@
+{
+    Animations = [
+        "_append"
+        // Moros Mirror
+        {
+            Name = "DashlessArmorLoop"
+            Type = "Constant"
+            FilePath = "Dev\blank_invisible"
+            CreateAnimation = "HyperArmorLoopA"
+            Duration = 0.1
+            Loop = true
+            VisualFx = "HyperArmorLoopA"
+            VisualFxIntervalMin = 0.5000
+            VisualFxIntervalMax = 0.5001
+            Sound = "/SFX/Player Sounds/ForcefieldBubbleLoop"
+            StopSoundOnFinishFade = 0.2
+        }
+
+        {
+            Name = "DashlessArmorLoopA"
+            Type = "Book"
+            FilePath = "Fx\HyperArmor\HyperArmor"
+            NumFrames = 15
+            Material = "Unlit"
+            GroupName = "FX_Standing_Add"
+            PlaySpeed = 45
+            EaseIn = 0.9
+            EaseOut = 1.0
+            RandomFlipHorizontal = true
+            StartScale = 1
+            EndScale = 1.05
+            ScaleMin = 0.95
+            ScaleMax = 1.05
+            SortMode = "FromParent"
+            AngleFromOwner = "Ignore"
+            UseOwnAngle = false
+            LocationZFromOwner = "Ignore"
+            LocationFromOwner = "Maintain"
+            ScaleFromOwner = "Ignore"
+            ColorFromOwner = "Ignore"
+            UseAttachedAddColor = false
+            UseAttachedFlasher = false
+            StartAlpha = 0
+            EndAlpha = 1
+            Alpha = 0.5
+            ScaleX = 1.1
+            PingPong = false
+            Loop = false
+            Sound = "/EmptyCue"
+            ChildAnimation = "DashlessArmorLoopB"
+            DieWithOwner = true
+        }
+
+        {
+            Name = "DashlessArmorLoopB"
+            Type = "Constant"
+            FilePath = "Fx\HyperArmor\HyperArmor0002"
+            Material = "Unlit"
+            EaseIn = 0.0
+            EaseOut = 1.0
+            StartScale = 1
+            EndScale = 1.05
+            AngleFromOwner = "Ignore"
+            UseOwnAngle = false
+            LocationZFromOwner = "Ignore"
+            LocationFromOwner = "Maintain"
+            ScaleFromOwner = "Ignore"
+            ColorFromOwner = "Ignore"
+            UseAttachedAddColor = false
+            UseAttachedFlasher = false
+            StartAlpha = 0.3
+            EndAlpha = 1.0
+            Alpha = 0.5
+            ScaleX = 1.1
+            Loop = true
+            Sound = "/EmptyCue"
+            ChildAnimation = "null"
+            Duration = 0.5
+            PingPongColor = true
+            StartRed = 1
+            StartGreen = 0.5
+            StartBlue = 0
+            EndRed = 0
+            EndGreen = 0.450
+            EndBlue = 1
+            DieWithOwner = true
+        }
+    ]
+}
