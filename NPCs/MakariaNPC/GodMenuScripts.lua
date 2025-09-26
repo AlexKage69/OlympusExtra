@@ -1,4 +1,4 @@
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
+--[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
 		function(baseFunc)
 			-- if (not CanOpenCodex()) and IsSuperValid() then
 			-- 	BuildSuperMeter(CurrentRun, 50)
@@ -6,9 +6,9 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
 			--CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
 			--baseFunc()
-			StartUpGodManagerMenu({})
+			--StartUpGodManagerMenu({})
 		end
-	)
+	)]]
 
 OnUsed { "OlympianTablet",
 	function(triggerArgs)
@@ -23,7 +23,7 @@ OnUsed { "OlympianTablet",
 	end
 }
 local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
-ObstacleData.OlympianTablet =
+OlympusObstacleData.OlympianTablet =
 	{
 		UseText = "UseAwardMenu",
 		UsePromptOffsetX = 65,
@@ -47,7 +47,9 @@ OlympusGiftData.DemeterUpgrade[4] = { UnlockExiled = true }
 OlympusGiftData.AresUpgrade[4] = { UnlockExiled = true }
 OlympusGiftData.DionysusUpgrade[4] = { UnlockExiled = true }
 OlympusGiftData.AthenaUpgrade[4] = { UnlockExiled = true }
-OlympusGiftData.DionysusUpgrade[4] = { UnlockExiled = true }
+if ApolloExtra ~= nil then
+	OlympusGiftData.ApolloUpgrade[4] = { UnlockExiled = true }
+end
 OlympusGiftData.HermesUpgrade[4] = { UnlockExiled = true, DualGod = "HephaestusUpgrade" }
 OlympusGiftData.TrialUpgrade[4] = { UnlockExiled = true, DualGod = "QuestUpgrade" }
 
@@ -138,6 +140,7 @@ function GetAvailableExiledGods()
 		for s = 1, GetMaxGiftLevel(npcName) do
 			local data = GetGiftLevelData(npcName, s)
 			if data ~= nil and data.UnlockExiled then
+				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(npcName))
 				local available = false
 				local broughtIt = false
 				local selected = false
@@ -156,10 +159,10 @@ function GetAvailableExiledGods()
 			end
 		end
 	end
-	for i = 1, 10, 1 do
+	--[[for i = 1, 10, 1 do
 		table.insert(exiledGods.Single,
 						{ Known = false, Available = false, NPC = "TestUpgrade", Unlocked = false, Selected = false })
-	end
+	end]]
 	table.insert(exiledGods.Dual,
 					{ Known = false, Available = false, NPC = "TestUpgrade", Unlocked = false, Selected = false, DualGod = "TestUpgrade2" })
 	return exiledGods

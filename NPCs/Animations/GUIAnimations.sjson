@@ -109,6 +109,16 @@
       ChildAnimation = "Keepsake_Candle_Child"
       EndFrame = 1
       StartFrame = 1
-    }    
+    }
+    // God Manager
+    {
+      Name = "GodManagerMenuBackground"
+      FilePath = "GUI\Screens\AwardMenuBackground"
+      Type = "ConstantNoUpdate"
+      EndFrame = 1
+      NumFrames = 1
+      StartFrame = 1
+      Material = "Unlit"
+    }
   ]
 }

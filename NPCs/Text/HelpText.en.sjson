@@ -412,5 +412,22 @@
 				{#AwardDarkFlavorFormat}You have been blessed by a strange, yet familiar link.
 			"""
 		}
+		// Makaria God Manager
+		{
+			Id = "GodManagerMenu_OverheadText"
+			DisplayName = "Keepsakes"
+		}
+		{
+			Id = "UseGodManagerMenu"
+			DisplayName = "{I} Inspect"
+		}
+		{
+			Id = "GodManagerMenu_Title"
+			DisplayName = "Keepsakes"
+		}
+		{
+			Id = "GodManagerMenu_SubTitle"
+			DisplayName = "“Here, Even Mortal Companionship Can Be Eternal”"
+		}
     ]
 }

@@ -1,2 +1,2 @@
-
 Import "MakariaNPC.lua"
+Import "GodMenuScripts.lua"

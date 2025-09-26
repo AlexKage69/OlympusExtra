@@ -8,9 +8,11 @@ Import "NPCExtra.lua"
 Include "MakariaNPC/modfile_makaria.txt"
 Include "MorosNPC/modfile_moros.txt"
 
+:: Language Text
 To "Game/Text/en/HelpText.en.sjson"
 SJSON "Text/HelpText.en.sjson"
 
+:: Units
 To "Game/Units/NPCs.sjson"
 SJSON "NPCs.sjson"
 
@@ -23,3 +25,7 @@ To "Game/Animations/GUIAnimations.sjson"
 SJSON "Animations/GUIAnimations.sjson"
 To "Game/Animations/PortraitAnimations.sjson"
 SJSON "Animations/PortraitAnimations.sjson"
+
+:: Obstacles
+To "Game/Obstacles/Gameplay.sjson"
+SJSON "Obstacles/Gameplay.sjson"
