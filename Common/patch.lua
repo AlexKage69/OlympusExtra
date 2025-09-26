@@ -813,7 +813,7 @@ function AuraThread(args)
         StopAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })
         CreateAnimation({ Name = "AuraFx-Rupture", DestinationId = CurrentRun.Hero.ObjectId })			
     end
-    if HeroHasTrait("StatusOverTimeTrait") then
+    if HeroHasTrait("StatusOverTimeTrait") or HeroHasTrait("HephaestusImproveHera") then
         StopAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })
         CreateAnimation({ Name = "AuraFx-Legendary", DestinationId = CurrentRun.Hero.ObjectId })			
     end
@@ -837,7 +837,7 @@ function AuraThread(args)
                 if distanceSquared <= 200 and HeroHasTrait("AuraRuptureTrait") then
                     ApplyEffectFromWeapon({ WeaponName = "RuptureCurseApplicator", EffectName = "DamageOverDistance", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
-                if distanceSquared <= 300 and HeroHasTrait("StatusOverTimeTrait") and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
+                if distanceSquared <= 300 and (HeroHasTrait("StatusOverTimeTrait") or HeroHasTrait("HephaestusImproveHera")) and enemy.VulnerabilityEffects and (enemy.VulnerabilityEffects["EnvyCurseAttack"] or enemy.VulnerabilityEffects["EnvyCurseSecondary"] or enemy.VulnerabilityEffects["JealousyCurse"]) then
                     ApplyEffectFromWeapon({ WeaponName = "DecayCurseApplicator", EffectName = "HeraDecay", Id = CurrentRun.Hero.ObjectId, DestinationId = enemy.ObjectId })
                 end
                 if distanceSquared <= 400 and HeroHasTrait("AuraExposedTrait") then
