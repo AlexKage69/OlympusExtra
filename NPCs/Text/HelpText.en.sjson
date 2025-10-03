@@ -429,5 +429,10 @@
 			Id = "GodManagerMenu_SubTitle"
 			DisplayName = "“Here, Even Mortal Companionship Can Be Eternal”"
 		}
+		{
+			Id = "Available_GiftPoints"
+			DisplayName = "{$TempTextData.Amount}{!Icons.GiftPointSmall}"
+			OverwriteLocalization = true
+		}
     ]
 }

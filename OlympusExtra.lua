@@ -21,9 +21,9 @@ ModUtil.LoadOnce(function()
         local OlympusCodexBoonTable = CodexMenu.BoonTable
         local OlympusConsumableTable = CodexMenu.ConsumableTable
         local OlympusCodexBossTable = CodexMenu.BossTable
-        OlympusCodexBossTable.Tartarus = RoomSetData.Tartarus.A_Reprieve01
+        OlympusCodexBossTable.Tartarus = RoomSetData.Tartarus.A_Shop01
         OlympusCodexBossTable.Asphodel = RoomSetData.Asphodel.B_Story01
-        OlympusCodexBossTable.Elysium = RoomSetData.Elysium.C_Story01
+        OlympusCodexBossTable.Elysium = RoomSetData.Elysium.C_PreBoss01
         OlympusCodexBossTable.Styx = RoomSetData.Styx.D_Reprieve01
         OlympusCodexBossTable.Secrets = RoomSetData.Secrets.RoomSecret01
         OlympusCodexBossTable.Surface = RoomSetData.Surface.E_Intro
