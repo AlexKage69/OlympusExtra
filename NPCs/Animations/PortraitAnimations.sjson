@@ -137,5 +137,56 @@
       EndFrame = 1
       StartFrame = 1
     }
+     // Melinoe
+    
+    {
+      Name = "Portrait_Melinoe_Default_01"
+      InheritFrom = "Portrait_Base_01"
+      FilePath = "Portraits\Portraits_Nyx_01"
+      OffsetX = -100
+      OffsetY = -50
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Melinoe_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Portraits\Portraits_Nyx_01"
+      OffsetX = -100
+      OffsetY = -50
+      EndFrame = 1
+      StartFrame = 1
+    }
+     // Nemesis
+   {
+      Name = "Portrait_Nemesis_Default_01"
+      InheritFrom = "Portrait_Base_01"
+      FilePath = "Portraits\Portraits_Skelly_01"
+      EndFrame = 1
+      StartFrame = 1
+      Sound = "/SFX/Enemy Sounds/MiscBoneRattle3"
+    }
+    {
+      Name = "Portrait_Nemesis_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Portraits\Portraits_Skelly_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+     // Eris
+    {
+      Name = "Portrait_Eris_Default_01"
+      InheritFrom = "Portrait_Base_01"
+      FilePath = "Portraits\Portraits_Persephone_Queen_FiredUp01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Portrait_Eris_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Portraits\Portraits_Persephone_Queen_FiredUp01"
+      EndFrame = 1
+      StartFrame = 1
+    }
   ]
 }

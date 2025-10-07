@@ -39,5 +39,62 @@
       Saturation = 0.2
       //Value = -0.5
     }
+    {
+      Name = "MelinoeIdle"
+      FilePath = "Animations\NPCCthonic\Idle\CthonicIdle"
+      Type = "Book"
+      VideoTexture = "CthonicIdle_Bink"
+      EndFrame = 60
+      Loop = true
+      NumAngles = 16
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetY = -50.0
+      Ambient = 0.0
+      CancelOnOwnerMove = true
+      OnlyWhenVisible = true
+      Hue = 0.4
+      Saturation = 0.2
+      //Value = -0.5
+    }
+    {
+      Name = "NemesisIdle"
+      FilePath = "Animations\NPCCthonic\Idle\CthonicIdle"
+      Type = "Book"
+      VideoTexture = "CthonicIdle_Bink"
+      EndFrame = 60
+      Loop = true
+      NumAngles = 16
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetY = -50.0
+      Ambient = 0.0
+      CancelOnOwnerMove = true
+      OnlyWhenVisible = true
+      Hue = 0.2
+      Saturation = 0.2
+      //Value = -0.5
+    }
+    {
+      Name = "ErisIdle"
+      FilePath = "Animations\NPCCthonic\Idle\CthonicIdle"
+      Type = "Book"
+      VideoTexture = "CthonicIdle_Bink"
+      EndFrame = 60
+      Loop = true
+      NumAngles = 16
+      NumFrames = 60
+      PlaySpeed = 30.0
+      StartFrame = 1
+      OffsetY = -50.0
+      Ambient = 0.0
+      CancelOnOwnerMove = true
+      OnlyWhenVisible = true
+      Hue = 0.9
+      Saturation = 0.2
+      //Value = -0.5
+    }
   ]
 }

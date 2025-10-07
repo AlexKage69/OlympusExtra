@@ -120,5 +120,77 @@
       StartFrame = 1
       Material = "Unlit"
     }
+    // Melinoe
+    {
+      Name = "Keepsake_MoonSigil_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 0.65
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_MoonSigil"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_MoonSigil_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_MoonSigil_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    // Nemesis
+    {
+      Name = "Keepsake_ShieldPlate_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 0.65
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_ShieldPlate"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_ShieldPlate_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_ShieldPlate_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    // Eris
+    {
+      Name = "Keepsake_GoldenApple_Child"
+      InheritFrom = "KeepsakeTrayIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 0.65
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_GoldenApple"
+      InheritFrom = "KeepsakeIcon"
+      FilePath = "Apollo\Keepsake_Lyre"
+      Scale = 1.5
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Keepsake_GoldenApple_Small"
+      InheritFrom = "KeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_GoldenApple_Child"
+      EndFrame = 1
+      StartFrame = 1
+    }
   ]
 }

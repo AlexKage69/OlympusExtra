@@ -108,8 +108,11 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		--ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
 		--GameState.Gift["NPC_Moros_01"] = nil
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Moros_01" })))) 
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Makaria_01" })))) 
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Moros_01" })))) 
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Makaria_01" })))) 
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Melinoe_01" })))) 
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Nemesis_01" })))) 
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Eris_01" })))) 
 		baseFunc()
 	end
 )
