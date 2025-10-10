@@ -1,0 +1,32 @@
+
+Animations = { 
+  "_append"
+  {
+      Name = "OETitle"
+      ChainTo = "OETitleLoop"
+      FilePath = "Screens\MainMenuIn\MainMenuIn"
+      Type = "Book"
+      VideoTexture = "MainMenuIn"
+      EndFrame = 7
+      NumFrames = 7
+      PlaySpeed = 45.0
+      StartFrame = 1
+      Ambient = 0.0
+      OnlyWhenVisible = true
+      Slides = [
+        { DurationFrames = 1 Sound = "/SFX/StabSplatterEndSequence" Frame = 1 }
+        { DurationFrames = 1 Sound = "/SFX/Menu Sounds/HadesMainMenuWhoosh" Frame = 64 }
+      ]
+    }
+
+    {
+      Name = "OETitleLoop"
+      InheritFrom = "OETitle"
+      //ChildAnimation = "MainMenuUpdateImage"
+      FilePath = "Screens\MainMenuLoop\MainMenuLoop"
+      VideoTexture = "MainMenuLoop"
+      Loop = true
+      PlaySpeed = 30.0
+	    Slides = []
+    }
+}

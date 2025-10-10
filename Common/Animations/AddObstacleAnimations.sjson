@@ -1,0 +1,14 @@
+
+Animations = { 
+  "_sequence" = true 
+  6 = { 
+    CreateAnimations = {
+      "OETitle"
+    }
+  }
+  7 = { 
+     CreateAnimations = {
+      "OETitleLoop"
+    }
+  }
+}
