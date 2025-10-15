@@ -5,7 +5,6 @@ function SpawnExtraNPCs(eventSource, args)
 	if args.Name == nil or obstacleId == nil or args.SpawnPointId == nil then
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character - No Ids")) 	
         ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Name))
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(obstacleId))
         ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.SpawnPointId))			
 		return
 	end
@@ -18,12 +17,12 @@ function SpawnExtraNPCs(eventSource, args)
         ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.LocationsById))
         return
 	end
-	
 	if IsActivationEligible( obstacleId, newUnit ) then
 		newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.ObjectId })
-
+		
 		SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
 		UseableOn({ Ids = newUnit.ObjectId })
+		
 		SetupAI( CurrentRun, newUnit )		
 		if GameState.Gift[args.Name] == nil or GameState.Gift[args.Name].Value == nil then
 			GameState.Gift[args.Name] = {
@@ -31,7 +30,6 @@ function SpawnExtraNPCs(eventSource, args)
 				--NewTraits = GameState.BefriendPersistentVals["TheseusGiftNewTraits"],
 			}
 		end
-
 		local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
 		if IsActivationEligible( newUnit.ObjectId, enemyData ) then
 			Activate({ Ids = newUnit.ObjectId })
@@ -110,9 +108,10 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		--GameState.Gift["NPC_Moros_01"] = nil
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Moros_01" })))) 
         --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Makaria_01" })))) 
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Melinoe_01" })))) 
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Nemesis_01" })))) 
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Eris_01" })))) 
+		--SpawnUnit({ Name = "NPC_Melinoe_01", Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId })
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Melinoe_01" })))) 
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Nemesis_01" })))) 
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetFirstValue(GetInactiveIdsByType({ Name = "NPC_Eris_01" })))) 
 		baseFunc()
 	end
 )
