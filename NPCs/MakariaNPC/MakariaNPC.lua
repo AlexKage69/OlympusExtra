@@ -314,3 +314,452 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 		SpawnPointId = 370036
 	},
 })
+-- Code for ChallengeSwitch modification
+ModUtil.Path.Wrap( "HandleChallengeLootDecay", 
+	function(baseFunc, challengeSwitch, challengeEncounter )	
+		if challengeSwitch.RewardType == "ExtraChance" or challengeSwitch.RewardType == "Boon" or challengeSwitch.RewardType == "CentaurHeart" 
+			or challengeSwitch.RewardType == "StackUpgrade" or challengeSwitch.RewardType == "GiftDrop" then
+			challengeEncounter.MinValue = 0
+		end
+		baseFunc(challengeSwitch, challengeEncounter)
+	end
+)
+ModUtil.Path.Wrap( "HandleChallengeLoot", 
+	function(baseFunc, challengeSwitch, challengeEncounter )	
+		baseFunc(challengeSwitch, challengeEncounter)
+		if challengeEncounter ~= nil then
+			if CurrentRun.SwitchChallengeReward == nil then
+				CurrentRun.SwitchChallengeReward = {
+					Money = 0,
+					Health = 0,
+					MetaPoints = 0,
+					Gems = 0,
+					ExtraChance = 0,
+					Boon = 0,
+					CentaurHeart = 0,
+					StackUpgrade = 0,
+					GiftDrop = 0,
+					QuestItemTartarus = 0,
+					QuestItemAsphodel = 0,
+					QuestItemElysium = 0,
+					QuestItemStyx = 0,
+				}
+			end
+			if GameState.CompletedSwitchChallengeReward == nil then
+				GameState.CompletedSwitchChallengeReward = {
+					Money = 0,
+					Health = 0,
+					MetaPoints = 0,
+					Gems = 0,
+					ExtraChance = 0,
+					Boon = 0,
+					CentaurHeart = 0,
+					StackUpgrade = 0,
+					GiftDrop = 0,
+					QuestItemTartarus = 0,
+					QuestItemAsphodel = 0,
+					QuestItemElysium = 0,
+					QuestItemStyx = 0,
+					Failed = 0,
+				}
+			end
+			if challengeSwitch.RewardType == "Money" then
+				CurrentRun.SwitchChallengeReward.Money = CurrentRun.SwitchChallengeReward.Money + 1
+				GameState.CompletedSwitchChallengeReward.Money =  GameState.CompletedSwitchChallengeReward.Money + 1
+			elseif challengeSwitch.RewardType == "Health" then
+				CurrentRun.SwitchChallengeReward.Health = CurrentRun.SwitchChallengeReward.Health + 1
+				GameState.CompletedSwitchChallengeReward.Health =  GameState.CompletedSwitchChallengeReward.Health + 1
+			elseif challengeSwitch.RewardType == "MetaPoints" then
+				CurrentRun.SwitchChallengeReward.MetaPoints = CurrentRun.SwitchChallengeReward.MetaPoints + 1
+				GameState.CompletedSwitchChallengeReward.MetaPoints =  GameState.CompletedSwitchChallengeReward.MetaPoints + 1
+			elseif challengeSwitch.RewardType == "Gems" then
+				CurrentRun.SwitchChallengeReward.Gems = CurrentRun.SwitchChallengeReward.Gems + 1
+				GameState.CompletedSwitchChallengeReward.Gems =  GameState.CompletedSwitchChallengeReward.Gems + 1
+			end
+			local angle = GetAngleBetween({ Id = challengeSwitch.ObjectId, DestinationId = CurrentRun.Hero.ObjectId })
+			if challengeSwitch.CurrentValue == 0 then
+				GameState.CompletedSwitchChallengeReward.Failed =  GameState.CompletedSwitchChallengeReward.Failed + 1
+				GiveRandomConsumables({
+					Delay = 0.2,
+					NotRequiredPickup = true,
+					LootOptions =
+					{
+						{
+							Name = "RoomRewardConsolationPrize",
+							Chance = 1,
+						}
+					}
+				})
+			else
+				if challengeSwitch.RewardType == "ExtraChance" then
+					CurrentRun.SwitchChallengeReward.ExtraChance = CurrentRun.SwitchChallengeReward.ExtraChance + 1
+					GameState.CompletedSwitchChallengeReward.ExtraChance =  GameState.CompletedSwitchChallengeReward.ExtraChance + 1
+					AddLastStand({
+						Name = "ExtraChanceReplenishMetaUpgrade",
+						Unit = CurrentRun.Hero,
+						Icon = "ExtraLifeReplenish",
+						WeaponName = "LastStandMetaUpgradeShield",
+						HealFraction = MetaUpgradeData.ExtraChanceReplenishMetaUpgrade.HealPercent,
+						Silent = true
+					})
+				elseif challengeSwitch.RewardType == "Boon" then
+					CurrentRun.SwitchChallengeReward.Boon = CurrentRun.SwitchChallengeReward.Boon + 1
+					GameState.CompletedSwitchChallengeReward.Boon =  GameState.CompletedSwitchChallengeReward.Boon + 1
+					local reward = GiveLoot({ SpawnPoint = CurrentRun.Hero.ObjectId })
+					ApplyUpwardForce({ Id = reward.Id, Speed = RandomFloat( 500, 700 ) })
+					ApplyForce({ Id = reward.Id, Speed = RandomFloat( 50, 100 ), Angle = angle, SelfApplied = true })
+				elseif challengeSwitch.RewardType == "CentaurHeart" then
+					CurrentRun.SwitchChallengeReward.CentaurHeart = CurrentRun.SwitchChallengeReward.CentaurHeart + 1
+					GameState.CompletedSwitchChallengeReward.CentaurHeart =  GameState.CompletedSwitchChallengeReward.CentaurHeart + 1
+					GiveRandomConsumables({
+						Delay = 0.2,
+						NotRequiredPickup = true,
+						LootOptions =
+						{
+							{
+								Name = "CentaurHeart",
+								Chance = 1,
+							}
+						}
+					})
+				elseif challengeSwitch.RewardType == "StackUpgrade" then
+					CurrentRun.SwitchChallengeReward.StackUpgrade = CurrentRun.SwitchChallengeReward.StackUpgrade + 1
+					GameState.CompletedSwitchChallengeReward.StackUpgrade =  GameState.CompletedSwitchChallengeReward.StackUpgrade + 1
+					local reward = CreateStackLoot({ SpawnPoint = CurrentRun.Hero.ObjectId, Cost = 0, DoesNotBlockExit = false, StackNum = 1 })
+					ApplyUpwardForce({ Id = reward.Id, Speed = RandomFloat( 500, 700 ) })
+					ApplyForce({ Id = reward.Id, Speed = RandomFloat( 50, 100 ), Angle = angle, SelfApplied = true })
+				elseif challengeSwitch.RewardType == "GiftDrop" then
+					CurrentRun.SwitchChallengeReward.GiftDrop = CurrentRun.SwitchChallengeReward.GiftDrop + 1
+					GameState.CompletedSwitchChallengeReward.GiftDrop =  GameState.CompletedSwitchChallengeReward.GiftDrop + 1
+					local dropItemName = "GiftDrop"
+					if GameState.Cosmetics and GameState.Cosmetics.GiftDropRunProgress then
+						dropItemName = "GiftDropRunProgress"
+					end
+					GiveRandomConsumables({
+						Delay = 0.2,
+						NotRequiredPickup = true,
+						LootOptions =
+						{
+							{
+								Name = dropItemName,
+								Chance = 1,
+							}
+						}
+					})
+				elseif challengeSwitch.RewardType == "QuestItemTartarus" or challengeSwitch.RewardType == "QuestItemAsphodel" or 
+				challengeSwitch.RewardType == "QuestItemElysium" or challengeSwitch.RewardType == "QuestItemStyx" then
+					CurrentRun.SwitchChallengeReward[challengeSwitch.RewardType] = CurrentRun.SwitchChallengeReward[challengeSwitch.RewardType] + 1
+					GameState.CompletedSwitchChallengeReward[challengeSwitch.RewardType] =  GameState.CompletedSwitchChallengeReward[challengeSwitch.RewardType] + 1
+					
+				end
+			end
+		end
+	end
+)
+-- Common Troves
+local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
+OlympusObstacleData.MoneyChallengeSwitch.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaMoneyChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	ChallengeAvailableUseText = "UseChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_MoneyRewardAvailable",
+	RewardMultiplier = 1.50,
+	IntervalMultiplier = 0.4,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredFalseCosmetics = { "ChallengeSwitches2" },
+	},
+}
+
+OlympusObstacleData.MoneyChallengeSwitch2.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaMoneyChallengeSwitch2 =
+{
+	InheritFrom = { "MoneyChallengeSwitch" },
+	RewardMultiplier = 1.75,
+	IntervalMultiplier = 0.3,
+	DifficultyModifier = 1.3,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches2" },
+		RequiredFalseCosmetics = { "ChallengeSwitches3" },
+	},
+}
+
+OlympusObstacleData.MoneyChallengeSwitch3.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaMoneyChallengeSwitch3 =
+{
+	InheritFrom = { "MoneyChallengeSwitch" },
+	RewardMultiplier = 2.00,
+	IntervalMultiplier = 0.2,
+	DifficultyModifier = 1.6,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches3" },
+	},
+}
+OlympusObstacleData.HealthChallengeSwitch.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaHealthChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	ChallengeText = "ChallengeSwitch_HealthValue",
+	ChallengeAvailableUseText = "UseHealthChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_HealthRewardAvailable",
+	RewardType = "Health",
+	RewardMultiplier = 1.50,
+	IntervalMultiplier = 0.4,
+	DifficultyModifier = 0.7,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredFalseCosmetics = { "ChallengeSwitches2" },
+	},
+}
+OlympusObstacleData.HealthChallengeSwitch2.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaHealthChallengeSwitch2 =
+{
+	InheritFrom = { "HealthChallengeSwitch" },
+	RewardMultiplier = 1.75,
+	DifficultyModifier = 1.2,
+	IntervalMultiplier = 0.3,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches2" },
+		RequiredFalseCosmetics = { "ChallengeSwitches3" },
+	},
+}
+OlympusObstacleData.HealthChallengeSwitch3.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaHealthChallengeSwitch3 =
+{
+	InheritFrom = { "HealthChallengeSwitch" },
+	RewardMultiplier = 2.0,
+	DifficultyModifier = 1.4,
+	IntervalMultiplier = 0.2,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches3" },
+	},
+}
+OlympusObstacleData.DarknessChallengeSwitch.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaDarknessChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_DarknessValue",
+	ChallengeAvailableUseText = "UseDarknessChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_DarknessRewardAvailable",
+	RewardMultiplier = 1.0,
+	RewardType = "MetaPoints",
+	IntervalMultiplier = 0.9,
+	DifficultyModifier = 0.7,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredFalseCosmetics = { "ChallengeSwitches2" },
+	},
+}
+
+OlympusObstacleData.DarknessChallengeSwitch2.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaDarknessChallengeSwitch2 =
+{
+	InheritFrom = { "DarknessChallengeSwitch" },
+	RewardMultiplier = 1.50,
+	IntervalMultiplier = 0.6,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches2" },
+		RequiredFalseCosmetics = { "ChallengeSwitches3" },
+	},
+}
+
+OlympusObstacleData.DarknessChallengeSwitch3.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaDarknessChallengeSwitch3 =
+{
+	InheritFrom = { "DarknessChallengeSwitch" },
+	RewardMultiplier = 2.0,
+	IntervalMultiplier = 0.3,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches3" },
+	},
+}
+
+OlympusObstacleData.GemChallengeSwitch.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaGemChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_GemValue",
+	ChallengeAvailableUseText = "UseGemChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_GemRewardAvailable",
+	RewardMultiplier = 0.75,
+	RewardType = "Gems",
+	IntervalMultiplier = 1.4,
+	DifficultyModifier = 0.7,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredFalseCosmetics = { "ChallengeSwitches2" },
+	},
+}
+OlympusObstacleData.GemChallengeSwitch2.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaGemChallengeSwitch2 =
+{
+	InheritFrom = { "GemChallengeSwitch" },
+	RewardMultiplier = 1.0,
+	IntervalMultiplier = 0.9,
+	DifficultyModifier = 1.1,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches2" },
+		RequiredFalseCosmetics = { "ChallengeSwitches3" },
+	},
+}
+
+OlympusObstacleData.GemChallengeSwitch3.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusObstacleData.MakariaGemChallengeSwitch3 =
+{
+	InheritFrom = { "GemChallengeSwitch" },
+	RewardMultiplier = 1.25,
+	IntervalMultiplier = 0.5,
+	DifficultyModifier = 1.4,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches3" },
+	},
+}
+-- Rare Trove
+OlympusObstacleData.MakariaExtraChanceChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_ExtraChanceValue",
+	ChallengeAvailableUseText = "UseExtraChanceChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_ExtraChanceRewardAvailable",
+	RewardMultiplier = 0.2,
+	RewardType = "ExtraChance",
+	IntervalMultiplier = 1.1,
+	DifficultyModifier = 1.8,
+	Requirements =
+	{
+		RequiredMinMaximumLastStands = 1,
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredMaxAdvancedChallengeSwitchThisRun = 5,
+		RequiredMaxExtraChanceChallengeSwitchThisRun = 1,
+	},
+}
+
+OlympusObstacleData.MakariaBoonChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_BoonValue",
+	ChallengeAvailableUseText = "UseBoonChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_BoonRewardAvailable",
+	RewardMultiplier = 0.3,
+	RewardType = "Boon",
+	IntervalMultiplier = 0.8,
+	DifficultyModifier = 1.8,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredMaxAdvancedChallengeSwitchThisRun = 5,
+		RequiredMaxBoonChallengeSwitchThisRun = 2,
+	},
+}
+
+OlympusObstacleData.MakariaCentaurHeartChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_CentaurHeartValue",
+	ChallengeAvailableUseText = "UseCentaurHeartChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_CentaurHeartRewardAvailable",
+	RewardMultiplier = 0.3,
+	RewardType = "CentaurHeart",
+	IntervalMultiplier = 0.8,
+	DifficultyModifier = 1.6,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredMaxAdvancedChallengeSwitchThisRun = 5,
+		RequiredMaxCentaurHeartChallengeSwitchThisRun = 2,
+	},
+}
+
+OlympusObstacleData.MakariaStackUpgradeChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_StackUpgradeValue",
+	ChallengeAvailableUseText = "UseStackUpgradeChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_StackUpgradeRewardAvailable",
+	RewardMultiplier = 0.3,
+	RewardType = "StackUpgrade",
+	IntervalMultiplier = 0.8,
+	DifficultyModifier = 1.6,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredMaxAdvancedChallengeSwitchThisRun = 5,
+		RequiredMaxStackUpgradeChallengeSwitchThisRun = 3,
+	},
+}
+
+OlympusObstacleData.MakariaGiftDropChallengeSwitch =
+{
+	InheritFrom = { "ChallengeSwitch" },
+	UseText = "UseChallengeSwitch_Locked",
+	ChallengeText = "ChallengeSwitch_GiftDropValue",
+	ChallengeAvailableUseText = "UseGiftDropChallengeSwitch_Unlocked",
+	ChallengeResolvedUseText = "UseChallengeSwitch_GiftDropRewardAvailable",
+	RewardMultiplier = 0.3,
+	RewardType = "GiftDrop",
+	IntervalMultiplier = 0.8,
+	DifficultyModifier = 1.8,
+	Requirements =
+	{
+		RequiredTrait = "TroveUpgradeBoonTrait",
+		RequiredCosmetics = { "ChallengeSwitches1" },
+		RequiredMaxAdvancedChallengeSwitchThisRun = 5,
+		RequiredMaxGiftDropChallengeSwitchThisRun = 1,
+	},
+}
+
+local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
+ModUtil.Table.Merge(OlympusEncounterSets.ChallengeOptions, {
+	--[["MakariaMoneyChallengeSwitch",
+	"MakariaMoneyChallengeSwitch2",
+	"MakariaMoneyChallengeSwitch3",
+	"MakariaHealthChallengeSwitch",
+	"MakariaHealthChallengeSwitch2",
+	"MakariaHealthChallengeSwitch3",
+	"MakariaDarknessChallengeSwitch",
+	"MakariaDarknessChallengeSwitch2",
+	"MakariaDarknessChallengeSwitch3",
+	"MakariaGemChallengeSwitch",
+	"MakariaGemChallengeSwitch2",
+	"MakariaGemChallengeSwitch3",]]
+	"MakariaExtraChanceChallengeSwitch",
+	"MakariaBoonChallengeSwitch",
+	"MakariaCentaurHeartChallengeSwitch",
+	"MakariaStackUpgradeChallengeSwitch",
+	"MakariaGiftDropChallengeSwitch",
+})

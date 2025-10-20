@@ -415,7 +415,7 @@
 		// Makaria God Manager
 		{
 			Id = "GodManagerMenu_OverheadText"
-			DisplayName = "Keepsakes"
+			DisplayName = "Stone of Banishment"
 		}
 		{
 			Id = "UseGodManagerMenu"
@@ -423,16 +423,86 @@
 		}
 		{
 			Id = "GodManagerMenu_Title"
-			DisplayName = "Keepsakes"
+			DisplayName = "Stone of Banishment"
 		}
 		{
 			Id = "GodManagerMenu_SubTitle"
-			DisplayName = "“Here, Even Mortal Companionship Can Be Eternal”"
+			DisplayName = "“Gods will forget about you, unless you choose to”"
 		}
 		{
 			Id = "Available_GiftPoints"
 			DisplayName = "{$TempTextData.Amount}{!Icons.GiftPointSmall}"
 			OverwriteLocalization = true
+		}
+		{
+			Id = "FreeExilMessage"
+			DisplayName = "{$TempTextData.NumExil} Free Purchase"
+		}
+		// Makaria Keepsake
+		{
+			Id = "ChallengeSwitch_ExtraChanceValue"
+			DisplayName = "{$Amount}{!Icons.ExtraChance}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ChallengeSwitch_BoonValue"
+			DisplayName = "{$Amount}{!Icons.RandomLootSmall}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ChallengeSwitch_CentaurHeartValue"
+			DisplayName = "{$Amount}{!Icons.GiftPointSmall}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ChallengeSwitch_StackUpgradeValue"
+			DisplayName = "{$Amount}{!Icons.PomSmall}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "ChallengeSwitch_GiftDropValue"
+			DisplayName = "{$Amount}{!Icons.GiftPoint}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "UseExtraChanceChallengeSwitch_Unlocked"
+			DisplayName = "{I} {#UseTextChallengeFormat}Trove Trial: {#PreviousFormat}Challenge for {#UseShrinePointFormat}{!Icons.ExtraChance}"
+		}
+		{
+			Id = "UseBoonChallengeSwitch_Unlocked"
+			DisplayName = "{I} {#UseTextChallengeFormat}Trove Trial: {#PreviousFormat}Challenge for {#UseShrinePointFormat}{!Icons.RandomLootSmall}"
+		}
+		{
+			Id = "UseCentaurHeartChallengeSwitch_Unlocked"
+			DisplayName = "{I} {#UseTextChallengeFormat}Trove Trial: {#PreviousFormat}Challenge for {#UseShrinePointFormat}{!Icons.ExtraChance}"
+		}
+		{
+			Id = "UseStackUpgradeChallengeSwitch_Unlocked"
+			DisplayName = "{I} {#UseTextChallengeFormat}Trove Trial: {#PreviousFormat}Challenge for {#UseShrinePointFormat}{!Icons.PomSmall}"
+		}
+		{
+			Id = "UseGiftDropChallengeSwitch_Unlocked"
+			DisplayName = "{I} {#UseTextChallengeFormat}Trove Trial: {#PreviousFormat}Challenge for {#UseShrinePointFormat}{!Icons.GiftPoint}"
+		}
+		{
+			Id = "UseChallengeSwitch_ExtraChanceRewardAvailable"
+			DisplayName = "{I} Claim {!Icons.ExtraChance}"
+		}
+		{
+			Id = "UseChallengeSwitch_BoonRewardAvailable"
+			DisplayName = "{I} Claim {!Icons.RandomLootSmall}"
+		}
+		{
+			Id = "UseChallengeSwitch_CentaurHeartRewardAvailable"
+			DisplayName = "{I} Claim {!Icons.ExtraChance}"
+		}
+		{
+			Id = "UseChallengeSwitch_StackUpgradeRewardAvailable"
+			DisplayName = "{I} Claim {!Icons.PomSmall}"
+		}
+		{
+			Id = "UseChallengeSwitch_GiftDropRewardAvailable"
+			DisplayName = "{I} Claim {!Icons.GiftPoint}"
 		}
     ]
 }

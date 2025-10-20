@@ -1391,6 +1391,84 @@ ModUtil.Path.Wrap("IsGameStateEligible",
             if requirements.RequiredChallengeSwitchInRoom ~= nil and CurrentRun.CurrentRoom.ChallengeSwitch == nil then
                 return false
             end
+            -- For Makaria Checks
+            if requirements.RequiredMaxAdvancedChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                local count = CurrentRun.SwitchChallengeReward.ExtraChance + CurrentRun.SwitchChallengeReward.Boon + CurrentRun.SwitchChallengeReward.CentaurHeart + CurrentRun.SwitchChallengeReward.StackUpgrade + CurrentRun.SwitchChallengeReward.GiftDrop
+                if count >= requirements.RequiredMaxAdvancedChallengeSwitchThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxExtraChanceChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                if CurrentRun.SwitchChallengeReward.ExtraChance >= requirements.RequiredMaxExtraChanceChallengeSwitchThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxBoonChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                if CurrentRun.SwitchChallengeReward.Boon >= requirements.RequiredMaxBoonChallengeSwitchThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxCentaurHeartChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                if CurrentRun.SwitchChallengeReward.CentaurHeart >= requirements.RequiredMaxCentaurHeartChallengeSwitchThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxStackUpgradeChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                if CurrentRun.SwitchChallengeReward.StackUpgrade >= requirements.RequiredMaxStackUpgradeChallengeSwitchThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxGiftDropChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                if CurrentRun.SwitchChallengeReward.GiftDrop >= requirements.RequiredMaxGiftDropChallengeSwitchThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxChallengeSwitchQuestItemThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
+                local count = CurrentRun.SwitchChallengeReward.QuestItemTartarus + CurrentRun.SwitchChallengeReward.QuestItemAsphodel + CurrentRun.SwitchChallengeReward.QuestItemElysium + CurrentRun.SwitchChallengeReward.QuestItemStyx
+                if count >= requirements.RequiredMaxChallengeSwitchQuestItemThisRun then
+                    return false
+                end
+            end
+            if requirements.RequiredMinChallengeSwitchQuestItemTartarus ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus < requirements.RequiredMinChallengeSwitchQuestItemTartarus then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxChallengeSwitchQuestItemTartarus ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus >= requirements.RequiredMaxChallengeSwitchQuestItemTartarus then
+                    return false
+                end
+            end
+            if requirements.RequiredMinChallengeSwitchQuestItemAsphodel ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus < requirements.RequiredMinChallengeSwitchQuestItemAsphodel then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxChallengeSwitchQuestItemAsphodel ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus >= requirements.RequiredMaxChallengeSwitchQuestItemTartarus then
+                    return false
+                end
+            end
+            if requirements.RequiredMinChallengeSwitchQuestItemElysium ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus < requirements.RequiredMinChallengeSwitchQuestItemElysium then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxChallengeSwitchQuestItemElysium ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus >= requirements.RequiredMaxChallengeSwitchQuestItemTartarus then
+                    return false
+                end
+            end
+            if requirements.RequiredMinChallengeSwitchQuestItemStyx ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus < requirements.RequiredMinChallengeSwitchQuestItemStyx then
+                    return false
+                end
+            end
+            if requirements.RequiredMaxChallengeSwitchQuestItemStyx ~= nil and GameState.CompletedSwitchChallengeReward ~= nil then
+                if GameState.CompletedSwitchChallengeReward.QuestItemTartarus >= requirements.RequiredMaxChallengeSwitchQuestItemTartarus then
+                    return false
+                end
+            end
             --[[if requirements.RequiredDidNoDamageRun ~= nil then
                 if CurrentRun.CurrentRoom.PerfectEncounterCleared then
                     return false

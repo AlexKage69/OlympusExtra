@@ -1,19 +1,7 @@
---[[ModUtil.Path.Wrap( "BeginOpeningCodex", 
-		function(baseFunc)
-			-- if (not CanOpenCodex()) and IsSuperValid() then
-			-- 	BuildSuperMeter(CurrentRun, 50)
-			-- end
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString.Deep(GiftOrdering)) 
-			--CreateLoot({ Name = "HephaestusUpgrade", SpawnPoint = CurrentRun.Hero.ObjectId } )
-			--baseFunc()
-			--StartUpGodManagerMenu({})
-		end
-	)]]
-	
-	GodOrderingReverseLookup = {} -- Auto Generate on open page ; GodOrdering is in GenerateGodOrderingReverseLookup
+GodOrderingReverseLookup = {} -- Auto Generate on open page ; GodOrdering is in GenerateGodOrderingReverseLookup
 OnUsed { "OlympianTablet",
 	function(triggerArgs)
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Open Tablet"))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Open Tablet"))
 		if CurrentRun.CurrentRoom.BlockKeepsakeMenu and not CanFreeSwapKeepsakes() then
 			CannotUseRackPresentation(triggerArgs.triggeredById)
 			return
@@ -61,6 +49,7 @@ end
 -- Dual Choices
 OlympusGiftData.HermesUpgrade[4] = { UnlockExiledData = {Name = "HermesUpgrade",RequiredTextLine = "HermesFirstPickUp", DualGod = {Name = "HephaestusUpgrade", RequiredTextLine = "HephaestusFirstPickUp", IsDualGodOf = "HermesUpgrade"}}}
 OlympusGiftData.TrialUpgrade[4] = { UnlockExiledData = {Name = "TrialUpgrade",RequiredTextLine = "ChaosFirstPickUp", DualGod = {Name = "QuestUpgrade", RequiredTextLine = "GaiaFirstPickUp", IsDualGodOf = "TrialUpgrade"}}}
+OlympusGiftData.TrialUpgrade[4] = { UnlockExiledData = {Name = "RoomChallenge",RequiredTextLine = "ChaosFirstPickUp", DualGod = {Name = "CauldronRoom", RequiredTextLine = "GaiaFirstPickUp", IsDualGodOf = "TrialUpgrade"}}}
 
 local OlympusObjectiveSetData = ModUtil.Entangled.ModData(ObjectiveSetData)
 OlympusObjectiveSetData.OlympianTabletPrompt =
@@ -106,16 +95,13 @@ function GetExilData()
 	return GameState.ExilData
 end
 LockAt = 3
+CostButtonTable = {}
 function GetMaxLock()
 	return math.floor(TableLength(UIData.GodManagerMenu.AvailableExiledGods.Single)/LockAt)
 end
-function GetNextCost()
+function GetCurrentCost()
 	local exilData = GetExilData()
 	return math.floor((TableLength(exilData.ExiledGodUnlocks))/LockAt) 
-end
-function GetCurrentLock()
-	local exilData = GetExilData()
-	return math.floor((TableLength(exilData.ExiledGodUnlocks))/LockAt)
 end
 function EquipLastExiledGods(eventSource, hero)
 	local existingHero = CurrentRun.Hero or hero
@@ -221,7 +207,7 @@ function StartUpGodManagerMenu(GodManagerMenuObject)
 		thread(MarkObjectiveComplete, "OlympianTabletPrompt")
 	end
 end
-
+-- should get 3 free gods. then you can pay nectar and ambrosia to unlock the rest. only gods with gift04 can be
 function ShowGodManagerMenu()
 	if IsScreenOpen("GodManagerMenu") then
 		return
@@ -257,13 +243,30 @@ function ShowGodManagerMenu()
 	PlaySound({ Name = "/SFX/Menu Sounds/GeneralWhooshMENU" })
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/ChestOpen" })
 
-	-- Nectar Available
-	if GameState.LifetimeResourcesGained.GiftPoints ~= nil and GameState.LifetimeResourcesGained.GiftPoints > 0 then
-		components.CurrentGift = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
-		CreateTextBox({ Id = components.CurrentGift.Id,
-			Text = "Available_GiftPoints",
+	-- Nectar and Ambrosia Available3
+	local FreeExilMessageText = " "
+	local CurrentGiftText = " "
+	local CurrentSuperGiftText = " "
+	if GetCurrentCost() == 0 then
+		FreeExilMessageText = "FreeExilMessage"
+	else if GameState.LifetimeResourcesGained.GiftPoints ~= nil and GameState.LifetimeResourcesGained.GiftPoints > 0 then
+			CurrentGiftText = "Available_GiftPoints"
+		end
+		if GameState.LifetimeResourcesGained.SuperGiftPoints ~= nil and GameState.LifetimeResourcesGained.SuperGiftPoints > 0 then
+			CurrentSuperGiftText = "Available_SuperGiftPoints"
+		end
+	end
+		local exilData = GetExilData()
+	components.FreeExilMessage = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
+		CreateTextBox({ Id = components.FreeExilMessage.Id, Text = FreeExilMessageText, FontSize = 24,
+			OffsetX = -400, OffsetY = -365, Color = Color.White, Font = "SpectralSCLight",
+			ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 1}, Justification = "Center", LuaKey = "TempTextData", LuaValue = { NumExil = LockAt-TableLength(exilData.ExiledGodUnlocks) } })	
+		
+	components.CurrentGift = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
+	CreateTextBox({ Id = components.CurrentGift.Id,
+			Text = CurrentGiftText,
 			FontSize = 24,
-			OffsetX = -400, 
+			OffsetX = -415, 
 			OffsetY = -365,
 			Color = Color.White,
 			Font = "AlegreyaSansSCRegular",
@@ -274,7 +277,21 @@ function ShowGodManagerMenu()
 			LuaKey = "TempTextData",
 			LuaValue = { Amount = tostring(GameState.Resources.GiftPoints)}
 		})
-	end
+		components.CurrentSuperGift = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
+		CreateTextBox({ Id = components.CurrentSuperGift.Id,
+				Text = CurrentSuperGiftText,
+				FontSize = 24,
+				OffsetX = -335, 
+				OffsetY = -365,
+				Color = Color.White,
+				Font = "AlegreyaSansSCRegular",
+				ShadowBlur = 0,
+				ShadowColor = {0,0,0,1},
+				ShadowOffset={0, 2},
+				Justification = "Right",
+				LuaKey = "TempTextData",
+				LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}
+			})
 	--Title
 	local title = "Olympian Tablet"
 	local subtitle = "Exil gods and goddesses."
@@ -291,14 +308,11 @@ function ShowGodManagerMenu()
 		Attach({ Id = components["ExilIcon"..i].Id, DestinationId = components.Background.Id, OffsetX = 300 + (i*50), OffsetY = -355 })
 		SetScale({Id = components["ExilIcon"..i].Id, Fraction = 2.0})
 		SetAnimation({ DestinationId = components["ExilIcon"..i].Id, Name = "LockedIcon" })
-		if GetCurrentLock() <= (i-1) then
+		if GetCurrentCost() <= (i-1) then
 			SetColor({ Id = components["ExilIcon"..i].Id, Color = { 0.15, 0.15, 0.15, 1.0 } })
 		end
 	end
 	--Start Table
-	components.ExilNum = CreateTextBox({ Id = components.Background.Id, Text = "0", FontSize = 19,
-	OffsetX = 400, OffsetY = -345, Width = 840, Color = Color.SubTitle, Font = "CrimsonTextItalic",
-	ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 1}, Justification = "Center" })
 	local spacerX = 150
 	local spacerY = 150
 	local startX = 700
@@ -586,24 +600,24 @@ function CreateExiledGodIcon(components, args)
 			if not IsGodUnlockedForExil(god.Name) then -- God is still locked
 				SetColor({ Id = components[buttonKey].Id, Color = { 0.15, 0.15, 0.15, 1.0 } })
 				if god.DualGod ~= nil or god.IsDualGodOf ~= nil then
-					if god.DualGod == nil then
-					components[buttonKey .. "Cost"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
-					Attach({ Id = components[buttonKey .. "Cost"].Id, DestinationId = components[buttonKey].Id, OffsetX = -30, OffsetY = 52 })
-					CreateTextBox({ Id = components[buttonKey .. "Cost"].Id,
-						Text = "SuperGiftPointCost",
-						FontSize = 24,
-						OffsetX = 0, 
-						OffsetY = 0,
-						Color = Color.White,
-						Font = "AlegreyaSansSCRegular",
-						ShadowBlur = 0,
-						ShadowColor = {0,0,0,1},
-						ShadowOffset={0, 2},
-						Justification = "Right",
-						LuaKey = "TempTextData",
-						LuaValue = { Amount = tostring(1)}
-					})		
-					end
+					--[[if god.DualGod == nil then
+						components[buttonKey .. "Cost"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
+						Attach({ Id = components[buttonKey .. "Cost"].Id, DestinationId = components[buttonKey].Id, OffsetX = -30, OffsetY = 52 })
+						CreateTextBox({ Id = components[buttonKey .. "Cost"].Id,
+							Text = "SuperGiftPointCost",
+							FontSize = 24,
+							OffsetX = 0, 
+							OffsetY = 0,
+							Color = Color.White,
+							Font = "AlegreyaSansSCRegular",
+							ShadowBlur = 0,
+							ShadowColor = {0,0,0,1},
+							ShadowOffset={0, 2},
+							Justification = "Right",
+							LuaKey = "TempTextData",
+							LuaValue = { Amount = tostring(1)}
+						})		
+					end]]
 				else
 					components[buttonKey .. "Cost"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
 					Attach({ Id = components[buttonKey .. "Cost"].Id, DestinationId = components[buttonKey].Id, OffsetX = 25, OffsetY = 52 })
@@ -619,12 +633,13 @@ function CreateExiledGodIcon(components, args)
 						ShadowOffset={0, 2},
 						Justification = "Right",
 						LuaKey = "TempTextData",
-						LuaValue = { Amount = tostring(GetNextCost())}
+						LuaValue = { Amount = tostring(GetCurrentCost())}
 					})		
+					table.insert(CostButtonTable, components[buttonKey .. "Cost"].Id)
 				end						
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Unpaid God:"..god.Name..":"..localx..";"..localy))
 			elseif IsGodExiled(god.Name) then -- God Unlocked and Selected
-				SetAlpha({ Id = iconId, Fraction = 1.0 })
+				--SetAlpha({ Id = iconId, Fraction = 1.0 })
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Selected ban:"..god.Name))
 				components[buttonKey .. "Lock"] = CreateScreenComponent({ Name = "BlankObstacle", Group ="Combat_Menu" })
 				Attach({ Id = components[buttonKey .. "Lock"].Id, DestinationId = components[buttonKey].Id, OffsetX = 0, OffsetY = 0 })
@@ -903,26 +918,6 @@ function CloseGodMenuScreen(screen, button)
 	if ScreenAnchors.GodManagerMenuScreen.LastTrait ~= GameState.LastAwardTrait then
 		UnequipKeepsake(CurrentRun.Hero, ScreenAnchors.GodManagerMenuScreen.LastTrait)
 		EquipKeepsake(CurrentRun.Hero, GameState.LastAwardTrait)
-
-		--[[if not CanFreeSwapKeepsakes() then
-			if CurrentRun.BlockedKeepsakes == nil then
-				CurrentRun.BlockedKeepsakes = {}
-			end
-			CurrentRun.CurrentRoom.BlockKeepsakeMenu = true
-			table.insert(CurrentRun.BlockedKeepsakes, ScreenAnchors.GodManagerMenuScreen.LastTrait)
-
-			if GameState.LastAwardTrait == "BonusMoneyTrait" then
-				AddMoney(GetTotalHeroTraitValue("BonusMoney"), "Bonus Money Keepsake")
-			end
-
-			if CurrentRun.CurrentRoom.GodManagerMenuObject then
-				CurrentRun.CurrentRoom.GodManagerMenuObject.UseText = "UseLockedOlympianTablet"
-				SetAnimation({ Name = "OlympianTabletClosed", DestinationId = CurrentRun.CurrentRoom
-				.GodManagerMenuObject.ObjectId })
-				PlaySound({ Name = RoomData.BaseRoom.LockedUseSound, Id = CurrentRun.CurrentRoom.GodManagerMenuObject
-				.ObjectId })
-			end
-		end]]
 		thread(PlayVoiceLines, GlobalVoiceLines.AwardSelectedVoiceLines, false)
 	end
 
@@ -948,7 +943,7 @@ function HandleExiledToggle(screen, button, textOverride)
 	local exilData = GetExilData()
 	if IsLootDataIconAvailable(lootData) then
 		if not IsGodAvailableForExil(god) then -- Unknown
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Click Unknown:"..god.Name))
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Click Unknown:"..god.Name))
 			return
 		else -- Known god
 			if not IsGodUnlockedForExil(god.Name) then -- God is still locked
@@ -961,49 +956,16 @@ function HandleExiledToggle(screen, button, textOverride)
 				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Unselect:"..god.Name))
 				RemoveExiledGod(screen,button)
 			else -- God Unlocked and Not Selected
-				if GetCurrentLock() > TableLength(exilData.CurrentExiledGods) then -- Can add god
+				if GetCurrentCost() > TableLength(exilData.CurrentExiledGods) then -- Can add god
 					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Add:"..god.Name))
 					AddExiledGod(screen,button)
 				else -- Already full
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Can't Add:"..god.Name))
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Shake the locks"))
 					thread( PlayVoiceLines, GlobalVoiceLines.CombatResolvedLowHealthVoiceLines, true )
 				end
 			end
 		end
-	else
 	end
-	--[[if IsExiledGodUnlocked( godName ) then -- Toggle if unlocked
-		-- equip weapon upgrade
-		--if itemIndex ~= lastEquippedIndex then
-			SelectExiledGod( screen, godName)
-			UpdateExiledGodButtons( buttonKey, godName )
-		--end
-	elseif CanUnlockExiledGod(godName) and HasResource( "GiftPoints", 1 ) then -- Buy out
-		SpendResource( "GiftPoints", 1, "ExiledGodsUnlock" )
-		--UnlockOrIncreaseWeaponUpgrade( screen, weaponName, itemIndex )
-
-		Flash({ Id = button.Id, Speed = 1, MinFraction = 1, MaxFraction = 0.0, Color = Color.White, ExpireAfterCycle = true })
-		CreateAnimation({ Name = "BoonGet", DestinationId = button.Id, Scale = 1.0, GroupName = "Combat_Menu_TraitTray_Additive", Color = Color.Red, OffsetX = -500 })
-		PlaySound({ Name = "/Leftovers/Menu Sounds/TeamWipe2" })
-		PlaySound({ Name = "/Leftovers/SFX/AnnouncementThunder" })
-		thread( PlayVoiceLines, GlobalVoiceLines.UpgradedWeaponUpgradePurchasedVoiceLines, true )
-		--SetColor({ Id = ScreenAnchors.WeaponUpgradeScreen.Components["PurchaseButton" ..itemIndex.."Icon"].Id, Color = Color.White })
-		--SetAnimation({ DestinationId = ScreenAnchors.WeaponUpgradeScreen.Components["LockIcon" .. itemIndex].Id, Name = "LockedIconReleaseWeapon" })
-		--UpdateWeaponUpgradeButtons( weaponName, lastEquippedIndex )
-		--ShowNextUpgrade( button )
-		UnlockExiledGod(screen, godName)
-		UpdateExiledGodButtons( buttonKey, godName )
-	--[[elseif not IsExiledGodUnlocked(weaponName, itemIndex) and HasResource( "SuperLockKeys", GetNextWeaponUpgradeKeyCost( weaponName, itemIndex ) ) and not IsBuyWeaponUpgradeDisabled( weaponName, itemIndex ) then
-		local components = ScreenAnchors.WeaponUpgradeScreen.Components
-		Flash({ Id = components[button.UpgradeButtonKey].Id, Speed = 2, MinFraction = 1, MaxFraction = 0.0, Color = Color.CostCantPurchase, ExpireAfterCycle = true })
-		PlaySound({ Name = "/Leftovers/SFX/OutOfAmmo" })
-	else
-		Flash({ Id = button.Id, Speed = 2, MinFraction = 1, MaxFraction = 0.0, Color = Color.CostUnaffordable, ExpireAfterCycle = true })
-		PlaySound({ Name = "/Leftovers/SFX/OutOfAmmo" })
-		if CheckCountInWindow( "TriedUnlock", 1.0, 3 ) then
-			thread( PlayVoiceLines, HeroVoiceLines.WeaponUpgradeLockedVoiceLines, true )
-		end
-	end]]
 end
 function IsLootDataIconAvailable(lootData)
 	return lootData ~= nil and lootData.BoonInfoIcon
@@ -1023,16 +985,40 @@ end
 function UnlockExiledGod( screen, button )
 	local exilData = GetExilData()
 	exilData.ExiledGodUnlocks[button.Data.Name] = true
-	SpendResource( "GiftPoints", 1, "ExiledGodUnlock" )
 
 	--wait(0.3)
 	local components = screen.Components
 	-- To all buttons....
-	ModifyTextBox({ Id = components[button.ButtonKey.."Cost"].Id, Text = "GiftPointCost", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GetNextCost()) }})
-	RefreshLockIcons(screen)
-	Destroy({ Id = components[button.ButtonKey.."Cost"].Id })
-	SetColor({ Id = components[button.ButtonKey].Id, Color = { 1.0, 1.0, 1.0, 1.0 } })
+	if GetCurrentCost() == 0 then
+		ModifyTextBox({ Id = components.FreeExilMessage.Id, Text = "FreeExilMessage", LuaKey = "TempTextData", LuaValue = { NumExil = LockAt-TableLength(exilData.ExiledGodUnlocks) }})
+		Destroy({ Id = components[button.ButtonKey.."Cost"].Id })
+	else
+		SpendResource( "GiftPoints", GetCurrentCost(), "ExiledGodUnlock" )
+		ModifyTextBox({ Id = components.FreeExilMessage.Id, Text = " "})
+		if GameState.LifetimeResourcesGained.GiftPoints ~= nil and GameState.LifetimeResourcesGained.GiftPoints > 0 then
+			ModifyTextBox({Id = components.FreeExilMessage.Id, Text = "Available_GiftPoints", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GameState.Resources.GiftPoints)}})
+		end
+		if GameState.LifetimeResourcesGained.SuperGiftPoints ~= nil and GameState.LifetimeResourcesGained.SuperGiftPoints > 0 then
+			ModifyTextBox({Id = components.FreeExilMessage.Id, Text = "Available_SuperGiftPoints", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}})
+		end		
+		if components[button.ButtonKey.."Cost"].Id ~= nil then
+			local indexToRemove = -1
+			for index, id in ipairs( CostButtonTable ) do
+				if id == components[button.ButtonKey.."Cost"].Id then
+					indexToRemove = index
+					Destroy({ Id = components[button.ButtonKey.."Cost"].Id })					
+				else
+					ModifyTextBox({ Id = id, Text = "GiftPointCost", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GetCurrentCost()) }})
+				end
+			end
+			if indexToRemove >= 0 then
+				table.remove(CostButtonTable,indexToRemove)
+			end
+		end
 	end
+	RefreshLockIcons(screen)
+	SetColor({ Id = components[button.ButtonKey].Id, Color = { 1.0, 1.0, 1.0, 1.0 } })
+end
 function AddExiledGod( screen, button )
 	local exilData = GetExilData()
 	exilData.CurrentExiledGods[button.Data.Name] = true
@@ -1052,7 +1038,7 @@ end
 function RefreshLockIcons( screen )
 	local components = screen.Components
 	for i = 1, GetMaxLock() do
-		if GetCurrentLock() <= (i-1) then
+		if GetCurrentCost() <= (i-1) or TableLength(GetExilData().CurrentExiledGods) >= i then
 			SetColor({ Id = components["ExilIcon"..i].Id, Color = { 0.15, 0.15, 0.15, 1.0 } })
 		else
 			SetColor({ Id = components["ExilIcon"..i].Id, Color = { 1.0, 1.0, 1.0, 1.0 } })

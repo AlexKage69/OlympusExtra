@@ -1,4 +1,3 @@
-
 function SpawnExtraNPCs(eventSource, args)
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnExtraNPCs")) 	
 	local obstacleId = GetFirstValue(GetInactiveIdsByType({ Name = args.Name }))
@@ -102,6 +101,7 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
 		end
+		AddTraitToHero({ TraitName = "TemporaryForcedChallengeSwitchTrait" })
 		--ActivateRotatingNPCs({},{Types={"NPC_Moros_01"}})
 		--ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })
