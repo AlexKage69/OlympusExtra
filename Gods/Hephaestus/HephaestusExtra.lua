@@ -2516,7 +2516,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "SwordWeapon",
-
+				RequiredTrait = "SwordConsecrationTrait",
 				{ Cue = "/VO/Hephaestus_0089",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "That's a mighty unique sword you got there. I thought only a king could wield the thing. Hmph, who would know Prince of the Underworld qualified as 'worthy'. " },
@@ -2528,7 +2528,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "SpearWeapon",
-
+				RequiredTrait = "SpearSpinTravel",
 				{ Cue = "/VO/Hephaestus_0090",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The ferocity of a {#DialogueItalicFormat}Guandao{#PreviousFormat}. We don't see these very often 'round these parts. Did you get a special delivery or something?" },
@@ -2540,7 +2540,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "ShieldWeapon",
-
+				RequiredTrait = "ShieldLoadAmmoTrait",
 				{ Cue = "/VO/Hephaestus_0091",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Who needs a weapon, when you can just use a shield like that? Legends says you can withstand the blows of many foes with the shield of the stalwart warrior-king. Even dragons!" },
@@ -2552,7 +2552,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "BowWeapon",
-
+				RequiredTrait = "BowBondTrait",
 				{ Cue = "/VO/Hephaestus_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Stringing that bow is no easy task. If you want to defeat your worst demons, you better learn how to use it properly. Many have failed before you." },
@@ -2564,7 +2564,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "FistWeapon",
-
+				RequiredTrait = "FistDetonateTrait",
 				{ Cue = "/VO/Hephaestus_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I don't believe you can achieve more feats of strength than with those gauntlets. I've seen many weapons and this pair handles smoothly like oil on metal. " },
@@ -2576,7 +2576,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "GunWeapon",
-
+				RequiredTrait = "GunLoadedGrenadeTrait",
 				{ Cue = "/VO/Hephaestus_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "That weapon... What a rebellious aura... Such fire suits you well. Blow that place up for me, eh?" },
@@ -3000,7 +3000,7 @@ if ModUtil ~= nil then
 			{
 				Name = "HephaestusMiscPickup02",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp", },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0003",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "My hammer knows no limit. I can forge your blessings with any mineral or material. Let me show you." },
