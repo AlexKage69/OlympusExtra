@@ -9,6 +9,8 @@ local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
+local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
+
 
 OlympusColor.OEMirrorAttribute = { 145, 17, 55, 255 }
 OlympusColor.CastDOTDamage = { 145, 17, 55, 255 }
@@ -331,12 +333,69 @@ table.insert(OlympusMetaUpgradeOrder[9], 3, "EpicBonusMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[10], 3, "RareNPCMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[11], 3, "PomFirstGodMetaUpgrade")
 table.insert(OlympusMetaUpgradeOrder[12], 3, "RerollPomMetaUpgrade")
+
+OlympusQuestData.MirrorCUpgrades =
+	{
+		InheritFrom = { "DefaultQuestItem" },
+		RewardResourceName = "SuperLockKeys",
+		RewardResourceAmount = 8,
+		UnlockGameStateRequirements =
+		{
+			RequiredMinRunsCleared = 1,
+			RequiredTrueFlags = { "SwapMetaupgradesEnabled" },
+			RequiredMetaUpgradeStageUnlocked = 4,
+		},
+		CompleteGameStateRequirements =
+		{
+			RequiredClearedWithMetaUpgrades =
+			{
+				"BackstabMetaUpgrade",
+				"FirstStrikeMetaUpgrade",
+				"DoorHealMetaUpgrade",
+				"DarknessHealMetaUpgrade",
+				"ExtraChanceMetaUpgrade",
+				"ExtraChanceReplenishMetaUpgrade",
+				"StaminaMetaUpgrade",
+				"PerfectDashMetaUpgrade",
+				"StoredAmmoVulnerabilityMetaUpgrade",
+				"StoredAmmoSlowMetaUpgrade",
+				"AmmoMetaUpgrade",
+				"ReloadAmmoMetaUpgrade",
+				"MoneyMetaUpgrade",
+				"InterestMetaUpgrade",
+				"HealthMetaUpgrade",
+				"HighHealthDamageMetaUpgrade",
+				"VulnerabilityEffectBonusMetaUpgrade",
+				"GodEnhancementMetaUpgrade",
+				"RareBoonDropMetaUpgrade",
+				"DuoRarityBoonDropMetaUpgrade",
+				"EpicBoonDropMetaUpgrade",
+				"RunProgressRewardMetaUpgrade",
+				"RerollMetaUpgrade",
+				"RerollPanelMetaUpgrade",
+			},
+		},
+
+		CashedOutVoiceLines =
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.4,
+			Cooldowns =
+			{
+				{ Name = "ZagreusProphecyFulfilledSpeech", Time = 3 },
+			},
+
+			-- The Mirror of Night... it's made me strong.
+			{ Cue = "/VO/ZagreusHome_3000" },
+		},
+	}
 -- Functions
-ModUtil.Path.Wrap("HandleMetaUpgradeInput",
+--[[ModUtil.Path.Wrap("HandleMetaUpgradeInput",
 	function(baseFunc, screen, button)
 		baseFunc(screen, button)
 	end
-)
+)]]
 ModUtil.Path.Wrap("CreateMetaUpgradeEntry",
 	function(baseFunc, args)
 		baseFunc(args)
@@ -362,14 +421,13 @@ ModUtil.Path.Wrap("SwapMetaupgrade",
 		local index = button.Index
 		local itemBackingKey = "Backing" .. index
 		local unlockId = "Locked" .. index
-		local lockIconKey = "LockIcon" .. index
 		local metaUpgradeNextCostKey = "UpgradeCost" .. index
 		local upgradeName = button.Name
 		local components = screen.Components
 		local isSwapToBSide = (MetaUpgradeOrder[index][1] == upgradeName)
-
+			
 		SwapMetaUpgradePresentation(screen, components[itemBackingKey .. "Swap"], isSwapToBSide)
-
+		
 		DestroyTextBox({ Id = components[itemBackingKey].Id })
 		Destroy({ Id = components["Icon" .. index].Id })
 		Destroy({ Id = components["UpgradeValueTotal" .. index].Id })
@@ -378,20 +436,22 @@ ModUtil.Path.Wrap("SwapMetaupgrade",
 		components[unlockId] = nil
 		components[metaUpgradeNextCostKey] = nil
 		components[itemBackingKey .. "Swap"] = nil
-
+			
 		GameState.MetaUpgradeState = GameState.MetaUpgradeState or {}
-
+			
 		local numUpgrades = GetNumMetaUpgrades(upgradeName)
 		GameState.MetaUpgradeState[upgradeName] = numUpgrades
 		for i = 1, numUpgrades, 1 do
 			DecrementTableValue(GameState.MetaUpgrades, upgradeName)
 			ApplyMetaUpgrade(MetaUpgradeData[upgradeName], true, GameState.MetaUpgrades[upgradeName] <= 0, true)
 		end
-
+			
 		local metaupgradeData = nil
 		local takenext = false
 		for i, entryName in pairs(MetaUpgradeOrder[index]) do
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(entryName))
+			if i == 3 and not GameState.Flags.MirrorCEnabled then
+				break
+			end
 			if takenext then
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("true"))
 				metaupgradeData = MetaUpgradeData[entryName]

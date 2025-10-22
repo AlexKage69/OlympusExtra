@@ -53,7 +53,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		MorosFirstMeeting =
 		{
 			Name = "MorosFirstMeeting",
-			PlayOnce = false,
+			PlayOnce = true,
 			UseableOffSource = true,
 			RequiredFalseFlags = { "InFlashback", },
 			--InOffice = true,
@@ -63,32 +63,382 @@ OlympusEnemyData.NPC_Moros_01 =
 					PreLineWait = 0.35,
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
-					-- Not funny.
+					-- Another time, then.
 					{ Cue = "/VO/ZagreusHome_3389" },
 				},
 			},
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Moros? How long has it been? Is my father making you work too much again? I haven't seen you of late." },
+				Text = "Is that you, Moros? I haven't seen you much lately. I assumed you were out collecting souls for my father." },
+			{ Cue = "/VO/Moros_0001", PostLineThreadedFunctionName = "MorosExit", PostLineFunctionArgs = { AnimationState = "NPCMorosExited", WaitTime = 0.35, },
+				Text = "Unfortunately, Prince, that is not the case. Lord Hades assigned me to the archive. Now, if you'll excuse me; there's much to do." },
+		},
+		MorosGrantMirror =
+		{
+			Name = "MorosGrantMirror",
+			PlayOnce = true,
+			Priority = true,
+			UseableOffSource = true,
+			RequiredFalseFlags = { "InFlashback", },
+			RequiredTextLines = { "NyxGrantsRespec", "MorosFirstMeeting" },
+			RequiredCosmetics = { "QuestLog", "OfficeDoorUnlockItem" },
+			RequiredAccumulatedMetaPoints = 600, 
+			RequiredMinNPCInteractions = { NPC_Nyx_01 = 1 , NPC_Moros_01 = 1},
+			--InOffice = true,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I don't know what to say. I'm sure it will help.
+					{ Cue = "/VO/ZagreusHome_3389" },
+				},
+			},
+			{ Cue = "/VO/Nyx_4000", Portrait = "Portrait_Nyx_Default_01", Speaker = "NPC_Nyx_01", PreLineWait = 0.35,
+					PreLineAnim = "NyxIdleGreeting", PreLineAnimTarget = 370010,
+				Text = "Come, child. Moros has something to discuss with you. Moros?" },
 			{ Cue = "/VO/Moros_0001",
-				Text = "Prince! Your father does nothing of the sort. Archive needs to be manage. Therefort here I am. " },
-			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				Text = "As I was archiving the recent deaths, I couldn't help but notice a specific pile increasing in height alarmingly fast. Imagine my surprise when I found it to belong to a certain Underworld Prince. Don't worry - it is my duty, it is no problem. However; I believe I can help you achieve your goal. Whatever that goal is. Nobody has properly filled me in on that." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Still seems like a lot of effort to be working in the archive all the time. You could say you were send to your doom" },
+				Text = "Help is always welcome. But how? It would be convenient if you were able to bring me with you to one of your trips to the surface." },
+			{ Cue = "/VO/Moros_0001",
+				Text = "Sorry to dissappoint you, Prince, but Lord Hades would never allow such a thing. No, my help would reach you through a certain tool which I believe has already helped you greatly... the Mirror of Night." },
+			{ Cue = "/VO/Nyx_4000", Portrait = "Portrait_Nyx_Default_01", Speaker = "NPC_Nyx_01", PreLineWait = 0.35,
+					PreLineAnim = "NyxIdleGreeting", PreLineAnimTarget = 370010, PostLineThreadedFunctionName = "EnableMirrorCSwap",
+					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.7 },
+				Text = "Moros' suggestion intrigued me. I already added the adjustments to it. Hopefully, both of you will gain something from this." },
 		},
+		--[[MorosAboutOfficeUnlock =
+		{
+			Name = "MorosAboutOfficeUnlock",
+			PlayOnce = true,
+			Priority = true,
+			UseableOffSource = true,
+			RequiredTextLines = { "MorosFirstMeeting" },
+			RequiredCosmetics = { "OfficeDoorUnlockItem" },
+			--InOffice = true,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I don't know what to say. I'm sure it will help.
+					{ Cue = "/VO/ZagreusHome_3389" },
+				},
+			},
+			{ Cue = "/VO/Moros_0001",
+				Text = "I've heard you were granted back access to the administrative chamber. Congratulations, Prince. I look forward to working with you. While on that topic, I have just received the final copies of the latest arrivals of Shades-" },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Help is always welcome. But how? It would be convenient if you were able to bring me with you to one of your trips to the surface." },
+			{ Cue = "/VO/Moros_0001",
+				Text = "Sorry to dissappoint you, Prince, but Lord Hades would never allow such a thing. No, my help would reach you through a certain tool which I believe has already helped you greatly... the Mirror of Night." },
+			{ Cue = "/VO/Nyx_4000", Portrait = "Portrait_Nyx_Default_01", Speaker = "NPC_Nyx_01", PreLineWait = 0.35,
+					PreLineAnim = "NyxIdleGreeting", PreLineAnimTarget = 370010, PostLineThreadedFunctionName = "EnableMirrorCSwap",
+					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.7 },
+				Text = "Moros' suggestion intrigued me. I already added the adjustments to it. Hopefully, both of you will gain something from this." },
+		}]]
+		MorosPreGrantsMirror =
+		{
+			Name = "MorosPreGrantsMirror",
+			PlayOnce = true,
+			Priority = true,
+			UseableOffSource = true,
+			RequiredTextLines = { "MorosFirstMeeting", "NyxGrantsRespec" },
+			RequiredFalseTextLines = { "MorosGrantMirror" },
+			--InOffice = true,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I don't know what to say. I'm sure it will help.
+					{ Cue = "/VO/ZagreusHome_3389" },
+				},
+			},
+			{ Cue = "/VO/Moros_0001",
+				Text = "My Prince... Can I talk to you about something? I am not sure how to bring it up..." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "What's up Moros? You look bothered by something. Have I done something wrong?" },
+			{ Cue = "/VO/Moros_0001",
+				Text = "Well, yes... and no... You see, ever since you started going to the surface you've been... dying... more than usual. The amount of paperwork that's been piling on me is now doubled, logging all your vain efforts to escape. Maybe if you could die less often..." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Oh, I didn't know you've been record all my escape attempts. I suppose I'll make sure I get out this time." },
+		},
+		MorosHomeRunProgress02 =
+		{
+			Name = "MorosHomeRunProgress02",
+			PlayOnce = true,
+			Priority = true,
+			UseableOffSource = true,		
+			RequiredTextLines = { "MorosFirstMeeting" },
+			RequiredTextLinesThisRun = { "PersephoneFirstMeeting" },
+			--InOffice = true,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I expect no less from you.
+					{ Cue = "/VO/ZagreusHome_3389" },
+				},
+			},
+			{ Cue = "/VO/Moros_0001",
+				Text = "I couldn't believe my last report. You've made it out, Prince Zagreus. But I heard that the harsh enviornement got the better of you." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Death by exposure... I didn't even think I could die that way. But it won't stop me from returning. I have unfinished business at the surface." },
+		},
+		MorosHomeRunProgress01 =
+		{
+			Name = "MorosHomeRunProgress01",
+			PlayOnce = true,
+			UseableOffSource = true,		
+			RequiredMinCompletedRuns = 10,
+			RequiredTextLines = { "MorosFirstMeeting" },
+			RequiredFalseTextLines = {  "PersephoneFirstMeeting" },
+			--InOffice = true,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I don't know what to say. I'm sure it will help.
+					{ Cue = "/VO/ZagreusHome_3389" },
+				},
+			},
+			{ Cue = "/VO/Moros_0001",
+				Text = "My Prince... Can I talk to you about something? I am not sure how to bring it up..." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "What's up Moros? You look bothered by something. Have I done something wrong?" },
+			{ Cue = "/VO/Moros_0001",
+				Text = "Well, yes... and no... You see, ever since you started going to the surface you've been... dying... more than usual. The amount of paperwork that's been piling on me is now doubled, logging all your vain efforts to escape. Maybe if you could die less often..." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Oh, I didn't know you've been record all my escape attempts. I suppose I'll make sure I get out this time." },
+		},
+		
 	},
 
 	RepeatableTextLineSets =
 	{
 		MorosChat01 =
 		{
+			Name = "MorosChat01",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Nyx",
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "I have reports, Prince. Not now." },
+		},
+		MorosChat02 =
+		{
+			Name = "MorosChat02",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "I can't talk now. Deadlines to met." },
+		},
+		MorosChat03 =
+		{
+			Name = "MorosChat03",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "I have paperwork. Later, please, Prince." },
+		},
+		MorosChat04 =
+		{
+			Name = "MorosChat04",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "Please excuse me, Lord Hades is waiting for my report." },
+		},
+		MorosChat05 =
+		{
+			Name = "MorosChat05",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "I need to file those. Maybe later." },
+		},
+		MorosChat06 =
+		{
+			Name = "MorosChat06",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "You died again, Zagreus. Let me file that real quick." },
+		},
+		MorosChat07 =
+		{
+			Name = "MorosChat07",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "Let me finish this report and then I'll get back to you." },
+		},
+		MorosChat08 =
+		{
+			Name = "MorosChat08",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "A shade calls. I'll see you soon." },
+		},
+		MorosChat09 =
+		{
+			Name = "MorosChat09",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000", PostLineThreadedFunctionName = "MorosExit", PostLineFunctionArgs = { AnimationState = "NPCMorosExited", WaitTime = 0.35, },
+				Text = "The surface is calling. This will be rather messy." },
+		},
+		MorosChat10 =
+		{
+			Name = "MorosChat10",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Moros_0000",
+				Text = "Well, this is the first time I have to censor a cause of death in my report." },
+		},
+		--[[MorosChat11 =
+		{
+			Name = "MorosChat11",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
 			{ Cue = "/VO/Nyx_0003",
 				Text = "Darkness guide you, child." },
 		},
+		MorosChat12 =
+		{
+			Name = "MorosChat12",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat13 =
+		{
+			Name = "MorosChat13",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat14 =
+		{
+			Name = "MorosChat14",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat15 =
+		{
+			Name = "MorosChat15",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat16 =
+		{
+			Name = "MorosChat16",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat17 =
+		{
+			Name = "MorosChat17",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat18 =
+		{
+			Name = "MorosChat18",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat19 =
+		{
+			Name = "MorosChat19",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat20 =
+		{
+			Name = "MorosChat20",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat21 =
+		{
+			Name = "MorosChat21",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat22 =
+		{
+			Name = "MorosChat22",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat23 =
+		{
+			Name = "MorosChat23",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat24 =
+		{
+			Name = "MorosChat24",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},
+		MorosChat25 =
+		{
+			Name = "MorosChat25",
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			{ Cue = "/VO/Nyx_0003",
+				Text = "Darkness guide you, child." },
+		},]]
 	},
 
 	GiftTextLineSets =
@@ -189,6 +539,15 @@ OlympusEnemyData.NPC_Moros_01 =
 		-- Cheers, Hypnos!
 		{ Cue = "/VO/ZagreusHome_0310" },
 	},
+}
+-- Nyx Partnership
+OlympusEnemyData.NPC_Nyx_01.MorosGrantMirror = 
+{
+	PlayOnce = true,
+	UseableOffSource = true,
+	GiftableOffSource = true,
+	StatusAnimation = false,
+	Skip = true,
 }
 -- Moros activation requirements
 --table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents[17].Args.Types, "NPC_Moros_01")
@@ -351,3 +710,71 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 		SpawnPointId = 370026
 	},
 })
+
+function MorosExit( source, args )
+
+	args = args or {}
+	if args.UseMaxedPresentation then
+		AddInputBlock({ Name = "MorosExit" })
+	end
+	UseableOff({ Id = source.ObjectId })
+	source.CanReceiveGift = false
+	source.InteractTextLineSets = nil
+	wait( args.WaitTime or 0 )
+
+	SetAnimation({ Name = "NPCThanatosExit", DestinationId = source.ObjectId })
+	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = source.ObjectId })
+	SetAlpha({ Id = source.ObjectId, Fraction = 0.0, Duration = 0.35 })
+	AdjustColorGrading({ Name = "Thanatos", Duration = 0.25 })
+
+	if not args.IgnoreMusic then
+		StopSecretMusic( true )
+	end
+
+	source.NextInteractLines = nil
+	RefreshUseButton( source.ObjectId, source )
+	StopStatusAnimation( source )
+
+	if not args.SkipExitReaction then
+		thread( PlayVoiceLines, HeroVoiceLines.ThanatosExitReactionVoiceLines, true )
+	end
+
+	wait( 0.5, RoomThreadName )
+	AdjustColorGrading({ Name = "Off", Duration = 1.35 })
+
+	--[[if args.UseMaxedPresentation then
+		MaxedRelationshipPresentation( source, { Text = "NPC_Thanatos_01", Icon = "Keepsake_ThanatosSticker_Max" } )
+	end]]
+
+	--[[source.Mute = true
+	CurrentRun.EventState[source.ObjectId] = { FunctionName = "ThanatosExitSilent", Args = args }]]
+
+	if args.UseMaxedPresentation then
+		RemoveInputBlock({ Name = "MorosExit" })
+	end
+
+	wait( 1.0, RoomThreadName )
+
+	if ActivatedObjects[source.ObjectId] ~= nil and not CurrentRun.Hero.IsDead then
+		ActivatedObjects[source.ObjectId] = nil
+		wait( 0.2, RoomThreadName )
+		if CheckRoomExitsReady( CurrentRun.CurrentRoom ) then
+			UnlockRoomExits( CurrentRun, CurrentRun.CurrentRoom )
+		end
+	end
+
+end
+
+
+function EnableMirrorCSwap()
+	GameState.Flags.MirrorCEnabled = true
+	wait(0.25)
+	DisplayUnlockText({
+		TitleText = "MetaUpgradeRespec_Unlocked",
+		SubtitleText = "MetaUpgradeRespec_Unlocked_Subtitle",
+		SubtitleData = { LuaKey = "TempTextData", LuaValue = { Name = weaponName }},
+		AnimationName = "LocationTextBGGeneric_Mirror",
+		AnimationOutName = "LocationTextBGGenericOut_Mirror",
+		-- Duration = 4.5,
+	})
+end
