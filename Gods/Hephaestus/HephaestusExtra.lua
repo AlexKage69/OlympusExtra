@@ -3497,7 +3497,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0145",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Glup{#PreviousFormat}. There, happy? Oh, that was proper good. {#DialogueItalicFormat}Glup{#PreviousFormat}." },
+					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Glup{#PreviousFormat}. There, happy? Oh, that was proper good." },
 			},
 			HephaestusGift05 =
 			{
