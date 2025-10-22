@@ -68,7 +68,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "Gems",
-		RewardResourceAmount = 450,
+		RewardResourceAmount = 1250,
 		UnlockGameStateRequirements =
 		{
 			RequiredAnyTextLines = { 
