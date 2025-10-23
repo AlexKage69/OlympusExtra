@@ -10,6 +10,18 @@
 				+ {#AlertHighlightFormat}Hephaestus Badge{#PreviousFormat}: We're looking for some snazzy new badge art to fit the new Hephaestus portrait. 
 				+ If interested, contact phypoh or alexkage, on the Hades Modding Discord!
 		
+		{#AlertHeaderFormat}1.4.3 - Hephaestus & Hera Voice Records - Oct 2025
+			Hephaestus is fully voiced by @{#AlertHighlightFormat}.Hevy{#PreviousFormat} and Hera is newly fully voiced by @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat}
+
+			{#AlertH2Format}Bug Fixes{#PreviousFormat}
+			+ {#AlertHighlightFormat}Hestia's Aid{#PreviousFormat}: Fixed numbers display.
+			+ {#AlertHighlightFormat}Vengeful Mood{#PreviousFormat}: Text is now working with the new Gods.
+			+ {#AlertHighlightFormat}Kinetic Launcher{#PreviousFormat}: No Longer works with Hestia Special, since its mutual exclusive with Aspect of Talos and Flying Cutter.
+			+ {#AlertHighlightFormat}Hephaestus Dialogs{#PreviousFormat}: Fixed a few condition for dialogs trigger.
+			+ {#AlertHighlightFormat}Hera Records{#PreviousFormat}: Fixed few Hera's voice dialogs.
+
+ 			\Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
+
 		{#AlertHeaderFormat}1.4.2 - Hephaestus Improvements Bug Fixes - Mar 2025
 			Fixes crashing bug caused by Hephaestus Improved Legendaries
 
@@ -17,8 +29,6 @@
 			+ {#AlertHighlightFormat}Hiemal Harvest{#PreviousFormat}: No longer crash.
 			+ {#AlertHighlightFormat}Monarchical Sanctuary{#PreviousFormat}: Aura now shows up.
 			+ {#AlertHighlightFormat}Text Improvement{#PreviousFormat}: Format fixed for Apollo, Hestia and Hera Improved Legendaries.
-
- 			\Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
 		
 		{#AlertHeaderFormat}1.4.1 - Hephaestus Bug Fixes - Feb 2025
 			Fixes for a few bugs including a major one with Hephaestus Legendary.
