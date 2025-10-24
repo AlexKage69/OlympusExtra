@@ -4,6 +4,10 @@ local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
 local OlympusGiftOrdering = ModUtil.Entangled.ModData(GiftOrdering)
 local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
 local OlympusColor = ModUtil.Entangled.ModData(Color)
+local OlympusRoomData = ModUtil.Entangled.ModData(RoomData)
+local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
+local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
+
 --Variables
 local DepthDamageMultiplier = 0.0
 local DuplicateMultiplier = -0.60
@@ -763,3 +767,7 @@ ModUtil.Table.Merge(OlympusEncounterSets.ChallengeOptions, {
 	"MakariaStackUpgradeChallengeSwitch",
 	"MakariaGiftDropChallengeSwitch",
 })
+-- Styx Management
+OlympusRoomSetData.Styx.D_Reprieve01.EnterVoiceLines[1].RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusGlobalVoiceLines.ForkingPathVoiceLines[3].RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Elysium)

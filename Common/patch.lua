@@ -1480,6 +1480,18 @@ ModUtil.Path.Wrap("IsGameStateEligible",
         return true
     end
 )
+ModUtil.Path.Wrap("IsRoomForced",
+	function(baseFunc, currentRun, currentRoom, nextRoomData, args)
+		if baseFunc(currentRun, currentRoom, nextRoomData, args) then
+			return true
+		end
+		-- Used in RareNPCMetaUpgrade
+		if nextRoomData.ChanceToForce ~= nil and RandomChance(nextRoomData.ChanceToForce) then
+			return true
+		end
+		return false
+	end
+)
 ModUtil.Path.Wrap("StartEncounter",
 		function(baseFunc, currentRun, currentRoom, currentEncounter)
             -- Apollo/Poseidon Duo

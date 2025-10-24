@@ -85,6 +85,11 @@ OlympusEnemyData.NPC_Moros_01 =
 			RequiredCosmetics = { "QuestLog", "OfficeDoorUnlockItem" },
 			RequiredAccumulatedMetaPoints = 600, 
 			RequiredMinNPCInteractions = { NPC_Nyx_01 = 1 , NPC_Moros_01 = 1},
+			TeleportToId = 370010,
+			TeleportOffsetX = -120,
+			TeleportOffsetY = 30,
+			AngleTowardTargetId = 370010,
+			InteractDistance = 375,
 			--InOffice = true,
 			EndVoiceLines =
 			{

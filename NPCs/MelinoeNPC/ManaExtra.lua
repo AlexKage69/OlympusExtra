@@ -697,17 +697,6 @@ function RegenerationMetaUpgrade(unit, args)
 	end
 end
 
-ModUtil.Path.Wrap("IsRoomForced",
-	function(baseFunc, currentRun, currentRoom, nextRoomData, args)
-		if baseFunc(currentRun, currentRoom, nextRoomData, args) then
-			return true
-		end
-		if nextRoomData.ChanceToForce ~= nil and RandomChance(nextRoomData.ChanceToForce) then
-			return true
-		end
-		return false
-	end
-)
 ModUtil.Path.Wrap("CheckAmmoDrop",
 	function(baseFunc, currentRun, targetId, ammoDropData, numDrops)
 		local skip = BounceAmmo(ammoDropData, targetId)
