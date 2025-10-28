@@ -11,14 +11,14 @@
 				+ If interested, contact phypoh or alexkage, on the Hades Modding Discord!
 		
 		{#AlertHeaderFormat}1.4.3 - Hephaestus & Hera Voice Records - Oct 2025
-			Hephaestus is fully voiced by @{#AlertHighlightFormat}.Hevy{#PreviousFormat} and Hera is newly fully voiced by @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat}
+			Hephaestus is fully voiced by @{#AlertHighlightFormat}.Hevy {#PreviousFormat} and Hera is newly fully voiced by @{#AlertHighlightFormat}Freddie E.H{#PreviousFormat} (the same VA for Hestia!)
 
 			{#AlertH2Format}Bug Fixes{#PreviousFormat}
 			+ {#AlertHighlightFormat}Hestia's Aid{#PreviousFormat}: Fixed numbers display.
 			+ {#AlertHighlightFormat}Vengeful Mood{#PreviousFormat}: Text is now working with the new Gods.
-			+ {#AlertHighlightFormat}Kinetic Launcher{#PreviousFormat}: No Longer works with Hestia Special, since its mutual exclusive with Aspect of Talos and Flying Cutter.
-			+ {#AlertHighlightFormat}Hephaestus Dialogs{#PreviousFormat}: Fixed a few condition for dialogs trigger.
-			+ {#AlertHighlightFormat}Hera Records{#PreviousFormat}: Fixed few Hera's voice dialogs.
+			+ {#AlertHighlightFormat}Kinetic Launcher{#PreviousFormat}: No Longer works with Hestia Special, since it's mutually exclusive with Aspect of Talos and Flying Cutter.
+			+ {#AlertHighlightFormat}Hephaestus Dialogs{#PreviousFormat}: Fixed a few conditions for dialogs trigger.
+			+ {#AlertHighlightFormat}Hera Records{#PreviousFormat}: Fixed a few of Hera's voice dialogs.
 
  			\Column 630 {#AlertSigFormat}~Love, the OlympusExtra Team
 
