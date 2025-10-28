@@ -3965,7 +3965,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp", "HeraGift04" },
 				{ Cue = "/VO/Hera_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard you have trouble with your father, Zagreus. Then let me tell you the story of ours. Kronos was my foster father and your father's father. And let's just say that Hades inherit Kronos temper. Let continue this chat once you are here." },
+					Text = "I heard you have trouble with your father, Zagreus. Then let me tell you the story of ours. Chronos was my foster father and your father's father. And let's just say that Hades inherit Chronos temper. Let continue this chat once you are here." },
 			},
 			HeraBackstory02 =
 			{
@@ -3975,7 +3975,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory01"},
 				{ Cue = "/VO/Hera_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Since you seem locked down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us away, like you are right now." },
+					Text = "Since you like being locked up down there, let me continue my story about Chronos. He received a prophecy that he would be overthrown by one of his children. So he locked us all up... like your father does with you, I suppose." },
 			},
 			HeraBackstory03 =
 			{
@@ -3985,7 +3985,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory02", "HeraGift05" },
 				{ Cue = "/VO/Hera_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember when I told you we were locked by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
+					Text = "Remember when I told you we were locked by our father Chronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Chronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
 			},
 			HeraBackstory04 =
 			{
@@ -3995,7 +3995,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory03" },
 				{ Cue = "/VO/Hera_0095",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "To keep a story short. With Kronos defeated, Olympus needed a new King. Zeus inherited that role, but he decided to share it between twelve seats. Which brings the Olympus you'll see once you get up here. If you ever do." },
+					Text = "To keep a story short. With Chronos defeated, Olympus needed a new King. Zeus inherited that role, but he decided to share it between twelve seats. Which brings the Olympus you'll see once you get up here. If you ever do." },
 			},
 			HeraBackstory05 =
 			{
@@ -4005,7 +4005,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory04", "HeraGift06"},
 				{ Cue = "/VO/Hera_0096",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Now that you know your grandfather's story, I hope you show more respect to me and your father from now on. And never dare compare Hades to Kronos." },
+					Text = "Now that you know your grandfather's story, I hope you show more respect to me and your father from now on. And never dare compare Hades to Chronos." },
 			},			
 		},
 
