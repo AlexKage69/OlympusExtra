@@ -1388,6 +1388,9 @@ if ModUtil ~= nil then
 			},
 		},
 	}
+	
+	table.insert(OlympusTraitData.FistSpecialFireballTrait.RequiredFalseTraits,"HestiaSecondaryTrait")
+	table.insert(OlympusTraitData.FistChargeSpecialTrait.RequiredFalseTraits,"HestiaSecondaryTrait")
 	OlympusTraitData.HestiaSecondaryTrait =
 	{
 		InheritFrom = { "ShopTier1Trait" },

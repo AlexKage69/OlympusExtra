@@ -68,7 +68,7 @@ if ModUtil ~= nil then
 	{
 		InheritFrom = { "DefaultQuestItem" },
 		RewardResourceName = "Gems",
-		RewardResourceAmount = 450,
+		RewardResourceAmount = 1250,
 		UnlockGameStateRequirements =
 		{
 			RequiredAnyTextLines = { 
@@ -391,7 +391,7 @@ if ModUtil ~= nil then
 		{ Cue = "/VO/Hephaestus_0060", },
 		-- A banging job, hey?
 		{ Cue = "/VO/Hephaestus_0061", },
-		-- Worthy of heroes.
+		-- Ah Worthy of heroes.
 		{ Cue = "/VO/Hephaestus_0062", },
 		-- Hope this works out.
 		{ Cue = "/VO/Hephaestus_0063", },
@@ -2177,7 +2177,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveAres",
 				{ Cue = "/VO/Hephaestus_0046",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "I see you received Ares' blessing. Hanging with warriors like him, are ya? I am not judging, I'm a professional. Let me show you what a real weapon looks like." },
+					Text = "I see you received Ares' blessing. Hanging with warriors like him, are you? I am not judging, I'm a professional. Let me show you what a real weapon looks like." },
 			},
 			HephaestusImproveAphrodite01 =
 			{
@@ -2221,7 +2221,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveDionysus",
 				{ Cue = "/VO/Hephaestus_0050",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Of course, you have Dionysus' blessing. He gets in with anybody he can, and their bed... and their loins. {#DialogueItalicFormat}Urgh{#PreviousFormat}... let me see what I can do." },
+					Text = "Of course, you have Dionysus' blessing. He gets in... with anybody he can really, and their bed... and their loins. {#DialogueItalicFormat}Urgh{#PreviousFormat}... let me see what I can do." },
 			},
 			HephaestusImproveDemeter01 =
 			{
@@ -2232,7 +2232,7 @@ if ModUtil ~= nil then
 				HasTraitNameInRoom = "HephaestusImproveDemeter01",
 				{ Cue = "/VO/Hephaestus_0051",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-					Text = "Now, that's a challenge. Demeter's blessings always melt when I try to improve them... but I think I got it this time around. Try this out." },
+					Text = "Now, that's a challenge. Demeter's blessings always melt when I try to improve them... but I think I got it this time around. Try this one out." },
 			},		
 			HephaestusImproveMiscOlympian01 =
 			{
@@ -2363,7 +2363,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0077",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Hermes and I don't work on the same schedule. Don't worry, there's no bad blood between us. We are just both so busy, far away from the other." },
+					Text = "Hermes and I don't work on the same schedule. Don't worry, there's no bad blood between us. We are just so busy, far away from the other." },
 			},
 			HephaestusAboutHermes02 =
 			{
@@ -2435,7 +2435,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0101",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "My wife has not been the most faithful, but even in our worst times, I know we cared for each other. I know I work too much, but I'd hardly say that's an excuse, eh, Zagreus?" },
+					Text = "My wife has not been the most faithful, but even in our worst times, I know we cared for one another. I know I work too much, but I'd hardly say that's an excuse, {#DialogueItalicFormat}eh{#PreviousFormat}, Zagreus?" },
 			},
 			HephaestusAboutStygius =
 			{
@@ -2495,7 +2495,7 @@ if ModUtil ~= nil then
 
 				{ Cue = "/VO/Hephaestus_0087",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "The cyclops did a great job on this one. Did you know Malphon was offered to many before falling into the hands of Demeter? And now it ended up in yours. What a surprise. You never know how the story's gonna end, {#DialogueItalicFormat}ehh{#PreviousFormat}?" },
+					Text = "The cyclops did a great job on this one. Did you know Malphon was offered to many before falling into the hands of Demeter? And now it ended up in yours. What a surprise. You never know how the story's gonna end, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusAboutExagryph =
 			{
@@ -2516,7 +2516,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "SwordWeapon",
-
+				RequiredTrait = "SwordConsecrationTrait",
 				{ Cue = "/VO/Hephaestus_0089",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "That's a mighty unique sword you got there. I thought only a king could wield the thing. Hmph, who would know Prince of the Underworld qualified as 'worthy'. " },
@@ -2528,7 +2528,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "SpearWeapon",
-
+				RequiredTrait = "SpearSpinTravel",
 				{ Cue = "/VO/Hephaestus_0090",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "The ferocity of a {#DialogueItalicFormat}Guandao{#PreviousFormat}. We don't see these very often 'round these parts. Did you get a special delivery or something?" },
@@ -2540,7 +2540,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "ShieldWeapon",
-
+				RequiredTrait = "ShieldLoadAmmoTrait",
 				{ Cue = "/VO/Hephaestus_0091",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Who needs a weapon, when you can just use a shield like that? Legends says you can withstand the blows of many foes with the shield of the stalwart warrior-king. Even dragons!" },
@@ -2552,10 +2552,10 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "BowWeapon",
-
+				RequiredTrait = "BowBondTrait",
 				{ Cue = "/VO/Hephaestus_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Stringing that bow is no easy task. If you want to defeat your worst demons, you better learn how to use it properly. Many failed before you." },
+					Text = "Stringing that bow is no easy task. If you want to defeat your worst demons, you better learn how to use it properly. Many have failed before you." },
 			},
 			HephaestusAboutGilgamesh =
 			{
@@ -2564,10 +2564,10 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "FistWeapon",
-
+				RequiredTrait = "FistDetonateTrait",
 				{ Cue = "/VO/Hephaestus_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I don't believe you can achieve more feats of strength than with these gauntlets. I've seen many weapons and this pair handles smoothly like oil on metal. " },
+					Text = "I don't believe you can achieve more feats of strength than with those gauntlets. I've seen many weapons and this pair handles smoothly like oil on metal. " },
 			},
 			HephaestusAboutLucifer =
 			{
@@ -2576,7 +2576,7 @@ if ModUtil ~= nil then
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				RequiredWeapon = "GunWeapon",
-
+				RequiredTrait = "GunLoadedGrenadeTrait",
 				{ Cue = "/VO/Hephaestus_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "That weapon... What a rebellious aura... Such fire suits you well. Blow that place up for me, eh?" },
@@ -2600,7 +2600,7 @@ if ModUtil ~= nil then
 				RequiredWeapon = "HammerWeapon"
 				{ Cue = "/VO/Hephaestus_0155",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Got some power there, eh? Zeus might get jealous if you're not careful." },
+					Text = "Got some power out there, {#DialogueItalicFormat}eh{#PreviousFormat}? Zeus might get jealous if you're not careful." },
 			},
 			HephaestusAboutThorAspect02 =
 			{
@@ -2845,7 +2845,7 @@ if ModUtil ~= nil then
 				RequiredNoDamageThisRoom = true,
 				{ Cue = "/VO/Hephaestus_0115",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Was that battle rigged? You didn't get hit! Here's to your hard work." },
+					Text = "Was that battle rigged? You didn't even get hit! Here's to your hard work." },
 			},
 
 			--[[HephaestusAboutDamageLessRun01 =
@@ -2865,7 +2865,7 @@ if ModUtil ~= nil then
 				PlayOnce = true,
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
 				RequiredTextLines = { "HephaestusFirstPickUp", "OlympianReunionQuestComplete" },
-				{ Cue = "/VO/Hephaestus_0119",
+				{ Cue = "/VO/Hephaestus_0043",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}, Hermes told me you got your little gathering at Hades' place. Now, back to work. How about you visit my workshop? I'll show you a trick or two about smithing." },
 			},
@@ -2942,7 +2942,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0125",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Your life is running out of ya, Zagreus. There's only so much surface I can patch." },
+					Text = "Your life is running out of you, Zagreus. There's only so much surface I can patch." },
 			},
 			HephaestusLowHealth04 =
 			{
@@ -2966,7 +2966,7 @@ if ModUtil ~= nil then
 				RequiredMaxLastStands = 1,
 				{ Cue = "/VO/Hephaestus_0127",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Life isn't going great, {#DialogueItalicFormat}eh{#PreviousFormat}? Better build a better base. Here's some pointers." },
+					Text = "Life isn't going great, {#DialogueItalicFormat}eh{#PreviousFormat}? You better build a better base. Here's some pointers." },
 			},
 		},
 
@@ -2985,7 +2985,7 @@ if ModUtil ~= nil then
 					PortraitExitWait = 1.25,
 					PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 					UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and asked me to help finetune your escape plan. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
+					Text = "{#DialogueItalicFormat}Oi{#PreviousFormat}, Hermes couldn't make it and so, he asked me to help finetune your escape plan. Daedalus sure knows how to create a great maze, {#DialogueItalicFormat}eh{#PreviousFormat}?" },
 			},
 			HephaestusMiscPickup01 =
 			{
@@ -2994,13 +2994,13 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0002",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Smithing is my passion. At the forge, all my worries melt away as if they were the metal I forge. But at times, I feel that others take my creation for granted." },
+					Text = "Smithing is my passion. At the furnace, all my worries melt away as if they were the metal I forge. But at times, I feel that others take my creation for granted." },
 			},
 			HephaestusMiscPickup02 =
 			{
 				Name = "HephaestusMiscPickup02",
 				PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
-				RequiredTextLines = { "HephaestusFirstPickUp", },
+				RequiredTextLines = { "HephaestusFirstPickUp" },
 				{ Cue = "/VO/Hephaestus_0003",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "My hammer knows no limit. I can forge your blessings with any mineral or material. Let me show you." },
@@ -3057,7 +3057,7 @@ if ModUtil ~= nil then
 				RequiredTextLines = { "HephaestusFirstPickUp", },
 				{ Cue = "/VO/Hephaestus_0009",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "If all you have is a hammer, everything looks like a nail. Sometimes, the simplest solution is to bash your way through." },
+					Text = "If all you've got is a hammer, everything looks like a nail. Sometimes, the simplest solution is to bash your way through." },
 			},
 			HephaestusMiscPickup09 =
 			{
@@ -3482,7 +3482,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0144",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "No, yes... I mean, sure... {#DialogueItalicFormat}Uh{#PreviousFormat}, {#DialogueItalicFormat}hm{#PreviousFormat}? What were you saying? I was distracted by something. {#DialogueItalicFormat}Ah{#PreviousFormat}, nectar. Cheers, mate. I'll keep it stored with the rest." },
+					Text = "No, yes... I.... I mean, sure... {#DialogueItalicFormat}Uh{#PreviousFormat}, {#DialogueItalicFormat}hm{#PreviousFormat}? What were you saying? I was distracted by something. {#DialogueItalicFormat}Ah{#PreviousFormat}, nectar. Cheers, mate. I'll keep it stored with the rest." },
 			},
 			HephaestusGift04 =
 			{
@@ -3497,7 +3497,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0145",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Glup{#PreviousFormat}. There, happy? Oh, that was proper good. {#DialogueItalicFormat}Glup{#PreviousFormat}." },
+					Text = "I... Fine. I'll drink them all right now. Be done with it. {#DialogueItalicFormat}Glup{#PreviousFormat}. There, happy? Oh, that was proper good." },
 			},
 			HephaestusGift05 =
 			{
@@ -3512,7 +3512,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0146",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, more? I haven't been this productive since... can't remember. {#DialogueItalicFormat}Glup{#PreviousFormat}. This goes here—so this goes there..." },
+					Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, more? I haven't been this productive since... I can't remember. {#DialogueItalicFormat}Glup{#PreviousFormat}. Right, so this goes here—this goes there..." },
 			},
 			HephaestusGift06 =
 			{
@@ -3527,7 +3527,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hephaestus_0147",
 					PortraitExitWait = 1.0,
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}... well, I'll have this one... {#DialogueItalicFormat}Glup{#PreviousFormat} but... ehh. I shouldn't have any more, mate. Sorry, got to go now." },
+					Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}... well, I'll have this one... {#DialogueItalicFormat}Glup{#PreviousFormat} but...{#DialogueItalicFormat}ehh{#PreviousFormat}. I shouldn't have any more, mate. Sorry, I've got to go now." },
 			},
 			HephaestusGift07 =
 			{
@@ -3709,7 +3709,7 @@ if ModUtil ~= nil then
             HasTraitNameInRoom = "HephaestusImproveApollo",
             { Cue = "/VO/Hephaestus_0150",
                 StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-                Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, shiny. Apollo sure knows how to bless someone. But let me turn up the brightness—let's see if we can Blind the Sun God." },
+                Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, shiny. Apollo sure knows how to bless someone. But let me turn up the brightness—let's see if we can Blind the Sun God, {#DialogueItalicFormat}eh{#PreviousFormat}." },
         }
 	end
 	if HestiaExtra then

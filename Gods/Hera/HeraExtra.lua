@@ -3965,7 +3965,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp", "HeraGift04" },
 				{ Cue = "/VO/Hera_0092",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "I heard you have trouble with your father, Zagreus. Then let me tell you the story of ours. Kronos was my foster father and your father's father. And let's just say that Hades inherit Kronos temper. Let continue this chat once you are here." },
+					Text = "I heard you have trouble with your father, Zagreus. Then let me tell you the story of ours. As you may know, Hades and I shared a fatherly figure. Same for Zeus, Poseidon, Demeter and Hestia. But maybe I could explain better if you join me in Olympus. I'll wait." },
 			},
 			HeraBackstory02 =
 			{
@@ -3975,7 +3975,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory01"},
 				{ Cue = "/VO/Hera_0093",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Since you seem locked down there, let me continue my story about Kronos. He received a prophecy that he would be overthrown by one of his children. So he locked us away, like you are right now." },
+					Text = "Since you like being locked up down there, let me continue my story about Chronos. He received a prophecy that he would be overthrown by one of his children. So he locked us all up... like your father does with you, I suppose." },
 			},
 			HeraBackstory03 =
 			{
@@ -3985,7 +3985,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory02", "HeraGift05" },
 				{ Cue = "/VO/Hera_0094",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Remember when I told you we were locked by our father Kronos. Well, Zeus was able to escape and gather enough friends along his way to save us and locked Kronos. Please keep going, Zagreus. While I remember Zeus in all his glory." },
+					Text = "Now Chronos. Where was I? Well, Zeus was able to escape and gather enough allies to save us. He then locked Chronos away. Good thing, I must say." },
 			},
 			HeraBackstory04 =
 			{
@@ -3995,7 +3995,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory03" },
 				{ Cue = "/VO/Hera_0095",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "To keep a story short. With Kronos defeated, Olympus needed a new King. Zeus inherited that role, but he decided to share it between twelve seats. Which brings the Olympus you'll see once you get up here. If you ever do." },
+					Text = "With Chronos defeated, Olympus needed a new King. Zeus inherited that role, but he decided to share it between twelve seats. Which brings the Olympus you'll see once you get up here. If you ever do." },
 			},
 			HeraBackstory05 =
 			{
@@ -4005,7 +4005,7 @@ end]]
 				RequiredTextLines = { "HeraBackstory04", "HeraGift06"},
 				{ Cue = "/VO/Hera_0096",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Now that you know your grandfather's story, I hope you show more respect to me and your father from now on. And never dare compare Hades to Kronos." },
+					Text = "Now that you know your grandfather's story, I hope you show more respect to me and your father from now on. And never dare compare Hades to Chronos." },
 			},			
 		},
 
@@ -4144,7 +4144,7 @@ end]]
 				RequiredTextLines = { "HeraFirstPickUp", "PersephoneHomeMeeting03" },
 				{ Cue = "/VO/Hera_0074",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Pomegranates are often given to me as offerings, and they symbolize my rightful role as queen. However, I recently heard that lately, someone else is getting pomegranates instead of me. I cannot let this slight stand, and if I catch this false queen... Oooh." },
+					Text = "I'm often given pomegranates as offerings, which I always enjoy. However, I've heard that lately, someone else is getting pomegranates instead of me. I cannot let this slight stand, and if I catch this false queen... {#DialogueItalicFormat}Oooh{#PreviousFormat}." },
 			},
 			HeraAboutPersephoneQueen02 =
 			{
@@ -4154,7 +4154,7 @@ end]]
 				RequiredTextLines = { "HeraAboutPersephoneQueen01", "PersephoneHomeMeeting04" },
 				{ Cue = "/VO/Hera_0075",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Even if you disagree with your father, you must continue to show him respect. He's been through so much, even I couldn't know where to start. Maybe start by listening to him." },
+					Text = "I've heard that some of my subjects are beginning to praise the new false queen you have down there. Everyone knows there can only be one queen! But of course, I'm sure you agree with me, am I right or am I right, Zagreus, {#DialogueItalicFormat}hm{#PreviousFormat}?" },
 			},
 			HeraOlympusSecurity01 =
 			{
@@ -4258,7 +4258,7 @@ end]]
 				{ Cue = "/VO/Hera_0084",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					--Emote = "PortraitEmoteMusical",
-					Text = "My KEEPSAKE! I can't believe I gave it to someone like you. You're not even a hero. Hmph. Anyway, a gift from a queen is forever. Cherish it." },
+					Text = "My KEEPSAKE! Oh, I can't believe I gave it to someone like you. You're not even a hero. Anyway, a gift from a queen is forever. Cherish it." },
 			},
 			HeraLegendaryPickUp01 =
 			{
@@ -5877,7 +5877,7 @@ end]]
 				RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "B_Boss01", "B_Boss02", "C_Boss01" },
 				{ Cue = "/VO/Hera_0233",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
-					Text = "Another gift coming your way, Zagreus. I am sure you are going to waste them like the others." },
+					Text = "Another gift coming your way, Zagreus. I am sure you are going to waste, just like the others." },
 					{
 						Text = "Hera_OfferText",
 					},
