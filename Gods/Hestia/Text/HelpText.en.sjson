@@ -130,7 +130,7 @@
 		{
 			Id = "HestiaShoutTrait"
 			DisplayName = "Hestia's Aid"
-			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {$TooltipData.TooltipHeal} {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
+			Description = "Your {$Keywords.WrathDerivedStocks} emits a ring of fire around you, restoring {!Icons.Health_Small} per foe hit. \n {!Icons.Bullet}{#PropertyFormat}Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.EXWrath} Ring Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta2}"
 		}		
 		{
 			Id = "HestiaShoutTrait_Tray"

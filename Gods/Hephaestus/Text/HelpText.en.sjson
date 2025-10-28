@@ -22,35 +22,35 @@
 		}
 		{
 			Id = "HephaestusUpgrade_FlavorText01"
-			DisplayName = "hard work is the greatest gift you can make to yourself."
+			DisplayName = "Hard work is the greatest gift you can make to yourself."
 		}
 		{
 			Id = "HephaestusUpgrade_FlavorText02"
-			DisplayName = "there's always place for improvement."
+			DisplayName = "There's always room for improvement."
 		}
 		{
 			Id = "HephaestusUpgrade_FlavorText03"
-			DisplayName = "perfection is never far, but never reached."
+			DisplayName = "Perfection is never far, but never reached."
 		}	
 		{
 			Id = "HephaestusWeaponTrait"
 			DisplayName = "Molten Strike"
-			Description = "{$Keywords.Attack} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
+			Description = "Your {$Keywords.Attack} starts charging {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusWeaponTrait_Initial"
 			InheritFrom = "HephaestusWeaponTrait"
-			Description = "{$Keywords.Attack} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
+			Description = "Your {$Keywords.Attack} starts charging {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusSecondaryTrait"
 			DisplayName = "Molten Flourish"
-			Description = "{$Keywords.Special} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
+			Description = "Your {$Keywords.Special} starts charging {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusSecondaryTrait_Initial"
 			InheritFrom = "HephaestusSecondaryTrait"
-			Description = "{$Keywords.Special} starts the charging of {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
+			Description = "Your {$Keywords.Special} starts charging {$Keywords.IgneousArmor}. \n {!Icons.Bullet}{#PropertyFormat}Igneous Charge Rate: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageTransfer:P} \n {!Icons.Bullet}{#PropertyFormat}Igneous Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipIgneousCooldown} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "HephaestusLongerDashes"
@@ -112,22 +112,22 @@
 		{
 			Id = "DamageReturnTrait"
 			DisplayName = "Golden Armor"
-			Description = "Any damage done to you is returned. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Any damage done to you is returned onto the damaging foe. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "DamageReturnTrait_Initial"
 			InheritFrom = "DamageReturnTrait"
-			Description = "Any damage done to you is returned. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+			Description = "Any damage done to you is returned onto the damaging foe. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
 		}
 		{
 			Id = "RevengeBoostTrait"
 			DisplayName = "Blood Rush"
-			Description = "After you take damage, increase damage and movement speed. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} Sec.{#PreviousFormat}"
+			Description = "After you take damage, increase your damage and movement speed. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "RevengeBoostTrait_Initial"
 			InheritFrom = "RevengeBoostTrait"
-			Description = "After you take damage, increase damage and movement speed. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} Sec.{#PreviousFormat}"
+			Description = "After you take damage, increase your damage and movement speed. \n {!Icons.Bullet}{#PropertyFormat}Bonus Damage: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipDamageBonus:P}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Duration: \Column 380 {#UpgradeFormat}{$TooltipData.TooltipEffectDuration} Sec.{#PreviousFormat}"
 		}
 		{
 			Id = "SpawnWeaponsTrait"
@@ -157,7 +157,7 @@
 		{
 			Id = "ArmorEncounterTrait"
 			DisplayName = "Perfect Work"
-			Description = "Upon clear an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Upon clearing an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "ArmorEncounterTrait_Initial"
@@ -167,7 +167,7 @@
 		{
 			Id = "ArmorEncounterTrait_Tray"
 			InheritFrom = "ArmorEncounterTrait"
-			Description = "Upon clear an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
+			Description = "Upon clearing an {$Keywords.EncounterAlt} without taking damage, {$Keywords.Repair}. \n {!Icons.Bullet}{#PropertyFormat}Repair {$Keywords.ZagreusArmor}: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat}"
 		}
 		{
 			Id = "ArmorDefianceTrait"
