@@ -324,22 +324,22 @@
     {
       Name = "Keepsake_Hephaestus_Max"
       InheritFrom = "KeepsakeMax_Corner"
-      FilePath = "Hephaestus\HephaestusBadge"
+      FilePath = "Hephaestus\HephBadge"
     }
     {
       Name = "Keepsake_HephaestusSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
-      FilePath = "Hephaestus\HephaestusBadge_max"
+      FilePath = "Hephaestus\HephBadge_max"
     }    
     {
       Name = "Keepsake_Hephaestus_Max"
       InheritFrom = "KeepsakeMax_Corner"
-      FilePath = "Hephaestus\HephaestusBadge"
+      FilePath = "Hephaestus\HephBadge"
     }
     {
       Name = "Keepsake_HephaestusSticker_Max"
       InheritFrom = "KeepsakeMax_Sticker"
-      FilePath = "Hephaestus\HephaestusBadge_max"
+      FilePath = "Hephaestus\HephBadge_max"
     }    
   ]
 }
