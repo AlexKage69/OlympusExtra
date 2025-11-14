@@ -2058,14 +2058,6 @@ function SpawnSeedsDeathArea(eventSource, args)
 		--currentRun.LastFishingPointDepth = GetRunDepth( currentRun )
 	end
 end
-ModUtil.Path.Wrap("DoUnlockRoomExits",
-	function(baseFunc, run, room)
-		baseFunc(run, room)
-		if CurrentRun.CurrentRoom.ForceSeed and CurrentRun.CurrentRoom.SeedPointId and IsUseable({ Id = CurrentRun.CurrentRoom.SeedPointId }) then
-			thread( SeedPointAvailablePresentation, CurrentRun.CurrentRoom )
-		end
-	end
-)
 ModUtil.Path.Wrap("CreateRoom",
 	function(baseFunc, roomData, args)
 		local room = baseFunc(roomData, args)

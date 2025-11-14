@@ -101,7 +101,7 @@
 		{
 			Id = "AmmoBounce"
 			DisplayName = "Sentient Soul"
-			Description = "Your {$Keywords.Cast} bounces off for each{!Icons.Ammo}{#PreviousFormat}{#ItalicFormat}(pick it up instantly){#PreviousFormat} {#TooltipUpgradeFormat}+{$TempTextData.BaseValue} {#PreviousFormat} per rank."
+			Description = "Your {$Keywords.Cast} auto-trigger after {#BoldFormatGraft}5 Sec. {#PreviousFormat} for each{!Icons.Ammo}{#PreviousFormat} {#TooltipUpgradeFormat}+{$TempTextData.BaseValue} {#PreviousFormat} per rank."
     	}
 		{
 			Id = "BonusMoneyMirror"
@@ -349,11 +349,31 @@
 		}
 		{
 			Id = "UseFountainHeal_Reroll"
-			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Power-Up {#UseGiftPointFormat}(-1{!Icons.ReRoll_Small})"
+			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {G} Power-Up {#UseGiftPointFormat}({$TempTextData.TooltipCost}{!Icons.ReRoll_Small})"
 		}
 		{
 			Id = "UseFountainHeal_CannotReroll"
 			DisplayName = "{I} Restore {#UseTextHealingFormat}{$TempTextData.TooltipHeal}{!Icons.HealthRestore_Small} \n {#UseTextDisabledFormat}Unusable"
+		}
+		{
+			Id = "AmmoBounceFasterTrait"
+			DisplayName = "Temporal Comeback"
+			Description = "The auto-trigger of your {$Keywords.Cast} is faster. \n {!Icons.Bullet}{#PropertyFormat}Auto-trigger Cooldown: \Column 380 {#UpgradeFormat}{$TooltipData.DisplayDelta1} {#UpgradeFormat}Sec."
+		}
+		{
+			Id = "AmmoBounceFasterTrait_Initial"
+			InheritFrom = "AmmoBounceFasterTrait"
+			Description = "The auto-trigger of your {$Keywords.Cast} is faster. \n {!Icons.Bullet}{#PropertyFormat}Auto-trigger Cooldown: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1} {#UpgradeFormat}Sec."
+		}
+		{
+			Id = "DefianceDamageTrait"
+			DisplayName = "Eternity"
+			Description = "{$Keywords.ExtraChanceFloor} deals damage to all enemies. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "DefianceDamageTrait_Initial"
+			DisplayName = "Eternity"
+			Description = "{$Keywords.ExtraChanceFloor} deals damage to all enemies. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		// Makaria
 		{
@@ -388,17 +408,17 @@
 		{
 			Id = "TroveUpgradeBoonTrait"
 			DisplayName = "Blessed Candle"
-			Description = "Improve Treasure Trove and help find our way."
+			Description = "{$Keywords.ChallengeSwitch} have more rewards. Chambers have {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to contain {$Keywords.ChallengeSwitch}. You can find your way around the Temple of Styx."
 		}
 		{
 			Id = "TroveUpgradeBoonTrait_Rack"
 			InheritFrom = "TroveUpgradeBoonTrait"
-			Description = "Improve Treasure Trove and help find our way. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+			Description = "{$Keywords.ChallengeSwitch} have more rewards. Chambers have {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to contain {$Keywords.ChallengeSwitch}. You can find your way around the Temple of Styx. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "TroveUpgradeBoonTrait_Inactive"
 			DisplayName = "Blessed Candle"
-			Description = "Improve Treasure Trove and help find our way."
+			Description = "{$Keywords.ChallengeSwitch} have more rewards. Chambers have {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to contain {$Keywords.ChallengeSwitch}. You can find your way around the Temple of Styx."
 		}
 		{
 			Id = "MakariaSignoff"
@@ -409,7 +429,7 @@
 			DisplayName = """
 				From {#AwardMaxFlavorFormat}Makaria{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Unrevealed Bond
 
-				{#AwardDarkFlavorFormat}You have been blessed by a strange, yet familiar link.
+				{#AwardDarkFlavorFormat}You have been blessed by a strange, yet familiar bond.
 			"""
 		}
 		// Makaria God Manager
@@ -437,6 +457,11 @@
 		{
 			Id = "FreeExilMessage"
 			DisplayName = "{$TempTextData.NumExil} Free Purchase"
+		}
+		{
+			Id = "StoneOfBanishmentWorkOrder"
+			DisplayName = "Restore the Stone of Banishment"
+			Description = "{$Keywords.NewSystem}: Banish the help of {$Keywords.GodBoon} as you desire."
 		}
 		// Makaria Keepsake
 		{

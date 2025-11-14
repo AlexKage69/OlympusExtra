@@ -1,5 +1,7 @@
 local OlympusMetaUpgradeData = ModUtil.Entangled.ModData(MetaUpgradeData)
 local OlympusMetaUpgradeOrder = ModUtil.Entangled.ModData(MetaUpgradeOrder)
+local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+local OlympusLootData = ModUtil.Entangled.ModData(LootData)
 local OlympusKeywordList = ModUtil.Entangled.ModData(KeywordList)
 local OlympusColor = ModUtil.Entangled.ModData(Color)
 local OlympusResourceData = ModUtil.Entangled.ModData(ResourceData)
@@ -10,17 +12,25 @@ local OlympusConsumableData = ModUtil.Entangled.ModData(ConsumableData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
+local OlympusGameData = ModUtil.Entangled.ModData(GameData)
 
-
+ModUtil.Mod.Register("OEMirror")
 OlympusColor.OEMirrorAttribute = { 145, 17, 55, 255 }
 OlympusColor.CastDOTDamage = { 145, 17, 55, 255 }
 table.insert(OlympusWeaponSets.HeroNonPhysicalWeapons, "RangedWeaponBounce")
 OlympusWeaponData.StoredAmmoDOTApplicator = {
+	--OnHitFunctionNames = { "StoredAmmoDOTApplicatorPresentation" },
+	RapidDamageType = true,
+	PureDamage = true
+}
+OlympusWeaponData.HestiaDefianceNovaWeapon = {
+	InheritFrom = { "HestiaColorProjectile", "NoSlowFrameProjectile", "NoShakeProjectile" },
 }
 OlympusEffectData.CastDamageOverTime = {
 	DamageTextStartColor = OlympusColor.CastDOTDamage,
 	DamageTextColor = OlympusColor.CastDOTDamage,
 	RapidDamageType = true,
+	BlockDamageAnimation = true,
 	IgnoreOnHitEffects = true,
 	IgnoreInvulnerabilityFrameTrigger = true,
 }
@@ -54,6 +64,64 @@ OlympusMetaUpgradeData.GemHealMetaUpgrade =
 	ChangeValue = 1.15,
 }
 OlympusResourceData.Gems.OnAddedFunctionName = "OnGemsAdded"
+if HestiaExtra ~= nil then
+	OlympusTraitData.DefianceDamageTrait = {
+		InheritFrom = { "ShopTier1Trait" },
+		Icon = "Boon_Hestia_01",
+		PreEquipWeapons = { "HestiaDefianceNovaWeapon", "LastStandMetaUpgradeShield", "LastStandReincarnateShield" },
+		RequiredMinMaximumLastStands = 1,
+		RequiredMetaUpgradeSelected = "ExtraChanceFloorMetaUpgrade",
+		RequiredFalseTrait = "DefianceDamageTrait",
+		RarityLevels =
+		{
+			Common =
+			{
+				Multiplier = 1.00,
+			},
+			Rare =
+			{
+				Multiplier = 1.33,
+			},
+			Epic =
+			{
+				Multiplier = 1.66,
+			},
+			Heroic =
+			{
+				Multiplier = 2.0,
+			}
+		},
+		PropertyChanges =
+		{
+			{
+				WeaponName = "HestiaDefianceNovaWeapon",
+				ProjectileName = "HestiaDefianceNovaProjectile",
+				ProjectileProperty = "DamageLow",
+				BaseMin = 150,
+				BaseMax = 150,
+				DepthMult = 0.0,
+				IdenticalMultiplier =
+				{
+					Value = -0.6,
+				},
+				AutoRamp = true,
+				ExtractValue =
+				{
+					ExtractAs = "TooltipDamage",
+				},
+				DeriveSource = "DeriveSource",
+			},
+			{
+				WeaponName = "HestiaDefianceNovaWeapon",
+				ProjectileName = "HestiaDefianceNovaProjectile",
+				ProjectileProperty = "DamageHigh",
+				DeriveValueFrom = "DeriveSource",
+			},
+		},
+	}
+	table.insert(OlympusLootData.HestiaUpgrade.Traits, "DefianceDamageTrait")
+	table.insert(OlympusGameData.RunClearMessageData.ClearRequiredTraitsHestia.GameStateRequirements.RequiredCountOfTraits, "DefianceDamageTrait")
+end
 OlympusMetaUpgradeData.ExtraChanceFloorMetaUpgrade =
 {
 	InheritFrom = { "BaseMetaUpgrade", },
@@ -130,6 +198,33 @@ OlympusMetaUpgradeData.CastDamageOverTimeMetaUpgrade =
 		},
 	},
 }
+OlympusTraitData.AmmoReclaimTrait.RequiredMetaUpgradeSelected = nil
+OlympusTraitData.AmmoReclaimTrait.RequiredAnyMetaUpgradeSelected = {"AmmoMetaUpgrade","BounceAmmoMetaUpgrade"}
+OlympusTraitData.AmmoBoltTrait.RequiredMetaUpgradeSelected = nil
+OlympusTraitData.AmmoBoltTrait.RequiredAnyMetaUpgradeSelected = {"AmmoMetaUpgrade","BounceAmmoMetaUpgrade"}
+OlympusTraitData.AmmoBounceFasterTrait = {
+	InheritFrom = { "ShopTier3Trait" },
+	RequiredFalseTrait = "AmmoBounceFasterTrait",
+	RequiredMetaUpgradeSelected = "BounceAmmoMetaUpgrade",
+	Icon = "Boon_Hermes_10",
+	AmmoBounceCooldownOverride = {
+		BaseValue = 2.0
+	},
+	ExtractValues =
+	{
+		{
+			Key = "AmmoBounceCooldownOverride",
+			ExtractAs = "TooltipAmmoBounceCooldown",
+		}
+	}
+}
+OlympusLootData.HermesUpgrade.LinkedUpgrades.AmmoBounceFasterTrait =
+{
+	OneOf = { "AmmoReclaimTrait", "FastClearDodgeBonusTrait" },
+}
+table.insert(OlympusQuestData.LegendaryUpgrades.UnlockGameStateRequirements.RequiredAnyTraitsTaken, "AmmoBounceFasterTrait")
+table.insert(OlympusQuestData.LegendaryUpgrades.CompleteGameStateRequirements.RequiredTraitsTaken, "AmmoBounceFasterTrait")
+table.insert(OlympusGameData.RunClearMessageData.ClearLegendaryTraits.GameStateRequirements.RequiredCountOfTraits, "AmmoBounceFasterTrait")
 OlympusMetaUpgradeData.BounceAmmoMetaUpgrade =
 {
 	InheritFrom = { "BaseMetaUpgrade", },
@@ -301,6 +396,16 @@ OlympusMetaUpgradeData.PomFirstGodMetaUpgrade =
 	},
 }
 
+if ApolloExtra ~= nil then
+	OlympusTraitData.RerollBoonTrait.RequiredMetaUpgradeSelected = nil
+	OlympusTraitData.RerollBoonTrait.RequiredAnyMetaUpgradeSelected = {"RerollPanelMetaUpgrade","RerollPomMetaUpgrade"}
+	OlympusTraitData.RerollObolTrait.RequiredMetaUpgradeSelected = nil
+	OlympusTraitData.RerollObolTrait.RequiredAnyMetaUpgradeSelected = {"RerollMetaUpgrade","RerollPomMetaUpgrade"}
+	OlympusConsumableData.RerollBoonDrop.RequiredMetaUpgradeSelected = nil
+	OlympusConsumableData.RerollBoonDrop.RequiredAnyMetaUpgradeSelected = {"RerollPanelMetaUpgrade","RerollPomMetaUpgrade"}
+	OlympusConsumableData.RerollObolDrop.RequiredMetaUpgradeSelected = nil
+	OlympusConsumableData.RerollObolDrop.RequiredAnyMetaUpgradeSelected = {"RerollMetaUpgrade","RerollPomMetaUpgrade"}
+end
 OlympusMetaUpgradeData.RerollPomMetaUpgrade =
 {
 	InheritFrom = { "BaseMetaUpgrade", },
@@ -314,6 +419,19 @@ OlympusMetaUpgradeData.RerollPomMetaUpgrade =
 OlympusObstacleData.HealthFountain.RerollFunctionName = "RerollPom"
 OlympusObstacleData.HealthFountain.Cost = 1
 OlympusObstacleData.HealthFountain.FountainReroll = true
+table.insert(OlympusObstacleData.HealthFountain.ExtractValues, { Key = "Cost", ExtractAs = "TooltipCost", })
+OlympusObstacleData.HealthFountainAsphodel.RerollFunctionName = "RerollPom"
+OlympusObstacleData.HealthFountainAsphodel.Cost = 1
+OlympusObstacleData.HealthFountainAsphodel.FountainReroll = true
+table.insert(OlympusObstacleData.HealthFountainAsphodel.ExtractValues, { Key = "Cost", ExtractAs = "TooltipCost", })
+OlympusObstacleData.HealthFountainElysium.RerollFunctionName = "RerollPom"
+OlympusObstacleData.HealthFountainElysium.Cost = 1
+OlympusObstacleData.HealthFountainElysium.FountainReroll = true
+table.insert(OlympusObstacleData.HealthFountainElysium.ExtractValues, { Key = "Cost", ExtractAs = "TooltipCost", })
+OlympusObstacleData.HealthFountainStyx.RerollFunctionName = "RerollPom"
+OlympusObstacleData.HealthFountainStyx.Cost = 1
+OlympusObstacleData.HealthFountainStyx.FountainReroll = true
+table.insert(OlympusObstacleData.HealthFountainStyx.ExtractValues, { Key = "Cost", ExtractAs = "TooltipCost", })
 
 ModUtil.Table.Merge(OlympusKeywordList, {
 	"LowHealthDamage", "GemHeal", "ExtraChanceFloor", "DashlessBonus",
@@ -545,44 +663,6 @@ function HeroHasPossibleStackTrait()
 	return true;
 end
 
-ModUtil.Path.Wrap("StartRoom",
-	function(baseFunc, currentRun, currentRoom)
-		--local biomeDepth = currentRun.BiomeDepthCache or GetBiomeDepth( currentRun )
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(biomeDepth))
-		if GetNumMetaUpgrades("BounceAmmoMetaUpgrade") > 0 then
-			CurrentRun.Hero.Bounce = {
-				LastId = nil,
-				Num = 0
-			}
-		end
-		if GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > 0 and Contains({ "B_Intro", "C_Intro", "D_Intro", }, currentRoom.Name) then
-			local numRegenerationLastStands = 0
-			for i, lastStand in pairs(CurrentRun.Hero.LastStands) do
-				if lastStand.Name == "ExtraChanceFloorMetaUpgrade" then
-					numRegenerationLastStands = numRegenerationLastStands + 1
-				end
-			end
-			while GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > numRegenerationLastStands do
-				AddLastStand({
-					Name = "ExtraChanceFloorMetaUpgrade",
-					Unit = CurrentRun.Hero,
-					Icon = "ExtraLifeReplenish",
-					WeaponName = "LastStandMetaUpgradeShield",
-					HealFraction = MetaUpgradeData.ExtraChanceFloorMetaUpgrade.HealPercent,
-					Silent = true
-				})
-				numRegenerationLastStands = numRegenerationLastStands + 1
-			end
-			CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
-		end
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
-		if GetNumMetaUpgrades("RegenerationMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
-			thread(RegenerationMetaUpgrade, CurrentRun.Hero,
-				{ Interval = 7.2 - 1.8 * GetNumMetaUpgrades("RegenerationMetaUpgrade"), Amount = 1.0 })
-		end
-		baseFunc(currentRun, currentRoom)
-	end
-)
 OnWeaponFired { "RushWeapon",
 	function(triggerArgs)
 		if GetNumMetaUpgrades("DashlessMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero then
@@ -620,11 +700,35 @@ ModUtil.Path.Wrap("HandleDeath",
 )
 ModUtil.Path.Wrap("HandleMetaUpgradeInput",
 	function(baseFunc, screen, button)
+		local upgradeData = button.Data
+		local hasAction = false
+
+		local capApplies = (GetNumMetaUpgrades( "MetaPointCapShrineUpgrade" ) > 0 and screen.ResourceName == "MetaPoints") or screen.ResourceName == "ShrinePoints"
+		local pointCap = 0
+		local currentPoints = 0
+		if (button.HandleType == "Add" and 
+			not (upgradeData.RankGameStateRequirements and upgradeData.RankGameStateRequirements[GetNumMetaUpgrades( upgradeData.Name ) + 1 ] and not IsGameStateEligible( CurrentRun, upgradeData.RankGameStateRequirements[GetNumMetaUpgrades( upgradeData.Name ) + 1 ]  )) and
+			not (upgradeData.GameStateRequirements and not IsGameStateEligible( CurrentRun, upgradeData.GameStateRequirements )) and
+			not (upgradeData.NextCost == nil) and
+			not (capApplies and currentPoints + upgradeData.NextCost > pointCap) and
+			not (not HasResource( button.ResourceName, upgradeData.NextCost ) and not screen.FreeSpend) and
+			not (upgradeData.RequiredTotalInvestment ~= nil and currentPoints < upgradeData.RequiredTotalInvestment)) or
+			(button.HandleType == "Remove" and 
+			CanDecrementValue( upgradeData, currentPoints, button.ResourceName ) and 
+			GetNumMetaUpgrades( upgradeData.Name ) > 0) then
+				hasAction = true
+		end
 		baseFunc(screen, button)
+		if not hasAction then
+			return
+		end
+		
 		CurrentRun.NumRerolls = CurrentRun.NumRerolls + GetNumMetaUpgrades("RerollPomMetaUpgrade")
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.NumRerolls))	
 		if CurrentRun.NumRerolls > 0 then
 			ShowResourceUIs({ CombatOnly = false })
 		end
+		UpdateRerollUI( CurrentRun.NumRerolls )
 	end
 )
 
@@ -714,7 +818,11 @@ function GetGemsMaxHealthAdded(amount)
 	local healthMultiplier = GetTotalHeroTraitValue("GemHealMultiplier") +
 		(GetTotalMetaUpgradeChangeValue("GemHealMetaUpgrade") - 1)
 	healthMultiplier = healthMultiplier * GetTotalHeroTraitValue("MaxHealthMultiplier", { IsMultiplier = true })
-	return round(healthMultiplier * amount)
+	local amountRewarded = round(healthMultiplier * amount)
+	if amountRewarded > 15 then
+		amountRewarded = 15
+	end
+	return amountRewarded
 end
 
 function RerollPom(run, fountain)
@@ -737,12 +845,15 @@ function AttemptPomReroll(run, fountain)
 
 	--RandomSynchronize( CurrentRun.NumRerolls )
 	InvalidateCheckpoint()
+	PreRerollPresentation( run, fountain )
 	RefreshUseButton(fountain.ObjectId, fountain)
 	if fountain.RerollFunctionName and _G[fountain.RerollFunctionName] then
 		--RerollPanelPresentation( screen, button )
 		_G[fountain.RerollFunctionName]()
 		fountain.Cost = fountain.Cost + 1
 	end
+	PostRerollPresentation( run, fountain )
+	--ModifyTextBox({ Id = components[purchaseButtonKey.."Level"].Id, Text = "UI_TraitLevel", LuaKey = "TempTextData", LuaValue = { Cost = fountain.Cost )} })
 	RemoveInputBlock({ Name = "AttemptPomReroll" })
 end
 
@@ -756,112 +867,123 @@ function RegenerationMetaUpgrade(unit, args)
 		end
 	end
 end
-
+function GetMaxBounce()
+end
 ModUtil.Path.Wrap("CheckAmmoDrop",
 	function(baseFunc, currentRun, targetId, ammoDropData, numDrops)
-		local skip = BounceAmmo(ammoDropData, targetId)
-		if not skip then
+		if CurrentRun.Hero.Bounce == nil then
+			CurrentRun.Hero.Bounce = {
+				LastId = nil,
+				Num = 0,
+				Max = GetNumMetaUpgrades( "BounceAmmoMetaUpgrade" ) 
+			}
+		end
+		if IsMetaUpgradeActive("BounceAmmoMetaUpgrade") and CurrentRun.Hero.Bounce ~= nil then
+			if ammoDropData == nil or ammoDropData.Count == nil or ammoDropData.Count <= 0 or numDrops == 0 or (ammoDropData.Chance ~= nil and not RandomChance( ammoDropData.Chance )) then
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Error in function"))
+				return
+			end
+
+			if CurrentRun.Hero.Bounce.Num >= CurrentRun.Hero.Bounce.Max then
+				CurrentRun.Hero.Bounce.Num = 0
+				return baseFunc(currentRun, targetId, ammoDropData, numDrops)
+			end
+
+			if ammoDropData.LocationX ~= nil then
+				targetId = nil
+			end
+
+			if numDrops == nil then
+				numDrops = ammoDropData.Count
+			end
+
+			local consumableName = "AmmoPack"
+			for i = 1, numDrops do
+				ammoDropData.Count = ammoDropData.Count - 1
+			end
+
+			for i = 1, numDrops do
+				local offset = {}
+				if ammoDropData.Angle ~= nil then
+					offset = CalcOffset( math.rad(ammoDropData.Angle + 180), 48 )
+				end
+				local consumableId = SpawnObstacle({ Name = consumableName, DestinationId = targetId, LocationX = ammoDropData.LocationX, LocationY = ammoDropData.LocationY, OffsetX = offset.X, OffsetY = offset.Y, Group = "Standing" })
+				local consumable = CreateConsumableItem( consumableId, consumableName )
+				consumable.AddAmmo = 1
+				ApplyUpwardForce({ Id = consumableId, Speed = RandomFloat( ammoDropData.UpwardForceMin or 500, ammoDropData.UpwardForceMax or 700 ) })
+				if ammoDropData.ForceMax ~= nil then
+					ApplyForce({ Id = consumableId, Speed = RandomFloat( ammoDropData.ForceMin, ammoDropData.ForceMax ), Angle = ammoDropData.Angle or RandomFloat( 0, 360 ), SelfApplied = true })
+				end
+				local delay = GetTotalHeroTraitValue("AmmoDropUseDelay")
+				SetInteractProperty({ DestinationId = consumableId, Property = "Cooldown", Value = delay + 5.0 + 1.0 })
+				if delay > 0 then
+					thread( DoUseDelay, consumableId, delay )
+				end
+				
+				for i, data in pairs(GetHeroTraitValues("AmmoFieldWeapon")) do
+					thread( FireAmmoWeapon, consumableId, data )
+				end
+				thread( EscalateMagnetism, consumable )
+				thread( StartBounceThread, consumable, targetId, delay )
+			end
+		else
 			baseFunc(currentRun, targetId, ammoDropData, numDrops)
 		end
 	end
 )
+function StartBounceThread( consumable, targetId, startDelay )
 
-function BounceAmmo(storedAmmo, victimId)
-	--CurrentRun.Hero.BounceAmmo = {}
-	if IsMetaUpgradeActive("BounceAmmoMetaUpgrade") and CurrentRun.Hero.Bounce ~= nil then
-		local victim = ActiveEnemies[victimId]
-		local nearbyTargetIds = GetClosestIds({ Id = victimId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 800 })
-		if IsEmpty(nearbyTargetIds) then
-			nearbyTargetIds = GetClosestIds({ Id = victimId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 1000 })
-		end
-		if IsEmpty(nearbyTargetIds) then
-			nearbyTargetIds = GetClosestIds({ Id = victimId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 2500 })
-		end
-		local toVictim = CurrentRun.Hero.ObjectId
-		local shouldBounce = victimId ~= nil or HeroHasTrait("AresRangedTrait") or HeroHasTrait("DionysusRangedTrait") or HeroHasTrait("ApolloRangedTrait") or HeroHasTrait("DemeterRangedTrait")
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(shouldBounce)..ModUtil.ToString(HeroHasTrait("AresRangedTrait")))
-		if shouldBounce and not IsEmpty(nearbyTargetIds) and CurrentRun.Hero.Bounce.Num < GetNumMetaUpgrades( "BounceAmmoMetaUpgrade" ) then
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Bounce.Num)..tostring(victim))
-			CurrentRun.Hero.Bounce.Num = CurrentRun.Hero.Bounce.Num + 1
-			--RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeaponBounce", Method = "AddAmmo", Parameters = { 1 } })
-			
-			if not IsEmpty(nearbyTargetIds) then
-				toVictim = GetRandomValue(nearbyTargetIds)
-			end
-			local angle = math.rad(GetAngleBetween({ Id = victimId, DestinationId = toVictim }))
-			local offset = CalcOffset(angle, 105)
-			local fromVictim = SpawnObstacle({
-				Name = "InvisibleTarget",
-				DestinationId = victimId,
-				OffsetX = offset.X,
-				OffsetY = offset.Y,
-				Group = "Standing"
-			})
-			FireWeaponFromUnit({
-				Weapon = "RangedWeaponBounce",
-				AutoEquip = true,
-				Id = CurrentRun.Hero.ObjectId,
-				DestinationId =
-					fromVictim,
-				FireFromTarget = true,
-				Angle = angle
-			})
-			return true
-		elseif GetWeaponProperty({ Id = CurrentRun.Hero.ObjectId, WeaponName = "RangedWeapon", Property = "Ammo" }) < 1 then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("spawn"))
-			local offset = {}
-			if storedAmmo.Angle ~= nil then
-				offset = CalcOffset(math.rad(storedAmmo.Angle + 180), 48)
-			end
-			if storedAmmo.LocationX ~= nil then
-				victimId = nil
-			end
-			local consumableName = "AmmoPack"
-			local consumableId = SpawnObstacle({
-				Name = consumableName,
-				DestinationId = victimId,
-				LocationX =
-					storedAmmo.LocationX,
-				LocationY = storedAmmo.LocationY,
-				OffsetX = offset.X,
-				OffsetY = offset.Y,
-				Group =
-				"Standing"
-			})
-			local consumable = CreateConsumableItem(consumableId, consumableName)
-			consumable.AddAmmo = 1
-			ApplyUpwardForce({
-				Id = consumableId,
-				Speed = RandomFloat(storedAmmo.UpwardForceMin or 500,
-					storedAmmo.UpwardForceMax or 700)
-			})
-			if storedAmmo.ForceMax ~= nil then
-				ApplyForce({
-					Id = consumableId,
-					Speed = RandomFloat(storedAmmo.ForceMin, storedAmmo.ForceMax),
-					Angle =
-						storedAmmo.Angle or RandomFloat(0, 360),
-					SelfApplied = true
-				})
-			end
-			local delay = GetTotalHeroTraitValue("AmmoDropUseDelay")
-			if delay > 0 then
-				SetInteractProperty({ DestinationId = consumableId, Property = "Cooldown", Value = delay })
-				thread(DoUseDelay, consumableId, delay)
-			end
-
-			--[[for i, data in pairs(GetHeroTraitValues("AmmoFieldWeapon")) do
-				thread(FireAmmoWeapon, consumableId, data)
-			end]]
-			
-			SetObstacleProperty({ Property = "Magnetism", Value = consumable.MagnetismEscalateAmount, DestinationId =
-			consumable.ObjectId })
-		end
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Refresh Counter"))
-		CurrentRun.Hero.Bounce.Num = 0
-		return true
+	if startDelay > 0 then
+		wait( startDelay , RoomThreadName )
 	end
-	return false
+	if not IsAlive({ Id = consumable.ObjectId }) then
+		return
+	end
+	local delay = consumable.MagnetismHintRemainingTime
+	local override = GetTotalHeroTraitValue("AmmoBounceCooldownOverride")
+	if override > 0 then
+		delay = override
+		CreateAnimation({ Name = "AmmoBounceTimerReduce", DestinationId = consumable.ObjectId })
+	else
+		CreateAnimation({ Name = "AmmoBounceTimer", DestinationId = consumable.ObjectId })
+	end
+	wait( delay, RoomThreadName )
+	FireBounceAmmo(consumable, targetId)
+	--SetObstacleProperty({ Property = "Magnetism", Value = consumable.MagnetismEscalateAmount, DestinationId = consumable.ObjectId })
 end
-
+function FireBounceAmmo(storedAmmo, victimId)
+	--local victim = ActiveEnemies[victimId]
+	local nearbyTargetIds = GetClosestIds({ Id = storedAmmo.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 800 })
+	if IsEmpty(nearbyTargetIds) then
+		nearbyTargetIds = GetClosestIds({ Id = storedAmmo.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 1000 })
+	end
+	if IsEmpty(nearbyTargetIds) then
+		nearbyTargetIds = GetClosestIds({ Id = storedAmmo.ObjectId, DestinationName = "EnemyTeam", IgnoreInvulnerable = true, IgnoreHomingIneligible = true, IgnoreSelf = true, Distance = 2500 })
+	end
+	local toVictim = CurrentRun.Hero.ObjectId
+	local shouldBounce = victimId ~= nil or HeroHasTrait("AresRangedTrait") or HeroHasTrait("DionysusRangedTrait") or HeroHasTrait("ApolloRangedTrait") or HeroHasTrait("DemeterRangedTrait")
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(IsEmpty(nearbyTargetIds))..ModUtil.ToString(shouldBounce)..ModUtil.ToString(HeroHasTrait("AresRangedTrait")))
+	
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Bounce.Num)..tostring(victim))
+		
+		--RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "RangedWeapon", Method = "AddAmmo", Parameters = { 1 } })
+		
+		if not IsEmpty(nearbyTargetIds) then
+			toVictim = GetRandomValue(nearbyTargetIds)
+		end
+		local angle = math.rad(GetAngleBetween({ Id = storedAmmo.ObjectId, DestinationId = toVictim }))
+		--local offset = CalcOffset(angle, 105)
+		CurrentRun.Hero.Bounce.Num = CurrentRun.Hero.Bounce.Num + 1
+		FireWeaponFromUnit({
+			Weapon = "RangedWeaponBounce",
+			AutoEquip = true,
+			Id = CurrentRun.Hero.ObjectId,
+			DestinationId =
+				storedAmmo.ObjectId,
+			FireFromTarget = true,
+			Angle = angle
+		})
+		Destroy({ Id = storedAmmo.ObjectId})
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Bounce.Num)..ModUtil.ToString(CurrentRun.Hero.Bounce.Max))
+end
 OverwriteTableKeys(RoomData, OlympusRoomSetData.Tartarus)

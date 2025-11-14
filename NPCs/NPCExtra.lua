@@ -101,7 +101,13 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 		if (not CanOpenCodex()) and IsSuperValid() then
 			BuildSuperMeter(CurrentRun, 50)
 		end
-		AddTraitToHero({ TraitName = "TemporaryForcedChallengeSwitchTrait" })
+		--AddTraitToHero({ TraitName = "TemporaryForcedChallengeSwitchTrait" })
+		--[[CurrentRun.Hero.Bounce = {
+			LastId = nil,
+			Num = 0,
+            Max = GetNumMetaUpgrades( "BounceAmmoMetaUpgrade" )
+		}]]
+		--FireBounceAmmo(CurrentRun.Hero.ObjectId)
 		--ActivateRotatingNPCs({},{Types={"NPC_Moros_01"}})
 		--ForceNextRoomFunc("A_Makaria01")
 		--local challengeBaseIds = GetIdsByType({ Name = "NPC_Makaria_01" })

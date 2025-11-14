@@ -107,5 +107,16 @@
           Active = false
         }]*/
     }
+    {
+      Name = "HestiaDefianceNovaWeapon"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "HestiaDefianceNovaProjectile"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+    }
   ]
 }

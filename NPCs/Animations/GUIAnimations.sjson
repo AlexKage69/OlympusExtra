@@ -86,6 +86,48 @@
       InheritFrom = "BaseMetaupgradeIcon"
       FilePath = "Moros\MirrorCIcons\Fated_Reach"
     }
+    {
+      Name = "AmmoBounceTimer"
+      FilePath = "GUI\HUD\BloodstoneReturnTimer\BloodstoneReturnTimer"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 100
+      NumFrames = 100
+      PlaySpeed = 20.0
+      StartFrame = 1
+      OffsetY = -45.0
+      Hue = 0.81
+      DieWithOwner = true
+      SortMode = "Id"
+      Material = "Unlit"
+    }
+    {
+      Name = "AmmoBounceTimerReduce"
+      FilePath = "GUI\HUD\BloodstoneReturnTimer\BloodstoneReturnTimer"
+      Type = "Book"
+      AngleFromOwner = "Ignore"
+      ColorFromOwner = "Ignore"
+      EndFrame = 100
+      NumFrames = 100
+      PlaySpeed = 50.0
+      StartFrame = 1
+      OffsetY = -45.0
+      Hue = 0.81
+      DieWithOwner = true
+      SortMode = "Id"
+      Material = "Unlit"
+    }
+    {
+      Name = "RandomPomPreview"
+      FilePath = "GUI\Icons\Pom_Small"
+      EndFrame = 1
+      StartFrame = 1
+      EaseOut = 1.0
+      NumFrames = 1
+      Scale = 1.0
+      Material = "Unlit"
+    }
     // Makaria
     {
       Name = "Keepsake_Candle_Child"
@@ -119,6 +161,12 @@
       NumFrames = 1
       StartFrame = 1
       Material = "Unlit"
+    }
+    {
+      Name = "RunUpgrade_StoneOfBanishment"
+      FilePath = "GUI\Screens\CosmeticIcons\cosmetic_metaPointUpgrade_01"
+      Type = "ConstantNoUpdate"
+      Scale = 1.0
     }
     // Melinoe
     {

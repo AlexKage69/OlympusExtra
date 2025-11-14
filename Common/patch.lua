@@ -131,13 +131,191 @@ ModUtil.Path.Wrap("SpecialHitPresentation",
     end
 )
 
-ModUtil.Path.Wrap("CreateTraitRequirements",
-    function(baseFunc, traitName)
-        ScreenAnchors.BoonInfoScreen.LastBoonSelected = traitName
-        return baseFunc(traitName)
+ModUtil.Path.Override("CreateTraitRequirements",
+    function(traitName)
+        local screen = ScreenAnchors.BoonInfoScreen
+        Destroy({Ids = screen.TraitRequirements })
+        screen.TraitRequirements = {}
+        local traitData = TraitData[traitName]
+        if not traitData then
+            traitData = ConsumableData[traitName]
+        end
+        local startY = 120
+        local startX = 10
+        local width = 500
+        local hasRequirement = false
+        if traitData.RequiredAnyMetaUpgradeSelected then
+            local color = Color.White
+            if IsGameStateEligible( CurrentRun, { RequiredAnyMetaUpgradeSelected = traitData.RequiredAnyMetaUpgradeSelected }) then
+                color = Color.BoonInfoAcquired
+            end
+            local requirementsText = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+            table.insert(screen.TraitRequirements, requirementsText.Id )
+            Attach({ Id = requirementsText.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX , OffsetY = -405 })
+	        CreateTextBox({
+                Id = requirementsText.Id,
+                Text = "BoonInfo_OneOf",
+                FontSize = 24,
+                OffsetX = 195,
+                OffsetY =  startY,
+                Color = color,
+                Font = "AlegreyaSansSCRegular",
+                ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+                Justification = "Left"
+            })
+            startY = startY + 35
+            for i, requiredMetaUpgrade in ipairs( traitData.RequiredAnyMetaUpgradeSelected ) do
+                local requirementsText = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+                table.insert(screen.TraitRequirements, requirementsText.Id )
+                Attach({ Id = requirementsText.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX , OffsetY = -405 })
+            
+                local color = Color.White
+                if IsGameStateEligible( CurrentRun, { RequiredMetaUpgradeSelected = requiredMetaUpgrade }) then
+                    color = Color.BoonInfoAcquired
+                end
+                CreateTextBox({
+                Id = requirementsText.Id,
+                Text = "BoonInfo_RequiredMetaupgrade",
+                FontSize = 20,
+                Width = 360,
+                OffsetX = 225,
+                OffsetY =  startY-5,
+                Color = color,
+                Font = "AlegreyaSansSCLight",
+                ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+                Justification = "Left",
+                LuaKey = "TempTextData",
+                LuaValue = { MetaupgradeName = requiredMetaUpgrade }})
+
+                if MetaUpgradeData[requiredMetaUpgrade] and MetaUpgradeData[requiredMetaUpgrade].Icon then
+                    local metaupgradeIcon = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+                    SetAnimation({ Name = MetaUpgradeData[requiredMetaUpgrade].Icon, DestinationId = metaupgradeIcon.Id })
+                    SetScale({ Id = metaupgradeIcon.Id, Fraction = 0.6 })
+                    table.insert(screen.TraitRequirements, metaupgradeIcon.Id )
+                    Attach({ Id = metaupgradeIcon.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX + 210, OffsetY = -405+startY-5 })
+                end
+		        startY = startY + BoonInfoScreenData.RequirementsYSpacer
+            end
+	        startY = startY + 35
+            hasRequirement = true
+        end
+        if traitData.RequiredMetaUpgradeSelected then
+            local requiredMetaUpgrade = traitData.RequiredMetaUpgradeSelected
+            local requirementsText = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+            table.insert(screen.TraitRequirements, requirementsText.Id )
+            Attach({ Id = requirementsText.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX , OffsetY = -405 })
+        
+            local color = Color.White
+            if IsGameStateEligible( CurrentRun, { RequiredMetaUpgradeSelected = traitData.RequiredMetaUpgradeSelected }) then
+                color = Color.BoonInfoAcquired
+            end
+            CreateTextBox({
+            Id = requirementsText.Id,
+            Text = "BoonInfo_RequiredMetaupgrade",
+            FontSize = 24,
+            Width = 360,
+            OffsetX = 200,
+            OffsetY =  startY-5,
+            Color = color,
+            Font = "AlegreyaSansSCLight",
+            ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+            Justification = "Left",
+            LuaKey = "TempTextData",
+            LuaValue = { MetaupgradeName = requiredMetaUpgrade }})
+            startY = startY + 45
+            hasRequirement = true
+
+            if MetaUpgradeData[requiredMetaUpgrade] and MetaUpgradeData[requiredMetaUpgrade].Icon then
+                local metaupgradeIcon = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+                SetAnimation({ Name = MetaUpgradeData[requiredMetaUpgrade].Icon, DestinationId = metaupgradeIcon.Id })
+                table.insert(screen.TraitRequirements, metaupgradeIcon.Id )
+                Attach({ Id = metaupgradeIcon.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX + 175, OffsetY = -290 })
+            end
+        end
+        if traitData.RequiredTrait then
+            local requirementsText = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+            table.insert(screen.TraitRequirements, requirementsText.Id )
+            Attach({ Id = requirementsText.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX + 35, OffsetY = -405 })
+            local color = Color.BoonInfoUnacquired
+            if HeroHasTrait(traitData.RequiredTrait) then
+                color = Color.BoonInfoAcquired
+            end
+            CreateTextBox({
+            Id = requirementsText.Id,
+            Text = "BoonInfo_RequiredTrait",
+            FontSize = 20,
+            OffsetX = 170,
+            OffsetY =  startY,
+            Color = color,
+            Font = "AlegreyaSansSCMedium",
+            ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+            Justification = "Left",
+            LuaKey = "TempTextData",
+            LuaValue = { TraitName = traitData.RequiredTrait}})
+            startY = startY + 45
+            hasRequirement = true
+
+            
+            if TraitData[traitData.RequiredTrait] and TraitData[traitData.RequiredTrait].Icon then
+                local metaupgradeIcon = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+                SetAnimation({ Name = GetTraitIcon( TraitData[traitData.RequiredTrait] ), DestinationId = metaupgradeIcon.Id })
+                SetScale({ Id = metaupgradeIcon.Id, Fraction = 0.5 })
+                table.insert(screen.TraitRequirements, metaupgradeIcon.Id )
+                Attach({ Id = metaupgradeIcon.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX + 180, OffsetY = -405 + 120 })
+            end
+        end
+        
+        if traitData.RequiredOneOfTraits then
+            startY = CreateTraitRequirementList( screen, { Text = "BoonInfo_OneOf", TextSingular = "BoonInfo_OneOf_Singular" }, traitData.RequiredOneOfTraits, startY, IsGameStateEligible(CurrentRun, { RequiredOneOfTraits = traitData.RequiredOneOfTraits }))
+            hasRequirement = true
+        end
+
+        if BoonInfoScreenData.TraitRequirementsDictionary[traitName] then
+            hasRequirement = true
+            local requirementData = BoonInfoScreenData.TraitRequirementsDictionary[traitName]
+            if requirementData.Type == "OneOf" then
+                startY = CreateTraitRequirementList( screen, { Text = "BoonInfo_OneOf", TextSingular = "BoonInfo_OneOf_Singular"  }, requirementData.OneOf, startY )
+            elseif requirementData .Type == "OneFromEachSet" then
+                for i, set in pairs(requirementData.OneFromEachSet) do		
+                    startY = CreateTraitRequirementList( screen, { Text = "BoonInfo_OneOf", TextSingular = "BoonInfo_OneOf_Singular"  }, set, startY )
+                end
+            elseif requirementData.Type == "TwoOf" then
+                local allTraitsDictionary = {}
+                local hasRequirement = false
+                local hasAmount = 0
+                for i, traitSet in pairs(requirementData .OneFromEachSet) do
+                    for s, traitName in pairs(traitSet) do
+                        allTraitsDictionary[traitName] = true
+                    end
+                end	
+                for traitName in pairs( allTraitsDictionary ) do
+                    if HeroHasTrait( traitName ) then
+                        hasAmount = hasAmount + 1
+                    end
+                end
+
+                startY = CreateTraitRequirementList( screen, { Text = "BoonInfo_TwoOf" }, (GetAllKeys(allTraitsDictionary)), startY, ( hasAmount >= 2 ))
+            end
+        end
+
+        if not hasRequirement then
+            local requirementsText = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray" })
+            table.insert(screen.TraitRequirements, requirementsText.Id )
+            Attach({ Id = requirementsText.Id, DestinationId = screen.Components.ShopBackground.Id, OffsetX = startX , OffsetY = -405 })
+        
+            CreateTextBox({
+            Id = requirementsText.Id,
+            Text = "BoonInfo_NoRequirements",
+            FontSize = 24,
+            OffsetX = 170,
+            OffsetY =  startY,
+            Color = {159, 159, 159, 255},
+            Font = "AlegreyaSansSCRegular",
+            ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
+            Justification = "Left"})
+        end
     end
 )
-
 ModUtil.Path.Wrap("CreateTraitRequirementList",
     function(baseFunc, screen, headerTextArgs, traitList, startY, metRequirement)
         if screen.LastBoonSelected ~= nil and screen.LastBoonSelected == "AutoRetaliateTrait" then
@@ -272,22 +450,11 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
 		local itemLocationX = ScreenCenterX - 355
 		for itemIndex, itemData in ipairs( upgradeOptions ) do
 			local purchaseButtonKey = "PurchaseButton"..itemIndex -- Doesnt work because eligible is not there yet...
-            if CanReceivePomFirstTrait(CurrentRun.Hero, itemData.ItemName) then       
-                ModUtil.Hades.PrintStackChunks(ModUtil.ToString(itemData.ItemName))
-                --[[local pom = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray"  })
-                Attach({ Id = pom, DestinationId = components[purchaseButtonKey.."Icon"].Id, OffsetX = 0, OffsetY = 40 })
-                SetAnimation({ Name = "StackUpgradePreview", DestinationId = pom, Group = "Combat_Menu_TraitTray" })
-                SetScale({ Id = pom, Fraction = 0.5})         ]]
-                CreateTextBox({ Id = components[purchaseButtonKey].Id,
-                    Text = "UI_TraitLevel",
-                    FontSize = 27,
-                    OffsetX = 260, OffsetY = -55,
-                    Color = Color.UpgradeGreen,
-                    Font = "AlegreyaSansSCBold",
-                    ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2},
-                    Justification = "Left",
-                    LuaKey = "TempTextData", LuaValue = { Amount = 2 }
-                })
+            if CanStackToTrait(itemData.ItemName) and not HasGodAlready(CurrentRun.Hero, itemData.ItemName) then       
+                local pom = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray"  })
+                Attach({ Id = pom, DestinationId = components[purchaseButtonKey].Id, OffsetX = 270, OffsetY = -60 })
+                SetAnimation({ Name = "MirrorIcon_PomFirstGod", DestinationId = pom, Group = "Combat_Menu_TraitTray" })
+                --SetScale({ Id = pom, Fraction = 1.0})
             end
             itemLocationY = itemLocationY + 220
         end
@@ -660,6 +827,11 @@ ModUtil.Path.Wrap("CheckLastStand",
             AddMaxHealth(GetTotalHeroTraitValue("DefianceExtraHealth"), "HealthDefianceTrait",
                 { Delay = 0.01, NoHealing = true, Thread = true })
         end
+        if HeroHasTrait("DefianceDamageTrait") and hasLastStand then
+            FireWeaponFromUnit({ Weapon = "HestiaDefianceNovaWeapon", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+			    AutoEquip = true, ClearAllFireRequests = true })
+            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fire Nova"))
+        end
         if HeroHasTrait("ArmorDefianceTrait") and CurrentRun.Hero.Armor ~= nil and hasLastStand then
             local armorToAdd = CurrentRun.Hero.Armor.Max*GetTotalHeroTraitValue("RepairArmorOnDeathDefiancePercent")
             RepairArmor(armorToAdd)
@@ -668,7 +840,11 @@ ModUtil.Path.Wrap("CheckLastStand",
         return hasLastStand
     end
 )
-
+function FireWeaponFromUnitThread(enemy)
+    ModUtil.Hades.PrintStackChunks("Run:"..ModUtil.ToString(enemy.Name))
+    FireWeaponFromUnit({ Weapon = "HestiaOnDeath", AutoEquip = true, Id = CurrentRun.Hero.ObjectId,
+                            DestinationId = enemy.ObjectId, FireFromTarget = true })
+end
 ModUtil.Path.Wrap("CheckOnDamagedPowers",
     function(baseFunc, victim, attacker, args)
         baseFunc(victim, attacker, args)
@@ -978,7 +1154,6 @@ function( triggerArgs )
         return
     end
     if target.FountainReroll and IsMetaUpgradeSelected( "RerollPomMetaUpgrade" ) then
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("FountainReroll"))
         AttemptPomReroll( CurrentRun, target )
     end
     if target.SacrificeCost then
@@ -1479,6 +1654,21 @@ ModUtil.Path.Override("SpawnStoreItemInWorld",
             end
 		end
 	)
+    
+ModUtil.Path.Wrap("CreateRoom",
+    function(baseFunc, roomData, args)
+        local room = baseFunc(roomData, args)
+        if args == nil then
+            args = {}
+        end
+
+        local challengeChance = room.ChallengeSpawnChance or RoomData.BaseRoom.ChallengeSpawnChance
+        local challengeChanceBonus = GetTotalHeroTraitValue("BaseChallengeSpawnChanceMultiplier")
+        room.ChallengeChanceSuccess = RandomChance( challengeChance + challengeChanceBonus )
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(room.ChallengeSpawnChance)..";"..ModUtil.ToString(challengeChanceBonus)..";"..ModUtil.ToString(room.ChallengeChanceSuccess))
+        return room
+    end
+)
 ModUtil.Path.Wrap("IsGameStateEligible",
     function(baseFunc, currentRun, source, requirements, args)
         local result = baseFunc(currentRun, source, requirements, args)
@@ -1488,6 +1678,15 @@ ModUtil.Path.Wrap("IsGameStateEligible",
             end
             if requirements.Force then
                 return true
+            end
+            -- Variables
+            if args == nil then
+                args = {}
+            end
+            local roomSkip = args.RoomsSkipped or 0
+            local currentBiomeDepth = 0
+            if currentRun.BiomeDepthCache ~= nil then
+                currentBiomeDepth = currentRun.BiomeDepthCache + roomSkip
             end
             -- All the new Requirements goes here --
             if requirements.RequiredMaxHephaestusUpgrades ~= nil then
@@ -1510,6 +1709,28 @@ ModUtil.Path.Wrap("IsGameStateEligible",
             end
             if requirements.RequiredChallengeSwitchInRoom ~= nil and CurrentRun.CurrentRoom.ChallengeSwitch == nil then
                 return false
+            end
+            if requirements.RequiredAnyMetaUpgradeSelected ~= nil then
+                local metaUpgradeFound = false                
+                for i, upgradeName in ipairs( requirements.RequiredAnyMetaUpgradeSelected ) do
+                    local nulledMetaUpgradeCount = GetNulledMetaUpgradeCount()
+                    for k, selectedUpgradeName in pairs( GameState.MetaUpgradesSelected ) do
+                        if k > (#MetaUpgradeOrder - nulledMetaUpgradeCount) then
+                            if MetaUpgradeOrder[k][1] == upgradeName then
+                                metaUpgradeFound = true
+                            end
+                        elseif selectedUpgradeName == upgradeName then
+                            metaUpgradeFound = true
+                            break
+                        end
+                    end
+                    if metaUpgradeFound then
+                        break
+                    end
+                end
+                if not metaUpgradeFound then
+                    return false
+                end
             end
             -- For Makaria Checks
             if requirements.RequiredMaxAdvancedChallengeSwitchThisRun ~= nil and CurrentRun.SwitchChallengeReward ~= nil then
@@ -1589,6 +1810,22 @@ ModUtil.Path.Wrap("IsGameStateEligible",
                     return false
                 end
             end
+            if requirements.RequiredSpecialStyxTroveCondition ~= nil then
+		        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Test Condition"))
+                if HeroHasTrait(requirements.RequiredSpecialStyxTroveCondition.RequiredTraitName) then
+                    if not currentRun.CurrentRoom.HasStyxFountain then
+		                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Condition 1 failed"))
+
+                        return false
+                    end
+                else
+                    if not args.SkipMinBiomeDepth and (CurrentRun.CurrentRoom == nil or not CurrentRun.CurrentRoom.SkipMinBiomeDepthRequirements) and currentBiomeDepth < 7 then --Based off vanilla
+		                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Condition 2 failed"))
+                        return false
+                    end    
+                end
+                
+            end
             --[[if requirements.RequiredDidNoDamageRun ~= nil then
                 if CurrentRun.CurrentRoom.PerfectEncounterCleared then
                     return false
@@ -1600,16 +1837,73 @@ ModUtil.Path.Wrap("IsGameStateEligible",
         return true
     end
 )
+ModUtil.Path.Wrap("ApplyWeaponPropertyChange",
+	function(baseFunc, unit, weaponName, propertyChange, reverse )
+        if IsMetaUpgradeSelected("BounceAmmoMetaUpgrade") then
+            if propertyChange.LegalWeapons ~= nil then
+                if not Contains( propertyChange.LegalWeapons, weaponName ) then
+                    return
+                end
+            end
+
+            if propertyChange.LegalWeapon ~= nil then
+                if propertyChange.LegalWeapon ~= weaponName then
+                    return
+                end
+            end
+
+            if propertyChange.LegalUnits ~= nil then
+                if not Contains( propertyChange.LegalUnits, unit.Name ) then
+                    return
+                end
+            end
+
+            local changeValue = propertyChange.ChangeValue
+            if reverse then
+                if propertyChange.ChangeType == "Multiply" then
+                    changeValue = 1 / changeValue
+                elseif propertyChange.ChangeType == "Add" then
+                    changeValue = 0 - changeValue
+                elseif type(changeValue) == "boolean" then
+                    changeValue = not changeValue
+                else
+                    return
+                end
+            end
+
+            if propertyChange.WeaponProperty ~= nil then
+                --SetWeaponProperty({ WeaponName = weaponName, DestinationId = unit.ObjectId, Property = propertyChange.WeaponProperty, Value = changeValue, ValueChangeType = propertyChange.ChangeType })
+                if propertyChange.WeaponProperty == "MaxAmmo" and  weaponName == "RangedWeapon" then
+                    if propertyChange.ChangeType == "Add" and changeValue > 0 then
+                        if CurrentRun.Hero.Bounce ~= nil then
+                            CurrentRun.Hero.Bounce.Max = CurrentRun.Hero.Bounce.Max + changeValue
+                            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Trigger More RangedWeapon Ammo:")..ModUtil.ToString(CurrentRun.Hero.Bounce.Max))
+                        end
+                    end    
+                    propertyChange.ChangeValue = 0
+                end
+            end
+        end
+        baseFunc(unit, weaponName, propertyChange, reverse)
+    end
+)
+ModUtil.Path.Wrap("ChooseNextRoomData",
+	function(baseFunc, currentRun, args)
+        local nextRoomData = baseFunc(currentRun, args)
+        return nextRoomData
+    end
+)
 ModUtil.Path.Wrap("IsRoomForced",
 	function(baseFunc, currentRun, currentRoom, nextRoomData, args)
-		if baseFunc(currentRun, currentRoom, nextRoomData, args) then
-			return true
-		end
-		-- Used in RareNPCMetaUpgrade
+        if nextRoomData.ForceChanceByRemainingWings and HeroHasTrait("TroveUpgradeBoonTrait") then
+             return true
+        end
 		if nextRoomData.ChanceToForce ~= nil and RandomChance(nextRoomData.ChanceToForce) then
 			return true
 		end
-		return false
+        -- ForceChanceByRemainingWings
+		-- Used in RareNPCMetaUpgrade
+		return baseFunc(currentRun, currentRoom, nextRoomData, args)
 	end
 )
 ModUtil.Path.Wrap("StartEncounter",
@@ -1752,42 +2046,191 @@ ModUtil.Path.Wrap("DropStoredAmmo",
 )
 ModUtil.Path.Wrap("AddTraitToHero",
     function(baseFunc, args)     
-        baseFunc(args)
-        local traitData = args.TraitData        
-        if traitData == nil then
-            traitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
+        local traitName = args.TraitName
+        if  traitName == nil then
+            traitName = args.TraitData.Name
         end
-        if CanReceivePomFirstTrait(CurrentRun.Hero, args) then            
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString(traitData.Name))
-            baseFunc(args)
+        local firstGod = HasGodAlready(CurrentRun.Hero, traitName)
+        baseFunc(args)   
+        if  args.TraitData == nil then
+            args.TraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
         end
-        if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
+        if CanStackToTrait(args.TraitData.Name) and not firstGod then     
+            AddStackToTrait(args)
+        end
+        if args.TraitData ~= nil and args.TraitData.Name ~= nil and args.TraitData.ReplaceTrait ~= nil and HeroHasTrait(args.TraitData.ReplaceTrait) then
+            RemoveTrait(CurrentRun.Hero, args.TraitData.ReplaceTrait)
+        end
+        --[[if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
             RemoveTrait(CurrentRun.Hero, traitData.ReplaceTrait)
-        end
-        if traitData ~= nil and traitData.Name ~= nil and traitData.ReplaceTrait ~= nil and HeroHasTrait(traitData.ReplaceTrait) then
-            RemoveTrait(CurrentRun.Hero, traitData.ReplaceTrait)
-        end
+        end]]
     end
 )
-
-function CanReceivePomFirstTrait( unit, args )
-    --local processedTraitData =  GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
-    if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") <= 0 or not IsGodTrait(args.TraitName) or not IsGameStateEligible(CurrentRun, TraitData[args.TraitName]) then
+function HasGodAlready( hero, traitName )
+		if not hero then
+			return 0
+		end
+        
+		for itraitName in pairs( hero.TraitDictionary ) do
+			local lootsource = GetLootSourceName( itraitName )
+			if lootsource and lootsource == GetLootSourceName( traitName ) then
+                return true
+			end
+		end
+        return false
+	end
+function CanStackToTrait( traitName )
+    local traitData = TraitData[traitName]
+    if traitData == nil then 
         return false
     end
-	if unit == nil or unit.Traits == nil then
+    if traitData.RequiredFalseTrait ~= nil and traitData.RequiredFalseTrait == traitName then
 		return false
 	end
-    local sourceName = GetLootSourceName(args.TraitName) 
-	local num = 0
-	for k, currentTrait in pairs( unit.Traits ) do
-		if IsGameStateEligible(CurrentRun, TraitData[currentTrait.Name]) and GetLootSourceName(currentTrait.Name) == sourceName then
-			num = num + 1
+
+	if traitData.RequiredFalseTraits ~= nil  then
+		for i, conditionTraitName in pairs(traitData.RequiredFalseTraits) do
+			if traitName == conditionTraitName then
+				return false
+			end
 		end
 	end
-	return num <= 1
+	return IsGodTrait(traitName) and traitData and IsGameStateEligible(CurrentRun, traitData)
+end
+function AddStackToTrait( args )
+
+	if args.Thread then
+		args.Thread = false
+		thread( AddStackToTrait, args )
+		return
+	end
+	wait( args.Delay )
+
+	local numStacks = args.NumStacks
+	--local numTraits = args.NumTraits
+
+	local upgradableTraits = {}
+	local upgradedTraits = {}
+
+	if not (IsGodTrait(args.TraitData.Name) and TraitData[args.TraitData.Name] and IsGameStateEligible(CurrentRun, TraitData[args.TraitData.Name])) then
+		return
+	end
+
+	AddTraitToHero({ TraitName = args.TraitData.Name })
+
+	UpdateHeroTraitDictionary()
+	SortPriorityTraits()
+    wait(0.1)
+    TraitUIUpdateText( TraitData[args.TraitData.Name] )
+	--[[for i, traitData in pairs( CurrentRun.Hero.Traits ) do
+		if upgradedTraits[traitData.Name] then
+			wait(0.1)
+			TraitUIUpdateText( traitData )
+		end
+	end]]
+	local upgradedTraits = {}
+    upgradedTraits[args.TraitData.Name] = true
+	thread( IncreasedTraitLevelPresentation, upgradedTraits, 1 )
 end
 
+ModUtil.Path.Wrap("DoUnlockRoomExits",
+	function(baseFunc, run, room)
+		baseFunc(run, room)
+        if Contains({"D_Hub"}, room.Name) and HeroHasTrait("TroveUpgradeBoonTrait") then
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Tigger:"..room.Name))
+            local exitDoorsIPairs = CollapseTableOrdered( OfferedExitDoors )
+            local foundFountain = false
+            for index, door in ipairs( exitDoorsIPairs ) do
+                if door.Room ~= nil and door.Room.HasStyxFountain then
+                    foundFountain = true
+			        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Already has a fountain:"..door.Room.Name))
+                    break
+                end
+            end
+            if not foundFountain then
+                local fountainDoor = GetRandomValue(OfferedExitDoors)
+                if fountainDoor ~= nil then
+                    fountainDoor.Room.HasStyxFountain = true
+                    CreateDoorRewardPreviewButterfly(fountainDoor)
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Adding a fountain:"..fountainDoor.Room.Name))
+                end
+            end
+        end
+		if CurrentRun.CurrentRoom.ForceSeed and CurrentRun.CurrentRoom.SeedPointId and IsUseable({ Id = CurrentRun.CurrentRoom.SeedPointId }) then
+			thread( SeedPointAvailablePresentation, CurrentRun.CurrentRoom )
+		end
+	end
+)
+
+ModUtil.Path.Wrap( "CreateDoorRewardPreview", 
+	function(baseFunc, exitDoor )	
+		baseFunc(exitDoor)
+		local room = exitDoor.Room
+		if room.HasStyxFountain then
+			CreateDoorRewardPreviewButterfly(exitDoor)		
+		end
+	end
+)
+function CreateDoorRewardPreviewButterfly(exitDoor)
+	local room = exitDoor.Room
+    --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Preview:"..room.Name))
+    local doorAIconId = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Standing" })
+    SetAnimation({ DestinationId = doorAIconId, Name = "BoonSymbolArtemisIsometric" })
+    Attach({ Id = doorAIconId, DestinationId = exitDoor.DoorIconId, DynamicScaleOffset = true, OffsetZ = 0, OffsetX = 25, OffsetY = 15 })
+    SetScale({ Id = doorAIconId, Fraction = 0.85 })
+    SetThingProperty({ Property = "SortMode", Value = "FromParent", DestinationId = doorAIconId })
+    table.insert( exitDoor.AdditionalIcons, doorAIconId )
+    table.insert( exitDoor.AdditionalAttractIds, doorAIconId )			
+end
+
+ModUtil.Path.Wrap("StartRoom",
+	function(baseFunc, currentRun, currentRoom)
+		--local biomeDepth = currentRun.BiomeDepthCache or GetBiomeDepth( currentRun )
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(biomeDepth))
+		if GetNumMetaUpgrades("BounceAmmoMetaUpgrade") > 0 then
+			CurrentRun.Hero.Bounce = {
+				LastId = nil,
+				Num = 0,
+                Max = GetNumMetaUpgrades( "BounceAmmoMetaUpgrade" )
+			}
+		end
+		if GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > 0 and Contains({ "B_Intro", "C_Intro", "D_Intro", }, currentRoom.Name) then
+			local numRegenerationLastStands = 0
+			for i, lastStand in pairs(CurrentRun.Hero.LastStands) do
+				if lastStand.Name == "ExtraChanceFloorMetaUpgrade" then
+					numRegenerationLastStands = numRegenerationLastStands + 1
+				end
+			end
+			while GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > numRegenerationLastStands do
+				AddLastStand({
+					Name = "ExtraChanceFloorMetaUpgrade",
+					Unit = CurrentRun.Hero,
+					Icon = "ExtraLifeReplenish",
+					WeaponName = "LastStandMetaUpgradeShield",
+					HealFraction = MetaUpgradeData.ExtraChanceFloorMetaUpgrade.HealPercent,
+					Silent = true
+				})
+				numRegenerationLastStands = numRegenerationLastStands + 1
+			end
+			CurrentRun.Hero.MaxLastStands = TableLength(CurrentRun.Hero.LastStands)
+		end
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GetNumMetaUpgrades("RegenerationMetaUpgrade")))	
+		if GetNumMetaUpgrades("RegenerationMetaUpgrade") > 0 and CurrentRun and CurrentRun.Hero and not CurrentRun.Hero.IsDead then
+			thread(RegenerationMetaUpgrade, CurrentRun.Hero,
+				{ Interval = 7.2 - 1.8 * GetNumMetaUpgrades("RegenerationMetaUpgrade"), Amount = 1.0 })
+		end
+		baseFunc(currentRun, currentRoom)
+        if currentRoom.HasStyxFountain then
+            for index, offeredDoor in pairs( OfferedExitDoors ) do
+                if offeredDoor.Room ~= nil and offeredDoor.Room.Name ~= "D_Hub"  then
+		            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("StyxFountain"..offeredDoor.Room.Name))	
+                    offeredDoor.Room.HasStyxFountain = true
+                end
+            end
+        end
+		
+	end
+)
 -- Test / Utility
 --[[ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)

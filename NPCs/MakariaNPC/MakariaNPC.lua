@@ -7,6 +7,8 @@ local OlympusColor = ModUtil.Entangled.ModData(Color)
 local OlympusRoomData = ModUtil.Entangled.ModData(RoomData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
+local OlympusConditionalItemData = ModUtil.Entangled.ModData(ConditionalItemData)
+
 
 --Variables
 local DepthDamageMultiplier = 0.0
@@ -57,7 +59,7 @@ OlympusEnemyData.NPC_Makaria_01 =
 		MakariaFirstMeeting =
 		{
 			Name = "MakariaFirstMeeting",
-			PlayOnce = false,
+			PlayOnce = true,
 			UseableOffSource = true,
 			RequiredFalseFlags = { "InFlashback", },
 			--InOffice = true,
@@ -87,6 +89,26 @@ OlympusEnemyData.NPC_Makaria_01 =
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 				Text = "Still seems like a lot of effort to be working in the archive all the time. You could say you were send to your doom" },
+		},
+		MakariaCompletedBanishmentQuest =
+		{
+			Name = "MakariaCompletedBanishmentQuest",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredFalseFlags = { "InFlashback", },
+			--InOffice = true,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I should check in with the House Contractor.
+					{ Cue = "/VO/ZagreusHome_1490" },
+				},
+			},
+			{ Cue = "/VO/Makaria_0001",
+				Text = "Looks like you did it! Now that you've got all the pieces, we can rebuild the Stone of Banishment! I mean the House Contractor. Hope it can be useful on your crusade once it's back to one piece." },
 		},
 	},
 
@@ -236,7 +258,6 @@ OlympusTraitData.TroveUpgradeBoonTrait = {
 		Slot = "Keepsake",
 		RecordCacheOnEquip = true,
 		ChamberThresholds = { 25, 50 },
-
 		RarityLevels =
 		{
 			Common =
@@ -245,17 +266,28 @@ OlympusTraitData.TroveUpgradeBoonTrait = {
 			},
 			Rare =
 			{
-				Multiplier = 1.25,
+				Multiplier = 1.5,
 			},
 			Epic =
 			{
-				Multiplier = 1.5,
+				Multiplier = 2.0,
 			}
 		},
 		--New Data
 		InRackTitle = "TroveUpgradeBoonTrait_Rack",
 		Icon = "Keepsake_Candle",
 		EquipSound = "/SFX/Enemy Sounds/HydraHead/HydraMiscBoneRattle1",
+		BaseChallengeSpawnChanceMultiplier = {
+			BaseValue = 0.10
+		},
+		ExtractValues =
+		{
+			{
+				Key = "BaseChallengeSpawnChanceMultiplier",
+				ExtractAs = "TooltipBaseChallengeSpawnChanceMultiplier",
+				Format = "Percent"
+			},
+		},
 		SignOffData =
 		{
 			{
@@ -749,7 +781,7 @@ OlympusObstacleData.MakariaGiftDropChallengeSwitch =
 
 local OlympusEncounterSets = ModUtil.Entangled.ModData(EncounterSets)
 ModUtil.Table.Merge(OlympusEncounterSets.ChallengeOptions, {
-	--[["MakariaMoneyChallengeSwitch",
+	"MakariaMoneyChallengeSwitch",
 	"MakariaMoneyChallengeSwitch2",
 	"MakariaMoneyChallengeSwitch3",
 	"MakariaHealthChallengeSwitch",
@@ -760,8 +792,8 @@ ModUtil.Table.Merge(OlympusEncounterSets.ChallengeOptions, {
 	"MakariaDarknessChallengeSwitch3",
 	"MakariaGemChallengeSwitch",
 	"MakariaGemChallengeSwitch2",
-	"MakariaGemChallengeSwitch3",]]
-	"MakariaExtraChanceChallengeSwitch",
+	"MakariaGemChallengeSwitch3",
+	--"MakariaExtraChanceChallengeSwitch",
 	"MakariaBoonChallengeSwitch",
 	"MakariaCentaurHeartChallengeSwitch",
 	"MakariaStackUpgradeChallengeSwitch",
@@ -769,5 +801,75 @@ ModUtil.Table.Merge(OlympusEncounterSets.ChallengeOptions, {
 })
 -- Styx Management
 OlympusRoomSetData.Styx.D_Reprieve01.EnterVoiceLines[1].RequiredFalseTrait = "TroveUpgradeBoonTrait"
+OlympusRoomSetData.Styx.D_Reprieve01.GameStateRequirements = {RequiredMinWingDepth = 3, RequiredSpecialStyxTroveCondition = {RequiredTraitName = "TroveUpgradeBoonTrait", RequiredMinBiomeDepth = 7}}
 OlympusGlobalVoiceLines.ForkingPathVoiceLines[3].RequiredFalseTrait = "TroveUpgradeBoonTrait"
-OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Elysium)
+OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Styx)
+
+-- God Manager Cosmetics
+table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, 
+{
+				FunctionName = "SpawnStoneOfBanishment",
+				GameStateRequirements =
+				{
+					RequiredCosmetics = { "StoneOfBanishmentWorkOrder", },
+				},
+				Args =
+				{
+					Ids = {"421422"},
+				},
+			})
+OlympusConditionalItemData.StoneOfBanishmentWorkOrder =
+	{
+		Name = "StoneOfBanishmentWorkOrder",
+		InheritFrom = { "DefaultCriticalItem" },
+		Slot = "Critical",
+		PanDuration = 2,
+		-- UsePanSound = true,
+		DoVerticalPan = true,
+		UseUnlockText = true,
+		PreActivationHoldDuration = 1.5,
+		PostActivationHoldDuration = 1.5,
+		SetPlayerAnimation = "ZagreusCosmeticPurchase",
+		-- UseReturnPanSound = true,
+		SkipFade = true,
+		SkipPurchaseGlobalVoiceLines = true,
+		-- SkipRevealReactionGlobalVoiceLines = true,
+
+		RevealVoiceLines =
+		{
+			{
+				PreLineWait = 0.35,
+				-- I think those columns still could use some sprucing up.
+				{ Cue = "/VO/ZagreusHome_1759" },
+			},
+			{
+				PreLineWait = 0.85,
+				ObjectType = "NPC_Hades_01",
+				RequiredFalseTextLinesThisRoom = { "HadesAboutOlympianReunionQuest01A" },
+				RequiredSourceValueFalse = "InPartnerConversation",
+				-- The columns were just fine the way they were.
+				{ Cue = "/VO/Hades_0676" },
+			},
+		},
+		RevealReactionGlobalVoiceLines = "HadesGhostAdminCriticalItemPurchaseReactionVoiceLines",
+		Icon = "RunUpgrade_StoneOfBanishment",
+		ResourceName = "SuperGems",
+		ResourceCost = 3,
+		GameStateRequirements =
+		{
+			RequiredTextLines = { "MakariaCompletedBanishmentQuest" },
+		},
+
+		OfferedVoiceLines =
+		{
+			PreLineWait = 0.5,
+			PlayOnce = true,
+
+			-- Hey that sounds handy, there...
+			{ Cue = "/VO/ZagreusHome_3562" },
+		},
+	}
+	function SpawnStoneOfBanishment(eventSource, args)
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnStoneOfBanishment"))
+		Activate({ Ids = args.Ids})
+	end

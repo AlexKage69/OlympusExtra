@@ -51382,7 +51382,7 @@
         {
             "ActivateAtRange": false,
             "ActivationRange": 600.0,
-            "Active": true,
+            "Active": false,
             "AllowMovementReaction": false,
             "Ambient": 0.0,
             "Angle": 0.0,

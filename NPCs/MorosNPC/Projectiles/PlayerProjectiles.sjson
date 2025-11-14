@@ -35,7 +35,43 @@
           CanAffectInvulnerable = false
           TimeModifierFraction = 0
         }
-        ]
+      ]
+    }
+    {
+      Name = "HestiaDefianceNovaProjectile"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "HestiaCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "null"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      //AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 4000,
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 20
+      DamageHigh = 20
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "HestiaRing"
+        Grip = 999999
+      }      
     }
   ]
 }

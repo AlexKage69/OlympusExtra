@@ -67,6 +67,9 @@ ModUtil.LoadOnce(function()
                 "LastStandHealthDrop", "HealthDamageSoulDrop", "LavaDeathTrait", "LavaResistTrait",
                 "LavaLongerTrait", "LavaAutoTrait"
             }
+            if OEMirror ~= nil then
+                table.insert(OlympusCodexMenuData.HestiaUpgrade, 8, "DefianceDamageTrait")
+            end
             table.insert(OlympusCodexMenuData.Consumables, "LastStandHealthDrop")
             table.insert(OlympusCodexMenuData.Consumables, "HealthDamageSoulDrop")
             table.insert(OlympusCodexMenuData.Legendaries, "LavaAutoTrait")
