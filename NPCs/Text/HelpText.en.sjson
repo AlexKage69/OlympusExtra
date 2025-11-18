@@ -375,6 +375,11 @@
 			DisplayName = "Eternity"
 			Description = "{$Keywords.ExtraChanceFloor} deals damage to all enemies. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
+		{
+			Id = "UI_BounceText"
+			DisplayName = "{$TempTextData.Bounce}"
+			OverwriteLocalization = true
+		}
 		// Makaria
 		{
 			Id = "NPC_Makaria_01"
@@ -528,6 +533,63 @@
 		{
 			Id = "UseChallengeSwitch_GiftDropRewardAvailable"
 			DisplayName = "{I} Claim {!Icons.GiftPoint}"
+		}
+		// Nemesis
+		{
+			Id = "NPC_Nemesis_01"
+			DisplayName = "Nemesis"
+			Description = "Retribution Incarnate"
+		}
+		{
+			Id = "NemesisFirstMeeting"
+			DisplayName = "Met Nemesis"
+		}
+		{
+			Id = "MetNemesis"
+			DisplayName = "Met Nemesis"
+		}
+		{
+			Id = "CodexData_Nemesis_01"
+			DisplayName = "'...Nemesis Codex 1...'"
+		}
+		{
+			Id = "CodexData_Nemesis_02"
+			DisplayName = "'...Nemesis Codex 1, Nemesis Codex 2...{#PreviousFormat}'"
+		}
+		{
+			Id = "CodexData_Nemesis_03"
+			DisplayName = "'...Nemesis Codex 1, Nemesis Codex 2, Nemesis Codex 3...{#PreviousFormat}'"
+		}
+		{
+			Id = "UseTalkToNemesis"
+			DisplayName = "{I} Talk"
+		}
+		{
+			Id = "NemesisRevengeTrait"
+			DisplayName = "Retaliation Mark"
+			Description = "After you take damage, damage foes around you and improve Revenge Boon. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "NemesisRevengeTrait_Rack"
+			InheritFrom = "NemesisRevengeTrait"
+			Description = "After you take damage, damage foes around you and improve Revenge Boon. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "NemesisRevengeTrait_Inactive"
+			DisplayName = "Retaliation Mark"
+			Description = "After you take damage, damage foes around you and improve Revenge Boon. \n {!Icons.Bullet}{#PropertyFormat}Revenge Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+		}
+		{
+			Id = "NemesisSignoff"
+			DisplayName = "From Nemesis"
+		}
+		{
+			Id = "NemesisSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Nemesis{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Allegiance Bond
+
+				{#AwardDarkFlavorFormat}A true friendship starts with knowing what needs to be done.
+			"""
 		}
     ]
 }

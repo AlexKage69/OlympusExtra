@@ -225,6 +225,7 @@ OlympusLootData.HermesUpgrade.LinkedUpgrades.AmmoBounceFasterTrait =
 table.insert(OlympusQuestData.LegendaryUpgrades.UnlockGameStateRequirements.RequiredAnyTraitsTaken, "AmmoBounceFasterTrait")
 table.insert(OlympusQuestData.LegendaryUpgrades.CompleteGameStateRequirements.RequiredTraitsTaken, "AmmoBounceFasterTrait")
 table.insert(OlympusGameData.RunClearMessageData.ClearLegendaryTraits.GameStateRequirements.RequiredCountOfTraits, "AmmoBounceFasterTrait")
+OlympusTraitData.DionysusRangedTrait.PropertyChanges[13].WeaponNames = { "RangedWeapon"}
 OlympusMetaUpgradeData.BounceAmmoMetaUpgrade =
 {
 	InheritFrom = { "BaseMetaUpgrade", },
@@ -405,6 +406,7 @@ if ApolloExtra ~= nil then
 	OlympusConsumableData.RerollBoonDrop.RequiredAnyMetaUpgradeSelected = {"RerollPanelMetaUpgrade","RerollPomMetaUpgrade"}
 	OlympusConsumableData.RerollObolDrop.RequiredMetaUpgradeSelected = nil
 	OlympusConsumableData.RerollObolDrop.RequiredAnyMetaUpgradeSelected = {"RerollMetaUpgrade","RerollPomMetaUpgrade"}
+	OlympusTraitData.ApolloRangedTrait.PropertyChanges[13].WeaponNames = { "RangedWeapon"}
 end
 OlympusMetaUpgradeData.RerollPomMetaUpgrade =
 {
@@ -949,6 +951,7 @@ function StartBounceThread( consumable, targetId, startDelay )
 	end
 	wait( delay, RoomThreadName )
 	FireBounceAmmo(consumable, targetId)
+	thread( UpdateAmmoUI )
 	--SetObstacleProperty({ Property = "Magnetism", Value = consumable.MagnetismEscalateAmount, DestinationId = consumable.ObjectId })
 end
 function FireBounceAmmo(storedAmmo, victimId)

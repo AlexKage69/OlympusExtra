@@ -32,7 +32,7 @@ OlympusEnemyData.NPC_Moros_01 =
 
 	ActivateRequirements =
 	{
-		--RequiredCompletedRuns = 5,
+		RequiredCompletedRuns = 5,
 		RequiredTextLines = { "AthenaFirstPickUp" },
 		--RequiredFalseTextLinesLastRun = {  },
 		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,

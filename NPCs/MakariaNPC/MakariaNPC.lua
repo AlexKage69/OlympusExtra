@@ -39,7 +39,7 @@ OlympusEnemyData.NPC_Makaria_01 =
 	ActivateRequirements =
 	{
 		--RequiredCompletedRuns = 5,
-		RequiredTextLines = { "AthenaFirstPickUp" },
+		RequiredTextLines = { "SceneMakariaFirstMeeting" },
 		--RequiredFalseTextLinesLastRun = {  },
 		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,
 		--RequiredFalseFlags = { "InFlashback" },

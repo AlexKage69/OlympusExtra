@@ -446,17 +446,18 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
         if IsEmpty( upgradeOptions ) then
 			table.insert(upgradeOptions, { ItemName = "FallbackMoneyDrop", Type = "Consumable", Rarity = "Common" })
 		end
-        local itemLocationY = 370
-		local itemLocationX = ScreenCenterX - 355
-		for itemIndex, itemData in ipairs( upgradeOptions ) do
-			local purchaseButtonKey = "PurchaseButton"..itemIndex -- Doesnt work because eligible is not there yet...
-            if CanStackToTrait(itemData.ItemName) and not HasGodAlready(CurrentRun.Hero, itemData.ItemName) then       
-                local pom = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray"  })
-                Attach({ Id = pom, DestinationId = components[purchaseButtonKey].Id, OffsetX = 270, OffsetY = -60 })
-                SetAnimation({ Name = "MirrorIcon_PomFirstGod", DestinationId = pom, Group = "Combat_Menu_TraitTray" })
-                --SetScale({ Id = pom, Fraction = 1.0})
+        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 then
+            local itemLocationY = 370
+            for itemIndex, itemData in ipairs( upgradeOptions ) do
+                local purchaseButtonKey = "PurchaseButton"..itemIndex -- Doesnt work because eligible is not there yet...
+                if CanStackToTrait(itemData.ItemName) and not HasGodAlready(CurrentRun.Hero, itemData.ItemName) then       
+                    local pom = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_Menu_TraitTray"  })
+                    Attach({ Id = pom, DestinationId = components[purchaseButtonKey].Id, OffsetX = 270, OffsetY = -60 })
+                    SetAnimation({ Name = "MirrorIcon_PomFirstGod", DestinationId = pom, Group = "Combat_Menu_TraitTray" })
+                    --SetScale({ Id = pom, Fraction = 1.0})
+                end
+                itemLocationY = itemLocationY + 220
             end
-            itemLocationY = itemLocationY + 220
         end
         if IsMetaUpgradeSelected( "RerollMetaUpgrade" ) and HeroHasTrait("ForceWeaponUpgradeTrait") and lootData.Name == "WeaponUpgrade" then
             local cost = -1
@@ -525,6 +526,49 @@ ModUtil.Path.Wrap("UpdateHeroTraitDictionary",
 			end
 		end
 	)
+ModUtil.Path.Wrap("UpdateAmmoUI",
+    function(baseFunc, triggerArgs)
+        baseFunc(triggerArgs)
+        if ScreenAnchors.AmmoIndicatorUI == nil or CurrentRun.Hero == nil then
+            return
+        end
+        if GetNumMetaUpgrades( "BounceAmmoMetaUpgrade" ) > 0 and CurrentRun.Hero.Bounce ~= nil then
+            if ScreenAnchors.AmmoBounceIndicatorUI == nil then
+                ScreenAnchors.AmmoBounceIndicatorUI = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI"})
+                Attach({ Id = ScreenAnchors.AmmoBounceIndicatorUI, DestinationId = ScreenAnchors.AmmoIndicatorUI, OffsetX = -15, OffsetY = 13 })
+                CreateTextBox(MergeTables({ Id = ScreenAnchors.AmmoBounceIndicatorUI, OffsetX = 24, OffsetY = -2,
+                    Font = "AlegreyaSansSCBold", FontSize = 20, ShadowRed = 0.1, ShadowBlue = 0.1, ShadowGreen = 0.1,
+                    OutlineColor = {0.113, 0.113, 0.113, 1}, OutlineThickness = 1,
+                    ShadowAlpha = 1.0, ShadowBlur = 0, ShadowOffsetY = 2, ShadowOffsetX = 0, Justification = "Left",
+                    }, LocalizationData.UIScripts.AmmoUI ))
+	            --FadeObstacleIn({ Id = ScreenAnchors.AmmoBounceIndicatorUI, Duration = CombatUI.FadeInDuration, IncludeText = true, Distance = CombatUI.FadeDistance.Ammo, Direction = 0 })
+            end
+            ModifyTextBox({ Id = ScreenAnchors.AmmoBounceIndicatorUI, Text = "UI_BounceText", LuaKey = "TempTextData", LuaValue = {Bounce = (CurrentRun.Hero.Bounce.Max - CurrentRun.Hero.Bounce.Num)}, AutoSetDataProperties = false, })
+        end
+    end
+)
+ModUtil.Path.Wrap("HideAmmoUI",
+    function(baseFunc)
+        local toDestroyId =  ScreenAnchors.AmmoBounceIndicatorUI
+        if ScreenAnchors.AmmoBounceIndicatorUI ~= nil then
+            HideObstacle({ Id = ScreenAnchors.AmmoBounceIndicatorUI, IncludeText = true, Distance = CombatUI.FadeDistance.Ammo, Angle = 180, Duration = CombatUI.FadeDuration, SmoothStep = true })
+        end
+        baseFunc()
+        if toDestroyId ~= nil then            
+            ScreenAnchors.AmmoBounceIndicatorUI = nil
+            Destroy({ Id = toDestroyId })
+        end
+    end
+)
+    
+ModUtil.Path.Wrap("DestroyAmmoUI",
+    function(baseFunc)
+        if ScreenAnchors.AmmoBounceIndicatorUI ~= nil then
+            Destroy({ Id =  ScreenAnchors.AmmoBounceIndicatorUI })
+        end
+        baseFunc()
+    end
+)
 ModUtil.Path.Wrap("CalculateDamageMultipliers",
     function(baseFunc, attacker, victim, weaponData, triggerArgs)
         local damageReductionMultipliers = 1
@@ -2055,7 +2099,7 @@ ModUtil.Path.Wrap("AddTraitToHero",
         if  args.TraitData == nil then
             args.TraitData = GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = args.TraitName, Rarity = args.Rarity })
         end
-        if CanStackToTrait(args.TraitData.Name) and not firstGod then     
+        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 and CanStackToTrait(args.TraitData.Name) and not firstGod then     
             AddStackToTrait(args)
         end
         if args.TraitData ~= nil and args.TraitData.Name ~= nil and args.TraitData.ReplaceTrait ~= nil and HeroHasTrait(args.TraitData.ReplaceTrait) then

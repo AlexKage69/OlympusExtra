@@ -1,0 +1,12 @@
+{
+  Weapons = [
+    "_append" 
+    {
+      Name = "NemesisRevengeWeapon"
+      InheritFrom = "MagicShieldAttack"
+      Projectile = "NemesisRevengeProjectile"
+      ClearFireRequestOnChargeCancel = false
+      Cooldown = 1.0
+    }
+  ]
+}

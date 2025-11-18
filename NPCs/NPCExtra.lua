@@ -1,5 +1,11 @@
 function SpawnExtraNPCs(eventSource, args)
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnExtraNPCs")) 	
+	if GameState.Gift[args.Name] == nil or GameState.Gift[args.Name].Value == nil then
+		GameState.Gift[args.Name] = {
+			Value =  0,
+			--NewTraits = GameState.BefriendPersistentVals["TheseusGiftNewTraits"],
+		}
+	end
 	local obstacleId = GetFirstValue(GetInactiveIdsByType({ Name = args.Name }))
 	if args.Name == nil or obstacleId == nil or args.SpawnPointId == nil then
 		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character - No Ids")) 	
@@ -23,12 +29,7 @@ function SpawnExtraNPCs(eventSource, args)
 		UseableOn({ Ids = newUnit.ObjectId })
 		
 		SetupAI( CurrentRun, newUnit )		
-		if GameState.Gift[args.Name] == nil or GameState.Gift[args.Name].Value == nil then
-			GameState.Gift[args.Name] = {
-				Value =  0,
-				--NewTraits = GameState.BefriendPersistentVals["TheseusGiftNewTraits"],
-			}
-		end
+		
 		local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
 		if IsActivationEligible( newUnit.ObjectId, enemyData ) then
 			Activate({ Ids = newUnit.ObjectId })

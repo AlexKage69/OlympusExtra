@@ -1,0 +1,20 @@
+{
+  Projectiles = [
+      "_append"
+      {
+      Name = "NemesisRevengeProjectile"
+      Fuse = 0.0
+      DamageRadius = 225
+      DamageLow = 50
+      DamageHigh = 50
+      UseVulnerability = false
+      ClearOnAttackEffects = false
+      Thing = 
+      {
+        Graphic = "null"
+        OffsetZ = 70
+        Grip = 999999
+      }
+    }
+  ]
+}
