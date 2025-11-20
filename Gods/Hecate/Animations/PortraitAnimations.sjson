@@ -1,0 +1,339 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "PortraitRayParticle_Gaia"
+      InheritFrom = "PortraitRayParticle"
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
+      OffsetX = 0
+      OffsetY = -300
+    }
+    {
+      Name = "PortraitVerticalRay_Gaia"
+      InheritFrom = "PortraitVerticalRay"
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
+
+      OffsetX = 0
+      CreateAnimation = "PortraitRayParticle_Gaia"
+    }
+    {
+      Name = "PortraitVerticalRayEmitter_Gaia"
+      InheritFrom = "PortraitVerticalRayEmitter_Base"
+      StartRed = 0.98
+      StartGreen = 0.98
+      StartBlue = 0.96
+      EndRed = 0.0
+      EndGreen = 0.53
+      EndBlue = 0.55
+      OffsetX = 0
+      VisualFx = "PortraitVerticalRay_Gaia"
+    }
+    {
+      Name = "PortraitGodRayEmitter_Gaia"
+      InheritFrom = "PortraitGodRayEmitter"
+      EndFrame = 1
+      StartFrame = 1
+      VisualFxOffsetX = -30.0
+      VisualFxOffsetY = 120.0
+      CreateAnimation = "PortraitVerticalRayEmitter_Gaia"
+    }
+    {
+      Name = "Portrait_Gaia_Default_01"
+      InheritFrom = "Portrait_God_01"
+      ChildAnimation = "PortraitGodRayEmitter_Gaia"
+      FilePath = "Gaia\Portraits_Gaia_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.60
+    }
+    {
+      Name = "Portrait_Gaia_Default_01_Exit"
+      InheritFrom = "Portrait_Base_01_Exit"
+      FilePath = "Gaia\Portraits_Gaia_01"
+      EndFrame = 1
+      StartFrame = 1
+      Scale = 0.60
+    }
+    {
+      Name = "Portrait_Gaia_Wrath_01"
+      InheritFrom = "Portrait_Gaia_Default_01"
+      ChildAnimation = "null"
+      AddColor = true
+      EndFrame = 1
+      StartFrame = 1
+      CreateAnimation = "null"
+    }
+    {
+      Name = "Codex_Portrait_Gaia"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Gaia\CodexPortrait_Gaia"
+      Scale = 0.29
+      EndFrame = 1
+      StartFrame = 1
+    }
+    // Seed/Grow Portrait
+    {
+      Name = "Codex_Portrait_Vegetable_Tartarus_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Vegetable_Styx_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Vegetable_Erebus_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Vegetable_Asphodel_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Vegetable_Chaos_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Vegetable_Chaos_Legendary_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Fruit_Elysium_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Fruit_Surface_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Fruit_Home_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Fruit_Gaia_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Fruit_Tartarus_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Fruit_Gaia_Legendary_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Herb_Asphodel_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Herb_Chaos_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Herb_Gaia_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Herb_Elysium_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Herb_Styx_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Herb_Surface_Legendary_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishChaosCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Vegetable_Tartarus_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Vegetable_Styx_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Vegetable_Erebus_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Vegetable_Asphodel_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Vegetable_Chaos_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Vegetable_Chaos_Legendary_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Fruit_Elysium_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Fruit_Surface_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Fruit_Home_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Fruit_Gaia_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Fruit_Tartarus_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Fruit_Gaia_Legendary_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Herb_Asphodel_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Herb_Chaos_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Herb_Gaia_Common_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Herb_Elysium_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Herb_Styx_Rare_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Codex_Portrait_Seed_Herb_Surface_Legendary_01"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Portraits\Codex\CodexPortrait_FishTartarusCommon01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+
+  ]
+}
