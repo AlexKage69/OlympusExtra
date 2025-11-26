@@ -1,5 +1,14 @@
+local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
+local OlympusObjectiveData = ModUtil.Entangled.ModData(ObjectiveData)
+local OlympusUIData = ModUtil.Entangled.ModData(UIData)
+local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
+local OlympusObjectiveSetData = ModUtil.Entangled.ModData(ObjectiveSetData)
+local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+
+
+
 GodOrderingReverseLookup = {} -- Auto Generate on open page ; GodOrdering is in GenerateGodOrderingReverseLookup
-OnUsed { "OlympianTablet",
+OnUsed { "StoneOfBanishment",
 	function(triggerArgs)
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Open Tablet"))
 		if CurrentRun.CurrentRoom.BlockKeepsakeMenu and not CanFreeSwapKeepsakes() then
@@ -11,14 +20,12 @@ OnUsed { "OlympianTablet",
 		StartUpGodManagerMenu(triggerArgs.TriggeredByTable)
 	end
 }
-local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
-OlympusObstacleData.OlympianTablet =
+OlympusObstacleData.StoneOfBanishment =
 	{
 		UseText = "UseAwardMenu",
 		UsePromptOffsetX = 65,
 		UsePromptOffsetY = -50,
 	}
-local OlympusUIData = ModUtil.Entangled.ModData(UIData)
 OlympusUIData.GodManagerMenu = {
 	CurrentPage = 0,
 	ItemsPerPage = 4,
@@ -27,7 +34,6 @@ OlympusUIData.GodManagerMenu = {
 	AvailableGods = {},
 	NormalSelectionFrame = "GodManagerMenuItemEquipped",
 }
-local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
 -- Single God
 OlympusGiftData.ZeusUpgrade[4] = { UnlockExiledData = { Name = "ZeusUpgrade", RequiredTextLine = "ZeusFirstPickUp"} }
 OlympusGiftData.PoseidonUpgrade[4] = { UnlockExiledData = { Name = "PoseidonUpgrade", RequiredTextLine = "PoseidonFirstPickUp"} }
@@ -38,48 +44,75 @@ OlympusGiftData.AresUpgrade[4] = { UnlockExiledData = { Name = "AresUpgrade", Re
 OlympusGiftData.DionysusUpgrade[4] = { UnlockExiledData = { Name = "DionysusUpgrade", RequiredTextLine = "DionysusFirstPickUp"} }
 OlympusGiftData.AthenaUpgrade[4] = { UnlockExiledData = { Name = "AthenaUpgrade", RequiredTextLine = "AthenaFirstPickUp"} }
 if ApolloExtra ~= nil and OlympusGiftData.ApolloUpgrade ~= nil then
-	OlympusGiftData.ApolloUpgrade[4] = { UnlockExiledData = {RequiredTextLine = "ApolloFirstPickUp"} }
+	OlympusGiftData.ApolloUpgrade[4] = { UnlockExiledData = { Name = "ApolloUpgrade", RequiredTextLine = "ApolloFirstPickUp"} }
 end
 if HestiaExtra ~= nil and OlympusGiftData.HestiaUpgrade ~= nil then
-	OlympusGiftData.HestiaUpgrade[4] = { UnlockExiledData = {RequiredTextLine = "HestiaFirstPickUp"} }
+	OlympusGiftData.HestiaUpgrade[4] = { UnlockExiledData = { Name = "HestiaUpgrade", RequiredTextLine = "HestiaFirstPickUp"} }
 end
 if HeraExtra ~= nil and OlympusGiftData.HeraUpgrade ~= nil then
-	OlympusGiftData.HeraUpgrade[4] = { UnlockExiledData = {RequiredTextLine = "HeraFirstPickUp"} }
+	OlympusGiftData.HeraUpgrade[4] = { UnlockExiledData = {Name = "HeraUpgrade", RequiredTextLine = "HeraFirstPickUp"} }
 end
 -- Dual Choices
 OlympusGiftData.HermesUpgrade[4] = { UnlockExiledData = {Name = "HermesUpgrade",RequiredTextLine = "HermesFirstPickUp", DualGod = {Name = "HephaestusUpgrade", RequiredTextLine = "HephaestusFirstPickUp", IsDualGodOf = "HermesUpgrade"}}}
 OlympusGiftData.TrialUpgrade[4] = { UnlockExiledData = {Name = "TrialUpgrade",RequiredTextLine = "ChaosFirstPickUp", DualGod = {Name = "QuestUpgrade", RequiredTextLine = "GaiaFirstPickUp", IsDualGodOf = "TrialUpgrade"}}}
 OlympusGiftData.TrialUpgrade[4] = { UnlockExiledData = {Name = "RoomChallenge",RequiredTextLine = "ChaosFirstPickUp", DualGod = {Name = "CauldronRoom", RequiredTextLine = "GaiaFirstPickUp", IsDualGodOf = "TrialUpgrade"}}}
 
-local OlympusObjectiveSetData = ModUtil.Entangled.ModData(ObjectiveSetData)
-OlympusObjectiveSetData.OlympianTabletPrompt =
+OlympusObjectiveData.StoneOfBanishmentPrompt = { Description = "Objective_UseStoneOfBanishment" }
+OlympusObjectiveSetData.StoneOfBanishmentPrompt =
 {
 	AllowRepeat = false,
 	PriorityLevel = 2,
 	OverrideExistingObjective = false,
 	RequiredRoom = "RoomPreRun",
 	RequireNewTraits = true,
+	IsIdAlive = 421422,
 	Objectives =
 	{
-		{ "OlympianTabletPrompt" }
+		{ "StoneOfBanishmentPrompt" }
 	},
 }
-local OlympusObjectiveData = ModUtil.Entangled.ModData(ObjectiveData)
-OlympusObjectiveData.OlympianTabletPrompt = { Description = "Objective_UseOlympianTablet" }
+OlympusTraitData.BanishmentTrait = {
+	Name = "BanishmentTrait",
+	Frame = "MetaUpgrade",
+	Icon = "BonusDarkness_01",
+}
 
-function UpdateOlympianTabletShineStatus()
+function UpdateStoneOfBanishmentShineStatus()
 	if ScreenAnchors.GodManagerMenuSparkleId ~= nil then
 		Destroy({ Id = ScreenAnchors.GodManagerMenuSparkleId })
 	end
-	local id = GetIdsByType({ Name = "OlympianTablet" })[1]
+	local id = GetIdsByType({ Name = "StoneOfBanishment" })[1]
 	if id ~= nil and HasNewTraits() and not CurrentRun.CurrentRoom.BlockKeepsakeMenu then
 		ScreenAnchors.GodManagerMenuSparkleId = SpawnObstacle({ Name = "BlankObstacle", Group = "FX_Standing" })
 		SetThingProperty({ Property = "SortMode", Value = "Id", DestinationId = ScreenAnchors.GodManagerMenuSparkleId })
 		Attach({ Id = ScreenAnchors.GodManagerMenuSparkleId, DestinationId = id })
-		SetAnimation({ Name = "OlympianTabletGlean", DestinationId = ScreenAnchors.GodManagerMenuSparkleId })
+		SetAnimation({ Name = "StoneOfBanishmentGlean", DestinationId = ScreenAnchors.GodManagerMenuSparkleId })
+	end
+	local exilData = GetExilData()
+	if HeroHasTrait("BanishmentTrait") then
+		RemoveTrait(CurrentRun.Hero, "BanishmentTrait")
+	end
+	if TableLength(exilData.CurrentExiledGods) > 0 then
+		AddTrait( CurrentRun.Hero, "BanishmentTrait" )
+		local GodsText = ""
+		for name, exiled in pairs( exilData.CurrentExiledGods) do
+			local godName = ParseRealGodName(name)
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(godName))
+			if GodsText ~= "" then
+				GodsText = GodsText..", "
+			end
+			GodsText = GodsText..godName
+		end
+		for i, trait in pairs(CurrentRun.Hero.Traits) do
+			if trait.Name == "BanishmentTrait" then
+				trait.Gods = GodsText
+			end
+		end
 	end
 end
-
+function ParseRealGodName(id)
+	return string.sub(id,0,string.len(id)-7)
+end
 
 function CreateExiledGodsData()
 	return {
@@ -182,10 +215,10 @@ function GenerateGodOrderingReverseLookup()
 		"AresUpgrade",
 		"ArtemisUpgrade",
 		"DionysusUpgrade",
+		"DemeterUpgrade",
 		"ApolloUpgrade",
 		"HestiaUpgrade",
 		"HeraUpgrade",
-		"DemeterUpgrade",
 		--Dual
 		"HermesUpgrade",
 		"HephaestusUpgrade",
@@ -204,7 +237,7 @@ function StartUpGodManagerMenu(GodManagerMenuObject)
 	ShowGodManagerMenu()
 
 	if GameState.LastAwardTrait ~= nil then
-		thread(MarkObjectiveComplete, "OlympianTabletPrompt")
+		thread(MarkObjectiveComplete, "StoneOfBanishmentPrompt")
 	end
 end
 -- should get 3 free gods. then you can pay nectar and ambrosia to unlock the rest. only gods with gift04 can be
@@ -243,7 +276,7 @@ function ShowGodManagerMenu()
 	PlaySound({ Name = "/SFX/Menu Sounds/GeneralWhooshMENU" })
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/ChestOpen" })
 
-	-- Nectar and Ambrosia Available3
+	-- Nectar and Ambrosia Available
 	local FreeExilMessageText = " "
 	local CurrentGiftText = " "
 	local CurrentSuperGiftText = " "
@@ -293,7 +326,7 @@ function ShowGodManagerMenu()
 				LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}
 			})
 	--Title
-	local title = "Olympian Tablet"
+	local title = "Stone of Banishment"
 	local subtitle = "Exil gods and goddesses."
 	components.Title = CreateTextBox({ Id = components.Background.Id, Text = title, FontSize = 34,
 	OffsetX = 0, OffsetY = -380, Color = Color.White, Font = "SpectralSCLight",
@@ -320,6 +353,7 @@ function ShowGodManagerMenu()
 	local rowMax = 6
 	local rowMin = math.ceil(rowMax / 2)
 	local maxIndex = 0
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(TableLength(UIData.GodManagerMenu.AvailableExiledGods.Single)))
 	for itemIndex, exiledGod in ipairs(UIData.GodManagerMenu.AvailableExiledGods.Single) do
 		local localx = startX - spacerX * rowMin/2 + ((itemIndex - 1) % rowMax + 0.5) * spacerX
 		local localy = startY + math.floor( (itemIndex - 1) / rowMax)* 2 * (spacerY / 2)
@@ -338,10 +372,16 @@ function ShowGodManagerMenu()
 	for itemIndex, exiledGod in ipairs(UIData.GodManagerMenu.AvailableExiledGods.Dual) do
 		local localx = startX - spacerX * rowMin/2 + ((itemIndex - 1) % rowMax + 0.5) * spacerX
 		local localy = startY + math.floor( (itemIndex - 1) / rowMax)* 2 * (spacerY / 2)
-		CreateExiledGodIcon( components, { Index = itemIndex+maxIndex+extraIndex, God = exiledGod, X = localx, Y = localy })
-		extraIndex = extraIndex + 1
-		-- Other God
-		CreateExiledGodIcon( components, { Index = itemIndex+maxIndex+extraIndex, God = exiledGod.DualGod, X = localx + 135, Y = localy })
+		
+		if not IsGodAvailableForExil(exiledGod) or not IsGodAvailableForExil(exiledGod.DualGod) then -- Unknown
+			components["Locked"..itemIndex] = CreateScreenComponent({ Name = "LegendaryKeepsakeLockedButton", X = localx, Y = localy, Group = "Combat_Menu" })
+			components["Locked"..itemIndex].Unavailable = true
+		else -- Known god
+			CreateExiledGodIcon( components, { Index = itemIndex+maxIndex+extraIndex, God = exiledGod, X = localx, Y = localy })
+			extraIndex = extraIndex + 1
+			-- Other God
+			CreateExiledGodIcon( components, { Index = itemIndex+maxIndex+extraIndex, God = exiledGod.DualGod, X = localx + 135, Y = localy })
+		end
 	end
 	-- CreateTextBox({ Id = components.ShopBackground.Id, Text = "GodManagerMenu_Hint", FontSize = 14, OffsetX = 0, OffsetY = 420, Width = 840, Color = Color.Gray, Font = "CrimsonTextBoldItalic", ShadowBlur = 0, ShadowColor = {0,0,0,1}, ShadowOffset={0, 2}, Justification = "Center" })
 
@@ -910,17 +950,7 @@ function CloseGodMenuScreen(screen, button)
 	SetConfigOption({ Name = "FreeFormSelectRepeatDelay", Value = 0.0 })
 	PlaySound({ Name = "/SFX/Menu Sounds/GeneralWhooshMENULoudLow" })
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/CabinetClose" })
-	if ScreenAnchors.GodManagerMenuScreen.LastAssist ~= GameState.LastAssistTrait then
-		UnequipAssist(CurrentRun.Hero, ScreenAnchors.GodManagerMenuScreen.LastAssist)
-		EquipAssist(CurrentRun.Hero, GameState.LastAssistTrait)
-	end
-
-	if ScreenAnchors.GodManagerMenuScreen.LastTrait ~= GameState.LastAwardTrait then
-		UnequipKeepsake(CurrentRun.Hero, ScreenAnchors.GodManagerMenuScreen.LastTrait)
-		EquipKeepsake(CurrentRun.Hero, GameState.LastAwardTrait)
-		thread(PlayVoiceLines, GlobalVoiceLines.AwardSelectedVoiceLines, false)
-	end
-
+	
 	DestroySelectedFrameGodMenu()
 	DestroyCursorFrameGodMenu()
 	DisableShopGamepadCursor()
@@ -932,7 +962,7 @@ function CloseGodMenuScreen(screen, button)
 	UnfreezePlayerUnit()
 	screen.KeepOpen = false
 	ShowCombatUI("GodManagerMenu")
-	UpdateOlympianTabletShineStatus()
+	UpdateStoneOfBanishmentShineStatus()
 end
 
 function HandleExiledToggle(screen, button, textOverride)
@@ -943,7 +973,7 @@ function HandleExiledToggle(screen, button, textOverride)
 	local exilData = GetExilData()
 	if IsLootDataIconAvailable(lootData) then
 		if not IsGodAvailableForExil(god) then -- Unknown
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Click Unknown:"..god.Name))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(buttonKey..";Click Unknown:"..god.Name))
 			return
 		else -- Known god
 			if not IsGodUnlockedForExil(god.Name) then -- God is still locked
@@ -953,14 +983,14 @@ function HandleExiledToggle(screen, button, textOverride)
 					thread( PlayVoiceLines, ResourceData["GiftPoints"].BrokerCannotSpendVoiceLines, true )
 				end
 			elseif IsGodExiled(god.Name) then -- God Unlocked and Selected
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Unselect:"..god.Name))
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Unselect:"..god.Name))
 				RemoveExiledGod(screen,button)
 			else -- God Unlocked and Not Selected
 				if GetCurrentCost() > TableLength(exilData.CurrentExiledGods) then -- Can add god
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Add:"..god.Name))
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Add:"..god.Name))
 					AddExiledGod(screen,button)
 				else -- Already full
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Shake the locks"))
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Shake the locks"))
 					thread( PlayVoiceLines, GlobalVoiceLines.CombatResolvedLowHealthVoiceLines, true )
 				end
 			end
@@ -1148,9 +1178,15 @@ ModUtil.Path.Wrap( "SetupRoomReward",
 				table.insert( excludeLootNames, god )
 			end
 		end
+		for k, trait in pairs( CurrentRun.Hero.Traits ) do
+				if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 then
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceBoonName))
+					trait.Uses = 0
+				end
+			end
 		if not args.IgnoreForceLootName then
 			for k, trait in pairs( CurrentRun.Hero.Traits ) do
-				if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 and not Contains(excludeLootNames, trait.ForceBoonName) then
+				if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 and Contains(excludeLootNames, trait.ForceBoonName) then
 					args.IgnoreForceLootName = true
 				end
 			end
@@ -1163,12 +1199,13 @@ ModUtil.Path.Wrap( "GetEligibleLootNames",
 		local output = baseFunc(excludeLootNames)
 		local exilData = GetExilData()
 		if TableLength(exilData.CurrentExiledGods) > 0 then
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("CurrentExiledGods"))
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("CurrentExiledGods"))
 			for _, lootName in ipairs( output ) do
 				if TableLength(output) <= 1 then
 					break
 				end
 				if exilData.CurrentExiledGods[lootName] ~= nil and exilData.CurrentExiledGods[lootName] then
+					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Removing from Eligible:"..lootName))
 					RemoveValue( output, lootName )
 				end
 			end

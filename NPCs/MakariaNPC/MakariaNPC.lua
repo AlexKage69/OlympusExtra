@@ -38,11 +38,11 @@ OlympusEnemyData.NPC_Makaria_01 =
 
 	ActivateRequirements =
 	{
-		--RequiredCompletedRuns = 5,
-		RequiredTextLines = { "SceneMakariaFirstMeeting" },
+		RequiredTextLines = { "HadesWithMakariaAndMelinoe01" },
+		RequiredFalseTextLinesThisRun = { "HadesWithMakariaAndMelinoe01" },
+		RequiredFalseFlags = { "InFlashback", }
 		--RequiredFalseTextLinesLastRun = {  },
 		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,
-		--RequiredFalseFlags = { "InFlashback" },
 	},
 	LocationsById = {
 		[370136] = { -- DeathAreaOffice
@@ -56,54 +56,162 @@ OlympusEnemyData.NPC_Makaria_01 =
 	},
 	InteractTextLineSets =
 	{
-		MakariaFirstMeeting =
+		MakariaFirstMeeting_A =
 		{
-			Name = "MakariaFirstMeeting",
+			Name = "MakariaFirstMeeting_A",
 			PlayOnce = true,
 			UseableOffSource = true,
-			RequiredFalseFlags = { "InFlashback", },
-			--InOffice = true,
+			RequiredTextLines = { "MakariaSnoopingScene", },
 			EndVoiceLines =
 			{
 				{
 					PreLineWait = 0.35,
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
-					-- Not funny.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					-- You're welcome
+					{ Cue = "/VO/ZagreusHome_3242" },
 				},
 			},
-			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Hey Makaria" },
-			{ Cue = "/VO/Makaria_0001",
-				Text = "Default Makaria " },
-			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Sad_02",
-				Text = "Sad Makaria" },
+				Text = "I know you. I saw in my room. You must be Melinoe's sister. It's nice to met you. I hope you'll feel welcome. Funny how you are trying to get in as I am trying to get out." },
 			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Smiling_03",
-				Text = "Smiling Makaria" },
-			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Sorrow_04",
-				Text = "Sorrow Makaria" },
-			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				Text = "{#DialogueItalicFormat}Hihi{#PreviousFormat}, and I know you will. I mean, get out. Just know, Mel and I will help you as much as we can. It was very nice of you to help us with getting Hades' approval." },
+		},
+		MakariaFirstMeeting_B =
+		{
+			Name = "MakariaFirstMeeting_B",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredFalseTextLines = { "MakariaSnoopingScene", },
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- You're welcome
+					{ Cue = "/VO/ZagreusHome_3242" },
+				},
+			},
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Still seems like a lot of effort to be working in the archive all the time. You could say you were send to your doom" },
+				Text = "Makaria right? You must be Melinoe's sister. It's nice to met you. I hope you'll feel welcome. Funny how you are trying to get in as I am trying to get out." },
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Smiling_03",
+				Text = "{#DialogueItalicFormat}Hihi{#PreviousFormat}, and I know you will. I mean, get out. Just know, Mel and I will help you as much as we can. It was very nice of you to help us with getting Hades' approval." },
+		},
+		MakariaWithHades01 =
+		{
+			Name = "MakariaWithHades01",
+			PlayOnce = true,
+			UseableOffSource = true,
+			Partner = "NPC_Hades_01",
+			RequiredMinNPCInteractions = { NPC_Makaria_01 = 1, NPC_Hades_01 = 1 },
+			BlockDistanceTriggers = true,
+			StatusAnimation = false,
+			GiftableOffSource = true,
+			UseText = "UseListenNPC",
+			TeleportToId = 370006,
+			TeleportOffsetX = -485,
+			TeleportOffsetY = 350,
+			AngleTowardTargetId = 370006,
+			InteractDistance = 400,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Hihi. Off I go.
+					{ Cue = "/VO/Makaria_0001" },
+				},
+			},
+			{ Cue = "/VO/Hades_4000", Portrait = "Portrait_Hades_Default_01", Speaker = "NPC_Hades_01",
+				Text = "I already accepted your request of refuge. What is it that you want again, girl? I don't have time to waste." },
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Default_01",
+				Text = "Why are you angry at me? I don't think I have seen you angry before. I came to ask for work. I wanted to help out too." },
+			{ Cue = "/VO/Hades_4000", Portrait = "Portrait_Hades_Default_01", Speaker = "NPC_Hades_01",
+				PostLineThreadedFunctionName = "MakariaExit",
+				Text = "You just arrived and you have the audacity of commenting on my behavior? I'll speak however I please. What is it about work? Can't you see I am busy? Go bother someone else. I have wasted enough on this. Just go." },
+		},
+		MakariaWithThanatos01 =
+		{
+			Name = "MakariaWithThanatos01",
+			PlayOnce = true,
+			Partner = "NPC_Thanatos_01",
+			UseText = "UseListenNPC",
+			BlockDistanceTriggers = true,
+			UseableOffSource = true,
+			GiftableOffSource = true,
+			TeleportToId = 423052,
+			TeleportOffsetX = 90,
+			TeleportOffsetY = -120,
+			AngleTowardTargetId = 423052,
+			InteractDistance = 375,			
+			RequiredTextLines = { "MakariaGift01", "ThanatosGift01" },
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Hihi. Off I go.
+					{ Cue = "/VO/Makaria" },
+				},
+			},
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Default_01",
+				Text = "Hades told me you have work for me. Actually he said Moros or you, but I don't feel like doing archive. And I heard you are reaping around. Might be my thing too. {#DialogueItalicFormat}Hihi{#PreviousFormat}." },
+			{ Cue = "/VO/Thanatos_4000", Portrait = "Portrait_Thanatos_Default_01", Speaker = "NPC_Thanatos_01",
+				PostLineThreadedFunctionName = "MakariaThanatosExit",
+				Text = "Let me doubt you would be capable of {#DialogueItalicFormat}reaping{#PreviousFormat} anything, little one. But if it's Hades' order. I'll show you the rope. Make sure to follow my every order." },
+		},
+		MakariaWithCerberus01 =
+		{
+			Name = "MakariaWithCerberus01",
+			PlayOnce = true,
+			UseableOffSource = true,		
+			Partner = "NPC_Cerberus_01",
+			UseText = "UseListenNPC",
+			RequiredTextLines = { "MakariaGift01", "CerberusGift01" },
+			RequiredMinCompletedRuns = 10,
+			BlockDistanceTriggers = true,
+			GiftableOffSource = true,
+			TeleportToId = 370007,
+			TeleportOffsetX = -175,
+			TeleportOffsetY = 275,
+			AngleTowardTargetId = 370007,
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Hihi. Off I go.
+					{ Cue = "/VO/Makaria" },
+				},
+			},
+			{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Default_01",
+				Text = "Hades told me you have work for me. Actually he said Moros or you, but I don't feel like doing archive. And I heard you are reaping around. Might be my thing too. {#DialogueItalicFormat}Hihi{#PreviousFormat}." },
+			{ Cue = "/VO/Thanatos_4000", Portrait = "Portrait_Thanatos_Default_01", Speaker = "NPC_Thanatos_01",
+				PostLineThreadedFunctionName = "MakariaThanatosExit",
+				Text = "Let me doubt you would be capable of {#DialogueItalicFormat}reaping{#PreviousFormat} anything, little one. But if it's Hades' order. I'll show you the rope. Make sure to follow my every order." },
 		},
 		MakariaCompletedBanishmentQuest =
 		{
+			SuperPriority = true,
 			Name = "MakariaCompletedBanishmentQuest",
 			PlayOnce = true,
 			UseableOffSource = true,
-			RequiredFalseFlags = { "InFlashback", },
-			--InOffice = true,
+			RequiredMinNPCInteractions = { NPC_Makaria_01 = 1 },
 			EndVoiceLines =
 			{
 				{
 					PreLineWait = 0.35,
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
-					-- I should check in with the House Contractor.
+					-- To the house contractor!
 					{ Cue = "/VO/ZagreusHome_1490" },
 				},
 			},
@@ -117,9 +225,79 @@ OlympusEnemyData.NPC_Makaria_01 =
 		MakariaChat01 =
 		{
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Nyx",
-			{ Cue = "/VO/Nyx_0003",
-				Text = "Darkness guide you, child." },
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "Make sure to fun on your next escape attempt." },
+		},
+		MakariaChat02 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat02" },
+		},
+		MakariaChat03 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat03" },
+		},
+		MakariaChat04 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat04" },
+		},
+		MakariaChat05 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat05" },
+		},
+		MakariaChat06 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat06" },
+		},
+		MakariaChat07 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat07" },
+		},
+		MakariaChat08 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat08" },
+		},
+		MakariaChat09 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat09" },
+		},
+		MakariaChat10 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat10" },
+		},
+		MakariaChat11 =
+		{
+			UseableOffSource = true,
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
+			{ Cue = "/VO/Makaria_0001",
+				Text = "MakariaChat11" },
 		},
 	},
 
@@ -129,61 +307,73 @@ OlympusEnemyData.NPC_Makaria_01 =
 			{
 				Name = "MakariaGift01",
 				PlayOnce = true,
-				{ Cue = "/VO/ZagreusHome_0118", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "{#DialogueItalicFormat}Erm{#PreviousFormat}, Makaria? You've done so much for me, I.. thought you might like this." },
-				{ Cue = "/VO/Makaria_0445",
+					Text = "We haven't known each other for long... But I prepared you this." },
+				{ Cue = "/VO/Makaria_0001",
 					PreLineAnim = "NyxIdleGreeting",
-					Text = "You know your father does not like it when Nectar is doled out on the premises, dear child. However, I am not he... and I wished, regardless, to provide to you a token of my affection." },
+					Text = "{#DialogueItalicFormat}Oohh{#PreviousFormat} The well known Zagreus' gifts? I wasn't sure it would happen. Thanks. In such case, I prepared this. Hope you can make use of it." },
 			},
 			MakariaGift02 =
 			{
 				Name = "MakariaGift02",
 				PlayOnce = true,
 				RequiredTextLines = { "MakariaGift01" },
-				{ Cue = "/VO/Nyx_0045",
+				{ Cue = "/VO/Makaria_0001", Portrait = "Portrait_Makaria_Sorrow_04",
 					PreLineAnim = "NyxIdleGreeting",
-					Text = "How can I possibly accept such generosity, my child? Surely others whom you know are more deserving of such offerings." },
-				{ Cue = "/VO/ZagreusHome_0196", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					Text = "Nonsense, Nyx. I want you to have it. You've always cared for me. I can't ever repay you for that." },
+					Text = "MakariaGift02_Makaria" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MakariaGift02_Zag" },
 			},
 			MakariaGift03 =
 			{
 				Name = "MakariaGift03",
 				PlayOnce = true,
 				RequiredTextLines = { "MakariaGift02" },
-				{ Cue = "/VO/Nyx_0046", Portrait = "Portrait_Nyx_Averted_01",
-					PreLineAnim = "NyxIdleGreeting",
-					Text = "Your kindness toward me is unnecessary, child. You know I have no expectation of such gifts, from you or anyone." },
-				{ Cue = "/VO/ZagreusHome_0197", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					Text = "I think of you always, Nyx. You raised me as your own, and I am grateful for it." },
+				{ Cue = "/VO/Makaria_0001",
+					Text = "They keep coming, {#DialogueItalicFormat}huh{#PreviousFormat}? If you keep on giving them to whoever, we'll stop feeling special, you know." },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "I don't mean it like that. It's just, everyone is special to me in their own way. And so are you. In more ways I can explain. I wanted my actions to reflect that." },
 			},
 			MakariaGift04 =
 			{
 				Name = "MakariaGift04",
 				PlayOnce = true,
 				RequiredTextLines = { "MakariaGift03" },
-				{ Cue = "/VO/Nyx_0047",
-					PreLineAnim = "NyxIdleGreeting",
-					Text = "You honor me, my child; although I dread that I am not deserving of such generosity. There is no need to flatter me like this." },
-				{ Cue = "/VO/ZagreusHome_0198", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				-- A Chtonic Companion! How did you manage this?
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Be that as it may, Nyx! I would still like for you to have it, with my compliments." },
+					Text = "I found Ambrosia, and though. Makaria might have never tried it. Here's my chance to share it with your... brother." },
+				{ Cue = "/VO/Makaria_0001",
+					Text = "Ambrosia! That is a very thoughful give and I was waiting for the right moment to be sharing this. From your beloved sister... Me. I mean me. Not Melinoë. Hihi" },
 			},
 			MakariaGift05 =
 			{
 				Name = "MakariaGift05",
 				PlayOnce = true,
 				RequiredTextLines = { "MakariaGift04" },
-				{ Cue = "/VO/Nyx_0048",
-					PreLineAnim = "NyxIdleGreeting",
-					Text = "No gift which you could bring me can exceed the value of our kinship, child. Though, it moves me to receive this offering." },
-				{ Cue = "/VO/ZagreusHome_3509", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+				-- Cheers
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "It's nothing, Nyx, really. I know you've always believed in me, and it's not something I ever take for granted." },
+					Text = "I know we can't talk about your past. Or my futur. But it doesn't stop us from sharing meaningful moment like this one. And I know one way. Look at this." },
+				{ Cue = "/VO/Makaria_0001",
+					Text = "Ambrosia! You don't know how super rare it is where we are coming from. To have the honor of sharing this with you is out of this world. Cheers." },
+				},
+			MakariaGift06 =
+			{
+				Name = "MakariaGift06",
+				PlayOnce = true,
+				RequiredTextLines = { "MakariaGift05" },
+				-- Sounds good.
+				{ Cue = "/VO/Makaria_0001",
+					Text = "What is behind your back? Another gift? Zag, you shouldn't. But I don't know how long I get to share these times with the old you. So to family." },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+					Text = "You know what? Safe it. I have an idea. Let's met at the surface whenever you have the time." },
 			},
 	},
 
@@ -197,7 +387,7 @@ OlympusEnemyData.NPC_Makaria_01 =
 			RandomRemaining = true,
 			UsePlayerSource = true,
 			SuccessiveChanceToPlay = 0.1,
-			AreIdsNotAlive = { 370025 },
+			AreIdsNotAlive = { 370036 },
 			Cooldowns =
 			{
 				{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
@@ -218,10 +408,66 @@ OlympusEnemyData.NPC_Makaria_01 =
 		PreLineWait = 1.0,
 		PlayFromTarget = true,
 
-		-- Cheers, Hypnos!
-		{ Cue = "/VO/ZagreusHome_0310" },
+		-- That's nice of you, Makaria
+		{ Cue = "/VO/ZagreusHome_4000" },
 	},
 }
+table.insert(OlympusDeathLoopData.DeathAreaBedroom.StartUnthreadedEvents, {
+	FunctionName = "ActivatePrePlacedUnits",
+	GameStateRequirements =
+	{
+		RequiredSeenRooms = { "D_Boss01" },		
+		RequiredFalseTextLines = { "MakariaSnoopingScene", "HadesWithMakariaAndMelinoe01" },		
+	},
+	BreakIfPlayed = true,
+	Args =
+	{
+		Ids = { 422256, },
+		DistanceTrigger =
+		{
+			WithinDistance = 1000,
+			FunctionName = "SurpriseNPCPresentation",
+			Args =
+			{
+				VoiceLines =
+				{
+					Queue = "Interrupt",
+					{
+						PreLineWait = 0.55,
+						BreakIfPlayed = true,
+						ObjectType = "NPC_Thanatos_01",
+							-- -Who was that?
+						{ Cue = "/VO/Thanatos_0534" },
+					},
+				},
+				TextLineSet =
+				{
+					MakariaSnoopingScene =
+					{
+						PlayOnce = true,
+						--EndGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+						-- requirements are above
+						{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+							PreLineThreadedFunctionName = "BedroomMoveTowardMakariaApproach",	
+							PreLineWait = 1.1,
+							--AngleHeroTowardSource = true,
+							AngleTowardTargetId = 310036,
+							PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+							PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+							-- Emote = "PortraitEmoteSurprise",
+							Text = "*Mmh* Hello? I don't think we've met. My name is Zagreus. You might telling me what you are doing in my room?" },
+
+						{ Cue = "/VO/Makaria_0001",
+							PostLineThreadedFunctionName = "MakariaExit",
+							AngleTowardHero = true,
+							Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat} shoot. Mel won't to be happy about that. Listen, Zagreus. You never saw me. I was just too curious to not look around. Just pretend you didn't see me, okay?" },
+
+					},
+				},
+			},
+		},
+	}
+})
 table.insert(OlympusGameData.ConversationOrder,"NPC_Makaria_01")
 OlympusDeathLoopData.DeathArea.ObstacleData[370036] = {
 	Name = "NPC_Makaria_01",
@@ -299,6 +545,108 @@ OlympusTraitData.TroveUpgradeBoonTrait = {
 			}
 		},
 	}
+OlympusTraitData.MakariaAssistTrait =
+{
+	Name = "MakariaAssistTrait",
+	InheritFrom = { "AssistTrait" },
+	InRackTitle = "MakariaAssistTrait_Rack",
+	InRackIcon = "Keepsake_Makaria_Plush_Menu",
+	Icon = "Keepsake_Makaria_Plush",
+	EquipSound = "/SFX/Enemy Sounds/ButterflyDeathSFX",
+	KeepsakeRarityGameStateRequirements =
+	{
+		[1] = {
+			AssistUpgradeLevel =
+			{
+				Name = "MakariaAssistTrait",
+				Level = 0,
+			}
+		},
+		[2] = {
+			AssistUpgradeLevel =
+			{
+				Name = "MakariaAssistTrait",
+				Level = 1,
+			}
+		},
+		[3] = {
+			AssistUpgradeLevel =
+			{
+				Name = "MakariaAssistTrait",
+				Level = 2,
+			}
+		},
+		[4] = {
+			AssistUpgradeLevel =
+			{
+				Name = "MakariaAssistTrait",
+				Level = 3,
+			}
+		},
+		[5] = {
+			AssistUpgradeLevel =
+			{
+				Name = "MakariaAssistTrait",
+				Level = 4,
+			}
+		},
+	},
+	--LoadPackages = { "NPC_Achilles_01_Assist", "NPC_Patroclus_01_Assist"},
+	PreEquipWeapons = { "FlurrySpawnerWeapon" },
+	AddAssist =
+	{
+		FunctionName = "MakariaAssist",
+		AssistWeapons = { "FlurrySpawnerWeapon" },
+		Range = 1500,
+		GameStateRequirements = {
+			CurrentRoomValueFalse = "BlockHadesAssistTraits",
+		},
+		AssistPresentationPortrait = "Portrait_Makaria_Default_01",
+		AssistPresentationPortraitOffsetY = 55,
+		AssistPresentationColor = { 200, 0, 255, 255 },
+		AssistPostWeaponSlowDuration = 0.1,
+	},
+	PropertyChanges =
+	{
+		{
+			WeaponName = "FlurrySpawnerWeapon",
+			ProjectileProperty = "DamageLow",
+			ChangeValue = 100,
+			DepthMult = DepthDamageMultiplier,
+			IdenticalMultiplier =
+			{
+				Value = DuplicateStrongMultiplier,
+			},
+			ExtractValue =
+			{
+				ExtractAs = "TooltipDamage",
+			}
+		},
+		{
+			WeaponName = "FlurrySpawnerWeapon",
+			ProjectileProperty = "DamageHigh",
+			DeriveValueFrom = "DamageLow"
+		},		
+	},
+	RemainingUses = { BaseValue = 1 },
+	ExtractValues =
+	{
+		{
+			Key = "RemainingUses",
+			ExtractAs = "TooltipKeepsakeUses",
+		},
+	},
+	SignOffData =
+	{
+	  {
+		Text = "MakariaSignoff",
+	  },
+	  {
+		RequiredTextLines = { "MakariaGift06" },
+		Text = "MakariaSignoff_AssistMax"
+	  }
+	},
+}
 -- Codex Section
 local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
 local OlympusCodex = ModUtil.Entangled.ModData(Codex)
@@ -327,14 +675,18 @@ OlympusGiftData.NPC_Makaria_01 =
 		Gift = true,
 		InheritFrom = {"DefaultGiftData"},
 		Name = "NPC_Makaria_01",
-		MaxedIcon = "Keepsake_Achilles_Max",
-		MaxedSticker = "Keepsake_AchillesSticker_Max",
-		MaxedRequirement = { RequiredTextLines = { "Test2" }, },
-		Locked = 4,
-		Maximum = 5,
+		MaxedIcon = "Keepsake_Makaria_Max",
+		MaxedSticker = "Keepsake_Makaria_Max",
+		MaxedRequirement = { RequiredTextLines = { "MakariaGift06" }, },
+		Locked = 3,
+		Maximum = 6,
 		[1] = { Gift = "TroveUpgradeBoonTrait" },
+		[3] = { Gift = "MakariaAssistTrait" },
 		[4] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "Test1" } }
+		--[4] = { Gift = "MakariaAssistTrait", RequiredResource = "SuperGiftPoints" },
+		[5] = { RequiredResource = "SuperGiftPoints" },
+		[6] = { RequiredResource = "SuperGiftPoints" },
+		UnlockGameStateRequirements = { RequiredTextLines = { "MelinoeGift05" } }
 	}
 	
 table.insert(OlympusGiftOrdering, 8, "TroveUpgradeBoonTrait")
@@ -492,6 +844,49 @@ ModUtil.Path.Wrap( "HandleChallengeLoot",
 		end
 	end
 )
+function MakariaAssist()
+	local enemyName = "TrainingMeleeSummon"
+	local enemyData = EnemyData[enemyName]
+	local newEnemy = DeepCopyTable( enemyData )
+	newEnemy.BlocksLootInteraction = false
+
+	local invaderSpawnPoint = CurrentRun.Hero.ObjectId
+	newEnemy.ObjectId = SpawnUnit({
+			Name = enemyData.Name,
+			Group = "Standing",
+			DestinationId = invaderSpawnPoint, OffsetX = 0, OffsetY = 0 })
+
+	SetupEnemyObject( newEnemy, CurrentRun )
+
+	CurrentRun.CurrentRoom.TauntTargetId = newEnemy.ObjectId
+end
+function BedroomMoveTowardMakariaApproach( source, args )
+
+	wait( 1.0 )
+
+	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
+	local initialSpeed = GetUnitDataValue({ Id = CurrentRun.Hero.ObjectId, Property = "Speed", Destination})
+	SetUnitProperty({ DestinationId = CurrentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
+	SetUnitProperty({ Property = "StartGraphic", Value = nil, DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "MoveGraphic", Value = "ZagreusWalk", DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = 160, DestinationId = CurrentRun.Hero.ObjectId })
+
+	Move({ Id = CurrentRun.Hero.ObjectId, DestinationId = 422258, Mode = "Precise" })
+
+	local notifyName = "ApproachStopped"
+	NotifyOnStopped({ Id = CurrentRun.Hero.ObjectId, Notify = notifyName })
+	waitUntil( notifyName )
+
+	SetUnitProperty({ Property = "StartGraphic", Value = "ZagreusStart", DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "MoveGraphic", Value = "ZagreusRun", DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = initialSpeed, DestinationId = CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = CurrentRun.Hero.ObjectId })
+	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
+
+	wait( 0.1 )
+
+	AngleTowardTarget({ Id = CurrentRun.Hero.ObjectId, DestinationId = 422256 })
+end
 -- Common Troves
 local OlympusObstacleData = ModUtil.Entangled.ModData(ObstacleData)
 OlympusObstacleData.MoneyChallengeSwitch.Requirements.RequiredFalseTrait = "TroveUpgradeBoonTrait"
@@ -869,6 +1264,64 @@ OlympusConditionalItemData.StoneOfBanishmentWorkOrder =
 			{ Cue = "/VO/ZagreusHome_3562" },
 		},
 	}
+function MakariaThanatosExit( source, args )	
+	ThanatosExit(source, args)
+	wait(0.5)
+	MakariaExit(source, args)
+end
+function MakariaExit( source, args )
+
+	args = args or {}
+	if args.UseMaxedPresentation then
+		AddInputBlock({ Name = "MakariaExit" })
+	end
+	UseableOff({ Id = source.ObjectId })
+	source.CanReceiveGift = false
+	source.InteractTextLineSets = nil
+	wait( args.WaitTime or 0 )
+
+	SetAnimation({ Name = "NPCThanatosExit", DestinationId = source.ObjectId })
+	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = source.ObjectId })
+	SetAlpha({ Id = source.ObjectId, Fraction = 0.0, Duration = 0.35 })
+	AdjustColorGrading({ Name = "Thanatos", Duration = 0.25 })
+
+	if not args.IgnoreMusic then
+		StopSecretMusic( true )
+	end
+
+	source.NextInteractLines = nil
+	RefreshUseButton( source.ObjectId, source )
+	StopStatusAnimation( source )
+
+	if not args.SkipExitReaction then
+		thread( PlayVoiceLines, HeroVoiceLines.ThanatosExitReactionVoiceLines, true )
+	end
+
+	wait( 0.5, RoomThreadName )
+	AdjustColorGrading({ Name = "Off", Duration = 1.35 })
+
+	--[[if args.UseMaxedPresentation then
+		MaxedRelationshipPresentation( source, { Text = "NPC_Thanatos_01", Icon = "Keepsake_ThanatosSticker_Max" } )
+	end]]
+
+	--[[source.Mute = true
+	CurrentRun.EventState[source.ObjectId] = { FunctionName = "ThanatosExitSilent", Args = args }]]
+
+	if args.UseMaxedPresentation then
+		RemoveInputBlock({ Name = "MakariaExit" })
+	end
+
+	wait( 1.0, RoomThreadName )
+
+	if ActivatedObjects[source.ObjectId] ~= nil and not CurrentRun.Hero.IsDead then
+		ActivatedObjects[source.ObjectId] = nil
+		wait( 0.2, RoomThreadName )
+		if CheckRoomExitsReady( CurrentRun.CurrentRoom ) then
+			UnlockRoomExits( CurrentRun, CurrentRun.CurrentRoom )
+		end
+	end
+
+end
 	function SpawnStoneOfBanishment(eventSource, args)
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnStoneOfBanishment"))
 		Activate({ Ids = args.Ids})

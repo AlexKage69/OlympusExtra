@@ -5476,6 +5476,7 @@ if ModUtil ~= nil then
 
 	OlympusGiftData.HestiaUpgrade =
 	{
+		Name = "HestiaUpgrade",
 		InheritFrom = { "DefaultGiftData" },
 		MaxedIcon = "Keepsake_Hestia_Max",
 		MaxedSticker = "Keepsake_HestiaSticker_Max",

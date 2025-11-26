@@ -25,6 +25,16 @@
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Keepsake_Moros_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Macaria\MacariaBadge_max"
+    }
+     {
+      Name = "Keepsake_MorosSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Macaria\MacariaBadge"
+    }
     // Mirror
     {
       Name = "MirrorIcon_LowHealthDamage"
@@ -152,6 +162,36 @@
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Keepsake_Makaria_Plush_Menu"
+      InheritFrom = "LegendaryKeepsakeMenuIcon"
+      FilePath = "Macaria\MacariaDoorIcon"
+    }
+    {
+      Name = "Keepsake_Makaria_Plush"
+      InheritFrom = "LegendaryKeepsakeIcon"
+      FilePath = "Macaria\MacariaDoorIcon"
+    }
+    {
+      Name = "Keepsake_Makaria_Plush_Child"
+      InheritFrom = "LegendaryKeepsakeTrayIcon"
+      FilePath = "Macaria\MacariaDoorIcon"
+    }
+     {
+      Name = "Keepsake_Makaria_Plush_Small"
+      InheritFrom = "LegendaryKeepsakeTrayIconBacking"
+      ChildAnimation = "Keepsake_Makaria_Plush_Child"
+    }
+    {
+      Name = "Keepsake_Makaria_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Macaria\MacariaBadge_max"
+    }
+     {
+      Name = "Keepsake_MakariaSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Macaria\MacariaBadge"
+    }
     // God Manager
     {
       Name = "GodManagerMenuBackground"
@@ -192,6 +232,16 @@
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Keepsake_Melinoe_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Macaria\MacariaBadge_max"
+    }
+     {
+      Name = "Keepsake_MelinoeSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Macaria\MacariaBadge"
+    }
     // Nemesis
     {
       Name = "Keepsake_ShieldPlate_Child"
@@ -216,6 +266,16 @@
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Keepsake_Nemesis_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Macaria\MacariaBadge_max"
+    }
+     {
+      Name = "Keepsake_NemesisSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Macaria\MacariaBadge"
+    }
     // Eris
     {
       Name = "Keepsake_GoldenApple_Child"
@@ -239,6 +299,16 @@
       ChildAnimation = "Keepsake_GoldenApple_Child"
       EndFrame = 1
       StartFrame = 1
+    }
+    {
+      Name = "Keepsake_Eris_Max"
+      InheritFrom = "KeepsakeMax_Corner"
+      FilePath = "Macaria\MacariaBadge_max"
+    }
+     {
+      Name = "Keepsake_ErisSticker_Max"
+      InheritFrom = "KeepsakeMax_Sticker"
+      FilePath = "Macaria\MacariaBadge"
     }
   ]
 }

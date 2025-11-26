@@ -734,24 +734,6 @@ ModUtil.Path.Wrap("HandleMetaUpgradeInput",
 	end
 )
 
-ModUtil.Path.Wrap("StartNewRun",
-	function(baseFunc, prevRun, args)
-		local CurrentRun = baseFunc(prevRun, args)
-		CurrentRun.NumRerolls = GetNumMetaUpgrades("RerollMetaUpgrade") + GetNumMetaUpgrades("RerollPanelMetaUpgrade") +
-			GetNumMetaUpgrades("RerollPomMetaUpgrade")
-		if GetNumMetaUpgrades("RareNPCMetaUpgrade") > 0 then
-			local additionnalChance = GetNumMetaUpgrades("RareNPCMetaUpgrade") * 0.02
-			RoomData.A_Story01.ChanceToForce = additionnalChance
-			RoomData.B_Story01.ChanceToForce = additionnalChance
-			RoomData.C_Story01.ChanceToForce = additionnalChance
-			RoomData.A_Reprieve01.ChanceToForce = additionnalChance
-			RoomData.B_Reprieve01.ChanceToForce = additionnalChance
-			RoomData.C_Reprieve01.ChanceToForce = additionnalChance
-		end
-
-		return CurrentRun
-	end
-)
 ModUtil.Path.Wrap("GetTotalHeroTraitValue",
 	function(baseFunc, propertyName, args)
 		local value = baseFunc(propertyName, args)

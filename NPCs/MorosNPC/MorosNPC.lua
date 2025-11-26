@@ -32,7 +32,7 @@ OlympusEnemyData.NPC_Moros_01 =
 
 	ActivateRequirements =
 	{
-		RequiredCompletedRuns = 5,
+		RequiredMinCompletedRuns = 5,
 		RequiredTextLines = { "AthenaFirstPickUp" },
 		--RequiredFalseTextLinesLastRun = {  },
 		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,
@@ -64,7 +64,7 @@ OlympusEnemyData.NPC_Moros_01 =
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
 					-- Another time, then.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					{ Cue = "/VO/ZagreusHome_4000" },
 				},
 			},
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
@@ -98,7 +98,7 @@ OlympusEnemyData.NPC_Moros_01 =
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
 					-- I don't know what to say. I'm sure it will help.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					{ Cue = "/VO/ZagreusHome_4000" },
 				},
 			},
 			{ Cue = "/VO/Nyx_4000", Portrait = "Portrait_Nyx_Default_01", Speaker = "NPC_Nyx_01", PreLineWait = 0.35,
@@ -133,7 +133,7 @@ OlympusEnemyData.NPC_Moros_01 =
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
 					-- I don't know what to say. I'm sure it will help.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					{ Cue = "/VO/ZagreusHome_4000" },
 				},
 			},
 			{ Cue = "/VO/Moros_0001",
@@ -165,7 +165,7 @@ OlympusEnemyData.NPC_Moros_01 =
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
 					-- I don't know what to say. I'm sure it will help.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					{ Cue = "/VO/ZagreusHome_4000" },
 				},
 			},
 			{ Cue = "/VO/Moros_0001",
@@ -197,7 +197,7 @@ OlympusEnemyData.NPC_Moros_01 =
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
 					-- I expect no less from you.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					{ Cue = "/VO/ZagreusHome_4000" },
 				},
 			},
 			{ Cue = "/VO/Moros_0001",
@@ -223,7 +223,7 @@ OlympusEnemyData.NPC_Moros_01 =
 					UsePlayerSource = true,
 					RequiredMinElapsedTime = 3,
 					-- I don't know what to say. I'm sure it will help.
-					{ Cue = "/VO/ZagreusHome_3389" },
+					{ Cue = "/VO/ZagreusHome_4000" },
 				},
 			},
 			{ Cue = "/VO/Moros_0001",
@@ -248,7 +248,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat01",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "I have reports, Prince. Not now." },
 		},
@@ -256,7 +256,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat02",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "I can't talk now. Deadlines to met." },
 		},
@@ -264,7 +264,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat03",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "I have paperwork. Later, please, Prince." },
 		},
@@ -272,7 +272,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat04",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "Please excuse me, Lord Hades is waiting for my report." },
 		},
@@ -280,7 +280,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat05",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "I need to file those. Maybe later." },
 		},
@@ -288,7 +288,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat06",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "You died again, Zagreus. Let me file that real quick." },
 		},
@@ -296,7 +296,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat07",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "Let me finish this report and then I'll get back to you." },
 		},
@@ -304,7 +304,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat08",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "A shade calls. I'll see you soon." },
 		},
@@ -312,7 +312,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat09",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000", PostLineThreadedFunctionName = "MorosExit", PostLineFunctionArgs = { AnimationState = "NPCMorosExited", WaitTime = 0.35, },
 				Text = "The surface is calling. This will be rather messy." },
 		},
@@ -320,7 +320,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		{
 			Name = "MorosChat10",
 			UseableOffSource = true,
-			EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+			EndGlobalVoiceLines = "MiscEndVoiceLines",
 			{ Cue = "/VO/Moros_0000",
 				Text = "Well, this is the first time I have to censor a cause of death in my report." },
 		},
@@ -452,61 +452,94 @@ OlympusEnemyData.NPC_Moros_01 =
 			{
 				Name = "MorosGift01",
 				PlayOnce = true,
-				{ Cue = "/VO/ZagreusHome_0118", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "{#DialogueItalicFormat}Erm{#PreviousFormat}, Moros? You've done so much for me, I.. thought you might like this." },
-				{ Cue = "/VO/Moros_0445",
+					Text = "Hi Moros, I thought I'd give you this, as a token of our friendship." },
+				{ Cue = "/VO/Moros_0001",
 					PreLineAnim = "NyxIdleGreeting",
-					Text = "You know your father does not like it when Nectar is doled out on the premises, dear child. However, I am not he... and I wished, regardless, to provide to you a token of my affection." },
+					Text = "I don't think you should have that, Prince Zagreus. But at the same time, I believe I need a break afterall. I meant to give you this, hope it keeps you from returning here too soon." },
 			},
 			MorosGift02 =
 			{
 				Name = "MorosGift02",
 				PlayOnce = true,
 				RequiredTextLines = { "MorosGift01" },
-				{ Cue = "/VO/Nyx_0045",
+				{ Cue = "/VO/Moros_0001",
 					PreLineAnim = "NyxIdleGreeting",
-					Text = "How can I possibly accept such generosity, my child? Surely others whom you know are more deserving of such offerings." },
-				{ Cue = "/VO/ZagreusHome_0196", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					Text = "Nonsense, Nyx. I want you to have it. You've always cared for me. I can't ever repay you for that." },
+					Text = "I know you don't get to take break so often, Moros. Maybe this will help you take a moment for yourself." },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "Your last nectar was the only break I could give myself for some time. I won't say no another one. My thanks, Prince." },
 			},
 			MorosGift03 =
 			{
 				Name = "MorosGift03",
 				PlayOnce = true,
 				RequiredTextLines = { "MorosGift02" },
-				{ Cue = "/VO/Nyx_0046", Portrait = "Portrait_Nyx_Averted_01",
-					PreLineAnim = "NyxIdleGreeting",
-					Text = "Your kindness toward me is unnecessary, child. You know I have no expectation of such gifts, from you or anyone." },
-				{ Cue = "/VO/ZagreusHome_0197", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					Text = "I think of you always, Nyx. You raised me as your own, and I am grateful for it." },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift03_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift03_Moros" },
 			},
 			MorosGift04 =
 			{
 				Name = "MorosGift04",
 				PlayOnce = true,
 				RequiredTextLines = { "MorosGift03" },
-				{ Cue = "/VO/Nyx_0047",
-					PreLineAnim = "NyxIdleGreeting",
-					Text = "You honor me, my child; although I dread that I am not deserving of such generosity. There is no need to flatter me like this." },
-				{ Cue = "/VO/ZagreusHome_0198", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Be that as it may, Nyx! I would still like for you to have it, with my compliments." },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift04_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift04_Moros" },
 			},
 			MorosGift05 =
 			{
 				Name = "MorosGift05",
 				PlayOnce = true,
 				RequiredTextLines = { "MorosGift04" },
-				{ Cue = "/VO/Nyx_0048",
-					PreLineAnim = "NyxIdleGreeting",
-					Text = "No gift which you could bring me can exceed the value of our kinship, child. Though, it moves me to receive this offering." },
-				{ Cue = "/VO/ZagreusHome_3509", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "It's nothing, Nyx, really. I know you've always believed in me, and it's not something I ever take for granted." },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift05_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift05_Moros" },
+			},
+			MorosGift06 =
+			{
+				Name = "MorosGift06",
+				PlayOnce = true,
+				RequiredTextLines = { "MorosGift05" },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift06_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift06_Moros" },
+			},
+			MorosGift07 =
+			{
+				Name = "MorosGift07",
+				PlayOnce = true,
+				RequiredTextLines = { "MorosGift06" },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift07_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift07_Moros" },
+			},
+			MorosGift08 =
+			{
+				Name = "MorosGift08",
+				PlayOnce = true,
+				RequiredTextLines = { "MorosGift07" },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift08_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift08_Moros" },
+			},
+			MorosGift09 =
+			{
+				Name = "MorosGift09",
+				PlayOnce = true,
+				RequiredTextLines = { "MorosGift08" },
+				{ Cue = "/VO/Moros_0001",
+					Text = "MorosGift09_Zag" },
+				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
+					Text = "MorosGift09_Moros" },
 			},
 	},
 
@@ -520,7 +553,7 @@ OlympusEnemyData.NPC_Moros_01 =
 			RandomRemaining = true,
 			UsePlayerSource = true,
 			SuccessiveChanceToPlay = 0.1,
-			AreIdsNotAlive = { 370025 },
+			AreIdsNotAlive = { 370026 },
 			Cooldowns =
 			{
 				{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
@@ -541,8 +574,8 @@ OlympusEnemyData.NPC_Moros_01 =
 		PreLineWait = 1.0,
 		PlayFromTarget = true,
 
-		-- Cheers, Hypnos!
-		{ Cue = "/VO/ZagreusHome_0310" },
+		-- Stay alive. Got it.
+		{ Cue = "/VO/ZagreusHome_4000" },
 	},
 }
 -- Nyx Partnership
@@ -692,14 +725,16 @@ OlympusGiftData.NPC_Moros_01 =
 		Gift = true,
 		InheritFrom = {"DefaultGiftData"},
 		Name = "NPC_Moros_01",
-		MaxedIcon = "Keepsake_Achilles_Max",
-		MaxedSticker = "Keepsake_AchillesSticker_Max",
-		MaxedRequirement = { RequiredTextLines = { "Test2" }, },
-		Locked = 4,
-		Maximum = 5,
+		MaxedIcon = "Keepsake_Moros_Max",
+		MaxedSticker = "Keepsake_MorosSticker_Max",
+		MaxedRequirement = { RequiredTextLines = { "MorosGift09" }, },
+		Locked = 7,
+		Maximum = 9,
 		[1] = { Gift = "BonusRangedBoonTrait" },
-		[4] = { RequiredResource = "SuperGiftPoints" },
-		UnlockGameStateRequirements = { RequiredTextLines = { "Test1" } }
+		[7] = { RequiredResource = "SuperGiftPoints" },
+		[8] = { RequiredResource = "SuperGiftPoints" },
+		[9] = { RequiredResource = "SuperGiftPoints" },
+		UnlockGameStateRequirements = { RequiredTextLines = { "MorosPropheciesComplete" } }
 	}
 	
 table.insert(OlympusGiftOrdering, 7, "BonusRangedBoonTrait")
@@ -712,7 +747,8 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 	Args =
 	{
 		Name = "NPC_Moros_01", 
-		SpawnPointId = 370026
+		SpawnPointId = 370026,
+		Chance = 0.8,
 	},
 })
 

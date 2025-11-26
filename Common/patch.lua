@@ -2057,26 +2057,40 @@ OnHit {
         end
     end
 }
---[[ModUtil.Path.Wrap("StartNewRunPresentation",
-    function(baseFunc, currentRun)
-        if GetNumMetaUpgrades("PomFirstGodMetaUpgrade") > 0 then            
-            currentRun.Hero.PomFirstList = {
-                "ZeusUpgrade",
-                "PoseidonUpgrade",
-                "AresUpgrade",
-                "DionysusUpgrade",
-                "ArtemisUpgrade",
-                "AthenaUpgrade",
-                "AphroditeUpgrade",
-                "DemeterUpgrade",
-                "ApolloUpgrade",
-                "HestiaUpgrade",
-                "HeraUpgrade"
-            }
+ModUtil.Path.Wrap("StartNewRun",
+	function(baseFunc, prevRun, args)
+		local CurrentRun = baseFunc(prevRun, args)
+		CurrentRun.NumRerolls = GetNumMetaUpgrades("RerollMetaUpgrade") + GetNumMetaUpgrades("RerollPanelMetaUpgrade") +
+			GetNumMetaUpgrades("RerollPomMetaUpgrade")
+		if GetNumMetaUpgrades("RareNPCMetaUpgrade") > 0 then
+			local additionnalChance = GetNumMetaUpgrades("RareNPCMetaUpgrade") * 0.02
+			RoomData.A_Story01.ChanceToForce = additionnalChance
+			RoomData.B_Story01.ChanceToForce = additionnalChance
+			RoomData.C_Story01.ChanceToForce = additionnalChance
+			RoomData.A_Reprieve01.ChanceToForce = additionnalChance
+			RoomData.B_Reprieve01.ChanceToForce = additionnalChance
+			RoomData.C_Reprieve01.ChanceToForce = additionnalChance
+		end
+        local exilData = GetExilData()
+        if TableLength(exilData.CurrentExiledGods) > 0 then
+            AddTrait( CurrentRun.Hero, "BanishmentTrait" )
+            local GodsText = ""
+            for name, exiled in pairs( exilData.CurrentExiledGods) do
+                local godName = ParseRealGodName(name)
+                if GodsText ~= "" then
+                    GodsText = GodsText..", "
+                end
+                GodsText = GodsText..godName
+            end
+            for i, trait in pairs(CurrentRun.Hero.Traits) do
+                if trait.Name == "BanishmentTrait" then
+                    trait.Gods = GodsText
+                end
+            end
         end
-        baseFunc(currentRun)
-    end
-)]]
+		return CurrentRun
+	end
+)
 ModUtil.Path.Wrap("DropStoredAmmo",
     function(baseFunc, enemy, weaponData, id )   
         if IsMetaUpgradeActive("CastDamageOverTimeMetaUpgrade") and enemy then

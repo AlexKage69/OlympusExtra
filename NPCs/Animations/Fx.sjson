@@ -87,7 +87,7 @@
         }
         // Macaria God Manager
         {
-            Name = "OlympianTabletGlean"
+            Name = "StoneOfBanishmentGlean"
             FilePath = "Dev\blank_invisible"
             Type = "Constant"
             VisualFx = "GiftRackSparkles"
@@ -111,7 +111,7 @@
             VisualFxOffsetY = -60.0
             }
             {
-            Name = "OlympianTabletClosed"
+            Name = "StoneOfBanishmentClosed"
             FilePath = "Tilesets\House\House_Fireplace_02"
             Type = "Constant"
             EndFrame = 1

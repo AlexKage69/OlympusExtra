@@ -22,19 +22,33 @@ function SpawnExtraNPCs(eventSource, args)
         ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.LocationsById))
         return
 	end
+	local chanceToSpawn = 1.0--args.Chance or 1.0
 	if IsActivationEligible( obstacleId, newUnit ) then
-		newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.ObjectId })
-		
-		SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
-		UseableOn({ Ids = newUnit.ObjectId })
-		
-		SetupAI( CurrentRun, newUnit )		
-		
-		local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
-		if IsActivationEligible( newUnit.ObjectId, enemyData ) then
-			Activate({ Ids = newUnit.ObjectId })
+		if RandomChance( chanceToSpawn ) then
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Spawn:"..args.Name)) 
+			newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.ObjectId })
+			
+			SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
+			UseableOn({ Ids = newUnit.ObjectId })
+			
+			SetupAI( CurrentRun, newUnit )		
+			
+			local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
+			if IsActivationEligible( newUnit.ObjectId, enemyData ) then
+				Activate({ Ids = newUnit.ObjectId })
+			end
+			CheckConversations()	
+		else	
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Missing Trigger:"..args.Name)) 
+			if newUnit.MissingDistanceTrigger ~= nil then
+				local missingUnit = {}
+				missingUnit.Name = args.Name
+				missingUnit.ObjectId = SpawnObstacle({ Name = "BlankObstacle" })
+				local location = GetLocation({ Id = obstacleId, CheckInactive = true })
+				Teleport({ Id = missingUnit.ObjectId, OffsetX = location.X, OffsetY = location.Y })
+				thread( CheckDistanceTrigger, newUnit.MissingDistanceTrigger, missingUnit )
+			end
 		end
-		CheckConversations()	
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Name.." Spawned:"..newUnit.ObjectId.."; GiftVal:"..GameState.Gift[args.Name].Value)) 	
 	end
 	--[[if IsActivationEligible( id, unitData ) then

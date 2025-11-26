@@ -203113,7 +203113,7 @@
             "Active": false,
             "AllowMovementReaction": false,
             "Ambient": -1.0,
-            "Angle": 298.166748046875,
+            "Angle": 100.166748046875,
             "AttachToID": 0,
             "AttachedIDs": [],
             "CausesOcculsion": false,
@@ -203143,8 +203143,8 @@
             "IgnoreGridManager": false,
             "Invert": false,
             "Location": {
-                "X": 3472.402832,
-                "Y": 2483.359375
+                "X": 3639.402832,
+                "Y": 2563.359375
             },
             "Name": "NPC_Makaria_01",
             "OffsetZ": 0.0,

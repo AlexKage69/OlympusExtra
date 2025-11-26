@@ -384,7 +384,7 @@
 		{
 			Id = "NPC_Makaria_01"
 			DisplayName = "Makaria"
-			Description = "Goddess of Blessed Death"
+			Description = "Chthonic Nymph"
 		}
 		{
 			Id = "MakariaFirstMeeting"
@@ -437,6 +437,12 @@
 				{#AwardDarkFlavorFormat}You have been blessed by a strange, yet familiar bond.
 			"""
 		}
+		{
+			Id = "MakariaSignoff_AssistMax"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Makaria{#AwardDarkFlavorFormat}, cherished sister
+			"""
+		}
 		// Makaria God Manager
 		{
 			Id = "GodManagerMenu_OverheadText"
@@ -467,6 +473,15 @@
 			Id = "StoneOfBanishmentWorkOrder"
 			DisplayName = "Restore the Stone of Banishment"
 			Description = "{$Keywords.NewSystem}: Banish the help of {$Keywords.GodBoon} as you desire."
+		}
+		{
+			Id = "Objective_UseStoneOfBanishment"
+			DisplayName = "Check the Stone Of Banishment"
+		}
+		{
+			Id = "BanishmentTrait"
+			DisplayName = "Divine Banishment"
+			Description = "You won't encounter: {#AltUpgradeFormat}{$TooltipData.Gods}"
 		}
 		// Makaria Keepsake
 		{
@@ -533,6 +548,53 @@
 		{
 			Id = "UseChallengeSwitch_GiftDropRewardAvailable"
 			DisplayName = "{I} Claim {!Icons.GiftPoint}"
+		}
+		{
+			Id = "MakariaAssistTrait_Rack"
+			DisplayName = "Companion Flappy"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage to {#BoldFormat}2 {#PreviousFormat}foes one after another. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.TooltipKeepsakeUses}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}		
+		// Melinoe
+		{
+			Id = "NPC_Melinoe_01"
+			DisplayName = "Melinoe"
+			Description = "Chthonic Nymph"
+		}
+		{
+			Id = "MelinoeFirstMeeting"
+			DisplayName = "Met Melinoe"
+		}
+		{
+			Id = "MetMelinoe"
+			DisplayName = "Met Melinoe"
+		}
+		{
+			Id = "CodexData_Melinoe_01"
+			DisplayName = "'...Melinoe Codex 1...'"
+		}
+		{
+			Id = "CodexData_Melinoe_02"
+			DisplayName = "'...Melinoe Codex 1, Melinoe Codex 2...{#PreviousFormat}'"
+		}
+		{
+			Id = "CodexData_Melinoe_03"
+			DisplayName = "'...Melinoe Codex 1, Melinoe Codex 2, Melinoe Codex 3...{#PreviousFormat}'"
+		}
+		{
+			Id = "UseTalkToMelinoe"
+			DisplayName = "{I} Talk"
+		}
+		{
+			Id = "MelinoeSignoff"
+			DisplayName = "From Melinoe"
+		}
+		{
+			Id = "MelinoeSignoff_Max"
+			DisplayName = """
+				From {#AwardMaxFlavorFormat}Melinoe{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Everlasting Bond
+
+				{#AwardDarkFlavorFormat}Family bond can pass through space and time.
+			"""
 		}
 		// Nemesis
 		{

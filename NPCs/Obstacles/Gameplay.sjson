@@ -2,7 +2,7 @@
   Obstacles = [
       "_append"
     {
-      Name = "OlympianTablet"
+      Name = "StoneOfBanishment"
       DisplayInEditor = true
       Life = 
       {
@@ -44,10 +44,10 @@
           }]
         Using = [
           {
-            Name = "OlympianTabletGlean"
+            Name = "StoneOfBanishmentGlean"
           }
           {
-            Name = "OlympianTabletClosed"
+            Name = "StoneOfBanishmentClosed"
           }]
       }
     }

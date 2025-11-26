@@ -5164,6 +5164,7 @@ if ModUtil ~= nil then
 
 	OlympusGiftData.ApolloUpgrade =
 	{
+		Name = "ApolloUpgrade",
 		InheritFrom = { "DefaultGiftData" },
 		MaxedIcon = "Keepsake_Apollo_Max",
 		MaxedSticker = "Keepsake_ApolloSticker_Max",

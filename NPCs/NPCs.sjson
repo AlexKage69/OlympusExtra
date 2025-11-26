@@ -69,8 +69,7 @@
             X = -72
             Y = -12
           }]
-        SubtitleColor = 
-        {
+        SubtitleColor = {
           Red = 0.44
           Green = 0.5
           Blue = 0.83
@@ -83,40 +82,34 @@
     }
     {
       Name = "NPC_Melinoe_01"
-      InheritFrom = "BaseNPC"
+      InheritFrom = "NPC_Thanatos_01"
+      Acceleration = 250.0
+      Deceleration = 250.0
       DisplayInEditor = true
-      Thing = 
-      {
-        AttachedAnim = "NPCShadow"
+      ImmuneToStun = true
+      RotationSpeed = 900.0
+      Speed = 450.0
+      MoveAI = {
+        Name = "Pathfind"
+        LookAheadDistance = 1024.0
+        SuccessDistance = 100.0
+      }
+      Thing = {
+        Interact = {
+          Distance = 200.0
+        }
         EditorOutlineDrawBounds = false
         Graphic = "MelinoeIdle"
-        OffsetZ = 30.0
-        Tallness = 150.0
-        Points = [
-          {
-            X = 4
-            Y = 26
-          }
-          {
-            X = 68
-            Y = -6
-          }
-          {
-            X = -8
-            Y = -44
-          }
-          {
-            X = -72
-            Y = -12
-          }]
-        SubtitleColor = 
-        {
+        Grip = 5000.0
+        ImmuneToForce = true
+        OffsetZ = 10.0
+        Tallness = 215.0
+        SubtitleColor = {
           Red = 0.44
           Green = 0.5
           Blue = 0.83
         }
-        Using = [
-          {
+        Using = [{
             Name = "MelinoeIdle"
           }]
       }
