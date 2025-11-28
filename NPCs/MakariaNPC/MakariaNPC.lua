@@ -7,6 +7,9 @@ local OlympusColor = ModUtil.Entangled.ModData(Color)
 local OlympusRoomData = ModUtil.Entangled.ModData(RoomData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
+local OlympusAssistUpgradeData = ModUtil.Entangled.ModData(AssistUpgradeData)
+local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
+local OlympusCodex = ModUtil.Entangled.ModData(Codex)
 
 
 --Variables
@@ -591,11 +594,11 @@ OlympusTraitData.MakariaAssistTrait =
 		},
 	},
 	--LoadPackages = { "NPC_Achilles_01_Assist", "NPC_Patroclus_01_Assist"},
-	PreEquipWeapons = { "FlurrySpawnerWeapon" },
+	PreEquipWeapons = { "NPC_FurySister_01_Assist" },
 	AddAssist =
 	{
-		FunctionName = "MakariaAssist",
-		AssistWeapons = { "FlurrySpawnerWeapon" },
+		--FunctionName = "MakariaAssist",
+		WeaponName = "FlurrySpawnerWeapon",
 		Range = 1500,
 		GameStateRequirements = {
 			CurrentRoomValueFalse = "BlockHadesAssistTraits",
@@ -646,9 +649,28 @@ OlympusTraitData.MakariaAssistTrait =
 	  }
 	},
 }
+OlympusAssistUpgradeData.MakariaAssistTrait = {
+	Costs = { 1, 2, 3, 4, 5, },
+}
+table.insert(OlympusGiftOrdering, "MakariaAssistTrait")
+	table.insert(OlympusCodexOrdering.Keepsakes.Order, "MakariaAssistTrait")
+	
+	OlympusCodex.Keepsakes.Entries["MakariaAssistTrait"] =
+	{
+        Entries =
+        {
+            {
+                UnlockThreshold = 1,
+                Text = "CodexData_MakariaAssistTrait_01",
+            },
+            {
+                UnlockThreshold = 10,
+                Text = "CodexData_MakariaAssistTrait_02",
+            },
+        },
+        Image = "Codex_Portrait_MakariaAssistTrait",
+    }
 -- Codex Section
-local OlympusCodexOrdering = ModUtil.Entangled.ModData(CodexOrdering)
-local OlympusCodex = ModUtil.Entangled.ModData(Codex)
 table.insert(OlympusCodexOrdering.ChthonicGods.Order, "NPC_Makaria_01")
 OlympusCodex.ChthonicGods.Entries["NPC_Makaria_01"] =
 {
@@ -677,7 +699,7 @@ OlympusGiftData.NPC_Makaria_01 =
 		MaxedIcon = "Keepsake_Makaria_Max",
 		MaxedSticker = "Keepsake_Makaria_Max",
 		MaxedRequirement = { RequiredTextLines = { "MakariaGift06" }, },
-		Locked = 3,
+		Locked = 4,
 		Maximum = 6,
 		[1] = { Gift = "TroveUpgradeBoonTrait" },
 		[3] = { Gift = "MakariaAssistTrait" },
@@ -843,7 +865,7 @@ ModUtil.Path.Wrap( "HandleChallengeLoot",
 		end
 	end
 )
-function MakariaAssist()
+--[[function MakariaAssist()
 	local enemyName = "TrainingMeleeSummon"
 	local enemyData = EnemyData[enemyName]
 	local newEnemy = DeepCopyTable( enemyData )
@@ -858,7 +880,7 @@ function MakariaAssist()
 	SetupEnemyObject( newEnemy, CurrentRun )
 
 	CurrentRun.CurrentRoom.TauntTargetId = newEnemy.ObjectId
-end
+end]]
 function BedroomMoveTowardMakariaApproach( source, args )
 
 	wait( 1.0 )

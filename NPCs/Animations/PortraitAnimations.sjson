@@ -137,6 +137,13 @@
       EndFrame = 1
       StartFrame = 1
     }
+    {
+      Name = "Codex_Portrait_MakariaAssistTrait"
+      InheritFrom = "Codex_Portrait_Base_01"
+      FilePath = "Macaria\MacariaDoorIcon"
+      EndFrame = 1
+      StartFrame = 1
+    }
      // Melinoe
     
     {

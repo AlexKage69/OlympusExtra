@@ -440,7 +440,7 @@
 		{
 			Id = "MakariaSignoff_AssistMax"
 			DisplayName = """
-				From {#AwardMaxFlavorFormat}Makaria{#AwardDarkFlavorFormat}, cherished sister
+				From {#AwardMaxFlavorFormat}Makaria{#AwardDarkFlavorFormat}, generous sister
 			"""
 		}
 		// Makaria God Manager
@@ -549,11 +549,32 @@
 			Id = "UseChallengeSwitch_GiftDropRewardAvailable"
 			DisplayName = "{I} Claim {!Icons.GiftPoint}"
 		}
+		// Makaria Assist
 		{
 			Id = "MakariaAssistTrait_Rack"
 			DisplayName = "Companion Flappy"
 			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage to {#BoldFormat}2 {#PreviousFormat}foes one after another. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.TooltipKeepsakeUses}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
-		}		
+		}
+		{
+			Id = "MakariaAssistTrait_Delta"
+			DisplayName = "Companion Flappy"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in a wide area. \n\n {#BoldFormat}{$Keywords.Assist}{#PreviousFormat}: Press {AS} for a quick assist from a friend {#ItalicFormat}(once per {$Keywords.EncounterAlt}). {#PreviousFormat}{#BoldFormat}Max Uses {#PreviousFormat}{#ItalicFormat}(per Escape): {#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.DisplayDelta1}{#PreviousFormat} \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+		}
+		{
+			Id = "MakariaAssistTrait"
+			DisplayName = "Companion Flappy"
+			Description = "Your {$Keywords.Assist} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamage} {#PreviousFormat}damage in a wide area."
+		}
+		{
+			Id = "CodexData_MakariaAssistTrait_01"
+			Speaker = "Achilles"
+			DisplayName = "'...Flappy Codex 01...'"
+		}    
+		{
+			Id = "CodexData_MakariaAssistTrait_02"
+			Speaker = "Achilles"
+			DisplayName = "'...Flappy Codex 01, Flappy Codex 02.{#PreviousFormat}'"
+		}	
 		// Melinoe
 		{
 			Id = "NPC_Melinoe_01"
