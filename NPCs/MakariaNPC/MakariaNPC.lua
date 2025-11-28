@@ -7,7 +7,6 @@ local OlympusColor = ModUtil.Entangled.ModData(Color)
 local OlympusRoomData = ModUtil.Entangled.ModData(RoomData)
 local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusGlobalVoiceLines = ModUtil.Entangled.ModData(GlobalVoiceLines)
-local OlympusConditionalItemData = ModUtil.Entangled.ModData(ConditionalItemData)
 
 
 --Variables
@@ -1200,70 +1199,7 @@ OlympusRoomSetData.Styx.D_Reprieve01.GameStateRequirements = {RequiredMinWingDep
 OlympusGlobalVoiceLines.ForkingPathVoiceLines[3].RequiredFalseTrait = "TroveUpgradeBoonTrait"
 OverwriteTableKeys(OlympusRoomData, OlympusRoomSetData.Styx)
 
--- God Manager Cosmetics
-table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, 
-{
-				FunctionName = "SpawnStoneOfBanishment",
-				GameStateRequirements =
-				{
-					RequiredCosmetics = { "StoneOfBanishmentWorkOrder", },
-				},
-				Args =
-				{
-					Ids = {"421422"},
-				},
-			})
-OlympusConditionalItemData.StoneOfBanishmentWorkOrder =
-	{
-		Name = "StoneOfBanishmentWorkOrder",
-		InheritFrom = { "DefaultCriticalItem" },
-		Slot = "Critical",
-		PanDuration = 2,
-		-- UsePanSound = true,
-		DoVerticalPan = true,
-		UseUnlockText = true,
-		PreActivationHoldDuration = 1.5,
-		PostActivationHoldDuration = 1.5,
-		SetPlayerAnimation = "ZagreusCosmeticPurchase",
-		-- UseReturnPanSound = true,
-		SkipFade = true,
-		SkipPurchaseGlobalVoiceLines = true,
-		-- SkipRevealReactionGlobalVoiceLines = true,
 
-		RevealVoiceLines =
-		{
-			{
-				PreLineWait = 0.35,
-				-- I think those columns still could use some sprucing up.
-				{ Cue = "/VO/ZagreusHome_1759" },
-			},
-			{
-				PreLineWait = 0.85,
-				ObjectType = "NPC_Hades_01",
-				RequiredFalseTextLinesThisRoom = { "HadesAboutOlympianReunionQuest01A" },
-				RequiredSourceValueFalse = "InPartnerConversation",
-				-- The columns were just fine the way they were.
-				{ Cue = "/VO/Hades_0676" },
-			},
-		},
-		RevealReactionGlobalVoiceLines = "HadesGhostAdminCriticalItemPurchaseReactionVoiceLines",
-		Icon = "RunUpgrade_StoneOfBanishment",
-		ResourceName = "SuperGems",
-		ResourceCost = 3,
-		GameStateRequirements =
-		{
-			RequiredTextLines = { "MakariaCompletedBanishmentQuest" },
-		},
-
-		OfferedVoiceLines =
-		{
-			PreLineWait = 0.5,
-			PlayOnce = true,
-
-			-- Hey that sounds handy, there...
-			{ Cue = "/VO/ZagreusHome_3562" },
-		},
-	}
 function MakariaThanatosExit( source, args )	
 	ThanatosExit(source, args)
 	wait(0.5)
@@ -1322,7 +1258,3 @@ function MakariaExit( source, args )
 	end
 
 end
-	function SpawnStoneOfBanishment(eventSource, args)
-		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnStoneOfBanishment"))
-		Activate({ Ids = args.Ids})
-	end

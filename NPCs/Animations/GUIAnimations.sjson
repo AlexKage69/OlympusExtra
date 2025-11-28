@@ -242,6 +242,21 @@
       InheritFrom = "KeepsakeMax_Sticker"
       FilePath = "Macaria\MacariaBadge"
     }
+    // Mana System
+    {
+      Name = "Mana_T1_Shield_Large"
+      InheritFrom = "BoonIcon"
+      FilePath = "GUI\Screens\ShopIcons\cyclops_jerky_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
+    {
+      Name = "Mana_T1_Shield_Small"
+      InheritFrom = "ShopTrayIcon"
+      FilePath = "GUI\Screens\ShopIcons\cyclops_jerky_01"
+      EndFrame = 1
+      StartFrame = 1
+    }
     // Nemesis
     {
       Name = "Keepsake_ShieldPlate_Child"

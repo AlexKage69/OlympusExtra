@@ -3,8 +3,8 @@
     Author - Phypoh
 :-
 
-Import "GaiaExtra.lua"
-Import "OECrops.lua"
+Import "HecateExtra.lua"
+Import "GodReplacement.lua"
 
 :: Animations
 To "Game/Animations/GUIAnimations.sjson"

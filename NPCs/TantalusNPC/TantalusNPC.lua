@@ -16,7 +16,7 @@ OlympusEnemyData.NPC_Tantalus_01 =
 {
 	InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 	Name = "NPC_Tantalus_01",
-	UseText = "UseTalkToFemaleGhost",
+	UseText = "UseTalkToMaleGhost",
 	Portrait = "Portrait_Tantalus_Default_01",
 	AnimOffsetZ = 205,
 	EmoteOffsetX = 50,
@@ -233,6 +233,6 @@ OlympusGiftData.NPC_Tantalus_01 =
 		Locked = 1,
 		Maximum = 2,
 		[1] = {  },
-		[2] = { RequiredResource = "SuperGiftPoints" },
+		[2] = { RequiredResource = "SuperGem" },
 		UnlockGameStateRequirements = { RequiredTextLines = { "Test1" } }
 	}

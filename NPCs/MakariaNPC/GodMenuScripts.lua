@@ -4,9 +4,77 @@ local OlympusUIData = ModUtil.Entangled.ModData(UIData)
 local OlympusGiftData = ModUtil.Entangled.ModData(GiftData)
 local OlympusObjectiveSetData = ModUtil.Entangled.ModData(ObjectiveSetData)
 local OlympusTraitData = ModUtil.Entangled.ModData(TraitData)
+local OlympusDeathLoopData = ModUtil.Entangled.ModData(DeathLoopData)
+local OlympusConditionalItemData = ModUtil.Entangled.ModData(ConditionalItemData)
 
+-- God Manager Cosmetics
+table.insert(OlympusDeathLoopData.RoomPreRun.StartUnthreadedEvents, 
+{
+				FunctionName = "SpawnStoneOfBanishment",
+				GameStateRequirements =
+				{
+					RequiredCosmetics = { "StoneOfBanishmentWorkOrder", },
+				},
+				Args =
+				{
+					Ids = {"421422"},
+				},
+			})
+OlympusConditionalItemData.StoneOfBanishmentWorkOrder =
+	{
+		Name = "StoneOfBanishmentWorkOrder",
+		InheritFrom = { "DefaultCriticalItem" },
+		Slot = "Critical",
+		PanDuration = 2,
+		-- UsePanSound = true,
+		DoVerticalPan = true,
+		UseUnlockText = true,
+		PreActivationHoldDuration = 1.5,
+		PostActivationHoldDuration = 1.5,
+		SetPlayerAnimation = "ZagreusCosmeticPurchase",
+		-- UseReturnPanSound = true,
+		SkipFade = true,
+		SkipPurchaseGlobalVoiceLines = true,
+		-- SkipRevealReactionGlobalVoiceLines = true,
 
+		RevealVoiceLines =
+		{
+			{
+				PreLineWait = 0.35,
+				-- I think those columns still could use some sprucing up.
+				{ Cue = "/VO/ZagreusHome_1759" },
+			},
+			{
+				PreLineWait = 0.85,
+				ObjectType = "NPC_Hades_01",
+				RequiredFalseTextLinesThisRoom = { "HadesAboutOlympianReunionQuest01A" },
+				RequiredSourceValueFalse = "InPartnerConversation",
+				-- The columns were just fine the way they were.
+				{ Cue = "/VO/Hades_0676" },
+			},
+		},
+		RevealReactionGlobalVoiceLines = "HadesGhostAdminCriticalItemPurchaseReactionVoiceLines",
+		Icon = "RunUpgrade_StoneOfBanishment",
+		ResourceName = "SuperGems",
+		ResourceCost = 3,
+		GameStateRequirements =
+		{
+			RequiredTextLines = { "MakariaCompletedBanishmentQuest" },
+		},
 
+		OfferedVoiceLines =
+		{
+			PreLineWait = 0.5,
+			PlayOnce = true,
+
+			-- Hey that sounds handy, there...
+			{ Cue = "/VO/ZagreusHome_3562" },
+		},
+	}
+	function SpawnStoneOfBanishment(eventSource, args)
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnStoneOfBanishment"))
+		Activate({ Ids = args.Ids})
+	end
 GodOrderingReverseLookup = {} -- Auto Generate on open page ; GodOrdering is in GenerateGodOrderingReverseLookup
 OnUsed { "StoneOfBanishment",
 	function(triggerArgs)
@@ -289,7 +357,7 @@ function ShowGodManagerMenu()
 			CurrentSuperGiftText = "Available_SuperGiftPoints"
 		end
 	end
-		local exilData = GetExilData()
+	local exilData = GetExilData()
 	components.FreeExilMessage = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
 		CreateTextBox({ Id = components.FreeExilMessage.Id, Text = FreeExilMessageText, FontSize = 24,
 			OffsetX = -400, OffsetY = -365, Color = Color.White, Font = "SpectralSCLight",
@@ -310,21 +378,21 @@ function ShowGodManagerMenu()
 			LuaKey = "TempTextData",
 			LuaValue = { Amount = tostring(GameState.Resources.GiftPoints)}
 		})
-		components.CurrentSuperGift = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
-		CreateTextBox({ Id = components.CurrentSuperGift.Id,
-				Text = CurrentSuperGiftText,
-				FontSize = 24,
-				OffsetX = -335, 
-				OffsetY = -365,
-				Color = Color.White,
-				Font = "AlegreyaSansSCRegular",
-				ShadowBlur = 0,
-				ShadowColor = {0,0,0,1},
-				ShadowOffset={0, 2},
-				Justification = "Right",
-				LuaKey = "TempTextData",
-				LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}
-			})
+	components.CurrentSuperGift = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
+	CreateTextBox({ Id = components.CurrentSuperGift.Id,
+			Text = CurrentSuperGiftText,
+			FontSize = 24,
+			OffsetX = -335, 
+			OffsetY = -365,
+			Color = Color.White,
+			Font = "AlegreyaSansSCRegular",
+			ShadowBlur = 0,
+			ShadowColor = {0,0,0,1},
+			ShadowOffset={0, 2},
+			Justification = "Right",
+			LuaKey = "TempTextData",
+			LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}
+		})
 	--Title
 	local title = "Stone of Banishment"
 	local subtitle = "Exil gods and goddesses."
@@ -977,7 +1045,7 @@ function HandleExiledToggle(screen, button, textOverride)
 			return
 		else -- Known god
 			if not IsGodUnlockedForExil(god.Name) then -- God is still locked
-				if HasResource( "GiftPoints", 1 ) then -- Can pay
+				if HasResource( "GiftPoints", GetCurrentCost() ) then -- Can pay
 					UnlockExiledGod(screen, button)
 				else --Can't pay
 					thread( PlayVoiceLines, ResourceData["GiftPoints"].BrokerCannotSpendVoiceLines, true )
@@ -1014,6 +1082,7 @@ end
 
 function UnlockExiledGod( screen, button )
 	local exilData = GetExilData()
+	local cost = GetCurrentCost()
 	exilData.ExiledGodUnlocks[button.Data.Name] = true
 
 	--wait(0.3)
@@ -1023,13 +1092,15 @@ function UnlockExiledGod( screen, button )
 		ModifyTextBox({ Id = components.FreeExilMessage.Id, Text = "FreeExilMessage", LuaKey = "TempTextData", LuaValue = { NumExil = LockAt-TableLength(exilData.ExiledGodUnlocks) }})
 		Destroy({ Id = components[button.ButtonKey.."Cost"].Id })
 	else
-		SpendResource( "GiftPoints", GetCurrentCost(), "ExiledGodUnlock" )
+		if cost ~= 0 then
+			SpendResource( "GiftPoints", cost, "ExiledGodUnlock" )
+		end
 		ModifyTextBox({ Id = components.FreeExilMessage.Id, Text = " "})
 		if GameState.LifetimeResourcesGained.GiftPoints ~= nil and GameState.LifetimeResourcesGained.GiftPoints > 0 then
-			ModifyTextBox({Id = components.FreeExilMessage.Id, Text = "Available_GiftPoints", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GameState.Resources.GiftPoints)}})
+			ModifyTextBox({Id = components.CurrentGift.Id, Text = "Available_GiftPoints", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GameState.Resources.GiftPoints)}})
 		end
 		if GameState.LifetimeResourcesGained.SuperGiftPoints ~= nil and GameState.LifetimeResourcesGained.SuperGiftPoints > 0 then
-			ModifyTextBox({Id = components.FreeExilMessage.Id, Text = "Available_SuperGiftPoints", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}})
+			ModifyTextBox({Id = components.CurrentSuperGift.Id, Text = "Available_SuperGiftPoints", LuaKey = "TempTextData", LuaValue = { Amount = tostring(GameState.Resources.SuperGiftPoints)}})
 		end		
 		if components[button.ButtonKey.."Cost"].Id ~= nil then
 			local indexToRemove = -1

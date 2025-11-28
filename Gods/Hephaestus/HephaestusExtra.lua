@@ -3607,6 +3607,7 @@ if ModUtil ~= nil then
 
 	OlympusGiftData.HephaestusUpgrade =
 	{
+		Name = "HephaestusUpgrade",
 		InheritFrom = { "DefaultGiftData" },
 		MaxedIcon = "Keepsake_Hephaestus_Max",
 		MaxedSticker = "Keepsake_HephaestusSticker_Max",

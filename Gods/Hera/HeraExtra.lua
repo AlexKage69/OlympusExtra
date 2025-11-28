@@ -7124,6 +7124,7 @@ end]]
 
 	OlympusGiftData.HeraUpgrade =
 	{
+		Name = "HeraUpgrade",
 		InheritFrom = { "DefaultGiftData" },
 		MaxedIcon = "Keepsake_Hera_Max",
 		MaxedSticker = "Keepsake_HeraSticker_Max",
