@@ -87,6 +87,24 @@
         }
         // Macaria God Manager
         {
+            Name = "StoneOfBanishmentFloat"
+            Type = "Constant"
+            FilePath = "Minor\StoneOfBanishmentObstacle"
+            Scale = 3.5
+            EaseIn = 0
+            EaseOut = 1
+            StartOffsetZ = -5
+            EndOffsetZ = 5
+            OffsetX = -3
+            Loop = true
+            Duration = 2
+            StartAngle = 0
+            EndAngle = 1
+            PingPongShiftOverDuration = true
+            PingPongAngle = true
+            PhaseOffsetAngle = 90
+        }
+        {
             Name = "StoneOfBanishmentGlean"
             FilePath = "Dev\blank_invisible"
             Type = "Constant"
@@ -109,8 +127,8 @@
             VisualFxIntervalMax = 0.07
             VisualFxIntervalMin = 0.05
             VisualFxOffsetY = -60.0
-            }
-            {
+        }
+        {
             Name = "StoneOfBanishmentClosed"
             FilePath = "Tilesets\House\House_Fireplace_02"
             Type = "Constant"
@@ -119,6 +137,6 @@
             NumFrames = 1
             StartFrame = 1
             Ambient = 0.0
-            }
+        }
     ]
 }

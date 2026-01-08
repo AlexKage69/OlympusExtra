@@ -95,6 +95,21 @@ if ModUtil ~= nil then
 	OlympusPresetEventArgs.HeraPatroclusBenefitChoices =
 	{
 		{
+			RequiredActiveMetaUpgrade = "ExtraChanceFloorMetaUpgrade",
+			ChoiceText = "ChoiceText_BuffExtraChance",
+			{
+				PostLineThreadedFunctionName = "PatroclusBuff",
+				PostLineFunctionArgs = {
+					LastStand = {
+						Count = 100,
+						Icon = "ExtraLifeStyx",
+						WeaponName = "LastStandMetaUpgradeShield",
+						HealFraction = 0.5
+					}
+				}
+			},
+		},
+		{
 			RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
 			ChoiceText = "ChoiceText_BuffExtraChance",
 			{
@@ -2654,6 +2669,16 @@ end]]
 		RequiredFalseBiome = "Styx",
 		God = "Hera",
 		Icon = "Boon_Hera_16",
+		--[[CustomTrayNameWithMetaUpgrade =
+		{
+			MetaUpgradeName = "HealingReductionShrineUpgrade",
+			Name = "HealthAsObolTrait_Tray_Reduced",
+		},]]
+		CustomNameWithMetaUpgrade =
+		{
+			MetaUpgradeName = "HealingReductionShrineUpgrade",
+			Name = "HealthAsObolTrait_Reduced",
+		},
 		RarityLevels =
 		{
 			Common =
@@ -2690,6 +2715,7 @@ end]]
 			{
 				Key = "CharonHealMultiplier",
 				ExtractAs = "TooltipMultiplier",
+				Format = "PercentHeal",
 			}
 		}
 	}

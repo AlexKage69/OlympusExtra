@@ -13,6 +13,8 @@ local OlympusRoomSetData = ModUtil.Entangled.ModData(RoomSetData)
 local OlympusEffectData = ModUtil.Entangled.ModData(EffectData)
 local OlympusQuestData = ModUtil.Entangled.ModData(QuestData)
 local OlympusGameData = ModUtil.Entangled.ModData(GameData)
+local OlympusPresetEventArgs = ModUtil.Entangled.ModData(PresetEventArgs)
+
 
 ModUtil.Mod.Register("OEMirror")
 OlympusColor.OEMirrorAttribute = { 145, 17, 55, 255 }
@@ -139,6 +141,23 @@ OlympusMetaUpgradeData.ExtraChanceFloorMetaUpgrade =
 		Value = "ExtraChanceAlt2",
 	},
 }
+table.insert(OlympusPresetEventArgs.PatroclusBenefitChoices,1,
+	{
+		RequiredActiveMetaUpgrade = "ExtraChanceFloorMetaUpgrade",
+		ChoiceText = "ChoiceText_BuffExtraChance",
+		{
+			PostLineThreadedFunctionName = "PatroclusBuff",
+			PostLineFunctionArgs = {
+				LastStand = {
+					Count = 100,
+					Icon = "ExtraLifeStyx",
+					WeaponName = "LastStandMetaUpgradeShield",
+					HealFraction = 0.5
+				}
+			}
+		},
+	}
+)
 OlympusConsumableData.LastStandDrop.RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade"
 OlympusMetaUpgradeData.DashlessMetaUpgrade =
 {
@@ -968,6 +987,12 @@ function FireBounceAmmo(storedAmmo, victimId)
 			FireFromTarget = true,
 			Angle = angle
 		})
+		if HeroHasTrait("CastNovaTrait") then
+			FireWeaponFromUnit({
+				Weapon = "DemeterAmmoWind",
+				Id = CurrentRun.Hero.ObjectId
+			})
+		end
 		Destroy({ Id = storedAmmo.ObjectId})
 		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.Hero.Bounce.Num)..ModUtil.ToString(CurrentRun.Hero.Bounce.Max))
 end

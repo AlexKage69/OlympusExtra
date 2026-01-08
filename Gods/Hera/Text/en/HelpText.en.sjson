@@ -246,10 +246,14 @@
       Id = "Shop_UseSuperGiftPointDrop_HealthAsObolText"
       DisplayName = "{I} Buy {#UseGiftPointFormat}+{$TempTextData.AddResources.SuperGiftPoints}{!Icons.SuperGiftPointSmall} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
     }
-	 {
+	{
       Id = "Shop_UseGemDrop_HealthAsObolText"
       DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
     }
+	{
+	  Id = "Shop_UseGemDrop_HealthAsObolText_Health"
+	  DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.Gems}{!Icons.GemSmall}     {#PreviousFormat}{#AltUpgradeFormat}+{$TempTextData.MaxHealthAmount}{!Icons.HealthUp_Small}{#PreviousFormat} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
+	}
 	{
       Id = "Shop_UseSuperGemDrop_HealthAsObolText"
       DisplayName = "{I} Buy {#UseShrinePointFormat}+{$TempTextData.AddResources.SuperGems}{!Icons.SuperGemSmall} \n {G} Sacrifice {$TempTextData.SacrificeCost}{!Icons.Health_Small}"
@@ -292,6 +296,16 @@
 			Id = "HealthAsObolTrait_Initial"
 			InheritFrom = "HealthAsObolTrait"
 			Description = "Visiting Charon restores some {!Icons.Health_Small}. You may pay Charon with {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Health_Small} restored: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}"
+		}
+		{
+			Id = "HealthAsObolTrait_Reduced"
+			InheritFrom = "HealthAsObolTrait"
+			Description = "Visiting Charon restores some {!Icons.Health_Small}. You may pay Charon with {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Health_Small} restored: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Condition Applied: \Column 380 {#AltPenaltyFormat}{$Keywords.HealingReduction_Total}"
+		}
+		{
+			Id = "HealthAsObolTrait_Tray_Reduced"
+			InheritFrom = "HealthAsObolTrait"
+			Description = "Visiting Charon restores some {!Icons.Health_Small}. You may pay Charon with {!Icons.Health_Small}. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Health_Small} restored: \Column 380 {#UpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat} \n {!Icons.Bullet}{#PropertyFormat}Condition Applied: \Column 380 {#AltPenaltyFormat}{$Keywords.HealingReduction_Total}"
 		}
 		{
 			Id = "StatusOverTimeTrait"

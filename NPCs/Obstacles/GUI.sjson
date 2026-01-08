@@ -1,0 +1,26 @@
+{
+  Obstacles = [
+	"_append"
+    // Stone Of Banishment
+    {
+      Name = "SingleLockedButton"
+      InheritFrom = "RadioButton"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "Single_Locked_Banishment"
+      }
+    }
+    {
+      Name = "DualLockedButton"
+      InheritFrom = "RadioButton"
+      DisplayInEditor = true
+      Thing =
+      {
+        EditorOutlineDrawBounds = false
+        Graphic = "Dual_Locked_Banishment"
+      }
+    }
+  ]
+}

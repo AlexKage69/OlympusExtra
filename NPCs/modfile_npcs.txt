@@ -32,3 +32,5 @@ SJSON "Animations/PortraitAnimations.sjson"
 :: Obstacles
 To "Game/Obstacles/Gameplay.sjson"
 SJSON "Obstacles/Gameplay.sjson"
+To "Game/Obstacles/GUI.sjson"
+SJSON "Obstacles/GUI.sjson"

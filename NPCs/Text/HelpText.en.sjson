@@ -449,6 +449,14 @@
 			DisplayName = "Stone of Banishment"
 		}
 		{
+			Id = "GodManagerMenu_Title"
+			DisplayName = "Stone of Banishment"			
+		}
+		{
+			Id = "GodManagerMenu_Subtitle"
+			DisplayName = "Exil gods and goddesses."			
+		}
+		{
 			Id = "UseGodManagerMenu"
 			DisplayName = "{I} Inspect"
 		}

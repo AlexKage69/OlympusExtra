@@ -51417,8 +51417,8 @@
             "IgnoreGridManager": false,
             "Invert": false,
             "Location": {
-                "X": 5274.87626953125,
-                "Y": 4199.534521484375
+                "X": 5244.87626953125,
+                "Y": 4240.534521484375
             },
             "Name": "StoneOfBanishment",
             "OffsetZ": 0.0,

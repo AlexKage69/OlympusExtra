@@ -4,44 +4,30 @@
     {
       Name = "StoneOfBanishment"
       DisplayInEditor = true
-      Life = 
-      {
+      Life = {
         HitFx = "InvincibleHitSpark"
         Invulnerable = true
       }
       Thing = 
       {
         EditorOutlineDrawBounds = false
-        Graphic = "Tilesets\House\House_Shelf_03"
+        Graphic = "StoneOfBanishmentFloat"
         Grip = 999999.0
-        Tallness = 1345.0
+        Tallness = 1.0
         TouchdownSound = "/EmptyCue"
-        Interact = 
-        {
+        Interact = {
           Distance = 220.0
         }
-        Offset = 
-        {
+        Offset = {
           X = 0
-          Y = -702
+          Y = -600
         }
         Points = [
-          {
-            X = -616
-            Y = 86
-          }
-          {
-            X = -172
-            Y = 299
-          }
-          {
-            X = 657
-            Y = -110
-          }
-          {
-            X = 220
-            Y = -333
-          }]
+          { X = 600 Y = -200 }
+          { X = 500 Y = -250 }
+          { X = -600 Y = 200 }
+          { X = -500 Y = 250 }
+        ]
         Using = [
           {
             Name = "StoneOfBanishmentGlean"

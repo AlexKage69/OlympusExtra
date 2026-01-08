@@ -67,6 +67,7 @@ OlympusWeaponSets.AssistWeapons = {
 	"DusaFreezeShotSpray",
 	"DusaFreezeShotSpread",
 	"NPC_Goodboy_01_Assist",
+	"NPC_Makaria_01_Assist",
 }	
 -- Verification Function
 ModUtil.Path.Wrap("Heal",
@@ -77,7 +78,24 @@ ModUtil.Path.Wrap("Heal",
         baseFunc(victim, triggerArgs)
     end
 )
-
+ModUtil.Path.Wrap("IsPauseBlocked",
+    function(baseFunc)
+        local result = baseFunc()
+        if not result then
+            local blockingScreens =
+            {
+                "GodManagerMenu"
+            }
+            for k, name in pairs( blockingScreens ) do
+                if ActiveScreens[name] then
+                    result = true
+                    break
+                end
+            end
+        end
+        return result
+    end
+)
 ModUtil.Path.Wrap("GetKeepsakeLevel",
     function(baseFunc, traitName)
         if TraitData[traitName] == nil then
@@ -459,7 +477,7 @@ ModUtil.Path.Wrap("CreateBoonLootButtons",
                 itemLocationY = itemLocationY + 220
             end
         end
-        if IsMetaUpgradeSelected( "RerollMetaUpgrade" ) and HeroHasTrait("ForceWeaponUpgradeTrait") and lootData.Name == "WeaponUpgrade" then
+        if not IsMetaUpgradeSelected( "RerollPanelMetaUpgrade" ) and HeroHasTrait("ForceWeaponUpgradeTrait") and lootData.Name == "WeaponUpgrade" then
             local cost = -1
             if lootData.BlockReroll then
                 cost = -1
@@ -2255,7 +2273,7 @@ ModUtil.Path.Wrap("StartRoom",
 		if GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade") > 0 and Contains({ "B_Intro", "C_Intro", "D_Intro", }, currentRoom.Name) then
 			local numRegenerationLastStands = 0
 			for i, lastStand in pairs(CurrentRun.Hero.LastStands) do
-				if lastStand.Name == "ExtraChanceFloorMetaUpgrade" then
+				if lastStand.Name == "ExtraChanceFloorMetaUpgrade" or lastStand.Icon == "ExtraLifeStyx" then
 					numRegenerationLastStands = numRegenerationLastStands + 1
 				end
 			end

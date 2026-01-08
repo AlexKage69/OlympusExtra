@@ -35,7 +35,7 @@ OlympusEnemyData.NPC_Makaria_01 =
 
 	Binks =
 	{
-		"CthonicIdle_Bink",
+		"NPC_MakIdle_Bink",
 	},
 
 	ActivateRequirements =
