@@ -50,7 +50,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 		MelinoeFirstMeeting =
 		{
 			Name = "MelinoeFirstMeeting",
-			PlayOnce = false,
+			PlayOnce = true,
 			UseableOffSource = true,
 			{ Cue = "/VO/Melinoe_0001",
 				Text = "Zagreus, I wanted to thank you on our behave for assisting us. My sister and I wouldn't have been welcomed without your intervention. We are only here because you made it happen." },
@@ -60,6 +60,165 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				Text = "I will always there to help friends or strangers. Still, I am not sure how you know so much about me." },
 			{ Cue = "/VO/Melinoe_0001",
 				Text = "You know, from here and there. But girls has to keep a few secrets, right? Don't worry to much. We just wanted to thanks." },
+		},
+		MelinoeAboutTimetravel01 =
+		{
+			Name = "MelinoeAboutTimetravel01",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting"},
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Melinoë. You never mention where you were coming from. You told me your came from far away. Did you mean the surface and beyond? Or maybe deeper than the depth of Erebus?" },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "It's... It's a long story. One day I hope to be able to tell it and you can tell me about your adventure as well. Right now, might not be the right time. Let me think more before I tell you my story. I need to be sure." },
+		},
+		MelinoeAboutTimetravel02 =
+		{
+			Name = "MelinoeAboutTimetravel02",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting", "MelinoeAboutTimetravel01", "PersephoneMeeting02"},
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "Prince... I've been thinking. You asked me about my origins, are you aware of story between your father and his father Chronos?" },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "I heard the name once or twice. God of time, Not very friendly from what I heard. Last time I heard he's imprison somewhere no one speaks of." },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "He is. And he should stay there for as long as possible... But that's not what I wanted to bring. I encountered him at some point. Learned a few spells from him. And there goes my sister and I. Do you see what I mean?" },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "I can't say that I do... What spell did you learn? I though you said he was locked up. How could you have met him?" },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "{#DialogueItalicFormat}Sign{#PreviousFormat}. This is what I mean by its {#DialogueItalicFormat}complicated{#PreviousFormat}. You know what I'll think of another way to explain it. Talk to you later." },
+		},
+		MelinoeAboutTimetravel03 =
+		{
+			Name = "MelinoeAboutTimetravel03",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting"},
+			MinRunsSinceAnyTextLines = { TextLines = { "MelinoeAboutTimetravel02" }, Count = 5 },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Melinoë! I think I started to understand what you meant by mentionning Chronos. You were not trying to tell me where you were coming from, but rather when?" },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "Yes... Makaria and I, we used one of Chronos incantation and we went too far in time. Leading us to now, weaken. I didn't know what impact this would have in our timeline if I were to tell you. You never mention any of this in our timeline." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "I am starting to understand why you hesitated to tell me. That means we met in the futur? I can try to not mention any of this to your futur self if that can keep your timeline safe." },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, we meet.? I already feel like I told you too much so here goes. Makaria and I... We're Hades and Persephone offsprings. We're sibling, Zagreus." },
+		},
+		MelinoeAboutTimetravel04 =
+		{
+			Name = "MelinoeAboutTimetravel04",
+			StatusAnimation = "StatusIconWantsToTalkImportant",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting"},
+			MinRunsSinceAnyTextLines = { TextLines = { "MelinoeAboutTimetravel03" }, Count = 2 },
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- -Hecate, Asphodel. Got it.
+					{ Cue = "/VO/ZagreusHome_4000" },
+				},
+			},
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "What made you decide to tell me the truth, Melinoë? Are you certain it won't affect your timeline when you get back there." },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "It might. Or not. Only the Fates know. But I decided to tell you because I need your help. The spell which brought us here took my powers away." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Oh no, what can we do? Maybe ask help Nyx. She might know a way to get them back." },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "I might have a way to get them back already. I need to find Hecate, Titaness of Witchcraft. She might know a way to bring back my powers. Rumors says she's with the witches of Asphodel, but I couldn't find her. If you could cross her path, let me know. I would be very grateful." },
+		},
+		MelinoeAboutTimetravel05 =
+		{
+			Name = "MelinoeAboutTimetravel05",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting", "MelinoeAboutTimetravel03"},
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					--Good to hear.					
+					{ Cue = "/VO/Melinoe_4000" },
+				},
+			},
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "I am suprised you don't ask me more about what is going to happen. I assumed you would ask what lies ahead. You did say you had many question." },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "At first, I did. but then I though, where the fun in knowing what's to come? And now, I know we'll met each other someday. That's enough for me to go on." },
+		},
+		MelinoeAboutZagreus01 =
+		{
+			Name = "MelinoeAboutZagreus01",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting", "MelinoeGift01"},
+			RequiredFalseTextLines = {"MelinoeAboutTimetravel03"},
+			EndVoiceLines =
+			{
+				{
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I suppose that's who you are.		
+					{ Cue = "/VO/Melinoe_4000" },
+				},
+			},
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "Are you always this trustful? You don't know me or my sister. Yet, you decided to vouch for our safety in your home. Why?" },
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Why wouldn't I? I believe trusting you will make you trust me in return. There's no harm in giving someone a chance. You'd be suprise what greatness is hiding in all of us." },
+		},
+		MelinoeAboutMakariaJob01 =
+		{
+			Name = "MelinoeAboutMakariaJob01",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting", "MakariaWithThanatos01"},
+			RequiredFalseTextLines = {"MelinoeAboutTimetravel03"},
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "Did you know Makaria started working with Thanatos? She's helping him getting mortals here. I don't know all the details, but I hear she's doing her part." },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "That's good to hear. She needs to keep herself busy. And in the end, she always did as she wanted. Once she's had something in mind, there's no stopping her." },
+		},
+		MelinoeAboutHecate01 =
+		{
+			Name = "MelinoeAboutHecate01",
+			PlayOnce = true,
+			UseableOffSource = true,
+			RequiredTextLines = {"MelinoeFirstMeeting", "MelinoeAboutTimetravel04", "HecateFirstMeeting"},
+			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
+				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
+				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
+				Text = "I found the Titaness. Hecate is somewhere in Erebus. She opened to gate for me to visit her again. I think you should be able to find her now." },
+			{ Cue = "/VO/Melinoe_0001",
+				Text = "You did it? Finally, I'll get my powers back." },
 		},
 	},
 
@@ -80,6 +239,16 @@ OlympusEnemyData.NPC_Melinoe_01 =
 			{
 				Name = "MelinoeGift01",
 				PlayOnce = true,
+				EndVoiceLines =
+				{
+					{
+						PreLineWait = 0.35,
+						UsePlayerSource = true,
+						RequiredMinElapsedTime = 3,
+						-- No worries.
+						{ Cue = "/VO/ZagreusHome_4000" },
+					},
+				},
 				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
@@ -102,6 +271,16 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				Name = "MelinoeGift03",
 				PlayOnce = true,
 				RequiredTextLines = { "MelinoeGift02" },
+				EndVoiceLines =
+				{
+					{
+						PreLineWait = 0.35,
+						UsePlayerSource = true,
+						RequiredMinElapsedTime = 3,
+						-- Definitely drinking it
+						{ Cue = "/VO/Melinoe_4000" },
+					},
+				},
 				-- Definitely drinking it
 				{ Cue = "/VO/Melinoe_0001",
 					Text = "I still can taste the nectar you gave me. I used to give to other, but never bothered drinking some myself." },
@@ -118,7 +297,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
 					Text = "I know you appreciated the nectar I've been finding around. But I feel you should have a taste of this." },
 				{ Cue = "/VO/Melinoe_0001",
-					PreLineAnim = "NyxIdleGreeting",
+					--PreLineAnim = "NyxIdleGreeting",
 					Text = "Is it what I think it is? How did you find such quality Ambrosia? It's coming from you brother. I can't refuse." },
 
 			},
@@ -128,7 +307,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				PlayOnce = true,
 				RequiredTextLines = { "MelinoeGift04" },
 				{ Cue = "/VO/Melinoe_0001",
-					PreLineAnim = "NyxIdleGreeting",
+					--PreLineAnim = "NyxIdleGreeting",
 					Text = "How do you get all these Ambrosia? I have been in your realm for a while now and still haven't found any on my own. Why won't you enjoy some yourself." },
 				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
@@ -179,6 +358,7 @@ OlympusRoomSetData.Tartarus.A_PostBoss01.StartUnthreadedEvents = {
 		GameStateRequirements =
 		{
 			RequiredTextLines = { "PersephoneFirstMeeting" },		--PersephoneFirstMeeting
+			RequiredFalseTextLines = { "MelinoeFirstEncounter" },
 		},
 		BreakIfPlayed = true,
 		Args =
@@ -491,7 +671,7 @@ OlympusGiftData.NPC_Melinoe_01 =
 		MaxedIcon = "Keepsake_Melinoe_Max",
 		MaxedSticker = "Keepsake_MelinoeSticker_Max",
 		MaxedRequirement = { RequiredTextLines = { "MelinoeGift05" }, },
-		Locked = 1,
+		Locked = 2,
 		Maximum = 5,
 		[2] = { Gift = "UnlockManaSkillBoonTrait" },
 		[3] = { RequiredResource = "SuperGiftPoints" },
@@ -510,6 +690,7 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 	Args =
 	{
 		Name = "NPC_Melinoe_01", 
-		SpawnPointId = 370046
+		SpawnPointId = 370046,
+		Angle = 280,
 	},
 })

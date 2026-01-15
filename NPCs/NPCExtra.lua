@@ -1,10 +1,12 @@
 function SpawnExtraNPCs(eventSource, args)
-	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("SpawnExtraNPCs")) 	
 	if GameState.Gift[args.Name] == nil or GameState.Gift[args.Name].Value == nil then
 		GameState.Gift[args.Name] = {
 			Value =  0,
 			--NewTraits = GameState.BefriendPersistentVals["TheseusGiftNewTraits"],
 		}
+	end
+	if CurrentRun.CustomNPC == nil then
+		CurrentRun.CustomNPC = {}
 	end
 	local obstacleId = GetFirstValue(GetInactiveIdsByType({ Name = args.Name }))
 	if args.Name == nil or obstacleId == nil or args.SpawnPointId == nil then
@@ -22,15 +24,20 @@ function SpawnExtraNPCs(eventSource, args)
         ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.LocationsById))
         return
 	end
-	local chanceToSpawn = 1.0--args.Chance or 1.0
+	local chanceToSpawn = args.SpawnChance or 1.0
 	if IsActivationEligible( obstacleId, newUnit ) then
-		if RandomChance( chanceToSpawn ) then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Spawn:"..args.Name)) 
+		if CurrentRun.CustomNPC[args.Name] == nil then
+			CurrentRun.CustomNPC[args.Name] = RandomChance( chanceToSpawn )		
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Chance:"..args.Name)) 	
+		end
+		if CurrentRun.CustomNPC[args.Name] then
 			newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.ObjectId })
 			
 			SetupEnemyObject( newUnit, CurrentRun, { IgnoreAI = true, PreLoadBinks = true, } )
 			UseableOn({ Ids = newUnit.ObjectId })
-			
+			if args.Angle ~= nil then
+				SetGoalAngle({ Id = newUnit.ObjectId, Angle = args.Angle })
+			end
 			SetupAI( CurrentRun, newUnit )		
 			
 			local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
@@ -39,7 +46,7 @@ function SpawnExtraNPCs(eventSource, args)
 			end
 			CheckConversations()	
 		else	
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Missing Trigger:"..args.Name)) 
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Start Missing Trigger:"..args.Name)) 
 			if newUnit.MissingDistanceTrigger ~= nil then
 				local missingUnit = {}
 				missingUnit.Name = args.Name

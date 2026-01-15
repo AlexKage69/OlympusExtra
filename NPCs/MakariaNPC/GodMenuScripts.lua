@@ -59,7 +59,11 @@ OlympusConditionalItemData.StoneOfBanishmentWorkOrder =
 	ResourceCost = 3,
 	GameStateRequirements =
 	{
-		RequiredTextLines = { "AthenaFirstPickUp" }, --{ "MakariaCompletedBanishmentQuest" },
+		RequiredMinChallengeSwitchQuestItemTartarus = 2,
+		RequiredMinChallengeSwitchQuestItemAsphodel = 2,
+		RequiredMinChallengeSwitchQuestItemElysium = 2,
+		RequiredMinChallengeSwitchQuestItemStyx = 2,
+		RequiredTextLines = {"MakariaStartBanishmentQuest"}
 	},
 
 	OfferedVoiceLines =
@@ -161,10 +165,18 @@ function UpdateStoneOfBanishmentShineStatus()
 	if HeroHasTrait("BanishmentTrait") then
 		RemoveTrait(CurrentRun.Hero, "BanishmentTrait")
 	end
-	if TableLength(exilData.CurrentExiledGods) > 0 then
+	if TableLength(exilData.CurrentExiledGods)+TableLength(exilData.CurrentDualExiledGods) > 0 then
 		AddTrait(CurrentRun.Hero, "BanishmentTrait")
 		local GodsText = ""
 		for name, exiled in pairs(exilData.CurrentExiledGods) do
+			local godName = ParseRealGodName(name)
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(godName))
+			if GodsText ~= "" then
+				GodsText = GodsText .. ", "
+			end
+			GodsText = GodsText .. godName
+		end
+		for name, exiled in pairs(exilData.CurrentDualExiledGods) do
 			local godName = ParseRealGodName(name)
 			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(godName))
 			if GodsText ~= "" then
@@ -180,6 +192,37 @@ function UpdateStoneOfBanishmentShineStatus()
 	end
 end
 
+ModUtil.Path.Wrap("EquipLastAwardTrait",
+    function(baseFunc, eventSource, hero)
+        baseFunc(eventSource, hero)
+        local exilData = GetExilData()
+        if not HeroHasTrait("BanishmentTrait") and TableLength(exilData.CurrentExiledGods)+TableLength(exilData.CurrentDualExiledGods) > 0 then
+            AddTrait(CurrentRun.Hero, "BanishmentTrait")
+            local GodsText = ""
+            for name, exiled in pairs(exilData.CurrentExiledGods) do
+                local godName = ParseRealGodName(name)
+                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(godName))
+                if GodsText ~= "" then
+                    GodsText = GodsText .. ", "
+                end
+                GodsText = GodsText .. godName
+            end
+            for name, exiled in pairs(exilData.CurrentDualExiledGods) do
+                local godName = ParseRealGodName(name)
+                --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(godName))
+                if GodsText ~= "" then
+                    GodsText = GodsText .. ", "
+                end
+                GodsText = GodsText .. godName
+            end
+            for i, trait in pairs(CurrentRun.Hero.Traits) do
+                if trait.Name == "BanishmentTrait" then
+                    trait.Gods = GodsText
+                end
+            end
+        end
+    end
+)
 function ParseRealGodName(id)
 	return string.sub(id, 0, string.len(id) - 7)
 end
@@ -187,13 +230,14 @@ end
 function CreateExiledGodsData()
 	return {
 		CurrentExiledGods = {},
+		CurrentDualExiledGods = {},
 		ExiledGodUnlocks = {},
 		ExiledDualGodUnlocks = {},
 	}
 end
 
 function GetExilData()
-	if GameState.ExilData == nil or GameState.ExilData.CurrentExiledGods == nil or GameState.ExilData.ExiledGodUnlocks == nil or GameState.ExilData.ExiledDualGodUnlocks == nil then
+	if GameState.ExilData == nil or GameState.ExilData.CurrentExiledGods == nil or GameState.ExilData.CurrentDualExiledGods == nil or GameState.ExilData.ExiledGodUnlocks == nil or GameState.ExilData.ExiledDualGodUnlocks == nil then
 		GameState.ExilData = CreateExiledGodsData()
 	end
 	return GameState.ExilData
@@ -774,7 +818,7 @@ function CreateDualExiledGodIcon(components, args)
 		SetAnimation({ DestinationId = components[buttonKey .. "FirstLock"].Id, Name = "LockedKeepsakeIcon" })
 		SetAlpha({ Id = components[buttonKey .. "FirstLock"].Id, Fraction = 0.0 })
 
-		if not IsGodUnlockedForExil(firstGod.Name) then -- God is still locked
+		if not IsDualGodUnlockedForExil(firstGod.Name) then -- God is still locked
 			SetColor({ Id = components[buttonKey.. "First"].Id, Color = { 0.15, 0.15, 0.15, 1.0 } })
 			components[buttonKey .. "FirstCost"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
 			Attach({
@@ -833,7 +877,7 @@ function CreateDualExiledGodIcon(components, args)
 		SetAnimation({ DestinationId = components[buttonKey .. "SecondLock"].Id, Name = "LockedKeepsakeIcon" })
 		SetAlpha({ Id = components[buttonKey .. "SecondLock"].Id, Fraction = 0.0 })
 
-		if not IsGodUnlockedForExil(secondGod.Name) then -- God is still locked
+		if not IsDualGodUnlockedForExil(secondGod.Name) then -- God is still locked
 			SetColor({ Id = components[buttonKey.. "Second"].Id, Color = { 0.15, 0.15, 0.15, 1.0 } })
 			components[buttonKey .. "SecondCost"] = CreateScreenComponent({ Name = "BlankObstacle", Group = "Combat_Menu" })
 			Attach({
@@ -1072,12 +1116,12 @@ function HandleDualExiledToggle(screen, button, textOverride)
 				end
 			elseif IsGodExiled(god.Name) then -- God Unlocked and Selected
 				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Click Unselect:"..god.Name))
-				RemoveExiledGod(screen, button)
+				RemoveDualExiledGod(screen, button)
 			else                       -- God Unlocked and Not Selected
 				if IsGodExiled(otherButton.Data.Name) then -- Can add god
-					RemoveExiledGod(screen, otherButton)
+					RemoveDualExiledGod(screen, otherButton)
 				end
-				AddExiledGod(screen, button)
+				AddDualExiledGod(screen, button)
 			end
 		end
 	end
@@ -1104,8 +1148,8 @@ end
 function IsGodExiled(godName)
 	local exilData = GetExilData()
 	return (IsGodUnlockedForExil(godName) and exilData.CurrentExiledGods[godName] ~= nil and
-		exilData.CurrentExiledGods[godName]) or (IsDualGodUnlockedForExil(godName) and exilData.ExiledDualGodUnlocks[godName] ~= nil and
-		exilData.ExiledDualGodUnlocks[godName])
+		exilData.CurrentExiledGods[godName]) or (IsDualGodUnlockedForExil(godName) and exilData.CurrentDualExiledGods[godName] ~= nil and
+		exilData.CurrentDualExiledGods[godName])
 end
 
 function UnlockExiledGod(screen, button)
@@ -1196,6 +1240,21 @@ function RemoveExiledGod(screen, button)
 	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Selected: "..godName..";"..GameState.ExiledGodUnlocks[godName]))
 end
 
+function AddDualExiledGod(screen, button)
+	local exilData = GetExilData()
+	exilData.CurrentDualExiledGods[button.Data.Name] = true
+	local components = screen.Components
+	SetAlpha({ Id = components[button.ButtonKey .. "Lock"].Id, Fraction = 1.0 })
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Selected: "..godName..";"..GameState.ExiledGodUnlocks[godName]))
+end
+
+function RemoveDualExiledGod(screen, button)
+	local exilData = GetExilData()
+	exilData.CurrentDualExiledGods[button.Data.Name] = nil
+	local components = screen.Components
+	SetAlpha({ Id = components[button.ButtonKey .. "Lock"].Id, Fraction = 0.0 })
+	--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Selected: "..godName..";"..GameState.ExiledGodUnlocks[godName]))
+end
 function RefreshLockIcons(components)
 	for i = 1, GetMaxLock() do
 		if GetCurrentCost() - i - TableLength(GetExilData().CurrentExiledGods) >= 0 then
@@ -1204,82 +1263,6 @@ function RefreshLockIcons(components)
 			SetColor({ Id = components["ExilIcon" .. i].Id, Color = { 0.25, 0.25, 0.25, 1.0 } })
 		end
 	end
-end
-
-function UpdateExiledGodButtons(buttonKey, godName)
-	local components = ScreenAnchors.GodManagerMenuScreen.Components
-
-	local exilData = GetExilData()
-	if exilData.ExiledGodUnlocks[godName] then
-		SetColor({ Id = components[buttonKey].Id, Color = { 1.0, 1.0, 1.0, 1.0 } })
-		if exilData.CurrentExiledGods[godName] then
-			SetAnimation({ DestinationId = components[buttonKey .. "Lock"].Id, Name = "LockedKeepsakeIcon" })
-		else
-			SetAnimation({ DestinationId = components[buttonKey .. "Lock"].Id, Name = "BlankObstacle" })
-		end
-	else
-		SetColor({ Id = buttonKey.Id, Color = { 0.15, 0.15, 0.15, 0.95 } })
-	end
-
-	--[[local components = ScreenAnchors.WeaponUpgradeScreen.Components
-	for itemIndex, itemData in pairs( WeaponUpgradeData[weaponName] ) do
-		local purchaseButtonKey = "PurchaseButton"..itemIndex
-
-		if not IsUpgradeWeaponUpgradeDisabled( weaponName, itemIndex ) and not IsBuyWeaponUpgradeDisabled( weaponName, itemIndex ) then
-			if not CanUpgradeWeaponUpgrade( weaponName, itemIndex ) then
-				ModifyTextBox({ Id = components[purchaseButtonKey.."KeyCost"].Id, Text = "Blank" })
-				SetColor({ Id = components[purchaseButtonKey.."KeyCost"].Id, Color = Color.DarkSlateGray })
-				UseableOff({ Id = components[purchaseButtonKey .. "Upgrade"].Id })
-			else
-				ModifyTextBox({ Id = components[purchaseButtonKey.."KeyCost"].Id,
-					Text = "MetaUpgrade_Locked_SuperKeys",
-					LuaKey = "TempTextData",
-					LuaValue = { Amount = GetNextWeaponUpgradeKeyCost( weaponName, itemIndex )}})
-				if not HasResource("SuperLockKeys", GetNextWeaponUpgradeKeyCost( weaponName, itemIndex )) then
-					ModifyTextBox({ Id = components[purchaseButtonKey.."KeyCost"].Id, ColorTarget = Color.CostUnaffordable, ColorDuration = 0.25 })
-				end
-			end
-		end
-
-		local traitData = {}
-		if not IsBuyWeaponUpgradeDisabled( weaponName, itemIndex ) then
-			if itemData.RequiredInvestmentTraitName then
-				itemName = itemData.RequiredInvestmentTraitName
-				if GetWeaponUpgradeLevel(weaponName, itemIndex) > 0  then
-					traitData =  GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = itemName, Rarity = GetRarityKey(GetWeaponUpgradeLevel( weaponName, itemIndex ))})
-					SetTraitTextData( traitData )
-				end
-			end
-			if itemData.TraitName then
-				traitData =  GetProcessedTraitData({ Unit = CurrentRun.Hero, TraitName = itemData.TraitName, Rarity = GetRarityKey(GetWeaponUpgradeLevel( weaponName, itemIndex )) })
-				SetTraitTextData( traitData )
-			end
-
-			if traitData.Name then
-				ModifyTextBox({ Id = components[purchaseButtonKey].Id, UseDescription = true, Text = traitData.Name, LuaKey = "TooltipData", LuaValue = traitData, ExcludeText = "SeasonalItem" })
-			end
-		end
-
-		if not CanUpgradeWeaponUpgrade( weaponName, itemIndex ) then
-			if IsWeaponUpgradeMaxed( weaponName, itemIndex ) then
-				ModifyTextBox({ Id = components[purchaseButtonKey.."Level"].Id, Text = "UI_TraitLevel_Max" })
-			end
-		elseif GetWeaponUpgradeLevel(weaponName, itemIndex ) > 0 then
-			ModifyTextBox({ Id = components[purchaseButtonKey.."Level"].Id, Text = "UI_TraitLevel", LuaKey = "TempTextData", LuaValue = { Amount = GetWeaponUpgradeLevel(weaponName, itemIndex )} })
-		end
-
-		if IsWeaponUpgradeEquipped( weaponName, itemIndex ) then
-			if itemIndex ~= lastEquippedIndex then
-
-				SetAnimation({ Name = "EquippedIcon", DestinationId = components[purchaseButtonKey.."Subtitle"].Id })
-				PlaySound({ Name = WeaponUpgradeData[weaponName][itemIndex].EquipSound or "/Leftovers/SFX/PerfectTiming" })
-				thread( PlayVoiceLines, GlobalVoiceLines.SwitchedWeaponUpgradeVoiceLines, true )
-			end
-		else
-			SetAnimation({ Name = "Blank", DestinationId = components[purchaseButtonKey.."Subtitle"].Id })
-			ModifyTextBox({ Id = components[purchaseButtonKey.."Subtitle"].Id, Text = "Blank" })
-		end
-	end]]
 end
 
 -- Change God Pool Mechanic
@@ -1310,7 +1293,7 @@ ModUtil.Path.Wrap("SetupRoomReward",
 			end
 		end
 		for k, trait in pairs(CurrentRun.Hero.Traits) do
-			if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0 then
+			if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0  and Contains(excludeLootNames, trait.ForceBoonName) then
 				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceBoonName))
 				trait.Uses = 0
 			end

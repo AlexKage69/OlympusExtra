@@ -8,6 +8,7 @@
       VideoTexture = "CthonicIdle_Bink"
       EndFrame = 60
       Loop = true
+      //Angle = 315
       NumAngles = 16
       NumFrames = 60
       PlaySpeed = 30.0
@@ -27,7 +28,7 @@
       VideoTexture = "NPC_MakIdle_Bink"
       EndFrame = 60
       Loop = true
-      Angle = 270
+      //Angle = 270
       NumAngles = 8
       NumFrames = 73
       PlaySpeed = 30.0
@@ -46,6 +47,7 @@
       FilePath = "Animations\NPCCthonic\Idle\CthonicIdle"
       Type = "Book"
       VideoTexture = "CthonicIdle_Bink"
+     // Angle = 280
       EndFrame = 60
       Loop = true
       NumAngles = 16
@@ -66,6 +68,7 @@
       Type = "Book"
       VideoTexture = "CthonicIdle_Bink"
       EndFrame = 60
+     // Angle = 225
       Loop = true
       NumAngles = 16
       NumFrames = 60
@@ -85,6 +88,7 @@
       Type = "Book"
       VideoTexture = "CthonicIdle_Bink"
       EndFrame = 60
+     // Angle = 225
       Loop = true
       NumAngles = 16
       NumFrames = 60

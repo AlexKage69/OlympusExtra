@@ -713,12 +713,6 @@ function AddDashlessBuff(duration)
 	end
 end
 
-ModUtil.Path.Wrap("HandleDeath",
-	function(baseFunc, currentRun, killer, killingUnitWeapon)
-		baseFunc(currentRun, killer, killingUnitWeapon)
-		currentRun.NumRerolls = currentRun.NumRerolls + GetNumMetaUpgrades("RerollPomMetaUpgrade")
-	end
-)
 ModUtil.Path.Wrap("HandleMetaUpgradeInput",
 	function(baseFunc, screen, button)
 		local upgradeData = button.Data

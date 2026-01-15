@@ -4629,7 +4629,8 @@ if ModUtil ~= nil then
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "Obols are of no importance; only love and relationships matter. You did well not getting attached to that coin." },
 			},
-			HestiaLootBought03 =
+			-- Missing record of this dialog
+			--[[HestiaLootBought03 =
 			{
 				Name = "HestiaLootBought03",
 				PlayOnce = true,
@@ -4639,7 +4640,7 @@ if ModUtil ~= nil then
 				{ Cue = "/VO/Hestia_0097",
 					StartSound = "/Leftovers/World Sounds/MapZoomInShort", UseEventEndSound = true,
 					Text = "I suppose this is the price of showing compassion towards Charon for all he is doing for you. Though, it's not much, when you think about it." },
-			},
+			},]]
 		},
 
 		RejectionTextLines =

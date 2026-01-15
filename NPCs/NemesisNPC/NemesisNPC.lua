@@ -476,6 +476,7 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, {
 	Args =
 	{
 		Name = "NPC_Nemesis_01", 
-		SpawnPointId = 370056
+		SpawnPointId = 370056,
+		SpawnChance = 0.0,
 	},
 })

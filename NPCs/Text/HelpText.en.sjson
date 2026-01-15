@@ -413,17 +413,12 @@
 		{
 			Id = "TroveUpgradeBoonTrait"
 			DisplayName = "Blessed Candle"
-			Description = "{$Keywords.ChallengeSwitch} have more rewards. Chambers have {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to contain {$Keywords.ChallengeSwitch}. You can find your way around the Temple of Styx."
+			Description = "{$Keywords.ChallengeSwitch} have more rewards and {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to spawn in chambers; You can find your way around the Temple of Styx."
 		}
 		{
 			Id = "TroveUpgradeBoonTrait_Rack"
 			InheritFrom = "TroveUpgradeBoonTrait"
-			Description = "{$Keywords.ChallengeSwitch} have more rewards. Chambers have {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to contain {$Keywords.ChallengeSwitch}. You can find your way around the Temple of Styx. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
-		}
-		{
-			Id = "TroveUpgradeBoonTrait_Inactive"
-			DisplayName = "Blessed Candle"
-			Description = "{$Keywords.ChallengeSwitch} have more rewards. Chambers have {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to contain {$Keywords.ChallengeSwitch}. You can find your way around the Temple of Styx."
+			Description = "{$Keywords.ChallengeSwitch} have more rewards and {#AltUpgradeFormat}{$TooltipData.TooltipBaseChallengeSpawnChanceMultiplier:P} {#PreviousFormat} chance to spawn in chambers; You can find your way around the Temple of Styx. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
 			Id = "MakariaSignoff"
@@ -442,6 +437,15 @@
 			DisplayName = """
 				From {#AwardMaxFlavorFormat}Makaria{#AwardDarkFlavorFormat}, generous sister
 			"""
+		}
+		{
+			Id = "StoneOfBanishmentQuest"
+			DisplayName = "No Stone Unturned"
+			Description = "The son of the god of the dead shall someday find all the lost artefact pieces and restore it."
+		}
+		{
+			Id = "StoneOfBanishmentCompleteQuest"
+      		DisplayName = "Restored the Stone of Banishment"
 		}
 		// Makaria God Manager
 		{
