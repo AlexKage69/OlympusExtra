@@ -82,15 +82,15 @@ if HestiaExtra ~= nil then
 			},
 			Rare =
 			{
-				Multiplier = 1.33,
+				Multiplier = 1.25,
 			},
 			Epic =
 			{
-				Multiplier = 1.66,
+				Multiplier = 1.5,
 			},
 			Heroic =
 			{
-				Multiplier = 2.0,
+				Multiplier = 1.75,
 			}
 		},
 		PropertyChanges =
@@ -99,8 +99,8 @@ if HestiaExtra ~= nil then
 				WeaponName = "HestiaDefianceNovaWeapon",
 				ProjectileName = "HestiaDefianceNovaProjectile",
 				ProjectileProperty = "DamageLow",
-				BaseMin = 150,
-				BaseMax = 150,
+				BaseMin = 400,
+				BaseMax = 400,
 				DepthMult = 0.0,
 				IdenticalMultiplier =
 				{

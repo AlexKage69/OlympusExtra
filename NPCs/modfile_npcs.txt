@@ -7,7 +7,7 @@
 Import "NPCExtra.lua"
 Include "MakariaNPC/modfile_makaria.txt"
 Include "MorosNPC/modfile_moros.txt"
-Include "NemesisNPC/modfile_nemesis.txt"
+:: Include "NemesisNPC/modfile_nemesis.txt"
 Include "MelinoeNPC/modfile_melinoe.txt"
 :: Include "ErisNPC/modfile_eris.txt"
 

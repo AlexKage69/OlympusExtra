@@ -975,7 +975,7 @@ ModUtil.Path.Wrap("CheckLastStand",
                 AutoEquip = true,
                 ClearAllFireRequests = true
             })
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fire Nova"))
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fire Nova"))
         end
         if HeroHasTrait("ArmorDefianceTrait") and CurrentRun.Hero.Armor ~= nil and hasLastStand then
             local armorToAdd = CurrentRun.Hero.Armor.Max * GetTotalHeroTraitValue("RepairArmorOnDeathDefiancePercent")
@@ -985,8 +985,8 @@ ModUtil.Path.Wrap("CheckLastStand",
         return hasLastStand
     end
 )
-function FireWeaponFromUnitThread(enemy)
-    ModUtil.Hades.PrintStackChunks("Run:" .. ModUtil.ToString(enemy.Name))
+--[[function FireWeaponFromUnitThread(enemy)
+    --ModUtil.Hades.PrintStackChunks("Run:" .. ModUtil.ToString(enemy.Name))
     FireWeaponFromUnit({
         Weapon = "HestiaOnDeath",
         AutoEquip = true,
@@ -994,7 +994,7 @@ function FireWeaponFromUnitThread(enemy)
         DestinationId = enemy.ObjectId,
         FireFromTarget = true
     })
-end
+end]]
 
 ModUtil.Path.Wrap("CheckOnDamagedPowers",
     function(baseFunc, victim, attacker, args)
@@ -2359,8 +2359,8 @@ ModUtil.Path.Wrap("DoUnlockRoomExits",
                 --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(tostring(index)))
                 if door.Room ~= nil and door.Room.Name == CurrentRun.FixStyxFountain.Room.Name then
                     CreateDoorRewardPreviewButterfly(CurrentRun.FixStyxFountain)
-                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Already a fountain:" ..
-                    CurrentRun.FixStyxFountain.Room.Name))
+                    --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Already a fountain:" ..
+                    --CurrentRun.FixStyxFountain.Room.Name))
                     break
                 end
             end

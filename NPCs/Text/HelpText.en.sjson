@@ -368,12 +368,12 @@
 		{
 			Id = "DefianceDamageTrait"
 			DisplayName = "Eternity"
-			Description = "{$Keywords.ExtraChanceFloor} deals damage to all enemies. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
+			Description = "{$Keywords.ExtraChanceFloor} emits a ring of fire around you. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.DisplayDelta1}"
 		}
 		{
 			Id = "DefianceDamageTrait_Initial"
 			DisplayName = "Eternity"
-			Description = "{$Keywords.ExtraChanceFloor} deals damage to all enemies. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
+			Description = "{$Keywords.ExtraChanceFloor} emits a ring of fire around you. \n {!Icons.Bullet}{#PropertyFormat}Burst Damage: \Column 380 {#PreviousFormat}{$TooltipData.NewTotal1}"
 		}
 		{
 			Id = "UI_BounceText"
@@ -494,6 +494,14 @@
 			Id = "BanishmentTrait"
 			DisplayName = "Divine Banishment"
 			Description = "You won't encounter: {#AltUpgradeFormat}{$TooltipData.Gods}"
+		}
+		{
+			Id = "StoneOfBanishmentQuestPiece_Unlocked"
+			DisplayName = "Stone of Banishment Piece"
+		}
+		{
+			Id = "StoneOfBanishmentQuestPiece_Unlocked_Subtitle"
+			DisplayName = "Another piece found. {$TempTextData.CurrentAmount} left."
 		}
 		// Makaria Keepsake
 		{

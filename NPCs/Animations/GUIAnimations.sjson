@@ -5,16 +5,16 @@
     {
       Name = "Keepsake_Ouroboros_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "Apollo\Keepsake_Lyre"
-      Scale = 0.65
+      FilePath = "Tilesets\Gameplay\Instrument_Inert_01"
+      Scale = 0.15
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Ouroboros"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "Apollo\Keepsake_Lyre"
-      Scale = 1.5
+      FilePath = "Tilesets\Gameplay\Instrument_Inert_01"
+      Scale = 0.5
       EndFrame = 1
       StartFrame = 1
     }

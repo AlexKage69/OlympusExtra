@@ -1137,7 +1137,16 @@ ModUtil.Path.Wrap("HandleChallengeLoot",
 						[challengeSwitch.RewardType] + 1
 					GameState.CompletedSwitchChallengeReward[challengeSwitch.RewardType] = GameState
 						.CompletedSwitchChallengeReward[challengeSwitch.RewardType] + 1
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Stone complete"))
+					local currentAmount = GameState.CompletedSwitchChallengeReward["QuestItemTartarus"] + GameState.CompletedSwitchChallengeReward["QuestItemAsphodel"] + GameState.CompletedSwitchChallengeReward["QuestItemElysium"] + GameState.CompletedSwitchChallengeReward["QuestItemStyx"]
+					DisplayUnlockText({
+						TitleText = "StoneOfBanishmentQuestPiece_Unlocked",
+						SubtitleText = "StoneOfBanishmentQuestPiece_Unlocked_Subtitle",
+						SubtitleData = { LuaKey = "TempTextData", LuaValue = { CurrentAmount = 12-currentAmount }},
+						AnimationName = "LocationTextBGGeneric_Mirror",
+						AnimationOutName = "LocationTextBGGenericOut_Mirror",
+						-- Duration = 4.5,
+					})
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Stone complete"))
 				end
 			end
 		end

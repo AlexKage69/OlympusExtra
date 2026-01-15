@@ -10,25 +10,25 @@ function SpawnExtraNPCs(eventSource, args)
 	end
 	local obstacleId = GetFirstValue(GetInactiveIdsByType({ Name = args.Name }))
 	if args.Name == nil or obstacleId == nil or args.SpawnPointId == nil then
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character - No Ids")) 	
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Name))
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.SpawnPointId))			
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character - No Ids")) 	
+       -- ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.Name))
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.SpawnPointId))			
 		return
 	end
 	local newUnit = DeepCopyTable( EnemyData[args.Name] )
 	if newUnit.LocationsById ~= nil and newUnit.LocationsById[args.SpawnPointId] ~= nil then
 		args.ObjectId = SpawnObstacle({ Name = "InvisibleTarget", LocationX = newUnit.LocationsById[args.SpawnPointId].LocationX, LocationY = newUnit.LocationsById[args.SpawnPointId].LocationY })
     else
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character - No Location")) 	
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.SpawnPointId))
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.LocationsById))
+		--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Fail loading character - No Location")) 	
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(args.SpawnPointId))
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString(newUnit.LocationsById))
         return
 	end
 	local chanceToSpawn = args.SpawnChance or 1.0
 	if IsActivationEligible( obstacleId, newUnit ) then
 		if CurrentRun.CustomNPC[args.Name] == nil then
 			CurrentRun.CustomNPC[args.Name] = RandomChance( chanceToSpawn )		
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Chance:"..args.Name)) 	
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Chance:"..args.Name)) 	
 		end
 		if CurrentRun.CustomNPC[args.Name] then
 			newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.ObjectId })
@@ -110,7 +110,7 @@ ModUtil.Path.Wrap( "SetNextInteractLines",
 	function(baseFunc, source, textLines)		
         baseFunc(source, textLines)
         if textLines.InOffice then
-            ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Move to Office")) 	
+            --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Move to Office")) 	
             CurrentRun.NPCExtra = {
                 MorosInOffice = true
             }

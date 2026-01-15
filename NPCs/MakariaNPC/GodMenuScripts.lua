@@ -1294,7 +1294,7 @@ ModUtil.Path.Wrap("SetupRoomReward",
 		end
 		for k, trait in pairs(CurrentRun.Hero.Traits) do
 			if trait ~= nil and trait.ForceBoonName ~= nil and trait.Uses > 0  and Contains(excludeLootNames, trait.ForceBoonName) then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceBoonName))
+				--ModUtil.Hades.PrintStackChunks(ModUtil.ToString(trait.ForceBoonName))
 				trait.Uses = 0
 			end
 		end
@@ -1313,13 +1313,13 @@ ModUtil.Path.Wrap("GetEligibleLootNames",
 		local output = baseFunc(excludeLootNames)
 		local exilData = GetExilData()
 		if TableLength(exilData.CurrentExiledGods) > 0 then
-			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("CurrentExiledGods"))
+			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("CurrentExiledGods"))
 			for _, lootName in ipairs(output) do
 				if TableLength(output) <= 1 then
 					break
 				end
 				if exilData.CurrentExiledGods[lootName] ~= nil and exilData.CurrentExiledGods[lootName] then
-					ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Removing from Eligible:" .. lootName))
+					--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Removing from Eligible:" .. lootName))
 					RemoveValue(output, lootName)
 				end
 			end
