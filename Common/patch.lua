@@ -2276,7 +2276,7 @@ ModUtil.Path.Wrap("AddTraitToHero",
     end
 )
 function HasGodAlready(hero, traitName)
-    if not hero then
+    if not hero or hero.TraitDictionary == nil then
         return 0
     end
 
