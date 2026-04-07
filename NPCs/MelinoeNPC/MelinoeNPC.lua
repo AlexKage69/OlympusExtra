@@ -70,7 +70,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Melinoë. You never mention where you were coming from. You told me your came from far away. Did you mean the surface and beyond? Or maybe deeper than the depth of Erebus?" },
+				Text = "Melinoë. You never mentioned where you were coming from. You told me your came from far away. Did you mean the surface and beyond? Or maybe deeper than the depth of Erebus?" },
 			{ Cue = "/VO/Melinoe_0001",
 				Text = "It's... It's a long story. One day I hope to be able to tell it and you can tell me about your adventure as well. Right now, might not be the right time. Let me think more before I tell you my story. I need to be sure." },
 		},
@@ -85,15 +85,15 @@ OlympusEnemyData.NPC_Melinoe_01 =
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "I heard the name once or twice. God of time, Not very friendly from what I heard. Last time I heard he's imprison somewhere no one speaks of." },
+				Text = "I heard the name once or twice. God of Time, Not very friendly from what I heard. Last time I heard he's imprisoned somewhere no one speaks of." }, -- 'God of Time' is a proper noun, therefore capitalized, and imprisoned is correct for this narrative. 
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "He is. And he should stay there for as long as possible... But that's not what I wanted to bring. I encountered him at some point. Learned a few spells from him. And there goes my sister and I. Do you see what I mean?" },
+				Text = "He is. And he should stay there for as long as possible... But that's not what I wanted to talk about. I encountered him at some point. Learned a few spells from him. And there goes my sister and I. Do you see what I mean?" },
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 				Text = "I can't say that I do... What spell did you learn? I though you said he was locked up. How could you have met him?" },
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "{#DialogueItalicFormat}Sign{#PreviousFormat}. This is what I mean by its {#DialogueItalicFormat}complicated{#PreviousFormat}. You know what I'll think of another way to explain it. Talk to you later." },
+				Text = "{#DialogueItalicFormat}Sign{#PreviousFormat}. This is what I mean by it's {#DialogueItalicFormat}complicated{#PreviousFormat}. You know what, I'll think of another way to explain it. Talk to you later." },
 		},
 		MelinoeAboutTimetravel03 =
 		{
@@ -105,15 +105,15 @@ OlympusEnemyData.NPC_Melinoe_01 =
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Melinoë! I think I started to understand what you meant by mentionning Chronos. You were not trying to tell me where you were coming from, but rather when?" },
+				Text = "Melinoë! I think I started to understand what you meant by mentioning Chronos. You were not trying to tell me where you were coming from, but rather when?" },
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "Yes... Makaria and I, we used one of Chronos incantation and we went too far in time. Leading us to now, weaken. I didn't know what impact this would have in our timeline if I were to tell you. You never mention any of this in our timeline." },
+				Text = "Yes... Makaria and I, we used one of Chronos' incantation and we went too far in time. Leading us to now, weaken. I didn't know what impact this would have in our timeline if I were to tell you. You never mention any of this in our timeline." }, --Chronos needs apostrophe after his name for possession 
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "I am starting to understand why you hesitated to tell me. That means we met in the futur? I can try to not mention any of this to your futur self if that can keep your timeline safe." },
+				Text = "I am starting to understand why you hesitated to tell me. That means we meet in the future? I can try to not mention any of this to your future self if that can keep your timeline safe." },
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, we meet.? I already feel like I told you too much so here goes. Makaria and I... We're Hades and Persephone offsprings. We're sibling, Zagreus." },
+				Text = "{#DialogueItalicFormat}Oh{#PreviousFormat}, we meet.? I already feel like I told you too much so here goes. Makaria and I... We're Hades' and Persephone's offspring. We are your sibling, Zagreus." }, --the addition of 'your' makes the statement less confusing, and is in proper form.
 		},
 		MelinoeAboutTimetravel04 =
 		{
@@ -142,7 +142,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Oh no, what can we do? Maybe ask help Nyx. She might know a way to get them back." },
+				Text = "Oh no, what can we do? Maybe ask for help from Nyx? She might know a way to get them back." }, -- Fixed grammatical errors 
 			{ Cue = "/VO/Melinoe_0001",
 				Text = "I might have a way to get them back already. I need to find Hecate, Titaness of Witchcraft. She might know a way to bring back my powers. Rumors says she's with the witches of Asphodel, but I couldn't find her. If you could cross her path, let me know. I would be very grateful." },
 		},
@@ -163,11 +163,11 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				},
 			},
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "I am suprised you don't ask me more about what is going to happen. I assumed you would ask what lies ahead. You did say you had many question." },
+				Text = "I am suprised you didn't ask me more about what is going to happen. I assumed you would ask what lies ahead. You did say you had many question." }, --most of the sentence is past tense, therefore 'didn't' is proper.
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "At first, I did. but then I though, where the fun in knowing what's to come? And now, I know we'll met each other someday. That's enough for me to go on." },
+				Text = "At first, I did. but then I thought, what's the fun in knowing what's to come? And now, I know we will met each other someday, and that's enough for me to go on." },
 		},
 		MelinoeAboutZagreus01 =
 		{
@@ -187,11 +187,11 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				},
 			},
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "Are you always this trustful? You don't know me or my sister. Yet, you decided to vouch for our safety in your home. Why?" },
+				Text = "Are you always this trustful? You don't know my siser or I. Yet, you decided to vouch for our safety in your home. Why?" },
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Why wouldn't I? I believe trusting you will make you trust me in return. There's no harm in giving someone a chance. You'd be suprise what greatness is hiding in all of us." },
+				Text = "Why wouldn't I? I believe that trusting you will all you to trust me in return. There's no harm in giving someone a chance. You'd be suprised what greatness is hiding in all of us." },
 		},
 		MelinoeAboutMakariaJob01 =
 		{
@@ -203,9 +203,9 @@ OlympusEnemyData.NPC_Melinoe_01 =
 			{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 				PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-				Text = "Did you know Makaria started working with Thanatos? She's helping him getting mortals here. I don't know all the details, but I hear she's doing her part." },
+				Text = "Did you know Makaria started working with Thanatos? She's helping him in getting mortals here. I don't know all the details, but I hear she's doing her part." },
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "That's good to hear. She needs to keep herself busy. And in the end, she always did as she wanted. Once she's had something in mind, there's no stopping her." },
+				Text = "That's good to hear, she needs to keep herself busy. And in the end, she always did as she wanted. Once she sets her mind to something, there's no stopping her." }, --fixed the inspirational saying so that it's proper in English.
 		},
 		MelinoeAboutHecate01 =
 		{
@@ -218,7 +218,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 				Text = "I found the Titaness. Hecate is somewhere in Erebus. She opened to gate for me to visit her again. I think you should be able to find her now." },
 			{ Cue = "/VO/Melinoe_0001",
-				Text = "You did it? Finally, I'll get my powers back." },
+				Text = "You did it? Finally, I'll get my powers back!" },  --added exclamation for dramatic effect.
 		},
 	},
 
@@ -252,9 +252,9 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "If I may, Melinoë, I know you just arrived, but I wanted you to have this. As a welcome gift." },
+					Text = "If I may, Melinoë, I know you just arrived, but I wanted you to have this, as a welcome gift." },
 				{ Cue = "/VO/Melinoe_0001",
-					Text = "It's a nice gesture, Zagreus. I wish I had all my powers back to give you something in exchange. Once I do, I'll trade you for it next time." },
+					Text = "It's a nice gesture, Zagreus. I wish that I had all of my powers back, so that I could give you something in exchange for this. Once I do, I'll be sure to trade you for it." }, --fixed sentence structure.
 			},
 			MelinoeGift02 =
 			{
@@ -262,9 +262,9 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				PlayOnce = true,
 				RequiredTextLines = { "MelinoeGift01" },
 				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					Text = "Is Hecate's training hard? I know Achilles wasn't easy on me. I hope you can enjoy this, if you ever have the chance. Everyone deserve a break." },
+					Text = "Is Hecate's training hard? I know Achilles wasn't easy on me. I hope you can enjoy this, if you ever have the chance. Everyone deserves a break now and then." }, --added for better sentence structure and clarity.
 				{ Cue = "/VO/Melinoe_0001",
-					Text = "It's going well, brother. And I told you I would led you my strength once I get it back. As promised. Hope this can help you defeating our father." },
+					Text = "It's going well, brother. And I told you I would lend you my strength once I got it back, and as promised, I hope this can help you defeating our father." },
 			},
 			MelinoeGift03 =
 			{
@@ -285,7 +285,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				{ Cue = "/VO/Melinoe_0001",
 					Text = "I still can taste the nectar you gave me. I used to give to other, but never bothered drinking some myself." },
 				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
-					Text = "You're in luck, then. I know the feeling of giving might be more rewarding than drinking by your own. Not that you shouldn't drink it. It's a gift. You can do what you want with it." },
+					Text = "You're in luck, then! I know the feeling of giving might be more rewarding than that of drinking it by yourself; not that you shouldn't drink it. It's a gift afterall, you can do whatever you want with it." },
 			},
 			MelinoeGift04 =
 			{
@@ -298,7 +298,7 @@ OlympusEnemyData.NPC_Melinoe_01 =
 					Text = "I know you appreciated the nectar I've been finding around. But I feel you should have a taste of this." },
 				{ Cue = "/VO/Melinoe_0001",
 					--PreLineAnim = "NyxIdleGreeting",
-					Text = "Is it what I think it is? How did you find such quality Ambrosia? It's coming from you brother. I can't refuse." },
+					Text = "Is it what I think it is? How did you find such quality Ambrosia? If it's a gift from you, brother, then I can't refuse." }, --fixed grammatical error.
 
 			},
 			MelinoeGift05 =
@@ -308,11 +308,11 @@ OlympusEnemyData.NPC_Melinoe_01 =
 				RequiredTextLines = { "MelinoeGift04" },
 				{ Cue = "/VO/Melinoe_0001",
 					--PreLineAnim = "NyxIdleGreeting",
-					Text = "How do you get all these Ambrosia? I have been in your realm for a while now and still haven't found any on my own. Why won't you enjoy some yourself." },
+					Text = "How do you get all of this Ambrosia? I have been in your realm for a while now and still haven't found any on my own. Why won't you enjoy some yourself." },
 				{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 					PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 					PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-					Text = "I found it, I get to do what I want with it. If I decide to give it to my family as appreciation. Then... Oh. I know. Safe it and met me at the surface. We'll both get to enjoy it." },
+					Text = "I found it, so I get to do what I want with it. If I decide to give it to my family as appreciation. Then... Oh. I know! Save it, and meet me at the surface. We'll both get to enjoy it." }, --Fixed a few grammatical errors.
 			},
 	},
 
@@ -389,7 +389,7 @@ OlympusRoomSetData.Tartarus.A_PostBoss01.StartUnthreadedEvents = {
 								PreLineWait = 1.0,
 								PreLineThreadedFunctionName = "StartMoveTowardMelinoeApproach",	
 								PreLineThreadedFunctionArgs = { DestinationId = 370046, OffsetX = -135, OffsetY = 80, Walk = true },
-								Text = "Hello... Zagreus... You don't know me. But I do... I wasn't sure if I should come to you. But I think it's time. I am Meli... Melinoë. I... I..." },
+								Text = "Hello... Zagreus... You don't know me, but I know you... I wasn't sure if I should come to you or not, but I think it's time. I am Meli... Melinoë. I... I..." }, --Added proper sentence flow.
 							-- requirements are above
 							{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 								--PreLineThreadedFunctionName = "BedroomMoveTowardMakariaApproach",	
@@ -398,9 +398,9 @@ OlympusRoomSetData.Tartarus.A_PostBoss01.StartUnthreadedEvents = {
 								PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 								PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
 								-- Emote = "PortraitEmoteSurprise",
-								Text = "Are you okay? It's really nice to met you Melinoë. You don't have to be scared or anything. I don't know how you know me but you look like you have something to say or ask." },
+								Text = "Are you okay? It's really nice to meet you Melinoë. You don't have to be scared or anything. I don't know how you know me, but you look like you have something to say or ask." },
 							{ Cue = "/VO/Melinoe_0002",
-								Text = "Not scared. Just cautious. And I do. May I ask you to have a word with Lord Hades. We would like to have an audience. My sister and I we come from very far and would like to stay in the underworld for a while. Not sure if he'll allow it." },
+								Text = "Not scared. Just cautious. And I do. May I ask you to have a word with Lord Hades. We would like to request an audience with him. My sister and I, we come from very far, and would like to stay in the underworld for a while. Not sure if he'll allow it." }, --Added commas to break up text properly, so that the sentence is not a run-on.
 							-- requirements are above
 							{ Cue = "/VO/ZagreusHome_4000", Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag",
 								PostLineThreadedFunctionName = "EndMoveTowardMelinoeApproach",	
@@ -481,17 +481,17 @@ table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents,
 							PreLineWait = 1.0,
 							PreLineAnim = "ZagreusTalkEmpathyStart", PreLineAnimTarget = "Hero",
 							PostLineAnim = "ZagreusTalkEmpathy_Return", PostLineAnimTarget = "Hero",
-							Text = "Father. I request audience to allow these travelers to stay in the courthouse. How long did you say you were staying?" },
+							Text = "Father. I request an audience with you, and request that you allow these travelers to stay in the courthouse. How long did you say you were staying?" },
 						{ Cue = "/VO/Melinoe_1476", Portrait = "Portrait_Melinoe_Default_01", Speaker = "NPC_Melinoe_01",
 							Text = "I didn't mention it... Great Lord of the Underworld! We don't know how long we would stay in your domain, but we can garantee we won't nuisance to its order." },
 						{ Cue = "/VO/Hades_0417",
-							Text = "And how can you garantee? I don't know you and I know everyone. How can I accept such request without knowing your names? It might not be common courtesy in your lands but it is here." },
+							Text = "And how can you garantee that? I don't know you and I know everyone, so how can I accept such request without even knowing your names? It might not be common courtesy in your lands, but it is here." }, --fixed dialogue so that it flows better.
 						{ Cue = "/VO/Makaria_1476", Portrait = "Portrait_Makaria_Smiling_03", Speaker = "NPC_Makaria_01",
-							Text = "Oh that's easy! I'm Makaria. It so great to see you. I can believe we get to see the courthouse. How awesome is this!" },
+							Text = "Oh that's easy! I'm Makaria. It so great to see you. I can't believe we get to see the courthouse! How awesome is this!?" }, --The last sentence is a exclamatory question, so I added the interrorbang punctuation.
 						{ Cue = "/VO/Melinoe_1476", Portrait = "Portrait_Melinoe_Default_01", Speaker = "NPC_Melinoe_01",
-							Text = "{#DialogueItalicFormat}Shh!{#PreviousFormat} Don't pay attention to my sister, she's just my easily excited. I am Melinoë and you have my word, we don't mean trouble. We are even willing to clean the courthouse or brush Cerberus if needed." },
+							Text = "{#DialogueItalicFormat}Shh!{#PreviousFormat} Please, don't pay attention to my sister, she's just easily excited. I am Melinoë, and you have my word, we don't mean any trouble. We are even willing to clean the courthouse or brush Cerberus if needed." }, --fixed small grammatical mistake.
 						{ Cue = "/VO/Hades_0417",
-							Text = "{#DialogueItalicFormat}Mmmh!{#PreviousFormat} Something is off, yet familiar. You make me think of someone. Could it be... {#DialogueItalicFormat}Arg!{#PreviousFormat} Zagreus! You asked the audience, therefore they are now your responsability. They cause trouble, you pay the price. Understood?" },
+							Text = "{#DialogueItalicFormat}Mmmh!{#PreviousFormat} Something is off, yet familiar. You make me think of someone. Could it be... {#DialogueItalicFormat}Arg!{#PreviousFormat} Zagreus! You asked the audience, therefore they are now your responsability. If they cause trouble, you pay the price. Understood?" },
 					},
 				},
 			},
