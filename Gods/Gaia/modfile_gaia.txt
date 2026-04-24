@@ -5,6 +5,7 @@
 
 Import "GaiaExtra.lua"
 Import "OECrops.lua"
+Import "RoomDataGarden.lua"
 
 :: Animations
 To "Game/Animations/GUIAnimations.sjson"

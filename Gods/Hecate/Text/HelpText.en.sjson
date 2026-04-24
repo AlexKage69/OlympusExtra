@@ -2,93 +2,93 @@
 	Texts = [
 		"_append"
 		{
-			Id = "NPC_Gaia_01"
-			DisplayName = "Gaia"
-			Description = "Ancestral Mother"
-		}		
+			Id = "NPC_Hecate_01"
+			DisplayName = "Hecate"
+			Description = "Titaness of Witchcraft"
+		}
 		{
-			Id = "NPC_GaiaUnnamed_01"
+			Id = "NPC_HecateUnnamed_01"
 			DisplayName = "? ? ?"
 			Description = ""
 		}
 		{
-			Id = "Location_Secret_G"
-			DisplayName = "GAIA"
+			Id = "Location_Cauldron"
+			DisplayName = "Cauldron"
 		}
 		{
-			Id = "Secrets_G"
-			DisplayName = "Gaia"
+			Id = "Cauldron"
+			DisplayName = "Cauldron"
 		}
 		{
-			Id = "GaiaSignoff"
-			DisplayName = "From Mother Gaia"
+			Id = "HecateSignoff"
+			DisplayName = "From Hecate"
 		}
 		{
-			Id = "GaiaSignoff_Max"
+			Id = "HecateSignoff_Max"
 			DisplayName = """
-				From {#AwardMaxFlavorFormat}Mother Gaia{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Natural Bond
+				From {#AwardMaxFlavorFormat}Hecate{#AwardDarkFlavorFormat}; you share a {#AwardMaxFlavorFormat}Chemical Bond
 
 				{#AwardDarkFlavorFormat}Of her many sons, you seem to be one of the favorite.
 			"""
    		}
 		{
-			Id = "GardenGate"
-			DisplayName = "Garden Gate"
-			Description = "A reward of {!Icons.Health_Small} for those who stop by Gaia's Garden."
+			Id = "CauldronGate"
+			DisplayName = "Cauldron Gate"
+			Description = "A reward of {!Icons.Health_Small} for those who stop by Cauldron."
 		}
 		{
-			Id = "GardenGatePlural"
+			Id = "CauldronGatePlural"
 			InheritFrom = "HealthGate"
 			DisplayName = "Garden Gates"
 		}
 		{
-			Id = "GaiaBoonTrait"
+			Id = "HecateBoonTrait"
 			DisplayName = "Willow Branch"
-			Description = "Enter {$Keywords.GardenGatePlural} without losing {!Icons.Health_Small}. Blessings from {#BoldFormat}Gaia {#PreviousFormat}have {#UpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
+			Description = "Enter {$Keywords.GardenGatePlural} without losing {!Icons.Health_Small}. Blessings from {#BoldFormat}Hecate {#PreviousFormat}have {#UpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better."
 		}
 		{
-			Id = "GaiaBoonTrait_Rack"
-			InheritFrom = "GaiaBoonTrait"
-			Description = "Enter {$Keywords.GardenGatePlural} without losing {!Icons.Health_Small}. Blessings from {#BoldFormat}Gaia {#PreviousFormat}have {#UpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
+			Id = "HecateBoonTrait_Rack"
+			InheritFrom = "HecateBoonTrait"
+			Description = "Enter {$Keywords.GardenGatePlural} without losing {!Icons.Health_Small}. Blessings from {#BoldFormat}Hecate {#PreviousFormat}have {#UpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat} chance to be {#RareFormat}Rare {#PreviousFormat}or better. \n\n {#AwardFlavorFormat}{$TooltipData.SignoffText}"
 		}
 		{
-			Id = "GaiaFirstPickUp"
-			DisplayName = "Met Mother Gaia"
+			Id = "HecateFirstPickUp"
+			DisplayName = "Met Mother Hecate"
 		}
 		{
-			Id = "GaiaBlessings"
+			Id = "HecateBlessings"
 			DisplayName = "Primordial Boons"
-			Description = "The son of the god of the dead shall someday earn various Blessings offered by Mother Gaia."
+			Description = "The son of the god of the dead shall someday earn various Blessings offered by Mother Hecate."
 		}
 		{
-			Id = "GaiaDeeds"
+			Id = "HecateDeeds"
 			DisplayName = "Primordial Banes"
-			Description = "The son of the god of the dead shall someday complete various Deeds given by Mother Gaia."
+			Description = "The son of the god of the dead shall someday complete various Deeds given by Mother Hecate."
 		}
 		{
 			Id = "CompleteGarden"
 			DisplayName = "Persephone's Garden"
-			Description = "The son of the god of the dead shall make certain attempts to aid our Mother Night, who through course of time has grown far apart from Gaia, her parent and origin of all things."
+			Description = "The son of the god of the dead shall make certain attempts to aid our Mother Night, who through course of time has grown far apart from Hecate, her parent and origin of all things."
 		}
 		{
-			Id = "GaiaCrops"
+			Id = "HecateCrops"
 			DisplayName = "Garden Goods"
-			Description = "The son of the god of the dead shall someday grow a significant number of garden goods, including an unusually rare crop, impressing Mother Gaia."
+			Description = "The son of the god of the dead shall someday grow a significant number of garden goods, including an unusually rare crop, impressing Mother Hecate."
 		}
 		{
-			Id = "GaiaCropsQuestComplete"
-			DisplayName = "Grow 25 Crops, at Least One Very Rare, and Report to Mother Gaia"
+			Id = "HecateCropsQuestComplete"
+			DisplayName = "Grow 25 Crops, at Least One Very Rare, and Report to Mother Hecate"
 		}
 		{
-			Id = "Fish_Gaia_Common_01"
+			Id = "Fish_Hecate_Common_01"
 			DisplayName = "Fish1"
 		}
 		{
-			Id = "Fish_Gaia_Rare_01"
+			Id = "Fish_Hecate_Rare_01"
 			DisplayName = "Fish2"
 		}
 		{
-			Id = "Fish_Gaia_Legendary_01"
+			Id = "Fish_Hecate_Legendary_01"
 			DisplayName = "Fish3"
 		}
 		{
@@ -96,8 +96,8 @@
 			DisplayName = "Perished in {#AltPenaltyFormat}GAIA{#PreviousFormat}"
 		}
 		{
-			Id = "ClearRequiredTraitsGaia"
-			DisplayName = "{!Icons.RunClearStar}Son of Gaia{!Icons.RunClearStar}"
+			Id = "ClearRequiredTraitsHecate"
+			DisplayName = "{!Icons.RunClearStar}Son of Hecate{!Icons.RunClearStar}"
 		}
 		 {
       Id = "GardenUpgrade_FlavorText01"
@@ -113,16 +113,16 @@
     }
 	{
       Id = "GardenUpgrade"
-      DisplayName = "Gaia"
+      DisplayName = "Hecate"
       Description = "Origin of Creation"
     }
 	{
-      Id = "GaiaBlessingFormat"
-      DisplayName = "Gaia Blessing/Deed"
+      Id = "HecateBlessingFormat"
+      DisplayName = "Hecate Blessing/Deed"
       Description = "{^TooltipData.Name}\n{^TooltipData.OnExpire.TraitData.Name}"
     }
     {
-      Id = "GaiaBlessingTrayFormat"
+      Id = "HecateBlessingTrayFormat"
       DisplayName = "{#BoldFormat}{$TooltipData.LastDeedName} {$TooltipData.LastBlessingName}{#PreviousFormat}"
       Description = ""
     }
@@ -140,185 +140,185 @@
       DisplayName = "{I} Grab"
     }
     {
-      Id = "GaiaCombo"
-      DisplayName = "{{GaiaDeed}} {{GaiaBlessing}}"
+      Id = "HecateCombo"
+      DisplayName = "{{HecateDeed}} {{HecateBlessing}}"
     }
     {
-      Id = "GaiaDeedNoMoneyTrait"
+      Id = "HecateDeedNoMoneyTrait"
       DisplayName = "Pauper's"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you cannot earn {!Icons.Currency_Small}."
     }
     {
-      Id = "GaiaDeedAmmoUseDelayTrait"
+      Id = "HecateDeedAmmoUseDelayTrait"
       DisplayName = "Slippery"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you cannot collect {!Icons.Ammo} for {#AltPenaltyFormat}{$TooltipData.AmmoDropUseDelay} {#PreviousFormat}Sec."
     }
     {
-      Id = "GaiaDeedDeathWeaponTrait"
+      Id = "HecateDeedDeathWeaponTrait"
       DisplayName = "Caustic"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, slain foes toss an {#BoldFormat}{$Keywords.DeathWeapon} {#PreviousFormat}at you."
     }
     {
-      Id = "GaiaDeedHiddenRoomReward"
+      Id = "HecateDeedHiddenRoomReward"
       DisplayName = "Enshrouded"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Room}{#PreviousFormat}, chamber reward previews are hidden."
     }
     {
-      Id = "GaiaDeedDamageTrait"
+      Id = "HecateDeedDamageTrait"
       DisplayName = "Excruciating"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you take {#AltPenaltyFormat}{$TooltipData.TooltipDamageDeed:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaDeedTrapDamageTrait"
+      Id = "HecateDeedTrapDamageTrait"
       DisplayName = "Abyssal"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you take {#AltPenaltyFormat}{$TooltipData.TooltipDamageIncrease:P} {#PreviousFormat}damage from {#BoldFormat}{$Keywords.Traps}{#PreviousFormat}."
     }
     {
-      Id = "GaiaDeedHealthTrait"
+      Id = "HecateDeedHealthTrait"
       DisplayName = "Atrophic"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, your Life Total is reduced by {#AltPenaltyFormat}{$TooltipData.TooltipHealthDeed}{!Icons.HealthDown_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaDeedMoveSpeedTrait"
+      Id = "HecateDeedMoveSpeedTrait"
       DisplayName = "Slothful"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, you have {#AltPenaltyFormat}{$TooltipData.TooltipSpeed}% {#PreviousFormat}move speed."
     }
     {
-      Id = "GaiaDeedSpawnTrait"
+      Id = "HecateDeedSpawnTrait"
       DisplayName = "Roiling"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {#PreviousFormat}standard {#BoldFormat}{$Keywords.Encounter}{#PreviousFormat}, you face {#AltPenaltyFormat}{$TooltipData.TooltipSpawnMultiplier:P} {#PreviousFormat}more foes."
     }
     {
-      Id = "GaiaDeedDashAttackTrait"
+      Id = "HecateDeedDashAttackTrait"
       DisplayName = "Stabbing"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Dash}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaDeedPrimaryAttackTrait"
+      Id = "HecateDeedPrimaryAttackTrait"
       DisplayName = "Maimed"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Attack}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaDeedSecondaryAttackTrait"
+      Id = "HecateDeedSecondaryAttackTrait"
       DisplayName = "Flayed"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Special}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaDeedCastAttackTrait"
+      Id = "HecateDeedCastAttackTrait"
       DisplayName = "Addled"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, each time you {#BoldFormat}{$Keywords.Cast}{#PreviousFormat}, get hit for {#AltPenaltyFormat}-{$TooltipData.TooltipDamage}{!Icons.Health_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaDeedDashRangeTrait"
+      Id = "HecateDeedDashRangeTrait"
       DisplayName = "Halting"
       Description = "For the next {#BoldFormat}{$TooltipData.RemainingUses} {$Keywords.Encounter}{#PreviousFormat}, your {#BoldFormat}{$Keywords.Dash} {#PreviousFormat} has {#AltPenaltyFormat}-{$TooltipData.TooltipPenalty}% {#PreviousFormat}range."
     }
     {
-      Id = "GaiaBlessingMeleeTrait"
+      Id = "HecateBlessingMeleeTrait"
       DisplayName = "Strike"
       Description = "Afterward, your {#BoldFormat}{$Keywords.Attack} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingMeleeTrait_Complete"
+      Id = "HecateBlessingMeleeTrait_Complete"
       Description = "Your {#BoldFormat}{$Keywords.Attack} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingSecondaryTrait"
+      Id = "HecateBlessingSecondaryTrait"
       DisplayName = "Flourish"
       Description = "Afterward, your {#BoldFormat}{$Keywords.Special} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat} damage."
     }
     {
-      Id = "GaiaBlessingSecondaryTrait_Complete"
+      Id = "HecateBlessingSecondaryTrait_Complete"
       Description = "Your {#BoldFormat}{$Keywords.Special} {#PreviousFormat} deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingDashAttackTrait"
+      Id = "HecateBlessingDashAttackTrait"
       DisplayName = "Lunge"
       Description = "Afterward, your {#BoldFormat}{$Keywords.BlinkStrike} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingDashAttackTrait_Complete"
+      Id = "HecateBlessingDashAttackTrait_Complete"
       Description = "Your {#BoldFormat}{$Keywords.BlinkStrike} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingRangedTrait"
+      Id = "HecateBlessingRangedTrait"
       DisplayName = "Shot"
       Description = "Afterward, your {#BoldFormat}{$Keywords.Cast} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingRangedTrait_Complete"
+      Id = "HecateBlessingRangedTrait_Complete"
       Description = "Your {#BoldFormat}{$Keywords.Cast} {#PreviousFormat}deals {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage."
     }
     {
-      Id = "GaiaBlessingAmmoTrait"
+      Id = "HecateBlessingAmmoTrait"
       DisplayName = "Grasp"
       Description = "Afterward, gain {#AltUpgradeFormat}+{$TooltipData.TooltipCapacity}{!Icons.Ammo}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingAmmoTrait_Complete"
+      Id = "HecateBlessingAmmoTrait_Complete"
       Description = "You have {#AltUpgradeFormat}+{$TooltipData.NewTotal1}{!Icons.Ammo}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingMaxHealthTrait"
+      Id = "HecateBlessingMaxHealthTrait"
       DisplayName = "Soul"
       Description = "Afterward, gain {#AltUpgradeFormat}+{$TooltipData.TooltipHealth}{!Icons.HealthUp_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingMaxHealthTrait_Complete"
+      Id = "HecateBlessingMaxHealthTrait_Complete"
       Description = "You have {#AltUpgradeFormat}+{$TooltipData.NewTotal1}{!Icons.HealthUp_Small}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingBoonRarityTrait"
+      Id = "HecateBlessingBoonRarityTrait"
       DisplayName = "Favor"
       Description = "Afterward, {#BoldFormat}{$Keywords.GodBoonPlural} {#PreviousFormat}have {#AltUpgradeFormat}{$TooltipData.TooltipBonusChance:P} {#PreviousFormat}chance to be {#RareFormat}Rare {#PreviousFormat}or better."
     }
     {
-      Id = "GaiaBlessingBoonRarityTrait_Complete"
+      Id = "HecateBlessingBoonRarityTrait_Complete"
       Description = "{#BoldFormat}{$Keywords.GodBoonPlural} {#PreviousFormat}have {#AltUpgradeFormat}{$TooltipData.NewTotal1} {#PreviousFormat}chance to be {#RareFormat}Rare {#PreviousFormat}or better."
     }
     {
-      Id = "GaiaBlessingMoneyTrait"
+      Id = "HecateBlessingMoneyTrait"
       DisplayName = "Affluence"
       Description = "Afterward, any {!Icons.Currency_Small} you find is worth {#AltUpgradeFormat}{$TooltipData.TooltipMoneyRewardIncrease:P}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingMoneyTrait_Complete"
+      Id = "HecateBlessingMoneyTrait_Complete"
       Description = "Any {!Icons.Currency_Small} you find is worth {#AltUpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingMetapointTrait"
+      Id = "HecateBlessingMetapointTrait"
       DisplayName = "Eclipse"
       Description = "Afterward, any {!Icons.MetaPoint_Small} and {!Icons.GemSmall} you find are worth {#AltUpgradeFormat}{$TooltipData.TooltipMetaPointRewardIncrease:P}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingMetapointTrait_Complete"
+      Id = "HecateBlessingMetapointTrait_Complete"
       Description = "Any {!Icons.MetaPoint_Small} and {!Icons.GemSmall} you find are worth {#AltUpgradeFormat}{$TooltipData.NewTotal1}{#PreviousFormat}."
     }
     {
-      Id = "GaiaBlessingAlphaStrikeTrait"
+      Id = "HecateBlessingAlphaStrikeTrait"
       DisplayName = "Assault"
       Description = "Afterward, you deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking undamaged foes."
     }
     {
-      Id = "GaiaBlessingAlphaStrikeTrait_Complete"
+      Id = "HecateBlessingAlphaStrikeTrait_Complete"
       Description = "You deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking undamaged foes."
     }
     {
-      Id = "GaiaBlessingBackstabTrait"
+      Id = "HecateBlessingBackstabTrait"
       DisplayName = "Ambush"
       Description = "Afterward, you deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking foes from behind."
     }
     {
-      Id = "GaiaBlessingBackstabTrait_Complete"
+      Id = "HecateBlessingBackstabTrait_Complete"
       Description = "You deal {#AltUpgradeFormat}{$TooltipData.TooltipDamageBonus:P} {#PreviousFormat}damage striking foes from behind."
     }
     {
-      Id = "GaiaBlessingExtraPomsTrait"
+      Id = "HecateBlessingExtraPomsTrait"
       DisplayName = "Defiance"
       Description = "Afterward, gain {#AltUpgradeFormat}+5 {#PreviousFormat}Lv.{!Icons.RandomPomSmall}."
     }
     {
-      Id = "GaiaBlessingExtraPomsTrait_Complete"
+      Id = "HecateBlessingExtraPomsTrait_Complete"
       Description = "You have {#AltUpgradeFormat}+5 {#PreviousFormat}Lv.{!Icons.RandomPomSmall}."
     }
     // Crops
@@ -391,7 +391,7 @@
       DisplayName = "Mati"
     }
     {
-      Id = "Fruit_Gaia_Rare_01"
+      Id = "Fruit_Hecate_Rare_01"
       DisplayName = "Mati"
     }
     {
@@ -399,7 +399,7 @@
       DisplayName = "Mati"
     }
     {
-      Id = "Fruit_Gaia_Legendary_01"
+      Id = "Fruit_Hecate_Legendary_01"
       DisplayName = "Mati"
     }
     {
@@ -411,7 +411,7 @@
       DisplayName = "Mati"
     }
     {
-      Id = "Herb_Gaia_Common_01"
+      Id = "Herb_Hecate_Common_01"
       DisplayName = "Mati"
     }
     {
@@ -463,7 +463,7 @@
       DisplayName = "Mati"
     }
     {
-      Id = "Seed_Fruit_Gaia_Rare_01"
+      Id = "Seed_Fruit_Hecate_Rare_01"
       DisplayName = "Mati"
     }
     {
@@ -471,7 +471,7 @@
       DisplayName = "Mati"
     }
     {
-      Id = "Seed_Fruit_Gaia_Legendary_01"
+      Id = "Seed_Fruit_Hecate_Legendary_01"
       DisplayName = "Mati"
     }
     {
@@ -483,7 +483,7 @@
       DisplayName = "Mati"
     }
     {
-      Id = "Seed_Herb_Gaia_Common_01"
+      Id = "Seed_Herb_Hecate_Common_01"
       DisplayName = "Mati"
     }
     {

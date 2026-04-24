@@ -6,6 +6,21 @@
   Texts = [
 	"_append"
     {
+      Id = "CodexData_Garden_01"
+      Speaker = "Achilles"
+      DisplayName = "'...Gaia...'"
+    }
+    {
+      Id = "CodexData_Garden_02"
+      Speaker = "Achilles"
+      DisplayName = "'...Gaia {#CodexBoldFormat}I remember, back when I was alive, there were such times as I would gaze into the black of night, toward the shimmering of the stars above, and wonder if that deep black was a vestige of the darkness from which all existence emerged...{#PreviousFormat}'"
+    }
+    {
+      Id = "CodexData_Garden_03"
+      Speaker = "Achilles"
+      DisplayName = "'...Gaia I remember, back when I was alive, there were such times as I would gaze into the black of night, toward the shimmering of the stars above, and wonder if that deep black was a vestige of the darkness from which all existence emerged. {#CodexBoldFormat}I tried never to give it too much thought. If such a place still exists, it is beyond even the Master's influence. Though, it does make me think: I miss the stars.{#PreviousFormat}'"
+    }
+    {
       Id = "CodexData_SeedVegetableTartarusCommon01_01"
       Speaker = "Achilles"
       DisplayName = "'...'"

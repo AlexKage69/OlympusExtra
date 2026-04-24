@@ -4,8 +4,6 @@ if ModUtil ~= nil then
 
 	ModUtil.Mod.Register("ApolloExtra")
 
-	local mod = "ApolloExtra"
-	local package = "ApolloPackage"
 	--Variables
 	local DepthDamageMultiplier = 0.0
 	local DuplicateMultiplier = -0.60

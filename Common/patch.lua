@@ -2440,12 +2440,13 @@ ModUtil.Path.Wrap("StartRoom",
     end
 )
 -- Test / Utility
---[[ModUtil.Path.Wrap("BeginOpeningCodex",
+ModUtil.Path.Wrap("BeginOpeningCodex",
     function(baseFunc)
         --PresentationNewSameGodIncrease()
         if (not CanOpenCodex()) and IsSuperValid() then
             BuildSuperMeter(CurrentRun, 50)
         end
+        CreateLoot({ Name = "GardenUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
         --thread(RunAudio01)
         --CreateHephaestusLoot()
         --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
@@ -2455,16 +2456,16 @@ ModUtil.Path.Wrap("StartRoom",
 
         --LoadMap({ Name ="E_Story01", ResetBinks = true, ResetWeaponBinks = true })
         --LoadMap({ Name ="A_Shop01", ResetBinks = true, ResetWeaponBinks = true })
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.ActiveMutators))
+        --[[ModUtil.Hades.PrintStackChunks(ModUtil.ToString(GameState.ActiveMutators))
         if GameState.ActiveMutators ~= nil then
             for activeMutator in pairs( GameState.ActiveMutators ) do
                 ModUtil.Hades.PrintStackChunks(ModUtil.ToString.TableKeys(activeMutator))
             end
-        end
+        end]]
         --UseLoungeTelescope()
         baseFunc()
     end
-)
+)--[[
 function ForceNextRoomFunc(value)
 
     -- Stomp any rooms already assigned to doors

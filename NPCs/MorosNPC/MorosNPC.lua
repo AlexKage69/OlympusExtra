@@ -36,7 +36,7 @@ OlympusEnemyData.NPC_Moros_01 =
 		RequiredTextLines = { "AthenaFirstPickUp" },
 		--RequiredFalseTextLinesLastRun = {  },
 		--RequiredFalseTextLinesThisRun = GameData.NyxWithChaosTextLines,
-		--RequiredFalseFlags = { "InFlashback" },
+		RequiredFalseFlags = { "InFlashback" },
 	},
 	LocationsById = {
 		[370126] = { -- DeathAreaOffice
@@ -82,8 +82,8 @@ OlympusEnemyData.NPC_Moros_01 =
 			UseableOffSource = true,
 			RequiredFalseFlags = { "InFlashback", },
 			RequiredTextLines = { "NyxGrantsRespec", "MorosFirstMeeting" },
-			RequiredCosmetics = { "QuestLog", "OfficeDoorUnlockItem" },
-			RequiredAccumulatedMetaPoints = 600, 
+			RequiredCosmetics = { "QuestLog", "OfficeDoorUnlockItem" }, -- 26 Runs completed
+			RequiredAccumulatedMetaPoints = 1000, 
 			RequiredMinNPCInteractions = { NPC_Nyx_01 = 1 , NPC_Moros_01 = 1},
 			TeleportToId = 370010,
 			TeleportOffsetX = -120,
@@ -113,7 +113,8 @@ OlympusEnemyData.NPC_Moros_01 =
 			{ Cue = "/VO/Moros_0001",
 				Text = "Sorry to dissappoint you, Prince, but Lord Hades would never allow such a thing. No, my help would reach you through a certain tool which I believe has already helped you greatly... the Mirror of Night." },
 			{ Cue = "/VO/Nyx_4000", Portrait = "Portrait_Nyx_Default_01", Speaker = "NPC_Nyx_01", PreLineWait = 0.35,
-					--PreLineAnim = "NyxIdleGreeting", PreLineAnimTarget = 370010, PostLineThreadedFunctionName = "EnableMirrorCSwap",
+					--PreLineAnim = "NyxIdleGreeting", PreLineAnimTarget = 370010, 
+					PostLineThreadedFunctionName = "EnableMirrorCSwap",
 					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 3.7 },
 				Text = "Moros' suggestion intrigued me. I already added the adjustments to it. Hopefully, both of you will gain something from this." },
 		},

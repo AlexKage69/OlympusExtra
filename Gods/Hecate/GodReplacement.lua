@@ -375,7 +375,7 @@ GrowData =
 				Legendary = { Num = 3, Weight = 0.03, Name = "Seed_Vegetable_Chaos_Legendary_01" },
 			},
 		},
-		Secrets_G = {
+		Gardens = {
 			Basic =
 			{
 				Common = { Num = 5, Weight = 0.2, Name = "Seed_Herb_Gaia_Common_01" },

@@ -25,10 +25,14 @@ function SpawnExtraNPCs(eventSource, args)
         return
 	end
 	local chanceToSpawn = args.SpawnChance or 1.0
+	if GameState.NPCInteractions[args.Name] == nil or GameState.NPCInteractions[args.Name] <= 0 then
+		chanceToSpawn = 1.0
+	end
 	if IsActivationEligible( obstacleId, newUnit ) then
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Chance:"..args.Name))
 		if CurrentRun.CustomNPC[args.Name] == nil then
-			CurrentRun.CustomNPC[args.Name] = RandomChance( chanceToSpawn )		
-			--ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Chance:"..args.Name)) 	
+			CurrentRun.CustomNPC[args.Name] = RandomChance( chanceToSpawn )
+			ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Chance:"..args.Name))
 		end
 		if CurrentRun.CustomNPC[args.Name] then
 			newUnit.ObjectId = SpawnUnit({ Name = args.Name, Group = "Standing", DestinationId = args.ObjectId })
@@ -38,7 +42,7 @@ function SpawnExtraNPCs(eventSource, args)
 			if args.Angle ~= nil then
 				SetGoalAngle({ Id = newUnit.ObjectId, Angle = args.Angle })
 			end
-			SetupAI( CurrentRun, newUnit )		
+			SetupAI( CurrentRun, newUnit )
 			
 			local enemyData = DeepCopyTable( EnemyData.NPC_Moros_01 )
 			if IsActivationEligible( newUnit.ObjectId, enemyData ) then

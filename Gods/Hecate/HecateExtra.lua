@@ -648,9 +648,9 @@ if ModUtil ~= nil then
 
 	-- LootData
 	local OlympusLootData = ModUtil.Entangled.ModData(LootData)
-	OlympusLootData.GardenUpgrade =
+	OlympusLootData.HecateUpgrade =
 	{
-		Name = "GardenUpgrade",
+		Name = "HecateUpgrade",
 		InheritFrom = { "BaseLoot", "BaseSoundPackage" },
 		GodLoot = false,
 		CanReceiveGift = true,

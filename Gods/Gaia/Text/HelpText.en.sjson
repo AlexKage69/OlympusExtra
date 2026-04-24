@@ -12,12 +12,12 @@
 			Description = ""
 		}
 		{
-			Id = "Location_Secret_G"
-			DisplayName = "GAIA"
+			Id = "Location_Gardens"
+			DisplayName = "Garden"
 		}
 		{
-			Id = "Secrets_G"
-			DisplayName = "Gaia"
+			Id = "Gardens"
+			DisplayName = "Garden"
 		}
 		{
 			Id = "GaiaSignoff"
@@ -61,8 +61,8 @@
 			Description = "The son of the god of the dead shall someday earn various Blessings offered by Mother Gaia."
 		}
 		{
-			Id = "GaiaDeeds"
-			DisplayName = "Primordial Banes"
+			Id = "GardenUpgrade"
+			DisplayName = "Gaia"
 			Description = "The son of the god of the dead shall someday complete various Deeds given by Mother Gaia."
 		}
 		{
@@ -92,8 +92,8 @@
 			DisplayName = "Fish3"
 		}
 		{
-			Id = "RunHistoryScreenResult_Secret_G"
-			DisplayName = "Perished in {#AltPenaltyFormat}GAIA{#PreviousFormat}"
+			Id = "RunHistoryScreenResult_Gardens"
+			DisplayName = "Perished in {#AltPenaltyFormat}Gardens{#PreviousFormat}"
 		}
 		{
 			Id = "ClearRequiredTraitsGaia"

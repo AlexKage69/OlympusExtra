@@ -2,6 +2,7 @@
 --Assets
 if ModUtil ~= nil then
     ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
+        LoadPackages({Name = "Gaia"})
         LoadPackages({Name = "OEHera"})
         LoadPackages({Name = "OEHestia"})
         LoadPackages({Name = "OEApollo"})
@@ -21,10 +22,10 @@ ModUtil.LoadOnce(function()
         local OlympusCodexBoonTable = CodexMenu.BoonTable
         local OlympusConsumableTable = CodexMenu.ConsumableTable
         local OlympusCodexBossTable = CodexMenu.BossTable
-        OlympusCodexBossTable.Tartarus = RoomSetData.Tartarus.A_PostBoss01
+        OlympusCodexBossTable.Tartarus = RoomSetData.Gardens.RoomGarden01
         OlympusCodexBossTable.Asphodel = RoomSetData.Asphodel.B_Story01
         OlympusCodexBossTable.Elysium = RoomSetData.Elysium.C_PreBoss01
-        OlympusCodexBossTable.Styx = RoomSetData.Styx.D_Reprieve01
+        OlympusCodexBossTable.Styx = RoomSetData.Styx.D_Intro
         OlympusCodexBossTable.Secrets = RoomSetData.Secrets.RoomSecret01
         OlympusCodexBossTable.Surface = RoomSetData.Surface.E_Intro
         --Apollo
