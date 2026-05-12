@@ -5,10 +5,12 @@ if ModUtil ~= nil then
 	ModUtil.Mod.Register("ExtraMeasures")
 	local mod = "ExtraMeasures"
     local package = "OEMPackage"
+	-- All OEM
 	local OlympusMetaUpgradeData = ModUtil.Entangled.ModData(MetaUpgradeData)
 	OlympusMetaUpgradeData.BossDifficultyShrineUpgrade.CostTable = { 1, 2, 3, 4, 2, 2, 2, 2 }
 
 	local OlympusEncounterData = ModUtil.Entangled.ModData(EncounterData)
+	-- Like BossHarpyTriumvirate
 	OlympusEncounterData.BossHarpyOE = {
 		InheritFrom = { "BossEncounter" },
 		StartRoomUnthreadedEvents =
@@ -766,23 +768,19 @@ if ModUtil ~= nil then
 			baseFunc(enemy, currentRun)
 		end
 	)
-	ModUtil.Path.Wrap("SelectHarpySupportAIs",
+	--[[ModUtil.Path.Wrap("SelectHarpySupportAIs",
 		function(baseFunc, enemy, currentRun)
 			local shrineLevel = GetNumMetaUpgrades( enemy.ShrineMetaUpgradeName )
-			if shrineLevel < 5 then
+			if shrineLevel < 0 then
 				baseFunc(enemy, currentRun)
 			end
 		end
-	)
+	)]]
 	ModUtil.Path.Wrap("BeginOpeningCodex",
 		function(baseFunc)
 			--PresentationNewSameGodIncrease()
 			if (not CanOpenCodex()) and IsSuperValid() then
 				BuildSuperMeter(CurrentRun, 50)
-			end
-			if CurrentRun.CurrentRoom.Encounter ~= nil then
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.CurrentRoom.Name))	
-				ModUtil.Hades.PrintStackChunks(ModUtil.ToString(CurrentRun.CurrentRoom.Encounter.Name))	
 			end
 			--CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })
 			--ForceNextRoomFunc("B_Shop01")

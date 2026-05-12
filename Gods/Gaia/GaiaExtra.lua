@@ -151,6 +151,7 @@ if ModUtil ~= nil then
 		-- Queen Gaia won't mind, will she?
 		{ Cue = "/VO/ZagreusField_4985" },
 	})
+	
 	--BoonInfoScreenData
 	local OlympusBoonInfoScreenData = ModUtil.Entangled.ModData(BoonInfoScreenData)
 	table.insert(OlympusBoonInfoScreenData.Ordering, "GardenUpgrade")
@@ -3387,5 +3388,57 @@ if ModUtil ~= nil then
 	-- Multi Gods compatibility
 
 	-- FUNCTIONS
-	
+	function GaiaInteractPresentation( source, args, textLines )
+
+		if textLines ~= nil and not textLines.IgnoreInteractAnimation then
+			local interactAnim = textLines.InteractAnimation or source.InteractAnimation
+			if interactAnim == nil and textLines.PlayOnce then
+				interactAnim = "StatusIconWantsToTalkBoon"
+			end
+			if interactAnim ~= nil then
+				CreateAnimation({ Name = interactAnim, DestinationId = source.ObjectId, OffsetZ = source.AnimOffsetZ })
+			end
+		end
+
+		Shake({ Id = source.ObjectId, Distance = 2, Speed = 300, Duration = 3, FalloffSpeed = 3000 })
+		AdjustColorGrading({ Name = "ChaosInversion", Duration = 0 })
+		AdjustColorGrading({ Name = "Chaos", Duration = 1 })
+		AdjustFullscreenBloom({ Name = "FullscreenFlash", Duration = 0.6 })
+		AdjustRadialBlurDistance({ Fraction = 8, Duration = 0.2 })
+		AdjustRadialBlurStrength({ Fraction = 2, Duration = 0.2 })
+
+		ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Events", X = ScreenCenterX, Y = ScreenCenterY })
+
+		local fullscreenAlertDisplacementFx = SpawnObstacle({ Name = "FullscreenChaosDisplace", Group = "FX_Displacement", DestinationId = ScreenAnchors.FullscreenAlertFxAnchor})
+		DrawScreenRelative({ Id = fullscreenAlertDisplacementFx })
+
+		local fullscreenAlertColorFx = SpawnObstacle({ Name = "FullscreenAlertColorDark", Group = "FX_Standing_Top", DestinationId = ScreenAnchors.FullscreenAlertFxAnchor})
+		DrawScreenRelative({ Id = fullscreenAlertColorFx })
+
+		local boonSound = PlaySound({ Name = "/SFX/Menu Sounds/ChaosBoonConfirm" })
+		ShakeScreen({ Speed = 600, Distance = 6, FalloffSpeed = 2000, Duration = 0.3 })
+
+		thread( DoRumble, { { ScreenPreWait = 0.02, RightFraction = 0.17, Duration = 0.5 }, } )
+
+		wait( 0.5 )
+		ChaosBassStart()
+
+		thread( DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.17, Duration = 0.5 }, } )
+
+		wait(0.06)
+
+		AdjustRadialBlurDistance({ Fraction = 8, Duration = 2 })
+		AdjustRadialBlurStrength({ Fraction = 1, Duration = 2 })
+		AdjustColorGrading({ Name = "Off", Duration = 3.0 })
+		AdjustFullscreenBloom({ Name = "Off", Duration = 3.0 })
+		SetAlpha({ Id = fullscreenAlertColorFx, Fraction = 0, Duration = 0.45 })
+		thread( DestroyOnDelay, { fullscreenAlertColorFx, fullscreenAlertDisplacementFx }, 5.0 )
+
+		PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteThoughtful" })
+
+		if args ~= nil then
+			wait( args.PickupWait )
+		end
+
+	end
 end

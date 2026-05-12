@@ -8465,15 +8465,7 @@ end]]
 	function GetBaseDashTrapReloadTime()
 		return TraitData.HeraRushTrait.DashTrap.DashTrap.Value
 	end
-	--[[ModUtil.Path.Wrap("CheckOnDeathPowers",
-		function(baseFunc, victim, attacker, weaponName)
-			if victim ~= nil and weaponName == "HeraMineBlast" then
-				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = victim.ObjectId, Property = "DamageLow", Value = 150 })
-				SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = victim.ObjectId, Property = "DamageHigh", Value = 150 })
-			end
-			baseFunc(victim, attacker, weaponName)
-		end
-	)]]
+
 	function SetupHeraDashTrap()
 		--SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = CurrentRun.Hero.ObjectId, Property = "DamageLow", Value = 150 })
 		--SetProjectileProperty({ WeaponName = "HeraMineBlast", DestinationId = CurrentRun.Hero.ObjectId, Property = "DamageHigh", Value = 150 })

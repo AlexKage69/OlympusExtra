@@ -12,7 +12,8 @@ ModUtil.Table.Merge(OlympusKeywordList, {
     "SpecialDiscount", "ApolloBlind", "FlashBomb", "DamageResist",
     "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon",
     "ArmorIcon", "ZagreusArmor", "HephSword", "HephBow",
-    "HephShield", "HephSpear", "EpicBonus_InRun" })
+    "HephShield", "HephSpear", "EpicBonus_InRun", "SelfExplosionFoe",
+    "GodWrathRoom", "EnemyLifesteal", "BoonRarityDebuff" })
 ResetKeywords()
 
 local OlympusEnemySets = ModUtil.Entangled.ModData(EnemySets)
@@ -948,7 +949,7 @@ function KilledRequiredEnemies(currentRoom, enemies)
 		if killCount >= killCountGoal then
 			return true
 		end
-        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Nope"))
+        --ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Nope"))
         return false
 end
 ModUtil.Path.Wrap("KillEnemy",
@@ -1677,7 +1678,83 @@ ModUtil.Path.Wrap("Damage",
         end
     end
 )
+	ModUtil.Path.Override("CalculateLifestealModifiers",
+		function(attacker, victim, weaponData, triggerArgs)
+            local lifesteal = 0
+            if attacker ~= nil and attacker ~= CurrentRun.Hero and victim ~= nil and GetNumMetaUpgrades("EnemyLifestealShrineUpgrade") > 0 then
+                if attacker.OutgoingLifestealModifiers == nil then
+                    attacker.OutgoingLifestealModifiers = {}
+                end
+                table.insert( attacker.OutgoingLifestealModifiers, {
+			        Unique = true,
+                    ValidMultiplier = GetNumMetaUpgrades("EnemyLifestealShrineUpgrade"),
+                    MaxLifesteal = 25, -- See limit
+                    MinLifesteal = 0,
+		        })
+            end
 
+            if attacker ~= nil and attacker.OutgoingLifestealModifiers and victim ~= nil and not victim.BlockLifeSteal then
+                for i, modifierData in pairs( attacker.OutgoingLifestealModifiers ) do
+                    local validWeapon = modifierData.ValidWeapons == nil or ( Contains( modifierData.ValidWeapons, triggerArgs.SourceWeapon ) and triggerArgs.EffectName == nil )
+                    if validWeapon then
+                        local modifierLifesteal = triggerArgs.DamageAmount * modifierData.ValidMultiplier
+                        if modifierData.MinLifesteal and modifierLifesteal < modifierData.MinLifesteal then
+                            modifierLifesteal = modifierData.MinLifesteal
+                        elseif modifierData.MaxLifesteal and modifierLifesteal > modifierData.MaxLifesteal then
+                            modifierLifesteal = modifierData.MaxLifesteal
+                        end
+                            lifesteal = lifesteal + modifierLifesteal
+                    end
+                end
+            end
+	        Heal( attacker, { HealAmount = lifesteal, SourceName = "CombatLifesteal", Silent = false } )
+        end
+    )
+	ModUtil.Path.Wrap("GetRarityChances",
+		function(baseFunc, args)     
+            local rarityChances = baseFunc(args)
+            rarityChances.Rare = rarityChances.Rare - GetNumMetaUpgrades( "BoonRarityDebuffShrineUpgrade" ) * ( MetaUpgradeData.BoonRarityDebuffShrineUpgrade.ChangeValue - 1 )
+            if rarityChances.Rare < 0 then
+                rarityChances.Rare = 0
+            end
+            rarityChances.Epic = rarityChances.Epic - GetNumMetaUpgrades( "BoonRarityDebuffShrineUpgrade" ) * ( MetaUpgradeData.BoonRarityDebuffShrineUpgrade.ChangeValue - 1 )
+            if rarityChances.Epic < 0 then
+                rarityChances.Epic = 0
+            end
+            rarityChances.Heroic = rarityChances.Heroic - GetNumMetaUpgrades( "BoonRarityDebuffShrineUpgrade" ) * ( MetaUpgradeData.BoonRarityDebuffShrineUpgrade.ChangeValue - 1 )
+            if rarityChances.Heroic < 0 then
+                rarityChances.Heroic = 0
+            end
+            return
+            {
+                Rare = rarityChances.Rare,
+                Epic = rarityChances.Epic,
+                Heroic = rarityChances.Heroic,
+                Legendary = rarityChances.Legendary,
+            }
+        end
+    )
+	ModUtil.Path.Wrap("HandleEnemySpawns",
+		function(baseFunc, eventSource)            
+			if GetNumMetaUpgrades("GodWrathRoomShrineUpgrade") > 0 then--and RandomChance(GetNumMetaUpgrades("GodWrathRoomShrineUpgrade")/5) then
+                local godNameRoomWeapon = GetUninteractedGodThisRun().."RoomWeapon" or "ArtemisUpgradeRoomWeapon"
+                eventSource.SpawnPassiveRoomWeapons = eventSource.SpawnPassiveRoomWeapons or {}
+                table.insert(eventSource.SpawnPassiveRoomWeapons, godNameRoomWeapon)
+            end
+            baseFunc(eventSource)
+        end
+    )
+    
+	ModUtil.Path.Wrap("SetupEnemyObject",
+    function (baseFunc, newEnemy, currentRun, args )
+        baseFunc(newEnemy, currentRun, args)
+        if newEnemy ~= nil and GetNumMetaUpgrades("SelfExplosionFoeShrineUpgrade") > 0 then
+            AddEnemyOnDeathWeapons(newEnemy, {
+				Weapon = "BloodlessGrenadierDeathDrop"
+			})
+		end
+    end
+    )
 ModUtil.Path.Override("HarvestBoons",
     function(args)
         numTraits = args.NumTraits
@@ -2216,6 +2293,20 @@ ModUtil.Path.Wrap("EndEncounterEffects",
         end
     end
 )
+ModUtil.Path.Wrap("CreateBossHealthBar",
+    function(baseFunc, boss)
+        local flag = false
+        local tempScreenWidth = ScreenWidth
+        if(true) then
+            flag = true
+            ScreenWidth = ScreenWidth * 0.8
+        end
+        baseFunc(boss)
+        if flag then
+            ScreenWidth = tempScreenWidth
+        end
+    end
+)
 OnHit {
     function(triggerArgs)
         local attacker = triggerArgs.AttackerTable
@@ -2502,7 +2593,9 @@ ModUtil.Path.Wrap("BeginOpeningCodex",
         if (not CanOpenCodex()) and IsSuperValid() then
             BuildSuperMeter(CurrentRun, 50)
         end
-        CreateLoot({ Name = "GardenUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+        --CreateLoot({ Name = "GardenUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+        
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(RoomSetData.Tartarus.A_Boss04))
         --thread(RunAudio01)
         --CreateHephaestusLoot()
         --CreateAnimation({ Name = "HeraWings", DestinationId = CurrentRun.Hero.ObjectId })

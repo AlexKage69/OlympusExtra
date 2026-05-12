@@ -1,5 +1,8 @@
 :: Include "Items/modfile_items.txt"
 Include "CerberusAssist/modfile_cerberus.txt"
+Include "Pacts/modfile_pacts.txt"
 
 To "Game/Text/en/HelpText.en.sjson"
 SJSON "Text/HelpText.en.sjson"
+To "Game/Text/en/MiscText.en.sjson"
+SJSON "Text/MiscText.en.sjson"

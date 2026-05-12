@@ -4,6 +4,7 @@
 :-
 
 Import "ExtraMeasures.lua"
+Import "ExtraPacts.lua"
 
 :: Weapons
 To "Game/Weapons/EnemyWeapons.sjson"

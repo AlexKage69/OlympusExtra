@@ -33,5 +33,72 @@
 				From {#AwardMaxFlavorFormat}Cerberus {#AwardDarkFlavorFormat}, goodest boy
 			"""
 		}		
+		// Charon Items
+		{
+			Id = "RunHistoryScreenResult_A_Boss04"
+			DisplayName = "Slain by {#AltPenaltyFormat}ALL THREE FURIES {#PreviousFormat}in {#AltPenaltyFormat}TARTARUS{#PreviousFormat}"
+		}
+		{
+			Id = "TemporaryLavaImmunityTrait"
+			DisplayName = "Homer’s Asphodel Meadow"
+			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+		}
+		{
+			Id = "TemporaryStyxPoisonImmunityTrait"
+			DisplayName = "Satyr Remedy Elixir"
+			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+		}
+		{
+			Id = "TemporaryForcedErebusDoorTrait"
+			DisplayName = "Darkness of Dia"
+			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+		}
+		// Pacts
+		{
+			Id = "SelfExplosionFoe"
+			DisplayName = "Kamikaze"
+			Description = "Slain foes toss {#TooltipPenaltyFormat}{$TempTextData.BaseValue}{#PreviousFormat} {#BoldFormat}{$Keywords.DeathWeapon} {#PreviousFormat}at you."
+		}
+		{
+			Id = "GodWrathRoom"
+			DisplayName = "Gods' Wrath"
+			Description = "Each room, gods not working with you might be against you, {#TooltipPenaltyFormat}+{$TempTextData.BaseValue}% chance to spawn {#PreviousFormat}per rank."
+		}
+		{
+			Id = "EnemyLifesteal"
+			DisplayName = "Lifestealer"
+			Description = "All foes restores when dealing damage, {#TooltipPenaltyFormat}+{$TempTextData.BaseValue}% {!Icons.HealthUp_Small} {#PreviousFormat}per rank."
+		}
+		{
+			Id = "BoonRarityDebuff"
+			DisplayName = "Unlucky"
+			Description = "Decrease your chance for a {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}to be {#RareFormat}{$Keywords.Rare}{#PreviousFormat} or {#EpicFormat}{$Keywords.Epic}{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+		}
+		{
+			Id = "SelfExplosionFoeShrineUpgrade"
+     		DisplayName = "{$Keywords.SelfExplosionFoe}"
+		}
+		{
+			Id = "GodWrathRoomShrineUpgrade"
+     		DisplayName = "{$Keywords.GodWrathRoom}"
+		}
+		{
+			Id = "EnemyLifestealShrineUpgrade"
+     		DisplayName = "{$Keywords.EnemyLifesteal}"		
+		}
+		{
+			Id = "BoonRarityDebuffShrineUpgrade"
+     		DisplayName = "{$Keywords.BoonRarityDebuff}"
+		}
+		{
+			Id = "SelfExplosionFoeShrineUpgrade_ShortTotal"
+			DisplayName = "{$TempTextData.Amount} {!Icons.ShieldHealth_Small}"
+			OverwriteLocalization = true
+		}
+		{
+			Id = "SelfExplosionFoeShrineUpgrade_ShortTotalNoIcon"
+			DisplayName = "{$TempTextData.Amount}"
+			OverwriteLocalization = true
+		}
     ]
 }
