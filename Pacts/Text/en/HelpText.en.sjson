@@ -1,0 +1,24 @@
+{
+	Texts = [
+		"_append"
+		{
+			Id = "RunHistoryScreenResult_A_Boss04"
+			DisplayName = "Slain by {#AltPenaltyFormat}ALL THREE FURIES {#PreviousFormat}in {#AltPenaltyFormat}TARTARUS{#PreviousFormat}"
+		}
+		{
+			Id = "TemporaryLavaImmunityTrait"
+			DisplayName = "Homer’s Asphodel Meadow"
+			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+		}
+		{
+			Id = "TemporaryStyxPoisonImmunityTrait"
+			DisplayName = "Satyr Remedy Elixir"
+			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+		}
+		{
+			Id = "TemporaryForcedErebusDoorTrait"
+			DisplayName = "Darkness of Dia"
+			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+		}
+	]
+}

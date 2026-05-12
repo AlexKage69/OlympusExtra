@@ -904,6 +904,7 @@ ModUtil.Path.Wrap("HandleDeath",
 
 ModUtil.Path.Wrap("Kill",
     function(baseFunc, victim, triggerArgs)
+        local currentRoom = CurrentRun.CurrentRoom
         -- Apollo Drop Healing
         if HeroHasTrait("ApolloHealTrait") and HasEffect({ Id = victim.ObjectId, EffectName = "ApolloBlind" }) then
             victim.HealDropOnDeath = {
@@ -913,6 +914,15 @@ ModUtil.Path.Wrap("Kill",
             }
         end
         baseFunc(victim, triggerArgs)
+        -- WipeEnemiesOnKills
+        if currentRoom.Encounter ~= nil then
+            if currentRoom.Encounter.WipeEnemiesOnKills ~= nil then
+                if KilledRequiredEnemies(currentRoom, currentRoom.Encounter.WipeEnemiesOnKills) then
+                    ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Kill them all"))
+                    DestroyRequiredKills( { BlockLoot = true, SkipIds = { victim.ObjectId } } )                    
+                end
+            end
+        end
         if victim.IsDead then
             -- Already killed
             return
@@ -924,6 +934,23 @@ ModUtil.Path.Wrap("Kill",
         end
     end
 )
+
+function KilledRequiredEnemies(currentRoom, enemies)
+    local killCountGoal = TableLength(enemies)
+		local killCount = 0
+		for k, unitName in pairs(enemies) do
+			if currentRoom.Kills ~= nil and currentRoom.Kills[unitName] ~= nil and currentRoom.Kills[unitName] >= 1 then
+				killCount = killCount + 1
+			end
+		end
+
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString(killCountGoal..":"..killCount))
+		if killCount >= killCountGoal then
+			return true
+		end
+        ModUtil.Hades.PrintStackChunks(ModUtil.ToString("Nope"))
+        return false
+end
 ModUtil.Path.Wrap("KillEnemy",
     function(baseFunc, victim, triggerArgs)
         if HeroHasTrait("SpawnWeaponsTrait") and victim ~= nil and victim.DamageType == "Enemy" then
