@@ -5,16 +5,16 @@
     {
       Name = "Keepsake_Ouroboros_Child"
       InheritFrom = "KeepsakeTrayIcon"
-      FilePath = "Tilesets\Gameplay\Instrument_Inert_01"
-      Scale = 0.15
+      FilePath = "Moros\Keepsake_Snake"
+      Scale = 0.25
       EndFrame = 1
       StartFrame = 1
     }
     {
       Name = "Keepsake_Ouroboros"
       InheritFrom = "KeepsakeIcon"
-      FilePath = "Tilesets\Gameplay\Instrument_Inert_01"
-      Scale = 0.5
+      FilePath = "Moros\Keepsake_Snake"
+      Scale = 0.75
       EndFrame = 1
       StartFrame = 1
     }

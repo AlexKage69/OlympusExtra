@@ -363,6 +363,35 @@ ModUtil.Path.Override("CreateTraitRequirements",
         end
     end
 )
+ModUtil.Path.Wrap("GetUseText",
+	function(baseFunc, useTarget)
+		local usetext = baseFunc(useTarget)
+		if (usetext == "UseGemDropRunProgress" or usetext == "UseGemDrop" or usetext == "Shop_UseGemDrop"
+				or usetext == "Shop_UseGemDrop_HealthAsObolText") and GetNumMetaUpgrades("GemHealMetaUpgrade") > 0 then
+			local maxHealthAmount = GetGemsMaxHealthAdded(useTarget.AddResources.Gems)
+			if maxHealthAmount > 15 then
+				maxHealthAmount = 15
+			end
+			useTarget.MaxHealthAmount = maxHealthAmount
+			usetext = usetext .. "_Health"
+		end
+		if usetext == "UseFountainHeal" and IsMetaUpgradeSelected("RerollPomMetaUpgrade") then
+			if not HeroHasPossibleStackTrait() then
+				usetext = usetext .. "_CannotReroll"
+			else
+				usetext = usetext .. "_Reroll"
+			end
+		end
+        if useTarget.SeedUnlockedUseText ~= nil then
+            if IsCombatEncounterActive( CurrentRun ) then
+                useText = useTarget.UseText
+            else
+                useText = useTarget.FishUnlockedUseText
+            end
+        end
+		return usetext
+	end
+)
 ModUtil.Path.Wrap("CreateTraitRequirementList",
     function(baseFunc, screen, headerTextArgs, traitList, startY, metRequirement)
         if screen.LastBoonSelected ~= nil and screen.LastBoonSelected == "AutoRetaliateTrait" then

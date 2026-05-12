@@ -658,28 +658,6 @@ ModUtil.Path.Wrap("GetNumMetaUpgradeLastStands",
 		return baseFunc() + GetNumMetaUpgrades("ExtraChanceFloorMetaUpgrade")
 	end
 )
-ModUtil.Path.Wrap("GetUseText",
-	function(baseFunc, useTarget)
-		local usetext = baseFunc(useTarget)
-		if (usetext == "UseGemDropRunProgress" or usetext == "UseGemDrop" or usetext == "Shop_UseGemDrop"
-				or usetext == "Shop_UseGemDrop_HealthAsObolText") and GetNumMetaUpgrades("GemHealMetaUpgrade") > 0 then
-			local maxHealthAmount = GetGemsMaxHealthAdded(useTarget.AddResources.Gems)
-			if maxHealthAmount > 15 then
-				maxHealthAmount = 15
-			end
-			useTarget.MaxHealthAmount = maxHealthAmount
-			usetext = usetext .. "_Health"
-		end
-		if usetext == "UseFountainHeal" and IsMetaUpgradeSelected("RerollPomMetaUpgrade") then
-			if not HeroHasPossibleStackTrait() then
-				usetext = usetext .. "_CannotReroll"
-			else
-				usetext = usetext .. "_Reroll"
-			end
-		end
-		return usetext
-	end
-)
 function HeroHasPossibleStackTrait()
 	return true;
 end

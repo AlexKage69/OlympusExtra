@@ -414,11 +414,11 @@ GrowData =
 			GrowTime = 6,
 			SeedCaughtVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishCaughtVoiceLines,
+				[1] = GlobalVoiceLines.SeedCaughtVoiceLines,
 			},
 			SeedIdentifiedVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishIdentifiedVoiceLines,
+				[1] = GlobalVoiceLines.SeedIdentifiedVoiceLines,
 			},
 		},
 
@@ -427,11 +427,11 @@ GrowData =
 			GrowTime = 12,
 			SeedCaughtVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishCaughtVoiceLines
+				[1] = GlobalVoiceLines.SeedCaughtVoiceLines
 			},
 			SeedIdentifiedVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishIdentifiedVoiceLines
+				[1] = GlobalVoiceLines.SeedIdentifiedVoiceLines
 			},
 		},
 
@@ -440,11 +440,11 @@ GrowData =
 			GrowTime = 18,
 			SeedCaughtVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishCaughtVoiceLines
+				[1] = GlobalVoiceLines.SeedCaughtVoiceLines
 			},
 			SeedIdentifiedVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishIdentifiedVoiceLines
+				[1] = GlobalVoiceLines.SeedIdentifiedVoiceLines
 			},
 		},
 
@@ -453,14 +453,14 @@ GrowData =
 			InheritFrom = { "SeedDefaultCommon" },
 			GrowValue = "Vegetable_Tartarus_Common_01",
 			GrowTime = 8,
-			--[[FishIdentifiedVoiceLines =
+			--[[SeedIdentifiedVoiceLines =
 			{
 				{
 					BreakIfPlayed = true,
 					RandomRemaining = true,
 					PreLineWait = 1.0,
 					SuccessiveChanceToPlayAll = 0.66,
-					TriggerCooldowns = { "ZagreusGlobalFishCaughtVoiceLinesPlayed" },
+					TriggerCooldowns = { "ZagreusGlobalSeedCaughtVoiceLinesPlayed" },
 
 					-- I caught a Hellfish!
 					{ Cue = "/VO/ZagreusField_3059" },
@@ -473,7 +473,7 @@ GrowData =
 					-- What do you know, a Hellfish.
 					{ Cue = "/VO/ZagreusField_3063", RequiredPlayed = { "/VO/ZagreusField_3059" } },
 				},
-				[2] = GlobalVoiceLines.FishIdentifiedVoiceLines,
+				[2] = GlobalVoiceLines.SeedIdentifiedVoiceLines,
 			},]]
 		},
 		Seed_Vegetable_Styx_Common_01 =
@@ -602,13 +602,13 @@ GrowData =
 			Award = {
 				{ Gems = 10 },
 			},
-			FishCaughtVoiceLines =
+			GrowCaughtVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishCaughtVoiceLines
+				[1] = GlobalVoiceLines.GrowCaughtVoiceLines
 			},
-			FishIdentifiedVoiceLines =
+			GrowIdentifiedVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishIdentifiedVoiceLines
+				[1] = GlobalVoiceLines.GrowIdentifiedVoiceLines
 			},
 		},
 
@@ -617,13 +617,13 @@ GrowData =
 			Award = {
 				{ Gems = 100 },
 			},
-			FishCaughtVoiceLines =
+			GrowCaughtVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishCaughtVoiceLines
+				[1] = GlobalVoiceLines.GrowCaughtVoiceLines
 			},
-			FishIdentifiedVoiceLines =
+			GrowIdentifiedVoiceLines =
 			{
-				[1] = GlobalVoiceLines.FishIdentifiedVoiceLines
+				[1] = GlobalVoiceLines.GrowIdentifiedVoiceLines
 			},
 		},
 
@@ -636,14 +636,14 @@ GrowData =
 				{ LockKeys = 1 },
 			},
 
-			--[[FishIdentifiedVoiceLines =
+			--[[GrowIdentifiedVoiceLines =
 			{
 				{
 					BreakIfPlayed = true,
 					RandomRemaining = true,
 					PreLineWait = 1.0,
 					SuccessiveChanceToPlayAll = 0.66,
-					TriggerCooldowns = { "ZagreusGlobalFishCaughtVoiceLinesPlayed" },
+					TriggerCooldowns = { "ZagreusGlobalGrowCaughtVoiceLinesPlayed" },
 
 					-- I caught a Hellfish!
 					{ Cue = "/VO/ZagreusField_3059" },
@@ -656,7 +656,7 @@ GrowData =
 					-- What do you know, a Hellfish.
 					{ Cue = "/VO/ZagreusField_3063", RequiredPlayed = { "/VO/ZagreusField_3059" } },
 				},
-				[2] = GlobalVoiceLines.FishIdentifiedVoiceLines,
+				[2] = GlobalVoiceLines.GrowIdentifiedVoiceLines,
 			},]]
 		},
 		Vegetable_Styx_Common_01 =
@@ -1389,13 +1389,13 @@ table.insert(OlympusCodexOrdering.Order, 10, "Grow")
 OlympusObstacleData.SeedPoint =
 	{
 		UseText = "UseSeedPointLocked",
-		FishUnlockedUseText = "UseSeedPoint",
+		SeedUnlockedUseText = "UseSeedPoint",
 
 		DistanceTrigger =
 		{
 			GameStateRequirements =
 			{
-				-- RequiredCosmetics = { "FishingUnlockItem", },
+				RequiredTextLines = { "GaiaFirstPickUp", },
 			},
 			WithinDistance = 500,
 			VoiceLines =

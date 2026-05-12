@@ -78,6 +78,7 @@ AlexKage, physiX
 **Hephaestus Portrait:** Leo_v ([Artstation](https://www.artstation.com/leo_v))\
 **Hestia Keepsake Badges:** [Starley](https://twitter.com/princestarley/)\
 **Hera Keepsake Badges:** Lazymano\
+**Moros Keepsake Badges:** [Cuyler "Bewx" Lorenzana](https://www.artstation.com/bewx)\
 **Additional Graphics:** physiX, bessyboo
 
 ### Audio
