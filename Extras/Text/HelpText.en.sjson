@@ -70,6 +70,11 @@
 			Description = "All foes restores when dealing damage, {#TooltipPenaltyFormat}+{$TempTextData.BaseValue}% {!Icons.HealthUp_Small} {#PreviousFormat}per rank."
 		}
 		{
+			Id = "BoonDuoLegendDebuff"
+			DisplayName = "Unfaintful"
+			Description = "Decrease your chance for a {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}to be {#LegendaryFormat}{$Keywords.Legendary} {#PreviousFormat}or {#DuoFormat}{$Keywords.Duo} {#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
+		}
+		{
 			Id = "BoonRarityDebuff"
 			DisplayName = "Unlucky"
 			Description = "Decrease your chance for a {#BoldFormatGraft}{$Keywords.GodBoon} {#PreviousFormat}to be {#RareFormat}{$Keywords.Rare}{#PreviousFormat} or {#EpicFormat}{$Keywords.Epic}{#PreviousFormat}, {#TooltipUpgradeFormat}{$TempTextData.BaseValue:P} {#PreviousFormat}per rank."
@@ -85,6 +90,10 @@
 		{
 			Id = "EnemyLifestealShrineUpgrade"
      		DisplayName = "{$Keywords.EnemyLifesteal}"		
+		}
+		{
+			Id = "BoonDuoLegendDebuffShrineUpgrade"
+     		DisplayName = "{$Keywords.BoonDuoLegendDebuff}"
 		}
 		{
 			Id = "BoonRarityDebuffShrineUpgrade"

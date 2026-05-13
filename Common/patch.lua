@@ -13,7 +13,7 @@ ModUtil.Table.Merge(OlympusKeywordList, {
     "Repair", "IgneousArmor", "TemporaryAmmo", "HephWeapon",
     "ArmorIcon", "ZagreusArmor", "HephSword", "HephBow",
     "HephShield", "HephSpear", "EpicBonus_InRun", "SelfExplosionFoe",
-    "GodWrathRoom", "EnemyLifesteal", "BoonRarityDebuff" })
+    "GodWrathRoom", "EnemyLifesteal", "BoonDuoLegendDebuff", "BoonRarityDebuff" })
 ResetKeywords()
 
 local OlympusEnemySets = ModUtil.Entangled.ModData(EnemySets)
@@ -1724,6 +1724,10 @@ ModUtil.Path.Wrap("Damage",
             rarityChances.Heroic = rarityChances.Heroic - GetNumMetaUpgrades( "BoonRarityDebuffShrineUpgrade" ) * ( MetaUpgradeData.BoonRarityDebuffShrineUpgrade.ChangeValue - 1 )
             if rarityChances.Heroic < 0 then
                 rarityChances.Heroic = 0
+            end
+            rarityChances.Legendary = rarityChances.Legendary - GetNumMetaUpgrades( "BoonDuoLegendDebuffShrineUpgrade" ) * ( MetaUpgradeData.BoonDuoLegendDebuffShrineUpgrade.ChangeValue - 1 )
+            if rarityChances.Legendary < 0 then
+                rarityChances.Legendary = 0
             end
             return
             {

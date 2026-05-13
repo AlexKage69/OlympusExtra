@@ -1,4 +1,4 @@
-:: Include "Items/modfile_items.txt"
+Include "Items/modfile_items.txt"
 Include "CerberusAssist/modfile_cerberus.txt"
 Include "Pacts/modfile_pacts.txt"
 
