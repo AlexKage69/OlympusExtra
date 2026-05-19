@@ -2218,6 +2218,10 @@ ModUtil.Path.Wrap("IsRoomForced",
         if nextRoomData.ForceChanceByRemainingWings and HeroHasTrait("TroveUpgradeBoonTrait") then
             return true
         end
+        if HasHeroTraitValue("ForceNPCEncounter") and nextRoomData.ForcedReward == "Story" then
+            UseHeroTraitsWithValue("ForceChallengeSwitch", true)
+            return true
+        end
         if nextRoomData.ChanceToForce ~= nil and RandomChance(nextRoomData.ChanceToForce) then
             return true
         end
@@ -2348,6 +2352,78 @@ OnHit {
         end
     end
 }
+function CreateExiledGodsData()
+	return {
+		CurrentExiledGods = {},
+		CurrentDualExiledGods = {},
+		ExiledGodUnlocks = {},
+		ExiledDualGodUnlocks = {},
+	}
+end
+function GetExilData()
+	if true or GameState.ExilData == nil or GameState.ExilData.CurrentExiledGods == nil or GameState.ExilData.CurrentDualExiledGods == nil or GameState.ExilData.ExiledGodUnlocks == nil or GameState.ExilData.ExiledDualGodUnlocks == nil then
+		GameState.ExilData = CreateExiledGodsData()
+	end
+	return GameState.ExilData
+end
+-- Place the seeds & Gaia, Hecate Gates
+ModUtil.Path.Wrap("HandleSecretSpawns",
+	function(baseFunc, currentRun)
+		baseFunc(currentRun)
+		local currentRoom = currentRun.CurrentRoom
+		local seedPoints = GetInactiveIdsByType({ Name = "SeedPoint" })
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(not IsEmpty( seedPoints )))
+		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(IsSeedEligible( currentRun, currentRoom )))
+		if not IsEmpty( seedPoints ) and IsSeedEligible( currentRun, currentRoom ) then
+			currentRoom.ForceSeed = true
+			UseHeroTraitsWithValue("ForceSeedPoint", true)
+			CurrentRun.CurrentRoom.SeedPointId = GetRandomValue(seedPoints)
+			Activate({ Id = CurrentRun.CurrentRoom.SeedPointId })
+			--currentRun.LastFishingPointDepth = GetRunDepth( currentRun )
+		end
+        local secretPointIds = GetIdsByType({ Name = "SecretPoint" })
+        -- Garden Door
+        if not IsEmpty( secretPointIds ) and IsGardenDoorEligible( currentRun, currentRoom ) then
+            currentRoom.ForceGardenDoor = true
+            UseHeroTraitsWithValue("ForceGardenDoor", true)
+            local secretRoomData = ChooseNextRoomData( currentRun, { RoomDataSet = RoomSetData.Secrets } )
+            if secretRoomData ~= nil then
+                local secretPointId = RemoveRandomValue( secretPointIds )
+                local secretDoor = DeepCopyTable( ObstacleData.SecretDoor )
+                secretDoor.ObjectId = SpawnObstacle({ Name = "SecretDoor", Group = "FX_Terrain", DestinationId = secretPointId, AttachedTable = secretDoor })
+                SetupObstacle( secretDoor )
+                secretDoor.HealthCost = GetSecretDoorCost()
+                local secretRoom = CreateRoom( secretRoomData )
+                AssignRoomToExitDoor( secretDoor, secretRoom )
+                secretDoor.OnUsedPresentationFunctionName = "SecretDoorUsedPresentation"
+                currentRun.LastSecretDepth = GetRunDepth( currentRun )
+            end
+        end
+	end
+)
+
+function IsGardenDoorEligible( currentRun, currentRoom )
+    return false
+
+	--[[if currentRoom.ForceSecretDoor then
+		return true
+	end
+
+	if HasHeroTraitValue( "ForceSecretDoor" ) then
+		return true
+	end
+
+	if not currentRoom.SecretChanceSuccess then
+		return false
+	end
+
+	if not IsGameStateEligible( currentRun, currentRoom.SecretDoorRequirements ) then
+		return false
+	end
+
+	return true]]
+
+end
 ModUtil.Path.Wrap("StartNewRun",
     function(baseFunc, prevRun, args)
         local CurrentRun = baseFunc(prevRun, args)

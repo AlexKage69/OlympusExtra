@@ -2024,23 +2024,6 @@ function GetGoodsReward(growName)
 	end
 	return { ResourceName = ResourceName, ResourceAmount = ResourceAmount, Color = ResourceData[ResourceName].Color }
 end
--- Place the seeds
-ModUtil.Path.Wrap("HandleSecretSpawns",
-	function(baseFunc, currentRun)
-		baseFunc(currentRun)
-		local currentRoom = currentRun.CurrentRoom
-		local seedPoints = GetInactiveIdsByType({ Name = "SeedPoint" })
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(not IsEmpty( seedPoints )))
-		ModUtil.Hades.PrintStackChunks(ModUtil.ToString(IsSeedEligible( currentRun, currentRoom )))
-		if not IsEmpty( seedPoints ) and IsSeedEligible( currentRun, currentRoom ) then
-			currentRoom.ForceSeed = true
-			UseHeroTraitsWithValue("ForceSeedPoint", true)
-			CurrentRun.CurrentRoom.SeedPointId = GetRandomValue(seedPoints)
-			Activate({ Id = CurrentRun.CurrentRoom.SeedPointId })
-			--currentRun.LastFishingPointDepth = GetRunDepth( currentRun )
-		end
-	end
-)
 table.insert(OlympusDeathLoopData.DeathArea.StartUnthreadedEvents, 2, {
 	FunctionName = "SpawnSeedsDeathArea",
 })

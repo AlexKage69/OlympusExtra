@@ -40,18 +40,53 @@
 		}
 		{
 			Id = "TemporaryLavaImmunityTrait"
-			DisplayName = "Homer’s Asphodel Meadow"
-			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+			DisplayName = "Prometheus Medal" // Homer’s Asphodel Meadow
+			Description = "{$Keywords.PassiveItem}: Asmodel only. For 6 rooms, you are immune to lava damage. Disabled on Heightened Security."
 		}
 		{
 			Id = "TemporaryStyxPoisonImmunityTrait"
-			DisplayName = "Satyr Remedy Elixir"
-			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+			DisplayName = "Asclepius' Rod"
+			Description = "{$Keywords.PassiveItem}: Styx only. For 12 rooms, you are immune to poison and cure pool gives defense bonus."
+		}
+		{
+			Id = "TemporaryNPCConsummableTrait"
+			DisplayName = "Winged Sandals"
+			Description = "{$Keywords.PassiveItem}: Ensure the next room to meet someone. (character), Disable if the character is already met."
 		}
 		{
 			Id = "TemporaryForcedErebusDoorTrait"
-			DisplayName = "Darkness of Dia"
-			Description = "{$Keywords.PassiveItem}: Ensure a {$Keywords.HealthGate} will spawn ahead {#ItalicFormat}(where possible){#PreviousFormat}."
+			DisplayName = "Darkness of Phlegyas"
+			Description = "{$Keywords.PassiveItem}: Needs minimum heat. Ensure Erebus gate next room"
+		}
+		{
+			Id = "TemporaryForcedGardenDoorTrait"
+			DisplayName = "Lost seed"
+			Description = "{$Keywords.PassiveItem}: Same requirement as Chaos. Ensure Gaia gate next room"
+		}
+		{
+			Id = "TemporaryDoubleBoonTrait"
+			DisplayName = "Tantalus' bowl"
+			Description = "{$Keywords.PassiveItem}: Tartarus only. Double your next boon spawn. Once per run."
+		}
+		{
+			Id = "TemporaryHeroicUpgradeTrait"
+			DisplayName = "Theseus' Glory"
+			Description = "{$Keywords.PassiveItem}: Must have a boon. After 12 encounters, a Random boon Becomes heroic."
+		}
+		{
+			Id = "TemporaryPomUpgradeTrait"
+			DisplayName = "Asterius' Loyalty"
+			Description = "{$Keywords.PassiveItem}: Must have a boon. After 6 encounters, a boon gain 2 boon lvl"
+		}
+		{
+			Id = "TemporaryAddRerollTrait"
+			DisplayName = "Tyche's coin"
+			Description = "{$Keywords.PassiveItem}: Gain 5 rerolls"
+		}
+		{
+			Id = "TemporaryRandomEffectTrait"
+			DisplayName = "Pandora's Box"
+			Description = "{$Keywords.PassiveItem}: Gain a Random Pandora Effect."
 		}
 		// Pacts
 		{

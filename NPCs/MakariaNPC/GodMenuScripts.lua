@@ -227,21 +227,7 @@ function ParseRealGodName(id)
 	return string.sub(id, 0, string.len(id) - 7)
 end
 
-function CreateExiledGodsData()
-	return {
-		CurrentExiledGods = {},
-		CurrentDualExiledGods = {},
-		ExiledGodUnlocks = {},
-		ExiledDualGodUnlocks = {},
-	}
-end
 
-function GetExilData()
-	if GameState.ExilData == nil or GameState.ExilData.CurrentExiledGods == nil or GameState.ExilData.CurrentDualExiledGods == nil or GameState.ExilData.ExiledGodUnlocks == nil or GameState.ExilData.ExiledDualGodUnlocks == nil then
-		GameState.ExilData = CreateExiledGodsData()
-	end
-	return GameState.ExilData
-end
 
 LockAt = 3
 CostButtonTable = {}
